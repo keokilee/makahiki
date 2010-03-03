@@ -1,0 +1,12 @@
+{% extends "energy_data/energy_data_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}Energy Data: Daily{% endblock %}
+
+{% block body %}
+  <div class="energy_content">
+    {% gblock "energy_day" for "gblocks.TitleAndText" %}
+  </div>
+{% endblock %}

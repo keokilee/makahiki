@@ -1,0 +1,12 @@
+{% extends "resources/resources_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{% trans "Products" %}{% endblock %}
+
+{% block body %}
+    <div class="have_fun_test" style="text-align:center">
+      {% gblock "have_fun_test" for "gblocks.TitleAndText" %}
+    </div>
+{% endblock %}

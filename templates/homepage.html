@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block tab_id %}id="home_tab"{% endblock %}
+
+{% block body %}
+  <div class="homepage_tips" style="width:100%; clear:both">
+    {% gblock "homepage_tips" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_video" style="width:350px;float:left">
+    {% gblock "homepage_video" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_news" style="width:250px; float:left; padding-left:10px">
+    {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_pictures" style="width:300px; float:left; padding-left:10px">
+    {% gblock "homepage_pictures" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_about" style="width:300px; float:left; clear:left">
+    {% gblock "homepage_about" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_events" style="width:300px; float:right">
+    {% gblock "homepage_events" for "gblocks.TitleAndText" %}
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "basic_profiles/base.html" %}
+
+{% load i18n %}
+{% load uni_form %}
+{% load avatar_tags %}
+
+{% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    
+    <div class="right_panel">
+        {% include "basic_profiles/profile_right_panel.html" %}
+    </div>
+    
+    <div class="vcard">
+        <div id="profile_avatar">
+            <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
+            {% if is_me %}
+            <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
+            {% endif %}
+        </div>
+        {% if other_user.get_profile.name %}
+            <h1>{% blocktrans %}Profile for <span class="nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
+        {% else %}
+            <h1>{% blocktrans %}Profile for <span class="fn nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
+        {% endif %}
+        
+        <div class="profile_info">
+            {% if other_user.get_profile.name %}<p><b>{% trans "Name" %}</b>: <span class="fn">{{ other_user.get_profile.name }}</span></p>{% endif %}
+            {% if other_user.get_profile.about %}<p><b>{% trans "About" %}</b>: {{ other_user.get_profile.about }}</p>{% endif %}
+            {% if other_user.get_profile.points %}<p><b>{% trans "Kukui Nuts" %}</b>: {{ other_user.get_profile.points }}</p>{% endif %}
+            {% if other_user.get_profile.website %}<p><b>{% trans "Website" %}</b>: <a class="url" href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></p>{% endif %}
+        </div>
+        
+        {% if is_me %}
+            <p><a href="{% url profile_edit %}" rel="facebox">Edit profile</a></p>
+        {% endif %}
+        
+    </div><!--/vcard-->
+{% endblock %}
+
+
+{% block extra_body %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

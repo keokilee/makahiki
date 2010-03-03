@@ -1,0 +1,9 @@
+{% load markup %}
+{% load frontendadmin_tags %}
+{% load thumbnail %}
+
+<div>
+    {% frontendadmin_change object %}
+    <h3>{{ object.title }}</h3>
+    {{ object.text|markdown }}
+</div>

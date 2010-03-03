@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{% trans "About Us" %}{% endblock %}
+
+{% block tab_id %}id="about_us_tab"{% endblock %}
+
+{% block body %}
+  <div style="width:300px; float:left">
+    {% gblock "about_website" for "gblocks.TitleAndText" %}
+  </div>
+  <div style="width:500px; float:left; padding-left:30px">
+    {% gblock "about_kukui_cup" for "gblocks.TitleAndText" %}
+  </div>
+{% endblock %}
