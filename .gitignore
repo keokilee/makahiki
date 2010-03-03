@@ -1,3 +1,4 @@
 # Ignore database files
 *.db
 *.sql
+*.pyc
