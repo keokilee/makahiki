@@ -1,6 +1,6 @@
-# Installation and setup
+# README.markdown
 
-This section describes how to install Pinax, get the Kukui Cup Pinax source code, and setup the database.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html).
+This README describes how to set up your computer for developing the Pinax implementation of the Kukui Cup.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 ## Prerequisites
 * Install [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  Make sure you can type `python` on the command line to start the interpreter (type `exit()` to close the interpreter).
@@ -11,6 +11,11 @@ This section describes how to install Pinax, get the Kukui Cup Pinax source code
 * Download the latest official release from the [Pinax web site](http://pinaxproject.com/download/).
 * Extract the bundle and using the terminal or a command prompt, change into the new directory.
 * Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
+
+## Installing Django CAS
+* Download the latest official release from the [Django CAS](http://code.google.com/p/django-cas/) project page.
+* Extract the bundle and change into the Django CAS directory.
+* Run `python setup.py install` to install Django CAS to your PYTHONPATH.
 
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [Git download page](http://git-scm.com/download).
