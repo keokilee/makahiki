@@ -3,9 +3,9 @@
 This README describes how to set up your computer for developing the Pinax implementation of the Kukui Cup.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 ## Prerequisites
-* Install [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  Make sure you can type `python` on the command line to start the interpreter (type `exit()` to close the interpreter).
-* Install the [Python Image Library](http://www.pythonware.com/products/pil/) (PIL)
-* If on OS X, make sure that the Apple developer tools are installed (which includes XCode).
+* Make sure you can type `python` on the command line to start the interpreter (type `exit()` to close the interpreter).  If you do not have [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3), install it.
+* If on Mac OS X, make sure that the Apple developer tools are installed (which includes XCode).  This is required to get gcc installed.
+* Install the [Python Image Library](http://www.pythonware.com/products/pil/) (PIL).
 
 ## Installing Pinax
 * Download the latest official release from the [Pinax web site](http://pinaxproject.com/download/).
@@ -18,9 +18,10 @@ This README describes how to set up your computer for developing the Pinax imple
 * Run `python setup.py install` to install Django CAS to your PYTHONPATH.
 
 ## Obtaining the Kukui Cup Pinax source
-* Getting this project requires Git.  Find a package for your operating system at the [Git download page](http://git-scm.com/download).
+* Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * Once Git is installed, cd into the directory that will hold the code.
-* Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to create a folder called "kukui-cup-pinax" and download the files.
+* If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
+* Once you set those up, you should be able to check out the code by typing `git clone git@github.com:keokilee/kukui-cup-pinax.git`.  This will create the new folder and download the code from the repository.
 
 ## Running the server for the first time
 * cd into the kukui-cup-pinax folder.
@@ -33,4 +34,9 @@ This README describes how to set up your computer for developing the Pinax imple
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
  
-# Modifying templates
+## Running tests
+There is support in Django/Pinax for Unit Tests.  Run `python manage.py test` to run all of the tests. Unfortunately, there are some out of the box tests that fail.  Here are a few patches that will help the tests pass.
+
+Patch for textile rendering: http://code.djangoproject.com/attachment/ticket/10843/10843.patch
+
+## Modifying templates

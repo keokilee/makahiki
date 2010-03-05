@@ -30,6 +30,9 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.run_tests'
+TEST_OUTPUT_DESCRIPTIONS = True
+
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -99,7 +102,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'kukuicup_auth.models.KukuiCupCASBackend',
+    # 'kukuicup_auth.models.KukuiCupCASBackend',
 )
 
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
@@ -118,9 +121,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-    
+
     "pinax.core.context_processors.pinax_settings",
-    
+
     "notification.context_processors.notification",
     "account.context_processors.openid",
     "account.context_processors.account",
@@ -199,6 +202,7 @@ CONTACT_EMAIL = "feedback@example.com"
 SITE_NAME = "University of Hawaii Dorm Energy"
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URLNAME = "home"
+LOGIN_REDIRECT_URL = "/"
 
 SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
