@@ -19,7 +19,6 @@ This README describes how to set up your computer for developing the Pinax imple
 
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
-* Once Git is installed, cd into the directory that will hold the code.
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
 * Once you set those up, you should be able to check out the code by typing `git clone git@github.com:keokilee/kukui-cup-pinax.git`.  This will create the new folder and download the code from the repository.
 
@@ -28,7 +27,7 @@ This README describes how to set up your computer for developing the Pinax imple
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Type `python manage.py syncdb` to create the Sqlite database.
 * It will ask you if you want to create a superuser.  Say "yes".
-* IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is required so that you can authenticate via UH CAS.
+* IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is so that you can authenticate via UH CAS.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
 * After the tables are created, type `python manage.py loaddata fixtures/*` to load the data in the fixtures folder.
 * Type `python manage.py runserver` to start the web server.
