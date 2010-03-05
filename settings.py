@@ -102,7 +102,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # 'kukuicup_auth.models.KukuiCupCASBackend',
+    'kukuicup_auth.models.KukuiCupCASBackend',
 )
 
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
