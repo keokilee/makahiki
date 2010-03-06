@@ -8,3 +8,6 @@
 # Ignore the settings file so that new users create their own.
 settings.py
 
+# Ignore the test files.
+log
+
