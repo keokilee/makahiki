@@ -1,4 +1,10 @@
 # Ignore database files
 *.db
 *.sql
+
+# Ignore compiled Python files.
 *.pyc
+
+# Ignore the settings file so that new users create their own.
+settings.py
+

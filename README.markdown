@@ -22,20 +22,22 @@ This README describes how to set up your computer for developing the Pinax imple
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
 * Once you set those up, you should be able to check out the code by typing `git clone git@github.com:keokilee/kukui-cup-pinax.git`.  This will create the new folder and download the code from the repository.
 
-## Running the server for the first time
+## Setting up Kukui Cup Pinax
 * cd into the kukui-cup-pinax folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
-* Type `python manage.py syncdb` to create the Sqlite database.
+* Copy `settings.py.example` to `settings.py`.  This will work as is, but you might want to make a few changes to it depending on your environment.  Some things you might want to change are the database settings, timezone, and the CAS Login server.
+* Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is so that you can authenticate via UH CAS.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
 * After the tables are created, type `python manage.py loaddata fixtures/*` to load the data in the fixtures folder.
+
+## Running the server
+* If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
  
 ## Running tests
-There is support in Django/Pinax for Unit Tests.  Run `python manage.py test` to run all of the tests. Unfortunately, there are some out of the box tests that fail.  Here are a few patches that will help the tests pass.
-
-Patch for textile rendering: http://code.djangoproject.com/attachment/ticket/10843/10843.patch
+While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.
 
 ## Modifying templates
