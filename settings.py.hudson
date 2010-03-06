@@ -30,6 +30,8 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+# Generates XML reports for the Django tests.
+# Requires http://pypi.python.org/pypi/unittest-xml-reporting/1.0.3
 TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.run_tests'
 TEST_OUTPUT_DESCRIPTIONS = True
 TEST_OUTPUT_DIR = "log"
