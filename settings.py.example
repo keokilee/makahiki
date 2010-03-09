@@ -36,6 +36,8 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # TEST_OUTPUT_DESCRIPTIONS = True
 # TEST_OUTPUT_DIR = "log"
 
+TEST_RUNNER = 'selenium_test_runner.test_runner.run_tests'
+
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -97,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_openid.consumer.SessionConsumer',
     'account.middleware.LocaleMiddleware',
-    'django_cas.middleware.CASMiddleware',
+    'apps.django_cas.middleware.CASMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
@@ -105,7 +107,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'kukui-cup-auth.models.KukuiCupCASBackend',
+    'apps.kukui_cup_auth.models.KukuiCupCASBackend',
 )
 
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
@@ -133,8 +135,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
-    'kukui-cup-auth',
-    'basic_profiles',
+    'apps.kukui_cup_auth',
     # 'south',
     
     # included

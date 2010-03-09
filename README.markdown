@@ -12,11 +12,6 @@ This README describes how to set up your computer for developing the Pinax imple
 * Extract the bundle and using the terminal or a command prompt, change into the new directory.
 * Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
 
-## Installing Django CAS
-* Download the latest official release from the [Django CAS](http://code.google.com/p/django-cas/) project page.
-* Extract the bundle and change into the Django CAS directory.
-* Run `python setup.py install` to install Django CAS to your PYTHONPATH.
-
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
