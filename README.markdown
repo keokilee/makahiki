@@ -3,9 +3,9 @@
 This README describes how to set up your computer for developing the Pinax implementation of the Kukui Cup.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 ## Prerequisites
-* Make sure you can type `python` on the command line to start the interpreter (type `exit()` to close the interpreter).  If you do not have [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3), install it.
+* [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
 * If on Mac OS X, make sure that the Apple developer tools are installed (which includes XCode).  This is required to get gcc installed.
-* Install the [Python Image Library](http://www.pythonware.com/products/pil/) (PIL).
+* [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL).
 
 ## Installing Pinax
 * Download the latest official release from the [Pinax web site](http://pinaxproject.com/download/).
