@@ -136,7 +136,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
+    'apps.django_cas', # Placed here so that it registers as an app during testing.
     'apps.kukui_cup_auth',
+    'apps.commitments',
     # 'south',
     
     # included
