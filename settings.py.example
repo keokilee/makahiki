@@ -36,7 +36,8 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # TEST_OUTPUT_DESCRIPTIONS = True
 # TEST_OUTPUT_DIR = "log"
 
-TEST_RUNNER = 'selenium_test_runner.test_runner.run_tests'
+# Run tests using Selenium (not working quite yet).
+# TEST_RUNNER = 'selenium_test_runner.test_runner.run_tests'
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
