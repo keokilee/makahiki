@@ -136,11 +136,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
+
+    # Kukui Cup specific apps.  Hopefully, they do not interfere with the fixture loading.
     'apps.django_cas', # Placed here so that it registers as an app during testing.
     'apps.kukui_cup_auth',
     'apps.activities',
     'apps.kukui_cup_profile',
-    # 'south',
     
     # included
     'django.contrib.auth',
@@ -151,7 +152,7 @@ INSTALLED_APPS = (
     'pinax.templatetags',
     
     # external
-    # 'notification', # must be first
+    'notification', # must be first
     # 'django_openid',
     'emailconfirmation',
     'mailer',
@@ -173,10 +174,9 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'frontendadmin',
     'attachments',
+    'django.contrib.markup',
     'django_generic_flatblocks',
     'django_generic_flatblocks.contrib.gblocks',
-    'django.contrib.markup',
-
 )
 
 FIXTURE_DIRS = [

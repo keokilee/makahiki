@@ -1,0 +1,7 @@
+UPDATE django_generic_flatblocks_genericflatblock SET content_type_id=38 where content_type_id=33;
+
+UPDATE django_generic_flatblocks_genericflatblock SET content_type_id=37 where content_type_id=32;
+
+UPDATE django_generic_flatblocks_genericflatblock SET content_type_id=36 where content_type_id=31;
+
+UPDATE django_generic_flatblocks_genericflatblock SET content_type_id=35 where content_type_id=30;
