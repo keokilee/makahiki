@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'apps.kukui_cup_auth',
     'apps.activities',
     'apps.kukui_cup_profile',
+    'apps.kukui_cup_admin',
     
     # included
     'django.contrib.auth',
