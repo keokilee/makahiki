@@ -38,6 +38,7 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  A sample SQL script is located in `fixture_update.sql`.  You'll need to update the content type ids in the genericflatblock table to point to the correct entry in the content types table.  It is recommended that you use a GUI based database browser like the [SQLite Database Browser](http://sqlitebrowser.sourceforge.net/) for SQLite3.
 
 Some hints:
+
 * website\_header matches to the content type with name "title"
 * website\_footer matches to the content type "text"
 * website\_image matches to the content type "image"
