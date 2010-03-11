@@ -2,7 +2,7 @@
 
 This README describes how to set up your computer for developing the Pinax implementation of the Kukui Cup.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
-If you're on Windows, there's also a screencast on installing Pinax in Windows at http://beshrkayali.com/posts/10/.
+If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).
 
 ## Prerequisites
 * [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
