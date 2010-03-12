@@ -23,6 +23,7 @@ class Activity(models.Model):
   point_value = models.IntegerField()
   created_at = models.DateTimeField()
   confirm_code = models.CharField(max_length=20)
+  active_date = models.DateTimeField(null=True)
   users = models.ManyToManyField(User, through="ActivityMembers")
   
 class ActivityMembers(models.Model):
@@ -30,7 +31,7 @@ class ActivityMembers(models.Model):
   activity = models.ForeignKey(Activity)
   created_at = models.DateTimeField()
   comment = models.TextField(null=True)
-  is_confirmed = models.BooleanField()
+  is_confirmed = models.BooleanField(default=False)
 
 class Goal(models.Model):
   title = models.CharField(max_length=200)
