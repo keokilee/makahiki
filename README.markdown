@@ -28,7 +28,7 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is so that you can authenticate via UH CAS.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
-* The database fixtures should be automatically loaded (it should say `Installed 70 objects from 1 fixture(s)`).  If they are not, type `python manage.py loaddata fixtures/*` to load the data in the fixtures folder.
+* The database fixtures should be automatically loaded (it should say `Installed 70 objects from 1 fixture(s)`).  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
 
 ## Running the server
 * If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
@@ -36,16 +36,33 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * Open a browser and go to http://localhost:8000 to see the website.
 
 ## Troubleshooting
-If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  A sample SQL script is located in `fixture_update.sql`.  You'll need to update the content type ids in the genericflatblock table to point to the correct entry in the content types table.  It is recommended that you use a GUI based database browser like the [SQLite Database Browser](http://sqlitebrowser.sourceforge.net/) for SQLite3.
+If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  I have created a backup of my contenttypes data that can be used to reload it.  But first, you need to delete the contents of the contenttypes database.
 
-Some hints:
+Here's a way to do this using the Python shell:
 
-* website\_header matches to the content type with name "title"
-* website\_footer matches to the content type "text"
-* website\_image matches to the content type "image"
-* homepage\_tips matches to the content type "titleandtext"
- 
-It sucks, but there's no easy way around it.
+1. Type `python manage.py shell` to start the shell.
+2. Import the ContentType model by typing `from django.contrib.contenttypes.models import ContentType`.
+3. Type the following command: `map(lambda c: c.delete(), ContentType.objects.all())`.  What this does is that it loads all of the objects from the database and deletes each one.
+4. Exit the python shell (type `exit()`) and reload the fixtures with `python manage.py loaddata fixtures/*`.
+
+You should see something similar to this:
+
+`
+(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py shell
+Python 2.6.1 (r261:67515, Jul  7 2009, 23:51:51) 
+[GCC 4.2.1 (Apple Inc. build 5646)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.contrib.contenttypes.models import ContentType
+>>> map(lambda c: c.delete(), ContentType.objects.all())
+[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+>>> exit()
+(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py loaddata fixtures/*
+Installing json fixture 'fixtures/contenttypes_backup' from absolute path.
+Installing json fixture 'fixtures/initial_data' from absolute path.
+Installed 109 object(s) from 2 fixture(s)
+(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$
+`
 
 ## Running tests
 While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
