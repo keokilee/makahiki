@@ -47,22 +47,20 @@ Here's a way to do this using the Python shell:
 
 You should see something similar to this:
 
-`
-(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py shell
+<code>(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py shell
 Python 2.6.1 (r261:67515, Jul  7 2009, 23:51:51) 
 [GCC 4.2.1 (Apple Inc. build 5646)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 (InteractiveConsole)
->>> from django.contrib.contenttypes.models import ContentType
->>> map(lambda c: c.delete(), ContentType.objects.all())
+&rt;&rt;&rt; from django.contrib.contenttypes.models import ContentType
+&rt;&rt;&rt; map(lambda c: c.delete(), ContentType.objects.all())
 [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
->>> exit()
+&rt;&rt;&rt; exit()
 (pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py loaddata fixtures/*
 Installing json fixture 'fixtures/contenttypes_backup' from absolute path.
 Installing json fixture 'fixtures/initial_data' from absolute path.
 Installed 109 object(s) from 2 fixture(s)
-(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$
-`
+(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$</code>
 
 ## Running tests
 While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
