@@ -35,7 +35,7 @@ urlpatterns = patterns('',
     (r'^account/cas/logout/$', 'django_cas.views.logout'),
     # (r'^openid/(.*)', PinaxConsumer()),
     (r'^avatar/', include('avatar.urls')),
-    (r'^profiles/', include('basic_profiles.urls')),
+    (r'^profiles/', include('kukui_cup_profile.urls')),
     (r'^admin/(.*)', admin.site.root),
 )
 

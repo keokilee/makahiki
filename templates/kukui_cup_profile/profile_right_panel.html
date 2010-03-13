@@ -1,9 +1,9 @@
 {% load i18n %}
 
-{% if commitments %}
-  <p>Listing new commitments.</p>
+{% if all_commitments %}
+  <p>Listing new commitments:</p>
   <ul>
-  {% for commitment in commitments %}
+  {% for commitment in all_commitments %}
     <li>
       {{ commitment.pk}} - {{ commitment.title }}
     </li>
@@ -13,12 +13,16 @@
   <p>No new commitments.</p>
 {% endif %}
 
-{% if my_commitments %}
-  <p>Your commitments.</p>
+{% if user_commitments %}
+  {% if is_me %}
+    <p>My commitments:</p>
+  {% else %}
+    <p>{{ other_user.get_profile.name }}'s commitments.</p>
+  {% endif %}
   <ul>
-  {% for commitment in my_commitments %}
+  {% for commitment in user_commitments %}
     <li>
-      {{ commitment.pk}} - {{ commitment.title }}
+      {{ commitment.pk }} - {{ commitment.title }}
     </li>
   {% endfor %}
   </ul>

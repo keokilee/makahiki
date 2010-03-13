@@ -4,7 +4,13 @@
 {% load uni_form %}
 {% load avatar_tags %}
 
-{% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
+{% block head_title %}
+  {% if is_me %}
+    My profile
+  {% else %}
+    {% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}
+  {% endif %}
+{% endblock %}
 
 {% block body %}
     
@@ -19,10 +25,14 @@
             <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
             {% endif %}
         </div>
-        {% if other_user.get_profile.name %}
-            <h1>{% blocktrans %}Profile for <span class="nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
+        {% if is_me %}
+            <h1>{% blocktrans %}My Profile{% endblocktrans %}</h1>
         {% else %}
+          {% if other_user.get_profile.name %}
+            <h1>{% blocktrans %}Profile for <span class="nickname">{{ other_user.get_profile.name }}</span>{% endblocktrans %}</h1>
+          {% else %}
             <h1>{% blocktrans %}Profile for <span class="fn nickname">{{ other_user }}</span>{% endblocktrans %}</h1>
+          {% endif %}
         {% endif %}
         
         <div class="profile_info">
