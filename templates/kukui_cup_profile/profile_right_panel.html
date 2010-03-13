@@ -1,0 +1,27 @@
+{% load i18n %}
+
+{% if commitments %}
+  <p>Listing new commitments.</p>
+  <ul>
+  {% for commitment in commitments %}
+    <li>
+      {{ commitment.pk}} - {{ commitment.title }}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No new commitments.</p>
+{% endif %}
+
+{% if my_commitments %}
+  <p>Your commitments.</p>
+  <ul>
+  {% for commitment in my_commitments %}
+    <li>
+      {{ commitment.pk}} - {{ commitment.title }}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>You are not committed to anything.</p>
+{% endif %}
