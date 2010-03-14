@@ -1,5 +1,7 @@
 # README.markdown
 
+Milestone 2
+
 This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/kukui-cup-pinax) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).  Note that you can ignore the section adding/removing Genshi.
