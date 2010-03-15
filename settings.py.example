@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'apps.activities',
     'apps.kukui_cup_profile',
     'apps.kukui_cup_admin',
+    'apps.basic_tests',
     
     # included
     'django.contrib.auth',
@@ -167,7 +168,7 @@ INSTALLED_APPS = (
     
     # internal (for now)
     'tribes',
-    'basic_profiles',
+    # 'basic_profiles',
     'account',
     'django.contrib.admin',
     
@@ -197,7 +198,7 @@ MARKUP_CHOICES = (
 )
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = 'basic_profiles.Profile'
+AUTH_PROFILE_MODULE = 'kukui_cup_profile.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 # ACCOUNT_OPEN_SIGNUP is not used by this project, but it acts as if it was
