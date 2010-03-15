@@ -1,5 +1,7 @@
 # README.markdown
 
+### Milestone 2.5
+
 This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/kukui-cup-pinax) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).  Note that you can ignore the section adding/removing Genshi.
@@ -17,8 +19,10 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
+* If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/kukui-cup-pinax.git` to get the source.
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
-* Once you set those up, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to check out the code.  This will create the new folder and download the code from the repository.
+* Once those are set up, send me your Git username so that you can be added as a collaborator.
+* When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to check out the code.  This will create the new folder and download the code from the repository.
 
 ## Setting up Kukui Cup Pinax
 * cd into the kukui-cup-pinax folder.
