@@ -10,7 +10,7 @@ class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
   created_at = models.DateTimeField(editable=False)
-  updated_at = models.DateTimeField(editable=False)
+  updated_at = models.DateTimeField(null=False, editable=False)
   
   def save(self):
     if not self.id:
@@ -41,7 +41,7 @@ class Commitment(CommonActivity):
 class CommitmentMember(CommonBase):
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  is_active = models.BooleanField()
+  is_active = models.BooleanField(default=True)
   comment = models.TextField(null=True)
   
 class Activity(CommonActivity):
