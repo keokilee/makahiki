@@ -6,19 +6,31 @@ from tribes.models import Tribe
 
 # Create your models here.
 
-class CommonActivity(models.Model):
-  title = models.CharField(max_length=200)
-  description = models.TextField()
-  point_value = models.IntegerField()
-  created_at = models.DateTimeField(editable=False)
+class CommonBase(models.Model):
+  """Common fields to all models in this file."""
   
-  def __unicode__(self):
-    return self.title
-    
+  created_at = models.DateTimeField(editable=False)
+  updated_at = models.DateTimeField(editable=False)
+  
   def save(self):
     if not self.id:
       self.created_at = datetime.date.today()
-    super(CommonActivity, self).save()
+    else:
+      self.updated_at = datetime.date.today()
+    super(CommonBase, self).save()
+    
+  class Meta:
+    abstract = True
+
+class CommonActivity(CommonBase):
+  """Common fields for activity models."""
+  
+  title = models.CharField(max_length=200)
+  description = models.TextField()
+  point_value = models.IntegerField()
+  
+  def __unicode__(self):
+    return self.title
     
   class Meta:
     abstract = True
@@ -26,45 +38,27 @@ class CommonActivity(models.Model):
 class Commitment(CommonActivity):
   users = models.ManyToManyField(User, through="CommitmentMember")
     
-class CommitmentMember(models.Model):
+class CommitmentMember(CommonBase):
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  created_at = models.DateTimeField(editable=False)
   is_active = models.BooleanField()
   comment = models.TextField(null=True)
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.date.today()
-    super(CommitmentMember, self).save()
   
 class Activity(CommonActivity):
   confirm_code = models.CharField(max_length=20)
   time = models.DateTimeField(null=True)
   users = models.ManyToManyField(User, through="ActivityMember")
   
-class ActivityMember(models.Model):
+class ActivityMember(CommonBase):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
-  created_at = models.DateTimeField()
   comment = models.TextField(null=True)
   is_confirmed = models.BooleanField(default=False)
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.date.today()
-    super(ActivityMember, self).save()
 
 class Goal(CommonActivity):
   groups = models.ManyToManyField(Tribe, through="GoalMember")
   
-class GoalMember(models.Model):
+class GoalMember(CommonBase):
   group = models.ForeignKey(Tribe)
   goal = models.ForeignKey(Goal)
-  created_at = models.DateTimeField()
   is_confirmed = models.BooleanField()
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.date.today()
-    super(GoalMember, self).save()
