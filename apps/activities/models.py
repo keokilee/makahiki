@@ -14,9 +14,9 @@ class CommonBase(models.Model):
   
   def save(self):
     if not self.id:
-      self.created_at = datetime.date.today()
+      self.created_at = datetime.datetime.today()
     else:
-      self.updated_at = datetime.date.today()
+      self.updated_at = datetime.datetime.today()
     super(CommonBase, self).save()
     
   class Meta:
@@ -49,6 +49,15 @@ class Activity(CommonActivity):
   time = models.DateTimeField(null=True)
   users = models.ManyToManyField(User, through="ActivityMember")
   
+  def _is_active(self):
+    if self.time:
+      result = self.time - datetime.datetime.today()  
+      if result.days > 5 or result.days < -5:
+        return False    
+    return True
+  
+  is_active = property(_is_active)
+
 class ActivityMember(CommonBase):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
