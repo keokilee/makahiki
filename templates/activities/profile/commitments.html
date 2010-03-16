@@ -1,0 +1,45 @@
+{% if available_commitments %}
+  <h3>Available commitments:</h3>
+  <ul>
+  {% for commitment in available_commitments %}
+    <li>
+      <h4>
+        {{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})
+        {% if is_me %}
+          <form action="{% url activities.views.add_commitment commitment.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Add</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ commitment.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h3>No new commitments.</h3>
+  {% endif %}
+{% endif %}
+
+{% if user_commitments %}
+  {% if is_me %}
+    <h3>My commitments:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s commitments.</h3>
+  {% endif %}
+  <ul>
+  {% for commitment in user_commitments %}
+    <li>
+      <h4>
+        {{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})
+        {% if is_me %}
+          <form action="{% url activities.views.remove_commitment commitment.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Remove</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ commitment.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}

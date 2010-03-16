@@ -1,0 +1,43 @@
+{% if available_activities %}
+  <h3>Available Activities:</h3>
+  <ul>
+  {% for activity in available_activities %}
+    <li>
+      <h4>
+        {{ activity.id }} - {{ activity.title }}({{activity.point_value}})
+        {% if is_me %}
+          <form action="{% url activities.views.add_activity activity.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Add</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ activity.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <h3>No new activities.</h3>
+{% endif %}
+
+{% if user_activities %}
+  {% if is_me %}
+    <h3>My activities:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s activities.</h3>
+  {% endif %}
+  <ul>
+  {% for activity in user_activities %}
+    <li>
+      <h4>
+        {{ activity.id }} - {{ activity.title }}({{ activity.point_value }})
+        {% if is_me %}
+          <form action="{% url activities.views.remove_activity activity.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Remove</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ activity.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}

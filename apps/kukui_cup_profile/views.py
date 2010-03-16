@@ -54,18 +54,20 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
         is_me = False
         
     # Load commitments for the user.
+    available_commitments = user_commitments = None
+    
     try:
       from apps.activities.models import Commitment
       user_commitments = other_user.commitment_set.all()
       if is_me:
-        all_commitments = Commitment.objects.exclude(commitmentmember__user__username=request.user.username)
+        available_commitments = Commitment.objects.exclude(commitmentmember__user__username=request.user.username)
     except ImportError:
-      all_commitments = user_commitments = None
+      pass
     
     return render_to_response(template_name, {
         "is_me": is_me,
         "other_user": other_user,
-        "all_commitments": all_commitments,
+        "available_commitments": available_commitments,
         "user_commitments": user_commitments,
     }, context_instance=RequestContext(request))
 

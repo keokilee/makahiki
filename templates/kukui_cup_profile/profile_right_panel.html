@@ -1,45 +1,5 @@
-{% load i18n %}
+{% if all_commitments or user_commitments %}{% include "activities/profile/commitments.html" %}{% endif %}
 
-{% if all_commitments and is_me %}
-  <h3>Available commitments:</h3>
-  <ul>
-  {% for commitment in all_commitments %}
-    <li>
-      <h4>
-        {{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})
-        {% if is_me %}
-          <form action="{% url activities.views.add_commitment commitment.id %}" method="post" style="display:inline">
-            <a href="#" onclick="parentNode.submit()">Add</a>
-          </form>
-        {% endif %}
-      </h4>
-      <p>{{ commitment.description }}</p>
-    </li>
-  {% endfor %}
-  </ul>
-{% else %}
-  <h3>No new commitments.</h3>
-{% endif %}
+{% if all_activities or user_activities %}{% include "activities/profile/activities.html" %}{% endif %}
 
-{% if user_commitments %}
-  {% if is_me %}
-    <h3>My commitments:</h3>
-  {% else %}
-    <h3>{{ other_user.get_profile.name }}'s commitments.</h3>
-  {% endif %}
-  <ul>
-  {% for commitment in user_commitments %}
-    <li>
-      <h4>
-        {{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})
-        {% if is_me %}
-          <form action="{% url activities.views.remove_commitment commitment.id %}" method="post" style="display:inline">
-            <a href="#" onclick="parentNode.submit()">Remove</a>
-          </form>
-        {% endif %}
-      </h4>
-      <p>{{ commitment.description }}</p>
-    </li>
-  {% endfor %}
-  </ul>
-{% endif %}
+{% if all_goals or group_goals %}{% include "activities/profile/goals.html" %}{% endif %}

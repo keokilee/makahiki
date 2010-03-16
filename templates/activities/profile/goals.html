@@ -1,0 +1,45 @@
+{% if available_goals %}
+  <h3>Available goals:</h3>
+  <ul>
+  {% for goal in available_goals %}
+    <li>
+      <h4>
+        {{ goal.id }} - {{ goal.title }}({{goal.point_value}})
+        {% if is_me %}
+          <form action="{% url activities.views.add_goal goal.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Add</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ goal.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h3>No new goals.</h3>
+  {% endif %}
+{% endif %}
+
+{% if user_goals %}
+  {% if is_me %}
+    <h3>My goals:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s goals.</h3>
+  {% endif %}
+  <ul>
+  {% for goal in user_goal %}
+    <li>
+      <h4>
+        {{ goal.id }} - {{ goal.title }}({{ goal.point_value }})
+        {% if is_me %}
+          <form action="{% url activities.views.remove_goal goal.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Remove</a>
+          </form>
+        {% endif %}
+      </h4>
+      <p>{{ goal.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}
