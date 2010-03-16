@@ -10,7 +10,7 @@ class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
   created_at = models.DateTimeField(editable=False)
-  updated_at = models.DateTimeField(null=False, editable=False)
+  updated_at = models.DateTimeField(null=True, editable=False)
   
   def save(self):
     if not self.id:

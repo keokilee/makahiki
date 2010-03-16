@@ -1,31 +1,41 @@
 {% load i18n %}
 
-{% if all_commitments %}
-  <p>Listing new commitments:</p>
+{% if all_commitments and is_me %}
+  <h3>Available commitments:</h3>
   <ul>
   {% for commitment in all_commitments %}
     <li>
-      {{ commitment.pk}} - {{ commitment.title }}
+      <h5>{{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})</h5>
+      <p>{{ commitment.description }}</p>
+      {% if is_me %}
+        <form action="{% url activities.views.add_commitment commitment.id %}" method="post">
+          <input type="submit" value="Add commitment"/>
+        </form>
+      {% endif %}
     </li>
   {% endfor %}
   </ul>
 {% else %}
-  <p>No new commitments.</p>
+  <h3>No new commitments.</h3>
 {% endif %}
 
 {% if user_commitments %}
   {% if is_me %}
-    <p>My commitments:</p>
+    <h3>My commitments:</h3>
   {% else %}
-    <p>{{ other_user.get_profile.name }}'s commitments.</p>
+    <h3>{{ other_user.get_profile.name }}'s commitments.</h3>
   {% endif %}
   <ul>
   {% for commitment in user_commitments %}
     <li>
-      {{ commitment.pk }} - {{ commitment.title }}
+      <h5>{{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})</h5>
+      <p>{{ commitment.description }}</p>
+      {% if is_me %}
+        <form action="{% url activities.views.remove_commitment commitment.id %}" method="post">
+          <input type="submit" value="Remove commitment"/>
+        </form>
+      {% endif %}
     </li>
   {% endfor %}
   </ul>
-{% else %}
-  <p>You are not committed to anything.</p>
 {% endif %}
