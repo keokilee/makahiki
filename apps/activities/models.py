@@ -50,13 +50,19 @@ class Activity(CommonActivity):
   users = models.ManyToManyField(User, through="ActivityMember")
   
   def _is_active(self):
+    """Determines if the activity is available for users to participate."""
     if self.time:
       result = self.time - datetime.datetime.today()  
       if result.days > 5 or result.days < -5:
         return False    
     return True
-  
   is_active = property(_is_active)
+  
+  @staticmethod
+  def get_active_for_user(user):
+    """Retrieves only the activities that a user can participate in."""
+    activities = Activity.objects.exclude(activitymember__user__username=user.username)
+    return (item for item in activities if item.is_active) # Filters out inactive activities.
 
 class ActivityMember(CommonBase):
   user = models.ForeignKey(User)
