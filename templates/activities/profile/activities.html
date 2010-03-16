@@ -6,7 +6,7 @@
       <h4>
         {{ activity.id }} - {{ activity.title }}({{activity.point_value}})
         {% if is_me %}
-          <form action="{% url activities.views.add_activity activity.id %}" method="post" style="display:inline">
+          <form action="/activities/add_activity/{{ activity.id }}/" method="post" style="display:inline">
             <a href="#" onclick="parentNode.submit()">Add</a>
           </form>
         {% endif %}
@@ -16,7 +16,9 @@
   {% endfor %}
   </ul>
 {% else %}
-  <h3>No new activities.</h3>
+  {% if is_me %}
+    <h3>No new activities.</h3>
+  {% endif %}
 {% endif %}
 
 {% if user_activities %}
@@ -31,7 +33,7 @@
       <h4>
         {{ activity.id }} - {{ activity.title }}({{ activity.point_value }})
         {% if is_me %}
-          <form action="{% url activities.views.remove_activity activity.id %}" method="post" style="display:inline">
+          <form action="/activities/remove_activity/{{ activity.id }}/" method="post" style="display:inline">
             <a href="#" onclick="parentNode.submit()">Remove</a>
           </form>
         {% endif %}

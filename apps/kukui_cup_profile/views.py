@@ -53,14 +53,17 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
     else:
         is_me = False
         
-    # Load commitments for the user.
-    available_commitments = user_commitments = None
-    
+    # Load activities for the user.
     try:
-      from apps.activities.models import Commitment
+      # TODO: Add goals later since it needs group functionality.
+      from apps.activities.models import Commitment, Activity
+      
       user_commitments = other_user.commitment_set.all()
+      user_activities = other_user.activity_set.all()
+      
       if is_me:
         available_commitments = Commitment.objects.exclude(commitmentmember__user__username=request.user.username)
+        available_activities = Activity.objects.exclude(activitymember__user__username=request.user.username)
     except ImportError:
       pass
     
@@ -69,6 +72,8 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
         "other_user": other_user,
         "available_commitments": available_commitments,
         "user_commitments": user_commitments,
+        "available_activities": available_activities,
+        "user_activities": user_activities,
     }, context_instance=RequestContext(request))
 
 
