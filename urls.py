@@ -36,6 +36,7 @@ urlpatterns = patterns('',
     # (r'^openid/(.*)', PinaxConsumer()),
     (r'^avatar/', include('avatar.urls')),
     (r'^profiles/', include('kukui_cup_profile.urls')),
+    (r'^activities/', include('activities.urls')),
     (r'^admin/(.*)', admin.site.root),
 )
 
