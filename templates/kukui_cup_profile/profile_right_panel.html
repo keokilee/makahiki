@@ -5,13 +5,15 @@
   <ul>
   {% for commitment in all_commitments %}
     <li>
-      <h5>{{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})</h5>
+      <h4>
+        {{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})
+        {% if is_me %}
+          <form action="{% url activities.views.add_commitment commitment.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Add</a>
+          </form>
+        {% endif %}
+      </h4>
       <p>{{ commitment.description }}</p>
-      {% if is_me %}
-        <form action="{% url activities.views.add_commitment commitment.id %}" method="post">
-          <input type="submit" value="Add commitment"/>
-        </form>
-      {% endif %}
     </li>
   {% endfor %}
   </ul>
@@ -28,13 +30,15 @@
   <ul>
   {% for commitment in user_commitments %}
     <li>
-      <h5>{{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})</h5>
+      <h4>
+        {{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})
+        {% if is_me %}
+          <form action="{% url activities.views.remove_commitment commitment.id %}" method="post" style="display:inline">
+            <a href="#" onclick="parentNode.submit()">Remove</a>
+          </form>
+        {% endif %}
+      </h4>
       <p>{{ commitment.description }}</p>
-      {% if is_me %}
-        <form action="{% url activities.views.remove_commitment commitment.id %}" method="post">
-          <input type="submit" value="Remove commitment"/>
-        </form>
-      {% endif %}
     </li>
   {% endfor %}
   </ul>

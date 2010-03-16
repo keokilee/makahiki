@@ -18,6 +18,7 @@ def add_commitment(request, commitment_id):
     if not CommitmentMember.objects.filter(user=user, commitment=commitment):
       commitment_member = CommitmentMember(user=user, commitment=commitment)
       commitment_member.save()
+      user.message_set.create(message="Added the commitment \"" + commitment.title + "\"")
     # TODO: Need to notify if this commitment already exists.
     
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
@@ -35,6 +36,7 @@ def remove_commitment(request, commitment_id):
     
     if commitment_member:
       commitment_member.delete()
+      user.message_set.create(message="Removed the commitment \"" + commitment.title + "\"")
       return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     else:
       # TODO: Print error message.
