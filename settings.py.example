@@ -168,12 +168,23 @@ INSTALLED_APPS = (
     'dbtemplates',
     'staticfiles',
     'avatar',
+    'wiki',
+    'threadedcomments',
+    'threadedcomments_extras',
+    'tagging',
+    'django_extensions',
+    'photologue',
     
     # internal (for now)
     'tribes',
     # 'basic_profiles',
     'account',
     'django.contrib.admin',
+    'tag_app',
+    'groups',
+    'topics',
+    'photos',
+    
     
     # project specific
     'sorl.thumbnail',
