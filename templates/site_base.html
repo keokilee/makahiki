@@ -18,7 +18,7 @@
        <a class="tab_logout" href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a>
        <a class="tab_account" href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a>
        {% if user.is_staff %}
-          <a class="tab_account" href="admin/"><span>{% trans "Admin" %}</span></a>
+          <a class="tab_account" href="/admin/"><span>{% trans "Admin" %}</span></a>
        {% endif %}
     {% else %}
         <a class="tab_login" href="/account/cas/login"><span>{% trans "Login" %}</span></a>
