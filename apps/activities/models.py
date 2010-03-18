@@ -4,7 +4,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from tribes.models import Tribe
 
+from activities import ACTIVITY_FILE_DIR
+
 # Create your models here.
+
+def activity_file_path(instance=None, filename=None, user=None):
+    user = user or instance.user
+    return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
 
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
@@ -43,9 +49,9 @@ class CommitmentMember(CommonBase):
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
   comment = models.TextField(null=True)
-  
+      
 class Activity(CommonActivity):
-  confirm_code = models.CharField(max_length=20)
+  confirm_code = models.CharField(null=True, max_length=20)
   time = models.DateTimeField(null=True)
   users = models.ManyToManyField(User, through="ActivityMember")
   
@@ -59,7 +65,7 @@ class Activity(CommonActivity):
   is_active = property(_is_active)
   
   @staticmethod
-  def get_active_for_user(user):
+  def get_available_for_user(user):
     """Retrieves only the activities that a user can participate in."""
     activities = Activity.objects.exclude(activitymember__user__username=user.username)
     return (item for item in activities if item.is_active) # Filters out inactive activities.
@@ -68,6 +74,7 @@ class ActivityMember(CommonBase):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   comment = models.TextField(null=True)
+  confirm_proof = models.FileField(upload_to=ACTIVITY_FILE_DIR)
   is_confirmed = models.BooleanField(default=False)
 
 class Goal(CommonActivity):

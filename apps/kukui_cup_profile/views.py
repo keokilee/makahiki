@@ -63,7 +63,7 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
       
       if is_me:
         available_commitments = Commitment.objects.exclude(commitmentmember__user__username=request.user.username)
-        available_activities = Activity.get_active_for_user(request.user)
+        available_activities = Activity.get_available_for_user(request.user)
     except ImportError:
       pass
     
