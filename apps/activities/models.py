@@ -45,12 +45,17 @@ class CommitmentMember(CommonBase):
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
   comment = models.TextField()
-      
+  
 class Activity(CommonActivity):
+  CONFIRM_CHOICES = (
+    ('text', 'Text'),
+    ('image', 'Image Upload'),
+  )
   confirm_code = models.CharField(blank=True, max_length=20)
   pub_date = models.DateField(default=datetime.date.today())
   expire_date = models.DateField()
   users = models.ManyToManyField(User, through="ActivityMember")
+  confirm_type = models.CharField(max_length=20, choices=CONFIRM_CHOICES)
   
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
@@ -68,7 +73,7 @@ class Activity(CommonActivity):
     activities = Activity.objects.exclude(activitymember__user__username=user.username)
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
-class EventActivity(Activity):
+class Event(Activity):
   event_date = models.DateTimeField()
 
 def activity_image_file_path(instance=None, filename=None):
