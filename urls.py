@@ -40,7 +40,8 @@ urlpatterns = patterns('',
     # (r'^openid/(.*)', PinaxConsumer()),
     (r'^avatar/', include('avatar.urls')),
     (r'^admin/(.*)', admin.site.root),
-    (r'^tribes/', include('tribes.urls')),
+    # (r'^tribes/', include('tribes.urls')),
+    # (r'^notifications/', include('notification.urls')),
 )
 
 if settings.SERVE_MEDIA:

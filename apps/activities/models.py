@@ -8,10 +8,6 @@ from activities import ACTIVITY_FILE_DIR
 
 # Create your models here.
 
-def activity_file_path(instance=None, filename=None, user=None):
-    user = user or instance.user
-    return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
-
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
@@ -48,20 +44,22 @@ class CommitmentMember(CommonBase):
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
-  comment = models.TextField(null=True)
+  comment = models.TextField()
       
 class Activity(CommonActivity):
-  confirm_code = models.CharField(null=True, max_length=20)
-  time = models.DateTimeField(null=True)
+  confirm_code = models.CharField(blank=True, max_length=20)
+  pub_date = models.DateField(default=datetime.date.today())
+  expire_date = models.DateField()
   users = models.ManyToManyField(User, through="ActivityMember")
   
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
-    if self.time:
-      result = self.time - datetime.datetime.today()  
-      if result.days > 5 or result.days < -5:
-        return False    
+    pub_result = datetime.date.today() - self.pub_date
+    expire_result = self.expire_date - datetime.date.today()
+    if pub_result.days < 0 or expire_result.days < 0:
+      return False
     return True
+    
   is_active = property(_is_active)
   
   @staticmethod
@@ -70,11 +68,18 @@ class Activity(CommonActivity):
     activities = Activity.objects.exclude(activitymember__user__username=user.username)
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
+class EventActivity(Activity):
+  event_date = models.DateTimeField()
+
+def activity_image_file_path(instance=None, filename=None):
+    user = instance.user
+    return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
+      
 class ActivityMember(CommonBase):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
-  comment = models.TextField(null=True)
-  confirm_proof = models.FileField(upload_to=ACTIVITY_FILE_DIR)
+  comment = models.TextField()
+  confirm_image = models.ImageField(null=True, upload_to=activity_image_file_path)
   is_confirmed = models.BooleanField(default=False)
 
 class Goal(CommonActivity):
