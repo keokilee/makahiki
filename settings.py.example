@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     'apps.activities',
     'apps.kukui_cup_profile',
     'apps.kukui_cup_admin',
-    'apps.basic_tests',
+    'apps.windmill_tests',
     
     # included
     'django.contrib.auth',
@@ -167,7 +167,7 @@ INSTALLED_APPS = (
     'uni_form',
     'dbtemplates',
     'staticfiles',
-    'avatar',
+    'kukui_cup_avatar',
     
     # internal (for now)
     'groups',
