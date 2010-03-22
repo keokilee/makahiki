@@ -1,0 +1,15 @@
+<li>
+  <h4>
+    {{ activity.id }} - {{ activity.title }}({{activity.point_value}})
+    {% if is_me %}
+      <form action="/activities/add_activity/{{ activity.id }}/" method="post" style="display:inline">
+        <a href="#" onclick="parentNode.submit()">Add</a>
+      </form>
+    {% endif %}
+  </h4>
+  <p>{{ activity.description }}</p>
+  
+  {% if activity.is_event %}
+    <p>This activity occurs at {{ activity.event_date }}</p>
+  {% endif %}
+</li>

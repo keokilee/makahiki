@@ -1,14 +1,10 @@
-{% if available_commitments or user_commitments %}
+{% if activities_enabled %}
   <h2>Commitments</h2>
   {% include "activities/profile/commitments.html" %}
-{% endif %}
 
-{% if available_activities or user_activities %}
   <h2>Activities</h2>
   {% include "activities/profile/activities.html" %}
-{% endif %}
 
-{% if available_goals or group_goals %}
   <h2>Goals</h2>
   {% include "activities/profile/goals.html" %}
 {% endif %}

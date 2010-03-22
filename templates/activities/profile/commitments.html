@@ -2,22 +2,12 @@
   <h3>Available commitments:</h3>
   <ul>
   {% for commitment in available_commitments %}
-    <li>
-      <h4>
-        {{ commitment.id }} - {{ commitment.title }}({{commitment.point_value}})
-        {% if is_me %}
-          <form action="/activities/add_commitment/{{ commitment.id }}/" method="post" style="display:inline">
-            <a href="#" onclick="parentNode.submit()">Add</a>
-          </form>
-        {% endif %}
-      </h4>
-      <p>{{ commitment.description }}</p>
-    </li>
+    {% include "activities/profile/available_commitment.html" %}
   {% endfor %}
   </ul>
 {% else %}
   {% if is_me %}
-    <h3>No new commitments.</h3>
+    <h4>No new commitments.</h4>
   {% endif %}
 {% endif %}
 
@@ -29,17 +19,13 @@
   {% endif %}
   <ul>
   {% for commitment in user_commitments %}
-    <li>
-      <h4>
-        {{ commitment.id }} - {{ commitment.title }}({{ commitment.point_value }})
-        {% if is_me %}
-          <form action="/activities/remove_commitment/{{ commitment.id }}/" method="post" style="display:inline">
-            <a href="#" onclick="parentNode.submit()">Remove</a>
-          </form>
-        {% endif %}
-      </h4>
-      <p>{{ commitment.description }}</p>
-    </li>
+    {% include "activities/profile/user_commitment.html" %}
   {% endfor %}
   </ul>
+{% else %}
+  {% if is_me %}
+    <h4>You are not participating in any commitments.</h4>
+  {% else %}
+    <h4>{{ other_user.get_profile.name }} is not participating in any commitments.<h4>
+  {% endif %}
 {% endif %}

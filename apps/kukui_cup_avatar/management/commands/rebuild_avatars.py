@@ -1,8 +1,8 @@
 from django.core.management.base import NoArgsCommand
 from django.conf import settings
 
-from avatar.models import Avatar
-from avatar import AUTO_GENERATE_AVATAR_SIZES
+from kukui_cup_avatar.models import Avatar
+from kukui_cup_avatar import AUTO_GENERATE_AVATAR_SIZES
 
 class Command(NoArgsCommand):
     help = "Regenerates avatar thumbnails for the sizes specified in " + \

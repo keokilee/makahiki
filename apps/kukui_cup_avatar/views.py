@@ -1,7 +1,7 @@
 import os.path
 
-from avatar.models import Avatar, avatar_file_path
-from avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
+from kukui_cup_avatar.models import Avatar, avatar_file_path
+from kukui_cup_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext

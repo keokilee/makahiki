@@ -54,9 +54,12 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
         is_me = False
         
     # Load activities for the user.
+    available_commitments = user_commitments = available_activities = user_activities = None
+    activities_enabled = False
     try:
       # TODO: Add goals later since it needs group functionality.
       from apps.activities.models import Commitment, Activity
+      activities_enabled = True
       
       user_commitments = other_user.commitment_set.all()
       user_activities = other_user.activity_set.all()
@@ -69,6 +72,7 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
     
     return render_to_response(template_name, {
         "is_me": is_me,
+        "activities_enabled": activities_enabled,
         "other_user": other_user,
         "available_commitments": available_commitments,
         "user_commitments": user_commitments,

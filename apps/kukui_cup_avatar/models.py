@@ -16,7 +16,7 @@ try:
 except ImportError:
     import Image
 
-from avatar import AVATAR_STORAGE_DIR, AVATAR_RESIZE_METHOD
+from kukui_cup_avatar import AVATAR_STORAGE_DIR, AVATAR_RESIZE_METHOD
 
 def avatar_file_path(instance=None, filename=None, user=None):
     user = user or instance.user

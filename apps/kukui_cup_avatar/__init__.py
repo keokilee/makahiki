@@ -16,7 +16,7 @@ AVATAR_DEFAULT_URL = getattr(settings, 'AVATAR_DEFAULT_URL',
 
 from django.db.models import signals
 from django.contrib.auth.models import User
-from avatar.models import Avatar
+from kukui_cup_avatar.models import Avatar
 
 
 def create_default_thumbnails(instance=None, created=False, **kwargs):

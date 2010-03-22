@@ -51,14 +51,18 @@ class Activity(CommonActivity):
     ('text', 'Text'),
     ('image', 'Image Upload'),
   )
+  
   confirm_code = models.CharField(blank=True, max_length=20)
   pub_date = models.DateField(default=datetime.date.today())
   expire_date = models.DateField()
   users = models.ManyToManyField(User, through="ActivityMember")
   confirm_type = models.CharField(max_length=20, choices=CONFIRM_CHOICES)
-  
+  is_event = models.BooleanField(default=False)
+  event_date = models.DateTimeField(null=True, blank=True)
+    
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
+    
     pub_result = datetime.date.today() - self.pub_date
     expire_result = self.expire_date - datetime.date.today()
     if pub_result.days < 0 or expire_result.days < 0:
@@ -70,11 +74,9 @@ class Activity(CommonActivity):
   @staticmethod
   def get_available_for_user(user):
     """Retrieves only the activities that a user can participate in."""
+    
     activities = Activity.objects.exclude(activitymember__user__username=user.username)
     return (item for item in activities if item.is_active) # Filters out inactive activities.
-
-class Event(Activity):
-  event_date = models.DateTimeField()
 
 def activity_image_file_path(instance=None, filename=None):
     user = instance.user
