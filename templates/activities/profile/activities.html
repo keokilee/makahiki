@@ -1,0 +1,31 @@
+{% if available_activities %}
+  <h3>Available Activities:</h3>
+  <ul>
+  {% for activity in available_activities %}
+    {% include "activities/profile/available_activity.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>No new activities.</h4>
+  {% endif %}
+{% endif %}
+
+{% if user_activities %}
+  {% if is_me %}
+    <h3>My activities:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s activities.</h3>
+  {% endif %}
+  <ul>
+  {% for activity in user_activities %}
+    {% include "activities/profile/user_activity.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>You are not participating in any activities.</h4>
+  {% else %}
+    <h4>{{ other_user.get_profile.name }} is not participating in any activities.<h4>
+  {% endif %}
+{% endif %}

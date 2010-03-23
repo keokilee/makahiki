@@ -1,6 +1,15 @@
 # README.markdown
 
-### Milestone 2
+## Milestone 2.5
+
+## CHANGELOG
+* Milestone 2.5
+ * Added commitments and activities to the user profile.
+ * Added commitments and activities to the admin interface.
+ * Added [Windmill](http://getwindmill.com) tests.
+ * Added admin tab for users with admin permissions.
+ * Customized profile and avatar templates for consistency.
+
 
 This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/kukui-cup-pinax) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
@@ -19,6 +28,7 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
+* If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/kukui-cup-pinax.git` to get the source.
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
 * Once those are set up, send me your Git username so that you can be added as a collaborator.
 * When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to check out the code.  This will create the new folder and download the code from the repository.
@@ -37,6 +47,9 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
+
+## OPTIONAL: Install Windmill
+Windmill is an Python app that will run tests within the browser.  The runtests.py script will work without it, but is useful if you're developing functionality and want to test it on the browser side.  Integrating it is very simple.  To install the application, download it from their [website](http://www.getwindmill.com/) and follow their installation [wiki](http://wiki.github.com/windmill/windmill/installing).  Once installed, running `python runtests.py` will run all of the available unit tests and Windmill tests.
 
 ## Troubleshooting
 If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  I have created a backup of my contenttypes data that can be used to reload it.  But first, you need to delete the contents of the contenttypes database.

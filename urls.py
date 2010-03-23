@@ -25,6 +25,10 @@ urlpatterns = patterns('',
     url(r'^energy_data/real_time/$', direct_to_template, {"template": "energy_data/real_time.html"}, name="energy_real_time"),
     url(r'^energy_data/week/$', direct_to_template, {"template": "energy_data/week.html"}, name="energy_week"),
     
+    # Kukui Cup Provided
+    (r'^profiles/', include('kukui_cup_profile.urls')),
+    (r'^activities/', include('activities.urls')),
+    
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
     (r'^attachments/', include('attachments.urls')),
@@ -34,9 +38,10 @@ urlpatterns = patterns('',
     (r'^account/cas/login/$', 'django_cas.views.login'),
     (r'^account/cas/logout/$', 'django_cas.views.logout'),
     # (r'^openid/(.*)', PinaxConsumer()),
-    (r'^avatar/', include('avatar.urls')),
-    (r'^profiles/', include('basic_profiles.urls')),
+    (r'^avatar/', include('kukui_cup_avatar.urls')),
     (r'^admin/(.*)', admin.site.root),
+    # (r'^tribes/', include('tribes.urls')),
+    # (r'^notifications/', include('notification.urls')),
 )
 
 if settings.SERVE_MEDIA:

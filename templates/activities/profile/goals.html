@@ -1,0 +1,31 @@
+{% if available_goals %}
+  <h3>Available goals:</h3>
+  <ul>
+  {% for goal in available_goals %}
+    {% include "activities/profile/available_goal.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>No new goals.</h4>
+  {% endif %}
+{% endif %}
+
+{% if user_goals %}
+  {% if is_me %}
+    <h3>My goals:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s goals.</h3>
+  {% endif %}
+  <ul>
+  {% for goal in user_goal %}
+    {% include "activities/profile/group_goal.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>Your floor is not participating in any goals.</h4>
+  {% else %}
+    <h4>{{ other_user.get_profile.name }}'s floor is not participating in any goals.<h4>
+  {% endif %}
+{% endif %}

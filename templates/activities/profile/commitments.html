@@ -1,0 +1,31 @@
+{% if available_commitments %}
+  <h3>Available commitments:</h3>
+  <ul>
+  {% for commitment in available_commitments %}
+    {% include "activities/profile/available_commitment.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>No new commitments.</h4>
+  {% endif %}
+{% endif %}
+
+{% if user_commitments %}
+  {% if is_me %}
+    <h3>My commitments:</h3>
+  {% else %}
+    <h3>{{ other_user.get_profile.name }}'s commitments.</h3>
+  {% endif %}
+  <ul>
+  {% for commitment in user_commitments %}
+    {% include "activities/profile/user_commitment.html" %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% if is_me %}
+    <h4>You are not participating in any commitments.</h4>
+  {% else %}
+    <h4>{{ other_user.get_profile.name }} is not participating in any commitments.<h4>
+  {% endif %}
+{% endif %}
