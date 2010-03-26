@@ -9,6 +9,8 @@ from activities.models import Commitment, CommitmentMember, Activity, ActivityMe
 
 @login_required
 def add_participation(request, item_type, item_id):
+  """Adds the user as participating in the item."""
+  
   if not request.method == "POST":
     request.user.message_set.create(message="We could not process your request.  Please try again.")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
@@ -21,6 +23,8 @@ def add_participation(request, item_type, item_id):
 
 @login_required
 def remove_participation(request, item_type, item_id):
+  """Removes the user's participation in the item."""
+  
   if not request.method == "POST":
     request.user.message_set.create(message="We could not process your request.  Please try again.")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
@@ -30,6 +34,19 @@ def remove_participation(request, item_type, item_id):
     return __remove_activity(request, item_id)
   else:
     raise Http404
+    
+@login_required
+def request_points(request, item_type, item_id):
+  """Request the points for a given item."""
+  
+  if not request.method == "POST":
+    request.user.message_set.create(message="We could not process your request.  Please try again.")
+  elif item_type == "activity":
+    return __request_points_activity(request, item_id)
+  else:
+    raise Http404
+
+### Private methods.
 
 def __add_commitment(request, commitment_id):
   """Commit the current user to the commitment."""
@@ -92,4 +109,17 @@ def __remove_activity(request, activity_id):
   else:
     user.message_set.create(message="You are not participating in this activity")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    
+def __request_points_activity(request, activity_id):
+  activity = get_object_or_404(Commitment, pk=activity_id)
+  user = request.user
+  activity_member = ActivityMember.objects.filter(user=user, activity=activity)
+
+  if not activity_member:
+    user.message_set.create(message="You need to be participating in this activity.")
+  else:
+    activity_member.approval_status="pending"
+    user.message_set.create(message="Your request has been submitted.")
+  
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args(request.user.username,)))
 

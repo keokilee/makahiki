@@ -6,7 +6,7 @@ from tribes.models import Tribe
 
 from activities import ACTIVITY_FILE_DIR
 
-# Create your models here.
+# These models represent the different types of activities users can commit to.
 
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
@@ -23,6 +23,18 @@ class CommonBase(models.Model):
     
   class Meta:
     abstract = True
+    
+class CommonActivityUser(CommonBase):
+  """Common fields for items that need to be approved by an administrator."""
+  
+  STATUS_TYPES = (
+    ('unapproved', 'Unapproved'),
+    ('pending', 'Pending approval'),
+    ('approved', 'Approved'),
+    ('rejected', 'Rejected'),
+  )
+  
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -38,15 +50,26 @@ class CommonActivity(CommonBase):
     abstract = True
 
 class Commitment(CommonActivity):
+  """Commitments involve non-verifiable actions that a user can commit to.
+  Typically, they will be worth fewer points than activities."""
+  
   users = models.ManyToManyField(User, through="CommitmentMember")
     
 class CommitmentMember(CommonBase):
+  """Represents the join between commitments and users.  Has fields for 
+  commenting on a commitment and whether or not the commitment is currently 
+  active."""
+  
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
   comment = models.TextField()
   
 class Activity(CommonActivity):
+  """Activities involve verifiable actions that users commit to.  These actions can be 
+  verified by asking questions or posting an image attachment that verifies the user did 
+  the activity."""
+  
   CONFIRM_CHOICES = (
     ('text', 'Text'),
     ('image', 'Image Upload'),
@@ -79,20 +102,26 @@ class Activity(CommonActivity):
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
 def activity_image_file_path(instance=None, filename=None):
-    user = instance.user
-    return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
+  """Returns the file path used to save an activity confirmation image."""
+  
+  user = instance.user
+  return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
       
-class ActivityMember(CommonBase):
+class ActivityMember(CommonActivityUser):
+  """Represents the join between users and activities."""
+  
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   comment = models.TextField()
   confirm_image = models.ImageField(null=True, upload_to=activity_image_file_path)
-  is_confirmed = models.BooleanField(default=False)
 
 class Goal(CommonActivity):
+  """Represents activities that are committed to by a group (floor)."""
+  
   groups = models.ManyToManyField(Tribe, through="GoalMember")
   
-class GoalMember(CommonBase):
+class GoalMember(CommonActivityUser):
+  """Represents the join between groups/floors."""
+  
   group = models.ForeignKey(Tribe)
   goal = models.ForeignKey(Goal)
-  is_confirmed = models.BooleanField()

@@ -1,8 +1,8 @@
 {% if available_goals %}
   <h3>Available goals:</h3>
   <ul>
-  {% for goal in available_goals %}
-    {% include "activities/profile/available_goal.html" %}
+  {% for item in available_goals %}
+    {% include "activities/profile/activity.html" %}
   {% endfor %}
   </ul>
 {% else %}
@@ -18,8 +18,8 @@
     <h3>{{ other_user.get_profile.name }}'s goals.</h3>
   {% endif %}
   <ul>
-  {% for goal in user_goal %}
-    {% include "activities/profile/group_goal.html" %}
+  {% for item in user_goal %}
+    {% include "activities/profile/activity.html" %}
   {% endfor %}
   </ul>
 {% else %}

@@ -1,8 +1,8 @@
 {% if available_activities %}
   <h3>Available Activities:</h3>
   <ul>
-  {% for activity in available_activities %}
-    {% include "activities/profile/available_activity.html" %}
+  {% for item in available_activities %}
+    {% include "activities/profile/activity.html" %}
   {% endfor %}
   </ul>
 {% else %}
@@ -18,8 +18,8 @@
     <h3>{{ other_user.get_profile.name }}'s activities.</h3>
   {% endif %}
   <ul>
-  {% for activity in user_activities %}
-    {% include "activities/profile/user_activity.html" %}
+  {% for item in user_activities %}
+    {% include "activities/profile/activity.html" %}
   {% endfor %}
   </ul>
 {% else %}
