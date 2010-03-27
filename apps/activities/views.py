@@ -87,7 +87,7 @@ def __add_activity(request, activity_id):
 
   # Search for an existing activity for this user
   if not ActivityMember.objects.filter(user=user, activity=activity):
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=user, activity=activity, approval_status="unapproved")
     activity_member.save()
     user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
   else:
@@ -113,13 +113,14 @@ def __remove_activity(request, activity_id):
 def __request_points_activity(request, activity_id):
   activity = get_object_or_404(Commitment, pk=activity_id)
   user = request.user
-  activity_member = ActivityMember.objects.filter(user=user, activity=activity)
 
-  if not activity_member:
-    user.message_set.create(message="You need to be participating in this activity.")
-  else:
+  try:
+    activity_member = ActivityMember.objects.get(user=user, activity=activity)
     activity_member.approval_status="pending"
+    activity_member.save()
     user.message_set.create(message="Your request has been submitted.")
+  except ActivityMember.DoesNotExist:
+    user.message_set.create(message="You need to be participating in this activity.")
   
-  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args(request.user.username,)))
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 

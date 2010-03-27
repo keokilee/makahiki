@@ -34,7 +34,7 @@ class CommonActivityUser(CommonBase):
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, editable=False)
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, editable=False, default="unapproved")
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -98,7 +98,11 @@ class Activity(CommonActivity):
   def get_available_for_user(user):
     """Retrieves only the activities that a user can participate in."""
     
-    activities = Activity.objects.exclude(activitymember__user__username=user.username)
+    activities = Activity.objects.exclude(
+      activitymember__user__username=user.username,
+    ).exclude(
+      activitymember__approval_status="approved",
+    )
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
 def activity_image_file_path(instance=None, filename=None):

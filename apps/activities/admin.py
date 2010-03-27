@@ -9,6 +9,7 @@ class ActivityAdminForm(ModelForm):
     
   def clean(self):
     """Checks that an event has an event date."""
+    
     cleaned_data = self.cleaned_data
     is_event = cleaned_data.get("is_event")
     event_date = cleaned_data.get("event_date")
