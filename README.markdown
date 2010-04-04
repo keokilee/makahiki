@@ -2,6 +2,12 @@
 
 ## CHANGELOG
 
+Milestone 3
+
+* Moved templates and css into "default" directories to set up themes.
+* Added custom CSS import tag to import arbitrary numbers of CSS files.
+* Added a drop down to change the CSS theme directory.
+
 Milestone 2.5
 
 * Added commitments and activities to the user profile.
