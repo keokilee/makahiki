@@ -85,7 +85,7 @@ STATIC_URL = '/site_media/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
-    ('kukui-cup-pinax', os.path.join(PROJECT_ROOT, 'media', KUKUI_CSS_THEME)),
+    ('kukui-cup-pinax', os.path.join(PROJECT_ROOT, 'media')),
     ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
