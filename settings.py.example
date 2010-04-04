@@ -153,6 +153,7 @@ INSTALLED_APPS = (
     'apps.kukui_cup_profile',
     'apps.kukui_cup_admin',
     'apps.windmill_tests',
+    'apps.kukui_cup_themes',
     
     # included
     'django.contrib.auth',
