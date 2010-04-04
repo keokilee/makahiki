@@ -11,6 +11,12 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # tells Pinax to use the default theme
 PINAX_THEME = 'default'
 
+# Kukui Cup CSS theme setting.
+KUKUI_CSS_THEME = 'default'
+
+# Kukui Cup Template theme setting.
+KUKUI_TEMPLATE_THEME = 'default'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -79,7 +85,7 @@ STATIC_URL = '/site_media/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
-    ('kukui-cup-pinax', os.path.join(PROJECT_ROOT, 'media')),
+    ('kukui-cup-pinax', os.path.join(PROJECT_ROOT, 'media', KUKUI_CSS_THEME)),
     ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
@@ -121,7 +127,7 @@ CAS_REDIRECT_URL = '/'
 ROOT_URLCONF = 'kukui-cup-pinax.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), "templates"),
+    os.path.join(os.path.dirname(__file__), "templates", KUKUI_TEMPLATE_THEME),
     os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 )
 
