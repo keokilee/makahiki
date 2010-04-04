@@ -111,7 +111,7 @@ def __remove_activity(request, activity_id):
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
 def __request_points_activity(request, activity_id):
-  activity = get_object_or_404(Commitment, pk=activity_id)
+  activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
 
   try:

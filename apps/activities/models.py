@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from kukui_cup_profile.models import Profile
 from tribes.models import Tribe
 
 from activities import ACTIVITY_FILE_DIR
@@ -34,7 +35,7 @@ class CommonActivityUser(CommonBase):
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, editable=False, default="unapproved")
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -116,8 +117,18 @@ class ActivityMember(CommonActivityUser):
   
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
-  comment = models.TextField()
-  confirm_image = models.ImageField(null=True, upload_to=activity_image_file_path)
+  comment = models.TextField(blank=True)
+  confirm_image = models.ImageField(blank=True, upload_to=activity_image_file_path)
+  
+  def save(self):
+    """Custom save method to award points to users if the item is approved."""
+    
+    if self.approval_status == u"approved":
+      profile = self.user.get_profile()
+      profile.points += self.activity.point_value
+      profile.save()
+      
+    super(ActivityMember, self).save()
 
 class Goal(CommonActivity):
   """Represents activities that are committed to by a group (floor)."""
@@ -129,3 +140,4 @@ class GoalMember(CommonActivityUser):
   
   group = models.ForeignKey(Tribe)
   goal = models.ForeignKey(Goal)
+  

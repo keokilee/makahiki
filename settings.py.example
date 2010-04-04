@@ -157,7 +157,7 @@ INSTALLED_APPS = (
     'pinax.templatetags',
     
     # external
-    # 'notification', # must be first
+    'notification', # must be first
     # 'django_openid',
     'emailconfirmation',
     'mailer',
@@ -170,7 +170,13 @@ INSTALLED_APPS = (
     'kukui_cup_avatar',
     
     # internal (for now)
+    'tribes',
+    'threadedcomments',
+    'threadedcomments_extras',
     'groups',
+    'topics',
+    'photologue',
+    'photos',
     # 'basic_profiles',
     'account',
     'django.contrib.admin',

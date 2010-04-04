@@ -54,7 +54,7 @@ def __generate_activity_form(user, item):
       return_string += '<form action="/activities/request_{0}_points/{1.id}'
       return_string += '/" method="post" style="display:inline"><a href="#"'
       return_string += 'onclick="parentNode.submit()">Request Points</a></form>&nbsp'
-    elif item_join.approval_status == u"pending":
+    elif item_join.approval_status == u"pending" or item_join.approval_status == u"rejected":
       return_string += "<span class=\"pending_activity\">Pending approval</span>&nbsp"
     
     return_string += '<form action="/activities/remove_{0}/{1.id}'

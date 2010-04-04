@@ -1,4 +1,4 @@
-from activities.models import Activity, Commitment
+from activities.models import Activity, Commitment, ActivityMember, CommitmentMember
 from django.contrib import admin
 from django.forms import ModelForm
 from django.forms.util import ErrorList
@@ -26,4 +26,5 @@ class ActivityAdmin(admin.ModelAdmin):
   form = ActivityAdminForm
   
 admin.site.register(Activity, ActivityAdmin)
+admin.site.register(ActivityMember)
 admin.site.register(Commitment)
