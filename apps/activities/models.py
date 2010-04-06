@@ -36,6 +36,7 @@ class CommonActivityUser(CommonBase):
   )
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  approved = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -74,15 +75,41 @@ class Activity(CommonActivity):
   CONFIRM_CHOICES = (
     ('text', 'Text'),
     ('image', 'Image Upload'),
+    ('code', 'Confirmation Code')
   )
   
-  confirm_code = models.CharField(blank=True, max_length=20)
-  pub_date = models.DateField(default=datetime.date.today())
-  expire_date = models.DateField()
+  duration = models.IntegerField(
+              verbose_name="Expected activity duration",
+              help_text="Time (in minutes) that the activity is expected to take."
+             )
+  pub_date = models.DateField(
+              default=datetime.date.today(),
+              verbose_name="Publication date",
+              help_text="Date at which the activity will be available for users."
+             )
+  expire_date = models.DateField(
+                verbose_name="Expiration date", 
+                help_text="Date at which the activity will be removed."
+              )
   users = models.ManyToManyField(User, through="ActivityMember")
-  confirm_type = models.CharField(max_length=20, choices=CONFIRM_CHOICES)
-  is_event = models.BooleanField(default=False)
-  event_date = models.DateTimeField(null=True, blank=True)
+  confirm_type = models.CharField(
+                  max_length=20, 
+                  choices=CONFIRM_CHOICES, 
+                  default="text",
+                  verbose_name="Confirmation Type"
+                 )
+  confirm_prompt = models.TextField(
+                    blank=True, 
+                    verbose_name="Confirmation prompt",
+                    help_text="Text to display to user when requesting points (for images and codes)."
+                   )
+  is_event = models.BooleanField(default=False, verbose_name="Is Event?")
+  event_date = models.DateTimeField(
+                null=True, 
+                blank=True, 
+                verbose_name="Date and time of the event",
+                help_text="Required for events."
+               )
     
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
@@ -111,6 +138,11 @@ def activity_image_file_path(instance=None, filename=None):
   
   user = instance.user
   return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
+  
+class TextPromptQuestion(models.Model):
+  activity = models.ForeignKey(Activity)
+  question = models.TextField()
+  answer = models.TextField()
       
 class ActivityMember(CommonActivityUser):
   """Represents the join between users and activities."""
@@ -118,7 +150,12 @@ class ActivityMember(CommonActivityUser):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   comment = models.TextField(blank=True)
-  confirm_image = models.ImageField(blank=True, upload_to=activity_image_file_path)
+  image = models.ImageField(blank=True, upload_to=activity_image_file_path)
+  code = models.CharField(blank=True, max_length=20)
+  
+  def __unicode__(self):
+    return "%s submission for activity %s and user %s", (self.approval_status.capitalize(), 
+           self.activity.title, self.user.username)
   
   def save(self):
     """Custom save method to award points to users if the item is approved."""
