@@ -141,17 +141,20 @@ def activity_image_file_path(instance=None, filename=None):
   
 class TextPromptQuestion(models.Model):
   activity = models.ForeignKey(Activity)
-  question = models.TextField()
-  answer = models.TextField()
+  question = models.CharField(max_length=255, help_text="255 character max.")
+  answer = models.CharField(max_length=255, help_text="255 character max.")
       
 class ActivityMember(CommonActivityUser):
   """Represents the join between users and activities."""
   
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
-  comment = models.TextField(blank=True)
+  question = models.ForeignKey(TextPromptQuestion, null=True)
+  awarded = models.BooleanField(default=False, editable=False)
+  response = models.CharField(max_length=255, help_text="255 character max.")
+  admin_comment = models.TextField(blank=True)
+  user_comment = models.TextField(blank=True)
   image = models.ImageField(blank=True, upload_to=activity_image_file_path)
-  code = models.CharField(blank=True, max_length=20)
   
   def __unicode__(self):
     return "%s submission for activity %s and user %s", (self.approval_status.capitalize(), 
@@ -160,10 +163,17 @@ class ActivityMember(CommonActivityUser):
   def save(self):
     """Custom save method to award points to users if the item is approved."""
     
-    if self.approval_status == u"approved":
+    if self.approval_status == u"approved" and not self.awarded:
       profile = self.user.get_profile()
       profile.points += self.activity.point_value
       profile.save()
+      self.awarded = True
+      
+    elif self.approval_status != u"approved" and self.awarded:
+      profile = self.user.get_profile()
+      profile.points -= self.activity.point_value
+      profile.save()
+      self.awarded = False
       
     super(ActivityMember, self).save()
 

@@ -39,32 +39,35 @@ def __generate_commitment_form(user, item):
   except ObjectDoesNotExist:
     return_string += '<form action="/activities/add_{0}/{1.id}'
     return_string += '/" method="post" style="display:inline">'
-    return_string += '<a href="#" onclick="parentNode.submit()">Add</a></form>'
+    return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("commitment", item)
   
 def __generate_activity_form(user, item):
+  """Generates the add/remove/request points links for the user."""
   # Check that the user is involved with this item.
   return_string = ""
   try:
     # Exception thrown if user cannot be found.
     item_join = ActivityMember.objects.get(user=user, activity=item)
-    if item_join.approval_status == u"unapproved":
-      return_string += '<form action="/activities/request_{0}_points/{1.id}'
-      return_string += '/" method="post" style="display:inline"><a href="#"'
-      return_string += 'onclick="parentNode.submit()">Request Points</a></form>&nbsp'
-    elif item_join.approval_status == u"pending" or item_join.approval_status == u"rejected":
+    if item_join.approval_status == u"unapproved" or item_join.approval_status == u"rejected":
+      return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
+    elif item_join.approval_status == u"pending":
       return_string += "<span class=\"pending_activity\">Pending approval</span>&nbsp"
+      
+    # TODO What should happen if the points are rejected?
     
     return_string += '<form action="/activities/remove_{0}/{1.id}'
     return_string += '/" method="post" style="display:inline"><a href="#"'
     return_string += 'onclick="parentNode.submit()">Remove</a></form>'
   
   except ObjectDoesNotExist:
-    return_string += '<form action="/activities/add_{0}/{1.id}'
+    return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
+    
+    return_string += '<form action="/activities/add_{0}/{1.id}/'
     return_string += '/" method="post" style="display:inline">'
-    return_string += '<a href="#" onclick="parentNode.submit()">Add</a></form>'
+    return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("activity", item)

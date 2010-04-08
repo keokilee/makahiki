@@ -1,0 +1,12 @@
+{% extends "kukui_cup_profile/base.html" %}
+
+{% block body %}
+  <h3>Requesting points for {{activity.title}}</h3>
+  <form action="/activities/request_{{item_type}}_points/{{activity.pk}}/" method="post">
+    <p><label for="id_response">{{activity.confirm_prompt}}</label><br/>
+    {{ form.response }}</p>
+    <p><label for="id_comment">Additional Comments</label><br/>
+    {{ form.comment }}</p>
+    <input type="submit" value="Submit" />
+  </form>
+{% endblock %}

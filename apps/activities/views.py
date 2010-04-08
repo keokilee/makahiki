@@ -1,11 +1,14 @@
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from django.template import RequestContext
 
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
 from activities.models import Commitment, CommitmentMember, Activity, ActivityMember
+from activities.forms import ActivityTextForm, ActivityImageForm 
 
 @login_required
 def add_participation(request, item_type, item_id):
@@ -38,10 +41,8 @@ def remove_participation(request, item_type, item_id):
 @login_required
 def request_points(request, item_type, item_id):
   """Request the points for a given item."""
-  
-  if not request.method == "POST":
-    request.user.message_set.create(message="We could not process your request.  Please try again.")
-  elif item_type == "activity":
+
+  if item_type == "activity":
     return __request_points_activity(request, item_id)
   else:
     raise Http404
@@ -114,13 +115,35 @@ def __request_points_activity(request, activity_id):
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
 
-  try:
-    activity_member = ActivityMember.objects.get(user=user, activity=activity)
-    activity_member.approval_status="pending"
-    activity_member.save()
-    user.message_set.create(message="Your request has been submitted.")
-  except ActivityMember.DoesNotExist:
-    user.message_set.create(message="You need to be participating in this activity.")
-  
-  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+  if request.method == "POST":
+    if activity.confirm_type == "image":
+      form = ActivityImageForm(request.POST, request.FILES)
+      if form.is_valid():
+        pass
+    else:
+      form = ActivityTextForm(request.POST)
+      if form.is_valid():
+        try:
+          # Retrieve an existing activity member object if it exists.
+          activity_member = ActivityMember.objects.get(user=user, activity=activity)
+        except ObjectDoesNotExist:
+          activity_member = ActivityMember(user=user, activity=activity)
+          
+        activity_member.response = form.cleaned_data["response"]
+        activity_member.user_comment = form.cleaned_data["comment"]
+        activity_member.approval_status = "pending"
+        activity_member.save()
+        user.message_set.create(message="Your request has been submitted!")
+        return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    
+  elif activity.confirm_type == "image":
+    form = ActivityImageForm()
+  else:
+    form = ActivityTextForm()
+      
+  return render_to_response("activities/request_points.html", {
+    "form": form,
+    "activity": activity,
+    "item_type": "activity",
+  }, context_instance = RequestContext(request))
 

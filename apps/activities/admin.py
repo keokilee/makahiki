@@ -13,7 +13,8 @@ class ActivityAdminForm(ModelForm):
       
       #1 Events must have an event date.
       #2 If the verification type is "image" or "code", then a confirm prompt is required.
-      #3 If the verification type is "text", then additional questions are required (TODO).
+      #3 If the verification type is "text", then additional questions are required 
+         (Handled in the formset class below).
       #4 Publication date must be before expiration date. """
     
     # Data that has passed validation.
@@ -36,8 +37,6 @@ class ActivityAdminForm(ModelForm):
       self._errors["confirm_prompt"] = ErrorList([u"This confirmation type requires a confirmation prompt."])
       del cleaned_data["confirm_type"]
       del cleaned_data["confirm_prompt"]
-      
-    #3 TODO: Check for additional fields for text verification.
       
     #4 Publication date must be before the expiration date.
     if cleaned_data.has_key("pub_date") and cleaned_data.has_key("expire_date"):
