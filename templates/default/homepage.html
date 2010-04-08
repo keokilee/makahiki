@@ -6,27 +6,27 @@
 {% block tab_id %}id="home_tab"{% endblock %}
 
 {% block body %}
-  <div class="homepage_tips" style="width:100%; clear:both">
+  <div class="homepage_tips" >
     {% gblock "homepage_tips" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_video" style="width:350px;float:left">
+  <div class="homepage_video" >
     {% gblock "homepage_video" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_news" style="width:250px; float:left; padding-left:10px">
+  <div class="homepage_news" >
     {% gblock "homepage_news" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_pictures" style="width:300px; float:left; padding-left:10px">
+  <div class="homepage_pictures" >
     {% gblock "homepage_pictures" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_about" style="width:300px; float:left; clear:left">
+  <div class="homepage_about" >
     {% gblock "homepage_about" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_events" style="width:300px; float:right">
+  <div class="homepage_events" >
     {% gblock "homepage_events" for "gblocks.TitleAndText" %}
   </div>
 {% endblock %}
