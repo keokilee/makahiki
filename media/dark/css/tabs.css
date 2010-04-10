@@ -1,29 +1,39 @@
 /* GENERAL TAB STYLING */
 
 #tabhead {
-    background-color: #666;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+	border: 2px solid #FFF;
+    background-color: #000;
+	height: 100px;
 }
 
 #tabhead a:link,
 #tabhead a:visited
 {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
     display: inline-block;
     color: White;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 1em;
     padding: 1em 2em;
-    background-color: #333;
-    line-height: 1em;
-    border-left: 1px solid #777;
-    border-right: 1px solid #444;
+	background:url('100.jpg') no-repeat center; 
+    background-color: #000;
+    line-height: 4em;
+  
 }
 
 #tabhead a:hover,
 #tabhead a:active
 {
     background-color: #000;
-    border-color: #666;
+    
     color: #FFF;
 }
 
@@ -32,15 +42,20 @@
 #tabhead a.tab_login,
 #tabhead a.tab_logout
 {
+
+    border-radius: 10px;
+    background-color: #000;
+
+    color: #FFF;
     float: right;
-    opacity: 0.5;
+    
 }
 
 
 /* SUBNAV */
 
 #subnav{
-    background-color: #666;
+    background-color: #333;
 }
 
 #subnav ul {
@@ -65,25 +80,9 @@
     font-size: 0.7em;
     line-height: 1em;
     padding: 0.5em 1em;
-    background-color: #666;
+    background-color: #333;
 }
 
 #subnav a:hover {
     text-decoration: underline;
-}
-
-/* SITE-SPECIFIC TAB STYLING */
-
-/* Active tabs */
-#home_tab a.tab_home,
-#resources_tab a.tab_resources,
-#energy_tab a.tab_energy,
-#about_us_tab a.tab_about_us,
-#billboard_tab a.tab_billboard,
-#kukui_tab a.tab_kukui,
-#user_tab a.tab_user
-{
-    background-color: #999;
-    border-color: #888;
-    color: #FFF;
 }
