@@ -1,12 +1,13 @@
 {% load activity_tags %}
+{% load markup %}
 <li>
   <h4>
     {{ item.title }}({{ item.point_value }})
     {% if is_me %}
-      - {% render_user_tools other_user item %}
+      <br/>{% render_user_tools other_user item %}
     {% endif %}
   </h4>
-  <p>{{ item.description }}</p>
+  <p>{{ item.description|markdown }}</p>
   
   {% if item.is_event %}
     <p>This activity occurs at {{ item.event_date }}</p>

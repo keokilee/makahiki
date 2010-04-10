@@ -44,7 +44,7 @@ class CommonActivity(CommonBase):
   """Common fields for activity models."""
   
   title = models.CharField(max_length=200)
-  description = models.TextField()
+  description = models.TextField(help_text="Uses Markdown formatting.")
   point_value = models.IntegerField()
   
   def __unicode__(self):

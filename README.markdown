@@ -7,6 +7,7 @@ Milestone 3
 * Moved templates and css into "default" directories to set up themes.
 * Added custom CSS import tag to import arbitrary numbers of CSS files.
 * Added a drop down to change the CSS theme directory.
+* Added activity validation process through uploading images, inputting confirm codes, or answering questions.
 
 Milestone 2.5
 
