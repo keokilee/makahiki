@@ -1,9 +1,9 @@
 {% load activity_tags %}
 <li>
   <h4>
-    {{ item.id }} - {{ item.title }}({{ item.point_value }})
+    {{ item.title }}({{ item.point_value }})
     {% if is_me %}
-      {% render_user_tools other_user item %}
+      - {% render_user_tools other_user item %}
     {% endif %}
   </h4>
   <p>{{ item.description }}</p>

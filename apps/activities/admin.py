@@ -79,8 +79,24 @@ class TextQuestionInline(admin.StackedInline):
   formset = TextQuestionInlineFormSet
   
 class ActivityAdmin(admin.ModelAdmin):
+  fieldsets = (
+    ("Basic Information", {
+      'fields' : ('title', 'description', 'point_value', 'duration', ('pub_date', 'expire_date')),
+    }),
+    ("Confirmation Type", {'fields': ('confirm_type', 'confirm_prompt')}),
+    ("Event", {'fields' : ('is_event', 'event_date')}),
+  )
   form = ActivityAdminForm
   inlines = [TextQuestionInline]
+  list_display = ["title", "created_at", "is_active", "pub_date", "expire_date",]
   
 admin.site.register(Activity, ActivityAdmin)
-admin.site.register(ActivityMember)
+
+class ActivityMemberAdmin(admin.ModelAdmin):
+  radio_fields = {"approval_status" : admin.HORIZONTAL}
+  # Requires Django 1.2
+  # readonly_fields = ("user", "activity", "question", "response", "user_comment", "image")
+  list_display = ("activity", "user", "approval_status")
+  list_filter = ["approval_status"]
+  
+admin.site.register(ActivityMember, ActivityMemberAdmin)

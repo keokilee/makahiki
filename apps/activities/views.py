@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
-from activities.models import Commitment, CommitmentMember, Activity, ActivityMember
+from activities.models import *
 from activities.forms import ActivityTextForm, ActivityImageForm 
 
 @login_required
@@ -114,12 +114,27 @@ def __remove_activity(request, activity_id):
 def __request_points_activity(request, activity_id):
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
+  question = None
 
   if request.method == "POST":
     if activity.confirm_type == "image":
       form = ActivityImageForm(request.POST, request.FILES)
       if form.is_valid():
-        pass
+        try:
+          # Retrieve an existing activity member object if it exists.
+          activity_member = ActivityMember.objects.get(user=user, activity=activity)
+        except ObjectDoesNotExist:
+          activity_member = ActivityMember(user=user, activity=activity)
+        
+        path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
+        activity_member.user_comment = form.cleaned_data["comment"]
+        activity_member.image = path
+        new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
+        activity_member.approval_status = "pending"
+        activity_member.save()
+        user.message_set.create(message="Your request has been submitted!")
+        return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+        
     else:
       form = ActivityTextForm(request.POST)
       if form.is_valid():
@@ -129,6 +144,10 @@ def __request_points_activity(request, activity_id):
         except ObjectDoesNotExist:
           activity_member = ActivityMember(user=user, activity=activity)
           
+        # Retrieve the question if one exists.
+        if form.cleaned_data["question"]:
+          activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
+        
         activity_member.response = form.cleaned_data["response"]
         activity_member.user_comment = form.cleaned_data["comment"]
         activity_member.approval_status = "pending"
@@ -138,12 +157,16 @@ def __request_points_activity(request, activity_id):
     
   elif activity.confirm_type == "image":
     form = ActivityImageForm()
+  elif activity.confirm_type == "text":
+    question = activity.pick_question()
+    form = ActivityTextForm(initial={"question" : question.pk})
   else:
     form = ActivityTextForm()
       
   return render_to_response("activities/request_points.html", {
     "form": form,
     "activity": activity,
+    "question" : question,
     "item_type": "activity",
   }, context_instance = RequestContext(request))
 

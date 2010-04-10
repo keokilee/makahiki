@@ -1,4 +1,6 @@
 import datetime
+import random
+import os
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -67,6 +69,14 @@ class CommitmentMember(CommonBase):
   is_active = models.BooleanField(default=True)
   comment = models.TextField()
   
+class TextPromptQuestion(models.Model):
+  activity = models.ForeignKey("Activity")
+  question = models.CharField(max_length=255, help_text="255 character max.")
+  answer = models.CharField(max_length=255, help_text="255 character max.")
+  
+  def __unicode__(self):
+    return self.question
+  
 class Activity(CommonActivity):
   """Activities involve verifiable actions that users commit to.  These actions can be 
   verified by asking questions or posting an image attachment that verifies the user did 
@@ -122,6 +132,14 @@ class Activity(CommonActivity):
     
   is_active = property(_is_active)
   
+  def pick_question(self):
+    if self.confirm_type != "text":
+      return None
+      
+    questions = TextPromptQuestion.objects.filter(activity=self)
+    return questions[random.randint(0, len(questions) - 1)]
+    
+  
   @staticmethod
   def get_available_for_user(user):
     """Retrieves only the activities that a user can participate in."""
@@ -133,16 +151,12 @@ class Activity(CommonActivity):
     )
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
-def activity_image_file_path(instance=None, filename=None):
+def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""
-  
-  user = instance.user
+
+  if instance:
+    user = user or instance.user
   return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
-  
-class TextPromptQuestion(models.Model):
-  activity = models.ForeignKey(Activity)
-  question = models.CharField(max_length=255, help_text="255 character max.")
-  answer = models.CharField(max_length=255, help_text="255 character max.")
       
 class ActivityMember(CommonActivityUser):
   """Represents the join between users and activities."""
@@ -152,13 +166,16 @@ class ActivityMember(CommonActivityUser):
   question = models.ForeignKey(TextPromptQuestion, null=True)
   awarded = models.BooleanField(default=False, editable=False)
   response = models.CharField(max_length=255, help_text="255 character max.")
-  admin_comment = models.TextField(blank=True)
-  user_comment = models.TextField(blank=True)
-  image = models.ImageField(blank=True, upload_to=activity_image_file_path)
+  admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
+  user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")
+  image = models.ImageField(max_length=1024, 
+                            blank=True, 
+                            upload_to=activity_image_file_path,
+                            help_text="Uploaded image for verification."
+  )
   
   def __unicode__(self):
-    return "%s submission for activity %s and user %s", (self.approval_status.capitalize(), 
-           self.activity.title, self.user.username)
+    return "%s : %s" % (self.activity.title, self.user.username)
   
   def save(self):
     """Custom save method to award points to users if the item is approved."""

@@ -10,6 +10,6 @@ settings.py
 # Ignore the test files.
 log
 
-# Ignore avatars.
-site_media/media/avatars/*
+# Ignore site media files.
+site_media
 
