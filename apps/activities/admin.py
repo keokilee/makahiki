@@ -1,4 +1,4 @@
-from activities.models import Activity, ActivityMember, TextPromptQuestion
+from activities.models import Activity, ActivityMember, TextPromptQuestion, ConfirmationCode
 from django.contrib import admin
 from django import forms
 from django.forms.models import BaseInlineFormSet
@@ -68,6 +68,9 @@ class ActivityAdminForm(forms.ModelForm):
     if confirm_type == "code" and has_codes and not num_codes:
       self._errors["num_codes"] = ErrorList([u"The number of codes is required for this confirmation type."])
       del cleaned_data["num_codes"]
+    elif confirm_type == "code" and len(self._errors) == 0 and num_codes > 0:
+      # Generate codes here if all data is valid.
+      ConfirmationCode.generate_codes_for_activity(self.instance, num_codes)
       
     return cleaned_data
     
@@ -78,7 +81,7 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
     """Validates the form data and checks if the activity confirmation type is text."""
     
     # Form that represents the activity.
-    activity_form = self.instance
+    activity = self.instance
     
     # Count the number of questions.
     count = 0
@@ -89,10 +92,10 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
       except AttributeError:
         pass
         
-    if activity_form.confirm_type == "text" and count == 0:
+    if activity.confirm_type == "text" and count == 0:
       raise forms.ValidationError("At least one question is required if the activity's confirmation type is text.")
         
-    elif activity_form.confirm_type != "text" and count > 0:
+    elif activity.confirm_type != "text" and count > 0:
       raise forms.ValidationError("Questions are not required for this confirmation type.")
 
 class TextQuestionInline(admin.TabularInline):
