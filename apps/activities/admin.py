@@ -3,6 +3,8 @@ from django.contrib import admin
 from django import forms
 from django.forms.models import BaseInlineFormSet
 from django.forms.util import ErrorList
+
+from django.core.urlresolvers import reverse
   
 class ActivityAdminForm(forms.ModelForm):
   num_codes = forms.IntegerField(required=False, 
@@ -16,9 +18,10 @@ class ActivityAdminForm(forms.ModelForm):
     
     super(ActivityAdminForm, self).__init__(*args, **kwargs)
     # Instance points to an instance of the model.
-    if self.instance and self.instance.created_at:
-      self.fields["num_codes"].help_text = "Number of additional codes to generate<br/>" 
-      self.fields["num_codes"].help_text += "<a href=\"http://youtube.com\" target=\"_blank\">View codes</a>"
+    if self.instance and self.instance.created_at and self.instance.confirm_type == "code":
+      self.fields["num_codes"].help_text = "Number of additional codes to generate <a href=\""
+      self.fields["num_codes"].help_text += reverse("activities.views.view_codes", args=(self.instance.pk,))
+      self.fields["num_codes"].help_text += "\" target=\"_blank\">View codes</a>"
     
   class Meta:
     model = Activity
@@ -65,7 +68,7 @@ class ActivityAdminForm(forms.ModelForm):
     #5 Number of codes is required if the verification type is "code"
     has_codes = cleaned_data.has_key("num_codes")
     num_codes = cleaned_data.get("num_codes")
-    if confirm_type == "code" and has_codes and not num_codes:
+    if not self.instance.created_at and confirm_type == "code" and has_codes and not num_codes:
       self._errors["num_codes"] = ErrorList([u"The number of codes is required for this confirmation type."])
       del cleaned_data["num_codes"]
     elif confirm_type == "code" and len(self._errors) == 0 and num_codes > 0:

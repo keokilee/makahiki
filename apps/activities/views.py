@@ -46,6 +46,22 @@ def request_points(request, item_type, item_id):
     return __request_points_activity(request, item_id)
   else:
     raise Http404
+    
+def view_codes(request, activity_id):
+  """View the confirmation codes for a given activity."""
+  
+  if not request.user or not request.user.is_staff:
+    raise Http404
+    
+  activity = get_object_or_404(Activity, pk=activity_id)
+  codes = ConfirmationCode.objects.filter(activity=activity)
+  if len(codes) == 0:
+    raise Http404
+  
+  return render_to_response("activities/view_codes.html", {
+    "activity": activity,
+    "codes": codes,
+  }, context_instance = RequestContext(request))
 
 ### Private methods.
 
