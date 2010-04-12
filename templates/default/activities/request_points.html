@@ -8,23 +8,29 @@
   {% else %}
     <form action="/activities/request_{{item_type}}_points/{{activity.pk}}/" method="post">
   {% endif %}
-    <p><label for="id_response">
-      {% if question %}
-        {{question.question}}
-        {{form.question}}
-      {% else %}
-        {{activity.confirm_prompt}}
-      {% endif %}
-    </label><br/>
-    {% if form.image_response %}
-      {{ form.image_response }}
+  
+  {% if form.response %}
+    {{ form.response.errors }}
+  {% else %}
+    {{ form.image_response.errors }}
+  {% endif %}
+  <p><label for="id_response">
+    {% if question %}
+      {{question.question}}
+      {{form.question}}
     {% else %}
-      {{ form.response }}
-    {%endif%}
-    </p>
-    
-    <p><label for="id_comment">Additional Comments</label><br/>
-    {{ form.comment }}</p>
-    <input type="submit" value="Submit" />
-  </form>
+      {{activity.confirm_prompt}}
+    {% endif %}
+  </label><br/>
+  {% if form.image_response %}
+    {{ form.image_response }}
+  {% else %}
+    {{ form.response }}
+  {%endif%}
+  </p>
+  
+  <p><label for="id_comment">Additional Comments</label><br/>
+  {{ form.comment }}</p>
+  <input type="submit" value="Submit" />
+</form>
 {% endblock %}

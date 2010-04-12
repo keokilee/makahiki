@@ -57,15 +57,15 @@ def __generate_activity_form(user, item):
       return_string += "<span class=\"pending_activity\">Pending approval</span>&nbsp"
       
     # TODO What should happen if the points are rejected?
-    
-    return_string += '<form action="/activities/remove_{0}/{1.id}'
-    return_string += '/" method="post" style="display:inline"><a href="#"'
-    return_string += 'onclick="parentNode.submit()">Remove</a></form>'
+    if item_join.approval_status != u"approved":
+      return_string += '<form action="/activities/remove_{0}/{1.id}'
+      return_string += '/" method="post" style="display:inline"><a href="#"'
+      return_string += 'onclick="parentNode.submit()">Remove</a></form>'
   
   except ObjectDoesNotExist:
     return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
     
-    return_string += '<form action="/activities/add_{0}/{1.id}/'
+    return_string += '<form action="/activities/add_{0}/{1.id}'
     return_string += '/" method="post" style="display:inline">'
     return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
     
