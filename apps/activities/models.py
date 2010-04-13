@@ -106,6 +106,7 @@ class ConfirmationCode(models.Model):
           code.save()
           valid = True
         except IntegrityError:
+          # Try again.
           code.code = header
       
 class Activity(CommonActivity):

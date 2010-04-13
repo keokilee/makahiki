@@ -12,14 +12,16 @@ class ActivityTextForm(forms.Form):
     """Custom validation to verify confirmation codes."""
     cleaned_data = self.cleaned_data
     
-    try:
-      code = ConfirmationCode.objects.get(code=cleaned_data["response"])
-      if not code.is_active:
-        self._errors["response"] = ErrorList(["This code has already been used."])
+    # Check if we are validating a confirmation code.
+    if not cleaned_data.has_key("question"):
+      try:
+        code = ConfirmationCode.objects.get(code=cleaned_data["response"])
+        if not code.is_active:
+          self._errors["response"] = ErrorList(["This code has already been used."])
+          del cleaned_data["response"]
+      except ConfirmationCode.DoesNotExist:
+        self._errors["response"] = ErrorList(["This code is not valid."])
         del cleaned_data["response"]
-    except ConfirmationCode.DoesNotExist:
-      self._errors["response"] = ErrorList(["This code is not valid."])
-      del cleaned_data["response"]
       
     return cleaned_data
   

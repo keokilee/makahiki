@@ -178,6 +178,7 @@ def __request_points_activity(request, activity_id):
           
         # Else, approve the activity (code is validated in forms.ActivityTextForm.clean())
         else:
+          code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
           code.is_active = False
           code.save()
           activity_member.approval_status = "approved"
