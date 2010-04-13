@@ -132,21 +132,25 @@ def __request_points_activity(request, activity_id):
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   question = None
+  activity_member = None
+  
+  try:
+    # Retrieve an existing activity member object if it exists.
+    activity_member = ActivityMember.objects.get(user=user, activity=activity)
+    if activity_member.awarded:
+      user.message_set.create(message="You have already received the points for this activity.")
+      return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+      
+  except ObjectDoesNotExist:
+    pass # Ignore for now.
 
   if request.method == "POST":
     if activity.confirm_type == "image":
       form = ActivityImageForm(request.POST, request.FILES)
       if form.is_valid():
-        try:
-          # Retrieve an existing activity member object if it exists.
-          activity_member = ActivityMember.objects.get(user=user, activity=activity)
-          if activity_member.awarded:
-            user.message_set.create(message="You have already received the points for this activity.")
-            return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-            
-        except ObjectDoesNotExist:
+        if not activity_member:
           activity_member = ActivityMember(user=user, activity=activity)
-        
+          
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
         activity_member.user_comment = form.cleaned_data["comment"]
         activity_member.image = path
@@ -159,15 +163,9 @@ def __request_points_activity(request, activity_id):
     else:
       form = ActivityTextForm(request.POST)
       if form.is_valid():
-        try:
-          # Retrieve an existing activity member object if it exists.
-          activity_member = ActivityMember.objects.get(user=user, activity=activity)
-          if activity_member.awarded:
-            user.message_set.create(message="You have already received the points for this activity.")
-            return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-        except ObjectDoesNotExist:
+        if not activity_member:
           activity_member = ActivityMember(user=user, activity=activity)
-        
+          
         activity_member.user_comment = form.cleaned_data["comment"]
         # Retrieve the question if one exists.
         if form.cleaned_data["question"]:
@@ -178,24 +176,19 @@ def __request_points_activity(request, activity_id):
           user.message_set.create(message="Your request has been submitted!")
           return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
           
-        # If there's no question, then this requires validating the confirmation code.
+        # Else, approve the activity (code is validated in forms.ActivityTextForm.clean())
         else:
-          code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
-          if not code:
-            user.message_set.create(message="This code is not valid.")
-          elif not code.is_active:
-            user.message_set.create(message="This code has already been used.")
-          else:
-            # Else, the code is valid.
-            code.is_active = False
-            code.save()
-            activity_member.approval_status = "approved"
-            # Model save method will award the points.
-            activity_member.save()
+          code.is_active = False
+          code.save()
+          activity_member.approval_status = "approved"
+          # Model save method will award the points.
+          activity_member.save()
 
-            points = activity_member.activity.point_value
-            user.message_set.create(message="You have been awarded points for your participation!")
-            return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+          points = activity_member.activity.point_value
+          message = "You have been awarded %d points for your participation!" % points
+          user.message_set.create(message=message)
+          return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+            
     
   elif activity.confirm_type == "image":
     form = ActivityImageForm()
@@ -204,12 +197,17 @@ def __request_points_activity(request, activity_id):
     form = ActivityTextForm(initial={"question" : question.pk})
   else:
     form = ActivityTextForm()
+    
+  admin_message = None
+  if activity_member:
+    admin_message = activity_member.admin_comment
       
   return render_to_response("activities/request_points.html", {
     "form": form,
     "activity": activity,
     "question" : question,
     "item_type": "activity",
+    "admin_message": admin_message,
   }, context_instance = RequestContext(request))
   
 

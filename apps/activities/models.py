@@ -194,9 +194,9 @@ class ActivityMember(CommonActivityUser):
   
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
-  question = models.ForeignKey(TextPromptQuestion, null=True)
+  question = models.ForeignKey(TextPromptQuestion, null=True, blank=True)
   awarded = models.BooleanField(default=False, editable=False)
-  response = models.CharField(max_length=255, help_text="255 character max.")
+  response = models.CharField(blank=True, max_length=255, help_text="255 character max.")
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
   user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")
   image = models.ImageField(max_length=1024, 
@@ -218,12 +218,24 @@ class ActivityMember(CommonActivityUser):
       self.awarded = True
       
     elif self.approval_status != u"approved" and self.awarded:
+      # Do we want to re-enable the confirmation code?
       profile = self.user.get_profile()
       profile.points -= self.activity.point_value
       profile.save()
       self.awarded = False
       
     super(ActivityMember, self).save()
+    
+  def delete(self):
+    """Custom delete method to remove awarded points."""
+    
+    if self.awarded:
+      # Do we want to re-enable the confirmation code?
+      profile = self.user.get_profile()
+      profile.points -= self.activity.point_value
+      profile.save()
+    
+    super(ActivityMember, self).delete()
 
 class Goal(CommonActivity):
   """Represents activities that are committed to by a group (floor)."""

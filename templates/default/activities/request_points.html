@@ -14,6 +14,9 @@
   {% else %}
     {{ form.image_response.errors }}
   {% endif %}
+  {% if admin_message %}
+    Admin message: {{ admin_message }}
+  {% endif %}
   <p><label for="id_response">
     {% if question %}
       {{question.question}}
