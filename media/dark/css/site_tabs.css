@@ -1,0 +1,16 @@
+/* SITE-SPECIFIC TAB STYLING */
+
+/* Active tabs */
+#home_tab a.tab_home,
+#resources_tab a.tab_resources,
+#energy_tab a.tab_energy,
+#billboard_tab a.tab_billboard,
+#about_us_tab a.tab_about_us
+{
+	
+    border-radius: 10px;
+	background:url('100a.jpg') no-repeat center; 
+    background-color: transparent;
+    border-color: #000;
+    color: #FFF;
+}
