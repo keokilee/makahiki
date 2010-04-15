@@ -1,7 +1,9 @@
 /* GENERAL TAB STYLING */
 
-#tabhead {
-    background-color: #666;
+#tabhead 
+{
+    /* Behind tab */
+    background-color: transparent;
 }
 
 #tabhead a:link,
@@ -13,18 +15,16 @@
     font-weight: bold;
     font-size: 0.8em;
     padding: 1em 2em;
-    background-color: #333;
+    background-color: transparent;
     line-height: 1em;
-    border-left: 1px solid #777;
-    border-right: 1px solid #444;
 }
 
 #tabhead a:hover,
 #tabhead a:active
 {
-    background-color: #000;
+    background-color: transparent;
     border-color: #666;
-    color: #FFF;
+    color: Black;
 }
 
 /* account tabs (right side) */
@@ -33,7 +33,6 @@
 #tabhead a.tab_logout
 {
     float: right;
-    opacity: 0.5;
 }
 
 
@@ -70,18 +69,4 @@
 
 #subnav a:hover {
     text-decoration: underline;
-}
-
-/* SITE-SPECIFIC TAB STYLING */
-
-/* Active tabs */
-#home_tab a.tab_home,
-#resources_tab a.tab_resources,
-#energy_tab a.tab_energy,
-#billboard_tab a.tab_billboard,
-#about_us_tab a.tab_about_us
-{
-    background-color: #999;
-    border-color: #888;
-    color: #FFF;
 }

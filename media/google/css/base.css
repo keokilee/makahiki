@@ -9,7 +9,7 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    background-color: #888;
+    background-color: White;
 }
 
 a:link {
@@ -43,20 +43,23 @@ div#website_title {
 
 div#website_title h1 {
     color: White;
+    text-indent: -9999px;
     text-shadow: 1px 1px 1px #666;
     padding: 0 0 0.2em 0;
-    margin: 0;
+    margin: 0 20px 0 30px;
+    font-family: Tahoma;
     font-size: 2.2em;
+    line-height: 60px;
     letter-spacing: -1px;
+    background:url('logo.jpg') no-repeat; 
 }
 
 div#website_title h1 a {
-    text-decoration: none;
-    color: White;
+    text-decoration: transparent;
 }
 
 #color-wrapper {
-    background-color: #888;
+    background-color: White;
 }
 
 #outline {
@@ -69,12 +72,80 @@ div#website_title h1 a {
 }
 
 #content {
-    padding: 20px;
+    padding: 10px;
     margin: 0 20px 0 20px;
     background-color: White;
     font-size: 0.9em;
     line-height: 1.5em;
     color: #555;
+}
+
+#content .homepage_tips {
+	width: auto;
+	height: 50px;
+	padding: 0px;
+	line-height: 1.0em;
+	margin: 0;
+}
+
+#content .homepage_pictures {
+	width: 300px;
+	height: auto;
+	margin: 0px 10px 10px 0px;
+	float: left;
+	border: 1px solid Silver;
+    /* Round corner */
+    -moz-border-radius: 5px;
+    -webkit-border: 5px;
+}
+
+#content .homepage_news {
+	width: 250px;
+	height: 200px;
+	float: right; 
+	margin: 0px 17px 10px 10px;
+	border: 1px solid Silver;
+    /* Round corner */
+    -moz-border-radius: 5px;
+    -webkit-border: 5px;
+}
+
+
+#content .homepage_about {
+	width: 300px;
+	height: auto;
+	padding: 0px;
+	margin: 10px 10px 10px 0px;
+	float: left;
+	clear: left;
+	border: 1px solid Silver;
+    /* Round corner */
+    -moz-border-radius: 5px;
+    -webkit-border: 5px;
+}
+
+#content .homepage_video {
+	width: auto;
+	height: auto;	
+	margin: 0px 10px 10px 10px;
+	padding: 0;
+	float: right;
+	border: 1px solid Silver;
+    /* Round corner */
+    -moz-border-radius: 5px;
+    -webkit-border: 5px;
+}
+#content .homepage_events {	
+	width: auto;
+	height: auto;	
+	padding: 0; 
+	margin: 10px 0px 10px 10px;
+	float: right;
+	clear: right;
+	border: 1px solid Silver;
+    /* Round corner */
+    -moz-border-radius: 5px;
+    -webkit-border: 5px;
 }
 
 #content h1 {
@@ -95,10 +166,17 @@ div#website_title h1 a {
 }
 
 #content h3 {
-    font-size: 1.5em;
-    font-weight: normal;
-    color: #777;
-    margin: 1em 0 0.5em 0;
+    font-size: 1.0em;
+    line-height: 1.5em;
+    text-indent: 10px;
+    font-weight: bold;
+    color: 	#254B99;
+    margin: 0;
+    background-color: #ADD8E6;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-radius-topright: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-radius-topleft: 5px;
 }
 
 #content p.image img {
@@ -153,50 +231,4 @@ ul#messages li {
 ul#messages li a {
     float: right;
     color: #693;
-}
-
-
-#content .homepage_tips {
-	width: auto;
-	height: 50px;
-	padding-top: 10px;
-	margin: 0px 0px 0px 0px;
-}
-#content .homepage_video {
-	width: 350px;
-	height: auto;	
-	margin: 20px 0px 0px 0px;
-	float: left;
-}
-
-#content .homepage_news {
-	width: 250px;
-	float: left; 
-	margin: 20px 5px 5px 5px;
-}
-	
-#content .homepage_pictures {
-	width: 300px;
-	margin: 20px 0px 0px 0px;
-	float:left;
-		
-}
-
-
-#content .homepage_about {
-	width: 300px;
-	height: auto;
-	padding: 10px;
-	margin: 10px 0px 20px 0px;
-	float: left;
-	clear: left;
-
-}
-
-#content .homepage_events {	
-	width: 300px;
-	height: auto;	
-	padding: 10px; 
-	margin: 10px 0px 20px 0px;
-	float: right;
 }

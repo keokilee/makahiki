@@ -1,0 +1,258 @@
+html {
+    height: 100%;
+    font-size: 100.01%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    background-color: #888;
+}
+
+a:link {
+    color: #555;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover, a:active {
+    color: #c00;
+}
+
+hr.clear {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    visibility: none;
+    clear: both;
+}
+
+#website_title {
+	background:url('banner.jpg') no-repeat;
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 3em;
+}
+
+#website_title h1 {
+    color: #F00;
+    text-shadow: 1px 1px 1px #666;
+    padding: 0 0 0.2em 0;
+    margin: 0;
+    font-size: 2em;
+    letter-spacing: -1px;
+}
+
+#website_title h1 a {
+    text-decoration: none;
+    color: transparent;
+}
+
+#color-wrapper { 
+	background:url('blow.jpg')  no-repeat top,
+		url('wind2.jpg') no-repeat bottom;	
+		
+    background-color: transparent;
+	opacity: 0.9;
+}
+
+#outline {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#content-outline {
+    background-color: #FFF;
+	opacity: 0.9;
+	-moz-border-radius-bottomleft: 20px;
+	-moz-border-radius-bottomright: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+
+	padding: 0px; 
+	margin: 30px 0px 0px 0px;
+
+
+}
+
+#content {	
+    padding: 10px;
+    margin: 5px 5px 5px 5px;
+    background-color: transparent;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    color: #333;
+}
+
+#content .homepage_tips {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	width: auto;
+	height: 30px;
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding-left:10px; 
+	padding-bottom: 30px;
+	margin: 0px 0px 0px 0px;
+}
+
+#content .homepage_news {
+	float: left;
+	width: auto;
+	height: auto;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding: 10px; 
+	margin: 20px 10px 0px 10px;
+}
+
+#content .homepage_video {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	width: auto;
+	height: auto;	
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding: 0px 10px; 
+	margin: 20px 0px 0px 0px;
+	float: left;
+}
+	
+#content .homepage_pictures {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	width: auto;
+	height: auto;	
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding-left: 10px; 
+	margin: 20px 0px 10px 0px;
+	float:left;
+	clear: right;
+		
+}
+#content iframe {
+	background-color: #fff; 
+	border: 1px solid #a9a9a9; 
+	padding: 1px; margin: -5px 5px -5px -5px;
+}
+
+#content .homepage_about {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	width: 300px;
+	height: auto;
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding: 10px;
+	margin: 20px 0px 150px 0px;
+	float: left;
+
+}
+
+#content .homepage_events {
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+	width: auto;
+	height: auto;
+	background-color: transparent; 
+	border: 1px solid #36F; 
+	padding: 10px; 
+	margin: 20px 0px 0px 0px;
+	float: right;
+}
+
+#content h1 {
+    color: #222;
+    margin: 0 0 0.5em 0;
+    text-shadow: 0 1px 0 #ccc;
+}
+
+#content h1 {
+    font-size: 2em;
+}
+
+#content h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+    color: #333;
+    margin: 1em 0 0.5em 0;
+}
+
+#content h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    color: #555;
+    margin: 1em 0 0.5em 0;
+}
+
+#content p.image img {
+    border: 1px solid #999;
+}
+
+#content p.image.left {
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+
+#content p.image.right {
+    float: right;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+#footer {
+    margin: 0 auto;
+    padding: 1px 0 80px 0;
+    width:  1100px;
+    font-size: 0.7em;
+    color: #333;
+}
+
+#footer p {
+    margin: 1em 0 1em 0;
+}
+
+
+form.add-attachment {
+    padding: 0.2em 1em;
+    background-color: #eee;
+    -webkit-box-shadow: 0 2px 3px #aaa;
+}
+
+
+/* MESSAGES */
+
+ul#messages {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: none;
+}
+ul#messages li {
+    padding: 5px 10px;
+    background: #EFD;
+    margin: 3px;
+    border: 1px solid #BC9;
+}
+ul#messages li a {
+    float: right;
+    color: #693;
+}
+
