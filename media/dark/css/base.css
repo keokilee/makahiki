@@ -36,85 +36,43 @@ hr.clear {
 }
 
 div#website_title {
-<<<<<<< HEAD
-
-	 
-    width: 1000px;
-	height: 60px;
-    margin: 0 auto;
-    padding-top: 3em;
-}
-
-div#website_title h1 {
-    color: White;
-    text-shadow: 1px 1px 1px #666;
-    padding: 0 0 0.2em 0;
-	text-align: center;
-    margin: 0;
-    font-size: 2.2em;
-    letter-spacing: 2px;
-}
-
-div#website_title h1 a {
-=======
 	opacity: 0.8;	 
     width: 1000px;
 	height: 50px;
-    margin: 0px 0px 0px 175px;
+    margin: -10px 0px 10px 200px;
     padding-top: 0em;
 }
 
 #website_title h1 {
-	font-family:  times;
-    color: white;
-    text-shadow: 1px 1px 1px #666;
+	background:url('banner.jpg') no-repeat center;
+	text-indent: -9999px;
     padding: 0 0 0.2em 0;
 	text-align: center;
-    margin: 0 auto;
+    margin: auto;
     font-size: 2.5em;
     letter-spacing: 2px;
 }
 
 #website_title h1 a {
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
     text-decoration: none;
     color: White;
 }
 
 #color-wrapper {
-<<<<<<< HEAD
-	background:url('dddarkroom.jpg') no-repeat; 
-    background-color: #000;
-}
-
-#outline {
-    width: 1000px;
-    margin: 0 auto;
-}
-
-#content-outline {
-	background:url('lead.jpg') ;
-	opacity: 0.5;
-	-moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    background-color: #fff; border: 2px solid #a9a9a9; padding: 0px; margin: -5px 5px 5px -5px;
-	-webkit-box-shadow: 3px 3px 6px #FFF; -moz-box-shadow: 3px 3px 6px #FFF; box-shadow: 3px 3px 6px #FFF;
-=======
 	color: white;
-	background:url('darkroom_small.jpg') no-repeat top left, url('door.png') no-repeat right; 
+	background:url('darkroom_small.jpg') no-repeat top left;
     background-color: #000;
 	opacity: 0.8;
 }
 
 #outline {
 	
-    width: 1100px;
-    margin: 0px 0px 0px 175px;
+    width: 1000px;
+    margin: 0px 0px 0px 200px;
 }
 
 #content-outline {
-	background:url('.jpg') ;
+	background:url('lead.jpg') no-repeat center;
 	opacity: 0.6;
 	-moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -126,17 +84,12 @@ div#website_title h1 a {
 	-webkit-box-shadow: 3px 3px 6px #FFF; 
 	-moz-box-shadow: 3px 3px 6px #FFF; 
 	box-shadow: 3px 3px 6px #FFF;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 	
 }
 
 #content {	
     padding: 10px;
-<<<<<<< HEAD
-    margin: 10px 20px 20px 20px;
-=======
     margin: 10px 5px 10px 5px;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
     background-color: transparent;
     font-size: 0.9em;
     line-height: 1.5em;
@@ -148,20 +101,12 @@ div#website_title h1 a {
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
 	width: auto;
-<<<<<<< HEAD
-	height: auto;
-	background:url('tips.jpg') no-repeat left; 
-	background-color: transparent; 
-	border: 1px solid #FFF; 
-	padding-left: 60px; 
-=======
 	height: 50px;
 	background:url('tip.jpg') no-repeat left; 
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding-left: 60px; 
 	padding-top: 10px;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 	margin: 0px 0px 0px 0px;
 }
 #content .homepage_video {
@@ -172,33 +117,22 @@ div#website_title h1 a {
 	height: auto;	
 	background-color: transparent; 
 	border: 1px solid #FFF; 
-<<<<<<< HEAD
-	padding-left: 10px; 
-=======
 	padding: 0px 10px; 
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 	margin: 20px 0px 0px 0px;
 	float: left;
 }
 
 #content .homepage_news {
 	float: left;
-<<<<<<< HEAD
-=======
 	width: auto;
 	height: auto;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
 	background-color: transparent; 
 	border: 1px solid #FFF; 
-<<<<<<< HEAD
-	padding: -1px; margin: 20px 10px 5px 10px;
-=======
 	padding: 10px; 
 	margin: 20px 10px 0px 10px;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 	
 #content .homepage_pictures {
@@ -210,25 +144,15 @@ div#website_title h1 a {
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding-left: 10px; 
-<<<<<<< HEAD
-	margin: 20px 0px 0px 0px;
-	float:left;
-		clear: right;
-=======
 	margin: 20px 0px 10px 0px;
 	float:left;
 	clear: right;
 		
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 #content iframe {
 	background-color: #fff; 
 	border: 1px solid #a9a9a9; 
-<<<<<<< HEAD
-	padding: 4px; margin: -5px 5px -5px -5px;
-=======
 	padding: 1px; margin: -5px 5px -5px -5px;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 
 #content .homepage_about {
@@ -240,14 +164,8 @@ div#website_title h1 a {
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding: 10px;
-<<<<<<< HEAD
-	padding-bottom:; 
-	margin: 10px 0px 20px 0px;
-	float: left;
-=======
 	margin: 20px 0px 150px 0px;
 	float: right;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 
 }
 
@@ -259,27 +177,16 @@ div#website_title h1 a {
 	height: auto;
 	background-color: transparent; 
 	border: 1px solid #FFF; 
-<<<<<<< HEAD
-	padding: 10px;
-	padding-bottom:; 
-	margin: 10px 0px 20px 0px;
-	float: right;
-=======
 	padding: 10px; 
 	margin: 20px 0px 0px 0px;
 	float: left;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 
 #content li {
 	font-size: 1em;
     font-weight: normal;
     color: #FFF;
-<<<<<<< HEAD
-    margin: 1em 0 0.5em 0;
-=======
     margin: .5em 0 0.5em 0;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 
 }
 
@@ -287,11 +194,7 @@ div#website_title h1 a {
     font-size: 1em;
     font-weight: normal;
     color: #DDD;
-<<<<<<< HEAD
-    margin: 1em 0 0.5em 0;
-=======
     margin: .5em 0 0.5em 0;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 
 }
 
@@ -309,22 +212,14 @@ div#website_title h1 a {
     font-size: 1.7em;
     font-weight: normal;
     color: #DDD;
-<<<<<<< HEAD
-    margin: 1em 0 0.5em 0;
-=======
     margin: .5em 0 0.5em 0;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 
 #content h3 {
     font-size: 1.5em;
     font-weight: normal;
     color: #DDD;
-<<<<<<< HEAD
-    margin: 1em 0 0.5em 0;
-=======
     margin: .5em 0 0.5em 0;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 
 #content p.image img {
@@ -345,13 +240,8 @@ div#website_title h1 a {
 }
 
 #footer {
-<<<<<<< HEAD
-    margin: 0 auto;
-    padding: 1px 0 80px 0;
-=======
     margin: 0px;
-    padding: 0px 0px 0px 175px;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
+    padding: 0px 0px 0px 200px;
     width:  1000px;
     font-size: 0.7em;
     color: #999;
@@ -359,11 +249,7 @@ div#website_title h1 a {
 
 #footer p {
     margin: 1em 0 1em 0;
-<<<<<<< HEAD
-	float: right;
-=======
 	float: left;
->>>>>>> 1ebda298eac7106e242fec002ef55b3d0b5cb7aa
 }
 
 

@@ -44,6 +44,7 @@ hr.clear {
 
 #website_title h1 {
     color: #F00;
+	text-indent: -9999px;
     text-shadow: 1px 1px 1px #666;
     padding: 0 0 0.2em 0;
     margin: 0;
@@ -57,16 +58,17 @@ hr.clear {
 }
 
 #color-wrapper { 
-	background:url('blow.jpg')  no-repeat top,
-		url('wind2.jpg') no-repeat bottom;	
+	background:url('blow.jpg')  no-repeat top left,
+		url('wind2.jpg') no-repeat bottom left;	
 		
     background-color: transparent;
 	opacity: 0.9;
 }
 
 #outline {
-    width: 1100px;
+    width: 1000px;
     margin: 0 auto;
+
 }
 
 #content-outline {
@@ -78,7 +80,7 @@ hr.clear {
     -khtml-border-radius: 20px;
 
 	padding: 0px; 
-	margin: 30px 0px 0px 0px;
+	margin: -2px 0px 0px 0px;
 
 
 }
@@ -221,7 +223,7 @@ hr.clear {
 #footer {
     margin: 0 auto;
     padding: 1px 0 80px 0;
-    width:  1100px;
+    width:  1000px;
     font-size: 0.7em;
     color: #333;
 }

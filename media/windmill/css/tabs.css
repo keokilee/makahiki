@@ -10,9 +10,11 @@
 	margin: 0px 3px;
 	 opacity: 0.7;
 	-moz-border-radius-topleft: 10px;
-	-moz-border-radius-topright: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
+	-moz-border-radius-topright: 10px; 
+    -webkit-border-radius-topleft: 10px;
+  	-webkit-border-radius-topright: 10px;
+    -khtml-border-radius-topleft: 10px; 
+	-khtml-border-radius-topright: 10px; 
     display: inline-block;
     color: White;
     text-decoration: none;
