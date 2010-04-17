@@ -55,9 +55,3 @@ class ActivitiesTestCase(unittest.TestCase):
     new_points = user.get_profile().points
     
     self.assertTrue(points == new_points)
-    
-    
-    
-    
-    
-    

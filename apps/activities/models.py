@@ -45,7 +45,7 @@ class CommonActivity(CommonBase):
   """Common fields for activity models."""
   
   title = models.CharField(max_length=200)
-  description = models.TextField(help_text="Uses Markdown formatting.")
+  description = models.TextField(help_text="Uses <a href=\"http://daringfireball.net/projects/markdown/\" target=\"_blank\">Markdown</a> formatting.")
   point_value = models.IntegerField()
   
   def __unicode__(self):
@@ -165,6 +165,7 @@ class Activity(CommonActivity):
   is_active = property(_is_active)
   
   def pick_question(self):
+    """Choose a random question to present to a user."""
     if self.confirm_type != "text":
       return None
       

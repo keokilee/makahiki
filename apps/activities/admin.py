@@ -72,7 +72,7 @@ class ActivityAdminForm(forms.ModelForm):
       self._errors["num_codes"] = ErrorList([u"The number of codes is required for this confirmation type."])
       del cleaned_data["num_codes"]
     elif confirm_type == "code" and len(self._errors) == 0 and num_codes > 0:
-      # Generate codes here if all data is valid.
+      # Since num_codes is not passed to the model save method, the codes need to be generated here.
       ConfirmationCode.generate_codes_for_activity(self.instance, num_codes)
       
     return cleaned_data
@@ -117,8 +117,8 @@ class ActivityAdmin(admin.ModelAdmin):
     ("Basic Information", {
       'fields' : ('title', 'description', 'point_value', 'duration', ('pub_date', 'expire_date')),
     }),
-    ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
     ("Event", {'fields' : ('is_event', 'event_date')}),
+    ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
   form = ActivityAdminForm
   inlines = [TextQuestionInline]
