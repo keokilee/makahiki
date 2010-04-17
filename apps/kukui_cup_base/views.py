@@ -8,5 +8,5 @@ def homepage(request):
   articles = Article.objects.all()[:5]
   return render_to_response("homepage.html", {
     "articles": articles,
-  })
+  }, context_instance = RequestContext(request))
   

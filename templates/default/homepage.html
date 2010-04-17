@@ -15,7 +15,14 @@
   </div>
   
   <div class="homepage_news" >
-    {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+    {% if articles %}
+      {% for article in articles %}
+        <h3>Featured News</h3>
+        {% include "news/article.html" %}
+      {% endfor %}
+    {% else %}
+      {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+    {% endif %}
   </div>
   
   <div class="homepage_pictures" >
