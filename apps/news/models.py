@@ -15,7 +15,7 @@ class Article(models.Model):
   updated_at = models.DateTimeField(null=True, editable=False)
   
   def create_slug(self):
-    """Creates a slug (an url based on content of the article) from the article's title.
+    """Creates a slug (an url parameter based on content of the article) from the article's title.
     Returns None if the article has no title."""
     
     if not self.title:
