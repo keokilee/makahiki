@@ -5,6 +5,7 @@ from news.models import Article
 class ArticleTestCase(unittest.TestCase):
   def testCreateSlug(self):
     article = Article(title="Hello World!", content="What's up everyone?")
+    slug = article.create_slug()
     self.assertEqual("hello-world", slug, "Testing that slug strips punctuation.")
     
     article.title = ""
