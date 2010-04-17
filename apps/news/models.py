@@ -1,4 +1,5 @@
 import datetime
+import string
 
 from django.db import models
 
@@ -8,7 +9,7 @@ class Article(models.Model):
   """Represents an article on the front page."""
   
   title = models.CharField(max_length=255)
-  slug = models.CharField(max_length=255, required=False)
+  slug = models.CharField(max_length=50, blank=True)
   content = models.TextField(help_text="Uses Markdown formatting.")
   created_at = models.DateTimeField(editable=False)
   updated_at = models.DateTimeField(null=True, editable=False)
@@ -17,13 +18,16 @@ class Article(models.Model):
     """Creates a slug (an url based on content of the article) from the article's title.
     Returns None if the article has no title."""
     
-    if not title:
+    if not self.title:
       return None
       
     if self.slug:
       return self.slug
     
-    slug = join(title.split(), "-").lower()
+    slug = self.title.translate(string.maketrans("", ""), string.punctuation)
+    slug = string.join(slug.split(), "-").lower()
+    if len(slug) > 100:
+      slug = slug[:100]
     
     return slug
     
