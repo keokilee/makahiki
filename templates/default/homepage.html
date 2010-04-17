@@ -15,7 +15,14 @@
   </div>
   
   <div class="homepage_news" >
-    {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+    {% if articles %}
+      <h3>Featured News</h3>
+      {% for article in articles %}
+        {% include "news/article.html" %}
+      {% endfor %}
+    {% else %}
+      {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+    {% endif %}
   </div>
   
   <div class="homepage_pictures" >
@@ -29,4 +36,21 @@
   <div class="homepage_events" >
     {% gblock "homepage_events" for "gblocks.TitleAndText" %}
   </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+    	//Switch the "Open" and "Close" state per click
+    	$("h4.trigger").toggle(function(){
+    		$(this).addClass("active");
+    		}, function () {
+    		$(this).removeClass("active");
+    	});
+
+    	//Slide up and down on click
+    	$("h4.trigger").click(function(){
+    		$(this).next(".article_container").toggle();
+    	});
+
+    });
+  </script>
 {% endblock %}

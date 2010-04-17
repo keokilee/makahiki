@@ -12,7 +12,7 @@ import os
 
 urlpatterns = patterns('',
     # some simple pages
-    url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
+    url(r'^$', "kukui_cup_base.views.homepage", name="home"),
     url(r'^billboard/$', direct_to_template, {"template": "billboard.html"}, name="billboard"),
     url(r'^about_us/$', direct_to_template, {"template": "about_us.html"}, name="about_us"),
     url(r'^kukui_cup/$', direct_to_template, {"template": "kukui_cup.html"}, name="kukui_cup"),
@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('kukui_cup_profile.urls')),
     (r'^activities/', include('activities.urls')),
     (r'^themes/', include('kukui_cup_themes.urls')),
+    (r'^news/', include('news.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
