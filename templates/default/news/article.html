@@ -1,0 +1,7 @@
+{% load markup %}
+
+<h4 class="trigger"><a href="#">{{article.title}}</a></h4>
+<div class="article_container" style="display:none">
+  <p>{{article.abstract|markdown}}</p>
+  <a href="news/{{article.id}}/{{article.slug}}/">Read the full story</a>
+</div>

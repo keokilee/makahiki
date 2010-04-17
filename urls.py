@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('kukui_cup_profile.urls')),
     (r'^activities/', include('activities.urls')),
     (r'^themes/', include('kukui_cup_themes.urls')),
+    (r'^news/', include('news.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
