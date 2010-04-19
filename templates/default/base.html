@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
-    {% render_css_import %}
+    {% render_css_import user %}
     <!--
       <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" />
       <link rel="stylesheet" href="{{ STATIC_URL }}css/tabs.css" />
@@ -21,7 +21,7 @@
 
 <body>
 <div id="color-wrapper">
-    {% render_css_select %}
+    {% render_css_select user %}
     
     {% block website_title %}{% endblock %}
     
