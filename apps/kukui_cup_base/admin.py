@@ -1,4 +1,4 @@
 from django.contrib import admin
-from news.models import Article
+from kukui_cup_base.models import Article
 
 admin.site.register(Article)

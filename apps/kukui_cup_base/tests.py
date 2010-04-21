@@ -1,6 +1,6 @@
 import unittest
 
-from news.models import Article
+from kukui_cup_base.models import Article
 
 class ArticleTestCase(unittest.TestCase):
   def testCreateSlug(self):
