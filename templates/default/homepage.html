@@ -5,6 +5,44 @@
 
 {% block tab_id %}id="home_tab"{% endblock %}
 
+{% block extra_head %}
+  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  <script type="text/javascript">
+    //News toggle
+    $(document).ready(function(){
+    	//Switch the "Open" and "Close" state per click
+    	$("h4.trigger").toggle(function(){
+    		$(this).addClass("active");
+    		}, function () {
+    		$(this).removeClass("active");
+    	});
+
+    	//Hide and unhide on click.
+    	$("h4.trigger").click(function(){
+    		$(this).next(".article_container").toggle();
+    	});
+
+    });
+    
+    //Visualization code
+    google.load('visualization', '1', {packages:['gauge']});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Label');
+      data.addColumn('number', 'Value');
+      data.addRows(1);
+      data.setValue(0, 0, 'Energy');
+      data.setValue(0, 1, 80);
+
+      var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+      var options = {width: 400, height: 120, redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90, minorTicks: 5};
+      chart.draw(data, options);
+    }
+  </script>
+{% endblock %}
+
 {% block body %}
   <div class="homepage_tips" >
     {% gblock "homepage_tips" for "gblocks.TitleAndText" %}
@@ -25,6 +63,11 @@
     {% endif %}
   </div>
   
+  <div class="homepage_gauge">
+    <h3>Energy gauge</h3>
+    <div id='chart_div'></div>
+  </div>
+  
   <div class="homepage_pictures" >
     {% gblock "homepage_pictures" for "gblocks.TitleAndText" %}
   </div>
@@ -37,20 +80,4 @@
     {% gblock "homepage_events" for "gblocks.TitleAndText" %}
   </div>
   
-  <script type="text/javascript">
-    $(document).ready(function(){
-    	//Switch the "Open" and "Close" state per click
-    	$("h4.trigger").toggle(function(){
-    		$(this).addClass("active");
-    		}, function () {
-    		$(this).removeClass("active");
-    	});
-
-    	//Slide up and down on click
-    	$("h4.trigger").click(function(){
-    		$(this).next(".article_container").toggle();
-    	});
-
-    });
-  </script>
 {% endblock %}
