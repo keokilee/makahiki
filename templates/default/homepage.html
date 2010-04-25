@@ -23,23 +23,6 @@
     	});
 
     });
-    
-    //Visualization code
-    google.load('visualization', '1', {packages:['gauge']});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Label');
-      data.addColumn('number', 'Value');
-      data.addRows(1);
-      data.setValue(0, 0, 'Energy');
-      data.setValue(0, 1, 80);
-
-      var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-      var options = {width: 400, height: 120, redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90, minorTicks: 5};
-      chart.draw(data, options);
-    }
   </script>
 {% endblock %}
 
@@ -65,7 +48,13 @@
   
   <div class="homepage_gauge">
     <h3>Energy gauge</h3>
-    <div id='chart_div'></div>
+    <div id = "loading"><img src="http://www.google.com/ig/images/spinner.gif"/></div>
+    <div id="sourcediv" align="center"></div>
+    <div id="chartdiv" align="center"></div>
+    <div id="data_displayed_div" align="center"></div>
+    <div id="lastcheckdiv" align="center"></div>
+    
+    <script type="text/javascript" src="{{ STATIC_URL }}js/gauge.js"></script>
   </div>
   
   <div class="homepage_pictures" >
