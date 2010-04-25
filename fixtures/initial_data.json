@@ -66,6 +66,9 @@
     88, 
     89, 
     90, 
+    31, 
+    32, 
+    33, 
     28, 
     29, 
     30, 
@@ -78,9 +81,6 @@
     81, 
     78, 
     84, 
-    31, 
-    32, 
-    33, 
     61, 
     64, 
     58, 
@@ -113,6 +113,30 @@
    "password": "sha1$be8b4$9dfdfc92faf73c8fc7fe9c50006a928d97657643", 
    "email": "", 
    "date_joined": "2010-03-21 16:51:26"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Current Standings", 
+   "created_at": "2010-04-25 13:50:00", 
+   "updated_at": "2010-04-25 13:55:45", 
+   "slug": "current-standings", 
+   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
+   "abstract": "The current Kukui Cup standings for the week."
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Upcoming Events", 
+   "created_at": "2010-04-25 13:52:11", 
+   "updated_at": null, 
+   "slug": "upcoming-events", 
+   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
+   "abstract": "Events coming up this week."
   }
  }, 
  {
