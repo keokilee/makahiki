@@ -1,6 +1,6 @@
 /*
  * Modified version of the Wattdepot Gauge code used in http://code.google.com/p/wattdepot-ui-googlegadgets/.
- * Thanks to Kendyll Doi, Jarret Mizo, Paul Galiza, Ed Meyer, and Yichi Xu.
+ * Mahalo to Jarret Mizo and Paul Galiza.
  */
 
 var gauge = null;

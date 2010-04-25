@@ -57,8 +57,16 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/gauge.js"></script>
   </div>
   
-  <div class="homepage_pictures" >
-    {% gblock "homepage_pictures" for "gblocks.TitleAndText" %}
+  <div class="homepage_heatmap" >
+    <h3>Heat Map</h3>
+    <div id="loading"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;color: red"></div>
+    <div id="lastchecked" align="center" style="font-family: Arial;font-size: 12px"> </div>
+    <div id="onboardoptions" style="font-family: Arial;font-size: 12px"></div>
+    <div id="onboarduidiv" style="font-family: Arial;font-size: 12px;display: none"></div>
+    
+    <script type="text/javascript" src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/heatmap.js"></script>
   </div>
   
   <div class="homepage_about" >
