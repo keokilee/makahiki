@@ -42,9 +42,9 @@ google.setOnLoadCallback(initialize);
 
 /* Parses the user preferences and generates the Query to WattDepot and displays the BioHeatMap. */ 
 function initialize() {
-  var sources = "saunders-floor-2,saunders-floor-3,saunders-floor-4"
+  var sources = "saunders-floor-2, saunders-floor-3, saunders-floor-4"
   // Store user preferences in corresponding variables.
-  host_uri = "http://server.wattdepot.org:8188/gviz";
+  host_uri = "http://server.wattdepot.org:8188/gviz/";
   source = sources.split(', ');
   dataType = "powerConsumed";
   dateRange = "last7days";

@@ -8,20 +8,22 @@
 {% block extra_head %}
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
   <script type="text/javascript">
+    //Resolves conflict with Prototype Library.
+    jQuery.noConflict()
+    
     //News toggle
-    $(document).ready(function(){
+    jQuery(document).ready(function(){
     	//Switch the "Open" and "Close" state per click
-    	$("h4.trigger").toggle(function(){
-    		$(this).addClass("active");
+    	jQuery("h4.trigger").toggle(function(){
+    		jQuery(this).addClass("active");
     		}, function () {
-    		$(this).removeClass("active");
+    		jQuery(this).removeClass("active");
     	});
 
     	//Hide and unhide on click.
-    	$("h4.trigger").click(function(){
-    		$(this).next(".article_container").toggle();
+    	jQuery("h4.trigger").click(function(){
+    		jQuery(this).next(".article_container").toggle();
     	});
-
     });
   </script>
 {% endblock %}
@@ -46,9 +48,8 @@
     {% endif %}
   </div>
   
-  <div class="homepage_gauge">
+  <div class="homepage_gauge" style="clear:left; width:400px">
     <h3>Energy gauge</h3>
-    <div id = "loading"><img src="http://www.google.com/ig/images/spinner.gif"/></div>
     <div id="sourcediv" align="center"></div>
     <div id="chartdiv" align="center"></div>
     <div id="data_displayed_div" align="center"></div>
@@ -57,24 +58,20 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/gauge.js"></script>
   </div>
   
-  <div class="homepage_heatmap" >
+  <div class="homepage_heatmap" style="clear:left; width:400px">
     <h3>Heat Map</h3>
-    <div id="loading"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
     <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;color: red"></div>
     <div id="lastchecked" align="center" style="font-family: Arial;font-size: 12px"> </div>
     <div id="onboardoptions" style="font-family: Arial;font-size: 12px"></div>
     <div id="onboarduidiv" style="font-family: Arial;font-size: 12px;display: none"></div>
     
+    <script type="text/javascript">google.load("prototype", "1.6.1.0");</script>
     <script type="text/javascript" src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/heatmap.js"></script>
   </div>
   
   <div class="homepage_about" >
     {% gblock "homepage_about" for "gblocks.TitleAndText" %}
-  </div>
-  
-  <div class="homepage_events" >
-    {% gblock "homepage_events" for "gblocks.TitleAndText" %}
   </div>
   
 {% endblock %}
