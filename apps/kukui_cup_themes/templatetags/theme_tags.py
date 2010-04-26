@@ -34,7 +34,7 @@ def render_css_select(user=None):
   return_string += "CSS select: <select name=\"css_theme\" onchange=\"this.form.submit()\">"
   theme_dir = os.path.join(settings.PROJECT_ROOT, "media")
   
-  items = (item for item in os.listdir(theme_dir) if os.path.isdir(os.path.join(theme_dir, item)))
+  items = (item for item in os.listdir(theme_dir) if os.path.isdir(os.path.join(theme_dir, item, "css")))
   current_theme = settings.KUKUI_CSS_THEME
   if user and user.is_authenticated():
     current_theme = user.get_profile().theme

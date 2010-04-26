@@ -12,7 +12,7 @@ def _get_available_themes():
   theme_dir = os.path.join(settings.PROJECT_ROOT, "media")
   # Returns a list of tuples representing the name of the theme and the directory of the theme
   return ((item, item) for item in os.listdir(theme_dir) 
-                      if os.path.isdir(os.path.join(theme_dir, item)))
+                      if os.path.isdir(os.path.join(theme_dir, item, "css")))
   
 class Profile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
