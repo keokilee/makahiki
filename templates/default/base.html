@@ -21,7 +21,9 @@
 
 <body>
 <div id="color-wrapper">
-    {% render_css_select user %}
+    {% if user.is_authenticated %}
+      {% render_css_select user %}
+    {% endif %}
     
     {% block website_title %}{% endblock %}
     
