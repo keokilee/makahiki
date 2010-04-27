@@ -5,6 +5,8 @@
 Milestone 3.5
 
 * Added a news application to the home page where an admin can add articles.
+* Added Gauge and BioHeatMap visualizations to the home page.
+* Users can now select their own theme.
 
 Milestone 3
 
