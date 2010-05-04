@@ -13,3 +13,6 @@ log
 # Ignore site media files.
 site_media
 
+# Ignore the apache configuration
+deploy/*.conf
+
