@@ -58,7 +58,7 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
     activities_enabled = False
     try:
       # TODO: Add goals later since it needs group functionality.
-      from apps.activities.models import Commitment, Activity
+      from activities.models import Commitment, Activity
       activities_enabled = True
       
       user_commitments = other_user.commitment_set.all()
