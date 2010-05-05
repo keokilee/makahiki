@@ -3,13 +3,13 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth.models import User
+from django.forms.util import ErrorList
+
 from activities.models import *
 from activities.forms import ActivityTextForm, ActivityImageForm 
-from django.forms.util import ErrorList
+from activities import MAX_COMMITMENTS
 
 @login_required
 def add_participation(request, item_type, item_id):
@@ -33,7 +33,7 @@ def remove_participation(request, item_type, item_id):
     request.user.message_set.create(message="We could not process your request.  Please try again.")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
   elif item_type == "commitment":
-    return __remove_commitment(request, item_id)
+    return __remove_active_commitment(request, item_id)
   elif item_type == "activity":
     return __remove_activity(request, item_id)
   else:
@@ -72,18 +72,26 @@ def __add_commitment(request, commitment_id):
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
   
-  # Search for an existing commitment for this user
-  if not CommitmentMember.objects.filter(user=user, commitment=commitment):
-    commitment_member = CommitmentMember(user=user, commitment=commitment)
-    commitment_member.save()
-    user.message_set.create(message="Added the commitment \"" + commitment.title + "\"")
-  else:
+  # Get the number of active commitments for this user
+  active_commitments = Commitment.objects.filter(
+    commitmentmember__user__username=user.username,
+    commitmentmember__user__is_active=True,
+  )    
+  if len(active_commitments) == MAX_COMMITMENTS:
+    message = "You can only have %d active commitments." % MAX_COMMITMENTS
+    user.message_set.create(message=message)
+  elif commitment in active_commitments:
     user.message_set.create(message="You are already committed to this commitment.")
+  else:
+    # User can commit to this commitment.
+    member = CommitmentMember(user=user, commitment=commitment)
+    member.save()
+    user.message_set.create(message="You are now committed to \"%s\"" % commitment.title.lower())
     
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
-def __remove_commitment(request, commitment_id):
-  """Remove the current user's commitment."""
+def __remove_active_commitment(request, commitment_id):
+  """Removes a user's active commitment.  Inactive commitments cannot be removed except by admins."""
   
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user

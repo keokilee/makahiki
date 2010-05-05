@@ -77,8 +77,15 @@ class CommitmentMember(CommonBase):
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
-  times_completed = models.IntegerField(default=0)
-  comment = models.TextField()
+  completion_date = models.DateField()
+  comment = models.TextField(blank=True)
+  
+  def save(self):
+    # Set the completion date.
+    if not self.completion_date:
+      self.completion_date = date.today() + timedelta(days=self.commitment.duration)
+    
+    super(CommitmentMember, self).save()
   
 class TextPromptQuestion(models.Model):
   """Represents questions that can be asked of users in order to verify participation in activities."""
