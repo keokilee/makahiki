@@ -39,7 +39,6 @@ class CommonActivityUser(CommonBase):
   )
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
-  approved = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
