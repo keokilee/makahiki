@@ -58,6 +58,16 @@ class Commitment(CommonActivity):
   Typically, they will be worth fewer points than activities."""
   
   users = models.ManyToManyField(User, through="CommitmentMember")
+  duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
+  
+  def get_available_for_user(self, user):
+    """Filter out commitments the user is currently active in."""
+    commitments = Commitment.objects.exclude(
+      commitmentmember__user__username=user.username,
+      commitmentmember__is_active=True,
+    )
+    
+    return commitments
     
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
@@ -67,6 +77,7 @@ class CommitmentMember(CommonBase):
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
   is_active = models.BooleanField(default=True)
+  times_completed = models.IntegerField(default=0)
   comment = models.TextField()
   
 class TextPromptQuestion(models.Model):
@@ -178,8 +189,6 @@ class Activity(CommonActivity):
     
     activities = Activity.objects.exclude(
       activitymember__user__username=user.username,
-    ).exclude(
-      activitymember__approval_status="approved",
     )
     return (item for item in activities if item.is_active) # Filters out inactive activities.
 
