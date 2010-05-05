@@ -39,6 +39,7 @@ class CommonActivityUser(CommonBase):
   )
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  awarded = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -83,7 +84,7 @@ class CommitmentMember(CommonBase):
   def save(self):
     # Set the completion date.
     if not self.completion_date:
-      self.completion_date = date.today() + timedelta(days=self.commitment.duration)
+      self.completion_date = datetime.date.today + timedelta(days=self.commitment.duration)
     
     super(CommitmentMember, self).save()
   
@@ -212,7 +213,6 @@ class ActivityMember(CommonActivityUser):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   question = models.ForeignKey(TextPromptQuestion, null=True, blank=True)
-  awarded = models.BooleanField(default=False, editable=False)
   response = models.CharField(blank=True, max_length=255, help_text="255 character max.")
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
   user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")

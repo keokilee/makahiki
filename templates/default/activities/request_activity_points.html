@@ -3,10 +3,10 @@
 {% block body %}
   <h3>Requesting points for {{activity.title}}</h3>
   {% if form.is_multipart %}
-    <form enctype="multipart/form-data" action="/activities/request_{{item_type}}_points/{{activity.pk}}/" 
+    <form enctype="multipart/form-data" action="/activities/request_activity_points/{{activity.pk}}/" 
     method="post">
   {% else %}
-    <form action="/activities/request_{{item_type}}_points/{{activity.pk}}/" method="post">
+    <form action="/activities/request_activity_points/{{activity.pk}}/" method="post">
   {% endif %}
   
   {% if form.response %}

@@ -28,3 +28,6 @@ class ActivityTextForm(forms.Form):
 class ActivityImageForm(forms.Form):
   image_response = forms.ImageField()
   comment = forms.CharField(widget=forms.Textarea, required=False)
+  
+class CommitmentCommentForm(forms.Form):
+  comment = forms.CharField(widget=forms.Textarea, required=False)
