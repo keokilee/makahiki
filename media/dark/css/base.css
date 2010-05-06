@@ -13,12 +13,12 @@ body {
 }
 
 a:link {
-    color: #555;
+    color: #AAA;
     font-weight: bold;
 }
 
 a:visited {
-    color: #333;
+    color: #999;
     font-weight: bold;
 }
 
@@ -71,6 +71,9 @@ div#website_title {
     margin: 0px 0px 0px 200px;
 }
 
+/* ---HIDE CONTENT1--- */
+#content1 { visibility: hidden; }
+
 #content-outline {
 	background:url('lead.jpg') no-repeat center;
 	opacity: 0.6;
@@ -109,6 +112,7 @@ div#website_title {
 	padding-top: 10px;
 	margin: 0px 0px 0px 0px;
 }
+
 #content .homepage_video {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -124,35 +128,32 @@ div#website_title {
 
 #content .homepage_news {
 	float: left;
-	width: auto;
+	width: 300px;
 	height: auto;
+	color: #AAA;
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding: 10px; 
-	margin: 20px 10px 0px 10px;
+	margin: 20px 20px 20px 20px;
 }
-	
-#content .homepage_pictures {
+
+#content .homepage_gauge {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
-	width: auto;
-	height: auto;	
+	width: 250px;
+	height: auto;
+	color: #AAA;	
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding-left: 10px; 
 	margin: 20px 0px 10px 0px;
-	float:left;
+	float:right;
 	clear: right;
 		
-}
-#content iframe {
-	background-color: #fff; 
-	border: 1px solid #a9a9a9; 
-	padding: 1px; margin: -5px 5px -5px -5px;
 }
 
 #content .homepage_about {
@@ -165,21 +166,27 @@ div#website_title {
 	border: 1px solid #FFF; 
 	padding: 10px;
 	margin: 20px 0px 150px 0px;
-	float: right;
+	float: left;
 
 }
 
-#content .homepage_events {
+#content .homepage_heatmap{
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
+    color: #999;
 	width: auto;
 	height: auto;
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding: 10px; 
 	margin: 20px 0px 0px 0px;
-	float: left;
+	float: right;
+	clear: left;
+}
+
+#content .homepage_heatmap #datadiv {
+    	background-color: #999;
 }
 
 #content li {

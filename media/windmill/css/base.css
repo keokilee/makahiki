@@ -4,6 +4,11 @@ html {
 }
 
 body {
+	background-image: url('blow.jpg'), url('wind2.jpg');
+	background-position: 0 0, 0 140px; 
+	background-repeat: no-repeat, no-repeat;
+    background-color: transparent;
+	opacity: 0.9;	
     height: 100%;
     margin: 0;
     padding: 0;
@@ -58,11 +63,7 @@ hr.clear {
 }
 
 #color-wrapper { 
-	background:url('blow.jpg')  no-repeat top left,
-		url('wind2.jpg') no-repeat bottom left;	
-		
-    background-color: transparent;
-	opacity: 0.9;
+
 }
 
 #outline {
@@ -80,10 +81,13 @@ hr.clear {
     -khtml-border-radius: 20px;
 
 	padding: 0px; 
-	margin: -2px 0px 0px 0px;
+	margin: -5px 0px 0px 0px;
 
 
 }
+
+/* ---HIDE CONTENT1--- */
+#content1 { visibility: hidden; }
 
 #content {	
     padding: 10px;
@@ -109,7 +113,7 @@ hr.clear {
 
 #content .homepage_news {
 	float: left;
-	width: auto;
+	width: 300px;
 	height: auto;
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -117,7 +121,7 @@ hr.clear {
 	background-color: transparent; 
 	border: 1px solid #36F; 
 	padding: 10px; 
-	margin: 20px 10px 0px 10px;
+	margin: 20px 20px 20px 20px;
 }
 
 #content .homepage_video {
@@ -133,25 +137,21 @@ hr.clear {
 	float: left;
 }
 	
-#content .homepage_pictures {
+#content .homepage_gauge {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
-	width: auto;
+	width: 250px;
 	height: auto;	
 	background-color: transparent; 
 	border: 1px solid #36F; 
 	padding-left: 10px; 
 	margin: 20px 0px 10px 0px;
-	float:left;
+	float:right;
 	clear: right;
 		
 }
-#content iframe {
-	background-color: #fff; 
-	border: 1px solid #a9a9a9; 
-	padding: 1px; margin: -5px 5px -5px -5px;
-}
+
 
 #content .homepage_about {
 	-moz-border-radius: 10px;
@@ -164,10 +164,11 @@ hr.clear {
 	padding: 10px;
 	margin: 20px 0px 150px 0px;
 	float: left;
+	clear: left;
 
 }
 
-#content .homepage_events {
+#content .homepage_heatmap {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -178,6 +179,7 @@ hr.clear {
 	padding: 10px; 
 	margin: 20px 0px 0px 0px;
 	float: right;
+	clear: right;
 }
 
 #content h1 {
