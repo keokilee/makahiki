@@ -79,7 +79,7 @@ def __add_commitment(request, commitment_id):
   # Get the number of active commitments for this user
   active_commitments = Commitment.objects.filter(
     commitmentmember__user__username=user.username,
-    commitmentmember__user__is_active=True,
+    commitmentmember__completed=False,
   )    
   if len(active_commitments) == MAX_COMMITMENTS:
     message = "You can only have %d active commitments." % MAX_COMMITMENTS
@@ -151,7 +151,7 @@ def __request_commitment_points(request, commitment_id):
     membership = CommitmentMember.objects.get(
       user=user, 
       commitment=commitment, 
-      is_active=True,
+      completed=False,
       completion_date__lte=datetime.date.today,           
     )
     
