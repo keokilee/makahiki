@@ -1,0 +1,96 @@
+/* GENERAL TAB STYLING */
+
+/* Bar behind tabs */
+#tabhead 
+{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-top: -30px;
+    background: -moz-linear-gradient(19% 75% 90deg,#D4C290, #CCBA8C, #D4C290 100%);
+    background: -webkit-gradient(19% 75% 90deg,#D4C290, #CCBA8C, #D4C290 100%);
+    border-bottom: solid 1px Gray;
+}
+
+/* Tabs */
+#tabhead a:link,
+#tabhead a:visited
+{
+    display: inline-block;
+    color: #4d3f1c;
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: normal;
+    padding: 0.5em 2em;
+    background: Transparent;
+    line-height: .75em;
+    border-left: solid 1px white;
+    border-right: solid 1px grey;
+}
+
+/* Tab mouse hovering over */
+#tabhead a:hover,
+#tabhead a:active
+{
+    background-color: Transparent;
+    color: #750909;
+}
+
+/* Account tabs (right side) */
+#tabhead a.tab_account,
+#tabhead a.tab_login,
+#tabhead a.tab_logout
+{
+    float: right;
+    border-left: solid 1px grey;
+}
+
+
+/* SUBNAV */
+
+#subnav{
+    background-color: #666;
+}
+
+#subnav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#subnav ul li {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#subnav a:link,
+#subnav a:visited
+{
+    display: inline-block;
+    color: White;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.7em;
+    line-height: 1em;
+    padding: 0.5em 1em;
+    background-color: #666;
+}
+
+#subnav a:hover {
+    text-decoration: underline;
+}
+
+/* SITE-SPECIFIC TAB STYLING */
+
+/* Active tabs */
+#home_tab a.tab_home,
+#products_tab a.tab_products,
+#support_tab a.tab_support,
+#about_us_tab a.tab_about_us,
+#resources_tab a.tab_resources,
+#energy_tab a.tab_energy
+{
+    color: #750909;
+    background-color: #e1d3ac;
+}

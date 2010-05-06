@@ -48,7 +48,7 @@
     {% endif %}
   </div>
   
-  <div class="homepage_gauge" style="clear:left; width:400px">
+  <div class="homepage_gauge" >
     <h3>Energy gauge</h3>
     <div id="sourcediv" align="center"></div>
     <div id="chartdiv" align="center"></div>
@@ -58,9 +58,9 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/gauge.js"></script>
   </div>
   
-  <div class="homepage_heatmap" style="clear:left; width:400px">
+  <div class="homepage_heatmap">
     <h3>Heat Map</h3>
-    <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;color: red"></div>
+    <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;font-color: red"></div>
     <div id="lastchecked" align="center" style="font-family: Arial;font-size: 12px"> </div>
     <div id="onboardoptions" style="font-family: Arial;font-size: 12px"></div>
     <div id="onboarduidiv" style="font-family: Arial;font-size: 12px;display: none"></div>
@@ -69,9 +69,29 @@
     <script type="text/javascript" src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/heatmap.js"></script>
   </div>
-  
+
   <div class="homepage_about" >
     {% gblock "homepage_about" for "gblocks.TitleAndText" %}
   </div>
+
+	<div id="content1"> 
+		<div class="messages" >
+	    <h3>Messages</h3> 
+			<p>blah blah blah...</p>
+			
+	  </div>
+		<div class="sponsors">
+			<h3>Sponsors</h3>
+			<p> blah... <br/> blah... <br/> blah...</p>
+		</div>
+		<div class="ads">
+			<h3>Place Ads Here </h3>
+			<p>Yay, more ads...</p>
+		</div>
+	</div>
   
+	
+
 {% endblock %}
+
+

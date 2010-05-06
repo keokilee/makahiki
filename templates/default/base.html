@@ -21,16 +21,15 @@
 
 <body>
 <div id="color-wrapper">
-    {% if user.is_authenticated %}
-      {% render_css_select user %}
-    {% endif %}
+		<div id="header">
+	    {% if user.is_authenticated %}
+	      {% render_css_select user %}
+	    {% endif %}
     
-    {% block website_title %}{% endblock %}
-    
+	    {% block website_title %}{% endblock %}
+	  </div>  
     <div id="outline">
-    <div id="content-outline">
-        
-        {% spaceless %}
+			 {% spaceless %}
         <div id="tabhead">
             <div class="tabs" {% block tab_id %}{% endblock %}>
                 {% block login %}{% endblock %}
@@ -41,6 +40,10 @@
             {% block subnav %}{% endblock %}
         </div>
         {% endspaceless %}
+	
+    <div id="content-outline">
+        
+       
                     
         <!-- {% block content_image %}{% endblock %} -->
         
@@ -56,7 +59,7 @@
         {% block body %}
         {% endblock %}
         </div>
-        
+				
         <hr class="clear"/>
     </div>
     </div>
