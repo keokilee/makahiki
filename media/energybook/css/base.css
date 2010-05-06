@@ -1,0 +1,309 @@
+html {
+    height: 100%;
+    font-size: 100.01%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    background-color: #FFF;
+}
+
+a:link {
+    color: #555;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover, a:active {
+    color: #c00;
+}
+
+hr.clear {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    visibility: none;
+    clear: both;
+}
+
+hr {
+	opacity: 0.3;
+	margin: -5px 0px 0px 0px;
+}
+
+#header {
+	background-color: #3B5998;
+	height: 70px;
+}
+#css_select {
+	float: left;
+}
+
+#website_title {
+
+	background: url("banner.jpg") no-repeat bottom;
+    width: 1000px;
+	height: 50px;
+    margin: 0 auto;
+    padding-top: -0.5em;
+}
+
+
+
+#login a {	
+	margin: 0px 10px 0px 0px;
+	padding-left: 20px;
+    display: inline-block;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 0.7em;
+	vertical-align: top;
+    background-color: transparent;
+    line-height: 1.5em;
+}
+
+#website_title h1 {
+    color: #F00;
+	text-indent: -9999px;
+    text-shadow: 1px 1px 1px #666;
+    padding: 0 0 0.2em 0;
+    margin: 0;
+    font-size: 3em;
+    letter-spacing: -1px;
+}
+
+#website_title h3 {
+	float: right;
+    text-decoration: none;
+    color: red;
+}
+
+#website_title h1 a {
+    text-decoration: none;
+    color: transparent;
+}
+
+#color-wrapper { 		
+    background-color: #FFF;
+	opacity: 0.9;
+}
+
+#outline {
+    width: 1000px;
+    margin: 0 auto;
+
+}
+
+#content-outline {
+	width: 800px;
+	border: 1px solid #999;
+	border-top: transparent;
+	float: left;
+
+}
+
+#content {	
+	width: 750px;
+	background-color: #FFF;
+    padding: 10px;
+    margin: 10px 5px 10px 5px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    color: #333;
+
+}
+
+#content .homepage_tips {
+	width: 400px;
+	height: 20px;
+	background-color: transparent; 
+	border: 1px solid #DDD; 
+	padding: 0px 0px 20px 20px; 
+	float: left;
+	clear: left;
+}
+
+#content .homepage_news {
+	width: 500px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: left; 
+}
+
+#content .homepage_video {
+	width: 500px;
+	height: auto;	
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px; 
+	float: left;
+	clear: left;
+
+}
+	
+#content .homepage_gauge {
+	width: 500px;
+	height: auto;	
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding-left: 10px; 
+	float: left;		
+}
+
+
+#content .homepage_about {
+	width: 500px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: left;
+
+}
+
+#content .homepage_heatmap {
+	width: 500px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: left;
+}
+
+
+/* ---Right Content--- */
+#content1 {
+	background-color: #FFF;
+	border-left: 2px solid #DDD ;
+	margin: -1050px 5px 10px 10px;
+	padding: 10px;
+	width: 175px;
+	height: auto;
+	float: right;
+	clear: right;
+		
+}
+#content1 .messages {
+	width: 150px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: right;
+}
+
+#content1 .sponsors {
+	width: 150px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: right;
+}
+#content1 .ads {
+	width: 150px;
+	height: auto;
+	background-color: transparent; 
+	border-bottom: 1px solid #DDD; 
+	padding: 10px;
+	float: right;
+}
+
+#content-outline h1 {
+    color: #222;
+    margin: 0 0 0.5em 0;
+    text-shadow: 0 1px 0 #DDD;
+}
+
+#content-outline h1 {
+    font-size: 2em;
+}
+
+#content-outline h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+    color: #35A;
+    margin: 1em 0 0.5em 0;
+}
+
+#content-outline h3 {
+    font-size: 1.25em;
+    font-weight: normal;
+    color: #35A;
+    margin: 1em 0 0.5em 0;
+}
+
+#content-outline h4 {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #35A;
+    margin: 1em 0 0.5em 0;
+}
+#content p.image img {
+    border: 1px solid #999;
+}
+
+#content p.image.left {
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+
+#content p.image.right {
+    float: right;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+#footer {
+    margin: 0 auto;
+    padding: 2px 0 80px 0;
+    width:  800px;
+    font-size: 0.7em;
+    color: #333;
+	float: right;
+
+}
+
+#footer p {
+    margin: 1em 0 1em 0;
+}
+
+
+form.add-attachment {
+    padding: 0.2em 1em;
+    background-color: #eee;
+    -webkit-box-shadow: 0 2px 3px #aaa;
+
+}
+
+
+/* MESSAGES */
+
+ul#messages {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: none;
+}
+ul#messages li {
+    padding: 5px 10px;
+    background: #EFD;
+    margin: 3px;
+    border: 1px solid #BC9;
+}
+ul#messages li a {
+    float: right;
+    color: #693;
+}
+
