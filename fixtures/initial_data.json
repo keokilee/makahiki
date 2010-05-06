@@ -117,30 +117,6 @@
  }, 
  {
   "pk": 1, 
-  "model": "kukui_cup_base.article", 
-  "fields": {
-   "title": "Current Standings", 
-   "created_at": "2010-04-25 13:50:00", 
-   "updated_at": "2010-04-25 13:55:45", 
-   "slug": "current-standings", 
-   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
-   "abstract": "The current Kukui Cup standings for the week."
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "kukui_cup_base.article", 
-  "fields": {
-   "title": "Upcoming Events", 
-   "created_at": "2010-04-25 13:52:11", 
-   "updated_at": null, 
-   "slug": "upcoming-events", 
-   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
-   "abstract": "Events coming up this week."
-  }
- }, 
- {
-  "pk": 1, 
   "model": "activities.textpromptquestion", 
   "fields": {
    "answer": "kilowatt", 
@@ -165,13 +141,13 @@
    "title": "Blue Planet Foundation", 
    "created_at": "2010-04-06 16:23:28", 
    "confirm_type": "code", 
-   "updated_at": "2010-04-10 00:53:25", 
+   "updated_at": "2010-05-04 09:52:40", 
    "confirm_prompt": "Enter the ticket code provided at the meeting.", 
    "point_value": 5, 
-   "expire_date": "2010-04-19", 
+   "expire_date": "2010-12-31", 
    "duration": 120, 
-   "event_date": "2010-04-06 16:23:25", 
-   "pub_date": "2010-04-09", 
+   "event_date": "2010-05-04 16:23:25", 
+   "pub_date": "2010-05-01", 
    "is_event": true
   }
  }, 
@@ -183,13 +159,13 @@
    "title": "Attend Energy Pong Competition", 
    "created_at": "2010-04-09 18:22:10", 
    "confirm_type": "code", 
-   "updated_at": null, 
+   "updated_at": "2010-05-04 09:52:09", 
    "confirm_prompt": "Enter ticket code provided at meeting.", 
    "point_value": 5, 
-   "expire_date": "2010-04-29", 
+   "expire_date": "2010-12-31", 
    "duration": 60, 
    "event_date": "2010-04-19 18:00:00", 
-   "pub_date": "2010-04-14", 
+   "pub_date": "2010-05-01", 
    "is_event": true
   }
  }, 
@@ -201,13 +177,13 @@
    "title": "Replace An Incandescent with a CFL", 
    "created_at": "2010-04-09 18:24:15", 
    "confirm_type": "image", 
-   "updated_at": null, 
+   "updated_at": "2010-05-04 09:51:52", 
    "confirm_prompt": "Upload a photo of yourself holding both the incandescent bulb and the CFL bulb.", 
    "point_value": 10, 
-   "expire_date": "2010-04-30", 
+   "expire_date": "2010-12-31", 
    "duration": 5, 
    "event_date": null, 
-   "pub_date": "2010-04-09", 
+   "pub_date": "2010-05-03", 
    "is_event": false
   }
  }, 
@@ -219,13 +195,13 @@
    "title": "Watch \"Be Energy Akamai!, Episode 1\" video", 
    "created_at": "2010-04-09 18:26:11", 
    "confirm_type": "text", 
-   "updated_at": "2010-04-09 23:49:08", 
+   "updated_at": "2010-05-04 09:51:35", 
    "confirm_prompt": "", 
    "point_value": 10, 
-   "expire_date": "2010-04-30", 
+   "expire_date": "2010-05-31", 
    "duration": 10, 
    "event_date": null, 
-   "pub_date": "2010-04-09", 
+   "pub_date": "2010-05-03", 
    "is_event": false
   }
  }, 
@@ -811,6 +787,30 @@
   "fields": {
    "text": "The Kukui Cup is a dorm energy competition aimed at reducing the electricity used in the dorms and improving the energy literacy of the students.  The next Kukui Cup will be held between October 4th, 2010 and November 1st, 2010 and the two dorms competing will be Hale Aloha Lehua and Hale Aloha Mokihana.\r\n\r\nThe winners will be decided in two ways:\r\n\r\n* Energy Reduction (Team): The dorm that reduces the most energy.\r\n* Kukui Nuts (Individual): Earn Kukui Nuts (points) by committing to energy saving practices or attending energy themed events.\r\n\r\nThe prizes are:\r\n\r\n* 1st Place Dorm (Energy Reduction): Pizza party\r\n* 1st Place Individual (Kukui Nuts): iPod Nano 8GB\r\n* 1st Place Floor (Kukui Nuts): TV for the lounge\r\n* Weekly Individual (Kukui Nuts): $10 Jamba Juice gift card", 
    "title": "About the Kukui Cup Competition"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Current Standings", 
+   "created_at": "2010-04-25 13:50:00", 
+   "updated_at": "2010-04-25 13:55:45", 
+   "slug": "current-standings", 
+   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
+   "abstract": "The current Kukui Cup standings for the week."
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Upcoming Events", 
+   "created_at": "2010-04-25 13:52:11", 
+   "updated_at": null, 
+   "slug": "upcoming-events", 
+   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
+   "abstract": "Events coming up this week."
   }
  }
 ]
