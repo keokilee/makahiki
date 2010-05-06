@@ -1,6 +1,7 @@
 /* GENERAL TAB STYLING */
 
 #tabhead {
+	opacity: 0.6;
 	-moz-border-radius: 20px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -9,6 +10,7 @@
 	border: 1px solid #FFF;
     background-color: #000;
 	height: 72px;
+	margin: 10px auto;
 }
 
 #tabhead a:link,

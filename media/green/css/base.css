@@ -74,6 +74,8 @@ div#website_title h1 a {
 #content-outline {
     background-color: Transparent;
 }
+/* ---HIDE CONTENT1--- */
+#content1 { visibility: hidden; }
 
 #content {
     padding: 0;
@@ -102,7 +104,7 @@ div#website_title h1 a {
 	margin: 20px 5px 5px 14px;
 }
 	
-#content .homepage_pictures {
+#content .homepage_gauge {
 	width: 300px;
 	height: auto;
 	margin: 20px 20px 0px 0px;
@@ -119,7 +121,7 @@ div#website_title h1 a {
 
 }
 
-#content .homepage_events {	
+#content .homepage_heatmap {	
 	width: 300px;
 	height: auto;	 
 	margin: 10px 20px 20px 20px;
@@ -133,7 +135,7 @@ div#website_title h1 a {
     color: #191919;
 }
 
-.homepage_news, .homepage_video, .homepage_pictures, .homepage_about, .homepage_events 
+.homepage_news, .homepage_video, .homepage_gauge, .homepage_about, .homepage_heatmap 
 {
     background-color: White;
     font-size: 0.9em;
