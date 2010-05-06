@@ -39,6 +39,7 @@ class CommonActivityUser(CommonBase):
   )
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  awarded = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -76,9 +77,28 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  is_active = models.BooleanField(default=True)
-  times_completed = models.IntegerField(default=0)
-  comment = models.TextField()
+  completed = models.BooleanField(default=False)
+  completion_date = models.DateField()
+  comment = models.TextField(blank=True)
+  
+  def __unicode__(self):
+    return "%s : %s" % (self.commitment.title, self.user.username)
+  
+  def save(self):
+    """Custom save method to generate the completion date automatically."""
+    if not self.completion_date:
+      self.completion_date = datetime.date.today + timedelta(days=self.commitment.duration)
+    
+    super(CommitmentMember, self).save()
+  
+  def delete(self):
+    """Custom delete method to remove the points for completed commitments."""
+    if completed:
+      profile = self.user.get_profile()
+      profile.points -= self.commitment.point_value
+      profile.save()
+      
+    super(CommitmentMember, self).delete()
   
 class TextPromptQuestion(models.Model):
   """Represents questions that can be asked of users in order to verify participation in activities."""
@@ -205,7 +225,6 @@ class ActivityMember(CommonActivityUser):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   question = models.ForeignKey(TextPromptQuestion, null=True, blank=True)
-  awarded = models.BooleanField(default=False, editable=False)
   response = models.CharField(blank=True, max_length=255, help_text="255 character max.")
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
   user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")

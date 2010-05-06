@@ -2,6 +2,10 @@
 
 ## CHANGELOG
 
+Milestone 4
+
+* Support for migrations using South.
+
 Milestone 3.5
 
 * Added a news application to the home page where an admin can add articles.

@@ -1,15 +1,17 @@
+import datetime
+
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth.models import User
+from django.forms.util import ErrorList
+
 from activities.models import *
 from activities.forms import ActivityTextForm, ActivityImageForm 
-from django.forms.util import ErrorList
+from activities import MAX_COMMITMENTS
 
 @login_required
 def add_participation(request, item_type, item_id):
@@ -33,7 +35,7 @@ def remove_participation(request, item_type, item_id):
     request.user.message_set.create(message="We could not process your request.  Please try again.")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
   elif item_type == "commitment":
-    return __remove_commitment(request, item_id)
+    return __remove_active_commitment(request, item_id)
   elif item_type == "activity":
     return __remove_activity(request, item_id)
   else:
@@ -44,7 +46,9 @@ def request_points(request, item_type, item_id):
   """Request the points for a given item."""
 
   if item_type == "activity":
-    return __request_points_activity(request, item_id)
+    return __request_activity_points(request, item_id)
+  elif item_type == "commitment":
+    return __request_commitment_points(request, item_id)
   else:
     raise Http404
     
@@ -72,30 +76,39 @@ def __add_commitment(request, commitment_id):
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
   
-  # Search for an existing commitment for this user
-  if not CommitmentMember.objects.filter(user=user, commitment=commitment):
-    commitment_member = CommitmentMember(user=user, commitment=commitment)
-    commitment_member.save()
-    user.message_set.create(message="Added the commitment \"" + commitment.title + "\"")
-  else:
+  # Get the number of active commitments for this user
+  active_commitments = Commitment.objects.filter(
+    commitmentmember__user__username=user.username,
+    commitmentmember__completed=False,
+  )    
+  if len(active_commitments) == MAX_COMMITMENTS:
+    message = "You can only have %d active commitments." % MAX_COMMITMENTS
+    user.message_set.create(message=message)
+  elif commitment in active_commitments:
     user.message_set.create(message="You are already committed to this commitment.")
+  else:
+    # User can commit to this commitment.
+    member = CommitmentMember(user=user, commitment=commitment)
+    member.save()
+    user.message_set.create(message="You are now committed to \"%s\"" % commitment.title.lower())
     
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
-def __remove_commitment(request, commitment_id):
-  """Remove the current user's commitment."""
+def __remove_active_commitment(request, commitment_id):
+  """Removes a user's active commitment.  Inactive commitments cannot be removed except by admins."""
   
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
-  commitment_member = CommitmentMember.objects.filter(user=user, commitment=commitment)
-  
-  if commitment_member:
+
+  try:
+    commitment_member = CommitmentMember.objects.get(user=user, commitment=commitment, is_active=True)
     commitment_member.delete()
-    user.message_set.create(message="Removed the commitment \"" + commitment.title + "\"")
-    return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-  else:
-    user.message_set.create(message="You are not committed to this commitment.")
-    return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
+    
+  except ObjectDoesNotExist:
+    user.message_set.create(message="We could not remove your commitment.")
+    
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
 def __add_activity(request, activity_id):
   """Commit the current user to the activity."""
@@ -128,7 +141,48 @@ def __remove_activity(request, activity_id):
     user.message_set.create(message="You are not participating in this activity")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
-def __request_points_activity(request, activity_id):
+def __request_commitment_points(request, commitment_id):
+  """Generates a form to add an optional comment."""
+  commitment = get_object_or_404(Commitment, pk=commitment_id)
+  user = request.user
+  membership = None
+  
+  try:
+    membership = CommitmentMember.objects.get(
+      user=user, 
+      commitment=commitment, 
+      completed=False,
+      completion_date__lte=datetime.date.today,           
+    )
+    
+  except ObjectDoesNotExist:
+    user.message_set.create(message="Either the commitment is not active or it is not completed yet.")
+    return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+  
+  if request.method == "POST":
+    form = CommitmentCommentForm(request.POST)
+    if form.is_valid():
+      # Currently, nothing in the form needs validation, but just to be safe.
+      membership.comment = form.comment
+      membership.is_active = False
+      profile = user.get_profile()
+      profile.points += commitment.point_value
+      profile.save()
+      membership.save()
+      
+      message = "You have been awarded %d points for your participation!" % commitment.point_value
+      user.message_set.create(message=message)
+      return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    
+  form = CommitmentCommentForm()
+  return render_to_response("activities/request_commitment_points.html", {
+    "form": form,
+    "commitment": commitment,
+  }, context_instance = RequestContext(request))
+    
+def __request_activity_points(request, activity_id):
+  """Creates a request for points for an activity."""
+  
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   question = None
@@ -174,7 +228,6 @@ def __request_points_activity(request, activity_id):
           activity_member.approval_status = "pending"
           activity_member.save()
           user.message_set.create(message="Your request has been submitted!")
-          return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
           
         # Else, approve the activity (code is validated in forms.ActivityTextForm.clean())
         else:
@@ -188,7 +241,8 @@ def __request_points_activity(request, activity_id):
           points = activity_member.activity.point_value
           message = "You have been awarded %d points for your participation!" % points
           user.message_set.create(message=message)
-          return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+        
+        return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
             
     
   elif activity.confirm_type == "image":
@@ -203,11 +257,10 @@ def __request_points_activity(request, activity_id):
   if activity_member:
     admin_message = activity_member.admin_comment
       
-  return render_to_response("activities/request_points.html", {
+  return render_to_response("activities/request_activity_points.html", {
     "form": form,
     "activity": activity,
     "question" : question,
-    "item_type": "activity",
     "admin_message": admin_message,
   }, context_instance = RequestContext(request))
   
