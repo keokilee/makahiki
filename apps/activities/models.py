@@ -87,7 +87,7 @@ class CommitmentMember(CommonBase):
   def save(self):
     """Custom save method to generate the completion date automatically."""
     if not self.completion_date:
-      self.completion_date = datetime.date.today + timedelta(days=self.commitment.duration)
+      self.completion_date = datetime.date.today() + datetime.timedelta(days=self.commitment.duration)
     
     super(CommitmentMember, self).save()
   

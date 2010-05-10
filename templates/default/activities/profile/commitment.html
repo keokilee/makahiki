@@ -10,8 +10,4 @@
   {% if item.description %}
     <p>{{ item.description|markdown }}</p>
   {% endif %}
-  
-  {% if item.is_event %}
-    <p>This activity occurs at {{ item.event_date }}</p>
-  {% endif %}
 </li>

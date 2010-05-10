@@ -2,7 +2,7 @@
   <h3>Available commitments:</h3>
   <ul>
   {% for item in available_commitments %}
-    {% include "activities/profile/activity.html" %}
+    {% include "activities/profile/commitment.html" %}
   {% endfor %}
   </ul>
 {% else %}
@@ -19,7 +19,7 @@
   {% endif %}
   <ul>
   {% for item in user_commitments %}
-    {% include "activities/profile/activity.html" %}
+    {% include "activities/profile/commitment.html" %}
   {% endfor %}
   </ul>
 {% else %}

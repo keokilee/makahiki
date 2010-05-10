@@ -39,7 +39,7 @@ def __generate_commitment_form(user, item):
   except ObjectDoesNotExist:
     return_string += '<form action="/activities/add_{0}/{1.id}'
     return_string += '/" method="post" style="display:inline">'
-    return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
+    return_string += '<a href="#" onclick="parentNode.submit()">Commit</a></form>'
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("commitment", item)

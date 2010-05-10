@@ -1,10 +1,13 @@
-from activities.models import Activity, ActivityMember, TextPromptQuestion, ConfirmationCode
+from activities.models import *
 from django.contrib import admin
 from django import forms
 from django.forms.models import BaseInlineFormSet
 from django.forms.util import ErrorList
 
 from django.core.urlresolvers import reverse
+
+admin.site.register(Commitment)
+admin.site.register(CommitmentMember)
   
 class ActivityAdminForm(forms.ModelForm):
   num_codes = forms.IntegerField(required=False, 
