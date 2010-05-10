@@ -7,7 +7,7 @@ var host_uri;
 // user select type for query.
 var dataType;
 // user selected source for data.
-var source;
+var gauge_source;
 // user select dataRange type: 24 hours, 7 or 14 days.
 var dateRange;
 // used to subtract hour duration based on date range.
@@ -42,10 +42,10 @@ google.setOnLoadCallback(initialize);
 
 /* Parses the user preferences and generates the Query to WattDepot and displays the BioHeatMap. */ 
 function initialize() {
-  var sources = "saunders-floor-2, saunders-floor-3, saunders-floor-4"
+  var gauge_sources = "saunders-floor-2, saunders-floor-3, saunders-floor-4"
   // Store user preferences in corresponding variables.
   host_uri = "http://server.wattdepot.org:8188/gviz/";
-  source = sources.split(', ');
+  gauge_source = gauge_sources.split(', ');
   dataType = "powerConsumed";
   dateRange = "last7days";
   table = new Array();
@@ -152,13 +152,13 @@ function initialize() {
   // In order to support multiple sources in a single visualization, need to create an array of queries
   // and store each as an element in the array.
   var query = new Array();
-  for (l = 0; l < source.length; l++) {
-    var url = host_uri + 'sources/' + source[l].toString() +  '/calculated?startTime=' + 
+  for (l = 0; l < gauge_source.length; l++) {
+    var url = host_uri + 'sources/' + gauge_source[l].toString() +  '/calculated?startTime=' + 
           startTime + '&endTime=' + endTime + '&samplingInterval=' + interval;
     query[l] = new google.visualization.Query(url);
     query[l].setQuery('select timePoint, ' + dataType);
   }
-  query[0].send(function(response) {responseHandler(response, query, source, 0);});
+  query[0].send(function(response) {responseHandler(response, query, gauge_source, 0);});
 
   // Write to the gadget the last time updated.
   var outputNow = new Date();
@@ -332,7 +332,7 @@ function transpose(tempTable) {
     // All values for a source is pushed onto this array.
     var addedrow = new Array();
     // Add the source name as a label for the row for viewing.
-    addedrow.push(source[j-1]);
+    addedrow.push(gauge_source[j-1]);
     // Each value in traversing column in the original data table gets pushed.
     for (k = 0; k < rows; k++) {
       addedrow.push(temp.getValue(k,j));

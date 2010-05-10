@@ -30,48 +30,38 @@
 
 {% block body %}
   <div class="homepage_tips" >
-    {% gblock "homepage_tips" for "gblocks.TitleAndText" %}
+    {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
   </div>
   
   <div class="homepage_video" >
-    {% gblock "homepage_video" for "gblocks.TitleAndText" %}
+    {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
   </div>
   
   <div class="homepage_news" >
+    <h3>Featured News</h3>
     {% if articles %}
-      <h3>Featured News</h3>
       {% for article in articles %}
         {% include "news/article.html" %}
       {% endfor %}
     {% else %}
-      {% gblock "homepage_news" for "gblocks.TitleAndText" %}
+      <p>There are no news stories yet</p>
     {% endif %}
   </div>
   
-  <div class="homepage_gauge" >
-    <h3>Energy gauge</h3>
-    <div id="sourcediv" align="center"></div>
-    <div id="chartdiv" align="center"></div>
-    <div id="data_displayed_div" align="center"></div>
-    <div id="lastcheckdiv" align="center"></div>
-    
-    <script type="text/javascript" src="{{ STATIC_URL }}js/gauge.js"></script>
+  <div class="homepage_gauge">
+    {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
   </div>
   
   <div class="homepage_heatmap">
-    <h3>Heat Map</h3>
-    <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;font-color: red"></div>
-    <div id="lastchecked" align="center" style="font-family: Arial;font-size: 12px"> </div>
-    <div id="onboardoptions" style="font-family: Arial;font-size: 12px"></div>
-    <div id="onboarduidiv" style="font-family: Arial;font-size: 12px;display: none"></div>
-    
-    <script type="text/javascript">google.load("prototype", "1.6.1.0");</script>
-    <script type="text/javascript" src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/heatmap.js"></script>
+    {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
   </div>
 
   <div class="homepage_about" >
-    {% gblock "homepage_about" for "gblocks.TitleAndText" %}
+    {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div class="homepage_content_6">
+    {% gblock "homepage_content_6" for "gblocks.TitleAndText" %}
   </div>
 
 	<div id="content1"> 

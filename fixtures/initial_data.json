@@ -117,92 +117,26 @@
  }, 
  {
   "pk": 1, 
-  "model": "activities.textpromptquestion", 
+  "model": "kukui_cup_base.article", 
   "fields": {
-   "answer": "kilowatt", 
-   "question": "What is the unit of measurement for household energy?", 
-   "activity": 4
+   "title": "Current Standings", 
+   "created_at": "2010-04-25 13:50:00", 
+   "updated_at": "2010-04-25 13:55:45", 
+   "slug": "current-standings", 
+   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
+   "abstract": "The current Kukui Cup standings for the week."
   }
  }, 
  {
   "pk": 2, 
-  "model": "activities.textpromptquestion", 
+  "model": "kukui_cup_base.article", 
   "fields": {
-   "answer": "watt", 
-   "question": "What is the unit of measurement for power?", 
-   "activity": 4
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "activities.activity", 
-  "fields": {
-   "description": "Attend a Blue Planet Foundation meeting.", 
-   "title": "Blue Planet Foundation", 
-   "created_at": "2010-04-06 16:23:28", 
-   "confirm_type": "code", 
-   "updated_at": "2010-05-04 09:52:40", 
-   "confirm_prompt": "Enter the ticket code provided at the meeting.", 
-   "point_value": 5, 
-   "expire_date": "2010-12-31", 
-   "duration": 120, 
-   "event_date": "2010-05-04 16:23:25", 
-   "pub_date": "2010-05-01", 
-   "is_event": true
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "activities.activity", 
-  "fields": {
-   "description": "Attend and/or participate in the Energy Pong Competition.", 
-   "title": "Attend Energy Pong Competition", 
-   "created_at": "2010-04-09 18:22:10", 
-   "confirm_type": "code", 
-   "updated_at": "2010-05-04 09:52:09", 
-   "confirm_prompt": "Enter ticket code provided at meeting.", 
-   "point_value": 5, 
-   "expire_date": "2010-12-31", 
-   "duration": 60, 
-   "event_date": "2010-04-19 18:00:00", 
-   "pub_date": "2010-05-01", 
-   "is_event": true
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "activities.activity", 
-  "fields": {
-   "description": "Replace an incandescent light bulb with a CFL.", 
-   "title": "Replace An Incandescent with a CFL", 
-   "created_at": "2010-04-09 18:24:15", 
-   "confirm_type": "image", 
-   "updated_at": "2010-05-04 09:51:52", 
-   "confirm_prompt": "Upload a photo of yourself holding both the incandescent bulb and the CFL bulb.", 
-   "point_value": 10, 
-   "expire_date": "2010-12-31", 
-   "duration": 5, 
-   "event_date": null, 
-   "pub_date": "2010-05-03", 
-   "is_event": false
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "activities.activity", 
-  "fields": {
-   "description": "Watch the video Be Energy Akamai Episode 1 on [YouTube](http://youtube.com).", 
-   "title": "Watch \"Be Energy Akamai!, Episode 1\" video", 
-   "created_at": "2010-04-09 18:26:11", 
-   "confirm_type": "text", 
-   "updated_at": "2010-05-04 09:51:35", 
-   "confirm_prompt": "", 
-   "point_value": 10, 
-   "expire_date": "2010-05-31", 
-   "duration": 10, 
-   "event_date": null, 
-   "pub_date": "2010-05-03", 
-   "is_event": false
+   "title": "Upcoming Events", 
+   "created_at": "2010-04-25 13:52:11", 
+   "updated_at": null, 
+   "slug": "upcoming-events", 
+   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
+   "abstract": "Events coming up this week."
   }
  }, 
  {
@@ -227,7 +161,7 @@
   "pk": 3, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "homepage_tips", 
+   "slug": "homepage_content_1", 
    "content_type": 54, 
    "object_id": 1
   }
@@ -236,34 +170,16 @@
   "pk": 4, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "homepage_video", 
+   "slug": "homepage_content_2", 
    "content_type": 54, 
    "object_id": 2
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "homepage_news", 
-   "content_type": 54, 
-   "object_id": 3
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "homepage_pictures", 
-   "content_type": 54, 
-   "object_id": 4
   }
  }, 
  {
   "pk": 7, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "homepage_about", 
+   "slug": "homepage_content_5", 
    "content_type": 54, 
    "object_id": 5
   }
@@ -521,6 +437,33 @@
   }
  }, 
  {
+  "pk": 36, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "homepage_content_3", 
+   "content_type": 54, 
+   "object_id": 25
+  }
+ }, 
+ {
+  "pk": 37, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "homepage_content_4", 
+   "content_type": 54, 
+   "object_id": 26
+  }
+ }, 
+ {
+  "pk": 38, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "homepage_content_6", 
+   "content_type": 54, 
+   "object_id": 27
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.title", 
   "fields": {
@@ -619,14 +562,6 @@
   "fields": {
    "text": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\"/><br/>\r\nCurrently, Frear Hall is in the lead!", 
    "title": "Featured News"
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "gblocks.titleandtext", 
-  "fields": {
-   "text": "<iframe align=\"center\" src=\"http://www.flickr.com/slideShow/index.gne?user_id=43651860@N02\" width=\"300\" height=\"300\" frameBorder=\"0\" scrolling=\"no\"></iframe><br /><center><small>Created with <a href=\"http://www.flickrslideshow.com\">flickr slideshow</a>.</small></center>", 
-   "title": "Featured Slideshow"
   }
  }, 
  {
@@ -790,27 +725,27 @@
   }
  }, 
  {
-  "pk": 1, 
-  "model": "kukui_cup_base.article", 
+  "pk": 25, 
+  "model": "gblocks.titleandtext", 
   "fields": {
-   "title": "Current Standings", 
-   "created_at": "2010-04-25 13:50:00", 
-   "updated_at": "2010-04-25 13:55:45", 
-   "slug": "current-standings", 
-   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
-   "abstract": "The current Kukui Cup standings for the week."
+   "text": "<div id=\"sourcediv\" align=\"center\"></div>\r\n    <div id=\"chartdiv\" align=\"center\"></div>\r\n    <div id=\"data_displayed_div\" align=\"center\"></div>\r\n    <div id=\"lastcheckdiv\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/gauge.js\"></script>", 
+   "title": "Energy Gauge"
   }
  }, 
  {
-  "pk": 2, 
-  "model": "kukui_cup_base.article", 
+  "pk": 26, 
+  "model": "gblocks.titleandtext", 
   "fields": {
-   "title": "Upcoming Events", 
-   "created_at": "2010-04-25 13:52:11", 
-   "updated_at": null, 
-   "slug": "upcoming-events", 
-   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
-   "abstract": "Events coming up this week."
+   "text": "<div id=\"datadiv\" align=\"center\" style=\"font-family: Arial;font-size: 12px;font-color: red\"></div>\r\n    <div id=\"lastchecked\" align=\"center\" style=\"font-family: Arial;font-size: 12px\"> </div>\r\n    <div id=\"onboardoptions\" style=\"font-family: Arial;font-size: 12px\"></div>\r\n    <div id=\"onboarduidiv\" style=\"font-family: Arial;font-size: 12px;display: none\"></div>\r\n    \r\n<script type=\"text/javascript\">google.load(\"prototype\", \"1.6.1.0\");</script>\r\n<script type=\"text/javascript\" src=\"http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js\"></script>\r\n<script type=\"text/javascript\" src=\"site_media/static/js/heatmap.js\"></script>", 
+   "title": "Heat Map"
+  }
+ }, 
+ {
+  "pk": 27, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
   }
  }
 ]
