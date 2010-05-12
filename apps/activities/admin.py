@@ -1,6 +1,7 @@
 from activities.models import Activity, ActivityMember, TextPromptQuestion, ConfirmationCode
 from django.contrib import admin
 from django import forms
+from django.db.models.signals import post_save
 from django.forms.models import BaseInlineFormSet
 from django.forms.util import ErrorList
 
@@ -71,11 +72,23 @@ class ActivityAdminForm(forms.ModelForm):
     if not self.instance.created_at and confirm_type == "code" and has_codes and not num_codes:
       self._errors["num_codes"] = ErrorList([u"The number of codes is required for this confirmation type."])
       del cleaned_data["num_codes"]
-    elif confirm_type == "code" and len(self._errors) == 0 and num_codes > 0:
-      # Since num_codes is not passed to the model save method, the codes need to be generated here.
-      ConfirmationCode.generate_codes_for_activity(self.instance, num_codes)
       
     return cleaned_data
+    
+  def save(self, force_insert=False, force_update=False, commit=True):
+    activity = super(forms.ModelForm, self).save(commit=False)
+    
+    activity.save()
+    
+    # If the activity's confirmation type is text, make sure to save the questions.
+    if self.cleaned_data.get("confirm_type") == "text":
+      self.save_m2m()
+
+    # Generate confirmation codes if needed.
+    elif self.cleaned_data.get("confirm_type") == "code" and self.cleaned_data.get("num_codes") > 0:
+      ConfirmationCode.generate_codes_for_activity(activity, self.cleaned_data.get("num_codes"))
+      
+    return activity
     
 class TextQuestionInlineFormSet(BaseInlineFormSet):
   """Custom formset model to override validation."""
