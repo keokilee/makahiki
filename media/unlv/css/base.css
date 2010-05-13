@@ -128,7 +128,7 @@ hr {
     float: left;
 }
 
-#content .homepage_tips {
+#content .homepage_content_1 {
     width: 99%;
 	background-color: #fff; 
 	border: 1px solid #222; 
@@ -138,7 +138,7 @@ hr {
    
 }
 
-#content .homepage_video {
+#content .homepage_content_2{
     float: left;
 	width: 100%;
 	height: auto;	
@@ -152,7 +152,7 @@ hr {
 #content .homepage_news {
     float: left;
 	width: 49%;
-	height: auto;
+	height: 275px;
 	background-color: #FFC; 
 	border: 1px solid #222;
 	border-bottom: #transparent; 
@@ -162,87 +162,42 @@ hr {
 }
 
 	
-#content .homepage_gauge {
+#content .homepage_content_3 {
     float: right;
     border: 1px solid #222; 
 	border-top: 1px solid #transparent;
 	width: 49%;
-	height: 300px;	
+	height: 275px;	
 	background-color: #FFF; 
 	margin: 2px -2px 0px 4px; 		
 }
 
 
-#content .homepage_about {
-    float: left;
-    clear:left;
-	width: 49%;
-	height: auto;
-	background-color: #FFC; 
-	border-left: 1px solid #222; 
-	border-right: 1px solid #222;
-	border-bottom: 1px solid #222;
-	margin-left: 2px;
-
-}
-
-#content .homepage_heatmap {
+#content .homepage_content_5 {
     float: left;
     clear: left;
 	width: 49%;
-	height: auto;
+	height: 200px;
+	
+	background-color: #FFC; 
 	border-left: 1px solid #222; 
 	border-right: 1px solid #222;
-	background-color: #FFC; 
-	margin-left: 2px;
-}
-
-/* ---Right Content--- */
-#content1 {
-    visibility: hidden;
-    float: right;
-    width: 49%;
-	background-color: #FFF;
-	margin-top: -0px;
-    margin-left: 2px;
-	height: auto;
-	
-
-
-		
-}
-#content1 .messages {
-	width: 99%;
-	height: auto;
-	background-color: #FFC;
-    border-left: 1px solid #222; 
-	border-right: 1px solid #222;
-	padding: 0px;
-	float: right;
-
-}
-
-#content1 .sponsors {
-	width: 99%;
-	height: 100px;
-	background-color: transparent; 
-    border-left: 1px solid #222; 
-	border-right: 1px solid #222;
 	border-bottom: 1px solid #222;
-	padding: 0px;
-	float: right;
-	
+	margin-left: 2px;
+
 }
 
-#content1 .ads {
+#content .homepage_content_4 {
     float: right;
-	width: 99%;
-	height: auto;
-	background-color: transparent; 
-    border-left: 1px solid #222; 
+    clear: right;
+	width: 49%;
+	height: 200px;
+	border-left: 1px solid #222; 
 	border-right: 1px solid #222;
-	padding: 0px;
+	border-bottom: 1px solid #222; 
+	margin-right: -2px;
 }
+
 
 #content-outline h1 {
     color: #222;
@@ -297,7 +252,7 @@ hr {
     text-align: right;
     margin-left: 185px;
     margin-bottom: 50px;
-    margin-top: -230px;
+    margin-top: -60px;
     padding: 0px 20px 0px 20px;
     width:  598px;
     height: 60px;

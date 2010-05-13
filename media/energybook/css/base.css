@@ -122,7 +122,7 @@ hr {
 
 }
 
-#content .homepage_tips {
+#content .homepage_content_1 {
 	width: 400px;
 	height: 20px;
 	background-color: transparent; 
@@ -133,15 +133,16 @@ hr {
 }
 
 #content .homepage_news {
-	width: 500px;
-	height: auto;
+	width: 200px;
+	height: 500px;
 	background-color: transparent; 
-	border-bottom: 1px solid #DDD; 
+	border-left: 2px solid #DDD; 
+	margin: -40px 0px 10px 0px; 
 	padding: 10px;
-	float: left; 
+	float: right; 
 }
 
-#content .homepage_video {
+#content .homepage_content_2 {
 	width: 500px;
 	height: auto;	
 	background-color: transparent; 
@@ -152,7 +153,7 @@ hr {
 
 }
 	
-#content .homepage_gauge {
+#content .homepage_content_3 {
 	width: 500px;
 	height: auto;	
 	background-color: transparent; 
@@ -162,7 +163,7 @@ hr {
 }
 
 
-#content .homepage_about {
+#content .homepage_content_5 {
 	width: 500px;
 	height: auto;
 	background-color: transparent; 
@@ -172,7 +173,7 @@ hr {
 
 }
 
-#content .homepage_heatmap {
+#content .homepage_content_4 {
 	width: 500px;
 	height: auto;
 	background-color: transparent; 

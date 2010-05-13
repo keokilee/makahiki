@@ -29,11 +29,11 @@
 {% endblock %}
 
 {% block body %}
-  <div class="homepage_tips" >
+  <div class="homepage_content_1" >
     {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_video" >
+  <div class="homepage_content_2" >
     {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
   </div>
   
@@ -48,38 +48,21 @@
     {% endif %}
   </div>
   
-  <div class="homepage_gauge">
+  <div class="homepage_content_3">
     {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
   </div>
   
-  <div class="homepage_heatmap">
+  <div class="homepage_content_4">
     {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
   </div>
 
-  <div class="homepage_about" >
+  <div class="homepage_content_5" >
     {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
   </div>
   
   <div class="homepage_content_6">
     {% gblock "homepage_content_6" for "gblocks.TitleAndText" %}
   </div>
-
-	<div id="content1"> 
-		<div class="messages" >
-	    <h3>Messages</h3> 
-			<p>blah blah blah...</p>
-			
-	  </div>
-		<div class="sponsors">
-			<h3>Sponsors</h3>
-			<p> blah... <br/> blah... <br/> blah...</p>
-		</div>
-		<div class="ads">
-			<h3>Place Ads Here </h3>
-			<p>Yay, more ads...</p>
-		</div>
-	</div>
-  
 	
 
 {% endblock %}
