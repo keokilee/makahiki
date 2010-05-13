@@ -117,6 +117,2814 @@
  }, 
  {
   "pk": 1, 
+  "model": "activities.textpromptquestion", 
+  "fields": {
+   "answer": "kilowatt-hour", 
+   "question": "What is the unit of measurement for household energy?", 
+   "activity": 2
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.textpromptquestion", 
+  "fields": {
+   "answer": "watt", 
+   "question": "What is the unit of measurement for power?", 
+   "activity": 2
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-msrel", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-twsf9", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-sx5cv", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-f5s7c", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xgc2f", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-wa375", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6lh01", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-g1jrc", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-7a46z", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-dl5mz", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-w218m", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-47xan", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 13, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-p0d8b", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-73ctr", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-evrm8", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ru6ps", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-uxzk0", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xsz3b", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-qlhjg", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 20, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-rvfeo", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-8dfjv", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 22, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xg7c5", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 23, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-5kaw0", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 24, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6b3me", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 25, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-hwat8", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 26, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-nw9mg", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 27, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ucx0h", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 28, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-y0k4o", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 29, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-9gs5b", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 30, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ymvt1", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 31, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-8ck0z", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 32, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-t3yq5", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 33, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-lf78m", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 34, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-szmob", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 35, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-tv52m", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 36, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-t3yxo", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 37, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-el21s", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 38, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-r6xzo", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 39, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-f21c8", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 40, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6o3q2", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 41, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-l18oz", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 42, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-63xlj", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 43, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-1m2au", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 44, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-zv72t", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 45, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-9xvml", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 46, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-4stwd", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 47, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xengq", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 48, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-pkr2o", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 49, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ey7ul", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 50, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-57zqk", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 51, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-5veyz", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 52, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-cimj3", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 53, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-d0qfm", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 54, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-har9j", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 55, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-rg89q", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 56, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-wca97", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 57, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xbdpn", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 58, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-przgs", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 59, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-qj7r4", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 60, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ynvcg", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 61, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6gskr", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 62, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-x7vtz", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 63, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6sucd", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 64, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-v3kog", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 65, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-eahvx", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 66, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ieqyv", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 67, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-zb04d", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 68, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-tolhf", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 69, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-xlzd8", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 70, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-vyt5f", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 71, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-p5szf", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 72, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-asxok", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 73, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ov5wi", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 74, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-dkzcp", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 75, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-16zox", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 76, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-aqdlp", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 77, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-hdf84", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 78, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-toa4h", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 79, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-oabd3", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 80, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-lj802", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 81, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-zmk1u", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 82, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-3aujl", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 83, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-z2qjv", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 84, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-pqhac", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 85, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-me7tj", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 86, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-40qfw", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 87, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-he4ut", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 88, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6tgxc", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 89, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-f73jn", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 90, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-pxmro", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 91, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-9ju3v", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 92, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-wugqm", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 93, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-t3hxz", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 94, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-dtyga", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 95, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-5umjv", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 96, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-6h2is", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 97, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-0u8re", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 98, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-oihy4", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 99, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-ds6u2", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 100, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "orie-nz3id", 
+   "is_active": true, 
+   "activity": 1
+  }
+ }, 
+ {
+  "pk": 101, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-x4nmz", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 102, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ryqsb", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 103, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-nlxyk", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 104, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c7mp4", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 105, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-uvh78", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 106, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bncq1", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 107, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-niho2", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 108, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-cqlwy", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 109, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ocjau", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 110, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-l8zao", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 111, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-s1f9q", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 112, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-28wlr", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 113, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wz06i", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 114, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-owvy9", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 115, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ikudv", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 116, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bg3kv", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 117, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ftgry", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 118, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zrns1", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 119, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-kvqe8", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 120, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-sel1c", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 121, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vfitr", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 122, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qkx6v", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 123, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mbrne", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 124, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-2bpeh", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 125, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ad3h8", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 126, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0vbwc", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 127, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-iku56", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 128, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hau2z", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 129, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-cv3pt", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 130, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-r4exu", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 131, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-th8p2", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 132, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zng91", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 133, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0xqjw", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 134, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-23kel", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 135, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-oyveq", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 136, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gb9vi", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 137, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0xswv", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 138, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7p892", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 139, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rjget", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 140, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-960eg", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 141, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-78yvb", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 142, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-k014p", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 143, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ph3k5", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 144, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-yo6cu", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 145, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ma2ul", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 146, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mh2xw", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 147, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3l5sw", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 148, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0916s", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 149, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-n39wx", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 150, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-d7yuo", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 151, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7dyhj", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 152, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-z638i", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 153, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-h2xyk", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 154, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-i2sp1", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 155, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3il6p", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 156, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ki3xd", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 157, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-huv0z", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 158, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xkq4c", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 159, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-cgh4m", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 160, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mokhz", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 161, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6hvgq", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 162, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-268rd", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 163, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-my98a", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 164, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-u0cp9", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 165, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3alpb", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 166, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-8hlc9", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 167, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-nmy98", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 168, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6yxu5", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 169, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pq9gn", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 170, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-y9wi1", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 171, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4fdlk", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 172, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-of5v3", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 173, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-g65pc", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 174, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0is8z", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 175, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pe8ko", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 176, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-anwfl", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 177, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-y0gst", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 178, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-te694", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 179, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wqac1", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 180, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rwbnp", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 181, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-54acy", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 182, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-w7d96", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 183, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-x5tnm", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 184, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4igrj", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 185, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-tjso0", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 186, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-j86y0", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 187, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0jcgx", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 188, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-n7b3g", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 189, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-oc6dg", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 190, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-9s1no", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 191, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-be132", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 192, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-j1xkb", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 193, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-52wke", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 194, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qyed0", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 195, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rw59f", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 196, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zmv3x", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 197, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-d0eyp", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 198, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6mqhr", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 199, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-93wjd", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 200, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1wqd2", 
+   "is_active": true, 
+   "activity": 3
+  }
+ }, 
+ {
+  "pk": 201, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6mnya", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 202, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-b52pw", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 203, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ym9q2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 204, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-opul8", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 205, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-da1uc", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 206, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wh3rf", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 207, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wa8lm", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 208, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-82dce", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 209, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hudm2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 210, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zf3xl", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 211, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gjdcw", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 212, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xt9ol", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 213, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ih80b", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 214, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3eu8b", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 215, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dk3my", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 216, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jl8ax", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 217, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rh8sq", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 218, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7g19q", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 219, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-9rjts", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 220, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-s46iq", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 221, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-08p2i", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 222, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-yi3mo", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 223, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ki7l4", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 224, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-h3ru0", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 225, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jtp7b", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 226, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-y46m2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 227, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-u5ymx", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 228, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qvcdg", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 229, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7tmdv", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 230, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-9zb0m", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 231, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wdzjl", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 232, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-19rht", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 233, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7vs3e", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 234, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-2ujf4", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 235, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fqsez", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 236, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rya6u", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 237, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1la8v", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 238, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-47l6h", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 239, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zo9tl", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 240, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-sufi1", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 241, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3ypo5", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 242, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-s87t2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 243, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4vstp", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 244, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4uic6", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 245, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-705od", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 246, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-9mhk0", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 247, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-a67to", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 248, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-emul0", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 249, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-2aphj", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 250, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-lj7vz", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 251, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0wxjo", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 252, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-v3jzu", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 253, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-sbgc7", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 254, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-r13o2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 255, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-93pf0", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 256, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-m5ks7", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 257, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gwjr8", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 258, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qazdu", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 259, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-87jmp", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 260, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-8j6eo", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 261, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-arhe6", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 262, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-96qip", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 263, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bo3ji", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 264, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-b1hmw", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 265, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jlfy1", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 266, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-doels", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 267, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vcmjp", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 268, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hm0ud", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 269, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-t4vrx", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 270, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-w3tok", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 271, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pklhi", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 272, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-029dk", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 273, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ewf5l", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 274, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xv1z8", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 275, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dryqx", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 276, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-8yqbl", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 277, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1nmkx", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 278, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-s5jy6", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 279, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-uo72x", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 280, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-yr2db", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 281, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ezso2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 282, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fkczr", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 283, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wmyht", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 284, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-i6mw4", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 285, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zcdpk", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 286, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-v845r", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 287, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-yro4t", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 288, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-iazl6", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 289, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-tbfo8", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 290, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-odzmu", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 291, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-khcpe", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 292, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-u9hek", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 293, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-q49u2", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 294, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-2dme6", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 295, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6hm2z", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 296, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-md5l3", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 297, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1qruz", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 298, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xq54p", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 299, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-nlvs4", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 300, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-e5xaj", 
+   "is_active": true, 
+   "activity": 4
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "What: Learn about the competition and the cool prizes you can win\r\nWhen: September 30, 2010 7:00pm\r\nWhere: Roof lounge", 
+   "title": "Kukui Cup Orientation", 
+   "created_at": "2010-05-12 12:14:09", 
+   "confirm_type": "code", 
+   "updated_at": "2010-05-12 12:16:46", 
+   "confirm_prompt": "Enter the confirmation code from the meeting.", 
+   "point_value": 10, 
+   "expire_date": "2010-12-31", 
+   "duration": 60, 
+   "event_date": "2010-09-30 19:00:00", 
+   "pub_date": "2010-05-12", 
+   "is_event": true
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Watch episode 1 of \"Be Energy Akamai!\"", 
+   "title": "Watch \"Be Energy Akamai!, Episode 1\"", 
+   "created_at": "2010-05-12 12:19:20", 
+   "confirm_type": "text", 
+   "updated_at": "2010-05-12 12:19:20", 
+   "confirm_prompt": "", 
+   "point_value": 10, 
+   "expire_date": "2010-12-31", 
+   "duration": 10, 
+   "event_date": null, 
+   "pub_date": "2010-05-12", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Attend the Blue Planet Foundation meeting.", 
+   "title": "Attend Blue Planet Foundation Meeting", 
+   "created_at": "2010-05-12 12:22:41", 
+   "confirm_type": "code", 
+   "updated_at": "2010-05-12 12:22:41", 
+   "confirm_prompt": "Enter the ticket code provided at the meeting.", 
+   "point_value": 5, 
+   "expire_date": "2010-12-31", 
+   "duration": 120, 
+   "event_date": "2010-05-19 19:00:00", 
+   "pub_date": "2010-05-12", 
+   "is_event": true
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Attend the Energy Pong Competition.", 
+   "title": "Attend the Energy Pong Competition", 
+   "created_at": "2010-05-12 12:23:51", 
+   "confirm_type": "code", 
+   "updated_at": "2010-05-12 12:23:51", 
+   "confirm_prompt": "Enter ticket code provided at meeting.", 
+   "point_value": 10, 
+   "expire_date": "2010-12-31", 
+   "duration": 5, 
+   "event_date": "2010-05-14 19:00:00", 
+   "pub_date": "2010-05-12", 
+   "is_event": true
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Replace an incandescent bulb with a CFL.  Take a picture of yourself holding both bulbs.", 
+   "title": "Replace an incandescent with a CFL", 
+   "created_at": "2010-05-12 12:25:23", 
+   "confirm_type": "image", 
+   "updated_at": "2010-05-12 12:25:23", 
+   "confirm_prompt": "Upload a photo of you holding the incandescent and the CFL you replaced it with.", 
+   "point_value": 10, 
+   "expire_date": "2010-12-31", 
+   "duration": 5, 
+   "event_date": null, 
+   "pub_date": "2010-05-12", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 1, 
   "model": "kukui_cup_base.article", 
   "fields": {
    "title": "Current Standings", 
@@ -374,51 +3182,6 @@
   }
  }, 
  {
-  "pk": 29, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "billboard_announce", 
-   "content_type": 52, 
-   "object_id": 4
-  }
- }, 
- {
-  "pk": 30, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "billboard_tips", 
-   "content_type": 52, 
-   "object_id": 5
-  }
- }, 
- {
-  "pk": 31, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "billboard_image", 
-   "content_type": 53, 
-   "object_id": 3
-  }
- }, 
- {
-  "pk": 32, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "billboard_about", 
-   "content_type": 52, 
-   "object_id": 6
-  }
- }, 
- {
-  "pk": 33, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "billboard_prizes", 
-   "content_type": 52, 
-   "object_id": 7
-  }
- }, 
- {
   "pk": 34, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
@@ -492,31 +3255,10 @@
   }
  }, 
  {
-  "pk": 4, 
-  "model": "gblocks.text", 
-  "fields": {
-   "text": "<h3>The Kukui Cup Competition Starts: September 30th</h3>"
-  }
- }, 
- {
   "pk": 5, 
   "model": "gblocks.text", 
   "fields": {
    "text": "Energy Tip: Turn off the lights when you leave the room."
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "gblocks.text", 
-  "fields": {
-   "text": "Who: You! The students of Hale Aloha Lehua and Hale Aloha Mokihana\r\n\r\nWhat: A dorm energy competition\r\n\r\nWhen: October 4th, 2010 to November 1st, 2010\r\n\r\nWhere: Hale Aloha Lehua and Hale Aloha Mokihana\r\n\r\nWhy: Green is the way to go! Plus you can win awesome prizes.\r\n\r\nHow to win:\r\n\r\n* Energy Reduction (Team): The dorm that reduces the most energy.\r\n* Kukui Nuts (Individual): Earn Kukui Nuts (points) by committing to energy saving practices or attending energy themed events."
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "gblocks.text", 
-  "fields": {
-   "text": "Energy Reduction:\r\n\r\n1st Place Dorm: Pizza party\r\n\r\nKukui Nuts:\r\n\r\n* 1st Place Individual: iPod Nano 8GB\r\n* 1st Place Floor: TV for the lounge\r\n\r\nWeekly Individual: $10 Jamba Juice gift card"
   }
  }, 
  {
@@ -531,13 +3273,6 @@
   "model": "gblocks.image", 
   "fields": {
    "image": "gblocks/Screen_shot_2010-02-22_at_2-22-10_4.50.03_PM_.png"
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "gblocks.image", 
-  "fields": {
-   "image": "gblocks/Screen_shot_2010-02-22_at_2-22-10_5.02.51_PM_.png"
   }
  }, 
  {
@@ -570,14 +3305,6 @@
   "fields": {
    "text": "This website provides resources to support energy literacy in the UH dormitories.  Energy literacy involves knowledge, attitudes, and behaviors.", 
    "title": "About UH Dorm Energy Resources"
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "gblocks.titleandtext", 
-  "fields": {
-   "text": "<script src=\"http://www.gmodules.com/ig/ifr?url=http://ralph.feedback.googlepages.com/googlecalendarviewer.xml&amp;up_feed=http%3A%2F%2Fwww.google.com%2Fcalendar%2Ffeeds%2Fralph.feedback%40gmail.com%2Fpublic%2Fbasic&amp;up_highlight=%23FF0000&amp;up_borderStyle=solid&amp;up_borderSize=2&amp;synd=open&amp;w=320&amp;h=200&amp;title=Google+Calendar+Viewer&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js\"></script>", 
-   "title": "Upcoming Events"
   }
  }, 
  {

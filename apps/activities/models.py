@@ -132,10 +132,11 @@ class ConfirmationCode(models.Model):
         for value in random.sample(values, 5):
           code.code += value
         try:
+          # print code.code
           # Throws exception if the code is a duplicate.
           code.save()
           valid = True
-        except IntegrityError:
+        except IntegrityError as error:
           # Try again.
           code.code = header
       
