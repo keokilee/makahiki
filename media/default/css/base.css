@@ -72,8 +72,8 @@ div#website_title h1 a {
 #content1 { visibility: hidden; }
 
 #content {
-    padding: 20px;
-    margin: 0 20px 0 20px;
+    padding: 10px;
+    margin: 0 5px 0 5px;
     background-color: White;
     font-size: 0.9em;
     line-height: 1.5em;
@@ -159,47 +159,55 @@ ul#messages li a {
 }
 
 
-#content .homepage_tips {
+#content .homepage_content_1 {
 	width: auto;
 	height: 50px;
 	padding-top: 10px;
 	margin: 0px 0px 0px 0px;
+	border: 1px solid #999;
+	padding: 0px 10px; 
 }
-#content .homepage_video {
-	width: 350px;
+#content .homepage_content_2 {
+	width: 320px;
 	height: auto;	
 	margin: 20px 0px 0px 0px;
 	float: left;
+	border: 1px solid #999;
+	padding: 0px 10px;
 }
 
 #content .homepage_news {
 	width: 300px;
+	height: 550px;
 	float: left; 
-	margin: 20px 5px 5px 5px;
+	margin: 20px 20px 20px 10px;
+	border: 1px solid #999;
+	padding: 0px 10px;
 }
 	
-#content .homepage_gauge {
+#content .homepage_content_3 {
 	width: 250px;
 	margin: 20px 0px 0px 0px;
-	float:left;
-		
+	float: right;
+	border: 1px solid #999;	
+	padding: 0px 10px;	
 }
 
 
-#content .homepage_about {
-	width: 300px;
-	height: auto;
-	padding: 10px;
-	margin: 10px 0px 20px 0px;
-	float: left;
-	clear: left;
-
-}
-
-#content .homepage_heatmap {	
-	width: 300px;
+#content .homepage_content_5 {
+	width: 320px;
 	height: auto;	
-	padding: 10px; 
+	margin: -230px 0px 20px 0px;
+	float: left;
+    padding: 0px 10px;
+	border: 1px solid #999;
+}
+
+#content .homepage_content_4 {	
+	width: 250px;
+	height: auto;	
+    padding: 0px 10px;
 	margin: 10px 0px 20px 0px;
 	float: right;
+	border: 1px solid #999;
 }

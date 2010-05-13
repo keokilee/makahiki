@@ -99,7 +99,7 @@ div#website_title {
     color: #333;
 }
 
-#content .homepage_tips {
+#content .homepage_content_1 {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -113,11 +113,11 @@ div#website_title {
 	margin: 0px 0px 0px 0px;
 }
 
-#content .homepage_video {
+#content .homepage_content_2 {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
-	width: auto;
+	width: 320px;
 	height: auto;	
 	background-color: transparent; 
 	border: 1px solid #FFF; 
@@ -129,7 +129,7 @@ div#website_title {
 #content .homepage_news {
 	float: left;
 	width: 300px;
-	height: auto;
+	height: 500px;
 	color: #AAA;
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -140,7 +140,7 @@ div#website_title {
 	margin: 20px 20px 20px 20px;
 }
 
-#content .homepage_gauge {
+#content .homepage_content_3 {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -156,21 +156,21 @@ div#website_title {
 		
 }
 
-#content .homepage_about {
+#content .homepage_content_5 {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
-	width: 300px;
+	width: 320px;
 	height: auto;
 	background-color: transparent; 
 	border: 1px solid #FFF; 
 	padding: 10px;
-	margin: 20px 0px 150px 0px;
+	margin: -220px 0px 150px 0px;
 	float: left;
 
 }
 
-#content .homepage_heatmap{
+#content .homepage_content_4 {
 	-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -181,11 +181,11 @@ div#website_title {
 	border: 1px solid #FFF; 
 	padding: 10px; 
 	margin: 20px 0px 0px 0px;
-	float: right;
-	clear: left;
+	float: left;
+
 }
 
-#content .homepage_heatmap #datadiv {
+#content .homepage_content_4 #datadiv {
     	background-color: #999;
 }
 

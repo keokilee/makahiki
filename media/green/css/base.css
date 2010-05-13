@@ -85,13 +85,13 @@ div#website_title h1 a {
     line-height: 1.5em;
     color: White;
 }
-#content .homepage_tips {
+#content .homepage_content_1 {
 	width: auto;
-	height: 50px;
-	padding-top: 10px;
+	height: 30px;
+	padding: 5px;
 	margin: 0px 0px 0px 0px;
 }
-#content .homepage_video {
+#content .homepage_content_2 {
 	width: auto;
 	height: auto;	
 	margin: 20px 10px 0px 0px;
@@ -100,11 +100,12 @@ div#website_title h1 a {
 
 #content .homepage_news {
 	width: 250px;
+	height: 520px;
 	float: left; 
 	margin: 20px 5px 5px 14px;
 }
 	
-#content .homepage_gauge {
+#content .homepage_content_3 {
 	width: 300px;
 	height: auto;
 	margin: 20px 20px 0px 0px;
@@ -112,30 +113,31 @@ div#website_title h1 a {
 		
 }
 
-#content .homepage_about {
+#content .homepage_content_5 {
 	width: 320px;
-	height: auto;
-	margin: 10px 0px 20px 0px;
+	height: 200px;
+	margin: -210px 0px 20px 0px;
 	float: left;
 	clear: left;
 
 }
 
-#content .homepage_heatmap {	
+#content .homepage_content_4 {	
 	width: 300px;
 	height: auto;	 
 	margin: 10px 20px 20px 20px;
 	clear: right;
 	float: right;
 }
-.homepage_tips
+.homepage_content_1
 {
     vertical-align: middle;
     text-indent: 20px;
     color: #191919;
 }
 
-.homepage_news, .homepage_video, .homepage_gauge, .homepage_about, .homepage_heatmap 
+.homepage_news, .homepage_content_2, .homepage_content_3, 
+.homepage_content_5, .homepage_content_4, .homepage_content_1
 {
     background-color: White;
     font-size: 0.9em;
