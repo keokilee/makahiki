@@ -1,6 +1,7 @@
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+import datetime
 
 from activities.models import Activity, Commitment, Goal, ActivityMember, CommitmentMember, GoalMember
 
@@ -32,9 +33,15 @@ def __generate_commitment_form(user, item):
     # Exception thrown if user cannot be found.
     item_join = CommitmentMember.objects.get(user=user, commitment=item)
     
+    if datetime.date.today() >= item_join.completion_date:
+      return_string += '<a href="/activities/request_{0}_points/{1.id}">Request Points</a>&nbsp'
+    
     return_string += '<form action="/activities/remove_{0}/{1.id}'
     return_string += '/" method="post" style="display:inline"><a href="#"'
     return_string += 'onclick="parentNode.submit()">Remove</a></form>'
+    
+    if datetime.date.today() < item_join.completion_date:
+       return_string += '<p>This commitment will be completed on %s</p>' % item_join.completion_date.isoformat()
   
   except ObjectDoesNotExist:
     return_string += '<form action="/activities/add_{0}/{1.id}'

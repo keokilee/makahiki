@@ -1,6 +1,7 @@
 {% extends "kukui_cup_profile/base.html" %}
 
 {% block body %}
+<form action="/activities/request_commitment_points/{{commitment.pk}}/" method="post">
   <h3>Requesting points for {{commitment.title}}</h3>
   <p>
     Before you receive your points, would you like to comment on your 

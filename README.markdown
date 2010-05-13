@@ -5,12 +5,17 @@
 Milestone 4
 
 * Support for migrations using South.
+* Added commitment workflow.
+* Made the homepage content more generic and put the visualizations into generic blocks.
+* Fixed bug where messages were not clearing.
+* Fixed bug where creating an activity with a confirmation code failed to work for new activities.
 
 Milestone 3.5
 
 * Added a news application to the home page where an admin can add articles.
 * Added Gauge and BioHeatMap visualizations to the home page.
 * Users can now select their own theme.
+* Added tabs to profile page.
 
 Milestone 3
 
@@ -52,14 +57,22 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * Once those are set up, send me your Git username so that you can be added as a collaborator.
 * When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to check out the code.  This will create the new folder and download the code from the repository.
 
+## OPTIONAL: Install South for database migrations
+
+If you plan on making changes to the database models, it is highly recommended that you use South.  With South, you do not have to blow away the database every time you make a change.  South is able to create intelligent migrations depending on what has changed in a model.  Even if you do not make changes to the database models, it is still recommended because other developers may be using it.
+
+To install South, please go to their [installation wiki](http://south.aeracode.org/docs/installation.html).  If you are not familiar with South, you might want to go through their [tutorial](http://south.aeracode.org/docs/tutorial/index.html) once you are set up.
+
 ## Setting up Kukui Cup Pinax
 * cd into the kukui-cup-pinax folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Copy `settings.py.example` to `settings.py`.  This will work as is, but you might want to make a few changes to it depending on your environment.  Some things you might want to change are the database settings, timezone, and the CAS Login server.
+* If you have installed South, you need to edit settings.py and uncomment 'south' from INSTALLED_APPS.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is so that you can authenticate via UH CAS.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
+* If you have installed South, then you will also need to run `python manage.py migrate` to sync the migrations.
 * The database fixtures should be automatically loaded (it should say `Installed 70 objects from 1 fixture(s)`).  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
 
 ## Running the server

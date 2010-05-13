@@ -61,7 +61,10 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
       from activities.models import Commitment, Activity
       activities_enabled = True
       
-      user_commitments = other_user.commitment_set.all()
+      user_commitments = other_user.commitment_set.exclude(
+        commitmentmember__completed=True,
+        commitmentmember__user__username=username,
+      )
       user_activities = other_user.activity_set.all()
       
       if is_me:

@@ -88,12 +88,12 @@ class CommitmentMember(CommonBase):
     """Custom save method to generate the completion date automatically."""
     if not self.completion_date:
       self.completion_date = datetime.date.today() + datetime.timedelta(days=self.commitment.duration)
-    
+
     super(CommitmentMember, self).save()
   
   def delete(self):
     """Custom delete method to remove the points for completed commitments."""
-    if completed:
+    if self.completed:
       profile = self.user.get_profile()
       profile.points -= self.commitment.point_value
       profile.save()

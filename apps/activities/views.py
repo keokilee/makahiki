@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.forms.util import ErrorList
 
 from activities.models import *
-from activities.forms import ActivityTextForm, ActivityImageForm 
+from activities.forms import ActivityTextForm, ActivityImageForm, CommitmentCommentForm
 from activities import MAX_COMMITMENTS
 
 @login_required
@@ -90,7 +90,7 @@ def __add_commitment(request, commitment_id):
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
-    user.message_set.create(message="You are now committed to \"%s\"" % commitment.title.lower())
+    user.message_set.create(message="You are now committed to \"%s\"" % commitment.title)
     
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
@@ -101,7 +101,7 @@ def __remove_active_commitment(request, commitment_id):
   user = request.user
 
   try:
-    commitment_member = CommitmentMember.objects.get(user=user, commitment=commitment, is_active=True)
+    commitment_member = CommitmentMember.objects.get(user=user, commitment=commitment, completed=False)
     commitment_member.delete()
     user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
     
@@ -163,8 +163,8 @@ def __request_commitment_points(request, commitment_id):
     form = CommitmentCommentForm(request.POST)
     if form.is_valid():
       # Currently, nothing in the form needs validation, but just to be safe.
-      membership.comment = form.comment
-      membership.is_active = False
+      membership.comment = form.cleaned_data["comment"]
+      membership.completed = True
       profile = user.get_profile()
       profile.points += commitment.point_value
       profile.save()
