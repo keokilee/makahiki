@@ -33,7 +33,6 @@
     {% if user.is_authenticated %}
        <a class="tab_kukui" href="{% url kukui_cup %}">{% trans "Kukui Cup" %}</a>
     {% endif %}
-    <a class="tab_billboard" href="{% url billboard %}">{% trans "Billboard" %}</a>
     <a class="tab_about_us" href="{% url about_us %}">{% trans "About" %}</a>
     {% endspaceless %}
 {% endblock %}

@@ -33,11 +33,11 @@ google.setOnLoadCallback(sendQuery);
  */
 function sendQuery() {
   host = checkTrailingSlash("http://server.wattdepot.org:8188/gviz");
-  source = "kailua-house";
+  source = "saunders-floors-2-to-6";
   dataDisplayed = "powerConsumed";
-  yellowThreshold = "150";
-  redThreshold = "250";
-  maxThreshold = "300";
+  yellowThreshold = "75000";
+  redThreshold = "90000";
+  maxThreshold = "100000";
   refreshInterval = 15000;
 
   dataSourceUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + dataDisplayed;
