@@ -104,7 +104,7 @@ div#website_title {
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
 	width: auto;
-	height: 50px;
+	height: auto;
 	background:url('tip.jpg') no-repeat left; 
 	background-color: transparent; 
 	border: 1px solid #FFF; 

@@ -87,7 +87,7 @@ div#website_title h1 a {
 }
 #content .homepage_content_1 {
 	width: auto;
-	height: 30px;
+	height: auto;
 	padding: 5px;
 	margin: 0px 0px 0px 0px;
 }

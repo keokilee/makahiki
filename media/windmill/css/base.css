@@ -103,7 +103,7 @@ hr.clear {
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
 	width: auto;
-	height: 30px;
+	height: auto;
 	background-color: transparent; 
 	border: 1px solid #36F; 
 	padding-left:10px; 

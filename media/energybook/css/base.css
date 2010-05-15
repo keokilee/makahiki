@@ -124,7 +124,7 @@ hr {
 
 #content .homepage_content_1 {
 	width: 400px;
-	height: 20px;
+	height: auto;
 	background-color: transparent; 
 	border: 1px solid #DDD; 
 	padding: 0px 0px 20px 20px; 
