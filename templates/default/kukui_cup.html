@@ -8,24 +8,32 @@
 {% block tab_id %}id="kukui_tab"{% endblock %}
 
 {% block body %}
-  <div class="kukui_start" style="text-align:center; clear:both">
-    {% gblock "kukui_start" for "gblocks.Text" %}
+  <div class="competition_header" style="text-align:center; clear:both">
+    {% gblock "competition_header" for "gblocks.Text" %}
   </div>
   
-  <div class="kukui_headline" style="text-align:center; clear:both">
-    {% gblock "kukui_headline" for "gblocks.TitleAndText" %}
+  <div class="competition_content_1" style="text-align:center; clear:both">
+    {% gblock "competition_content_1" for "gblocks.TitleAndText" %}
   </div>
 
-  <div class="kukui_why" style="width:260px;float:left">
-    {% gblock "kukui_why" for "gblocks.TitleAndText" %}
+  <div class="competition_content_2" style="width:260px;float:left">
+    {% gblock "competition_content_2" for "gblocks.TitleAndText" %}
   </div>
 
-  <div class="kukui_picture" style="width:360px; float:left; padding-left:10px">
-    {% gblock "kukui_picture" for "gblocks.Image" %}
+  <div class="competition_content_3" style="width:360px; float:left; padding-left:10px">
+    {% gblock "competition_content_3" for "gblocks.Image" %}
   </div>
 
-  <div class="kukui_how" style="width:260px; float:left; padding-left:10px">
-    {% gblock "kukui_how" for "gblocks.TitleAndText" %}
+  <div class="competition_content_4" style="width:260px; float:left; padding-left:10px">
+    {% gblock "competition_content_4" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div>
+    {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
+  </div>
+  
+  <div>
+    {% gblock "competition_content_6" for "gblocks.TitleAndText" %}
   </div>
   
 {% endblock %}

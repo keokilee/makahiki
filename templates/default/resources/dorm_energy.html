@@ -6,23 +6,27 @@
 {% block head_title %}{% trans "Dorm Energy" %}{% endblock %}
 
 {% block body %}
-    <div class="resources_headline" style="text-align:center; clear:both">
-      {% gblock "resources_headline" for "gblocks.TitleAndText" %}
+    <div class="resources_content" style="text-align:center; clear:both">
+      {% gblock "resources_content_1" for "gblocks.TitleAndText" %}
     </div>
 
-    <div class="resources_about" style="width:160px;float:left">
-      {% gblock "resources_about" for "gblocks.TitleAndText" %}
+    <div class="resources_content" style="width:160px;float:left">
+      {% gblock "resources_content_2" for "gblocks.TitleAndText" %}
     </div>
 
-    <div class="resources_video" style="width:560px; float:left; padding-left:10px">
-      {% gblock "resources_video" for "gblocks.Text" %}
+    <div class="resources_content" style="width:560px; float:left; padding-left:10px">
+      {% gblock "resources_content_3" for "gblocks.Text" %}
     </div>
 
-    <div class="resources_start" style="width:160px; float:left; padding-left:10px">
-      {% gblock "resources_start" for "gblocks.TitleAndText" %}
+    <div class="resources_content" style="width:160px; float:left; padding-left:10px">
+      {% gblock "resources_content_4" for "gblocks.TitleAndText" %}
     </div>
 
-    <div class="resources_others" style="width:560px; float:left; clear:both; text-align:center; padding-left:170px">
-      {% gblock "resources_others" for "gblocks.TitleAndText" %}
+    <div class="resources_content" style="width:560px; float:left; clear:both; text-align:center; padding-left:170px">
+      {% gblock "resources_content_5" for "gblocks.TitleAndText" %}
+    </div>
+    
+    <div class="resources_content">
+      {% gblock "resources_content_6" for "gblocks.TitleAndText" %}
     </div>
 {% endblock %}
