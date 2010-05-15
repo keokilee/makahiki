@@ -6,113 +6,192 @@
    "username": "admin", 
    "first_name": "", 
    "last_name": "", 
-   "is_active": true, 
-   "is_superuser": true, 
-   "is_staff": true, 
+   "is_active": 1, 
+   "is_superuser": 1, 
+   "is_staff": 1, 
    "last_login": "2010-04-05 14:35:50", 
    "groups": [], 
    "user_permissions": [
-    16, 
-    19, 
-    4, 
-    7, 
-    1, 
-    13, 
-    22, 
-    25, 
     10, 
-    17, 
-    20, 
-    5, 
-    8, 
-    2, 
-    14, 
-    23, 
-    26, 
+    16, 
+    7, 
+    13, 
     11, 
-    18, 
-    21, 
-    6, 
-    9, 
-    3, 
-    15, 
-    24, 
-    27, 
+    17, 
+    8, 
+    14, 
     12, 
-    37, 
+    18, 
+    9, 
+    15, 
+    19, 
+    20, 
+    21, 
+    58, 
+    59, 
+    60, 
     43, 
-    34, 
-    40, 
-    38, 
-    44, 
-    35, 
-    41, 
-    39, 
-    45, 
-    36, 
-    42, 
     46, 
+    44, 
     47, 
+    45, 
     48, 
+    61, 
+    62, 
+    63, 
+    4, 
+    5, 
+    6, 
+    1, 
+    2, 
+    3, 
+    52, 
+    49, 
+    55, 
+    53, 
+    50, 
+    56, 
+    54, 
+    51, 
+    57, 
+    34, 
+    37, 
+    31, 
+    28, 
+    40, 
+    35, 
+    38, 
+    32, 
+    29, 
+    41, 
+    36, 
+    39, 
+    33, 
+    30, 
+    42, 
+    79, 
+    82, 
     85, 
+    88, 
+    94, 
+    91, 
+    80, 
+    83, 
     86, 
+    89, 
+    95, 
+    92, 
+    81, 
+    84, 
     87, 
+    90, 
+    96, 
+    93, 
+    97, 
+    22, 
+    23, 
+    24, 
+    25, 
+    26, 
+    27, 
     70, 
     73, 
+    67, 
     71, 
     74, 
+    68, 
     72, 
     75, 
-    88, 
-    89, 
-    90, 
-    31, 
-    32, 
-    33, 
-    28, 
-    29, 
-    30, 
-    79, 
-    76, 
-    82, 
-    80, 
-    77, 
-    83, 
-    81, 
-    78, 
-    84, 
-    61, 
-    64, 
-    58, 
-    55, 
-    67, 
-    62, 
-    65, 
-    59, 
-    56, 
-    68, 
-    63, 
-    66, 
-    60, 
-    57, 
     69, 
-    49, 
-    50, 
-    51, 
-    52, 
-    53, 
-    54, 
-    97, 
-    94, 
-    95, 
-    96, 
-    91, 
-    92, 
-    93
+    76, 
+    77, 
+    78, 
+    64, 
+    65, 
+    66
    ], 
    "password": "sha1$be8b4$9dfdfc92faf73c8fc7fe9c50006a928d97657643", 
    "email": "", 
    "date_joined": "2010-03-21 16:51:26"
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "user", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": 1, 
+   "is_superuser": 0, 
+   "is_staff": 0, 
+   "last_login": "2010-05-12 17:26:46", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "sha1$6b957$d43d4f1ef4978d47ede0858f4c05e6c23a3dce27", 
+   "email": "", 
+   "date_joined": "2010-05-12 17:25:41"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Turn off your laptop/computer every day before you go to sleep.", 
+   "title": "I will turn off my laptop/computer every night before going to sleep", 
+   "created_at": "2010-05-12 16:18:35", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Unplugging your electrical appliances when they are not in use prevents them from drawing power.", 
+   "title": "I will unplug all electrical appliances when I am not using them", 
+   "created_at": "2010-05-12 16:19:14", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Turn off the lights before leaving the room.", 
+   "title": "I will turn off the lights when leaving any room", 
+   "created_at": "2010-05-12 16:19:39", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Refrigerators use lots of energy.  Sharing refrigerators means that the other does not have to be used.", 
+   "title": "I will share a refrigerator with my roommate", 
+   "created_at": "2010-05-12 16:20:27", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-05-12 18:21:35", 
+   "commitment": 1, 
+   "updated_at": "2010-05-12 18:21:52", 
+   "completion_date": "2010-05-12", 
+   "user": 1, 
+   "completed": 1
   }
  }, 
  {
@@ -138,7 +217,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-msrel", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -147,7 +226,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-twsf9", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -156,7 +235,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-sx5cv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -165,7 +244,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-f5s7c", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -174,7 +253,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xgc2f", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -183,7 +262,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-wa375", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -192,7 +271,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6lh01", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -201,7 +280,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-g1jrc", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -210,7 +289,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-7a46z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -219,7 +298,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-dl5mz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -228,7 +307,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-w218m", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -237,7 +316,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-47xan", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -246,7 +325,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-p0d8b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -255,7 +334,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-73ctr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -264,7 +343,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-evrm8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -273,7 +352,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ru6ps", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -282,7 +361,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-uxzk0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -291,7 +370,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xsz3b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -300,7 +379,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-qlhjg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -309,7 +388,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-rvfeo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -318,7 +397,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-8dfjv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -327,7 +406,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xg7c5", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -336,7 +415,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-5kaw0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -345,7 +424,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6b3me", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -354,7 +433,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-hwat8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -363,7 +442,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-nw9mg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -372,7 +451,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ucx0h", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -381,7 +460,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-y0k4o", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -390,7 +469,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-9gs5b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -399,7 +478,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ymvt1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -408,7 +487,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-8ck0z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -417,7 +496,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-t3yq5", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -426,7 +505,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-lf78m", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -435,7 +514,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-szmob", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -444,7 +523,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-tv52m", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -453,7 +532,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-t3yxo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -462,7 +541,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-el21s", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -471,7 +550,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-r6xzo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -480,7 +559,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-f21c8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -489,7 +568,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6o3q2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -498,7 +577,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-l18oz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -507,7 +586,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-63xlj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -516,7 +595,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-1m2au", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -525,7 +604,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-zv72t", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -534,7 +613,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-9xvml", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -543,7 +622,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-4stwd", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -552,7 +631,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xengq", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -561,7 +640,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-pkr2o", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -570,7 +649,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ey7ul", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -579,7 +658,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-57zqk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -588,7 +667,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-5veyz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -597,7 +676,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-cimj3", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -606,7 +685,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-d0qfm", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -615,7 +694,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-har9j", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -624,7 +703,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-rg89q", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -633,7 +712,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-wca97", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -642,7 +721,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xbdpn", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -651,7 +730,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-przgs", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -660,7 +739,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-qj7r4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -669,7 +748,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ynvcg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -678,7 +757,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6gskr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -687,7 +766,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-x7vtz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -696,7 +775,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6sucd", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -705,7 +784,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-v3kog", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -714,7 +793,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-eahvx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -723,7 +802,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ieqyv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -732,7 +811,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-zb04d", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -741,7 +820,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-tolhf", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -750,7 +829,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-xlzd8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -759,7 +838,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-vyt5f", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -768,7 +847,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-p5szf", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -777,7 +856,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-asxok", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -786,7 +865,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ov5wi", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -795,7 +874,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-dkzcp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -804,7 +883,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-16zox", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -813,7 +892,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-aqdlp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -822,7 +901,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-hdf84", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -831,7 +910,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-toa4h", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -840,7 +919,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-oabd3", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -849,7 +928,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-lj802", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -858,7 +937,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-zmk1u", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -867,7 +946,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-3aujl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -876,7 +955,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-z2qjv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -885,7 +964,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-pqhac", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -894,7 +973,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-me7tj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -903,7 +982,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-40qfw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -912,7 +991,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-he4ut", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -921,7 +1000,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6tgxc", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -930,7 +1009,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-f73jn", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -939,7 +1018,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-pxmro", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -948,7 +1027,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-9ju3v", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -957,7 +1036,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-wugqm", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -966,7 +1045,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-t3hxz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -975,7 +1054,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-dtyga", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -984,7 +1063,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-5umjv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -993,7 +1072,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-6h2is", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -1002,7 +1081,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-0u8re", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -1011,7 +1090,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-oihy4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -1020,7 +1099,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-ds6u2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -1029,7 +1108,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "orie-nz3id", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 1
   }
  }, 
@@ -1038,7 +1117,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-x4nmz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1047,7 +1126,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ryqsb", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1056,7 +1135,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-nlxyk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1065,7 +1144,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-c7mp4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1074,7 +1153,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-uvh78", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1083,7 +1162,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-bncq1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1092,7 +1171,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-niho2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1101,7 +1180,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-cqlwy", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1110,7 +1189,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ocjau", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1119,7 +1198,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-l8zao", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1128,7 +1207,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-s1f9q", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1137,7 +1216,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-28wlr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1146,7 +1225,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wz06i", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1155,7 +1234,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-owvy9", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1164,7 +1243,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ikudv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1173,7 +1252,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-bg3kv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1182,7 +1261,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ftgry", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1191,7 +1270,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zrns1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1200,7 +1279,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-kvqe8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1209,7 +1288,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-sel1c", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1218,7 +1297,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-vfitr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1227,7 +1306,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-qkx6v", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1236,7 +1315,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-mbrne", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1245,7 +1324,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-2bpeh", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1254,7 +1333,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ad3h8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1263,7 +1342,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0vbwc", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1272,7 +1351,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-iku56", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1281,7 +1360,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-hau2z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1290,7 +1369,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-cv3pt", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1299,7 +1378,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-r4exu", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1308,7 +1387,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-th8p2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1317,7 +1396,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zng91", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1326,7 +1405,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0xqjw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1335,7 +1414,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-23kel", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1344,7 +1423,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-oyveq", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1353,7 +1432,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-gb9vi", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1362,7 +1441,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0xswv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1371,7 +1450,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-7p892", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1380,7 +1459,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-rjget", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1389,7 +1468,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-960eg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1398,7 +1477,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-78yvb", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1407,7 +1486,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-k014p", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1416,7 +1495,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ph3k5", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1425,7 +1504,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-yo6cu", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1434,7 +1513,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ma2ul", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1443,7 +1522,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-mh2xw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1452,7 +1531,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-3l5sw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1461,7 +1540,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0916s", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1470,7 +1549,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-n39wx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1479,7 +1558,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-d7yuo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1488,7 +1567,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-7dyhj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1497,7 +1576,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-z638i", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1506,7 +1585,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-h2xyk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1515,7 +1594,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-i2sp1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1524,7 +1603,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-3il6p", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1533,7 +1612,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ki3xd", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1542,7 +1621,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-huv0z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1551,7 +1630,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-xkq4c", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1560,7 +1639,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-cgh4m", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1569,7 +1648,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-mokhz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1578,7 +1657,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-6hvgq", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1587,7 +1666,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-268rd", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1596,7 +1675,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-my98a", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1605,7 +1684,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-u0cp9", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1614,7 +1693,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-3alpb", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1623,7 +1702,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-8hlc9", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1632,7 +1711,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-nmy98", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1641,7 +1720,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-6yxu5", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1650,7 +1729,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-pq9gn", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1659,7 +1738,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-y9wi1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1668,7 +1747,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-4fdlk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1677,7 +1756,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-of5v3", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1686,7 +1765,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-g65pc", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1695,7 +1774,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0is8z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1704,7 +1783,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-pe8ko", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1713,7 +1792,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-anwfl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1722,7 +1801,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-y0gst", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1731,7 +1810,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-te694", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1740,7 +1819,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wqac1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1749,7 +1828,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-rwbnp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1758,7 +1837,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-54acy", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1767,7 +1846,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-w7d96", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1776,7 +1855,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-x5tnm", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1785,7 +1864,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-4igrj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1794,7 +1873,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-tjso0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1803,7 +1882,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-j86y0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1812,7 +1891,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0jcgx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1821,7 +1900,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-n7b3g", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1830,7 +1909,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-oc6dg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1839,7 +1918,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-9s1no", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1848,7 +1927,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-be132", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1857,7 +1936,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-j1xkb", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1866,7 +1945,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-52wke", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1875,7 +1954,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-qyed0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1884,7 +1963,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-rw59f", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1893,7 +1972,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zmv3x", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1902,7 +1981,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-d0eyp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1911,7 +1990,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-6mqhr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1920,7 +1999,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-93wjd", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1929,7 +2008,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-1wqd2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 3
   }
  }, 
@@ -1938,7 +2017,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-6mnya", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1947,7 +2026,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-b52pw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1956,7 +2035,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ym9q2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1965,7 +2044,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-opul8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1974,7 +2053,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-da1uc", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1983,7 +2062,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wh3rf", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -1992,7 +2071,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wa8lm", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2001,7 +2080,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-82dce", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2010,7 +2089,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-hudm2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2019,7 +2098,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zf3xl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2028,7 +2107,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-gjdcw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2037,7 +2116,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-xt9ol", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2046,7 +2125,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ih80b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2055,7 +2134,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-3eu8b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2064,7 +2143,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-dk3my", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2073,7 +2152,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-jl8ax", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2082,7 +2161,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-rh8sq", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2091,7 +2170,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-7g19q", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2100,7 +2179,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-9rjts", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2109,7 +2188,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-s46iq", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2118,7 +2197,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-08p2i", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2127,7 +2206,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-yi3mo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2136,7 +2215,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ki7l4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2145,7 +2224,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-h3ru0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2154,7 +2233,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-jtp7b", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2163,7 +2242,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-y46m2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2172,7 +2251,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-u5ymx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2181,7 +2260,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-qvcdg", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2190,7 +2269,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-7tmdv", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2199,7 +2278,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-9zb0m", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2208,7 +2287,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wdzjl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2217,7 +2296,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-19rht", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2226,7 +2305,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-7vs3e", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2235,7 +2314,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-2ujf4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2244,7 +2323,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-fqsez", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2253,7 +2332,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-rya6u", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2262,7 +2341,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-1la8v", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2271,7 +2350,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-47l6h", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2280,7 +2359,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zo9tl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2289,7 +2368,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-sufi1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2298,7 +2377,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-3ypo5", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2307,7 +2386,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-s87t2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2316,7 +2395,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-4vstp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2325,7 +2404,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-4uic6", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2334,7 +2413,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-705od", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2343,7 +2422,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-9mhk0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2352,7 +2431,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-a67to", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2361,7 +2440,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-emul0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2370,7 +2449,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-2aphj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2379,7 +2458,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-lj7vz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2388,7 +2467,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-0wxjo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2397,7 +2476,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-v3jzu", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2406,7 +2485,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-sbgc7", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2415,7 +2494,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-r13o2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2424,7 +2503,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-93pf0", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2433,7 +2512,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-m5ks7", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2442,7 +2521,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-gwjr8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2451,7 +2530,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-qazdu", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2460,7 +2539,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-87jmp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2469,7 +2548,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-8j6eo", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2478,7 +2557,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-arhe6", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2487,7 +2566,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-96qip", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2496,7 +2575,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-bo3ji", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2505,7 +2584,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-b1hmw", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2514,7 +2593,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-jlfy1", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2523,7 +2602,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-doels", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2532,7 +2611,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-vcmjp", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2541,7 +2620,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-hm0ud", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2550,7 +2629,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-t4vrx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2559,7 +2638,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-w3tok", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2568,7 +2647,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-pklhi", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2577,7 +2656,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-029dk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2586,7 +2665,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ewf5l", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2595,7 +2674,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-xv1z8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2604,7 +2683,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-dryqx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2613,7 +2692,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-8yqbl", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2622,7 +2701,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-1nmkx", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2631,7 +2710,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-s5jy6", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2640,7 +2719,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-uo72x", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2649,7 +2728,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-yr2db", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2658,7 +2737,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-ezso2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2667,7 +2746,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-fkczr", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2676,7 +2755,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-wmyht", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2685,7 +2764,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-i6mw4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2694,7 +2773,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-zcdpk", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2703,7 +2782,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-v845r", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2712,7 +2791,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-yro4t", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2721,7 +2800,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-iazl6", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2730,7 +2809,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-tbfo8", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2739,7 +2818,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-odzmu", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2748,7 +2827,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-khcpe", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2757,7 +2836,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-u9hek", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2766,7 +2845,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-q49u2", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2775,7 +2854,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-2dme6", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2784,7 +2863,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-6hm2z", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2793,7 +2872,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-md5l3", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2802,7 +2881,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-1qruz", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2811,7 +2890,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-xq54p", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2820,7 +2899,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-nlvs4", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2829,7 +2908,7 @@
   "model": "activities.confirmationcode", 
   "fields": {
    "code": "atte-e5xaj", 
-   "is_active": true, 
+   "is_active": 1, 
    "activity": 4
   }
  }, 
@@ -2848,7 +2927,7 @@
    "duration": 60, 
    "event_date": "2010-09-30 19:00:00", 
    "pub_date": "2010-05-12", 
-   "is_event": true
+   "is_event": 1
   }
  }, 
  {
@@ -2866,7 +2945,7 @@
    "duration": 10, 
    "event_date": null, 
    "pub_date": "2010-05-12", 
-   "is_event": false
+   "is_event": 0
   }
  }, 
  {
@@ -2884,7 +2963,7 @@
    "duration": 120, 
    "event_date": "2010-05-19 19:00:00", 
    "pub_date": "2010-05-12", 
-   "is_event": true
+   "is_event": 1
   }
  }, 
  {
@@ -2902,7 +2981,7 @@
    "duration": 5, 
    "event_date": "2010-05-14 19:00:00", 
    "pub_date": "2010-05-12", 
-   "is_event": true
+   "is_event": 1
   }
  }, 
  {
@@ -2920,7 +2999,7 @@
    "duration": 5, 
    "event_date": null, 
    "pub_date": "2010-05-12", 
-   "is_event": false
+   "is_event": 0
   }
  }, 
  {
@@ -2952,7 +3031,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_header", 
-   "content_type": 51, 
+   "content_type": 42, 
    "object_id": 1
   }
  }, 
@@ -2961,7 +3040,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_image", 
-   "content_type": 53, 
+   "content_type": 44, 
    "object_id": 1
   }
  }, 
@@ -2970,7 +3049,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_1", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 1
   }
  }, 
@@ -2979,7 +3058,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_2", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 2
   }
  }, 
@@ -2988,17 +3067,8 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_5", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 5
-  }
- }, 
- {
-  "pk": 8, 
-  "model": "django_generic_flatblocks.genericflatblock", 
-  "fields": {
-   "slug": "homepage_events", 
-   "content_type": 54, 
-   "object_id": 6
   }
  }, 
  {
@@ -3006,7 +3076,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_footer", 
-   "content_type": 52, 
+   "content_type": 43, 
    "object_id": 1
   }
  }, 
@@ -3014,26 +3084,26 @@
   "pk": 10, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "resources_headline", 
-   "content_type": 54, 
+   "slug": "resources_content_1", 
+   "content_type": 45, 
    "object_id": 7
   }
  }, 
  {
-  "pk": 11, 
+  "pk": 46, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "resources_about", 
-   "content_type": 54, 
-   "object_id": 8
+   "slug": "about_content_3", 
+   "content_type": 45, 
+   "object_id": 35
   }
  }, 
  {
   "pk": 12, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "resources_video", 
-   "content_type": 52, 
+   "slug": "resources_content_3", 
+   "content_type": 43, 
    "object_id": 2
   }
  }, 
@@ -3041,8 +3111,8 @@
   "pk": 13, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "resources_start", 
-   "content_type": 54, 
+   "slug": "resources_content_4", 
+   "content_type": 45, 
    "object_id": 9
   }
  }, 
@@ -3050,8 +3120,8 @@
   "pk": 14, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "resources_others", 
-   "content_type": 54, 
+   "slug": "resources_content_5", 
+   "content_type": 45, 
    "object_id": 10
   }
  }, 
@@ -3060,7 +3130,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_hawaii", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 11
   }
  }, 
@@ -3069,7 +3139,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_news", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 12
   }
  }, 
@@ -3078,7 +3148,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_involved", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 13
   }
  }, 
@@ -3087,7 +3157,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "have_fun_test", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 14
   }
  }, 
@@ -3096,7 +3166,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_real_time", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 15
   }
  }, 
@@ -3105,7 +3175,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_hour", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 16
   }
  }, 
@@ -3114,7 +3184,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_day", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 17
   }
  }, 
@@ -3123,7 +3193,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_week", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 18
   }
  }, 
@@ -3132,7 +3202,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_month", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 19
   }
  }, 
@@ -3140,8 +3210,8 @@
   "pk": 24, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "kukui_start", 
-   "content_type": 52, 
+   "slug": "competition_header", 
+   "content_type": 43, 
    "object_id": 3
   }
  }, 
@@ -3149,8 +3219,8 @@
   "pk": 25, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "kukui_headline", 
-   "content_type": 54, 
+   "slug": "competition_content_1", 
+   "content_type": 45, 
    "object_id": 20
   }
  }, 
@@ -3158,8 +3228,8 @@
   "pk": 26, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "kukui_why", 
-   "content_type": 54, 
+   "slug": "competition_content_2", 
+   "content_type": 45, 
    "object_id": 21
   }
  }, 
@@ -3167,8 +3237,8 @@
   "pk": 27, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "kukui_picture", 
-   "content_type": 53, 
+   "slug": "competition_content_3", 
+   "content_type": 44, 
    "object_id": 2
   }
  }, 
@@ -3176,8 +3246,8 @@
   "pk": 28, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "kukui_how", 
-   "content_type": 54, 
+   "slug": "competition_content_4", 
+   "content_type": 45, 
    "object_id": 22
   }
  }, 
@@ -3185,8 +3255,8 @@
   "pk": 34, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "about_website", 
-   "content_type": 54, 
+   "slug": "about_content_1", 
+   "content_type": 45, 
    "object_id": 23
   }
  }, 
@@ -3194,8 +3264,8 @@
   "pk": 35, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "about_kukui_cup", 
-   "content_type": 54, 
+   "slug": "about_content_2", 
+   "content_type": 45, 
    "object_id": 24
   }
  }, 
@@ -3204,7 +3274,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_3", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 25
   }
  }, 
@@ -3213,17 +3283,80 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_4", 
-   "content_type": 54, 
+   "content_type": 45, 
    "object_id": 26
   }
  }, 
  {
-  "pk": 38, 
+  "pk": 43, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "resources_content_6", 
+   "content_type": 45, 
+   "object_id": 32
+  }
+ }, 
+ {
+  "pk": 44, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_6", 
-   "content_type": 54, 
-   "object_id": 27
+   "content_type": 45, 
+   "object_id": 33
+  }
+ }, 
+ {
+  "pk": 45, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "resources_content_2", 
+   "content_type": 45, 
+   "object_id": 34
+  }
+ }, 
+ {
+  "pk": 47, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "about_content_4", 
+   "content_type": 45, 
+   "object_id": 36
+  }
+ }, 
+ {
+  "pk": 48, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "about_content_5", 
+   "content_type": 45, 
+   "object_id": 37
+  }
+ }, 
+ {
+  "pk": 49, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "about_content_6", 
+   "content_type": 45, 
+   "object_id": 38
+  }
+ }, 
+ {
+  "pk": 50, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "competition_content_5", 
+   "content_type": 45, 
+   "object_id": 39
+  }
+ }, 
+ {
+  "pk": 51, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "competition_content_6", 
+   "content_type": 45, 
+   "object_id": 40
   }
  }, 
  {
@@ -3469,6 +3602,102 @@
  }, 
  {
   "pk": 27, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 28, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 29, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 31, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 32, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 33, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 34, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "The purpose of a Dorm Energy competition is to promote the importance of energy conservation with students residing in dorms, engaging them in an environmentally minded competition which is held between dorms.  The competition is to educate students on simple things they can do to conserve energy while increasing their energy literacy.\r\n\r\n<a href=\"http://code.google.com/p/uh-dorm-energy-competition/\">UH Dorm Energy Competition site</a>\r\n", 
+   "title": "What is it?"
+  }
+ }, 
+ {
+  "pk": 35, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 36, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 37, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 38, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 39, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 40, 
   "model": "gblocks.titleandtext", 
   "fields": {
    "text": "", 
