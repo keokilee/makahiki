@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     (r'^activities/', include('activities.urls')),
     (r'^themes/', include('kukui_cup_themes.urls')),
     (r'^news/', include('kukui_cup_base.urls')),
+    (r'^dorms/', include('kukui_cup_floors.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
