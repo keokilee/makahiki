@@ -1,4 +1,5 @@
 import datetime
+import string
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -9,10 +10,13 @@ from groups.base import Group
 # Create your models here.
 
 class Dorm(models.Model):
-  name = models.CharField(max_length=200)
-  slug = models.CharField(max_length=20, blank=True)
+  name = models.CharField(max_length=200, help_text="The name of the dorm.")
+  slug = models.CharField(max_length=20, blank=True, help_text="Automatically generated if left blank.")
   created_at = models.DateTimeField(editable=False);
   updated_at = models.DateTimeField(null=True, editable=False)
+  
+  def __unicode__(self):
+    return self.name
   
   def create_slug(self):
     """Creates a slug (a url parameter based on content of the title).
@@ -38,14 +42,17 @@ class Dorm(models.Model):
     if not self.slug:
       self.slug = self.create_slug()
     
-    if not created_at:
-      created_at = datetime.date.today()
+    if not self.created_at:
+      self.created_at = datetime.date.today()
     else:
-      updated_at = datetime.date.today()
+      self.updated_at = datetime.date.today()
       
     super(Dorm, self).save()
     
-class Floor(Group):
-  floor_number = models.IntegerField()
-  dorm = models.ForeignKey(Dorm)
+class Floor(models.Model):
+  floor_number = models.IntegerField(help_text="The floor number in the dorm.")
+  dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
+  
+  def __unicode__(self):
+    return "%s: Floor %d" % (self.dorm.name, self.floor_number)
   
