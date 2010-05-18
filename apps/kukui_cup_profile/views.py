@@ -53,36 +53,29 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
     else:
         is_me = False
         
+    return_dict = {
+        "is_me": is_me,
+        "activities_enabled": False,
+        "other_user": other_user,
+    }
+    
     # Load activities for the user.
-    available_commitments = user_commitments = available_activities = user_activities = None
-    activities_enabled = False
     try:
-      # TODO: Add goals later since it needs group functionality.
-      from activities.models import Commitment, Activity
-      activities_enabled = True
+      from activities import get_activities_for_user, get_available_activities_for_user
+      return_dict["activities_enabled"] = True
       
-      user_commitments = other_user.commitment_set.exclude(
-        commitmentmember__completed=True,
-        commitmentmember__user__username=username,
-      )
-      user_activities = other_user.activity_set.all()
-      
+      user_activities = get_activities_for_user(other_user)
+      return_dict["user_commitments"] = user_activities["commitments"]
+      return_dict["user_activities"] = user_activities["activities"]
       if is_me:
-        available_commitments = Commitment.objects.exclude(commitmentmember__user__username=request.user.username)
-        available_activities = Activity.get_available_for_user(request.user)
+        available_activities = get_available_activities_for_user(other_user)
+        return_dict["available_activities"] = available_activities["activities"]
+        return_dict["available_commitments"] = available_activities["commitments"]
+    
     except ImportError:
       pass
-    
-    return render_to_response(template_name, {
-        "is_me": is_me,
-        "activities_enabled": activities_enabled,
-        "other_user": other_user,
-        "available_commitments": available_commitments,
-        "user_commitments": user_commitments,
-        "available_activities": available_activities,
-        "user_activities": user_activities,
-    }, context_instance=RequestContext(request))
-
+      
+    return render_to_response(template_name, return_dict, context_instance=RequestContext(request))
 
 @login_required
 def profile_edit(request, form_class=ProfileForm, **kwargs):

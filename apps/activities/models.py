@@ -8,8 +8,6 @@ from django.contrib.auth.models import User
 from kukui_cup_profile.models import Profile
 from tribes.models import Tribe
 
-from activities import ACTIVITY_FILE_DIR
-
 # These models represent the different types of activities users can commit to.
 
 class CommonBase(models.Model):
@@ -61,11 +59,12 @@ class Commitment(CommonActivity):
   users = models.ManyToManyField(User, through="CommitmentMember")
   duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
   
-  def get_available_for_user(self, user):
+  @staticmethod
+  def get_available_for_user(user):
     """Filter out commitments the user is currently active in."""
     commitments = Commitment.objects.exclude(
       commitmentmember__user__username=user.username,
-      commitmentmember__is_active=True,
+      commitmentmember__completed=False,
     )
     
     return commitments
@@ -77,7 +76,7 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  completed = models.BooleanField(default=False)
+  completed = models.BooleanField(default=False, editable=False)
   completion_date = models.DateField()
   comment = models.TextField(blank=True)
   
@@ -215,7 +214,9 @@ class Activity(CommonActivity):
 
 def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""
-
+  
+  from activities import ACTIVITY_FILE_DIR
+  
   if instance:
     user = user or instance.user
   return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
