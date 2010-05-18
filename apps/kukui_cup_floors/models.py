@@ -48,5 +48,4 @@ class Dorm(models.Model):
 class Floor(Group):
   floor_number = models.IntegerField()
   dorm = models.ForeignKey(Dorm)
-  members = models.ManyToManyField(User, related_name='floors', verbose_name=_('members'))
   

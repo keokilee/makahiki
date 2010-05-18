@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
+from kukui_cup_floors.models import Floor
+
 def _get_available_themes():
   """Retrieves the available themes from the media folder."""
   
@@ -20,6 +22,7 @@ class Profile(models.Model):
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
+    floor = models.ForeignKey(Floor, null=True)
     
     def __unicode__(self):
         return self.user.username
