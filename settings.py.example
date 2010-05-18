@@ -178,7 +178,7 @@ INSTALLED_APPS = (
     'kukui_cup_avatar',
     
     # internal (for now)
-    'tribes',
+    'kukui_cup_floors',
     'threadedcomments',
     'threadedcomments_extras',
     'groups',
