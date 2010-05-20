@@ -217,6 +217,23 @@ form.add-attachment {
     -webkit-box-shadow: 0 2px 3px #aaa;
 }
 
+/* News items */
+#content .news_item {
+  border: 1px solid Silver;
+  padding:0px 5px;
+}
+
+#content .trigger {
+  margin:10px 0px 5px 0px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin:0px 10px 5px 10px;
+}
 
 /* MESSAGES */
 
