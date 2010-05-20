@@ -93,7 +93,7 @@ div#website_title h1 a {
 }
 
 /* Content modules */
-#content .homepage_news, .homepage_content_2, .homepage_content_3, 
+#content #homepage_news, .homepage_content_2, .homepage_content_3, 
 .homepage_content_5, .homepage_content_4{
     background-color: Transparent;
     font-size: 0.9em;
@@ -119,7 +119,7 @@ div#website_title h1 a {
 	clear: left;
 }
 
-#content .homepage_news {
+#content #homepage_news {
 	width: 400px;
 	height: 300px;
 	float: right; 
@@ -215,6 +215,28 @@ form.add-attachment {
     -webkit-box-shadow: 0 2px 3px #aaa;
 }
 
+/* News items */
+#homepage_news h3 {
+  border-bottom: 1px solid #820A0A;
+  padding-bottom: 10px;
+}
+
+#content .news_item {
+  border-bottom: 1px solid #820A0A;
+  padding:0px 5px;
+}
+
+#content .trigger {
+  margin:10px 0px 5px 0px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin:0px 10px 5px 10px;
+}
 
 /* MESSAGES */
 
