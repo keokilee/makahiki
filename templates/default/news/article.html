@@ -1,7 +1,9 @@
 {% load markup %}
+{% load news_tags %}
 
-<h4 class="trigger"><a href="#">{{article.title}}</a></h4>
-<div class="article_container" style="display:none">
-  <p>{{article.abstract|markdown}}</p>
-  <a href="news/{{article.id}}/{{article.slug}}/">Read the full story</a>
+<div class="news_item">
+  <h4 class="trigger"><a href="news/{{article.id}}/{{article.slug}}/">{% article_date article %} {{article.title}}</a></h4>
+  <div class="article_container">
+    <p>{{article.abstract|markdown}}</p>
+  </div>
 </div>

@@ -211,3 +211,17 @@ ul#messages li a {
 	float: right;
 	border: 1px solid #999;
 }
+
+/* News items */
+#content .news_item {
+  border: 1px solid #999;
+  padding:0px 5px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin-left:10px;
+}
