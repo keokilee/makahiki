@@ -176,7 +176,7 @@ ul#messages li a {
 	padding: 0px 10px;
 }
 
-#content .homepage_news {
+#content #homepage_news {
 	width: 300px;
 	height: 550px;
 	float: left; 

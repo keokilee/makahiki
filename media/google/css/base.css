@@ -101,7 +101,7 @@ div#website_title h1 a {
     -webkit-border: 5px;
 }
 
-#content .homepage_news {
+#content #homepage_news {
 	width: 275px;
 	height: 520px;
 	float: left; 
