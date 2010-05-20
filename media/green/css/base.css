@@ -10,6 +10,7 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
     background-image: -moz-linear-gradient(19% 75% 90deg,#1AAB28, #55C938, #C7C7C7 100%);
+    /*background-image: -webkit-gradient(linear, 19% 75%, from(#1AAB28), to(#C7C7C7)); */
     /* background-image: -moz-linear-gradient(50% 70% 90deg,#52B81F, #27B312);*/
 }
 
@@ -98,7 +99,7 @@ div#website_title h1 a {
 	float: left;
 }
 
-#content .homepage_news {
+#content #homepage_news {
 	width: 250px;
 	height: 520px;
 	float: left; 
@@ -136,13 +137,14 @@ div#website_title h1 a {
     color: #191919;
 }
 
-.homepage_news, .homepage_content_2, .homepage_content_3, 
+#homepage_news, .homepage_content_2, .homepage_content_3, 
 .homepage_content_5, .homepage_content_4, .homepage_content_1
 {
     background-color: White;
     font-size: 0.9em;
     padding: 0 10px 0 10px;
     color: #555;
+    border:1px solid green;
     /* Round corner */
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -206,6 +208,29 @@ form.add-attachment {
     -webkit-box-shadow: 0 2px 3px #aaa;
 }
 
+/* News items */
+#content #homepage_news h3 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #FFF;
+}
+
+#content .news_item {
+  /*border-top: 1px solid #FFF;*/
+  border-bottom: 1px solid #FFF;
+  padding:0px 5px;
+}
+
+#content .trigger {
+  margin:10px 0px 5px 0px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin:0px 10px 5px 10px;
+}
 
 /* MESSAGES */
 
