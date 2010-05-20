@@ -132,7 +132,7 @@ hr {
 	clear: left;
 }
 
-#content .homepage_news {
+#content #homepage_news {
 	width: 200px;
 	height: 500px;
 	background-color: transparent; 
@@ -289,6 +289,30 @@ form.add-attachment {
 
 }
 
+/* News items */
+#content #homepage_news h3 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DDD;
+}
+
+#content .news_item {
+  /*border-top: 1px solid #FFF;*/
+  border-bottom: 1px solid #DDD;
+  padding:0px 5px;
+}
+
+#content .trigger {
+  font-size:15px;
+  margin:10px 0px 5px 0px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin:0px 0px 5px 10px;
+}
 
 /* MESSAGES */
 
