@@ -42,9 +42,9 @@ google.setOnLoadCallback(initialize);
 
 /* Parses the user preferences and generates the Query to WattDepot and displays the BioHeatMap. */ 
 function initialize() {
-  var gauge_sources = "saunders-floor-2, saunders-floor-3, saunders-floor-4, saunders-floor-5, saunders-floor-6"
+  var gauge_sources = "SIM_UH_ILIMA_FLOORS_3-4, SIM_UH_ILIMA_FLOORS_5-6, SIM_UH_ILIMA_FLOORS_7-8, SIM_UH_ILIMA_FLOORS_9-10, SIM_UH_ILIMA_FLOORS_11-12"
   // Store user preferences in corresponding variables.
-  host_uri = "http://server.wattdepot.org:8188/gviz/";
+  host_uri = "http://server.wattdepot.org:8184/gviz/";
   gauge_source = gauge_sources.split(', ');
   dataType = "powerConsumed";
   dateRange = "last7days";

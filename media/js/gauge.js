@@ -32,12 +32,12 @@ google.setOnLoadCallback(sendQuery);
  * Sets up the data source to be queried.
  */
 function sendQuery() {
-  host = checkTrailingSlash("http://server.wattdepot.org:8188/gviz");
-  source = "saunders-floors-2-to-6";
+  host = checkTrailingSlash("http://server.wattdepot.org:8184/gviz/");
+  source = "SIM_UH_ILIMA";
   dataDisplayed = "powerConsumed";
-  yellowThreshold = "75000";
-  redThreshold = "90000";
-  maxThreshold = "100000";
+  yellowThreshold = "4000";
+  redThreshold = "6000";
+  maxThreshold = "8000";
   refreshInterval = 15000;
 
   dataSourceUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + dataDisplayed;
