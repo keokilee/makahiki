@@ -149,7 +149,7 @@ hr {
 
 }
 
-#content .homepage_news {
+#content #homepage_news {
     float: left;
 	width: 49%;
 	height: 275px;
@@ -197,7 +197,6 @@ hr {
 	border-bottom: 1px solid #222; 
 	margin-right: -2px;
 }
-
 
 #content-outline h1 {
     color: #222;
@@ -274,6 +273,28 @@ form.add-attachment {
 
 }
 
+/* News items */
+#homepage_news h3 {
+  border-bottom: 1px solid #222;
+  padding-bottom: 10px;
+}
+
+#content .news_item {
+  border-bottom: 1px solid #222;
+  padding:0px 5px;
+}
+
+#content .trigger {
+  margin:10px 0px 5px 0px;
+}
+
+#content .trigger a {
+  text-decoration: none;
+}
+
+#content .article_container p {
+  margin:0px 10px 5px 10px;
+}
 
 /* MESSAGES */
 
