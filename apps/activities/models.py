@@ -6,7 +6,7 @@ import os
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from kukui_cup_profile.models import Profile
-from tribes.models import Tribe
+from kukui_cup_floors.models import Floor
 
 # These models represent the different types of activities users can commit to.
 
@@ -271,11 +271,10 @@ class ActivityMember(CommonActivityUser):
 class Goal(CommonActivity):
   """Represents activities that are committed to by a group (floor)."""
   
-  groups = models.ManyToManyField(Tribe, through="GoalMember")
+  floors = models.ManyToManyField(Floor, through="GoalMember")
   
 class GoalMember(CommonActivityUser):
   """Represents the join between groups/floors."""
   
-  group = models.ForeignKey(Tribe)
   goal = models.ForeignKey(Goal)
-  
+  floor = models.ForeignKey(Floor)
