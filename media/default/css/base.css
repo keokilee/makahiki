@@ -72,8 +72,8 @@ div#website_title h1 a {
 #content1 { visibility: hidden; }
 
 #content {
-    padding: 10px;
-    margin: 0 5px 0 5px;
+/*    padding: 10px;
+    margin: 0 5px 0 5px;*/
     background-color: White;
     font-size: 0.9em;
     line-height: 1.5em;
@@ -143,14 +143,13 @@ form.add-attachment {
 /* MESSAGES */
 
 ul#messages {
-    margin: 0 0 10px 0;
-    padding: 0;
+    margin: 0 5px 10px 5px;
+    padding: 10px 10px 0px 10px;
     list-style: none;
 }
 ul#messages li {
     padding: 5px 10px;
     background: #EFD;
-    margin: 3px;
     border: 1px solid #BC9;
 }
 ul#messages li a {
@@ -158,63 +157,71 @@ ul#messages li a {
     color: #693;
 }
 
-
-#content .homepage_content_1 {
-	width: auto;
-	height: auto;
-	padding-top: 10px;
-	margin: 0px 0px 0px 0px;
-	border: 1px solid #999;
-	padding: 0px 10px; 
+#content .homepage_content {
+  border: 1px solid #999;
+  height: auto;
+  margin: 20px 0px 0px 0px;
+  padding: 0px 10px;
 }
-#content .homepage_content_2 {
-	width: 320px;
-	height: auto;	
-	margin: 20px 0px 0px 0px;
+
+#content #homepage_content {
+  width: auto;
+	margin: 0px;
+	padding: 10px 10px 0px 10px;
+}
+
+#content #homepage_left {
+  width: 300px;
+  float: left;
+  padding: 0px 10px;
+  height: 100%;
+}
+
+#content #homepage_center {
+  width: 360px;
+  float: left; 
+  height: 100%;
+}
+
+#content #homepage_right {
+  width: 300px;
+	margin: 0px;
 	float: left;
-	border: 1px solid #999;
 	padding: 0px 10px;
+	height: 100%;
+}
+
+#content #homepage_content_1 {
+  height: auto;
+}
+
+#content #homepage_content_2 {
+  height: auto;
 }
 
 #content #homepage_news {
-	width: 300px;
-	height: 550px;
-	float: left; 
-	margin: 20px 20px 20px 10px;
-	border: 1px solid #999;
-	padding: 0px 10px;
+/*  margin-bottom:20px;*/
 }
 	
 #content .homepage_content_3 {
-	width: 250px;
-	margin: 20px 0px 0px 0px;
-	float: right;
-	border: 1px solid #999;	
-	padding: 0px 10px;	
+	
 }
 
 
-#content .homepage_content_5 {
-	width: 320px;
-	height: auto;	
-	margin: -230px 0px 20px 0px;
-	float: left;
-    padding: 0px 10px;
-	border: 1px solid #999;
+#content #homepage_content_5 {
+/*  height: auto; 
+  padding: 0px 10px;*/
 }
 
-#content .homepage_content_4 {	
-	width: 250px;
-	height: auto;	
-    padding: 0px 10px;
-	margin: 10px 0px 20px 0px;
-	float: right;
-	border: 1px solid #999;
+#content #homepage_content_4 {	
+/*  height: auto; 
+  padding: 0px 10px;
+  margin: 10px 0px 20px 0px;*/
 }
 
 /* News items */
 #content .news_item {
-  border: 1px solid #999;
+  border-top: 1px solid #999;
   padding:0px 5px;
 }
 

@@ -31,40 +31,48 @@
 {% endblock %}
 
 {% block body %}
-  <div class="homepage_content_1" >
-    {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
+  <div id="homepage_content">
+    <div id="homepage_content_1" class="homepage_content">
+      {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
+    </div>
   </div>
   
-  <div class="homepage_content_2" >
-    {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
+  <div id="homepage_left">
+    <div id="homepage_content_3" class="homepage_content">
+      {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
+    </div>
+    
+    <div id="homepage_content_5" class="homepage_content">
+      {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
+    </div>
+
+    <div id="homepage_content_6">
+      {% gblock "homepage_content_6" for "gblocks.TitleAndText" %}
+    </div>
   </div>
   
-  <div id="homepage_news" >
-    <h3>Featured News</h3>
-    {% if articles %}
-      {% for article in articles %}
-        {% include "news/article.html" %}
-      {% endfor %}
-    {% else %}
-      <p>There are no news stories yet</p>
-    {% endif %}
+  <div id="homepage_center">
+    <div id="homepage_content_2" class="homepage_content">
+      {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
+    </div>
+    
+    <div id="homepage_content_4" class="homepage_content">
+      {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
+    </div>
   </div>
-  
-  <div class="homepage_content_3">
-    {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
-  </div>
-  
-  <div class="homepage_content_4">
-    {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
+  <div id="homepage_right">
+    <div id="homepage_news" class="homepage_content">
+      <h3>Featured News</h3>
+      {% if articles %}
+        {% for article in articles %}
+          {% include "news/article.html" %}
+        {% endfor %}
+      {% else %}
+        <p>There are no news stories yet</p>
+      {% endif %}
+    </div>
   </div>
 
-  <div class="homepage_content_5" >
-    {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
-  </div>
-  
-  <div class="homepage_content_6">
-    {% gblock "homepage_content_6" for "gblocks.TitleAndText" %}
-  </div>
 	
 
 {% endblock %}
