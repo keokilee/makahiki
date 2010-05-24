@@ -1,43 +1,95 @@
 ul.tabs {
-	margin: 0;
-	padding: 0;
-	float: left;
-	list-style: none;
-	height: 32px; /*--Set height of tabs--*/
-	border-bottom: 1px solid #999;
-	border-left: 1px solid #999;
-	width: 100%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  list-style: none;
+  height: 32px; /*--Set height of tabs--*/
+  border-bottom: 1px solid #999;
+  border-left: 1px solid #999;
+  width: 100%;
 }
 ul.tabs li {
-	float: left;
-	margin: 0;
-	padding: 0;
-	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
-	line-height: 31px; /*--Vertically aligns the text within the tab--*/
-	border: 1px solid #999;
-	border-left: none;
-	margin-bottom: -1px; /*--Pull the list item down 1px--*/
-	overflow: hidden;
-	position: relative;
-	background: #e0e0e0;
+  float: left;
+  margin: 0;
+  padding: 0;
+  height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+  line-height: 31px; /*--Vertically aligns the text within the tab--*/
+  border: 1px solid #999;
+  border-left: none;
+  margin-bottom: -1px; /*--Pull the list item down 1px--*/
+  overflow: hidden;
+  position: relative;
+  background: #e0e0e0;
 }
 ul.tabs li a {
-	text-decoration: none;
-	color: #000;
-	display: block;
-	font-size: 1.2em;
-	padding: 0 20px;
-	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
-	outline: none;
+  text-decoration: none;
+  color: #000;
+  display: block;
+  font-size: 1.2em;
+  padding: 0 20px;
+  border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+  outline: none;
 }
 ul.tabs li a:hover {
-	background: #ccc;
+  background: #ccc;
 }
 html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
-	background: #fff;
-	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+  background: #fff;
+  border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.activity_header {
+  background-color: #666;
+  color: white;
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.0em;
+}
+
+.activity_item {
+  border: 1px solid #999;
+  margin: 10px 0px;
 }
 
 .activity_content {
-  margin-top:40px;
+  padding: 0px 5px;
+}
+
+.column_header td {
+  font-weight:bold;
+  border-bottom: 1px solid #999;
+}
+
+td.description_row {
+  width:100%;
+  padding: 5px 0px;
+}
+
+.activity_title {
+  padding: 5px 0px;
+  width:60%;
+}
+
+.activity_points {
+  width:15%;
+  padding: 5px 0px;
+}
+
+.profile_content {
+  margin: 10px 5px;
+  padding: 5px 0px;
+}
+
+#profile_left {
+  float:left;
+  width:200px;
+}
+
+#profile_center {
+  float:left;
+  width:480px
+}
+
+#profile_right {
+
 }

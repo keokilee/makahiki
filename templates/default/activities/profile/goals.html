@@ -1,31 +1,28 @@
-{% if available_goals %}
-  <h3>Available goals:</h3>
-  <ul>
-  {% for item in available_goals %}
-    {% include "activities/profile/activity.html" %}
-  {% endfor %}
-  </ul>
-{% else %}
+<div class="activity_header">
   {% if is_me %}
-    <h4>No new goals.</h4>
+      Our goals:
+  {% else %}
+    {{ other_user.get_profile.name }}'s goals.
   {% endif %}
-{% endif %}
+</div>
 
-{% if user_goals %}
-  {% if is_me %}
-    <h3>My goals:</h3>
+<div class="activity_content">
+  {% if user_goals %}
+    <table class="activity_list">
+    <tr class="column_header">
+      <td class="activity_title">Title</td>
+      <td class="activity_points">Points</td>
+      <td class="activity_options">Options</td>
+    </tr>
+      {% for item in user_goals %}
+        {% include "activities/profile/activity.html" %}
+      {% endfor %}
+    </table>
   {% else %}
-    <h3>{{ other_user.get_profile.name }}'s goals.</h3>
+    {% if is_me %}
+      <h4>Your floor is not participating in any goals.</h4>
+    {% else %}
+      <h4>{{ other_user.get_profile.name }}'s floor is not participating in any goals.<h4>
+    {% endif %}
   {% endif %}
-  <ul>
-  {% for item in user_goal %}
-    {% include "activities/profile/activity.html" %}
-  {% endfor %}
-  </ul>
-{% else %}
-  {% if is_me %}
-    <h4>Your floor is not participating in any goals.</h4>
-  {% else %}
-    <h4>{{ other_user.get_profile.name }}'s floor is not participating in any goals.<h4>
-  {% endif %}
-{% endif %}
+</div>
