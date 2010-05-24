@@ -164,26 +164,26 @@ ul#messages li a {
   padding: 0px 10px;
 }
 
-#content #homepage_content {
+#content #content_header {
   width: auto;
 	margin: 0px;
 	padding: 10px 10px 0px 10px;
 }
 
-#content #homepage_left {
+#content #three_col_left {
   width: 300px;
   float: left;
   padding: 0px 10px;
   height: 100%;
 }
 
-#content #homepage_center {
+#content #three_col_center {
   width: 360px;
   float: left; 
   height: 100%;
 }
 
-#content #homepage_right {
+#content #three_col_right {
   width: 300px;
 	margin: 0px;
 	float: left;

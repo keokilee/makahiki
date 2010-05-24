@@ -31,13 +31,13 @@
 {% endblock %}
 
 {% block body %}
-  <div id="homepage_content">
+  <div id="content_header">
     <div id="homepage_content_1" class="homepage_content">
       {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
     </div>
   </div>
   
-  <div id="homepage_left">
+  <div id="three_col_left">
     <div id="homepage_content_3" class="homepage_content">
       {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
     </div>
@@ -51,7 +51,7 @@
     </div>
   </div>
   
-  <div id="homepage_center">
+  <div id="three_col_center">
     <div id="homepage_content_2" class="homepage_content">
       {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
     </div>
@@ -60,7 +60,7 @@
       {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
     </div>
   </div>
-  <div id="homepage_right">
+  <div id="three_col_right">
     <div id="homepage_news" class="homepage_content">
       <h3>Featured News</h3>
       {% if articles %}
