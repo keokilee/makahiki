@@ -197,7 +197,6 @@ function responseHandler(response, query, source, number) {
     var errorMessage = response.getMessage();
     document.getElementById('datadiv').innerHTML = "Error: " + errorMessage;
     document.getElementById('datadiv').innerHTML += "<br />" + response.getDetailedMessage();
-    gadgets.window.adjustHeight();
     return;
   }
 

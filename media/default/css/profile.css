@@ -81,15 +81,27 @@ td.description_row {
 }
 
 #profile_left {
-  float:left;
-  width:200px;
+  float: left;
+  width: 200px;
 }
 
 #profile_center {
-  float:left;
-  width:480px
+  float: left;
+  width: 480px;
+  padding: 0;
 }
 
 #profile_right {
+  float: left;
+  width: 280px;
+}
 
+.monitor_item {
+  border: 1px solid #999;
+  margin: 5px 0px;
+  padding: 5px;
+}
+
+#power_monitor {
+  margin-bottom: 20px;
 }
