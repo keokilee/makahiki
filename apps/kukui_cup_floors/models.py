@@ -52,6 +52,18 @@ class Dorm(models.Model):
 class Floor(models.Model):
   floor_number = models.IntegerField(help_text="The floor number in the dorm.")
   dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
+  wattdepot_source = models.CharField(
+                  max_length=200,
+                  blank=True,
+                  null=True,
+                  help_text="The WattDepot source corresponding to this floor."
+  )
+  wattdepot_host = models.CharField(
+                  max_length=200,
+                  blank=True, 
+                  null=True,
+                  help_text="Optional. Use if you need to specify a different WattDepot host than the one used in the settings."
+  )
   
   def __unicode__(self):
     return "%s: Floor %d" % (self.dorm.name, self.floor_number)
