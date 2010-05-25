@@ -8,16 +8,14 @@ var unit = null;
 var source = null;
 
 google.load("visualization", "1");
-google.setOnLoadCallback(sendQuery);
+//google.setOnLoadCallback(sendQuery);
 
 /**
  * testing data source name: "monitor-test", "monitor-test2", and "monitor-test3"
  * testing host: http://server.wattdepot.org:8184/gviz
  * datasource Url structure: {host}/sources/{source}/sensordata/latest?tq={queryString}   
  */
-function sendQuery() {
-  host = "http://server.wattdepot.org:8184/gviz";
-  source = "SIM_UH_ILIMA";
+function sendQuery(host, source) {
   refreshInterval = 15000;
   var powerTitle = document.getElementById('powertitle');
   var powerLastCheck = document.getElementById('powerlastcheck');
@@ -36,7 +34,9 @@ function sendQuery() {
   powerQuery.send(handlePowerQuery);
   energyQuery.send(handleEnergyQuery);
 
-  setTimeout("sendQuery()",refreshInterval);
+  setTimeout(function() {
+    sendQuery(host, source);
+  },refreshInterval);
 }
 
 /**

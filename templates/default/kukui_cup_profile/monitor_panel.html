@@ -1,18 +1,21 @@
-<div id="power_monitor" class="monitor_item">
-  <div id="powertitle" align="center"></div>
-  <div id="powerdata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
-  <div id="powerlastcheck" align="center"></div>
-</div>
+{% if user.get_profile.floor %}
+  <div id="power_monitor" class="monitor_item">
+    <div id="powertitle" align="center"></div>
+    <div id="powerdata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="powerlastcheck" align="center"></div>
+  </div>
 
-<div id="energy_monitor" class="monitor_item">
-  <div id="energytitle" align="center"></div>
-  <div id="energydata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
-  <div id="energylastcheck" align="center"></div>
-</div>
-
-<script type='text/javascript' src='http://www.google.com/jsapi'></script>
-<script src="http://wattdepot-ui-googlegadgets.googlecode.com/svn/trunk/Monitor/monitor_visualization.js" type="text/javascript"></script> 
-<script type="text/javascript" src="/site_media/static/js/monitor.js"></script>
-<script type="text/javascript">
-  
-</script>
+  <div id="energy_monitor" class="monitor_item">
+    <div id="energytitle" align="center"></div>
+    <div id="energydata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="energylastcheck" align="center"></div>
+  </div>
+  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  <script src="http://wattdepot-ui-googlegadgets.googlecode.com/svn/trunk/Monitor/monitor_visualization.js" type="text/javascript"></script> 
+  <script type="text/javascript" src="/site_media/static/js/monitor.js"></script>
+  <script type="text/javascript">
+    host = "http://server.wattdepot.org:8184/gviz";
+    source = "{{user.get_profile.floor.wattdepot_source}}";
+    sendQuery(host, source);
+  </script>
+{% endif %}
