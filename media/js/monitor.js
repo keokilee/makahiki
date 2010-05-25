@@ -49,7 +49,7 @@ function handlePowerQuery(response) {
   dataContainer = new monitor.visualization(dataDiv);
   var data = response.getDataTable();
 
-  dataContainer.draw(data, unit);
+  dataContainer.draw(data, "Watts");
 }
 
 /**
@@ -62,7 +62,7 @@ function handleEnergyQuery(response) {
   dataContainer = new monitor.visualization(dataDiv);
   var data = response.getDataTable();
 
-  dataContainer.draw(data, unit);
+  dataContainer.draw(data, "Watt Hours");
 }
 
 function generateTitle(source, dataDisplayed) {
@@ -70,19 +70,19 @@ function generateTitle(source, dataDisplayed) {
   html.push(source);
   html.push("<br />");
   if (dataDisplayed == "energyGeneratedToDate") {
-    html.push("Energy Generated");
+    html.push("Current Energy Generated");
     unit = "Watt Hours";
   }
   else if (dataDisplayed == "energyConsumedToDate") {
-    html.push("Energy Consumed");
+    html.push("Current Energy Consumed");
     unit = "Watt Hours";
   }
   else if (dataDisplayed == "powerGenerated") {
-    html.push("Power Generated");
+    html.push("Current Power Generated");
     unit = "Watts";
   }
   else if (dataDisplayed == "powerConsumed") {
-    html.push("Power Consumed");
+    html.push("Current Power Consumed");
     unit = "Watts";
   }
   else {

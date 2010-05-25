@@ -4,6 +4,7 @@ import string
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from groups.base import Group
 
@@ -67,4 +68,8 @@ class Floor(models.Model):
   
   def __unicode__(self):
     return "%s: Floor %d" % (self.dorm.name, self.floor_number)
+    
+  def get_wattdepot_host(self):
+    """Retrieves the floor's specified host or the host specified in settings."""
+    return self.wattdepot_host or settings.WATTDEPOT_HOST
   
