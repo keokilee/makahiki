@@ -15,12 +15,12 @@
 {% block login %}
     {% if user.is_authenticated %}
       {% if user.is_staff %}
-         <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a>
+         <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
       {% endif %}
        <li class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
        <li class="ui-state-default ui-corner-top"><a href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a></li>
     {% else %}
-        <li class="ui-state-default ui-corner-top"><a href="/account/cas/login"><span>{% trans "Login" %}</span></a>
+        <li class="ui-state-default ui-corner-top"><a href="/account/cas/login"><span>{% trans "Login" %}</span></a></li>
     {% endif %}
 {% endblock %}
 
