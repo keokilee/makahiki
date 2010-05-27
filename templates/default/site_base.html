@@ -14,25 +14,25 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-       <a class="tab_logout" href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a>
-       <a class="tab_account" href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a>
-       {% if user.is_staff %}
-          <a class="tab_account" href="/admin/"><span>{% trans "Admin" %}</span></a>
-       {% endif %}
+      {% if user.is_staff %}
+         <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a>
+      {% endif %}
+       <li class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
+       <li class="ui-state-default ui-corner-top"><a href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a></li>
     {% else %}
-        <a class="tab_login" href="/account/cas/login"><span>{% trans "Login" %}</span></a>
+        <li class="ui-state-default ui-corner-top"><a href="/account/cas/login"><span>{% trans "Login" %}</span></a>
     {% endif %}
 {% endblock %}
 
 {% block tabs %}
     {% spaceless %}
-    <a class="tab_home" href="{% url home %}">{% trans "Home" %}</a>
-    <a class="tab_resources" href="{% url dorm_energy %}">{% trans "Resources" %}</a>
-    <a class="tab_energy" href="{% url energy_real_time %}">{% trans "Energy Data" %}</a>
+      <li class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="{% url dorm_energy %}">{% trans "Resources" %}</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
     {% if user.is_authenticated %}
-       <a class="tab_kukui" href="{% url kukui_cup %}">{% trans "Kukui Cup" %}</a>
+       <li class="ui-state-default ui-corner-top"><a href="{% url kukui_cup %}">{% trans "Kukui Cup" %}</a></li>
     {% endif %}
-    <a class="tab_about_us" href="{% url about_us %}">{% trans "About" %}</a>
+    <li class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
     {% endspaceless %}
 {% endblock %}
 

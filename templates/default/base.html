@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<div id="color-wrapper">
+<div class="ui-widget-content">
 		<div id="header">
 	    {% if user.is_authenticated %}
 	      {% render_css_select user %}
@@ -29,9 +29,13 @@
     <div id="outline">
 			 {% spaceless %}
         <div id="tabhead">
-            <div class="tabs" {% block tab_id %}{% endblock %}>
-                {% block login %}{% endblock %}
-                {% block tabs %}{% endblock %}
+            <div class="ui-tabs">
+                <ul class="ui-tabs-nav">
+                  {% block tabs %}{% endblock %}
+                </ul>
+                <ul class="ui-tabs-nav account">
+                  {% block login %}{% endblock %}
+                </ul>
             </div>
         </div>
         <div id="subnav">
@@ -49,7 +53,11 @@
         {% if messages %}
         <ul id="messages">
             {% for message in messages %}
-            <li id="message_{{ forloop.counter }}"><a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>{% trans "clear" %}</small></a> {{ message }}</li>
+            <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
+              <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>{% trans "clear" %}</small></a> 
+              {{ message }}
+              <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
+            </li>
             {% endfor %}
         </ul>
         {% endif %}

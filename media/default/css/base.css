@@ -9,7 +9,6 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    background-color: #888;
 }
 
 a:link {
@@ -43,16 +42,17 @@ div#website_title {
 
 div#website_title h1 {
     color: White;
-    text-shadow: 1px 1px 1px #666;
+    text-shadow: 1px 1px 1px #444;
     padding: 0 0 0.2em 0;
     margin: 0;
-    font-size: 2.2em;
+    font-size: 2.0em;
     letter-spacing: -1px;
 }
 
 div#website_title h1 a {
     text-decoration: none;
-    color: White;
+    color: #55AE00;
+    font-style:italic;
 }
 
 #color-wrapper {
@@ -99,7 +99,7 @@ div#website_title h1 a {
 #content h3 {
     font-size: 1.5em;
     font-weight: normal;
-    color: #777;
+    color: #459E00;
     margin: 1em 0 0.5em 0;
 }
 
@@ -147,9 +147,10 @@ ul#messages {
     list-style: none;
 }
 ul#messages li {
-    padding: 5px 10px;
+/*    padding: 5px 10px;
     background: #EFD;
-    border: 1px solid #BC9;
+    border: 1px solid #BC9;*/
+    padding:5px;
 }
 ul#messages li a {
     float: right;

@@ -33,17 +33,17 @@
 
 {% block body %}
   <div id="content_header">
-    <div id="homepage_content_1" class="homepage_content">
+    <div id="homepage_content_1" class="homepage_content ui-corner-all">
       {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
     </div>
   </div>
   
   <div id="three_col_left">
-    <div id="homepage_content_3" class="homepage_content">
+    <div id="homepage_content_3" class="homepage_content ui-corner-all">
       {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
     </div>
     
-    <div id="homepage_content_5" class="homepage_content">
+    <div id="homepage_content_5" class="homepage_content ui-corner-all">
       {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
     </div>
 
@@ -53,16 +53,16 @@
   </div>
   
   <div id="three_col_center">
-    <div id="homepage_content_4" class="homepage_content">
+    <div id="homepage_content_4" class="homepage_content ui-corner-all">
       {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
     </div>
   
-    <div id="homepage_content_2" class="homepage_content">
+    <div id="homepage_content_2" class="homepage_content ui-corner-all">
       {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
     </div>
   </div>
   <div id="three_col_right">
-    <div id="homepage_news" class="homepage_content">
+    <div id="homepage_news" class="homepage_content ui-corner-all">
       <h3>Featured News</h3>
       {% if articles %}
         {% for article in articles %}
