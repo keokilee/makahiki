@@ -2,7 +2,7 @@
 
 #tabhead {
 /*    background-color: #666;*/
-  margin-bottom: 25px;
+  margin: 0px -6px 24px -3px;
 }
 
 #tabhead ul {
@@ -36,13 +36,13 @@
 
 /* SUBNAV */
 
-#subnav{
-    background-color: #666;
+#subnav {
+    background-color: #459E00;
 }
 
 #subnav ul {
     margin: 0;
-    padding: 0;
+    padding: 1px;
     list-style: none;
 }
 
@@ -62,7 +62,7 @@
     font-size: 0.7em;
     line-height: 1em;
     padding: 0.5em 1em;
-    background-color: #666;
+    background-color: #459E00;
 }
 
 #subnav a:hover {

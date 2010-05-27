@@ -36,6 +36,10 @@
                 <ul class="ui-tabs-nav account">
                   {% block login %}{% endblock %}
                 </ul>
+                <script type="text/javascript">
+                  //Set active tab.
+                  $({% block tab_id %}{% endblock %}).addClass("ui-state-active");
+                </script>
             </div>
         </div>
         <div id="subnav">
@@ -54,7 +58,9 @@
         <ul id="messages">
             {% for message in messages %}
             <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
-              <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>{% trans "clear" %}</small></a> 
+              <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;">
+                <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
+              </a> 
               {{ message }}
               <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
             </li>

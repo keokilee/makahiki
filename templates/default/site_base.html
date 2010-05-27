@@ -17,7 +17,7 @@
       {% if user.is_staff %}
          <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
       {% endif %}
-       <li class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
+       <li id="profile_tab" class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
        <li class="ui-state-default ui-corner-top"><a href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a></li>
     {% else %}
         <li class="ui-state-default ui-corner-top"><a href="/account/cas/login"><span>{% trans "Login" %}</span></a></li>
@@ -25,15 +25,13 @@
 {% endblock %}
 
 {% block tabs %}
-    {% spaceless %}
-      <li class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
-      <li class="ui-state-default ui-corner-top"><a href="{% url dorm_energy %}">{% trans "Resources" %}</a></li>
-      <li class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
+      <li id="home_tab" class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
+      <li id="resources_tab" class="ui-state-default ui-corner-top"><a href="{% url dorm_energy %}">{% trans "Resources" %}</a></li>
+      <li id="energy_tab" class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
     {% if user.is_authenticated %}
-       <li class="ui-state-default ui-corner-top"><a href="{% url kukui_cup %}">{% trans "Kukui Cup" %}</a></li>
+       <li id="competition_tab" class="ui-state-default ui-corner-top"><a href="{% url kukui_cup %}">{% trans "Kukui Cup" %}</a></li>
     {% endif %}
-    <li class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
-    {% endspaceless %}
+    <li id="about_tab" class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
 {% endblock %}
 
 {% block content_image %}

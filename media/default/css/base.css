@@ -235,10 +235,6 @@ ul#messages li a {
   padding: 0;
 }
 
-#content .trigger a {
-  text-decoration: none;
-}
-
 #content .article_container p {
   margin-left:10px;
 }

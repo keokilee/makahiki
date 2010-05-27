@@ -3,32 +3,11 @@
 {% load i18n %}
 {% load generic_flatblocks %}
 
-{% block tab_id %}id="home_tab"{% endblock %}
+{% block tab_id %}"#home_tab"{% endblock %}
 
 {% block extra_head %}
   <!--Since so many scripts on this page use the Visualization API, we load it here. -->
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
-  <script type="text/javascript">
-    //Resolves conflict with Prototype Library.
-    jQuery.noConflict()
-    
-    //News toggle
-    /*
-    jQuery(document).ready(function(){
-      //Switch the "Open" and "Close" state per click
-      jQuery("h4.trigger").toggle(function(){
-        jQuery(this).addClass("active");
-        }, function () {
-        jQuery(this).removeClass("active");
-      });
-    
-      //Hide and unhide on click.
-      jQuery("h4.trigger").click(function(){
-        jQuery(this).next(".article_container").toggle();
-      });
-    });
-    */
-  </script>
 {% endblock %}
 
 {% block body %}
