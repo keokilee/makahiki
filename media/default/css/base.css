@@ -160,14 +160,14 @@ ul#messages li a {
 #content .homepage_content {
   border: 1px solid #999;
   height: auto;
-  margin: 20px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
   padding: 0px 10px;
 }
 
 #content #content_header {
   width: auto;
 	margin: 0px;
-	padding: 10px 10px 0px 10px;
+	padding: 5px 10px 0px 10px;
 }
 
 #content #three_col_left {
