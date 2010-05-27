@@ -37,6 +37,11 @@ class Article(models.Model):
     
     return slug
     
+  def formatted_date(self):
+    """Formats the created or updated date into a pretty string."""
+    date = self.updated_at or self.created_at
+    return date.strftime("%m/%d %I:%M")
+    
   def save(self):
     """Custom save method to update slug and date time fields."""
     

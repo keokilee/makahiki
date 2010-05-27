@@ -5,7 +5,7 @@ from django.template import RequestContext
 from kukui_cup_base.models import Article
 
 def homepage(request):
-  articles = Article.objects.all()[:5]
+  articles = Article.objects.order_by('-pk')
   return render_to_response("homepage.html", {
     "articles": articles,
   }, context_instance = RequestContext(request))
