@@ -1,5 +1,23 @@
 [
  {
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "gelee", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": 1, 
+   "is_superuser": 1, 
+   "is_staff": 1, 
+   "last_login": "2010-05-25 14:11:12", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "sha1$a7513$e607d708e2eb830410b30b9e7f547d1c914d093a", 
+   "email": "gelee@hawaii.edu", 
+   "date_joined": "2010-05-16 16:46:01"
+  }
+ }, 
+ {
   "pk": 2, 
   "model": "auth.user", 
   "fields": {
@@ -9,7 +27,7 @@
    "is_active": 1, 
    "is_superuser": 1, 
    "is_staff": 1, 
-   "last_login": "2010-04-05 14:35:50", 
+   "last_login": "2010-05-25 13:27:44", 
    "groups": [], 
    "user_permissions": [
     10, 
@@ -131,6 +149,34 @@
    "password": "sha1$6b957$d43d4f1ef4978d47ede0858f4c05e6c23a3dce27", 
    "email": "", 
    "date_joined": "2010-05-12 17:25:41"
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "user1", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": 1, 
+   "is_superuser": 0, 
+   "is_staff": 0, 
+   "last_login": "2010-05-25 13:28:44", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "sha1$1833a$14cecfd2a86b5d83edfa2466a0aa13136a514eec", 
+   "email": "", 
+   "date_joined": "2010-05-25 13:28:19"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "created_at": "2010-05-17 16:36:15", 
+   "awarded": 0, 
+   "updated_at": null, 
+   "approval_status": "pending"
   }
  }, 
  {
@@ -3004,26 +3050,39 @@
  }, 
  {
   "pk": 1, 
-  "model": "kukui_cup_base.article", 
+  "model": "activities.activitymember", 
   "fields": {
-   "title": "Current Standings", 
-   "created_at": "2010-04-25 13:50:00", 
-   "updated_at": "2010-04-25 13:55:45", 
-   "slug": "current-standings", 
-   "content": "<img src=\"http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=t:75,67&chxt=x&chxl=0:|Frear+Hall|Johnson+Hall|&chbh=25,20,50\">\r\n\r\nCurrently, Frear Hall is in the lead!", 
-   "abstract": "The current Kukui Cup standings for the week."
+   "admin_comment": "", 
+   "user_comment": "", 
+   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
+   "question": null, 
+   "user": 1, 
+   "activity": 5, 
+   "response": ""
   }
  }, 
  {
-  "pk": 2, 
+  "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {
-   "title": "Upcoming Events", 
-   "created_at": "2010-04-25 13:52:11", 
-   "updated_at": null, 
-   "slug": "upcoming-events", 
-   "content": "There are a few events where you can earn points coming up this week!  First, the monthly Blue Planet Foundation meeting will be this Tuesday.  Attendees can earn 10 points for attending this event!  Also, a free screening of the next Disney Earth movie will be shown on Friday.  Watching this movie can help your dorm earn 15 points!", 
-   "abstract": "Events coming up this week."
+   "title": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE", 
+   "created_at": "2010-05-26 14:42:19", 
+   "updated_at": "2010-05-26 14:43:58", 
+   "slug": "35th-ieee-photovoltaic-specialists-conference", 
+   "content": "Come see the exhibits displaying technology that spans the solar cell industry, and don\u2019t miss the HIGH SCHOOL PHOTOVOLTAIC DESIGN COMPETITION DEMONSTRATION! High school students will be displaying practical applications of photovoltaics to power their projects.\r\n\r\nThe following schools are competing: Honoka\u2019a High School, Farrington High and McKinley High\r\n\r\nSponsored by:\r\n\r\nThe Institute of Electrical and Electronics Engineers (IEEE) /\r\n\r\nElectron Devices Society / IEEE Photonics Society / Solar Energy\r\n\r\nIndustries Association", 
+   "abstract": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE\r\n\r\nInvites you to join us for\r\nPUBLIC DAY in the Exhibition Hall\r\n\r\nJune 22, 2010 1:30 PM \u2013 5:00 PM\r\n\r\nHawaii Convention Center"
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Hawaii Clean Energy Day 2010", 
+   "created_at": "2010-05-26 14:41:16", 
+   "updated_at": "2010-05-26 14:44:07", 
+   "slug": "hawaii-clean-energy-day-2010", 
+   "content": "The Hawai\u2018i Energy Policy Forum and our partners will be hosting an afternoon of local speakers and panels, followed by a pau hana networking session, to inspire vigorous discussion on the next steps Hawai\u2018i needs to take to achieve our clean energy objectives.\r\n\r\nAll are welcome!", 
+   "abstract": "Friday, June 4, 2010\r\n\r\n1:00 p.m. to 6:00 p.m.\r\n\r\nLaniakea YWCA, 1040 Richards Street in Honolulu\r\n\r\nRegistration fee: $25 (includes pupu & drinks)"
   }
  }, 
  {
@@ -3596,8 +3655,8 @@
   "pk": 26, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"datadiv\" align=\"center\" style=\"font-family: Arial;font-size: 12px;font-color: red\"></div>\r\n    <div id=\"lastchecked\" align=\"center\" style=\"font-family: Arial;font-size: 12px\"> </div>\r\n    <div id=\"onboardoptions\" style=\"font-family: Arial;font-size: 12px\"></div>\r\n    <div id=\"onboarduidiv\" style=\"font-family: Arial;font-size: 12px;display: none\"></div>\r\n    \r\n<script type=\"text/javascript\">google.load(\"prototype\", \"1.6.1.0\");</script>\r\n<script type=\"text/javascript\" src=\"http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js\"></script>\r\n<script type=\"text/javascript\" src=\"site_media/static/js/heatmap.js\"></script>", 
-   "title": "Heat Map"
+   "text": "<div id=\"dorm_chart_div\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
+   "title": "Standings"
   }
  }, 
  {
