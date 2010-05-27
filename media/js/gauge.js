@@ -42,8 +42,8 @@ function sendQuery() {
 
   dataSourceUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + dataDisplayed;
   
-  sourcediv.innerHTML = '<p align=\"center\" style=\"font-weight:bold;font-size:large;\">' + source + '</p>'
-  data_displayed_div.innerHTML= '<p align=\"center\" style=\"font-weight:bold;font-size:large;\">' + generateDataDisplayed(dataDisplayed) + '</p>';
+  sourcediv.innerHTML = '<p align=\"center\">' + source + '</p>'
+  data_displayed_div.innerHTML= '<p align=\"center\">' + generateDataDisplayed(dataDisplayed) + '</p>';
   
   gauge = new google.visualization.Gauge(document.getElementById('chartdiv'));
   
