@@ -42,10 +42,10 @@ div#website_title {
 
 div#website_title h1 {
     color: White;
-    text-shadow: 1px 1px 1px #444;
+    /*text-shadow: 1px 1px 1px #444;*/
     padding: 0 0 0.2em 0;
     margin: 0;
-    font-size: 2.0em;
+    font-size: 19px;
     letter-spacing: -1px;
 }
 
@@ -74,7 +74,7 @@ div#website_title h1 a {
 
 #content {
     background-color: White;
-    font-size: 0.9em;
+    font-size: 12px;
     line-height: 1.5em;
     color: #555;
 }
@@ -86,7 +86,7 @@ div#website_title h1 a {
 }
 
 #content h1 {
-    font-size: 2em;
+    font-size: 17px;
 }
 
 #content h2 {
@@ -97,7 +97,7 @@ div#website_title h1 a {
 }
 
 #content h3 {
-    font-size: 1.5em;
+    font-size: 15px;
     font-weight: normal;
     color: #459E00;
     margin: 1em 0 0.5em 0;
