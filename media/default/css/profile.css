@@ -6,13 +6,25 @@
   font-size: 1.0em;
 }
 
+.activity_header a {
+  text-decoration: none;
+  color: white;
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.0em;
+}
+
 .activity_item {
-  border: 1px solid #999;
+  /*border: 1px solid #999;*/
   margin: 10px 0px;
 }
 
 .activity_content {
   padding: 0px 5px;
+}
+
+.activity_content h4 {
+  padding: 0 10px;
 }
 
 .column_header td {

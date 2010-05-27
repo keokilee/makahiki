@@ -1,4 +1,4 @@
-<div class="activity_header">
+<div class="activity_header ui-accordion-header ui-corner-top">
 {% if is_me %}
   My commitments:
 {% else %}
@@ -6,7 +6,7 @@
 {% endif %}
 </div>
 
-<div class="activity_content">
+<div class="activity_content activity_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
   {% if user_commitments %}
     <table class="activity_list">
       <tr class="column_header">
