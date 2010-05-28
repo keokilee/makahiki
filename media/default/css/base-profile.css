@@ -52,6 +52,28 @@
   width: 200px;
 }
 
+#profile_info {
+  padding: 5px 0;
+}
+
+#profile_avatar {
+  margin: 5px 0 10px 0;
+}
+
+#profile_left .profile_detail {
+  padding: 0 10px;
+}
+
+.profile_detail ul {
+  padding: 0px;
+  list-style: none;
+}
+
+.profile_detail ul li {
+  margin: 5px;
+  list-style: none;
+}
+
 #profile_center {
   float: left;
   width: 480px;
