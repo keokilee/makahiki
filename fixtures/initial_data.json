@@ -1,23 +1,5 @@
 [
  {
-  "pk": 1, 
-  "model": "auth.user", 
-  "fields": {
-   "username": "gelee", 
-   "first_name": "", 
-   "last_name": "", 
-   "is_active": 1, 
-   "is_superuser": 1, 
-   "is_staff": 1, 
-   "last_login": "2010-05-25 14:11:12", 
-   "groups": [], 
-   "user_permissions": [], 
-   "password": "sha1$a7513$e607d708e2eb830410b30b9e7f547d1c914d093a", 
-   "email": "gelee@hawaii.edu", 
-   "date_joined": "2010-05-16 16:46:01"
-  }
- }, 
- {
   "pk": 2, 
   "model": "auth.user", 
   "fields": {
@@ -3046,19 +3028,6 @@
    "event_date": null, 
    "pub_date": "2010-05-12", 
    "is_event": 0
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
-   "question": null, 
-   "user": 1, 
-   "activity": 5, 
-   "response": ""
   }
  }, 
  {
