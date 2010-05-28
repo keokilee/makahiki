@@ -12,44 +12,48 @@
 
 {% block body %}
   <div id="content_header">
-    <div id="homepage_content_1" class="homepage_content ui-corner-all">
+    <div id="homepage_content_1" class="homepage_content">
       {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
     </div>
   </div>
   
   <div id="three_col_left">
-    <div id="homepage_content_3" class="homepage_content ui-corner-all">
+    <div id="homepage_content_3" class="homepage_content">
       {% gblock "homepage_content_3" for "gblocks.TitleAndText" %}
     </div>
     
-    <div id="homepage_content_5" class="homepage_content ui-corner-all">
+    <div id="homepage_content_5" class="homepage_content">
       {% gblock "homepage_content_5" for "gblocks.TitleAndText" %}
     </div>
 
-    <div id="homepage_content_6">
+    <div id="homepage_content_6" style="display:none">
       {% gblock "homepage_content_6" for "gblocks.TitleAndText" %}
     </div>
   </div>
   
   <div id="three_col_center">
-    <div id="homepage_content_4" class="homepage_content ui-corner-all">
+    <div id="homepage_content_4" class="homepage_content">
       {% gblock "homepage_content_4" for "gblocks.TitleAndText" %}
     </div>
   
-    <div id="homepage_content_2" class="homepage_content ui-corner-all">
+    <div id="homepage_content_2" class="homepage_content">
       {% gblock "homepage_content_2" for "gblocks.TitleAndText" %}
     </div>
   </div>
   <div id="three_col_right">
-    <div id="homepage_news" class="homepage_content ui-corner-all">
-      <h3>Featured News</h3>
-      {% if articles %}
-        {% for article in articles %}
-          {% include "news/article.html" %}
-        {% endfor %}
-      {% else %}
-        <p>There are no news stories yet</p>
-      {% endif %}
+    <div id="homepage_news" class="homepage_header ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="activity_header ui-accordion-header ui-corner-top">
+        Featured News
+      </div>
+      <div class="homepage_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% if articles %}
+          {% for article in articles %}
+            {% include "news/article.html" %}
+          {% endfor %}
+        {% else %}
+          <p>There are no news stories yet</p>
+        {% endif %}
+      </div>
     </div>
   </div>
 

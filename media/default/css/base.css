@@ -156,10 +156,14 @@ ul#messages li a {
     color: #693;
 }
 
+#content .makahiki_content {
+  padding: 0px 10px;
+}
+
 #content .homepage_content {
-  border: 1px solid #999;
+  /*border: 1px solid #999;*/
   height: auto;
-  margin: 5px 0px 0px 0px;
+  margin: 0px 0px 15px 0px;
   padding: 0px 10px;
 }
 
@@ -202,7 +206,7 @@ ul#messages li a {
 /*  margin-bottom:20px;*/
 }
 	
-#content .homepage_content_3 {
+#content #homepage_content_3 {
 	
 }
 
@@ -220,7 +224,6 @@ ul#messages li a {
 
 /* News items */
 #content .news_item {
-  border-top: 1px solid #999;
   padding:0px 5px;
 }
 

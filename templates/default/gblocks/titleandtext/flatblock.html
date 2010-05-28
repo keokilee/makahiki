@@ -2,8 +2,16 @@
 {% load frontendadmin_tags %}
 {% load thumbnail %}
 
-<div>
+<div class="makahiki_header ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+  {% if object.title %}
+    <div class="activity_header ui-accordion-header ui-corner-top">
+      {{ object.title }}
+    </div>
+    <div class="makahiki_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+  {% else %}
+    <div class="makahiki_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+  {%endif%}
     {% frontendadmin_change object %}
-    <h3>{{ object.title }}</h3>
     {{ object.text|markdown }}
+  </div>
 </div>
