@@ -17,13 +17,9 @@ google.load("visualization", "1");
  */
 function sendQuery(host, source) {
   refreshInterval = 15000;
-  var powerTitle = document.getElementById('powertitle');
   var powerLastCheck = document.getElementById('powerlastcheck');
-  var energyTitle = document.getElementById('energytitle');
   var energyLastCheck = document.getElementById('energylastcheck');
-  
-  powerTitle.innerHTML = generateTitle(source, "powerConsumed");
-  energyTitle.innerHTML = generateTitle(source, "energyConsumedToDate");
+
   powerUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + "powerConsumed";
   energyUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + "energyConsumedToDate";
   powerLastCheck.innerHTML = generateCheckDate();
@@ -65,31 +61,31 @@ function handleEnergyQuery(response) {
   dataContainer.draw(data, "Watt Hours");
 }
 
-function generateTitle(source, dataDisplayed) {
-  var html = [];
-  html.push(source);
-  html.push("<br />");
-  if (dataDisplayed == "energyGeneratedToDate") {
-    html.push("Current Energy Generated");
-    unit = "Watt Hours";
-  }
-  else if (dataDisplayed == "energyConsumedToDate") {
-    html.push("Current Energy Consumed");
-    unit = "Watt Hours";
-  }
-  else if (dataDisplayed == "powerGenerated") {
-    html.push("Current Power Generated");
-    unit = "Watts";
-  }
-  else if (dataDisplayed == "powerConsumed") {
-    html.push("Current Power Consumed");
-    unit = "Watts";
-  }
-  else {
-    html.push(dataDisplayed);
-  }
-  return html.join('');
-}
+// function generateTitle(source, dataDisplayed) {
+//   var html = [];
+//   html.push(source);
+//   html.push("<br />");
+//   if (dataDisplayed == "energyGeneratedToDate") {
+//     html.push("Current Energy Generated");
+//     unit = "Watt Hours";
+//   }
+//   else if (dataDisplayed == "energyConsumedToDate") {
+//     html.push("Current Energy Consumed");
+//     unit = "Watt Hours";
+//   }
+//   else if (dataDisplayed == "powerGenerated") {
+//     html.push("Current Power Generated");
+//     unit = "Watts";
+//   }
+//   else if (dataDisplayed == "powerConsumed") {
+//     html.push("Current Power Consumed");
+//     unit = "Watts";
+//   }
+//   else {
+//     html.push(dataDisplayed);
+//   }
+//   return html.join('');
+// }
 
 function generateCheckDate() {
   var html = [];
