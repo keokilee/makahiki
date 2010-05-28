@@ -19,12 +19,8 @@
   margin: 10px 0px;
 }
 
-.activity_content {
-  padding: 0px 5px;
-}
-
-.activity_content h4 {
-  padding: 0 10px;
+.profile_content .activity_item .activity_content {
+  padding: 0 15px;
 }
 
 .column_header td {
