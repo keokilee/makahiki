@@ -61,10 +61,10 @@
 #profile_right {
   float: left;
   width: 280px;
+  margin: 15px 5px;
 }
 
 .monitor_item {
-  border: 1px solid #999;
   margin: 5px 0px;
   padding: 5px;
 }
