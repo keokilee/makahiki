@@ -6,12 +6,12 @@ google.setOnLoadCallback(initializeData);
 
 // Once visualization API is loaded, retrieve data and set callbacks to run once retrieved.
 function initializeData() {
-// Get Overall Dorm Data.
-var dormURL = 'http://spreadsheets.google.com/tq?key=0An9ynmXUoikYdG94TnRCYjNqNng5MVZYb01SUEFMQVE&range=C10:D13&gid=0';
-var dormQuery = new google.visualization.Query(dormURL);
+  // Get Overall Dorm Data.
+  var dormURL = 'http://spreadsheets.google.com/tq?key=0An9ynmXUoikYdG94TnRCYjNqNng5MVZYb01SUEFMQVE&range=C10:D13&gid=0';
+  var dormQuery = new google.visualization.Query(dormURL);
 
-// Set a callback to run when the overall dorm data has been retrieved.
-dormQuery.send(displayDormEnergyData);
+  // Set a callback to run when the overall dorm data has been retrieved.
+  dormQuery.send(displayDormEnergyData);
 }
 
 
@@ -27,7 +27,9 @@ if (response.isError()) {
 var data = response.getDataTable();
 data.sort([{column: 1}]);
 var chart = new google.visualization.BarChart(document.getElementById('dorm_chart_div'));
-chart.draw(data, {width: 300,
+chart.draw(data, {backgroundColor: '#F5F3E5',
+                 colors: ['#459E00'],
+                 width: 300,
                  height: 200,
                  legend: 'none',
                  title: 'Dorm Energy Consumption',

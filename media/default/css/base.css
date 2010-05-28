@@ -9,6 +9,8 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
+    /*background: url("images/ui-bg_highlight-hard_100_f5f3e5_1x100.png") repeat-x scroll 50% top #F5F3E5;*/
+    background-color: #2F6B00;
 }
 
 a:link {
@@ -51,7 +53,7 @@ div#website_title h1 {
 
 div#website_title h1 a {
     text-decoration: none;
-    color: #55AE00;
+    color: White;
 }
 
 #color-wrapper {
