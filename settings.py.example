@@ -145,6 +145,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "account.context_processors.account",
 )
 
+WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
+
 INSTALLED_APPS = (
     # Kukui Cup specific apps.  Hopefully, they do not interfere with the fixture loading.
     'django_cas', # Placed here so that it registers as an app during testing.
