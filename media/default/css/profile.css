@@ -32,11 +32,6 @@
   border-bottom: 1px solid #999;
 }
 
-td.description_row {
-  width:100%;
-  padding: 5px 0px;
-}
-
 .activity_title {
   padding: 5px 0px;
   width:60%;
@@ -45,6 +40,10 @@ td.description_row {
 .activity_points {
   width:15%;
   padding: 5px 0px;
+}
+
+.activity_list tr td {
+  font-size:12px;
 }
 
 .profile_content {
