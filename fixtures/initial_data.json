@@ -3013,6 +3013,19 @@
   }
  }, 
  {
+  "pk": 1, 
+  "model": "activities.activitymember", 
+  "fields": {
+   "admin_comment": "", 
+   "user_comment": "", 
+   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
+   "question": null, 
+   "user": 1, 
+   "activity": 5, 
+   "response": ""
+  }
+ }, 
+ {
   "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {
@@ -3638,7 +3651,7 @@
   "pk": 25, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"sourcediv\" align=\"center\"></div>\r\n    <div id=\"chartdiv\" align=\"center\"></div>\r\n    <div id=\"data_displayed_div\" align=\"center\"></div>\r\n    <div id=\"lastcheckdiv\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/gauge.js\"></script>", 
+   "text": "<div id=\"sourcediv\" align=\"center\"></div>\r\n    <div id=\"chartdiv\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"data_displayed_div\" align=\"center\"></div>\r\n    <div id=\"lastcheckdiv\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/gauge.js\"></script>", 
    "title": "Energy Gauge"
   }
  }, 
@@ -3646,7 +3659,7 @@
   "pk": 26, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"dorm_chart_div\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
+   "text": "<div id=\"dorm_chart_div\" style=\"padding-top:35px\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\" /></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
    "title": "Standings"
   }
  }, 
