@@ -237,6 +237,12 @@ ul#messages li a {
   height: 100%;
 }
 
+/* Energy content tab. */
+.energy_content {
+  padding: 10px 10px;
+  height: auto;
+}
+
 /* News items */
 #content .news_item {
   padding:0px 5px;
