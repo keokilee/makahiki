@@ -158,10 +158,6 @@ ul#messages li a {
 }
 
 #content .makahiki_content {
-  padding: 0px 10px;
-}
-
-#content .homepage_content {
   /*border: 1px solid #999;*/
   height: auto;
   margin: 0px 0px 15px 0px;
@@ -196,11 +192,11 @@ ul#messages li a {
 }
 
 #content #homepage_content_1 {
-  height: auto;
+  
 }
 
 #content #homepage_content_2 {
-  height: auto;
+  
 }
 
 #content #homepage_news {

@@ -10,6 +10,11 @@
   padding: 0;
 }
 
+/* Override to ensure subnavigation doesn't get pushed over.*/
+#tabhead ul li.ui-state-default {
+  margin: 0 0.2em 0 0;
+}
+
 #tabhead a:link,
 #tabhead a:visited
 {
