@@ -3192,7 +3192,7 @@
   "pk": 15, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "energy_hawaii", 
+   "slug": "resources_content_7", 
    "content_type": 44, 
    "object_id": 11
   }
@@ -3201,7 +3201,7 @@
   "pk": 16, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "energy_news", 
+   "slug": "resources_content_8", 
    "content_type": 44, 
    "object_id": 12
   }
@@ -3210,7 +3210,7 @@
   "pk": 17, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "energy_involved", 
+   "slug": "resources_content_9", 
    "content_type": 44, 
    "object_id": 13
   }
@@ -3440,7 +3440,7 @@
   "pk": 2, 
   "model": "gblocks.text", 
   "fields": {
-   "text": "<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+   "text": "<object width=\"320\" height=\"240\"><param name=\"movie\" value=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"320\" height=\"240\"></embed></object>"
   }
  }, 
  {
