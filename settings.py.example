@@ -108,7 +108,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_openid.consumer.SessionConsumer',
     'account.middleware.LocaleMiddleware',
     'django_cas.middleware.CASMiddleware',
     'django.middleware.doc.XViewMiddleware',
@@ -141,9 +140,24 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "pinax.core.context_processors.pinax_settings",
 
     # "notification.context_processors.notification",
-    "account.context_processors.openid",
+    # "account.context_processors.openid",
     "account.context_processors.account",
 )
+
+# Default Facebook info if the connection fails for some reason.
+DUMMY_FACEBOOK_INFO = {
+    'uid':0,
+    'name':'(Private)',
+    'first_name':'(Private)',
+    'pic_square_with_logo':'http://www.facebook.com/pics/t_silhouette.gif',
+    'affiliations':None,
+    'status':None,
+    'proxied_email':None,
+}
+
+FACEBOOK_API_KEY = '123928214292464'
+FACEBOOK_SECRET_KEY = '9ee2cbf8b058ff53296ff8bf41d8b578'
+FACEBOOK_INTERNAL = True
 
 WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
 
@@ -157,6 +171,8 @@ INSTALLED_APPS = (
     'windmill_tests',
     'kukui_cup_themes',
     'kukui_cup_base',
+    
+    'facebookconnect',
     
     # included
     'django.contrib.auth',
@@ -200,7 +216,7 @@ INSTALLED_APPS = (
     'django_generic_flatblocks.contrib.gblocks',
     
     # migration support. comment out if module is not installed.
-    #'south',
+    'south',
 )
 
 FIXTURE_DIRS = [

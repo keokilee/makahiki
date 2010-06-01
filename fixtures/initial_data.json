@@ -134,24 +134,6 @@
   }
  }, 
  {
-  "pk": 4, 
-  "model": "auth.user", 
-  "fields": {
-   "username": "user1", 
-   "first_name": "", 
-   "last_name": "", 
-   "is_active": 1, 
-   "is_superuser": 0, 
-   "is_staff": 0, 
-   "last_login": "2010-05-25 13:28:44", 
-   "groups": [], 
-   "user_permissions": [], 
-   "password": "sha1$1833a$14cecfd2a86b5d83edfa2466a0aa13136a514eec", 
-   "email": "", 
-   "date_joined": "2010-05-25 13:28:19"
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.commonactivityuser", 
   "fields": {
@@ -3052,6 +3034,46 @@
    "slug": "hawaii-clean-energy-day-2010", 
    "content": "The Hawai\u2018i Energy Policy Forum and our partners will be hosting an afternoon of local speakers and panels, followed by a pau hana networking session, to inspire vigorous discussion on the next steps Hawai\u2018i needs to take to achieve our clean energy objectives.\r\n\r\nAll are welcome!", 
    "abstract": "Friday, June 4, 2010\r\n\r\n1:00 p.m. to 6:00 p.m.\r\n\r\nLaniakea YWCA, 1040 Richards Street in Honolulu\r\n\r\nRegistration fee: $25 (includes pupu & drinks)"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "kukui_cup_floors.dorm", 
+  "fields": {
+   "updated_at": null, 
+   "created_at": "2010-05-17 00:00:00", 
+   "name": "Hale Wainani", 
+   "slug": "hale-wainani"
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "kukui_cup_floors.dorm", 
+  "fields": {
+   "updated_at": null, 
+   "created_at": "2010-05-25 00:00:00", 
+   "name": "Hale Ilima", 
+   "slug": "hale-ilima"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "kukui_cup_floors.floor", 
+  "fields": {
+   "dorm": 1, 
+   "wattdepot_host": null, 
+   "floor_number": 2, 
+   "wattdepot_source": null
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "kukui_cup_floors.floor", 
+  "fields": {
+   "dorm": 2, 
+   "wattdepot_host": "", 
+   "floor_number": 3, 
+   "wattdepot_source": "SIM_UH_ILIMA_FLOORS_3-4"
   }
  }, 
  {
