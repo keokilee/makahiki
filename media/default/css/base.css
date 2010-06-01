@@ -162,6 +162,7 @@ ul#messages li a {
     color: #693;
 }
 
+/* Content item styles */
 #content .makahiki_content {
   /*border: 1px solid #999;*/
   height: auto;
@@ -183,10 +184,19 @@ ul#messages li a {
   padding: 0px 10px;
 }
 
+/* Content Header */
 #content #content_header {
   width: auto;
 	margin: 0px;
 	padding: 10px;
+}
+
+#content_header .makahiki_content_body {
+  text-align: center;
+}
+
+#content_header .makahiki_content_title {
+  text-align: center;
 }
 
 /* Three column layout */
