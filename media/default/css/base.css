@@ -164,6 +164,20 @@ ul#messages li a {
   padding: 0px 10px;
 }
 
+#content .makahiki_content_title {
+  background-color: #459E00;
+  color: white;
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.0em;
+}
+
+#content .makahiki_content_body {
+  height: auto;
+  margin: 0px 0px 15px 0px;
+  padding: 0px 10px;
+}
+
 #content #content_header {
   width: auto;
 	margin: 0px;
