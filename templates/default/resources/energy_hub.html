@@ -6,15 +6,19 @@
 {% block head_title %}{% trans "Resources: Energy Hub" %}{% endblock %}
 
 {% block body %}
-<div class="energy_hawaii" style="width:500px;float:left">
-  {% gblock "energy_hawaii" for "gblocks.TitleAndText" %}
-</div>
+  <div id="two_col_left">
+    <div class="makahiki_content">
+      {% gblock "resources_content_7" for "gblocks.TitleAndText" %}
+    </div>
+  </div>
 
-<div class="energy_news" style="width:400px; float:left; padding-left:10px">
-  {% gblock "energy_news" for "gblocks.TitleAndText" %}
-</div>
+  <div id="two_col_right">
+    <div class="makahiki_content">
+      {% gblock "resources_content_8" for "gblocks.TitleAndText" %}
+    </div>
 
-<div class="energy_involved" style="width:400px; float:left; padding-left:10px">
-  {% gblock "energy_involved" for "gblocks.TitleAndText" %}
-</div>
+    <div class="makahiki_content">
+      {% gblock "resources_content_9" for "gblocks.TitleAndText" %}
+    </div>
+  </div>
 {% endblock %}
