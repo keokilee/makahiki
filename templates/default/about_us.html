@@ -5,25 +5,33 @@
 
 {% block head_title %}{% trans "About Us" %}{% endblock %}
 
-{% block tab_id %}"#about_us_tab"{% endblock %}
+{% block tab_id %}"#about_tab"{% endblock %}
 
 {% block body %}
-  <div style="width:300px; float:left">
-    {% gblock "about_content_1" for "gblocks.TitleAndText" %}
+  <div id="two_col_left">
+    <div id="about_content_1" class="makahiki_content">
+      {% gblock "about_content_1" for "gblocks.TitleAndText" %}
+    </div>
   </div>
-  <div style="width:500px; float:left; padding-left:30px">
-    {% gblock "about_content_2" for "gblocks.TitleAndText" %}
+  
+  <div id="two_col_right">
+    <div id="about_content_2" class="makahiki_content">
+      {% gblock "about_content_2" for "gblocks.TitleAndText" %}
+    </div>
   </div>
-  <div>
-    {% gblock "about_content_3" for "gblocks.TitleAndText" %}
-  </div>
-  <div>
-    {% gblock "about_content_4" for "gblocks.TitleAndText" %}
-  </div>
-  <div>
-    {% gblock "about_content_5" for "gblocks.TitleAndText" %}
-  </div>
-  <div>
-    {% gblock "about_content_6" for "gblocks.TitleAndText" %}
+  
+  <div style="display:none">
+    <div>
+      {% gblock "about_content_3" for "gblocks.TitleAndText" %}
+    </div>
+    <div>
+      {% gblock "about_content_4" for "gblocks.TitleAndText" %}
+    </div>
+    <div>
+      {% gblock "about_content_5" for "gblocks.TitleAndText" %}
+    </div>
+    <div>
+      {% gblock "about_content_6" for "gblocks.TitleAndText" %}
+    </div>
   </div>
 {% endblock %}
