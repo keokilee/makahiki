@@ -1,9 +1,10 @@
-.activity_header {
+#content .activity_header {
   background-color: #459E00;
   color: white;
   margin: 0px;
   padding: 5px;
   font-size: 1.0em;
+  font-weight: normal;
 }
 
 .activity_header a {
@@ -12,6 +13,10 @@
   margin: 0px;
   padding: 5px;
   font-size: 1.0em;
+}
+
+.activity_header .ui-icon {
+  margin-left: 450px;
 }
 
 .activity_item {

@@ -1,9 +1,10 @@
-<div class="activity_header ui-accordion-header ui-corner-top">
+<div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
 {% if is_me %}
   My commitments:
 {% else %}
   {{ other_user.get_profile.name }}'s commitments.
 {% endif %}
+<span class="ui-icon ui-icon-help"></span>
 </div>
 
 <div class="activity_content activity_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">

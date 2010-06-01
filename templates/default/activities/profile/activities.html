@@ -1,9 +1,10 @@
-<div class="ui-accordion-header ui-corner-top activity_header">
+<div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
   {% if is_me %}
       My activities:
   {% else %}
     {{ other_user.get_profile.name }}'s activities.
   {% endif %}
+  <span class="ui-icon ui-icon-help"></span>
 </div>
 
 <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
