@@ -5,6 +5,12 @@ from django.db import models
 
 # Create your models here.
 
+class EnergyTip(models.Model):
+  content = models.TextField(help_text="Content of the energy tip.")
+  
+  def __unicode__(self):
+    return self.content
+
 class Article(models.Model):
   """Represents an article on the front page."""
   
