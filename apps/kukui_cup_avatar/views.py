@@ -74,9 +74,9 @@ def change(request, extra_context={}, next_override=None):
             updated = True
             request.user.message_set.create(
                 message=_("Successfully updated your avatar."))
-        if updated and notification:
-            notification.send([request.user], "avatar_updated", {"user": request.user, "avatar": avatar})
-            notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "avatar_friend_updated", {"user": request.user, "avatar": avatar})
+        # if updated and notification:
+        #     notification.send([request.user], "avatar_updated", {"user": request.user, "avatar": avatar})
+        #     notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "avatar_friend_updated", {"user": request.user, "avatar": avatar})
         return HttpResponseRedirect(next_override or _get_next(request))
     return render_to_response(
         'avatar/change.html',
