@@ -278,3 +278,4 @@ class GoalMember(CommonActivityUser):
   
   goal = models.ForeignKey(Goal)
   floor = models.ForeignKey(Floor)
+  user = models.ForeignKey(User)
