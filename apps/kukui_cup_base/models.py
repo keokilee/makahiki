@@ -2,10 +2,12 @@ import datetime
 import string
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
-class EnergyTip(models.Model):
+class Headline(models.Model):
+  """Notifications to be posted at the top of the home page."""
   content = models.TextField(help_text="Content of the energy tip.")
   
   def __unicode__(self):
@@ -48,8 +50,17 @@ class Article(models.Model):
     date = self.updated_at or self.created_at
     return date.strftime("%m/%d %I:%M")
     
+  def create_headline(self):
+    """Creates a headline for new stories."""
+    
+    # We want to do this after saving, but not for updated items.
+    if self.pk and not self.updated_at:
+      content = "Latest News: <a href='/news/%d/%s'>%s</a>" % (self.pk, self.slug, self.title)
+      headline = Headline(content=content)
+      headline.save()
+    
   def save(self):
-    """Custom save method to update slug and date time fields."""
+    """Custom save method to update slug and date time fields and to post headlines."""
     
     if not self.slug:
       self.slug = self.create_slug()
@@ -58,5 +69,8 @@ class Article(models.Model):
       self.created_at = datetime.datetime.today()
     else:
       self.updated_at = datetime.datetime.today()
-      
+
     super(Article, self).save()
+    
+    # Create headline.
+    self.create_headline()
