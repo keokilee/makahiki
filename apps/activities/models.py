@@ -279,3 +279,32 @@ class GoalMember(CommonActivityUser):
   goal = models.ForeignKey(Goal)
   floor = models.ForeignKey(Floor)
   user = models.ForeignKey(User)
+  
+  def save(self):
+    """Custom save method to award points to all floor members."""
+    
+    if self.approval_status == u"approved" and not self.awarded:
+      for profile in self.floor.profile_set:
+        profile.points += self.goal.point_value
+        profile.save()
+      
+      self.awarded = True
+    
+    elif self.approval_status !=u"approved" and self.awarded:
+      for profile in self.floor.profile_set:
+        profile.points -= self.goal.point_value
+        profile.save()
+        
+      self.awarded = False
+      
+    super(GoalMember, self).save()
+  
+  def delete(self):
+    """Custom delete method to remove points from all floor members."""
+    
+    if self.awarded:
+      for profile in self.floor.profile_set:
+        profile.points -= self.goal.point_value
+        profile.save()
+    
+    super(GoalMember, self).delete()
