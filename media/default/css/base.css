@@ -237,6 +237,18 @@ ul#messages li a {
   height: 100%;
 }
 
+/* Headlines */
+
+#content #headlines {
+  height:40px;
+  text-align:center;
+}
+
+#headlines .headline_content {
+  text-align:center;
+  width: 100%;
+}
+
 /* Energy content tab. */
 .energy_content {
   padding: 10px 10px;

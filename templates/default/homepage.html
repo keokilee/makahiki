@@ -8,12 +8,24 @@
 {% block extra_head %}
   <!--Since so many scripts on this page use the Visualization API, we load it here. -->
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.cycle.lite.1.0.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('#headlines').cycle({
+  		fx: 'fade',
+  	});
+  });
+  </script>
+  
 {% endblock %}
 
 {% block body %}
-  <div id="content_header">
-    <div id="homepage_content_1" class="makahiki_content">
-      {% gblock "homepage_content_1" for "gblocks.TitleAndText" %}
+  <div id="content_header">    
+    <div class="makahiki_content">
+      <div id="headlines" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+        {% include "kukui_cup_base/headlines.html" %}
+      </div>
     </div>
   </div>
   

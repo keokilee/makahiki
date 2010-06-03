@@ -21,7 +21,7 @@ def article(request, item_id, slug=None):
   else:
     article = get_object_or_404(Article, pk=item_id, slug=slug)
 
-  return render_to_response("news/full_article.html", {
+  return render_to_response("kukui_cup_base/full_article.html", {
     "article": article,
   }, context_instance = RequestContext(request))
   
