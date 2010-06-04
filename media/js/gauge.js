@@ -9,8 +9,8 @@ function initializeGauge() {
   // Get all of the dorm data from the spreadsheet.
   var gaugeURL = 'http://spreadsheets.google.com/tq?key=0Av0U6TKHfzXYdG1vUnduR0RVTktyR1ZtNjAtSE9Qbmc&range=A3:F21&gid=0';
   var gaugeQuery = new google.visualization.Query(gaugeURL);
-  // Update the gauges every 5 seconds
-  gaugeQuery.setRefreshInterval(5);
+  // Update the gauges every 30 seconds
+  gaugeQuery.setRefreshInterval(30);
 
   // Set a callback to run when the dorm data has been retrieved.
   gaugeQuery.send(displayGaugeData);
