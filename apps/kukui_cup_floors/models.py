@@ -53,17 +53,25 @@ class Dorm(models.Model):
 class Floor(models.Model):
   floor_number = models.IntegerField(help_text="The floor number in the dorm.")
   dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
-  wattdepot_source = models.CharField(
-                  max_length=200,
-                  blank=True,
-                  null=True,
-                  help_text="The WattDepot source corresponding to this floor."
-  )
-  wattdepot_host = models.CharField(
+  chart_url = models.CharField(
                   max_length=200,
                   blank=True, 
                   null=True,
-                  help_text="Optional. Use if you need to specify a different WattDepot host than the one used in the settings."
+                  help_text="Specify a Google Chart where we can retrieve power and energy data from."
+  )
+  
+  chart_dorm = models.CharField(
+                  max_length=200,
+                  blank=True,
+                  null=True,
+                  help_text="The column value where we can find the dorm in the Google chart."
+  )
+  
+  chart_floor = models.CharField(
+                  max_length=200,
+                  blank=True,
+                  null=True,
+                  help_text="The column value where we can find the floor in the Google chart."
   )
   
   def __unicode__(self):

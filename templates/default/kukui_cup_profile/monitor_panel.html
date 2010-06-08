@@ -1,4 +1,4 @@
-{% if user.get_profile.floor and user.get_profile.floor.wattdepot_source %}
+{% if user.get_profile.floor and user.get_profile.floor.chart_url %}
 <div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
   <div class="ui-accordion-header ui-corner-top activity_header">
     Your floor&apos;s power usage:
@@ -27,9 +27,9 @@
   <script type="text/javascript" src="{{STATIC_URL}}js/monitor.js"></script>
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      dorm = "Ilima";
-      floor= "3 - 4";
-      charturl = 'http://spreadsheets.google.com/tq?key=0Av0U6TKHfzXYdG1vUnduR0RVTktyR1ZtNjAtSE9Qbmc&range=A3:F21&gid=0';
+      dorm = "{{user.get_profile.floor.chart_dorm}}";
+      floor= "{{user.get_profile.floor.chart_floor}}";
+      charturl = '{{user.get_profile.floor.chart_url}}';
       initializeMonitor(charturl, dorm, floor);
     })
   </script>
