@@ -1,91 +1,52 @@
-var dataContainer = null;
-var dataSourceUrl = null;
-var dataSourceUrlPart1 = "/sources/";
-var dataSourceUrlPart2 = "/sensordata/latest?tq=select%20timePoint%2C%20";
-var host = null;
-var refreshInterval = null;
-var unit = null;
-var source = null;
-
+// Load the Visualization API and the bar chart package.
 google.load("visualization", "1");
-//google.setOnLoadCallback(sendQuery);
 
 /**
- * testing data source name: "monitor-test", "monitor-test2", and "monitor-test3"
- * testing host: http://server.wattdepot.org:8184/gviz
- * datasource Url structure: {host}/sources/{source}/sensordata/latest?tq={queryString}   
+ * Once visualization API is loaded, retrieve data and set callback to run once retrieved.
  */
-function sendQuery(host, source) {
-  refreshInterval = 15000;
+function initializeMonitor(charturl, dorm, floor) {
   var powerLastCheck = document.getElementById('powerlastcheck');
   var energyLastCheck = document.getElementById('energylastcheck');
-
-  powerUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + "powerConsumed";
-  energyUrl = host + dataSourceUrlPart1 + source + dataSourceUrlPart2 + "energyConsumedToDate";
+  
   powerLastCheck.innerHTML = generateCheckDate();
   energyLastCheck.innerHTML = generateCheckDate();
-
-  var powerQuery = new google.visualization.Query(powerUrl);
-  var energyQuery = new google.visualization.Query(energyUrl);
-  powerQuery.send(handlePowerQuery);
-  energyQuery.send(handleEnergyQuery);
-
-  setTimeout(function() {
-    sendQuery(host, source);
-  },refreshInterval);
+  
+  // Get all of the dorm data from the spreadsheet.
+  var dormDataURL = charturl;
+  var dorm = dorm;
+  var floor = floor;
+  var dormDataQuery = new google.visualization.Query(dormDataURL);
+  // Update the chart every 15 seconds
+  dormDataQuery.setRefreshInterval(30);
+  // Set a callback to run when the dorm data has been retrieved.
+  dormDataQuery.send(displayDormData);
 }
+
 
 /**
- * Query response handler function.
- * Called by the Google Visualization API once the response is received.
- * Takes the query response and formats it as a table.
+ * Once data is available, create view to display.
  */
-function handlePowerQuery(response) {
-  var dataDiv = document.getElementById('powerdata');
-  dataContainer = new monitor.visualization(dataDiv);
+function displayDormData(response) {
+  // Process errors, if any.
+  if (response.isError()) {
+      alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+      return;
+  }
+  
+  // Get the dorm data table.
   var data = response.getDataTable();
-
-  dataContainer.draw(data, "Watts");
+  
+  var view = new google.visualization.DataView(data);
+  //Find the row corresponding to the dorm and floor.  Dorm is column 0, Floor is column 1.
+  //Should we do anything if there is more than one row?
+  view.setRows(view.getFilteredRows([{column: 0, value: dorm}, {column: 1, value: floor}]));
+  
+  //Create power monitor.  Column 2 is the power value, column 3 is the update.
+  drawMonitor(document.getElementById("powerdata"), "Watts", view, 2, 3);
+  
+  //Create energy monitor. Column 5 is update date, column 4 is value.
+  drawMonitor(document.getElementById("energydata"), "Watt Hours", view, 4, 5);             
 }
-
-/**
- * Query response handler function.
- * Called by the Google Visualization API once the response is received.
- * Takes the query response and formats it as a table.
- */
-function handleEnergyQuery(response) {
-  var dataDiv = document.getElementById('energydata');
-  dataContainer = new monitor.visualization(dataDiv);
-  var data = response.getDataTable();
-
-  dataContainer.draw(data, "Watt Hours");
-}
-
-// function generateTitle(source, dataDisplayed) {
-//   var html = [];
-//   html.push(source);
-//   html.push("<br />");
-//   if (dataDisplayed == "energyGeneratedToDate") {
-//     html.push("Current Energy Generated");
-//     unit = "Watt Hours";
-//   }
-//   else if (dataDisplayed == "energyConsumedToDate") {
-//     html.push("Current Energy Consumed");
-//     unit = "Watt Hours";
-//   }
-//   else if (dataDisplayed == "powerGenerated") {
-//     html.push("Current Power Generated");
-//     unit = "Watts";
-//   }
-//   else if (dataDisplayed == "powerConsumed") {
-//     html.push("Current Power Consumed");
-//     unit = "Watts";
-//   }
-//   else {
-//     html.push(dataDisplayed);
-//   }
-//   return html.join('');
-// }
 
 function generateCheckDate() {
   var html = [];
@@ -98,9 +59,22 @@ function generateCheckDate() {
   html.push("</font>");
   return html.join('');
 }
+
+function drawMonitor(datadiv, unit, data, valueIndex, dateIndex) {
+  var html = [];
+  var date = data.getFormattedValue(0, dateIndex)
+  var value = data.getFormattedValue(0, valueIndex)
+  value = parseFloat(value);
+  value = Math.floor(value + 0.5);
+  html.push('<font style=\"font-size:1.2em; font-weight:bold; font-family:arial,sans-serif\">');
+  html.push(value);
+  html.push('</font>');
+  html.push(' ');
+  html.push(unit);
+  html.push('<br /><font style=\"font-size:0.8em; font-style: italic\">Data Updated at: '); 
+  html.push(date);
+  html.push('</font>');
   
-
-
-
-
+  datadiv.innerHTML = html.join('');
+}
 

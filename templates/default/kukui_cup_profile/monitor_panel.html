@@ -24,11 +24,13 @@
 </div>
 
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
-  <script src="{{STATIC_URL}}js/monitor_visualization.js" type="text/javascript"></script> 
   <script type="text/javascript" src="{{STATIC_URL}}js/monitor.js"></script>
   <script type="text/javascript">
-    host = "{{user.get_profile.floor.get_wattdepot_host}}";
-    source = "{{user.get_profile.floor.wattdepot_source}}";
-    sendQuery(host, source);
+    jQuery(document).ready(function() {
+      dorm = "Ilima";
+      floor= "3 - 4";
+      charturl = 'http://spreadsheets.google.com/tq?key=0Av0U6TKHfzXYdG1vUnduR0RVTktyR1ZtNjAtSE9Qbmc&range=A3:F21&gid=0';
+      initializeMonitor(charturl, dorm, floor);
+    })
   </script>
 {% endif %}
