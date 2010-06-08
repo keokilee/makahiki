@@ -3026,34 +3026,6 @@
   }
  }, 
  {
-  "pk": 4, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/9/35th-ieee-photovoltaic-specialists-conference'>35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE</a>"
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/8/hawaii-clean-energy-day-2010'>Hawaii Clean Energy Day 2010</a>"
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/11/blue-planet-foundation-meeting'>Blue Planet Foundation Meeting</a>"
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Energy Tip: Turn off the lights before you leave your room."
-  }
- }, 
- {
   "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {

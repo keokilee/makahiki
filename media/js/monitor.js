@@ -16,7 +16,7 @@ function initializeMonitor(charturl, dorm, floor) {
   var dorm = dorm;
   var floor = floor;
   var dormDataQuery = new google.visualization.Query(dormDataURL);
-  // Update the chart every 15 seconds
+  // Update the chart every 30 seconds
   dormDataQuery.setRefreshInterval(30);
   // Set a callback to run when the dorm data has been retrieved.
   dormDataQuery.send(displayDormData);
