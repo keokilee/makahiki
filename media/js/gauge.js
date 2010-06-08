@@ -4,7 +4,9 @@ google.load("visualization", "1", {packages:['gauge']});
 // Set a callback to run when the Google Visualization API is loaded.
 google.setOnLoadCallback(initializeGauge);
 
-// Once visualization API is loaded, retrieve data and set callbacks to run once retrieved.
+/**
+ * Once visualization API is loaded, retrieve data and set callbacks to run once retrieved.
+ */
 function initializeGauge() {
   // Get all of the dorm data from the spreadsheet.
   var gaugeURL = 'http://spreadsheets.google.com/tq?key=0Av0U6TKHfzXYdG1vUnduR0RVTktyR1ZtNjAtSE9Qbmc&range=A3:F21&gid=0';
@@ -17,7 +19,9 @@ function initializeGauge() {
 }
 
 
-// Callback that gets the dorm data and creates DataViews to display each table individually.
+/**
+ * Once dorm data is retrieved, create DataViews and display gauges.
+ */
 function displayGaugeData(response) {
   // Process errors, if any.
   if (response.isError()) {
@@ -26,12 +30,27 @@ function displayGaugeData(response) {
   }
   
   // Get the dorm data table.
-  var data = response.getDataTable();
+  var gaugeData = response.getDataTable();
+  // Format the timestamps in column 3 to a short version. 
+  var gaugeFormatter = new google.visualization.DateFormat({formatType: 'short'});
+  gaugeFormatter.format(gaugeData, 3);
   
-  // Create the view that is just ilima floors.
-  var view = new google.visualization.DataView(data);
-  view.setColumns([0,2]);
-  view.setRows([5, 11, 17]);
-  var chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
-  chart.draw(view, {height: 100, max: 5000, greenFrom: 0, greenTo: 2000, yellowFrom:2001, yellowTo: 4000, redFrom: 4001, redTo: 5000});
+  // Now draw the gauges.
+  drawGaugeInfo(gaugeData, 17, 'lehua');
+  drawGaugeInfo(gaugeData, 11, 'mokihana');
+  drawGaugeInfo(gaugeData, 5, 'ilima');
 }
+
+/**
+ * Draws the gauge and timestamp for the given dorm. 
+ */
+function drawGaugeInfo(data, row, dorm) {
+  var gaugeView = new google.visualization.DataView(data);
+  gaugeView.setColumns([0,2]);
+  gaugeView.setRows([row]);
+  var gauge = new google.visualization.Gauge(document.getElementById(dorm + '_chart_div'));
+  // 90 is the minimum height for a gauge that still allows the dorm name to be readable.
+  gauge.draw(gaugeView, {height: 90, max: 5000, greenFrom: 0, greenTo: 2000, yellowFrom:2001, yellowTo: 4000, redFrom: 4001, redTo: 5000});
+  document.getElementById(dorm + '_time_div').innerHTML = data.getFormattedValue(row, 3);
+}
+
