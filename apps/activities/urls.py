@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
+    url(r'^activity_list/$', 'activities.views.activity_list', name="activity_list"),
     url(r'^add_(?P<item_type>activity|commitment)/(?P<item_id>\d+)/$',
       'activities.views.add_participation', name='add_participation'),
     url(r'^remove_(?P<item_type>activity|commitment)/(?P<item_id>\d+)/$',

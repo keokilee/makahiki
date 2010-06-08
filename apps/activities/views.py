@@ -14,6 +14,18 @@ from activities.forms import ActivityTextForm, ActivityImageForm, CommitmentComm
 from activities import MAX_COMMITMENTS
 
 @login_required
+def activity_list(request):
+  user = request.user
+  
+  user_activities = user.activity_set.all()
+  available_activities = Activity.get_available_for_user(user)
+  
+  return render_to_response('activities/activity_list.html', {
+    "user_activities": user_activities,
+    "available_activities": available_activities,
+  }, context_instance = RequestContext(request))
+  
+@login_required
 def add_participation(request, item_type, item_id):
   """Adds the user as participating in the item."""
   
