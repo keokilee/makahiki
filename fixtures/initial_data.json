@@ -3463,12 +3463,12 @@
   }
  }, 
  {
-  "pk": 52, 
+  "pk": 55, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "activity_help", 
-   "content_type": 44, 
-   "object_id": 41
+   "content_type": 42, 
+   "object_id": 8
   }
  }, 
  {
@@ -3536,6 +3536,13 @@
   "model": "gblocks.text", 
   "fields": {
    "text": "Goals are tasks that involve the participation of your fellow dorm floor residents.  A floor can only participate in up to 5 goals.  Also, each user can add up to two goals for their floor at a time.\r\n\r\nTo get points for completing a goal, you will need to click on the \"Request Points\" link.  There, you can enter an optional comment.  Once an admin approves your request, your entire floor will receive points."
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!"
   }
  }, 
  {
@@ -3845,14 +3852,6 @@
   "model": "gblocks.titleandtext", 
   "fields": {
    "text": "", 
-   "title": ""
-  }
- }, 
- {
-  "pk": 41, 
-  "model": "gblocks.titleandtext", 
-  "fields": {
-   "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!", 
    "title": ""
   }
  }
