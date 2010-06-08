@@ -3013,19 +3013,6 @@
   }
  }, 
  {
-  "pk": 1, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
-   "question": null, 
-   "user": 1, 
-   "activity": 5, 
-   "response": ""
-  }
- }, 
- {
   "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {
@@ -3047,6 +3034,18 @@
    "slug": "hawaii-clean-energy-day-2010", 
    "content": "The Hawai\u2018i Energy Policy Forum and our partners will be hosting an afternoon of local speakers and panels, followed by a pau hana networking session, to inspire vigorous discussion on the next steps Hawai\u2018i needs to take to achieve our clean energy objectives.\r\n\r\nAll are welcome!", 
    "abstract": "Friday, June 4, 2010\r\n\r\n1:00 p.m. to 6:00 p.m.\r\n\r\nLaniakea YWCA, 1040 Richards Street in Honolulu\r\n\r\nRegistration fee: $25 (includes pupu & drinks)"
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "kukui_cup_base.article", 
+  "fields": {
+   "title": "Blue Planet Foundation Meeting", 
+   "created_at": "2010-06-02 16:28:42", 
+   "updated_at": null, 
+   "slug": "blue-planet-foundation-meeting", 
+   "content": "<div></div>", 
+   "abstract": "There will be a Blue Planet Foundation meeting on campus at 2PM.  All are welcome to attend."
   }
  }, 
  {
@@ -3423,6 +3422,33 @@
   }
  }, 
  {
+  "pk": 52, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "activity_help", 
+   "content_type": 44, 
+   "object_id": 41
+  }
+ }, 
+ {
+  "pk": 53, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "commitment_help", 
+   "content_type": 42, 
+   "object_id": 6
+  }
+ }, 
+ {
+  "pk": 54, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "goal_help", 
+   "content_type": 42, 
+   "object_id": 7
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.title", 
   "fields": {
@@ -3455,6 +3481,20 @@
   "model": "gblocks.text", 
   "fields": {
    "text": "Energy Tip: Turn off the lights when you leave the room."
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": "Commitments are a \"pledge\" or a \"promise\" that you will perform a simple task for your floor.  You can participate in up to 5 commitments.\r\n\r\nA commitment must be performed for a few days before you can ask for points.  Beware, if you remove a commitment, then you will have to start all over again!\r\n\r\nTo request points for the commitment, simply click on the \"Request Points\" link.  There, you can enter an optional comment.  Then, your points are awarded immediately!"
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": "Goals are tasks that involve the participation of your fellow dorm floor residents.  A floor can only participate in up to 5 goals.  Also, each user can add up to two goals for their floor at a time.\r\n\r\nTo get points for completing a goal, you will need to click on the \"Request Points\" link.  There, you can enter an optional comment.  Once an admin approves your request, your entire floor will receive points."
   }
  }, 
  {
@@ -3651,15 +3691,15 @@
   "pk": 25, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"sourcediv\" align=\"center\"></div>\r\n    <div id=\"chartdiv\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"data_displayed_div\" align=\"center\"></div>\r\n    <div id=\"lastcheckdiv\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/gauge.js\"></script>", 
-   "title": "Energy Gauge"
+   "text": "<div id=\"lehua_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"lehua_time_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"mokihana_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"mokihana_time_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"ilima_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"ilima_time_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n\r\n<script type=\"text/javascript\" src=\"/site_media/static/js/gauge.js\"></script>\r\n", 
+   "title": "Dorm Energy Gauges"
   }
  }, 
  {
   "pk": 26, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"dorm_chart_div\" style=\"padding-top:35px\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\" /></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
+   "text": "<div id=\"chart_div\" style=\"padding-top:35px\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\" /></div>\r\n<div id=\"chart_timestamp_div\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
    "title": "Standings"
   }
  }, 
@@ -3764,6 +3804,14 @@
   "model": "gblocks.titleandtext", 
   "fields": {
    "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 41, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!", 
    "title": ""
   }
  }
