@@ -14,15 +14,15 @@ from activities.forms import ActivityTextForm, ActivityImageForm, CommitmentComm
 from activities import MAX_COMMITMENTS
 
 @login_required
-def activity_list(request):
+def list(request, item_type):
   user = request.user
   
-  user_activities = user.activity_set.all()
-  available_activities = Activity.get_available_for_user(user)
+  user_items = user.activity_set.all()
+  available_items = Activity.get_available_for_user(user)
   
-  return render_to_response('activities/activity_list.html', {
-    "user_activities": user_activities,
-    "available_activities": available_activities,
+  return render_to_response('activities/list.html', {
+    "user_items": user_items,
+    "available_items": available_items,
   }, context_instance = RequestContext(request))
   
 @login_required

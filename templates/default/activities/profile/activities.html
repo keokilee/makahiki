@@ -9,7 +9,7 @@
 
 <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
   {% if user_activities %}
-    <table class="activity_list">
+    <table class="profile_table">
     <tr class="column_header">
       <td class="activity_title">Title</td>
       <td class="activity_points">Points</td>
@@ -25,5 +25,11 @@
     {% else %}
       <h4>{{ other_user.get_profile.name }} is not participating in any activities.<h4>
     {% endif %}
+  {% endif %}
+  
+  {% if is_me %}
+    <div style="padding-bottom: 5px">
+      <a href="/activities/activity_list/">View all activities</a>
+    </div>
   {% endif %}
 </div>

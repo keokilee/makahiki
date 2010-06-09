@@ -1,0 +1,12 @@
+.activity_list {
+  width: 100%;
+}
+
+.list_content {
+  padding: 10px 30px;
+}
+
+#content #list_header {
+  margin: 0px;
+  padding: 10px 20px 0 20px;
+}

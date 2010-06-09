@@ -1,0 +1,25 @@
+{% load activity_tags %}
+{% load markup %}
+
+<tr>
+  <td class="activity_title">{{ item.title }}</td>
+  <td class="activity_points">{{ item.point_value }}</td>
+  <td class="activity_options">
+    {% render_user_tools user item %}
+  </td>
+</tr>
+
+<!--
+<tr>
+  <td class="description_row">
+    {% if item.description %}
+      <p>{{ item.description|markdown }}</p>
+    {% endif %}
+
+    {% if item.is_event %}
+      <p>This activity occurs at {{ item.event_date }}</p>
+    {% endif %}
+  </td>
+</tr>
+-->
+
