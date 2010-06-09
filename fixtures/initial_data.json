@@ -3026,6 +3026,34 @@
   }
  }, 
  {
+  "pk": 4, 
+  "model": "kukui_cup_base.headline", 
+  "fields": {
+   "content": "Latest News: <a href='/news/9/35th-ieee-photovoltaic-specialists-conference'>35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE</a>"
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "kukui_cup_base.headline", 
+  "fields": {
+   "content": "Latest News: <a href='/news/8/hawaii-clean-energy-day-2010'>Hawaii Clean Energy Day 2010</a>"
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "kukui_cup_base.headline", 
+  "fields": {
+   "content": "Latest News: <a href='/news/11/blue-planet-foundation-meeting'>Blue Planet Foundation Meeting</a>"
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "kukui_cup_base.headline", 
+  "fields": {
+   "content": "Energy Tip: Turn off the lights before you leave your room."
+  }
+ }, 
+ {
   "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {
@@ -3516,7 +3544,7 @@
   "pk": 8, 
   "model": "gblocks.text", 
   "fields": {
-   "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!"
+   "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!\r\n"
   }
  }, 
  {
@@ -3714,7 +3742,7 @@
   "model": "gblocks.titleandtext", 
   "fields": {
    "text": "<div id=\"lehua_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"lehua_time_div\" align=\"center\"></div>\r\n    <div id=\"mokihana_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"mokihana_time_div\" align=\"center\"></div>\r\n    <div id=\"ilima_chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"ilima_time_div\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"/site_media/static/js/gauge.js\"></script>\r\n", 
-   "title": "Dorm Energy Gauges"
+   "title": "Real-Time Dorm Power"
   }
  }, 
  {
@@ -3722,7 +3750,7 @@
   "model": "gblocks.titleandtext", 
   "fields": {
    "text": "<div id=\"chart_div\" align=\"center\"><img src=\"http://www.google.com/ig/images/spinner.gif\" /></div>\r\n<div id=\"chart_timestamp_div\" align=\"center\"></div>\r\n\r\n<script type=\"text/javascript\" src=\"site_media/static/js/chart.js\"></script>", 
-   "title": "Standings"
+   "title": "Cumulative Dorm Energy Usage"
   }
  }, 
  {
