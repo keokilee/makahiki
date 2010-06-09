@@ -1,9 +1,6 @@
 // Load the Visualization API and the bar chart package.
 google.load("visualization", "1");
 
-/**
- * Once visualization API is loaded, retrieve data and set callback to run once retrieved.
- */
 function initializeMonitor(charturl, dorm, floor) {
   var powerLastCheck = document.getElementById('powerlastcheck');
   var energyLastCheck = document.getElementById('energylastcheck');
@@ -41,10 +38,10 @@ function displayDormData(response) {
   //Should we do anything if there is more than one row?
   view.setRows(view.getFilteredRows([{column: 0, value: dorm}, {column: 1, value: floor}]));
   
-  //Create power monitor.  Column 2 is the power value, column 3 is the update.
+  //Create power monitor.  Column 2 is the power value, column 3 is the update date.
   drawMonitor(document.getElementById("powerdata"), "Watts", view, 2, 3);
   
-  //Create energy monitor. Column 5 is update date, column 4 is value.
+  //Create energy monitor. Column 4 is the value, column 5 is the update date.
   drawMonitor(document.getElementById("energydata"), "Watt Hours", view, 4, 5);             
 }
 

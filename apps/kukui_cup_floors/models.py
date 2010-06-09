@@ -64,14 +64,14 @@ class Floor(models.Model):
                   max_length=200,
                   blank=True,
                   null=True,
-                  help_text="The column value where we can find the dorm in the Google chart."
+                  help_text="Column value of the dorm in the Google chart."
   )
   
   chart_floor = models.CharField(
                   max_length=200,
                   blank=True,
                   null=True,
-                  help_text="The column value where we can find the floor in the Google chart."
+                  help_text="Column value of the floor in the Google chart."
   )
   
   def __unicode__(self):
