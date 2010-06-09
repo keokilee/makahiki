@@ -17,12 +17,25 @@ from activities import MAX_COMMITMENTS
 def list(request, item_type):
   user = request.user
   
-  user_items = user.activity_set.all()
-  available_items = Activity.get_available_for_user(user)
+  user_items = available_items = item_name = None
   
+  if item_type == "activity":
+    user_items = user.activity_set.all()
+    available_items = Activity.get_available_for_user(user)
+    item_name = "activities"
+    
+  elif item_type == "commitment":
+    user_items = user.commitment_set.exclude(
+      commitmentmember__completed=True,
+      commitmentmember__user__username=user.username,
+    )
+    available_items = Commitment.get_available_for_user(user)
+    item_name = "commitments"
+    
   return render_to_response('activities/list.html', {
     "user_items": user_items,
     "available_items": available_items,
+    "item_name": item_name,
   }, context_instance = RequestContext(request))
   
 @login_required

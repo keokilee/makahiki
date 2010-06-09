@@ -2,8 +2,12 @@
   width: 100%;
 }
 
-.list_content {
+.list_item {
   padding: 10px 30px;
+}
+
+.list_content h4 {
+  margin: 0;
 }
 
 #content #list_header {
