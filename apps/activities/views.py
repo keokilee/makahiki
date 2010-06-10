@@ -72,6 +72,8 @@ def remove_participation(request, item_type, item_id):
     return __remove_active_commitment(request, item_id)
   elif item_type == "activity":
     return __remove_activity(request, item_id)
+  elif item_type == "goal":
+    return __remove_goal(request, item_id)
   else:
     raise Http404
     
@@ -134,14 +136,10 @@ def __remove_active_commitment(request, commitment_id):
   
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
-
-  try:
-    commitment_member = CommitmentMember.objects.get(user=user, commitment=commitment, completed=False)
-    commitment_member.delete()
-    user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
-    
-  except ObjectDoesNotExist:
-    user.message_set.create(message="We could not remove your commitment.")
+  commitment_member = get_object_or_404(CommitmentMember, user=user, commitment=commitment, completed=False)
+  
+  commitment_member.delete()
+  user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
     
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
@@ -157,7 +155,7 @@ def __add_activity(request, activity_id):
     activity_member.save()
     user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
   else:
-    user.message_set.create(message="You are already participating in this activity.")
+    return Http404
 
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
 
@@ -166,15 +164,11 @@ def __remove_activity(request, activity_id):
 
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
-  activity_member = ActivityMember.objects.filter(user=user, activity=activity)
+  activity_member = get_object_or_404(ActivityMember, user=user, activity=activity)
 
-  if activity_member:
-    activity_member.delete()
-    user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
-    return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-  else:
-    user.message_set.create(message="You are not participating in this activity")
-    return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+  activity_member.delete()
+  user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
 def __add_goal(request, goal_id):
   """Add the goal to the floor."""
@@ -188,11 +182,20 @@ def __add_goal(request, goal_id):
     goal_member = GoalMember(user=user, goal=goal, floor=user.get_profile().floor)
     goal_member.save()
     user.message_set.create(message="Your floor is now participating in the goal \"" + goal.title + "\"")
-  elif goal_member:
-    user.message_set.create(message="Your floor is already participating in this goal.")
   else:
-    user.message_set.create(message="You are not allowed to add any more goals for your floor.")
+    return Http404
     
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+  
+def __remove_goal(request, goal_id):
+  goal = get_object_or_404(Goal, pk=goal_id)
+  user = request.user
+  floor = user.get_profile().floor
+  goal_member = get_object_or_404(GoalMember, goal=goal, user=user, floor=floor)
+  
+  # At this point, user is allowed to remove the goal because they own goal_member
+  goal_member.delete()
+  user.message_set.create(message="Your floor's participation in \"" + goal.title + "\" has been removed")
   return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
 def __request_commitment_points(request, commitment_id):
