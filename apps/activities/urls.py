@@ -4,7 +4,7 @@ urlpatterns = patterns('',
     url(r'^(?P<item_type>activity|commitment|goal)_list/$', 'activities.views.list', name="list"),
     
     # Actions
-    url(r'^add_(?P<item_type>activity|commitment)/(?P<item_id>\d+)/$',
+    url(r'^add_(?P<item_type>activity|commitment|goal)/(?P<item_id>\d+)/$',
       'activities.views.add_participation', name='add_participation'),
     url(r'^remove_(?P<item_type>activity|commitment)/(?P<item_id>\d+)/$',
       'activities.views.remove_participation', name='remove_participation'),

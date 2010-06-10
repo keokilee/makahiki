@@ -56,6 +56,8 @@ def add_participation(request, item_type, item_id):
     return __add_commitment(request, item_id)
   elif item_type == "activity":
     return __add_activity(request, item_id)
+  elif item_type == "goal":
+    return __add_goal(request, item_id)
   else:
     raise Http404
 
@@ -151,7 +153,7 @@ def __add_activity(request, activity_id):
 
   # Search for an existing activity for this user
   if not ActivityMember.objects.filter(user=user, activity=activity):
-    activity_member = ActivityMember(user=user, activity=activity, approval_status="unapproved")
+    activity_member = ActivityMember(user=user, activity=activity)
     activity_member.save()
     user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
   else:
@@ -173,6 +175,25 @@ def __remove_activity(request, activity_id):
   else:
     user.message_set.create(message="You are not participating in this activity")
     return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    
+def __add_goal(request, goal_id):
+  """Add the goal to the floor."""
+  
+  goal = get_object_or_404(Goal, pk=goal_id)
+  user = request.user
+  floor = user.get_profile().floor
+  goal_member = GoalMember.objects.filter(floor=floor, goal=goal)
+  
+  if not goal_member and GoalMember.can_add_goal(user):
+    goal_member = GoalMember(user=user, goal=goal, floor=user.get_profile().floor)
+    goal_member.save()
+    user.message_set.create(message="Your floor is now participating in the goal \"" + goal.title + "\"")
+  elif goal_member:
+    user.message_set.create(message="Your floor is already participating in this goal.")
+  else:
+    user.message_set.create(message="You are not allowed to add any more goals for your floor.")
+    
+  return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
 def __request_commitment_points(request, commitment_id):
   """Generates a form to add an optional comment."""
@@ -270,6 +291,7 @@ def __request_activity_points(request, activity_id):
       activity_member.save()
       return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
+  # Create activity request form.
   elif activity.confirm_type == "image":
     form = ActivityImageForm()
   elif activity.confirm_type == "text":

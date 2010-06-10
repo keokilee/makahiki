@@ -43,6 +43,10 @@
   padding: 5px 0px;
 }
 
+#content .profile_table {
+  width: 100%;
+}
+
 .profile_table tr td {
   font-size:12px;
 }
