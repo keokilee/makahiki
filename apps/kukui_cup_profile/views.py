@@ -61,16 +61,13 @@ def profile(request, username, template_name="kukui_cup_profile/profile.html"):
     
     # Load activities for the user.
     try:
-      from activities import get_activities_for_user, get_available_activities_for_user
+      from activities import get_activities_for_user
       return_dict["activities_enabled"] = True
       
       user_activities = get_activities_for_user(other_user)
       return_dict["user_commitments"] = user_activities["commitments"]
       return_dict["user_activities"] = user_activities["activities"]
-      if is_me:
-        available_activities = get_available_activities_for_user(other_user)
-        return_dict["available_activities"] = available_activities["activities"]
-        return_dict["available_commitments"] = available_activities["commitments"]
+      return_dict["user_goals"] = user_activities["goals"]
     
     except ImportError:
       pass

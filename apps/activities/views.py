@@ -25,9 +25,8 @@ def list(request, item_type):
     item_name = "activities"
     
   elif item_type == "commitment":
-    user_items = user.commitment_set.exclude(
-      commitmentmember__completed=True,
-      commitmentmember__user__username=user.username,
+    user_items = user.commitment_set.filter(
+      commitmentmember__completed=False,
     )
     available_items = Commitment.get_available_for_user(user)
     item_name = "commitments"
