@@ -289,6 +289,7 @@ class GoalMember(CommonActivityUser):
   floor = models.ForeignKey(Floor)
   user = models.ForeignKey(User)
   user_comment = models.TextField(null=True, blank=True, help_text="Comment from user about their submission.")
+  admin_comment = models.TextField(null=True, blank=True, help_text="Reason for approval/rejection")
   
   @staticmethod
   def can_add_goal(user):
