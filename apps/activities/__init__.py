@@ -14,8 +14,14 @@ def get_activities_for_user(user):
   user_commitments = user.commitment_set.filter(
     commitmentmember__completed=False,
   )
-  user_activities = user.activity_set.all()
-  user_goals = user.get_profile().floor.goal_set.all()
+  user_activities = user.activity_set.filter(
+    activitymember__user=user,
+    activitymember__awarded=False,
+  )
+  user_goals = user.get_profile().floor.goal_set.filter(
+    goalmember__floor=user.get_profile().floor,
+    goalmember__awarded=False,
+  )
     
   return {
     "commitments": user_commitments,
