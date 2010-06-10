@@ -9,6 +9,9 @@ from django.core.urlresolvers import reverse
 
 admin.site.register(Commitment)
 admin.site.register(CommitmentMember)
+
+admin.site.register(Goal)
+admin.site.register(GoalMember)
   
 class ActivityAdminForm(forms.ModelForm):
   num_codes = forms.IntegerField(required=False, 

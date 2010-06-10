@@ -273,6 +273,15 @@ class Goal(CommonActivity):
   
   floors = models.ManyToManyField(Floor, through="GoalMember")
   
+  @staticmethod
+  def get_available_for_user(user):
+    """Retrieves only the goals that a user can participate in."""
+    
+    return Goal.objects.exclude(
+      goalmember__floor__pk=user.get_profile().floor.pk,
+    )
+    
+  
 class GoalMember(CommonActivityUser):
   """Represents the join between groups/floors."""
   

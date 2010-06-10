@@ -32,6 +32,14 @@ def list(request, item_type):
     available_items = Commitment.get_available_for_user(user)
     item_name = "commitments"
     
+  elif item_type == "goal":
+    user_items = user.get_profile().floor.goal_set.all()
+    available_items = Goal.get_available_for_user(user)
+    item_name = "goals"
+  
+  else:
+    return Http404
+    
   return render_to_response('activities/list.html', {
     "user_items": user_items,
     "available_items": available_items,

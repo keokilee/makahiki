@@ -2,7 +2,7 @@
   {% if is_me %}
       Our goals:
   {% else %}
-    {{ other_user.get_profile.name }}'s goals.
+    {{ other_user.get_profile.name }} floor's goals.
   {% endif %}
   <span id="goal_help" class="ui-icon ui-icon-help"></span>
 </div>
@@ -21,9 +21,15 @@
     </table>
   {% else %}
     {% if is_me %}
-      <h4>Your floor is not participating in any goals.</h4s
+      <h4>Your floor is not participating in any goals.</h4>
     {% else %}
-      <h4>{{ other_user.get_profile.name }}'s floor is not participating in any goals.<h4>
+      <h4>{{ other_user.get_profile.name }}'s floor is not participating in any goals.</h4>
     {% endif %}
+  {% endif %}
+  
+  {% if is_me %}
+    <div style="padding-bottom: 5px">
+      <a href="/activities/goal_list/">View all goals</a>
+    </div>
   {% endif %}
 </div>
