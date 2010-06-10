@@ -20,7 +20,10 @@ def list(request, item_type):
   user_items = available_items = item_name = None
   
   if item_type == "activity":
-    user_items = user.activity_set.all()
+    user_items = user.activity_set.all(
+      activitymember__user=user,
+      activitymember__awarded=False,
+    )
     available_items = Activity.get_available_for_user(user)
     item_name = "activities"
     
@@ -32,7 +35,10 @@ def list(request, item_type):
     item_name = "commitments"
     
   elif item_type == "goal":
-    user_items = user.get_profile().floor.goal_set.all()
+    user_items = user.get_profile().floor.goal_set.filter(
+      goalmember__floor=user.get_profile().floor,
+      goalmember__awarded=False,
+    )
     available_items = Goal.get_available_for_user(user)
     item_name = "goals"
   
