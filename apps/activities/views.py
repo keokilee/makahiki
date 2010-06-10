@@ -242,15 +242,19 @@ def __request_activity_points(request, activity_id):
         activity_member = ActivityMember(user=user, activity=activity)
       
       activity_member.user_comment = form.cleaned_data["comment"]
+      # Attach image if it is an image form.
       if form.cleaned_data["image_response"]:
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
         activity_member.image = path
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
+        activity_member.approval_status = "pending"
         user.message_set.create(message="Your request has been submitted!")
         
+      # Attach text prompt question if one is provided
       elif form.cleaned_data["question"]:
         activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
         activity_member.response = form.cleaned_data["response"]
+        activity_member.approval_status = "pending"
         user.message_set.create(message="Your request has been submitted!")
         
       else:
@@ -263,9 +267,7 @@ def __request_activity_points(request, activity_id):
         message = "You have been awarded %d points for your participation!" % points
         user.message_set.create(message=message)
 
-      activity_member.approval_status = "pending"
       activity_member.save()
-      
       return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
   elif activity.confirm_type == "image":
