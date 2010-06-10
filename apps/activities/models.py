@@ -307,6 +307,10 @@ class GoalMember(CommonActivityUser):
       return True
       
     return False
+    
+  def can_manage_goal(user):
+    """Simple method to determine if the goal belongs to the user."""
+    return self.user == user
   
   def save(self):
     """Custom save method to award points to all floor members."""

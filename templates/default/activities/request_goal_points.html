@@ -1,0 +1,16 @@
+{% extends "kukui_cup_profile/base.html" %}
+
+{% block body %}
+<form action="/activities/request_goal_points/{{goal.pk}}/" method="post">
+  <h3>Requesting points for {{goal.title}}</h3>
+  {% if admin_comment %}
+    <p>Admin message: {{ admin_comment }}</p>
+  {% endif %}
+  <p>
+    Please enter an optional comment before submitting your request.  Your feedback is appreciated!
+  </p>
+  <p><label for="id_comment">Comment(optional):</label><br/>
+  {{ form.comment }}</p>
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}

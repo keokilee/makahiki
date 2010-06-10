@@ -192,19 +192,6 @@
   }
  }, 
  {
-  "pk": 5, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-05-12 18:21:35", 
-   "commitment": 1, 
-   "updated_at": "2010-05-12 18:21:52", 
-   "completion_date": "2010-05-12", 
-   "user": 1, 
-   "completed": 1
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.textpromptquestion", 
   "fields": {
@@ -3010,19 +2997,6 @@
    "event_date": null, 
    "pub_date": "2010-05-12", 
    "is_event": 0
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
-   "question": null, 
-   "user": 1, 
-   "activity": 5, 
-   "response": ""
   }
  }, 
  {

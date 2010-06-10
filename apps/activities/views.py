@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.forms.util import ErrorList
 
 from activities.models import *
-from activities.forms import ActivityTextForm, ActivityImageForm, CommitmentCommentForm
+from activities.forms import *
 from activities import MAX_COMMITMENTS
 
 @login_required
@@ -85,6 +85,8 @@ def request_points(request, item_type, item_id):
     return __request_activity_points(request, item_id)
   elif item_type == "commitment":
     return __request_commitment_points(request, item_id)
+  elif item_type == "goal":
+    return __request_goal_points(request, item_id)
   else:
     raise Http404
     
@@ -222,6 +224,8 @@ def __request_commitment_points(request, commitment_id):
       # Currently, nothing in the form needs validation, but just to be safe.
       membership.comment = form.cleaned_data["comment"]
       membership.completed = True
+      
+      # Note that points are added outside of the model save for simplicity (over consistency).
       profile = user.get_profile()
       profile.points += commitment.point_value
       profile.save()
@@ -303,9 +307,7 @@ def __request_activity_points(request, activity_id):
   else:
     form = ActivityTextForm()
     
-  admin_message = None
-  if activity_member:
-    admin_message = activity_member.admin_comment
+  admin_message = activity_member.admin_comment
       
   return render_to_response("activities/request_activity_points.html", {
     "form": form,
@@ -313,4 +315,36 @@ def __request_activity_points(request, activity_id):
     "question" : question,
     "admin_message": admin_message,
   }, context_instance = RequestContext(request))
-
+  
+def __request_goal_points(request, goal_id):
+  """Creates or processes a form for requesting points."""
+  
+  goal = get_object_or_404(Goal, pk=goal_id)
+  user = request.user
+  floor = user.get_profile().floor
+  goal_member = get_object_or_404(GoalMember, user=user, floor=floor, goal=goal)
+  
+  if request.method == "POST":
+    form = GoalCommentForm(request.POST)
+    if form.is_valid():
+      goal_member.approval_status = "pending"
+      goal_member.user_comment = form.cleaned_data["comment"]
+      goal_member.save()
+      
+      user.message_set.create(message="Your request has been submitted!")
+      return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
+    
+  # Create goal request form.
+  else:
+    form = GoalCommentForm()
+  
+  admin_comment = goal_member.admin_comment
+  
+  return render_to_response("activities/request_goal_points.html", {
+    "form": form,
+    "goal": goal,
+    "admin_comment": admin_comment,
+  }, context_instance = RequestContext(request))
+  
+  
+  

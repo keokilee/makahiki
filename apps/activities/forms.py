@@ -31,3 +31,6 @@ class ActivityImageForm(forms.Form):
   
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea, required=False)
+  
+class GoalCommentForm(forms.Form):
+  comment = forms.CharField(widget=forms.Textarea, required=False)
