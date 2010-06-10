@@ -281,7 +281,6 @@ class Goal(CommonActivity):
       goalmember__floor__pk=user.get_profile().floor.pk,
     )
     
-  
 class GoalMember(CommonActivityUser):
   """Represents the join between groups/floors."""
   
@@ -291,6 +290,9 @@ class GoalMember(CommonActivityUser):
   user_comment = models.TextField(null=True, blank=True, help_text="Comment from user about their submission.")
   admin_comment = models.TextField(null=True, blank=True, help_text="Reason for approval/rejection")
   
+  def __unicode__(self):
+    return "%s : %s Floor %d" % (self.goal.title, self.floor.dorm.name, self.floor.floor_number)
+    
   @staticmethod
   def can_add_goal(user):
     """Method that determines if the user can add additional goals for their floor or not.
@@ -316,7 +318,7 @@ class GoalMember(CommonActivityUser):
     """Custom save method to award points to all floor members."""
     
     if self.approval_status == u"approved" and not self.awarded:
-      for profile in self.floor.profile_set:
+      for profile in self.floor.profile_set.all():
         profile.points += self.goal.point_value
         profile.save()
       

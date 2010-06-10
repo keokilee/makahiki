@@ -7,12 +7,11 @@ from django.forms.util import ErrorList
 
 from django.core.urlresolvers import reverse
 
+### Commitment Admin
 admin.site.register(Commitment)
 admin.site.register(CommitmentMember)
-
-admin.site.register(Goal)
-admin.site.register(GoalMember)
   
+### Activity Admin
 class ActivityAdminForm(forms.ModelForm):
   num_codes = forms.IntegerField(required=False, 
                                  label="Number of codes", 
@@ -153,3 +152,14 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   list_filter = ["approval_status"]
   
 admin.site.register(ActivityMember, ActivityMemberAdmin)
+
+### Goal admin
+
+admin.site.register(Goal)
+
+class GoalMemberAdmin(admin.ModelAdmin):
+  radio_fields = {"approval_status" : admin.HORIZONTAL}
+  list_display = ("goal", "floor", "user", "approval_status")
+  list_filter = ["approval_status"]
+
+admin.site.register(GoalMember, GoalMemberAdmin)
