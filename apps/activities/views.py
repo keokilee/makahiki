@@ -84,6 +84,7 @@ def request_points(request, item_type, item_id):
   else:
     raise Http404
     
+@login_required
 def view_codes(request, activity_id):
   """View the confirmation codes for a given activity."""
   
@@ -233,49 +234,39 @@ def __request_activity_points(request, activity_id):
   if request.method == "POST":
     if activity.confirm_type == "image":
       form = ActivityImageForm(request.POST, request.FILES)
-      if form.is_valid():
-        if not activity_member:
-          activity_member = ActivityMember(user=user, activity=activity)
-          
-        path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
-        activity_member.user_comment = form.cleaned_data["comment"]
-        activity_member.image = path
-        new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
-        activity_member.approval_status = "pending"
-        activity_member.save()
-        user.message_set.create(message="Your request has been submitted!")
-        return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-        
     else:
       form = ActivityTextForm(request.POST)
-      if form.is_valid():
-        if not activity_member:
-          activity_member = ActivityMember(user=user, activity=activity)
-          
-        activity_member.user_comment = form.cleaned_data["comment"]
-        # Retrieve the question if one exists.
-        if form.cleaned_data["question"]:
-          activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
-          activity_member.response = form.cleaned_data["response"]
-          activity_member.approval_status = "pending"
-          activity_member.save()
-          user.message_set.create(message="Your request has been submitted!")
-          
-        # Else, approve the activity (code is validated in forms.ActivityTextForm.clean())
-        else:
-          code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
-          code.is_active = False
-          code.save()
-          activity_member.approval_status = "approved"
-          # Model save method will award the points.
-          activity_member.save()
-
-          points = activity_member.activity.point_value
-          message = "You have been awarded %d points for your participation!" % points
-          user.message_set.create(message=message)
+      
+    if form.is_valid():
+      if not activity_member:
+        activity_member = ActivityMember(user=user, activity=activity)
+      
+      activity_member.user_comment = form.cleaned_data["comment"]
+      if form.cleaned_data["image_response"]:
+        path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
+        activity_member.image = path
+        new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
+        user.message_set.create(message="Your request has been submitted!")
         
-        return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
-            
+      elif form.cleaned_data["question"]:
+        activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
+        activity_member.response = form.cleaned_data["response"]
+        user.message_set.create(message="Your request has been submitted!")
+        
+      else:
+        # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
+        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+        code.is_active = False
+        code.save()
+        activity_member.approval_status = "approved" # Model save method will award the points.
+        points = activity_member.activity.point_value
+        message = "You have been awarded %d points for your participation!" % points
+        user.message_set.create(message=message)
+
+      activity_member.approval_status = "pending"
+      activity_member.save()
+      
+      return HttpResponseRedirect(reverse("kukui_cup_profile.views.profile", args=(request.user.username,)))
     
   elif activity.confirm_type == "image":
     form = ActivityImageForm()
@@ -295,5 +286,4 @@ def __request_activity_points(request, activity_id):
     "question" : question,
     "admin_message": admin_message,
   }, context_instance = RequestContext(request))
-  
 
