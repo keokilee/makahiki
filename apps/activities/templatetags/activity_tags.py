@@ -63,7 +63,7 @@ def __generate_activity_form(user, item):
     if item_join.approval_status == u"unapproved" or item_join.approval_status == u"rejected":
       return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
     elif item_join.approval_status == u"pending":
-      return_string += "<span class=\"pending_activity\">Pending</span>&nbsp"
+      return_string += "<span class=\"pending_activity\">Submitted for approval</span>&nbsp"
       
     # TODO What should happen if the points are rejected?
     if item_join.approval_status != u"approved":
@@ -92,7 +92,7 @@ def __generate_goal_form(user, item):
       return_string += '<a href="/activities/request_{0}_points/{1.id}/">We Did This!</a>&nbsp'
       
     elif item_join.approval_status == u"pending":
-      return_string += "<span class=\"pending_activity\">Pending</span>&nbsp"
+      return_string += "<span class=\"pending_activity\">Submitted for approval</span>&nbsp"
       
     # TODO What should happen if the points are rejected?
     if item_join.approval_status != u"approved" and item_join.user == user:
