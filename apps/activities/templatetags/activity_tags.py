@@ -88,13 +88,14 @@ def __generate_goal_form(user, item):
   try:
     # Exception thrown if user cannot be found.
     item_join = GoalMember.objects.get(floor=user.get_profile().floor, goal=item)
-    if item_join.approval_status == u"unapproved" or item_join.approval_status == u"rejected":
-      return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
+    if (item_join.approval_status == u"unapproved" or item_join.approval_status == u"rejected") and item_join.user == user:
+      return_string += '<a href="/activities/request_{0}_points/{1.id}/">We Did This!</a>&nbsp'
+      
     elif item_join.approval_status == u"pending":
       return_string += "<span class=\"pending_activity\">Pending</span>&nbsp"
       
     # TODO What should happen if the points are rejected?
-    if item_join.approval_status != u"approved":
+    if item_join.approval_status != u"approved" and item_join.user == user:
       return_string += '<form action="/activities/remove_{0}/{1.id}'
       return_string += '/" method="post" style="display:inline"><a href="#"'
       return_string += 'onclick="parentNode.submit()">Remove</a></form>'
@@ -102,11 +103,12 @@ def __generate_goal_form(user, item):
       return_string += "<span class=\"approved_activity\">Approved</span>"
   
   except ObjectDoesNotExist:
-    return_string += '<a href="/activities/request_{0}_points/{1.id}/">I Did This!</a>&nbsp'
-    
-    return_string += '<form action="/activities/add_{0}/{1.id}'
-    return_string += '/" method="post" style="display:inline">'
-    return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
+    if GoalMember.can_add_goal(user):
+      return_string += '<form action="/activities/add_{0}/{1.id}'
+      return_string += '/" method="post" style="display:inline">'
+      return_string += '<a href="#" onclick="parentNode.submit()">Add</a></form>'
+    else:
+      return_string += "You cannot add more goals."
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("goal", item)

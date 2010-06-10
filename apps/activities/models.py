@@ -289,6 +289,23 @@ class GoalMember(CommonActivityUser):
   floor = models.ForeignKey(Floor)
   user = models.ForeignKey(User)
   
+  @staticmethod
+  def can_add_goal(user):
+    """Method that determines if the user can add additional goals for their floor or not.
+       A user cannot add a goal if they have more than two active goals or if their floor is 
+       participating in more than five. """
+    user_goals = user.goalmember_set.filter(
+      awarded=False,
+    )
+    floor_goals = user.get_profile().floor.goalmember_set.filter(
+      awarded=False,
+    )
+    
+    if len(user_goals) < 2 and len(floor_goals) < 5:
+      return True
+      
+    return False
+  
   def save(self):
     """Custom save method to award points to all floor members."""
     
