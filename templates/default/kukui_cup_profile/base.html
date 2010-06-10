@@ -9,6 +9,9 @@
     {% if user.is_authenticated %}
         <ul>
             <li><a href="{% url profile_detail user.username %} ">{% trans "Your Profile" %}</a></li>
+            <li><a href="/activities/commitment_list/">Commitments</a></li>
+            <li><a href="/activities/activity_list/">Activities</a></li>
+            <li><a href="/activities/goal_list/">Goals</a></li>
         </ul>
     {% else %}
         &nbsp;
