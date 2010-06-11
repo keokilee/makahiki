@@ -1,7 +1,8 @@
 {% if user.get_profile.floor and user.get_profile.floor.chart_url %}
 <div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-  <div class="ui-accordion-header ui-corner-top activity_header">
+  <div class="ui-accordion-header ui-state-default ui-corner-top activity_header">
     Your floor&apos;s power usage:
+    <span id="power_monitor_help" class="ui-icon ui-icon-help"></span>
   </div>
   
   <div id="power_monitor" class="monitor_item ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
@@ -12,8 +13,9 @@
 </div>
 
 <div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-  <div class="ui-accordion-header ui-corner-top activity_header">
+  <div class="ui-state-default ui-accordion-header ui-corner-top activity_header">
     Your floor&apos;s energy usage:
+    <span id="energy_monitor_help" class="ui-icon ui-icon-help"></span>
   </div>
   
   <div id="energy_monitor" class="monitor_item ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">

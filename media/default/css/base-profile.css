@@ -19,6 +19,10 @@
   margin-left: 450px;
 }
 
+.monitor-item .activity_header .ui-icon {
+  margin-left: 250px;
+}
+
 .activity_item {
   /*border: 1px solid #999;*/
   margin: 10px 0px;
