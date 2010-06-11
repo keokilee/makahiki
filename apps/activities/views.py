@@ -20,7 +20,7 @@ def list(request, item_type):
   user_items = available_items = completed_items = item_name = None
   
   if item_type == "activity":
-    user_items = user.activity_set.all(
+    user_items = user.activity_set.filter(
       activitymember__user=user,
       activitymember__awarded=False,
     )

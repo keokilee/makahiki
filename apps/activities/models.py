@@ -325,7 +325,7 @@ class GoalMember(CommonActivityUser):
       self.awarded = True
     
     elif self.approval_status !=u"approved" and self.awarded:
-      for profile in self.floor.profile_set:
+      for profile in self.floor.profile_set.all():
         profile.points -= self.goal.point_value
         profile.save()
         
@@ -337,7 +337,7 @@ class GoalMember(CommonActivityUser):
     """Custom delete method to remove points from all floor members."""
     
     if self.awarded:
-      for profile in self.floor.profile_set:
+      for profile in self.floor.profile_set.all():
         profile.points -= self.goal.point_value
         profile.save()
     
