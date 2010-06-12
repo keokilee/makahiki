@@ -135,16 +135,6 @@
  }, 
  {
   "pk": 1, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-05-17 16:36:15", 
-   "awarded": 0, 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 1, 
   "model": "activities.commitment", 
   "fields": {
    "description": "Turn off your laptop/computer every day before you go to sleep.", 
@@ -3033,34 +3023,6 @@
   }
  }, 
  {
-  "pk": 4, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/9/35th-ieee-photovoltaic-specialists-conference'>35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE</a>"
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/8/hawaii-clean-energy-day-2010'>Hawaii Clean Energy Day 2010</a>"
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Latest News: <a href='/news/11/blue-planet-foundation-meeting'>Blue Planet Foundation Meeting</a>"
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "kukui_cup_base.headline", 
-  "fields": {
-   "content": "Energy Tip: Turn off the lights before you leave your room."
-  }
- }, 
- {
   "pk": 9, 
   "model": "kukui_cup_base.article", 
   "fields": {
@@ -3499,6 +3461,24 @@
   }
  }, 
  {
+  "pk": 56, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "energy_monitor_help", 
+   "content_type": 42, 
+   "object_id": 9
+  }
+ }, 
+ {
+  "pk": 57, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "power_monitor_help", 
+   "content_type": 42, 
+   "object_id": 10
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.title", 
   "fields": {
@@ -3509,7 +3489,7 @@
   "pk": 1, 
   "model": "gblocks.text", 
   "fields": {
-   "text": "Designed at the University of Hawaii at Manoa Information and Computer Sciences Department."
+   "text": "This site is based on the open source Makahiki project, which is sponsored by the <a href=\"http://csdl.ics.hawaii.edu\">Collaborative Software Development Laboratory</a> within the <a href=\"http://www.ics.hawaii.edu\">Department of Information and Computer Sciences</a> at the <a href=\"http://manoa.hawaii.edu\">University of Hawaii at Manoa</a>."
   }
  }, 
  {
@@ -3552,6 +3532,20 @@
   "model": "gblocks.text", 
   "fields": {
    "text": "Activities require you to perform some type of action, whether it's attending an event, participating in campus sustainability, or watching videos on energy conservation.  \r\n\r\nTo receive Kukui Nuts for the activity, click on the \"Request Points\" link.  To make sure that you have done the activity, you will be asked to either answer a question, provide a code, or upload a picture.\r\n\r\nOnce an admin approves your submission, you will receive your points!\r\n"
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
   }
  }, 
  {
