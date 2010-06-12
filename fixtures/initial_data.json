@@ -3023,42 +3023,6 @@
   }
  }, 
  {
-  "pk": 9, 
-  "model": "kukui_cup_base.article", 
-  "fields": {
-   "title": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE", 
-   "created_at": "2010-05-26 14:42:19", 
-   "updated_at": "2010-05-26 14:43:58", 
-   "slug": "35th-ieee-photovoltaic-specialists-conference", 
-   "content": "Come see the exhibits displaying technology that spans the solar cell industry, and don\u2019t miss the HIGH SCHOOL PHOTOVOLTAIC DESIGN COMPETITION DEMONSTRATION! High school students will be displaying practical applications of photovoltaics to power their projects.\r\n\r\nThe following schools are competing: Honoka\u2019a High School, Farrington High and McKinley High\r\n\r\nSponsored by:\r\n\r\nThe Institute of Electrical and Electronics Engineers (IEEE) /\r\n\r\nElectron Devices Society / IEEE Photonics Society / Solar Energy\r\n\r\nIndustries Association", 
-   "abstract": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE\r\n\r\nInvites you to join us for\r\nPUBLIC DAY in the Exhibition Hall\r\n\r\nJune 22, 2010 1:30 PM \u2013 5:00 PM\r\n\r\nHawaii Convention Center"
-  }
- }, 
- {
-  "pk": 8, 
-  "model": "kukui_cup_base.article", 
-  "fields": {
-   "title": "Hawaii Clean Energy Day 2010", 
-   "created_at": "2010-05-26 14:41:16", 
-   "updated_at": "2010-05-26 14:44:07", 
-   "slug": "hawaii-clean-energy-day-2010", 
-   "content": "The Hawai\u2018i Energy Policy Forum and our partners will be hosting an afternoon of local speakers and panels, followed by a pau hana networking session, to inspire vigorous discussion on the next steps Hawai\u2018i needs to take to achieve our clean energy objectives.\r\n\r\nAll are welcome!", 
-   "abstract": "Friday, June 4, 2010\r\n\r\n1:00 p.m. to 6:00 p.m.\r\n\r\nLaniakea YWCA, 1040 Richards Street in Honolulu\r\n\r\nRegistration fee: $25 (includes pupu & drinks)"
-  }
- }, 
- {
-  "pk": 11, 
-  "model": "kukui_cup_base.article", 
-  "fields": {
-   "title": "Blue Planet Foundation Meeting", 
-   "created_at": "2010-06-02 16:28:42", 
-   "updated_at": null, 
-   "slug": "blue-planet-foundation-meeting", 
-   "content": "<div></div>", 
-   "abstract": "There will be a Blue Planet Foundation meeting on campus at 2PM.  All are welcome to attend."
-  }
- }, 
- {
   "pk": 1, 
   "model": "kukui_cup_floors.dorm", 
   "fields": {
