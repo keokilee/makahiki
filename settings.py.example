@@ -152,7 +152,6 @@ INSTALLED_APPS = (
     'kukui_cup_auth',
     'activities',
     'kukui_cup_profile',
-    'kukui_cup_admin',
     'windmill_tests',
     'kukui_cup_themes',
     'kukui_cup_base',
