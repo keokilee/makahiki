@@ -38,13 +38,19 @@
 }
 
 .activity_title {
+  vertical-align: text-top;
   padding: 5px 5px 5px 0px;
   width:60%;
 }
 
 .activity_points {
+  vertical-align: text-top;
   width:10%;
   padding: 5px 0px;
+}
+
+.activity_options {
+  vertical-align: text-top;
 }
 
 #content .profile_table {
