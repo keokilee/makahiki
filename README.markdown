@@ -35,7 +35,7 @@ Milestone 2.5
 
 ## Introduction
 
-This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/kukui-cup-pinax) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
+This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/makahiki) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).  Note that you can ignore the section adding/removing Genshi.
 
@@ -52,10 +52,10 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
-* If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/kukui-cup-pinax.git` to get the source.
+* If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/makahiki.git` to get the source.
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
 * Once those are set up, send me your Git username so that you can be added as a collaborator.
-* When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/kukui-cup-pinax.git` to check out the code.  This will create the new folder and download the code from the repository.
+* When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/makahiki.git` to check out the code.  This will create the new folder and download the code from the repository.
 
 ## OPTIONAL: Install South for database migrations
 
@@ -64,7 +64,7 @@ If you plan on making changes to the database models, it is highly recommended t
 To install South, please go to their [installation wiki](http://south.aeracode.org/docs/installation.html).  If you are not familiar with South, you might want to go through their [tutorial](http://south.aeracode.org/docs/tutorial/index.html) once you are set up.
 
 ## Setting up Kukui Cup Pinax
-* cd into the kukui-cup-pinax folder.
+* cd into the makahiki folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Copy `settings.py.example` to `settings.py`.  This will work as is, but you might want to make a few changes to it depending on your environment.  Some things you might want to change are the database settings, timezone, and the CAS Login server.
 * If you have installed South, you need to edit settings.py and uncomment 'south' from INSTALLED_APPS.
@@ -97,7 +97,7 @@ You should see something similar to this:
 
 <pre>
 <code>
-(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py shell
+(pinax-env)gelee-macbook-pro:makahiki gelee$ python manage.py shell
 Python 2.6.1 (r261:67515, Jul  7 2009, 23:51:51) 
 [GCC 4.2.1 (Apple Inc. build 5646)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -106,11 +106,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> map(lambda c: c.delete(), ContentType.objects.all())
 [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
 >>> exit()
-(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$ python manage.py loaddata fixtures/*
+(pinax-env)gelee-macbook-pro:makahiki gelee$ python manage.py loaddata fixtures/*
 Installing json fixture 'fixtures/contenttypes_backup' from absolute path.
 Installing json fixture 'fixtures/initial_data' from absolute path.
 Installed 109 object(s) from 2 fixture(s)
-(pinax-env)gelee-macbook-pro:kukui-cup-pinax gelee$
+(pinax-env)gelee-macbook-pro:makahiki gelee$
 </code>
 </pre>
 
@@ -118,4 +118,4 @@ Installed 109 object(s) from 2 fixture(s)
 While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
 
 ## Further documentation
-For information on editing views, consult the [Editing Views wiki](http://wiki.github.com/keokilee/kukui-cup-pinax/editing-views).
+For information on editing views, consult the [Editing Views wiki](http://wiki.github.com/keokilee/makahiki/editing-views).

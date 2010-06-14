@@ -85,7 +85,7 @@ STATIC_URL = '/site_media/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
-    ('kukui-cup-pinax', os.path.join(PROJECT_ROOT, 'media')),
+    ('makahiki', os.path.join(PROJECT_ROOT, 'media')),
     ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
@@ -123,7 +123,7 @@ AUTHENTICATION_BACKENDS = (
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
 CAS_REDIRECT_URL = '/'
 
-ROOT_URLCONF = 'kukui-cup-pinax.urls'
+ROOT_URLCONF = 'makahiki.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates", KUKUI_TEMPLATE_THEME),
