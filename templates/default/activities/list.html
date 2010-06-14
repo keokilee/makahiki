@@ -1,5 +1,7 @@
 {% extends "makahiki_profiles/base.html" %}
 
+{% load generic_flatblocks %}
+
 {% block tab_id %}"#profile_tab"{% endblock %}
 
 {% block extra_head %}
@@ -29,6 +31,7 @@
   <div id="user_items" class="list_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
       Active {{item_name}}:
+      <span id="active_help" class="list-help ui-icon ui-icon-help"></span>
     </div>
 
     <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
@@ -52,6 +55,7 @@
   <div id="available_items" class="list_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
       Available {{item_name}}:
+      <span id="available_help" class="list-help ui-icon ui-icon-help"></span>
     </div>
 
     <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
@@ -65,5 +69,32 @@
           {% include "activities/item.html" %}
         {% endfor %}
       </table>
+  </div>
+{% endblock %}
+
+{% block extra_body %}
+  <!-- Dialogs -->
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery("#active_dialog").dialog({autoOpen: false, modal: true});
+      jQuery("#available_dialog").dialog({autoOpen: false, modal: true});
+
+      jQuery('#active_help').click(function() {
+        jQuery('#active_dialog').dialog('open');
+        return false;
+      });
+      
+      jQuery('#available_help').click(function() {
+        jQuery('#available_dialog').dialog('open');
+        return false;
+      });
+    })
+  </script>
+  
+  <div id="active_dialog" title="Active {{item_name.capitalize}}">
+    {% gblock "active",item_name for "gblocks.Text" with "activities/gblocks/help.html" %}
+  </div>
+  <div id="available_dialog" title="Available {{item_name.capitalize}}">
+    {% gblock "available",item_name for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
 {% endblock %}
