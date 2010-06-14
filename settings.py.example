@@ -151,10 +151,10 @@ INSTALLED_APPS = (
     'django_cas', # Placed here so that it registers as an app during testing.
     'makahiki_auth',
     'activities',
-    'kukui_cup_profile',
+    'makahiki_profiles',
     'windmill_tests',
-    'kukui_cup_themes',
-    'kukui_cup_base',
+    'makahiki_themes',
+    'makahiki_base',
     
     # 'facebookconnect',
     
@@ -177,10 +177,10 @@ INSTALLED_APPS = (
     'uni_form',
     'dbtemplates',
     'staticfiles',
-    'kukui_cup_avatar',
+    'makahiki_avatar',
     
     # internal (for now)
-    'kukui_cup_floors',
+    'floors',
     'threadedcomments',
     'threadedcomments_extras',
     'groups',
@@ -220,7 +220,7 @@ MARKUP_CHOICES = (
 )
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = 'kukui_cup_profile.Profile'
+AUTH_PROFILE_MODULE = 'makahiki_profiles.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 # ACCOUNT_OPEN_SIGNUP is not used by this project, but it acts as if it was

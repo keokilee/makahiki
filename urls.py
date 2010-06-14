@@ -12,7 +12,7 @@ import os
 
 urlpatterns = patterns('',
     # some simple pages
-    url(r'^$', "kukui_cup_base.views.homepage", name="home"),
+    url(r'^$', "makahiki_base.views.homepage", name="home"),
     url(r'^billboard/$', direct_to_template, {"template": "billboard.html"}, name="billboard"),
     url(r'^about_us/$', direct_to_template, {"template": "about_us.html"}, name="about_us"),
     url(r'^kukui_cup/$', direct_to_template, {"template": "kukui_cup.html"}, name="kukui_cup"),
@@ -26,11 +26,11 @@ urlpatterns = patterns('',
     url(r'^energy_data/week/$', direct_to_template, {"template": "energy_data/week.html"}, name="energy_week"),
     
     # Kukui Cup Provided
-    (r'^profiles/', include('kukui_cup_profile.urls')),
+    (r'^profiles/', include('makahiki_profiles.urls')),
     (r'^activities/', include('activities.urls')),
-    (r'^themes/', include('kukui_cup_themes.urls')),
-    (r'^news/', include('kukui_cup_base.urls')),
-    (r'^dorms/', include('kukui_cup_floors.urls')),
+    (r'^themes/', include('makahiki_themes.urls')),
+    (r'^news/', include('makahiki_base.urls')),
+    (r'^dorms/', include('floors.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
@@ -41,7 +41,7 @@ urlpatterns = patterns('',
     (r'^account/cas/login/$', 'django_cas.views.login'),
     (r'^account/cas/logout/$', 'django_cas.views.logout'),
     # (r'^openid/(.*)', PinaxConsumer()),
-    (r'^avatar/', include('kukui_cup_avatar.urls')),
+    (r'^avatar/', include('makahiki_avatar.urls')),
     (r'^admin/(.*)', admin.site.root),
     (r'^tribes/', include('tribes.urls')),
     # (r'^notifications/', include('notification.urls')),

@@ -88,7 +88,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Goal'},
             'created_at': ('django.db.models.fields.DateTimeField', [], {}),
             'description': ('django.db.models.fields.TextField', [], {}),
-            'floors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['kukui_cup_floors.Floor']", 'through': "'GoalMember'"}),
+            'floors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['floors.Floor']", 'through': "'GoalMember'"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'point_value': ('django.db.models.fields.IntegerField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
@@ -98,7 +98,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'GoalMember', '_ormbases': ['activities.CommonActivityUser']},
             'admin_comment': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'commonactivityuser_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['activities.CommonActivityUser']", 'unique': 'True', 'primary_key': 'True'}),
-            'floor': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['kukui_cup_floors.Floor']"}),
+            'floor': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Floor']"}),
             'goal': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['activities.Goal']"}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'user_comment': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'})
@@ -146,7 +146,7 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'kukui_cup_floors.dorm': {
+        'floors.dorm': {
             'Meta': {'object_name': 'Dorm'},
             'created_at': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -154,12 +154,12 @@ class Migration(SchemaMigration):
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True'})
         },
-        'kukui_cup_floors.floor': {
+        'floors.floor': {
             'Meta': {'object_name': 'Floor'},
             'chart_dorm': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'chart_floor': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'chart_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'dorm': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['kukui_cup_floors.Dorm']"}),
+            'dorm': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Dorm']"}),
             'floor_number': ('django.db.models.fields.IntegerField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         }

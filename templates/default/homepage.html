@@ -24,7 +24,7 @@
   <div id="content_header">    
     <div class="makahiki_content">
       <div id="headlines" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
-        {% include "kukui_cup_base/headlines.html" %}
+        {% include "makahiki_base/headlines.html" %}
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
       <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
         {% if articles %}
           {% for article in articles %}
-            {% include "kukui_cup_base/article.html" %}
+            {% include "makahiki_base/article.html" %}
           {% endfor %}
         {% else %}
           <p>There are no news stories yet</p>

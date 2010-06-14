@@ -3024,7 +3024,7 @@
  }, 
  {
   "pk": 1, 
-  "model": "kukui_cup_floors.dorm", 
+  "model": "floors.dorm", 
   "fields": {
    "updated_at": null, 
    "created_at": "2010-05-17 00:00:00", 
@@ -3034,7 +3034,7 @@
  }, 
  {
   "pk": 2, 
-  "model": "kukui_cup_floors.dorm", 
+  "model": "floors.dorm", 
   "fields": {
    "updated_at": null, 
    "created_at": "2010-05-25 00:00:00", 
@@ -3044,7 +3044,7 @@
  }, 
  {
   "pk": 1, 
-  "model": "kukui_cup_floors.floor", 
+  "model": "floors.floor", 
   "fields": {
    "dorm": 1, 
    "floor_number": 2, 
@@ -3055,7 +3055,7 @@
  }, 
  {
   "pk": 2, 
-  "model": "kukui_cup_floors.floor", 
+  "model": "floors.floor", 
   "fields": {
    "dorm": 2, 
    "floor_number": 3, 

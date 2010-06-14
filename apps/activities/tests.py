@@ -1,7 +1,7 @@
 import unittest
 
 from django.contrib.auth.models import User
-from kukui_cup_profile.models import Profile
+from makahiki_profiles.models import Profile
 from activities.models import Activity, ActivityMember
 
 class ActivitiesTestCase(unittest.TestCase):

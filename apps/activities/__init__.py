@@ -18,10 +18,14 @@ def get_activities_for_user(user):
     activitymember__user=user,
     activitymember__awarded=False,
   )
-  user_goals = user.get_profile().floor.goal_set.filter(
-    goalmember__floor=user.get_profile().floor,
-    goalmember__awarded=False,
-  )
+  if user.get_profile().floor:
+    user_goals = user.get_profile().floor.goal_set.filter(
+      goalmember__floor=user.get_profile().floor,
+      goalmember__awarded=False,
+    )
+    
+  else:
+    user_goals = None
     
   return {
     "commitments": user_commitments,

@@ -5,8 +5,8 @@ import os
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
-from kukui_cup_profile.models import Profile
-from kukui_cup_floors.models import Floor
+from makahiki_profiles.models import Profile
+from floors.models import Floor
 
 # These models represent the different types of activities users can commit to.
 
