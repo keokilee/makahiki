@@ -33,9 +33,6 @@
             <li>
               <div id="profile_avatar">
                   <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
-                  {% if is_me %}
-                  <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
-                  {% endif %}
               </div>
             </li>
             {% if other_user.get_profile.floor %}
