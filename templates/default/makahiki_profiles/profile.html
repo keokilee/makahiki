@@ -6,29 +6,6 @@
 
 {% block extra_head %}
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
-  <!-- <script type="text/javascript">
-    //Thanks to http://www.sohtanaka.com/web-design/simple-tabs-w-css-jquery/
-    jQuery(document).ready(function() {
-
-    	//When page loads...
-    	jQuery(".activity_content").hide(); //Hide all content
-    	jQuery("ul.tabs li:first").addClass("active").show(); //Activate first tab
-    	jQuery(".activity_content:first").show(); //Show first tab content
-
-    	//On Click Event
-    	jQuery("ul.tabs li").click(function() {
-
-    		jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
-    		jQuery(this).addClass("active"); //Add "active" class to selected tab
-    		jQuery(".activity_content").hide(); //Hide all tab content
-
-    		var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-    		jQuery(activeTab).fadeIn(); //Fade in the active ID content
-    		return false;
-    	});
-
-    });
-  </script> -->
 {% endblock %}
 
 {% block head_title %}
