@@ -14,3 +14,11 @@
   margin: 0px;
   padding: 10px 20px 0 20px;
 }
+
+.title-string {
+  padding-left:20px;
+}
+
+.item_description {
+  padding-left: 20px;
+}
