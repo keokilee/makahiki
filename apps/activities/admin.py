@@ -159,6 +159,8 @@ admin.site.register(Goal)
 
 class GoalMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
+  # Requires Django 1.2
+  readonly_fields = ("user", "goal", "floor", "user_comment")
   list_display = ("goal", "floor", "user", "approval_status")
   list_filter = ["approval_status"]
 
