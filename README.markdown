@@ -40,7 +40,7 @@ This README describes how to set up your computer for developing the [Pinax impl
 If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).  Note that you can ignore the section adding/removing Genshi.
 
 ## Prerequisites
-* [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
+* [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using 64 bit seems to have issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
 * If on Mac OS X, make sure that the Apple Developer Tools are installed (which is bundled with XCode).  You can either get this from your Mac's install DVD or from Apple's [site](http://developer.apple.com/technologies/xcode.html).  Note that you need an Apple developer account (which is free) to download from Apple.
 * [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL).
 
@@ -48,6 +48,7 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * Download the latest official release from the [Pinax web site](http://pinaxproject.com/download/).
 * Extract the bundle and using the terminal or a command prompt, change into the new directory.
 * Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
+* TROUBLESHOOTING: On Mac OS X Snow Leopard, you may see an issue where the virtual environment fails to install.  One way to avoid this is to use the [virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/).  Follow the steps in the introduction and make a virtualenv for Pinax (i.e. `mkvirtualenv pinax-env`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script. Then, you can go back to the pinax folder you downloaded and type `python scripts/pinax-boot.py $WORKON_HOME/pinax-env` to install Pinax into the virtual environment.
 
 ## Obtaining the Kukui Cup Pinax source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
@@ -65,15 +66,15 @@ To install South, please go to their [installation wiki](http://south.aeracode.o
 
 ## Setting up Kukui Cup Pinax
 * cd into the makahiki folder.
-* Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
+* Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
 * Copy `settings.py.example` to `settings.py`.  This will work as is, but you might want to make a few changes to it depending on your environment.  Some things you might want to change are the database settings, timezone, and the CAS Login server.
 * If you have installed South, you need to edit settings.py and uncomment 'south' from INSTALLED_APPS.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "yes".
-* IMPORTANT: Use your UH username (i.e. if your UH email is "bob@hawaii.edu", use "bob" as your username).  This is so that you can authenticate via UH CAS.
+* IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
 * If you have installed South, then you will also need to run `python manage.py migrate` to sync the migrations.
-* The database fixtures should be automatically loaded (it should say `Installed 70 objects from 1 fixture(s)`).  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
+* The database fixtures should be automatically loaded.  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
 
 ## Running the server
 * If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
