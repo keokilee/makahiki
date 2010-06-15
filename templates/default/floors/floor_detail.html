@@ -1,0 +1,25 @@
+{% extends "makahiki_profiles/base.html" %}
+
+{% load generic_flatblocks %}
+{% load avatar_tags %}
+
+{% block tab_id %}"#profile_tab"{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block body %}
+  <h2>Your Floor</h2>
+  
+  <div id="floor_members" style="width:25%">
+    {% for profile in profiles %}
+      <div class="member_block" style="display:inline">
+        <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" class="photo" />
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block extra_body %}
+
+{% endblock %}
