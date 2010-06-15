@@ -37,10 +37,10 @@
             </li>
             {% if other_user.get_profile.floor %}
               <li><b>{% trans "Dorm" %}</b>: <span class="fn">{{ other_user.get_profile.floor.dorm.name }}</span></li>
-              <li><b>{% trans "Floor" %}</b>: <span class="fn">{{ other_user.get_profile.floor.floor_number }}</span></li>
+              <li><b>{% trans "Floor" %}</b>: <span class="fn">{{ other_user.get_profile.floor.number }}</span></li>
             {% endif %}
             {% if other_user.get_profile.about %}<li><b>{% trans "About" %}</b>: {{ other_user.get_profile.about }}</li>{% endif %}
-            <li><b>{% trans "Kukui Nuts" %}</b>: {{ other_user.get_profile.points }}</li>
+            <li><b>{% trans "Points" %}</b>: {{ other_user.get_profile.points }}</li>
             
             {% if is_me %}
                 <li><a href="{% url profile_edit %}" rel="facebox">Edit profile</a></li>
