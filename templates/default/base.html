@@ -1,11 +1,14 @@
 {% load i18n %}
 {% load theme_tags %}
+{% load facebook_tags %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
+    {% facebook_js %}
     {% render_css_import user %}
     
     <link rel="stylesheet" href="{{ STATIC_URL }}frontendadmin/css/frontendadmin.css" />
@@ -20,8 +23,10 @@
 <body>
 	<div id="header">
     {% block website_title %}{% endblock %}
-  </div>  
+  </div> 
+  
   <div id="outline">
+     {% show_connect_button %} 
 		 {% spaceless %}
       <div id="tabhead">
           <div class="ui-tabs">
@@ -78,5 +83,7 @@
   {% block extra_body_base %}
       {% block extra_body %}{% endblock %}
   {% endblock %}
+  
+  {% initialize_facebook_connect %}
 </body>
 </html>

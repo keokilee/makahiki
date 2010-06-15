@@ -51,7 +51,8 @@ class Dorm(models.Model):
     super(Dorm, self).save()
     
 class Floor(models.Model):
-  floor_number = models.IntegerField(help_text="The floor number in the dorm.")
+  number = models.CharField(help_text="The floor number in the dorm. Can be a string value", max_length=10)
+  slug = models.CharField(max_length=10, blank=True, help_text="Automatically generated if left blank.")
   dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
   chart_url = models.CharField(
                   max_length=200,
@@ -75,7 +76,26 @@ class Floor(models.Model):
   )
   
   def __unicode__(self):
-    return "%s: Floor %d" % (self.dorm.name, self.floor_number)
+    return "%s: Floor %s" % (self.dorm.name, self.slug)
+    
+  def create_slug(self):
+    """Creates a slug (a url parameter based on content of the title).
+    Returns None if the floor has no title."""
+
+    if not self.number:
+      return None
+
+    if self.slug:
+      return self.slug
+
+    slug = self.number
+    for char in string.punctuation:
+      slug = slug.replace(char, "")
+    slug = string.join(slug.split(), "-").lower()
+    if len(slug) > 10:
+      slug = slug[:10]
+
+    return slug
     
   def get_wattdepot_host(self):
     """Retrieves the floor's specified host or the host specified in settings."""

@@ -44,6 +44,9 @@ urlpatterns = patterns('',
     (r'^avatar/', include('makahiki_avatar.urls')),
     (r'^admin/(.*)', admin.site.root),
     # (r'^notifications/', include('notification.urls')),
+    
+    # Facebook Connect
+    (r'^facebook/', include('facebookconnect.urls')),
 )
 
 if settings.SERVE_MEDIA:
