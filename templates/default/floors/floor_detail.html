@@ -11,12 +11,25 @@
 {% block body %}
   <h2>Your Floor</h2>
   
-  <div id="floor_members" style="width:25%">
-    {% for profile in profiles %}
-      <div class="member_block" style="display:inline">
-        <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" class="photo" />
+  <div id="floor_left">
+    <div id="member_list" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-accordion-header ui-corner-top activity_header">
+        Members:
       </div>
-    {% endfor %}
+      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% for profile in profiles %}
+          <div class="member_block" style="display:inline; float:left; margin:2px; width:45px">
+            <a href="{% url profile_detail profile.user.username %}">
+              <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" class="photo" align="center"/>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div id="floor_center">
+  </div>
+  <div id="floor_right">
   </div>
 {% endblock %}
 

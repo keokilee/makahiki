@@ -97,6 +97,13 @@ class Floor(models.Model):
 
     return slug
     
+  def save(self):
+    """Custom save method to generate slug and set created_at/updated_at."""
+    if not self.slug:
+      self.slug = self.create_slug()
+
+    super(Floor, self).save()
+    
   def get_wattdepot_host(self):
     """Retrieves the floor's specified host or the host specified in settings."""
     return self.wattdepot_host or settings.WATTDEPOT_HOST

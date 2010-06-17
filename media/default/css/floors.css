@@ -1,0 +1,21 @@
+#floor_left {
+  float: left;
+  width: 220px;
+}
+
+#floor_center {
+  float: left;
+  width: 490px;
+  padding: 0;
+}
+
+#floor_right {
+  float: left;
+  width: 250px;
+  margin: 15px 5px;
+}
+
+.floor_content {
+  margin: 10px 5px;
+  padding: 5px 0px;
+}
