@@ -107,4 +107,29 @@ class Floor(models.Model):
   def get_wattdepot_host(self):
     """Retrieves the floor's specified host or the host specified in settings."""
     return self.wattdepot_host or settings.WATTDEPOT_HOST
+    
+class Post(models.Model):
+  """Represents a wall post on a user's wall."""
+  user = models.ForeignKey(User)
+  floor = models.ForeignKey(Floor)
+  text = models.TextField()
+  style_class = models.CharField(max_length=50, default="user_post") #CSS class to apply to this post.
+  created_at = models.DateTimeField(editable=False)
   
+  def save(self):
+    if not self.created_at:
+      self.created_at = datetime.date.today()
+    
+    super(Post, self).save()
+  
+class PostComment(models.Model):
+  user = models.ForeignKey(User)
+  post = models.ForeignKey(Post)
+  text = models.TextField()
+  created_at = models.DateTimeField(editable=False)
+  
+  def save(self):
+    if not self.created_at:
+      self.created_at = datetime.date.today()
+    
+    super(PostComment, self).save()
