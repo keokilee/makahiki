@@ -1,0 +1,38 @@
+{% if floor.chart_url %}
+<div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+  <div class="ui-accordion-header ui-state-default ui-corner-top activity_header">
+    Current power usage:
+    <span id="power_monitor_help" class="ui-icon ui-icon-help"></span>
+  </div>
+  
+  <div id="power_monitor" class="monitor_item ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div id="powertitle" align="center"></div>
+    <div id="powerdata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="powerlastcheck" align="center"></div>
+  </div>
+</div>
+
+<div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+  <div class="ui-state-default ui-accordion-header ui-corner-top activity_header">
+    Current energy usage:
+    <span id="energy_monitor_help" class="ui-icon ui-icon-help"></span>
+  </div>
+  
+  <div id="energy_monitor" class="monitor_item ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div id="energytitle" align="center"></div>
+    <div id="energydata" align="center"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="energylastcheck" align="center"></div>
+  </div>
+</div>
+
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/monitor.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    dorm = "{{floor.chart_dorm}}";
+    floor= "{{floor.chart_floor}}";
+    charturl = '{{floor.chart_url}}';
+    initializeMonitor(charturl, dorm, floor);
+  })
+</script>
+{% endif %}

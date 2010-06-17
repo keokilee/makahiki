@@ -16,4 +16,5 @@ def floor(request, dorm_slug, floor_slug):
   
   return render_to_response('floors/floor_detail.html', {
     "profiles": profiles,
+    "floor": floor,
   }, context_instance = RequestContext(request))

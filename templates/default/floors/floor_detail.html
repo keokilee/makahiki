@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-  <h2>Your Floor</h2>
+  <h2 style="margin:0px; padding: 5px">{{floor}}</h2>
   
   <div id="floor_left">
     <div id="member_list" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
@@ -18,9 +18,9 @@
       </div>
       <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
         {% for profile in profiles %}
-          <div class="member_block" style="display:inline; float:left; margin:2px; width:45px">
+          <div class="member_block" style="display:inline; float:left; margin:0 5px 10px 0; width:45px">
             <a href="{% url profile_detail profile.user.username %}">
-              <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" class="photo" align="center"/>
+              <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="center"/>
             </a>
           </div>
         {% endfor %}
@@ -28,8 +28,18 @@
     </div>
   </div>
   <div id="floor_center">
+    <div id="wall_title" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-state-default ui-accordion-header ui-corner-top activity_header">
+        Wall:
+      </div>
+
+      <div id="wall_content" class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <p>Insert posts here</p>
+      </div>
+    </div>
   </div>
   <div id="floor_right">
+    {% include 'floors/monitor_panel.html' %}
   </div>
 {% endblock %}
 
