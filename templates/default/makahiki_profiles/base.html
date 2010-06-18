@@ -8,8 +8,8 @@
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="{% url profile_detail user.username %} ">{% trans "Your Profile" %}</a></li>
-            <li><a href="{% url floor_detail user.get_profile.floor.dorm.slug user.get_profile.floor.slug %}">{% trans "Your Floor" %}</a></li>
+            <li><a href="{% url profile_detail user.username %} ">{% trans "My Profile" %}</a></li>
+            <li><a href="{% url floor_detail user.get_profile.floor.dorm.slug user.get_profile.floor.slug %}">{% trans "My Floor" %}</a></li>
             <li><a href="/activities/commitment_list/">Commitments</a></li>
             <li><a href="/activities/activity_list/">Activities</a></li>
             <li><a href="/activities/goal_list/">Goals</a></li>
