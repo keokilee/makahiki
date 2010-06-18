@@ -42,7 +42,7 @@ def __generate_commitment_form(user, item):
       return_string += '%d days left&nbsp' % diff.days
     
     return_string += '<form action="/activities/remove_{0}/{1.id}'
-    return_string += '/" method="post" style="display:inline"><a href="#"'
+    return_string += '/" method="post" style="display:inline; margin-left:3px"><a href="#"'
     return_string += 'onclick="parentNode.submit()">Remove</a></form>'
   
   except ObjectDoesNotExist:

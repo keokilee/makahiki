@@ -34,7 +34,10 @@
       </div>
 
       <div id="wall_content" class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <p>Insert posts here</p>
+        {% if posts %}
+        {% else %}
+          <p>There are no posts.</p>
+        {% endif %}
       </div>
     </div>
   </div>
