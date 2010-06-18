@@ -107,17 +107,17 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'facebook.djangofb.FacebookMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'account.middleware.LocaleMiddleware',
     'django_cas.middleware.CASMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'facebookconnect.models.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
     'makahiki_auth.models.MakahikiCASBackend',
 )
@@ -146,24 +146,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "account.context_processors.account",
 )
 
-<<<<<<< HEAD
 WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
-=======
-# Default Facebook info if the connection fails for some reason.
-DUMMY_FACEBOOK_INFO = {
-    'uid':0,
-    'name':'(Private)',
-    'first_name':'(Private)',
-    'pic_square_with_logo':'http://www.facebook.com/pics/t_silhouette.gif',
-    'affiliations':None,
-    'status':None,
-    'proxied_email':None,
-}
-
-FACEBOOK_API_KEY = '00000000000000000000000000000000'
-FACEBOOK_SECRET_KEY = '00000000000000000000000000000000'
-FACEBOOK_INTERNAL = True
->>>>>>> Changed settings.py.example to include Facebook Connect.
 
 INSTALLED_APPS = (
     # Kukui Cup specific apps.  Hopefully, they do not interfere with the fixture loading.
@@ -174,6 +157,8 @@ INSTALLED_APPS = (
     'windmill_tests',
     'makahiki_themes',
     'makahiki_base',
+    
+    # 'facebookconnect',
     
     # included
     'django.contrib.auth',

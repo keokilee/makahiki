@@ -315,7 +315,7 @@ def __request_activity_points(request, activity_id):
   else:
     form = ActivityTextForm()
     
-  admin_message = activity_member.admin_comment
+  admin_message = activity_member.admin_comment if activity_member else None
       
   return render_to_response("activities/request_activity_points.html", {
     "form": form,

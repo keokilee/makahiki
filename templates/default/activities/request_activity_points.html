@@ -9,6 +9,7 @@
     <form action="/activities/request_activity_points/{{activity.pk}}/" method="post">
   {% endif %}
   
+  {% csrf_token %}
   {% if form.response %}
     {{ form.response.errors }}
   {% else %}
