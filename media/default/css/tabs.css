@@ -45,9 +45,15 @@
     background-color: #2F6B00;
 }
 
+#commitments #commitments_subnav,
+#activities #activities_subnav,
+#goals #goals_subnav {
+  background-color: #459E00;
+}
+
 #subnav ul {
     margin: 0;
-    padding: 5px 0 0 0;
+    padding: 5px 0 0 5px;
     list-style: none;
 }
 

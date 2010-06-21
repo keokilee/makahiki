@@ -37,6 +37,8 @@
   </script>
 {% endblock %}
 
+{% block active_subnav %}{{item_name}}{%endblock%}
+
 {% block breadcrumbs %}{{block.super}} &raquo; List {{item_name.capitalize}}{% endblock %}
 
 {% block body %}
