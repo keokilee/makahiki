@@ -36,8 +36,16 @@
       <div id="wall_content" class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
         {% if posts %}
         {% else %}
-          <p>There are no posts.</p>
+          <p>There are no posts yet!</p>
         {% endif %}
+        <div id="wall_form">
+          <form action="{% url floor_post floor.dorm.slug floor.slug %}" method="post">
+            <div id="wall_post" style="display:block; width: 100%">
+              {{wall_form.post}}
+            </div>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
     </div>
   </div>
