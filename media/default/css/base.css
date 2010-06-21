@@ -35,10 +35,15 @@ hr.clear {
     clear: both;
 }
 
+div#header {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 div#website_title {
-    width: 1000px;
-    margin: 0 auto;
-    padding-top: 5px;
+  width: 70%;
+  float: left;
+  padding-top: 5px;
 }
 
 div#website_title h1 {
@@ -55,6 +60,17 @@ div#website_title h1 a {
     color: #459E00;
 }
 
+div#login {
+  width: 30%;
+  float:left;
+  padding-top:10px;
+  text-align: right;
+}
+
+div#login h5 {
+  margin: 0;
+}
+
 #color-wrapper {
     background-color: #888;
 }
@@ -62,6 +78,7 @@ div#website_title h1 a {
 #outline {
     width: 1000px;
     margin: 0 auto;
+    clear: left;
 }
 
 #content-outline {
