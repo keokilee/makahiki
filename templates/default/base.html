@@ -45,12 +45,10 @@
       {% endspaceless %}
 
   <div id="content-outline" class="ui-corner-bottom">
-      
-     
-                  
       <!-- {% block content_image %}{% endblock %} -->
       
       <div id="content">
+      <h3 id="breadcrumbs">{% block breadcrumbs %}{% endblock %}</h3>
       {% if messages %}
       <ul id="messages">
           {% for message in messages %}

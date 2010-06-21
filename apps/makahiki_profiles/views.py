@@ -57,6 +57,7 @@ def profile(request, username, template_name="makahiki_profiles/profile.html"):
         "is_me": is_me,
         "activities_enabled": False,
         "other_user": other_user,
+        "floor": other_user.get_profile().floor,
     }
     
     # Load activities for the user.

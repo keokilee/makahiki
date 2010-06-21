@@ -1,4 +1,4 @@
-{% extends "makahiki_profiles/base.html" %}
+{% extends "floors/base.html" %}
 
 {% load generic_flatblocks %}
 {% load avatar_tags %}
@@ -8,9 +8,11 @@
 {% block extra_head %}
 {% endblock %}
 
+{% block breadcrumbs %}
+  {{block.super}} &raquo; Floor
+{% endblock %}
+
 {% block body %}
-  <h2 id="list_header">{{floor}}</h2>
-  
   <div id="floor_left">
     <div id="member_list" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       <div class="ui-accordion-header ui-corner-top activity_header">

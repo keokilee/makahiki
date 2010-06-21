@@ -1,4 +1,4 @@
-{% extends "makahiki_profiles/base.html" %}
+{% extends "floors/base.html" %}
 
 {% load i18n %}
 {% load uni_form %}
@@ -30,6 +30,11 @@
 {% endblock %}
 
 {% block tab_id %}"#profile_tab"{% endblock %}
+
+{% block breadcrumbs %}
+  {{block.super}}  &raquo;
+  <a href="{% url profile_detail other_user %} ">{{other_user.get_profile.name}}</a> &raquo; Profile
+{% endblock %}
 
 {% block body %}
   <div id="profile_left" class="profile_content">
