@@ -275,3 +275,28 @@ ul#messages li a {
 #content .article_container p {
   margin-left:10px;
 }
+
+#content a.option-link {
+  padding: 2px 4px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.activity_options form {
+  margin: 5px 0;
+  width: 100%;
+} 
+
+.option-link span.ui-icon {
+  margin-left: 3px;
+  position: absolute;
+}
+
+.option-link span.ui-icon-circle-minus {
+  margin-left: 5px;
+}
+
+.option-link span.button-text {
+  margin-left: 20px;
+  padding-right: 5px;
+}
