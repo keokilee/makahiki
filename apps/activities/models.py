@@ -91,7 +91,7 @@ class CommitmentMember(CommonBase):
       self.completion_date = datetime.date.today() + datetime.timedelta(days=self.commitment.duration)
       
     if not self.pk and profile.floor:
-      message = "is participating in the commitment \"%s\"" % (
+      message = "is participating in the commitment \"%s\"." % (
         self.commitment.title,
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
@@ -107,7 +107,7 @@ class CommitmentMember(CommonBase):
       profile.points -= self.commitment.point_value
       profile.save()
     elif profile.floor:
-        message = "is no longer participating in \"%s\"" % (
+        message = "is no longer participating in \"%s\"." % (
           self.commitment.title,
         )
         post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
@@ -265,8 +265,7 @@ class ActivityMember(CommonActivityUser):
       self.awarded = True
       
       if profile.floor:
-        message = "%s has been awarded %d points for completing \"%s\"" % (
-          profile.name,
+        message = " has been awarded %d points for completing \"%s\"." % (
           self.activity.point_value,
           self.activity.title,
         )
@@ -341,11 +340,27 @@ class GoalMember(CommonActivityUser):
   
   def save(self):
     """Custom save method to award points to all floor members."""
+    profile = self.user.get_profile()
     
-    if self.approval_status == u"approved" and not self.awarded:
+    if not self.pk:
+      message = " has added the goal \"%s\" to the floor." % (
+        self.goal.title,
+      )
+      post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+      post.save()
+
+    
+    elif self.approval_status == u"approved" and not self.awarded:
       for profile in self.floor.profile_set.all():
         profile.points += self.goal.point_value
         profile.save()
+        
+        message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
+          self.goal.title,
+          self.goal.point_value,
+        )
+        post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+        post.save()
       
       self.awarded = True
     
