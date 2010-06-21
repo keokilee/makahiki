@@ -45,22 +45,22 @@
         </div>
         
         {% if posts %}
-          <ul id="wall_posts" style="list-style: none; margin: 0; padding: 5px 0">
+          <ul id="wall_posts">
           {% for post in posts %}
-            <li style="padding: 5px 0">
-              <a style="float: left;" href="{% url profile_detail post.user.username %}">
+            <li>
+              <a class="wall_image" href="{% url profile_detail post.user.username %}">
                <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
               </a>
-              <div style="float: left; margin-left: 10px">
-                <a style="text-decoration: none; color: #2F6B00" href="{% url profile_detail post.user.username %}">
+              <div class="wall_text">
+                <a href="{% url profile_detail post.user.username %}">
                   {{post.user.get_profile.name}} 
                 </a>
-                <p style="padding: 0; margin: 0">
+                <p>
                   {{post.text}}
                 </p>
-                <div style="font-size: 11px; font-style: italic">Posted at {{post.date_string}}</div>
+                <div class="date_string">Posted at {{post.date_string}}</div>
               </div>
-              <div style="clear: left; padding: 5px 0; border-bottom: 1px solid #DFD9C3;"></div>
+              <div class="post_clear"></div>
             </li>
           {% endfor %}
           </ul>
