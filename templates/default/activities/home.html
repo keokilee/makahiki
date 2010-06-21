@@ -1,0 +1,85 @@
+{% extends "activities/base.html" %}
+
+{% load generic_flatblocks %}
+
+{% block tab_id %}"#activity_tab"{% endblock %}
+
+{% block extra_head %}
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery(".item_description").hide();
+      
+      jQuery(".item_title a").click(function() {
+        var icon = jQuery(this).children(".toggle-icon");
+        
+        if (icon.hasClass("ui-icon-plus")) {
+          icon.addClass("ui-icon-minus");
+          icon.removeClass('ui-icon-plus');
+        }
+        else {
+          icon.addClass("ui-icon-plus");
+          icon.removeClass('ui-icon-minus');
+        }
+        jQuery(this).parent().next(".item_description").toggle("blind");
+      });
+    });
+    
+    function confirm_removal(form, item_type) {
+      var confirmed = confirm("Are you sure you wish to remove this " + item_type + "?");
+      if (confirmed) {
+        form.submit();
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  </script>
+{% endblock %}
+
+{% block breadcrumbs %}{{block.super}} &raquo; Home{% endblock %}
+
+{% block body %}
+<div id="content_header">    
+
+</div>
+
+<div id="three_col_left" style="width: 320px">
+  <div id="commitment_detail" class="makahiki_content">
+    {% gblock "commitment_detail" for "gblocks.TitleAndText" %}
+  </div>
+</div>
+
+<div id="three_col_center" style="width: 320px">
+  <div id="activity_detail" class="makahiki_content">
+    {% gblock "activity_detail" for "gblocks.TitleAndText" %}
+  </div>
+</div>
+<div id="three_col_right" style="width: 320px">
+  <div id="goal_detail" class="makahiki_content">
+    {% gblock "goal_detail" for "gblocks.TitleAndText" %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('a.frontendadmin_edit').hover(
+        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+        function(){jQuery(this).parent().css('outline', '')}
+    );
+    
+    jQuery('a.frontendadmin_edit').click(function(){
+            jQuery(this).parent().css('outline', '');
+            jQuery(this).parent().load(this.href);
+            return false;
+    });
+    
+    jQuery('a.frontendadmin_delete').hover(
+        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+        function(){jQuery(this).parent().css('outline', '')}
+    );
+});
+</script>
+{% endblock %}

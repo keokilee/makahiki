@@ -1,7 +1,8 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    url(r'^(?P<item_type>activity|commitment|goal)_list/$', 'activities.views.list', name="list"),
+    url(r'^home/$', 'activities.views.home', name="activity_home"),
+    url(r'^(?P<item_type>activity|commitment|goal)_list/$', 'activities.views.list', name="activity_list"),
     
     # Actions
     url(r'^add_(?P<item_type>activity|commitment|goal)/(?P<item_id>\d+)/$',

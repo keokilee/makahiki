@@ -14,6 +14,11 @@ from activities.forms import *
 from activities import MAX_COMMITMENTS
 
 @login_required
+def home(request):
+  """Home page listing for activities.  We may want to add top commitments/activities/goals later."""
+  return render_to_response('activities/home.html', {}, context_instance = RequestContext(request))
+
+@login_required
 def list(request, item_type):
   user = request.user
   

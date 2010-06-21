@@ -1,8 +1,8 @@
-{% extends "makahiki_profiles/base.html" %}
+{% extends "activities/base.html" %}
 
 {% load generic_flatblocks %}
 
-{% block tab_id %}"#profile_tab"{% endblock %}
+{% block tab_id %}"#activity_tab"{% endblock %}
 
 {% block extra_head %}
   <script type="text/javascript">
@@ -37,8 +37,9 @@
   </script>
 {% endblock %}
 
+{% block breadcrumbs %}{{block.super}} &raquo; List {{item_name.capitalize}}{% endblock %}
+
 {% block body %}
-  <h2 id="list_header">{{item_name.capitalize}}</h2>
   <div id="user_items" class="list_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
       Active {{item_name}}:
