@@ -48,19 +48,11 @@
           <ul id="wall_posts">
           {% for post in posts %}
             <li>
-              <a class="wall_image" href="{% url profile_detail post.user.username %}">
-               <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
-              </a>
-              <div class="wall_text">
-                <a href="{% url profile_detail post.user.username %}">
-                  {{post.user.get_profile.name}} 
-                </a>
-                <p>
-                  {{post.text}}
-                </p>
-                <div class="date_string">Posted at {{post.date_string}}</div>
-              </div>
-              <div class="post_clear"></div>
+              {% ifequal post.style_class "user_post" %}
+                {% include "floors/posts/user_post.html" %}
+              {% else %}
+                {% include "floors/posts/system_post.html" %}
+              {% endifequal %}
             </li>
           {% endfor %}
           </ul>

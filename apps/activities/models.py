@@ -6,7 +6,7 @@ import os
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from makahiki_profiles.models import Profile
-from floors.models import Floor
+from floors.models import Floor, Post
 
 # These models represent the different types of activities users can commit to.
 
@@ -85,17 +85,33 @@ class CommitmentMember(CommonBase):
   
   def save(self):
     """Custom save method to generate the completion date automatically."""
+    profile = self.user.get_profile()
+    
     if not self.completion_date:
       self.completion_date = datetime.date.today() + datetime.timedelta(days=self.commitment.duration)
+      
+    if not self.pk and profile.floor:
+      message = "is participating in the commitment \"%s\"" % (
+        self.commitment.title,
+      )
+      post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+      post.save()
 
     super(CommitmentMember, self).save()
   
   def delete(self):
     """Custom delete method to remove the points for completed commitments."""
+    profile = self.user.get_profile()
+    
     if self.completed:
-      profile = self.user.get_profile()
       profile.points -= self.commitment.point_value
       profile.save()
+    elif profile.floor:
+        message = "is no longer participating in \"%s\"" % (
+          self.commitment.title,
+        )
+        post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
+        post.save()
       
     super(CommitmentMember, self).delete()
   
@@ -247,6 +263,15 @@ class ActivityMember(CommonActivityUser):
       profile.points += self.activity.point_value
       profile.save()
       self.awarded = True
+      
+      if profile.floor:
+        message = "%s has been awarded %d points for completing \"%s\"" % (
+          profile.name,
+          self.activity.point_value,
+          self.activity.title,
+        )
+        post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+        post.save()
       
     elif self.approval_status != u"approved" and self.awarded:
       # Do we want to re-enable the confirmation code?

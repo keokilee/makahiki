@@ -32,12 +32,14 @@ ul#wall_posts li {
 }
 
 li a.wall_image {
+  width: 10%;
   float: left;
 }
 
 li .wall_text {
   float: left;
   margin-left: 10px;
+  width: 85%;
 }
 
 li .wall_text a {
@@ -59,4 +61,9 @@ li .post_clear {
   clear: left;
   padding: 5px 0;
   border-bottom: 1px solid #DFD9C3;
+}
+
+li .system_text a {
+  text-decoration: none;
+  color: #2F6B00
 }
