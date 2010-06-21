@@ -1,8 +1,10 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.http import Http404
+from django.http import HttpResponseRedirect, Http404
+from django.contrib import messages
 
-from floors.models import Dorm, Floor
+
+from floors.models import Dorm, Floor, Post
 from floors.forms import WallForm
 from makahiki_avatar.models import Avatar
 # Create your views here.
@@ -26,7 +28,15 @@ def floor(request, dorm_slug, floor_slug):
   }, context_instance = RequestContext(request))
   
 def wall_post(request, dorm_slug, floor_slug):
+  dorm = get_object_or_404(Dorm, slug=dorm_slug)
+  floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
+  
   if request.method == "POST":
-    pass
-  else:
-    raise Http404
+    form = WallForm(request.POST)
+    if form.is_valid():
+      post = Post(user=request.user, floor=floor, text=form.cleaned_data["post"])
+      post.save()
+      messages.success(request, 'Your post was successful!')
+      return HttpResponseRedirect(reverse("floors.views.floor", args=(dorm_slug, floor_slug,)))
+  
+  raise Http404

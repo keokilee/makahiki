@@ -35,6 +35,11 @@
 
       <div id="wall_content" class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
         {% if posts %}
+          <ul id="wall_posts">
+          {% for post in posts %}
+            <li>{{post.user.get_profile.name}} says {{post.text}}</li>
+          {% endfor %}
+          </ul>
         {% else %}
           <p>There are no posts yet!</p>
         {% endif %}
