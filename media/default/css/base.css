@@ -304,13 +304,17 @@ ul#messages li a {
   width: 100%;
 } 
 
-.option-link span.ui-icon {
-  margin-left: 3px;
-  position: absolute;
+.option-link {
+  padding:0.4em 1em 0.4em 20px;
+  position:relative;
+  text-decoration:none;
 }
 
-.option-link span.ui-icon-circle-minus {
-  margin-left: 5px;
+.option-link span.ui-icon {
+  left:0.1em;
+  margin:-8px 5px 0 0;
+  position:absolute;
+  top:50%;
 }
 
 .option-link span.button-text {
