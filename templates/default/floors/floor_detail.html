@@ -34,23 +34,39 @@
       </div>
 
       <div id="wall_content" class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        {% if posts %}
-          <ul id="wall_posts">
-          {% for post in posts %}
-            <li>{{post.user.get_profile.name}} says {{post.text}}</li>
-          {% endfor %}
-          </ul>
-        {% else %}
-          <p>There are no posts yet!</p>
-        {% endif %}
-        <div id="wall_form">
+        <div id="wall_form" style="padding: 0; padding-bottom: 5px; border-bottom: 1px solid #DFD9C3">
           <form action="{% url floor_post floor.dorm.slug floor.slug %}" method="post">
+            <label for="wall_post">Post something on the wall:</label>
             <div id="wall_post" style="display:block; width: 100%">
               {{wall_form.post}}
             </div>
             <input type="submit" value="Submit" />
           </form>
         </div>
+        
+        {% if posts %}
+          <ul id="wall_posts" style="list-style: none; margin: 0; padding: 5px 0">
+          {% for post in posts %}
+            <li style="padding: 5px 0">
+              <a style="float: left;" href="{% url profile_detail post.user.username %}">
+               <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
+              </a>
+              <div style="float: left; margin-left: 10px">
+                <a style="text-decoration: none; color: #2F6B00" href="{% url profile_detail post.user.username %}">
+                  {{post.user.get_profile.name}} 
+                </a>
+                <p style="padding: 0; margin: 0">
+                  {{post.text}}
+                </p>
+                <div style="font-size: 11px; font-style: italic">Posted at {{post.date_string}}</div>
+              </div>
+              <div style="clear: left; padding: 5px 0; border-bottom: 1px solid #DFD9C3;"></div>
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <p>There are no posts yet!</p>
+        {% endif %}
       </div>
     </div>
   </div>

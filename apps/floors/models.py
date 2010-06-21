@@ -116,9 +116,13 @@ class Post(models.Model):
   style_class = models.CharField(max_length=50, default="user_post") #CSS class to apply to this post.
   created_at = models.DateTimeField(editable=False)
   
+  def date_string(self):
+    """Formats the created date into a pretty string."""
+    return self.created_at.strftime("%m/%d %I:%M %p")
+  
   def save(self):
     if not self.created_at:
-      self.created_at = datetime.date.today()
+      self.created_at = datetime.datetime.today()
     
     super(Post, self).save()
   
