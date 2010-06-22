@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 from floors.models import Dorm, Floor, Post
 from floors.forms import WallForm
@@ -33,8 +33,21 @@ def floor_members(request, dorm_slug, floor_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
-  profiles = floor.profile_set.all()
+  profile_list = floor.profile_set.all()
+  paginator = Paginator(profile_list, 10) # Show 25 profiles per page.
   
+  # Make sure page request is an int. If not, deliver first page.
+  try:
+    page = int(request.GET.get('page', '1'))
+  except ValueError:
+    page = 1
+      
+  # If page request (9999) is out of range, deliver last page of results.
+  try:
+    profiles = paginator.page(page)
+  except (EmptyPage, InvalidPage):
+    profiles = paginator.page(paginator.num_pages)
+
   return render_to_response('floors/members.html', {
     "profiles": profiles,
     "floor": floor,
