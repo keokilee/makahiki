@@ -1,0 +1,52 @@
+{% extends "floors/base.html" %}
+
+{% load generic_flatblocks %}
+{% load avatar_tags %}
+
+{% block tab_id %}"#profile_tab"{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  {{block.super}} &raquo; Members
+{% endblock %}
+
+{% block body %}
+<div id="floor_members" class="list_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+  <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
+    Members of {{floor}}:
+  </div>
+
+  <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <ul id="member_list" style="list-style: none; margin: 0; padding: 0">
+    {% for profile in profiles %}
+    <li style="padding: 5px 0">
+      <a class="member_image" href="{% url profile_detail profile.user.username %}" style="float: left; width: 60px">
+       <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="top"/>
+      </a>
+      <div class="member_about" style="float: left; width: 85%">
+        <ul style="list-style: none; margin: 0; padding: 0">
+          <li>
+            <a href="{% url profile_detail profile.user.username %}" style="text-decoration: none; color:#2F6B00">
+              {{profile.name}} ({{profile.user.username}})
+            </a>
+          </li>
+          <li>Points: {{profile.points}}</li>
+          {% if profile.about %}
+            <li>About: {{profile.about}}</li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="post_clear"></div>
+    </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_body %}
+
+{% endblock %}

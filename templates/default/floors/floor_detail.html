@@ -18,7 +18,7 @@
       <div class="ui-accordion-header ui-corner-top activity_header">
         Members:
       </div>
-      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 5px 10px; text-align: center">
+      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 5px 10px;">
         {% for profile in profiles %}
           <div class="member_block" style="display:inline; float:left; margin:0 0 10px 15px; width:45px; font-size: 0.8em">
             <a href="{% url profile_detail profile.user.username %}">
@@ -27,6 +27,8 @@
             </a>
           </div>
         {% endfor %}
+        
+        <a style="margin-left: 15px" href="{% url floor_members floor.dorm.slug floor.slug %}">View all</a>
       </div>
     </div>
   </div>

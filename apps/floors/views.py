@@ -17,7 +17,7 @@ def floor(request, dorm_slug, floor_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
-  profiles = floor.profile_set.all()
+  profiles = floor.profile_set.all()[0:12]
   posts = floor.post_set.order_by('-created_at')
   wall_form = WallForm(initial={"floor" : floor.pk})
   
@@ -26,6 +26,18 @@ def floor(request, dorm_slug, floor_slug):
     "floor": floor,
     "posts": posts,
     "wall_form": wall_form,
+  }, context_instance = RequestContext(request))
+  
+def floor_members(request, dorm_slug, floor_slug):
+  """Lists all of the members of the floor."""
+  dorm = get_object_or_404(Dorm, slug=dorm_slug)
+  floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
+  
+  profiles = floor.profile_set.all()
+  
+  return render_to_response('floors/members.html', {
+    "profiles": profiles,
+    "floor": floor,
   }, context_instance = RequestContext(request))
   
 def wall_post(request, dorm_slug, floor_slug):
