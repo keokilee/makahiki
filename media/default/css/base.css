@@ -162,8 +162,8 @@ form.add-attachment {
 
 /*Breadcrumbs*/
 #content #breadcrumbs {
-  margin: 0px;
-  padding: 10px 0 0 5px;
+  margin: 0;
+  padding: 20px 0 0 5px;
   color: #555555;
 }
 

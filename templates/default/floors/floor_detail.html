@@ -18,11 +18,12 @@
       <div class="ui-accordion-header ui-corner-top activity_header">
         Members:
       </div>
-      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 5px 10px; text-align: center">
         {% for profile in profiles %}
-          <div class="member_block" style="display:inline; float:left; margin:0 5px 10px 0; width:45px">
+          <div class="member_block" style="display:inline; float:left; margin:0 0 10px 15px; width:45px; font-size: 0.8em">
             <a href="{% url profile_detail profile.user.username %}">
               <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="center"/>
+              {{profile.user.username}}
             </a>
           </div>
         {% endfor %}
