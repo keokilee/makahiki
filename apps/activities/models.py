@@ -9,7 +9,6 @@ from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 
 # These models represent the different types of activities users can commit to.
-
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
@@ -30,13 +29,12 @@ class CommonActivityUser(CommonBase):
   """Common fields for items that need to be approved by an administrator."""
   
   STATUS_TYPES = (
-    ('unapproved', 'Unapproved'),
     ('pending', 'Pending approval'),
     ('approved', 'Approved'),
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="pending")
   awarded = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
