@@ -5,9 +5,23 @@ import os
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 
+class Like(models.Model):
+  """Tracks the activities that users like."""
+  user = models.ForeignKey(User)
+  floor = models.ForeignKey(Floor)
+  object_type = models.ForeignKey(ContentType)
+  object_id = models.IntegerField()
+  
+  def save(self):
+    if not self.floor:
+      self.floor = user.get_profile().floor
+    super(Like, self).save()
+  
 # These models represent the different types of activities users can commit to.
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
@@ -196,7 +210,16 @@ class Activity(CommonActivity):
                 verbose_name="Date and time of the event",
                 help_text="Required for events."
                )
+  
+  def likes(self):
+    """Checks how many people like this activity."""
+    likes = Like.objects.filter(
+      content_type=ContentType.objects.get(app_label="activities", model="Activity"),
+      object_id=self.pk,
+    )
     
+    return len(likes)
+  
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
     
