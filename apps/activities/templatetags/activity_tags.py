@@ -1,9 +1,10 @@
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 import datetime
 
-from activities.models import Activity, Commitment, Goal, ActivityMember, CommitmentMember, GoalMember
+from activities.models import Activity, Commitment, Goal, ActivityMember, CommitmentMember, GoalMember, Like
 
 register = template.Library()
 
@@ -84,8 +85,14 @@ def __generate_activity_form(user, item):
     return_string += '<span class="ui-icon ui-icon-circle-check"></span>'
     return_string += '<span class="button-text">I Did This!</span></a>'
     
-    return_string += '<form action="/activities/add_{0}/{1.id}/" method="post">'
-    return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
+    # try:
+    #   content_type = ContentType.objects.get(app_label="activities", model="Activity")
+    #   like = Like.objects.get(user=user, object_type=content_type, object_id=item.id)
+    #   # No exception thrown, so the user likes the activity
+    #   return_string += '<h5 style="padding: 0; margin: 0">You like this activity.</h5>'
+    # except ObjectDoesNotExist:
+    #   return_string += '<form action="/activities/like_{0}/{1.id}/" method="post">'
+    #   return_string += '<a href="#" onclick="parentNode.submit()">Like</a></form>'
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("activity", item)
