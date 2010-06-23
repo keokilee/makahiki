@@ -16,10 +16,16 @@
           {% endif %}
           {% if user in like_users %}
             <form action="/activities/unlike_activity/{{item.pk}}/" method="post" style="display: inline">
-            <a href="#" onclick="parentNode.submit()">Unlike</a></form>
+            <a class="option-link ui-state-error ui-corner-all" href="#" onclick="parentNode.submit()">
+              <span class="ui-icon ui-icon-circle-minus"></span>
+              <span class="button-text">Unlike</span>
+            </a></form>
           {% else %}
             <form action="/activities/like_activity/{{item.pk}}/" method="post" style="display: inline">
-            <a href="#" onclick="parentNode.submit()">Like</a></form>
+            <a class="option-link ui-state-default ui-corner-all" href="#" onclick="parentNode.submit()">
+              <span class="ui-icon ui-icon-star"></span>
+              <span class="button-text">Like</span>
+            </a></form>
           {% endif %}
         {% endwith %}
         </div>
