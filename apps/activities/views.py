@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.forms.util import ErrorList
+from django.contrib.contenttypes.models import ContentType
 
 from activities.models import *
 from activities.forms import *
@@ -58,6 +59,35 @@ def list(request, item_type):
     "item_name": item_name,
   }, context_instance = RequestContext(request))
   
+@login_required
+def like(request, item_type, item_id):
+  """Like an activity/commitment/goal."""
+  
+  user = request.user
+  content_type = get_object_or_404(ContentType, app_label="activities", model=item_type.capitalize())
+  try:
+    like = Like.objects.get(user=user, content_type=content_type, object_id=item_id)
+    request.user.message_set.create(message="You already like this item.")
+  except ObjectDoesNotExist:
+    like = Like(user=user, floor=user.get_profile().floor, content_type=content_type, object_id=item_id)
+    like.save()
+    
+  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,))) 
+  
+@login_required
+def unlike(request, item_type, item_id):
+  """Unlike an activity/commitment/goal."""
+
+  user = request.user
+  content_type = get_object_or_404(ContentType, app_label="activities", model=item_type.capitalize())
+  try:
+    like = Like.objects.get(user=user, content_type=content_type, object_id=item_id)
+    like.delete()
+  except ObjectDoesNotExist:
+    request.user.message_set.create(message="You do not like this item.")
+
+  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,)))
+
 @login_required
 def add_participation(request, item_type, item_id):
   """Adds the user as participating in the item."""

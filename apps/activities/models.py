@@ -5,11 +5,21 @@ import os
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 
+class Like(models.Model):
+  """Tracks the activities that users like."""
+  user = models.ForeignKey(User)
+  floor = models.ForeignKey(Floor)
+  content_type = models.ForeignKey(ContentType)
+  object_id = models.IntegerField()
+  content_object = generic.GenericForeignKey('content_type', 'object_id')
+  
 # These models represent the different types of activities users can commit to.
-
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
@@ -30,13 +40,12 @@ class CommonActivityUser(CommonBase):
   """Common fields for items that need to be approved by an administrator."""
   
   STATUS_TYPES = (
-    ('unapproved', 'Unapproved'),
     ('pending', 'Pending approval'),
     ('approved', 'Approved'),
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="pending")
   awarded = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
@@ -198,7 +207,8 @@ class Activity(CommonActivity):
                 verbose_name="Date and time of the event",
                 help_text="Required for events."
                )
-    
+  likes  = generic.GenericRelation(Like)
+  
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
     
@@ -209,6 +219,10 @@ class Activity(CommonActivity):
     return True
     
   is_active = property(_is_active)
+  
+  def liked_users(self):
+    """Returns an array of users that like this activity."""
+    return [like.user for like in self.likes.all()]
   
   def pick_question(self):
     """Choose a random question to present to a user."""
@@ -296,6 +310,7 @@ class Goal(CommonActivity):
   """Represents activities that are committed to by a group (floor)."""
   
   floors = models.ManyToManyField(Floor, through="GoalMember")
+  likes  = generic.GenericRelation(Like)
   
   @staticmethod
   def get_available_for_user(user):

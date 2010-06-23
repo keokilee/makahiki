@@ -20,10 +20,21 @@
 }
 
 .item_description {
-  padding-left: 20px;
+  padding:5px 0 0 20px;
+  clear: both;
 }
 
 #content .list-help {
   margin-left:910px;
+}
+
+.item_title {
+  float: left;
+  width: 70%;
+}
+.item_likes {
+  float: right;
+  text-align: right;
+  margin-right: 5px;
 }
 
