@@ -304,19 +304,13 @@ ul#messages li a {
   margin-left:10px;
 }
 
-#content a.option-link {
-  padding: 2px 4px;
-  text-decoration: none;
-  width: 100%;
-}
-
 .activity_options form {
   margin: 5px 0;
   width: 100%;
 } 
 
 .option-link {
-  padding:0.4em 1em 0.4em 20px;
+  padding: 2px 4px;;
   position:relative;
   text-decoration:none;
 }

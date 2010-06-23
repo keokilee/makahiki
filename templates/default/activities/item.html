@@ -9,10 +9,13 @@
         <span class="title-string">{{item.title}}</span>
       </a>
       {% if item.likes %}
-        <div class="item_likes">
+        <span class="item_likes">
         {% with item.liked_users as like_users %}
           {% if like_users|length > 0 %}
-            {{like_users|length}} users like this activity. 
+            <span class="option-link ui-state-highlight ui-corner-all" style="margin-right: 10px">
+              <span class="ui-icon ui-icon-person"></span>
+              <span class="button-text">{{like_users|length}}</span>
+            </span>
           {% endif %}
           {% if user in like_users %}
             <form action="/activities/unlike_activity/{{item.pk}}/" method="post" style="display: inline">
@@ -28,7 +31,7 @@
             </a></form>
           {% endif %}
         {% endwith %}
-        </div>
+        </span>
       {% endif %}
     </div>
     <div class="item_description">
