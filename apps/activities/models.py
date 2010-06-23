@@ -310,6 +310,7 @@ class Goal(CommonActivity):
   """Represents activities that are committed to by a group (floor)."""
   
   floors = models.ManyToManyField(Floor, through="GoalMember")
+  likes  = generic.GenericRelation(Like)
   
   @staticmethod
   def get_available_for_user(user):
