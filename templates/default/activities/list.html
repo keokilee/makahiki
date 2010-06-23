@@ -20,7 +20,7 @@
           icon.addClass("ui-icon-plus");
           icon.removeClass('ui-icon-minus');
         }
-        jQuery(this).parent().next(".item_description").toggle("blind");
+        jQuery(this).parent().parent().children(".item_description").toggle("blind");
       });
     });
     

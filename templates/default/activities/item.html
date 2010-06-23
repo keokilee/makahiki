@@ -8,32 +8,32 @@
         <span class="toggle-icon ui-icon ui-icon-plus" style="position:absolute"></span>
         <span class="title-string">{{item.title}}</span>
       </a>
-      {% if item.likes %}
-        <span class="item_likes">
-        {% with item.liked_users as like_users %}
-          {% if like_users|length > 0 %}
-            <span class="option-link ui-state-highlight ui-corner-all" style="margin-right: 10px">
-              <span class="ui-icon ui-icon-person"></span>
-              <span class="button-text">{{like_users|length}}</span>
-            </span>
-          {% endif %}
-          {% if user in like_users %}
-            <form action="/activities/unlike_activity/{{item.pk}}/" method="post" style="display: inline">
-            <a class="option-link ui-state-error ui-corner-all" href="#" onclick="parentNode.submit()">
-              <span class="ui-icon ui-icon-circle-minus"></span>
-              <span class="button-text">Unlike</span>
-            </a></form>
-          {% else %}
-            <form action="/activities/like_activity/{{item.pk}}/" method="post" style="display: inline">
-            <a class="option-link ui-state-default ui-corner-all" href="#" onclick="parentNode.submit()">
-              <span class="ui-icon ui-icon-star"></span>
-              <span class="button-text">Like</span>
-            </a></form>
-          {% endif %}
-        {% endwith %}
+    </div>
+    {% if item.likes %}
+    <div class="item_likes">
+    {% with item.liked_users as like_users %}
+      {% if like_users|length > 0 %}
+        <span class="option-link ui-state-highlight ui-corner-all" style="margin-right: 10px">
+          <span class="ui-icon ui-icon-person"></span>
+          <span class="button-text">{{like_users|length}}</span>
         </span>
       {% endif %}
+      {% if user in like_users %}
+        <form action="/activities/unlike_activity/{{item.pk}}/" method="post" style="display: inline">
+        <a class="option-link ui-state-error ui-corner-all" href="#" onclick="parentNode.submit()">
+          <span class="ui-icon ui-icon-circle-minus"></span>
+          <span class="button-text">Unlike</span>
+        </a></form>
+      {% else %}
+        <form action="/activities/like_activity/{{item.pk}}/" method="post" style="display: inline">
+        <a class="option-link ui-state-default ui-corner-all" href="#" onclick="parentNode.submit()">
+          <span class="ui-icon ui-icon-star"></span>
+          <span class="button-text">Like</span>
+        </a></form>
+      {% endif %}
+    {% endwith %}
     </div>
+    {% endif %}
     <div class="item_description">
       {% if item.description %}
         <p>{{ item.description|markdown }}</p>
