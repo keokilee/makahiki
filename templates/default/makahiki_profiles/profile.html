@@ -31,6 +31,10 @@
 
 {% block tab_id %}"#profile_tab"{% endblock %}
 
+{% if is_me %}
+  {% block active_subnav %}profile{%endblock%}
+{% endif %}
+
 {% block body %}
   <div id="profile_left" class="profile_content">
       <div id="profile_info" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
