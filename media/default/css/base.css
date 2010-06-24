@@ -160,18 +160,6 @@ form.add-attachment {
     -webkit-box-shadow: 0 2px 3px #aaa;
 }
 
-/*Breadcrumbs*/
-#content #breadcrumbs {
-  margin: 0;
-  padding: 20px 0 0 5px;
-  color: #555555;
-}
-
-#content #breadcrumbs a {
-  color: #2F6B00;
-  text-decoration: none;
-}
-
 /* MESSAGES */
 
 ul#messages {
