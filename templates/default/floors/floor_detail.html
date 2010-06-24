@@ -1,12 +1,12 @@
-{% extends "floors/base.html" %}
+{% extends "makahiki_profiles/base.html" %}
 
 {% load generic_flatblocks %}
 {% load avatar_tags %}
 
-{% block tab_id %}"#profile_tab"{% endblock %}
-
 {% block extra_head %}
 {% endblock %}
+
+{% block active_subnav %}{% if my_floor %}floor{% endif %}{%endblock%}
 
 {% block body %}
   <div id="floor_left">

@@ -29,11 +29,7 @@
   {% endif %}
 {% endblock %}
 
-{% block tab_id %}"#profile_tab"{% endblock %}
-
-{% if is_me %}
-  {% block active_subnav %}profile{%endblock%}
-{% endif %}
+{% block active_subnav %}{% if is_me %}profile{% endif %}{%endblock%}
 
 {% block body %}
   <div id="profile_left" class="profile_content">
