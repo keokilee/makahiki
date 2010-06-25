@@ -11,9 +11,6 @@ local_settings.py
 # Ignore the test files.
 log
 
-# Ignore site media files.
-site_media
-
 # Ignore the apache configuration
 deploy/*.conf
 
