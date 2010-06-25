@@ -1,23 +1,5 @@
 [
  {
-  "pk": 1, 
-  "model": "auth.user", 
-  "fields": {
-   "username": "gelee", 
-   "first_name": "", 
-   "last_name": "", 
-   "is_active": true, 
-   "is_superuser": true, 
-   "is_staff": true, 
-   "last_login": "2010-06-24 18:53:08", 
-   "groups": [], 
-   "user_permissions": [], 
-   "password": "sha1$181ae$4f38257be487941cc91bcf73c6f4242d20137ee7", 
-   "email": "gelee@hawaii.edu", 
-   "date_joined": "2010-06-13 15:15:34"
-  }
- }, 
- {
   "pk": 2, 
   "model": "auth.user", 
   "fields": {
@@ -12156,5 +12138,5 @@
    "points": 0, 
    "user": 403
   }
- }, 
+ }
 ]
