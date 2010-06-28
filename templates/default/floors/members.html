@@ -1,4 +1,4 @@
-{% extends "floors/base.html" %}
+{% extends "makahiki_profiles/base.html" %}
 
 {% load generic_flatblocks %}
 {% load avatar_tags %}
@@ -9,12 +9,28 @@
 {% endblock %}
 
 {% block body %}
-<div id="floor_members" class="list_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+<div id="floor_members" class="item_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
   <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
     Members of {{floor}}:
   </div>
 
   <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="pagination" style="float: right">
+      <span class="step-links">
+        {% if profiles.has_previous %}
+          <a href="?page={{ profiles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}.
+        </span>
+
+        {% if profiles.has_next %}
+          <a href="?page={{ profiles.next_page_number }}">next</a>
+        {% endif %}
+      </span>
+    </div>
+    
     <ul id="member_list" style="list-style: none; margin: 0; padding: 0">
     {% for profile in profiles.object_list %}
     <li style="padding: 5px 0">
@@ -39,10 +55,10 @@
     {% endfor %}
     </ul>
     
-    <div class="pagination">
+    <div class="pagination" style="float:right">
       <span class="step-links">
         {% if profiles.has_previous %}
-          <a href="?page={{ contacts.previous_page_number }}">previous</a>
+          <a href="?page={{ profiles.previous_page_number }}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -50,7 +66,7 @@
         </span>
 
         {% if profiles.has_next %}
-          <a href="?page={{ contacts.next_page_number }}">next</a>
+          <a href="?page={{ profiles.next_page_number }}">next</a>
         {% endif %}
       </span>
     </div>
