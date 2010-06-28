@@ -29,11 +29,17 @@ ul#wall_posts {
 
 ul#wall_posts li {
   padding: 5px 0;
+  border-bottom: 1px solid #DFD9C3;
 }
 
 li a.wall_image {
   width: 10%;
   float: left;
+}
+
+ul#wall_posts .user_post {
+  background-color: #DED8C4;
+  padding: 5px 0 0 5px;
 }
 
 li .wall_text {
@@ -59,11 +65,13 @@ li .date_string {
 
 li .post_clear {
   clear: left;
-  padding: 5px 0;
-  border-bottom: 1px solid #DFD9C3;
 }
 
 li .system_text a {
   text-decoration: none;
   color: #2F6B00
+}
+
+li .system_text span {
+  font-style: italic;
 }

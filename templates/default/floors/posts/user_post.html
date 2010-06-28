@@ -1,15 +1,17 @@
 {% load avatar_tags %}
 
-<a class="wall_image" href="{% url profile_detail post.user.username %}">
- <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
-</a>
-<div class="wall_text">
-  <a href="{% url profile_detail post.user.username %}">
-    {{post.user.get_profile.name}} 
+<div class="user_post">
+  <a class="wall_image" href="{% url profile_detail post.user.username %}">
+   <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
   </a>
-  <p>
-    {{post.text}}
-  </p>
-  <div class="date_string">Posted at {{post.date_string}}</div>
+  <div class="wall_text">
+    <a href="{% url profile_detail post.user.username %}">
+      {{post.user.get_profile.name}} 
+    </a>
+    <p>
+      {{post.text}}
+    </p>
+    <div class="date_string">Posted at {{post.date_string}}</div>
+  </div>
+  <div class="post_clear"></div>
 </div>
-<div class="post_clear"></div>
