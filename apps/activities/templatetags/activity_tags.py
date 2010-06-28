@@ -108,8 +108,7 @@ def __generate_goal_form(user, item):
       return_string += '<a href="/activities/request_{0}_points/{1.id}/"'
       return_string += 'class="option-link ui-state-default ui-corner-all ui-state-hover">'
       return_string += '<span class="ui-icon ui-icon-circle-check"></span>'
-      return_string += '<span class="button-text">We Did This!</span></a>'
-      
+      return_string += '<span class="button-text">We Did This!</span></a>'      
     elif item_join.approval_status == u"pending":
       return_string += "<span class=\"pending_activity\">Submitted for approval</span> "
       
@@ -118,8 +117,10 @@ def __generate_goal_form(user, item):
       return_string += '<form action="/activities/remove_{0}/{1.id}/" method="post">'
       return_string += '<a href="#" onclick="confirm_removal(parentNode, \'goal\')" class="option-link ui-state-error ui-corner-all ui-state-hover">'
       return_string += '<span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span></a></form>'
+    elif item_join.approval_status == u"approved":
+      return_string += "<span class=\"approved_activity\">Approved</span>"      
     else:
-      return_string += "<span class=\"approved_activity\">Approved</span>"
+      return_string += item_join.user.username + " owns this goal"
   
   except ObjectDoesNotExist:
     if GoalMember.can_add_goal(user):
