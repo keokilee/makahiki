@@ -15,7 +15,7 @@
   </div>
 
   <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-    <div class="pagination" style="float: right">
+    <div class="pagination">
       <span class="step-links">
         {% if profiles.has_previous %}
           <a href="?page={{ profiles.previous_page_number }}">previous</a>
@@ -55,7 +55,7 @@
     {% endfor %}
     </ul>
     
-    <div class="pagination" style="float:right">
+    <div class="pagination">
       <span class="step-links">
         {% if profiles.has_previous %}
           <a href="?page={{ profiles.previous_page_number }}">previous</a>
