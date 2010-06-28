@@ -31,13 +31,22 @@ def list(request, item_type):
       activitymember__awarded=False,
     )
     available_items = Activity.get_available_for_user(user)
+    completed_items = user.activity_set.filter(
+      activitymember__user=user,
+      activitymember__awarded=True,
+    )
     item_name = "activities"
     
   elif item_type == "commitment":
     user_items = user.commitment_set.filter(
+      commitmentmember__user=user,
       commitmentmember__completed=False,
     )
     available_items = Commitment.get_available_for_user(user)
+    completed_items = user.commitment_set.filter(
+      commitmentmember__user=user,
+      commitmentmember__completed=True
+    )
     item_name = "commitments"
     
   elif item_type == "goal":
@@ -46,6 +55,10 @@ def list(request, item_type):
       goalmember__awarded=False,
     )
     available_items = Goal.get_available_for_user(user)
+    completed_items = user.get_profile().floor.goal_set.filter(
+      goalmember__floor=user.get_profile().floor,
+      goalmember__awarded=True,
+    )
     item_name = "goals"
   
   else:
