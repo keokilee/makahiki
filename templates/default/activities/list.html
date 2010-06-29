@@ -1,6 +1,7 @@
 {% extends "makahiki_profiles/base.html" %}
 
 {% load generic_flatblocks %}
+{% load activity_tags %}
 
 {% block extra_head %}
   <script type="text/javascript">
@@ -38,71 +39,70 @@
 {% block active_subnav %}{{item_name}}{%endblock%}
 
 {% block body %}
-  <div id="user_items" class="item_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
-      Active {{item_name}}:
-      <span id="active_help" class="list-help ui-icon ui-icon-help"></span>
-    </div>
+  <div id="main_content" style="float: left; width: 70%">
+    <div id="available_items" class="main_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
+        Available {{item_name}}:
+        <span id="available_help" class="list-help ui-icon ui-icon-help"></span>
+      </div>
 
-    <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      {% if user_items %}
+      <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
         <table class="activity_list">
         <tr class="column_header">
-          <td class="activity_title">Title</td>
-          <td class="activity_points">Points</td>
-          <td class="activity_options">Options</td>
+          <td class="item_info">Title</td>
+          <td class="item_points">Points</td>
+          <td class="item_options">Options</td>
         </tr>
-          {% for item in user_items %}
+          {% for item in available_items %}
             {% include "activities/item.html" %}
           {% endfor %}
         </table>
-      {% else %}
-        <h4>You are not participating in any {{item_name}}.</h4>
-      {% endif %}
-    </div>
-  </div>
-
-  <div id="available_items" class="item_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
-      Available {{item_name}}:
-      <span id="available_help" class="list-help ui-icon ui-icon-help"></span>
-    </div>
-
-    <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      <table class="activity_list">
-      <tr class="column_header">
-        <td class="activity_title">Title</td>
-        <td class="activity_points">Points</td>
-        <td class="activity_options">Options</td>
-      </tr>
-        {% for item in available_items %}
-          {% include "activities/item.html" %}
-        {% endfor %}
-      </table>
+      </div>
     </div>
   </div>
   
-  <div id="completed_items" class="item_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
-      Completed {{item_name}}:
-      <span id="completed_help" class="list-help ui-icon ui-icon-help"></span>
-    </div>
+  <div id="side_content" style="float:left; width: 30%">
+    <div id="user_items" class="side_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
+        Active {{item_name}}:
+        <span id="active_help" class="list-help ui-icon ui-icon-help"></span>
+      </div>
 
-    <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-    {% if completed_items %}
-      <table class="activity_list">
-      <tr class="column_header">
-        <td class="activity_title">Title</td>
-        <td class="activity_points">Points</td>
-        <td class="activity_options">Options</td>
-      </tr>
+      <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% if user_items %}
+          <ul style="list-style: none; margin: 0; padding: 0">
+            {% for item in user_items %}
+              <li style="padding: 0; margin: 0">
+                <h4 style="color: black; font-weight: bold; padding: 10px 0">{{item.title}}</h4>
+                <div style="padding-left: 15px">{% render_user_tools user item %}</div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <h4>You are not participating in any {{item_name}}.</h4>
+        {% endif %}
+      </div>
+    </div>
+  
+    <div id="completed_items" class="side_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-accordion-header ui-corner-top ui-state-default activity_header">
+        Completed {{item_name}}:
+        <span id="completed_help" class="list-help ui-icon ui-icon-help"></span>
+      </div>
+
+      <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      {% if completed_items %}
+      <ul style="list-style: none; margin: 0; padding: 0">
         {% for item in completed_items %}
-          {% include "activities/item.html" %}
+          <li style="padding: 0; margin: 0">
+            <h4 style="color: black; font-weight: bold; padding: 10px 0">{{item.title}}</h4>
+          </li>
         {% endfor %}
-      </table>
-    {% else %}
-      <h4>You have not completed any {{item_name}}.</h4>
-    {% endif %}
+      </ul>
+      {% else %}
+        <h4>You have not completed any {{item_name}}.</h4>
+      {% endif %}
+      </div>
     </div>
   </div>
 {% endblock %}

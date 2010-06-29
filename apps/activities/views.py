@@ -327,7 +327,7 @@ def __request_activity_points(request, activity_id):
       
       activity_member.user_comment = form.cleaned_data["comment"]
       # Attach image if it is an image form.
-      if form.cleaned_data["image_response"]:
+      if form.cleaned_data.has_key("image_response"):
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
         activity_member.image = path
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
