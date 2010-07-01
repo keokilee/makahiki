@@ -109,7 +109,7 @@ def generate_csdl_for_floor(floor):
     "alexey": {"name": "Alexey Olkov", "avatar": "alexey.jpg"},
     "anned": {"name": "Anne Disney", "avatar": "annedisney.jpeg"},
     "austen": {"name": "Austen Ito", "avatar": "austen.jpg"},
-    "carleton": {"name": "Carleton Moore", "avatar": "carleton.jpg"},
+    "carleton": {"name": "Carleton Moore", "avatar": "carleton.jpeg"},
     "cedric": {"name": "Cedric Zhang", "avatar": "cedric.jpeg"},
     "christoph": {"name": "Christoph Lofi", "avatar": "christoph.jpg"},
     "dadong": {"name": "Dadong Wan", "avatar": "dadong.png"},
@@ -135,7 +135,7 @@ def generate_csdl_for_floor(floor):
     "joedane": {"name": "Joe Dane", "avatar": "joedane.jpeg"}
   }
 
-  for key in members.keys
+  for key in members.keys():
     user = None
     try:
       user = User(username=key)
