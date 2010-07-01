@@ -1,5 +1,5 @@
 {% if user.get_profile.floor and user.get_profile.floor.chart_url %}
-<div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+<!--<div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
   <div class="ui-accordion-header ui-state-default ui-corner-top activity_header">
     Our floor&apos;s power usage:
     <span id="power_monitor_help" class="ui-icon ui-icon-help"></span>
@@ -34,5 +34,42 @@
       charturl = '{{user.get_profile.floor.chart_url}}';
       initializeMonitor(charturl, dorm, floor);
     })
+  </script>-->
+  
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js"></script>
+
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Timestamp.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/energystatus.js"></script>
+
+  <script type="text/javascript">
+  // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+  (function() {
+    // A spreadsheet containing Energy Summary data.
+    var spreadsheetURL = 'http://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHdqMXVEckp5eWFwXzdSNjJMa2JvNUE&range=A1:J27&gid=0';
+    // How frequently we want this spreadsheet data to be refreshed in the visualization.
+    var refreshInterval = 3600; 
+    // Load the visualization API and the spreadsheet data, then call displayDormData.
+    var loader = new org.wattdepot.gdata.GDataLoader(spreadsheetURL, refreshInterval, displayDormData); 
+
+    function displayDormData(datatable) {
+      // Create and draw the StatusSummaryExample instance.    
+      var summary = new org.wattdepot.gdata.kukuicup.EnergyStatusSummary();
+      summary.draw(datatable, document.getElementById('summary_div'));
+    }
+  })();
   </script>
+
+  <div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="ui-accordion-header ui-state-default ui-corner-top activity_header">
+      Current power usage:
+      <span id="power_monitor_help" class="ui-icon ui-icon-help"></span>
+    </div>
+
+    <div id="power_monitor" class="monitor_item ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <div id="summary_div"></div>
+    </div>
+  </div>
 {% endif %}
