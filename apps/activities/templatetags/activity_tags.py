@@ -110,7 +110,7 @@ def __generate_goal_form(user, item):
       return_string += '<span class="ui-icon ui-icon-circle-check"></span>'
       return_string += '<span class="button-text">We Did This!</span></a>'      
     elif item_join.approval_status == u"pending":
-      return_string += "<span class=\"pending_activity\">Submitted for approval</span> "
+      return_string += "<span class=\"pending_activity\">Submitted for approval</span><br/>"
       
     # TODO What should happen if the points are rejected?
     if item_join.approval_status != u"approved" and item_join.user == user:

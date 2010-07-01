@@ -46,7 +46,7 @@ class CommonActivityUser(CommonBase):
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="pending")
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
   awarded = models.BooleanField(default=False, editable=False)
 
 class CommonActivity(CommonBase):
