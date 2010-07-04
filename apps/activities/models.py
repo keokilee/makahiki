@@ -86,7 +86,7 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  completed = models.BooleanField(default=False, editable=False)
+  completed = models.BooleanField(default=False)
   completion_date = models.DateField()
   comment = models.TextField(blank=True)
   
@@ -106,6 +106,13 @@ class CommitmentMember(CommonBase):
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
+      
+    if self.completed:
+      message = "has completed the commitment \"%s\"." % (
+        self.commitment.title,
+      )
+      post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
+      post.save()
 
     super(CommitmentMember, self).save()
   
@@ -117,11 +124,11 @@ class CommitmentMember(CommonBase):
       profile.points -= self.commitment.point_value
       profile.save()
     elif profile.floor:
-        message = "is no longer participating in \"%s\"." % (
-          self.commitment.title,
-        )
-        post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
-        post.save()
+      message = "is no longer participating in \"%s\"." % (
+        self.commitment.title,
+      )
+      post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
+      post.save()
       
     super(CommitmentMember, self).delete()
   
