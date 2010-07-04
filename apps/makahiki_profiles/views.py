@@ -21,6 +21,9 @@ if "notification" in settings.INSTALLED_APPS:
 else:
     notification = None
 
+@login_required
+def user_profile(request):
+  return HttpResponseRedirect(reverse("profile_detail", args=[request.user.username]))
 
 def profiles(request, template_name="makahiki_profiles/profiles.html"):
     users = User.objects.all().order_by("-date_joined")

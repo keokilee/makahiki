@@ -12,9 +12,16 @@
     {% gblock "website_header" for "gblocks.Title" with "gblocks/title/website.html" %}
     <div id="login">
       {% if user.is_authenticated %}
-         <h5>Aloha, {{user.get_profile.name}}. <a href="/account/cas/logout/"><span>{% trans "Logout" %}</span></a></h5>
+         <h5 style="display: inline">Aloha, {{user.get_profile.name}}.</h5>
+          <a href="/account/cas/logout/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+            <span class="ui-icon ui-icon-person"></span>
+            <span class="button-text" style="font-size: 0.8em; color: white">{% trans "Logout" %}</span>
+          </a>
       {% else %}
-          <h5><a href="/account/cas/login"><span>{% trans "Login" %}</span></a></h5>
+        <a href="/account/cas/login" class="option-link ui-state-default ui-corner-all ui-state-hover">
+          <span class="ui-icon ui-icon-circle-check"></span>
+          <span class="button-text" style="font-size: 0.8em; color: white">{% trans "Login" %}</span>
+        </a>
       {% endif %}
     </div>
 {% endblock %}
