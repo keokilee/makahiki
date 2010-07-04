@@ -30,12 +30,16 @@
 }
 
 #content .list-help {
-  margin-left:910px;
+  margin-left:650px;
+}
+
+#content .side-help {
+  margin-left:260px;
 }
 
 .item_title {
   float: left;
-  width: 60%;
+  width: 65%;
 }
 
 .item_likes {
@@ -66,11 +70,12 @@
   width: 100%;
 }
 
+/* Sidebar styles. */
 #content .side_list .list_content {
   padding: 5px 10px;
   padding-bottom: 15px;
 }
 
-#content .side_list form {
-  display: inline;
+.side_list li .item_title {
+  width: 100%;
 }
