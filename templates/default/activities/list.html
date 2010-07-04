@@ -52,16 +52,24 @@
       </div>
 
       <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <table class="activity_list">
-        <tr class="column_header">
-          <td class="item_info">Title</td>
-          <td class="item_points">Points</td>
-          <td class="item_options">Options</td>
-        </tr>
-          {% for item in user_items %}
-            {% include "activities/item.html" %}
-          {% endfor %}
-        </table>
+        {% if user_items %}
+          <table class="activity_list">
+          <tr class="column_header">
+            <td class="item_info">Title</td>
+            <td class="item_points">Points</td>
+            <td class="item_options">Options</td>
+          </tr>
+            {% for item in available_items %}
+              {% include "activities/item.html" %}
+            {% endfor %}
+          </table>
+        {% else %}
+          {% if item_name == "activities" %}
+            You have not submitted any activities.
+          {% else %}
+            <h4>You are not participating in any {{item_name}}.</h4>
+          {% endif %}
+        {% endif %}
       </div>
     </div>
     
