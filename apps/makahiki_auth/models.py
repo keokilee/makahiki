@@ -1,16 +1,19 @@
-from django_cas.backends import CASBackend
+from django_cas.backends import CASBackend, _verify
+from django.contrib.auth.models import User, AnonymousUser
 
 class MakahikiCASBackend(CASBackend):
   """Checks if the login name is a admin or a participant in the cup."""
   
   def authenticate(self, ticket, service):
-    user = super(MakahikiCASBackend, self).authenticate(ticket, service)
-    
-    if len(user.email) == 0:
-      # Not a valid user.
-      user.delete()
-      return None
-    
-    return user
-  
+      """Verifies CAS ticket and gets or creates User object"""
+
+      username = _verify(ticket, service)
+      if not username:
+          return None
+      try:
+          user = User.objects.get(username=username)
+      except User.DoesNotExist:
+          # In our case, we don't want to create the new user at all.
+          user = AnonymousUser()
+      return user
 

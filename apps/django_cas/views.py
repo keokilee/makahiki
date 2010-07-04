@@ -58,7 +58,7 @@ def _logout_url(request, next_page=None):
     if next_page:
         protocol = ('http://', 'https://')[request.is_secure()]
         host = get_host(request)
-        url += '?' + urlencode({'url': protocol + host + next_page})
+        url += '?' + urlencode({'next': protocol + host + next_page})
     return url
 
 

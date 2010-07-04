@@ -6,6 +6,7 @@ from urlparse import urljoin
 from django.conf import settings
 
 from django_cas.models import User
+from django.contrib.auth.models import AnonymousUser
 
 __all__ = ['CASBackend']
 
@@ -86,4 +87,4 @@ class CASBackend(object):
         try:
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
-            return None
+            return AnonymousUser()
