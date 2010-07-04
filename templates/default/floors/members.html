@@ -15,24 +15,8 @@
   </div>
 
   <div class="list_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-    <div class="pagination">
-      <span class="step-links">
-        {% if profiles.has_previous %}
-          <a href="?page={{ profiles.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-          Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}.
-        </span>
-
-        {% if profiles.has_next %}
-          <a href="?page={{ profiles.next_page_number }}">next</a>
-        {% endif %}
-      </span>
-    </div>
-    
     <ul id="member_list" style="list-style: none; margin: 0; padding: 0">
-    {% for profile in profiles.object_list %}
+    {% for profile in profiles %}
     <li style="padding: 5px 0">
       <a class="member_image" href="{% url profile_detail profile.user.username %}" style="float: left; width: 60px">
        <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="top"/>
@@ -54,23 +38,6 @@
     </li>
     {% endfor %}
     </ul>
-    
-    <div class="pagination">
-      <span class="step-links">
-        {% if profiles.has_previous %}
-          <a href="?page={{ profiles.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-          Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}.
-        </span>
-
-        {% if profiles.has_next %}
-          <a href="?page={{ profiles.next_page_number }}">next</a>
-        {% endif %}
-      </span>
-    </div>
-  </div>
 </div>
 
 {% endblock %}
