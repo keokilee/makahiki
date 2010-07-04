@@ -3,7 +3,7 @@
 
 <tr>
   <td class="item_info">
-    <div class="item_title">
+    <div class="item_title" style="{% if item.likes %}width: 65%;{% endif %}">
       <a style="text-decoration:none" href="#">
         <div class="toggle-icon ui-icon ui-icon-plus" style="position:absolute; width: 15px; float: left"></div>
         <div class="title-string" style="float: left">{{item.title}}</div>
