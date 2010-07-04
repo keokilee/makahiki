@@ -2,8 +2,13 @@
   width: 100%;
 }
 
-.item_list {
-  padding: 10px 30px;
+.main_list {
+  padding: 10px;
+}
+
+.side_list {
+  padding: 10px;
+  padding-left: 0;
 }
 
 .list_content h4 {
@@ -25,16 +30,51 @@
 }
 
 #content .list-help {
-  margin-left:910px;
+  margin-left:650px;
+}
+
+#content .side-help {
+  margin-left:260px;
 }
 
 .item_title {
   float: left;
-  width: 70%;
 }
+
 .item_likes {
   float: right;
   text-align: right;
   margin-right: 5px;
 }
 
+.item_info {
+  vertical-align: text-top;
+  padding: 5px 5px 5px 0px;
+  width:70%;
+}
+
+.item_points {
+  vertical-align: top;
+  width:8%;
+  padding: 5px 0px;
+}
+
+.item_options {
+  padding: 5px 0;
+  vertical-align: top;
+}
+
+.item_options form {
+  margin: 5px 0;
+  width: 100%;
+}
+
+/* Sidebar styles. */
+#content .side_list .list_content {
+  padding: 5px 10px;
+  padding-bottom: 15px;
+}
+
+.side_list li .item_title {
+  width: 100%;
+}

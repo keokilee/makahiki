@@ -2,11 +2,11 @@
 {% load markup %}
 
 <tr>
-  <td class="activity_title">
-    <div class="item_title">
+  <td class="item_info">
+    <div class="item_title" style="{% if item.likes %}width: 65%;{% endif %}">
       <a style="text-decoration:none" href="#">
-        <span class="toggle-icon ui-icon ui-icon-plus" style="position:absolute"></span>
-        <span class="title-string">{{item.title}}</span>
+        <div class="toggle-icon ui-icon ui-icon-plus" style="position:absolute; width: 15px; float: left"></div>
+        <div class="title-string" style="float: left">{{item.title}}</div>
       </a>
     </div>
     {% if item.likes %}
@@ -44,8 +44,8 @@
       {% endif %}
     </div>
   </td>
-  <td class="activity_points">{{ item.point_value }}</td>
-  <td class="activity_options">
+  <td class="item_points">{{ item.point_value }}</td>
+  <td class="item_options">
     {% render_user_tools user item %}
   </td>
 </tr>
