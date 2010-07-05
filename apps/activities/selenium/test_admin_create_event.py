@@ -41,6 +41,12 @@ class test_admin_create_event(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         sel.click("link=Add activity")
+        for i in range(60):
+            try:
+                if sel.is_element_present("id_title"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         sel.type("id_title", "Test Activity With Confirmation Codes")
         sel.type("id_description", "A test activity")
         sel.type("id_point_value", "10")
@@ -86,14 +92,14 @@ class test_admin_create_event(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         sel.click("link=Delete")
-        sel.click("//input[@value=\"Yes, I'm sure\"]")
-        sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
                 if sel.is_element_present("//input[@value=\"Yes, I'm sure\"]"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
+        sel.click("//input[@value=\"Yes, I'm sure\"]")
+        sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
                 if sel.is_element_present("link=Log out"): break

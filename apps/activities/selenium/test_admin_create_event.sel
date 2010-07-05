@@ -67,6 +67,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id_title</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id_title</td>
 	<td>Test Activity With Confirmation Codes</td>
@@ -177,12 +182,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>waitForElementPresent</td>
 	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>clickAndWait</td>
 	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
 	<td></td>
 </tr>
