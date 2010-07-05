@@ -103,6 +103,9 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
     
     # Form that represents the activity.
     activity = self.instance
+    if not activity.pk:
+      """If the activity is not saved, we don't care if this validates."""
+      return
     
     # Count the number of questions.
     count = 0
