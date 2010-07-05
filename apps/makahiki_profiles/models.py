@@ -22,7 +22,7 @@ class Profile(models.Model):
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
-    floor = models.ForeignKey(Floor, null=True)
+    floor = models.ForeignKey(Floor, null=True, blank=True)
     
     def __unicode__(self):
         return self.user.username
