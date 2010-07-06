@@ -1,0 +1,58 @@
+{% extends "resources/resources_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{% trans "Dorm Energy" %}{% endblock %}
+
+{% block body %}
+    <div id="content_header">
+      
+    </div>
+
+    <div id="three_col_left">
+      <div id="resources_topics_list" class="makahiki_content">
+        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+          Media Types
+        </div>
+        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+          <ul style="list-style: none">
+          {% for media in media_types %}
+            <li>{{media}}</li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="three_col_center">
+      <div id="resources_topics_list" class="makahiki_content">
+        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+          Newest Resources
+        </div>
+        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+          <ul style="list-style: none">
+          {% for resource in new_resources %}
+            <li><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="three_col_right">
+      <div id="resources_topics_list" class="makahiki_content">
+        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+          Resource Topics
+        </div>
+        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+          <ul style="list-style: none;">
+          {% for topic in topics %}
+            <li><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

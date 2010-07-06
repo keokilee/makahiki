@@ -1,0 +1,18 @@
+{% extends "resources/resources_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{{resource.title}}{% endblock %}
+
+{% block body %}
+<div id="resource" class="makahiki_content">
+  <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
+    {{resource.title}}
+  </div>
+
+  <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <p>{{resource.abstract}}</p>
+  </div>
+</div>
+{% endblock %}
