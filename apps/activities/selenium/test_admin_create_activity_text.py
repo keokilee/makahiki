@@ -4,7 +4,7 @@ import unittest, time, re
 class test_admin_create_activity_text(unittest.TestCase):
     def setUp(self):
         self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://change-this-to-the-site-you-are-testing/")
+        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
         self.selenium.start()
     
     def test_test_admin_create_activity_text(self):
@@ -89,7 +89,7 @@ class test_admin_create_activity_text(unittest.TestCase):
     
     def tearDown(self):
         self.selenium.stop()
-        self.assertEqual([''], self.verificationErrors)
+        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,7 +4,7 @@ import unittest, time, re
 class test_admin_create_event(unittest.TestCase):
     def setUp(self):
         self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://change-this-to-the-site-you-are-testing/")
+        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
         self.selenium.start()
     
     def test_test_admin_create_event(self):
@@ -18,7 +18,7 @@ class test_admin_create_event(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit]")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
