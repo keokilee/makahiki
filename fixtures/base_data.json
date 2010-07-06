@@ -1,45 +1,5 @@
 [
  {
-  "pk": 3, 
-  "model": "activities.like", 
-  "fields": {
-   "object_id": 1, 
-   "user": 1, 
-   "content_type": 52, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 9, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-06-20 17:13:54", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "unapproved"
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-06-18 09:58:44", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 11, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-06-20 23:40:49", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "unapproved"
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.commitment", 
   "fields": {
@@ -2896,19 +2856,6 @@
   }
  }, 
  {
-  "pk": 7, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "Hi admins!", 
-   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
-   "question": null, 
-   "user": 1, 
-   "activity": 5, 
-   "response": ""
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.goal", 
   "fields": {
@@ -2939,28 +2886,6 @@
    "updated_at": null, 
    "point_value": 20, 
    "title": "Change Incandescent Bulbs to CFLs"
-  }
- }, 
- {
-  "pk": 11, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 1, 
-   "user_comment": null, 
-   "goal": 2, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 9, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 1, 
-   "user_comment": null, 
-   "goal": 1, 
-   "admin_comment": null, 
-   "floor": 2
   }
  }, 
  {
