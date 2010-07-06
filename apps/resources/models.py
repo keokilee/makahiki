@@ -4,6 +4,9 @@ import datetime
 # Create your models here.
 class Topic(models.Model):
   topic = models.CharField(max_length=255)
+  
+  def __unicode__(self):
+    return self.topic
 
 class Resource(models.Model):
   MEDIA_TYPES = (
@@ -49,6 +52,9 @@ class Resource(models.Model):
     help_text="Please put your first name here so we know who entered this info in case we have questions later."
   )
   
+  def __unicode__(self):
+    return self.title
+    
   def save(self):
     """Custom save method to update the updated_at field."""
     self.updated_at = datetime.datetime.today()
