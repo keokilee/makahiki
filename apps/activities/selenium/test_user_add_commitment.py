@@ -4,7 +4,7 @@ import unittest, time, re
 class test_add_commitment(unittest.TestCase):
     def setUp(self):
         self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://change-this-to-the-site-you-are-testing/")
+        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
         self.selenium.start()
     
     def test_test_add_commitment(self):
@@ -12,7 +12,7 @@ class test_add_commitment(unittest.TestCase):
         sel.open("/account/login/")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -88,7 +88,7 @@ class test_add_commitment(unittest.TestCase):
     
     def tearDown(self):
         self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
+        self.assertEqual([''], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

@@ -12,7 +12,7 @@ class test_admin_create_activity_text(unittest.TestCase):
         sel.open("/account/login/")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         for i in range(60):
             try:
                 if sel.is_element_present("//div[@id='tabhead']/div/ul[2]/li[1]/a/span"): break
@@ -89,7 +89,7 @@ class test_admin_create_activity_text(unittest.TestCase):
     
     def tearDown(self):
         self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
+        self.assertEqual([''], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

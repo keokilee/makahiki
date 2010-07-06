@@ -1,8 +1,10 @@
-import unittest
+from django.test import TestCase
 
 from makahiki_base.models import Article, Headline
 
-class ArticleTestCase(unittest.TestCase):
+class ArticleTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
   def testCreateSlug(self):
     """Tests creating slugs."""
     article = Article(title="Hello World!", content="What's up everyone?")

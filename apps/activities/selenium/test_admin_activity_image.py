@@ -12,7 +12,7 @@ class test_admin_activity_image(unittest.TestCase):
         sel.open("/account/login/")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -96,7 +96,7 @@ class test_admin_activity_image(unittest.TestCase):
     
     def tearDown(self):
         self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
+        self.assertEqual([''], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

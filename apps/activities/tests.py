@@ -1,10 +1,12 @@
-import unittest
+from django.test import TestCase
 
 from django.contrib.auth.models import User
 from makahiki_profiles.models import Profile
 from activities.models import Activity, ActivityMember
 
-class ActivitiesTestCase(unittest.TestCase):
+class ActivitiesTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
   def testApproveAddsPoints(self):
     """Test for verifying that approving a user awards them points."""
     user = User.objects.all()[0]
