@@ -3160,17 +3160,17 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_header", 
-   "content_type": 41, 
+   "content_type": 39, 
    "object_id": 1
   }
  }, 
  {
-  "pk": 2, 
+  "pk": 72, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_image", 
-   "content_type": 43, 
-   "object_id": 1
+   "content_type": 41, 
+   "object_id": 4
   }
  }, 
  {
@@ -3178,7 +3178,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_1", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 1
   }
  }, 
@@ -3187,7 +3187,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_2", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 2
   }
  }, 
@@ -3196,7 +3196,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_5", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 5
   }
  }, 
@@ -3205,7 +3205,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_footer", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 1
   }
  }, 
@@ -3214,7 +3214,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_1", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 7
   }
  }, 
@@ -3223,7 +3223,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_3", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 35
   }
  }, 
@@ -3232,7 +3232,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_3", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 2
   }
  }, 
@@ -3241,7 +3241,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_4", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 9
   }
  }, 
@@ -3250,7 +3250,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_5", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 10
   }
  }, 
@@ -3259,7 +3259,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_7", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 11
   }
  }, 
@@ -3268,7 +3268,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_8", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 12
   }
  }, 
@@ -3277,7 +3277,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_9", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 13
   }
  }, 
@@ -3286,7 +3286,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "have_fun_test", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 14
   }
  }, 
@@ -3295,7 +3295,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_real_time", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 15
   }
  }, 
@@ -3304,7 +3304,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_hour", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 16
   }
  }, 
@@ -3313,7 +3313,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_day", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 17
   }
  }, 
@@ -3322,7 +3322,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_week", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 18
   }
  }, 
@@ -3331,7 +3331,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_month", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 19
   }
  }, 
@@ -3340,7 +3340,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_header", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 3
   }
  }, 
@@ -3349,7 +3349,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_1", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 20
   }
  }, 
@@ -3358,7 +3358,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_2", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 21
   }
  }, 
@@ -3367,7 +3367,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_3", 
-   "content_type": 43, 
+   "content_type": 41, 
    "object_id": 2
   }
  }, 
@@ -3376,7 +3376,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_4", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 22
   }
  }, 
@@ -3385,7 +3385,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_1", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 23
   }
  }, 
@@ -3394,7 +3394,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_2", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 24
   }
  }, 
@@ -3403,7 +3403,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_3", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 25
   }
  }, 
@@ -3412,7 +3412,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_4", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 26
   }
  }, 
@@ -3421,17 +3421,17 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_6", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 32
   }
  }, 
  {
-  "pk": 44, 
+  "pk": 73, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_6", 
-   "content_type": 44, 
-   "object_id": 33
+   "content_type": 42, 
+   "object_id": 45
   }
  }, 
  {
@@ -3439,7 +3439,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "resources_content_2", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 34
   }
  }, 
@@ -3448,7 +3448,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_4", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 36
   }
  }, 
@@ -3457,7 +3457,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_5", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 37
   }
  }, 
@@ -3466,7 +3466,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "about_content_6", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 38
   }
  }, 
@@ -3475,7 +3475,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_5", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 39
   }
  }, 
@@ -3484,7 +3484,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "competition_content_6", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 40
   }
  }, 
@@ -3493,7 +3493,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "activity_help", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 8
   }
  }, 
@@ -3502,7 +3502,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "commitment_help", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 6
   }
  }, 
@@ -3511,7 +3511,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "goal_help", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 7
   }
  }, 
@@ -3520,7 +3520,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "energy_monitor_help", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 9
   }
  }, 
@@ -3529,7 +3529,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "power_monitor_help", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 10
   }
  }, 
@@ -3538,7 +3538,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "active_activities", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 11
   }
  }, 
@@ -3547,7 +3547,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "available_activities", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 12
   }
  }, 
@@ -3556,7 +3556,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "active_goals", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 13
   }
  }, 
@@ -3565,7 +3565,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "available_goals", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 14
   }
  }, 
@@ -3574,7 +3574,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "active_commitments", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 15
   }
  }, 
@@ -3583,7 +3583,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "available_commitments", 
-   "content_type": 42, 
+   "content_type": 40, 
    "object_id": 16
   }
  }, 
@@ -3592,7 +3592,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "commitment_detail", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 41
   }
  }, 
@@ -3601,7 +3601,7 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "activity_detail", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 42
   }
  }, 
@@ -3610,8 +3610,35 @@
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "goal_detail", 
-   "content_type": 44, 
+   "content_type": 42, 
    "object_id": 43
+  }
+ }, 
+ {
+  "pk": 67, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "completed_commitments", 
+   "content_type": 38, 
+   "object_id": 17
+  }
+ }, 
+ {
+  "pk": 68, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "completed_activities", 
+   "content_type": 38, 
+   "object_id": 18
+  }
+ }, 
+ {
+  "pk": 69, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "completed_goals", 
+   "content_type": 38, 
+   "object_id": 19
   }
  }, 
  {
@@ -3727,6 +3754,27 @@
   }
  }, 
  {
+  "pk": 17, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.image", 
   "fields": {
@@ -3738,6 +3786,20 @@
   "model": "gblocks.image", 
   "fields": {
    "image": "gblocks/Screen_shot_2010-02-22_at_2-22-10_4.50.03_PM_.png"
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "gblocks.image", 
+  "fields": {
+   "image": ""
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "gblocks.image", 
+  "fields": {
+   "image": ""
   }
  }, 
  {
@@ -4058,6 +4120,2063 @@
   "fields": {
    "text": "Goals are tasks that involve the participation of your fellow dorm floor residents. A floor can only participate in up to 5 goals. Also, each user can add up to two goals for their floor at a time.\r\n\r\nTo get points for completing a goal, you will need to click on the \"Request Points\" link. There, you can enter an optional comment. Once an admin approves your request, your entire floor will receive points.\r\n\r\n[View Goals](/activities/goal_list/)", 
    "title": "Goals"
+  }
+ }, 
+ {
+  "pk": 44, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 45, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Dorm Energy Competitions"
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Solar Energy"
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Wind Energy"
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Wave Energy"
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Geothermal Energy"
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "BioMass Energy"
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Climate Change"
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Fossil Fuels"
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Conservation"
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Smart Grid"
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "University of Hawaii"
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Careers"
+  }
+ }, 
+ {
+  "pk": 13, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Sea Water A/C"
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "State of Hawaii"
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Bioenergy"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Nuclear Energy"
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "resources.topic", 
+  "fields": {
+   "topic": "Software"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Nasa's Climate Change Site", 
+   "url": "http://climate.nasa.gov/", 
+   "created_at": "2010-06-10 07:33:32", 
+   "updated_at": "2010-07-05 16:29:22", 
+   "topics": [
+    7
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "From planet vital signs, to videos on sea level changes, to blogs by prominent environmental scientists, this site provides a portal to a wealth of information on climate change.", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Wind power careers in Wyoming", 
+   "url": "http://www.nsf.gov/news/special_reports/science_nation/windenergy.jsp", 
+   "created_at": "2010-06-10 07:37:34", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    3
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Interested in a career in wind energy?  This video describes a Wyoming based program in this upcoming renewable energy source.", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Renewable Energy: A Reality Check in Rural China", 
+   "url": "http://www.nsf.gov/news/special_reports/science_nation/renewableenergy.jsp", 
+   "created_at": "2010-06-10 07:40:23", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Abby Watrous learned an important engineering lesson while working in rural China.\nWatrous, who has her master's degree in civil and environmental engineering and is working towards her doctorate, is helping to research renewable energy technologies in developing communities. While clean energy solutions such as wind and solar power may work in some places, she has to find different, cheaper possibilities for people making less than five thousand dollars a year. ", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Wave of Discovery: Harnessing the Ocean's Power", 
+   "url": "http://www.nsf.gov/news/special_reports/science_nation/waveenergy.jsp", 
+   "created_at": "2010-06-10 07:43:05", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    4
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Capturing the power of ocean waves could become an important part of the world's renewable energy portfolio. In September 2008, Oregon State, working with Columbia Power Technologies and the U.S. Navy, deployed its eleventh wave energy prototype--a permanent magnet linear generator that creates power with few moving parts.\n\n\"A float heaves up and down with the waves. Underneath the float is a magnet assembly, and as that magnet assembly heaves up and down, it creates a changing magnetic field,\" explains von Jouanne. \"The coils in the spar experience that changing magnetic field and that induces voltage, and creates electricity.\"", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Solar Decathlon: Housing's Bright Spot", 
+   "url": "http://www.nsf.gov/news/special_reports/science_nation/solardecathlon.jsp", 
+   "created_at": "2010-06-10 07:44:47", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "This past October, taking a walk on the National Mall in Washington, D.C., might have been more like taking a walk into the future. Twenty solar-powered homes were sprawled across the mall's west end, transforming it from a park into something that resembled an innovative new housing development. \n\n\"The Solar Decathlon is a competition for university schools of engineering and architecture to design, from the ground up, a solar-powered, high efficiency, self-sustaining house,\" says Solar Decathlon Director Richard King.", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Kill-a-Watt Competition at University of Central Florida ", 
+   "url": "http://www.youtube.com/watch?v=dXpoMDdhfUI", 
+   "created_at": "2010-06-16 09:48:42", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "At the University of Central Florida, students have taken it upon themselves to create a culture of energy efficiency. Each year, different dorm buildings compete to see who can save the most. In 2009, the school saw a total savings of $27,000. As of March 2010, they've saved over $24,000 this year alone.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Rob Hopkins: Transition to a world without oil.", 
+   "url": "http://www.ted.com/talks/lang/eng/rob_hopkins_transition_to_a_world_without_oil.html", 
+   "created_at": "2010-06-16 13:38:45", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    8
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Rob Hopkins reminds us that the oil our world depends on is steadily running out. He proposes a unique solution to this problem -- the Transition response, where we prepare ourselves for life without oil and sacrifice our luxuries to build systems and communities that are completely independent of fossil fuels. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Kevin Surace invents eco-friendly drywall", 
+   "url": "http://www.ted.com/talks/lang/eng/kevin_surace_fixing_drywall_to_heal_the_planet.html", 
+   "created_at": "2010-06-16 13:42:48", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Kevin Surace suggests we rethink basic construction materials -- such as the familiar wallboard -- to reduce the huge carbon footprint generated by the manufacturing and construction of our buildings. He introduces EcoRock, a clean, recyclable and energy-efficient drywall created by his team at Serious Materials.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Al Gore on averting climate crisis", 
+   "url": "http://www.ted.com/talks/lang/eng/al_gore_on_averting_climate_crisis.html", 
+   "created_at": "2010-06-16 13:44:10", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    7
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "With the same humor and humanity he exuded in An Inconvenient Truth,  Al Gore spells out 15 ways that individuals can address climate change immediately, from buying a hybrid to inventing a new, hotter \"brand name\" for global warming.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Alex Steffen sees a sustainable future.", 
+   "url": "http://www.ted.com/talks/lang/eng/alex_steffen_sees_a_sustainable_future.html", 
+   "created_at": "2010-06-16 13:46:44", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Worldchanging.com founder Alex Steffen argues that reducing humanity\u2019s ecological footprint is incredibly vital now, as the western consumer lifestyle spreads to developing countries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Stewart Brand proclaims 4 environmental 'heresies'", 
+   "url": "http://www.ted.com/talks/lang/eng/stewart_brand_proclaims_4_environmental_heresies.html", 
+   "created_at": "2010-06-16 13:48:31", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "The man who helped usher in the environmental movement in the 1960s and '70s has been rethinking his positions on cities, nuclear power, genetic modification and geo-engineering. This talk at the US State Department is a foretaste of his major new book, sure to provoke widespread debate.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "John Doerr sees salvation and profit in greentech.", 
+   "url": "http://www.ted.com/talks/lang/eng/john_doerr_sees_salvation_and_profit_in_greentech.html", 
+   "created_at": "2010-06-16 13:49:48", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    7
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "\"I don't think we're going to make it,\" John Doerr says in an emotional talk about climate change and investment. To create a world fit for his daughter to live in, he says, we need to invest now in clean, green energy.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 13, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Armory Lovins on winning the oil endgame.", 
+   "url": "http://www.ted.com/talks/lang/eng/amory_lovins_on_winning_the_oil_endgame.html", 
+   "created_at": "2010-06-16 13:50:53", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    8
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "In this energizing talk, Amory Lovins lays out his simple plan for weaning the US off oil and revitalizing the economy.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Why can't we grow new energy? by Juan Enriquez", 
+   "url": "http://blog.ted.com/2007/11/juan_enriquez.php", 
+   "created_at": "2010-06-16 13:53:30", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    15
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Biologist and futurist Juan Enriquez  talks about the potential of bioenergy. Our current energy sources -- coal, oil, gas -- are ultimately derived from ancient plants -- they're \"concentrated sunlight.\" He asks, Can we learn from that process and accelerate it? Can we get to the point where we grow our own energy as efficiently as we grow wheat? (Less than a month after this talk, his company announced a process to do just that.)", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Al Gore warns on latest climate trends.", 
+   "url": "http://www.ted.com/talks/lang/eng/al_gore_warns_on_latest_climate_trends.html", 
+   "created_at": "2010-06-16 13:54:22", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    7
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Al Gore presents updated slides from around the globe to make the case that worrying climate trends are even worse than scientists predicted, and to make clear his stance on \"clean coal.\"", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Shai Agassi's bold plan for electric cars.", 
+   "url": "http://www.ted.com/talks/lang/eng/shai_agassi_on_electric_cars.html", 
+   "created_at": "2010-06-16 13:55:56", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Forget about the hybrid auto -- Shai Agassi says it's electric cars or bust if we want to impact emissions. His company, Better Place, has a radical plan to take entire countries oil-free by 2020.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "John La Grou plugs smart power outlets.", 
+   "url": "http://www.ted.com/talks/lang/eng/john_la_grou_plugs_smart_power_outlets_1.html", 
+   "created_at": "2010-06-16 13:57:20", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "John La Grou unveils an ingenious new technology that will smarten up the electrical outlets in our homes, using microprocessors and RFID tags. The invention, Safeplug, promises to prevent deadly accidents like house fires -- and to conserve energy.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Richard Sears: Planning for the end of oil.", 
+   "url": "http://www.ted.com/talks/lang/eng/richard_sears_planning_for_the_end_of_oil.html", 
+   "created_at": "2010-06-16 13:58:31", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    8
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "As the world's attention focuses on the perils of oil exploration, we present Richard Sears' talk from early February 2010. Sears, an expert in developing new energy resources, talks about our inevitable and necessary move away from oil. Toward ... what?", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Larry Burns on the future of cars.", 
+   "url": "http://www.ted.com/talks/lang/eng/reinventing_the_car.html", 
+   "created_at": "2010-06-16 13:59:14", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "General Motors veep Larry Burns previews cool next-gen car design: sleek, customizable (and computer-enhanced) vehicles that run clean on hydrogen -- and pump energy back into the electrical grid when they're idle.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 20, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Bill Gates on energy: Innovating to zero!", 
+   "url": "http://www.ted.com/talks/lang/eng/bill_gates.html", 
+   "created_at": "2010-06-16 14:00:57", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "At TED2010, Bill Gates unveils his vision for the world's energy future, describing the need for \"miracles\" to avoid planetary catastrophe and explaining why he's backing a dramatically different type of nuclear reactor. The necessary goal? Zero carbon emissions globally by 2050.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Debate: Does the world need nuclear energy?", 
+   "url": "http://www.ted.com/talks/lang/eng/debate_does_the_world_need_nuclear_energy.html", 
+   "created_at": "2010-06-16 14:01:57", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    16
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Nuclear power: the energy crisis has even die-hard environmentalists reconsidering it. In this first-ever TED debate, Stewart Brand and Mark Z. Jacobson square off over the pros and cons. A discussion that'll make you think -- and might even change your mind.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 22, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Bill Gross on new energy", 
+   "url": "http://www.ted.com/talks/lang/eng/bill_gross_on_new_energy.html", 
+   "created_at": "2010-06-16 14:02:52", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Bill Gross, the founder of Idealab, talks about his life as an inventor, starting with his high-school company selling solar energy plans and kits. Learn here about a groundbreaking system for solar cells -- and some questions we haven't yet solved.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 23, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Paul MacCready flies on solar wings", 
+   "url": "http://www.ted.com/talks/paul_maccready_flies_on_solar_wings.html", 
+   "created_at": "2010-06-16 14:03:49", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Paul MacCready -- aircraft designer, environmentalist, and lifelong lover of flight -- talks about his long career.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 24, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Steven Cowley: Fusion is energy's future.", 
+   "url": "http://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future.html", 
+   "created_at": "2010-06-16 14:04:40", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    16
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Physicist Steven Cowley is certain that nuclear fusion is the only truly sustainable solution to the fuel crisis. He explains why fusion will work -- and details the projects that he and many others have devoted their lives to, working against the clock to create a new source of energy.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 25, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Saul Griffith's kites tap wind energy.", 
+   "url": "http://www.ted.com/talks/saul_griffith_on_kites_as_the_future_of_renewable_energy.html", 
+   "created_at": "2010-06-16 14:05:26", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    3
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "In this brief talk, Saul Griffith unveils the invention his new company Makani Power has been working on: giant kite turbines that create surprising amounts of clean, renewable energy.", 
+   "added_by": "Na"
+  }
+ }, 
+ {
+  "pk": 26, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Global Wind Day 2010 ", 
+   "url": "http://www.renewableenergyworld.com/rea/video/global-wind-day-2010", 
+   "created_at": "2010-06-16 14:37:02", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    3
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Inside look at how the European Wind Energy Association is promoting wind energy on Global Wind Day 2010 in Brussels", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 27, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "SNRY Solar Energy Initiatives", 
+   "url": "http://www.solarenergy.com/", 
+   "created_at": "2010-06-16 17:17:12", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Solar Energy Initiatives, Inc. (OTC BB: SNRY) is a catalyst for the entire solar value chain. Our businesses connect manufacturers, the building trades and energy consumers.\n\nWe are dedicated to advancing the solar economy through awareness, training, supply chain services and direct capital projects. We help small businesses enter the fast-growing solar economy. We connect buyers and sellers bringing global manufacturers to market through indirect and direct distribution channels. We source, execute and manage large-scale solar projects driving demand, creating jobs and generating energy for a variety of commercial and government interests.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 28, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "AWEA American Wind Energy Association", 
+   "url": "http://www.awea.org/about/", 
+   "created_at": "2010-06-16 17:19:44", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    3
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "AWEA is a national trade association representing wind power project developers, equipment suppliers, services providers, parts manufacturers, utilities, researchers, and others involved in the wind industry - one of the world's fastest growing energy industries. In addition, AWEA represents hundreds of wind energy advocates from around the world.", 
+   "added_by": "N"
+  }
+ }, 
+ {
+  "pk": 29, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Puna Geothermal Venture Hawaii", 
+   "url": "http://www.punageothermalventure.com/", 
+   "created_at": "2010-06-17 08:30:30", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Geothermal energy is heat from Earth\u2019s interior. Geothermal heat originates from Earth\u2019s fiery formation more than four billion years ago. At Earth\u2019s core\u20144,000 miles deep\u2014temperatures may reach over 9,000 degrees Fahrenheit.\n\nPuna Geothermal Venture Hawaii explores the volcanoes on the island of Hawaii and use the heat that is generated in three locations: in shallow ground; in the hot water and rock located a few miles beneath the earth\u2019s surface; and even deeper into the earth where molten rock reaches extremely high temperatures.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 30, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Tufts University Dorm Energy Competition", 
+   "url": "http://sustainability.tufts.edu/?pid=24", 
+   "created_at": "2010-06-18 13:05:47", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Each fall, the student group Environmental Consciousness Outreach (ECO), with Office of Sustainability (OOS) support and sponsorship, hold a competition for residential halls on the Medford campus to reduce energy usage during a month-long period.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 31, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Energy in the Dorms", 
+   "url": "http://www.insidehighered.com/news/2008/01/25/environment", 
+   "created_at": "2010-06-18 13:07:43", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "In Yale University's recent announcement that it had reduced greenhouse gas emissions by 17 percent since 2005, Richard C. Levin, the institution's president, credited several initiatives, among them replacing windows and installing more efficient heating and cooling systems in 90 buildings.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 32, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Sustainability at Harvard", 
+   "url": "http://green.harvard.edu/home", 
+   "created_at": "2010-06-18 13:18:44", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Sustainability at Harvard connects people across the University with information, tools, and inspiration for the challenge at hand: making Harvard sustainable for the long term.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 33, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaiian Geothermal Working Group founded. ", 
+   "url": "http://thinkgeoenergy.com/archives/4929", 
+   "created_at": "2010-06-18 13:21:09", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "The County of Hawai`i founds Geothermal Working Group, that is supposed to evaluate the potential of geothermal to serve as the primary energy source for electricity in the county.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 34, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaii's Energy Future", 
+   "url": "http://www.hawaiisenergyfuture.com/index.html", 
+   "created_at": "2010-06-18 13:24:06", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    8, 
+    9, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The Hawaii\u2019s Energy Future website is devoted to sharing the latest news, technologies and projects in the ongoing effort to reduce Hawaii\u2019s dependence on imported oil and to achieve a preferred energy future. \n\nAccomplishing this involves a four-part strategy that includes: energy conservation and efficiency; renewable energy; and new technologies such as distributed generation and central power plants that use the cleanest, greenest fuels possible. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 35, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Incandescent Search-and-Destroy", 
+   "url": "http://www.soest.hawaii.edu/UHMEnergy/", 
+   "created_at": "2010-06-18 13:26:48", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    11
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "There are literally thousands of incandescent lightbulbs all over campus...the trouble is, we don't know where they are! Help us change them! Replacing a 65 watt bulb that burns only 10 hours per day will save $50 a year - and many of the bulbs found so far burn 24/7. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 36, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "University of Hawaii Campus Energy Projects", 
+   "url": "http://www.soest.hawaii.edu/UHMEnergy/Campus%20Energy%20Projects/Energy%20Projects%20Front%20Page%202.html", 
+   "created_at": "2010-06-18 13:31:47", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    11
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Projects around University of Hawaii at Manoa that you could participate in.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 37, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaiii to build undersea power cables", 
+   "url": "http://www.khon2.com/news/local/story/Hawaii-to-build-undersea-power-cables/ZSc6nAYf_UK2dRI_U8yUQw.cspx", 
+   "created_at": "2010-06-18 13:33:25", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    3, 
+    9, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "A nearly $1 billion clean energy project is getting underway that will allow neighbor island wind to power Oahu homes and businesses.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 38, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "KHON 2 News feat. Pacific Energy Strategies", 
+   "url": "http://diygreenenergy.net/renewable-energy-news/solar-power-news/khon-2-news-feat-pacific-energy-strategies-fuel-surcharges-rising-to-new-heights", 
+   "created_at": "2010-06-18 13:38:44", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    9, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Hawaii residents install solar water heaters in homes to save 40% of their average monthly electricity bill.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 39, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Energy Detective", 
+   "url": "http://www.theenergydetective.com/", 
+   "created_at": "2010-06-18 13:44:32", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    10
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "TED (The Energy Detective) is a simple, yet extremely accurate, home energy monitor that allows you to see electricity usage in real-time. You no longer have to wait for the 'electricity bill surprise'! TED will accurately tell you what your bill is going to be long before the electric bill arrives. Meanwhile, you will learn more about conserving energy, saving money, and helping save the environment.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 40, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "6 Green Gadgets Your Home Needs", 
+   "url": "http://www.rd.com/advice-and-know-how/6-green-gadgets-your-home-needs/article176583.html#slide", 
+   "created_at": "2010-06-18 13:49:56", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    10
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "My husband and I used to run around the house unplugging everything\u2014TVs, computers, cell chargers. We had no idea how much energy we were using. We didn\u2019t know if the house was leaking warm air in the winter or cool air in the summer, or where those energy vampires were hiding. But now that the rest of America wants to save money (and the earth), companies are stepping up with new advances that can help. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 41, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Google Searches for Key to Energy Savings", 
+   "url": "http://news.nationalgeographic.com/news/2010/04/100409-energy-google-powermeter/", 
+   "created_at": "2010-06-18 13:53:56", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    10
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "Google's PowerMeter can show homeowners their real-time energy usage on a smart phone. But the energy monitoring software needs hardware--a hook-up to the electrical power system--in order to work.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 42, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Save energy. Save money. Make a difference.", 
+   "url": "http://www.google.com/powermeter/about/", 
+   "created_at": "2010-06-18 13:55:32", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    10, 
+    17
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Google PowerMeter is a free energy monitoring tool that allows you to view your home's energy consumption from anywhere online", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 43, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaii Energy Program", 
+   "url": "http://www.hawaiienergy.com/", 
+   "created_at": "2010-06-18 21:07:53", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    9, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Welcome to the Hawaii Energy Efficiency Program transition website. This is where you can find the latest information concerning the new and expanded Hawaii Energy, Efficiency Programs operated under contract by the Hawaii Public Utilities Commission (HPUC) and paid for by electric utility ratepayer fees. Soon, we will launch our official website where we will offer interactive energy efficiency and conservation tools and information to help you make informed energy decisions. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 44, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Saint Mary's College of California", 
+   "url": "http://www.stmarys-ca.edu/about-smc/sustain-smc/for-students/flick-the-switch.html", 
+   "created_at": "2010-06-22 14:16:03", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "For a two week period, Saint Mary\u2019s College students in 22 monitored dorms competed to see which dorm could reduce its electricity use by the largest percentage. The goal of the competition was to educate, motivate and empower students to develop attitudes, strategies and behaviors that lead to electricity conservation. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 45, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Oberlin College", 
+   "url": "http://www.oberlin.edu/dormenergy/", 
+   "created_at": "2010-06-22 14:18:38", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Oberlin College has developed the \"Campus Resource Monitoring System\" to display electricity and water use in residence halls. Over the last year we have expanded the system to include all of Oberlin's residence halls and we will soon include water as well as electricity. The objective is to provide real-time feedback that engages, educates, motivates and empowers students to conserve environmental resources.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 46, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Brown University", 
+   "url": "http://brownecoreps.wordpress.com/category/dorm-energy-competition/", 
+   "created_at": "2010-06-22 14:24:02", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Eco Reps is a student outreach and environmental activism group at Brown University sponsored by the Brown Department of Facilities Management.  We try to capitalize and interface with the many other environmental groups on camps while engaging the segment of the Brown community for whom environmental issues are not a top priority.  By increasing awareness of how personal actions impact the environment and educating the Brown community on why these issues are important, we hope to inspire informed lifestyle and personal behavior changes.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 47, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Vanderbilt University ", 
+   "url": "http://studentorgs.vanderbilt.edu/spear/projects.php", 
+   "created_at": "2010-06-22 14:29:57", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Vanderbilt - SPEAR Students Promoting Environmental Awareness and Responsibility - University promotes their Dorm Energy Competition and Awareness through this website.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 48, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Williams University", 
+   "url": "http://www.williams.edu/resources/sustainability/energy_competition/energy_competition.php", 
+   "created_at": "2010-06-22 14:32:56", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "On each day of the competition, the dorms were rated by how much they reduced their energy use from a baseline calculated during the previous week. All dorms had electricity metered, and many dorms had heat and hot water metered. Total points in the competition were determined by the daily rankings, and the dorm with the most points at the end of the competition won. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 49, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Pomona College", 
+   "url": "http://www.pomona.edu/administration/sustainability/programs/powerdown.aspx", 
+   "created_at": "2010-06-22 14:34:16", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Since 2006, Pomona students and administrators have hosted an annual dorm energy reduction contest, pitting residence hall against residence hall to see who can reduce their energy use the most. Started by Campus Climate Challenge and most recently hosted by the Sustainability Integration Office and PEAR (Pomona for Environmental Activism and Responsibility), the contest provides incentives for students to become more aware of their energy load and take the steps to reduce it.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 50, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "MIT", 
+   "url": "http://web.mit.edu/mit_energy/programs/campusenergy/dorm_electricity/", 
+   "created_at": "2010-06-22 14:35:08", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "As one of the largest energy consumers in Massachusetts, MIT must begin taking energy conservation seriously.  President Hockfield has stated that MIT must begin to \u201cwalk the talk\u201d and set an example for other universities and communities across the country.  The Energy Club wants to get as much student involvement as possible in this initiative. The campus can only truly begin to cut back on its energy use when its students are aware and willing to work toward this goal.  In order to promote student involvement we are holding an undergraduate dorm electricity competition.  The contest will run from March 10th to May 4th.  Over that interval, the dorm that reduces its energy use per student the most will receive $10,000 in energy efficient retrofits.  This includes new lighting and showerheads. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 51, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Reed College", 
+   "url": "http://web.reed.edu/sustainability/events/2008-09/dormwars09.html", 
+   "created_at": "2010-06-22 14:38:19", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Greenboard (and the Reed community) extends its heartiest congratulations to the Farm House, Canyon House, and New Dorms (Grove), winners of the 2009 Power Struggle, Reed's third annual dorm energy conservation competition. Over the month of February, the Farm House accomplished a cumulative reduction in its electrical use by 14 percent.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 52, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Eastern Michigan University", 
+   "url": "http://www.emich.edu/physplant/energyidol.html", 
+   "created_at": "2010-06-22 14:40:15", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    1
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "EMU Energy Idol is a yearly contest to determine the \"greenest\" student at Eastern Michigan University. Students submit entries describing how they are sustainable and energy efficient both on and off campus. Once the entry submission deadline is closed, the voting begins. Voting continues until the last entrant is left, making them the winner. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 53, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Lighting the way", 
+   "url": "http://www.ibm.com/services/gbs/lightingtheway", 
+   "created_at": "2010-06-23 14:50:24", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    9, 
+    10
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "Almost 70 percent of 5000 respondents in our 2008 Global Utility Consumer Survey are willing to experiment with how they interact with energy providers. Many consumers have specific visions of what they want \u2013 and how much they will pay for it. Their attitude change coincides with rising environmental and economic urgency that is focusing attention on energy infrastructures across the globe. To satisfy the smart energy consumer and stay competitive, utilities must plan now to encourage beneficial consumer behaviors, leverage customer analytics and segmentation, and understand the enhanced customer interactions \u2013 all vital in a participatory utility network where consumers, utilities and service providers share responsibilities and benefits.", 
+   "added_by": "Robert"
+  }
+ }, 
+ {
+  "pk": 54, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Wave Energy in Hawaii", 
+   "url": "http://www.greenfudge.org/2010/02/27/wave-energy-in-hawaii/", 
+   "created_at": "2010-06-25 03:16:20", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    4, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "With the help of the U.S. military, a company called Ocean Power Technologies is looking to exploit Hawaii\u2019s massive wave energy potential as a renewable energy source.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 55, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Kaneohe Bay, Oahu, Hawaii - Project at Marine Corps Base Hawaii", 
+   "url": "http://www.oceanpowertechnologies.com/projects.htm", 
+   "created_at": "2010-06-25 03:18:17", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    4, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "Demonstrate the potential of wave power to reduce fossil fuel consumption at Navy and Marine bases around the world and comply with Executive Order 13423 which requires half of renewable energy purchases to come from new renewable sources. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 56, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Oceanlinx", 
+   "url": "http://www.oceanlinx.com/", 
+   "created_at": "2010-06-25 03:21:06", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    4
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Oceanlinx is a leading international company in the field of wave energy conversion. The company has developed proprietary technology for extracting energy from ocean waves and converting that energy into electricity, or using it to provide desalinated potable grade water from sea water.\n\nOceanlinx has designed and deployed wave energy systems since 1997, to remain at the leading edge of marine renewable technology development.\n", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 57, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Geothermal Energy", 
+   "url": "http://www.renewableenergyworld.com/rea/tech/geothermal-energy", 
+   "created_at": "2010-06-28 06:41:20", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "Geothermal energy is the heat from the Earth. It's clean and sustainable. Resources of geothermal energy range from the shallow ground to hot water and hot rock found a few miles beneath the Earth's surface, and down even deeper to the extremely high temperatures of molten rock called magma. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 58, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Geothermal Energy Association", 
+   "url": "http://www.geo-energy.org/", 
+   "created_at": "2010-06-28 06:43:15", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The Geothermal Energy Association is a trade association composed of U.S. companies who support the expanded use of geothermal energy and are developing geothermal Resources worldwide for electrical power generation and direct-heat uses.\n\nOur members have offices or operations in many states and in numerous countries throughout the world.\n\nTo accomplish this, the GEA advocates for public policies that will promote the development and utilization of geothermal Resources, provides a forum for the industry to discuss issues and problems, encourages research and development to improve geothermal technologies, presents industry views to governmental organizations, provides assistance for the export of geothermal goods and services, compiles statistical data about the geothermal industry, and conducts education and outreach projects. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 59, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The GEA Blog", 
+   "url": "http://geo-energy.blogspot.com/", 
+   "created_at": "2010-06-28 06:44:41", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "The Geothermal Energy Association is a trade association composed of U.S. companies who support the expanded use of geothermal energy and are developing geothermal Resources worldwide for electrical power generation and direct-heat uses.\n\nRead about the topics that the GEA posts on their blog.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 60, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Idaho National Laboratory", 
+   "url": "https://inlportal.inl.gov/portal/server.pt?open=512&objID=422&parentname=CommunityPage&parentid=14&mode=2", 
+   "created_at": "2010-06-28 06:46:35", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The mission of the Idaho National Laboratory (INL) Geothermal Program is to work in partnership with U.S. industry to establish geothermal energy as an economically competitive contributor to the U.S. energy supply. Since 1974, the INL has been a key laboratory in executing the Department of Energy\u2019s (DOE'S) Geothermal Program, investigating and developing geothermal resource technologies for both direct use and electricity generation, particularly those resources considered marginally economical.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 61, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Alternative Energy", 
+   "url": "http://www.alternative-energy-news.info/technology/heating/", 
+   "created_at": "2010-06-28 06:48:34", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Welcome to the AENews Network: a comprehensive set of online resources designed to raise public awareness and encourage debate about renewable energy technologies. We are dedicated to providing an open and comprehensive collection of discussions, information, media and news promoting the research and development of renewables.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 62, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Alternative Energy ", 
+   "url": "http://feeds.feedburner.com/EnergyPlanetNews", 
+   "created_at": "2010-06-28 06:49:58", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "Welcome to the AENews Network: a comprehensive set of online resources designed to raise public awareness and encourage debate about renewable energy technologies. We are dedicated to providing an open and comprehensive collection of discussions, information, media and news promoting the research and development of renewables.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 63, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "How Geothermal Energy Works", 
+   "url": "http://www.ucsusa.org/clean_energy/technology_and_impacts/energy_technologies/how-geothermal-energy-works.html", 
+   "created_at": "2010-06-28 06:50:58", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "Heat from the earth can be used as an energy source in many ways, from large and complex power stations to small and relatively simple pumping systems. This heat energy, known as geothermal energy, can be found almost anywhere\u2014as far away as remote deep wells in Indonesia and as close as the dirt in our backyards. Many regions of the world are already tapping geothermal energy as an affordable and sustainable solution to reducing dependence on fossil fuels, and the global warming and public health risks that result from their use. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 64, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Consumer Energy Center", 
+   "url": "http://www.consumerenergycenter.org/renewables/geothermal/", 
+   "created_at": "2010-06-28 06:52:05", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Geothermal energy is produced by the heat of the earth and is often associated with volcanic and seismically active regions. California has 25 known geothermal resource areas, 14 of which have underground water temperatures of 300 degrees Fahrenheit (149 degrees Celsius) or greater", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 65, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Clean Energy Ideas", 
+   "url": "http://www.clean-energy-ideas.com/geothermal_power.html", 
+   "created_at": "2010-06-28 06:55:25", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    5, 
+    7
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The website \"www.clean-energy-ideas.com\" was launched in February 2007 with the intention of providing useful information relating to renewable energy sources and a variety of topics surrounding the environment.\n\nWe attempt to make visitors increasingly aware to the importance of the use of clean and renewable energy sources including energy conservation.\n\nThroughout the website you'll be able to find a wide variety of educational information incorporated into many energy and the environment articles that cover many of the different topics surrounding renewable energy. The main focus of these articles covers; solar, wind and geothermal energy sources however many additional articles will cover energy conservation, recycling and global warming.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 66, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Renewable Energy", 
+   "url": "http://oregon.gov/ENERGY/RENEW/index.shtml", 
+   "created_at": "2010-06-28 06:57:56", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The mission of the Oregon Department of Energy is to ensure Oregon has an adequate supply of reliable and affordable energy and is safe from nuclear contamination, by helping Oregonians save energy, develop clean energy resources, promote renewable energy, and clean up nuclear waste.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 67, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Careers at the California Energy Commission", 
+   "url": "http://www.energy.ca.gov/careers/index.html", 
+   "created_at": "2010-06-28 07:00:06", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    12
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "We are in search of talented and enthusiastic people eager to link with a dynamic and steadfast team that works with public and private partners to continually improve California's energy systems.\n\nYour work will matter as you help us strive to meet our state's energy needs while enhancing environmental stewardship. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 68, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The California Energy Commission", 
+   "url": "http://www.energy.ca.gov/index.html", 
+   "created_at": "2010-06-28 07:01:51", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    7, 
+    8, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": " \n\nThe California Energy Commission is the state's primary energy policy and planning agency. Created by the Legislature in 1974 and located in Sacramento, the Commission responsibilities include:\n\n    * Forecasting future energy needs and keeping historical energy data.\n    * Licensing thermal power plants 50 megawatts or larger.\n    * Promoting energy efficiency by setting the state's appliance and building efficiency standards and working with local government to enforce those standards.\n    * Supporting public interest energy research that advances energy science and technology through research, development, and demonstration programs.\n    * Supporting renewable energy by providing market support to existing, new, and emerging renewable technologies; providing incentives for small wind and fuel cell electricity systems; and providing incentives for solar electricity systems in new home construction.\n    * Implementing the state's Alternative and Renewable Fuel and Vehicle Technology Program.\n    * Planning for and directing state response to energy emergencies.\n", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 69, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Energy4me", 
+   "url": "http://www.energy4me.org/", 
+   "created_at": "2010-06-28 07:08:16", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    8, 
+    9, 
+    12
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Energy4me is an energy information resource for elementary and secondary educators.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 70, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Energy4Me Blog", 
+   "url": "http://www.energy4me.org/blog/", 
+   "created_at": "2010-06-28 07:10:20", 
+   "updated_at": "2010-07-05 16:29:23", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    8, 
+    9, 
+    12
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "Energy4me is an energy information resource for elementary and secondary educators. Read about their works in their blog postings.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 71, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "US Department of Energy", 
+   "url": "http://www.energy.gov/energysources/index.htm", 
+   "created_at": "2010-06-28 07:13:32", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    8, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The Department of Energy's overarching mission is to advance the national, economic, and energy security of the United States; to promote scientific and technological innovation in support of that mission; and to ensure the environmental cleanup of the national nuclear weapons complex. The Department's strategic goals to achieve the mission are designed to deliver results along five strategic themes: Energy Security, Nuclear Security, Scientific Discovery and Innovation, Environmental Responsibility, and Management Excellence.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 72, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Renewable Energy News", 
+   "url": "http://www.renewableenergyworld.com/rea/news/geothermal-energy", 
+   "created_at": "2010-06-28 07:15:14", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "RenewableEnergyWorld.com was started in 1998 by a group of Renewable Energy professionals who wanted their work to relate to their passion for renewable energy. With this passion and the desire to create a long term sustainable business, we have created perhaps the single most recognized and trusted source for Renewable Energy News and Information on the Internet. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 73, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Renewable Energy Blog", 
+   "url": "http://www.renewableenergyworld.com/rea/blog", 
+   "created_at": "2010-06-28 07:16:23", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5, 
+    8, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "RenewableEnergyWorld.com was started in 1998 by a group of Renewable Energy professionals who wanted their work to relate to their passion for renewable energy. With this passion and the desire to create a long term sustainable business, we have created perhaps the single most recognized and trusted source for Renewable Energy News and Information on the Internet. \n\nRead About their works here through their blog.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 74, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Colorado Renewable Energy Society", 
+   "url": "http://www.cres-energy.org/index.html", 
+   "created_at": "2010-06-28 07:26:14", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    2, 
+    3, 
+    4, 
+    5
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": " The   Colorado Renewable Energy Society (CRES)\nis a nonprofit membership organization whose members work to increase awareness of the economic and environmental benefits of renewable energy and energy efficiency technology and support the sensible adoption of these technologies by Colorado businesses and consumers.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 75, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaii Says Aloha to Clean Renewable Energy", 
+   "url": "http://www.scientificamerican.com/article.cfm?id=hawaii-renewable-energy", 
+   "created_at": "2010-06-28 07:27:58", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    3, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "Last January, Hawaii signed an agreement with the U.S. Department of Energy (DoE) that would make the Aloha State the country's most aggressive in pursuing renewable energy. By 2030, it plans to obtain 70 percent of its power from clean energy (40 percent from renewables and 30 percent from energy efficiency). ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 76, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Geothermal in Hawaii", 
+   "url": "http://www.ecoworld.com/energy-fuels/geothermal-in-hawaii.html", 
+   "created_at": "2010-06-28 07:28:58", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    5, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "In 1881, King David Kalakaua had the bright idea of using Hawaii\u2019s fiery volcanoes to produce electricity  and light the streets. It took technology the next century to catch up with the visionary king.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 77, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Group examines potential for geothermal power on Hawaii's Big Island", 
+   "url": "http://www.brighterenergy.org/11466/news/geothermal/group-examines-potential-for-geothermal-power-on-hawaiis-big-island/", 
+   "created_at": "2010-06-28 07:30:58", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [
+    5, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "A working group convened by state lawmakers met for the first time this week, to find a way to tap up the island\u2019s geothermal reserves to act as the County\u2019s primary source of electricity.\n\nGeothermal energy has been generated on Hawaii since 1981, and the island is currently home to the 30-megawatt Pohoiki geothermal power plant, run by an affiliate of Ormat Technologies, Puna Geothermal Venture.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 78, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Seawater Air Conditioning", 
+   "url": "http://honoluluswac.com/", 
+   "created_at": "2010-06-28 07:54:15", 
+   "updated_at": "2010-07-05 16:29:24", 
+   "topics": [], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "Honolulu Seawater Air Conditioning, LLC, is currently developing a 25,000-ton seawater air conditioning district cooling system for downtown Honolulu.  This renewable energy system is designed to cool buildings in the downtown core using deep ocean cold water.  A seawater air conditioning (SWAC) system is a cost-effective and attractive ?green energy? investment, and a smart way to use renewable energy for air conditioning.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 79, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaii's Energy Future: Seawater Air Conditioning", 
+   "url": "http://www.hawaiisenergyfuture.com/articles/Sea_Water_Air_Conditionin.html", 
+   "created_at": "2010-06-28 07:55:21", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    13, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Article", 
+   "abstract": "Air conditioning is among the largest uses of electricity in many Hawaii homes and businesses. For example, it is estimated that half the energy consumed in Waikiki is for air conditioning*.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 80, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Seawater-Based Air Conditioning in Honolulu's Future", 
+   "url": "http://www.cbsnews.com/8301-501465_162-20004115-501465.html", 
+   "created_at": "2010-06-28 07:56:33", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    13, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "The State of Hawaii is working toward installing a massive seawater air conditioning system in Honolulu  that could cut grid power consumption by 77 million kilowatt hours a year and eliminate the need to add 14 megawatts of peak capacity, according to Anders Rydaker, president of  Ever-Green Energy, which will provide the technology for the system and own and manage it through a subsidiary once construction is complete.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 81, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Ocean Thermal Energy Conversion", 
+   "url": "http://www.nrel.gov/otec/what.html", 
+   "created_at": "2010-06-28 07:58:22", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    13
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The oceans cover a little more than 70 percent of the Earth's surface. This makes them the world's largest solar energy collector and energy storage system. On an average day, 60 million square kilometers (23 million square miles) of tropical seas absorb an amount of solar radiation equal in heat content to about 250 billion barrels of oil. If less than one-tenth of one percent of this stored solar energy could be converted into electric power, it would supply more than 20 times the total amount of electricity consumed in the United States on any given day. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 82, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Ocean Thermal Energy", 
+   "url": "http://www.oceanenergycouncil.com/index.php/Ocean-Thermal-OTEC/OTEC.html", 
+   "created_at": "2010-06-28 07:59:48", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    13
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "Thermocline energy is based on the temperature differences between surface water, which is heated by the sun, and deep water, which stays very cold. Thermal energy conversion plants use the surface water to make steam and then pass the steam through a turbine generator to make electricity. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 83, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Utilities are Warming to Solar Hot Water", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/24024", 
+   "created_at": "2010-06-28 17:03:47", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    2, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Solar hot water systems are much more cost competitive than solar PV. But why do utilities pay more attention to the costlier solution? In this podcast, we'll have a roundtable discussion on how to spread adoption of solar hot water systems on the utility scale. Dell Jones, VP of Renewable Development with Regenesis, talks about the company's solar-as-a-service model for hot water systems. USH20's Chip Bircher talks about the successful utility-scale programs that have been rolled over the years. And ASES Fellow Joe McCabe describes the new business models emerging around large-scale deployment of solar hot water systems. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 84, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Wind Technologies: Size matters, But only so much", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/21368", 
+   "created_at": "2010-06-28 17:05:36", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    3
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "The wind turbine \u2013 standing tall, sleek and uniquely modern \u2013 is arguably the most powerful symbol of the technological advancement of renewables. And although size is typically the metric for such progress, it's the less visible improvements that have allowed the industry to grow.Wind technologies have come a long way over the last 30 years, starting as custom-made amalgamations of farm machinery in Denmark and lab experiments in the U.S., and evolving to become the giant sentries of today's energy transition.In this podcast, we'll look at what has driven the technological progress in the wind industry.Benjamin Bell, CEO of Garrad Hassan North America, tells us about his unique experience over the last three decades developing one of the most important technologies in the wind industry today.Dutch Wind Journalist Eize de Vries describes the significance of the newer changes in wind technologies, including: direct drive systems, variable-speed systems, permanent magnet generators and lighter materials.Wind Expert Paul Gipe talks about why the Danish wind turbine manufacturers had much better products that the American manufacturers in the 1970s and 1980s.And Small Wind Guru Mick Sagrillo discusses how small wind systems have evolved in tandem with industrial wind systems.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 85, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Is Solar Changing Utilities or Are Utilities Changing Solar", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/19614", 
+   "created_at": "2010-06-28 17:06:52", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    2, 
+    9
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Utilities and solar companies haven't historically had a very positive relationship. In the past, people in the utility sector scoffed at the fridge solar industry, certain that it would never have a real impact on their business. People in the solar industry eyed the utilities with distrust, certain they were blocking progress in any way they could. Today, as utilities start to embrace solar \u2013 even developing their own projects \u2013 that relationship is changing for the better. In this podcast, we'll look at the increasing involvement of utilities in the solar space. There will certainly be more conflicts as the industry scales up, changing the way both parties do business. But it's becoming increasingly clear that utilities see solar as a necessary and lucrative investment option. We'll speak with Denis Dubois of Energy Priorities Magazine, who's been following how businesses are investing in solar under utility-developed projects. He'll give us the scoop on what kind of opportunities are available. We'll also discuss the evolving relationship between utilities and solar companies with Mike Taylor of the Solar Electric Power Association and Paul Alvarez of MetaVu Consulting. They'll tell us about the market drivers that are forcing utilities to change. Finally, Solar Marketing Consultant and RenewableEnergyWorld.com blogger Solar Fred, encourages solar companies to help start a new holiday in April: National Solar Quote Month. He'll talk about the need for solar companies to be innovative in their marketing efforts in order to educate the public about the affordability of solar PV and solar thermal. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 86, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Why Solar Works", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/12372", 
+   "created_at": "2010-06-28 17:08:16", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Whether they like it or not, utilities are starting to deploy more solar. Utility support of solar PV and CSP has been one of the most important developments for the industry. In many cases, utilities are supporting solar because the law requires them to. However, a growing group of power providers are openly embracing solar technologies as an important \u2013 and reliable \u2013 part of their energy mix.In this podcast, we'll look at the market drivers turning solar from a niche technology with limited applications into a commodity with unlimited technological potential for utilities, businesses and individual consumers.We'll visit the 10-MW El Dorado thin-film solar PV plant \u2013 the largest in North America. Michael Gallagher, Sempra Generation's vice president of assets will show us around the power plant and tell us why the company decided to invest in solar. This is just the beginning: Sempra and First Solar plan to expand the project by 48 MW in 2010.Then, we'll feature a panel discussion from the Net Impact Conference at Cornell University called \u201cMaking Solar Work.\u201d Tim Derrick of Axio Power, Bill Jordan of Jordan Energy and Food Enterprises, Robb Jetty of Recurrent Energy and Robert Petrina of Yingli Solar discuss the many technological and financial factors moving the solar market forward.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 87, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Traansmission: Geothermal's Achilles Heel", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/12088", 
+   "created_at": "2010-06-28 17:09:46", 
+   "updated_at": "2010-07-05 16:36:20", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Now that geothermal is finally on our energy priority list, the industry is seeing a new influx of public and private capital. After more than a decade of almost no activity in the U.S. geothermal sector, we're finally seeing a lot of new plants being developed. The problem is, many of them may not move forward because of a lack of transmission.But transmission is not the only issue. In this podcast, we'll look at how factors like resource evaluation, lack of government support and industry marketing have held back the industry \u2014 and how industry professionals are addressing these factors to make sure geothermal becomes a major piece of our global baseload power mix.Lisa Shevenell, a hydrologist with the Great Basin Center for Geothermal Energy, talks about why the industry is coming out of a dark age of almost no geothermal development. She'll also tell us about a new tool that makes it easier and less costly to examine potential resources.Alison Thompson, executive director of the Canadian Geothermal Energy Association, discusses the reasons why Canada has no geothermal power plants, despite having numerous public companies in the country. She'll also talk about the \u201cbrain drain\u201d of Canadian talent down to the U.S.Finally, Erik Swenson, a partner with the international law firm Fulbright and Jaworski, describes the need for a national transmission system for integrating more renewables. He'll tell us why it's not as easy as many proponents make it seem.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 88, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Why Geothermal is Both Hot and Cool", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/11742", 
+   "created_at": "2010-06-28 17:10:31", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Most geothermal development in the near future will come from conventional, medium-temperature hydrothermal power plants. But beyond the next few years, a large number of projects that utilize temperature extremes, both hot and cool, may come online. In this podcast, we'll look at two pioneer companies developing innovative, unconventional geothermal projects. Michael Hayter, Director of Geothermal Development for Raser Technologies, discusses the company's achievements and setbacks over the last two years as it develops a 10-MW plant in Utah that utilizes low-temperature brine for electricity. If successful, Raser may open the door for more \u201cbuild as you go\u201d geothermal power plants. Jared Potter, President and CEO of Potter Drilling, talks about the year of testing for the company's new \u201chydrothermal spallation\u201d drill, which could lower drilling costs by a factor of ten. This year, the heat was on, as the company had to achieve certain milestones in order to get more funding from Google. If Potter can achieve what its goals, the company may hold the key to the cost-effective development of high-temperature Enhanced Geothermal Systems. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 89, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Geothermal: It's Not Just About Drilling Holes", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/11298", 
+   "created_at": "2010-06-28 17:11:38", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    5
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "It takes a lot of time and money to build out a geothermal project. Developers can spend millions of dollars and many years just to drill a test well and find a viable resource. Due to the high capital expenditures needed to get a project moving, there are a lot of variables that can impact a project. In this podcast, we'll look at some of the technical, financial and cultural issues that can affect geothermal companies.Frank Monastero, President of Magma Energy Corp. and the Geothermal Resources Council, tells us about how Magma is expanding around the U.S., South America and to Iceland, despite the still-tight financial markets. That expansion has also brought a lot of challenges for Magma, including some resistance to the company's presence in Iceland.Alexander Richter, an analyst with Islandsbanki, describes why some Icelanders have raised concerns about a foreign company like Magma owning Icelandic energy assets. He'll also talk about the need for private investment in the country's geothermal sector in order to help Iceland rebuild its tattered economy.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 90, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "CSP: Bringing Solar to the Masses", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/11052", 
+   "created_at": "2010-06-28 17:13:00", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "In order to bring solar to the terawatt scale, we're going to need every solar-electric and solar-thermal technology possible. But the only technology that can deliver large amounts of electricity, heat and hot water at one time is concentrating solar power. In this podcast, we'll have a roundtable discussion on the role of CSP in our energy mix. We had a chance to sit down with some executives from leading companies in the CSP space at the Solar Power International conference. This roundtable was part of our video coverage at the event. Fred Morse, Senior Advisor to U.S. Operations for Abengoa Solar, discusses the company's power tower technology and the value of CSP for utilities. Rob Rogan, Senior VP of the Americas for eSolar, talks about his company's unique approach to building cheaper power tower plants. And Arnold Leitner, President and CEO of SkyFuel, talks about the benefits of being a manufacturer of parabolic troughs, not a developer of projects. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 91, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Biomass Thermals Heats Up", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/9565", 
+   "created_at": "2010-06-28 17:13:52", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    6
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "For a decade, Europe has been supporting biomass thermal energy, creating a large commercial and industrial market for resources like wood pellets. Here in the U.S., support has been absent; therefore, wood pellets play only a niche role in residential applications. In this podcast, we'll look at what the industry is doing to create a market for wood pellets and close the technology gap between Europe and the U.S. We'll take a trip to New England Wood Pellet, where General Manager Charlie Niebling tells us about the company's efforts to create a market for commercial wood pellet boilers. He'll talk about the shifting market conditions for biomass thermal, the advances in boiler technologies and how the Biomass Thermal Energy Council is pushing U.S. policymakers to step up support for this promising resource. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 92, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Eating Cellulose and Sweating fuels: The Next Biofuel Revolution", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/8306", 
+   "created_at": "2010-06-28 17:15:25", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    6
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "The race is on to develop the next generation of biofuels. Biotechnology companies of all kinds have taken up the challenge and are looking in every corner of the globe for organisms that will help us make cheap, abundant, non-food based fuels. In this podcast, we'll talk to a couple companies that believe they've found the \"secret sauce\" to sustainable, renewable fuels. Bill Simms, president and CEO of Joule Biotechnologies, tells us about his company's secret organism that absorbs sunlight and CO2 and secretes ethanol and other hydrocarbon products. We'll take a look inside the Joule lab and talk to Simms about future plans for this potentially-groundbreaking company. Also, Carlos Riva, president and CEO of Verenium Corporation, describes the company's process for finding enzymes and using them for cellulosic ethanol production. He'll talk about Verenium's partnership with BP and give us his take on the prospects for the biofuels industry. This podcast is sponsored by Solar Power International. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 93, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Surviving the Downturn for Biodiesel", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/8047", 
+   "created_at": "2010-06-28 17:16:14", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    8
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "The biodiesel industry has been in rough shape over the last year. With oil prices down, two thirds of American refineries sitting unused and no national target for the fuel, there are many questions about where the industry will go next. In this podcast, we'll look at what companies are doing to survive the market downturn. And as we'll find out, some companies are still thriving. Chris Langille of Batchelder Biodiesel shows us around the company's 300,000 gallon-per-year facility and talks about why relying on waste grease is a much better option than grain. Rick Kment of DTN Research talks about the difference between small biodiesel producers and large-scale ethanol producers, and how those differences have impacted the industry. Wall Street Journal Reporter Ann Davis discusses her latest article titled, \u201cU.S. Biofuel Boom Running on Empty,\u201d in which she writes about the financial problems that biodiesel and ethanol producers are facing. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 94, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Will the Rough Patch Continue for Ethanol?", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/8052", 
+   "created_at": "2010-06-28 17:17:26", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    8
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "The last year has been a bad one for the corn ethanol industry. With relatively high grain prices and low oil prices, producers have struggled to stay profitable and many companies have gone bankrupt. In addition, growing consumer backlash has caused a public relations nightmare for the industry. With such a terrible state of affairs, where does the industry stand? In this podcast, we'll look at the state of first-generation ethanol in the U.S. Rick Kment, an analyst with DTN Research, describes how the industry may look differently when it comes out of the current period of stagnant growth and financial turmoil. Jeff Broin, CEO of the nation's largest ethanol producer, Poet, explains why the industry will actually deliver more fuel this year than last. He'll also tell us why he thinks the food versus fuel debate was overblown. Lester Brown, president of the Earth Policy Institute and author of Plan B 3.0, talks about why he doesn't believe ethanol producers are serious about next-generation fuels. He'll also explain why he thinks electric transport \u2014 not biofuels \u2014 are the future of transportation. Finally, Michael Pollan, author of the Omnivore's Dilemma, talks with Yale Environment 360's Kate Cheney Davidson about why our love of corn-based ethanol is a symptom of our larger problems related to food production and consumption. This podcast is sponsored by Solar Power International. Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 95, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Ushering in a New Wave of Hydropower Growth", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/8053", 
+   "created_at": "2010-06-28 17:18:33", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    4
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Hydro in the U.S. is poised for another period of major growth. With states recognizing hydro in renewable portfolio standards, companies getting access to stimulus funds and a range of new players getting into the industry, the environment is looking good. In this podcast, we'll look at what type of projects we're likely to see in America and internationally.Rumford Falls Technician Ron Violet will show us around a historic mid-sized hydro plant in Maine. He'll tell us about what it's like operating a run-of-river facility.Fred Ayer, executive director of the Low Impact Hydro Institute, talks about the need to ensure sustainable growth in the industry.Julie Smith-Galvin, director of communications at Brookfield Renewable Power, talks about how the company is working to achieve a higher level environmental protection at its facilities.And Peter Bosshard, policy director for the NGO International Rivers, describes the problems associated with large dams \u2013 many of which are being constructed in developing countries. He'll talk about the need to look at more environmentally-sound alternatives.This podcast is sponsored by Solar Power International.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 96, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Can We Meet Our Energy Needs with Solar?", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/6435", 
+   "created_at": "2010-06-28 17:20:10", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Theoretically, we could get all of our energy from the sun. But is it realistically feasible? And if so, what are the technical, economic and political barriers to reaching that lofty goal? In this podcast, we'll look at the challenges and implications of such a heavy reliance on solar.First, we'll take a brief tour of the new air-cooled solar thermal tower in the Northern German town of J\u00fclich.Then, Michael Webber of the University of Texas at Austin describes the complicated relationship between energy (including solar energy) and water.Finally, Ken Zweibel of the George Washington University Solar Institute talks about the possibility of powering the entire U.S. with solar.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 97, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Realizing the Potential of Solar Thermal", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/6437", 
+   "created_at": "2010-06-28 17:52:22", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    2
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "People are waking up to the benefits and \"sexiness\" of solar-electric systems. But in North America, the solar thermal industry still has a lot of work to do to educate people about the myriad water heating, space heating and cooling technologies available. In this podcast, we'll have a roundtable discussion about where the U.S. compares with more mature solar thermal markets in Europe and Asia. We'll sit down with Ed Murray of Aztec Solar, Chuck Marken of Home Power Magazine and Bob Fisher of EnerWorks to chat about solar thermal technologies, applications, consumer awareness and much more.Also, Jackie Jones of Renewable Energy World Magazine speaks with Olivier Dr\u00fcke, President of the European Solar Thermal Industry Federation, about how the rest of Europe can match the impressive growth in the German solar thermal market.Inside Renewable Energy is a weekly audio news program featuring stories and interviews on all the latest developments in the renewable energy industries.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 98, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Storing Renewable Energy on the Smart Grid", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/6442", 
+   "created_at": "2010-06-28 17:54:24", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    10
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "Storage is considered the \"holy grail\" of clean technologies, especially as it relates to the deployment of renewable energy. If we truly want to clean up the grid and make it smarter, all kinds of storage technologies will need to be considered. In this podcast, we'll take a look at a couple storage methods that will enable the transformation of the electricity delivery system.Bill Capp, President of Beacon Power, describes the importance of flywheels for regulating frequency and storing large amounts of energy on the grid.Also, David Marcus of General Compression and Walter Doyle of Dakota Salts talk about the emerging market for compressed air energy storage and the economic potential for \u201cdispatchable\u201d wind.Inside Renewable Energy offers the latest in renewable energy news and information.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 99, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Smart Grid Explained", 
+   "url": "http://feed.podcastmachine.com/podcasts/1347/episodes/6444", 
+   "created_at": "2010-06-28 17:55:41", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    10
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "The Smart Grid is an intriguing but elusive concept. What exactly do we mean when we talk about the intelligent grid? And where does renewable energy fit into the mix? In this podcast, we'll explore the technological and conceptual basics of the evolving grid. Eric Lightner, Director of the Smart Grid Task Force at the U.S. Department of Energy, outlines the way the grid works today and how that may change with technological progress.Tim Healy, CEO of the intelligent demand response provider EnerNOC, shows us how the company remotely manages the energy use of commercial and industrial customers.And Richard Baxter, Senior Vice President of Ardour Capital Investments, talks about the thorny issues associated the management of data as the grid makes a digital shift.Inside Renewable Energy offers the latest in renewable energy news and information.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 100, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Simple Tools to do a Home-Energy Audit and Save", 
+   "url": "http://robocaster.com/pasadenastarnews/podcast-episode-home/ci_15381167/simple-tools-to-do-a-home-energy-audit-and-save.aspx", 
+   "created_at": "2010-06-28 19:35:20", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    9, 
+    10
+   ], 
+   "length": null, 
+   "media_type": "Audio", 
+   "abstract": "For many homeowners, electricity use is highest during the summer - and that means steeper energy bills are just around the corner.A lot of the energy you're paying for actually is squandered through air leaks around doors and windows, or through cable boxes and appliances that sap energy when no one is around.Before you shell out the cash for a professional home-energy audit, however, here are some do-it-yourself ways to measure - and then curb - your energy use. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 101, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Wind Energy from Kites", 
+   "url": "http://www.ted.com/talks/saul_griffith_on_kites_as_the_future_of_renewable_energy.html", 
+   "created_at": "2010-07-01 15:44:16", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    3, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Video", 
+   "abstract": "In this brief talk, Saul Griffith unveils the invention his new company Makani Power has been working on: giant kite turbines that create surprising amounts of clean, renewable energy.", 
+   "added_by": "Philip"
+  }
+ }, 
+ {
+  "pk": 102, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Energy Matters", 
+   "url": "http://www.hawaiienergypolicy.hawaii.edu/News%20Articles/energymatters.html", 
+   "created_at": "2010-07-01 19:18:00", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    9, 
+    11
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "THE EFFORT to build a self-reliant Hawaii, freed from forces beyond our control, is growing. We are vulnerable. Here on the world's most isolated island chain, we need to import practically everything we use. To take control of our future, we need to understand the need for energy independence, and understand the way energy issues affect the well-being of our entire society. Perhaps if we look at energy independence as a security issue, we can better understand its urgency and take the necessary steps toward reform. ", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 103, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Alternative Energy: An Idea Whose Time Has Come", 
+   "url": "http://www.hawaiienergypolicy.hawaii.edu/News%20Articles/op_ed1.html", 
+   "created_at": "2010-07-01 19:18:54", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    9, 
+    11
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "One of the key issues of the upcoming legislative session is energy: where it comes from, what it costs, and how it is produced.   To keep our state\u2019s economy moving, we need to find ways to conserve, and we need to explore new energy sources.   The ideas are in place; the laws are on the books \u2013 our task for the future is putting ideas into practice.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 104, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Hawaii 10-Point Energ Plan: Charting a Course for Hawaii's Energy Future", 
+   "url": "http://www.hawaiienergypolicy.hawaii.edu/News%20Articles/morita.html", 
+   "created_at": "2010-07-01 19:20:04", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    9, 
+    11, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Blog Posting", 
+   "abstract": "With Hawaii\u2019s high energy costs and over dependence on imported fuels, many people have participated in various discussion arenas, such as the Economic Momentum Task Force, to provide valuable input on how to improve Hawaii\u2019s energy situation.  As the Legislature prepares for opening day, these discussion groups, both the House and Senate, and the Governor have or will be unveiling energy proposals.  Individually, these proposals may appear to be just small changes.  However, many fall into the desired actions of the Hawaii 10-point Energy Plan outlined below.  By talking and acting upon these measures in the framework of a 10-point plan, we can begin to understand how small changes can make big differences much like epidemics described in Malcolm Gladwell\u2019s, The Tipping Point.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 105, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "The Hawaii Bioenergy Master Plan", 
+   "url": "http://www.hawaiienergypolicy.hawaii.edu/EnergyBriefings/bioenergyMP09.html", 
+   "created_at": "2010-07-01 19:22:44", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    6, 
+    9, 
+    11, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "Website", 
+   "abstract": "The primary objective of the\nbioenergy master plan shall be to develop\na Hawaii renewable biofuels program to\nmanage the State\u2019s transition to energy\nself-sufficiency based in part on biofuels\nfor power generation and transportation.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 106, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Alternative Energy Needs Storage Options", 
+   "url": "http://www.mauinews.com/page/content.detail/id/532640.html?nav=10", 
+   "created_at": "2010-07-01 19:25:51", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    10, 
+    11, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "Today, there isn't a single operating utility-scale storage system in the state, although there are small, commercial-scale systems here and there, seminar participants were told.Garth Corey, known as \"Mr. Battery\" at Sandia, described the importance of stored power.\"An off-grid electron is a tremendously more valuable electron than a grid-tied electron,\" he said. The grid-tied electron has to be used right now. A stored electron is more flexible.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 107, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Be Green 2: Hawaii Energy Connection Celebrates Milestone", 
+   "url": "http://www.khon2.com/content/begreen2/story/Be-Green-2-Hawaii-Energy-Connection-celebrates/KCHB5Cy7dUe-8u81NGOiEw.cspx", 
+   "created_at": "2010-07-01 19:27:32", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    2, 
+    11, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "\"We've discovered in our conversations with them that Hawaii is second only to California, the largest solar market in the country for the roll-out the integration of this revolutionary technology and per capita, Hawaii is number one,\u201d said Steve Godmere from Hawaii Energy Connection.In fact, Hawaii Energy Connection has installed 300 of the solar electric plants and is responsible for about half such units in the state.", 
+   "added_by": "Nathaniel Ashe"
+  }
+ }, 
+ {
+  "pk": 108, 
+  "model": "resources.resource", 
+  "fields": {
+   "title": "Hawaii's Last Sugar Plantation to be a Biofuel 'Lab'", 
+   "url": "http://www.usnews.com/science/articles/2010/04/08/hawaiis-last-sugar-plantation-to-be-biofuel-lab.html", 
+   "created_at": "2010-07-01 19:30:57", 
+   "updated_at": "2010-07-05 16:36:21", 
+   "topics": [
+    6, 
+    11, 
+    14
+   ], 
+   "length": null, 
+   "media_type": "News", 
+   "abstract": "Hawaii's last sugar plantation could start producing jet fuel for the Navy.Federal agencies on Wednesday announced they would spend millions of dollars to study producing advanced biofuels from sugarcane grown at Hawaiian Commercial & Sugar's fields on Maui.Click here to find out more!The Office of Naval Research is budgeting $2 million annually for the project through 2015, with a focus on producing diesel and jet fuel from sugar.The Department of Energy is spending $2 million a year to have the University of Hawaii study energy crop development and energy conversion technologies.HC&S General Manager Chris Benjamin says his company will be a \"working laboratory\" to test the potential of biofuel production.", 
+   "added_by": "Nathaniel Ashe"
   }
  }
 ]
