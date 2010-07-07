@@ -1,29 +1,39 @@
 {% if floor.chart_url %}
-
 <!--Load the AJAX API-->
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.Timestamp.js"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyStatusSummary.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
 
-<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Timestamp.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}js/energystatus.js"></script>
- 
 <script type="text/javascript">
-// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
-(function() {
-  // A spreadsheet containing Energy Summary data.
-  var spreadsheetURL = 'http://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHdqMXVEckp5eWFwXzdSNjJMa2JvNUE&range=A1:J27&gid=0';
-  // How frequently we want this spreadsheet data to be refreshed in the visualization.
-  var refreshInterval = 3600; 
-  // Load the visualization API and the spreadsheet data, then call displayDormData.
-  var loader = new org.wattdepot.gdata.GDataLoader(spreadsheetURL, refreshInterval, displayDormData); 
+  // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+  (function() {
+    // Get the kukui cup configuration file. 
+    var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
+    // Specify the floor of interest.
+    var source = configuration.ilima_3_4;
+    // Get the spreadsheets we need.
+    var energySummaryDataUrl = configuration.getEnergySummaryDataUrl();
+    var baselineDataUrl = configuration.getBaselineDataUrl();
+    var currentPowerDataUrl = configuration.getCurrentPowerDataUrl();
+    // How frequently we want these spreadsheets to be refreshed.
+    var energySummaryRefreshInterval = 600;  // every 10 minutes (for last hr sparkline).
+    var baselineRefreshInterval = 0; // never refresh.
+    var currentPowerRefreshInterval = 30; // once every 30 seconds.
+    // Load the visualization API and the spreadsheet data, then call displayDormData.
+    var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, 
+                                                     energySummaryDataUrl, energySummaryRefreshInterval,
+                                                     baselineDataUrl, baselineRefreshInterval,
+                                                     currentPowerDataUrl, currentPowerRefreshInterval);
 
-  function displayDormData(datatable) {
-    // Create and draw the StatusSummaryExample instance.    
-    var summary = new org.wattdepot.gdata.kukuicup.EnergyStatusSummary();
-    summary.draw(datatable, document.getElementById('summary_div'));
-  }
-})();
+    function displayDormData(energySummaryDatatable, baselineDatatable, currentPowerDatatable) {
+      // Create and draw the StatusSummaryExample instance.    
+      var summary = new org.wattdepot.gdata.makahiki.EnergyStatusSummary(configuration, source);
+      summary.draw(energySummaryDatatable, baselineDatatable, currentPowerDatatable, 'summary_div');
+    }
+  })();
 </script>
 
 <div class="monitor-item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
