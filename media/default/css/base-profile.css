@@ -1,4 +1,4 @@
-#content .activity_header {
+#content .list_header {
   background-color: #459E00;
   color: white;
   margin: 0px;
@@ -7,7 +7,7 @@
   font-weight: normal;
 }
 
-.activity_header a {
+.list_header a {
   text-decoration: none;
   color: white;
   margin: 0px;
@@ -15,11 +15,11 @@
   font-size: 1.0em;
 }
 
-.activity_header .ui-icon {
+.list_header .ui-icon {
   margin-left: 510px;
 }
 
-.monitor-item .activity_header .ui-icon {
+.monitor-item .list_header .ui-icon {
   margin-left: 180px;
 }
 

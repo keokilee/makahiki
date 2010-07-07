@@ -10,12 +10,12 @@ class Topic(models.Model):
 
 class Resource(models.Model):
   MEDIA_TYPES = (
-    ('Website', 'Website'),
-    ('Video', 'Video'),
-    ('Audio', 'Audio'),
-    ('Blog Posting', 'Blog Posting'),
-    ('News', 'News'),
-    ('Article', 'Article'),
+    ('website', 'Website'),
+    ('video', 'Video'),
+    ('audio', 'Audio'),
+    ('blog_post', 'Blog Posting'),
+    ('news', 'News'),
+    ('article', 'Article'),
   )
   
   created_at = models.DateTimeField(

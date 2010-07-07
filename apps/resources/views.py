@@ -1,6 +1,7 @@
 from django.template import RequestContext
 from resources.models import Resource, Topic
 from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404
 # Create your views here.
 
 def index(request):
@@ -8,7 +9,7 @@ def index(request):
   topics = Topic.objects.all()
   new_resources = Resource.objects.order_by("-created_at")[0:10]
   popular_resources = Resource.objects.order_by("-created_at")[0:10]
-  media_types = [media_type[0] for media_type in Resource.MEDIA_TYPES]
+  media_types = [media_type for media_type in Resource.MEDIA_TYPES]
   return render_to_response('resources/index.html', {
     "topics": topics,
     "media_types": media_types,
@@ -21,8 +22,27 @@ def topic(request, topic_id):
   topic = get_object_or_404(Topic, pk=topic_id)
   resources = topic.resource_set.all()
   
-  return render_to_response('resources/topic.html', {
-    "topic": topic,
+  return render_to_response('resources/list.html', {
+    "topic": topic.topic,
+    "resources": resources,
+  }, context_instance = RequestContext(request))
+  
+def media(request, media_type):
+  """View resources for a given media type."""
+  type_string = None
+  for media in Resource.MEDIA_TYPES:
+     if media_type == media[0]:
+       type_string = media[1]
+       break
+  if not type_string: 
+    raise Http404
+  
+  resources = Resource.objects.filter(
+    media_type=type_string
+  )
+  
+  return render_to_response('resources/list.html', {
+    "media": type_string,
     "resources": resources,
   }, context_instance = RequestContext(request))
   

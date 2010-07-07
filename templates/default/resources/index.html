@@ -16,9 +16,9 @@
           Resource Topics
         </div>
         <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none;">
+          <ul style="list-style: none; margin: 0; padding: 0">
           {% for topic in topics %}
-            <li><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
+            <li style="padding: 5px"><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -29,9 +29,9 @@
           Media Types
         </div>
         <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none">
+          <ul style="list-style: none; margin: 0; padding: 0">
           {% for media in media_types %}
-            <li>{{media}}</li>
+            <li style="padding: 5px"><a href="/resources/type/{{media.0}}/">{{media.1}}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -44,9 +44,9 @@
           Newest Resources
         </div>
         <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none">
+          <ul style="list-style: none; margin: 0; padding: 0">
           {% for resource in new_resources %}
-            <li><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
+            <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -59,9 +59,9 @@
           Popular Resources
         </div>
         <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none">
+          <ul style="list-style: none; margin: 0; padding: 0">
           {% for resource in popular_resources %}
-            <li><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
+            <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
           {% endfor %}
           </ul>
         </div>

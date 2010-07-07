@@ -6,13 +6,40 @@
 {% block head_title %}{{resource.title}}{% endblock %}
 
 {% block body %}
-<div id="resource" class="makahiki_content">
-  <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
-    {{resource.title}}
-  </div>
+<h3>{{resource.title}}</h3>
+<div id="side_content" style="float: left; width: 30%">
+  <div id="resource_info" class="makahiki_content">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
+      Info:
+    </div>
 
-  <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-    <p>{{resource.abstract}}</p>
+    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <ul style="list-style: none; margin: 0; padding: 0">
+        <li>Uploaded: {{resource.created_at}}</li>
+        <li>Media Type: {{resource.media_type}}</li>
+        <li>
+          Topics:
+          {% for topic in resource.topics.all %}
+            <a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a>
+          {% endfor %}
+        </li>
+        {% if resource.length %}
+          <li>Length: {{resource.length}}</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="main_content" style="float: left; width: 70%">
+  <div id="resource_abstract" class="makahiki_content">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
+      Abstract
+    </div>
+
+    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <p>{{resource.abstract}}</p>
+      <p>Read more at <a href="{{resource.url}}">{{resource.url}}</a>
+    </div>
   </div>
 </div>
 {% endblock %}
