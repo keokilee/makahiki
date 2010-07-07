@@ -6,12 +6,12 @@ from django.shortcuts import render_to_response, get_object_or_404
 def index(request):
   """Index page for the resources tab."""
   topics = Topic.objects.all()
-  resources = Resource.objects.order_by("-created_at")
-  media_types = set([resource.media_type for resource in resources])
+  new_resources = Resource.objects.order_by("-created_at")[0:10]
+  media_types = [media_type[0] for media_type in Resource.MEDIA_TYPES]
   return render_to_response('resources/index.html', {
     "topics": topics,
     "media_types": media_types,
-    "new_resources": resources[0:10],
+    "new_resources": new_resources,
   }, context_instance = RequestContext(request))
   
 def topic(request, topic_id):
