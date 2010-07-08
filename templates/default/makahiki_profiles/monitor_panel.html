@@ -32,6 +32,7 @@
       // Create and draw the StatusSummaryExample instance.    
       var summary = new org.wattdepot.gdata.makahiki.EnergyStatusSummary(configuration, source);
       summary.draw(energySummaryDatatable, baselineDatatable, currentPowerDatatable, 'summary_div');
+      jQuery('table.google-visualization-sparkline-default').css("margin", "0 auto");
     }
   })();
 </script>
