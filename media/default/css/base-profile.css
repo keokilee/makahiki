@@ -16,11 +16,11 @@
 }
 
 .activity_header .ui-icon {
-  margin-left: 450px;
+  margin-left: 510px;
 }
 
 .monitor-item .activity_header .ui-icon {
-  margin-left: 250px;
+  margin-left: 180px;
 }
 
 .activity_item {
@@ -96,13 +96,13 @@
 
 #profile_center {
   float: left;
-  width: 480px;
+  width: 550px;
   padding: 0;
 }
 
 #profile_right {
   float: left;
-  width: 280px;
+  width: 210px;
   margin: 15px 5px;
 }
 

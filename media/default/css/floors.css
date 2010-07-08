@@ -5,13 +5,13 @@
 
 #floor_center {
   float: left;
-  width: 500px;
+  width: 535px;
   padding: 0;
 }
 
 #floor_right {
   float: left;
-  width: 245px;
+  width: 210px;
   margin: 15px 5px 0 15px;
 }
 
