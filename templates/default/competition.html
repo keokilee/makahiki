@@ -5,44 +5,43 @@
 
 {% block head_title %}{% trans "The Kukui Cup" %}{% endblock %}
 
-{% block tab_id %}"#kukui_tab"{% endblock %}
+{% block tab_id %}"#competition_tab"{% endblock %}
 
 {% block body %}
 
   <div id="content_header">
-    <div id="competition_header" class="makahiki_content">
+    <div id="competition_header" class="makahiki_content" style="display:none">
       {% gblock "competition_header" for "gblocks.Text" %}
     </div>
+  </div>
 
+  <div id="two_col_left" style="width: 70%">
     <div id="competition_content_1" class="makahiki_content">
       {% gblock "competition_content_1" for "gblocks.TitleAndText" %}
     </div>
-  </div>
-
-  <div id="three_col_left">
+    
     <div id="competition_content_2" class="makahiki_content">
       {% gblock "competition_content_2" for "gblocks.TitleAndText" %}
     </div>
-  </div>
-
-  <div id="three_col_center">
-    <div id="competition_content_3" class="makahiki_content">
-      {% gblock "competition_content_3" for "gblocks.Image" %}
+    
+    <div id="competition_content_5" class="makahiki_content">
+      {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
     </div>
-  </div>
 
-  <div id="three_col_right">
+    <div id="competition_content_6" class="makahiki_content">
+      {% gblock "competition_content_6" for "gblocks.TitleAndText" %}
+    </div>
+    
     <div id="competition_content_4" class="makahiki_content">
       {% gblock "competition_content_4" for "gblocks.TitleAndText" %}
     </div>
   </div>
-  
-  <div style='display:none'>
-    {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
+
+  <div id="two_col_right" style="width: 25%">
+    <div id="competition_content_7" class="makahiki_content">
+      {% gblock "competition_content_7" for "gblocks.TitleAndText" %}
+    </div>
   </div>
-  
-  <div style="display:none">
-    {% gblock "competition_content_6" for "gblocks.TitleAndText" %}
-  </div>
+
   
 {% endblock %}
