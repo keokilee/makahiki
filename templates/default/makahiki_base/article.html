@@ -2,10 +2,10 @@
 
 <div class="news_item">
   <h4 class="trigger"><a href="news/{{article.id}}/{{article.slug}}/">{{article.title}}</a></h4>
-  <p class="article_date">
-    Posted at {{ article.formatted_date }}
-  </p>
   <div class="article_container">
     <p>{{article.abstract|markdown}}</p>
   </div>
+  <p class="article_date">
+    Posted at {{ article.formatted_date }}
+  </p>
 </div>
