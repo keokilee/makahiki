@@ -34,13 +34,11 @@
 {% endblock %}
 
 {% block tabs %}
-      <li id="home_tab" class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
-      <li id="resources_tab" class="ui-state-default ui-corner-top"><a href="{% url dorm_energy %}">{% trans "Resources" %}</a></li>
-      <li id="energy_tab" class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
-    {% if user.is_authenticated %}
-       <li id="competition_tab" class="ui-state-default ui-corner-top"><a href="{% url competition %}">{% trans "Kukui Cup" %}</a></li>
-    {% endif %}
-    <li id="about_tab" class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
+  <li id="home_tab" class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
+  <li id="resources_tab" class="ui-state-default ui-corner-top"><a href="{% url dorm_energy %}">{% trans "Resources" %}</a></li>
+  <li id="energy_tab" class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
+  <li id="competition_tab" class="ui-state-default ui-corner-top"><a href="{% url competition %}">{% trans "Kukui Cup" %}</a></li>
+  <li id="about_tab" class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
 {% endblock %}
 
 {% block content_image %}
