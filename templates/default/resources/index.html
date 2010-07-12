@@ -10,61 +10,55 @@
       
     </div>
 
-    <div id="three_col_left">
-      <div id="resources_topics_list" class="makahiki_content">
-        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-          Resource Topics
-        </div>
-        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none; margin: 0; padding: 0">
-          {% for topic in topics %}
-            <li style="padding: 5px"><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
+    <div id="resources_topics_list" class="makahiki_content">
+      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+        Resource Topics
       </div>
-      
-      <div id="resources_media_list" class="makahiki_content">
-        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-          Media Types
-        </div>
-        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none; margin: 0; padding: 0">
-          {% for media in media_types %}
-            <li style="padding: 5px"><a href="/resources/type/{{media.0}}/">{{media.1}}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
+      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <ul style="list-style: none; margin: 0; padding: 0">
+        {% for topic in topics %}
+          <li style="padding: 5px"><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    
+    <div id="resources_media_list" class="makahiki_content">
+      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+        Media Types
+      </div>
+      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <ul style="list-style: none; margin: 0; padding: 0">
+        {% for media in media_types %}
+          <li style="padding: 5px"><a href="/resources/type/{{media.0}}/">{{media.1}}</a></li>
+        {% endfor %}
+        </ul>
       </div>
     </div>
 
-    <div id="three_col_center">
-      <div id="new_resources_list" class="makahiki_content">
-        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-          Newest Resources
-        </div>
-        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none; margin: 0; padding: 0">
-          {% for resource in new_resources %}
-            <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
+    <div id="new_resources_list" class="makahiki_content">
+      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+        Newest Resources
+      </div>
+      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <ul style="list-style: none; margin: 0; padding: 0">
+        {% for resource in new_resources %}
+          <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
+        {% endfor %}
+        </ul>
       </div>
     </div>
 
-    <div id="three_col_right">
-      <div id="popular_resources_list" class="makahiki_content">
-        <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-          Popular Resources
-        </div>
-        <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-          <ul style="list-style: none; margin: 0; padding: 0">
-          {% for resource in popular_resources %}
-            <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
-          {% endfor %}
-          </ul>
-        </div>
+    <div id="popular_resources_list" class="makahiki_content">
+      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+        Popular Resources
+      </div>
+      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <ul style="list-style: none; margin: 0; padding: 0">
+        {% for resource in popular_resources %}
+          <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
+        {% endfor %}
+        </ul>
       </div>
     </div>
 
