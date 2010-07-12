@@ -8,19 +8,19 @@
 {% block tab_id %}"#about_tab"{% endblock %}
 
 {% block body %}
-  <div id="two_col_left">
+  <div id="two_col_left" style="width:70%">
     <div id="about_content_1" class="makahiki_content">
       {% gblock "about_content_1" for "gblocks.TitleAndText" %}
+    </div>
+    <div id="about_content_2" class="makahiki_content">
+      {% gblock "about_content_2" for "gblocks.TitleAndText" %}
     </div>
     <div>
       {% gblock "about_content_3" for "gblocks.TitleAndText" %}
     </div>
   </div>
   
-  <div id="two_col_right">
-    <div id="about_content_2" class="makahiki_content">
-      {% gblock "about_content_2" for "gblocks.TitleAndText" %}
-    </div>
+  <div id="two_col_right" style="width:25%">
     <div>
       {% gblock "about_content_4" for "gblocks.TitleAndText" %}
     </div>
