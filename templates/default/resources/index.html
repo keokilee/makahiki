@@ -41,13 +41,7 @@
             <th>Length</th>
           </tr>
           {% for resource in resources %}
-          <tr>
-            <td>{{resource.title|truncatewords:5}}</td>
-            <td>{{resource.abstract|truncatewords:10}}</td>
-            <td>{{resource.topic_string|truncatewords:3}}</td>
-            <td>{{resource.media_type}}</td>
-            <td>{{resource.length}}</td>
-          </tr>
+            {% include "resources/list_item.html" %}
           {% endfor %}
         </table>
         {% if more %}

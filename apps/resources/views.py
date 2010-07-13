@@ -24,7 +24,7 @@ def index(request):
         resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
       else:
         resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at").count()
           
   if topics and resources:
     form = TopicSelectForm(initial={"topics": [topic.pk for topic in topics]})
