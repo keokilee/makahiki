@@ -7,14 +7,10 @@ from django.http import Http404
 def index(request):
   """Index page for the resources tab."""
   topics = Topic.objects.all()
-  new_resources = Resource.objects.order_by("-created_at")[0:10]
-  popular_resources = Resource.objects.order_by("-created_at")[0:10]
-  media_types = [media_type for media_type in Resource.MEDIA_TYPES]
+  resources = Resource.objects.order_by("-created_at")[0:50]
   return render_to_response('resources/index.html', {
     "topics": topics,
-    "media_types": media_types,
-    "new_resources": new_resources,
-    "popular_resources": popular_resources,
+    "resources": resources,
   }, context_instance = RequestContext(request))
   
 def topic(request, topic_id):
