@@ -1,6 +1,6 @@
 <tr>
   <td>
-    {% if resource.title|wordcount > 5 %}
+    {% if resource.title|wordcount > 6 %}
       <a class="truncated" href="/resources/resource/{{resource.pk}}/">
         {{resource.title|truncatewords:6}}
         <span class="ui-corner-all">{{resource.title}}</span>
