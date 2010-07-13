@@ -108,13 +108,13 @@ def __generate_goal_form(user, item):
       return_string += '<a href="/activities/request_{0}_points/{1.id}/"'
       return_string += 'class="option-link ui-state-default ui-corner-all ui-state-hover">'
       return_string += '<span class="ui-icon ui-icon-circle-check"></span>'
-      return_string += '<span class="button-text">We Did This!</span></a>'      
+      return_string += '<span class="button-text">We Did This!</span></a> '      
     elif item_join.approval_status == u"pending":
       return_string += "<span class=\"pending_activity\">Submitted for approval</span><br/>"
       
     # TODO What should happen if the points are rejected?
     if item_join.approval_status != u"approved" and item_join.user == user:
-      return_string += '<form action="/activities/remove_{0}/{1.id}/" method="post" style="display: inline">'
+      return_string += '<form action="/activities/remove_{0}/{1.id}/" method="post" style="display: block">'
       return_string += '<a href="#" onclick="confirm_removal(parentNode, \'goal\')" class="option-link ui-state-error ui-corner-all ui-state-hover">'
       return_string += '<span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span></a></form>'
     elif item_join.approval_status == u"approved":
@@ -125,9 +125,9 @@ def __generate_goal_form(user, item):
   except ObjectDoesNotExist:
     if GoalMember.can_add_goal(user):
       return_string += '<form action="/activities/add_{0}/{1.id}'
-      return_string += '/" method="post">'
+      return_string += '/" method="post" style="margin: 0">'
       return_string += '<a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">'
-      return_string += '<span class="ui-icon ui-icon-circle-plus"</span><span class="button-text">Add</span></a></form>'
+      return_string += '<span class="ui-icon ui-icon-circle-plus"></span><span class="button-text">Add</span></a></form>'
     else:
       return_string += "You cannot add more goals."
     
