@@ -20,16 +20,15 @@ def index(request):
     form = TopicSelectForm(request.POST)
     if form.is_valid():
       topics = form.cleaned_data["topics"]
-      if len(topics) == 0:
-        resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-      else:
+      if len(topics) > 0:
         resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at").count()
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
           
   if topics and resources:
     form = TopicSelectForm(initial={"topics": [topic.pk for topic in topics]})
     list_title = "Resources in %s" % string.join([topic.topic for topic in topics], ", ")
   else:
+    # We get here if the user has not selected any topics or has deselected all topics.
     form = TopicSelectForm()
     resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
     resource_count = Resource.objects.count()
