@@ -28,11 +28,34 @@
         Resources
       </div>
       <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <ul style="list-style: none; margin: 0; padding: 0">
-        {% for resource in resources %}
-          <li style="padding: 5px"><a href="/resources/resource/{{resource.pk}}">{{resource.title}}</a></li>
-        {% endfor %}
-        </ul>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Topic Type(s)</th>
+            <th>Media Type</th>
+            <th>Length</th>
+          </tr>
+          {% for resource in resources %}
+          <tr>
+            <td>{{resource.title}}</td>
+            <td>{{resource.abstract}}</td>
+            <td>
+              {% with resource.topics.all as topics %} 
+              {% for topic in topics %}
+                {% if forloop.last %}
+                  {{topic.topic}}
+                {% else %}
+                  {{topic.topic}}, 
+                {% endif %}
+              {% endfor %}
+              {% endwith %}
+            </td>
+            <td>{{resource.media_type}}</td>
+            <td>{{resource.length}}</td>
+          </tr>
+          {% endfor %}
+        </table>
       </div>
     </div>
 
