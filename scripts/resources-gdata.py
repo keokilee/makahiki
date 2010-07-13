@@ -9,9 +9,10 @@ import gdata.spreadsheet
 import atom
 import string
 from django.core.management import setup_environ
-import settings
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+import settings
+import MySQLdb
 
 setup_environ(settings)
 
@@ -22,6 +23,7 @@ sys.path.insert(0, join(settings.PINAX_ROOT, "apps"))
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 
 from resources.models import Topic, Resource
+from django.db import IntegrityError
 
 RESOURCE_KEY="0An9ynmXUoikYdGZfXzRXM1l3aV9NUV9xb1JqcFAxQXc"
 last_resource = Resource.objects.order_by("-created_at")[0]
@@ -44,13 +46,13 @@ def printFeed(feed):
     else:
       print '%s %s\n' % (i, entry.title.text)
       
-def updateResources(worksheet_feed):
+def updateResources(worksheet_feed, reload):
   for i, entry in enumerate(worksheet_feed.entry):
     print 'Resource:'
     for key in entry.custom:
       print '  %s: %s' % (key, entry.custom[key].text)
     print '\n'
-    if datetime.datetime.strptime(entry.custom["timestamp"].text, "%m/%d/%Y %H:%M:%S") > last_date:
+    if reload or datetime.datetime.strptime(entry.custom["timestamp"].text, "%m/%d/%Y %H:%M:%S") > last_date:
       createResource(entry)
     else:
       print "Skipping old entry."
@@ -65,13 +67,15 @@ def createResource(entry):
   resource.url = entry.custom["link"].text
 
   try:
-    resource.length = int(entry.custom["length"].text)
-  except ValueError:
-    print "This resource has length %s" % entry.custom["length"].text
+    resource.length = entry.custom["length"].text
   except TypeError:
     print "This resource has no length."
     
-  resource.save()
+  try:
+    resource.save()
+  except MySQLdb.Warning:
+    print "Error saving resource.", sys.exc_info()[0]
+    return
   
   topics = entry.custom["topictypes"].text.split(",")
   for topic_string in topics:
@@ -106,6 +110,14 @@ def stringToDictionary(row_data):
   return result
 
 def main():
+  reload = False
+  for arg in sys.argv:
+    if arg == "--reload":
+      print "Reloading all resources."
+      for resource in Resource.objects.all():
+        resource.delete()
+      reload = True
+  
   gd_client = gdata.spreadsheet.service.SpreadsheetsService()
   gd_client.email = settings.GDATA_EMAIL
   gd_client.password = settings.GDATA_PASSWORD
@@ -113,9 +125,11 @@ def main():
   gd_client.ProgrammaticLogin()
 
   spreadsheet = promptForSpreadsheet(gd_client)
+  print spreadsheet
   worksheet = promptForWorksheet(gd_client, spreadsheet)
+  print worksheet
   feed = gd_client.GetListFeed(spreadsheet, worksheet)
-  updateResources(feed)
+  updateResources(feed, reload)
   
 if __name__ == '__main__':
   main()

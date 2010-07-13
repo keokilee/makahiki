@@ -40,12 +40,14 @@ class Resource(models.Model):
     choices=MEDIA_TYPES,
     help_text="The format of the resource."
   )
-  length = models.IntegerField(
+  length = models.CharField(
     null=True,
     blank=True,
+    max_length=20,
     help_text="If appropriate, specify length in the approximate number of pages (for text), minutes duration for video/audio resources.",
   )
-  url = models.URLField(
+  url = models.CharField(
+    max_length=300,
     help_text="Provide the full URL (beginning with http:) to this resource.",
   )
   added_by = models.CharField(
