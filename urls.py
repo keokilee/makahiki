@@ -44,7 +44,7 @@ urlpatterns = patterns('',
     # (r'^notifications/', include('notification.urls')),
     
     # Facebook Connect
-    (r'^facebook/', include('facebookconnect.urls')),
+    # (r'^facebook/', include('facebookconnect.urls')),
 )
 
 if settings.SERVE_MEDIA:
