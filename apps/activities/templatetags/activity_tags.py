@@ -114,7 +114,7 @@ def __generate_goal_form(user, item):
       
     # TODO What should happen if the points are rejected?
     if item_join.approval_status != u"approved" and item_join.user == user:
-      return_string += '<form action="/activities/remove_{0}/{1.id}/" method="post" style="display: inline``">'
+      return_string += '<form action="/activities/remove_{0}/{1.id}/" method="post" style="display: inline">'
       return_string += '<a href="#" onclick="confirm_removal(parentNode, \'goal\')" class="option-link ui-state-error ui-corner-all ui-state-hover">'
       return_string += '<span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span></a></form>'
     elif item_join.approval_status == u"approved":

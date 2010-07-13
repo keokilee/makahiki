@@ -15,17 +15,21 @@
         Resource Topics
       </div>
       <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <ul style="list-style: none; margin: 0; padding: 0">
-        {% for topic in topics %}
-          <li style="padding: 5px; display: inline"><a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a></li>
-        {% endfor %}
-        </ul>
+        <form action="/resources/" method="POST">
+          <ul id="topic_form">
+            {{topic_form.as_ul}}
+          </ul>
+          <a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">
+            <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
+            <span class="button-text">Refresh</span>
+          </a>
+        </form>
       </div>
     </div>
 
     <div id="resource_list" class="makahiki_content">
       <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-        Resources
+        {{list_title|truncatewords:20}}
       </div>
       <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
         <table>
@@ -38,19 +42,9 @@
           </tr>
           {% for resource in resources %}
           <tr>
-            <td>{{resource.title}}</td>
-            <td>{{resource.abstract}}</td>
-            <td>
-              {% with resource.topics.all as topics %} 
-              {% for topic in topics %}
-                {% if forloop.last %}
-                  {{topic.topic}}
-                {% else %}
-                  {{topic.topic}}, 
-                {% endif %}
-              {% endfor %}
-              {% endwith %}
-            </td>
+            <td>{{resource.title|truncatewords:5}}</td>
+            <td>{{resource.abstract|truncatewords:10}}</td>
+            <td>{{resource.topic_string|truncatewords:3}}</td>
             <td>{{resource.media_type}}</td>
             <td>{{resource.length}}</td>
           </tr>

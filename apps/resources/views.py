@@ -1,23 +1,48 @@
+import string
+
 from django.template import RequestContext
-from resources.models import Resource, Topic
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import Http404
 
 from resources import DEFAULT_NUM_RESOURCES
+from resources.models import Resource, Topic
+from resources.forms import TopicSelectForm
 # Create your views here.
 
 def index(request):
   """Index page for the resources tab."""
-  topics = Topic.objects.all()
-  resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+  resources = None
+  resource_count = 0
+  topics = None
+  list_title = "All Resources"
+  
+  if request.method == "POST":
+    form = TopicSelectForm(request.POST)
+    if form.is_valid():
+      topics = form.cleaned_data["topics"]
+      if len(topics) == 0:
+        resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+      else:
+        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")
+          
+  if topics and resources:
+    form = TopicSelectForm(initial={"topics": [topic.pk for topic in topics]})
+    list_title = "Resources in %s" % string.join([topic.topic for topic in topics], ", ")
+  else:
+    form = TopicSelectForm()
+    resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+    resource_count = Resource.objects.count()
+    
   more_resources = False
-  if Resource.objects.count() > DEFAULT_NUM_RESOURCES:
+  if resource_count > DEFAULT_NUM_RESOURCES:
     more_resources = True
     
   return render_to_response('resources/index.html', {
-    "topics": topics,
+    "topic_form": form,
     "resources": resources,
     "more": more_resources,
+    "list_title": list_title,
   }, context_instance = RequestContext(request))
   
 def topic(request, topic_id):

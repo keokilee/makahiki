@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+import string
 
 # Create your models here.
 class Topic(models.Model):
@@ -52,6 +53,9 @@ class Resource(models.Model):
     help_text="Please put your first name here so we know who entered this info in case we have questions later."
   )
   
+  def topic_string(self):
+    return string.join([topic.topic for topic in self.topics.all()], ", ")
+    
   def __unicode__(self):
     return self.title
     
