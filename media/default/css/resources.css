@@ -19,3 +19,31 @@
   display: inline;
   white-space: pre;
 }
+
+#resource_table tr a {
+  text-decoration: none;
+}
+
+.truncated {
+  position:relative; /*this is the key*/
+  z-index:24;
+}
+
+.truncated:hover {
+  z-index:25;
+}
+
+.truncated span {
+  display: none
+}
+
+.truncated:hover span { /*the span will display just on :hover state*/
+  display:block;
+  position:absolute;
+  top:1em; left:2em; width:15em;
+  border:1px solid #327E04;
+  background-color:#459E00;
+  color: white;
+  padding: 5px;
+  font-weight: normal;
+}

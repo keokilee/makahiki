@@ -1,7 +1,33 @@
 <tr>
-  <td>{{resource.title|truncatewords:5}}</td>
-  <td>{{resource.abstract|truncatewords:10}}</td>
-  <td>{{resource.topic_string|truncatewords:3}}</td>
+  <td>
+    {% if resource.title|wordcount > 5 %}
+      <a class="truncated" href="/resources/resource/{{resource.pk}}/">
+        {{resource.title|truncatewords:6}}
+        <span class="ui-corner-all">{{resource.title}}</span>
+      </a>
+    {% else %}
+      <a href="/resources/resource/{{resource.pk}}/">
+        {{resource.title}}
+      </a>
+    {% endif %}
+  </td>
+  <td>
+    <span class="truncated">
+      {{resource.abstract|truncatewords:8}}
+      <span class="ui-corner-all">{{resource.abstract}}</span>
+    </span>
+  </td>
+  <td>
+    {% with resource.topic_string as topic_string %}
+    {% if topic_string|wordcount > 2 %}
+      <span class="truncated">
+        {{topic_string|truncatewords:2}}
+        <span class="ui-corner-all">{{topic_string}}</span>
+      </span>
+    {% else %}
+      {{topic_string}}
+    {% endif %}
+    {% endwith %}
+  </td>
   <td>{{resource.media_type}}</td>
-  <td>{{resource.length}}</td>
 </tr>

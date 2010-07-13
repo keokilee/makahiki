@@ -32,13 +32,12 @@
         {{list_title|truncatewords:20}}
       </div>
       <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <table>
+        <table id="resource_table">
           <tr>
             <th>Title</th>
             <th>Summary</th>
             <th>Topic Type(s)</th>
             <th>Media Type</th>
-            <th>Length</th>
           </tr>
           {% for resource in resources %}
             {% include "resources/list_item.html" %}
