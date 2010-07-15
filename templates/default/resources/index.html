@@ -16,9 +16,10 @@
       </div>
       <div class="resource_topics makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
         <form action="/resources/" method="POST">
-          <ul id="topic_form">
+          <ul id="topic_form_list">
             {{topic_form.as_ul}}
           </ul>
+          <div class="clear_div"></div>
           <a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">
             <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
             <span class="button-text">Refresh</span>

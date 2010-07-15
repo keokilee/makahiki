@@ -2,22 +2,30 @@
   padding: 10px 5px;
 }
 
-#topic_form {
+.resource_topics .clear_div {
+  clear: both;
+  padding: 5px 0;
+}
+
+#topic_form_list {
   list-style: none;
   margin: 0;
-  margin-bottom: 10px;
   padding: 0;
 }
 
-#topic_form ul {
+#topic_form_list ul {
   list_style: none;
   margin: 0;
   padding: 0;
 }
 
-#topic_form ul li {
+#topic_form_list ul li {
+  
   display: inline;
   white-space: pre;
+  text-align: left;
+  float: left;
+  width: 235px;
 }
 
 #resource_table tr a {
