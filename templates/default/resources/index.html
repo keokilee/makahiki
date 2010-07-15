@@ -5,6 +5,14 @@
 
 {% block head_title %}{% trans "Dorm Energy" %}{% endblock %}
 
+{% block extra_head %}
+  <script type="text/javascript">
+    function clearTopics() {
+      jQuery("input[id*='id_topics_']").removeAttr("checked");
+    };
+  </script>
+{% endblock %}
+
 {% block body %}
     <div id="content_header">
       
@@ -23,6 +31,10 @@
           <a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">
             <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
             <span class="button-text">Refresh</span>
+          </a>
+          <a href="javascript:clearTopics()" class="option-link ui-state-error ui-corner-all ui-state-hover" style="margin-left: 20px">
+            <span class="ui-icon ui-icon-circle-close"></span>
+            <span class="button-text">Clear All</span>
           </a>
         </form>
       </div>
