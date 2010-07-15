@@ -14,18 +14,31 @@
 }
 
 #topic_form_list ul {
-  list_style: none;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 #topic_form_list ul li {
-  
   display: inline;
   white-space: pre;
   text-align: left;
   float: left;
   width: 235px;
+}
+
+#resource_table tr {
+  height: 25px;
+}
+
+#resource_table tr th {
+  text-align: left;
+}
+
+#resource_table tr:hover {
+  background-color: #DFD9C3;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #resource_table tr a {
