@@ -17,5 +17,11 @@ class TopicSelectForm(forms.Form):
       initial=[topic.pk for topic in Topic.objects.all()],
   )
   
-# class ViewAllForm(forms.Form):
+class ViewAllForm(forms.Form):
+  """Form for displaying all resources."""
+  topics = forms.ModelMultipleChoiceField(
+      queryset=Topic.objects,
+      widget=forms.MultipleHiddenInput, 
+      initial=[topic.pk for topic in Topic.objects.all()],
+  )
   

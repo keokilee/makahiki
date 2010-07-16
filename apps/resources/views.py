@@ -13,23 +13,19 @@ def index(request):
   """Index page for the resources tab."""
   resources = None
   resource_count = 0
-  topics = None
   list_title = "All Resources"
   
-  if request.method == "POST":
-    form = TopicSelectForm(request.POST)
-    if form.is_valid():
-      topics = form.cleaned_data["topics"]
-      if len(topics) > 0:
-        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
-          
-  if topics and resources:
-    form = TopicSelectForm(initial={"topics": [topic.pk for topic in topics]})
-    list_title = "Resources in %s" % string.join([topic.topic for topic in topics], ", ")
+  if request.GET.has_key("topics"):
+    topic_form = TopicSelectForm(request.GET)
+    if topic_form.is_valid():
+      topics = topic_form.cleaned_data["topics"]
+      resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+      resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+      list_title = "Resources in %s" % string.join([topic.topic for topic in Topic.objects.filter(pk__in=topics)], ", ")
+  
   else:
-    # We get here if the user has not selected any topics or has deselected all topics.
-    form = TopicSelectForm()
+    # We get here on first load
+    topic_form = TopicSelectForm() # Note that all topics are selected by default.
     resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
     resource_count = Resource.objects.count()
     
@@ -38,10 +34,11 @@ def index(request):
     more_resources = True
     
   return render_to_response('resources/index.html', {
-    "topic_form": form,
+    "topic_form": topic_form,
     "resources": resources,
     "more": more_resources,
     "list_title": list_title,
+    "resource_count": resource_count,
   }, context_instance = RequestContext(request))
   
 def topic(request, topic_id):

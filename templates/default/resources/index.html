@@ -23,7 +23,7 @@
         Resource Topics
       </div>
       <div class="resource_topics makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <form action="/resources/" method="POST">
+        <form action="/resources/" method="GET">
           <ul id="topic_form_list">
             {{topic_form.as_ul}}
           </ul>
@@ -57,7 +57,7 @@
           {% endfor %}
         </table>
         {% if more %}
-          <a href="#">View all</a>
+          <a href="#">View all ({{resource_count}})</a>
         {% endif %}
       </div>
     </div>
