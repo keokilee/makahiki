@@ -20,7 +20,7 @@
         <li>
           Topics:
           {% for topic in resource.topics.all %}
-            <a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a>
+            <a href="/resources/?topics={{topic.pk}}">{{topic.topic}}</a>
           {% endfor %}
         </li>
         {% if resource.length %}

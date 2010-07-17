@@ -64,34 +64,6 @@ def _construct_all_url(request):
   
   return url
   
-def topic(request, topic_id):
-  """View resources for a given topic."""
-  topic = get_object_or_404(Topic, pk=topic_id)
-  resources = topic.resource_set.all()
-  return render_to_response('resources/list.html', {
-    "topic": topic.topic,
-    "resources": resources,
-  }, context_instance = RequestContext(request))
-  
-def media(request, media_type):
-  """View resources for a given media type."""
-  type_string = None
-  for media in Resource.MEDIA_TYPES:
-     if media_type == media[0]:
-       type_string = media[1]
-       break
-  if not type_string: 
-    raise Http404
-  
-  resources = Resource.objects.filter(
-    media_type=type_string
-  )
-  
-  return render_to_response('resources/list.html', {
-    "media": type_string,
-    "resources": resources,
-  }, context_instance = RequestContext(request))
-  
 def resource(request, resource_id):
   """View details for a resource."""
   resource = get_object_or_404(Resource, pk=resource_id)
