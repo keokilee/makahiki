@@ -52,8 +52,11 @@ class CommonActivityUser(CommonBase):
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
   
+  MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
+  MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
+  
   title = models.CharField(max_length=200)
-  description = models.TextField(help_text="Uses <a href=\"http://daringfireball.net/projects/markdown/\" target=\"_blank\">Markdown</a> formatting.")
+  description = models.TextField(help_text=MARKDOWN_TEXT)
   point_value = models.IntegerField()
   
   def __unicode__(self):
