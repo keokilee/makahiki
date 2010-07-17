@@ -1,8 +1,9 @@
 import string
 
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse
 
 from resources import DEFAULT_NUM_RESOURCES
 from resources.models import Resource, Topic
@@ -53,16 +54,61 @@ def index(request):
   
 def _construct_all_url(request):
   """Constructs a view all url using the parameters in the request."""
-  url = request.get_full_path()
-  all_param = "view_all=True"
+  url = "/resources/view_all/"
   if request.GET.has_key("topics"):
-    # If this url has topics, we append the view all parameter.
-    url += "&view_all=True"
-  else:
-    # We need to create a GET parameter.
-    url += "?view_all=True"
+    # If this url has topics, we need to append that list.
+    url += "?" + request.GET.urlencode()
   
   return url
+  
+def filter(request):
+  """Uses AJAX to update resources list."""
+  view_all_url = None
+  
+  if request.is_ajax() and request.GET.has_key("topics"):
+    topic_form = TopicSelectForm(request.GET)
+    if topic_form.is_valid():
+      topics = topic_form.cleaned_data["topics"]
+      resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+      resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+      
+      if resource_count > DEFAULT_NUM_RESOURCES:
+        view_all_url = _construct_all_url(request)
+      
+      response = render_to_string("resources/list.html", {
+        "resources": resources,
+        "resource_count": resource_count,
+        "view_all_url": view_all_url,
+      })
+      return HttpResponse(response, mimetype='text/plain')
+  
+  # If something goes wrong, all we can do is raise a 404 or 500.
+  raise Http404
+  
+def view_all(request):
+  """Uses AJAX to view all resources."""
+  if request.is_ajax():
+    if request.GET.has_key("topics"):
+      topic_form = TopicSelectForm(request.GET)
+      if topic_form.is_valid():
+        topics = topic_form.cleaned_data["topics"]
+        # Note that DEFAULT_NUM_RESOURCES is already loaded, so we just load the rest.
+        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[DEFAULT_NUM_RESOURCES:]
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+    
+    else:
+      # View all on default page.
+      resources = Resource.objects.order_by("-created_at")[DEFAULT_NUM_RESOURCES:]
+      resource_count = Resource.objects.count()
+      
+    response = render_to_string("resources/list.html", {
+      "resources": resources,
+      "resource_count": resource_count,
+    })
+    return HttpResponse(response, mimetype='text/plain')
+  
+  # If something goes wrong, all we can do is raise a 404 or 500.
+  raise Http404
   
 def resource(request, resource_id):
   """View details for a resource."""
