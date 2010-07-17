@@ -1,3 +1,12 @@
-{% for resource in resources %}
-  {% include "resources/list_item.html" %}
-{% endfor %}
+<table>
+  <tr>
+    <th style="width: 7%">Posted</th>
+    <th style="width: 65%">Title</th>
+    <th style="width: 15%">Topic Type(s)</th>
+    <th>Media Type</th>
+  </tr>
+  {% include "resources/resource_list.html" %}
+</table>
+{% if view_all_url %}
+  <a id="view_all" href="{{view_all_url}}" onclick="viewAll(this); return false;">View all ({{resource_count}})</a>
+{% endif %}

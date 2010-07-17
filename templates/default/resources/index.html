@@ -11,26 +11,25 @@
       jQuery("input[id*='id_topics_']").removeAttr("checked");
     };
     
+    function viewAll(link) {
+      alert($(link).attr("href"));
+      $("#resource_table").append('<img id="view_spinner" src="http://www.google.com/ig/images/spinner.gif"/>');
+      $.get($(link).attr("href"), function(data) {
+        $("#view_all").detach();
+        $("#view_spinner").detach();
+        $("#resource_table table").append(data.resources);
+      });
+      
+      return false;
+    }
+    
     $(document).ready(function() {
       $("#topic_form_submit").click(function() {
         $("#resource_table").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
         $.get("/resources/filter/", $("#topic_form").serialize(), function(data) {
-          $("#resource_table").html(data);
+          $("#resource_table").html(data.resources);
         });
       });
-      
-      $("#view_all").click(function() {
-        alert($(this).attr("href"));
-        $("#resource_table").append('<img id="view_spinner" src="http://www.google.com/ig/images/spinner.gif"/>');
-        $.get($(this).attr("href"), function(data) {
-          $("#view_all").detach();
-          $("#view_spinner").detach();
-          $("#resource_table").append(data);
-        });
-        
-        return false;
-      })
-      
     });
   </script>
 {% endblock %}
@@ -67,18 +66,7 @@
         {{list_title}}
       </div>
       <div id="resource_table" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <table>
-          <tr>
-            <th style="width: 7%">Posted</th>
-            <th style="width: 65%">Title</th>
-            <th style="width: 15%">Topic Type(s)</th>
-            <th>Media Type</th>
-          </tr>
-          {% include "resources/list.html" %}
-        </table>
-        {% if view_all_url %}
-          <a id="view_all" href="{{view_all_url}}">View all ({{resource_count}})</a>
-        {% endif %}
+        {% include "resources/list.html" %}
       </div>
     </div>
 

@@ -1,4 +1,5 @@
 import string
+import simplejson as json
 
 from django.template import RequestContext
 from django.template.loader import render_to_string
@@ -80,7 +81,11 @@ def filter(request):
         "resource_count": resource_count,
         "view_all_url": view_all_url,
       })
-      return HttpResponse(response, mimetype='text/plain')
+      title = "%d resources" % resource_count
+      return HttpResponse(json.dumps({
+          "resources": response,
+          "title": title,
+      }), mimetype='application/json')
   
   # If something goes wrong, all we can do is raise a 404 or 500.
   raise Http404
@@ -101,11 +106,15 @@ def view_all(request):
       resources = Resource.objects.order_by("-created_at")[DEFAULT_NUM_RESOURCES:]
       resource_count = Resource.objects.count()
       
-    response = render_to_string("resources/list.html", {
+    response = render_to_string("resources/resource_list.html", {
       "resources": resources,
       "resource_count": resource_count,
     })
-    return HttpResponse(response, mimetype='text/plain')
+    title = "%d resources" % resource_count
+    return HttpResponse(json.dumps({
+        "resources": response,
+        "title": title,
+    }), mimetype='application/json')
   
   # If something goes wrong, all we can do is raise a 404 or 500.
   raise Http404
