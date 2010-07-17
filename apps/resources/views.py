@@ -13,36 +13,56 @@ def index(request):
   """Index page for the resources tab."""
   resources = None
   resource_count = 0
-  topics = None
-  list_title = "All Resources"
+  view_all = request.GET.has_key("view_all") and request.GET["view_all"]
+  view_all_url = None
   
-  if request.method == "POST":
-    form = TopicSelectForm(request.POST)
-    if form.is_valid():
-      topics = form.cleaned_data["topics"]
-      if len(topics) > 0:
+  if request.GET.has_key("topics"):
+    topic_form = TopicSelectForm(request.GET)
+    if topic_form.is_valid():
+      topics = topic_form.cleaned_data["topics"]
+      if view_all:
+        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")
+      else:
         resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
-          
-  if topics and resources:
-    form = TopicSelectForm(initial={"topics": [topic.pk for topic in topics]})
-    list_title = "Resources in %s" % string.join([topic.topic for topic in topics], ", ")
+      resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+  
   else:
-    # We get here if the user has not selected any topics or has deselected all topics.
-    form = TopicSelectForm()
-    resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+    # We get here on first load
+    topic_form = TopicSelectForm() # Note that all topics are selected by default.
+    if view_all:
+      resources = Resource.objects.order_by("-created_at")
+    else:
+      resources = Resource.objects.order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
     resource_count = Resource.objects.count()
-    
-  more_resources = False
-  if resource_count > DEFAULT_NUM_RESOURCES:
-    more_resources = True
+
+  # Create the list header and view all link.
+  list_title = "%d resources"
+  if not view_all and resource_count > DEFAULT_NUM_RESOURCES:
+    view_all_url = _construct_all_url(request)
+    list_title = list_title % DEFAULT_NUM_RESOURCES
+  else:
+    list_title = list_title % resource_count
     
   return render_to_response('resources/index.html', {
-    "topic_form": form,
+    "topic_form": topic_form,
     "resources": resources,
-    "more": more_resources,
     "list_title": list_title,
+    "resource_count": resource_count,
+    "view_all_url": view_all_url,
   }, context_instance = RequestContext(request))
+  
+def _construct_all_url(request):
+  """Constructs a view all url using the parameters in the request."""
+  url = request.get_full_path()
+  all_param = "view_all=True"
+  if request.GET.has_key("topics"):
+    # If this url has topics, we append the view all parameter.
+    url += "&view_all=True"
+  else:
+    # We need to create a GET parameter.
+    url += "?view_all=True"
+  
+  return url
   
 def topic(request, topic_id):
   """View resources for a given topic."""
