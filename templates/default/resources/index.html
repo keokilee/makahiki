@@ -48,7 +48,7 @@
         <table id="resource_table">
           <tr>
             <th style="width: 7%">Posted</th>
-            <th style="width: 70%">Title</th>
+            <th style="width: 65%">Title</th>
             <th style="width: 15%">Topic Type(s)</th>
             <th>Media Type</th>
           </tr>
@@ -56,8 +56,8 @@
             {% include "resources/list_item.html" %}
           {% endfor %}
         </table>
-        {% if more %}
-          <a href="#">View all ({{resource_count}})</a>
+        {% if view_all_url %}
+          <a href="{{view_all_url}}">View all ({{resource_count}})</a>
         {% endif %}
       </div>
     </div>
