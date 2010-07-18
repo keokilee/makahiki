@@ -2,7 +2,13 @@ from django.db import models
 import datetime
 import string
 
+from django.contrib.contenttypes import generic
+
+from makahiki_base.models import Like
+
+
 # Create your models here.
+  
 class Topic(models.Model):
   topic = models.CharField(max_length=255)
   
@@ -54,6 +60,7 @@ class Resource(models.Model):
     max_length=255,
     help_text="Please put your first name here so we know who entered this info in case we have questions later."
   )
+  likes  = generic.GenericRelation(Like)
   
   def topic_string(self):
     return string.join([topic.topic for topic in self.topics.all()], ", ")
