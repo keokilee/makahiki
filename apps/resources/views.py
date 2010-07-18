@@ -81,16 +81,16 @@ def filter(request):
       resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
       resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
       
+      title = "%d resources" % resource_count
       if resource_count > DEFAULT_NUM_RESOURCES:
-        resource_count = DEFAULT_NUM_RESOURCES
         view_all_url = _construct_all_url(request)
+        title = "%d resources" % DEFAULT_NUM_RESOURCES
       
       response = render_to_string("resources/list.html", {
         "resources": resources,
         "resource_count": resource_count,
         "view_all_url": view_all_url,
       })
-      title = "%d resources" % resource_count
       return HttpResponse(json.dumps({
           "resources": response,
           "title": title,
