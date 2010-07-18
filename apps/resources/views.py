@@ -80,6 +80,7 @@ def filter(request):
       resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
       
       if resource_count > DEFAULT_NUM_RESOURCES:
+        resource_count = DEFAULT_NUM_RESOURCES
         view_all_url = _construct_all_url(request)
       
       response = render_to_string("resources/list.html", {
