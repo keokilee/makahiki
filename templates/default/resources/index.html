@@ -12,11 +12,12 @@
     };
     
     function viewAll(link) {
-      alert($(link).attr("href"));
+      //alert($(link).attr("href"));
       $("#resource_table").append('<img id="view_spinner" src="http://www.google.com/ig/images/spinner.gif"/>');
       $.get($(link).attr("href"), function(data) {
         $("#view_all").detach();
         $("#view_spinner").detach();
+        $("#list-title").html(data.title);
         $("#resource_table table").append(data.resources);
       });
       
@@ -27,6 +28,7 @@
       $("#topic_form_submit").click(function() {
         $("#resource_table").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
         $.get("/resources/filter/", $("#topic_form").serialize(), function(data) {
+          $("#list-title").html(data.title);
           $("#resource_table").html(data.resources);
         });
       });
@@ -63,7 +65,7 @@
 
     <div id="resource_list" class="makahiki_content">
       <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-        {{list_title}}
+        <span id="list-title">{{list_title}}</span>
       </div>
       <div id="resource_table" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
         {% include "resources/list.html" %}
