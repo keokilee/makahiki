@@ -1,5 +1,15 @@
 {% extends "makahiki_profiles/base.html" %}
 
+{% block extra_head %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("form").submit(function() {
+        $('input[type=submit]', this).attr('disabled', 'disabled')
+      })
+    })
+  </script>
+{% endblock %}
+
 {% block body %}
 <form action="/activities/request_commitment_points/{{commitment.pk}}/" method="post">
   {% csrf_token %}

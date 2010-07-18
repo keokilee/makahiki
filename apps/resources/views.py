@@ -91,6 +91,7 @@ def filter(request):
         "resource_count": resource_count,
         "view_all_url": view_all_url,
       })
+      
       return HttpResponse(json.dumps({
           "resources": response,
           "title": title,
