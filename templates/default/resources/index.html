@@ -10,6 +10,29 @@
     function clearTopics() {
       jQuery("input[id*='id_topics_']").removeAttr("checked");
     };
+    
+    function viewAll(link) {
+      //alert($(link).attr("href"));
+      $("#resource_table").append('<img id="view_spinner" src="http://www.google.com/ig/images/spinner.gif"/>');
+      $.get($(link).attr("href"), function(data) {
+        $("#view_all").detach();
+        $("#view_spinner").detach();
+        $("#list-title").html(data.title);
+        $("#resource_table table").append(data.resources);
+      });
+      
+      return false;
+    }
+    
+    $(document).ready(function() {
+      $("#topic_form_submit").click(function() {
+        $("#resource_table").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
+        $.get("/resources/filter/", $("#topic_form").serialize(), function(data) {
+          $("#list-title").html(data.title);
+          $("#resource_table").html(data.resources);
+        });
+      });
+    });
   </script>
 {% endblock %}
 
@@ -23,12 +46,12 @@
         Resource Topics
       </div>
       <div class="resource_topics makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <form action="/resources/" method="GET">
+        <form id="topic_form" action="/resources/" method="GET">
           <ul id="topic_form_list">
             {{topic_form.as_ul}}
           </ul>
           <div class="clear_div"></div>
-          <a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">
+          <a id="topic_form_submit" href="#" class="option-link ui-state-default ui-corner-all ui-state-hover">
             <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
             <span class="button-text">Refresh</span>
           </a>
@@ -42,23 +65,10 @@
 
     <div id="resource_list" class="makahiki_content">
       <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-        {{list_title|truncatewords:20}}
+        <span id="list-title">{{list_title}}</span>
       </div>
-      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        <table id="resource_table">
-          <tr>
-            <th style="width: 7%">Posted</th>
-            <th style="width: 65%">Title</th>
-            <th style="width: 15%">Topic Type(s)</th>
-            <th>Media Type</th>
-          </tr>
-          {% for resource in resources %}
-            {% include "resources/list_item.html" %}
-          {% endfor %}
-        </table>
-        {% if view_all_url %}
-          <a href="{{view_all_url}}">View all ({{resource_count}})</a>
-        {% endif %}
+      <div id="resource_table" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% include "resources/list.html" %}
       </div>
     </div>
 

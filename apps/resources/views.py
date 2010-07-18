@@ -1,8 +1,16 @@
 import string
+import simplejson as json
 
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
+
+from makahiki_base.models import Like
 
 from resources import DEFAULT_NUM_RESOURCES
 from resources.models import Resource, Topic
@@ -53,45 +61,117 @@ def index(request):
   
 def _construct_all_url(request):
   """Constructs a view all url using the parameters in the request."""
-  url = request.get_full_path()
-  all_param = "view_all=True"
+  url = "/resources/view_all/"
   if request.GET.has_key("topics"):
-    # If this url has topics, we append the view all parameter.
-    url += "&view_all=True"
-  else:
-    # We need to create a GET parameter.
-    url += "?view_all=True"
+    # If this url has topics, we need to append that list.
+    url += "?" + request.GET.urlencode()
   
   return url
   
-def topic(request, topic_id):
-  """View resources for a given topic."""
-  topic = get_object_or_404(Topic, pk=topic_id)
-  resources = topic.resource_set.all()
-  return render_to_response('resources/list.html', {
-    "topic": topic.topic,
-    "resources": resources,
-  }, context_instance = RequestContext(request))
+def filter(request):
+  """Uses AJAX to update resources list."""
+  view_all_url = None
   
-def media(request, media_type):
-  """View resources for a given media type."""
-  type_string = None
-  for media in Resource.MEDIA_TYPES:
-     if media_type == media[0]:
-       type_string = media[1]
-       break
-  if not type_string: 
-    raise Http404
+  if request.is_ajax() and request.GET.has_key("topics"):
+    topic_form = TopicSelectForm(request.GET)
+    if topic_form.is_valid():
+      topics = topic_form.cleaned_data["topics"]
+      resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+      resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+      
+      if resource_count > DEFAULT_NUM_RESOURCES:
+        view_all_url = _construct_all_url(request)
+      
+      response = render_to_string("resources/list.html", {
+        "resources": resources,
+        "resource_count": resource_count,
+        "view_all_url": view_all_url,
+      })
+      title = "%d resources" % resource_count
+      return HttpResponse(json.dumps({
+          "resources": response,
+          "title": title,
+      }), mimetype='application/json')
   
-  resources = Resource.objects.filter(
-    media_type=type_string
-  )
+  # If something goes wrong, all we can do is raise a 404 or 500.
+  raise Http404
   
-  return render_to_response('resources/list.html', {
-    "media": type_string,
-    "resources": resources,
-  }, context_instance = RequestContext(request))
+def view_all(request):
+  """Uses AJAX to view all resources."""
+  if request.is_ajax():
+    if request.GET.has_key("topics"):
+      topic_form = TopicSelectForm(request.GET)
+      if topic_form.is_valid():
+        topics = topic_form.cleaned_data["topics"]
+        # Note that DEFAULT_NUM_RESOURCES is already loaded, so we just load the rest.
+        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[DEFAULT_NUM_RESOURCES:]
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+    
+    else:
+      # View all on default page.
+      resources = Resource.objects.order_by("-created_at")[DEFAULT_NUM_RESOURCES:]
+      resource_count = Resource.objects.count()
+      
+    response = render_to_string("resources/resource_list.html", {
+      "resources": resources,
+      "resource_count": resource_count,
+    })
+    title = "%d resources" % resource_count
+    return HttpResponse(json.dumps({
+        "resources": response,
+        "title": title,
+    }), mimetype='application/json')
   
+  # If something goes wrong, all we can do is raise a 404 or 500.
+  raise Http404
+  
+@login_required
+def like(request, item_id):
+  """Like a resource."""
+  
+  error = None
+  user = request.user
+  content_type = get_object_or_404(ContentType, app_label="resources", model="Resource")
+  try:
+    like = Like.objects.get(user=user, content_type=content_type, object_id=item_id)
+    error = "You already like this item."
+  except ObjectDoesNotExist:
+    like = Like(user=user, floor=user.get_profile().floor, content_type=content_type, object_id=item_id)
+    like.save()
+
+  if request.is_ajax():
+    return HttpResponse(json.dumps({
+        "error":error
+    }), mimetype='application/json')
+    
+  elif error:
+    request.user.message_set.create(message=error)
+    
+  return HttpResponseRedirect(reverse("resources.views.resource", args=(item_id,))) 
+
+@login_required
+def unlike(request, item_id):
+  """Unlike an activity/commitment/goal."""
+
+  error = None
+  user = request.user
+  content_type = get_object_or_404(ContentType, app_label="resources", model="Resource")
+  try:
+    like = Like.objects.get(user=user, content_type=content_type, object_id=item_id)
+    like.delete()
+  except ObjectDoesNotExist:
+    error = "You do not like this item."
+
+  if request.is_ajax():
+    return HttpResponse(json.dumps({
+        "error":error
+    }), mimetype='application/json')
+  #At this point, this is a non-ajax request.
+  elif error:
+    request.user.message_set.create(message=error)
+    
+  return HttpResponseRedirect(reverse("resources.views.resource", args=(item_id,)))
+    
 def resource(request, resource_id):
   """View details for a resource."""
   resource = get_object_or_404(Resource, pk=resource_id)

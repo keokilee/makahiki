@@ -5,6 +5,10 @@
 
 {% block head_title %}{{resource.title}}{% endblock %}
 
+{% block extra_head %}
+
+{% endblock %}
+
 {% block body %}
 <h3>{{resource.title}}</h3>
 <div id="side_content" style="float: left; width: 30%">
@@ -20,12 +24,15 @@
         <li>
           Topics:
           {% for topic in resource.topics.all %}
-            <a href="/resources/topic/{{topic.pk}}/">{{topic.topic}}</a>
+            <a href="/resources/?topics={{topic.pk}}">{{topic.topic}}</a>
           {% endfor %}
         </li>
         {% if resource.length %}
           <li>Length: {{resource.length}}</li>
         {% endif %}
+        <li id="resource_likes">
+          {% include "resources/detail_likes.html" %}
+        </li>
       </ul>
     </div>
   </div>

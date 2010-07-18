@@ -3,12 +3,25 @@
     {{resource.created_at|date:"SHORT_DATE_FORMAT"}}
   </td>
   <td>
-    {{resource.title}}
+    {% with resource.liked_users as like_users %}
+    <span class="tooltip" {% if like_users|length > 0 %}style="float: left; width: 90%"{% endif %}>
+      {{resource.title}}
+      <span class="ui-corner-all">{{resource.abstract}}</span>
+    </span>
+    {% if like_users|length > 0 %}
+    <span class="resource_likes" style="float: right; margin-top:2px">
+      <span class="option-link ui-state-highlight ui-corner-all">
+        <span class="ui-icon ui-icon-person"></span>
+        <span class="button-text">{{like_users|length}}</span>
+      </span>
+    </span>
+    {% endif %}
+    {% endwith %}
   </td>
   <td>
     {% with resource.topic_string as topic_string %}
     {% if topic_string|wordcount > 2 %}
-      <span class="truncated">
+      <span class="tooltip">
         {{topic_string|truncatewords:2}}
         <span class="ui-corner-all">{{topic_string}}</span>
       </span>

@@ -5,19 +5,12 @@ import os
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
+from makahiki_base.models import Like
 
-class Like(models.Model):
-  """Tracks the activities that users like."""
-  user = models.ForeignKey(User)
-  floor = models.ForeignKey(Floor)
-  content_type = models.ForeignKey(ContentType)
-  object_id = models.IntegerField()
-  content_object = generic.GenericForeignKey('content_type', 'object_id')
   
 # These models represent the different types of activities users can commit to.
 class CommonBase(models.Model):
