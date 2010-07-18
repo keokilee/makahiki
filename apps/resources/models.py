@@ -65,6 +65,10 @@ class Resource(models.Model):
   def topic_string(self):
     return string.join([topic.topic for topic in self.topics.all()], ", ")
     
+  def liked_users(self):
+    """Returns an array of users that like this activity."""
+    return [like.user for like in self.likes.all()]
+    
   def __unicode__(self):
     return self.title
     
