@@ -53,7 +53,7 @@ def __generate_commitment_form(user, item):
     return_string += '<form action="/activities/add_{0}/{1.id}'
     return_string += '/" method="post">'
     return_string += '<a href="#" onclick="parentNode.submit()" class="option-link ui-state-default ui-corner-all ui-state-hover">'
-    return_string += '<span class="ui-icon ui-icon-circle-plus"</span><span class="button-text">Commit</span></a></form>'
+    return_string += '<span class="ui-icon ui-icon-circle-plus"></span><span class="button-text">Commit</span></a></form>'
     
   # return_string is a format string with places to insert the item type and item.
   return return_string.format("commitment", item)
