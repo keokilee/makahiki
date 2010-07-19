@@ -45,28 +45,26 @@
       {% endspaceless %}
 
   <div id="content-outline" class="ui-corner-bottom">
-      <!-- {% block content_image %}{% endblock %} -->
-      
-      <div id="content">
-      {% if messages %}
-      <ul id="messages">
-          {% for message in messages %}
-          <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
-            <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;">
-              <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
-            </a> 
-            {{ message }}
-            <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
-          </li>
-          {% endfor %}
-      </ul>
-      {% endif %}
-      
-      {% block body %}
-      {% endblock %}
-      </div>
-			
-      <hr class="clear"/>
+    <div id="content">
+    {% if messages %}
+    <ul id="messages">
+        {% for message in messages %}
+        <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
+          <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;">
+            <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
+          </a> 
+          {{ message }}
+          <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% block body %}
+    {% endblock %}
+    </div>
+		
+    <hr class="clear"/>
   </div>
   </div>
   

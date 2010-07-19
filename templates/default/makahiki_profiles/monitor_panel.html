@@ -1,4 +1,4 @@
-{% if user.get_profile.floor and user.get_profile.floor.chart_url %}
+{% if user.get_profile.floor and user.get_profile.floor.floor_identifier %}
 <!--Load the AJAX API-->
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
@@ -13,7 +13,7 @@
     // Get the kukui cup configuration file. 
     var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
     // Specify the floor of interest.
-    var source = configuration.ilima_3_4;
+    var source = configuration.{{floor.floor_identifier}};
     // Get the spreadsheets we need.
     var energySummaryDataUrl = configuration.getEnergySummaryDataUrl();
     var baselineDataUrl = configuration.getBaselineDataUrl();

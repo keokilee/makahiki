@@ -54,25 +54,11 @@ class Floor(models.Model):
   number = models.CharField(help_text="The floor number in the dorm. Can be a string value", max_length=10)
   slug = models.CharField(max_length=10, blank=True, help_text="Automatically generated if left blank.")
   dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
-  chart_url = models.CharField(
-                  max_length=200,
-                  blank=True, 
-                  null=True,
-                  help_text="Specify a Google Chart where we can retrieve power and energy data from."
-  )
-  
-  chart_dorm = models.CharField(
+  floor_identifier = models.CharField(
                   max_length=200,
                   blank=True,
                   null=True,
-                  help_text="Column value of the dorm in the Google chart."
-  )
-  
-  chart_floor = models.CharField(
-                  max_length=200,
-                  blank=True,
-                  null=True,
-                  help_text="Column value of the floor in the Google chart."
+                  help_text="Name of the variable used in the kukuicup configuration to refer to this floor."
   )
   
   def __unicode__(self):
