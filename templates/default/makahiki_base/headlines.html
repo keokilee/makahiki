@@ -1,5 +1,3 @@
-{% load markup %}
-
 {% for headline in headlines %}
-  <div class="headline_content">{{headline.content|markdown}}</div>
+  <div class="headline_content">{{headline|safe}}</div>
 {% endfor %}

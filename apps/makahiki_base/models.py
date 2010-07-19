@@ -2,7 +2,6 @@ import datetime
 import string
 
 from django.db import models
-from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -18,13 +17,6 @@ class Like(models.Model):
   content_type = models.ForeignKey(ContentType)
   object_id = models.IntegerField()
   content_object = generic.GenericForeignKey('content_type', 'object_id')
-
-class Headline(models.Model):
-  """Notifications to be posted at the top of the home page."""
-  content = models.TextField(help_text="Content of the energy tip.")
-  
-  def __unicode__(self):
-    return self.content
 
 class Article(models.Model):
   """Represents an article on the front page."""
