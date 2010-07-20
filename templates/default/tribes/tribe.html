@@ -24,7 +24,7 @@
                         {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
                         <td>
                             <div class="avatar">{% avatar member 40 %}</div>
-                            <div class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></div>
+                            <div class="details"><a href="{% url profile_detail member.id %}" title="{{ member.get_profile.name }}">{{ member.username }}</a></div>
                         </td>
                         {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
                     {% endfor %}
@@ -40,7 +40,7 @@
         
         <p>
             {% trans "Slug:" %} <tt>{{ tribe.slug }}</tt><br />
-            {% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
+            {% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.id %}">{{ tribe.creator }}</a><br />
             {% trans "Created:" %} {{ tribe.created|date }}
             <br />
         </p>

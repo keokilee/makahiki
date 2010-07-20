@@ -87,7 +87,7 @@ def add_participation(request, item_type, item_id):
   
   if not request.method == "POST":
     request.user.message_set.create(message="We could not process your request.  Please try again.")
-    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   elif item_type == "commitment":
     return __add_commitment(request, item_id)
   elif item_type == "activity":
@@ -103,7 +103,7 @@ def remove_participation(request, item_type, item_id):
   
   if not request.method == "POST":
     request.user.message_set.create(message="We could not process your request.  Please try again.")
-    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   elif item_type == "commitment":
     return __remove_active_commitment(request, item_id)
   elif item_type == "activity":
@@ -162,7 +162,7 @@ def __add_commitment(request, commitment_id):
     member.save()
     user.message_set.create(message="You are now committed to \"%s\"" % commitment.title)
     
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
 
 def __remove_active_commitment(request, commitment_id):
   """Removes a user's active commitment.  Inactive commitments cannot be removed except by admins."""
@@ -174,7 +174,7 @@ def __remove_active_commitment(request, commitment_id):
   commitment_member.delete()
   user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
     
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
 
 def __add_activity(request, activity_id):
   """Commit the current user to the activity."""
@@ -190,7 +190,7 @@ def __add_activity(request, activity_id):
   else:
     return Http404
 
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
 
 def __remove_activity(request, activity_id):
   """Remove the current user's activity."""
@@ -201,7 +201,7 @@ def __remove_activity(request, activity_id):
 
   activity_member.delete()
   user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
 def __add_goal(request, goal_id):
   """Add the goal to the floor."""
@@ -217,7 +217,7 @@ def __add_goal(request, goal_id):
   else:
     return Http404
     
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   
 def __remove_goal(request, goal_id):
   goal = get_object_or_404(Goal, pk=goal_id)
@@ -228,7 +228,7 @@ def __remove_goal(request, goal_id):
   # At this point, user is allowed to remove the goal because they own goal_member
   goal_member.delete()
   user.message_set.create(message="Your floor's participation in \"" + goal.title + "\" has been removed")
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
 def __request_commitment_points(request, commitment_id):
   """Generates a form to add an optional comment."""
@@ -241,7 +241,7 @@ def __request_commitment_points(request, commitment_id):
     
   except ObjectDoesNotExist:
     user.message_set.create(message="Either the commitment is not active or it is not completed yet.")
-    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   
   if request.method == "POST":
     form = CommitmentCommentForm(request.POST)
@@ -255,7 +255,7 @@ def __request_commitment_points(request, commitment_id):
       
       message = "You have been awarded %d points for your participation!" % commitment.point_value
       user.message_set.create(message=message)
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
   form = CommitmentCommentForm()
   return render_to_response("activities/request_commitment_points.html", {
@@ -276,7 +276,7 @@ def __request_activity_points(request, activity_id):
     activity_member = ActivityMember.objects.get(user=user, activity=activity)
     if activity_member.award_date:
       user.message_set.create(message="You have already received the points for this activity.")
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
       
   except ObjectDoesNotExist:
     pass # Ignore for now.
@@ -318,7 +318,7 @@ def __request_activity_points(request, activity_id):
         user.message_set.create(message=message)
 
       activity_member.save()
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
   # Create activity request form.
   elif activity.confirm_type == "image":
@@ -354,7 +354,7 @@ def __request_goal_points(request, goal_id):
       goal_member.save()
       
       user.message_set.create(message="Your request has been submitted!")
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
+      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
   # Create goal request form.
   else:

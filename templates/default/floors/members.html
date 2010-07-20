@@ -18,13 +18,13 @@
     <ul id="member_list" style="list-style: none; margin: 0; padding: 0">
     {% for profile in profiles %}
     <li style="padding: 5px 0">
-      <a class="member_image" href="{% url profile_detail profile.user.username %}" style="float: left; width: 60px">
+      <a class="member_image" href="{% url profile_detail profile.user.id %}" style="float: left; width: 60px">
        <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="top"/>
       </a>
       <div class="member_about" style="float: left; width: 85%">
         <ul style="list-style: none; margin: 0; padding: 0">
           <li>
-            <a href="{% url profile_detail profile.user.username %}" style="text-decoration: none; color:#2F6B00">
+            <a href="{% url profile_detail profile.user.id %}" style="text-decoration: none; color:#2F6B00">
               {{profile.name}}
             </a>
           </li>

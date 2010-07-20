@@ -1,11 +1,11 @@
 {% load avatar_tags %}
 
 <div class="user_post">
-  <a class="wall_image" href="{% url profile_detail post.user.username %}">
+  <a class="wall_image" href="{% url profile_detail post.user.id %}">
    <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" title="{{ post.user }}'s profile" class="photo" align="top"/>
   </a>
   <div class="wall_text">
-    <a href="{% url profile_detail post.user.username %}">
+    <a href="{% url profile_detail post.user.id %}">
       {{post.user.get_profile.name}} 
     </a>
     <p>

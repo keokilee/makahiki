@@ -1,5 +1,5 @@
 <div class="system_text">
-  <a href="{% url profile_detail post.user.username %}">
+  <a href="{% url profile_detail post.user.id %}">
     {{post.user.get_profile.name}}
   </a>
   <span>{{post.text}}</span>
