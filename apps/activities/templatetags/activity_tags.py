@@ -120,7 +120,7 @@ def __generate_goal_form(user, item):
     elif item_join.approval_status == u"approved":
       return_string += "<span class=\"approved_activity\">Approved</span>"      
     else:
-      return_string += item_join.user.username + " owns this goal"
+      return_string += item_join.user.get_profile().name + " owns this goal"
   
   except ObjectDoesNotExist:
     if GoalMember.can_add_goal(user):

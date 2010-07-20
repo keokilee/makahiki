@@ -19,7 +19,7 @@
           <div class="member_block" style="display:inline; float:left; margin:0 0 10px 15px; width:45px; font-size: 0.8em">
             <a href="{% url profile_detail profile.user.username %}">
               <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="center"/>
-              {{profile.user.username}}
+              {{profile.name}}
             </a>
           </div>
         {% endfor %}

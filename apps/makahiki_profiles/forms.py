@@ -7,4 +7,4 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        exclude = ('user', 'points', 'floor')
+        exclude = ('user', 'points', 'floor', 'first_name', 'last_name')

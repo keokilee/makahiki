@@ -18,7 +18,9 @@ def _get_available_themes():
   
 class Profile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    name = models.CharField(_('name'), max_length=50, null=True, blank=True)
+    name = models.CharField(_('name'), max_length=50)
+    first_name = models.CharField(_('first_name'), max_length=50, null=True, blank=True)
+    last_name = models.CharField(_('last_name'), max_length=50, null=True, blank=True)
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
