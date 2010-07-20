@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
-from django.views.decorators.cache import cache_control
+from django.views.decorators.cache import never_cache
 
 from makahiki_base.models import Like
 
@@ -18,7 +18,7 @@ from resources.models import Resource, Topic
 from resources.forms import TopicSelectForm
 # Create your views here.
 
-@cache_control(no_cache=True)
+@never_cache
 def index(request):
   """Index page for the resources tab."""
   resources = None
@@ -155,7 +155,7 @@ def like(request, item_id):
 
 @login_required
 def unlike(request, item_id):
-  """Unlike an activity/commitment/goal."""
+  """Unlike a resource."""
 
   error = None
   user = request.user
@@ -176,10 +176,12 @@ def unlike(request, item_id):
     
   return HttpResponseRedirect(reverse("resources.views.resource", args=(item_id,)))
     
-@cache_control(no_cache=True)
+@never_cache
 def resource(request, resource_id):
   """View details for a resource."""
   resource = get_object_or_404(Resource, pk=resource_id)
+  resource.views += 1
+  resource.save()
   
   return render_to_response('resources/resource_detail.html', {
     "resource": resource,

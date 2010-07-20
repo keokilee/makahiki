@@ -9,17 +9,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.forms.util import ErrorList
 from django.contrib.contenttypes.models import ContentType
+from django.views.decorators.cache import never_cache
 
 from activities.models import *
 from activities.forms import *
 from activities import MAX_COMMITMENTS
 
 @login_required
-def home(request):
-  """Home page listing for activities.  We may want to add top commitments/activities/goals later."""
-  return render_to_response('activities/home.html', {}, context_instance = RequestContext(request))
-
-@login_required
+@never_cache
 def list(request, item_type):
   user = request.user
   

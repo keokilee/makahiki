@@ -60,6 +60,11 @@ class Resource(models.Model):
     max_length=255,
     help_text="Please put your first name here so we know who entered this info in case we have questions later."
   )
+  views = models.IntegerField(
+    default=0,
+    editable=False,
+    help_text="The number of views this resource has received.",
+  )
   likes  = generic.GenericRelation(Like)
   
   def topic_string(self):

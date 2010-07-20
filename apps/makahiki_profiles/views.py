@@ -12,6 +12,8 @@ from django.utils.translation import ugettext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from django.views.decorators.cache import never_cache
+
 from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
 
@@ -43,7 +45,7 @@ def profiles(request, template_name="makahiki_profiles/profiles.html"):
         'search_terms' : search_terms
     }, context_instance=RequestContext(request))
 
-
+@never_cache
 def profile(request, username, template_name="makahiki_profiles/profile.html"):
     
     other_user = get_object_or_404(User, username=username)

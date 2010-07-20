@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.views.decorators.cache import never_cache
 
 from floors.models import Dorm, Floor, Post
 from floors.forms import WallForm
@@ -12,7 +13,8 @@ from makahiki_avatar.models import Avatar
 
 def dorm(request, dorm_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
-  
+
+@never_cache
 def floor(request, dorm_slug, floor_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
