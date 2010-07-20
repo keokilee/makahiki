@@ -2,9 +2,11 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.views.decorators.cache import cache_control
 
 from makahiki_base.models import Article
 
+@cache_control(must_revalidate=True, max_age=3600)
 def homepage(request):
   """Retrieves articles for the home page."""
   articles = Article.objects.order_by('-pk')
