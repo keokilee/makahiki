@@ -334,7 +334,7 @@ class GoalMember(CommonActivityUser):
   admin_comment = models.TextField(null=True, blank=True, help_text="Reason for approval/rejection")
   
   def __unicode__(self):
-    return "%s : %s Floor %d" % (self.goal.title, self.floor.dorm.name, self.floor.floor_number)
+    return "%s : %s Floor %s" % (self.goal.title, self.floor.dorm.name, self.floor.number)
     
   @staticmethod
   def can_add_goal(user):
@@ -373,15 +373,14 @@ class GoalMember(CommonActivityUser):
       for profile in self.floor.profile_set.all():
         profile.points += self.goal.point_value
         profile.save()
-        
-        message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
-          self.goal.title,
-          self.goal.point_value,
-        )
-        post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
-        post.save()
       
       self.awarded = True
+      message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
+        self.goal.title,
+        self.goal.point_value,
+      )
+      post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+      post.save()
     
     elif self.approval_status !=u"approved" and self.awarded:
       for profile in self.floor.profile_set.all():
