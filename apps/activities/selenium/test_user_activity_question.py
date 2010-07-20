@@ -12,7 +12,7 @@ class test_user_activity_question(unittest.TestCase):
         sel.open("/account/login/")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit]")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -54,8 +54,8 @@ class test_user_activity_question(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='login']/a/span[2]")
-        sel.wait_for_page_to_load("30000")
+        # sel.click("//div[@id='login']/a/span[2]")
+        # sel.wait_for_page_to_load("30000")
         sel.open("/account/login/")
         for i in range(60):
             try:
@@ -65,7 +65,7 @@ class test_user_activity_question(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit]")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -127,7 +127,7 @@ class test_user_activity_question(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit]")
+        sel.click(u"//input[@type='submit']")
         for i in range(60):
             try:
                 if sel.is_element_present("//li[@id='user_tab']/a/span"): break
@@ -155,7 +155,6 @@ class test_user_activity_question(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='login']/a/span[2]")
         sel.open("/account/login/")
         for i in range(60):
             try:
@@ -165,7 +164,7 @@ class test_user_activity_question(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit]")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -218,7 +217,7 @@ class test_user_activity_question(unittest.TestCase):
     
     def tearDown(self):
         self.selenium.stop()
-        self.assertEqual([''], self.verificationErrors)
+        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()
