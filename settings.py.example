@@ -159,6 +159,7 @@ INSTALLED_APPS = (
     'makahiki_themes',
     'makahiki_base',
     'resources',
+		'standings',
     
     # 'facebookconnect',
     
