@@ -74,28 +74,33 @@ def filter(request):
   """Uses AJAX to update resources list."""
   view_all_url = None
   
-  if request.is_ajax() and request.GET.has_key("topics"):
+  if request.is_ajax():
     topic_form = TopicSelectForm(request.GET)
     if topic_form.is_valid():
       topics = topic_form.cleaned_data["topics"]
-      resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
-      resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+      if len(topics) > 0:
+        resources = Resource.objects.filter(topics__pk__in=topics).distinct().order_by("-created_at")[0:DEFAULT_NUM_RESOURCES]
+        resource_count = Resource.objects.filter(topics__pk__in=topics).distinct().count()
+
+        title = "%d resources" % resource_count
+        if resource_count > DEFAULT_NUM_RESOURCES:
+          view_all_url = _construct_all_url(request)
+          title = "%d resources" % DEFAULT_NUM_RESOURCES
+
+        response = render_to_string("resources/list.html", {
+          "resources": resources,
+          "resource_count": resource_count,
+          "view_all_url": view_all_url,
+        })
       
-      title = "%d resources" % resource_count
-      if resource_count > DEFAULT_NUM_RESOURCES:
-        view_all_url = _construct_all_url(request)
-        title = "%d resources" % DEFAULT_NUM_RESOURCES
-      
-      response = render_to_string("resources/list.html", {
-        "resources": resources,
-        "resource_count": resource_count,
-        "view_all_url": view_all_url,
-      })
-      
-      return HttpResponse(json.dumps({
-          "resources": response,
-          "title": title,
-      }), mimetype='application/json')
+    else:
+      title = "0 resources"
+      response = "<h3 style='color:black'>No topics selected.</h3>"
+  
+    return HttpResponse(json.dumps({
+        "resources": response,
+        "title": title,
+    }), mimetype='application/json')
   
   # If something goes wrong, all we can do is raise a 404 or 500.
   raise Http404
