@@ -152,8 +152,8 @@ admin.site.register(Activity, ActivityAdmin)
 class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
   # Requires Django 1.2
-  readonly_fields = ("user", "activity", "question", "response", "user_comment", "image")
-  list_display = ("activity", "user", "approval_status")
+  readonly_fields = ("user", "activity", "question", "response", "user_comment")
+  list_display = ("activity", "user", "approval_status", "question", "response", "image")
   list_filter = ["approval_status"]
   
 admin.site.register(ActivityMember, ActivityMemberAdmin)
