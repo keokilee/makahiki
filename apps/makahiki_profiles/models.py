@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from django.db import models
 from django.conf import settings
@@ -21,6 +22,7 @@ class Profile(models.Model):
     name = models.CharField(_('name'), max_length=50, null=True, blank=True)
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
+    last_awarded = models.DateTimeField(null=True, blank=True, editable=False)
     theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
     floor = models.ForeignKey(Floor, null=True, blank=True)
     
@@ -30,6 +32,12 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return ('profile_detail', None, {'username': self.user.username})
     get_absolute_url = models.permalink(get_absolute_url)
+    
+    def add_points(self, value):
+      """Adds points to the user and updates the last_awarded field."""
+      self.points += value
+      self.last_awarded = datetime.datetime.today()
+      self.save()
     
     class Meta:
         verbose_name = _('profile')
