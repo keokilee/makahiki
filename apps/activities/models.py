@@ -40,7 +40,7 @@ class CommonActivityUser(CommonBase):
   )
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
-  awarded = models.BooleanField(default=False, editable=False)
+  award_date = models.DateTimeField(null=True, blank=True, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -82,7 +82,7 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  completed = models.BooleanField(default=False)
+  award_date = models.DateTimeField(blank=True, null=True, editable=False)
   completion_date = models.DateField()
   comment = models.TextField(blank=True)
   
@@ -90,13 +90,14 @@ class CommitmentMember(CommonBase):
     return "%s : %s" % (self.commitment.title, self.user.username)
   
   def save(self):
-    """Custom save method to generate the completion date automatically."""
+    """Custom save method to set fields depending on whether or not the item is just added or if the item is completed."""
     profile = self.user.get_profile()
     
     if not self.completion_date:
       self.completion_date = datetime.date.today() + datetime.timedelta(days=self.commitment.duration)
       
     if not self.pk and profile.floor:
+      # User is adding the commitment.
       message = "is participating in the commitment \"%s\"." % (
         self.commitment.title,
       )
@@ -104,9 +105,17 @@ class CommitmentMember(CommonBase):
       post.save()
       
     if self.completed:
+      # User has finished the commitment.
+      # Award the points
+      profile = self.user.get_profile()
+      profile.add_points(self.commitment.point_value, self.completed)
+      profile.save()
+      
+      # Construct the points
       message = "has completed the commitment \"%s\"." % (
         self.commitment.title,
       )
+      
       post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
       post.save()
 
@@ -117,7 +126,8 @@ class CommitmentMember(CommonBase):
     profile = self.user.get_profile()
     
     if self.completed:
-      profile.points -= self.commitment.point_value
+      # Need to rollback points.
+      profile.remove_points(self.commitment.point_value, self.completed)
       profile.save()
     elif profile.floor:
       message = "is no longer participating in \"%s\"." % (
@@ -277,10 +287,10 @@ class ActivityMember(CommonActivityUser):
     """Custom save method to award points to users if the item is approved."""
     
     if self.approval_status == u"approved" and not self.awarded:
+      self.awarded = datetime.datetime.today()
       profile = self.user.get_profile()
-      profile.points += self.activity.point_value
+      profile.add_points(self.activity.point_value, self.awarded)
       profile.save()
-      self.awarded = True
       
       if profile.floor:
         message = " has been awarded %d points for completing \"%s\"." % (
@@ -293,9 +303,9 @@ class ActivityMember(CommonActivityUser):
     elif self.approval_status != u"approved" and self.awarded:
       # Do we want to re-enable the confirmation code?
       profile = self.user.get_profile()
-      profile.points -= self.activity.point_value
+      profile.remove_points(self.activity.point_value, self.awarded)
       profile.save()
-      self.awarded = False
+      self.awarded = None
       
     super(ActivityMember, self).save()
     
@@ -305,7 +315,7 @@ class ActivityMember(CommonActivityUser):
     if self.awarded:
       # Do we want to re-enable the confirmation code?
       profile = self.user.get_profile()
-      profile.points -= self.activity.point_value
+      profile.remove_points(self.activity.point_value, self.awarded)
       profile.save()
     
     super(ActivityMember, self).delete()
@@ -370,11 +380,11 @@ class GoalMember(CommonActivityUser):
 
     
     elif self.approval_status == u"approved" and not self.awarded:
+      self.awarded = datetime.datetime.today()
       for profile in self.floor.profile_set.all():
-        profile.points += self.goal.point_value
+        profile.add_points(self.goal.point_value, self.awarded)
         profile.save()
       
-      self.awarded = True
       message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
         self.goal.title,
         self.goal.point_value,
@@ -384,10 +394,10 @@ class GoalMember(CommonActivityUser):
     
     elif self.approval_status !=u"approved" and self.awarded:
       for profile in self.floor.profile_set.all():
-        profile.points -= self.goal.point_value
+        profile.remove_points(self.goal.point_value, self.awarded)
         profile.save()
         
-      self.awarded = False
+      self.awarded = None
       
     super(GoalMember, self).save()
   
@@ -396,7 +406,7 @@ class GoalMember(CommonActivityUser):
     
     if self.awarded:
       for profile in self.floor.profile_set.all():
-        profile.points -= self.goal.point_value
+        profile.remove_points(self.goal.point_value, self.awarded)
         profile.save()
     
     super(GoalMember, self).delete()

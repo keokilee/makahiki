@@ -1,5 +1,4 @@
 import os
-import datetime
 
 from django.db import models
 from django.conf import settings
@@ -33,12 +32,61 @@ class Profile(models.Model):
         return ('profile_detail', None, {'username': self.user.username})
     get_absolute_url = models.permalink(get_absolute_url)
     
-    def add_points(self, value):
+    def add_points(self, value, completion_date):
       """Adds points to the user and updates the last_awarded field."""
       self.points += value
-      self.last_awarded = datetime.datetime.today()
-      self.save()
-    
+      self.last_awarded = completion_date
+      
+    def remove_points(self, value, completion_date):
+      """Removes points from the user.  
+      If the completion date is the same as the last_awarded field, we rollback to a previously completed task."""
+      
+      from activities.models import CommitmentMember, ActivityMember, GoalMember
+      
+      self.points -= value
+      if self.last_awarded == completion_date:
+        self.last_awarded = self._last_completed_before(self, completion_date)
+        
+    def _last_completed_before(self, completion_date):
+      """Time of the last task that was completed.  Returns None if there are no other tasks."""
+      # Find the latest commitment/activity/goal that was completed.
+      
+      last_date = last_commitment = last_activity = last_goal = None
+      try:
+        last_commitment = CommitmentMember.objects.filter(
+            user__pk=self.user,
+            completion_date__isnull=False,
+            completion_date__lte=completion_date,
+        ).order_by("-completion_date")[0].completion_date
+        last_date = last_commitment
+      except IndexError:
+        pass
+        
+      try:
+        last_activity = ActivityMember.objects.filter(
+            user=self.user,
+            awarded__isnull=False,
+            awarded__lte=completion_date,
+        ).order_by("-awarded")[0].awarded
+        if not last_date or last_date < last_activity:
+          last_date = last_activity
+      except IndexError:
+        pass
+      if self.floor:
+        try:
+          last_goal = GoalMember.objects.filter(
+              floor=self.floor,
+              awarded__isnull=False,
+              awarded__lte=completion_date,
+          ).order_by("-awarded")[0].awarded
+          if not last_date or last_date < last_goal:
+            last_date = last_goal
+        except IndexError:
+          pass
+      
+      return last_date
+        
+      
     class Meta:
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')

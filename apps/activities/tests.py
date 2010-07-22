@@ -1,8 +1,10 @@
+import datetime
+
 from django.test import TestCase
 
 from django.contrib.auth.models import User
 from makahiki_profiles.models import Profile
-from activities.models import Activity, ActivityMember
+from activities.models import Activity, ActivityMember, Commitment, CommitmentMember
 
 class ActivitiesTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -57,3 +59,22 @@ class ActivitiesTestCase(TestCase):
     new_points = user.get_profile().points
     
     self.assertTrue(points == new_points)
+    
+class CommitmentsTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def testCompletionAddsPoints(self):
+    """Tests that completing a task adds points."""
+    user = User.objects.all()[0]
+    points = user.get_profile().points
+    
+    commitment = Commitment.objects.all()[0]
+    commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
+    
+    commitment_member.save()
+    self.assertTrue(points == user.get_profile().points)
+    
+    commitment_member.completed = datetime.datetime.today()
+    commitment_member.save()
+    points += commitment_member.commitment.point_value
+    self.assertTrue(points, user.get_profile().points)

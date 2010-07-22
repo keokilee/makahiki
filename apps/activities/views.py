@@ -276,12 +276,9 @@ def __request_commitment_points(request, commitment_id):
     if form.is_valid():
       # Currently, nothing in the form needs validation, but just to be safe.
       membership.comment = form.cleaned_data["comment"]
-      membership.completed = True
+      membership.completed = datetime.datetime.today()
       
-      # Note that points are added outside of the model save for simplicity (over consistency).
-      profile = user.get_profile()
-      profile.points += commitment.point_value
-      profile.save()
+      # Points are awarded in the save method.
       membership.save()
       
       message = "You have been awarded %d points for your participation!" % commitment.point_value

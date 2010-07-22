@@ -12,16 +12,16 @@ def get_activities_for_user(user):
   
   # TODO: Add goals later since it needs group functionality.
   user_commitments = user.commitment_set.filter(
-    commitmentmember__completed=False,
+    commitmentmember__completed=None,
   )
   user_activities = user.activity_set.filter(
     activitymember__user=user,
-    activitymember__awarded=False,
+    activitymember__awarded=None,
   )
   if user.get_profile().floor:
     user_goals = user.get_profile().floor.goal_set.filter(
       goalmember__floor=user.get_profile().floor,
-      goalmember__awarded=False,
+      goalmember__awarded=None,
     )
     
   else:
