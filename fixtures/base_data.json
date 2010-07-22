@@ -1,65 +1,5 @@
 [
  {
-  "pk": 12, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-06-25 10:12:09", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 13, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-06-30 15:02:48", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 14, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-07-07 11:53:58", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "unapproved"
-  }
- }, 
- {
-  "pk": 15, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-07-16 18:07:59", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "unapproved"
-  }
- }, 
- {
-  "pk": 16, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-07-17 12:33:15", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 17, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "created_at": "2010-07-17 12:44:21", 
-   "awarded": false, 
-   "updated_at": null, 
-   "approval_status": "unapproved"
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.commitment", 
   "fields": {
@@ -333,123 +273,6 @@
    "updated_at": null, 
    "point_value": 2, 
    "duration": 5
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "I so rock.", 
-   "created_at": "2010-06-25 10:10:38", 
-   "commitment": 1, 
-   "updated_at": "2010-07-08 11:45:13", 
-   "completion_date": "2010-06-30", 
-   "user": 2, 
-   "completed": true
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "I feel so green.", 
-   "created_at": "2010-06-25 10:10:49", 
-   "commitment": 3, 
-   "updated_at": "2010-07-17 06:38:05", 
-   "completion_date": "2010-06-30", 
-   "user": 2, 
-   "completed": true
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "Hello admins!", 
-   "created_at": "2010-06-30 15:12:48", 
-   "commitment": 4, 
-   "updated_at": "2010-07-18 17:43:30", 
-   "completion_date": "2010-07-05", 
-   "user": 1, 
-   "completed": true
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-08 11:45:23", 
-   "commitment": 1, 
-   "updated_at": null, 
-   "completion_date": "2010-07-13", 
-   "user": 2, 
-   "completed": false
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-16 18:01:52", 
-   "commitment": 1, 
-   "updated_at": null, 
-   "completion_date": "2010-07-21", 
-   "user": 605, 
-   "completed": false
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-16 18:02:02", 
-   "commitment": 3, 
-   "updated_at": null, 
-   "completion_date": "2010-07-21", 
-   "user": 605, 
-   "completed": false
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-16 18:02:09", 
-   "commitment": 8, 
-   "updated_at": null, 
-   "completion_date": "2010-07-21", 
-   "user": 605, 
-   "completed": false
-  }
- }, 
- {
-  "pk": 8, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-16 18:02:17", 
-   "commitment": 11, 
-   "updated_at": null, 
-   "completion_date": "2010-07-21", 
-   "user": 605, 
-   "completed": false
-  }
- }, 
- {
-  "pk": 9, 
-  "model": "activities.commitmentmember", 
-  "fields": {
-   "comment": "", 
-   "created_at": "2010-07-16 18:02:28", 
-   "commitment": 17, 
-   "updated_at": null, 
-   "completion_date": "2010-07-21", 
-   "user": 605, 
-   "completed": false
   }
  }, 
  {
@@ -6447,32 +6270,6 @@
   }
  }, 
  {
-  "pk": 13, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "", 
-   "question": 1, 
-   "user": 1, 
-   "activity": 2, 
-   "response": "kilowatt"
-  }
- }, 
- {
-  "pk": 16, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "", 
-   "question": 1, 
-   "user": 2, 
-   "activity": 2, 
-   "response": "kWh"
-  }
- }, 
- {
   "pk": 1, 
   "model": "activities.goal", 
   "fields": {
@@ -6539,56 +6336,12 @@
   }
  }, 
  {
-  "pk": 14, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 1, 
-   "user_comment": null, 
-   "goal": 2, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 12, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 2, 
-   "user_comment": null, 
-   "goal": 1, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 15, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 605, 
-   "user_comment": null, 
-   "goal": 6, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 17, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 2, 
-   "user_comment": null, 
-   "goal": 4, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
   "pk": 3, 
   "model": "makahiki_base.like", 
   "fields": {
    "object_id": 1, 
    "user": 1, 
-   "content_type": 52, 
+   "content_type": 54, 
    "floor": 2
   }
  }, 
@@ -6598,7 +6351,7 @@
   "fields": {
    "object_id": 1, 
    "user": 2, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6608,7 +6361,7 @@
   "fields": {
    "object_id": 1, 
    "user": 1, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6618,7 +6371,7 @@
   "fields": {
    "object_id": 4, 
    "user": 1, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6628,7 +6381,7 @@
   "fields": {
    "object_id": 1, 
    "user": 605, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6638,7 +6391,7 @@
   "fields": {
    "object_id": 12, 
    "user": 605, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6648,7 +6401,7 @@
   "fields": {
    "object_id": 19, 
    "user": 605, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6658,7 +6411,7 @@
   "fields": {
    "object_id": 2, 
    "user": 2, 
-   "content_type": 51, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -6668,7 +6421,7 @@
   "fields": {
    "object_id": 985, 
    "user": 1, 
-   "content_type": 66, 
+   "content_type": 60, 
    "floor": 2
   }
  }, 
@@ -6678,7 +6431,7 @@
   "fields": {
    "object_id": 984, 
    "user": 1, 
-   "content_type": 66, 
+   "content_type": 60, 
    "floor": 2
   }
  }, 
@@ -6688,7 +6441,7 @@
   "fields": {
    "object_id": 979, 
    "user": 1, 
-   "content_type": 66, 
+   "content_type": 60, 
    "floor": 2
   }
  }, 
@@ -6698,7 +6451,7 @@
   "fields": {
    "object_id": 985, 
    "user": 2, 
-   "content_type": 66, 
+   "content_type": 60, 
    "floor": 2
   }
  }, 

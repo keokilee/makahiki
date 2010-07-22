@@ -1,40 +1,39 @@
 # encoding: utf-8
 import datetime
 from south.db import db
-from south.v2 import SchemaMigration
+from south.v2 import DataMigration
 from django.db import models
 
-class Migration(SchemaMigration):
+class Migration(DataMigration):
     
     def forwards(self, orm):
+        "Write your forwards methods here."
+        import datetime
+        for member in orm.CommonActivityUser.objects.all():
+          if member.awarded:
+            member.award_date = datetime.datetime.today()
+            member.save()
         
-        # Deleting field 'CommitmentMember.completed'
-        db.delete_column('activities_commitmentmember', 'completed')
-
-        # Adding field 'CommitmentMember.award_date'
-        db.add_column('activities_commitmentmember', 'award_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True), keep_default=False)
-
-        # Deleting field 'CommonActivityUser.awarded'
-        db.delete_column('activities_commonactivityuser', 'awarded')
-
-        # Adding field 'CommonActivityUser.award_date'
-        db.add_column('activities_commonactivityuser', 'award_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True), keep_default=False)
-    
+        for member in orm.CommitmentMember.objects.all():
+          if member.completed:
+            member.award_date = datetime.datetime.today()
+            member.save()
     
     def backwards(self, orm):
+        "Write your backwards methods here."
+        for member in orm.CommonActivityUser.objects.all():
+          if member.award_date:
+            member.awarded = True
+          else:
+            member.awarded = False
+          member.save()
         
-        # Adding field 'CommitmentMember.completed'
-        db.add_column('activities_commitmentmember', 'completed', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True), keep_default=False)
-
-        # Deleting field 'CommitmentMember.award_date'
-        db.delete_column('activities_commitmentmember', 'award_date')
-
-        # Adding field 'CommonActivityUser.awarded'
-        db.add_column('activities_commonactivityuser', 'awarded', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True), keep_default=False)
-
-        # Deleting field 'CommonActivityUser.award_date'
-        db.delete_column('activities_commonactivityuser', 'award_date')
-    
+        for member in orm.CommitmentMember.objects.all():
+          if member.award_date:
+            member.completed = True
+          else:
+            member.completed = False
+          member.save()
     
     models = {
         'activities.activity': {
@@ -49,7 +48,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_event': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'point_value': ('django.db.models.fields.IntegerField', [], {}),
-            'pub_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date(2010, 7, 21)'}),
+            'pub_date': ('django.db.models.fields.DateField', [], {'default': 'datetime.date(2010, 7, 22)'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'users': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'through': "orm['activities.ActivityMember']", 'symmetrical': 'False'})
@@ -81,6 +80,7 @@ class Migration(SchemaMigration):
             'award_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'comment': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'commitment': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['activities.Commitment']"}),
+            'completed': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'completion_date': ('django.db.models.fields.DateField', [], {}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -91,6 +91,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'CommonActivityUser'},
             'approval_status': ('django.db.models.fields.CharField', [], {'default': "'unapproved'", 'max_length': '20'}),
             'award_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'awarded': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True'})
