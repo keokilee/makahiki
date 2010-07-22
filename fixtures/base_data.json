@@ -1,19 +1,59 @@
 [
  {
-  "pk": 7, 
+  "pk": 12, 
   "model": "activities.commonactivityuser", 
   "fields": {
-   "created_at": "2010-06-18 09:58:44", 
+   "created_at": "2010-06-25 10:12:09", 
    "awarded": false, 
    "updated_at": null, 
    "approval_status": "pending"
   }
  }, 
  {
-  "pk": 11, 
+  "pk": 13, 
   "model": "activities.commonactivityuser", 
   "fields": {
-   "created_at": "2010-06-20 23:40:49", 
+   "created_at": "2010-06-30 15:02:48", 
+   "awarded": false, 
+   "updated_at": null, 
+   "approval_status": "pending"
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "created_at": "2010-07-07 11:53:58", 
+   "awarded": false, 
+   "updated_at": null, 
+   "approval_status": "unapproved"
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "created_at": "2010-07-16 18:07:59", 
+   "awarded": false, 
+   "updated_at": null, 
+   "approval_status": "unapproved"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "created_at": "2010-07-17 12:33:15", 
+   "awarded": false, 
+   "updated_at": null, 
+   "approval_status": "pending"
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "created_at": "2010-07-17 12:44:21", 
    "awarded": false, 
    "updated_at": null, 
    "approval_status": "unapproved"
@@ -23,10 +63,10 @@
   "pk": 1, 
   "model": "activities.commitment", 
   "fields": {
-   "description": "Turn off your laptop/computer every day before you go to sleep.", 
-   "title": "I will turn off my laptop/computer every night before going to sleep", 
+   "description": "Commit to turning off all appliances in your room (computer, TVs, DVD players, game consoles) every night before you go to sleep. Appliances use a significant amount of electricity, so turning them off when you definitely won't be using them (like when you are asleep) will save energy.", 
+   "title": "I will turn off all appliances every night before going to sleep", 
    "created_at": "2010-05-12 16:18:35", 
-   "updated_at": null, 
+   "updated_at": "2010-07-16 15:08:42", 
    "point_value": 2, 
    "duration": 5
   }
@@ -47,10 +87,10 @@
   "pk": 3, 
   "model": "activities.commitment", 
   "fields": {
-   "description": "Turn off the lights before leaving the room.", 
+   "description": "Commit to turning off the lights when leaving any room.", 
    "title": "I will turn off the lights when leaving any room", 
    "created_at": "2010-05-12 16:19:39", 
-   "updated_at": null, 
+   "updated_at": "2010-07-16 14:14:33", 
    "point_value": 2, 
    "duration": 5
   }
@@ -68,16 +108,348 @@
   }
  }, 
  {
+  "pk": 5, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to using task lighting (like a desk lamp) instead of overhead room lights when possible. Often overhead lights provide more light than you need, or might not provide the light where you need it. Using a desk lamp will reduce your electricity use while giving you the light you need, where you need it.", 
+   "title": "I will use task lighting instead of overhead lights", 
+   "created_at": "2010-07-16 14:22:30", 
+   "updated_at": "2010-07-16 14:50:30", 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "A vampire load is a device that uses power when plugged in, even when it is turned off and not doing anything. Commit to turning off any vampire loads (cell phone charger, iPod charger, game consoles, TVs) using a power strip when you are not using them, thereby saving energy.", 
+   "title": "I will turn off vampire loads using a power strip", 
+   "created_at": "2010-07-16 14:33:47", 
+   "updated_at": "2010-07-16 14:49:23", 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to turning off water at sinks when you aren't actually using the water, such as when brushing your teeth, shaving, applying makeup, etc. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+   "title": "I will turn off water when brushing my teeth or shaving", 
+   "created_at": "2010-07-16 14:35:27", 
+   "updated_at": "2010-07-16 14:48:31", 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to turning off water when showering except when actively rinsing off soap or shampoo. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+   "title": "I will turn off water when sudsing and scrubbing in shower", 
+   "created_at": "2010-07-16 14:36:37", 
+   "updated_at": "2010-07-16 14:48:11", 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to using natural light from windows or outdoors instead of turning on electric lighting. This can mean opening shades instead of turning on the lights, and/or planning your day so that tasks that require light (like reading books, doing written homework) are done during the day.", 
+   "title": "I will use natural light instead of electric lighting", 
+   "created_at": "2010-07-16 14:40:17", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to turning off your printer when you aren't actively printing something out. This will reduce electricity use, since printers draw some power if they are turned on even when they aren't printing.", 
+   "title": "I will turn off printer when not printing", 
+   "created_at": "2010-07-16 14:41:41", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to using the stairs instead of elevators during your day, whenever that is feasible. Elevators use electricity, so by using the stairs you will save some energy. Also, using the stairs is good exercise!", 
+   "title": "I will use stairs instead of elevator", 
+   "created_at": "2010-07-16 14:43:29", 
+   "updated_at": "2010-07-16 14:45:59", 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to recycling all (recyclable) beverage containers at an appropriate location. Making things from recycled materials generally costs less and uses less energy than making them from raw materials.", 
+   "title": "I will recycle all beverage containers", 
+   "created_at": "2010-07-16 14:45:00", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 13, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to not driving off-campus in a car by yourself. Try riding the bus (free using your U-PASS!), riding a bike, walking, driving a moped, or using a vehicle with 3+ occupants instead. Transportation fuel is a major use of energy and it generates a lot of greenhouse gases, so traveling more efficiently saves energy and the planet.", 
+   "title": "I won't drive off-campus alone", 
+   "created_at": "2010-07-16 15:06:52", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to using your TV (watching shows, movies, playing games) for not more than 1 hour per day. Widescreen TVs use a lot of electricity, so putting a limit on how much you use them will reduce your electricity use.", 
+   "title": "I will limit my TV use to 1 hour a day", 
+   "created_at": "2010-07-16 15:11:28", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to always washing full loads of laundry. Washing less than a full load is less efficient, leading to more electricity and hot water being used per piece of laundry washed.", 
+   "title": "I will wash only full loads of laundry", 
+   "created_at": "2010-07-16 15:12:50", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to wearing your Kukui Cup button every day during the commitment period. Wearing your button will help spread awareness about the competition, and remind others to get involved.", 
+   "title": "I will wear my Kukui Cup button every day", 
+   "created_at": "2010-07-16 15:13:44", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to walking to any destination less than one mile away from your residence hall. Walking saves energy, costs nothing, and is good exercise.", 
+   "title": "I will walk to destinations less than one mile away", 
+   "created_at": "2010-07-16 15:15:45", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to washing your laundry in cold water instead of warm or hot water. There are now detergents designed to be used in cold water, and it takes lots of energy to heat water up. By using cold water, you will be saving energy.", 
+   "title": "I will wash my laundry in cold water", 
+   "created_at": "2010-07-16 15:17:12", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to measuring the length of your shower with a watch or phone, and reducing the time by 1 minute. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+   "title": "I will reduce my shower time by 1 minute", 
+   "created_at": "2010-07-16 15:18:16", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 20, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to turning off your music (from computer, stereo, etc) when you leave your room. You save electricity when you turn off your music when you aren't there to enjoy it.", 
+   "title": "I will turn off my music when leaving my room", 
+   "created_at": "2010-07-16 15:20:58", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to turning off your computer/TV/game console and doing something that doesn't require electricity instead. There are many things you can do both on and off campus that don't require electricity, go find them!", 
+   "title": "I will do something \"unplugged\" every day", 
+   "created_at": "2010-07-16 15:23:09", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 22, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to bringing and using reuseable bags when shopping instead of the paper or plastic ones offered by stores. Making disposable bags requires energy, and often the bags end up in our landfills or worse yet they blow away into the ocean. Using a reusable bag saves energy and keeps trash out of our landfills.", 
+   "title": "I will bring reusable bags when shopping", 
+   "created_at": "2010-07-16 15:25:40", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
+  "pk": 23, 
+  "model": "activities.commitment", 
+  "fields": {
+   "description": "Commit to not eating any meat (beef, pork, chicken, fish, shellfish, etc) during the commitment period. Producing meat (beef in particular) uses a great deal of energy, and produces a great deal of greenhouse gasses. A vegetarian diet uses less energy and emits less greenhouse gas. There are many of vegetarian food options on campus, try them out!", 
+   "title": "I will not eat meat", 
+   "created_at": "2010-07-16 15:32:51", 
+   "updated_at": null, 
+   "point_value": 2, 
+   "duration": 5
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "activities.commitmentmember", 
   "fields": {
-   "comment": "Hi everyone!", 
-   "created_at": "2010-06-27 14:38:45", 
+   "comment": "I so rock.", 
+   "created_at": "2010-06-25 10:10:38", 
    "commitment": 1, 
-   "updated_at": "2010-07-03 17:26:43", 
-   "completion_date": "2010-07-02", 
+   "updated_at": "2010-07-08 11:45:13", 
+   "completion_date": "2010-06-30", 
+   "user": 2, 
+   "completed": true
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "I feel so green.", 
+   "created_at": "2010-06-25 10:10:49", 
+   "commitment": 3, 
+   "updated_at": "2010-07-17 06:38:05", 
+   "completion_date": "2010-06-30", 
+   "user": 2, 
+   "completed": true
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "Hello admins!", 
+   "created_at": "2010-06-30 15:12:48", 
+   "commitment": 4, 
+   "updated_at": "2010-07-18 17:43:30", 
+   "completion_date": "2010-07-05", 
    "user": 1, 
    "completed": true
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-08 11:45:23", 
+   "commitment": 1, 
+   "updated_at": null, 
+   "completion_date": "2010-07-13", 
+   "user": 2, 
+   "completed": false
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-16 18:01:52", 
+   "commitment": 1, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605, 
+   "completed": false
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:02", 
+   "commitment": 3, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605, 
+   "completed": false
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:09", 
+   "commitment": 8, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605, 
+   "completed": false
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:17", 
+   "commitment": 11, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605, 
+   "completed": false
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:28", 
+   "commitment": 17, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605, 
+   "completed": false
   }
  }, 
  {
@@ -96,6 +468,24 @@
    "answer": "watt", 
    "question": "What is the unit of measurement for power?", 
    "activity": 2
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.textpromptquestion", 
+  "fields": {
+   "answer": "Bogus", 
+   "question": "Bogus", 
+   "activity": 12
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.textpromptquestion", 
+  "fields": {
+   "answer": "Bogus", 
+   "question": "Bogus", 
+   "activity": 21
   }
  }, 
  {
@@ -2799,17 +3189,2987 @@
   }
  }, 
  {
+  "pk": 301, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-9uwyb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 302, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7dx2f", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 303, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-e3i85", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 304, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xoy2l", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 305, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-782ux", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 306, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-x6jm4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 307, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-lqa5o", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 308, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4u5bk", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 309, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-favyd", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 310, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-sdzyk", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 311, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bp8yc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 312, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6lqm3", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 313, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-j4rkc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 314, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ka84q", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 315, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ae7xg", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 316, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7v6ib", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 317, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xyk0b", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 318, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qx2ci", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 319, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4kngm", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 320, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7lczs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 321, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jq98y", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 322, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vrdjz", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 323, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jw8g4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 324, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-j1wg6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 325, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-tofzk", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 326, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1sfcl", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 327, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ti04e", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 328, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7kd0n", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 329, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-en95s", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 330, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4p8ha", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 331, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wg5yr", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 332, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-detbq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 333, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-8291h", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 334, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-auns7", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 335, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pudgs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 336, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-griet", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 337, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gpnyl", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 338, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jb7op", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 339, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hgl0w", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 340, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-l5cyr", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 341, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-np4ky", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 342, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-btqu8", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 343, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-veymt", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 344, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6zv59", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 345, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-a0lek", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 346, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7xc9t", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 347, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xo3hz", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 348, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7w8h6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 349, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3pfrs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 350, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1tua6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 351, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-djtnr", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 352, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wo4fp", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 353, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6zhcy", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 354, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pmqav", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 355, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-19jyu", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 356, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-yfcxn", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 357, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-osr9i", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 358, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-5bk7d", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 359, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-n6zbt", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 360, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xz1f2", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 361, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zn7o0", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 362, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4opzs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 363, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-g98xh", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 364, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vud9q", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 365, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-atwyj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 366, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-z8hvd", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 367, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-lqdic", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 368, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-l1bmc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 369, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-znq3s", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 370, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gwz3q", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 371, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dsehn", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 372, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-w3o9b", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 373, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6yz9c", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 374, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mk7xh", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 375, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xn7br", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 376, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-0958f", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 377, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4b9rv", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 378, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-317hy", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 379, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ifye1", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 380, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bqzj9", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 381, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dozkb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 382, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-18kfi", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 383, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1rjw4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 384, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dhtg1", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 385, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c5f10", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 386, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zhfxc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 387, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6r3n9", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 388, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-61890", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 389, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-uftx6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 390, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zojkx", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 391, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-biv5h", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 392, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7iel5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 393, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-scvd4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 394, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-d3glu", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 395, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-i0gyd", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 396, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fxidn", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 397, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wetpi", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 398, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-95hr7", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 399, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3kmvi", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 400, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-awq38", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 401, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-w2ed5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 402, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ga0pw", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 403, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-dpg3j", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 404, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-eiyup", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 405, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vds0r", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 406, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-py1qs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 407, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-tg415", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 408, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7a0bc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 409, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gjnas", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 410, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-kd4rj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 411, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-4oz0h", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 412, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-13v74", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 413, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rseu1", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 414, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-acxsq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 415, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-e1pf0", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 416, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-u2a04", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 417, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-sc3h5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 418, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-04pk9", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 419, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-flrnd", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 420, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gc42d", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 421, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1x3bj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 422, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-poq9y", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 423, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6mf8e", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 424, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rwyfb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 425, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-xuyjk", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 426, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-5jt4x", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 427, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ni0xb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 428, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ldi10", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 429, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-5z8jd", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 430, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fjdi1", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 431, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-q7lry", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 432, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ljqvp", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 433, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-97ybu", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 434, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-juop6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 435, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ofvce", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 436, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-t7c4q", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 437, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-eordz", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 438, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fpo1h", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 439, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-gxvil", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 440, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-lonw3", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 441, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vb1ru", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 442, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mkvl5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 443, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c6i70", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 444, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ox40q", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 445, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-od2pj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 446, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vxdn5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 447, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6n0lq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 448, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-tx8so", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 449, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-nimwe", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 450, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ve1s5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 451, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ahmrj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 452, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-a9cez", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 453, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hx0f4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 454, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-r4qt5", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 455, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-hlzf7", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 456, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pscq7", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 457, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-pz4g6", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 458, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-u57xb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 459, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-3r0zq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 460, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-v4xi2", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 461, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-vf28p", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 462, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-bxurm", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 463, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c68xr", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 464, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-fgxhb", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 465, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-afm59", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 466, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-q3elm", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 467, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wyb5s", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 468, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zrsvq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 469, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mb3u8", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 470, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7sxyu", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 471, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-8j7tv", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 472, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6zi8t", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 473, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-jmc6s", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 474, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-rat2p", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 475, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-h25gq", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 476, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1jh9a", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 477, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-n7x5b", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 478, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-qlgyc", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 479, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-kofix", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 480, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zoc0p", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 481, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-1e09h", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 482, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ogca8", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 483, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7sw4y", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 484, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-biovf", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 485, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-el7gm", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 486, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-nlq6f", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 487, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-y7s0r", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 488, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c9pv4", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 489, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-cea4g", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 490, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-6ojsx", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 491, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-c4ozx", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 492, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-mqocs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 493, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-wa87i", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 494, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-zr5fp", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 495, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-7ha0b", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 496, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-h7k90", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 497, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-t3knj", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 498, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-poxzs", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 499, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-ea6kf", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 500, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "atte-26f7v", 
+   "is_active": true, 
+   "activity": 6
+  }
+ }, 
+ {
+  "pk": 501, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-3hios", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 502, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-bh321", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 503, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-cznpe", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 504, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-1sx6i", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 505, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-75w4r", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 506, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-vcd9p", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 507, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-zuskx", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 508, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-p6k4o", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 509, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-5o34q", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 510, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-7a9n2", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 511, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-0qvh4", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 512, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-p6cqn", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 513, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-vcesz", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 514, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-xpo8g", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 515, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-w25q9", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 516, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-49rjv", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 517, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ej36y", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 518, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-y1ic2", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 519, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-pq970", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 520, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-odkjq", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 521, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-379w8", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 522, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-3qdkj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 523, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-mksop", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 524, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-j6hos", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 525, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-vlcfy", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 526, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-x31ny", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 527, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-yw2ts", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 528, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-vhd14", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 529, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ae3bu", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 530, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-o3j25", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 531, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-qtp7m", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 532, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-dpzlm", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 533, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-03wx5", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 534, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ga41u", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 535, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-3uzgy", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 536, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-oumei", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 537, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-icejw", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 538, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-w26mp", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 539, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-rp73s", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 540, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-nwe70", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 541, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-hiobf", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 542, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-59jh1", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 543, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-xervi", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 544, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-74m0x", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 545, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-7p0dq", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 546, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-jge3h", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 547, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ecdsp", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 548, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-kjhog", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 549, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ki3hf", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 550, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-rfeua", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 551, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-268my", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 552, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-ugy5m", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 553, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-h1odj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 554, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-46x0z", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 555, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-vyxom", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 556, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-2rb9x", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 557, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-mgrsj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 558, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-sxeh5", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 559, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-xqnmc", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 560, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-v7k5x", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 561, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-psy49", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 562, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-5otml", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 563, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-qg7rj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 564, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-rwoak", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 565, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-cxy61", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 566, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-06t7d", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 567, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-gzbr1", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 568, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-8d9v7", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 569, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-z901o", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 570, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-1x96r", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 571, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-mrntj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 572, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-re9cj", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 573, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-dv2g9", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 574, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-fl0ti", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 575, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-w1sz6", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 576, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-0m1if", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 577, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-tpy2q", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 578, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-zfl98", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 579, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-x61g3", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 580, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-hw9b6", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 581, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-694k5", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 582, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-xof8u", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 583, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-xod03", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 584, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-6j1ty", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 585, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-hizk2", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 586, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-cwkl5", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 587, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-pq9gb", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 588, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-5a3e6", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 589, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-s3ytl", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 590, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-k2f4a", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 591, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-e81ft", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 592, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-q8wmg", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 593, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-spg70", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 594, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-2g3fs", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 595, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-2uyfc", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 596, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-4p0hq", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 597, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-2gpbn", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 598, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-73g81", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 599, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-5s2ue", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 600, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "watc-x5ef4", 
+   "is_active": true, 
+   "activity": 7
+  }
+ }, 
+ {
+  "pk": 601, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-bhc1q", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 602, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-npuag", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 603, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-94igk", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 604, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-juler", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 605, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-afeug", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 606, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-agv1h", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 607, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-po8lf", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 608, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-xf0we", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 609, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-8yuie", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 610, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-8sj9z", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 611, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-6dyu2", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 612, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-h1t5l", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 613, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-qp7dz", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 614, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-oc9px", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 615, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-7vgdq", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 616, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-9h41s", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 617, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-t8376", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 618, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-29blf", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 619, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-afs8i", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 620, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-skr4j", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 621, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-bspno", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 622, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-lgps6", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 623, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-9a70j", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 624, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-ocysm", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 625, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-4tjbm", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 626, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-db6ml", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 627, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-hyzau", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 628, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-nl03t", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 629, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-23h7e", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
+  "pk": 630, 
+  "model": "activities.confirmationcode", 
+  "fields": {
+   "code": "play-mo3nq", 
+   "is_active": true, 
+   "activity": 15
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "activities.activity", 
   "fields": {
    "description": "What: Learn about the competition and the cool prizes you can win\r\nWhen: September 30, 2010 7:00pm\r\nWhere: Roof lounge", 
-   "title": "Kukui Cup Orientation", 
+   "title": "Attend Kukui Cup Orientation", 
    "created_at": "2010-05-12 12:14:09", 
    "confirm_type": "code", 
-   "updated_at": "2010-05-12 12:16:46", 
-   "confirm_prompt": "Enter the confirmation code from the meeting.", 
+   "updated_at": "2010-07-16 11:59:25", 
+   "confirm_prompt": "Enter the attendance code from the meeting.", 
    "point_value": 10, 
-   "expire_date": "2010-12-31", 
+   "expire_date": "2010-10-08", 
    "duration": 60, 
    "event_date": "2010-09-30 19:00:00", 
    "pub_date": "2010-05-12", 
@@ -2856,16 +6216,16 @@
   "pk": 4, 
   "model": "activities.activity", 
   "fields": {
-   "description": "Attend the Energy Pong Competition.", 
+   "description": "Attend the Energy Pong Competition happening in your building.", 
    "title": "Attend the Energy Pong Competition", 
    "created_at": "2010-05-12 12:23:51", 
    "confirm_type": "code", 
-   "updated_at": "2010-05-12 12:23:51", 
-   "confirm_prompt": "Enter ticket code provided at meeting.", 
-   "point_value": 10, 
-   "expire_date": "2010-12-31", 
-   "duration": 5, 
-   "event_date": "2010-05-14 19:00:00", 
+   "updated_at": "2010-07-16 12:00:57", 
+   "confirm_prompt": "Enter attendance code provided at meeting.", 
+   "point_value": 2, 
+   "expire_date": "2010-11-08", 
+   "duration": 60, 
+   "event_date": "2010-10-13 19:00:00", 
    "pub_date": "2010-05-12", 
    "is_event": true
   }
@@ -2874,13 +6234,13 @@
   "pk": 5, 
   "model": "activities.activity", 
   "fields": {
-   "description": "Replace an incandescent bulb with a CFL.  Take a picture of yourself holding both bulbs.", 
-   "title": "Replace an incandescent with a CFL", 
+   "description": "Find an incandescent bulb (perhaps from a desk lamp) and replace it with a CFL. You should throw away the incandescent bulb, because even though it isn't burned out it is a massive energy hog and you don't want someone using it later.\r\n\r\nFor verification, please take a photo showing both the incandescent bulb you replaced and the CFL you installed.", 
+   "title": "Replace incandescent bulb with compact fluorescent (CFL)", 
    "created_at": "2010-05-12 12:25:23", 
    "confirm_type": "image", 
-   "updated_at": "2010-05-12 12:25:23", 
-   "confirm_prompt": "Upload a photo of you holding the incandescent and the CFL you replaced it with.", 
-   "point_value": 10, 
+   "updated_at": "2010-07-16 16:51:12", 
+   "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
+   "point_value": 4, 
    "expire_date": "2010-12-31", 
    "duration": 5, 
    "event_date": null, 
@@ -2889,16 +6249,227 @@
   }
  }, 
  {
+  "pk": 6, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "SustainableUH is a student-lead organization focused on establishing the University of Hawaii as a world leader in sustainable practices, education, and research. Attend a special meeting and find out what Sustainable UH has accomplished and how you can get involved!", 
+   "title": "Attend SustainableUH meeting", 
+   "created_at": "2010-07-16 12:11:12", 
+   "confirm_type": "code", 
+   "updated_at": "2010-07-16 12:11:12", 
+   "confirm_prompt": "Enter the attendance code you received at the meeting.", 
+   "point_value": 2, 
+   "expire_date": "2010-11-09", 
+   "duration": 60, 
+   "event_date": "2010-10-04 18:00:00", 
+   "pub_date": "2010-07-16", 
+   "is_event": true
+  }
+ }, 
+ {
   "pk": 7, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Who Killed the Electric Car? is a 2006 documentary film that explores the creation, limited commercialization, and subsequent destruction of the battery electric vehicle in the United States, specifically the General Motors EV1 of the mid 1990s. The film explores the roles of automobile manufacturers, the oil industry, the US government, the Californian government, batteries, hydrogen vehicles, and consumers in limiting the development and adoption of this technology.\r\n\r\nShowing in Room [?]", 
+   "title": "Watch the movie \"Who Killed the Electric Car?\"", 
+   "created_at": "2010-07-16 12:20:36", 
+   "confirm_type": "code", 
+   "updated_at": "2010-07-16 12:20:36", 
+   "confirm_prompt": "Enter the attendance code you received at the movie.", 
+   "point_value": 2, 
+   "expire_date": "2010-10-15", 
+   "duration": 100, 
+   "event_date": "2010-10-11 20:00:00", 
+   "pub_date": "2010-07-12", 
+   "is_event": true
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "[350.org](http://www.350.org/), a climate change advocacy organization, is organizing a series of \"work parties\" to take place on October 10, 2010 (10/10/10). Find a work party on the 350.org website and participate!\r\n\r\nTo verify your participation in the work party, please take a picture of the work going on.", 
+   "title": "Participate in a 10/10/10 work party", 
+   "created_at": "2010-07-16 12:33:23", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-20 14:39:52", 
+   "confirm_prompt": "Please upload the image you took of the work party, and describe the work you did in the comments field.", 
+   "point_value": 5, 
+   "expire_date": "2010-10-15", 
+   "duration": 180, 
+   "event_date": null, 
+   "pub_date": "2010-07-12", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Configure your computer and any external monitor to sleep after 20 minutes of inactivity. You can find instructions on enabling sleep functionality at the [EnergySTAR website](http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_users).\r\n\r\nOnce you have changed your settings, please take a screenshot showing the new settings for use in verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+   "title": "Configure computer to sleep after inactivity", 
+   "created_at": "2010-07-16 17:10:10", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-16 17:10:10", 
+   "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
+   "point_value": 3, 
+   "expire_date": "2010-12-31", 
+   "duration": 10, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Borrow the Kill-A-Watt power meter from your RA, and then for each plug-in appliances in your room, write down its energy consumption when turned on and when turned off. You might be surprised to learn how much power your stuff uses, even when turned off! When you are done, come back and type in your results to receive your points.", 
+   "title": "Perform room energy audit", 
+   "created_at": "2010-07-16 16:41:10", 
+   "confirm_type": "text", 
+   "updated_at": "2010-07-16 16:41:10", 
+   "confirm_prompt": "List each plug-in device in your room, and how much power it uses when turned on, and when turned off.", 
+   "point_value": 10, 
+   "expire_date": "2010-12-31", 
+   "duration": 20, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Become a member of your floor's team in the Energy Pong tournament for your residence hall.", 
+   "title": "Play in Energy Pong tournament", 
+   "created_at": "2010-07-16 17:15:12", 
+   "confirm_type": "code", 
+   "updated_at": "2010-07-16 17:15:12", 
+   "confirm_prompt": "Enter in the attendance code you received from the Energy Pong referee.", 
+   "point_value": 4, 
+   "expire_date": "2010-10-25", 
+   "duration": 180, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Become a fan of the [Kukui Cup Competition group on Facebook](http://www.facebook.com/group.php?gid=101651363219833).\r\n\r\nOnce you have become a fan, take a screenshot of the Kukui Cup Facebook page for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+   "title": "Connect to Kukui Cup on Facebook", 
+   "created_at": "2010-07-16 17:20:00", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-16 17:20:33", 
+   "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
+   "point_value": 3, 
+   "expire_date": "2010-12-31", 
+   "duration": 5, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "If you use [Twitter](http://twitter.com/), tweet a link to the [Kukui Cup website](http://dasha.ics.hawaii.edu:8100/) so other folks will learn about the competition.\r\n\r\nOnce you have tweeted, take a screenshot of the Kukui Cup Facebook page for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+   "title": "Tweet about Kukui Cup", 
+   "created_at": "2010-07-16 17:36:56", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-16 17:38:09", 
+   "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
+   "point_value": 2, 
+   "expire_date": "2010-12-31", 
+   "duration": 5, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Update your Facebook status with a link to the [Kukui Cup website](/) to promote the competition.\r\n\r\nOnce you have updated your status, take a screenshot for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)\r\n\r\nFoo!", 
+   "title": "Link to Kukui Cup on Facebook status", 
+   "created_at": "2010-07-16 17:46:59", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-20 15:06:50", 
+   "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
+   "point_value": 2, 
+   "expire_date": "2010-12-31", 
+   "duration": 5, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "This is a followup activity to the energy audit activity. If you haven't performed that activity, do it first and keep your notes around for this activity.\r\n\r\nBased on the audit results, make a label for each device in your room that shows the number of watts consumed when on and off, located close to the power switch for those devices that have them.\r\n\r\nOnce you have made the labels take a photo of the devices with their labels on to be used for verification.", 
+   "title": "Label appliance power requirements in your room", 
+   "created_at": "2010-07-16 17:52:24", 
+   "confirm_type": "image", 
+   "updated_at": "2010-07-16 17:52:24", 
+   "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
+   "point_value": 3, 
+   "expire_date": "2010-12-31", 
+   "duration": 15, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "activities.activity", 
+  "fields": {
+   "description": "Use this [carbon footprint calculator](http://coolclimate.berkeley.edu/) to estimate the size of your carbon footprint. Record the size of your footprint for verification.", 
+   "title": "Determine carbon footprint using calculator", 
+   "created_at": "2010-07-16 18:01:04", 
+   "confirm_type": "text", 
+   "updated_at": "2010-07-16 18:01:04", 
+   "confirm_prompt": "Enter in the carbon footprint you received from the calculator, and any comments you have about your carbon footprint.", 
+   "point_value": 3, 
+   "expire_date": "2010-12-31", 
+   "duration": 20, 
+   "event_date": null, 
+   "pub_date": "2010-07-16", 
+   "is_event": false
+  }
+ }, 
+ {
+  "pk": 13, 
   "model": "activities.activitymember", 
   "fields": {
    "admin_comment": "", 
-   "user_comment": "Hi admins!", 
-   "image": "activities/gelee/aloha-pic-thumbnail.jpg", 
-   "question": null, 
+   "user_comment": "", 
+   "image": "", 
+   "question": 1, 
    "user": 1, 
-   "activity": 5, 
-   "response": ""
+   "activity": 2, 
+   "response": "kilowatt"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.activitymember", 
+  "fields": {
+   "admin_comment": "", 
+   "user_comment": "", 
+   "image": "", 
+   "question": 1, 
+   "user": 2, 
+   "activity": 2, 
+   "response": "kWh"
   }
  }, 
  {
@@ -2906,10 +6477,10 @@
   "model": "activities.goal", 
   "fields": {
    "created_at": "2010-06-09 14:57:26", 
-   "description": "Reduce energy usage for your floor by 5% in a week.", 
-   "updated_at": null, 
-   "point_value": 20, 
-   "title": "Reduce Energy Usage"
+   "description": "Get together with your floormates and reduce the energy usage for your floor by 5% compared to your baseline, before the goal period ends.", 
+   "updated_at": "2010-07-16 15:40:19", 
+   "point_value": 5, 
+   "title": "Reduce floor energy usage by 5%"
   }
  }, 
  {
@@ -2938,15 +6509,37 @@
   "pk": 4, 
   "model": "activities.goal", 
   "fields": {
-   "created_at": "2010-07-19 15:21:11", 
-   "description": "Go testing!", 
+   "created_at": "2010-07-16 15:40:39", 
+   "description": "Get together with your floormates and reduce the energy usage for your floor by 10% compared to your baseline, before the goal period ends.", 
    "updated_at": null, 
    "point_value": 10, 
-   "title": "A test goal"
+   "title": "Reduce floor energy usage by 10%"
   }
  }, 
  {
-  "pk": 11, 
+  "pk": 5, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-16 15:41:04", 
+   "description": "Get together with your floormates and reduce the energy usage for your floor by 15% compared to your baseline, before the goal period ends.", 
+   "updated_at": null, 
+   "point_value": 15, 
+   "title": "Reduce floor energy usage by 15%"
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-16 15:51:26", 
+   "description": "Pick a day and time for your floor to try to determine the minimum amount of power your floor can consume. Everyone on the floor must disconnect and unplug everything, all lights must be turned off, etc. Then, using a laptop or mobile device, check the website for your floor's power usage in watts and write it down. That is your floor's minimum power.\r\n\r\n*Note:* that this goal requires near 100% participation to be successful. Good luck!", 
+   "updated_at": null, 
+   "point_value": 15, 
+   "title": "Find your floor's minimum power"
+  }
+ }, 
+ {
+  "pk": 14, 
   "model": "activities.goalmember", 
   "fields": {
    "user": 1, 
@@ -2957,927 +6550,45 @@
   }
  }, 
  {
-  "pk": 1, 
-  "model": "floors.dorm", 
-  "fields": {
-   "updated_at": null, 
-   "created_at": "2010-05-17 00:00:00", 
-   "name": "Hale Wainani", 
-   "slug": "hale-wainani"
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "floors.dorm", 
-  "fields": {
-   "updated_at": null, 
-   "created_at": "2010-05-25 00:00:00", 
-   "name": "Hale Ilima", 
-   "slug": "hale-ilima"
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "floors.dorm", 
-  "fields": {
-   "updated_at": null, 
-   "created_at": "2010-06-16 00:00:00", 
-   "name": "Hale Mokihana", 
-   "slug": "hale-mokihana"
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 1, 
-   "floor_identifier": null, 
-   "number": "3-4", 
-   "slug": "3-4"
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 2, 
-   "floor_identifier": "ilima_3_4", 
-   "number": "3-4", 
-   "slug": "3-4"
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 3, 
-   "floor_identifier": null, 
-   "number": "3-4", 
-   "slug": "3-4"
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 1, 
-   "floor_identifier": null, 
-   "number": "5-6", 
-   "slug": "5-6"
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 1, 
-   "floor_identifier": null, 
-   "number": "7-8", 
-   "slug": "7-8"
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 1, 
-   "floor_identifier": null, 
-   "number": "9-10", 
-   "slug": "9-10"
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 1, 
-   "floor_identifier": null, 
-   "number": "11-12", 
-   "slug": "11-12"
-  }
- }, 
- {
-  "pk": 8, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 2, 
-   "floor_identifier": null, 
-   "number": "5-6", 
-   "slug": "5-6"
-  }
- }, 
- {
-  "pk": 9, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 2, 
-   "floor_identifier": null, 
-   "number": "7-8", 
-   "slug": "7-8"
-  }
- }, 
- {
-  "pk": 10, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 2, 
-   "floor_identifier": null, 
-   "number": "9-10", 
-   "slug": "9-10"
-  }
- }, 
- {
-  "pk": 11, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 2, 
-   "floor_identifier": null, 
-   "number": "11-12", 
-   "slug": "11-12"
-  }
- }, 
- {
   "pk": 12, 
-  "model": "floors.floor", 
+  "model": "activities.goalmember", 
   "fields": {
-   "dorm": 3, 
-   "floor_identifier": null, 
-   "number": "5-6", 
-   "slug": "5-6"
-  }
- }, 
- {
-  "pk": 13, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 3, 
-   "floor_identifier": null, 
-   "number": "7-8", 
-   "slug": "7-8"
-  }
- }, 
- {
-  "pk": 14, 
-  "model": "floors.floor", 
-  "fields": {
-   "dorm": 3, 
-   "floor_identifier": null, 
-   "number": "9-10", 
-   "slug": "9-10"
+   "user": 2, 
+   "user_comment": null, 
+   "goal": 1, 
+   "admin_comment": null, 
+   "floor": 2
   }
  }, 
  {
   "pk": 15, 
-  "model": "floors.floor", 
+  "model": "activities.goalmember", 
   "fields": {
-   "dorm": 3, 
-   "floor_identifier": null, 
-   "number": "11-12", 
-   "slug": "11-12"
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-06-27 14:38:45", 
-   "user": 1, 
-   "style_class": "system_post", 
+   "user": 605, 
+   "user_comment": null, 
+   "goal": 6, 
+   "admin_comment": null, 
    "floor": 2
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "Hello everyone!", 
-   "created_at": "2010-06-27 14:39:08", 
-   "user": 1, 
-   "style_class": "user_post", 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-06-28 14:24:11", 
-   "user": 1, 
-   "style_class": "system_post", 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "has completed the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 17:26:43", 
-   "user": 1, 
-   "style_class": "system_post", 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:27:08", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:29:01", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 7, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:30:30", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 8, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:30:37", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 9, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:31:28", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 10, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-03 18:31:34", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 11, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-04 22:03:15", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 12, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-04 22:09:02", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 13, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-04 22:10:15", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 14, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:17:32", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 15, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:17:37", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 16, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:18:27", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
   }
  }, 
  {
   "pk": 17, 
-  "model": "floors.post", 
+  "model": "activities.goalmember", 
   "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:18:32", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
+   "user": 2, 
+   "user_comment": null, 
+   "goal": 4, 
+   "admin_comment": null, 
+   "floor": 2
   }
  }, 
  {
-  "pk": 18, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:21:10", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 19, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-05 22:21:15", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 20, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-19 15:05:43", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 21, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\".", 
-   "created_at": "2010-07-19 15:05:48", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 22, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-19 15:12:01", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 23, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-19 15:14:12", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 24, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
-   "created_at": "2010-07-19 15:15:45", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 25, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has added the goal \"A test goal\" to the floor.", 
-   "created_at": "2010-07-19 15:23:08", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 26, 
-  "model": "floors.post", 
-  "fields": {
-   "text": " has added the goal \"A test goal\" to the floor.", 
-   "created_at": "2010-07-19 15:26:18", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 27, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 28, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 29, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 30, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 31, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 32, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 33, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 34, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 35, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 36, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 37, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 38, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 39, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 40, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 41, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 42, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 43, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 44, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 45, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 46, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 47, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 48, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 49, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 50, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 51, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 52, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 53, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 54, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 55, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 56, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 57, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 58, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 59, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 60, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 61, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 62, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 63, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 64, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 65, 
-  "model": "floors.post", 
-  "fields": {
-   "text": "'s goal \"A test goal\" has been completed! Everyone on the floor received 10 points.", 
-   "created_at": "2010-07-19 15:30:04", 
-   "user": 604, 
-   "style_class": "system_post", 
-   "floor": 1
-  }
- }, 
- {
-  "pk": 1, 
+  "pk": 3, 
   "model": "makahiki_base.like", 
   "fields": {
    "object_id": 1, 
    "user": 1, 
-   "content_type": 53, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "makahiki_base.like", 
-  "fields": {
-   "object_id": 2, 
-   "user": 1, 
-   "content_type": 53, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "makahiki_base.like", 
-  "fields": {
-   "object_id": 985, 
-   "user": 1, 
-   "content_type": 65, 
+   "content_type": 52, 
    "floor": 2
   }
  }, 
@@ -3885,9 +6596,9 @@
   "pk": 5, 
   "model": "makahiki_base.like", 
   "fields": {
-   "object_id": 977, 
-   "user": 1, 
-   "content_type": 65, 
+   "object_id": 1, 
+   "user": 2, 
+   "content_type": 51, 
    "floor": 2
   }
  }, 
@@ -3895,9 +6606,69 @@
   "pk": 6, 
   "model": "makahiki_base.like", 
   "fields": {
-   "object_id": 984, 
+   "object_id": 1, 
    "user": 1, 
-   "content_type": 65, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 4, 
+   "user": 1, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 1, 
+   "user": 605, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 12, 
+   "user": 605, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 19, 
+   "user": 605, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 11, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 2, 
+   "user": 2, 
+   "content_type": 51, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "makahiki_base.like", 
+  "fields": {
+   "object_id": 985, 
+   "user": 1, 
+   "content_type": 66, 
    "floor": 2
   }
  }, 
@@ -3905,56 +6676,42 @@
   "pk": 13, 
   "model": "makahiki_base.like", 
   "fields": {
-   "object_id": 983, 
+   "object_id": 984, 
    "user": 1, 
-   "content_type": 65, 
+   "content_type": 66, 
    "floor": 2
   }
  }, 
  {
-  "pk": 14, 
+  "pk": 15, 
   "model": "makahiki_base.like", 
   "fields": {
-   "object_id": 982, 
+   "object_id": 979, 
    "user": 1, 
-   "content_type": 65, 
+   "content_type": 66, 
    "floor": 2
   }
  }, 
  {
-  "pk": 1, 
-  "model": "makahiki_base.article", 
+  "pk": 16, 
+  "model": "makahiki_base.like", 
   "fields": {
-   "title": "Blue Planet Foundation Meeting", 
-   "created_at": "2010-06-13 15:21:17", 
-   "updated_at": null, 
-   "slug": "blue-planet-foundation-meeting", 
-   "content": "<div></div>", 
-   "abstract": "There will be a Blue Planet Foundation meeting on campus at 2PM.  All are welcome to attend."
+   "object_id": 985, 
+   "user": 2, 
+   "content_type": 66, 
+   "floor": 2
   }
  }, 
  {
-  "pk": 2, 
+  "pk": 4, 
   "model": "makahiki_base.article", 
   "fields": {
-   "title": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE", 
-   "created_at": "2010-06-13 15:21:48", 
-   "updated_at": null, 
-   "slug": "35th-ieee-photovoltaic-specialists-conference", 
-   "content": "Come see the exhibits displaying technology that spans the solar cell industry, and don\u2019t miss the HIGH SCHOOL PHOTOVOLTAIC DESIGN COMPETITION DEMONSTRATION! High school students will be displaying practical applications of photovoltaics to power their projects.\r\n\r\nThe following schools are competing: Honoka\u2019a High School, Farrington High and McKinley High\r\n\r\nSponsored by:\r\n\r\nThe Institute of Electrical and Electronics Engineers (IEEE) /\r\n\r\nElectron Devices Society / IEEE Photonics Society / Solar Energy\r\n\r\nIndustries Association", 
-   "abstract": "35TH IEEE PHOTOVOLTAIC SPECIALISTS CONFERENCE\r\n\r\nInvites you to join us for\r\nPUBLIC DAY in the Exhibition Hall\r\n\r\nJune 22, 2010 1:30 PM \u2013 5:00 PM\r\n\r\nHawaii Convention Center"
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "makahiki_base.article", 
-  "fields": {
-   "title": "Hawaii Clean Energy Day 2010", 
-   "created_at": "2010-06-13 15:22:14", 
-   "updated_at": null, 
-   "slug": "hawaii-clean-energy-day-2010", 
-   "content": "The Hawai\u2018i Energy Policy Forum and our partners will be hosting an afternoon of local speakers and panels, followed by a pau hana networking session, to inspire vigorous discussion on the next steps Hawai\u2018i needs to take to achieve our clean energy objectives.\r\n\r\nAll are welcome!", 
-   "abstract": "Friday, June 4, 2010\r\n\r\n1:00 p.m. to 6:00 p.m.\r\n\r\nLaniakea YWCA, 1040 Richards Street in Honolulu\r\n\r\nRegistration fee: $25 (includes pupu & drinks)"
+   "title": "Inaugural Kukui Cup scheduled for October, 2010", 
+   "created_at": "2010-07-09 06:57:52", 
+   "updated_at": "2010-07-09 07:04:08", 
+   "slug": "first-kukui-cup-in-october-2010", 
+   "content": "We expect this to be a great event and encourage participation.", 
+   "abstract": "Plans are under way to hold the first Kukui Cup competition in October, 2010!  We are currently working on installing power meters, developing the website, gathering educational resources, and refining the competition rules and structure.  \r\n\r\nIf you would like to get involved with planning of the competition, please contact Philip Johnson (<johnson@hawaii.edu>)."
   }
  }, 
  {
@@ -3967,7 +6724,7 @@
   }
  }, 
  {
-  "pk": 72, 
+  "pk": 69, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "website_image", 
@@ -4228,7 +6985,7 @@
   }
  }, 
  {
-  "pk": 73, 
+  "pk": 70, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "homepage_content_6", 
@@ -4417,29 +7174,29 @@
   }
  }, 
  {
-  "pk": 67, 
+  "pk": 71, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "completed_commitments", 
-   "content_type": 38, 
+   "slug": "completed_activities", 
+   "content_type": 40, 
    "object_id": 17
   }
  }, 
  {
-  "pk": 68, 
+  "pk": 72, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
-   "slug": "completed_activities", 
-   "content_type": 38, 
+   "slug": "completed_commitments", 
+   "content_type": 40, 
    "object_id": 18
   }
  }, 
  {
-  "pk": 69, 
+  "pk": 73, 
   "model": "django_generic_flatblocks.genericflatblock", 
   "fields": {
    "slug": "completed_goals", 
-   "content_type": 38, 
+   "content_type": 40, 
    "object_id": 19
   }
  }, 
@@ -4463,7 +7220,7 @@
   "pk": 1, 
   "model": "gblocks.text", 
   "fields": {
-   "text": "This site is based on the open source Makahiki project, which is sponsored by the <a href=\"http://csdl.ics.hawaii.edu\">Collaborative Software Development Laboratory</a> within the <a href=\"http://www.ics.hawaii.edu\">Department of Information and Computer Sciences</a> at the <a href=\"http://manoa.hawaii.edu\">University of Hawaii at Manoa</a>."
+   "text": "<div style=\"text-align:center\">\r\n  Sponsored by:<br>\r\n  <a href=\"http://csdl.ics.hawaii.edu\"><img style=\"border-style: none; margin-right: 50px\" src=\"http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.csdl.gif\" width=\"75px\"/></a>\r\n  <a href=\"http://reis.manoa.hawaii.edu\"><img  style=\"border-style: none; margin-right: 50px\" src=\"http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.reis.2.png\" width=\"75px\"/></a>\r\n  <a href=\"http://housing.hawaii.edu\"><img  style=\"border-style: none; margin-right: 50px\" src=\"http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.manoa.2.png\" width=\"75px\"/></a>\r\n  <a href=\"http://sustainableuh.hawaii.edu\"><img style=\"border-style: none\" src=\"http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.sustainable-uh.2.png\" width=\"75px\"/></a>\r\n<p>\r\nImplemented using the open source <a href=\"http://keokilee.github.com/makahiki\">Makahiki Framework</a><br> \r\n</div>"
   }
  }, 
  {
@@ -4625,8 +7382,8 @@
   "pk": 2, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<object width=\"320\" height=\"240\"><param name=\"movie\" value=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vnPaLewMaAA&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"320\" height=\"240\"></embed></object>", 
-   "title": "Featured Video"
+   "text": "<object width=\"320\" height=\"240\"><param name=\"movie\" value=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"320\" height=\"240\"></embed></object>", 
+   "title": "Featured Video: Kill-a-watt Competition at UCF"
   }
  }, 
  {
@@ -4641,8 +7398,8 @@
   "pk": 5, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "This website provides resources to support energy literacy in the UH dormitories.  Energy literacy involves knowledge, attitudes, and behaviors.", 
-   "title": "About UH Dorm Energy Resources"
+   "text": "This website provides resources and data related to energy usage in the University of Hawaii's residential housing.\r\n\r\nIt also supports the \"Kukui Cup\", an annual event designed to help residence hall members learn about energy, reduce their consumption, compete for prizes, and have fun!", 
+   "title": "About This Site"
   }
  }, 
  {
@@ -4753,7 +7510,7 @@
   "pk": 20, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "The Kukui Cup is a competition devoted to raising energy literacy in the freshmen dorms.  Literacy is raised through various activities, events, as well as resources such as videos or articles.  Additionally the Kukui Cup is a competition between the dorms as well as individuals to see who and which dorm can save the most energy.", 
+   "text": "The Kukui Cup is a competition between various residence halls with three major goals:\r\n<ol>\r\n<li> Help residents to learn more about energy and ways that they can use it more efficiently and effectively;\r\n<li> Provide a fun and interesting competition where residents can win prizes by saving energy and performing energy-related activities;\r\n<li> Understand more about the ways in which people are motivated (or not) to conserve energy.\r\n</ol>", 
    "title": "What is the Kukui Cup?"
   }
  }, 
@@ -4761,39 +7518,39 @@
   "pk": 21, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "As an individual you will have the chance to win an Apple iPod Nano through various energy saving actions that you complete.  Apart from the individual, each floor has a chance to win a TV for their lounge.  Also weekly prizes will be given to those who earn the most Kukui Nuts.", 
-   "title": "Why should you compete?"
+   "text": "To appear soon.", 
+   "title": "Competition standings"
   }
  }, 
  {
   "pk": 22, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "As Individuals:\r\n\r\n* Win Kukui Nuts by performing energy saving actions and attending events.\r\n\r\nAs a dorm floor/dorm:\r\n\r\n* Come together as a floor and a dorm to save as much energy as you can to win over other towers.", 
-   "title": "How to compete?"
+   "text": "", 
+   "title": ""
   }
  }, 
  {
   "pk": 23, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "This website provides resources to support energy literacy in the UH dormitories.  Energy literacy involves knowledge, attitudes, and behaviors.  We believe that by providing resources for learning, we can improve the literacy of students.", 
-   "title": "About the Manoa Dorm Energy Website"
+   "text": "We believe that the appropriate use and generation of energy is a critical issue for the future of Hawaii, and that the University of Hawaii must take a leadership role in education and research regarding this topic.  \r\n<p>\r\nThe University of Hawaii Dorm Energy website and the Kukui Cup is an initial step in a longer range project to provide all of Hawaii with information and incentives to implement positive, sustained changes in their energy behaviors. ", 
+   "title": "Why this website?"
   }
  }, 
  {
   "pk": 24, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "The Kukui Cup is a dorm energy competition aimed at reducing the electricity used in the dorms and improving the energy literacy of the students.  The next Kukui Cup will be held between October 4th, 2010 and November 1st, 2010 and the two dorms competing will be Hale Aloha Lehua and Hale Aloha Mokihana.\r\n\r\nThe winners will be decided in two ways:\r\n\r\n* Energy Reduction (Team): The dorm that reduces the most energy.\r\n* Kukui Nuts (Individual): Earn Kukui Nuts (points) by committing to energy saving practices or attending energy themed events.\r\n\r\nThe prizes are:\r\n\r\n* 1st Place Dorm (Energy Reduction): Pizza party\r\n* 1st Place Individual (Kukui Nuts): iPod Nano 8GB\r\n* 1st Place Floor (Kukui Nuts): TV for the lounge\r\n* Weekly Individual (Kukui Nuts): $10 Jamba Juice gift card", 
-   "title": "About the Kukui Cup Competition"
+   "text": "For more information about this website or the Kukui Cup competition, please contact:\r\n<p>\r\nPhilip Johnson<br>\r\nProfessor<br>\r\nDepartment of Information and Computer Sciences<br>\r\nUniversity of Hawaii at Manoa<br>\r\n1680 East-West Rd, POST 307<br>\r\njohnson@hawaii.edu", 
+   "title": "Contact info"
   }
  }, 
  {
   "pk": 25, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"chartdiv\">\r\n  <div id=\"lehua_chart_div\" align=\"center\"></div>\r\n  <div id=\"mokihana_chart_div\" align=\"center\"></div>\r\n  <div id=\"ilima_chart_div\" align=\"center\"></div>\r\n</div>\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.PowerMonitor.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var currentPowerUrl = configuration.getCurrentPowerDataUrl();\r\n  // A spreadsheet with baseline data. \r\n  var baselineDataUrl = configuration.getBaselineDataUrl();\r\n  // How frequently we want the spreadsheets to be refreshed.\r\n  var currentPowerRefreshInterval = 15; \r\n  var baselineDataRefreshInterval = 0;  // never refresh.\r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, \r\n                                                   currentPowerUrl, currentPowerRefreshInterval,\r\n                                                   baselineDataUrl, baselineDataRefreshInterval);  \r\n      \r\n  // Display three gauges\r\n  function displayDormData(currentPowerTable, baselineDataTable) {\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.ilima, 'ilima_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.mokihana, 'mokihana_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.lehua, 'lehua_chart_div');\r\n    var element = document.getElementById('chartdiv');\r\n    element.style.width = configuration.powerMonitorWidth;\r\n    element.style.backgroundColor = configuration.widgetBackgroundColor;\r\n  }\r\n\r\n  // Draw a monitor, title, and timestamp for the given dorm. \r\n  function drawPowerMonitor(currentPowerTable, baselineDataTable, source, id) {\r\n    var monitor = new org.wattdepot.gdata.makahiki.PowerMonitor(configuration);\r\n    monitor.draw(currentPowerTable, baselineDataTable, source, id);\r\n  }\r\n})();\r\n</script>", 
+   "text": "<div id=\"chartdiv\">\r\n  <div id=\"lehua_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"mokihana_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"ilima_chart_div\" align=\"center\"></div>\r\n</div>\r\n<p>\r\n\r\nUpdated every 30 seconds with current <a href=\"about_us#plugload\">plug load</a> for each dorm.  (Currently simulated)\r\n<p>\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.PowerMonitor.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var currentPowerUrl = configuration.getCurrentPowerDataUrl();\r\n  // A spreadsheet with baseline data. \r\n  var baselineDataUrl = configuration.getBaselineDataUrl();\r\n  // How frequently we want the spreadsheets to be refreshed.\r\n  var currentPowerRefreshInterval = 15; \r\n  var baselineDataRefreshInterval = 0;  // never refresh.\r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, \r\n                                                   currentPowerUrl, currentPowerRefreshInterval,\r\n                                                   baselineDataUrl, baselineDataRefreshInterval);  \r\n      \r\n  // Display three gauges\r\n  function displayDormData(currentPowerTable, baselineDataTable) {\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.ilima, 'ilima_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.mokihana, 'mokihana_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.lehua, 'lehua_chart_div');\r\n    var element = document.getElementById('chartdiv');\r\n    element.style.width = configuration.powerMonitorWidth;\r\n    element.style.backgroundColor = configuration.widgetBackgroundColor;\r\n  }\r\n\r\n  // Draw a monitor, title, and timestamp for the given dorm. \r\n  function drawPowerMonitor(currentPowerTable, baselineDataTable, source, id) {\r\n    var monitor = new org.wattdepot.gdata.makahiki.PowerMonitor(configuration);\r\n    monitor.draw(currentPowerTable, baselineDataTable, source, id);\r\n  }\r\n})();\r\n</script>", 
    "title": "Real-Time Dorm Power"
   }
  }, 
@@ -4801,8 +7558,8 @@
   "pk": 26, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "  <div id=\"bar_chart\">\r\n    <div id=\"bar_chart_div\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"chart_timestamp_div\"></div>\r\n  </div>\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.Timestamp.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.BarChart.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n \r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var spreadsheetURL = configuration.getCumulativeEnergyDataUrl();\r\n  // How frequently we want this spreadsheet data to be refreshed in the visualization.\r\n  var refreshInterval = 3600; \r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, spreadsheetURL, refreshInterval);  \r\n      \r\n  // Display the bar chart.\r\n  function displayDormData(datatable) {\r\n    // Set up the parameters for the BarChart, then display it.\r\n\r\n    var rows = [configuration.getCumulativeEnergyDataRow(configuration.ilima),\r\n                configuration.getCumulativeEnergyDataRow(configuration.lehua),\r\n                configuration.getCumulativeEnergyDataRow(configuration.mokihana)];\r\n    var columns = [0,4];\r\n\r\n    var title = 'Energy Usage since 5/25/2010';\r\n    var units = 'watt-hours';\r\n    var barChart = new org.wattdepot.gdata.makahiki.BarChart(configuration);\r\n    // Set all configuration parameters to default values (for documentation purposes).\r\n    barChart.draw(datatable, rows, columns, 'bar_chart_div', title, units);\r\n\r\n    // Apply standard formatting to the timestamp, then display it.\r\n    var tstampFormatter = new org.wattdepot.gdata.makahiki.Timestamp();\r\n    var timestampDiv = document.getElementById('chart_timestamp_div');\r\n    tstampFormatter.format(datatable, 5, timestampDiv);\r\n    timestampDiv.innerHTML = datatable.getFormattedValue(5, 5);                          \r\n    timestampDiv.style.textAlign = \"center\";\r\n    timestampDiv.style.width = configuration.barChartWidth;\r\n    var chartDiv = document.getElementById('bar_chart');\r\n    chartDiv.style.backgroundColor = configuration.widgetBackgroundColor;\r\n    chartDiv.style.width = configuration.barChartWidth;\r\n    chartDiv.style.color = configuration.widgetHeaderColor;\r\n    chartDiv.style.fontFamily = configuration.fontFamily;\r\n  }\r\n})();\r\n</script>", 
-   "title": "Cumulative Dorm Energy Usage"
+   "text": "<div id=\"bar_chart\">\r\n    <div id=\"bar_chart_div\"><img src=\"http://www.google.com/ig/images/spinner.gif\"/></div>\r\n    <div id=\"chart_timestamp_div\"></div>\r\n  </div>\r\n\r\nCumulative plug load energy used by each dorm. The smaller the bar, the better!\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.Timestamp.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.BarChart.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n \r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var spreadsheetURL = configuration.getCumulativeEnergyDataUrl();\r\n  // How frequently we want this spreadsheet data to be refreshed in the visualization.\r\n  var refreshInterval = 3600; \r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, spreadsheetURL, refreshInterval);  \r\n      \r\n  // Display the bar chart.\r\n  function displayDormData(datatable) {\r\n    // Set up the parameters for the BarChart, then display it.\r\n\r\n    var rows = [configuration.getCumulativeEnergyDataRow(configuration.ilima),\r\n                configuration.getCumulativeEnergyDataRow(configuration.lehua),\r\n                configuration.getCumulativeEnergyDataRow(configuration.mokihana)];\r\n    var columns = [0,4];\r\n\r\n    var title = 'Energy Usage since 5/25/2010';\r\n    var units = 'watt-hours';\r\n    var barChart = new org.wattdepot.gdata.makahiki.BarChart(configuration);\r\n    // Set all configuration parameters to default values (for documentation purposes).\r\n    barChart.draw(datatable, rows, columns, 'bar_chart_div', title, units);\r\n\r\n    // Apply standard formatting to the timestamp, then display it.\r\n    var tstampFormatter = new org.wattdepot.gdata.makahiki.Timestamp();\r\n    var timestampDiv = document.getElementById('chart_timestamp_div');\r\n    tstampFormatter.format(datatable, 5, timestampDiv);\r\n    timestampDiv.innerHTML = datatable.getFormattedValue(5, 5);                          \r\n    timestampDiv.style.textAlign = \"center\";\r\n    timestampDiv.style.width = configuration.barChartWidth;\r\n    var chartDiv = document.getElementById('bar_chart');\r\n    chartDiv.style.backgroundColor = configuration.widgetBackgroundColor;\r\n    chartDiv.style.width = configuration.barChartWidth;\r\n    chartDiv.style.color = configuration.widgetHeaderColor;\r\n    chartDiv.style.fontFamily = configuration.fontFamily;\r\n  }\r\n})();\r\n</script>", 
+   "title": "Dorm Energy Consumption"
   }
  }, 
  {
@@ -4865,8 +7622,8 @@
   "pk": 35, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "", 
-   "title": ""
+   "text": "<h3>I tried to login with my UH account, but I could not!</h3>\r\n\r\n<p>Login facilities are available only to UH students currently living in  three freshman residence halls (Hale Lehua, Hale Mokihana, and Hale Ilima).  If you are not a current resident of those dorms, you will not be able to login even if you successfully provide your account credentials to the UH login service.\r\n<p>\r\nAdditionally, login services to freshman residence hall residents are disabled until the competition starts in Fall, 2010.\r\n\r\n<h3><a href=\"#plugload\"></a>What do you mean by \"plug load\"?</h3>\r\n\r\n<p>Currently, the meters in the residence halls only monitor the energy used by the wall outlets (\"plug loads\") on floors 3 through 12 (where residence rooms are located). \r\n\r\n<h3>What do you mean by \"baseline\"?</h3>\r\n\r\n<p>Baseline refers to the \"typical\" levels of energy for a residence hall (or floors in the hall). We compute two baselines, one for energy and one for power. \r\n\r\n<p>In the case of power, we monitor the average power use for each of the 24 hours in a day over the course of several weeks.  This results in 24 different baseline power levels for each residence hall (or floors in the hall).\r\nThis is good because power values in the middle of the night are typically much lower than in the middle of the day, so the baseline comparison takes that into account.\r\n\r\n<p>In the case of energy, we monitor consumption over the course of several weeks, and use this to determine the baseline as an average energy consumption per day.  This is good because energy consumption is shown as a cumulative value over longer periods of time, and so the baseline tends to even out short-term fluctuations in use. \r\n", 
+   "title": "Frequently Asked Questions"
   }
  }, 
  {
@@ -4897,8 +7654,8 @@
   "pk": 39, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "", 
-   "title": ""
+   "text": "<h3>Motivation</h3>\r\nOne of the goals of the Kukui Cup is to learn more about the factors which help people to make sustained, positive changes to their energy behaviors.\r\n<h3>Kinds of data collected</h3>\r\nIn order to accomplish this goal, we wish to collect and analyze data about your participation in the competition.  This data takes two forms:\r\n<ol>\r\n<li> Data collected from your interactions with this website.  We will collect data about the things you do while logged in to this website, such as your activities, goals, and commitments.  This helps us to understand which of these tasks are interesting and helpful.\r\n<li> Data gathered through interviews and questionnaires.  We will contact a subset of participants to request a short interview and/or to fill out an online questionnaire.  This data will help us to understand more about the strengths and weaknesses of our approach.\r\n</ol>\r\n\r\n<h3>Privacy</h3>\r\nNo identifying information about you will be made available in any research publications resulting from this study.  \r\n<p>\r\nNote that as part of your participation in the competition, information such as your \"public commitments\" will be made available to others via mechanisms such as the Kukui Cup \"wall\" in your home page. If you choose to enable Facebook integration, then public commitments and activities will be transmitted to Facebook.  However, such identifying information will not be made available in future research publications.\r\n\r\n<h3>If you do not wish to participate</h3>\r\nYour participation in this study is voluntary.  If you decide you do not wish to participate in this study at any time, please contact Philip Johnson (<a href=\"mailto:johnson@hawaii.edu\">johnson@hawaii.edu</a>, 956-3489, POST 307, University of Hawaii).  We will remove your data from all analyses.\r\n<p>\r\nYou can decline to participate in this study but still participate in the Kukui Cup.   Your decision to participate or not has no impact on your ablity to win prizes or participate in events associated with the competition.", 
+   "title": "Terms and conditions"
   }
  }, 
  {
@@ -4953,8 +7710,8 @@
   "pk": 46, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "", 
-   "title": ""
+   "text": "<h3>Individual and group competitions</h3>\r\n<p>\r\nThe Kukui Cup actually consists of two types of competitions: <emphasis>individual</emphasis> competitions and <emphasis>group</emphasis> competitions.  \r\n<p>\r\n\r\nIn an individual competition, you compete to accumulate the most \"Kukui Nut\" points by performing various actions, including activities, goals, and commitments.   To win in the individual competition, you simply have to accumulate the most Kukui Nut points.\r\n\r\n<p>\r\nIn a group competition, pairs of floors compete as a unit.  Each dorm is divided into five groups consisting of floors 3-4, 5-6, 7-8, 9-10, and 11-12. To win in the group competition, your group must reduce its energy consumption more than other groups.  To simplify things, whenever we refer to \"floor\" in this competition, we really mean \"pair of floors\".\r\n\r\n<h3>Competition timeline and rounds</h3>\r\n\r\nThe competition will be held for three weeks starting in October, 2010.  The official start date will be announced soon. \r\n<p>\r\nTo provide multiple chances to win, the competition is divided into two week-long \"rounds\" as well as an overall \"grand prize\" round.\r\n<p> \r\nAfter the first week of competition, the winners of  \"Round 1\" will be announced based upon those individuals who accumulated the most Kukui Nut points and those floors who reduced their energy consumption the most. \r\n<p>\r\nAfter the second week of competition, the winners of \"Round 2\" will be announced.  Round 2 winners are based only on data from the second week of the competition.  \r\n<p>\r\nAfter the third week of competition, the \"Grand Prize\" winners will be announced.  The Grand Prize winners are based upon all three weeks of data. \r\n\r\n<h3>How to win!</h3>\r\n<p>\r\nTo compete for individual prizes, you first have to login to this website using the link at the upper right corner.  Only members of the dorms competing in this competition are able to login.  \r\n<p>\r\nOnce you have logged in, you can collect points by (a) performing activities, (b) making public commitments, or (c) participating in floor-level goals.\r\n<p>\r\nThe competition provides a wide variety of activities that you can participate in, such as watching videos, reading articles, attending workshops, or movies, or other events.  Each time you complete an activity, you submit it for points.  As part of this process, there is a simple verification procedure. For example, in the case of an activity that involves watching a certain YouTube video, the verification procedure might involve you answering a simple question about the contents of the video.  In the case of an event, you will find a Kukui Cup administrator at the event who can give you a personalized code that verifies your attendance. Each activity earns you from 5 to 20 points.  \r\n<p>\r\nAnother way to earn points is by making public commitments, such as \"I will turn off the lights after leaving a room\".  Each commitment lasts for five days, and you are limited to five commitments at any one time.  We do not verify your commitments, and each commitment (when completed after the five days) is worth 2 points.  Making a commitment is \"public\" in that it shows up on your Kukui Cup \"wall\" and on the electronic billboard associated with this competition. \r\n<p>\r\nA final way to earn points is through goal setting.  Goals are different from activities and commitments in that they always involve the entire floor. For example, one goal might be to reduce the floor's energy consumption by 5% over five days. When a goal is achieved, every member of the floor gets Kukui Nut points. Goals are worth between 5 and 10 Kukui Cup points. \r\n<p>\r\n\r\nIn addition to prizes for the most points, the competition will also award prizes to the floor that reduces their energy consumption the most.  To do that, you simply have to learn how to conserve energy!  As that is the goal of the activities, commitments, and goals, we believe that you will naturally learn how to save energy as you take part in this competition. \r\n\r\n<h3>Award categories and prizes</h3>\r\n\r\nRound 1 Awards:\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual on each floor who gained the most points.</td>\r\n<td>$25 gift certif.</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that gained the most points (across all dorms).</td> \r\n<td>Ice cream party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most (across all dorms).</td>\r\n<td>Ice cream party</td>\r\n</tr>\r\n</table>\r\n\r\n<p>\r\nRound 2 Awards:\r\n\r\n<p>\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual on each floor who gained the most points.</td>\r\n<td>$25 gift certif.</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that gained the most points (across all dorms).</td> \r\n<td>Ice cream party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most (across all dorms).</td>\r\n<td>Ice cream party</td>\r\n</tr>\r\n</table>\r\n\r\n<p>\r\nGrand Prize Awards:\r\n<p>\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual per dorm with highest number of points.</td>\r\n<td>iPod touch</td>\r\n</tr>\r\n<tr>\r\n<td>Floor with highest number of points.</td> \r\n<td>Pizza party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most.</td>\r\n<td>Pizza party</td>\r\n</tr>\r\n</table>\r\n\r\n<h3>In the event of ties...</h3>\r\n\r\n<p> In the event that two or more individuals (or floors) are tied for the most points, then the timestamp associated with the final goal, commitment, or activity associated with the individuals (or floors) will be used to break the tie.  In other words, the individual (or floor) who got to their final point total first will be declared the winner. Under the remote possibility that the final timestamps are equal, a coin toss will be used to decide the winner.\r\n\r\n<p> Given that energy consumption is measured down to a fraction of a watt-hour, we do not anticipate that any floor could tie with respect to their consumption.  In case that this does occur, a coin toss will be used to decide the winner. \r\n\r\n", 
+   "title": "Rules of the competition"
   }
  }
 ]
