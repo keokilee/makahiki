@@ -104,20 +104,21 @@ class CommitmentMember(CommonBase):
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
       
-    if self.completed:
+    if self.award_date:
       # User has finished the commitment.
       # Award the points
       profile = self.user.get_profile()
-      profile.add_points(self.commitment.point_value, self.completed)
+      profile.add_points(self.commitment.point_value, self.award_date)
       profile.save()
       
-      # Construct the points
-      message = "has completed the commitment \"%s\"." % (
-        self.commitment.title,
-      )
-      
-      post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
-      post.save()
+      if profile.floor:
+        # Construct the points
+        message = "has completed the commitment \"%s\"." % (
+          self.commitment.title,
+        )
+
+        post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
+        post.save()
 
     super(CommitmentMember, self).save()
   
@@ -125,9 +126,8 @@ class CommitmentMember(CommonBase):
     """Custom delete method to remove the points for completed commitments."""
     profile = self.user.get_profile()
     
-    if self.completed:
-      # Need to rollback points.
-      profile.remove_points(self.commitment.point_value, self.completed)
+    if self.award_date:
+      profile.remove_points(self.commitment.point_value, self.award_date)
       profile.save()
     elif profile.floor:
       message = "is no longer participating in \"%s\"." % (
@@ -284,12 +284,11 @@ class ActivityMember(CommonActivityUser):
     return "%s : %s" % (self.activity.title, self.user.username)
   
   def save(self):
-    """Custom save method to award points to users if the item is approved."""
-    
-    if self.approval_status == u"approved" and not self.awarded:
-      self.awarded = datetime.datetime.today()
+    """Custom save method to award points to users if the item is approved."""  
+    if self.approval_status == u"approved" and not self.award_date:
+      self.award_date = datetime.datetime.today()
       profile = self.user.get_profile()
-      profile.add_points(self.activity.point_value, self.awarded)
+      profile.add_points(self.activity.point_value, self.award_date)
       profile.save()
       
       if profile.floor:
@@ -300,24 +299,23 @@ class ActivityMember(CommonActivityUser):
         post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
         post.save()
       
-    elif self.approval_status != u"approved" and self.awarded:
+    elif self.approval_status != u"approved" and self.award_date:
       # Do we want to re-enable the confirmation code?
       profile = self.user.get_profile()
-      profile.remove_points(self.activity.point_value, self.awarded)
+      profile.remove_points(self.activity.point_value, self.award_date)
       profile.save()
-      self.awarded = None
+      self.award_date = None
       
     super(ActivityMember, self).save()
     
   def delete(self):
     """Custom delete method to remove awarded points."""
     
-    if self.awarded:
-      # Do we want to re-enable the confirmation code?
+    if self.award_date:
       profile = self.user.get_profile()
-      profile.remove_points(self.activity.point_value, self.awarded)
+      profile.remove_points(self.activity.point_value, self.award_date)
       profile.save()
-    
+      
     super(ActivityMember, self).delete()
 
 class Goal(CommonActivity):
@@ -352,10 +350,10 @@ class GoalMember(CommonActivityUser):
        A user cannot add a goal if they have more than two active goals or if their floor is 
        participating in more than five. """
     user_goals = user.goalmember_set.filter(
-      awarded=False,
+      award_date=None,
     )
     floor_goals = user.get_profile().floor.goalmember_set.filter(
-      awarded=False,
+      award_date=None,
     )
     
     if len(user_goals) < 2 and len(floor_goals) < 5:
@@ -379,10 +377,10 @@ class GoalMember(CommonActivityUser):
       post.save()
 
     
-    elif self.approval_status == u"approved" and not self.awarded:
-      self.awarded = datetime.datetime.today()
+    elif self.approval_status == u"approved" and not self.award_date:
+      self.award_date = datetime.datetime.today()
       for profile in self.floor.profile_set.all():
-        profile.add_points(self.goal.point_value, self.awarded)
+        profile.add_points(self.goal.point_value, self.award_date)
         profile.save()
       
       message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
@@ -392,21 +390,21 @@ class GoalMember(CommonActivityUser):
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
     
-    elif self.approval_status !=u"approved" and self.awarded:
+    elif self.approval_status !=u"approved" and self.award_date:
       for profile in self.floor.profile_set.all():
-        profile.remove_points(self.goal.point_value, self.awarded)
+        profile.remove_points(self.goal.point_value, self.award_date)
         profile.save()
-        
-      self.awarded = None
+      self.award_date = None
       
     super(GoalMember, self).save()
-  
+      
+        
   def delete(self):
     """Custom delete method to remove points from all floor members."""
-    
-    if self.awarded:
+    if self.award_date:
       for profile in self.floor.profile_set.all():
-        profile.remove_points(self.goal.point_value, self.awarded)
+        profile.remove_points(self.goal.point_value, self.award_date)
         profile.save()
-    
+        
     super(GoalMember, self).delete()
+    

@@ -41,23 +41,22 @@ class Profile(models.Model):
       """Removes points from the user.  
       If the completion date is the same as the last_awarded field, we rollback to a previously completed task."""
       
-      from activities.models import CommitmentMember, ActivityMember, GoalMember
-      
       self.points -= value
       if self.last_awarded == completion_date:
-        self.last_awarded = self._last_completed_before(self, completion_date)
+        self.last_awarded = self._last_completed_before(completion_date)
         
     def _last_completed_before(self, completion_date):
       """Time of the last task that was completed.  Returns None if there are no other tasks."""
-      # Find the latest commitment/activity/goal that was completed.
+      
+      from activities.models import CommitmentMember, ActivityMember, GoalMember
       
       last_date = last_commitment = last_activity = last_goal = None
       try:
         last_commitment = CommitmentMember.objects.filter(
-            user__pk=self.user,
-            completion_date__isnull=False,
-            completion_date__lte=completion_date,
-        ).order_by("-completion_date")[0].completion_date
+            user=self.user,
+            award_date__isnull=False,
+            award_date__lt=completion_date
+        ).order_by("-award_date")[0].award_date
         last_date = last_commitment
       except IndexError:
         pass
@@ -65,20 +64,21 @@ class Profile(models.Model):
       try:
         last_activity = ActivityMember.objects.filter(
             user=self.user,
-            awarded__isnull=False,
-            awarded__lte=completion_date,
-        ).order_by("-awarded")[0].awarded
+            approval_status=u"approved",
+            award_date__lt=completion_date
+        ).order_by("-award_date")[0].award_date
         if not last_date or last_date < last_activity:
           last_date = last_activity
       except IndexError:
         pass
+        
       if self.floor:
         try:
           last_goal = GoalMember.objects.filter(
               floor=self.floor,
-              awarded__isnull=False,
-              awarded__lte=completion_date,
-          ).order_by("-awarded")[0].awarded
+              approval_status=u"approved",
+              award_date__lt=completion_date,
+          ).order_by("-award_date")[0].award_date
           if not last_date or last_date < last_goal:
             last_date = last_goal
         except IndexError:
