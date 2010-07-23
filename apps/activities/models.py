@@ -390,7 +390,7 @@ class GoalMember(CommonActivityUser):
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
     
-    elif self.approval_status !=u"approved" and self.award_date:
+    elif self.approval_status != u"approved" and self.award_date:
       for profile in self.floor.profile_set.all():
         profile.remove_points(self.goal.point_value, self.award_date)
         profile.save()
