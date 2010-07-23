@@ -10,6 +10,7 @@ from django.contrib.contenttypes import generic
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 from makahiki_base.models import Like
+from activities import MAX_USER_GOALS, MAX_FLOOR_GOALS
 
   
 # These models represent the different types of activities users can commit to.
@@ -68,12 +69,17 @@ class Commitment(CommonActivity):
   @staticmethod
   def get_available_for_user(user):
     """Filter out commitments the user is currently active in."""
-    commitments = Commitment.objects.exclude(
-      commitmentmember__user__username=user.username,
-      commitmentmember__completed=False,
+    return Commitment.objects.exclude(
+      commitmentmember__user=user,
+      commitmentmember__award_date=None,
     )
     
-    return commitments
+  @staticmethod
+  def get_completed_for_user(user):
+    """Gets the user's completed commitments"""
+    return user.commitment_set.exclude(
+      commitmentmember__award_date__isnull=False
+    )
     
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
@@ -252,9 +258,16 @@ class Activity(CommonActivity):
     """Retrieves only the activities that a user can participate in."""
     
     activities = Activity.objects.exclude(
-      activitymember__user__username=user.username,
+      activitymember__user=user,
     )
     return (item for item in activities if item.is_active) # Filters out inactive activities.
+    
+  @staticmethod
+  def get_completed_for_user(user):
+    """Gets the user's completed activities"""
+    return user.activity_set.exclude(
+      activitymember__award_date__isnull=False,
+    )
 
 def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""
@@ -284,14 +297,16 @@ class ActivityMember(CommonActivityUser):
     return "%s : %s" % (self.activity.title, self.user.username)
   
   def save(self):
-    """Custom save method to award points to users if the item is approved."""  
+    """Custom save method to award/remove points if the activitymember is approved or rejected."""  
     if self.approval_status == u"approved" and not self.award_date:
+      # Award users points and update wall.
       self.award_date = datetime.datetime.today()
       profile = self.user.get_profile()
       profile.add_points(self.activity.point_value, self.award_date)
       profile.save()
       
       if profile.floor:
+        # Post on the user's floor wall.
         message = " has been awarded %d points for completing \"%s\"." % (
           self.activity.point_value,
           self.activity.title,
@@ -300,7 +315,7 @@ class ActivityMember(CommonActivityUser):
         post.save()
       
     elif self.approval_status != u"approved" and self.award_date:
-      # Do we want to re-enable the confirmation code?
+      # Removing user points and resetting award date.
       profile = self.user.get_profile()
       profile.remove_points(self.activity.point_value, self.award_date)
       profile.save()
@@ -329,7 +344,15 @@ class Goal(CommonActivity):
     """Retrieves only the goals that a user can participate in."""
     
     return Goal.objects.exclude(
-      goalmember__floor__pk=user.get_profile().floor.pk,
+      goalmember__floor=user.get_profile().floor,
+    )
+    
+  @staticmethod
+  def get_completed_goals_for_user(user):
+    """Gets the user's completed goals."""
+    floor = user.get_profile().floor
+    return floor.goal_set.exclude(
+      goalmember__award_date__isnull=False
     )
     
 class GoalMember(CommonActivityUser):
@@ -351,12 +374,12 @@ class GoalMember(CommonActivityUser):
        participating in more than five. """
     user_goals = user.goalmember_set.filter(
       award_date=None,
-    )
+    ).count()
     floor_goals = user.get_profile().floor.goalmember_set.filter(
       award_date=None,
-    )
+    ).count()
     
-    if len(user_goals) < 2 and len(floor_goals) < 5:
+    if user_goals < MAX_USER_GOALS and floor_goals < MAX_FLOOR_GOALS:
       return True
       
     return False
@@ -370,6 +393,7 @@ class GoalMember(CommonActivityUser):
     profile = self.user.get_profile()
     
     if not self.pk:
+      # Item is being saved for the first time.
       message = " has added the goal \"%s\" to the floor." % (
         self.goal.title,
       )
@@ -378,6 +402,7 @@ class GoalMember(CommonActivityUser):
 
     
     elif self.approval_status == u"approved" and not self.award_date:
+      # Award points to users and post on the floor wall.
       self.award_date = datetime.datetime.today()
       for profile in self.floor.profile_set.all():
         profile.add_points(self.goal.point_value, self.award_date)
@@ -391,6 +416,7 @@ class GoalMember(CommonActivityUser):
       post.save()
     
     elif self.approval_status != u"approved" and self.award_date:
+      # Remove points and reject goal.
       for profile in self.floor.profile_set.all():
         profile.remove_points(self.goal.point_value, self.award_date)
         profile.save()
