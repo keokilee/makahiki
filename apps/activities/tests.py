@@ -111,7 +111,7 @@ class CommitmentsTestCase(TestCase):
     self.assertTrue(user.get_profile().last_awarded == commitment_member.award_date)
     
   def testAddCompletePostsMessages(self):
-    """Test that an added commitment and a completed commitment posts to the user's wall.."""
+    """Test that an added commitment and a completed commitment posts to the user's wall."""
     floor = Floor.objects.all()[0]
     num_posts = floor.post_set.count()
     profile = floor.profile_set.all()[0]
@@ -176,7 +176,7 @@ class GoalsTestCase(TestCase):
         self.assertTrue(profiles[i].last_awarded < after_profiles[i].last_awarded)
        
   def testAddCompletePostsMessages(self):
-    """Test that an added commitment and a completed commitment posts to the user's wall.."""
+    """Test that an added goal and a completed goal posts to the user's wall."""
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
     num_posts = floor.post_set.count()
