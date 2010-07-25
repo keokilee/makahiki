@@ -21,7 +21,7 @@ class Profile(models.Model):
     name = models.CharField(_('name'), max_length=50, null=True, blank=True)
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
-    last_awarded = models.DateTimeField(null=True, blank=True, editable=False)
+    last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
     theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
     floor = models.ForeignKey(Floor, null=True, blank=True)
     
@@ -32,30 +32,52 @@ class Profile(models.Model):
         return ('profile_detail', None, {'username': self.user.username})
     get_absolute_url = models.permalink(get_absolute_url)
     
-    def add_points(self, value, completion_date):
-      """Adds points to the user and updates the last_awarded field."""
-      self.points += value
-      self.last_awarded = completion_date
+    def add_points(self, submission):
+      """Adds points based on the point value of the submitted object."""
+      from activities.models import CommitmentMember, ActivityMember, GoalMember
       
-    def remove_points(self, value, completion_date):
+      if isinstance(submission, CommitmentMember):
+        self.points += submission.commitment.point_value
+        self.last_awarded_submission = submission.award_date
+      elif isinstance(submission, ActivityMember):
+        self.points += submission.activity.point_value
+        self.last_awarded_submission = submission.submission_date
+      elif isinstance(submission, GoalMember):
+        self.points += submission.goal.point_value
+        self.last_awarded_submission = submission.submission_date
+      
+    def remove_points(self, submission):
       """Removes points from the user.  
-      If the completion date is the same as the last_awarded field, we rollback to a previously completed task."""
+      If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task."""
       
-      self.points -= value
-      if self.last_awarded == completion_date:
-        self.last_awarded = self._last_completed_before(completion_date)
+      from activities.models import CommitmentMember, ActivityMember, GoalMember
+      
+      submission_date = None
+      if isinstance(submission, CommitmentMember):
+        self.points -= submission.commitment.point_value
+        submission_date = submission.award_date
+      elif isinstance(submission, ActivityMember):
+        self.points -= submission.activity.point_value
+        submission_date= submission.submission_date
+      elif isinstance(submission, GoalMember):
+        self.points -= submission.goal.point_value
+        submission_date = submission.submission_date
         
-    def _last_completed_before(self, completion_date):
+      if self.last_awarded_submission == submission_date:
+        self.last_awarded_submission = self._last_submitted_before(submission_date)
+        
+    def _last_submitted_before(self, submission_date):
       """Time of the last task that was completed.  Returns None if there are no other tasks."""
       
       from activities.models import CommitmentMember, ActivityMember, GoalMember
       
       last_date = last_commitment = last_activity = last_goal = None
       try:
+        # In the case of commitments, the award date is the same as the submission date.
         last_commitment = CommitmentMember.objects.filter(
             user=self.user,
             award_date__isnull=False,
-            award_date__lt=completion_date
+            award_date__lt=submission_date
         ).order_by("-award_date")[0].award_date
         last_date = last_commitment
       except IndexError:
@@ -65,8 +87,8 @@ class Profile(models.Model):
         last_activity = ActivityMember.objects.filter(
             user=self.user,
             approval_status=u"approved",
-            award_date__lt=completion_date
-        ).order_by("-award_date")[0].award_date
+            submission_date__lt=submission_date
+        ).order_by("-submission_date")[0].submission_date
         if not last_date or last_date < last_activity:
           last_date = last_activity
       except IndexError:
@@ -77,8 +99,8 @@ class Profile(models.Model):
           last_goal = GoalMember.objects.filter(
               floor=self.floor,
               approval_status=u"approved",
-              award_date__lt=completion_date,
-          ).order_by("-award_date")[0].award_date
+              submission_date__lt=submission_date,
+          ).order_by("-submission_date")[0].submission_date
           if not last_date or last_date < last_goal:
             last_date = last_goal
         except IndexError:

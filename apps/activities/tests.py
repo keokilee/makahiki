@@ -14,7 +14,7 @@ class ActivitiesTestCase(TestCase):
     """Test for verifying that approving a user awards them points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded = user.get_profile().last_awarded
+    last_awarded_submission = user.get_profile().last_awarded_submission
     
     activity = Activity.objects.all()[0]
     activity_points = activity.point_value
@@ -24,14 +24,14 @@ class ActivitiesTestCase(TestCase):
     
     # Verify that nothing has changed.
     self.assertTrue(points == user.get_profile().points)
-    self.assertTrue(last_awarded == user.get_profile().last_awarded)
+    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     
     activity_member.approval_status = "approved"
     activity_member.save()
     
     new_points = user.get_profile().points
     self.assertTrue(new_points - points == activity_points)
-    self.assertTrue(activity_member.award_date == user.get_profile().last_awarded)
+    self.assertTrue(activity_member.submission_date == user.get_profile().last_awarded_submission)
     
   def testApprovePostsMessage(self):
     """Test that an approved activity posts to the user's wall."""
@@ -51,7 +51,7 @@ class ActivitiesTestCase(TestCase):
     """Test that unapproving a user removes their points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded = user.get_profile().last_awarded
+    last_awarded_submission = user.get_profile().last_awarded_submission
     
     activity = Activity.objects.all()[0]
     
@@ -65,14 +65,14 @@ class ActivitiesTestCase(TestCase):
     
     self.assertTrue(activity_member.award_date is None)
     self.assertTrue(points == new_points)
-    self.assertTrue(last_awarded == user.get_profile().last_awarded)
+    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting an approved ActivityMember removes their points."""
     
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded = user.get_profile().last_awarded
+    last_awarded_submission = user.get_profile().last_awarded_submission
     
     activity = Activity.objects.all()[0]
     
@@ -84,7 +84,7 @@ class ActivitiesTestCase(TestCase):
     new_points = user.get_profile().points
     
     self.assertTrue(points == new_points)
-    self.assertTrue(last_awarded == user.get_profile().last_awarded)
+    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     
 class CommitmentsTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -93,7 +93,7 @@ class CommitmentsTestCase(TestCase):
     """Tests that completing a task adds points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded = user.get_profile().last_awarded
+    last_awarded_submission = user.get_profile().last_awarded_submission
     
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
@@ -102,13 +102,13 @@ class CommitmentsTestCase(TestCase):
     
     # Check that this does not change the user's points.
     self.assertTrue(points == user.get_profile().points)
-    self.assertTrue(last_awarded == user.get_profile().last_awarded)
+    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
     points += commitment_member.commitment.point_value
     self.assertTrue(points, user.get_profile().points)
-    self.assertTrue(user.get_profile().last_awarded == commitment_member.award_date)
+    self.assertTrue(user.get_profile().last_awarded_submission == commitment_member.award_date)
     
   def testAddCompletePostsMessages(self):
     """Test that an added commitment and a completed commitment posts to the user's wall."""
@@ -119,17 +119,17 @@ class CommitmentsTestCase(TestCase):
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=profile.user, commitment=commitment, completion_date=datetime.datetime.today())
     commitment_member.save()
-    self.assertTrue(num_posts == floor.post_set.count() - 1)
+    self.assertTrue(floor.post_set.count() - num_posts == 1)
     
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
-    self.assertTrue(num_posts == floor.post_set.count() - 2)
+    self.assertTrue(floor.post_set.count() - num_posts == 2)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting a commitment member after it is completed removes the user's points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded = user.get_profile().last_awarded
+    last_awarded_submission = user.get_profile().last_awarded_submission
     
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
@@ -138,7 +138,7 @@ class CommitmentsTestCase(TestCase):
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
     commitment_member.delete()
-    self.assertTrue(last_awarded == user.get_profile().last_awarded)
+    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     self.assertTrue(points == user.get_profile().points)
     
 class GoalsTestCase(TestCase):
@@ -160,7 +160,7 @@ class GoalsTestCase(TestCase):
     after_profiles = floor.profile_set.all().order_by("pk")
     for i in range(0, len(profiles)):
       self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded == after_profiles[i].last_awarded)
+      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)
       
     goal_member.approval_status = 'approved'
     goal_member.save()
@@ -170,10 +170,10 @@ class GoalsTestCase(TestCase):
     after_profiles = floor.profile_set.all().order_by("pk")
     for i in range(0, len(profiles)):
       self.assertTrue(profiles[i].points + goal.point_value == after_profiles[i].points)
-      if profiles[i].last_awarded is None:
-        self.assertTrue(after_profiles[i].last_awarded is not None)
+      if profiles[i].last_awarded_submission is None:
+        self.assertTrue(after_profiles[i].last_awarded_submission is not None)
       else:
-        self.assertTrue(profiles[i].last_awarded < after_profiles[i].last_awarded)
+        self.assertTrue(profiles[i].last_awarded_submission < after_profiles[i].last_awarded_submission)
        
   def testAddCompletePostsMessages(self):
     """Test that an added goal and a completed goal posts to the user's wall."""
@@ -209,7 +209,7 @@ class GoalsTestCase(TestCase):
     after_profiles = floor.profile_set.all().order_by("pk")
     for i in range(0, len(profiles)):
       self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded == after_profiles[i].last_awarded)
+      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)
       
   def testDeleteRemovesPoints(self):
     """Tests that deleting an approved goal removes points from members of the entire floor."""
@@ -226,4 +226,4 @@ class GoalsTestCase(TestCase):
     after_profiles = floor.profile_set.all().order_by("pk")
     for i in range(0, len(profiles)):
       self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded == after_profiles[i].last_awarded)
+      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)

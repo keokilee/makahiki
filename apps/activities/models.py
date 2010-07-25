@@ -10,8 +10,6 @@ from django.contrib.contenttypes import generic
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 from makahiki_base.models import Like
-from activities import MAX_USER_GOALS, MAX_FLOOR_GOALS
-
   
 # These models represent the different types of activities users can commit to.
 class CommonBase(models.Model):
@@ -42,6 +40,7 @@ class CommonActivityUser(CommonBase):
   
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
   award_date = models.DateTimeField(null=True, blank=True, editable=False)
+  submission_date = models.DateTimeField(null=True, blank=True, editable=False)
 
 class CommonActivity(CommonBase):
   """Common fields for activity models."""
@@ -114,7 +113,7 @@ class CommitmentMember(CommonBase):
       # User has finished the commitment.
       # Award the points
       profile = self.user.get_profile()
-      profile.add_points(self.commitment.point_value, self.award_date)
+      profile.add_points(self)
       profile.save()
       
       if profile.floor:
@@ -133,7 +132,7 @@ class CommitmentMember(CommonBase):
     profile = self.user.get_profile()
     
     if self.award_date:
-      profile.remove_points(self.commitment.point_value, self.award_date)
+      profile.remove_points(self)
       profile.save()
     elif profile.floor:
       message = "is no longer participating in \"%s\"." % (
@@ -297,12 +296,19 @@ class ActivityMember(CommonActivityUser):
     return "%s : %s" % (self.activity.title, self.user.username)
   
   def save(self):
-    """Custom save method to award/remove points if the activitymember is approved or rejected."""  
-    if self.approval_status == u"approved" and not self.award_date:
+    """Custom save method to award/remove points if the activitymember is approved or rejected."""
+    if self.approval_status == u"pending":
+      # Mark pending items as submitted.
+      self.submission_date = datetime.datetime.today()
+      
+    elif self.approval_status == u"approved" and not self.award_date:
       # Award users points and update wall.
       self.award_date = datetime.datetime.today()
+      if not self.submission_date:
+        # This may happen if it is an item with a confirmation code.
+        self.submission_date = self.award_date
       profile = self.user.get_profile()
-      profile.add_points(self.activity.point_value, self.award_date)
+      profile.add_points(self)
       profile.save()
       
       if profile.floor:
@@ -317,9 +323,11 @@ class ActivityMember(CommonActivityUser):
     elif self.approval_status != u"approved" and self.award_date:
       # Removing user points and resetting award date.
       profile = self.user.get_profile()
-      profile.remove_points(self.activity.point_value, self.award_date)
+      profile.remove_points(self)
       profile.save()
       self.award_date = None
+      self.submission_date = None # User will have to resubmit.
+      
       
     super(ActivityMember, self).save()
     
@@ -328,7 +336,7 @@ class ActivityMember(CommonActivityUser):
     
     if self.award_date:
       profile = self.user.get_profile()
-      profile.remove_points(self.activity.point_value, self.award_date)
+      profile.remove_points(self)
       profile.save()
       
     super(ActivityMember, self).delete()
@@ -370,8 +378,11 @@ class GoalMember(CommonActivityUser):
   @staticmethod
   def can_add_goal(user):
     """Method that determines if the user can add additional goals for their floor or not.
-       A user cannot add a goal if they have more than two active goals or if their floor is 
-       participating in more than five. """
+       A user cannot add a goal if they have MAX_USER_GOALS or if their floor is 
+       participating in MAX_FLOOR_GOALS. """
+      
+    from activities import MAX_USER_GOALS, MAX_FLOOR_GOALS
+    
     user_goals = user.goalmember_set.filter(
       award_date=None,
     ).count()
@@ -399,13 +410,18 @@ class GoalMember(CommonActivityUser):
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
-
+    
+    if self.approval_status == u"pending":
+      # Mark pending items as submitted.
+      self.submission_date = datetime.datetime.today()
     
     elif self.approval_status == u"approved" and not self.award_date:
       # Award points to users and post on the floor wall.
       self.award_date = datetime.datetime.today()
+      if not self.submission_date:
+        self.submission_date = self.award_date
       for profile in self.floor.profile_set.all():
-        profile.add_points(self.goal.point_value, self.award_date)
+        profile.add_points(self)
         profile.save()
       
       message = "'s goal \"%s\" has been completed! Everyone on the floor received %d points." % (
@@ -418,9 +434,10 @@ class GoalMember(CommonActivityUser):
     elif self.approval_status != u"approved" and self.award_date:
       # Remove points and reject goal.
       for profile in self.floor.profile_set.all():
-        profile.remove_points(self.goal.point_value, self.award_date)
+        profile.remove_points(self)
         profile.save()
       self.award_date = None
+      self.submission_date = None
       
     super(GoalMember, self).save()
       
@@ -429,7 +446,7 @@ class GoalMember(CommonActivityUser):
     """Custom delete method to remove points from all floor members."""
     if self.award_date:
       for profile in self.floor.profile_set.all():
-        profile.remove_points(self.goal.point_value, self.award_date)
+        profile.remove_points(self)
         profile.save()
         
     super(GoalMember, self).delete()
