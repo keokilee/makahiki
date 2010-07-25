@@ -78,6 +78,15 @@ def profile(request, username, template_name="makahiki_profiles/profile.html"):
     except ImportError:
       pass
       
+    # Load standings for user.
+    try:
+      from standings import get_standings_for_user
+      
+      return_dict["floor_standings"] = get_standings_for_user(other_user, "floor")
+      return_dict["all_standings"] = get_standings_for_user(other_user, "all")
+    except ImportError:
+      pass
+      
     return render_to_response(template_name, return_dict, context_instance=RequestContext(request))
 
 @login_required

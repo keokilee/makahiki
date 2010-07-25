@@ -27,6 +27,7 @@ def get_standings_for_user(user, standings_group="floor"):
     
   elif standings_group == "all":
     profiles = Profile.objects.all().order_by("-points", "-last_awarded_submission")
+    title = "Individual standings, Everyone"
   else:
     raise StandingsException("Unknown standings type %s" % standings_type)
     
@@ -69,26 +70,26 @@ def _calculate_user_standings(user_profile, profiles):
       
   # Construct the return dictionary.
   index = 0
-  info = [{"points": first.points, "rank": 1}]
+  info = [{"points": first.points, "rank": 1, "label": ''}]
   
   # Append above points
   if rank == 2:
     # There's no above points, since that is #1
     index = 1
   elif rank > 2:
-    info.append({"points": above_points, "rank": rank - 1})
+    info.append({"points": above_points, "rank": rank - 1, "label": ''})
     index = 2
   
   # Append user points if they are not #1
   if rank > 1:
-    info.append({"points": user_profile.points, "rank": rank})
+    info.append({"points": user_profile.points, "rank": rank, "label": ''})
 
   # Append below and/or last only if the user is not ranked last.
   if rank < profile_count:
     if rank < profile_count - 1:
       # Append the below points if the user is ranked higher than second to last.
-      info.append({"points": below_points, "rank": rank + 1})
-    info.append({"points": last.points, "rank": profile_count})
+      info.append({"points": below_points, "rank": rank + 1, "label": ''})
+    info.append({"points": last.points, "rank": profile_count, "label": ''})
     
   return info, index
     

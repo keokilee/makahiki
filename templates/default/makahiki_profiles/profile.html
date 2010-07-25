@@ -6,6 +6,9 @@
 
 {% block extra_head %}
   <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  <script type="text/javascript" src="ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
   <script type="text/javascript">
     function confirm_removal(form, item_type) {
       var confirmed = confirm("Are you sure you wish to remove this " + item_type + "?");
@@ -63,7 +66,9 @@
       </div>
   </div>
   <div id="profile_center" class="profile_content">
-      {% include "makahiki_profiles/activity_panel.html" %}
+    {% include "makahiki_profiles/standings.html" %}
+      
+    {% include "makahiki_profiles/activity_panel.html" %}
   </div>
   
   <div id="profile_right" class="profile_content">

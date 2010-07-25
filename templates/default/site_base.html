@@ -29,7 +29,9 @@
       {% if user.is_staff %}
          <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
       {% endif %}
-      <li id="user_tab" class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
+      {% if user.get_profile.floor %}
+        <li id="user_tab" class="ui-state-default ui-corner-top"><a href="{% url profile_detail user %}"><span>{% trans "My Home" %}</span></a></li>
+      {% endif %}
     {% endif %}
 {% endblock %}
 

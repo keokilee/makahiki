@@ -3,6 +3,7 @@ import datetime
 
 from django.test import TestCase
 from floors.models import Floor
+from makahiki_profiles.models import Profile
 from standings import get_standings_for_user
     
 class FloorStandingsTest(TestCase):
@@ -107,3 +108,33 @@ class FloorStandingsTest(TestCase):
     # Verify that user is now first.
     self.assertTrue(decoded_standings["myindex"] == 0)
     self.assertTrue(len(decoded_standings["info"]) == 3)
+    
+class AllStandingsTest(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def setUp(self):
+    self.profiles = Profile.objects.order_by("-points", "-last_awarded_submission")
+    self.count = self.profiles.count()
+    
+  def testStandingsAllUsers(self):
+    profile = self.profiles[0]
+    json_standings = get_standings_for_user(profile, "all")
+    decoded_standings = json.loads(json_standings)
+    
+    # Verify that the returned structure is correct.
+    self.assertTrue(decoded_standings.has_key("title"))
+    self.assertTrue(decoded_standings.has_key("info"))
+    self.assertTrue(decoded_standings.has_key("myindex"))
+    self.assertTrue(decoded_standings.has_key("type"))
+    self.assertTrue(len(decoded_standings) == 4)
+    
+    # Verify that the contents are correct.
+    self.assertTrue(decoded_standings["myindex"] == 0)
+    self.assertTrue(len(decoded_standings["info"]) == 3)
+    self.assertTrue(decoded_standings["info"][0]["rank"] == 1)
+    self.assertTrue(decoded_standings["info"][2]["rank"] == self.count)
+    
+    first = decoded_standings["info"][0]
+    second = decoded_standings["info"][1]
+    self.assertTrue(first["points"] >= second["points"])
+    
