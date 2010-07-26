@@ -4,7 +4,7 @@ import unittest, time, re
 class test_goals(unittest.TestCase):
     def setUp(self):
         self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://change-this-to-the-site-you-are-testing/")
+        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
         self.selenium.start()
     
     def test_test_goals(self):
