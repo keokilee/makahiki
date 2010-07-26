@@ -40,11 +40,11 @@ class test_add_commitment(unittest.TestCase):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_text_present("I will turn off my laptop/computer every night before going to sleep"): break
+                if sel.is_text_present("I will turn off all appliances every night before going to sleep"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        try: self.failUnless(sel.is_text_present("You are now committed to \"I will turn off my laptop/computer every night before going to sleep\""))
+        try: self.failUnless(sel.is_text_present("You are now committed to \"I will turn off all appliances every night before going to sleep\""))
         except AssertionError, e: self.verificationErrors.append(str(e))
         try: self.failUnless(sel.is_element_present("//div[@id='commitments']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[2]"))
         except AssertionError, e: self.verificationErrors.append(str(e))
@@ -52,11 +52,11 @@ class test_add_commitment(unittest.TestCase):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_text_present("I will turn off my laptop/computer every night before going to sleep"): break
+                if sel.is_text_present("I will turn off all appliances every night before going to sleep"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        try: self.failUnless(sel.is_text_present("is participating in the commitment \"I will turn off my laptop/computer every night before going to sleep\"."))
+        try: self.failUnless(sel.is_text_present("is participating in the commitment \"I will turn off all appliances every night before going to sleep\"."))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.click("link=Commitments")
         for i in range(60):
@@ -73,16 +73,16 @@ class test_add_commitment(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        try: self.failUnless(sel.is_text_present("Commitment \"I will turn off my laptop/computer every night before going to sleep\" has been removed."))
+        try: self.failUnless(sel.is_text_present("Commitment \"I will turn off all appliances every night before going to sleep\" has been removed."))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.click("link=My Floor")
         for i in range(60):
             try:
-                if sel.is_text_present("I will turn off my laptop/computer every night before going to sleep"): break
+                if sel.is_text_present("I will turn off all appliances every night before going to sleep"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        try: self.failUnless(sel.is_text_present("is no longer participating in \"I will turn off my laptop/computer every night before going to sleep\"."))
+        try: self.failUnless(sel.is_text_present("is no longer participating in \"I will turn off all appliances every night before going to sleep\"."))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.click("link=Logout")
     

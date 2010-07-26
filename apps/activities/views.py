@@ -25,36 +25,36 @@ def list(request, item_type):
   if item_type == "activity":
     user_items = user.activity_set.filter(
       activitymember__user=user,
-      activitymember__awarded=False,
+      activitymember__award_date__isnull=True,
     )
     available_items = Activity.get_available_for_user(user)
     completed_items = user.activity_set.filter(
       activitymember__user=user,
-      activitymember__awarded=True,
+      activitymember__award_date__isnull=False,
     )
     item_name = "activities"
     
   elif item_type == "commitment":
     user_items = user.commitment_set.filter(
       commitmentmember__user=user,
-      commitmentmember__completed=False,
+      commitmentmember__award_date__isnull=True,
     )
     available_items = Commitment.get_available_for_user(user)
     completed_items = user.commitment_set.filter(
       commitmentmember__user=user,
-      commitmentmember__completed=True
+      commitmentmember__award_date__isnull=False,
     )
     item_name = "commitments"
     
   elif item_type == "goal":
     user_items = user.get_profile().floor.goal_set.filter(
       goalmember__floor=user.get_profile().floor,
-      goalmember__awarded=False,
+      goalmember__award_date__isnull=True,
     )
     available_items = Goal.get_available_for_user(user)
     completed_items = user.get_profile().floor.goal_set.filter(
       goalmember__floor=user.get_profile().floor,
-      goalmember__awarded=True,
+      goalmember__award_date__isnull=False,
     )
     item_name = "goals"
   
@@ -171,7 +171,7 @@ def __add_commitment(request, commitment_id):
   # Get the number of active commitments for this user
   active_commitments = Commitment.objects.filter(
     commitmentmember__user__username=user.username,
-    commitmentmember__completed=False,
+    commitmentmember__award_date__isnull=True,
   )    
   if len(active_commitments) == MAX_COMMITMENTS:
     message = "You can only have %d active commitments." % MAX_COMMITMENTS
@@ -191,7 +191,7 @@ def __remove_active_commitment(request, commitment_id):
   
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
-  commitment_member = get_object_or_404(CommitmentMember, user=user, commitment=commitment, completed=False)
+  commitment_member = get_object_or_404(CommitmentMember, user=user, commitment=commitment, award_date__isnull=True)
   
   commitment_member.delete()
   user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
@@ -263,7 +263,7 @@ def __request_commitment_points(request, commitment_id):
     membership = CommitmentMember.objects.get(
       user=user, 
       commitment=commitment, 
-      completed=False,
+      award_date__isnull=True,
       completion_date__lte=datetime.date.today,           
     )
     
@@ -276,7 +276,7 @@ def __request_commitment_points(request, commitment_id):
     if form.is_valid():
       # Currently, nothing in the form needs validation, but just to be safe.
       membership.comment = form.cleaned_data["comment"]
-      membership.completed = datetime.datetime.today()
+      membership.award_date = datetime.datetime.today()
       
       # Points are awarded in the save method.
       membership.save()
@@ -302,7 +302,7 @@ def __request_activity_points(request, activity_id):
   try:
     # Retrieve an existing activity member object if it exists.
     activity_member = ActivityMember.objects.get(user=user, activity=activity)
-    if activity_member.awarded:
+    if activity_member.award_date:
       user.message_set.create(message="You have already received the points for this activity.")
       return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.username,)))
       

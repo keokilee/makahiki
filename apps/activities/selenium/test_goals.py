@@ -12,13 +12,13 @@ class test_goals(unittest.TestCase):
         sel.open("/account/login/")
         for i in range(60):
             try:
-                if sel.is_element_present(u"//input[@value='Log in »']"): break
+                if sel.is_element_present(u"//input[@type='submit']"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -67,6 +67,7 @@ class test_goals(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
+        sel.open("/account/login/")
         for i in range(60):
             try:
                 if sel.is_element_present("id_username"): break
@@ -75,7 +76,7 @@ class test_goals(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         for i in range(60):
             try:
                 if sel.is_element_present("//li[@id='user_tab']/a/span"): break
@@ -90,12 +91,16 @@ class test_goals(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         sel.click("link=Goals")
-        try: self.failUnless(sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[5]/td[1]/div[1]/a/div[2]"))
-        except AssertionError, e: self.verificationErrors.append(str(e))
+        for i in range(60):
+            try:
+                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[5]/td[1]/div[1]/a/div[2]"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[5]/td[3]/form/a/span[2]")
         for i in range(60):
             try:
-                if sel.is_text_present("Your floor is now participating in the goal \"A test goal\""): break
+                if sel.is_element_present("//div[@id='goals']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[2]"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -103,7 +108,7 @@ class test_goals(unittest.TestCase):
         self.failUnless(re.search(r"^Are you sure you wish to remove this goal[\s\S]$", sel.get_confirmation()))
         for i in range(60):
             try:
-                if sel.is_text_present("Your floor's participation in \"A test goal\" has been removed"): break
+                if sel.is_element_present("message_1"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -145,10 +150,10 @@ class test_goals(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         for i in range(60):
             try:
-                if sel.is_element_present("//div[@id='tabhead']/div/ul[2]/li[1]/a/span"): break
+                if sel.is_element_present("link=Admin"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -162,11 +167,11 @@ class test_goals(unittest.TestCase):
         sel.click("link=Goal members")
         for i in range(60):
             try:
-                if sel.is_element_present("link=A test goal"): break
+                if sel.is_element_present("link=Reduce floor energy usage by 10%"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=A test goal")
+        sel.click("link=Reduce floor energy usage by 10%")
         for i in range(60):
             try:
                 if sel.is_element_present("id_admin_comment"): break
@@ -177,7 +182,7 @@ class test_goals(unittest.TestCase):
         sel.click("_save")
         for i in range(60):
             try:
-                if sel.is_text_present("The goal member \"A test goal : Hale Wainani Floor 3-4\" was changed successfully."): break
+                if sel.is_element_present("//div[@id='container']/ul/li"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -190,7 +195,7 @@ class test_goals(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -216,7 +221,7 @@ class test_goals(unittest.TestCase):
         sel.click("link=My Floor")
         for i in range(60):
             try:
-                if sel.is_text_present("user 's goal \"A test goal\" has been completed! Everyone on the floor received 10 points."): break
+                if sel.is_element_present("//ul[@id='wall_posts']/li[1]/div[1]/span"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -229,7 +234,7 @@ class test_goals(unittest.TestCase):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@value='Log in »']")
+        sel.click(u"//input[@type='submit']")
         for i in range(60):
             try:
                 if sel.is_element_present("link=Admin"): break
@@ -246,11 +251,11 @@ class test_goals(unittest.TestCase):
         sel.click("link=Goal members")
         for i in range(60):
             try:
-                if sel.is_element_present("link=A test goal"): break
+                if sel.is_element_present("link=Reduce floor energy usage by 10%"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=A test goal")
+        sel.click("link=Reduce floor energy usage by 10%")
         for i in range(60):
             try:
                 if sel.is_element_present("link=Delete"): break
@@ -267,7 +272,7 @@ class test_goals(unittest.TestCase):
         sel.click("//input[@value=\"Yes, I'm sure\"]")
         for i in range(60):
             try:
-                if sel.is_text_present("The goal member \"A test goal : Hale Wainani Floor 3-4\" was deleted successfully."): break
+                if sel.is_element_present("//div[@id='container']/ul/li"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
