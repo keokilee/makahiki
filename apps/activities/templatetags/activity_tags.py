@@ -34,7 +34,7 @@ def __generate_commitment_form(user, item):
   return_string = ""
   try:
     # Exception thrown if user cannot be found.
-    item_join = CommitmentMember.objects.get(user=user, commitment=item, completed=False)
+    item_join = CommitmentMember.objects.get(user=user, commitment=item, award_date__isnull=True)
     
     if datetime.date.today() >= item_join.completion_date:
       return_string += '<a href="/activities/request_{0}_points/{1.id}" '
