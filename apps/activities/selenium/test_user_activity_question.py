@@ -1,18 +1,20 @@
-from selenium import selenium
-import time, re
 from django.test import TestCase
 from noseselenium.cases import SeleniumTestCaseMixin
+import time, re
 
 class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
     selenium_test = True
     selenium_fixtures = ["base_data.json", "user_data.json"]
+    
+    def setUp(self):
+        self.verificationErrors = []
     
     def test_test_user_activity_question(self):
         sel = self.selenium
         sel.open("/account/login/")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit']")
+        sel.click("//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -24,7 +26,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("link=Activities"): break
+                if sel.is_text_present("Points: 0"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -32,11 +34,11 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[2]/a/span[2]"): break
+                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[2]/a/span[2]")
+        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -54,8 +56,6 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        # sel.click("//div[@id='login']/a/span[2]")
-        # sel.wait_for_page_to_load("30000")
         sel.open("/account/login/")
         for i in range(60):
             try:
@@ -65,7 +65,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit']")
+        sel.click("//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -127,7 +127,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         else: self.fail("time out")
         sel.type("id_username", "user")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit']")
+        sel.click("//input[@type='submit']")
         for i in range(60):
             try:
                 if sel.is_element_present("//li[@id='user_tab']/a/span"): break
@@ -137,7 +137,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         sel.click("//li[@id='user_tab']/a/span")
         for i in range(60):
             try:
-                if sel.is_element_present("link=Activities"): break
+                if sel.is_text_present("Points: 10"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -164,7 +164,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
         else: self.fail("time out")
         sel.type("id_username", "admin")
         sel.type("id_password", "changeme")
-        sel.click(u"//input[@type='submit']")
+        sel.click("//input[@type='submit']")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -214,6 +214,9 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
+    
+    def tearDown(self):
+        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

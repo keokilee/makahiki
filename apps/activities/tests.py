@@ -93,7 +93,7 @@ class ActivitiesFunctionalTestCase(TestCase):
   
   def setUp(self):
     self.user = User.objects.get(username="user")
-    self.client.login(username='user', password='changeme')
+    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
   
   def testLoadActivities(self):
     """Test that we can load the activity list page."""

@@ -19,21 +19,13 @@
         </span>
       {% endif %}
       {% if user in like_users %}
-        {% if item_name == "activities" %}
-          <form action="/activities/unlike_activity/{{item.pk}}/" method="post" style="display: inline">
-        {% else %}
-          <form action="/activities/unlike_goal/{{item.pk}}/" method="post" style="display: inline">
-        {% endif %}
+        <form action="/activities/unlike_{{item_type}}/{{item.pk}}/" method="post" style="display: inline">
         <a class="option-link ui-state-error ui-corner-all" href="#" onclick="parentNode.submit()">
           <span class="ui-icon ui-icon-circle-minus"></span>
           <span class="button-text">Unlike</span>
         </a></form>
       {% else %}
-        {% if item_name == "activities" %}
-          <form action="/activities/like_activity/{{item.pk}}/" method="post" style="display: inline">
-        {% else %}
-          <form action="/activities/like_goal/{{item.pk}}/" method="post" style="display: inline">
-        {% endif %}
+        <form action="/activities/like_{{item_type}}/{{item.pk}}/" method="post" style="display: inline">
         <a class="option-link ui-state-default ui-corner-all" href="#" onclick="parentNode.submit()">
           <span class="ui-icon ui-icon-star"></span>
           <span class="button-text">Like</span>

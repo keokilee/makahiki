@@ -3,3 +3,13 @@
 TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.run_tests'
 TEST_OUTPUT_DESCRIPTIONS = True
 TEST_OUTPUT_DIR = "log"
+
+SOUTH_TESTS_MIGRATE = False
+
+# Django Nose.
+
+INSTALLED_APPS += (
+  'django_nose',
+)
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

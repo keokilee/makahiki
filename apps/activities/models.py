@@ -314,6 +314,10 @@ class Goal(CommonActivity):
   
   floors = models.ManyToManyField(Floor, through="GoalMember")
   likes  = generic.GenericRelation(Like)
+  
+  def liked_users(self):
+    """Returns an array of users that like this activity."""
+    return [like.user for like in self.likes.all()]
     
 class GoalMember(CommonActivityUser):
   """Represents the join between groups/floors."""

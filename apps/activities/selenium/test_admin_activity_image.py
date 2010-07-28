@@ -6,6 +6,9 @@ class test_admin_activity_image(unittest.TestCase, SeleniumTestCaseMixin):
     selenium_test = True
     selenium_fixtures = ["base_data.json", "user_data.json"]
     
+    def setUp(self):
+        self.verificationErrors = []
+        
     def test_test_admin_activity_image(self):
         sel = self.selenium
         sel.open("/account/login/")
@@ -92,6 +95,8 @@ class test_admin_activity_image(unittest.TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-
+        
+    def tearDown(self):
+        self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
     unittest.main()

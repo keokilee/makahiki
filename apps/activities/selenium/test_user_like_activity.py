@@ -1,15 +1,15 @@
+import time, re
 from django.test import TestCase
 from noseselenium.cases import SeleniumTestCaseMixin
-import time, re
 
-class test_user_add_commitment(TestCase, SeleniumTestCaseMixin):
+class test_user_like_activity(TestCase, SeleniumTestCaseMixin):
     selenium_test = True
     selenium_fixtures = ["base_data.json", "user_data.json"]
-    
+  
     def setUp(self):
         self.verificationErrors = []
     
-    def test_user_add_commitment(self):
+    def test_test_user_like_activity(self):
         sel = self.selenium
         sel.open("/account/login/")
         for i in range(60):
@@ -24,46 +24,46 @@ class test_user_add_commitment(TestCase, SeleniumTestCaseMixin):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("//li[@id='user_tab']/a/span"): break
+                if sel.is_element_present("link=My Home"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//li[@id='user_tab']/a/span")
+        sel.click("link=My Home")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("link=Commitments"): break
+                if sel.is_element_present("link=Activities"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=Commitments")
+        sel.click("link=Activities")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[1]"): break
+                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[1]/div[2]/form/a/span[2]"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[2]")
+        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[1]/div[2]/form/a/span[2]")
         for i in range(60):
             try:
-                if sel.is_element_present("//div[@id='commitments']/div[2]/table/tbody/tr[2]/td[3]"): break
+                if sel.is_element_present("link=Unlike"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        try: self.failUnless(sel.is_element_present("message_1"))
-        except AssertionError, e: self.verificationErrors.append(str(e))
-        try: self.failUnless(sel.is_element_present("//div[@id='commitments']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[2]"))
-        except AssertionError, e: self.verificationErrors.append(str(e))
-        sel.click("//div[@id='commitments']/div[2]/table/tbody/tr[2]/td[3]/form/a/span[1]")
-        self.failUnless(re.search(r"^Are you sure you wish to remove this commitment[\s\S]$", sel.get_confirmation()))
+        sel.click("link=Unlike")
         for i in range(60):
             try:
-                if sel.is_text_present("You are not participating in any commitments."): break
+                if sel.is_text_present("Available activities:"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='login']/a/span")
+        for i in range(60):
+            try:
+                if not sel.is_element_present("link=Unlike"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
     
     def tearDown(self):
         self.assertEqual([], self.verificationErrors)

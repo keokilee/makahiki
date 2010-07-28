@@ -36,17 +36,17 @@
   </script>
 {% endblock %}
 
-{% block active_subnav %}{{item_name}}{%endblock%}
+{% block active_subnav %}{{plural_type}}{%endblock%}
 
 {% block body %}
   <div id="main_content" style="float: left; width: 70%">
   
     <div id="user_items" class="main_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
-        {% if item_name == "activities" %}
-          Submitted {{item_name}}:
+        {% if plural_type == "activities" %}
+          Submitted {{plural_type}}:
         {% else %}
-          Active {{item_name}}:
+          Active {{plural_type}}:
         {% endif %}
         <span id="active_help" class="list-help ui-icon ui-icon-help"></span>
       </div>
@@ -64,10 +64,10 @@
             {% endfor %}
           </table>
         {% else %}
-          {% if item_name == "activities" %}
+          {% if plural_type == "activities" %}
             You have not submitted any activities.
           {% else %}
-            <h4>You are not participating in any {{item_name}}.</h4>
+            <h4>You are not participating in any {{plural_type}}.</h4>
           {% endif %}
         {% endif %}
       </div>
@@ -75,7 +75,7 @@
     
     <div id="available_items" class="main_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
-        Available {{item_name}}:
+        Available {{plural_type}}:
         <span id="available_help" class="list-help ui-icon ui-icon-help"></span>
       </div>
 
@@ -97,7 +97,7 @@
   <div id="side_content" style="float:left; width: 30%">
     <div id="completed_items" class="side_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
-        Completed {{item_name}}:
+        Completed {{plural_type}}:
         <span id="completed_help" class="side-help ui-icon ui-icon-help"></span>
       </div>
 
@@ -109,7 +109,7 @@
         {% endfor %}
       </ul>
       {% else %}
-        <h4>You have not completed any {{item_name}}.</h4>
+        <h4>You have not completed any {{plural_type}}.</h4>
       {% endif %}
       </div>
     </div>
@@ -141,13 +141,13 @@
     })
   </script>
   
-  <div id="active_dialog" title="Active {{item_name.capitalize}}">
-    {% gblock "active",item_name for "gblocks.Text" with "activities/gblocks/help.html" %}
+  <div id="active_dialog" title="Active {{plural_type.capitalize}}">
+    {% gblock "active",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
-  <div id="available_dialog" title="Available {{item_name.capitalize}}">
-    {% gblock "available",item_name for "gblocks.Text" with "activities/gblocks/help.html" %}
+  <div id="available_dialog" title="Available {{plural_type.capitalize}}">
+    {% gblock "available",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
-  <div id="completed_dialog" title="Completed {{item_name.capitalize}}">
-    {% gblock "completed",item_name for "gblocks.Text" with "activities/gblocks/help.html" %}
+  <div id="completed_dialog" title="Completed {{plural_type.capitalize}}">
+    {% gblock "completed",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
 {% endblock %}

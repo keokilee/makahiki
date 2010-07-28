@@ -20,25 +20,25 @@ from activities import *
 def list(request, item_type):
   user = request.user
   
-  user_items = available_items = completed_items = item_name = None
+  user_items = available_items = completed_items = plural_type = None
   
   if item_type == "activity":
     user_items = get_current_activities(user)
     available_items = get_available_activities(user)
     completed_items = get_completed_activities(user)
-    item_name = "activities"
+    plural_type = "activities"
     
   elif item_type == "commitment":
     user_items = get_current_commitments(user)
     available_items = get_available_commitments(user)
     completed_items = get_completed_commitments(user)
-    item_name = "commitments"
+    plural_type = "commitments"
     
   elif item_type == "goal":
     user_items = get_current_goals(user)
     available_items = get_available_goals(user)
     completed_items = get_completed_goals(user)
-    item_name = "goals"
+    plural_type = "goals"
   
   else:
     # Already handled by urls.py, but just to be safe.
@@ -48,7 +48,8 @@ def list(request, item_type):
     "user_items": user_items,
     "available_items": available_items,
     "completed_items": completed_items,
-    "item_name": item_name,
+    "item_type": item_type,
+    "plural_type": plural_type,
   }, context_instance = RequestContext(request))
   
 @login_required
@@ -64,7 +65,7 @@ def like(request, item_type, item_id):
     like = Like(user=user, floor=user.get_profile().floor, content_type=content_type, object_id=item_id)
     like.save()
     
-  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,))) 
+  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,)))   
   
 @login_required
 def unlike(request, item_type, item_id):

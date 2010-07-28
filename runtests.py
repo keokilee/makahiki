@@ -4,8 +4,8 @@ import os
 import sys
 import string
 
-unit_tests = ["activities.tests", "makahiki_base.tests", "standings.tests"]
-selenium_tests = ["activities", "makahiki_base"]
+unit_tests = ["activities.tests", "makahiki_base", "standings"]
+selenium_tests = ["activities"]
 
 if len(sys.argv) == 1:
   print "**Running all tests.**"
