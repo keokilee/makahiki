@@ -109,7 +109,7 @@ class ActivitiesFunctionalTestCase(TestCase):
       activitymember__user=self.user,
     )[0]
     response = self.client.post('/activities/add_activity/%d/' % activity.pk, {}, "multipart/form-data", True)
-    self.assertRedirects(response, "/profiles/profile/%s/" % self.user.username)
+    self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
     self.failUnless(activity in response.context["user_activities"])
     response = self.client.get('/activities/activity_list/')
     self.failUnless(activity in response.context["user_items"])
