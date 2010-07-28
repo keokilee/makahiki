@@ -237,7 +237,7 @@ def __request_commitment_points(request, commitment_id):
   membership = None
   
   try:
-    membership = get_current_commitments(user).get(commitment=commitment, completion_date__lte=datetime.date.today())
+    membership = CommitmentMember.objects.get(commitment=commitment, completion_date__lte=datetime.date.today())
     
   except ObjectDoesNotExist:
     user.message_set.create(message="Either the commitment is not active or it is not completed yet.")
