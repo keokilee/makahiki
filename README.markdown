@@ -1,46 +1,13 @@
 # README.markdown
 
-## CHANGELOG
-
-Milestone 4
-
-* Support for migrations using South.
-* Added commitment workflow.
-* Made the homepage content more generic and put the visualizations into generic blocks.
-* Fixed bug where messages were not clearing.
-* Fixed bug where creating an activity with a confirmation code failed to work for new activities.
-
-Milestone 3.5
-
-* Added a news application to the home page where an admin can add articles.
-* Added Gauge and BioHeatMap visualizations to the home page.
-* Users can now select their own theme.
-* Added tabs to profile page.
-
-Milestone 3
-
-* Moved templates and css into "default" directories to set up themes.
-* Added custom CSS import tag to import arbitrary numbers of CSS files.
-* Added a drop down to change the CSS theme directory.
-* Added activity validation process through uploading images, inputting confirm codes, or answering questions.
-* Added CSS themes "Windmill", "Google", "Green", and "Dark".
-
-Milestone 2.5
-
-* Added commitments and activities to the user profile.
-* Added commitments and activities to the admin interface.
-* Added [Windmill](http://getwindmill.com) tests.
-* Added admin tab for users with admin permissions.
-* Customized profile and avatar templates for consistency.
-
 ## Introduction
 
-This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/makahiki) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
+This README describes how to set up your computer for contributing to the [Makahiki](http://github.com/keokilee/makahiki) project.  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
 
 If you're on Windows, there's also a screencast on installing Pinax in Windows on [Beshr Kayali's blog](http://beshrkayali.com/posts/10/).  Note that you can ignore the section adding/removing Genshi.
 
 ## Prerequisites
-* [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using 64 bit seems to have issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
+* [Python](http://www.python.org/download/) 2.5 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using the 64 bit version may lead to installation issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
 * If on Mac OS X, make sure that the Apple Developer Tools are installed (which is bundled with XCode).  You can either get this from your Mac's install DVD or from Apple's [site](http://developer.apple.com/technologies/xcode.html).  Note that you need an Apple developer account (which is free) to download from Apple.
 * [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL).
 
@@ -50,13 +17,20 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
 * TROUBLESHOOTING: On Mac OS X Snow Leopard, you may see an issue where the virtual environment fails to install.  One way to avoid this is to use the [virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/).  Follow the steps in the introduction and make a virtualenv for Pinax (i.e. `mkvirtualenv pinax-env`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script. Then, you can go back to the pinax folder you downloaded and type `python scripts/pinax-boot.py $WORKON_HOME/pinax-env` to install Pinax into the virtual environment.
 
-## Obtaining the Kukui Cup Pinax source
+## Obtaining the Makahiki source
 * Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
 * It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
 * If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/makahiki.git` to get the source.
-* If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
-* Once those are set up, send me your Git username so that you can be added as a collaborator.
-* When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/makahiki.git` to check out the code.  This will create the new folder and download the code from the repository.
+
+## Activate the virtual environment
+Before working with Makahiki and Pinax, always make sure to activate the virtual environment.  If you are not using virtualenvwrapper, you can activate the environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you're using virtualenvwrapper, then the command to start the virtual environment is `workon <name-of-virtual-environment>`.
+
+## Update installed plugins.
+
+Makahiki uses different versions of plugins than the ones found in the default Pinax installation.  Using pip (included in the virtual environment), it is easy to update the requirements.
+
+* Change to the project directory and make sure the virtual environment is active.
+* Type `pip install -r requirements.txt`.  This will install the plugins listed in requirements.txt, which include Django 1.2.1 and testing tools.
 
 ## OPTIONAL: Install South for database migrations
 
@@ -74,15 +48,11 @@ To install South, please go to their [installation wiki](http://south.aeracode.o
 * IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
 * If you have installed South, then you will also need to run `python manage.py migrate` to sync the migrations.
-* The database fixtures should be automatically loaded.  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
+* There is an initial set of fixtures that can be used to aid in development.  To install them, type `./manage.py loaddata fixtures/*`.
 
 ## Running the server
-* If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
-
-## OPTIONAL: Install Windmill
-Windmill is an Python app that will run tests within the browser.  The runtests.py script will work without it, but is useful if you're developing functionality and want to test it on the browser side.  Integrating it is very simple.  To install the application, download it from their [website](http://www.getwindmill.com/) and follow their installation [wiki](http://wiki.github.com/windmill/windmill/installing).  Once installed, running `python runtests.py` will run all of the available unit tests and Windmill tests.
 
 ## Troubleshooting
 If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  I have created a backup of my contenttypes data that can be used to reload it.  But first, you need to delete the contents of the contenttypes database.
@@ -116,7 +86,11 @@ Installed 109 object(s) from 2 fixture(s)
 </pre>
 
 ## Running tests
-While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
+I have written my own script (runtests.py) that run through the tests installed in Makahiki.  These tests should be run before committing.  The test suite includes Selenium tests as well as regular unit/functional tests. The Selenium tests require both the development server and Selenium Remote Control to be running.  If they are not running, they are skipped.
+
+## Writing tests
+
+Currently, the Selenium tests require the dev server to be running with the base fixtures.  Also note that changes to the database are NOT undone when the tests conclude, so it is recommended that you undo your actions in the test.
 
 ## Further documentation
 For information on editing views, consult the [Editing Views wiki](http://wiki.github.com/keokilee/makahiki/editing-views).
