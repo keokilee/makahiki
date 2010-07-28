@@ -9,7 +9,17 @@ from django.core.urlresolvers import reverse
 
 ### Commitment Admin
 admin.site.register(Commitment)
-admin.site.register(CommitmentMember)
+
+class CommitmentMemberAdmin(admin.ModelAdmin):
+  """Override to use custom delete method."""
+  actions = ["delete_selected"]
+    
+  def delete_selected(self, request, queryset):
+    for obj in queryset:
+      obj.delete()
+  delete_selected.short_description = "Delete the selected objects."
+  
+admin.site.register(CommitmentMember, CommitmentMemberAdmin)
   
 ### Activity Admin
 class ActivityAdminForm(forms.ModelForm):
@@ -155,6 +165,12 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   readonly_fields = ("user", "activity", "question", "response", "user_comment")
   list_display = ("activity", "user", "approval_status", "question", "response", "image")
   list_filter = ["approval_status"]
+  actions = ["delete_selected"]
+    
+  def delete_selected(self, request, queryset):
+    for obj in queryset:
+      obj.delete()
+  delete_selected.short_description = "Delete the selected objects."
   
 admin.site.register(ActivityMember, ActivityMemberAdmin)
 
@@ -168,5 +184,11 @@ class GoalMemberAdmin(admin.ModelAdmin):
   readonly_fields = ("user", "goal", "floor", "user_comment")
   list_display = ("goal", "floor", "user", "approval_status")
   list_filter = ["approval_status"]
+  actions = ["delete_selected"]
+    
+  def delete_selected(self, request, queryset):
+    for obj in queryset:
+      obj.delete()
+  delete_selected.short_description = "Delete the selected objects."
 
 admin.site.register(GoalMember, GoalMemberAdmin)
