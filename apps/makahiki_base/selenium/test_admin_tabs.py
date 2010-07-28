@@ -1,11 +1,10 @@
 from selenium import selenium
 import unittest, time, re
+from noseselenium.cases import SeleniumTestCaseMixin
 
-class test_admin_tab(unittest.TestCase):
-    def setUp(self):
-        self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
-        self.selenium.start()
+class test_admin_tab(unittest.TestCase, SeleniumTestCaseMixin):
+    selenium_test = True
+    selenium_fixtures = ["base_data.json", "user_data.json"]
     
     def test_test_admin_tab(self):
         sel = self.selenium
@@ -35,10 +34,6 @@ class test_admin_tab(unittest.TestCase):
         try: self.failIf(sel.is_text_present("Admin"))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.click("link=Logout")
-    
-    def tearDown(self):
-        self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

@@ -13,7 +13,7 @@ from django.views.decorators.cache import never_cache
 
 from activities.models import *
 from activities.forms import *
-from activities import MAX_COMMITMENTS
+from activities import *
 
 @login_required
 @never_cache
@@ -23,39 +23,21 @@ def list(request, item_type):
   user_items = available_items = completed_items = item_name = None
   
   if item_type == "activity":
-    user_items = user.activity_set.filter(
-      activitymember__user=user,
-      activitymember__award_date__isnull=True,
-    )
-    available_items = Activity.get_available_for_user(user)
-    completed_items = user.activity_set.filter(
-      activitymember__user=user,
-      activitymember__award_date__isnull=False,
-    )
+    user_items = get_current_activities(user)
+    available_items = get_available_activities(user)
+    completed_items = get_completed_activities(user)
     item_name = "activities"
     
   elif item_type == "commitment":
-    user_items = user.commitment_set.filter(
-      commitmentmember__user=user,
-      commitmentmember__award_date__isnull=True,
-    )
-    available_items = Commitment.get_available_for_user(user)
-    completed_items = user.commitment_set.filter(
-      commitmentmember__user=user,
-      commitmentmember__award_date__isnull=False,
-    )
+    user_items = get_current_commitments(user)
+    available_items = get_available_commitments(user)
+    completed_items = get_completed_commitments(user)
     item_name = "commitments"
     
   elif item_type == "goal":
-    user_items = user.get_profile().floor.goal_set.filter(
-      goalmember__floor=user.get_profile().floor,
-      goalmember__award_date__isnull=True,
-    )
-    available_items = Goal.get_available_for_user(user)
-    completed_items = user.get_profile().floor.goal_set.filter(
-      goalmember__floor=user.get_profile().floor,
-      goalmember__award_date__isnull=False,
-    )
+    user_items = get_current_goals(user)
+    available_items = get_available_goals(user)
+    completed_items = get_completed_goals(user)
     item_name = "goals"
   
   else:
@@ -168,15 +150,10 @@ def __add_commitment(request, commitment_id):
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
   
-  # Get the number of active commitments for this user
-  active_commitments = Commitment.objects.filter(
-    commitmentmember__user__username=user.username,
-    commitmentmember__award_date__isnull=True,
-  )    
-  if len(active_commitments) == MAX_COMMITMENTS:
+  if not can_add_commitments(user):
     message = "You can only have %d active commitments." % MAX_COMMITMENTS
     user.message_set.create(message=message)
-  elif commitment in active_commitments:
+  elif commitment in get_current_commitments(user):
     user.message_set.create(message="You are already committed to this commitment.")
   else:
     # User can commit to this commitment.
@@ -205,7 +182,7 @@ def __add_activity(request, activity_id):
   user = request.user
 
   # Search for an existing activity for this user
-  if not ActivityMember.objects.filter(user=user, activity=activity):
+  if activity not in user.activity_set.all():
     activity_member = ActivityMember(user=user, activity=activity)
     activity_member.save()
     user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
@@ -231,9 +208,8 @@ def __add_goal(request, goal_id):
   goal = get_object_or_404(Goal, pk=goal_id)
   user = request.user
   floor = user.get_profile().floor
-  goal_member = GoalMember.objects.filter(floor=floor, goal=goal)
   
-  if not goal_member and GoalMember.can_add_goal(user):
+  if (goal not in floor.goal_set.all()) and GoalMember.can_add_goal(user):
     goal_member = GoalMember(user=user, goal=goal, floor=user.get_profile().floor)
     goal_member.save()
     user.message_set.create(message="Your floor is now participating in the goal \"" + goal.title + "\"")
@@ -260,12 +236,7 @@ def __request_commitment_points(request, commitment_id):
   membership = None
   
   try:
-    membership = CommitmentMember.objects.get(
-      user=user, 
-      commitment=commitment, 
-      award_date__isnull=True,
-      completion_date__lte=datetime.date.today,           
-    )
+    membership = get_current_commitments(user).get(commitment=commitment, completion_date__lte=datetime.date.today())
     
   except ObjectDoesNotExist:
     user.message_set.create(message="Either the commitment is not active or it is not completed yet.")

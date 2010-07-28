@@ -1,11 +1,11 @@
 from selenium import selenium
-import unittest, time, re
+import time, re
+from django.test import TestCase
+from noseselenium.cases import SeleniumTestCaseMixin
 
-class test_goals(unittest.TestCase):
-    def setUp(self):
-        self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
-        self.selenium.start()
+class test_goals(TestCase, SeleniumTestCaseMixin):
+    selenium_test = True
+    selenium_fixtures = ["base_data.json", "user_data.json"]
     
     def test_test_goals(self):
         sel = self.selenium
@@ -56,6 +56,24 @@ class test_goals(unittest.TestCase):
         for i in range(60):
             try:
                 if sel.is_text_present("The goal \"A test goal\" was added successfully."): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        sel.click("link=A test goal")
+        sel.wait_for_page_to_load("30000")
+        sel.click("link=Delete")
+        sel.wait_for_page_to_load("30000")
+        for i in range(60):
+            try:
+                if sel.is_element_present("//div[@id='content']/ul/li/a"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        sel.click("//input[@value=\"Yes, I'm sure\"]")
+        sel.wait_for_page_to_load("30000")
+        for i in range(60):
+            try:
+                if sel.is_element_present("//div[@id='container']/ul/li"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -277,10 +295,6 @@ class test_goals(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         sel.click("link=Log out")
-    
-    def tearDown(self):
-        self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

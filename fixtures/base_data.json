@@ -1,5 +1,71 @@
 [
  {
+  "pk": 12, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-06-25 10:12:09", 
+   "updated_at": null, 
+   "approval_status": "pending"
+  }
+ }, 
+ {
+  "pk": 13, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-06-30 15:02:48", 
+   "updated_at": null, 
+   "approval_status": "pending"
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-07-07 11:53:58", 
+   "updated_at": null, 
+   "approval_status": "unapproved"
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-07-16 18:07:59", 
+   "updated_at": null, 
+   "approval_status": "unapproved"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-07-17 12:33:15", 
+   "updated_at": null, 
+   "approval_status": "pending"
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.commonactivityuser", 
+  "fields": {
+   "award_date": null, 
+   "submission_date": null, 
+   "created_at": "2010-07-17 12:44:21", 
+   "updated_at": null, 
+   "approval_status": "unapproved"
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "activities.commitment", 
   "fields": {
@@ -273,6 +339,123 @@
    "updated_at": null, 
    "point_value": 2, 
    "duration": 5
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": "2010-07-22 13:32:28", 
+   "comment": "I so rock.", 
+   "created_at": "2010-06-25 10:10:38", 
+   "commitment": 1, 
+   "updated_at": "2010-07-08 11:45:13", 
+   "completion_date": "2010-06-30", 
+   "user": 2
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": "2010-07-22 13:32:28", 
+   "comment": "I feel so green.", 
+   "created_at": "2010-06-25 10:10:49", 
+   "commitment": 3, 
+   "updated_at": "2010-07-17 06:38:05", 
+   "completion_date": "2010-06-30", 
+   "user": 2
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": "2010-07-22 13:32:28", 
+   "comment": "Hello admins!", 
+   "created_at": "2010-06-30 15:12:48", 
+   "commitment": 4, 
+   "updated_at": "2010-07-18 17:43:30", 
+   "completion_date": "2010-07-05", 
+   "user": 1
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-08 11:45:23", 
+   "commitment": 1, 
+   "updated_at": null, 
+   "completion_date": "2010-07-13", 
+   "user": 2
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-16 18:01:52", 
+   "commitment": 1, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:02", 
+   "commitment": 3, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:09", 
+   "commitment": 8, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:17", 
+   "commitment": 11, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "activities.commitmentmember", 
+  "fields": {
+   "award_date": null, 
+   "comment": "", 
+   "created_at": "2010-07-16 18:02:28", 
+   "commitment": 17, 
+   "updated_at": null, 
+   "completion_date": "2010-07-21", 
+   "user": 605
   }
  }, 
  {
@@ -6270,6 +6453,32 @@
   }
  }, 
  {
+  "pk": 13, 
+  "model": "activities.activitymember", 
+  "fields": {
+   "admin_comment": "", 
+   "user_comment": "", 
+   "image": "", 
+   "question": 1, 
+   "user": 1, 
+   "activity": 2, 
+   "response": "kilowatt"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.activitymember", 
+  "fields": {
+   "admin_comment": "", 
+   "user_comment": "", 
+   "image": "", 
+   "question": 1, 
+   "user": 2, 
+   "activity": 2, 
+   "response": "kWh"
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "activities.goal", 
   "fields": {
@@ -6333,6 +6542,116 @@
    "updated_at": null, 
    "point_value": 15, 
    "title": "Find your floor's minimum power"
+  }
+ }, 
+ {
+  "pk": 22, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 16:35:10", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 15:53:44", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 20, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 15:51:15", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 15:49:05", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 15:47:15", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 16, 
+  "model": "activities.goal", 
+  "fields": {
+   "created_at": "2010-07-25 15:42:45", 
+   "description": "Go testing!", 
+   "updated_at": null, 
+   "point_value": 10, 
+   "title": "A test goal"
+  }
+ }, 
+ {
+  "pk": 14, 
+  "model": "activities.goalmember", 
+  "fields": {
+   "user": 1, 
+   "user_comment": null, 
+   "goal": 2, 
+   "admin_comment": null, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 12, 
+  "model": "activities.goalmember", 
+  "fields": {
+   "user": 2, 
+   "user_comment": null, 
+   "goal": 1, 
+   "admin_comment": null, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 15, 
+  "model": "activities.goalmember", 
+  "fields": {
+   "user": 605, 
+   "user_comment": null, 
+   "goal": 6, 
+   "admin_comment": null, 
+   "floor": 2
+  }
+ }, 
+ {
+  "pk": 17, 
+  "model": "activities.goalmember", 
+  "fields": {
+   "user": 2, 
+   "user_comment": null, 
+   "goal": 4, 
+   "admin_comment": null, 
+   "floor": 2
   }
  }, 
  {

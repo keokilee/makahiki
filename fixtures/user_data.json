@@ -14,51 +14,45 @@
     103, 
     104, 
     105, 
-    152, 
-    153, 
-    154, 
     155, 
     156, 
     157, 
-    140, 
-    141, 
-    142, 
-    143, 
-    144, 
-    145, 
-    137, 
-    138, 
-    139, 
-    149, 
-    150, 
-    151, 
     158, 
     159, 
     160, 
-    161, 
-    162, 
-    163, 
-    134, 
-    135, 
-    136, 
+    143, 
+    144, 
+    145, 
     146, 
     147, 
     148, 
+    140, 
+    141, 
+    142, 
+    152, 
+    153, 
+    154, 
+    161, 
+    162, 
+    163, 
+    164, 
+    165, 
+    166, 
+    149, 
+    150, 
+    151, 
     7, 
     8, 
     9, 
     113, 
     114, 
     115, 
-    173, 
-    174, 
-    175, 
-    176, 
-    177, 
-    178, 
-    179, 
-    180, 
-    181, 
+    137, 
+    138, 
+    139, 
+    134, 
+    135, 
+    136, 
     182, 
     183, 
     184, 
@@ -77,15 +71,21 @@
     128, 
     129, 
     130, 
+    173, 
+    174, 
+    175, 
     170, 
     171, 
     172, 
     167, 
     168, 
     169, 
-    164, 
-    165, 
-    166
+    179, 
+    180, 
+    181, 
+    176, 
+    177, 
+    178
    ]
   }
  }, 
@@ -99,7 +99,7 @@
    "is_active": true, 
    "is_superuser": true, 
    "is_staff": true, 
-   "last_login": "2010-07-17 22:17:56", 
+   "last_login": "2010-07-25 15:19:43", 
    "groups": [], 
    "user_permissions": [], 
    "password": "sha1$1ec42$55198a04ae01b5a33a031535dc93e91ca8ddf916", 
@@ -10991,7 +10991,7 @@
    "is_active": true, 
    "is_superuser": true, 
    "is_staff": true, 
-   "last_login": "2010-07-13 10:11:34", 
+   "last_login": "2010-07-26 16:14:44", 
    "groups": [
     1
    ], 
@@ -11544,12 +11544,49 @@
   }
  }, 
  {
+  "pk": 637, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "user", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": true, 
+   "is_superuser": false, 
+   "is_staff": false, 
+   "last_login": "2010-07-25 16:36:48", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "sha1$56f3d$9650f448ab848cc3871617ab5ab911ca83be927a", 
+   "email": "", 
+   "date_joined": "2010-07-25 15:12:49"
+  }
+ }, 
+ {
+  "pk": 638, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "user1", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": true, 
+   "is_superuser": false, 
+   "is_staff": false, 
+   "last_login": "2010-07-25 15:13:05", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "sha1$48a78$0cf465b7a5248280acda9ced5f1d7d82be4583be", 
+   "email": "", 
+   "date_joined": "2010-07-25 15:13:05"
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "makahiki_profiles.profile", 
   "fields": {
    "about": "", 
    "name": "George Lee", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 2, 
    "user": 1
@@ -11562,6 +11599,7 @@
    "about": "I am interested in learning more about saving energy. ", 
    "name": "Philip Johnson", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 4, 
    "user": 2
@@ -11574,6 +11612,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 3
@@ -11586,6 +11625,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 4
@@ -11598,6 +11638,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 5
@@ -11610,6 +11651,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 6
@@ -11622,6 +11664,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 7
@@ -11634,6 +11677,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 8
@@ -11646,6 +11690,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 9
@@ -11658,6 +11703,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 10
@@ -11670,6 +11716,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 11
@@ -11682,6 +11729,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 12
@@ -11694,6 +11742,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 13
@@ -11706,6 +11755,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 14
@@ -11718,6 +11768,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 15
@@ -11730,6 +11781,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 16
@@ -11742,6 +11794,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 17
@@ -11754,6 +11807,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 18
@@ -11766,6 +11820,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 19
@@ -11778,6 +11833,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 20
@@ -11790,6 +11846,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 21
@@ -11802,6 +11859,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 22
@@ -11814,6 +11872,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 23
@@ -11826,6 +11885,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 24
@@ -11838,6 +11898,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 25
@@ -11850,6 +11911,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 26
@@ -11862,6 +11924,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 27
@@ -11874,6 +11937,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 28
@@ -11886,6 +11950,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 29
@@ -11898,6 +11963,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 30
@@ -11910,6 +11976,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 31
@@ -11922,6 +11989,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 32
@@ -11934,6 +12002,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 33
@@ -11946,6 +12015,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 34
@@ -11958,6 +12028,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 35
@@ -11970,6 +12041,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 36
@@ -11982,6 +12054,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 37
@@ -11994,6 +12067,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 38
@@ -12006,6 +12080,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 39
@@ -12018,6 +12093,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 40
@@ -12030,8 +12106,9 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 41
   }
  }, 
@@ -12042,6 +12119,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 42
@@ -12054,6 +12132,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 43
@@ -12066,6 +12145,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 44
@@ -12078,6 +12158,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 45
@@ -12090,6 +12171,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 46
@@ -12102,6 +12184,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 47
@@ -12114,6 +12197,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 48
@@ -12126,6 +12210,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 49
@@ -12138,6 +12223,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 50
@@ -12150,6 +12236,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 51
@@ -12162,6 +12249,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 52
@@ -12174,6 +12262,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 53
@@ -12186,8 +12275,9 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 54
   }
  }, 
@@ -12198,6 +12288,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 55
@@ -12210,6 +12301,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 56
@@ -12222,6 +12314,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 57
@@ -12234,6 +12327,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 58
@@ -12246,6 +12340,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 59
@@ -12258,6 +12353,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 60
@@ -12270,6 +12366,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 61
@@ -12282,6 +12379,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 62
@@ -12294,6 +12392,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 63
@@ -12306,6 +12405,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 64
@@ -12318,6 +12418,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 65
@@ -12330,6 +12431,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 66
@@ -12342,6 +12444,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 67
@@ -12354,6 +12457,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 68
@@ -12366,6 +12470,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 69
@@ -12378,6 +12483,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 70
@@ -12390,6 +12496,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 71
@@ -12402,6 +12509,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 72
@@ -12414,8 +12522,9 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 73
   }
  }, 
@@ -12426,6 +12535,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 74
@@ -12438,6 +12548,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 75
@@ -12450,6 +12561,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 76
@@ -12462,8 +12574,9 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 77
   }
  }, 
@@ -12474,6 +12587,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 78
@@ -12486,6 +12600,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 79
@@ -12498,6 +12613,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 80
@@ -12510,6 +12626,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 81
@@ -12522,6 +12639,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 82
@@ -12534,6 +12652,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 83
@@ -12546,8 +12665,9 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 84
   }
  }, 
@@ -12558,6 +12678,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 85
@@ -12570,6 +12691,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 86
@@ -12582,6 +12704,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 87
@@ -12594,6 +12717,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 88
@@ -12606,6 +12730,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 89
@@ -12618,8 +12743,9 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 90
   }
  }, 
@@ -12630,6 +12756,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 91
@@ -12642,6 +12769,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 92
@@ -12654,6 +12782,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 93
@@ -12666,6 +12795,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 94
@@ -12678,6 +12808,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 95
@@ -12690,6 +12821,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 96
@@ -12702,6 +12834,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 97
@@ -12714,6 +12847,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 98
@@ -12726,6 +12860,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 99
@@ -12738,6 +12873,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 100
@@ -12750,6 +12886,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 101
@@ -12762,6 +12899,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 102
@@ -12774,6 +12912,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 103
@@ -12786,6 +12925,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 104
@@ -12798,6 +12938,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 105
@@ -12810,6 +12951,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 106
@@ -12822,6 +12964,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 107
@@ -12834,8 +12977,9 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 108
   }
  }, 
@@ -12846,6 +12990,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 109
@@ -12858,6 +13003,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 110
@@ -12870,6 +13016,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 111
@@ -12882,6 +13029,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 112
@@ -12894,6 +13042,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 113
@@ -12906,6 +13055,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 114
@@ -12918,6 +13068,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 115
@@ -12930,6 +13081,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 116
@@ -12942,6 +13094,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 117
@@ -12954,6 +13107,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 118
@@ -12966,6 +13120,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 119
@@ -12978,6 +13133,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 120
@@ -12990,6 +13146,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 121
@@ -13002,6 +13159,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 122
@@ -13014,6 +13172,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 123
@@ -13026,6 +13185,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 124
@@ -13038,6 +13198,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 125
@@ -13050,6 +13211,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 126
@@ -13062,6 +13224,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 127
@@ -13074,8 +13237,9 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 128
   }
  }, 
@@ -13086,6 +13250,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 129
@@ -13098,6 +13263,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 130
@@ -13110,6 +13276,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 131
@@ -13122,6 +13289,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 132
@@ -13134,6 +13302,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 133
@@ -13146,6 +13315,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 134
@@ -13158,6 +13328,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 135
@@ -13170,6 +13341,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 136
@@ -13182,6 +13354,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 137
@@ -13194,6 +13367,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 138
@@ -13206,6 +13380,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 139
@@ -13218,6 +13393,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 140
@@ -13230,6 +13406,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 141
@@ -13242,6 +13419,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 142
@@ -13254,6 +13432,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 143
@@ -13266,6 +13445,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 144
@@ -13278,8 +13458,9 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 145
   }
  }, 
@@ -13290,6 +13471,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 146
@@ -13302,6 +13484,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 147
@@ -13314,6 +13497,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 148
@@ -13326,6 +13510,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 149
@@ -13338,6 +13523,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 150
@@ -13350,6 +13536,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 151
@@ -13362,8 +13549,9 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 152
   }
  }, 
@@ -13374,6 +13562,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 153
@@ -13386,6 +13575,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 154
@@ -13398,6 +13588,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 155
@@ -13410,6 +13601,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 156
@@ -13422,6 +13614,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 157
@@ -13434,6 +13627,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 158
@@ -13446,6 +13640,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 159
@@ -13458,6 +13653,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 160
@@ -13470,6 +13666,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 161
@@ -13482,6 +13679,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 162
@@ -13494,6 +13692,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 163
@@ -13506,6 +13705,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 164
@@ -13518,6 +13718,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 165
@@ -13530,6 +13731,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 166
@@ -13542,6 +13744,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 167
@@ -13554,6 +13757,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 168
@@ -13566,6 +13770,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 169
@@ -13578,6 +13783,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 170
@@ -13590,6 +13796,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 171
@@ -13602,6 +13809,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 172
@@ -13614,6 +13822,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 173
@@ -13626,6 +13835,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 174
@@ -13638,6 +13848,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 175
@@ -13650,6 +13861,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 176
@@ -13662,6 +13874,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 177
@@ -13674,6 +13887,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 178
@@ -13686,6 +13900,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 179
@@ -13698,6 +13913,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 180
@@ -13710,6 +13926,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 181
@@ -13722,6 +13939,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 182
@@ -13734,8 +13952,9 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 183
   }
  }, 
@@ -13746,6 +13965,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 184
@@ -13758,6 +13978,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 185
@@ -13770,6 +13991,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 186
@@ -13782,6 +14004,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 187
@@ -13794,6 +14017,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 188
@@ -13806,6 +14030,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 189
@@ -13818,6 +14043,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 190
@@ -13830,6 +14056,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 191
@@ -13842,6 +14069,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 192
@@ -13854,6 +14082,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 193
@@ -13866,6 +14095,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 194
@@ -13878,6 +14108,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 195
@@ -13890,6 +14121,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 196
@@ -13902,6 +14134,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 197
@@ -13914,6 +14147,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 198
@@ -13926,6 +14160,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 199
@@ -13938,6 +14173,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 200
@@ -13950,6 +14186,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 201
@@ -13962,6 +14199,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 202
@@ -13974,6 +14212,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 203
@@ -13986,6 +14225,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 204
@@ -13998,6 +14238,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 205
@@ -14010,6 +14251,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 206
@@ -14022,6 +14264,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 207
@@ -14034,8 +14277,9 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 208
   }
  }, 
@@ -14046,6 +14290,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 209
@@ -14058,6 +14303,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 210
@@ -14070,6 +14316,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 211
@@ -14082,6 +14329,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 212
@@ -14094,6 +14342,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 213
@@ -14106,6 +14355,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 214
@@ -14118,6 +14368,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 215
@@ -14130,6 +14381,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 216
@@ -14142,6 +14394,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 217
@@ -14154,6 +14407,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 218
@@ -14166,6 +14420,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 219
@@ -14178,6 +14433,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 220
@@ -14190,8 +14446,9 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 221
   }
  }, 
@@ -14202,6 +14459,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 222
@@ -14214,6 +14472,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 223
@@ -14226,6 +14485,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 224
@@ -14238,6 +14498,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 225
@@ -14250,6 +14511,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 226
@@ -14262,6 +14524,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 227
@@ -14274,6 +14537,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 228
@@ -14286,6 +14550,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 229
@@ -14298,6 +14563,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 230
@@ -14310,6 +14576,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 231
@@ -14322,6 +14589,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 232
@@ -14334,6 +14602,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 233
@@ -14346,8 +14615,9 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 234
   }
  }, 
@@ -14358,6 +14628,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 235
@@ -14370,6 +14641,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 236
@@ -14382,6 +14654,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 237
@@ -14394,6 +14667,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 238
@@ -14406,6 +14680,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 239
@@ -14418,6 +14693,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 240
@@ -14430,6 +14706,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 241
@@ -14442,6 +14719,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 242
@@ -14454,6 +14732,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 243
@@ -14466,6 +14745,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 244
@@ -14478,6 +14758,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 245
@@ -14490,6 +14771,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 246
@@ -14502,6 +14784,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 247
@@ -14514,6 +14797,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 248
@@ -14526,6 +14810,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 249
@@ -14538,6 +14823,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 250
@@ -14550,6 +14836,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 251
@@ -14562,6 +14849,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 252
@@ -14574,6 +14862,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 253
@@ -14586,6 +14875,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 254
@@ -14598,6 +14888,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 255
@@ -14610,6 +14901,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 256
@@ -14622,6 +14914,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 257
@@ -14634,6 +14927,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 258
@@ -14646,6 +14940,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 259
@@ -14658,6 +14953,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 260
@@ -14670,6 +14966,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 261
@@ -14682,6 +14979,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 262
@@ -14694,6 +14992,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 263
@@ -14706,6 +15005,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 264
@@ -14718,6 +15018,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 265
@@ -14730,6 +15031,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 266
@@ -14742,6 +15044,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 267
@@ -14754,6 +15057,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 268
@@ -14766,8 +15070,9 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 269
   }
  }, 
@@ -14778,8 +15083,9 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 270
   }
  }, 
@@ -14790,6 +15096,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 271
@@ -14802,6 +15109,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 272
@@ -14814,6 +15122,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 273
@@ -14826,6 +15135,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 274
@@ -14838,6 +15148,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 275
@@ -14850,6 +15161,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 276
@@ -14862,6 +15174,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 277
@@ -14874,6 +15187,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 278
@@ -14886,8 +15200,9 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 279
   }
  }, 
@@ -14898,6 +15213,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 280
@@ -14910,6 +15226,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 281
@@ -14922,6 +15239,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 282
@@ -14934,6 +15252,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 283
@@ -14946,6 +15265,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 284
@@ -14958,6 +15278,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 285
@@ -14970,6 +15291,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 286
@@ -14982,6 +15304,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 287
@@ -14994,6 +15317,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 288
@@ -15006,6 +15330,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 289
@@ -15018,6 +15343,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 290
@@ -15030,6 +15356,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 291
@@ -15042,6 +15369,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 292
@@ -15054,6 +15382,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 293
@@ -15066,6 +15395,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 294
@@ -15078,6 +15408,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 295
@@ -15090,6 +15421,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 296
@@ -15102,6 +15434,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 297
@@ -15114,6 +15447,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 298
@@ -15126,6 +15460,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 299
@@ -15138,6 +15473,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 300
@@ -15150,6 +15486,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 301
@@ -15162,6 +15499,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 302
@@ -15174,6 +15512,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 303
@@ -15186,6 +15525,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 304
@@ -15198,6 +15538,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 305
@@ -15210,6 +15551,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 306
@@ -15222,6 +15564,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 307
@@ -15234,6 +15577,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 308
@@ -15246,6 +15590,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 309
@@ -15258,6 +15603,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 310
@@ -15270,6 +15616,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 311
@@ -15282,6 +15629,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 312
@@ -15294,6 +15642,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 313
@@ -15306,6 +15655,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 314
@@ -15318,6 +15668,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 315
@@ -15330,6 +15681,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 316
@@ -15342,6 +15694,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 317
@@ -15354,6 +15707,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 318
@@ -15366,6 +15720,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 319
@@ -15378,6 +15733,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 320
@@ -15390,6 +15746,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 321
@@ -15402,6 +15759,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 322
@@ -15414,6 +15772,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 323
@@ -15426,6 +15785,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 324
@@ -15438,6 +15798,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 325
@@ -15450,6 +15811,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 326
@@ -15462,6 +15824,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 327
@@ -15474,6 +15837,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 328
@@ -15486,6 +15850,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 329
@@ -15498,6 +15863,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 330
@@ -15510,6 +15876,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 331
@@ -15522,6 +15889,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 332
@@ -15534,8 +15902,9 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 333
   }
  }, 
@@ -15546,6 +15915,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 334
@@ -15558,6 +15928,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 335
@@ -15570,6 +15941,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 336
@@ -15582,6 +15954,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 337
@@ -15594,6 +15967,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 338
@@ -15606,8 +15980,9 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 339
   }
  }, 
@@ -15618,6 +15993,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 340
@@ -15630,6 +16006,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 341
@@ -15642,6 +16019,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 342
@@ -15654,8 +16032,9 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 343
   }
  }, 
@@ -15666,6 +16045,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 344
@@ -15678,6 +16058,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 345
@@ -15690,6 +16071,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 346
@@ -15702,6 +16084,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 347
@@ -15714,6 +16097,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 348
@@ -15726,6 +16110,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 349
@@ -15738,8 +16123,9 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 350
   }
  }, 
@@ -15750,6 +16136,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 351
@@ -15762,6 +16149,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 352
@@ -15774,6 +16162,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 353
@@ -15786,6 +16175,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 354
@@ -15798,6 +16188,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 355
@@ -15810,6 +16201,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 356
@@ -15822,6 +16214,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 357
@@ -15834,6 +16227,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 358
@@ -15846,6 +16240,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 359
@@ -15858,6 +16253,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 360
@@ -15870,6 +16266,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 361
@@ -15882,6 +16279,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 362
@@ -15894,6 +16292,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 363
@@ -15906,6 +16305,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 364
@@ -15918,8 +16318,9 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 365
   }
  }, 
@@ -15930,6 +16331,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 366
@@ -15942,6 +16344,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 367
@@ -15954,6 +16357,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 368
@@ -15966,6 +16370,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 369
@@ -15978,6 +16383,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 370
@@ -15990,6 +16396,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 371
@@ -16002,6 +16409,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 372
@@ -16014,6 +16422,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 373
@@ -16026,6 +16435,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 374
@@ -16038,6 +16448,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 375
@@ -16050,6 +16461,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 376
@@ -16062,6 +16474,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 377
@@ -16074,6 +16487,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 378
@@ -16086,6 +16500,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 379
@@ -16098,8 +16513,9 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 380
   }
  }, 
@@ -16110,6 +16526,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 381
@@ -16122,6 +16539,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 382
@@ -16134,6 +16552,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 383
@@ -16146,6 +16565,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 384
@@ -16158,8 +16578,9 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 385
   }
  }, 
@@ -16170,6 +16591,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 386
@@ -16182,6 +16604,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 387
@@ -16194,6 +16617,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 388
@@ -16206,6 +16630,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 389
@@ -16218,6 +16643,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 390
@@ -16230,6 +16656,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 391
@@ -16242,6 +16669,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 392
@@ -16254,6 +16682,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 393
@@ -16266,6 +16695,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 394
@@ -16278,6 +16708,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 395
@@ -16290,6 +16721,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 396
@@ -16302,6 +16734,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 397
@@ -16314,6 +16747,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 398
@@ -16326,6 +16760,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 399
@@ -16338,6 +16773,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 400
@@ -16350,6 +16786,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 401
@@ -16362,6 +16799,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 402
@@ -16374,6 +16812,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 403
@@ -16386,6 +16825,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 404
@@ -16398,6 +16838,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 405
@@ -16410,6 +16851,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 406
@@ -16422,6 +16864,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 407
@@ -16434,6 +16877,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 408
@@ -16446,6 +16890,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 409
@@ -16458,8 +16903,9 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 410
   }
  }, 
@@ -16470,6 +16916,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 411
@@ -16482,6 +16929,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 412
@@ -16494,6 +16942,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 413
@@ -16506,6 +16955,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 414
@@ -16518,6 +16968,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 415
@@ -16530,6 +16981,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 416
@@ -16542,6 +16994,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 417
@@ -16554,6 +17007,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 418
@@ -16566,8 +17020,9 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 419
   }
  }, 
@@ -16578,6 +17033,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 420
@@ -16590,6 +17046,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 421
@@ -16602,6 +17059,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 422
@@ -16614,6 +17072,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 423
@@ -16626,6 +17085,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 424
@@ -16638,6 +17098,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 425
@@ -16650,6 +17111,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 426
@@ -16662,6 +17124,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 427
@@ -16674,6 +17137,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 428
@@ -16686,6 +17150,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 429
@@ -16698,8 +17163,9 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 430
   }
  }, 
@@ -16710,8 +17176,9 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 431
   }
  }, 
@@ -16722,6 +17189,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 432
@@ -16734,6 +17202,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 433
@@ -16746,6 +17215,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 434
@@ -16758,6 +17228,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 435
@@ -16770,6 +17241,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 436
@@ -16782,6 +17254,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 437
@@ -16794,6 +17267,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 438
@@ -16806,8 +17280,9 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 439
   }
  }, 
@@ -16818,6 +17293,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 440
@@ -16830,6 +17306,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 441
@@ -16842,6 +17319,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 442
@@ -16854,6 +17332,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 443
@@ -16866,6 +17345,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 444
@@ -16878,6 +17358,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 445
@@ -16890,6 +17371,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 446
@@ -16902,6 +17384,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 447
@@ -16914,6 +17397,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 448
@@ -16926,6 +17410,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 449
@@ -16938,6 +17423,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 450
@@ -16950,6 +17436,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 451
@@ -16962,6 +17449,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 452
@@ -16974,6 +17462,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 453
@@ -16986,6 +17475,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 454
@@ -16998,8 +17488,9 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 455
   }
  }, 
@@ -17010,8 +17501,9 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 456
   }
  }, 
@@ -17022,6 +17514,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 457
@@ -17034,6 +17527,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 458
@@ -17046,6 +17540,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 459
@@ -17058,6 +17553,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 460
@@ -17070,6 +17566,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 461
@@ -17082,6 +17579,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 462
@@ -17094,8 +17592,9 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 463
   }
  }, 
@@ -17106,6 +17605,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 464
@@ -17118,6 +17618,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 465
@@ -17130,6 +17631,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 466
@@ -17142,6 +17644,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 467
@@ -17154,8 +17657,9 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 468
   }
  }, 
@@ -17166,6 +17670,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 469
@@ -17178,6 +17683,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 470
@@ -17190,6 +17696,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 471
@@ -17202,6 +17709,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 472
@@ -17214,6 +17722,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 473
@@ -17226,6 +17735,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 474
@@ -17238,6 +17748,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 475
@@ -17250,6 +17761,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 476
@@ -17262,6 +17774,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 477
@@ -17274,6 +17787,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 478
@@ -17286,6 +17800,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 479
@@ -17298,6 +17813,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 480
@@ -17310,6 +17826,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 481
@@ -17322,6 +17839,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 482
@@ -17334,8 +17852,9 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 483
   }
  }, 
@@ -17346,6 +17865,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 484
@@ -17358,6 +17878,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 485
@@ -17370,6 +17891,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 486
@@ -17382,6 +17904,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 487
@@ -17394,8 +17917,9 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 488
   }
  }, 
@@ -17406,6 +17930,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 489
@@ -17418,6 +17943,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 490
@@ -17430,6 +17956,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 491
@@ -17442,8 +17969,9 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 492
   }
  }, 
@@ -17454,6 +17982,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 493
@@ -17466,6 +17995,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 494
@@ -17478,6 +18008,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 495
@@ -17490,6 +18021,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 496
@@ -17502,6 +18034,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 497
@@ -17514,6 +18047,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 498
@@ -17526,6 +18060,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 499
@@ -17538,6 +18073,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 500
@@ -17550,6 +18086,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 501
@@ -17562,6 +18099,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 502
@@ -17574,6 +18112,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 503
@@ -17586,6 +18125,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 504
@@ -17598,6 +18138,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 505
@@ -17610,6 +18151,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 506
@@ -17622,6 +18164,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 507
@@ -17634,6 +18177,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 508
@@ -17646,6 +18190,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 509
@@ -17658,6 +18203,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 510
@@ -17670,6 +18216,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 511
@@ -17682,6 +18229,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 512
@@ -17694,8 +18242,9 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 513
   }
  }, 
@@ -17706,6 +18255,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 514
@@ -17718,6 +18268,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 515
@@ -17730,6 +18281,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 516
@@ -17742,6 +18294,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 517
@@ -17754,6 +18307,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 518
@@ -17766,6 +18320,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 519
@@ -17778,6 +18333,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 520
@@ -17790,6 +18346,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 521
@@ -17802,6 +18359,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 522
@@ -17814,6 +18372,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 523
@@ -17826,6 +18385,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 524
@@ -17838,6 +18398,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 525
@@ -17850,6 +18411,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 526
@@ -17862,8 +18424,9 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 527
   }
  }, 
@@ -17874,6 +18437,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 528
@@ -17886,6 +18450,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 529
@@ -17898,6 +18463,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 530
@@ -17910,6 +18476,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 531
@@ -17922,6 +18489,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 532
@@ -17934,6 +18502,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 533
@@ -17946,6 +18515,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 534
@@ -17958,6 +18528,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 535
@@ -17970,6 +18541,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 536
@@ -17982,6 +18554,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 537
@@ -17994,6 +18567,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 538
@@ -18006,6 +18580,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 539
@@ -18018,6 +18593,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 540
@@ -18030,6 +18606,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 541
@@ -18042,6 +18619,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 542
@@ -18054,6 +18632,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 543
@@ -18066,6 +18645,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 544
@@ -18078,6 +18658,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 545
@@ -18090,6 +18671,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 546
@@ -18102,6 +18684,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 547
@@ -18114,6 +18697,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 548
@@ -18126,6 +18710,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 549
@@ -18138,6 +18723,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 550
@@ -18150,6 +18736,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 551
@@ -18162,6 +18749,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 552
@@ -18174,6 +18762,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 553
@@ -18186,6 +18775,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 554
@@ -18198,6 +18788,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 555
@@ -18210,6 +18801,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 556
@@ -18222,6 +18814,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 557
@@ -18234,6 +18827,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 4, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 558
@@ -18246,6 +18840,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 559
@@ -18258,6 +18853,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 560
@@ -18270,6 +18866,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 561
@@ -18282,6 +18879,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 562
@@ -18294,6 +18892,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 563
@@ -18306,6 +18905,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 564
@@ -18318,6 +18918,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 565
@@ -18330,8 +18931,9 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 566
   }
  }, 
@@ -18342,6 +18944,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 567
@@ -18354,6 +18957,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 568
@@ -18366,6 +18970,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 569
@@ -18378,6 +18983,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 5, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 570
@@ -18390,6 +18996,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 571
@@ -18402,8 +19009,9 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 572
   }
  }, 
@@ -18414,6 +19022,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 573
@@ -18426,6 +19035,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 574
@@ -18438,6 +19048,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 575
@@ -18450,6 +19061,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 576
@@ -18462,6 +19074,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 577
@@ -18474,6 +19087,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 578
@@ -18486,6 +19100,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 579
@@ -18498,6 +19113,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 580
@@ -18510,6 +19126,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 11, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 581
@@ -18522,6 +19139,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 582
@@ -18534,6 +19152,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 583
@@ -18546,6 +19165,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 1, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 584
@@ -18558,6 +19178,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 585
@@ -18570,6 +19191,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 586
@@ -18582,6 +19204,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 13, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 587
@@ -18594,6 +19217,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 588
@@ -18606,6 +19230,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 589
@@ -18618,6 +19243,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 3, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 590
@@ -18630,6 +19256,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 591
@@ -18642,6 +19269,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 592
@@ -18654,6 +19282,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 593
@@ -18666,6 +19295,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 12, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 594
@@ -18678,6 +19308,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 595
@@ -18690,6 +19321,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 596
@@ -18702,6 +19334,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 597
@@ -18714,8 +19347,9 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 6, 
+   "last_awarded_submission": null, 
    "theme": "default", 
-   "points": 0, 
+   "points": 20, 
    "user": 598
   }
  }, 
@@ -18726,6 +19360,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 15, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 599
@@ -18738,6 +19373,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 10, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 600
@@ -18750,6 +19386,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 14, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 601
@@ -18762,6 +19399,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 8, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 602
@@ -18774,6 +19412,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 9, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 603
@@ -18786,6 +19425,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 7, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 604
@@ -18798,6 +19438,7 @@
    "about": "", 
    "name": "Robert Brewer", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 605
@@ -18810,6 +19451,7 @@
    "about": null, 
    "name": null, 
    "floor": null, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 606
@@ -18822,6 +19464,7 @@
    "about": null, 
    "name": "Julio Polo", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 607
@@ -18834,6 +19477,7 @@
    "about": null, 
    "name": "David Nickels", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 608
@@ -18846,6 +19490,7 @@
    "about": null, 
    "name": "Aaron Kagawa", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 609
@@ -18858,6 +19503,7 @@
    "about": null, 
    "name": "Christoph Lofi", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 610
@@ -18870,6 +19516,7 @@
    "about": null, 
    "name": "Jitender Miglani", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 611
@@ -18882,6 +19529,7 @@
    "about": null, 
    "name": "Austen Ito", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 612
@@ -18894,6 +19542,7 @@
    "about": null, 
    "name": "Jennifer Geis", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 613
@@ -18906,6 +19555,7 @@
    "about": null, 
    "name": "Dan Port", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 614
@@ -18918,6 +19568,7 @@
    "about": null, 
    "name": "Jay Corbett", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 615
@@ -18930,6 +19581,7 @@
    "about": null, 
    "name": "Russell Tokuyama", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 616
@@ -18942,6 +19594,7 @@
    "about": null, 
    "name": "Joe Dane", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 617
@@ -18954,6 +19607,7 @@
    "about": null, 
    "name": "Mike Paulding", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 618
@@ -18966,6 +19620,7 @@
    "about": null, 
    "name": "Ka Yee Leung", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 619
@@ -18978,6 +19633,7 @@
    "about": null, 
    "name": "Randy Cox", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 620
@@ -18990,6 +19646,7 @@
    "about": null, 
    "name": "Pavel Senin", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 621
@@ -19002,6 +19659,7 @@
    "about": null, 
    "name": "James Wang", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 622
@@ -19014,6 +19672,7 @@
    "about": null, 
    "name": "Hongbing Kou", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 623
@@ -19026,6 +19685,7 @@
    "about": null, 
    "name": "Michael Staver", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 624
@@ -19038,6 +19698,7 @@
    "about": null, 
    "name": "Cedric Zhang", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 625
@@ -19050,6 +19711,7 @@
    "about": null, 
    "name": "Anne Disney", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 626
@@ -19062,6 +19724,7 @@
    "about": null, 
    "name": "Julie Sakuda", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 627
@@ -19074,6 +19737,7 @@
    "about": null, 
    "name": "Joy Augustin", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 628
@@ -19086,6 +19750,7 @@
    "about": null, 
    "name": "Mette Moffett", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 629
@@ -19098,6 +19763,7 @@
    "about": null, 
    "name": "Danu Tjahjono", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 630
@@ -19110,6 +19776,7 @@
    "about": null, 
    "name": "Alexey Olkov", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 631
@@ -19122,6 +19789,7 @@
    "about": null, 
    "name": "Dadong Wan", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 632
@@ -19134,6 +19802,7 @@
    "about": null, 
    "name": "Monir Hodges", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 633
@@ -19146,6 +19815,7 @@
    "about": null, 
    "name": "Rosemary Andrada Sumajit", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 634
@@ -19158,6 +19828,7 @@
    "about": null, 
    "name": "Carleton Moore", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 635
@@ -19170,9 +19841,36 @@
    "about": "", 
    "name": "Shanah Trevenna", 
    "floor": 2, 
+   "last_awarded_submission": null, 
    "theme": "default", 
    "points": 0, 
    "user": 636
+  }
+ }, 
+ {
+  "pk": 637, 
+  "model": "makahiki_profiles.profile", 
+  "fields": {
+   "about": "", 
+   "name": "", 
+   "floor": 6, 
+   "last_awarded_submission": null, 
+   "theme": "default", 
+   "points": 30, 
+   "user": 637
+  }
+ }, 
+ {
+  "pk": 638, 
+  "model": "makahiki_profiles.profile", 
+  "fields": {
+   "about": "", 
+   "name": "", 
+   "floor": 1, 
+   "last_awarded_submission": null, 
+   "theme": "default", 
+   "points": 0, 
+   "user": 638
   }
  }, 
  {
@@ -25880,6 +26578,424 @@
    "user": 1, 
    "style_class": "system_post", 
    "floor": 2
+  }
+ }, 
+ {
+  "pk": 18, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-07-25 15:18:39", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 19, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-07-25 15:20:24", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 20, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:22:23", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:23:08", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 22, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:25:08", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 23, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:25:13", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 24, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:26:27", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 25, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 15:26:32", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 26, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:37:10", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 27, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:38:06", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 28, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:38:49", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 29, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 15%\" to the floor.", 
+   "created_at": "2010-07-25 15:40:06", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 30, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:40:57", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 31, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:41:02", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 32, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:42:53", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 33, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:42:57", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 34, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:44:46", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 35, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:44:50", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 36, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-07-25 15:45:02", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 37, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 15%\" to the floor.", 
+   "created_at": "2010-07-25 15:47:24", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 38, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 15%\" to the floor.", 
+   "created_at": "2010-07-25 15:47:28", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 39, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 15%\" to the floor.", 
+   "created_at": "2010-07-25 15:49:16", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 40, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 15%\" to the floor.", 
+   "created_at": "2010-07-25 15:49:25", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 41, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:51:30", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 42, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:51:37", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 43, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-07-25 15:52:17", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 44, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:53:57", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 45, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 15:54:06", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 46, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-07-25 15:54:28", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 47, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-07-25 16:20:59", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 48, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 16:21:46", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 49, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 16:21:51", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 50, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 16:35:18", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 51, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-07-25 16:35:22", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 52, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-07-25 16:35:36", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 53, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-07-25 16:36:20", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 54, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 16:36:56", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 55, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-07-25 16:37:02", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
   }
  }
 ]

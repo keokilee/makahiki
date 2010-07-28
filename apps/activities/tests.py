@@ -7,7 +7,7 @@ from makahiki_profiles.models import Profile
 from activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Goal, GoalMember
 from floors.models import Floor
 
-class ActivitiesTestCase(TestCase):
+class ActivitiesUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
   def testApproveAddsPoints(self):
@@ -58,6 +58,7 @@ class ActivitiesTestCase(TestCase):
     activity_member = ActivityMember(user=user, activity=activity)
     activity_member.approval_status = "approved"
     activity_member.save()
+    award_date = activity_member.award_date
     
     activity_member.approval_status = "rejected"
     activity_member.save()
@@ -65,7 +66,7 @@ class ActivitiesTestCase(TestCase):
     
     self.assertTrue(activity_member.award_date is None)
     self.assertTrue(points == new_points)
-    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
+    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting an approved ActivityMember removes their points."""
@@ -79,14 +80,51 @@ class ActivitiesTestCase(TestCase):
     activity_member = ActivityMember(user=user, activity=activity)
     activity_member.approval_status = "approved"
     activity_member.save()
+    award_date = activity_member.award_date
     
     activity_member.delete()
     new_points = user.get_profile().points
     
     self.assertTrue(points == new_points)
-    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
+    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
     
-class CommitmentsTestCase(TestCase):
+class ActivitiesFunctionalTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def setUp(self):
+    self.user = User.objects.get(username="user")
+    self.client.login(username='user', password='changeme')
+  
+  def testLoadActivities(self):
+    """Test that we can load the activity list page."""
+    response = self.client.get('/activities/activity_list/')
+    self.failUnlessEqual(response.status_code, 200)
+    for activity in self.user.activity_set.all():
+      self.assertNotIn(activity, response.context["available_items"])
+      self.failUnless((activity in response.context["user_items"]) or (activity in response.context["completed_items"]))
+      
+  def testAddActivity(self):
+    """Test that we can add an activity."""
+    activity = Activity.objects.exclude(
+      activitymember__user=self.user,
+    )[0]
+    response = self.client.post('/activities/add_activity/%d/' % activity.pk, {}, "multipart/form-data", True)
+    self.assertRedirects(response, "/profiles/profile/%s/" % self.user.username)
+    self.failUnless(activity in response.context["user_activities"])
+    response = self.client.get('/activities/activity_list/')
+    self.failUnless(activity in response.context["user_items"])
+    
+  def testApprovedActivity(self):
+    """Test that approved activities appear in the correct location."""
+    activity = Activity.objects.exclude(
+      activitymember__user=self.user,
+    )[0]
+    member = ActivityMember(user=self.user, activity=activity, approval_status="approved")
+    member.save()
+    response = self.client.get('/activities/activity_list/')
+    self.failUnless(activity in response.context["completed_items"])
+    
+class CommitmentsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
   def testCompletionAddsPoints(self):
@@ -129,7 +167,6 @@ class CommitmentsTestCase(TestCase):
     """Test that deleting a commitment member after it is completed removes the user's points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
-    last_awarded_submission = user.get_profile().last_awarded_submission
     
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
@@ -137,11 +174,12 @@ class CommitmentsTestCase(TestCase):
     
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
+    award_date = commitment_member.award_date
     commitment_member.delete()
-    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
+    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
     self.assertTrue(points == user.get_profile().points)
     
-class GoalsTestCase(TestCase):
+class GoalsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
   def testCompletionAddsPoints(self):

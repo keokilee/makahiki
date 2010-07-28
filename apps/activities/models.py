@@ -64,21 +64,6 @@ class Commitment(CommonActivity):
   
   users = models.ManyToManyField(User, through="CommitmentMember")
   duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
-  
-  @staticmethod
-  def get_available_for_user(user):
-    """Filter out commitments the user is currently active in."""
-    return Commitment.objects.exclude(
-      commitmentmember__user=user,
-      commitmentmember__award_date=None,
-    )
-    
-  @staticmethod
-  def get_completed_for_user(user):
-    """Gets the user's completed commitments"""
-    return user.commitment_set.exclude(
-      commitmentmember__award_date__isnull=False
-    )
     
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
@@ -250,23 +235,6 @@ class Activity(CommonActivity):
       
     questions = TextPromptQuestion.objects.filter(activity=self)
     return questions[random.randint(0, len(questions) - 1)]
-    
-  
-  @staticmethod
-  def get_available_for_user(user):
-    """Retrieves only the activities that a user can participate in."""
-    
-    activities = Activity.objects.exclude(
-      activitymember__user=user,
-    )
-    return (item for item in activities if item.is_active) # Filters out inactive activities.
-    
-  @staticmethod
-  def get_completed_for_user(user):
-    """Gets the user's completed activities"""
-    return user.activity_set.exclude(
-      activitymember__award_date__isnull=False,
-    )
 
 def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""
@@ -334,7 +302,7 @@ class ActivityMember(CommonActivityUser):
   def delete(self):
     """Custom delete method to remove awarded points."""
     
-    if self.award_date:
+    if self.approval_status == u"approved":
       profile = self.user.get_profile()
       profile.remove_points(self)
       profile.save()
@@ -346,22 +314,6 @@ class Goal(CommonActivity):
   
   floors = models.ManyToManyField(Floor, through="GoalMember")
   likes  = generic.GenericRelation(Like)
-  
-  @staticmethod
-  def get_available_for_user(user):
-    """Retrieves only the goals that a user can participate in."""
-    
-    return Goal.objects.exclude(
-      goalmember__floor=user.get_profile().floor,
-    )
-    
-  @staticmethod
-  def get_completed_goals_for_user(user):
-    """Gets the user's completed goals."""
-    floor = user.get_profile().floor
-    return floor.goal_set.exclude(
-      goalmember__award_date__isnull=False
-    )
     
 class GoalMember(CommonActivityUser):
   """Represents the join between groups/floors."""

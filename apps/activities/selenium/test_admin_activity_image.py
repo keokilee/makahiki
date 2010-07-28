@@ -1,11 +1,10 @@
 from selenium import selenium
 import unittest, time, re
+from noseselenium.cases import SeleniumTestCaseMixin
 
-class test_admin_activity_image(unittest.TestCase):
-    def setUp(self):
-        self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
-        self.selenium.start()
+class test_admin_activity_image(unittest.TestCase, SeleniumTestCaseMixin):
+    selenium_test = True
+    selenium_fixtures = ["base_data.json", "user_data.json"]
     
     def test_test_admin_activity_image(self):
         sel = self.selenium
@@ -93,10 +92,6 @@ class test_admin_activity_image(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-    
-    def tearDown(self):
-        self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

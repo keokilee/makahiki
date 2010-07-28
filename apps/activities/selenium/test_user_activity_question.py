@@ -1,11 +1,11 @@
 from selenium import selenium
-import unittest, time, re
+import time, re
+from django.test import TestCase
+from noseselenium.cases import SeleniumTestCaseMixin
 
-class test_user_activity_question(unittest.TestCase):
-    def setUp(self):
-        self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
-        self.selenium.start()
+class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
+    selenium_test = True
+    selenium_fixtures = ["base_data.json", "user_data.json"]
     
     def test_test_user_activity_question(self):
         sel = self.selenium
@@ -32,11 +32,11 @@ class test_user_activity_question(unittest.TestCase):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]"): break
+                if sel.is_element_present("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[2]/a/span[2]"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]")
+        sel.click("//div[@id='available_items']/div[2]/table/tbody/tr[2]/td[2]/a/span[2]")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
@@ -214,10 +214,6 @@ class test_user_activity_question(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-    
-    def tearDown(self):
-        self.selenium.stop()
-        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

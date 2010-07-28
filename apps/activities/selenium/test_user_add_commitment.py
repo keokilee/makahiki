@@ -1,11 +1,10 @@
 from selenium import selenium
 import unittest, time, re
+from noseselenium.cases import SeleniumTestCaseMixin
 
-class test_add_commitment(unittest.TestCase):
-    def setUp(self):
-        self.verificationErrors = []
-        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/")
-        self.selenium.start()
+class test_add_commitment(unittest.TestCase, SeleniumTestCaseMixin):
+    selenium_test = True
+    selenium_fixtures = ["base_data.json", "user_data.json"]
     
     def test_test_add_commitment(self):
         sel = self.selenium
@@ -85,10 +84,6 @@ class test_add_commitment(unittest.TestCase):
         try: self.failUnless(sel.is_text_present("is no longer participating in \"I will turn off all appliances every night before going to sleep\"."))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.click("link=Logout")
-    
-    def tearDown(self):
-        self.selenium.stop()
-        self.assertEqual([''], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()

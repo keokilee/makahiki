@@ -155,11 +155,11 @@ INSTALLED_APPS = (
     'makahiki_auth',
     'activities',
     'makahiki_profiles',
-    'windmill_tests',
+    'windmill',
     'makahiki_themes',
     'makahiki_base',
     'resources',
-		'standings',
+    'standings',
     
     # 'facebookconnect',
     

@@ -67,10 +67,10 @@ def profile(request, username, template_name="makahiki_profiles/profile.html"):
     
     # Load activities for the user.
     try:
-      from activities import get_tasks_for_user
+      from activities import get_incomplete_tasks
       return_dict["activities_enabled"] = True
       
-      user_activities = get_tasks_for_user(other_user)
+      user_activities = get_incomplete_tasks(other_user)
       return_dict["user_commitments"] = user_activities["commitments"]
       return_dict["user_activities"] = user_activities["activities"]
       return_dict["user_goals"] = user_activities["goals"]
