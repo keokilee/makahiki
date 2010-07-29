@@ -50,8 +50,8 @@ def get_available_commitments(user):
 
 def get_completed_commitments(user):
   """Gets the user's completed commitments"""
-  return user.commitment_set.exclude(
-    commitmentmember__award_date=None
+  return user.commitment_set.filter(
+    commitmentmember__award_date__isnull=False,
   )
   
 def get_current_activities(user):

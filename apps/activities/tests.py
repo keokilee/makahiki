@@ -4,6 +4,7 @@ from django.test import TestCase
 
 from django.contrib.auth.models import User
 from makahiki_profiles.models import Profile
+from activities import *
 from activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Goal, GoalMember
 from floors.models import Floor
 
@@ -178,6 +179,46 @@ class CommitmentsUnitTestCase(TestCase):
     commitment_member.delete()
     self.assertTrue(user.get_profile().last_awarded_submission < award_date)
     self.assertTrue(points == user.get_profile().points)
+
+class CommitmentsFunctionalTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def setUp(self):
+    self.user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
+      
+  def testAddCommitment(self):
+    """Test that we can add a commitment."""
+    
+    commitment = get_available_commitments(self.user)[0]
+    response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
+    self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
+    self.failUnless(commitment in response.context["user_commitments"])
+    response = self.client.get('/activities/commitment_list/')
+    self.failUnless(commitment in response.context["user_items"])
+    
+  def testCompleteCommitment(self):
+    """Test that we can complete a commitment and get the points."""
+    
+    from activities.forms import CommitmentCommentForm
+    
+    points = self.user.get_profile().points
+    commitment = get_available_commitments(self.user)[0]
+    response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
+    
+    # Set the commitment to be completed today and request points.
+    member = CommitmentMember.objects.get(commitment=commitment, user=self.user, completion_date__gt=datetime.date.today())
+    member.completion_date = datetime.date.today()
+    member.save()
+    response = self.client.get('/activities/request_commitment_points/%d/' % commitment.pk)
+    self.failUnlessEqual(response.status_code, 200)
+    response = self.client.post('/activities/request_commitment_points/%d/' % commitment.pk)
+    self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
+    response = self.client.get("/profiles/profile/%d/" % self.user.pk)
+    self.assertNotContains(response, "Either the commitment is not active or it is not completed yet.")
+
+    response = self.client.get('/activities/commitment_list/')
+    self.failUnless(commitment in response.context["completed_items"])
     
 class GoalsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
