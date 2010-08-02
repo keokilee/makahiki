@@ -9,7 +9,7 @@ selenium_tests = ["activities"]
 
 if len(sys.argv) == 1:
   print "**Running all tests.**"
-  command = "python manage.py test " + string.join(unit_tests + selenium_tests, " ") + " --with-selenium"
+  command = "python manage.py test " + string.join(unit_tests + selenium_tests, " ") + " --with-selenium --with-xunit"
   os.system(command)
   
 elif ("unit" in sys.argv) or ("selenium" in sys.argv):

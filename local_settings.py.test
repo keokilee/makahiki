@@ -1,0 +1,30 @@
+from settings import *
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'mysql',
+    'NAME': 'makahiki_test',
+		'TEST_NAME': 'makahiki_test_temp',
+		'USER': 'root',
+		'PASSWORD': '', # Insert password here.
+  }
+}
+
+# South
+
+INSTALLED_APPS += (
+  'south',
+)
+
+SOUTH_TESTS_MIGRATE = False
+
+# Nose tests.
+INSTALLED_APPS += (
+  # Testing
+	'django_nose',
+)
+
+# Use Nose as the test runner.
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+SELENIUM_URL_ROOT = "http://127.0.0.1:8105"
