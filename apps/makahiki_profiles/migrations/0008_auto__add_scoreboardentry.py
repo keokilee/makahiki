@@ -1,11 +1,37 @@
 # encoding: utf-8
 import datetime
-import string
 from south.db import db
-from south.v2 import DataMigration
+from south.v2 import SchemaMigration
+from django.conf import settings
 from django.db import models
 
-class Migration(DataMigration):
+class Migration(SchemaMigration):
+    
+    def forwards(self, orm):
+        
+        # Adding model 'ScoreboardEntry'
+        db.create_table('makahiki_profiles_scoreboardentry', (
+            ('profile', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['makahiki_profiles.Profile'])),
+            ('round_name', self.gf('django.db.models.fields.CharField')(max_length='30')),
+            ('points', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('last_awarded_submission', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+        ))
+        db.send_create_signal('makahiki_profiles', ['ScoreboardEntry'])
+        
+        # Create scoreboard entries for the users.
+        if not db.dry_run:
+          profiles = orm.Profile.objects.all()
+          for profile in profiles:
+            for key in settings.COMPETITION_ROUNDS.keys():
+              entry, created = orm.ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
+    
+    
+    def backwards(self, orm):
+        
+        # Deleting model 'ScoreboardEntry'
+        db.delete_table('makahiki_profiles_scoreboardentry')
+    
     
     models = {
         'auth.group': {
@@ -66,38 +92,21 @@ class Migration(DataMigration):
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
             'floor': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Floor']", 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'last_awarded_submission': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'points': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'theme': ('django.db.models.fields.CharField', [], {'default': "'default'", 'max_length': '255'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'unique': 'True'})
+        },
+        'makahiki_profiles.scoreboardentry': {
+            'Meta': {'object_name': 'ScoreboardEntry'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'last_awarded_submission': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'points': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'profile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['makahiki_profiles.Profile']"}),
+            'round_name': ('django.db.models.fields.CharField', [], {'max_length': "'30'"})
         }
     }
     
     complete_apps = ['makahiki_profiles']
-    
-    def forwards(self, orm):
-      """Split's the profile's name field to first and last name."""
-      if not db.dry_run:
-        profiles = orm.Profile.objects.all()
-        for profile in profiles:
-          if profile.name:
-            try:
-              (profile.first_name, profile.last_name) = profile.name.split(" ", 1)
-              profile.name = profile.first_name + " " + profile.last_name[0] + "."
-              profile.name = profile.name[:50]
-              profile.save()
-            except ValueError:
-              profile.first_name = profile.name
-              profile.name = profile.name[:50]
-              profile.save()
-        
-    def backwards(self, orm):
-      """Merges the first and last name fields into the name field."""
-      if not db.dry_run:
-        profiles = orm.Profile.objects.all()
-        for profile in profiles:
-          profile.name = profile.first_name
-          if profile.last_name:
-            profile.name += " " + profile.last_name
-          profile.save()

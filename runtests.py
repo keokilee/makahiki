@@ -4,7 +4,7 @@ import os
 import sys
 import string
 
-unit_tests = ["activities.tests", "makahiki_base", "standings"]
+unit_tests = ["activities.tests", "makahiki_base", "standings", "makahiki_profiles.tests"]
 selenium_tests = ["activities"]
 
 if len(sys.argv) == 1:

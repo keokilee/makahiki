@@ -13,6 +13,13 @@ class Migration(SchemaMigration):
 
         # Adding field 'Profile.last_awarded_submission'
         db.add_column('makahiki_profiles_profile', 'last_awarded_submission', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True), keep_default=False)
+        
+        if not db.dry_run:
+          profiles = orm.Profile.objects.all()
+          for profile in profiles:
+            if profile.points > 0:
+              profile.last_awarded_submission = datetime.datetime.today()
+              profile.save()
     
     
     def backwards(self, orm):

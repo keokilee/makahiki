@@ -10,7 +10,16 @@ class Migration(SchemaMigration):
         
         # Adding field 'CommonActivityUser.submission_date'
         db.add_column('activities_commonactivityuser', 'submission_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True), keep_default=False)
-    
+        
+        if not db.dry_run:
+          submissions = orm.CommonActivityUser.objects.all()
+          for submission in submissions:
+            if submission.approval_status != u"unapproved":
+              submission.submission_date = datetime.date.today()
+            if submission.approval_status == u"approved":
+              submission.award_date = datetime.date.today()
+              
+            submission.save()
     
     def backwards(self, orm):
         

@@ -9,7 +9,7 @@ class StandingsException(Exception):
   def __str__(self):
     return repr(self.value)
   
-def get_standings_for_user(user, standings_group="floor"):
+def get_standings_for_user(user, standings_group="floor", round=-1):
   """Generates standings for a user to be used in the standings widget.  
   Generates either floor-wide standings or standings based on all users.
   Returns a json structure for insertion into the javascript code."""
