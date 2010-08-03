@@ -7,8 +7,7 @@ COMPETITION_END = '2010-12-31'
 # End means the competition will end at midnight of the NEXT date.
 # This means that a round that ends on "2010-08-02" will end at midnight of August 3rd.
 COMPETITION_ROUNDS = {
-
-  "Round 2" : {
+  "Round 1" : {
     "start": '2010-08-09',
     "end": '2010-08-16',
   }

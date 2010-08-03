@@ -1,5 +1,6 @@
+from django.conf import settings
 from django.contrib.auth.models import User
-from makahiki_profiles.models import Profile
+from makahiki_profiles.models import Profile, ScoreboardEntry
 import simplejson as json
 
 class StandingsException(Exception):
@@ -9,29 +10,55 @@ class StandingsException(Exception):
   def __str__(self):
     return repr(self.value)
   
-def get_standings_for_user(user, standings_group="floor", round=-1):
+def get_standings_for_user(user, group="floor", round_name=None):
   """Generates standings for a user to be used in the standings widget.  
   Generates either floor-wide standings or standings based on all users.
   Returns a json structure for insertion into the javascript code."""
   
-  user_profile = Profile.objects.get(user=user)
   standings_type = "individual"
   
-  if not user_profile.floor:
-    # Nothing we can do here.
-    return ""
-  
-  if standings_group == "floor":
-    profiles = Profile.objects.filter(floor=user_profile.floor).order_by("-points", "-last_awarded_submission")
-    title = "Individual standings, %s" % user_profile.floor
-    
-  elif standings_group == "all":
-    profiles = Profile.objects.all().order_by("-points", "-last_awarded_submission")
-    title = "Individual standings, Everyone"
-  else:
+  # Check for valid standings parameter.
+  if group != "floor" and group != "all":
     raise StandingsException("Unknown standings type %s" % standings_type)
     
-  info, user_index = _calculate_user_standings(user_profile, profiles)
+  user_profile = Profile.objects.get(user=user)
+  
+  if not user_profile.floor:
+    # Nothing we can do again.
+    raise StandingsException("User has no floor for standings.")
+  
+  title = user_entry = entries = None
+  if not round_name:
+    # Calculate overall standings.
+    user_entry = user_profile
+
+    if group == "floor":
+      entries = Profile.objects.filter(floor=user_profile.floor).order_by("-points", "-last_awarded_submission")
+      title = "Individual standings, %s" % user_profile.floor
+
+    else:
+      entries = Profile.objects.all().order_by("-points", "-last_awarded_submission")
+      title = "Individual standings, Everyone"
+    
+  else:
+    # Calculate standings for round.
+    user_entry = user_profile.scoreboardentry_set.get(round_name=round_name)
+    
+    if not settings.COMPETITION_ROUNDS or not settings.COMPETITION_ROUNDS.has_key(round_name):
+      # Nothing we can do again.
+      raise StandingsException("Unknown round name %s" % round_name)
+    
+    if group == "floor":
+      entries = ScoreboardEntry.objects.filter(
+                  profile__floor=user_profile.floor,
+                  round_name=round_name,
+                ).order_by("-points", "-last_awarded_submission")
+      title = "Individual standings, %s, %s" % (user_profile.floor, round_name)
+    else:
+      entries = ScoreboardEntry.objects.filter(round_name=round_name).order_by("-points", "-last_awarded_submission")
+      title = "Individual standings, Everyone, %s" % round_name
+  
+  info, user_index = _calculate_user_standings(user_entry, entries)
   
   # Construct return dictionary.
   return json.dumps({
@@ -41,7 +68,7 @@ def get_standings_for_user(user, standings_group="floor", round=-1):
     "type": standings_type,
   })
   
-def _calculate_user_standings(user_profile, profiles):
+def _calculate_user_standings(user_profile, profiles, round=None):
   """Finds user standings based on the user's profile and a list of profiles.
   Returns dictionary of points and the index of the user."""
   

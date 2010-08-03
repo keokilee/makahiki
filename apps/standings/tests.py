@@ -2,8 +2,10 @@ import simplejson as json
 import datetime
 
 from django.test import TestCase
+from django.conf import settings
+
 from floors.models import Floor
-from makahiki_profiles.models import Profile
+from makahiki_profiles.models import Profile, ScoreboardEntry
 from standings import get_standings_for_user
     
 class FloorStandingsTest(TestCase):
@@ -77,13 +79,14 @@ class FloorStandingsTest(TestCase):
 
     # Test using the second place user.
     profile = self.profiles[1]
-    json_standings = get_standings_for_user(profile, "floor")
+    json_standings = get_standings_for_user(profile, group="floor")
     decoded_standings = json.loads(json_standings)
-    point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][1]["points"]
+    user_index = decoded_standings["myindex"]
+    point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][user_index]["points"]
     profile.points += point_diff + 1
     profile.save()
 
-    json_standings = get_standings_for_user(profile, "floor")
+    json_standings = get_standings_for_user(profile, group="floor")
     decoded_standings = json.loads(json_standings)
 
     # Verify that user is now first.
@@ -95,19 +98,80 @@ class FloorStandingsTest(TestCase):
 
     # Test using the second place user.
     profile = self.profiles[1]
-    json_standings = get_standings_for_user(profile, "floor")
+    json_standings = get_standings_for_user(profile, group="floor")
     decoded_standings = json.loads(json_standings)
     point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][1]["points"]
     profile.points += point_diff # Tie for points
     profile.last_awarded_submission = datetime.datetime.today()
     profile.save()
 
-    json_standings = get_standings_for_user(profile, "floor")
+    json_standings = get_standings_for_user(profile, group="floor")
     decoded_standings = json.loads(json_standings)
 
     # Verify that user is now first.
     self.assertTrue(decoded_standings["myindex"] == 0)
     self.assertTrue(len(decoded_standings["info"]) == 3)
+    
+class RoundStandingsTest(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def setUp(self):
+    """Set the competition settings to the current date for testing."""
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    self.floor = Floor.objects.all()[0]
+    self.entries = ScoreboardEntry.objects.filter(
+                      profile__floor=self.floor, 
+                      round_name=self.current_round
+                    ).order_by("-points", "-last_awarded_submission")
+    
+    
+  def testUpdatePointsChangesStandings(self):
+    """Test that updating the points in a round changes the standings."""
+    entry = self.entries[1] # Use second place entry.
+    
+    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    decoded_standings = json.loads(json_standings)
+    user_index = decoded_standings["myindex"]
+    self.assertEqual(user_index, 1)
+    point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][user_index]["points"]
+    entry.points += point_diff + 1 #Should push user to number 1.
+    entry.save()
+    
+    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    decoded_standings = json.loads(json_standings)
+    user_index = decoded_standings["myindex"]
+    self.assertEqual(user_index, 0)
+    
+  def testUpdateSubmissionChangesStandings(self):
+    """Test that updating the submission date in a round changes the standings."""
+    entry = self.entries[1] # Use second place entry.
+
+    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    decoded_standings = json.loads(json_standings)
+    user_index = decoded_standings["myindex"]
+    self.assertEqual(user_index, 1)
+    entry.last_awarded_submission = datetime.datetime.today()
+    entry.save()
+
+    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    decoded_standings = json.loads(json_standings)
+    user_index = decoded_standings["myindex"]
+    self.assertEqual(user_index, 0)
+    
+  def tearDown(self):
+    """Restore the saved settings."""
+    settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class AllStandingsTest(TestCase):
   fixtures = ["base_data.json", "user_data.json"]

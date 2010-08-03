@@ -1,9 +1,10 @@
 import datetime
 
 from django.test import TestCase
+from django.conf import settings
 
 from django.contrib.auth.models import User
-from makahiki_profiles.models import Profile
+from makahiki_profiles.models import Profile, ScoreboardEntry
 from activities import *
 from activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Goal, GoalMember
 from floors.models import Floor
@@ -11,11 +12,30 @@ from floors.models import Floor
 class ActivitiesUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
+  def setUp(self):
+    """Set the competition settings to the current date for testing."""
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+  
   def testApproveAddsPoints(self):
     """Test for verifying that approving a user awards them points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
     last_awarded_submission = user.get_profile().last_awarded_submission
+    
+    # Setup to check round points.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points = entry.points
+    round_last_awarded = entry.last_awarded_submission
     
     activity = Activity.objects.all()[0]
     activity_points = activity.point_value
@@ -24,15 +44,24 @@ class ActivitiesUnitTestCase(TestCase):
     activity_member.save()
     
     # Verify that nothing has changed.
-    self.assertTrue(points == user.get_profile().points)
-    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
+    self.assertEqual(points, user.get_profile().points)
+    self.assertEqual(last_awarded_submission, user.get_profile().last_awarded_submission)
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points, entry.points)
+    self.assertEqual(round_last_awarded, entry.last_awarded_submission)
     
     activity_member.approval_status = "approved"
     activity_member.save()
     
+    # Verify overall score changed.
     new_points = user.get_profile().points
-    self.assertTrue(new_points - points == activity_points)
-    self.assertTrue(activity_member.submission_date == user.get_profile().last_awarded_submission)
+    self.assertEqual(new_points - points, activity_points)
+    self.assertEqual(activity_member.submission_date, user.get_profile().last_awarded_submission)
+    
+    # Verify round score changed.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points + activity_points, entry.points)
+    self.assertTrue(abs(activity_member.submission_date - entry.last_awarded_submission) < datetime.timedelta(minutes=1))
     
   def testApprovePostsMessage(self):
     """Test that an approved activity posts to the user's wall."""
@@ -54,6 +83,11 @@ class ActivitiesUnitTestCase(TestCase):
     points = user.get_profile().points
     last_awarded_submission = user.get_profile().last_awarded_submission
     
+    # Setup to check round points.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points = entry.points
+    round_last_awarded = entry.last_awarded_submission
+    
     activity = Activity.objects.all()[0]
     
     activity_member = ActivityMember(user=user, activity=activity)
@@ -66,8 +100,12 @@ class ActivitiesUnitTestCase(TestCase):
     new_points = user.get_profile().points
     
     self.assertTrue(activity_member.award_date is None)
-    self.assertTrue(points == new_points)
+    self.assertEqual(points, new_points)
     self.assertTrue(user.get_profile().last_awarded_submission < award_date)
+    
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points, entry.points)
+    self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting an approved ActivityMember removes their points."""
@@ -75,6 +113,11 @@ class ActivitiesUnitTestCase(TestCase):
     user = User.objects.all()[0]
     points = user.get_profile().points
     last_awarded_submission = user.get_profile().last_awarded_submission
+    
+    # Setup to check round points.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points = entry.points
+    round_last_awarded = entry.last_awarded_submission
     
     activity = Activity.objects.all()[0]
     
@@ -86,8 +129,16 @@ class ActivitiesUnitTestCase(TestCase):
     activity_member.delete()
     new_points = user.get_profile().points
     
-    self.assertTrue(points == new_points)
+    self.assertEqual(points, new_points)
     self.assertTrue(user.get_profile().last_awarded_submission < award_date)
+    
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points, entry.points)
+    self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
+    
+  def tearDown(self):
+    """Restore the saved settings."""
+    settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class ActivitiesFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -128,11 +179,30 @@ class ActivitiesFunctionalTestCase(TestCase):
 class CommitmentsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
+  def setUp(self):
+    """Set the competition settings to the current date for testing."""
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+  
   def testCompletionAddsPoints(self):
     """Tests that completing a task adds points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
     last_awarded_submission = user.get_profile().last_awarded_submission
+    
+    # Setup to check round points.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points = entry.points
+    round_last_awarded = entry.last_awarded_submission
     
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
@@ -143,11 +213,20 @@ class CommitmentsUnitTestCase(TestCase):
     self.assertTrue(points == user.get_profile().points)
     self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
     
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points, entry.points)
+    self.assertEqual(round_last_awarded, entry.last_awarded_submission)
+    
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
     points += commitment_member.commitment.point_value
     self.assertTrue(points, user.get_profile().points)
     self.assertTrue(user.get_profile().last_awarded_submission == commitment_member.award_date)
+    
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points += commitment_member.commitment.point_value
+    self.assertEqual(round_points, entry.points)
+    self.assertTrue(abs(entry.last_awarded_submission - commitment_member.award_date) < datetime.timedelta(minutes=1))
     
   def testAddCompletePostsMessages(self):
     """Test that an added commitment and a completed commitment posts to the user's wall."""
@@ -158,16 +237,21 @@ class CommitmentsUnitTestCase(TestCase):
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=profile.user, commitment=commitment, completion_date=datetime.datetime.today())
     commitment_member.save()
-    self.assertTrue(floor.post_set.count() - num_posts == 1)
+    self.assertEqual(floor.post_set.count() - num_posts, 1)
     
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
-    self.assertTrue(floor.post_set.count() - num_posts == 2)
+    self.assertEqual(floor.post_set.count() - num_posts, 2)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting a commitment member after it is completed removes the user's points."""
     user = User.objects.all()[0]
     points = user.get_profile().points
+    
+    # Setup to check round points.
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    round_points = entry.points
+    round_last_awarded = entry.last_awarded_submission
     
     commitment = Commitment.objects.all()[0]
     commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
@@ -177,8 +261,20 @@ class CommitmentsUnitTestCase(TestCase):
     commitment_member.save()
     award_date = commitment_member.award_date
     commitment_member.delete()
-    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
-    self.assertTrue(points == user.get_profile().points)
+    
+    # Verify nothing has changed.
+    # Slightly lenient since it depends on how data is dumped.
+    profile = user.get_profile()
+    self.assertTrue(profile.last_awarded_submission is None or profile.last_awarded_submission < award_date)
+    self.assertEqual(points, profile.points)
+    
+    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(round_points, entry.points)
+    self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
+    
+  def tearDown(self):
+    """Restore the saved settings."""
+    settings.COMPETITION_ROUNDS = self.saved_rounds
 
 class CommitmentsFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -223,10 +319,26 @@ class CommitmentsFunctionalTestCase(TestCase):
 class GoalsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
+  def setUp(self):
+    """Set the competition settings to the current date for testing."""
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+  
   def testCompletionAddsPoints(self):
     """Tests that completing a goal adds points to the entire floor."""
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
+    scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("pk")
+    scoreboard = list(scoreboard)
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]
@@ -237,22 +349,34 @@ class GoalsUnitTestCase(TestCase):
     self.assertTrue(goal_member.approval_status == u'unapproved')
     self.assertTrue(goal_member.award_date is None)
     after_profiles = floor.profile_set.all().order_by("pk")
+    after_scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("pk")
     for i in range(0, len(profiles)):
-      self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)
+      self.assertEqual(profiles[i].points, after_profiles[i].points)
+      self.assertEqual(profiles[i].last_awarded_submission, after_profiles[i].last_awarded_submission)
+      self.assertEqual(scoreboard[i].points, after_scoreboard[i].points)
+      self.assertEqual(scoreboard[i].last_awarded_submission, after_scoreboard[i].last_awarded_submission)
       
     goal_member.approval_status = 'approved'
     goal_member.save()
     
     self.assertTrue(goal_member.award_date is not None)
+    
     # Verify that points are updated.
     after_profiles = floor.profile_set.all().order_by("pk")
+    after_scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("pk")
     for i in range(0, len(profiles)):
-      self.assertTrue(profiles[i].points + goal.point_value == after_profiles[i].points)
+      self.assertEqual(profiles[i].points + goal.point_value, after_profiles[i].points)
+      self.assertEqual(scoreboard[i].points + goal.point_value, after_scoreboard[i].points)
+      
       if profiles[i].last_awarded_submission is None:
         self.assertTrue(after_profiles[i].last_awarded_submission is not None)
       else:
         self.assertTrue(profiles[i].last_awarded_submission < after_profiles[i].last_awarded_submission)
+        
+      if scoreboard[i].last_awarded_submission is None:
+        self.assertTrue(after_scoreboard[i].last_awarded_submission is not None)
+      else:
+        self.assertTrue(scoreboard[i].last_awarded_submission < after_scoreboard[i].last_awarded_submission)
        
   def testAddCompletePostsMessages(self):
     """Test that an added goal and a completed goal posts to the user's wall."""
@@ -274,6 +398,7 @@ class GoalsUnitTestCase(TestCase):
     """Tests that unapproving an approved goal removes points from members of the entire floor."""
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
+    scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]
@@ -286,14 +411,18 @@ class GoalsUnitTestCase(TestCase):
     
     self.assertTrue(goal_member.award_date is None)
     after_profiles = floor.profile_set.all().order_by("pk")
+    after_scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
     for i in range(0, len(profiles)):
-      self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)
+      self.assertEqual(profiles[i].points, after_profiles[i].points)
+      self.assertEqual(scoreboard[i].points, after_scoreboard[i].points)
+      self.assertEqual(profiles[i].last_awarded_submission, after_profiles[i].last_awarded_submission)
+      self.assertEqual(scoreboard[i].last_awarded_submission, after_scoreboard[i].last_awarded_submission)
       
   def testDeleteRemovesPoints(self):
     """Tests that deleting an approved goal removes points from members of the entire floor."""
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
+    scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]
@@ -303,6 +432,13 @@ class GoalsUnitTestCase(TestCase):
     goal_member.delete()
     
     after_profiles = floor.profile_set.all().order_by("pk")
+    after_scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
     for i in range(0, len(profiles)):
-      self.assertTrue(profiles[i].points == after_profiles[i].points)
-      self.assertTrue(profiles[i].last_awarded_submission == after_profiles[i].last_awarded_submission)
+      self.assertEqual(profiles[i].points, after_profiles[i].points)
+      self.assertEqual(scoreboard[i].points, after_scoreboard[i].points)
+      self.assertEqual(profiles[i].last_awarded_submission, after_profiles[i].last_awarded_submission)
+      self.assertEqual(scoreboard[i].last_awarded_submission, after_scoreboard[i].last_awarded_submission)
+      
+  def tearDown(self):
+    """Restore the saved settings."""
+    settings.COMPETITION_ROUNDS = self.saved_rounds

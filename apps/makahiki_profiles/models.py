@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
 
 from floors.models import Floor
 
@@ -75,7 +76,7 @@ class Profile(models.Model):
         submission_date = submission.submission_date
         
       self.points += points
-      if submission_date > self.last_awarded_submission:
+      if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
         self.last_awarded_submission = submission_date
         
       current_round = self._get_round(submission_date)
@@ -97,13 +98,13 @@ class Profile(models.Model):
       points = 0
       submission_date = None
       if isinstance(submission, CommitmentMember):
-        points -= submission.commitment.point_value
+        points = submission.commitment.point_value
         submission_date = submission.award_date
       elif isinstance(submission, ActivityMember):
-        points -= submission.activity.point_value
-        submission_date= submission.submission_date
+        points = submission.activity.point_value
+        submission_date = submission.submission_date
       elif isinstance(submission, GoalMember):
-        points -= submission.goal.point_value
+        points = submission.goal.point_value
         submission_date = submission.submission_date
        
       self.points -= points
@@ -115,9 +116,10 @@ class Profile(models.Model):
         try:
           entry = ScoreboardEntry.objects.get(profile=self, round_name=current_round)
           entry.points -= points
-          if entry.last_awarded_submission == last_awarded_submission:
+          if entry.last_awarded_submission == submission_date:
             # Need to find the previous update.
             entry.last_awarded_submission = self._last_submitted_before(submission_date)
+            
           entry.save()
         except ObjectDoesNotExist:
           # This should not happen once the competition is rolling.
