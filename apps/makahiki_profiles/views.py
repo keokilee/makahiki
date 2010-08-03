@@ -1,4 +1,4 @@
-# Create your views here.
+import datetime
 
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -79,10 +79,24 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Load standings for user.
     try:
-      from standings import get_standings_for_user
+      from standings import get_floor_standings_for_user
       
-      return_dict["floor_standings"] = get_standings_for_user(other_user, "floor")
-      return_dict["all_standings"] = get_standings_for_user(other_user, "all")
+      return_dict["floor_standings"] = get_floor_standings_for_user(other_user)
+      # Default selected tab to overall.
+      return_dict["selected_tab"] = len(return_dict["floor_standings"]) - 1
+      return_dict["standings_titles"] = []
+      today = datetime.datetime.today()
+      
+      rounds = settings.COMPETITION_ROUNDS
+      for index, key in enumerate(rounds.keys()):
+        return_dict["standings_titles"].append(key)
+        start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
+        end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
+        if today >= start and today < end:
+          return_dict["selected_tab"] = index
+        
+      return_dict["standings_titles"].append("Overall")
+        
     except ImportError:
       pass
       

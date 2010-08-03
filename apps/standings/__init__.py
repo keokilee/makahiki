@@ -9,6 +9,32 @@ class StandingsException(Exception):
     
   def __str__(self):
     return repr(self.value)
+    
+def get_floor_standings_for_user(user):
+  """Uses get_standings_for_user to generate standings for each round and the overall 
+  standings for users in the user's floor."""
+    
+  standings = []
+  for round_name in settings.COMPETITION_ROUNDS.keys():
+    standings.append(get_standings_for_user(user, group="floor", round_name=round_name))
+  
+  # Append overall standings.
+  standings.append(get_standings_for_user(user, group="floor"))
+  
+  return standings
+  
+def get_all_standings_for_user(user):
+  """Uses get_standings_for_user to generate standings for each round and the overall 
+  standings for all users."""
+
+  standings = []
+  for round_name in settings.COMPETITION_ROUNDS.keys():
+    standings.append(get_standings_for_user(user, group="floor", round_name=round_name))
+
+  # Append overall standings.
+  standings.append(get_standings_for_user(user, group="floor"))
+
+  return standings
   
 def get_standings_for_user(user, group="floor", round_name=None):
   """Generates standings for a user to be used in the standings widget.  
