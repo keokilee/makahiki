@@ -8,10 +8,12 @@
 {% block tab_id %}"#standings_tab"{% endblock %}
 
 {% block subnav %}
-  <a href="{% url standings %}">{% trans "Floor vs. Floor" %}</a>
-  <a href="{% url standings %}">{% trans "Hale Ilima" %}</a>
-  <a href="{% url standings %}">{% trans "Hale Lehua" %}</a>
-  <a href="{% url standings %}">{% trans "Hale Mokihana" %}</a>
+  <ul id="floor">
+    <li id="floor_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Floor vs. Floor" %}</a></li>
+    <li id="ilima_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Ilima" %}</a></li>
+    <li id="lehua_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Lehua" %}</a></li>
+    <li id="mokihana_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Mokihana" %}</a></li>
+  </ul>
 {% endblock %}
 
 {% block body %}
