@@ -1,0 +1,52 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{% trans "The Kukui Cup" %}{% endblock %}
+
+{% block tab_id %}"#standings_tab"{% endblock %}
+
+{% block subnav %}
+  <a href="{% url standings %}">{% trans "Floor vs. Floor" %}</a>
+  <a href="{% url standings %}">{% trans "Hale Ilima" %}</a>
+  <a href="{% url standings %}">{% trans "Hale Lehua" %}</a>
+  <a href="{% url standings %}">{% trans "Hale Mokihana" %}</a>
+{% endblock %}
+
+{% block body %}
+
+<div id="three_col_left" style="padding-top: 10px; width: 320px">
+  <div id="standings_energy" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Floor vs. Floor: Energy Consumed
+    </div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Under construction
+    </div>
+  </div>
+</div>
+
+<div id="three_col_center" style="padding-top: 10px; width: 320px">
+  <div id="standings_floor" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Floor vs. Floor: Points
+    </div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Under construction
+    </div>
+  </div>
+</div>
+
+<div id="three_col_right" style="padding-top: 10px; width: 320px">
+  <div id="standings_individual" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Floor vs. Floor: Individual Points
+    </div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Under construction
+    </div>
+  </div>
+</div>
+
+{% endblock %}

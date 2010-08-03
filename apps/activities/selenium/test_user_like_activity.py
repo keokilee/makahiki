@@ -24,11 +24,11 @@ class test_user_like_activity(TestCase, SeleniumTestCaseMixin):
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:
-                if sel.is_element_present("link=My Home"): break
+                if sel.is_element_present("link=My Cup"): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=My Home")
+        sel.click("link=My Cup")
         sel.wait_for_page_to_load("30000")
         for i in range(60):
             try:

@@ -38,12 +38,12 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>link=My Home</td>
+	<td>link=My Cup</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=My Home</td>
+	<td>link=My Cup</td>
 	<td></td>
 </tr>
 <tr>

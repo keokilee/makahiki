@@ -30,17 +30,19 @@
          <li class="ui-state-default ui-corner-top"><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
       {% endif %}
       {% if user.get_profile.floor %}
-        <li id="user_tab" class="ui-state-default ui-corner-top"><a href="{% url profile_detail user.id %}"><span>{% trans "My Home" %}</span></a></li>
+        <li id="user_tab" class="ui-state-default ui-corner-top"><a href="{% url profile_detail user.id %}"><span>{% trans "My Cup" %}</span></a></li>
       {% endif %}
     {% endif %}
 {% endblock %}
 
 {% block tabs %}
   <li id="home_tab" class="ui-state-default ui-corner-top"><a href="{% url home %}">{% trans "Home" %}</a></li>
-  <li id="resources_tab" class="ui-state-default ui-corner-top"><a href="{% url resources_index %}">{% trans "Resources" %}</a></li>
+  <li id="rules_tab" class="ui-state-default ui-corner-top"><a href="{% url rules %}">{% trans "Rules" %}</a></li>
+  <li id="standings_tab" class="ui-state-default ui-corner-top"><a href="{% url standings %}">{% trans "Standings" %}</a></li>
   <li id="energy_tab" class="ui-state-default ui-corner-top"><a href="{% url energy_real_time %}">{% trans "Energy Data" %}</a></li>
-  <li id="competition_tab" class="ui-state-default ui-corner-top"><a href="{% url competition %}">{% trans "Kukui Cup" %}</a></li>
+  <li id="resources_tab" class="ui-state-default ui-corner-top"><a href="{% url resources_index %}">{% trans "Resources" %}</a></li>
   <li id="about_tab" class="ui-state-default ui-corner-top"><a href="{% url about_us %}">{% trans "About" %}</a></li>
+  <li id="blog_tab" class="ui-state-default ui-corner-top"><a href="http://kukuicup.wordpress.com">{% trans "Blog" %}</a></li>
 {% endblock %}
 
 {% block content_image %}
