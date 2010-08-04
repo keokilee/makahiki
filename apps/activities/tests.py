@@ -338,7 +338,7 @@ class GoalsUnitTestCase(TestCase):
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
     scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("pk")
-    scoreboard = list(scoreboard)
+    scoreboard = list(scoreboard) # Force the queryset to evaluate now since the data will change later.
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]
@@ -399,6 +399,7 @@ class GoalsUnitTestCase(TestCase):
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
     scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
+    scoreboard = list(scoreboard) # Force the queryset to evaluate now since the data will change later.
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]
@@ -423,6 +424,7 @@ class GoalsUnitTestCase(TestCase):
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
     scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
+    scoreboard = list(scoreboard) # Force the queryset to evaluate now since the data will change later.
     user = profiles[0].user
     
     goal = Goal.objects.all()[0]

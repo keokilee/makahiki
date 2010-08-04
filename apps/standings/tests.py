@@ -6,7 +6,7 @@ from django.conf import settings
 
 from floors.models import Floor
 from makahiki_profiles.models import Profile, ScoreboardEntry
-from standings import get_standings_for_user
+from standings import get_standings_for_widget
     
 class FloorStandingsTest(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -19,7 +19,7 @@ class FloorStandingsTest(TestCase):
   def testStandingsFirstPlace(self):
     """Test that the standings of the first place user is correct."""
     
-    json_standings = get_standings_for_user(self.profiles[0], "floor")
+    json_standings = get_standings_for_widget(self.profiles[0], "floor")
     decoded_standings = json.loads(json_standings)
     
     # Verify that the returned structure is correct.
@@ -42,7 +42,7 @@ class FloorStandingsTest(TestCase):
   def testStandingsSecondPlace(self):
     """Test that standings of the second place user is correct."""
 
-    json_standings = get_standings_for_user(self.profiles[1], "floor")
+    json_standings = get_standings_for_widget(self.profiles[1], "floor")
     decoded_standings = json.loads(json_standings)
     self.assertTrue(decoded_standings["myindex"] == 1)
     self.assertTrue(len(decoded_standings["info"]) == 4)
@@ -51,7 +51,7 @@ class FloorStandingsTest(TestCase):
   def testStandingsThirdPlace(self):
     """Test that standings of the third place user is correct. This will also verify that any user in the middle is correct."""
 
-    json_standings = get_standings_for_user(self.profiles[2], "floor")
+    json_standings = get_standings_for_widget(self.profiles[2], "floor")
     decoded_standings = json.loads(json_standings)
     self.assertTrue(decoded_standings["myindex"] == 2)
     self.assertTrue(len(decoded_standings["info"]) == 5)
@@ -60,7 +60,7 @@ class FloorStandingsTest(TestCase):
   def testStandingsSecondToLastPlace(self):
     """Test that standings of the second to the last user is correct."""
 
-    json_standings = get_standings_for_user(self.profiles[self.count-2], "floor")
+    json_standings = get_standings_for_widget(self.profiles[self.count-2], "floor")
     decoded_standings = json.loads(json_standings)
     self.assertTrue(decoded_standings["myindex"] == 2)
     self.assertTrue(len(decoded_standings["info"]) == 4)
@@ -68,7 +68,7 @@ class FloorStandingsTest(TestCase):
   def testStandingsLastPlace(self):
     """Test that standings of the last place user is correct."""
 
-    json_standings = get_standings_for_user(self.profiles[self.count-1], "floor")
+    json_standings = get_standings_for_widget(self.profiles[self.count-1], "floor")
     decoded_standings = json.loads(json_standings)
     self.assertTrue(decoded_standings["myindex"] == 2)
     self.assertTrue(len(decoded_standings["info"]) == 3)
@@ -79,14 +79,14 @@ class FloorStandingsTest(TestCase):
 
     # Test using the second place user.
     profile = self.profiles[1]
-    json_standings = get_standings_for_user(profile, group="floor")
+    json_standings = get_standings_for_widget(profile, group="floor")
     decoded_standings = json.loads(json_standings)
     user_index = decoded_standings["myindex"]
     point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][user_index]["points"]
     profile.points += point_diff + 1
     profile.save()
 
-    json_standings = get_standings_for_user(profile, group="floor")
+    json_standings = get_standings_for_widget(profile, group="floor")
     decoded_standings = json.loads(json_standings)
 
     # Verify that user is now first.
@@ -98,14 +98,14 @@ class FloorStandingsTest(TestCase):
 
     # Test using the second place user.
     profile = self.profiles[1]
-    json_standings = get_standings_for_user(profile, group="floor")
+    json_standings = get_standings_for_widget(profile, group="floor")
     decoded_standings = json.loads(json_standings)
     point_diff = decoded_standings["info"][0]["points"] - decoded_standings["info"][1]["points"]
     profile.points += point_diff # Tie for points
     profile.last_awarded_submission = datetime.datetime.today()
     profile.save()
 
-    json_standings = get_standings_for_user(profile, group="floor")
+    json_standings = get_standings_for_widget(profile, group="floor")
     decoded_standings = json.loads(json_standings)
 
     # Verify that user is now first.
@@ -140,7 +140,7 @@ class RoundStandingsTest(TestCase):
     """Test that updating the points in a round changes the standings."""
     entry = self.entries[1] # Use second place entry.
     
-    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    json_standings = get_standings_for_widget(entry.profile.user, group="floor", round_name=self.current_round)
     decoded_standings = json.loads(json_standings)
     user_index = decoded_standings["myindex"]
     self.assertEqual(user_index, 1)
@@ -148,7 +148,7 @@ class RoundStandingsTest(TestCase):
     entry.points += point_diff + 1 #Should push user to number 1.
     entry.save()
     
-    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    json_standings = get_standings_for_widget(entry.profile.user, group="floor", round_name=self.current_round)
     decoded_standings = json.loads(json_standings)
     user_index = decoded_standings["myindex"]
     self.assertEqual(user_index, 0)
@@ -157,14 +157,14 @@ class RoundStandingsTest(TestCase):
     """Test that updating the submission date in a round changes the standings."""
     entry = self.entries[1] # Use second place entry.
 
-    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    json_standings = get_standings_for_widget(entry.profile.user, group="floor", round_name=self.current_round)
     decoded_standings = json.loads(json_standings)
     user_index = decoded_standings["myindex"]
     self.assertEqual(user_index, 1)
     entry.last_awarded_submission = datetime.datetime.today()
     entry.save()
 
-    json_standings = get_standings_for_user(entry.profile.user, group="floor", round_name=self.current_round)
+    json_standings = get_standings_for_widget(entry.profile.user, group="floor", round_name=self.current_round)
     decoded_standings = json.loads(json_standings)
     user_index = decoded_standings["myindex"]
     self.assertEqual(user_index, 0)
@@ -182,7 +182,7 @@ class AllStandingsTest(TestCase):
     
   def testStandingsAllUsers(self):
     profile = self.profiles[0]
-    json_standings = get_standings_for_user(profile, "all")
+    json_standings = get_standings_for_widget(profile, "all")
     decoded_standings = json.loads(json_standings)
     
     # Verify that the returned structure is correct.

@@ -10,33 +10,20 @@ class StandingsException(Exception):
   def __str__(self):
     return repr(self.value)
     
-def get_floor_standings_for_user(user):
-  """Uses get_standings_for_user to generate standings for each round and the overall 
+def get_floor_standings_for_widget(user, is_me=True, group="floor"):
+  """Uses get_standings_for_widget to generate standings for each round and the overall 
   standings for users in the user's floor."""
     
   standings = []
   for round_name in settings.COMPETITION_ROUNDS.keys():
-    standings.append(get_standings_for_user(user, group="floor", round_name=round_name))
+    standings.append(get_standings_for_widget(user, group=group, round_name=round_name, is_me=is_me))
   
   # Append overall standings.
-  standings.append(get_standings_for_user(user, group="floor"))
+  standings.append(get_standings_for_widget(user, group=group, is_me=is_me))
   
   return standings
   
-def get_all_standings_for_user(user):
-  """Uses get_standings_for_user to generate standings for each round and the overall 
-  standings for all users."""
-
-  standings = []
-  for round_name in settings.COMPETITION_ROUNDS.keys():
-    standings.append(get_standings_for_user(user, group="floor", round_name=round_name))
-
-  # Append overall standings.
-  standings.append(get_standings_for_user(user, group="floor"))
-
-  return standings
-  
-def get_standings_for_user(user, group="floor", round_name=None):
+def get_standings_for_widget(user, group="floor", round_name=None, is_me=True):
   """Generates standings for a user to be used in the standings widget.  
   Generates either floor-wide standings or standings based on all users.
   Returns a json structure for insertion into the javascript code."""
@@ -94,31 +81,34 @@ def get_standings_for_user(user, group="floor", round_name=None):
     "type": standings_type,
   })
   
-def _calculate_user_standings(user_profile, profiles, round=None):
-  """Finds user standings based on the user's profile and a list of profiles.
+def _calculate_user_standings(user_entry, entries, round=None):
+  """Finds user standings based on the user's entry and a list of entries.
+  Note that this code works when the passed instances are Profiles or 
+  ScoreboardEntries, since it only accesses the points field.
+  
   Returns dictionary of points and the index of the user."""
   
   # First and last users are easy enough to retrieve.
-  first = profiles[0]
-  profile_count = profiles.count()
-  last = profiles[profile_count-1]
+  first = entries[0]
+  entry_count = entries.count()
+  last = entries[entry_count-1]
   
   # Search for user.
   rank = 1
   above_points = first.points
   below_points = last.points
   found_user = False
-  for profile in profiles:
-    if profile == user_profile:
+  for entry in entries:
+    if entry == user_entry:
       # Set flag that we found the user.
       found_user = True
     elif not found_user:
       # If we haven't found the user yet, keep going.
-      above_points = profile.points
+      above_points = entry.points
       rank += 1
     elif found_user:
       # If we found the user, then this is the person just after.
-      below_points = profile.points
+      below_points = entry.points
       break
       
   # Construct the return dictionary.
@@ -135,14 +125,14 @@ def _calculate_user_standings(user_profile, profiles, round=None):
   
   # Append user points if they are not #1
   if rank > 1:
-    info.append({"points": user_profile.points, "rank": rank, "label": ''})
+    info.append({"points": user_entry.points, "rank": rank, "label": ''})
 
   # Append below and/or last only if the user is not ranked last.
-  if rank < profile_count:
-    if rank < profile_count - 1:
+  if rank < entry_count:
+    if rank < entry_count - 1:
       # Append the below points if the user is ranked higher than second to last.
       info.append({"points": below_points, "rank": rank + 1, "label": ''})
-    info.append({"points": last.points, "rank": profile_count, "label": ''})
+    info.append({"points": last.points, "rank": entry_count, "label": ''})
     
   return info, index
     
