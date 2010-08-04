@@ -22,6 +22,9 @@
               {{profile.name}}
             </a>
           </div>
+          {% if forloop.counter|divisibleby:3 %}
+            <div style="clear:both"></div>
+          {% endif %}
         {% endfor %}
         
         <a style="margin-left: 15px" href="{% url floor_members floor.dorm.slug floor.slug %}">View all</a>
