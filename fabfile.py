@@ -1,20 +1,38 @@
+import os
 import string
-from fabric.api import local
-
-unit_tests = ["activities.tests", "makahiki_base", "standings", "makahiki_profiles.tests"]
-selenium_tests = ["activities"]
-
-def run_all_tests_with_report():
-  """Runs all of the tests and generates a report."""
-  command = "python manage.py test " + string.join(unit_tests + selenium_tests, " ") + " --with-selenium --with-xunit"
+from fabric.api import local, run
+  
+def test_selenium():
+  """Runs the selenium tests."""
+  
+  apps = [app for app in os.listdir("apps") if os.path.isdir(os.path.join("apps", app))]
+  command = "python manage.py test "
+  for app in apps:
+    if "selenium" in os.listdir(os.path.join("apps", app)):
+      command += "%s.selenium" % app
+      
   result = local(command, capture=False)
   
-def run_tests():
-  """Runs all of the tests and does not append a report."""
-  command = "python manage.py test " + string.join(unit_tests + selenium_tests, " ") + " --with-selenium"
+def test_unit():
+  """Runs the unit and functional tests."""
+
+  apps = [app for app in os.listdir("apps") if os.path.isdir(os.path.join("apps", app))]
+  command = "python manage.py test "
+  for app in apps:
+    if "tests.py" in os.listdir(os.path.join("apps", app)):
+      command += "%s.tests" % app
+
   result = local(command, capture=False)
   
-def push_master():
-  local("git checkout master")
-  run_tests()
-  local("git push origin master")
+def test():
+  """Runs the tests with the option to run the automated Selenium tests."""
+  
+  response = ""
+  while response != "yes" and response != "no":
+    response = raw_input("Do you want to run the Selenium tests (yes/no)? ")
+    
+  test_unit()
+  if response == "yes":
+    print "Running Selenium tests"
+    test_selenium()
+  
