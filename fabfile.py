@@ -1,3 +1,6 @@
+import string
+from fabric.api import local
+
 unit_tests = ["activities.tests", "makahiki_base", "standings", "makahiki_profiles.tests"]
 selenium_tests = ["activities"]
 

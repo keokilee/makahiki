@@ -79,9 +79,9 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Load standings for user.
     try:
-      from standings import get_floor_standings_for_widget
+      from standings import get_all_standings_for_user
       
-      return_dict["floor_standings"] = get_floor_standings_for_widget(other_user)
+      return_dict["floor_standings"] = get_all_standings_for_user(other_user)
       # Default selected tab to overall.
       return_dict["selected_tab"] = len(return_dict["floor_standings"]) - 1
       return_dict["standings_titles"] = []

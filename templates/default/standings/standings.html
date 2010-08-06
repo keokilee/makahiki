@@ -7,12 +7,16 @@
 
 {% block tab_id %}"#standings_tab"{% endblock %}
 
+{% block extra_head %}
+  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+{% endblock %}
+
 {% block subnav %}
   <ul id="floor">
     <li id="floor_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Floor vs. Floor" %}</a></li>
-    <li id="ilima_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Ilima" %}</a></li>
-    <li id="lehua_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Lehua" %}</a></li>
-    <li id="mokihana_subnav" class="ui-corner-all"><a href="{% url standings %}">{% trans "Hale Mokihana" %}</a></li>
+    {% for dorm in dorms %}
+      <li id="{{dorm.slug}}_subnav" class="ui-corner-all"><a href="/standings/{{dorm.slug}}/">{{dorm.name}}</a></li>
+    {% endfor %}
   </ul>
 {% endblock %}
 
@@ -35,7 +39,11 @@
       Floor vs. Floor: Points
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      Under construction
+      {% with floor_points as standings_array %}
+      {% with "floor" as prefix %}
+        {% include "standings/standings_block.html" %}
+      {% endwith %}
+      {% endwith %}
     </div>
   </div>
 </div>
@@ -46,7 +54,11 @@
       Floor vs. Floor: Individual Points
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      Under construction
+      {% with individual_points as standings_array %}
+      {% with "individual" as prefix %}
+        {% include "standings/standings_block.html" %}
+      {% endwith %}
+      {% endwith %}
     </div>
   </div>
 </div>

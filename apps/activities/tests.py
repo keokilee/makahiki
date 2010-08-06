@@ -416,13 +416,12 @@ class GoalsUnitTestCase(TestCase):
     for i in range(0, len(profiles)):
       self.assertEqual(profiles[i].points, after_profiles[i].points)
       self.assertEqual(scoreboard[i].points, after_scoreboard[i].points)
-      self.assertEqual(profiles[i].last_awarded_submission, after_profiles[i].last_awarded_submission)
-      self.assertEqual(scoreboard[i].last_awarded_submission, after_scoreboard[i].last_awarded_submission)
       
   def testDeleteRemovesPoints(self):
     """Tests that deleting an approved goal removes points from members of the entire floor."""
     floor = Floor.objects.all()[0]
     profiles = floor.profile_set.all().order_by("pk")
+    profiles = list(profiles)
     scoreboard = ScoreboardEntry.objects.filter(profile__floor=floor, round_name=self.current_round).order_by("profile")
     scoreboard = list(scoreboard) # Force the queryset to evaluate now since the data will change later.
     user = profiles[0].user
@@ -438,8 +437,6 @@ class GoalsUnitTestCase(TestCase):
     for i in range(0, len(profiles)):
       self.assertEqual(profiles[i].points, after_profiles[i].points)
       self.assertEqual(scoreboard[i].points, after_scoreboard[i].points)
-      self.assertEqual(profiles[i].last_awarded_submission, after_profiles[i].last_awarded_submission)
-      self.assertEqual(scoreboard[i].last_awarded_submission, after_scoreboard[i].last_awarded_submission)
       
   def tearDown(self):
     """Restore the saved settings."""

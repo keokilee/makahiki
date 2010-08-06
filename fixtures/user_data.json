@@ -9,7 +9,7 @@
    "is_active": true, 
    "is_superuser": true, 
    "is_staff": true, 
-   "last_login": "2010-07-26 21:34:16", 
+   "last_login": "2010-08-03 11:26:03", 
    "groups": [], 
    "user_permissions": [], 
    "password": "sha1$1ec42$55198a04ae01b5a33a031535dc93e91ca8ddf916", 
@@ -10901,7 +10901,7 @@
    "is_active": true, 
    "is_superuser": true, 
    "is_staff": true, 
-   "last_login": "2010-07-28 12:02:58", 
+   "last_login": "2010-08-03 10:39:50", 
    "groups": [
     1
    ], 
@@ -11463,7 +11463,7 @@
    "is_active": true, 
    "is_superuser": false, 
    "is_staff": false, 
-   "last_login": "2010-07-27 22:33:23", 
+   "last_login": "2010-08-03 10:41:42", 
    "groups": [], 
    "user_permissions": [], 
    "password": "sha1$56f3d$9650f448ab848cc3871617ab5ab911ca83be927a", 
@@ -11495,7 +11495,7 @@
   "fields": {
    "profile": 1, 
    "round_name": "Round 1", 
-   "points": 0, 
+   "points": 5, 
    "last_awarded_submission": null
   }
  }, 
@@ -35890,6 +35890,468 @@
   "fields": {
    "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
    "created_at": "2010-07-28 14:24:59", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 177, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 19:15:00", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 178, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 19:15:45", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 179, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 19:15:47", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 180, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 19:16:16", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 181, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 19:16:20", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 182, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 19:16:33", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 183, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 19:40:16", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 184, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 19:41:04", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 185, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 19:41:06", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 186, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 19:41:35", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 187, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 19:41:40", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 188, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 19:41:53", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 189, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 20:11:40", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 190, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 20:12:34", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 191, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 20:12:36", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 192, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 20:13:03", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 193, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 20:13:07", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 194, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 20:13:20", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 195, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 20:33:33", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 196, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 20:34:21", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 197, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 20:34:23", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 198, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 20:34:51", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 199, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 20:34:56", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 200, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 20:35:08", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 201, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 21:54:56", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 202, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 21:55:47", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 203, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 21:55:50", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 204, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 21:56:20", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 205, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 21:56:24", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 206, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 21:56:38", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 207, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-02 22:40:10", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 208, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 22:41:05", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 209, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-02 22:41:07", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 210, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 22:41:36", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 211, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-02 22:41:40", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 212, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-02 22:41:54", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 213, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\".", 
+   "created_at": "2010-08-03 10:38:01", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 214, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-03 10:38:46", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 215, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+   "created_at": "2010-08-03 10:38:49", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 216, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-03 10:39:21", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 217, 
+  "model": "floors.post", 
+  "fields": {
+   "text": " has added the goal \"Reduce floor energy usage by 10%\" to the floor.", 
+   "created_at": "2010-08-03 10:39:25", 
+   "user": 637, 
+   "style_class": "system_post", 
+   "floor": 6
+  }
+ }, 
+ {
+  "pk": 218, 
+  "model": "floors.post", 
+  "fields": {
+   "text": "'s goal \"Reduce floor energy usage by 10%\" has been completed! Everyone on the floor received 10 points.", 
+   "created_at": "2010-08-03 10:39:38", 
    "user": 637, 
    "style_class": "system_post", 
    "floor": 6
