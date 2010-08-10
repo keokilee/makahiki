@@ -224,6 +224,7 @@ ul#messages li a {
   padding: 0;
   padding-left: 10px;
   height: 100%;
+  margin-right: 10px;
 }
 
 #content #three_col_center {

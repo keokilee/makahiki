@@ -18,8 +18,10 @@ def index(request, dorm_slug=None):
   """
   
   dorm = None
+  current_page = "floor"
   if dorm_slug:
     dorm = get_object_or_404(Dorm, slug=dorm_slug)
+    current_page = dorm.slug
     
   # Retrieve dorms for use in subnavigation.
   dorms = Dorm.objects.all()
@@ -45,6 +47,7 @@ def index(request, dorm_slug=None):
   individual_standings = get_all_standings(dorm=dorm, grouping="individual", count=MAX_INDIVIDUAL_STANDINGS)
   
   return render_to_response('standings/standings.html', {
+    "current_page": current_page,
     "dorms": dorms,
     "floor_points": floor_standings,
     "individual_points": individual_standings,

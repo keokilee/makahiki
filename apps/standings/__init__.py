@@ -96,10 +96,14 @@ def get_floor_standings(dorm=None, round_name=None):
   # Construct the standings info dictionary.
   info = []
   for i, floor in enumerate(floors):
+    if dorm:
+      label = floor.number
+    else:
+      label = "%s: %s" % (floor.dorm.name, floor.number)
     info.append({
       "points": floor.points,
       "rank": i + 1,
-      "label": floor.number,
+      "label": label,
     })
   
   return json.dumps({
