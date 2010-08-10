@@ -51,11 +51,13 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
     
     if request.user.is_authenticated():
         if request.user == other_user:
-            is_me = True
+          is_me = True
+        elif other_user.get_profile().floor == request.user.get_profile().floor: 
+          is_me = False
         else:
-            is_me = False
+          return _restricted(request)
     else:
-        is_me = False
+        return _restricted(request)
         
     return_dict = {
         "is_me": is_me,
@@ -129,4 +131,11 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
         "profile": profile,
         "profile_form": profile_form,
     }, context_instance=RequestContext(request))
+    
+def _restricted(request):
+  """Helper method to return a error message when a user accesses a page they are not allowed to view."""
+
+  return render_to_response("restricted.html", {
+    "message": "You are not allowed to view this user's profile page."
+  }, context_instance = RequestContext(request))
 

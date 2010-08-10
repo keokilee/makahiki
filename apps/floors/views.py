@@ -19,13 +19,14 @@ def floor(request, dorm_slug, floor_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
-  my_floor = (request.user.get_profile().floor == floor)
+  if not request.user.is_authenticated() or (request.user.get_profile() not in floor.profile_set.all()):
+    return _restricted(request)
+    
   profiles = floor.profile_set.all()[0:12]
   posts = floor.post_set.order_by('-created_at')
   wall_form = WallForm(initial={"floor" : floor.pk})
   
   return render_to_response('floors/floor_detail.html', {
-    "my_floor": my_floor,
     "profiles": profiles,
     "floor": floor,
     "posts": posts,
@@ -38,6 +39,8 @@ def floor_members(request, dorm_slug, floor_slug):
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
   profiles = floor.profile_set.all()
+  if not request.user.is_authenticated() or (request.user.get_profile() not in profiles):
+    return _restricted(request)
 
   return render_to_response('floors/members.html', {
     "profiles": profiles,
@@ -57,3 +60,10 @@ def wall_post(request, dorm_slug, floor_slug):
       return HttpResponseRedirect(reverse("floors.views.floor", args=(dorm_slug, floor_slug,)))
   
   raise Http404
+  
+def _restricted(request):
+  """Helper method to return a error message when a user accesses a page they are not allowed to view."""
+  
+  return render_to_response("restricted.html", {
+    "message": "You must be a member of the floor to access this page."
+  }, context_instance = RequestContext(request))

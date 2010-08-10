@@ -2,8 +2,10 @@ import datetime
 
 from django.conf import settings
 from django.test import TestCase
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from activities.models import Activity, ActivityMember
+from floors.models import Floor
 from makahiki_profiles.models import Profile, ScoreboardEntry
     
 class ScoreboardEntryUnitTests(TestCase):
@@ -113,13 +115,43 @@ class ProfileUnitTests(TestCase):
 class ProfilesFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
-  def setUp(self):
+  def testUnauthenticatedAccess(self):
+    """Test that an unauthenticated user cannot access user profiles."""
+    profile = Profile.objects.all()[0]
+    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
+    self.assertTemplateUsed(response, "restricted.html", msg_prefix="Test that user cannot access a user's profile page.")
+    
+  def testUserProfileAccess(self):
+    """Test that a user can only access their own page and pages of those on their floor."""
+    
     self.user = User.objects.get(username="user")
     self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
+    
+    # Check that the user can access their own page.
+    profile = self.user.get_profile()
+    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
+    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", msg_prefix="Test that user can access their own page.")
+    
+    # Check that the user can access their fellow floor member's page.
+    floor = profile.floor
+    profile = floor.profile_set.exclude(user=self.user)[0]
+    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
+    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", 
+            msg_prefix="Test that user can access a fellow floor member's page.")
+    
+    # Check that the user cannot access the profile page of a member of another floor.
+    floor = Floor.objects.exclude(pk=floor.pk)[0]
+    profile = floor.profile_set.all()[0]
+    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
+    self.assertTemplateUsed(response, "restricted.html", 
+            msg_prefix="Test that user cannot access the profile page of a user in another floor.")
 
   def testLoadProfile(self):
     """Test that we can load the profile page and the boxes are correct."""
-
+    
+    self.user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
+    
     response = self.client.get('/profiles/profile/%s/' % self.user.pk)
     
     # Verify standings are correct.
@@ -143,6 +175,9 @@ class ProfilesFunctionalTestCase(TestCase):
       
   def testSelectedTab(self):
     """Test that the current round's tab is selected."""
+    
+    self.user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
     
     # Set up rounds for test.
     self.saved_rounds = settings.COMPETITION_ROUNDS

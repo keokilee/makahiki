@@ -343,8 +343,8 @@ class FloorStandingsTest(TestCase):
   def testAddPointsChangeStandings(self):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    
-    self.assertNotEqual(decoded_standings["info"][0]["label"], self.test_floor.number, 
+    label = "%s: %s" % (self.test_floor.dorm.name, self.test_floor.number)
+    self.assertNotEqual(decoded_standings["info"][0]["label"], label, 
                         "Test that we are not using the first place floor.")
                         
     floor_points = self.test_floor.points
@@ -355,7 +355,7 @@ class FloorStandingsTest(TestCase):
     
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], self.test_floor.number, 
+    self.assertEqual(decoded_standings["info"][0]["label"], label, 
                         "Test that the test floor is now #1.")
     self.assertEqual(decoded_standings["info"][0]["points"], floor_points + point_diff + 1,
                       "Test that the points were updated.")
@@ -364,7 +364,8 @@ class FloorStandingsTest(TestCase):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
 
-    self.assertNotEqual(decoded_standings["info"][0]["label"], self.test_floor.number, 
+    label = "%s: %s" % (self.test_floor.dorm.name, self.test_floor.number)
+    self.assertNotEqual(decoded_standings["info"][0]["label"], label, 
                         "Test that we are not using the first place floor.")
 
     floor_points = self.test_floor.points
@@ -376,7 +377,7 @@ class FloorStandingsTest(TestCase):
 
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], self.test_floor.number, 
+    self.assertEqual(decoded_standings["info"][0]["label"], label, 
                         "Test that the test floor is now #1.")
     self.assertEqual(decoded_standings["info"][0]["points"], floor_points + point_diff,
                         "Test that the points were updated.")
