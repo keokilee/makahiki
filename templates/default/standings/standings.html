@@ -34,7 +34,7 @@
 <div id="three_col_left" style="padding-top: 10px; width: 320px">
   <div id="standings_energy" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-      Floor vs. Floor: Energy Consumed
+      {{title}}: Energy Consumed
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
       Under construction
@@ -45,7 +45,7 @@
 <div id="three_col_center" style="padding-top: 10px; width: 320px">
   <div id="standings_floor" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-      Floor vs. Floor: Points
+      {{title}}: Floor Points
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
       {% with floor_points as standings_array %}
@@ -60,7 +60,7 @@
 <div id="three_col_right" style="padding-top: 10px; width: 320px">
   <div id="standings_individual" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-      Floor vs. Floor: Individual Points
+      {{title}}: Individual Points
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
       {% with individual_points as standings_array %}

@@ -19,9 +19,11 @@ def index(request, dorm_slug=None):
   
   dorm = None
   current_page = "floor"
+  title = "Floor vs. Floor"
   if dorm_slug:
     dorm = get_object_or_404(Dorm, slug=dorm_slug)
     current_page = dorm.slug
+    title = dorm.name
     
   # Retrieve dorms for use in subnavigation.
   dorms = Dorm.objects.all()
@@ -48,6 +50,7 @@ def index(request, dorm_slug=None):
   
   return render_to_response('standings/standings.html', {
     "current_page": current_page,
+    "title": title,
     "dorms": dorms,
     "floor_points": floor_standings,
     "individual_points": individual_standings,
