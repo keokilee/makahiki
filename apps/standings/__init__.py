@@ -7,7 +7,7 @@ from floors.models import Floor
 import simplejson as json
 
 # Default number of individuals to retrieve standings for when tracking across all dorms.
-MAX_INDIVIDUAL_STANDINGS = 5
+MAX_INDIVIDUAL_STANDINGS = 10
 
 class StandingsException(Exception):
   def __init__(self, value):
