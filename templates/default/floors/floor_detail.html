@@ -14,11 +14,12 @@
       <div class="ui-accordion-header ui-corner-top list_header">
         Members:
       </div>
-      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 5px 10px;">
+      <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 5px; margin: 0 auto;">
         {% for profile in profiles %}
-          <div class="member_block" style="display:inline; float:left; margin:0 0 10px 15px; width:45px; font-size: 0.8em">
+          <div class="member_block" style="display:inline; float:left; padding: 0; margin:0 0 5px 5px; width:70px; font-size: 0.8em">
             <a href="{% url profile_detail profile.user.id %}">
-              <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" class="photo" align="center"/>
+              <img src="{% avatar_url profile.user 40 %}" alt="Photo of {{ profile.user }}" title="{{ profile.user }}'s profile" 
+                        class="photo" align="center"/><br/>
               {{profile.name}}
             </a>
           </div>
@@ -27,7 +28,7 @@
           {% endif %}
         {% endfor %}
         
-        <a style="margin-left: 15px" href="{% url floor_members floor.dorm.slug floor.slug %}">View all</a>
+        <a style="margin-left: 5px" href="{% url floor_members floor.dorm.slug floor.slug %}">View all</a>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 #floor_left {
   float: left;
-  width: 230px;
+  width: 255px;
 }
 
 #floor_center {
   float: left;
-  width: 535px;
+  width: 510px;
   padding: 0;
 }
 
