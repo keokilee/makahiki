@@ -9,6 +9,6 @@ COMPETITION_END = '2010-12-31'
 COMPETITION_ROUNDS = {
   "Round 1" : {
     "start": '2010-08-09',
-    "end": '2010-08-16',
+    "end": '2010-12-31',
   }
 }
