@@ -19,7 +19,7 @@ def floor(request, dorm_slug, floor_slug):
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
-  if not request.user.is_authenticated() or (request.user.get_profile() not in floor.profile_set.all()):
+  if not request.user.is_authenticated() or (request.user.get_profile() not in floor.profile_set.all() and not request.user.is_staff):
     return _restricted(request)
     
   profiles = floor.profile_set.all()[0:12]
@@ -31,7 +31,7 @@ def floor(request, dorm_slug, floor_slug):
     "floor": floor,
     "posts": posts,
     "wall_form": wall_form,
-  }, context_instance = RequestContext(request))
+  }, context_instance=RequestContext(request))
   
 def floor_members(request, dorm_slug, floor_slug):
   """Lists all of the members of the floor."""
@@ -39,7 +39,7 @@ def floor_members(request, dorm_slug, floor_slug):
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
   profiles = floor.profile_set.all()
-  if not request.user.is_authenticated() or (request.user.get_profile() not in profiles):
+  if not request.user.is_authenticated() or (request.user.get_profile() not in profiles and not request.user.is_staff):
     return _restricted(request)
 
   return render_to_response('floors/members.html', {

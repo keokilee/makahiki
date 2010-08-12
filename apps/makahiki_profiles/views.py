@@ -52,7 +52,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
     if request.user.is_authenticated():
         if request.user == other_user:
           is_me = True
-        elif other_user.get_profile().floor == request.user.get_profile().floor: 
+        elif other_user.get_profile().floor == request.user.get_profile().floor or request.user.is_staff: 
           is_me = False
         else:
           return _restricted(request)

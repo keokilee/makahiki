@@ -38,9 +38,23 @@ class FloorsFunctionalTestCase(TestCase):
     # Retrieve a floor that the user does not have access to.
     floor = Floor.objects.exclude(dorm=profile.floor.dorm, number=profile.floor.number)[0]
     response = self.client.get(reverse("floor_detail", args=(floor.dorm.slug, floor.number)))
+    self.assertEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "restricted.html", msg_prefix="Test that user cannot access another floor's detail page.")
     
     response = self.client.get(reverse("floor_members", args=(floor.dorm.slug, floor.number)))
+    self.assertEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "restricted.html", msg_prefix="Test that user cannot access another floor's member list.")
     
+  def testAdminAccess(self):
+    """Test that an admin can access any floor page."""
     
+    # Log in as admin.
+    self.client.post('/account/login/', {"username": "admin", "password": "changeme", "remember": False})
+    
+    floor = Floor.objects.all()[0]
+    response = self.client.get(reverse("floor_detail", args=(floor.dorm.slug, floor.number)))
+    self.assertTemplateUsed(response, "floors/floor_detail.html", msg_prefix="Test admin can access detail page.")
+    self.assertEqual(response.status_code, 200)
+    response = self.client.get(reverse("floor_members", args=(floor.dorm.slug, floor.number)))
+    self.assertTemplateUsed(response, "floors/members.html", msg_prefix="Test admin can access member list.")
+    self.assertEqual(response.status_code, 200)

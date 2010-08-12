@@ -145,6 +145,15 @@ class ProfilesFunctionalTestCase(TestCase):
     response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
     self.assertTemplateUsed(response, "restricted.html", 
             msg_prefix="Test that user cannot access the profile page of a user in another floor.")
+            
+  def testAdminAccess(self):
+    """Test that an admin can access any user's page."""
+    
+    self.client.post('/account/login/', {"username": "admin", "password": "changeme", "remember": False})
+    profile = Profile.objects.exclude(user__username="admin", floor=None)[0]
+    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
+    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", 
+            msg_prefix="Test that admin can access a member's page.")
 
   def testLoadProfile(self):
     """Test that we can load the profile page and the boxes are correct."""

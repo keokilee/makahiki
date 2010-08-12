@@ -6,7 +6,7 @@
 {% block body_class %}profile{% endblock %}
 
 {% block subnav %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and user.get_profile.floor%}
       {% with user.get_profile.floor as user_floor %}
       <ul id="{% block active_subnav %}{% endblock %}">
         <li id="profile_subnav" class="ui-corner-all"><a href="{% url profile_detail user.id %}">My Profile</a></li>
@@ -18,6 +18,5 @@
       </ul>
       {% endwith %}
     {% else %}
-        &nbsp;
     {% endif %}
 {% endblock %}
