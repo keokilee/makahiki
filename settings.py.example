@@ -42,10 +42,6 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # TEST_OUTPUT_DESCRIPTIONS = True
 # TEST_OUTPUT_DIR = "log"
 
-# Use Nose as the test runner.
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -146,6 +142,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "notification.context_processors.notification",
     # "account.context_processors.openid",
     "account.context_processors.account",
+    "makahiki_base.context_processors.competition",
 )
 
 WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
@@ -161,11 +158,12 @@ INSTALLED_APPS = (
     'makahiki_base',
     'resources',
     'standings',
+    'floors',
     
     # 'facebookconnect',
 
 		# Testing
-		'django_nose',
+		# 'django_nose',
     
     # included
     'django.contrib.auth',
@@ -189,13 +187,6 @@ INSTALLED_APPS = (
     'makahiki_avatar',
     
     # internal (for now)
-    'floors',
-    'threadedcomments',
-    'threadedcomments_extras',
-    'groups',
-    'topics',
-    'photologue',
-    'photos',
     # 'basic_profiles',
     'account',
     'django.contrib.admin',
@@ -254,5 +245,10 @@ SERIALIZATION_MODULES = {
 # like database and email that differ between development and production.
 try:
     from local_settings import *
+except ImportError:
+    pass
+
+try:
+    from competition_settings import *
 except ImportError:
     pass
