@@ -50,7 +50,7 @@
  *
  * http://docs.jquery.com/UI/Theming/API
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=segoe%20ui,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=ffffff&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=100&borderColorHeader=bbbbbb&fcHeader=433f38&iconColorHeader=847e71&bgColorContent=ffffff&bgTextureContent=04_highlight_hard.png&bgImgOpacityContent=100&borderColorContent=bbbbbb&fcContent=000000&iconColorContent=ffffff&bgColorDefault=1eb08b&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=15&borderColorDefault=057167&fcDefault=ffffff&iconColorDefault=eeeeee&bgColorHover=1eb08b&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=25&borderColorHover=057167&fcHover=ffffff&iconColorHover=ffffff&bgColorActive=94ebf2&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=0&borderColorActive=6cdce5&fcActive=1EB08B&iconColorActive=ffffff&bgColorHighlight=94ebf2&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=bbbbbb&fcHighlight=363636&iconColorHighlight=1eb08b&bgColorError=ffedad&bgTextureError=03_highlight_soft.png&bgImgOpacityError=95&borderColorError=e3a345&fcError=cd5c0a&iconColorError=cd0a0a&bgColorOverlay=2b2922&bgTextureOverlay=05_inset_soft.png&bgImgOpacityOverlay=15&opacityOverlay=70&bgColorShadow=cccccc&bgTextureShadow=04_highlight_hard.png&bgImgOpacityShadow=95&opacityShadow=20&thicknessShadow=12px&offsetTopShadow=-12px&offsetLeftShadow=-12px&cornerRadiusShadow=10px
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=segoe%20ui,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=ffffff&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=100&borderColorHeader=bbbbbb&fcHeader=433f38&iconColorHeader=847e71&bgColorContent=ffffff&bgTextureContent=04_highlight_hard.png&bgImgOpacityContent=100&borderColorContent=bbbbbb&fcContent=000000&iconColorContent=1eb08b&bgColorDefault=1eb08b&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=15&borderColorDefault=057167&fcDefault=ffffff&iconColorDefault=eeeeee&bgColorHover=1eb08b&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=25&borderColorHover=057167&fcHover=ffffff&iconColorHover=ffffff&bgColorActive=94ebf2&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=0&borderColorActive=6cdce5&fcActive=1eb08b&iconColorActive=ffffff&bgColorHighlight=94ebf2&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=bbbbbb&fcHighlight=363636&iconColorHighlight=1eb08b&bgColorError=ffedad&bgTextureError=03_highlight_soft.png&bgImgOpacityError=95&borderColorError=e3a345&fcError=cd5c0a&iconColorError=cd0a0a&bgColorOverlay=2b2922&bgTextureOverlay=05_inset_soft.png&bgImgOpacityOverlay=15&opacityOverlay=70&bgColorShadow=cccccc&bgTextureShadow=04_highlight_hard.png&bgImgOpacityShadow=95&opacityShadow=20&thicknessShadow=12px&offsetTopShadow=-12px&offsetLeftShadow=-12px&cornerRadiusShadow=10px
  */
 
 
@@ -89,8 +89,8 @@
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_ffffff_256x240.png); }
-.ui-widget-content .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_1eb08b_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_1eb08b_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_847e71_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_eeeeee_256x240.png); }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_ffffff_256x240.png); }
