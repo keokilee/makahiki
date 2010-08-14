@@ -33,8 +33,6 @@ def render_css_select(user=None):
   
   items = (item for item in os.listdir(theme_dir) if os.path.isdir(os.path.join(theme_dir, item, "css")))
   current_theme = settings.KUKUI_CSS_THEME
-  if user and user.is_authenticated():
-    current_theme = user.get_profile().theme
   
   for item in items:
     if item == current_theme:
