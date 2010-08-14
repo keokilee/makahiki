@@ -36,7 +36,13 @@ def get_all_standings(dorm=None, grouping="floor", count=MAX_INDIVIDUAL_STANDING
   
 def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_STANDINGS):
   """Retrieves standings across all floors for individual users."""
-  title = "Floor vs. Floor: "
+  
+  if settings.COMPETITION_GROUP_NAME:
+    name = settings.COMPETITION_GROUP_NAME
+    title = name.capitalize() + " vs. " + name.capitalize() + ": "
+  else:
+    title = "Floor vs. Floor: "
+    
   # Build up the query set.
   profiles = Profile.objects
   if dorm:
@@ -73,7 +79,12 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
 def get_floor_standings(dorm=None, round_name=None):
   """Retrieves standings across all floors grouped by floor."""
   
-  title = "Floor vs. Floor: "
+  if settings.COMPETITION_GROUP_NAME:
+    name = settings.COMPETITION_GROUP_NAME
+    title = name.capitalize() + " vs. " + name.capitalize() + ": "
+  else:
+    title = "Floor vs. Floor: "
+    
   # Build up the query set.
   floors = Floor.objects
   if dorm:

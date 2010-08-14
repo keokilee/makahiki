@@ -11,7 +11,7 @@
       <ul id="{% block active_subnav %}{% endblock %}">
         <li id="profile_subnav" class="ui-corner-all"><a href="{% url profile_detail user.id %}">My Profile</a></li>
         <li id="floor_subnav" class="ui-corner-all">
-          <a href="{% url floor_detail user_floor.dorm.slug user_floor.slug %}">My Floor</a></li>
+          <a href="{% url floor_detail user_floor.dorm.slug user_floor.slug %}">My {{floor_label.capitalize}}</a></li>
         <li id="commitments_subnav" class="ui-corner-all"><a href="/activities/commitment_list/">Commitments</a></li>
         <li id="activities_subnav" class="ui-corner-all"><a href="/activities/activity_list/">Activities</a></li>
         <li id="goals_subnav" class="ui-corner-all"><a href="/activities/goal_list/">Goals</a></li>

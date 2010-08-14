@@ -1,3 +1,6 @@
+# The name of a standard competition grouping.  Defaults to "Floor" if this is not provided.
+COMPETITION_GROUP_NAME = "Lounge"
+
 # The start and end date of the competition.
 COMPETITION_START = '2010-07-28'
 COMPETITION_END = '2010-12-31'

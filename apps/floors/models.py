@@ -49,7 +49,12 @@ class Floor(models.Model):
   )
   
   def __unicode__(self):
-    return "%s: Floor %s" % (self.dorm.name, self.number)
+    if settings.COMPETITION_GROUP_NAME:
+      floor_label = settings.COMPETITION_GROUP_NAME
+    else:
+      floor_label = "Floor"
+      
+    return "%s: %s %s" % (self.dorm.name, floor_label, self.number)
     
   def save(self):
     """Custom save method to generate slug and set created_at/updated_at."""

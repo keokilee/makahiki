@@ -6,6 +6,7 @@ import os
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
+from django.conf import settings
 
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
@@ -329,7 +330,11 @@ class GoalMember(CommonActivityUser):
   admin_comment = models.TextField(null=True, blank=True, help_text="Reason for approval/rejection")
   
   def __unicode__(self):
-    return "%s : %s Floor %s" % (self.goal.title, self.floor.dorm.name, self.floor.number)
+    if settings.COMPETITION_GROUP_NAME:
+      floor_label = settings.COMPETITION_GROUP_NAME
+    else:
+      floor_label = "Floor"
+    return "%s : %s %s %s" % (self.goal.title, self.floor.dorm.name, floor_label, self.floor.number)
     
   @staticmethod
   def can_add_goal(user):

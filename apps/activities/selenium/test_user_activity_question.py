@@ -148,7 +148,7 @@ class test_user_activity_question(TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=My Floor")
+        sel.click("link=My Lounge")
         for i in range(60):
             try:
                 if sel.is_text_present("has been awarded 10 points for completing \"Watch \"Be Energy Akamai!, Episode 1\"\"."): break

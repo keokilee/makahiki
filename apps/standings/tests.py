@@ -4,6 +4,7 @@ import datetime
 from django.test import TestCase
 from django.conf import settings
 from django.db.models import Sum, Max
+from django.contrib.auth.models import User
 
 from floors.models import Dorm, Floor
 from makahiki_profiles.models import Profile, ScoreboardEntry
@@ -500,5 +501,56 @@ class IndividualStandingsTest(TestCase):
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
-
+    
+class StandingsFunctionalTest(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def testDefaultView(self):
+    """Test that we can load the default stadings view."""
+    
+    import settings
+    
+    # Backup previous setting.
+    if settings.COMPETITION_GROUP_NAME:
+      self.saved_name = settings.COMPETITION_GROUP_NAME
+    
+    settings.COMPETITION_GROUP_NAME = "Lounge"
+    
+    response = self.client.get("/standings/")
+    self.assertNotContains(response, "Floor vs. Floor")
+    self.assertNotContains(response, "Floor Points")
+    self.assertContains(response, "Lounge vs. Lounge")
+    self.assertContains(response, "Lounge Points")
+    
+    # Restore setting.
+    if self.saved_name:
+      settings.COMPETITION_GROUP_NAME = self.saved_name
+      
+  def testProfileView(self):
+    """Test that we can load the profile view and that the correct settings are in place."""
+    
+    import settings
+    
+    # Backup previous setting.
+    if settings.COMPETITION_GROUP_NAME:
+      self.saved_name = settings.COMPETITION_GROUP_NAME
+    
+    settings.COMPETITION_GROUP_NAME = "Lounge"
+    
+    user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
+    
+    # Go to user's profile page and check for the floor text.
+    profile = user.get_profile()
+    response = self.client.get('/profiles/profile/%s/' % user.pk)
+    self.assertNotContains(response, profile.floor.dorm.name + ": Floor")
+    self.assertNotContains(response, "<b>Floor</b>")
+    self.assertNotContains(response, "My Floor")
+    self.assertContains(response, profile.floor.dorm.name + ": Lounge " + profile.floor.number)
+    self.assertContains(response, "<b>Lounge</b>")
+    self.assertContains(response, "My Lounge")
+    
+    # Restore setting.
+    if self.saved_name:
+      settings.COMPETITION_GROUP_NAME = self.saved_name
     

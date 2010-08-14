@@ -19,7 +19,11 @@ def index(request, dorm_slug=None):
   
   dorm = None
   current_page = "floor"
-  title = "Floor vs. Floor"
+  if settings.COMPETITION_GROUP_NAME:
+    name = settings.COMPETITION_GROUP_NAME
+    title = name.capitalize() + " vs. " + name.capitalize()
+  else:
+    title = "Floor vs. Floor"
   if dorm_slug:
     dorm = get_object_or_404(Dorm, slug=dorm_slug)
     current_page = dorm.slug

@@ -166,7 +166,7 @@ class test_goals(TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("link=My Floor")
+        sel.click("link=My Lounge")
         for i in range(60):
             try:
                 if sel.is_element_present("//ul[@id='wall_posts']/li[1]/div[1]/span"): break
