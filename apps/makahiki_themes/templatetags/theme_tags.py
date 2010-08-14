@@ -11,9 +11,6 @@ def render_css_import(user=None):
 
   return_string = ""
   current_theme = settings.KUKUI_CSS_THEME
-  if user and user.is_authenticated():
-    # If we have a user, we are going to use their theme setting.
-    current_theme = user.get_profile().theme
     
   css_dir = os.path.join(settings.PROJECT_ROOT, "media", current_theme, "css")
   
