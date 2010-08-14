@@ -279,6 +279,13 @@ class FloorStandingsTest(TestCase):
       },
     }
     
+    # Backup previous setting for the floor label.
+    if settings.COMPETITION_GROUP_NAME:
+      self.saved_name = settings.COMPETITION_GROUP_NAME
+    
+    settings.COMPETITION_GROUP_NAME = "Lounge"
+    self.title_prefix = "Lounge vs. Lounge"
+    
     # Grab the last place floor as the test floor.
     self.test_floor = Floor.objects.annotate(
                           points=Sum("profile__points"), 
@@ -296,7 +303,7 @@ class FloorStandingsTest(TestCase):
     # Verify that the contents are correct.
     self.assertEqual(len(decoded_standings["info"]), Floor.objects.count(), 
                     "Test that the correct number of floors is generated.")
-    self.assertEqual(decoded_standings["title"], "Floor vs. Floor: Overall",
+    self.assertEqual(decoded_standings["title"], "%s: Overall" % self.title_prefix,
                     "Test that correct title is generated.")
     
     first = decoded_standings["info"][0]
@@ -314,7 +321,7 @@ class FloorStandingsTest(TestCase):
     
     # Verify that the contents are correct.
     self.assertEqual(len(decoded_standings["info"]), Floor.objects.count())
-    self.assertEqual(decoded_standings["title"], "Floor vs. Floor: %s" % self.current_round,
+    self.assertEqual(decoded_standings["title"], "%s: %s" % (self.title_prefix, self.current_round),
                     "Test that correct title is generated.")
     
     first = decoded_standings["info"][0]
@@ -386,7 +393,11 @@ class FloorStandingsTest(TestCase):
     
   def tearDown(self):
     """Restore the saved settings."""
+    
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    
+    if self.saved_name:
+      settings.COMPETITION_GROUP_NAME = self.saved_name
     
 class IndividualStandingsTest(TestCase):
   """Tests that check the generated standings for individuals (not based on a user)."""
@@ -405,6 +416,13 @@ class IndividualStandingsTest(TestCase):
         "end": end.strftime("%Y-%m-%d"),
       },
     }
+    
+    # Backup previous setting for the floor label.
+    if settings.COMPETITION_GROUP_NAME:
+      self.saved_name = settings.COMPETITION_GROUP_NAME
+    
+    settings.COMPETITION_GROUP_NAME = "Lounge"
+    self.title_prefix = "Lounge vs. Lounge"
 
     # Grab the last place user as the test user.
     self.test_user = Profile.objects.order_by("points", "last_awarded_submission")[0]
@@ -420,7 +438,7 @@ class IndividualStandingsTest(TestCase):
     # Verify that the contents are correct.
     self.assertEqual(len(decoded_standings["info"]), MAX_INDIVIDUAL_STANDINGS, 
                     "Test that the correct number of individuals is generated.")
-    self.assertEqual(decoded_standings["title"], "Floor vs. Floor: Overall",
+    self.assertEqual(decoded_standings["title"], "%s: Overall" % self.title_prefix,
                     "Test that correct title is generated.")
 
     first = decoded_standings["info"][0]
@@ -437,7 +455,7 @@ class IndividualStandingsTest(TestCase):
     self.assertTrue(decoded_standings.has_key("info"))
 
     # Verify that the contents are correct.
-    self.assertEqual(decoded_standings["title"], "Floor vs. Floor: %s" % self.current_round,
+    self.assertEqual(decoded_standings["title"], "%s: %s" % (self.title_prefix, self.current_round),
                     "Test that correct title is generated.")
 
     first = decoded_standings["info"][0]
@@ -501,6 +519,9 @@ class IndividualStandingsTest(TestCase):
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    
+    if self.saved_name:
+      settings.COMPETITION_GROUP_NAME = self.saved_name
     
 class StandingsFunctionalTest(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
