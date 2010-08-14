@@ -38,10 +38,10 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
   """Retrieves standings across all floors for individual users."""
   
   if settings.COMPETITION_GROUP_NAME:
-    name = settings.COMPETITION_GROUP_NAME
-    title = name.capitalize() + " vs. " + name.capitalize() + ": "
+    floor_label = settings.COMPETITION_GROUP_NAME    
   else:
-    title = "Floor vs. Floor: "
+    floor_label = "Floor"
+  title = floor_label.capitalize() + " vs. " + floor_label.capitalize() + ": "
     
   # Build up the query set.
   profiles = Profile.objects
@@ -65,10 +65,23 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
   # Construct the standings info dictionary.
   info = []
   for i, profile in enumerate(profiles):
+    if profile.first_name and profile.last_name:
+      initials = profile.first_name[0] + profile.last_name[0]
+    else:
+      initials = profile.name[0]
+      
+    if profile.floor:
+      label = "%s: %s %s (%s)" % (
+                profile.floor.dorm.name,
+                floor_label,
+                profile.floor.number,
+                initials,
+              )
+      
     info.append({
       "points": profile.points,
       "rank": i + 1,
-      "label": profile.name,
+      "label": label,
     })
   
   return json.dumps({
@@ -80,10 +93,11 @@ def get_floor_standings(dorm=None, round_name=None):
   """Retrieves standings across all floors grouped by floor."""
   
   if settings.COMPETITION_GROUP_NAME:
-    name = settings.COMPETITION_GROUP_NAME
-    title = name.capitalize() + " vs. " + name.capitalize() + ": "
+    floor_label = settings.COMPETITION_GROUP_NAME
   else:
-    title = "Floor vs. Floor: "
+    floor_label = "Floor"
+    
+  title = floor_label.capitalize() + " vs. " + floor_label.capitalize() + ": "
     
   # Build up the query set.
   floors = Floor.objects
@@ -110,7 +124,7 @@ def get_floor_standings(dorm=None, round_name=None):
     if dorm:
       label = floor.number
     else:
-      label = "%s: %s" % (floor.dorm.name, floor.number)
+      label = "%s: %s %s" % (floor.dorm.name, floor_label, floor.number)
     info.append({
       "points": floor.points,
       "rank": i + 1,
