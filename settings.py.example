@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PINAX_THEME = 'default'
 
 # Kukui Cup CSS theme setting.
-KUKUI_CSS_THEME = 'default'
+KUKUI_CSS_THEME = 'blue7'
 
 # Kukui Cup Template theme setting.
 KUKUI_TEMPLATE_THEME = 'default'
