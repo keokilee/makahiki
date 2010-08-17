@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     (r'^themes/', include('makahiki_themes.urls')),
     (r'^news/', include('makahiki_base.urls')),
     (r'^dorms/', include('floors.urls')),
+    (r'^api/', include('api.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
