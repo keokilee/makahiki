@@ -122,6 +122,7 @@ def get_floor_standings(dorm=None, round_name=None):
   info = []
   for i, floor in enumerate(floors):
     if dorm:
+      # We don't need to put the dorm name if it's standings for a dorm.
       label = floor.number
     else:
       label = "%s: %s %s" % (floor.dorm.name, floor_label, floor.number)
