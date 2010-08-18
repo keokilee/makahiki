@@ -33,7 +33,7 @@ def standings(request, grouping):
       dorm = Dorm.objects.get(name=request.GET["dorm"])
       
     standings = get_all_standings(dorm=dorm, grouping=grouping)
-    # standings is an Python array of JSON strings, so we're going to turn it into a JSON array.
+    # standings is an Python array of JSON strings, so using simplejson would double-encode this.
     standings = "[" + ",".join(standings) + "]"
     return HttpResponse(standings, mimetype='application/json')
   
