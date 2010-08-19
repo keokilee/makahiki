@@ -159,6 +159,7 @@ INSTALLED_APPS = (
     'resources',
     'standings',
     'floors',
+    'api',
     
     # 'facebookconnect',
 
