@@ -351,9 +351,9 @@ class FloorStandingsTest(TestCase):
   def testAddPointsChangeStandings(self):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    label = "%s: %s" % (self.test_floor.dorm.name, self.test_floor.number)
-    self.assertNotEqual(decoded_standings["info"][0]["label"], label, 
-                        "Test that we are not using the first place floor.")
+    
+    # Save first place label.
+    first_label = decoded_standings["info"][0]["label"]
                         
     floor_points = self.test_floor.points
     point_diff = decoded_standings["info"][0]["points"] - floor_points
@@ -363,8 +363,8 @@ class FloorStandingsTest(TestCase):
     
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], label, 
-                        "Test that the test floor is now #1.")
+    self.assertEqual(decoded_standings["info"][1]["label"], first_label, 
+                        "Test that the original first place floor is now second.")
     self.assertEqual(decoded_standings["info"][0]["points"], floor_points + point_diff + 1,
                       "Test that the points were updated.")
                       
@@ -372,9 +372,8 @@ class FloorStandingsTest(TestCase):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
 
-    label = "%s: %s" % (self.test_floor.dorm.name, self.test_floor.number)
-    self.assertNotEqual(decoded_standings["info"][0]["label"], label, 
-                        "Test that we are not using the first place floor.")
+    # Save first place label.
+    first_label = decoded_standings["info"][0]["label"]
 
     floor_points = self.test_floor.points
     point_diff = decoded_standings["info"][0]["points"] - floor_points
@@ -385,8 +384,8 @@ class FloorStandingsTest(TestCase):
 
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], label, 
-                        "Test that the test floor is now #1.")
+    self.assertEqual(decoded_standings["info"][1]["label"], first_label, 
+                        "Test that the original first place floor is now second.")
     self.assertEqual(decoded_standings["info"][0]["points"], floor_points + point_diff,
                         "Test that the points were updated.")
     
@@ -483,38 +482,32 @@ class IndividualStandingsTest(TestCase):
   def testAddPointsChangeStandings(self):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-
-    self.assertNotEqual(decoded_standings["info"][0]["label"], self.test_user.name, 
-                        "Test that we are not using the first place user.")
-
+    # Save label of first place user.
+    first_label = decoded_standings["info"][0]["label"]
+    
     point_diff = decoded_standings["info"][0]["points"] - self.test_user.points
     self.test_user.points += point_diff + 1 # Should move this floor ahead.
     self.test_user.save()
 
-    json_standings = get_individual_standings()
+    json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], self.test_user.name, 
-                      "Test that the test user is now #1.")
-    self.assertEqual(decoded_standings["info"][0]["points"], self.test_user.points,
-                      "Test that the points were updated.")
-
+    self.assertEqual(decoded_standings["info"][1]["label"], first_label, 
+                      "Test that the original first place floor is now second.")
+                      
   def testChangeSubmissionChangesStandings(self):
     json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-
-    self.assertNotEqual(decoded_standings["info"][0]["label"], self.test_user.name, 
-                        "Test that we are not using the first place user.")
+    first_label = decoded_standings["info"][0]["label"]
 
     point_diff = decoded_standings["info"][0]["points"] - self.test_user.points
     self.test_user.points += point_diff # Should move this user into a tie.
+    self.test_user.last_awarded_submission = datetime.datetime.today()
     self.test_user.save()
 
-    json_standings = get_individual_standings()
+    json_standings = get_floor_standings()
     decoded_standings = json.loads(json_standings)
-    self.assertEqual(decoded_standings["info"][0]["label"], self.test_user.name, 
-                      "Test that the test user is now #1.")
-    self.assertEqual(decoded_standings["info"][0]["points"], self.test_user.points,
-                      "Test that the points were updated.")
+    self.assertEqual(decoded_standings["info"][1]["label"], first_label, 
+                      "Test that the former 1st place floor is now second.")
 
   def tearDown(self):
     """Restore the saved settings."""
