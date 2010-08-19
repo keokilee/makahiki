@@ -40,6 +40,7 @@ def index(request, dorm_slug=None):
   selected_tab = len(rounds)
   for index, key in enumerate(rounds.keys()):
     standings_titles.append(key)
+    
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:
@@ -61,3 +62,4 @@ def index(request, dorm_slug=None):
     "standings_titles": standings_titles,
     "selected_tab": selected_tab,
   }, context_instance = RequestContext(request))
+  
