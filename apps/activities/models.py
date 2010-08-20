@@ -11,6 +11,9 @@ from django.conf import settings
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 from makahiki_base.models import Like
+
+MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
+MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
   
 # These models represent the different types of activities users can commit to.
 class CommonBase(models.Model):
@@ -43,28 +46,18 @@ class CommonActivityUser(CommonBase):
   award_date = models.DateTimeField(null=True, blank=True, editable=False)
   submission_date = models.DateTimeField(null=True, blank=True, editable=False)
 
-class CommonActivity(CommonBase):
-  """Common fields for activity models."""
-  
-  MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
-  MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
+class Commitment(CommonBase):
+  """Commitments involve non-verifiable actions that a user can commit to.
+  Typically, they will be worth fewer points than activities."""
   
   title = models.CharField(max_length=200)
   description = models.TextField(help_text=MARKDOWN_TEXT)
   point_value = models.IntegerField()
+  users = models.ManyToManyField(User, through="CommitmentMember")
+  duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
   
   def __unicode__(self):
     return self.title
-    
-  class Meta:
-    abstract = True
-
-class Commitment(CommonActivity):
-  """Commitments involve non-verifiable actions that a user can commit to.
-  Typically, they will be worth fewer points than activities."""
-  
-  users = models.ManyToManyField(User, through="CommitmentMember")
-  duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
     
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
@@ -169,7 +162,7 @@ class ConfirmationCode(models.Model):
           # Try again.
           code.code = header
       
-class Activity(CommonActivity):
+class Activity(CommonBase):
   """Activities involve verifiable actions that users commit to.  These actions can be 
   verified by asking questions or posting an image attachment that verifies the user did 
   the activity."""
@@ -179,6 +172,10 @@ class Activity(CommonActivity):
     ('image', 'Image Upload'),
     ('code', 'Confirmation Code')
   )
+  
+  title = models.CharField(max_length=200)
+  description = models.TextField(help_text=MARKDOWN_TEXT)
+  point_value = models.IntegerField()
   
   duration = models.IntegerField(
               verbose_name="Expected activity duration",
@@ -213,6 +210,9 @@ class Activity(CommonActivity):
                 help_text="Required for events."
                )
   likes  = generic.GenericRelation(Like)
+                      
+  def __unicode__(self):
+    return self.title
   
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
@@ -310,11 +310,17 @@ class ActivityMember(CommonActivityUser):
       
     super(ActivityMember, self).delete()
 
-class Goal(CommonActivity):
+class Goal(CommonBase):
   """Represents activities that are committed to by a group (floor)."""
   
+  title = models.CharField(max_length=200)
+  description = models.TextField(help_text=MARKDOWN_TEXT)
+  point_value = models.IntegerField()
   floors = models.ManyToManyField(Floor, through="GoalMember")
   likes  = generic.GenericRelation(Like)
+  
+  def __unicode__(self):
+    return self.title
   
   def liked_users(self):
     """Returns an array of users that like this activity."""
