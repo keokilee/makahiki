@@ -43,14 +43,17 @@ class ActivityAdminForm(forms.ModelForm):
     model = Activity
     
   def clean(self):
-    """ Validates the admin form data based on our constraints.
+    """ 
+      Validates the admin form data based on a set of constraints.
       
       #1 Events must have an event date.
       #2 If the verification type is "image" or "code", then a confirm prompt is required.
       #3 If the verification type is "text", then additional questions are required 
          (Handled in the formset class below).
       #4 Publication date must be before expiration date.
-      #5 If the verification type is "code", then the number of codes is required.  """
+      #5 If the verification type is "code", then the number of codes is required. 
+      #6 Either points or a point range needs to be specified.
+    """
     
     # Data that has passed validation.
     cleaned_data = self.cleaned_data
@@ -87,6 +90,31 @@ class ActivityAdminForm(forms.ModelForm):
     if not self.instance.created_at and confirm_type == "code" and has_codes and not num_codes:
       self._errors["num_codes"] = ErrorList([u"The number of codes is required for this confirmation type."])
       del cleaned_data["num_codes"]
+      
+    #6 Either points or a point range needs to be specified.
+    points = cleaned_data.has_key("point_value")
+    range_start = cleaned_data.has_key("point_value_start")
+    range_end = cleaned_data.has_key("point_value_end")
+    if not points and not (range_start or range_end):
+      self._errors["point_value"] = ErrorList([u"Either a point value or a range needs to be specified."])
+      del cleaned_data["point_value"]
+    elif points and (range_start or range_end):
+      self._errors["point_value"] = ErrorList([u"Please specify either a point_value or a range."])
+      del cleaned_data["point_value"]
+    elif not points:
+      point_value_start = cleaned_data.get("point_value_start")
+      point_value_end = cleaned_data.get("point_value_end")
+      if not range_start:
+        self._errors["point_value_start"] = ErrorList([u"Please specify a start value for the point range."])
+        del cleaned_data["point_value_start"]
+      elif not range_end:
+        self._errors["point_value_end"] = ErrorList([u"Please specify a end value for the point range."])
+        del cleaned_data["point_value_end"]
+      elif point_value_start >= point_value_end:
+        self._errors["point_value_start"] = ErrorList([u"The start value must be less than the end value."])
+        del cleaned_data["point_value_start"]
+        del cleaned_data["point_value_end"]
+      
       
     return cleaned_data
     
