@@ -30,6 +30,12 @@
     color: #FFF;*/
 }
 
+#tabhead ul li.ui-state-active {
+  background: none;
+  background-color: white;
+  border: 1px solid #BBB;
+}
+
 /* account tabs (right side) */
 #tabhead ul.account
 {

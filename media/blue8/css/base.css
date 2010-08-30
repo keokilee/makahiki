@@ -83,7 +83,7 @@ div#login h5 {
 }
 
 #content-outline {
-    background-color: #94ebf2;
+    background-color: white;
     padding-bottom: 10px;
 }
 
@@ -91,7 +91,7 @@ div#login h5 {
 #content1 { visibility: hidden; }
 
 #content {
-    background-color: #94ebf2;
+    background-color: white;
     font-size: 12px;
     line-height: 1.5em;
     color: #555;
@@ -148,6 +148,7 @@ div#login h5 {
 #footer .makahiki_content_body {
   border:none;
   background-image: none;
+  background-color: white;
 }
 
 #footer p {
@@ -200,7 +201,7 @@ ul#messages li a {
   margin: 0px 0px 15px 0px;
   padding: 0px 10px;
   background: none;
-  background-color: White;
+  background-color: #F5F3E5;
 }
 
 /* Content Header */
