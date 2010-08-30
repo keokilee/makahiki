@@ -10,7 +10,7 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    background-color: white;
+    background-color: #94EBF2;
 }
 
 a:link {
@@ -147,8 +147,7 @@ div#login h5 {
 /* Override for gblock in footer.*/
 #footer .makahiki_content_body {
   border:none;
-  background-image: none;
-  background-color: white;
+  background: none;
 }
 
 #footer p {
