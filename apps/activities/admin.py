@@ -115,7 +115,6 @@ class ActivityAdminForm(forms.ModelForm):
         del cleaned_data["point_value_start"]
         del cleaned_data["point_value_end"]
       
-      
     return cleaned_data
     
   def save(self, force_insert=False, force_update=False, commit=True):
@@ -187,6 +186,50 @@ class ActivityAdmin(admin.ModelAdmin):
   
 admin.site.register(Activity, ActivityAdmin)
 
+### Activity Member admin.
+class ActivityMemberAdminForm(forms.ModelForm):
+  
+  def __init__(self, *args, **kwargs):
+    """Override to dynamically change the form if the activity specifies a point range.."""
+    
+    super(ActivityMemberAdminForm, self).__init__(*args, **kwargs)
+    # Instance points to an instance of the model.
+    member = self.instance
+    if member and member.activity.has_variable_points:
+      activity = member.activity
+      message = "Specify the number of points to award.  This value must be between %d and %d"
+      message = message % (activity.point_range_start, activity.point_range_end)
+      self.fields["points_awarded"].help_text = message
+    else:
+      del self.fields["points_awarded"]
+      
+  class Meta:
+    model = ActivityMember
+    
+  def clean(self):
+    """Custom validator that checks values for variable point activities."""
+    
+    # Data that has passed validation.
+    cleaned_data = self.cleaned_data
+    
+    activity = Activity.objects.get(pk=cleaned_data.get("activity"))
+    if activity.point_range_start and activity.point_range_start > 0 and activity.point_range_end > 0:
+      # Check if the point value is filled in.
+      if not cleaned_data.has_key("points_awarded"):
+        self._errors["points_awarded"] = ErrorList([u"This activity requires that you specify the number of points to award."])
+        del cleaned_data["points_awarded"]
+      
+      # Check if the point value is valid.
+      elif cleaned_data["points_awarded"] < activity.point_range_start or cleaned_data["points_awarded"] > activity.point_range_end:
+        message = "The points to award must be between %d and %d" % (activity.point_range_start, activity.point_range_end)
+        self._errors["points_awarded"] = ErrorList([message])
+        del cleaned_data["points_awarded"]
+    elif cleaned_data.has_key("points_awarded"):
+      self._errors["points_awarded"] = ErrorList([u"This field is only required for activities with variable point values."])
+      del cleaned_data["points_awarded"]
+      
+    return cleaned_data 
+
 class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
   # Requires Django 1.2
@@ -194,6 +237,7 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   list_display = ("activity", "user", "approval_status", "question", "response", "image")
   list_filter = ["approval_status"]
   actions = ["delete_selected"]
+  form = ActivityMemberAdminForm
     
   def delete_selected(self, request, queryset):
     for obj in queryset:

@@ -175,16 +175,16 @@ class Activity(CommonBase):
   
   title = models.CharField(max_length=200)
   description = models.TextField(help_text=MARKDOWN_TEXT)
-  point_value = models.IntegerField(null=True, blank=True) # This is going to be validated by the admin form.
+  point_value = models.IntegerField(null=True, blank=True) # This is validated by the admin form.
   point_range_start = models.IntegerField(
                         null=True, 
                         blank=True, 
-                        help_text="Optionally specify a range of possible points for this activity."
+                        help_text="Specify a range of possible points for this activity."
                       )
   point_range_end = models.IntegerField(
                         null=True, 
                         blank=True, 
-                        help_text="Optionally specify a range of possible points for this activity."
+                        help_text="Specify a range of possible points for this activity."
                       )
   
   duration = models.IntegerField(
@@ -235,6 +235,15 @@ class Activity(CommonBase):
     
   is_active = property(_is_active)
   
+  def _has_variable_points(self):
+    """Returns true if the activity uses variable points, false otherwise."""
+    if self.point_value > 0:
+      return False
+    else:
+      return True
+      
+  has_variable_points = property(_has_variable_points)
+  
   def liked_users(self):
     """Returns an array of users that like this activity."""
     return [like.user for like in self.likes.all()]
@@ -269,6 +278,11 @@ class ActivityMember(CommonActivityUser):
                             blank=True, 
                             upload_to=activity_image_file_path,
                             help_text="Uploaded image for verification."
+  )
+  points_awarded = models.IntegerField(
+      blank=True, 
+      null=True, 
+      help_text="Number of points to award for activities with variable point values."
   )
   
   def __unicode__(self):
