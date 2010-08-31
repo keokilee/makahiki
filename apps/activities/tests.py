@@ -10,10 +10,22 @@ from activities.models import Activity, ActivityMember, Commitment, CommitmentMe
 from floors.models import Floor
 
 class ActivitiesUnitTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
   
   def setUp(self):
-    """Set the competition settings to the current date for testing."""
+    """Generate test user and activity. Set the competition settings to the current date for testing."""
+    self.user = User(username="test_user", password="changeme")
+    self.user.save()
+    self.activity = Activity(
+                title="Test activity",
+                description="Testing!",
+                duration=10,
+                point_value=10,
+                pub_date=datetime.datetime.today(),
+                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                confirm_type="text",
+    )
+    self.activity.save()
+    
     self.saved_rounds = settings.COMPETITION_ROUNDS
     self.current_round = "Round 1"
     start = datetime.date.today()
@@ -28,25 +40,23 @@ class ActivitiesUnitTestCase(TestCase):
   
   def testApproveAddsPoints(self):
     """Test for verifying that approving a user awards them points."""
-    user = User.objects.all()[0]
-    points = user.get_profile().points
-    last_awarded_submission = user.get_profile().last_awarded_submission
+    points = self.user.get_profile().points
+    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     round_last_awarded = entry.last_awarded_submission
     
-    activity = Activity.objects.all()[0]
-    activity_points = activity.point_value
+    activity_points = self.activity.point_value
     
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.save()
     
     # Verify that nothing has changed.
-    self.assertEqual(points, user.get_profile().points)
-    self.assertEqual(last_awarded_submission, user.get_profile().last_awarded_submission)
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    self.assertEqual(points, self.user.get_profile().points)
+    self.assertEqual(last_awarded_submission, self.user.get_profile().last_awarded_submission)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points, entry.points)
     self.assertEqual(round_last_awarded, entry.last_awarded_submission)
     
@@ -54,87 +64,82 @@ class ActivitiesUnitTestCase(TestCase):
     activity_member.save()
     
     # Verify overall score changed.
-    new_points = user.get_profile().points
+    new_points = self.user.get_profile().points
     self.assertEqual(new_points - points, activity_points)
-    self.assertEqual(activity_member.submission_date, user.get_profile().last_awarded_submission)
+    self.assertEqual(activity_member.submission_date, self.user.get_profile().last_awarded_submission)
     
     # Verify round score changed.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points + activity_points, entry.points)
     self.assertTrue(abs(activity_member.submission_date - entry.last_awarded_submission) < datetime.timedelta(minutes=1))
     
-  def testApprovePostsMessage(self):
-    """Test that an approved activity posts to the user's wall."""
-    floor = Floor.objects.all()[0]
-    num_posts = floor.post_set.count()
-    profile = floor.profile_set.all()[0]
-    
-    activity = Activity.objects.all()[0]
-    
-    activity_member = ActivityMember(user=profile.user, activity=activity)
-    activity_member.approval_status = "approved"
-    activity_member.save()
-    
-    self.assertTrue(num_posts == floor.post_set.count() - 1)
-    
   def testUnapproveRemovesPoints(self):
     """Test that unapproving a user removes their points."""
-    user = User.objects.all()[0]
-    points = user.get_profile().points
-    last_awarded_submission = user.get_profile().last_awarded_submission
+    points = self.user.get_profile().points
+    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     round_last_awarded = entry.last_awarded_submission
     
-    activity = Activity.objects.all()[0]
-    
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
     activity_member.save()
     award_date = activity_member.award_date
     
     activity_member.approval_status = "rejected"
     activity_member.save()
-    new_points = user.get_profile().points
+    new_points = self.user.get_profile().points
     
     self.assertTrue(activity_member.award_date is None)
     self.assertEqual(points, new_points)
-    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
+    self.assertTrue(self.user.get_profile().last_awarded_submission is None)
     
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points, entry.points)
     self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
     
   def testDeleteRemovesPoints(self):
     """Test that deleting an approved ActivityMember removes their points."""
     
-    user = User.objects.all()[0]
-    points = user.get_profile().points
-    last_awarded_submission = user.get_profile().last_awarded_submission
+    points = self.user.get_profile().points
+    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     round_last_awarded = entry.last_awarded_submission
     
-    activity = Activity.objects.all()[0]
-    
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
     activity_member.save()
     award_date = activity_member.award_date
     
     activity_member.delete()
-    new_points = user.get_profile().points
+    new_points = self.user.get_profile().points
     
     self.assertEqual(points, new_points)
-    self.assertTrue(user.get_profile().last_awarded_submission < award_date)
+    self.assertTrue(self.user.get_profile().last_awarded_submission is None)
     
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points, entry.points)
     self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
+    
+  def testCreateVariablePointActivity(self):
+    """Tests the creation of activities with variable points."""
+    activity = Activity(
+                title="Test activity",
+                description="Variable points!",
+                duration=10,
+                point_range_start=5,
+                point_range_end=10,
+                pub_date=datetime.datetime.today(),
+                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                confirm_type="text",
+    )
+    activity.save()
+    self.assertTrue(activity.has_variable_points)
     
   def tearDown(self):
     """Restore the saved settings."""
@@ -156,7 +161,7 @@ class ActivitiesFunctionalTestCase(TestCase):
       self.failUnless((activity in response.context["user_items"]) or (activity in response.context["completed_items"]))
       
   def testAddActivity(self):
-    """Test that we can add an activity."""
+    """Test that a user can add an activity."""
     activity = Activity.objects.exclude(
       activitymember__user=self.user,
     )[0]
@@ -171,16 +176,30 @@ class ActivitiesFunctionalTestCase(TestCase):
     activity = Activity.objects.exclude(
       activitymember__user=self.user,
     )[0]
+    floor = self.user.get_profile().floor
+    num_posts = floor.post_set.count()
+    
     member = ActivityMember(user=self.user, activity=activity, approval_status="approved")
     member.save()
+    
     response = self.client.get('/activities/activity_list/')
     self.failUnless(activity in response.context["completed_items"])
     
+    self.assertEqual(floor.post_set.count(), num_posts + 1)
+    
 class CommitmentsUnitTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
   
   def setUp(self):
-    """Set the competition settings to the current date for testing."""
+    """Create test user and commitment. Set the competition settings to the current date for testing."""
+    self.user = User(username="test_user", password="changeme")
+    self.user.save()
+    self.commitment = Commitment(
+                title="Test commitment",
+                description="A commitment!",
+                point_value=10,
+    )
+    self.commitment.save()
+    
     self.saved_rounds = settings.COMPETITION_ROUNDS
     self.current_round = "Round 1"
     start = datetime.date.today()
@@ -195,66 +214,46 @@ class CommitmentsUnitTestCase(TestCase):
   
   def testCompletionAddsPoints(self):
     """Tests that completing a task adds points."""
-    user = User.objects.all()[0]
-    points = user.get_profile().points
-    last_awarded_submission = user.get_profile().last_awarded_submission
+    points = self.user.get_profile().points
+    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     round_last_awarded = entry.last_awarded_submission
     
-    commitment = Commitment.objects.all()[0]
-    commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
-    
+    commitment_member = CommitmentMember(user=self.user, commitment=self.commitment, completion_date=datetime.datetime.today())
     commitment_member.save()
     
     # Check that this does not change the user's points.
-    self.assertTrue(points == user.get_profile().points)
-    self.assertTrue(last_awarded_submission == user.get_profile().last_awarded_submission)
+    self.assertEqual(points, self.user.get_profile().points)
+    self.assertEqual(last_awarded_submission, self.user.get_profile().last_awarded_submission)
     
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points, entry.points)
     self.assertEqual(round_last_awarded, entry.last_awarded_submission)
     
     commitment_member.award_date = datetime.datetime.today()
     commitment_member.save()
     points += commitment_member.commitment.point_value
-    self.assertTrue(points, user.get_profile().points)
-    self.assertTrue(user.get_profile().last_awarded_submission == commitment_member.award_date)
+    self.assertEqual(points, self.user.get_profile().points)
+    self.assertEqual(self.user.get_profile().last_awarded_submission, commitment_member.award_date)
     
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     round_points += commitment_member.commitment.point_value
     self.assertEqual(round_points, entry.points)
     self.assertTrue(abs(entry.last_awarded_submission - commitment_member.award_date) < datetime.timedelta(minutes=1))
     
-  def testAddCompletePostsMessages(self):
-    """Test that an added commitment and a completed commitment posts to the user's wall."""
-    floor = Floor.objects.all()[0]
-    num_posts = floor.post_set.count()
-    profile = floor.profile_set.all()[0]
-
-    commitment = Commitment.objects.all()[0]
-    commitment_member = CommitmentMember(user=profile.user, commitment=commitment, completion_date=datetime.datetime.today())
-    commitment_member.save()
-    self.assertEqual(floor.post_set.count() - num_posts, 1)
-    
-    commitment_member.award_date = datetime.datetime.today()
-    commitment_member.save()
-    self.assertEqual(floor.post_set.count() - num_posts, 2)
-    
   def testDeleteRemovesPoints(self):
     """Test that deleting a commitment member after it is completed removes the user's points."""
-    user = User.objects.all()[0]
-    points = user.get_profile().points
+    points = self.user.get_profile().points
     
     # Setup to check round points.
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     round_last_awarded = entry.last_awarded_submission
     
-    commitment = Commitment.objects.all()[0]
-    commitment_member = CommitmentMember(user=user, commitment=commitment, completion_date=datetime.datetime.today())
+    commitment_member = CommitmentMember(user=self.user, commitment=self.commitment, completion_date=datetime.datetime.today())
     commitment_member.save()
     
     commitment_member.award_date = datetime.datetime.today()
@@ -263,12 +262,11 @@ class CommitmentsUnitTestCase(TestCase):
     commitment_member.delete()
     
     # Verify nothing has changed.
-    # Slightly lenient since it depends on how data is dumped.
-    profile = user.get_profile()
+    profile = self.user.get_profile()
     self.assertTrue(profile.last_awarded_submission is None or profile.last_awarded_submission < award_date)
     self.assertEqual(points, profile.points)
     
-    entry = user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
+    entry = self.user.get_profile().scoreboardentry_set.get(round_name=self.current_round)
     self.assertEqual(round_points, entry.points)
     self.assertTrue(entry.last_awarded_submission is None or entry.last_awarded_submission < award_date)
     
@@ -299,6 +297,8 @@ class CommitmentsFunctionalTestCase(TestCase):
     from activities.forms import CommitmentCommentForm
     
     points = self.user.get_profile().points
+    floor = self.user.get_profile().floor
+    num_posts = floor.post_set.count()
     commitment = get_available_commitments(self.user)[0]
     response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
     
@@ -306,6 +306,10 @@ class CommitmentsFunctionalTestCase(TestCase):
     member = CommitmentMember.objects.get(commitment=commitment, user=self.user, completion_date__gt=datetime.date.today())
     member.completion_date = datetime.date.today()
     member.save()
+    
+    # Check that the added commitment generates a post.
+    self.assertEqual(floor.post_set.count(), num_posts + 1)
+    
     response = self.client.get('/activities/request_commitment_points/%d/' % commitment.pk)
     self.failUnlessEqual(response.status_code, 200)
     response = self.client.post('/activities/request_commitment_points/%d/' % commitment.pk)
@@ -315,6 +319,9 @@ class CommitmentsFunctionalTestCase(TestCase):
 
     response = self.client.get('/activities/commitment_list/')
     self.failUnless(commitment in response.context["completed_items"])
+    
+    # Check that the completed commitment generates a post.
+    self.assertEqual(floor.post_set.count(), num_posts + 2)
     
 class GoalsUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]

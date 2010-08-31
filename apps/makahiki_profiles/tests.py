@@ -9,10 +9,22 @@ from floors.models import Floor
 from makahiki_profiles.models import Profile, ScoreboardEntry
     
 class ScoreboardEntryUnitTests(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
   
   def setUp(self):
-    """Set the competition settings to the current date for testing."""
+    """Generate test user and activity. Set the competition settings to the current date for testing."""
+    self.user = User(username="test_user", password="changeme")
+    self.user.save()
+    self.activity = Activity(
+                title="Test activity",
+                description="Testing!",
+                duration=10,
+                point_value=10,
+                pub_date=datetime.datetime.today(),
+                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                confirm_type="text",
+    )
+    self.activity.save()
+    
     self.saved_rounds = settings.COMPETITION_ROUNDS
     self.current_round = "Round 1"
     start = datetime.date.today()
@@ -27,24 +39,22 @@ class ScoreboardEntryUnitTests(TestCase):
     
   def testRoundsUpdate(self):
     """Test that the score for the round updates when an activity is approved."""
-    user = User.objects.all()[0]
     entry, created = ScoreboardEntry.objects.get_or_create(
-                        profile=user.get_profile(), 
+                        profile=self.user.get_profile(), 
                         round_name=self.current_round,
                       )
     round_points = entry.points
     round_submission_date = entry.last_awarded_submission
+    
+    activity_points = self.activity.point_value
 
-    activity = Activity.objects.all()[0]
-    activity_points = activity.point_value
-
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
     activity_member.save()
     
     # Verify that the points for the round has been updated.
     entry, created = ScoreboardEntry.objects.get_or_create(
-                        profile=user.get_profile(), 
+                        profile=self.user.get_profile(), 
                         round_name=self.current_round,
                       )
                     
@@ -53,25 +63,23 @@ class ScoreboardEntryUnitTests(TestCase):
     
   def testRoundDoesNotUpdate(self):
     """Test that the score for the round does not update for an activity submitted outside of the round."""
-    user = User.objects.all()[0]
     entry, created = ScoreboardEntry.objects.get_or_create(
-                        profile=user.get_profile(), 
+                        profile=self.user.get_profile(), 
                         round_name=self.current_round,
                       )
     round_points = entry.points
     round_submission_date = entry.last_awarded_submission
+    
+    activity_points = self.activity.point_value
 
-    activity = Activity.objects.all()[0]
-    activity_points = activity.point_value
-
-    activity_member = ActivityMember(user=user, activity=activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
     activity_member.submission_date = datetime.datetime.today() - datetime.timedelta(days=1)
     activity_member.save()
 
     # Verify that the points for the round has not been updated.
     entry, created = ScoreboardEntry.objects.get_or_create(
-                        profile=user.get_profile(), 
+                        profile=self.user.get_profile(), 
                         round_name=self.current_round,
                       )
                       
@@ -83,12 +91,34 @@ class ScoreboardEntryUnitTests(TestCase):
     settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class ProfileUnitTests(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
   
   def testAwardRollback(self):
     """Tests that the last_awarded_submission field rolls back to a previous task."""
-    user = User.objects.get(username="user")
-    activities = Activity.objects.all()[0:2]
+    user = User(username="test_user", password="changeme")
+    user.save()
+    
+    activity1 = Activity(
+                title="Test activity",
+                description="Testing!",
+                duration=10,
+                point_value=10,
+                pub_date=datetime.datetime.today(),
+                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                confirm_type="text",
+    )
+    activity1.save()
+    
+    activity2 = Activity(
+                title="Test activity 2",
+                description="Testing!",
+                duration=10,
+                point_value=15,
+                pub_date=datetime.datetime.today(),
+                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                confirm_type="text",
+    )
+    activity2.save()
+    activities = [activity1, activity2]
     
     # Submit the first activity.  This is what we're going to rollback to.
     activity_member = ActivityMember(user=user, activity=activities[0])
