@@ -306,8 +306,13 @@ class ActivityMember(CommonActivityUser):
       
       if profile.floor:
         # Post on the user's floor wall.
+        if self.activity.has_variable_points:
+          points = self.points_awarded
+        else:
+          points = self.activity.point_value
+          
         message = " has been awarded %d points for completing \"%s\"." % (
-          self.activity.point_value,
+          points,
           self.activity.title,
         )
         post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")

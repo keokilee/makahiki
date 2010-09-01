@@ -1,0 +1,210 @@
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Activitys</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add activity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_title</td>
+	<td>Variable Point activity</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_description</td>
+	<td>Testing an activity with variable points!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_expire_date</td>
+	<td>2010-12-31</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_duration</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_value</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_start</td>
+	<td>15</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_end</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_textpromptquestion_set-0-question</td>
+	<td>Is this a test?</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_textpromptquestion_set-0-answer</td>
+	<td>It is!</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Please specify either a point_value or a range.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_value</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_start</td>
+	<td>15</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_end</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>The start value must be less than the end value.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_end</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Please specify a end value for the point range.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_start</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Either a point value or a range needs to be specified.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_start</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_range_end</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Variable Point activity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The activity &quot;Variable Point activity&quot; was added successfully.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Variable Point activity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The activity &quot;Variable Point activity&quot; was deleted successfully.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Log in again</td>
+	<td></td>
+</tr>

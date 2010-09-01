@@ -1,8 +1,8 @@
-from selenium import selenium
-import unittest, time, re
+import time, re
 from noseselenium.cases import SeleniumTestCaseMixin
+from django.test import TestCase
 
-class test_admin_create_event(unittest.TestCase, SeleniumTestCaseMixin):
+class test_admin_create_event(TestCase, SeleniumTestCaseMixin):
     selenium_test = True
     selenium_fixtures = ["base_data.json", "user_data.json"]
     
@@ -63,14 +63,21 @@ class test_admin_create_event(unittest.TestCase, SeleniumTestCaseMixin):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        sel.click("//form[@id='activity_form']/div[3]/fieldset[2]/div[2]/div/p[1]/span[1]/a[1]")
+        sel.type("id_event_date_0", "2010-08-31")
         sel.click("link=Now")
-        try: self.failUnless(sel.is_text_present("The number of codes is required for this confirmation type."))
-        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("_save")
+        sel.wait_for_page_to_load("30000")
+        for i in range(60):
+            try:
+                if sel.is_text_present("The number of codes is required for this confirmation type."): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         sel.type("id_num_codes", "100")
         try: self.failUnless(sel.is_text_present("This confirmation type requires a confirmation prompt."))
         except AssertionError, e: self.verificationErrors.append(str(e))
         sel.type("id_confirm_prompt", "Enter the confirmation code from this event.")
+        sel.type("id_event_date_1", "12:00:00")
         sel.click("_save")
         for i in range(60):
             try:

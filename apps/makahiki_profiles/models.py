@@ -69,7 +69,11 @@ class Profile(models.Model):
         points = submission.commitment.point_value
         submission_date = submission.award_date
       elif isinstance(submission, ActivityMember):
-        points = submission.activity.point_value
+        if submission.activity.has_variable_points:
+          points = submission.points_awarded
+        else:
+          points = submission.activity.point_value
+          
         submission_date = submission.submission_date
       elif isinstance(submission, GoalMember):
         points = submission.goal.point_value
@@ -101,7 +105,10 @@ class Profile(models.Model):
         points = submission.commitment.point_value
         submission_date = submission.award_date
       elif isinstance(submission, ActivityMember):
-        points = submission.activity.point_value
+        if submission.activity.has_variable_points:
+          points = submission.points_awarded
+        else:
+          points = submission.activity.point_value
         submission_date = submission.submission_date
       elif isinstance(submission, GoalMember):
         points = submission.goal.point_value

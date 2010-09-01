@@ -117,9 +117,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//form[@id='activity_form']/div[3]/fieldset[2]/div[2]/div/p[1]/span[1]/a[1]</td>
-	<td></td>
+	<td>type</td>
+	<td>id_event_date_0</td>
+	<td>2010-08-31</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -127,7 +127,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
+	<td>clickAndWait</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
 	<td>The number of codes is required for this confirmation type.</td>
 	<td></td>
 </tr>
@@ -145,6 +150,11 @@
 	<td>type</td>
 	<td>id_confirm_prompt</td>
 	<td>Enter the confirmation code from this event.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_event_date_1</td>
+	<td>12:00:00</td>
 </tr>
 <tr>
 	<td>click</td>

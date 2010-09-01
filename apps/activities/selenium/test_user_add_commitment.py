@@ -1,6 +1,6 @@
 from django.test import TestCase
 from noseselenium.cases import SeleniumTestCaseMixin
-import time, re
+import re, time
 
 class test_user_add_commitment(TestCase, SeleniumTestCaseMixin):
     selenium_test = True

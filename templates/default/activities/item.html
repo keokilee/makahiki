@@ -44,7 +44,13 @@
       {% endif %}
     </div>
   </td>
-  <td class="item_points">{{ item.point_value }}</td>
+  <td class="item_points">
+    {% if item.has_variable_points %}
+      {{ item.point_range_start }}-{{ item.point_range_end }}
+    {% else %}
+      {{ item.point_value }}
+    {% endif %}
+  </td>
   <td class="item_options">
     {% render_user_tools user item %}
   </td>

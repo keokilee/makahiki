@@ -1,8 +1,8 @@
-from selenium import selenium
-import unittest, time, re
+import time, re
 from noseselenium.cases import SeleniumTestCaseMixin
+from django.test import TestCase
 
-class test_admin_create_activity_text(unittest.TestCase, SeleniumTestCaseMixin):
+class test_admin_create_activity_text(TestCase, SeleniumTestCaseMixin):
     selenium_test = True
     selenium_fixtures = ["base_data.json", "user_data.json"]
     
@@ -90,5 +90,6 @@ class test_admin_create_activity_text(unittest.TestCase, SeleniumTestCaseMixin):
         else: self.fail("time out")
     def tearDown(self):
         self.assertEqual([], self.verificationErrors)
+        
 if __name__ == "__main__":
     unittest.main()

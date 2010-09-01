@@ -92,28 +92,28 @@ class ActivityAdminForm(forms.ModelForm):
       del cleaned_data["num_codes"]
       
     #6 Either points or a point range needs to be specified.
-    points = cleaned_data.has_key("point_value")
-    range_start = cleaned_data.has_key("point_value_start")
-    range_end = cleaned_data.has_key("point_value_end")
-    if not points and not (range_start or range_end):
+    points = cleaned_data.get("point_value")
+    point_range_start = cleaned_data.get("point_range_start")
+    point_range_end = cleaned_data.get("point_range_end")
+    if not points and not (point_range_start or point_range_end):
       self._errors["point_value"] = ErrorList([u"Either a point value or a range needs to be specified."])
       del cleaned_data["point_value"]
-    elif points and (range_start or range_end):
+    elif points and (point_range_start or point_range_end):
       self._errors["point_value"] = ErrorList([u"Please specify either a point_value or a range."])
       del cleaned_data["point_value"]
     elif not points:
-      point_value_start = cleaned_data.get("point_value_start")
-      point_value_end = cleaned_data.get("point_value_end")
-      if not range_start:
-        self._errors["point_value_start"] = ErrorList([u"Please specify a start value for the point range."])
-        del cleaned_data["point_value_start"]
-      elif not range_end:
-        self._errors["point_value_end"] = ErrorList([u"Please specify a end value for the point range."])
-        del cleaned_data["point_value_end"]
-      elif point_value_start >= point_value_end:
-        self._errors["point_value_start"] = ErrorList([u"The start value must be less than the end value."])
-        del cleaned_data["point_value_start"]
-        del cleaned_data["point_value_end"]
+      point_range_start = cleaned_data.get("point_range_start")
+      point_range_end = cleaned_data.get("point_range_end")
+      if not point_range_start:
+        self._errors["point_range_start"] = ErrorList([u"Please specify a start value for the point range."])
+        del cleaned_data["point_range_start"]
+      elif not point_range_end:
+        self._errors["point_range_end"] = ErrorList([u"Please specify a end value for the point range."])
+        del cleaned_data["point_range_end"]
+      elif point_range_start >= point_range_end:
+        self._errors["point_range_start"] = ErrorList([u"The start value must be less than the end value."])
+        del cleaned_data["point_range_start"]
+        del cleaned_data["point_range_end"]
       
     return cleaned_data
     
@@ -175,8 +175,9 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('title', 'description', 'point_value', 'duration', ('pub_date', 'expire_date')),
+      'fields' : ('title', 'description', 'duration', ('pub_date', 'expire_date')),
     }),
+    ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
     ("Event", {'fields' : ('is_event', 'event_date')}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
@@ -200,7 +201,6 @@ class ActivityMemberAdminForm(forms.ModelForm):
       message = "Specify the number of points to award.  This value must be between %d and %d"
       message = message % (activity.point_range_start, activity.point_range_end)
       self.fields["points_awarded"].help_text = message
-      self.fields["points_awarded"].required = True
       
   class Meta:
     model = ActivityMember
@@ -210,20 +210,20 @@ class ActivityMemberAdminForm(forms.ModelForm):
     
     # Data that has passed validation.
     cleaned_data = self.cleaned_data
+    status = cleaned_data.get("approval_status")
     
     activity = self.instance.activity
-    if activity.point_range_start and activity.point_range_start > 0 and activity.point_range_end > 0:
+    if status == "approved" and activity.has_variable_points:
       # Check if the point value is filled in.
       if not cleaned_data.has_key("points_awarded"):
         self._errors["points_awarded"] = ErrorList([u"This activity requires that you specify the number of points to award."])
-        del cleaned_data["points_awarded"]
       
       # Check if the point value is valid.
       elif cleaned_data["points_awarded"] < activity.point_range_start or cleaned_data["points_awarded"] > activity.point_range_end:
         message = "The points to award must be between %d and %d" % (activity.point_range_start, activity.point_range_end)
         self._errors["points_awarded"] = ErrorList([message])
         del cleaned_data["points_awarded"]
-    elif cleaned_data.has_key("points_awarded"):
+    elif status == "approved" and cleaned_data.has_key("points_awarded"):
       self._errors["points_awarded"] = ErrorList([u"This field is only required for activities with variable point values."])
       del cleaned_data["points_awarded"]
       
@@ -245,8 +245,8 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   
   def get_form(self, request, obj=None, **kwargs):
     """Override to remove the points_awarded field if the activity does not have variable points."""
+    self.exclude = []
     if obj and not obj.activity.has_variable_points:
-      self.exclude = []
       self.exclude.append("points_awarded")
       
     return super(ActivityMemberAdmin, self).get_form(request, obj, **kwargs)
