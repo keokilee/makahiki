@@ -175,16 +175,20 @@ class Activity(CommonBase):
   
   title = models.CharField(max_length=200)
   description = models.TextField(help_text=MARKDOWN_TEXT)
-  point_value = models.IntegerField(null=True, blank=True) # This is validated by the admin form.
+  point_value = models.IntegerField(
+                  null=True, 
+                  blank=True, 
+                  help_text="Specify a single point value or a range of points to be awarded."
+                ) # This is validated by the admin form.
   point_range_start = models.IntegerField(
                         null=True, 
                         blank=True, 
-                        help_text="Specify a range of possible points for this activity."
+                        help_text="Minimum number of points possible for this activity."
                       )
   point_range_end = models.IntegerField(
                         null=True, 
                         blank=True, 
-                        help_text="Specify a range of possible points for this activity."
+                        help_text="Maximum number of points possible for this activity."
                       )
   
   duration = models.IntegerField(
