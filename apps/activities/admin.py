@@ -195,13 +195,12 @@ class ActivityMemberAdminForm(forms.ModelForm):
     super(ActivityMemberAdminForm, self).__init__(*args, **kwargs)
     # Instance points to an instance of the model.
     member = self.instance
-    if member and member.activity.has_variable_points:
+    if self.instance and member and member.activity.has_variable_points:
       activity = member.activity
       message = "Specify the number of points to award.  This value must be between %d and %d"
       message = message % (activity.point_range_start, activity.point_range_end)
       self.fields["points_awarded"].help_text = message
-    else:
-      del self.fields["points_awarded"]
+      self.fields["points_awarded"].required = True
       
   class Meta:
     model = ActivityMember
@@ -212,7 +211,7 @@ class ActivityMemberAdminForm(forms.ModelForm):
     # Data that has passed validation.
     cleaned_data = self.cleaned_data
     
-    activity = Activity.objects.get(pk=cleaned_data.get("activity"))
+    activity = self.instance.activity
     if activity.point_range_start and activity.point_range_start > 0 and activity.point_range_end > 0:
       # Check if the point value is filled in.
       if not cleaned_data.has_key("points_awarded"):
@@ -243,6 +242,14 @@ class ActivityMemberAdmin(admin.ModelAdmin):
     for obj in queryset:
       obj.delete()
   delete_selected.short_description = "Delete the selected objects."
+  
+  def get_form(self, request, obj=None, **kwargs):
+    """Override to remove the points_awarded field if the activity does not have variable points."""
+    if obj and not obj.activity.has_variable_points:
+      self.exclude = []
+      self.exclude.append("points_awarded")
+      
+    return super(ActivityMemberAdmin, self).get_form(request, obj, **kwargs)
   
 admin.site.register(ActivityMember, ActivityMemberAdmin)
 
