@@ -1,40 +1,26 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
-from makahiki_base.models import Article, Headline
+from makahiki_base.models import Article
 
-class ArticleTestCase(TestCase):
+class IndexFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
-  def testCreateSlug(self):
-    """Tests creating slugs."""
-    article = Article(title="Hello World!", content="What's up everyone?")
-    slug = article.create_slug()
-    self.assertEqual("hello-world", slug, "Testing that slug strips punctuation.")
+  def testHomepageRedirect(self):
+    """Tests that a logged in user goes to their profile page."""
     
-    article.title = ""
-    for i in range(0, 255):
-      article.title += "x"
-      
-    slug = article.create_slug()
-    self.assertTrue(len(slug) < len(article.title), "Testing that slug shortens title.")
+    response = self.client.get(reverse("index"))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "homepage.html", 
+          "Check that the home page template is used for non-authenticated users.")
     
-  def testDateSlug(self):
-    """Tests creating slugs with forward slashes."""
-    article = Article(title="Standings for 4/18", content="Currently, Frear Hall is in the lead!")
-    article.save()
-    self.assertEqual("standings-for-418", article.slug, "Testing creating a slug from a date.")
-    
-  def testArticleHeadline(self):
-    """Tests that an article headline is created for new stories and not old stories."""
-    headline_count = len(Headline.objects.all())
-    
-    article = Article(
-            title="Blue Planet Foundation", 
-            content="There will be a Blue Planet Foundation meeting on campus at 2PM.  All are welcome to attend."
-    )
-    article.save()
-    self.assertEqual(len(Headline.objects.all()), headline_count + 1, "Checking that a new headline is created.")
-    
-    article.content = "Editing content."
-    article.save()
-    self.assertEqual(len(Headline.objects.all()), headline_count + 1, "Check that another headline is not added.")
+    user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
+    response = self.client.get(reverse("index"), follow=True)
+    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", "Check that the user is taken to their profile.")
+    response = self.client.get(reverse("home"))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "homepage.html", 
+          "Check that the home page is still accessible in the tab.")
+
