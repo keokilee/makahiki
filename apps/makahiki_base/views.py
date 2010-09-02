@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import get_object_or_404, render_to_response
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.views.decorators.cache import cache_control
@@ -16,6 +17,16 @@ def homepage(request):
     "articles": articles,
     "headlines": headlines,
   }, context_instance = RequestContext(request))
+  
+@cache_control(must_revalidate=True, max_age=3600)
+def index(request):
+  user = request.user
+  
+  # Check if a user is logged in and a valid participant.
+  if user.is_authenticated() and user.get_profile().floor:
+    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  else:
+    return homepage(request)
   
 def _generate_headlines(items):
   """Private method to generate headlines on demand."""

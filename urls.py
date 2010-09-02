@@ -12,7 +12,8 @@ import os
 
 urlpatterns = patterns('',
     # some simple pages
-    url(r'^$', "makahiki_base.views.homepage", name="home"),
+    url(r'^$', "makahiki_base.views.index", name="index"),
+    url(r'^home/$', "makahiki_base.views.homepage", name="home"),
     url(r'^billboard/$', direct_to_template, {"template": "billboard.html"}, name="billboard"),
     url(r'^about_us/$', direct_to_template, {"template": "about_us.html"}, name="about_us"),
     url(r'^rules/$', direct_to_template, {"template": "rules.html"}, name="rules"),
