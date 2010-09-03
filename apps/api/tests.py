@@ -51,10 +51,9 @@ class JsonApiFunctionalTestCase(TestCase):
     # Check that the content is correct.
     json_content = json.loads(response.content)
     
-    self.assertTrue(json_content.has_key("start"), "Check that the competition start date is included.")
-    self.assertTrue(json_content.has_key("end"), "Check that the competition end date is included.")
+    self.assertTrue(json_content.has_key("Competition"), "Check that the competition dates are included.")
     self.assertTrue(json_content.has_key("Round 1"), "Check that Round 1 is included.")
-    self.assertEqual(len(json_content), 3, "Check that these are the only 3 items.")
+    self.assertEqual(len(json_content), 2, "Check that these are the only 2 items.")
     
   def testFloorStandingsResponse(self):
     """Test that we get the correct JSON API response when accessing floor standings."""

@@ -11,7 +11,7 @@ def rounds(request):
   
   if request.method == "GET":
     rounds = competition_settings.COMPETITION_ROUNDS
-    rounds.update({"start": competition_settings.COMPETITION_START, "end": competition_settings.COMPETITION_END})
+    rounds.update({"Competition": {"start": competition_settings.COMPETITION_START, "end": competition_settings.COMPETITION_END}})
 
     return HttpResponse(json.dumps(rounds), mimetype='application/json')
   
