@@ -145,6 +145,23 @@ class ProfileUnitTests(TestCase):
 class ProfilesFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
+  def testProfileEdit(self):
+    """Test to check that the user can edit their profile."""
+    
+    user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
+    response = self.client.get(reverse("profile_edit"))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "makahiki_profiles/profile_edit.html", "Check user can access profile edit.")
+    response = self.client.post(reverse("profile_edit"), {
+                  "theme": "default", 
+                  "name": "test",
+                  "about": "Testing test test."
+                }, follow=True)
+    self.assertRedirects(response, reverse("profile_detail", args=(user.get_profile().pk,)), 
+                         msg_prefix="Check the user is redirected to their page.")
+    self.assertContains(response, "Testing test test.", msg_prefix="Check that the info is saved.")
+    
   def testUnauthenticatedAccess(self):
     """Test that an unauthenticated user cannot access user profiles."""
     profile = Profile.objects.all()[0]
@@ -154,17 +171,17 @@ class ProfilesFunctionalTestCase(TestCase):
   def testUserProfileAccess(self):
     """Test that a user can only access their own page and pages of those on their floor."""
     
-    self.user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
+    user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
     
     # Check that the user can access their own page.
-    profile = self.user.get_profile()
+    profile = user.get_profile()
     response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
     self.assertTemplateUsed(response, "makahiki_profiles/profile.html", msg_prefix="Test that user can access their own page.")
     
     # Check that the user can access their fellow floor member's page.
     floor = profile.floor
-    profile = floor.profile_set.exclude(user=self.user)[0]
+    profile = floor.profile_set.exclude(user=user)[0]
     response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
     self.assertTemplateUsed(response, "makahiki_profiles/profile.html", 
             msg_prefix="Test that user can access a fellow floor member's page.")

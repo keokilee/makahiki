@@ -123,7 +123,7 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
             profile = profile_form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return HttpResponseRedirect(reverse("profile_detail", args=[request.user.username]))
+            return HttpResponseRedirect(reverse("profile_detail", args=[profile.pk]))
     else:
         profile_form = form_class(instance=profile)
     
