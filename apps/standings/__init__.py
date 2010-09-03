@@ -1,10 +1,12 @@
+import simplejson as json
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Sum, Max
 
+from makahiki_base import get_floor_label
 from makahiki_profiles.models import Profile, ScoreboardEntry
 from floors.models import Floor
-import simplejson as json
 
 # Default number of individuals to retrieve standings for when tracking across all dorms.
 MAX_INDIVIDUAL_STANDINGS = 10
@@ -37,10 +39,7 @@ def get_all_standings(dorm=None, grouping="floor", count=MAX_INDIVIDUAL_STANDING
 def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_STANDINGS):
   """Retrieves standings across all floors for individual users."""
   
-  if settings.COMPETITION_GROUP_NAME:
-    floor_label = settings.COMPETITION_GROUP_NAME    
-  else:
-    floor_label = "Floor"
+  floor_label = get_floor_label()
   title = floor_label.capitalize() + " vs. " + floor_label.capitalize() + ": "
     
   # Build up the query set.
@@ -92,10 +91,7 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
 def get_floor_standings(dorm=None, round_name=None):
   """Retrieves standings across all floors grouped by floor."""
   
-  if settings.COMPETITION_GROUP_NAME:
-    floor_label = settings.COMPETITION_GROUP_NAME
-  else:
-    floor_label = "Floor"
+  floor_label = get_floor_label()
     
   title = floor_label.capitalize() + " vs. " + floor_label.capitalize() + ": "
     

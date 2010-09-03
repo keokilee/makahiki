@@ -11,6 +11,7 @@ from django.conf import settings
 from makahiki_profiles.models import Profile
 from floors.models import Floor, Post
 from makahiki_base.models import Like
+from makahiki_base import get_floor_label
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
@@ -369,10 +370,7 @@ class GoalMember(CommonActivityUser):
   admin_comment = models.TextField(null=True, blank=True, help_text="Reason for approval/rejection")
   
   def __unicode__(self):
-    if settings.COMPETITION_GROUP_NAME:
-      floor_label = settings.COMPETITION_GROUP_NAME
-    else:
-      floor_label = "Floor"
+    floor_label = get_floor_label()
     return "%s : %s %s %s" % (self.goal.title, self.floor.dorm.name, floor_label, self.floor.number)
     
   @staticmethod

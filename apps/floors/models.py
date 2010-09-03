@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.template.defaultfilters import slugify
 
-from groups.base import Group
+from makahiki_base import get_floor_label
 
 # Create your models here.
 
@@ -49,12 +49,7 @@ class Floor(models.Model):
   )
   
   def __unicode__(self):
-    if settings.COMPETITION_GROUP_NAME:
-      floor_label = settings.COMPETITION_GROUP_NAME
-    else:
-      floor_label = "Floor"
-      
-    return "%s: %s %s" % (self.dorm.name, floor_label, self.number)
+    return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
     
   def save(self):
     """Custom save method to generate slug and set created_at/updated_at."""
