@@ -15,3 +15,17 @@ COMPETITION_ROUNDS = {
     "end": '2010-12-31',
   },
 }
+
+# Theme settings for Makahiki.  Used to aid in styling the Javascript widgets.
+# The system will insert the colors based on the selected theme.  If an entry 
+# for a theme does not exist, default will be used.
+MAKAHIKI_CSS_THEME = {
+  "default" : {
+    "widgetBackgroundColor" : '#F5F3E5',
+    "widgetHeaderColor" : '#459E00',
+    "widgetHeaderTextColor" : 'white',
+    "widgetTextColor" : '#312E25',
+    "widgetTextFont" : 'Ariel, sans serif',
+    "windowNavBarColor" : '#2F6B00',
+  },
+}
