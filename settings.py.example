@@ -12,10 +12,10 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PINAX_THEME = 'default'
 
 # Kukui Cup CSS theme setting.
-KUKUI_CSS_THEME = 'blue7'
+MAKAHIKI_THEME = 'blue7'
 
 # Kukui Cup Template theme setting.
-KUKUI_TEMPLATE_THEME = 'default'
+MAKAHIKI_TEMPLATE_THEME = 'default'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -126,7 +126,7 @@ CAS_IGNORE_REFERER = True
 ROOT_URLCONF = 'makahiki.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), "templates", KUKUI_TEMPLATE_THEME),
+    os.path.join(os.path.dirname(__file__), "templates", MAKAHIKI_TEMPLATE_THEME),
     os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 )
 

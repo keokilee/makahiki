@@ -16,10 +16,13 @@ COMPETITION_ROUNDS = {
   },
 }
 
+# The theme to use as default. This corresponds to a folder in media that contains the CSS.
+MAKAHIKI_THEME = "default"
+
 # Theme settings for Makahiki.  Used to aid in styling the Javascript widgets.
 # The system will insert the colors based on the selected theme.  If an entry 
 # for a theme does not exist, default will be used.
-MAKAHIKI_CSS_THEME = {
+MAKAHIKI_THEME_SETTINGS = {
   "default" : {
     "widgetBackgroundColor" : '#F5F3E5',
     "widgetHeaderColor" : '#459E00',

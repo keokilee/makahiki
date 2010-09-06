@@ -9,6 +9,6 @@ def change_theme(request):
   if request.method == "POST":
     form = ThemeSelect(request.POST)
     if form.is_valid():
-      settings.KUKUI_CSS_THEME = form.cleaned_data["css_theme"]
+      settings.MAKAHIKI_THEME = form.cleaned_data["css_theme"]
       
   return HttpResponseRedirect("/")

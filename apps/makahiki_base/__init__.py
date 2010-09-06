@@ -17,3 +17,14 @@ def get_round_info():
   rounds.update({"Competition": {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}})
   
   return rounds
+  
+def get_theme():
+  """Get the current theme and returns the theme settings."""
+
+  theme = settings.MAKAHIKI_THEME or "default"
+  if settings.MAKAHIKI_THEME_SETTINGS.has_key(theme):
+    return settings.MAKAHIKI_THEME_SETTINGS[theme]
+  elif settings.MAKAHIKI_THEME_SETTINGS.has_key("default"):
+    return settings.MAKAHIKI_THEME_SETTINGS["default"]
+  else:
+    return {}

@@ -10,7 +10,7 @@ def render_css_import(user=None):
   """Renders the CSS import header statements for a template."""
 
   return_string = ""
-  current_theme = settings.KUKUI_CSS_THEME
+  current_theme = settings.MAKAHIKI_THEME
     
   css_dir = os.path.join(settings.PROJECT_ROOT, "media", current_theme, "css")
   
@@ -32,7 +32,7 @@ def render_css_select(user=None):
   theme_dir = os.path.join(settings.PROJECT_ROOT, "media")
   
   items = (item for item in os.listdir(theme_dir) if os.path.isdir(os.path.join(theme_dir, item, "css")))
-  current_theme = settings.KUKUI_CSS_THEME
+  current_theme = settings.MAKAHIKI_THEME
   
   for item in items:
     if item == current_theme:
