@@ -46,7 +46,7 @@
             </li>
             {% if other_user.get_profile.floor %}
               <li><b>{% trans "Dorm" %}</b>: <span class="fn">{{ other_user.get_profile.floor.dorm.name }}</span></li>
-              <li><b>{{floor_label}}</b>: <span class="fn">{{ other_user.get_profile.floor.number }}</span></li>
+              <li><b>{{FLOOR_LABEL}}</b>: <span class="fn">{{ other_user.get_profile.floor.number }}</span></li>
             {% endif %}
             {% if other_user.get_profile.about %}<li><b>{% trans "About" %}</b>: {{ other_user.get_profile.about }}</li>{% endif %}
             <li><b>{% trans "Points" %}</b>: {{ other_user.get_profile.points }}</li>

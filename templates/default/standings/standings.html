@@ -22,7 +22,7 @@
 
 {% block subnav %}
   <ul id="{{current_page}}">
-    <li id="floor_subnav" class="ui-corner-all"><a href="{% url standings %}">{{floor_label}} vs. {{floor_label}}</a></li>
+    <li id="floor_subnav" class="ui-corner-all"><a href="{% url standings %}">{{FLOOR_LABEL}} vs. {{FLOOR_LABEL}}</a></li>
     {% for dorm in dorms %}
       <li id="{{dorm.slug}}_subnav" class="ui-corner-all"><a href="/standings/{{dorm.slug}}/">{{dorm.name}}</a></li>
     {% endfor %}
@@ -45,7 +45,7 @@
 <div id="three_col_center" style="padding-top: 10px; width: 320px">
   <div id="standings_floor" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-      {{title}}: {{floor_label}} Points
+      {{title}}: {{FLOOR_LABEL}} Points
     </div>
     <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
       {% with floor_points as standings_array %}

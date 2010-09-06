@@ -1,6 +1,6 @@
 <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
   {% if is_me %}
-      Our {{floor_label.lower}}&apos;s goals: <a href="/activities/goal_list/" class="header_link">view all</a>
+      Our {{FLOOR_LABEL.lower}}&apos;s goals: <a href="/activities/goal_list/" class="header_link">view all</a>
   {% else %}
     {{ other_user.get_profile.name }} floor's goals.
   {% endif %}
