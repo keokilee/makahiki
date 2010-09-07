@@ -64,9 +64,16 @@ class IndexFunctionalTestCase(TestCase):
     response = self.client.get(reverse("home"))
     articles = Article.objects.all()
     for article in articles:
-      article_url = reverse("view_article", args=(article.pk, article.slug,))
+      article_url = reverse("view_article", args=(article.slug,))
       message = "Checking that link to '%s' appears in headline and listing."
       self.assertContains(response, article_url, count=2, msg_prefix=message)
+      
+    # Test using a new article.
+    article = Article(title="Test Article", abstract="This is a test", content="Testing testing.")
+    article.save()
+    article_url = reverse("view_article", args=(article.slug,))
+    response = self.client.get(reverse("home"))
+    self.assertContains(response, article_url, count=2, msg_prefix="Checking that a new test article appears.")
     
   def testHomepageRedirect(self):
     """Tests that a logged in user goes to their profile page."""

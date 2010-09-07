@@ -32,15 +32,11 @@ def _generate_headlines(items):
   """Private method to generate headlines on demand."""
   for item in items:
     if isinstance(item, Article):
-      yield "<p>Latest News: <a href='%s'>%s</a></p>" % (reverse("resources.views.resource", args=(item.id,)), item.title)
+      yield "<p>Latest News: <a href='%s'>%s</a></p>" % (reverse("view_article", args=(item.slug,)), item.title)
   
-def article(request, item_id, slug=None):
+def article(request, slug=None):
   """Displays a single article."""
-  article = None
-  if not slug:
-    article = get_object_or_404(Article, pk=item_id)
-  else:
-    article = get_object_or_404(Article, pk=item_id, slug=slug)
+  article = get_object_or_404(Article, slug=slug)
 
   return render_to_response("makahiki_base/full_article.html", {
     "article": article,
