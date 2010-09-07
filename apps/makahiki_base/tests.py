@@ -59,6 +59,15 @@ class BaseUnitTestCase(TestCase):
 class IndexFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
+  def testHomepageHeadlines(self):
+    """Check that the headline links in the home page are correct."""
+    response = self.client.get(reverse("home"))
+    articles = Article.objects.all()
+    for article in articles:
+      article_url = reverse("view_article", args=(article.pk, article.slug,))
+      message = "Checking that link to '%s' appears in headline and listing."
+      self.assertContains(response, article_url, count=2, msg_prefix=message)
+    
   def testHomepageRedirect(self):
     """Tests that a logged in user goes to their profile page."""
     
