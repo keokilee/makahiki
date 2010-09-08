@@ -5,6 +5,7 @@ from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -16,7 +17,6 @@ from django.views.decorators.cache import never_cache
 
 from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
-
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -49,6 +49,7 @@ def profiles(request, template_name="makahiki_profiles/profiles.html"):
 def profile(request, user_id, template_name="makahiki_profiles/profile.html"):    
     other_user = get_object_or_404(User, pk=user_id)
     
+    # Check that the user has permission to view this profile.
     if request.user.is_authenticated():
         if request.user == other_user:
           is_me = True
@@ -59,6 +60,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
     else:
         return _restricted(request)
         
+    # Create initial return dictionary.
     return_dict = {
         "is_me": is_me,
         "activities_enabled": False,
@@ -99,6 +101,28 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
         
       return_dict["standings_titles"].append("Overall")
         
+    except ImportError:
+      pass
+      
+    # Retrieve the current energy goal.
+    try:
+      from goals.models import EnergyGoal, EnergyGoalVote
+      
+      current_goal = EnergyGoal.get_current_goal()
+      if current_goal and is_me:
+        in_voting = current_goal.in_voting_period()
+        vote = None
+        if in_voting:
+          try:
+            vote = EnergyGoalVote.objects.get(user=other_user, goal=current_goal)
+          except ObjectDoesNotExist:
+            pass
+            
+        return_dict["energy_goal"] = {
+              "goal": current_goal,
+              "in_voting": in_voting,
+              "vote": vote,
+        }
     except ImportError:
       pass
       

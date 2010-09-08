@@ -1,0 +1,12 @@
+{% if energy_goal.goal and energy_goal.in_voting %}
+<div class="ui-accordion-header ui-corner-top list_header">
+  Vote For Your Energy Goal:
+</div>
+<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+  {% if energy_goal.vote %}
+    <p>Thank you for voting.</p>
+  {% else %}
+    <p>Please vote!</p>
+  {% endif %}
+</div>
+{% endif %}

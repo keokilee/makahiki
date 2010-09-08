@@ -9,13 +9,16 @@ from floors.models import Floor
 
 class EnergyGoal(models.Model):
   start_date = models.DateField(help_text="The date on which the goal starts.  Users will begin voting at 12:00am on this date.")
-  voting_end_date = models.DateField(help_text="The date on which voting ends. Voting ends at 11:59pm on this date.")
-  end_date = models.DateField(help_text="The goal will end at 11:59pm on this date.")
+  voting_end_date = models.DateField(help_text="The date on which voting ends. Voting ends at 12:00am on this date and the goal starts.")
+  end_date = models.DateField(help_text="The goal will end at 12:00am on this date.")
   minimum_goal = models.IntegerField(default=0, help_text="The lowest percent reduction possible for a goal.")
   maximum_goal = models.IntegerField(default=50, help_text="The highest percent reduction possible for a goal.")
   goal_increments = models.IntegerField(default=5, help_text="The percent increments users will be able to vote on.")
   created_at = models.DateTimeField(editable=False)
   updated_at = models.DateTimeField(null=True, editable=False)
+  
+  def __unicode__(self):
+    return "Goal for %s to %s" % (self.start_date, self.end_date)
   
   def save(self):
     if not self.id:
@@ -23,6 +26,24 @@ class EnergyGoal(models.Model):
     else:
       self.updated_at = datetime.datetime.today()
     super(EnergyGoal, self).save()
+    
+  @staticmethod
+  def get_current_goal():
+    """Gets the current energy goal. Returns None if no goal is currently going on."""
+    today = datetime.date.today()
+    for goal in EnergyGoal.objects.all():
+      if today >= goal.start_date and today < goal.end_date:
+        return goal
+        
+    return None
+    
+  def in_voting_period(self):
+    """Returns True if the goal is in the voting period and False otherwise."""
+    today = datetime.date.today()
+    if today >= self.start_date and today < self.voting_end_date:
+      return True
+    
+    return False
   
 class EnergyGoalVote(models.Model):
   user = models.ForeignKey(User)
