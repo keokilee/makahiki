@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,9 +8,9 @@ from floors.models import Floor
 # Create your models here.
 
 class EnergyGoal(models.Model):
-  start_date = models.DateField(help_text="The date on which the goal starts.  Users will begin voting on this date.")
-  voting_end_date = models.DateField(help_text="The date on which voting ends.")
-  end_date = models.DateField(help_text="The date on which the goal ends.")
+  start_date = models.DateField(help_text="The date on which the goal starts.  Users will begin voting at 12:00am on this date.")
+  voting_end_date = models.DateField(help_text="The date on which voting ends. Voting ends at 11:59pm on this date.")
+  end_date = models.DateField(help_text="The goal will end at 11:59pm on this date.")
   minimum_goal = models.IntegerField(default=0, help_text="The lowest percent reduction possible for a goal.")
   maximum_goal = models.IntegerField(default=50, help_text="The highest percent reduction possible for a goal.")
   goal_increments = models.IntegerField(default=5, help_text="The percent increments users will be able to vote on.")
