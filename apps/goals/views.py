@@ -1,8 +1,11 @@
-from django.http import HttpResponseRedirect, Http404
+import simplejson as json
+
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 
+from makahiki_base import restricted
 from goals.models import EnergyGoal, EnergyGoalVote
 from goals.forms import EnergyGoalVotingForm
 
@@ -27,4 +30,16 @@ def vote(request, goal_id):
   else:
     return HttpResponseRedirect(reverse("profile_detail", args=(user.pk,)))
   
+def voting_results(request, goal_id):
+  """Get the voting results for the user's floor."""
+  goal = get_object_or_404(EnergyGoal, pk=goal_id)
+  
+  profile = request.user.get_profile()
+  results = goal.get_floor_results(profile.floor)
+  
+  # Need to sort the results.
+  
+  return HttpResponse(json.dumps({
+      "results": results,
+  }), mimetype='text/plain')
   

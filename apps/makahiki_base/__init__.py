@@ -1,5 +1,8 @@
 import competition_settings as settings
 
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
 # Default string to use as the floor label.
 DEFAULT_FLOOR_LABEL = "Floor"
 
@@ -28,3 +31,13 @@ def get_theme():
     return settings.MAKAHIKI_THEME_SETTINGS["default"]
   else:
     return {}
+    
+def restricted(request, message=None):
+  """Helper method to return a error message when a user accesses a page they are not allowed to view."""
+
+  if not message:
+    message = "You are not allowed to view this page."
+    
+  return render_to_response("restricted.html", {
+    "message": message,
+  }, context_instance = RequestContext(request))

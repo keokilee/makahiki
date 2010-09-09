@@ -12,5 +12,18 @@
   {% else %}
     <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
   {% endif %}
+  <div id="goal_vote_results">
+    <a id="view_results" href="#">View Results</a>
+  </div>
+  <script type=text/javascript>
+    $(document).ready(function() {
+      $("#view_results").click(function() {
+        $("#goal_vote_results").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
+        $.get("{% url goal_vote_results energy_goal.goal.id %}", function(data) {
+          $("#goal_vote_results").html(data);
+        });
+      });
+    });
+  </script>
 </div>
 {% endif %}

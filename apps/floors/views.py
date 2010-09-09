@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.decorators.cache import never_cache
 
+from makahiki_base import restricted
 from floors.models import Dorm, Floor, Post
 from floors.forms import WallForm
 from makahiki_avatar.models import Avatar
@@ -20,7 +21,7 @@ def floor(request, dorm_slug, floor_slug):
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
   
   if not request.user.is_authenticated() or (request.user.get_profile() not in floor.profile_set.all() and not request.user.is_staff):
-    return _restricted(request)
+    return restricted(request, "You must be a member of the floor to access this page.")
     
   profiles = floor.profile_set.all()[0:12]
   posts = floor.post_set.order_by('-created_at')
@@ -40,7 +41,7 @@ def floor_members(request, dorm_slug, floor_slug):
   
   profiles = floor.profile_set.all()
   if not request.user.is_authenticated() or (request.user.get_profile() not in profiles and not request.user.is_staff):
-    return _restricted(request)
+    return restricted(request, "You must be a member of the floor to access this page.")
 
   return render_to_response('floors/members.html', {
     "profiles": profiles,
@@ -61,9 +62,3 @@ def wall_post(request, dorm_slug, floor_slug):
   
   raise Http404
   
-def _restricted(request):
-  """Helper method to return a error message when a user accesses a page they are not allowed to view."""
-  
-  return render_to_response("restricted.html", {
-    "message": "You must be a member of the floor to access this page."
-  }, context_instance = RequestContext(request))

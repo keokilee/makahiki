@@ -17,7 +17,6 @@ from django.views.decorators.cache import never_cache
 
 from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
-from goals.forms import EnergyGoalVotingForm
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -57,9 +56,9 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
         elif other_user.get_profile().floor == request.user.get_profile().floor or request.user.is_staff: 
           is_me = False
         else:
-          return _restricted(request)
+          return restricted(request, "You are not allowed to view this user's profile page.")
     else:
-        return _restricted(request)
+        return restricted(request, "You are not allowed to view this user's profile page.")
         
     # Create initial return dictionary.
     return_dict = {
@@ -107,21 +106,10 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Retrieve the current energy goal.
     try:
-      from goals.models import EnergyGoal, EnergyGoalVote
+      from goals import get_info_for_user
       
-      current_goal = EnergyGoal.get_current_goal()
-      if current_goal and is_me:
-        form = None 
-        in_voting = current_goal.in_voting_period()
-        can_vote = in_voting and current_goal.user_can_vote(other_user)
-        if can_vote:
-          form = EnergyGoalVotingForm(instance=EnergyGoalVote(user=other_user, goal=current_goal))
-            
-        return_dict["energy_goal"] = {
-              "goal": current_goal,
-              "in_voting": in_voting,
-              "form": form,
-        }
+      if is_me:
+        return_dict.update({"energy_goal": get_info_for_user(other_user)})
     except ImportError:
       pass
       
@@ -154,11 +142,5 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
         "profile": profile,
         "profile_form": profile_form,
     }, context_instance=RequestContext(request))
-    
-def _restricted(request):
-  """Helper method to return a error message when a user accesses a page they are not allowed to view."""
 
-  return render_to_response("restricted.html", {
-    "message": "You are not allowed to view this user's profile page."
-  }, context_instance = RequestContext(request))
 
