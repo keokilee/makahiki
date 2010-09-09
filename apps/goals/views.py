@@ -24,7 +24,7 @@ def vote(request, goal_id):
     form.save()
     messages.info(request, 'Thank you for your vote!')
   
-  if request.META.has_key("REFERER"):
+  if request.META.has_key("HTTP_REFERER"):
     return HttpResponseRedirect(request.META["HTTP_REFERER"]) 
     
   else:
