@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 
 from goals.models import EnergyGoal, EnergyGoalVote
@@ -20,5 +21,10 @@ def vote(request, goal_id):
     form.save()
     messages.info(request, 'Thank you for your vote!')
   
-  return HttpResponseRedirect(request.META["HTTP_REFERER"]) 
+  if request.META.has_key("REFERER"):
+    return HttpResponseRedirect(request.META["HTTP_REFERER"]) 
+    
+  else:
+    return HttpResponseRedirect(reverse("profile_detail", args=(user.pk,)))
+  
   

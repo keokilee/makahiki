@@ -52,6 +52,20 @@ class EnergyGoal(models.Model):
         return False
         
     return True
+    
+  def get_floor_results(self, floor):
+    """Get the floor's voting results for this goal."""
+    votes = self.energygoalvote_set.filter(
+      user__profile__floor=floor,
+    )
+    
+    return_dict = dict([("%d%%" % i, 0) for i in range(self.minimum_goal, self.maximum_goal+1, self.goal_increments)])
+    for vote in votes:
+      key = "%d%%" % (vote.percent_reduction,)
+      return_dict[key] += 1
+        
+    return return_dict
+    
   
 class EnergyGoalVote(models.Model):
   user = models.ForeignKey(User, editable=False)
