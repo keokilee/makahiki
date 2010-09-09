@@ -3,10 +3,14 @@
   Vote For Your Energy Goal:
 </div>
 <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-  {% if energy_goal.vote %}
-    <p>Thank you for voting.</p>
+  {% if energy_goal.form %}
+  <form id="goal_vote_form" action="/goals/vote/{{energy_goal.goal.id}}/" method="post">
+    {{energy_goal.form.as_p}}
+    
+    <input type="submit" value="Vote"/>
+  </form>
   {% else %}
-    <p>Please vote!</p>
+    <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
   {% endif %}
 </div>
 {% endif %}

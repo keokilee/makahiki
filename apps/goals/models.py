@@ -44,17 +44,29 @@ class EnergyGoal(models.Model):
       return True
     
     return False
+    
+  def user_can_vote(self, user):
+    """Determines if the user can vote."""
+    for vote in self.energygoalvote_set.all():
+      if vote.user == user:
+        return False
+        
+    return True
   
 class EnergyGoalVote(models.Model):
-  user = models.ForeignKey(User)
-  goal = models.ForeignKey(EnergyGoal)
-  percent_reduction = models.IntegerField(default=0, editable=False)
+  user = models.ForeignKey(User, editable=False)
+  goal = models.ForeignKey(EnergyGoal, editable=False)
+  percent_reduction = models.IntegerField(default=0)
   created_at = models.DateTimeField(editable=False)
+  
+  class Meta:
+    # Ensures that a user can only vote on a single goal.
+    unique_together = ("user", "goal")
   
   def save(self):
     if not self.id:
       self.created_at = datetime.datetime.today()
-    super(EnergyGoal, self).save()
+    super(EnergyGoalVote, self).save()
     
 class FloorEnergyGoal(models.Model):
   floor = models.ForeignKey(Floor)

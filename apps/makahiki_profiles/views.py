@@ -17,6 +17,7 @@ from django.views.decorators.cache import never_cache
 
 from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
+from goals.forms import EnergyGoalVotingForm
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -110,18 +111,16 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
       current_goal = EnergyGoal.get_current_goal()
       if current_goal and is_me:
+        form = None 
         in_voting = current_goal.in_voting_period()
-        vote = None
-        if in_voting:
-          try:
-            vote = EnergyGoalVote.objects.get(user=other_user, goal=current_goal)
-          except ObjectDoesNotExist:
-            pass
+        can_vote = in_voting and current_goal.user_can_vote(other_user)
+        if can_vote:
+          form = EnergyGoalVotingForm(instance=EnergyGoalVote(user=other_user, goal=current_goal))
             
         return_dict["energy_goal"] = {
               "goal": current_goal,
               "in_voting": in_voting,
-              "vote": vote,
+              "form": form,
         }
     except ImportError:
       pass
