@@ -15,6 +15,7 @@ from django.contrib.auth.models import User
 
 from django.views.decorators.cache import never_cache
 
+from makahiki_base import restricted
 from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
 
