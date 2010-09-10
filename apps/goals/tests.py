@@ -96,8 +96,18 @@ class EnergyGoalFunctionalTestCase(TestCase):
     """Check that the results of the vote are accurate."""
     # Save the current votes.
     results = self.goal.get_floor_results(self.user.get_profile().floor)
-    votes = results["10%"]
+    votes = 0
+    for result in results:
+      if result["percent_reduction"] == 10:
+        votes = result["votes"]
+        break
     
     response = self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
     results = self.goal.get_floor_results(self.user.get_profile().floor)
-    self.assertEqual(results["10%"], votes + 1, "Check that the number of results for this user's floor has changed.")
+    
+    for result in results:
+      if result["percent_reduction"] == 10:
+        self.assertEqual(result["votes"], votes + 1, "Check that the number of results for this user's floor has changed.")
+        return
+        
+    self.fail("Could not find the vote matching the percent reduction.")

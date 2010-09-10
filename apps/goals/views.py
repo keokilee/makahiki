@@ -37,9 +37,7 @@ def voting_results(request, goal_id):
   profile = request.user.get_profile()
   results = goal.get_floor_results(profile.floor)
   
-  # Need to sort the results.
-  
   return HttpResponse(json.dumps({
-      "results": results,
+      "results": list(results), # Needed to convert results from a queryset.
   }), mimetype='text/plain')
   
