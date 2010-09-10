@@ -20,7 +20,7 @@
       $("#view_results").click(function() {
         $("#goal_vote_results").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
         $.get("{% url goal_vote_results energy_goal.goal.id %}", function(data) {
-          $("#goal_vote_results").html(data);
+          $("#goal_vote_results").html("<img src='" + data.url + "'/>");
         });
       });
     });
