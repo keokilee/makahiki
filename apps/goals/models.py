@@ -73,7 +73,7 @@ class EnergyGoal(models.Model):
 class EnergyGoalVote(models.Model):
   user = models.ForeignKey(User, editable=False)
   goal = models.ForeignKey(EnergyGoal, editable=False)
-  percent_reduction = models.IntegerField(default=0)
+  percent_reduction = models.IntegerField(default=5)
   created_at = models.DateTimeField(editable=False)
   
   class Meta:

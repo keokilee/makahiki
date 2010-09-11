@@ -8,7 +8,9 @@ def get_info_for_user(user):
     in_voting = current_goal.in_voting_period()
     can_vote = in_voting and current_goal.user_can_vote(user)
     if can_vote:
-      form = EnergyGoalVotingForm(instance=EnergyGoalVote(user=user, goal=current_goal))
+      form = EnergyGoalVotingForm(
+          instance=EnergyGoalVote(user=user, goal=current_goal, percent_reduction=current_goal.default_goal)
+      )
         
     return {
           "goal": current_goal,
