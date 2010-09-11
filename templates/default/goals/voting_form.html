@@ -1,0 +1,27 @@
+{% if energy_goal.form %}
+<div id="profile_goal_form" class="activity_item ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+  <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
+    Vote For Your {{FLOOR_LABEL}}'s  Energy Goal:
+    <span id="goal_voting_help" class="ui-icon ui-icon-help"></span>
+  </div>
+  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <form action="/goals/vote/{{energy_goal.goal.id}}/" method="post">
+      {{energy_goal.form.as_p}}
+      <input type="submit" value="Vote">
+    </form>
+    <div id="goal_vote_results">
+      <a id="goal_view_results" href="#">View Results</a>
+    </div>
+    <script type=text/javascript>
+      $(document).ready(function() {
+        $("#goal_view_results").click(function() {
+          $("#goal_vote_results").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
+          $.get("{% url goal_vote_results energy_goal.goal.id %}", function(data) {
+            $("#goal_vote_results").html("<img src='" + data.url + "'/>");
+          });
+        })
+      });
+    </script>
+  </div>
+</div>
+{% endif %}

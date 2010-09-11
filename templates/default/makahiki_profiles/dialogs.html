@@ -56,4 +56,21 @@
   <div id="power_dialog" title="Power Monitor">
     {% gblock "power_monitor_help" for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
+  
+  {% if energy_goal.form %}
+    <script type="text/javascript">
+      jQuery(document).ready(function() {
+        jQuery("#voting_dialog").dialog({autoOpen: false, modal: true});
+        
+        jQuery('#goal_voting_help').click(function() {
+          jQuery('#voting_dialog').dialog('open');
+          return false;
+        });
+      });
+    </script>
+    
+    <div id="voting_dialog" title="Energy Goal Voting">
+      {% gblock "goal_voting_help" for "gblocks.Text" with "activities/gblocks/help.html" %}
+    </div>
+  {% endif %}
 {% endif %}
