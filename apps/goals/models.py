@@ -14,6 +14,15 @@ class EnergyGoal(models.Model):
   minimum_goal = models.IntegerField(default=0, help_text="The lowest percent reduction possible for a goal.")
   maximum_goal = models.IntegerField(default=50, help_text="The highest percent reduction possible for a goal.")
   goal_increments = models.IntegerField(default=5, help_text="The percent increments users will be able to vote on.")
+  default_goal = models.IntegerField(
+      default=5, 
+      help_text="The default percent reduction that will appear in the voting form." + 
+                "This must be a multiple of the goal increments between the minimum and maximum goal."
+  )
+  point_conversion = models.FloatField(
+      default=1.0,
+      help_text="The points awarded for this goal will be the percent reduction multiplied by this number.",
+  )
   created_at = models.DateTimeField(editable=False)
   updated_at = models.DateTimeField(null=True, editable=False)
   
