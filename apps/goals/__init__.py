@@ -14,6 +14,5 @@ def get_info_for_user(user):
         
     return {
           "goal": current_goal,
-          "in_voting": in_voting,
           "form": form,
     }

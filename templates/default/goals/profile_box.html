@@ -1,29 +1,18 @@
-{% if energy_goal.goal and energy_goal.in_voting %}
-<div class="ui-accordion-header ui-corner-top list_header">
-  Vote For Your Energy Goal:
-</div>
-<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-  {% if energy_goal.form %}
-  <form id="goal_vote_form" action="/goals/vote/{{energy_goal.goal.id}}/" method="post">
-    {{energy_goal.form.as_p}}
-    
-    <input type="submit" value="Vote"/>
-  </form>
-  {% else %}
-    <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
-  {% endif %}
-  <div id="goal_vote_results">
-    <a id="view_results" href="#">View Results</a>
+{% if energy_goal.goal and energy_goal.goal.in_voting_period and not energy_goal.form %}
+  <div class="ui-accordion-header ui-corner-top list_header">
+  Your {{FLOOR_LABEL}}'s  Energy Goal:
   </div>
-  <script type=text/javascript>
-    $(document).ready(function() {
-      $("#view_results").click(function() {
+  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
+    <div id="goal_vote_results">
+    </div>
+    <script type=text/javascript>
+      $(document).ready(function() {
         $("#goal_vote_results").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
         $.get("{% url goal_vote_results energy_goal.goal.id %}", function(data) {
           $("#goal_vote_results").html("<img src='" + data.url + "'/>");
         });
       });
-    });
-  </script>
-</div>
+    </script>
+  </div>
 {% endif %}
