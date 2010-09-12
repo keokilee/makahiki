@@ -1,20 +1,13 @@
-{% if energy_goal.goal.in_voting_period and not energy_goal.form %}
+{% if energy_goal.goal and energy_goal.goal.in_voting_period and not energy_goal.form %}
   <div class="ui-accordion-header ui-corner-top list_header ui-state-default">
     Energy Goal:
     <span id="goal_voting_help" class="ui-icon ui-icon-help" style="margin-left: 165px"></span>
   </div>
-  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding:5px 15px">
     <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
     <div id="goal_vote_results">
+      <img src="{{energy_goal.results_url}}"/>
     </div>
-    <script type=text/javascript>
-      $(document).ready(function() {
-        $("#goal_vote_results").html('<img src="http://www.google.com/ig/images/spinner.gif"/>');
-        $.get("{% url goal_vote_results energy_goal.goal.id %}", function(data) {
-          $("#goal_vote_results").html("<img src='" + data.url + "'/>");
-        });
-      });
-    </script>
   </div>
 {% else %}
 {% endif %}
