@@ -1,6 +1,7 @@
-{% if energy_goal.goal and energy_goal.goal.in_voting_period and not energy_goal.form %}
-  <div class="ui-accordion-header ui-corner-top list_header">
-  Your {{FLOOR_LABEL}}'s  Energy Goal:
+{% if energy_goal.goal.in_voting_period and not energy_goal.form %}
+  <div class="ui-accordion-header ui-corner-top list_header ui-state-default">
+    Energy Goal:
+    <span id="goal_voting_help" class="ui-icon ui-icon-help" style="margin-left: 165px"></span>
   </div>
   <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
     <p>Thanks for voting. The energy goal will start on {{energy_goal.goal.voting_end_date}}</p>
@@ -15,4 +16,5 @@
       });
     </script>
   </div>
+{% else %}
 {% endif %}
