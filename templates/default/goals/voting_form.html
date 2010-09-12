@@ -5,6 +5,23 @@
     <span id="goal_voting_help" class="ui-icon ui-icon-help"></span>
   </div>
   <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <p>
+    From {{energy_goal.goal.start_date}} to {{energy_goal.goal.end_date}}, each lounge will participate in an Energy Goal. 
+    There are two parts to this goal:
+    <ol>
+      <li>
+        Each member of the {{FLOOR_LABEL.lower}} will vote on how much you think your {{FLOOR_LABEL.lower}} can save. 
+        This period ends on {{energy_goal.goal.voting_end_date}}.
+      </li>
+      <li>
+        The percent reduction with the most votes will be chosen as the goal. Your {{FLOOR_LABEL.lower}} must try to reduce
+        your energy usage by that percentage.
+      </li>
+    </ol>
+    For each percent you declare to save, you will receive {{energy_goal.goal.point_conversion}} point(s) if your 
+    {{FLOOR_LABEL.lower}} succeeds in reducing your overall energy use during the period.  Good luck!
+    </p>
+    
     <form action="/goals/vote/{{energy_goal.goal.id}}/" method="post">
       {{energy_goal.form.as_p}}
       <input type="submit" value="Vote">
