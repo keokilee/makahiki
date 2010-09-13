@@ -61,7 +61,7 @@ def generate_floor_goals():
   """Called by a cron task to generate the floor goals for a floor."""
   goal = EnergyGoal.get_current_goal()
   today = datetime.date.today()
-  if goal.voting_end_date <= today and goal.floorenergygoal_set.count() == 0:
+  if goal and goal.voting_end_date <= today and goal.floorenergygoal_set.count() == 0:
     # Go through the votes and create energy goals for the floor.
     for floor in Floor.objects.all():
       results = goal.get_floor_results(floor)

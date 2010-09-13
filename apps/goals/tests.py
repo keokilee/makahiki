@@ -74,6 +74,10 @@ class EnergyGoalHelperTestCase(TestCase):
   
   def testGenerateFloorGoals(self):
     """Tests the generation of floor goals."""
+    generate_floor_goals()
+    for floor in Floor.objects.all():
+      self.assertEqual(floor.floorenergygoal_set.count(), 0, "Test that nothing happens if there is no goal.")
+      
     start = datetime.date.today() - datetime.timedelta(days=2)
     voting_end = datetime.date.today() + datetime.timedelta(days=1)
     end = start + datetime.timedelta(days=7)
@@ -87,7 +91,7 @@ class EnergyGoalHelperTestCase(TestCase):
     # Test that this goal does not generate any floor goals because the voting period is not up.
     generate_floor_goals()
     for floor in Floor.objects.all():
-      self.assertEqual(floor.floorenergygoal_set.count(), 0, "Test that no goals are created yet.")
+      self.assertEqual(floor.floorenergygoal_set.count(), 0, "Test that no goals are created before the voting end date.")
     
     goal.voting_end_date = datetime.date.today()
     goal.save()
