@@ -6,26 +6,41 @@ from goals.forms import EnergyGoalVotingForm
 from floors.models import Floor
 
 def get_info_for_user(user):
+  """Generates a return dictionary for use in rendering the user profile."""
   current_goal = EnergyGoal.get_current_goal()
   if current_goal:
-    form = None 
-    results_url = None
     in_voting = current_goal.in_voting_period()
     can_vote = in_voting and current_goal.user_can_vote(user)
     if can_vote:
       form = EnergyGoalVotingForm(
           instance=EnergyGoalVote(user=user, goal=current_goal, percent_reduction=current_goal.default_goal)
       )
+      
+      return {
+            "goal": current_goal,
+            "form": form,
+      }
     elif in_voting:
       profile = user.get_profile()
       results = current_goal.get_floor_results(profile.floor)
       results_url = generate_chart_url(results)
-        
-    return {
-          "goal": current_goal,
-          "results_url": results_url,
-          "form": form,
-    }
+      return {
+            "goal": current_goal,
+            "results_url": results_url,
+      }
+      
+    else:
+      floor = user.get_profile().floor
+      try:
+        floor_goal = floor.floorenergygoal_set.get(goal=current_goal)
+        return {
+              "goal": current_goal,
+              "floor_goal": floor_goal,
+        }
+      except FloorEnergyGoal.DoesNotExist:
+        pass
+    
+  return None
     
 def generate_chart_url(results):
   """Helper method to generate a chart url given the goal's voting results."""

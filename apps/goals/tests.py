@@ -162,7 +162,7 @@ class EnergyGoalFunctionalTestCase(TestCase):
     
     response = self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
     goal_dict = response.context["energy_goal"]
-    self.assertTrue(goal_dict["form"] is None, "Check that the context no longer contains a voting form.")
+    self.assertFalse(goal_dict.has_key("form"), "Check that the context no longer contains a voting form.")
     
   def testUserResults(self):
     """Check that the results of the vote are accurate."""
@@ -232,3 +232,32 @@ class FloorEnergyGoalUnitTestCase(TestCase):
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    
+class FloorEnergyGoalFunctionalTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+
+  def setUp(self):
+    """Create a test goal and log in the user."""
+    self.user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
+
+    start = datetime.date.today() - datetime.timedelta(days=4)
+    voting_end = start + datetime.timedelta(days=3)
+    end = start + datetime.timedelta(days=7)
+    self.goal = EnergyGoal(
+          start_date=start,
+          voting_end_date=voting_end,
+          end_date=end,
+    )
+    self.goal.save()
+    
+  def testFloorEnergyGoal(self):
+    """Test to check that the goal is available in the web app."""
+    # Create the energy goal
+    floor_goal = FloorEnergyGoal(floor=self.user.get_profile().floor, goal=self.goal, percent_reduction=10)
+    floor_goal.save()
+    
+    response = self.client.get(reverse("profile_detail", args=(self.user.get_profile().pk,)))
+    goal_dict = response.context["energy_goal"]
+    self.assertTrue(goal_dict.has_key("floor_goal"), "Check that the goal is in the context.")
+    self.assertEqual(goal_dict["floor_goal"], floor_goal, "Check that our created goal is in the context.")
