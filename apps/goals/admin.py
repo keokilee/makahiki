@@ -9,7 +9,7 @@ class EnergyGoalAdminForm(forms.ModelForm):
     
   def clean(self):
     """
-    Custom clean method that verifies two things:
+    Custom clean method that verifies three things:
     
     * The voting end date is after the start of the goal and before the end of the goal.
     * The minimum goal is less than the maximum goal.
@@ -41,13 +41,14 @@ class EnergyGoalAdminForm(forms.ModelForm):
       
     # Verify that no goals are going on during this time.
     for goal in EnergyGoal.objects.all():
-      message = "An energy goal is already running from %s to %s." % (goal.start_date, goal.end_date)
-      if start_date > goal.start_date and start_date < goal.end_date:
-        self.errors["start_date"] = self.error_class([message])
-        del cleaned_data["start_date"]
-      elif end_date > goal.start_date and end_date < goal.end_date:
-        self.errors["end_date"] = self.error_class([message])
-        del cleaned_data["end_date"]
+      if self.instance and goal != self.instance:
+        message = "An energy goal is already running from %s to %s." % (goal.start_date, goal.end_date)
+        if start_date > goal.start_date and start_date < goal.end_date:
+          self.errors["start_date"] = self.error_class([message])
+          del cleaned_data["start_date"]
+        elif end_date > goal.start_date and end_date < goal.end_date:
+          self.errors["end_date"] = self.error_class([message])
+          del cleaned_data["end_date"]
       
     return cleaned_data
       
