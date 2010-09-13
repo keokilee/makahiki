@@ -4,19 +4,8 @@
   "model": "activities.commonactivityuser", 
   "fields": {
    "award_date": null, 
-   "submission_date": null, 
+   "submission_date": "2010-08-02 00:00:00", 
    "created_at": "2010-06-25 10:12:09", 
-   "updated_at": null, 
-   "approval_status": "pending"
-  }
- }, 
- {
-  "pk": 13, 
-  "model": "activities.commonactivityuser", 
-  "fields": {
-   "award_date": null, 
-   "submission_date": null, 
-   "created_at": "2010-06-30 15:02:48", 
    "updated_at": null, 
    "approval_status": "pending"
   }
@@ -25,11 +14,11 @@
   "pk": 14, 
   "model": "activities.commonactivityuser", 
   "fields": {
-   "award_date": null, 
-   "submission_date": null, 
+   "award_date": "2010-08-02 00:00:00", 
+   "submission_date": "2010-08-02 00:00:00", 
    "created_at": "2010-07-07 11:53:58", 
-   "updated_at": null, 
-   "approval_status": "unapproved"
+   "updated_at": "2010-07-26 21:34:51", 
+   "approval_status": "approved"
   }
  }, 
  {
@@ -48,9 +37,9 @@
   "model": "activities.commonactivityuser", 
   "fields": {
    "award_date": null, 
-   "submission_date": null, 
+   "submission_date": "2010-09-01 10:44:36", 
    "created_at": "2010-07-17 12:33:15", 
-   "updated_at": null, 
+   "updated_at": "2010-09-01 10:44:36", 
    "approval_status": "pending"
   }
  }, 
@@ -6172,12 +6161,14 @@
    "title": "Attend Kukui Cup Orientation", 
    "created_at": "2010-05-12 12:14:09", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 11:59:25", 
    "confirm_prompt": "Enter the attendance code from the meeting.", 
+   "event_date": "2010-09-30 19:00:00", 
    "point_value": 10, 
    "expire_date": "2010-10-08", 
    "duration": 60, 
-   "event_date": "2010-09-30 19:00:00", 
+   "point_range_end": null, 
    "pub_date": "2010-05-12", 
    "is_event": true
   }
@@ -6190,12 +6181,14 @@
    "title": "Watch \"Be Energy Akamai!, Episode 1\"", 
    "created_at": "2010-05-12 12:19:20", 
    "confirm_type": "text", 
+   "point_range_start": null, 
    "updated_at": "2010-05-12 12:19:20", 
    "confirm_prompt": "", 
+   "event_date": null, 
    "point_value": 10, 
    "expire_date": "2010-12-31", 
    "duration": 10, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-05-12", 
    "is_event": false
   }
@@ -6208,12 +6201,14 @@
    "title": "Attend Blue Planet Foundation Meeting", 
    "created_at": "2010-05-12 12:22:41", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-05-12 12:22:41", 
    "confirm_prompt": "Enter the ticket code provided at the meeting.", 
+   "event_date": "2010-05-19 19:00:00", 
    "point_value": 5, 
    "expire_date": "2010-12-31", 
    "duration": 120, 
-   "event_date": "2010-05-19 19:00:00", 
+   "point_range_end": null, 
    "pub_date": "2010-05-12", 
    "is_event": true
   }
@@ -6226,12 +6221,14 @@
    "title": "Attend the Energy Pong Competition", 
    "created_at": "2010-05-12 12:23:51", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 12:00:57", 
    "confirm_prompt": "Enter attendance code provided at meeting.", 
+   "event_date": "2010-10-13 19:00:00", 
    "point_value": 2, 
    "expire_date": "2010-11-08", 
    "duration": 60, 
-   "event_date": "2010-10-13 19:00:00", 
+   "point_range_end": null, 
    "pub_date": "2010-05-12", 
    "is_event": true
   }
@@ -6244,12 +6241,14 @@
    "title": "Replace incandescent bulb with compact fluorescent (CFL)", 
    "created_at": "2010-05-12 12:25:23", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 16:51:12", 
    "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
+   "event_date": null, 
    "point_value": 4, 
    "expire_date": "2010-12-31", 
    "duration": 5, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-05-12", 
    "is_event": false
   }
@@ -6262,12 +6261,14 @@
    "title": "Attend SustainableUH meeting", 
    "created_at": "2010-07-16 12:11:12", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 12:11:12", 
    "confirm_prompt": "Enter the attendance code you received at the meeting.", 
+   "event_date": "2010-10-04 18:00:00", 
    "point_value": 2, 
    "expire_date": "2010-11-09", 
    "duration": 60, 
-   "event_date": "2010-10-04 18:00:00", 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": true
   }
@@ -6280,12 +6281,14 @@
    "title": "Watch the movie \"Who Killed the Electric Car?\"", 
    "created_at": "2010-07-16 12:20:36", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 12:20:36", 
    "confirm_prompt": "Enter the attendance code you received at the movie.", 
+   "event_date": "2010-10-11 20:00:00", 
    "point_value": 2, 
    "expire_date": "2010-10-15", 
    "duration": 100, 
-   "event_date": "2010-10-11 20:00:00", 
+   "point_range_end": null, 
    "pub_date": "2010-07-12", 
    "is_event": true
   }
@@ -6298,12 +6301,14 @@
    "title": "Participate in a 10/10/10 work party", 
    "created_at": "2010-07-16 12:33:23", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-20 14:39:52", 
    "confirm_prompt": "Please upload the image you took of the work party, and describe the work you did in the comments field.", 
+   "event_date": null, 
    "point_value": 5, 
    "expire_date": "2010-10-15", 
    "duration": 180, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-12", 
    "is_event": false
   }
@@ -6316,12 +6321,14 @@
    "title": "Configure computer to sleep after inactivity", 
    "created_at": "2010-07-16 17:10:10", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 17:10:10", 
    "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
+   "event_date": null, 
    "point_value": 3, 
    "expire_date": "2010-12-31", 
    "duration": 10, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6334,12 +6341,14 @@
    "title": "Perform room energy audit", 
    "created_at": "2010-07-16 16:41:10", 
    "confirm_type": "text", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 16:41:10", 
    "confirm_prompt": "List each plug-in device in your room, and how much power it uses when turned on, and when turned off.", 
+   "event_date": null, 
    "point_value": 10, 
    "expire_date": "2010-12-31", 
    "duration": 20, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6352,12 +6361,14 @@
    "title": "Play in Energy Pong tournament", 
    "created_at": "2010-07-16 17:15:12", 
    "confirm_type": "code", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 17:15:12", 
    "confirm_prompt": "Enter in the attendance code you received from the Energy Pong referee.", 
+   "event_date": null, 
    "point_value": 4, 
    "expire_date": "2010-10-25", 
    "duration": 180, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6370,12 +6381,14 @@
    "title": "Connect to Kukui Cup on Facebook", 
    "created_at": "2010-07-16 17:20:00", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 17:20:33", 
    "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
+   "event_date": null, 
    "point_value": 3, 
    "expire_date": "2010-12-31", 
    "duration": 5, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6388,12 +6401,14 @@
    "title": "Tweet about Kukui Cup", 
    "created_at": "2010-07-16 17:36:56", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 17:38:09", 
    "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
+   "event_date": null, 
    "point_value": 2, 
    "expire_date": "2010-12-31", 
    "duration": 5, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6406,12 +6421,14 @@
    "title": "Link to Kukui Cup on Facebook status", 
    "created_at": "2010-07-16 17:46:59", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-20 15:06:50", 
    "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
+   "event_date": null, 
    "point_value": 2, 
    "expire_date": "2010-12-31", 
    "duration": 5, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6424,12 +6441,14 @@
    "title": "Label appliance power requirements in your room", 
    "created_at": "2010-07-16 17:52:24", 
    "confirm_type": "image", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 17:52:24", 
    "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
+   "event_date": null, 
    "point_value": 3, 
    "expire_date": "2010-12-31", 
    "duration": 15, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
   }
@@ -6442,27 +6461,16 @@
    "title": "Determine carbon footprint using calculator", 
    "created_at": "2010-07-16 18:01:04", 
    "confirm_type": "text", 
+   "point_range_start": null, 
    "updated_at": "2010-07-16 18:01:04", 
    "confirm_prompt": "Enter in the carbon footprint you received from the calculator, and any comments you have about your carbon footprint.", 
+   "event_date": null, 
    "point_value": 3, 
    "expire_date": "2010-12-31", 
    "duration": 20, 
-   "event_date": null, 
+   "point_range_end": null, 
    "pub_date": "2010-07-16", 
    "is_event": false
-  }
- }, 
- {
-  "pk": 13, 
-  "model": "activities.activitymember", 
-  "fields": {
-   "admin_comment": "", 
-   "user_comment": "", 
-   "image": "", 
-   "question": 1, 
-   "user": 1, 
-   "activity": 2, 
-   "response": "kilowatt"
   }
  }, 
  {
@@ -6470,188 +6478,13 @@
   "model": "activities.activitymember", 
   "fields": {
    "admin_comment": "", 
+   "points_awarded": null, 
    "user_comment": "", 
    "image": "", 
    "question": 1, 
    "user": 2, 
    "activity": 2, 
    "response": "kWh"
-  }
- }, 
- {
-  "pk": 1, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-06-09 14:57:26", 
-   "description": "Get together with your floormates and reduce the energy usage for your floor by 5% compared to your baseline, before the goal period ends.", 
-   "updated_at": "2010-07-16 15:40:19", 
-   "point_value": 5, 
-   "title": "Reduce floor energy usage by 5%"
-  }
- }, 
- {
-  "pk": 2, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-06-09 14:58:09", 
-   "description": "Get everyone on your floor to attend the Blue Planet Foundation meeting.", 
-   "updated_at": null, 
-   "point_value": 20, 
-   "title": "Attend Blue Planet Foundation Meeting"
-  }
- }, 
- {
-  "pk": 3, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-06-09 14:59:40", 
-   "description": "Have each person on your floor complete the \"Replace an incandescent with a CFL\" activity.", 
-   "updated_at": null, 
-   "point_value": 20, 
-   "title": "Change Incandescent Bulbs to CFLs"
-  }
- }, 
- {
-  "pk": 4, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-16 15:40:39", 
-   "description": "Get together with your floormates and reduce the energy usage for your floor by 10% compared to your baseline, before the goal period ends.", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "Reduce floor energy usage by 10%"
-  }
- }, 
- {
-  "pk": 5, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-16 15:41:04", 
-   "description": "Get together with your floormates and reduce the energy usage for your floor by 15% compared to your baseline, before the goal period ends.", 
-   "updated_at": null, 
-   "point_value": 15, 
-   "title": "Reduce floor energy usage by 15%"
-  }
- }, 
- {
-  "pk": 6, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-16 15:51:26", 
-   "description": "Pick a day and time for your floor to try to determine the minimum amount of power your floor can consume. Everyone on the floor must disconnect and unplug everything, all lights must be turned off, etc. Then, using a laptop or mobile device, check the website for your floor's power usage in watts and write it down. That is your floor's minimum power.\r\n\r\n*Note:* that this goal requires near 100% participation to be successful. Good luck!", 
-   "updated_at": null, 
-   "point_value": 15, 
-   "title": "Find your floor's minimum power"
-  }
- }, 
- {
-  "pk": 22, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 16:35:10", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 21, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 15:53:44", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 20, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 15:51:15", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 19, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 15:49:05", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 18, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 15:47:15", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 16, 
-  "model": "activities.goal", 
-  "fields": {
-   "created_at": "2010-07-25 15:42:45", 
-   "description": "Go testing!", 
-   "updated_at": null, 
-   "point_value": 10, 
-   "title": "A test goal"
-  }
- }, 
- {
-  "pk": 14, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 1, 
-   "user_comment": null, 
-   "goal": 2, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 12, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 2, 
-   "user_comment": null, 
-   "goal": 1, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 15, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 605, 
-   "user_comment": null, 
-   "goal": 6, 
-   "admin_comment": null, 
-   "floor": 2
-  }
- }, 
- {
-  "pk": 17, 
-  "model": "activities.goalmember", 
-  "fields": {
-   "user": 2, 
-   "user_comment": null, 
-   "goal": 4, 
-   "admin_comment": null, 
-   "floor": 2
   }
  }, 
  {
@@ -7282,6 +7115,78 @@
   }
  }, 
  {
+  "pk": 75, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_header", 
+   "content_type": 40, 
+   "object_id": 20
+  }
+ }, 
+ {
+  "pk": 76, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_1", 
+   "content_type": 42, 
+   "object_id": 47
+  }
+ }, 
+ {
+  "pk": 77, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_2", 
+   "content_type": 42, 
+   "object_id": 48
+  }
+ }, 
+ {
+  "pk": 78, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_5", 
+   "content_type": 42, 
+   "object_id": 49
+  }
+ }, 
+ {
+  "pk": 79, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_6", 
+   "content_type": 42, 
+   "object_id": 50
+  }
+ }, 
+ {
+  "pk": 80, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_4", 
+   "content_type": 42, 
+   "object_id": 51
+  }
+ }, 
+ {
+  "pk": 81, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "standings_content_7", 
+   "content_type": 42, 
+   "object_id": 52
+  }
+ }, 
+ {
+  "pk": 82, 
+  "model": "django_generic_flatblocks.genericflatblock", 
+  "fields": {
+   "slug": "goal_voting_help", 
+   "content_type": 40, 
+   "object_id": 21
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.title", 
   "fields": {
@@ -7415,6 +7320,20 @@
   }
  }, 
  {
+  "pk": 20, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
+  "pk": 21, 
+  "model": "gblocks.text", 
+  "fields": {
+   "text": ""
+  }
+ }, 
+ {
   "pk": 1, 
   "model": "gblocks.image", 
   "fields": {
@@ -7454,8 +7373,8 @@
   "pk": 2, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<object width=\"320\" height=\"240\"><param name=\"movie\" value=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"320\" height=\"240\"></embed></object>", 
-   "title": "Featured Video: Kill-a-watt Competition at UCF"
+   "text": "<div id=\"chartdiv\">\r\n  <div id=\"lehua_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"mokihana_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"ilima_chart_div\" align=\"center\"></div>\r\n</div>\r\n<p>\r\n\r\nUpdated every 30 seconds with current <a href=\"about_us#plugload\">plug load</a> for each dorm.  (Currently simulated)\r\n<p>\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.PowerMonitor.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var currentPowerUrl = configuration.getCurrentPowerDataUrl();\r\n  // A spreadsheet with baseline data. \r\n  var baselineDataUrl = configuration.getBaselineDataUrl();\r\n  // How frequently we want the spreadsheets to be refreshed.\r\n  var currentPowerRefreshInterval = 15; \r\n  var baselineDataRefreshInterval = 0;  // never refresh.\r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, \r\n                                                   currentPowerUrl, currentPowerRefreshInterval,\r\n                                                   baselineDataUrl, baselineDataRefreshInterval);  \r\n      \r\n  // Display three gauges\r\n  function displayDormData(currentPowerTable, baselineDataTable) {\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.ilima, 'ilima_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.mokihana, 'mokihana_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.lehua, 'lehua_chart_div');\r\n    var element = document.getElementById('chartdiv');\r\n    element.style.width = configuration.powerMonitorWidth;\r\n    element.style.backgroundColor = configuration.widgetBackgroundColor;\r\n  }\r\n\r\n  // Draw a monitor, title, and timestamp for the given dorm. \r\n  function drawPowerMonitor(currentPowerTable, baselineDataTable, source, id) {\r\n    var monitor = new org.wattdepot.gdata.makahiki.PowerMonitor(configuration);\r\n    monitor.draw(currentPowerTable, baselineDataTable, source, id);\r\n  }\r\n})();\r\n</script>\r\n", 
+   "title": "Real-Time Dorm Power"
   }
  }, 
  {
@@ -7470,8 +7389,8 @@
   "pk": 5, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "This website provides resources and data related to energy usage in the University of Hawaii's residential housing.\r\n\r\nIt also supports the \"Kukui Cup\", an annual event designed to help residence hall members learn about energy, reduce their consumption, compete for prizes, and have fun!", 
-   "title": "About This Site"
+   "text": "<object width=\"320\" height=\"240\"><param name=\"movie\" value=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/dXpoMDdhfUI&hl=en_US&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"320\" height=\"240\"></embed></object>", 
+   "title": "Featured Video: Kill-a-watt Competition at UCF"
   }
  }, 
  {
@@ -7622,8 +7541,8 @@
   "pk": 25, 
   "model": "gblocks.titleandtext", 
   "fields": {
-   "text": "<div id=\"chartdiv\">\r\n  <div id=\"lehua_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"mokihana_chart_div\" align=\"center\"></div>\r\n<p>\r\n  <div id=\"ilima_chart_div\" align=\"center\"></div>\r\n</div>\r\n<p>\r\n\r\nUpdated every 30 seconds with current <a href=\"about_us#plugload\">plug load</a> for each dorm.  (Currently simulated)\r\n<p>\r\n\r\n<!--Load the AJAX API-->\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.PowerMonitor.js\"></script>\r\n<script type=\"text/javascript\" src=\"http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js\"></script>\r\n\r\n<script type=\"text/javascript\">\r\n// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.\r\n(function() {\r\n  // Get the configuration instance with access to kukuicup data.\r\n  var configuration = new org.wattdepot.gdata.kukuicup.Configuration();\r\n  // A spreadsheet containing dorm energy data.\r\n  var currentPowerUrl = configuration.getCurrentPowerDataUrl();\r\n  // A spreadsheet with baseline data. \r\n  var baselineDataUrl = configuration.getBaselineDataUrl();\r\n  // How frequently we want the spreadsheets to be refreshed.\r\n  var currentPowerRefreshInterval = 15; \r\n  var baselineDataRefreshInterval = 0;  // never refresh.\r\n  // Load the visualization API and the spreadsheet data, then call displayDormData.\r\n  var loader = new org.wattdepot.gdata.GDataLoader(displayDormData, \r\n                                                   currentPowerUrl, currentPowerRefreshInterval,\r\n                                                   baselineDataUrl, baselineDataRefreshInterval);  \r\n      \r\n  // Display three gauges\r\n  function displayDormData(currentPowerTable, baselineDataTable) {\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.ilima, 'ilima_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.mokihana, 'mokihana_chart_div');\r\n    drawPowerMonitor(currentPowerTable, baselineDataTable, configuration.lehua, 'lehua_chart_div');\r\n    var element = document.getElementById('chartdiv');\r\n    element.style.width = configuration.powerMonitorWidth;\r\n    element.style.backgroundColor = configuration.widgetBackgroundColor;\r\n  }\r\n\r\n  // Draw a monitor, title, and timestamp for the given dorm. \r\n  function drawPowerMonitor(currentPowerTable, baselineDataTable, source, id) {\r\n    var monitor = new org.wattdepot.gdata.makahiki.PowerMonitor(configuration);\r\n    monitor.draw(currentPowerTable, baselineDataTable, source, id);\r\n  }\r\n})();\r\n</script>", 
-   "title": "Real-Time Dorm Power"
+   "text": "This website provides resources and data related to energy usage in the University of Hawaii's residential housing.\r\n\r\nIt also supports the \"Kukui Cup\", an annual event designed to help residence hall members learn about energy, reduce their consumption, compete for prizes, and have fun!", 
+   "title": "About This Site"
   }
  }, 
  {
@@ -7784,6 +7703,54 @@
   "fields": {
    "text": "<h3>Individual and group competitions</h3>\r\n<p>\r\nThe Kukui Cup actually consists of two types of competitions: <emphasis>individual</emphasis> competitions and <emphasis>group</emphasis> competitions.  \r\n<p>\r\n\r\nIn an individual competition, you compete to accumulate the most \"Kukui Nut\" points by performing various actions, including activities, goals, and commitments.   To win in the individual competition, you simply have to accumulate the most Kukui Nut points.\r\n\r\n<p>\r\nIn a group competition, pairs of floors compete as a unit.  Each dorm is divided into five groups consisting of floors 3-4, 5-6, 7-8, 9-10, and 11-12. To win in the group competition, your group must reduce its energy consumption more than other groups.  To simplify things, whenever we refer to \"floor\" in this competition, we really mean \"pair of floors\".\r\n\r\n<h3>Competition timeline and rounds</h3>\r\n\r\nThe competition will be held for three weeks starting in October, 2010.  The official start date will be announced soon. \r\n<p>\r\nTo provide multiple chances to win, the competition is divided into two week-long \"rounds\" as well as an overall \"grand prize\" round.\r\n<p> \r\nAfter the first week of competition, the winners of  \"Round 1\" will be announced based upon those individuals who accumulated the most Kukui Nut points and those floors who reduced their energy consumption the most. \r\n<p>\r\nAfter the second week of competition, the winners of \"Round 2\" will be announced.  Round 2 winners are based only on data from the second week of the competition.  \r\n<p>\r\nAfter the third week of competition, the \"Grand Prize\" winners will be announced.  The Grand Prize winners are based upon all three weeks of data. \r\n\r\n<h3>How to win!</h3>\r\n<p>\r\nTo compete for individual prizes, you first have to login to this website using the link at the upper right corner.  Only members of the dorms competing in this competition are able to login.  \r\n<p>\r\nOnce you have logged in, you can collect points by (a) performing activities, (b) making public commitments, or (c) participating in floor-level goals.\r\n<p>\r\nThe competition provides a wide variety of activities that you can participate in, such as watching videos, reading articles, attending workshops, or movies, or other events.  Each time you complete an activity, you submit it for points.  As part of this process, there is a simple verification procedure. For example, in the case of an activity that involves watching a certain YouTube video, the verification procedure might involve you answering a simple question about the contents of the video.  In the case of an event, you will find a Kukui Cup administrator at the event who can give you a personalized code that verifies your attendance. Each activity earns you from 5 to 20 points.  \r\n<p>\r\nAnother way to earn points is by making public commitments, such as \"I will turn off the lights after leaving a room\".  Each commitment lasts for five days, and you are limited to five commitments at any one time.  We do not verify your commitments, and each commitment (when completed after the five days) is worth 2 points.  Making a commitment is \"public\" in that it shows up on your Kukui Cup \"wall\" and on the electronic billboard associated with this competition. \r\n<p>\r\nA final way to earn points is through goal setting.  Goals are different from activities and commitments in that they always involve the entire floor. For example, one goal might be to reduce the floor's energy consumption by 5% over five days. When a goal is achieved, every member of the floor gets Kukui Nut points. Goals are worth between 5 and 10 Kukui Cup points. \r\n<p>\r\n\r\nIn addition to prizes for the most points, the competition will also award prizes to the floor that reduces their energy consumption the most.  To do that, you simply have to learn how to conserve energy!  As that is the goal of the activities, commitments, and goals, we believe that you will naturally learn how to save energy as you take part in this competition. \r\n\r\n<h3>Award categories and prizes</h3>\r\n\r\nRound 1 Awards:\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual on each floor who gained the most points.</td>\r\n<td>$25 gift certif.</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that gained the most points (across all dorms).</td> \r\n<td>Ice cream party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most (across all dorms).</td>\r\n<td>Ice cream party</td>\r\n</tr>\r\n</table>\r\n\r\n<p>\r\nRound 2 Awards:\r\n\r\n<p>\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual on each floor who gained the most points.</td>\r\n<td>$25 gift certif.</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that gained the most points (across all dorms).</td> \r\n<td>Ice cream party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most (across all dorms).</td>\r\n<td>Ice cream party</td>\r\n</tr>\r\n</table>\r\n\r\n<p>\r\nGrand Prize Awards:\r\n<p>\r\n\r\n<table border=\"0\">\r\n<tr><td>Category</td><td>Award</td>\r\n<tr>\r\n<td>Individual per dorm with highest number of points.</td>\r\n<td>iPod touch</td>\r\n</tr>\r\n<tr>\r\n<td>Floor with highest number of points.</td> \r\n<td>Pizza party</td>\r\n</tr>\r\n<tr>\r\n<td>Floor that reduced energy use the most.</td>\r\n<td>Pizza party</td>\r\n</tr>\r\n</table>\r\n\r\n<h3>In the event of ties...</h3>\r\n\r\n<p> In the event that two or more individuals (or floors) are tied for the most points, then the timestamp associated with the final goal, commitment, or activity associated with the individuals (or floors) will be used to break the tie.  In other words, the individual (or floor) who got to their final point total first will be declared the winner. Under the remote possibility that the final timestamps are equal, a coin toss will be used to decide the winner.\r\n\r\n<p> Given that energy consumption is measured down to a fraction of a watt-hour, we do not anticipate that any floor could tie with respect to their consumption.  In case that this does occur, a coin toss will be used to decide the winner. \r\n\r\n", 
    "title": "Rules of the competition"
+  }
+ }, 
+ {
+  "pk": 47, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 48, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 49, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 50, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 51, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
+  }
+ }, 
+ {
+  "pk": 52, 
+  "model": "gblocks.titleandtext", 
+  "fields": {
+   "text": "", 
+   "title": ""
   }
  }
 ]

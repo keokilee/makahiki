@@ -89,3 +89,5 @@ class FloorEnergyGoal(models.Model):
   floor = models.ForeignKey(Floor)
   goal = models.ForeignKey(EnergyGoal)
   percent_reduction = models.IntegerField(default=0, editable=False)
+  completed = models.BooleanField(default=False)
+  awarded = models.BooleanField(default=False, editable=False)

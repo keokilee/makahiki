@@ -33,12 +33,6 @@ def list(request, item_type):
     available_items = get_available_commitments(user)
     completed_items = get_completed_commitments(user)
     plural_type = "commitments"
-    
-  elif item_type == "goal":
-    user_items = get_current_goals(user)
-    available_items = get_available_goals(user)
-    completed_items = get_completed_goals(user)
-    plural_type = "goals"
   
   else:
     # Already handled by urls.py, but just to be safe.
@@ -54,7 +48,7 @@ def list(request, item_type):
   
 @login_required
 def like(request, item_type, item_id):
-  """Like an activity/commitment/goal."""
+  """Like an activity/commitment."""
   
   user = request.user
   content_type = get_object_or_404(ContentType, app_label="activities", model=item_type.capitalize())
@@ -69,7 +63,7 @@ def like(request, item_type, item_id):
   
 @login_required
 def unlike(request, item_type, item_id):
-  """Unlike an activity/commitment/goal."""
+  """Unlike an activity/commitment."""
 
   user = request.user
   content_type = get_object_or_404(ContentType, app_label="activities", model=item_type.capitalize())
@@ -92,8 +86,6 @@ def add_participation(request, item_type, item_id):
     return __add_commitment(request, item_id)
   elif item_type == "activity":
     return __add_activity(request, item_id)
-  elif item_type == "goal":
-    return __add_goal(request, item_id)
   else:
     raise Http404
 
@@ -108,8 +100,6 @@ def remove_participation(request, item_type, item_id):
     return __remove_active_commitment(request, item_id)
   elif item_type == "activity":
     return __remove_activity(request, item_id)
-  elif item_type == "goal":
-    return __remove_goal(request, item_id)
   else:
     raise Http404
     
@@ -121,8 +111,6 @@ def request_points(request, item_type, item_id):
     return __request_activity_points(request, item_id)
   elif item_type == "commitment":
     return __request_commitment_points(request, item_id)
-  elif item_type == "goal":
-    return __request_goal_points(request, item_id)
   else:
     raise Http404
     
@@ -201,33 +189,6 @@ def __remove_activity(request, activity_id):
 
   activity_member.delete()
   user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-    
-def __add_goal(request, goal_id):
-  """Add the goal to the floor."""
-  
-  goal = get_object_or_404(Goal, pk=goal_id)
-  user = request.user
-  floor = user.get_profile().floor
-  
-  if (goal not in floor.goal_set.all()) and GoalMember.can_add_goal(user):
-    goal_member = GoalMember(user=user, goal=goal, floor=user.get_profile().floor)
-    goal_member.save()
-    user.message_set.create(message="Your floor is now participating in the goal \"" + goal.title + "\"")
-  else:
-    return Http404
-    
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  
-def __remove_goal(request, goal_id):
-  goal = get_object_or_404(Goal, pk=goal_id)
-  user = request.user
-  floor = user.get_profile().floor
-  goal_member = get_object_or_404(GoalMember, goal=goal, user=user, floor=floor)
-  
-  # At this point, user is allowed to remove the goal because they own goal_member
-  goal_member.delete()
-  user.message_set.create(message="Your floor's participation in \"" + goal.title + "\" has been removed")
   return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
     
 def __request_commitment_points(request, commitment_id):
@@ -338,35 +299,6 @@ def __request_activity_points(request, activity_id):
     "admin_message": admin_message,
   }, context_instance = RequestContext(request))
   
-def __request_goal_points(request, goal_id):
-  """Creates or processes a form for requesting points."""
-  
-  goal = get_object_or_404(Goal, pk=goal_id)
-  user = request.user
-  floor = user.get_profile().floor
-  goal_member = get_object_or_404(GoalMember, user=user, floor=floor, goal=goal)
-  
-  if request.method == "POST":
-    form = GoalCommentForm(request.POST)
-    if form.is_valid():
-      goal_member.approval_status = "pending"
-      goal_member.user_comment = form.cleaned_data["comment"]
-      goal_member.save()
-      
-      user.message_set.create(message="Your request has been submitted!")
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-    
-  # Create goal request form.
-  else:
-    form = GoalCommentForm()
-  
-  admin_comment = goal_member.admin_comment
-  
-  return render_to_response("activities/request_goal_points.html", {
-    "form": form,
-    "goal": goal,
-    "admin_comment": admin_comment,
-  }, context_instance = RequestContext(request))
   
   
   

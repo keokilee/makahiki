@@ -252,22 +252,3 @@ class ActivityMemberAdmin(admin.ModelAdmin):
     return super(ActivityMemberAdmin, self).get_form(request, obj, **kwargs)
   
 admin.site.register(ActivityMember, ActivityMemberAdmin)
-
-### Goal admin
-
-admin.site.register(Goal)
-
-class GoalMemberAdmin(admin.ModelAdmin):
-  radio_fields = {"approval_status" : admin.HORIZONTAL}
-  # Requires Django 1.2
-  readonly_fields = ("user", "goal", "floor", "user_comment")
-  list_display = ("goal", "floor", "user", "approval_status")
-  list_filter = ["approval_status"]
-  actions = ["delete_selected"]
-    
-  def delete_selected(self, request, queryset):
-    for obj in queryset:
-      obj.delete()
-  delete_selected.short_description = "Delete the selected objects."
-
-admin.site.register(GoalMember, GoalMemberAdmin)

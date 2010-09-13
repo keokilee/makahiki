@@ -6,7 +6,6 @@
     jQuery(document).ready(function() {
       jQuery("#activity_dialog").dialog({autoOpen: false, modal: true});
       jQuery("#commitment_dialog").dialog({autoOpen: false, modal: true});
-      jQuery("#goal_dialog").dialog({autoOpen: false, modal: true});
       jQuery("#energy_dialog").dialog({autoOpen: false, modal: true});
       jQuery("#power_dialog").dialog({autoOpen: false, modal: true});
       jQuery("#voting_dialog").dialog({autoOpen: false, modal: true});
@@ -18,11 +17,6 @@
       
       jQuery('#commitment_help').click(function() {
         jQuery('#commitment_dialog').dialog('open');
-        return false;
-      });
-      
-      jQuery('#goal_help').click(function() {
-        jQuery('#goal_dialog').dialog('open');
         return false;
       });
       
@@ -50,10 +44,6 @@
 
   <div id="commitment_dialog" title="Commitments">
     {% gblock "commitment_help" for "gblocks.Text" with "activities/gblocks/help.html" %}
-  </div>
-
-  <div id="goal_dialog" title="Goals">
-    {% gblock "goal_help" for "gblocks.Text" with "activities/gblocks/help.html" %}
   </div>
   
   <div id="energy_dialog" title="Energy Monitor">

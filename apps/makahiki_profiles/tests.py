@@ -215,7 +215,6 @@ class ProfilesFunctionalTestCase(TestCase):
     
     activities = self.user.activity_set.filter(activitymember__award_date=None)
     commitments = self.user.commitment_set.filter(commitmentmember__award_date=None)
-    goals = self.user.get_profile().floor.goal_set.filter(goalmember__award_date=None)
     
     self.assertEqual(len(activities), len(response.context["user_activities"]))
     for activity in activities:
@@ -224,10 +223,6 @@ class ProfilesFunctionalTestCase(TestCase):
     self.assertEqual(len(commitments), len(response.context["user_commitments"]))
     for commitment in commitments:
       self.assertTrue(commitment in response.context["user_commitments"])
-      
-    self.assertEqual(len(goals), len(response.context["user_goals"]))
-    for goal in goals:
-      self.assertTrue(goal in response.context["user_goals"])
       
   def testSelectedTab(self):
     """Test that the current round's tab is selected."""

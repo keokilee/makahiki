@@ -60,7 +60,7 @@ class Profile(models.Model):
     
     def add_points(self, submission):
       """Adds points based on the point value of the submitted object. Note that this method does not save the profile."""
-      from activities.models import CommitmentMember, ActivityMember, GoalMember
+      from activities.models import CommitmentMember, ActivityMember
       
       points = 0
       submission_date = None
@@ -74,9 +74,6 @@ class Profile(models.Model):
         else:
           points = submission.activity.point_value
           
-        submission_date = submission.submission_date
-      elif isinstance(submission, GoalMember):
-        points = submission.goal.point_value
         submission_date = submission.submission_date
         
       self.points += points
@@ -97,7 +94,7 @@ class Profile(models.Model):
       """Removes points from the user. Note that this method does not save the profile.  
       If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task."""
       
-      from activities.models import CommitmentMember, ActivityMember, GoalMember
+      from activities.models import CommitmentMember, ActivityMember
       
       points = 0
       submission_date = None
@@ -109,9 +106,6 @@ class Profile(models.Model):
           points = submission.points_awarded
         else:
           points = submission.activity.point_value
-        submission_date = submission.submission_date
-      elif isinstance(submission, GoalMember):
-        points = submission.goal.point_value
         submission_date = submission.submission_date
        
       self.points -= points
@@ -152,7 +146,7 @@ class Profile(models.Model):
     def _last_submitted_before(self, submission_date):
       """Time of the last task that was completed before the submission date.  Returns None if there are no other tasks."""
       
-      from activities.models import CommitmentMember, ActivityMember, GoalMember
+      from activities.models import CommitmentMember, ActivityMember
       
       last_date = None
       try:
@@ -176,18 +170,6 @@ class Profile(models.Model):
           last_date = last_activity
       except IndexError:
         pass
-        
-      if self.floor:
-        try:
-          last_goal = GoalMember.objects.filter(
-              floor=self.floor,
-              approval_status=u"approved",
-              submission_date__lt=submission_date,
-          ).order_by("-submission_date")[0].submission_date
-          if not last_date or last_date < last_goal:
-            last_date = last_goal
-        except IndexError:
-          pass
       
       return last_date
         

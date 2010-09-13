@@ -77,7 +77,6 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       user_activities = get_incomplete_tasks(other_user)
       return_dict["user_commitments"] = user_activities["commitments"]
       return_dict["user_activities"] = user_activities["activities"]
-      return_dict["user_goals"] = user_activities["goals"]
     
     except ImportError:
       pass
