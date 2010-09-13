@@ -63,8 +63,6 @@ class Profile(models.Model):
       Adds points based on the point value of the submitted object.
       Note that this method does not save the profile.
       """
-      from activities.models import CommitmentMember, ActivityMember
-        
       self.points += points
       if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
         self.last_awarded_submission = submission_date
@@ -82,9 +80,6 @@ class Profile(models.Model):
     def remove_points(self, points, submission_date):
       """Removes points from the user. Note that this method does not save the profile.  
       If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task."""
-      
-      from activities.models import CommitmentMember, ActivityMember
-      
       self.points -= points
       
       current_round = self._get_round(submission_date)

@@ -1,5 +1,9 @@
-from goals.models import EnergyGoal, EnergyGoalVote
+import datetime
+
+from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
 from goals.forms import EnergyGoalVotingForm
+
+from floors.models import Floor
 
 def get_info_for_user(user):
   current_goal = EnergyGoal.get_current_goal()
@@ -52,3 +56,18 @@ def generate_chart_url(results):
   data_color = "&chco=459E00"
 
   return base_url + data + label + data_range + bg_color + data_color
+  
+def generate_floor_goals():
+  """Called by a cron task to generate the floor goals for a floor."""
+  goal = EnergyGoal.get_current_goal()
+  today = datetime.date.today()
+  if goal.voting_end_date <= today and goal.floorenergygoal_set.count() == 0:
+    # Go through the votes and create energy goals for the floor.
+    for floor in Floor.objects.all():
+      results = goal.get_floor_results(floor)
+      percent_reduction = 0
+      if len(results) > 0:
+        percent_reduction = results[0]["percent_reduction"]
+
+      floor_goal = FloorEnergyGoal(floor=floor, goal=goal, percent_reduction=percent_reduction)
+      floor_goal.save()

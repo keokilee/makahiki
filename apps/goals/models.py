@@ -82,3 +82,19 @@ class FloorEnergyGoal(models.Model):
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True)
+  
+  def save(self):
+    """Overrided save method to award the goal's points to members of the floor."""
+    if self.completed and not self.awarded:
+      points = int(self.goal.point_conversion * self.percent_reduction)
+      # Subtract a minute from the end date in order to get around energy goals tied to rounds, which
+      # also end at midnight.
+      # Conversion from http://stackoverflow.com/questions/1937622/convert-date-to-datetime-in-python
+      award_date = datetime.datetime.combine(self.goal.end_date, datetime.time()) - datetime.timedelta(minutes=1)
+      for profile in self.floor.profile_set.all():
+        profile.add_points(points, award_date)
+        profile.save()
+        
+      self.awarded = True
+      
+    super(FloorEnergyGoal, self).save()
