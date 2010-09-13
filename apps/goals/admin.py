@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from goals.models import EnergyGoal
+from goals.models import EnergyGoal, FloorEnergyGoal
 
 class EnergyGoalAdminForm(forms.ModelForm):
   class Meta:
@@ -57,3 +57,8 @@ class EnergyGoalAdmin(admin.ModelAdmin):
   list_display = ["start_date", "voting_end_date", "end_date",]
   
 admin.site.register(EnergyGoal, EnergyGoalAdmin)
+
+class FloorEnergyGoalAdmin(admin.ModelAdmin):
+  list_display = ["floor", "goal",]
+  
+admin.site.register(FloorEnergyGoal, FloorEnergyGoalAdmin)
