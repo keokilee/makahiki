@@ -10,4 +10,13 @@
     </div>
   </div>
 {% else %}
+  {% if energy_goal.goal and energy_goal.floor_goal %}
+  <div class="ui-accordion-header ui-corner-top list_header ui-state-default">
+    Energy Goal:
+    <span id="goal_voting_help" class="ui-icon ui-icon-help" style="margin-left: 165px"></span>
+  </div>
+  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding:5px 15px">
+    <p>Your {{FLOOR_LABEL.lower}}'s energy goal is {{energy_goal.floor_goal.percent_reduction}}%.</p>
+  </div>
+  {% endif %}
 {% endif %}

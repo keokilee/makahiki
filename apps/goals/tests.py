@@ -161,8 +161,11 @@ class EnergyGoalFunctionalTestCase(TestCase):
     self.assertTrue(goal_dict.has_key("form"), "Check that the context dictionary contains the voting form.")
     
     response = self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
+    
+    # Check the context passed to the template.
     goal_dict = response.context["energy_goal"]
     self.assertFalse(goal_dict.has_key("form"), "Check that the context no longer contains a voting form.")
+    self.assertTrue(goal_dict.has_key("results_url"), "Check that the results image is added.")
     
   def testUserResults(self):
     """Check that the results of the vote are accurate."""
@@ -258,6 +261,14 @@ class FloorEnergyGoalFunctionalTestCase(TestCase):
     floor_goal.save()
     
     response = self.client.get(reverse("profile_detail", args=(self.user.get_profile().pk,)))
+    self.assertEqual(response.status_code, 200, "Test that there is no error in retrieving the profile.")
+    
+    # Check that the goal is added to the context.
     goal_dict = response.context["energy_goal"]
     self.assertTrue(goal_dict.has_key("floor_goal"), "Check that the goal is in the context.")
     self.assertEqual(goal_dict["floor_goal"], floor_goal, "Check that our created goal is in the context.")
+    
+    # Check the contents of the page.
+    label = settings.COMPETITION_GROUP_NAME.lower()
+    goal_text = "Your %s's energy goal is 10%%." % (label,)
+    self.assertContains(response, goal_text, msg_prefix="Test that the goal appears in the contents of the page.")
