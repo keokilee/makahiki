@@ -23,18 +23,11 @@ class EnergyGoal(models.Model):
       default=1.0,
       help_text="The points awarded for this goal will be the percent reduction multiplied by this number.",
   )
-  created_at = models.DateTimeField(editable=False)
-  updated_at = models.DateTimeField(null=True, editable=False)
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
+  updated_at = models.DateTimeField(editable=False, auto_now=True)
   
   def __unicode__(self):
     return "Goal for %s to %s" % (self.start_date, self.end_date)
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.datetime.today()
-    else:
-      self.updated_at = datetime.datetime.today()
-    super(EnergyGoal, self).save()
     
   @staticmethod
   def get_current_goal():
@@ -74,16 +67,11 @@ class EnergyGoalVote(models.Model):
   user = models.ForeignKey(User, editable=False)
   goal = models.ForeignKey(EnergyGoal, editable=False)
   percent_reduction = models.IntegerField(default=5)
-  created_at = models.DateTimeField(editable=False)
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
   
   class Meta:
     # Ensures that a user can only vote on a single goal.
     unique_together = ("user", "goal")
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.datetime.today()
-    super(EnergyGoalVote, self).save()
     
 class FloorEnergyGoal(models.Model):
   floor = models.ForeignKey(Floor)
@@ -91,3 +79,6 @@ class FloorEnergyGoal(models.Model):
   percent_reduction = models.IntegerField(default=0, editable=False)
   completed = models.BooleanField(default=False)
   awarded = models.BooleanField(default=False, editable=False)
+  
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
+  updated_at = models.DateTimeField(editable=False, auto_now=True)

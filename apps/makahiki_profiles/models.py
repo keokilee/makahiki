@@ -58,23 +58,12 @@ class Profile(models.Model):
         return ('profile_detail', None, {'username': self.user.username})
     get_absolute_url = models.permalink(get_absolute_url)
     
-    def add_points(self, submission):
-      """Adds points based on the point value of the submitted object. Note that this method does not save the profile."""
+    def add_points(self, points, submission_date):
+      """
+      Adds points based on the point value of the submitted object.
+      Note that this method does not save the profile.
+      """
       from activities.models import CommitmentMember, ActivityMember
-      
-      points = 0
-      submission_date = None
-      
-      if isinstance(submission, CommitmentMember):
-        points = submission.commitment.point_value
-        submission_date = submission.award_date
-      elif isinstance(submission, ActivityMember):
-        if submission.activity.has_variable_points:
-          points = submission.points_awarded
-        else:
-          points = submission.activity.point_value
-          
-        submission_date = submission.submission_date
         
       self.points += points
       if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
@@ -90,24 +79,12 @@ class Profile(models.Model):
           entry.last_awarded_submission = submission_date
         entry.save()
       
-    def remove_points(self, submission):
+    def remove_points(self, points, submission_date):
       """Removes points from the user. Note that this method does not save the profile.  
       If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task."""
       
       from activities.models import CommitmentMember, ActivityMember
       
-      points = 0
-      submission_date = None
-      if isinstance(submission, CommitmentMember):
-        points = submission.commitment.point_value
-        submission_date = submission.award_date
-      elif isinstance(submission, ActivityMember):
-        if submission.activity.has_variable_points:
-          points = submission.points_awarded
-        else:
-          points = submission.activity.point_value
-        submission_date = submission.submission_date
-       
       self.points -= points
       
       current_round = self._get_round(submission_date)
@@ -155,9 +132,9 @@ class Profile(models.Model):
             user=self.user,
             award_date__isnull=False,
             award_date__lt=submission_date
-        ).order_by("-award_date")[0].award_date
+        ).latest("award_date").award_date
         last_date = last_commitment
-      except IndexError:
+      except CommitmentMember.DoesNotExist:
         pass
         
       try:
@@ -165,18 +142,17 @@ class Profile(models.Model):
             user=self.user,
             approval_status=u"approved",
             submission_date__lt=submission_date
-        ).order_by("-submission_date")[0].submission_date
+        ).latest("submission_date").submission_date
         if not last_date or last_date < last_activity:
           last_date = last_activity
-      except IndexError:
+      except ActivityMember.DoesNotExist:
         pass
       
       return last_date
-        
       
     class Meta:
-        verbose_name = _('profile')
-        verbose_name_plural = _('profiles')
+      verbose_name = _('profile')
+      verbose_name_plural = _('profiles')
 
 def create_profile(sender, instance=None, **kwargs):
     if instance is None:

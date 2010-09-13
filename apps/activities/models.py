@@ -20,15 +20,8 @@ MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdo
 class CommonBase(models.Model):
   """Common fields to all models in this file."""
   
-  created_at = models.DateTimeField(editable=False)
-  updated_at = models.DateTimeField(null=True, editable=False)
-  
-  def save(self):
-    if not self.id:
-      self.created_at = datetime.datetime.today()
-    else:
-      self.updated_at = datetime.datetime.today()
-    super(CommonBase, self).save()
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
+  updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
     
   class Meta:
     abstract = True
@@ -93,7 +86,7 @@ class CommitmentMember(CommonBase):
       # User has finished the commitment.
       # Award the points
       profile = self.user.get_profile()
-      profile.add_points(self)
+      profile.add_points(self.commitment.point_value, self.award_date)
       profile.save()
       
       if profile.floor:
@@ -112,7 +105,7 @@ class CommitmentMember(CommonBase):
     profile = self.user.get_profile()
     
     if self.award_date:
-      profile.remove_points(self)
+      profile.remove_points(self.commitment.point_value, self.award_date)
       profile.save()
     elif profile.floor:
       message = "is no longer participating in \"%s\"." % (
@@ -302,20 +295,22 @@ class ActivityMember(CommonActivityUser):
     elif self.approval_status == u"approved" and not self.award_date:
       # Award users points and update wall.
       self.award_date = datetime.datetime.today()
+      
+      # Determine how many points to award.
+      if self.activity.has_variable_points:
+        points = self.points_awarded
+      else:
+        points = self.activity.point_value
+        
       if not self.submission_date:
         # This may happen if it is an item with a confirmation code.
         self.submission_date = self.award_date
       profile = self.user.get_profile()
-      profile.add_points(self)
+      profile.add_points(points, self.submission_date)
       profile.save()
       
       if profile.floor:
         # Post on the user's floor wall.
-        if self.activity.has_variable_points:
-          points = self.points_awarded
-        else:
-          points = self.activity.point_value
-          
         message = " has been awarded %d points for completing \"%s\"." % (
           points,
           self.activity.title,
@@ -325,8 +320,15 @@ class ActivityMember(CommonActivityUser):
       
     elif self.approval_status != u"approved" and self.award_date:
       # Removing user points and resetting award date.
+      
+      # Determine how many points to remove.
+      if self.activity.has_variable_points:
+        points = self.points_awarded
+      else:
+        points = self.activity.point_value
+        
       profile = self.user.get_profile()
-      profile.remove_points(self)
+      profile.remove_points(points, self.submission_date)
       profile.save()
       self.award_date = None
       self.submission_date = None # User will have to resubmit.
@@ -338,8 +340,14 @@ class ActivityMember(CommonActivityUser):
     """Custom delete method to remove awarded points."""
     
     if self.approval_status == u"approved":
+      # Determine how many points to award.
+      if self.activity.has_variable_points:
+        points = self.points_awarded
+      else:
+        points = self.activity.point_value
+        
       profile = self.user.get_profile()
-      profile.remove_points(self)
+      profile.remove_points(points, self.submission_date)
       profile.save()
       
     super(ActivityMember, self).delete()
