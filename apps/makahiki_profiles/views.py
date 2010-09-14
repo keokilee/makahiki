@@ -83,24 +83,10 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Load standings for user.
     try:
-      from standings import get_all_standings_for_user
+      from standings import generate_standings_for_profile
       
-      return_dict["floor_standings"] = get_all_standings_for_user(other_user)
-      # Default selected tab to overall.
-      return_dict["selected_tab"] = len(return_dict["floor_standings"]) - 1
-      return_dict["standings_titles"] = []
-      today = datetime.datetime.today()
+      return_dict["standings"] = generate_standings_for_profile(other_user, is_me)
       
-      rounds = settings.COMPETITION_ROUNDS
-      for index, key in enumerate(rounds.keys()):
-        return_dict["standings_titles"].append(key)
-        start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
-        end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
-        if today >= start and today < end:
-          return_dict["selected_tab"] = index
-        
-      return_dict["standings_titles"].append("Overall")
-        
     except ImportError:
       pass
       
@@ -109,7 +95,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       from goals import get_info_for_user
       
       if is_me:
-        return_dict.update({"energy_goal": get_info_for_user(other_user)})
+        return_dict["energy_goal"] = get_info_for_user(other_user)
     except ImportError:
       pass
       

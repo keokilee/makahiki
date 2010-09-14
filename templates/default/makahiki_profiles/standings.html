@@ -3,13 +3,13 @@
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.Standings.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#tabs").tabs({ selected: {{selected_tab}} });
+		$("#tabs").tabs({ selected: {{standings.selected_tab}} });
 	});
 </script>
 
 <div id="tabs" class="activity_item">
   <ul>
-		{% for title in standings_titles %}
+		{% for title in standings.standings_titles %}
 		  {% if forloop.last %}
 		    <li><a href="#overall_standings" style="font-weight: normal">{{title}}</a></li>
 		  {% else %}
@@ -18,7 +18,7 @@
 		{% endfor %}
 	</ul>
 
-  {% for standings in floor_standings %}
+  {% for standings in standings.floor_standings %}
     {% if forloop.last %}
       <div id="overall_standings"></div>
       <script type="text/javascript">

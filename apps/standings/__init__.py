@@ -1,3 +1,4 @@
+import datetime
 import simplejson as json
 
 from django.conf import settings
@@ -260,9 +261,23 @@ def _calculate_user_standings(user_entry, entries, round=None):
     info.append({"points": last.points, "rank": entry_count, "label": ''})
     
   return info, index
-    
-    
-      
-    
   
+def generate_standings_for_profile(user, is_me):
+  return_dict = {}
+  return_dict["floor_standings"] = get_all_standings_for_user(user, is_me, "floor")
+  # Default selected tab to overall.
+  return_dict["selected_tab"] = len(return_dict["floor_standings"]) - 1
+  return_dict["standings_titles"] = []
+  today = datetime.datetime.today()
   
+  rounds = settings.COMPETITION_ROUNDS
+  for index, key in enumerate(rounds.keys()):
+    return_dict["standings_titles"].append(key)
+    start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
+    end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
+    if today >= start and today < end:
+      return_dict["selected_tab"] = index
+    
+  return_dict["standings_titles"].append("Overall")
+  
+  return return_dict
