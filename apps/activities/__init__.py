@@ -1,3 +1,5 @@
+import datetime
+
 from django.conf import settings
 from activities.models import Activity, Commitment
 
@@ -32,7 +34,7 @@ def get_available_commitments(user):
   """Get any commitments that the user is not currently active in."""
   return Commitment.objects.exclude(
     commitmentmember__user=user,
-    commitmentmember__award_date=None,
+    commitmentmember__completion_date__gt=datetime.datetime.today(),
   )
 
 def get_completed_commitments(user):

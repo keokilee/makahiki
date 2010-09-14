@@ -188,7 +188,6 @@ class ActivitiesFunctionalTestCase(TestCase):
     self.assertEqual(floor.post_set.count(), num_posts + 1)
     
 class CommitmentsUnitTestCase(TestCase):
-  
   def setUp(self):
     """Create test user and commitment. Set the competition settings to the current date for testing."""
     self.user = User(username="test_user", password="changeme")
@@ -300,11 +299,18 @@ class CommitmentsFunctionalTestCase(TestCase):
     floor = self.user.get_profile().floor
     num_posts = floor.post_set.count()
     commitment = get_available_commitments(self.user)[0]
+    commitment_count = len(get_available_commitments(self.user))
     response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
     
     # Set the commitment to be completed today and request points.
-    member = CommitmentMember.objects.get(commitment=commitment, user=self.user, completion_date__gt=datetime.date.today())
+    member = CommitmentMember.objects.get(
+        commitment=commitment, 
+        user=self.user, 
+        completion_date__gt=datetime.date.today(),
+        award_date=None,
+    )
     member.completion_date = datetime.date.today()
+    member_id = member.id
     member.save()
     
     # Check that the added commitment generates a post.
@@ -316,9 +322,61 @@ class CommitmentsFunctionalTestCase(TestCase):
     self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
     response = self.client.get("/profiles/profile/%d/" % self.user.pk)
     self.assertNotContains(response, "Either the commitment is not active or it is not completed yet.")
-
+    
+    member = CommitmentMember.objects.get(pk=member_id)
+    self.assertTrue(member.award_date is not None, "Test that the commitment is awarded.")
+    
     response = self.client.get('/activities/commitment_list/')
     self.failUnless(commitment in response.context["completed_items"])
     
+    # Check that the commitment is available.
+    self.assertEqual(commitment_count, len(get_available_commitments(self.user)), "Check for same number of commitments.")
+    self.failUnless(commitment in response.context["available_items"])
+    
     # Check that the completed commitment generates a post.
     self.assertEqual(floor.post_set.count(), num_posts + 2)
+    
+  def testMultipleCompleteCommitment(self):
+    """Test that we can complete a commitment multiple times."""
+
+    from activities.forms import CommitmentCommentForm
+
+    points = self.user.get_profile().points
+    floor = self.user.get_profile().floor
+    num_posts = floor.post_set.count()
+    commitment = get_available_commitments(self.user)[0]
+    response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
+
+    # Set the commitment to be completed today and request points.
+    member = CommitmentMember.objects.get(
+        commitment=commitment, 
+        user=self.user, 
+        completion_date__gt=datetime.date.today(),
+        award_date=None,
+    )
+    member.completion_date = datetime.date.today()
+    member.save()
+    
+    # Complete the first time.
+    response = self.client.post('/activities/request_commitment_points/%d/' % commitment.pk)
+    
+    # Now let's add and complete it again.
+    response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
+    member = CommitmentMember.objects.get(
+        commitment=commitment, 
+        user=self.user, 
+        completion_date__gt=datetime.date.today(),
+        award_date=None,
+    )
+    member.completion_date = datetime.date.today()
+    member.save()
+    
+    # Complete the second time.
+    response = self.client.post('/activities/request_commitment_points/%d/' % commitment.pk)
+    self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
+    response = self.client.get("/profiles/profile/%d/" % self.user.pk)
+    self.assertNotContains(response, "Either the commitment is not active or it is not completed yet.")
+    
+    response = self.client.get('/activities/commitment_list/')
+    self.failUnless(commitment in response.context["completed_items"])
+    self.failUnless(commitment in response.context["available_items"])

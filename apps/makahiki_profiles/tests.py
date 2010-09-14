@@ -211,7 +211,7 @@ class ProfilesFunctionalTestCase(TestCase):
     response = self.client.get('/profiles/profile/%s/' % self.user.pk)
     
     # Verify standings are correct.
-    self.assertEqual(len(response.context["standings_titles"]), len(response.context["floor_standings"]))
+    self.assertEqual(len(response.context["standings"]["standings_titles"]), len(response.context["standings"]["user_standings"]))
     
     activities = self.user.activity_set.filter(activitymember__award_date=None)
     commitments = self.user.commitment_set.filter(commitmentmember__award_date=None)
@@ -244,7 +244,7 @@ class ProfilesFunctionalTestCase(TestCase):
     }
     
     response = self.client.get('/profiles/profile/%s/' % self.user.pk)
-    self.assertEqual(0, response.context["selected_tab"])
+    self.assertEqual(0, response.context["standings"]["selected_tab"])
     
     start = end
     end = end + datetime.timedelta(days=7)
@@ -256,7 +256,7 @@ class ProfilesFunctionalTestCase(TestCase):
     }
     
     response = self.client.get('/profiles/profile/%s/' % self.user.pk)
-    self.assertEqual(1, response.context["selected_tab"])
+    self.assertEqual(1, response.context["standings"]["selected_tab"])
     
     # Restore settings.
     settings.COMPETITION_ROUNDS = self.saved_rounds
