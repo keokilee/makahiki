@@ -516,7 +516,7 @@ class IndividualStandingsTest(TestCase):
     if self.saved_name:
       settings.COMPETITION_GROUP_NAME = self.saved_name
     
-class StandingsFunctionalTest(TestCase):
+class StandingsFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
   
   def testDefaultView(self):
@@ -563,6 +563,13 @@ class StandingsFunctionalTest(TestCase):
     self.assertContains(response, profile.floor.dorm.name + ": Lounge " + profile.floor.number)
     self.assertContains(response, "<b>Lounge</b>")
     self.assertContains(response, "My Lounge")
+    
+    # Inspect the response context to check for the two types of standings.
+    standings_dict = response.context["standings"]
+    self.assertTrue(standings_dict.has_key("user_standings"), "Check that the user's standings are available.")
+    for standings in standings_dict["user_standings"]:
+      self.assertTrue(standings.has_key("floor"), "Check that the floor standings are available.")
+      self.assertTrue(standings.has_key("all"), "Check that the floor standings are available.")
     
     # Restore setting.
     if self.saved_name:

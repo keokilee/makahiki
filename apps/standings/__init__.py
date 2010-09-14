@@ -179,10 +179,10 @@ def get_standings_for_user(user, group="floor", round_name=None, is_me=True):
                   profile__floor=user_profile.floor,
                   round_name=round_name,
                 ).order_by("-points", "-last_awarded_submission")
-      title = "Individual standings, %s, %s" % (user_profile.floor, round_name)
+      title = "Your standings in %s %s, %s" % (get_floor_label(), user_profile.floor.number, round_name)
     else:
       entries = ScoreboardEntry.objects.filter(round_name=round_name).order_by("-points", "-last_awarded_submission")
-      title = "Individual standings, Everyone, %s" % round_name
+      title = "Your standings in all dorms, %s" % round_name
     
   else:
     # Calculate overall standings.
@@ -263,10 +263,16 @@ def _calculate_user_standings(user_entry, entries, round=None):
   return info, index
   
 def generate_standings_for_profile(user, is_me):
-  return_dict = {}
-  return_dict["floor_standings"] = get_all_standings_for_user(user, is_me, "floor")
+  return_dict = {"user_standings": []}
+  
+  floor_standings = get_all_standings_for_user(user, is_me, "floor")
+  all_standings = get_all_standings_for_user(user, is_me, "all")
+  # length of floor_standings and all standings should be identical.
+  for index in range(0, len(floor_standings)):
+    return_dict["user_standings"].append({"floor": floor_standings[index], "all": all_standings[index]})
+  
   # Default selected tab to overall.
-  return_dict["selected_tab"] = len(return_dict["floor_standings"]) - 1
+  return_dict["selected_tab"] = len(return_dict["user_standings"]) - 1
   return_dict["standings_titles"] = []
   today = datetime.datetime.today()
   
