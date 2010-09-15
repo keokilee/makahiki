@@ -32,6 +32,15 @@
 {% block active_subnav %}{% if is_me %}profile{% endif %}{%endblock%}
 
 {% block body %}
+  {% if CURRENT_PHASE %}
+  <div class="makahiki_content" style="margin:0; padding-top: 10px">
+    <div id="countdown-timer" class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active"
+      style="margin:0">
+      {% include "makahiki_base/timer.html" %}
+    </div>
+  </div>
+  {% endif %}
+  
   <div id="profile_left" class="profile_content">
       <div id="profile_info" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
         <div class="ui-accordion-header ui-corner-top list_header">

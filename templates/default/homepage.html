@@ -21,13 +21,15 @@
 {% endblock %}
 
 {% block body %}
+  {% if CURRENT_PHASE %}
   <div id="content_header">    
     <div class="makahiki_content">
-      <div id="headlines" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+      <div id="round_timer" class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
         {% include "makahiki_base/headlines.html" %}
       </div>
     </div>
   </div>
+  {% endif %}
   
   <div id="three_col_left" style="margin: 0">
     <div id="homepage_content_5" class="makahiki_content">
