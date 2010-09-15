@@ -1,3 +1,4 @@
+import datetime
 import competition_settings as settings
 
 from django.shortcuts import render_to_response
@@ -20,6 +21,23 @@ def get_round_info():
   rounds.update({"Competition": {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}})
   
   return rounds
+  
+def get_current_round():
+  """Gets the current round from the settings."""
+  rounds = settings.COMPETITION_ROUNDS
+  today = datetime.datetime.today()
+  for index, key in enumerate(rounds.keys()):
+    start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
+    end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
+    if today >= start and today < end:
+      return {
+        "title": key,
+        "start": rounds[key]["start"],
+        "end": rounds[key]["end"],
+      }
+  
+  # No current round.
+  return None
   
 def get_theme():
   """Get the current theme and returns the theme settings."""

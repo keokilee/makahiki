@@ -1,4 +1,5 @@
 import simplejson as json
+import datetime
 
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -6,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 import competition_settings as settings
 from makahiki_base.models import Article
-from makahiki_base import get_round_info, get_theme
+from makahiki_base import get_round_info, get_theme, get_current_round
 
 class BaseUnitTestCase(TestCase):
   def testThemeRetrieval(self):
@@ -55,6 +56,28 @@ class BaseUnitTestCase(TestCase):
     # Restore settings
     settings.MAKAHIKI_THEME = saved_theme
     settings.MAKAHIKI_THEME_SETTINGS = saved_theme_settings
+    
+  def testCurrentRound(self):
+    """Tests that the current round retrieval is correct."""
+    saved_rounds = settings.COMPETITION_ROUNDS
+    current_round = "Round 1"
+    start = datetime.date.today() - datetime.timedelta(days=3)
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    round_info = get_current_round()
+    self.assertEqual(round_info["title"], current_round, "Test that the current round is returned.")
+    self.assertEqual(round_info["start"], start.strftime("%Y-%m-%d"), "Test that the start is retrieved correctly.")
+    self.assertEqual(round_info["end"], end.strftime("%Y-%m-%d"), "Test that the end is retrieved correctly.")
+    
+    # Restore settings.
+    settings.COMPETITION_ROUNDS = saved_rounds
     
 class IndexFunctionalTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
