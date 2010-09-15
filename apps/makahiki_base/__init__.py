@@ -17,8 +17,8 @@ def get_floor_label():
   
 def get_round_info():
   """Returns a dictionary containing round information."""
-  rounds = settings.COMPETITION_ROUNDS
-  rounds.update({"Competition": {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}})
+  rounds = settings.COMPETITION_ROUNDS.copy()
+  rounds["Competition"] = {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}
   
   return rounds
   
@@ -27,17 +27,39 @@ def get_current_round():
   rounds = settings.COMPETITION_ROUNDS
   today = datetime.datetime.today()
   for index, key in enumerate(rounds.keys()):
+    print key
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:
       return {
         "title": key,
-        "start": rounds[key]["start"],
-        "end": rounds[key]["end"],
+        "start": start,
+        "end": end,
       }
   
   # No current round.
   return None
+
+def in_competition():
+  """Returns true if we are still in the competition."""
+  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+  end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+  today = datetime.datetime.today()
+  if today >= start and today < end:
+    return True
+  
+  return False
+    
+def get_competition_dates():
+  """Returns information about the competition."""
+  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+  end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+  
+  return {
+    "title": "Competition",
+    "start": start,
+    "end": end,
+  }
   
 def get_theme():
   """Get the current theme and returns the theme settings."""

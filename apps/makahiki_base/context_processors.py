@@ -1,6 +1,6 @@
 import simplejson as json
 
-from makahiki_base import get_floor_label, get_round_info, get_theme, get_current_round
+from makahiki_base import get_floor_label, get_round_info, get_theme, get_current_round, get_competition_dates, in_competition
 
 def competition(request):
   """Provides access to standard competition constants within a template."""
@@ -8,11 +8,16 @@ def competition(request):
   # We may want to retrieve theme settings for insertion into CSS.
   theme = get_theme()
   
+  # Get current round info.
+  current_phase = get_current_round()
+  if not current_phase and in_competition():
+    current_phase = get_competition_dates()
+  
   return {
     "THEME": json.dumps(theme),
     "ROUNDS": json.dumps(get_round_info()),
     "FLOOR_LABEL": get_floor_label(),
-    "CURRENT_ROUND": json.dumps(get_current_round()),
+    "CURRENT_PHASE": current_phase,
   }
 
     
