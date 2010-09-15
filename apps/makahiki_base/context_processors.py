@@ -1,7 +1,6 @@
 import simplejson as json
 
 from makahiki_base import get_floor_label, get_round_info, get_theme
-from django.conf import settings
 
 def competition(request):
   """Provides access to standard competition constants within a template."""

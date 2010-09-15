@@ -177,7 +177,7 @@ class EnergyGoalFunctionalTestCase(TestCase):
         votes = result["votes"]
         break
     
-    response = self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
+    self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
     results = self.goal.get_floor_results(self.user.get_profile().floor)
     
     for result in results:

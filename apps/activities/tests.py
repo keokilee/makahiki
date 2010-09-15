@@ -4,10 +4,8 @@ from django.test import TestCase
 from django.conf import settings
 
 from django.contrib.auth.models import User
-from makahiki_profiles.models import Profile, ScoreboardEntry
 from activities import *
 from activities.models import Activity, ActivityMember, Commitment, CommitmentMember
-from floors.models import Floor
 
 class ActivitiesUnitTestCase(TestCase):
   
@@ -76,12 +74,10 @@ class ActivitiesUnitTestCase(TestCase):
   def testUnapproveRemovesPoints(self):
     """Test that unapproving a user removes their points."""
     points = self.user.get_profile().points
-    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
     (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
-    round_last_awarded = entry.last_awarded_submission
     
     activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
@@ -104,12 +100,10 @@ class ActivitiesUnitTestCase(TestCase):
     """Test that deleting an approved ActivityMember removes their points."""
     
     points = self.user.get_profile().points
-    last_awarded_submission = self.user.get_profile().last_awarded_submission
     
     # Setup to check round points.
     (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
-    round_last_awarded = entry.last_awarded_submission
     
     activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"
@@ -250,7 +244,6 @@ class CommitmentsUnitTestCase(TestCase):
     # Setup to check round points.
     (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
-    round_last_awarded = entry.last_awarded_submission
     
     commitment_member = CommitmentMember(user=self.user, commitment=self.commitment, completion_date=datetime.datetime.today())
     commitment_member.save()
@@ -338,12 +331,8 @@ class CommitmentsFunctionalTestCase(TestCase):
     
   def testMultipleCompleteCommitment(self):
     """Test that we can complete a commitment multiple times."""
-
-    from activities.forms import CommitmentCommentForm
-
-    points = self.user.get_profile().points
+    
     floor = self.user.get_profile().floor
-    num_posts = floor.post_set.count()
     commitment = get_available_commitments(self.user)[0]
     response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
 

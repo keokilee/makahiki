@@ -10,8 +10,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from floors.models import Floor
 
-from django.conf import settings
-
 class InvalidRoundException(Exception):
   def __init__(self, value):
     self.value = value

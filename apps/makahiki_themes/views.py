@@ -1,5 +1,3 @@
-import os
-
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from makahiki_themes.forms import ThemeSelect

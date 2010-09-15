@@ -1,7 +1,6 @@
 from activities.models import *
 from django.contrib import admin
 from django import forms
-from django.db.models.signals import post_save
 from django.forms.models import BaseInlineFormSet
 from django.forms.util import ErrorList
 

@@ -1,14 +1,11 @@
-import datetime
-
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
-from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponseRedirect
 
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+# from django.utils.translation import ugettext_lazy as _
+# from django.utils.translation import ugettext
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -16,13 +13,12 @@ from django.contrib.auth.models import User
 from django.views.decorators.cache import never_cache
 
 from makahiki_base import restricted
-from makahiki_profiles.models import Profile
 from makahiki_profiles.forms import ProfileForm
 
-if "notification" in settings.INSTALLED_APPS:
-    from notification import models as notification
-else:
-    notification = None
+# if "notification" in settings.INSTALLED_APPS:
+#     from notification import models as notification
+# else:
+#     notification = None
 
 @login_required
 def user_profile(request):

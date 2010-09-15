@@ -1,10 +1,9 @@
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
 import datetime
 
-from activities.models import Activity, Commitment, ActivityMember, CommitmentMember, Like
+from activities.models import Activity, Commitment, ActivityMember, CommitmentMember
 
 register = template.Library()
 

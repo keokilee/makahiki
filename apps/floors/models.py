@@ -1,10 +1,7 @@
 import datetime
-import string
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _
-from django.conf import settings
 from django.template.defaultfilters import slugify
 
 from makahiki_base import get_floor_label

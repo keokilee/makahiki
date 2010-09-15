@@ -69,8 +69,6 @@ class ScoreboardEntryUnitTests(TestCase):
                       )
     round_points = entry.points
     round_submission_date = entry.last_awarded_submission
-    
-    activity_points = self.activity.point_value
 
     activity_member = ActivityMember(user=self.user, activity=self.activity)
     activity_member.approval_status = "approved"

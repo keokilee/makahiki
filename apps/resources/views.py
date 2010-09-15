@@ -1,4 +1,3 @@
-import string
 import simplejson as json
 
 from django.template import RequestContext
@@ -14,7 +13,7 @@ from django.views.decorators.cache import never_cache
 from makahiki_base.models import Like
 
 from resources import DEFAULT_NUM_RESOURCES
-from resources.models import Resource, Topic
+from resources.models import Resource
 from resources.forms import TopicSelectForm
 # Create your views here.
 

@@ -6,12 +6,9 @@ import os
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
-from django.conf import settings
 
-from makahiki_profiles.models import Profile
-from floors.models import Floor, Post
+from floors.models import Post
 from makahiki_base.models import Like
-from makahiki_base import get_floor_label
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
@@ -152,7 +149,7 @@ class ConfirmationCode(models.Model):
           # Throws exception if the code is a duplicate.
           code.save()
           valid = True
-        except IntegrityError as error:
+        except IntegrityError:
           # Try again.
           code.code = header
       

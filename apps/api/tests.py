@@ -6,7 +6,6 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 
 import competition_settings
-from makahiki_profiles.models import Profile
 from floors.models import Floor
 from floors.models import Dorm
 from standings import MAX_INDIVIDUAL_STANDINGS
