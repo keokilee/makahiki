@@ -32,7 +32,13 @@
 {% block body %}
 
 <div id="content_header">
-  {% include "makahiki_base/timer.html" %}
+  {% if CURRENT_PHASE %}
+  <div class="makahiki_content">
+    <div id="countdown-timer" class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+      {% include "makahiki_base/timer.html" %}
+    </div>
+  </div>
+  {% endif %}
 </div>
 
 <div id="three_col_left" style="padding-top: 10px; width: 320px">
