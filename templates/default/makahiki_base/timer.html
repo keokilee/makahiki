@@ -1,6 +1,6 @@
 {% if CURRENT_PHASE %}
 <h3 style="margin:5px 0; text-align:center">
-  {{CURRENT_PHASE.title}} ends in <span id="countdown"></span>
+  {{CURRENT_PHASE.title}} ends at midnight on {{CURRENT_PHASE.end|date:"D, m/d/y"}} (<span id="countdown"></span>)
 </h3>
 
 <script type="text/javascript">
