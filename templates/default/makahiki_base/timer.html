@@ -9,7 +9,8 @@
     newYear = new Date({{CURRENT_PHASE.end.year}}, {{CURRENT_PHASE.end.month}} - 1, {{CURRENT_PHASE.end.day}}); 
     $('#countdown').countdown({
         until: newYear, 
-        layout: '{dn} {dl}, {hn} {hl}, and {mn} {ml}'
+        layout: '{dn} {dl}, {hn} {hl}, and {mn} {ml}',
+        timezone: -10
     }); 
   });
 </script>
