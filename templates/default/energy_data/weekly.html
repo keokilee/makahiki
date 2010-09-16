@@ -13,7 +13,7 @@
     // The next two variables, source and percentageReductionGoal, must be set by Makahiki.
     var source = configuration.{{floor.floor_identifier}};
     {% if goal %}
-    var percentageReductionGoal = {{floor_goal.percent_reduction}};
+    var percentageReductionGoal = {{goal.percent_reduction}};
     {% else %}
     var percentageReductionGoal = 0;
     {% endif %}
