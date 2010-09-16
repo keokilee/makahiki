@@ -19,11 +19,7 @@ urlpatterns = patterns('',
     url(r'^rules/$', direct_to_template, {"template": "rules.html"}, name="rules"),
     url(r'^standings/', include('standings.urls')),
     url(r'^resources/', include('resources.urls')),
-    url(r'^energy_data/day/$', direct_to_template, {"template": "energy_data/day.html"}, name="energy_day"),
-    url(r'^energy_data/hour/$', direct_to_template, {"template": "energy_data/hour.html"}, name="energy_hour"),
-    url(r'^energy_data/month/$', direct_to_template, {"template": "energy_data/month.html"}, name="energy_month"),
-    url(r'^energy_data/real_time/$', direct_to_template, {"template": "energy_data/real_time.html"}, name="energy_real_time"),
-    url(r'^energy_data/week/$', direct_to_template, {"template": "energy_data/week.html"}, name="energy_week"),
+    url(r'^energy_data/$', "energy_data.views.index", name="energy_data"),
     
     # Kukui Cup Provided
     (r'^profiles/', include('makahiki_profiles.urls')),
