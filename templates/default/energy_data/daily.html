@@ -1,0 +1,39 @@
+<div class="makahiki_content_title ui-accordion-header ui-corner-top">
+  {% if floor %}{{floor}}: {% endif %}Energy Consumption Over the Last Day
+</div>
+<div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+  {% if floor %}
+  <div id="daily_visualization"></div>
+  
+  <script type="text/javascript">
+  // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+  (function() {
+    var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
+
+    // The next two variables, source and percentageReductionGoal, must be set by Makahiki.
+    var source = configuration.{{floor.floor_identifier}};
+    {% if floor_goal %}
+    var percentageReductionGoal = {{floor_goal.percent_reduction}};
+    {% else %}
+    var percentageReductionGoal = 0;
+    {% endif %}
+
+    // Get the spreadsheets we need.
+    var rollingHoursEnergyUrl = configuration.getRollingHoursEnergyUrl();
+    //console.log(rollingHoursEnergyUrl);
+    var refreshInterval = 0; // don't refresh this spreadsheet.
+
+    // Load the visualization API and the spreadsheet, then call displayEnergy.
+    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, rollingHoursEnergyUrl, refreshInterval);  
+
+    function displayEnergy(rollingHoursDatatable) {
+      var energyChart = new org.wattdepot.gdata.makahiki.EnergyLastTwentyFourHours(configuration);
+      var datatable = energyChart.makeDataTable(rollingHoursDatatable, source, percentageReductionGoal);
+      energyChart.draw('daily_visualization', source, percentageReductionGoal, datatable);
+    }
+  })();
+  </script>
+  {% else %}
+    <p>Please select a {{FLOOR_LABEL.lower}}</p>
+  {% endif %}
+</div>

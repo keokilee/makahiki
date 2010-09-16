@@ -4,6 +4,37 @@
 {% load generic_flatblocks %}
 
 {% block head_title %}{% trans "Energy Data" %}{% endblock %}
+{% block extra_head %}
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastSevenDays.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastTwentyFourHours.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#floor_form_submit").click(function() {
+      $("#floor_form").submit();
+    });
+  });
+</script>
+
+<style type="text/css">
+  #floor_form ul {
+    display: inline;
+  }
+  
+  #floor_form ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  #content_header #floor_select {
+    padding: 10px 0;
+  }
+</style>
+{% endblock %}
 
 {% block tab_id %}"#energy_tab"{% endblock %}
 
@@ -17,27 +48,32 @@
       </div>
     </div>
     {% endif %}
+    
+    <div class="makahiki_content" style="margin:0; margin-top: 10px;">
+      <div id="floor_select" class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+        <form id="floor_form" action="/energy_data/" method="GET">
+          <div id="floor_select_errors"></div>
+          <ul>
+            {{form.as_ul}}
+          </ul>
+          <a id="floor_form_submit" href="#" class="option-link ui-state-default ui-corner-all ui-state-hover">
+            <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
+            <span class="button-text">Refresh</span>
+          </a>
+        </form>
+      </div>
+    </div>
   </div>
   
   <div id="two_col_left">
     <div id="energy_daily" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-        Energy Consumed Over the Last 24 Hours
-      </div>
-      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        Please select a dorm.
-      </div>
+      {% include "energy_data/daily.html" %}
     </div>
   </div>
   
   <div id="two_col_right">
     <div id="energy_weekly" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-      <div class="makahiki_content_title ui-accordion-header ui-corner-top">
-        Energy Consumed Over the Last 7 Days
-      </div>
-      <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-        Please select a dorm.
-      </div>
+      {% include "energy_data/weekly.html" %}
     </div>
   </div>
 {% endblock %}
