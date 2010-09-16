@@ -27,7 +27,20 @@ def index(request):
         except FloorEnergyGoal.DoesNotExist:
           floor_goal = None
   
-  # Create the empty form.
+  # Check if the user is logged in and has a floor.
+  elif request.user.is_authenticated() and request.user.get_profile().floor:
+    floor = request.user.get_profile().floor
+    form = EnergyDataSelectForm(initial={"floor": floor,})
+    
+    # Check if there is an energy goal available.
+    goal = EnergyGoal.get_current_goal()
+    if goal:
+      try:
+        floor_goal = goal.floorenergygoal_set.get(floor=floor)
+      except FloorEnergyGoal.DoesNotExist:
+        floor_goal = None
+  
+  # Create the form.
   else:
     form = EnergyDataSelectForm()
   
