@@ -27,7 +27,6 @@ def get_current_round():
   rounds = settings.COMPETITION_ROUNDS
   today = datetime.datetime.today()
   for index, key in enumerate(rounds.keys()):
-    print key
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:

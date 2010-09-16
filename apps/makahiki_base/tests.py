@@ -73,8 +73,6 @@ class BaseUnitTestCase(TestCase):
     
     round_info = get_current_round()
     self.assertEqual(round_info["title"], current_round, "Test that the current round is returned.")
-    self.assertEqual(round_info["start"], start.strftime("%Y-%m-%d"), "Test that the start is retrieved correctly.")
-    self.assertEqual(round_info["end"], end.strftime("%Y-%m-%d"), "Test that the end is retrieved correctly.")
     
     # Restore settings.
     settings.COMPETITION_ROUNDS = saved_rounds
