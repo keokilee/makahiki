@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.views.decorators.cache import cache_control
-from minidetecotr import detect_mobile
+from minidetector import detect_mobile
 
 from makahiki_base.models import Article
 
