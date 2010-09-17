@@ -20,6 +20,7 @@ def homepage(request):
   
 @cache_control(must_revalidate=True, max_age=3600)
 def index(request):
+  """Goes to the base URL.  At this point, we can determine if the user is logged in or on a mobile device."""
   user = request.user
   
   # Check if a user is logged in and a valid participant.
