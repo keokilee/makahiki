@@ -10,10 +10,8 @@ from makahiki_base import restricted
 from floors.models import Dorm, Floor, Post
 from floors.forms import WallForm
 from makahiki_avatar.models import Avatar
+from goals.models import EnergyGoal, FloorEnergyGoal
 # Create your views here.
-
-def dorm(request, dorm_slug):
-  dorm = get_object_or_404(Dorm, slug=dorm_slug)
 
 @never_cache
 def floor(request, dorm_slug, floor_slug):
@@ -27,11 +25,19 @@ def floor(request, dorm_slug, floor_slug):
   posts = floor.post_set.order_by('-created_at')
   wall_form = WallForm(initial={"floor" : floor.pk})
   
+  # Check if we have a current goal.
+  goal = EnergyGoal.get_current_goal()
+  try:
+    floor_goal = floor.floorenergygoal_set.get(goal=goal)
+  except FloorEnergyGoal.DoesNotExist:
+    floor_goal = None
+  
   return render_to_response('floors/floor_detail.html', {
     "profiles": profiles,
     "floor": floor,
     "posts": posts,
     "wall_form": wall_form,
+    "goal": floor_goal,
   }, context_instance=RequestContext(request))
   
 def floor_members(request, dorm_slug, floor_slug):
