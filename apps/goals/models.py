@@ -59,7 +59,7 @@ class EnergyGoal(models.Model):
     """Get the floor's voting results for this goal."""
     votes = self.energygoalvote_set.filter(
       user__profile__floor=floor,
-    ).values("percent_reduction").annotate(votes=models.Count('id')).order_by("votes")
+    ).values("percent_reduction").annotate(votes=models.Count('id')).order_by("-votes", "-percent_reduction")
         
     return votes
     
