@@ -4,4 +4,4 @@ var jQT = new $.jQTouch({
    startupScreen: 'jqt_startup.png',
    statusBar: 'black',
    preloadImages: []
-})
+});
