@@ -11,6 +11,8 @@
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastSevenDays.js"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastTwentyFourHours.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.PowerLastFewMinutes.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.HtmlTable.js"></script>
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -77,15 +79,21 @@
     </div>
   </div>
   
-  <div id="two_col_left">
+  <div id="three_col_left" style="width:320px">
     <div id="energy_daily" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       {% include "energy_data/daily.html" %}
     </div>
   </div>
   
-  <div id="two_col_right">
+  <div id="three_col_center" style="width: 320px">
     <div id="energy_weekly" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       {% include "energy_data/weekly.html" %}
+    </div>
+  </div>
+  
+  <div id="three_col_right" style="width:320px; float:right">
+    <div id="energy_minutes" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      {% include "energy_data/minutes.html" %}
     </div>
   </div>
 {% endblock %}

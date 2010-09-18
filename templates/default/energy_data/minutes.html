@@ -1,0 +1,33 @@
+<div class="makahiki_content_title ui-accordion-header ui-corner-top">
+  {% if floor %}{{floor}}: {% endif %}Power Over the Last Few Minutes
+</div>
+<div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+  {% if floor %}
+  <div id="minutes_visualization"></div>
+  
+  <script type="text/javascript">
+  // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+  (function() {
+    var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
+
+    // The next two variables, source and percentageReductionGoal, must be set by Makahiki.
+    var source = configuration.ilima_3_4;
+
+    // Get the spreadsheets we need.
+    var currentPowerDataUrl = configuration.getRollingSecondsPowerUrl();
+    var refreshInterval = 15; // refresh every 15 seconds.
+
+    // Load the visualization API and the spreadsheet, then call displayEnergy.
+    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, currentPowerDataUrl, refreshInterval);  
+
+    function displayEnergy(rollingSecondsDatatable) {
+      var energyChart = new org.wattdepot.gdata.makahiki.PowerLastFewMinutes(configuration);
+      var datatable = energyChart.makeDataTable(rollingSecondsDatatable, source);
+      energyChart.draw('minutes_visualization', source, datatable);
+    }
+  })();
+  </script>
+  {% else %}
+  <p>Please select a {{FLOOR_LABEL.lower}}</p>
+  {% endif %}
+</div>
