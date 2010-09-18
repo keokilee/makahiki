@@ -14,6 +14,8 @@ def index(request):
   """Creates and/or processes the EnergyData form."""
   floor = None
   floor_goal = None
+  
+  # Check if the user is refreshing from the form.
   if request.GET.has_key("floor"):
     form = EnergyDataSelectForm(request.GET)
     if form.is_valid():
@@ -40,9 +42,10 @@ def index(request):
       except FloorEnergyGoal.DoesNotExist:
         floor_goal = None
   
-  # Create the form.
+  # The user is either not logged in or has no default floor.  Use the first floor.
   else:
     form = EnergyDataSelectForm()
+    floor = form.fields["floor"].queryset[0] # Take the first floor in the list.
   
   return render_to_response("energy_data/index.html", {
     "form": form,

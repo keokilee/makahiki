@@ -7,5 +7,6 @@ class EnergyDataSelectForm(forms.Form):
   floor = forms.ModelChoiceField(
               queryset=Floor.objects.all().order_by("dorm__name", "number"),
               label="Pick a %s" % get_floor_label().lower(),
+              empty_label=None,
           )
   
