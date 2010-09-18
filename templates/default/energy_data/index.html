@@ -14,20 +14,32 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#floor_form_submit").click(function() {
+    $("#id_floor").change(function() {
       $("#floor_form").submit();
     });
   });
 </script>
 
 <style type="text/css">
+  #floor_form {
+    height: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
   #floor_form ul {
     display: inline;
   }
   
   #floor_form ul li {
     display: inline;
-    margin-right: 10px;
+    color: white;
+    font-size: 0.7em;
+    font-weight: bold;
+  }
+  
+  #floor_form ul li label {
+    padding-right: 10px;
   }
   
   #content_header #floor_select {
@@ -37,6 +49,15 @@
 {% endblock %}
 
 {% block tab_id %}"#energy_tab"{% endblock %}
+
+{% block subnav %}
+<form id="floor_form" action="/energy_data/" method="GET">
+  <div id="floor_select_errors"></div>
+  <ul>
+    {{form.as_ul}}
+  </ul>
+</form>
+{% endblock %}
 
 {% block body %}
   <div id="content_header">
@@ -48,22 +69,8 @@
       </div>
     </div>
     {% endif %}
-    
-    <div class="makahiki_content" style="margin:0; margin-top: 10px;">
-      <div id="floor_select" class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
-        <form id="floor_form" action="/energy_data/" method="GET">
-          <div id="floor_select_errors"></div>
-          <ul>
-            {{form.as_ul}}
-          </ul>
-          <a id="floor_form_submit" href="#" class="option-link ui-state-default ui-corner-all ui-state-hover">
-            <span class="ui-icon ui-icon-arrowrefresh-1-e"></span>
-            <span class="button-text">Refresh</span>
-          </a>
-        </form>
-      </div>
-    </div>
   </div>
+  
   <div id="energy_help" style="padding: 0 10px; margin: 0">
     <div class="makahiki_content">
       {% gblock "energy_data_help" for "gblocks.TitleAndText" %}
