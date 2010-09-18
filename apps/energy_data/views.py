@@ -46,6 +46,12 @@ def index(request):
   else:
     form = EnergyDataSelectForm()
     floor = form.fields["floor"].queryset[0] # Take the first floor in the list.
+    goal = EnergyGoal.get_current_goal()
+    if goal:
+      try:
+        floor_goal = goal.floorenergygoal_set.get(floor=floor)
+      except FloorEnergyGoal.DoesNotExist:
+        floor_goal = None
   
   return render_to_response("energy_data/index.html", {
     "form": form,
