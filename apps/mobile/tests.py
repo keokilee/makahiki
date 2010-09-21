@@ -1,6 +1,8 @@
 import datetime
 
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 import competition_settings as settings
 from floors.models import Floor
@@ -138,4 +140,22 @@ class MobileOverallStandingsTestCase(TestCase):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
         
-
+class MobileFunctionalTestCase(TestCase):
+  fixtures = ["base_data.json", "user_data.json"]
+  
+  def testMobileLogin(self):
+    """Tests that a logged in user goes to their profile page."""
+    
+    response = self.client.get(reverse("mobile_index"))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "mobile/login.html", 
+          "Check that the home page template is used for non-authenticated users.")
+    
+    user = User.objects.get(username="user")
+    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
+    response = self.client.get(reverse("mobile_index"), follow=True)
+    self.assertTemplateUsed(response, "mobile/profile.html", "Check that the user is taken to their mobile home page.")
+    response = self.client.get(reverse("home"))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "homepage.html", 
+          "Check that the full site is still accessible in the tab.")

@@ -36,7 +36,7 @@ def profile(request):
   #TODO: Pull in current energy goal.
   goal_info = get_info_for_user(user)
   floor_goal = None
-  if goal_info.has_key("floor_goal"):
+  if goal_info and goal_info.has_key("floor_goal"):
     floor_goal = goal_info["floor_goal"]
   
   # Retrieve news articles.
