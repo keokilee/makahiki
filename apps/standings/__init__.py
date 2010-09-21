@@ -168,7 +168,7 @@ def get_standings_for_user(user, group="floor", round_name=None, is_me=True):
   title = user_entry = entries = None
   if round_name:
     # Calculate standings for round.
-    user_entry = user_profile.scoreboardentry_set.get(round_name=round_name)
+    user_entry, created = user_profile.scoreboardentry_set.get_or_create(round_name=round_name)
     
     if not settings.COMPETITION_ROUNDS or not settings.COMPETITION_ROUNDS.has_key(round_name):
       # Nothing we can do again.
