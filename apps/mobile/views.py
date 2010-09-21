@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from mobile import get_mobile_standings
 from makahiki_profiles.models import Profile
 from makahiki_base.models import Article
 from activities import get_current_commitments
@@ -31,10 +32,13 @@ def profile(request):
   
   #TODO: Get scoreboard entry for points.
   
+  #TODO: Pull in current energy goal.
+  
   # Retrieve news articles.
   articles = Article.objects.order_by("-created_at")
   
   #TODO: Pull in user standings.
+  standings = get_mobile_standings(user)
   
   # Pull in user commitments.
   commitments = get_current_commitments(user)
@@ -43,4 +47,5 @@ def profile(request):
     "profile": profile,
     "articles": articles,
     "commitments": commitments,
+    "standings": standings,
   }, context_instance=RequestContext(request))
