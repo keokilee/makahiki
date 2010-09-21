@@ -41,7 +41,13 @@
       <ul style="padding:0; margin:0">
         <li>Right now: 1.2 kW</li>
         <li>This round so far: 57 kWh</li>
-        <li>Goal: 10% below baseline, doing well so far!</li>
+        <li>
+          {% if goal %}
+            Goal: {{goal.percent_reduction}}% below baseline, doing well so far!
+          {% else %}
+            Goal: 0% below baseline, doing well so far!
+          {% endif %}
+        </li>
       </ul>
     </div>
   </div>

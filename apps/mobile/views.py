@@ -7,6 +7,7 @@ from mobile import get_mobile_standings
 from makahiki_profiles.models import Profile
 from makahiki_base.models import Article
 from activities import get_current_commitments
+from goals import get_info_for_user
 
 # Create your views here.
 
@@ -33,11 +34,15 @@ def profile(request):
   #TODO: Get scoreboard entry for points.
   
   #TODO: Pull in current energy goal.
+  goal_info = get_info_for_user(user)
+  floor_goal = None
+  if goal_info.has_key("floor_goal"):
+    floor_goal = goal_info["floor_goal"]
   
   # Retrieve news articles.
   articles = Article.objects.order_by("-created_at")
   
-  #TODO: Pull in user standings.
+  #Pull in user standings.
   standings = get_mobile_standings(user)
   
   # Pull in user commitments.
@@ -48,4 +53,5 @@ def profile(request):
     "articles": articles,
     "commitments": commitments,
     "standings": standings,
+    "goal": floor_goal,
   }, context_instance=RequestContext(request))
