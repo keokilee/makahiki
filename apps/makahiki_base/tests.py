@@ -74,6 +74,19 @@ class BaseUnitTestCase(TestCase):
     round_info = get_current_round()
     self.assertEqual(round_info["title"], current_round, "Test that the current round is returned.")
     
+    start = datetime.date.today() - datetime.timedelta(days=14)
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    round_info = get_current_round()
+    self.assertTrue(round_info is None, "Test that there is no current round.")
+    
     # Restore settings.
     settings.COMPETITION_ROUNDS = saved_rounds
     
