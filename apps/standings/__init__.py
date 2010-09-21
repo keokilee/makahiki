@@ -162,13 +162,13 @@ def get_standings_for_user(user, group="floor", round_name=None, is_me=True):
   user_profile = Profile.objects.get(user=user)
   
   if not user_profile.floor:
-    # Nothing we can do again.
+    # Nothing we can do.
     raise StandingsException("User has no floor for standings.")
   
   title = user_entry = entries = None
   if round_name:
     # Calculate standings for round.
-    user_entry = user_profile.scoreboardentry_set.get(round_name=round_name)
+    user_entry, created = user_profile.scoreboardentry_set.get_or_create(round_name=round_name)
     
     if not settings.COMPETITION_ROUNDS or not settings.COMPETITION_ROUNDS.has_key(round_name):
       # Nothing we can do again.

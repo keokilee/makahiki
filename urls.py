@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^standings/', include('standings.urls')),
     url(r'^resources/', include('resources.urls')),
     url(r'^energy_data/$', "energy_data.views.index", name="energy_data"),
+    url(r'^mobile/', include('mobile.urls')),
     
     # Kukui Cup Provided
     (r'^profiles/', include('makahiki_profiles.urls')),

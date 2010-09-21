@@ -34,8 +34,8 @@ def get_info_for_user(user):
       try:
         floor_goal = floor.floorenergygoal_set.get(goal=current_goal)
         return {
-              "goal": current_goal,
-              "floor_goal": floor_goal,
+          "goal": current_goal,
+          "floor_goal": floor_goal,
         }
       except FloorEnergyGoal.DoesNotExist:
         pass

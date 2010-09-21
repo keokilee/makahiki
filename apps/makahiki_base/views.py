@@ -1,9 +1,11 @@
 # Create your views here.
+
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.views.decorators.cache import cache_control
+from minidetector import detect_mobile
 
 from makahiki_base.models import Article
 
@@ -19,11 +21,15 @@ def homepage(request):
   }, context_instance = RequestContext(request))
   
 @cache_control(must_revalidate=True, max_age=3600)
+@detect_mobile
 def index(request):
+  """Goes to the base URL.  At this point, we can determine if the user is logged in or on a mobile device."""
   user = request.user
   
+  if request.mobile:
+    return HttpResponseRedirect("/mobile")
   # Check if a user is logged in and a valid participant.
-  if user.is_authenticated() and user.get_profile().floor:
+  elif user.is_authenticated() and user.get_profile().floor:
     return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   else:
     return homepage(request)

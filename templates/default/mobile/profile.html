@@ -1,0 +1,85 @@
+{% extends "mobile/base.html" %}
+
+{% load avatar_tags %}
+
+{% block body %}
+<div id="mobile_header">
+  <h1><a href="/mobile/profile/">Kukui Cup</a></h1>
+  <div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+      <li class="ui-state-default ui-corner-top"><a href="/">Home</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="/">Lounge</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="/">Tasks</a></li>
+      <li class="ui-state-default ui-corner-top"><a href="/">About</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="mobile_content">
+  <div id="avatar" style="float:left">
+    <img src="{% avatar_url user 80 %}" alt="Photo of {{ user }}" class="photo" />
+  </div>
+  <div id="info" style="float:right;width:200px; margin-top: -20px">
+    <ul style="text-align:center">
+      <li style="margin:5px 0"><h2 style="margin:0">{{profile.first_name}} {{profile.last_name}}</h2></li>
+      <li style="margin:5px 0">{{profile.floor}}</li>
+      <li style="margin:5px 0">Overall: {{profile.points}} points</li>
+    </ul>
+  </div>
+  <div style="clear:both"></div>
+
+  <h3 style="padding:0">News</h3>
+  <ul style="padding:0">
+    {% for article in articles %}
+    <li><a href="{% url view_article article.slug %}">{{article.title|truncatewords:5}}</a></li>
+    {% endfor %}
+  </ul>
+  
+  <h3 style="padding:0">Energy Usage</h3>
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active" style="padding-left:10px;">
+      <ul style="padding:0; margin:0">
+        <li>Right now: 1.2 kW</li>
+        <li>This round so far: 57 kWh</li>
+        <li>
+          {% if goal %}
+            Goal: {{goal.percent_reduction}}% below baseline, doing well so far!
+          {% else %}
+            Goal: 0% below baseline, doing well so far!
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <h3 style="padding:0">Standings</h3>
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active" style="padding-left:10px;">
+      <ul style="padding:0; margin:0">
+        <li>{{standings.floor}}</li>
+        <li>{{standings.overall}}</li>
+      </ul>
+    </div>
+  </div>
+  
+  <h3 style="padding:0">My Commitments</h3>
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active" style="padding-left:10px;">
+      {% if commitments %}
+      <ul style="padding:0; margin:0">
+        {% for commitment in commitments %}
+        <li>{{commitment.title}}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      You are not participating in any commitments.
+      {% endif %}
+    </div>
+  </div>
+  
+  <ul>
+  	<li><a href="/home">Switch to full site.</a></li>
+  </ul>
+</div>
+
+{% endblock %}

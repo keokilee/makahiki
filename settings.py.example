@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     'floors',
     'api',
     'goals',
+    'minidetector',
     
     # 'facebookconnect',
 
