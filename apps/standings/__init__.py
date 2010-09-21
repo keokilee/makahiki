@@ -162,7 +162,7 @@ def get_standings_for_user(user, group="floor", round_name=None, is_me=True):
   user_profile = Profile.objects.get(user=user)
   
   if not user_profile.floor:
-    # Nothing we can do again.
+    # Nothing we can do.
     raise StandingsException("User has no floor for standings.")
   
   title = user_entry = entries = None
