@@ -39,6 +39,12 @@
 {% block active_subnav %}{{plural_type}}{%endblock%}
 
 {% block body %}
+  <div id="list_help" style="padding: 15px 5px 0; margin: 0">
+    <div class="makahiki_content">
+      {% gblock "list",plural_type for "gblocks.TitleAndText" %}
+    </div>
+  </div>
+  <div style="clear:both"></div>
   <div id="main_content" style="float: left; width: 67%">
   
     <div id="user_items" class="main_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
@@ -117,6 +123,27 @@
 {% endblock %}
 
 {% block extra_body %}
+  <!-- Frontendadmin -->
+  <script type="text/javascript">
+  jQuery(document).ready(function(){
+      jQuery('a.frontendadmin_edit').hover(
+          function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+          function(){jQuery(this).parent().css('outline', '')}
+      );
+
+      jQuery('a.frontendadmin_edit').click(function(){
+              jQuery(this).parent().css('outline', '');
+              jQuery(this).parent().load(this.href);
+              return false;
+      });
+
+      jQuery('a.frontendadmin_delete').hover(
+          function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+          function(){jQuery(this).parent().css('outline', '')}
+      );
+  });
+  </script>
+  
   <!-- Dialogs -->
   <script type="text/javascript">
     jQuery(document).ready(function() {
