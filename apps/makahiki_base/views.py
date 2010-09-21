@@ -26,8 +26,10 @@ def index(request):
   """Goes to the base URL.  At this point, we can determine if the user is logged in or on a mobile device."""
   user = request.user
   
+  if request.mobile:
+    return HttpResponseRedirect("/mobile")
   # Check if a user is logged in and a valid participant.
-  if user.is_authenticated() and user.get_profile().floor:
+  elif user.is_authenticated() and user.get_profile().floor:
     return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
   else:
     return homepage(request)
