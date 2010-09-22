@@ -29,7 +29,10 @@ def get_mobile_standings(user):
     floor_string = "You are #%d in points for %s in the competition." % (rank, user.get_profile().floor)
   if index > 0:
     diff = info[index - 1]["points"] - info[index]["points"]
-    floor_string += " Get %d more points to move to #%d." % (diff, rank - 1)
+    if diff < 2:
+      floor_string += " Get 1 more point to move to #%d." % (rank - 1,)
+    else:
+      floor_string += " Get %d more points to move to #%d." % (diff, rank - 1)
     
   info = overall_standings["info"]
   index = overall_standings["myindex"]
@@ -41,7 +44,10 @@ def get_mobile_standings(user):
     overall_string = "You are #%d in overall points in the competition." % rank
   if index > 0:
     diff = info[index - 1]["points"] - info[index]["points"]
-    overall_string += " Get %d more points to move to #%d." % (diff, rank - 1)
+    if diff < 2:
+      overall_string += " Get 1 more point to move to #%d." % (rank - 1,)
+    else:
+      overall_string += " Get %d more points to move to #%d." % (diff, rank - 1)
     
   return {"floor": floor_string, "overall": overall_string}
     

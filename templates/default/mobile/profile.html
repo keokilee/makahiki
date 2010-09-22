@@ -1,10 +1,11 @@
 {% extends "mobile/base.html" %}
 
 {% load avatar_tags %}
+{% load generic_flatblocks %}
 
 {% block body %}
 <div id="mobile_header">
-  <h1><a href="/mobile/profile/">Kukui Cup</a></h1>
+  {% gblock "website_header" for "gblocks.Title" with "gblocks/title/website.html" %}
   <div class="ui-tabs">
     <ul class="ui-tabs-nav">
       <li class="ui-state-default ui-corner-top"><a href="/">Home</a></li>

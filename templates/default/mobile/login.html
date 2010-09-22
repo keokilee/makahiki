@@ -1,8 +1,10 @@
 {% extends "mobile/base.html" %}
 
+{% load generic_flatblocks %}
+
 {% block body %}
 <div id="mobile_header">
-  <h1>Kukui Cup</h1>
+  {% gblock "website_header" for "gblocks.Title" with "gblocks/title/website.html" %}
 </div>
 
 <div id="mobile_content">
