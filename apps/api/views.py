@@ -10,7 +10,7 @@ def rounds(request):
   """Returns a dictionary containing competition dates."""
   
   if request.method == "GET":
-    rounds = competition_settings.COMPETITION_ROUNDS
+    rounds = competition_settings.COMPETITION_ROUNDS.copy()
     rounds.update({"Competition": {"start": competition_settings.COMPETITION_START, "end": competition_settings.COMPETITION_END}})
 
     return HttpResponse(json.dumps(rounds), mimetype='application/json')
