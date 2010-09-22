@@ -28,7 +28,7 @@ def get_current_commitments(user):
   """Get the user's incomplete commitments."""
   return user.commitment_set.filter(
     commitmentmember__award_date=None,
-  ).order_by("title")
+  ).order_by("commitmentmember__completion_date")
   
 def get_available_commitments(user):
   """Get any commitments that the user is not currently active in."""
@@ -48,7 +48,7 @@ def get_current_activities(user):
   
   return user.activity_set.filter(
     activitymember__award_date=None,
-  ).order_by("title")
+  ).order_by("activitymember__submission_date")
   
 def get_available_activities(user):
   """Retrieves only the activities that a user can participate in."""
