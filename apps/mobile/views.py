@@ -25,8 +25,6 @@ def login(request):
   
 def profile(request):
   """The home page for logged in users."""
-  if not request.user.is_authenticated():
-    return HttpResponseRedirect(reverse("mobile.views.login"))
     
   user = request.user
   profile = Profile.objects.get(user=user)

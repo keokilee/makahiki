@@ -27,7 +27,7 @@ def index(request):
   user = request.user
   
   if request.mobile:
-    return HttpResponseRedirect("/mobile")
+    return HttpResponseRedirect(reverse("mobile_index"))
   # Check if a user is logged in and a valid participant.
   elif user.is_authenticated() and user.get_profile().floor:
     return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
