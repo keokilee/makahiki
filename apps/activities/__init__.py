@@ -28,39 +28,40 @@ def get_current_commitments(user):
   """Get the user's incomplete commitments."""
   return user.commitment_set.filter(
     commitmentmember__award_date=None,
-  )
+  ).order_by("title")
   
 def get_available_commitments(user):
   """Get any commitments that the user is not currently active in."""
   return Commitment.objects.exclude(
     commitmentmember__user=user,
     commitmentmember__completion_date__gt=datetime.datetime.today(),
-  )
+  ).order_by("title")
 
 def get_completed_commitments(user):
   """Gets the user's completed commitments"""
   return user.commitment_set.filter(
     commitmentmember__award_date__isnull=False,
-  )
+  ).order_by("title")
   
 def get_current_activities(user):
   """Get the user's incomplete activities."""
   
   return user.activity_set.filter(
     activitymember__award_date=None,
-  )
+  ).order_by("title")
   
 def get_available_activities(user):
   """Retrieves only the activities that a user can participate in."""
   
   activities = Activity.objects.exclude(
     activitymember__user=user,
-  )
+  ).order_by("title")
+  
   return (item for item in activities if item.is_active) # Filters out inactive activities.
   
 def get_completed_activities(user):
   """Gets the user's completed activities"""
   return user.activity_set.filter(
     activitymember__award_date__isnull=False,
-  )
+  ).order_by("title")
   
