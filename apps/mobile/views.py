@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
 from mobile import get_mobile_standings
 from makahiki_profiles.models import Profile
@@ -14,15 +15,16 @@ from goals import get_info_for_user
 def index(request):
   """Method that redirects the user to their profile if they are logged in."""
   if request.user.is_authenticated() and request.user.get_profile().floor:
-    return profile(request)
+    return HttpResponseRedirect(reverse("mobile_profile"))
   else:
-    return login(request)
+    return HttpResponseRedirect(reverse("mobile_login"))
   
 def login(request):
   """Provides a login link."""
   
   return render_to_response("mobile/login.html", {}, context_instance=RequestContext(request))
   
+@login_required
 def profile(request):
   """The home page for logged in users."""
     
