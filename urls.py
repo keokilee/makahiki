@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     (r'^dorms/', include('floors.urls')),
     (r'^api/', include('api.urls')),
     (r'^goals/', include('goals.urls')),
+    (r'^facebook/', include('makahiki_facebook.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
