@@ -1,38 +1,5 @@
 # README.markdown
 
-## CHANGELOG
-
-Milestone 4
-
-* Support for migrations using South.
-* Added commitment workflow.
-* Made the homepage content more generic and put the visualizations into generic blocks.
-* Fixed bug where messages were not clearing.
-* Fixed bug where creating an activity with a confirmation code failed to work for new activities.
-
-Milestone 3.5
-
-* Added a news application to the home page where an admin can add articles.
-* Added Gauge and BioHeatMap visualizations to the home page.
-* Users can now select their own theme.
-* Added tabs to profile page.
-
-Milestone 3
-
-* Moved templates and css into "default" directories to set up themes.
-* Added custom CSS import tag to import arbitrary numbers of CSS files.
-* Added a drop down to change the CSS theme directory.
-* Added activity validation process through uploading images, inputting confirm codes, or answering questions.
-* Added CSS themes "Windmill", "Google", "Green", and "Dark".
-
-Milestone 2.5
-
-* Added commitments and activities to the user profile.
-* Added commitments and activities to the admin interface.
-* Added [Windmill](http://getwindmill.com) tests.
-* Added admin tab for users with admin permissions.
-* Customized profile and avatar templates for consistency.
-
 ## Introduction
 
 This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/makahiki) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
@@ -81,8 +48,14 @@ To install South, please go to their [installation wiki](http://south.aeracode.o
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
 
-## OPTIONAL: Install Windmill
-Windmill is an Python app that will run tests within the browser.  The runtests.py script will work without it, but is useful if you're developing functionality and want to test it on the browser side.  Integrating it is very simple.  To install the application, download it from their [website](http://www.getwindmill.com/) and follow their installation [wiki](http://wiki.github.com/windmill/windmill/installing).  Once installed, running `python runtests.py` will run all of the available unit tests and Windmill tests.
+## Adding Facebook Integration
+The Javascript required to log in to Facebook are included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Also, you will need to download the Python SDK for Facebook using git (http://github.com/facebook/python-sdk) and install it in the Pinax virtual environment.  Once these are done, add the following things to your settings.py file.
+
+FACEBOOK_APP_ID = '<APP_ID>'
+FACEBOOK_API_KEY = '<API_KEY>'
+FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
+
+These can be found in your application's page within the Facebook Developer page.
 
 ## Troubleshooting
 If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  I have created a backup of my contenttypes data that can be used to reload it.  But first, you need to delete the contents of the contenttypes database.

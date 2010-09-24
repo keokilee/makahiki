@@ -48,7 +48,6 @@ class Profile(models.Model):
     last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
     theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
     floor = models.ForeignKey(Floor, null=True, blank=True)
-    facebook_id = models.IntegerField(blank=True, null=True)
     
     def __unicode__(self):
         return self.user.username
