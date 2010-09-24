@@ -123,7 +123,7 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
     fb_profile = None
     fb_enabled = False
     try:
-      import facebook
+      import makahiki_facebook.facebook as facebook
       
       fb_enabled = True
       fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)

@@ -49,7 +49,7 @@ To install South, please go to their [installation wiki](http://south.aeracode.o
 * Open a browser and go to http://localhost:8000 to see the website.
 
 ## Adding Facebook Integration
-The Javascript required to log in to Facebook are included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Also, you will need to download the Python SDK for Facebook using git (http://github.com/facebook/python-sdk) and install it in the Pinax virtual environment.  Once these are done, add the following things to your settings.py file.
+The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, add the following things to your settings.py file.
 
 FACEBOOK_APP_ID = '<APP_ID>'
 FACEBOOK_API_KEY = '<API_KEY>'

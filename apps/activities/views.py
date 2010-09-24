@@ -151,7 +151,8 @@ def __add_commitment(request, commitment_id):
   
     # Check for Facebook.
     try:
-      import facebook
+      import makahiki_facebook.facebook as facebook
+      
       fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
       if fb_user:
         graph = facebook.GraphAPI(fb_user["access_token"])
