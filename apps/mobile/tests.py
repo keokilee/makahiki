@@ -109,7 +109,11 @@ class MobileOverallStandingsTestCase(TestCase):
     standings = get_mobile_standings(profile.user)
     test_string = "You are #2 in points for %s in the competition." % (self.floor)
     diff = self.floor_profiles[0].points - self.floor_profiles[1].points
-    test_string += " Get %d more points to move to #1." % diff
+    if diff == 0:
+      diff = 1
+      test_string += " Get %d more point to move to #1." % diff
+    else:
+      test_string += " Get %d more points to move to #1." % diff
     self.assertEqual(standings["floor"], test_string)
 
     profile.points += diff + 1 # Moves user to first place.
@@ -126,7 +130,12 @@ class MobileOverallStandingsTestCase(TestCase):
     standings = get_mobile_standings(profile.user)
     test_string = "You are #2 in overall points in the competition."
     diff = self.all_profiles[0].points - self.all_profiles[1].points
-    test_string += " Get %d more points to move to #1." % diff
+    if diff == 0:
+      diff = 1
+      test_string += " Get %d more point to move to #1." % diff
+    else:
+      test_string += " Get %d more points to move to #1." % diff
+    
     self.assertEqual(standings["overall"], test_string)
 
     profile.points += diff + 1 # Moves user to first place.
@@ -146,8 +155,7 @@ class MobileFunctionalTestCase(TestCase):
   def testMobileLogin(self):
     """Tests that a logged in user goes to their profile page."""
     
-    response = self.client.get(reverse("mobile_index"))
-    self.assertEqual(response.status_code, 200)
+    response = self.client.get(reverse("mobile_index"), follow=True)
     self.assertTemplateUsed(response, "mobile/login.html", 
           "Check that the home page template is used for non-authenticated users.")
     

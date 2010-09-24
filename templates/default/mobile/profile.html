@@ -67,7 +67,7 @@
   <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active" style="padding-left:10px;">
       {% if commitments %}
-      <ul style="padding:0; margin:0">
+      <ul style="padding:0; margin:0; list-style:bullet">
         {% for commitment in commitments %}
         <li>{{commitment.title}}</li>
         {% endfor %}

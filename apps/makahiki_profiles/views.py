@@ -119,10 +119,26 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
             return HttpResponseRedirect(reverse("profile_detail", args=[profile.pk]))
     else:
         profile_form = form_class(instance=profile)
-    
+        
+    fb_profile = None
+    fb_enabled = False
+    try:
+      import facebook
+      
+      fb_enabled = True
+      fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+      if fb_user:
+        graph = facebook.GraphAPI(fb_user["access_token"])
+        fb_profile = graph.get_object("me")
+        
+    except ImportError:
+      pass
+      
     return render_to_response(template_name, {
         "profile": profile,
         "profile_form": profile_form,
+        "fb_profile": fb_profile,
+        "fb_enabled": fb_enabled,
     }, context_instance=RequestContext(request))
 
 

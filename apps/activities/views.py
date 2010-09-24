@@ -1,4 +1,5 @@
 import datetime
+import simplejson as json
 
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, Http404
@@ -147,6 +148,16 @@ def __add_commitment(request, commitment_id):
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
     user.message_set.create(message="You are now committed to \"%s\"" % commitment.title)
+  
+    # Check for Facebook.
+    try:
+      import facebook
+      fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+      if fb_user:
+        graph = facebook.GraphAPI(fb_user["access_token"])
+        graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
+    except ImportError:
+      pass
     
   return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
 
