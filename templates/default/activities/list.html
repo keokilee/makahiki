@@ -98,6 +98,28 @@
         </table>
       </div>
     </div>
+    
+    {% if available_events %}
+    <div id="available_events" class="main_list ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+      <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
+        Available Events:
+        <span id="available_help" class="list-help ui-icon ui-icon-help"></span>
+      </div>
+
+      <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <table class="activity_list">
+        <tr class="column_header">
+          <td class="item_info">Title</td>
+          <td class="item_points">Points</td>
+          <td class="item_options">Options</td>
+        </tr>
+          {% for item in available_events %}
+            {% include "activities/item.html" %}
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    {% endif %}
   </div>
   
   <div id="side_content" style="float:right; width: 30%; padding-right: 10px">

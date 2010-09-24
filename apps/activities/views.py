@@ -24,26 +24,36 @@ def list(request, item_type):
   if item_type == "activity":
     user_items = get_current_activities(user)
     available_items = get_available_activities(user)
+    available_events = get_available_events(user)
     completed_items = get_completed_activities(user)
     plural_type = "activities"
+    
+    return render_to_response('activities/list.html', {
+      "user_items": user_items,
+      "available_items": available_items,
+      "available_events": available_events,
+      "completed_items": completed_items,
+      "item_type": item_type,
+      "plural_type": plural_type,
+    }, context_instance = RequestContext(request))
     
   elif item_type == "commitment":
     user_items = get_current_commitments(user)
     available_items = get_available_commitments(user)
     completed_items = get_completed_commitments(user)
     plural_type = "commitments"
+    
+    return render_to_response('activities/list.html', {
+      "user_items": user_items,
+      "available_items": available_items,
+      "completed_items": completed_items,
+      "item_type": item_type,
+      "plural_type": plural_type,
+    }, context_instance = RequestContext(request))
   
   else:
     # Already handled by urls.py, but just to be safe.
     return Http404
-    
-  return render_to_response('activities/list.html', {
-    "user_items": user_items,
-    "available_items": available_items,
-    "completed_items": completed_items,
-    "item_type": item_type,
-    "plural_type": plural_type,
-  }, context_instance = RequestContext(request))
   
 @login_required
 def like(request, item_type, item_id):

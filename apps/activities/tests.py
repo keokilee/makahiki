@@ -35,6 +35,19 @@ class ActivitiesUnitTestCase(TestCase):
         "end": end.strftime("%Y-%m-%d"),
       },
     }
+    
+  def testGetEvents(self):
+    """Verify that get_available_activities does not retrieve events."""
+    self.activity.is_event = True
+    self.activity.save()
+    
+    activities = get_available_activities(self.user)
+    if self.activity in activities:
+      self.fail("Event is listed in the activity list.")
+        
+    events = get_available_events(self.user)
+    if not self.activity in events:
+      self.fail("Event is not listed in the events list.")
   
   def testApproveAddsPoints(self):
     """Test for verifying that approving a user awards them points."""
@@ -150,6 +163,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     """Test that we can load the activity list page."""
     response = self.client.get('/activities/activity_list/')
     self.failUnlessEqual(response.status_code, 200)
+    self.assertTrue(response.context.has_key("available_events"))
     for activity in self.user.activity_set.all():
       self.assertNotIn(activity, response.context["available_items"])
       self.failUnless((activity in response.context["user_items"]) or (activity in response.context["completed_items"]))

@@ -51,13 +51,22 @@ def get_current_activities(user):
   ).order_by("activitymember__submission_date")
   
 def get_available_activities(user):
-  """Retrieves only the activities that a user can participate in."""
+  """Retrieves only the activities that a user can participate in (excluding events)."""
   
   activities = Activity.objects.exclude(
     activitymember__user=user,
-  ).order_by("title")
+  ).filter(is_event=False).order_by("title")
   
   return (item for item in activities if item.is_active) # Filters out inactive activities.
+  
+def get_available_events(user):
+  """Retrieves only the events that a user can participate in."""
+
+  events = Activity.objects.exclude(
+    activitymember__user=user,
+  ).filter(is_event=True).order_by("title")
+
+  return (item for item in events if item.is_active) # Filters out inactive activities.
   
 def get_completed_activities(user):
   """Gets the user's completed activities"""
