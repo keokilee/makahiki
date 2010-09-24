@@ -11,7 +11,7 @@
       Connected to <a href="{{fb_profile.link}}">{{fb_profile.name}}</a>
     {% else %}
       {% if fb_enabled %}
-        <fb:login-button id="fb_login"></fb:login-button>
+        <fb:login-button id="fb_login" perms="publish_stream" onlogin="location.reload()"></fb:login-button>
       {% endif %}
     {% endif %}
     
@@ -29,23 +29,6 @@
   <script src="http://connect.facebook.net/en_US/all.js"></script>
   <script>
     FB.init({appId: '{{FACEBOOK_APP_ID}}', status: true, cookie: true, xfbml: true});
-
-    $("#fb_login").click(function() {
-      FB.login(function(response) {
-        if (response.session) {
-          if (response.perms) {
-            alert("Your account is now connected to the Kukui Cup.");
-            location.reload(true);
-          } else {
-            alert("Please enable the permissions.");
-          }
-        } else {
-          alert("Could not connect your Facebook profile.  Please log in to Facebook.");
-        }
-      }, {perms:'publish_stream'});
-
-    });
-
   </script>
   {% endif %}
 

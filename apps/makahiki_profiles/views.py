@@ -128,8 +128,11 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
       fb_enabled = True
       fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
       if fb_user:
-        graph = facebook.GraphAPI(fb_user["access_token"])
-        fb_profile = graph.get_object("me")
+        try:
+          graph = facebook.GraphAPI(fb_user["access_token"])
+          fb_profile = graph.get_object("me")
+        except facebook.GraphAPIError:
+          pass
         
     except ImportError:
       pass
