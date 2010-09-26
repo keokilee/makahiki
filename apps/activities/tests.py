@@ -163,7 +163,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     """Test that we can load the activity list page."""
     response = self.client.get('/activities/activity_list/')
     self.failUnlessEqual(response.status_code, 200)
-    self.assertTrue(response.context.has_key("available_events"))
+    self.assertTrue(response.context["available_events"] is not None)
     for activity in self.user.activity_set.all():
       self.assertNotIn(activity, response.context["available_items"])
       self.failUnless((activity in response.context["user_items"]) or (activity in response.context["completed_items"]))
