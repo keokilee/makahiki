@@ -54,6 +54,25 @@ def list(request, item_type):
   else:
     # Already handled by urls.py, but just to be safe.
     return Http404
+    
+@login_required
+def detail(request, item_type, item_id):
+  """Get the detail view for an item."""
+  if item_type == "activity":
+    item = get_object_or_404(Activity, pk=item_id)
+    plural_type = "activities"
+  elif item_type == "commitment":
+    item = get_object_or_404(Commitment, pk=item_id)
+    plural_type = "commitments"
+  else:
+    # Already handled by urls.py, but just to be safe.
+    return Http404
+    
+  return render_to_response('activities/item_detail.html', {
+    "item": item,
+    "item_type": item_type,
+    "plural_type": plural_type,
+  }, context_instance = RequestContext(request))
   
 @login_required
 def like(request, item_type, item_id):

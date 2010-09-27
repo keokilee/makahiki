@@ -1,0 +1,28 @@
+<li><span style="font-weight: bold">Approximate time required:</span> {{ item.duration }} minutes</li>
+<li><span style="font-weight: bold">Expires at:</span> {{item.expire_date|date:"SHORT_DATE_FORMAT"}}</li>
+{% if item.is_event %}
+<li><span style="font-weight: bold">Event Date:</span> {{item.event_date|date:"SHORT_DATETIME_FORMAT"}}</li>
+{% endif %}
+<li>
+  {% with item.liked_users as like_users %}
+    {% if like_users|length > 0 %}
+      <span class="option-link ui-state-highlight ui-corner-all" style="margin-right: 10px">
+        <span class="ui-icon ui-icon-star"></span>
+        <span class="button-text">{{like_users|length}}</span>
+      </span>
+    {% endif %}
+    {% if user in like_users %}
+      <form action="/activities/unlike_{{item_type}}/{{item.pk}}/" method="post" style="display: inline">
+      <a class="option-link ui-state-error ui-corner-all" href="#" onclick="parentNode.submit()">
+        <span class="ui-icon ui-icon-circle-minus"></span>
+        <span class="button-text">Unlike</span>
+      </a></form>
+    {% else %}
+      <form action="/activities/like_{{item_type}}/{{item.pk}}/" method="post" style="display: inline">
+      <a class="option-link ui-state-default ui-corner-all" href="#" onclick="parentNode.submit()">
+        <span class="ui-icon ui-icon-star"></span>
+        <span class="button-text">Like</span>
+      </a></form>
+    {% endif %}
+  {% endwith %}
+</li>

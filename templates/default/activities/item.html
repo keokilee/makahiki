@@ -1,17 +1,16 @@
 {% load activity_tags %}
-{% load markup %}
 
 <tr>
   <td class="item_info">
     <div class="item_title" style="{% if item.likes %}width: 65%;{% endif %}">
-      <a href="#" style="text-decoration:none">{{item.title}}</a>
+      <a href="{% url activity_detail item_type item.id %}" style="text-decoration:none">{{item.title}}</a>
     </div>
     {% if item.likes %}
     <div class="item_likes">
     {% with item.liked_users as like_users %}
       {% if like_users|length > 0 %}
         <span class="option-link ui-state-highlight ui-corner-all" style="margin-right: 10px">
-          <span class="ui-icon ui-icon-person"></span>
+          <span class="ui-icon ui-icon-star"></span>
           <span class="button-text">{{like_users|length}}</span>
         </span>
       {% endif %}

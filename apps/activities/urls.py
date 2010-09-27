@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     url(r'^(?P<item_type>activity|commitment)_list/$', 'activities.views.list', name="activity_list"),
+    url(r'^(?P<item_type>activity|commitment)_detail/(?P<item_id>\d+)/$', 'activities.views.detail', name="activity_detail"),
     
     # Actions
     url(r'^like_(?P<item_type>activity)/(?P<item_id>\d+)/$', 

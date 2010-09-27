@@ -2,36 +2,48 @@
 
 {% load generic_flatblocks %}
 {% load activity_tags %}
+{% load markup %}
 
 {% block extra_head %}
-
+  <style type="text/css">
+    #item_info li {
+      padding:3px 0;
+    }
+  </style>
 {% endblock %}
 
 {% block active_subnav %}{{plural_type}}{%endblock%}
 
 {% block body %}
-<h3>{{item.title}}</h3>
-<div class="two_col_left" style="width: 30%">
+<h3 style="margin:0; padding:5px 0 0 10px">{{item.title}}</h3>
+<div id="two_col_left" style="width: 30%; padding:0; padding-top:10px">
   <div id="activity_info" class="makahiki_content">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
       Info:
     </div>
 
-    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      <ul style="list-style: none; margin: 0; padding: 0">
-        <li>Stuff</li>
+    <div class="makahiki_content_body ui-helper-reset ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <ul id="item_info" style="list-style: none; margin: 0; padding: 5px">
+        {% if item.has_variable_points %}
+        <li><span style="font-weight: bold">Points:</span> {{ item.point_range_start }}-{{ item.point_range_end }}</li>
+        {% else %}
+        <li><span style="font-weight: bold">Points:</span> {{ item.point_value }}</li>
+        {% endif %}
+        {% if item_type == "activity" %}
+        {% include "activities/activity_info.html" %}
+        {% endif %}
       </ul>
     </div>
   </div>
 </div>
-<div id="main_content" style="float: left; width: 70%">
+<div id="two_col_right" style="width: 70%; padding:0; padding-top:10px">
   <div id="activity_description" class="makahiki_content">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
-      Description
+      Description:
     </div>
 
-    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      Insert description here.
+    <div class="makahiki_content_body ui-helper-reset ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      {{item.description|markdown}}
     </div>
   </div>
 </div>
