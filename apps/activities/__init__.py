@@ -55,9 +55,13 @@ def get_available_activities(user):
   
   activities = Activity.objects.exclude(
     activitymember__user=user,
-  ).filter(is_event=False).order_by("title")
+  ).filter(
+    is_event=False,
+    pub_date__lte=datetime.date.today(),
+    expire_date__gte=datetime.date.today(),
+  ).order_by("priority", "title")
   
-  return (item for item in activities if item.is_active) # Filters out inactive activities.
+  return [item for item in activities if item.is_active] # Filters out inactive activities.
   
 def get_available_events(user):
   """Retrieves only the events that a user can participate in."""

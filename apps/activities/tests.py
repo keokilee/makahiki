@@ -14,14 +14,14 @@ class ActivitiesUnitTestCase(TestCase):
     self.user = User(username="test_user", password="changeme")
     self.user.save()
     self.activity = Activity(
-                title="Test activity",
-                description="Testing!",
-                duration=10,
-                point_value=10,
-                pub_date=datetime.datetime.today(),
-                expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
-                confirm_type="text",
-    )
+                      title="Test activity",
+                      description="Testing!",
+                      duration=10,
+                      point_value=10,
+                      pub_date=datetime.datetime.today(),
+                      expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                      confirm_type="text",
+                    )
     self.activity.save()
     
     self.saved_rounds = settings.COMPETITION_ROUNDS
@@ -35,6 +35,33 @@ class ActivitiesUnitTestCase(TestCase):
         "end": end.strftime("%Y-%m-%d"),
       },
     }
+    
+  def testActivityOrdering(self):
+    """Check the ordering of two activities.  If they do not have priorities, they should be alphabetical."""
+    activity2 = Activity(
+                  title="Another test activity",
+                  description="Testing!",
+                  duration=10,
+                  point_value=10,
+                  pub_date=datetime.datetime.today(),
+                  expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+                  confirm_type="text",
+                )
+    activity2.save()
+    
+    activities = get_available_activities(self.user)
+    self.assertTrue(self.activity in activities, "Check that the first activity is in the list.")
+    self.assertTrue(activity2 in activities, "Check that the second activity is in the list.")
+    self.assertEqual(activities[0], activity2, "Check that the activities are ordered alphabetically.")
+    
+    # Add priority to test activity.
+    self.activity.priority = 1
+    self.activity.save()
+    
+    activities = get_available_activities(self.user)
+    self.assertTrue(self.activity in activities, "Check that the first activity is in the list.")
+    self.assertTrue(activity2 in activities, "Check that the second activity is in the list.")
+    self.assertEqual(activities[0], self.activity, "Check that the test activity is now first.")
     
   def testGetEvents(self):
     """Verify that get_available_activities does not retrieve events."""

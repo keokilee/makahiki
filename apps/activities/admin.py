@@ -177,6 +177,7 @@ class ActivityAdmin(admin.ModelAdmin):
       'fields' : ('title', 'description', 'duration', ('pub_date', 'expire_date')),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
+    ("Ordering", {"fields": ("priority",)}),
     ("Event", {'fields' : ('is_event', 'event_date')}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )

@@ -214,7 +214,12 @@ class Activity(CommonBase):
                 verbose_name="Date and time of the event",
                 help_text="Required for events."
                )
-  likes  = generic.GenericRelation(Like)
+  priority = models.IntegerField(
+                default=1000,
+                help_text="Orders the activities in the available activities list. " + 
+                          "Activities with lower values (higher priority) will be listed first."
+             )
+  likes = generic.GenericRelation(Like)
                       
   def __unicode__(self):
     return self.title
