@@ -1,0 +1,38 @@
+{% extends "makahiki_profiles/base.html" %}
+
+{% load generic_flatblocks %}
+{% load activity_tags %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block active_subnav %}{{plural_type}}{%endblock%}
+
+{% block body %}
+<h3>{{item.title}}</h3>
+<div class="two_col_left" style="width: 30%">
+  <div id="activity_info" class="makahiki_content">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
+      Info:
+    </div>
+
+    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <ul style="list-style: none; margin: 0; padding: 0">
+        <li>Stuff</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="main_content" style="float: left; width: 70%">
+  <div id="activity_description" class="makahiki_content">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
+      Description
+    </div>
+
+    <div class="makahiki_content_body ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Insert description here.
+    </div>
+  </div>
+</div>
+{% endblock %}
