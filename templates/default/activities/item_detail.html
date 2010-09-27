@@ -15,7 +15,11 @@
 {% block active_subnav %}{{plural_type}}{%endblock%}
 
 {% block body %}
-<h3 style="margin:0; padding:5px 0 0 10px">{{item.title}}</h3>
+<div id="content_header" style="padding-bottom:0">
+  <a href="{% url activity_list item_type %}">Back to {{plural_type}}</a>
+  <h2 style="margin:0; padding-top:5px;">{{item.title}}</h2>
+  <div style="clear:both"></div>
+</div>
 <div id="two_col_left" style="width: 30%; padding:0; padding-top:10px">
   <div id="activity_info" class="makahiki_content">
     <div class="makahiki_content_title ui-accordion-header ui-corner-top ui-state-default">
