@@ -6,10 +6,23 @@
 
 {% block extra_head %}
   <style type="text/css">
-    #item_info li {
+    .item_info li {
       padding:3px 0;
     }
   </style>
+  
+  <script type="text/javascript">
+    function confirm_removal(form, item_type) {
+      var confirmed = confirm("Are you sure you wish to remove this " + item_type + "?");
+      if (confirmed) {
+        form.submit();
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  </script>
 {% endblock %}
 
 {% block active_subnav %}{{plural_type}}{%endblock%}
@@ -27,14 +40,11 @@
     </div>
 
     <div class="makahiki_content_body ui-helper-reset ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      <ul id="item_info" style="list-style: none; margin: 0; padding: 5px">
-        {% if item.has_variable_points %}
-        <li><span style="font-weight: bold">Points:</span> {{ item.point_range_start }}-{{ item.point_range_end }}</li>
-        {% else %}
-        <li><span style="font-weight: bold">Points:</span> {{ item.point_value }}</li>
-        {% endif %}
+      <ul class="item_info" style="list-style: none; margin: 0; padding: 5px">
         {% if item_type == "activity" %}
-        {% include "activities/activity_info.html" %}
+          {% include "activities/activity_info.html" %}
+        {% else %}
+          {% include "activities/commitment_info.html" %}
         {% endif %}
       </ul>
     </div>

@@ -58,12 +58,26 @@ def list(request, item_type):
 @login_required
 def detail(request, item_type, item_id):
   """Get the detail view for an item."""
+  member = None
+  
   if item_type == "activity":
     item = get_object_or_404(Activity, pk=item_id)
     plural_type = "activities"
+    
+    # Check for membership in this activity.
+    try:
+      member = ActivityMember.objects.get(activity=item, user=request.user)
+    except ActivityMember.DoesNotExist:
+      pass
   elif item_type == "commitment":
     item = get_object_or_404(Commitment, pk=item_id)
     plural_type = "commitments"
+    
+    # Check for membership in this commitment.
+    try:
+      member = CommitmentMember.objects.get(commitment=item, user=request.user)
+    except CommitmentMember.DoesNotExist:
+      pass
   else:
     # Already handled by urls.py, but just to be safe.
     return Http404
@@ -72,6 +86,7 @@ def detail(request, item_type, item_id):
     "item": item,
     "item_type": item_type,
     "plural_type": plural_type,
+    "member": member,
   }, context_instance = RequestContext(request))
   
 @login_required
