@@ -3,18 +3,7 @@
 <li style="padding: 0; margin: 0">
   <div class="item_title">
     <a style="text-decoration:none" href="#">
-      <div class="toggle-icon ui-icon ui-icon-plus" style="position:absolute; width: 15px; float: left"></div>
-      <div class="title-string" style="float: left">{{item.title}}</div>
+      {{item.title}}
     </a>
-  </div>
-  
-  <div class="item_description">
-    {% if item.description %}
-      <p>{{ item.description|markdown }}</p>
-    {% endif %}
-
-    {% if item.is_event %}
-      <p>This activity occurs at {{ item.event_date }}</p>
-    {% endif %}
   </div>
 </li>
