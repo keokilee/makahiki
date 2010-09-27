@@ -2,8 +2,16 @@
 
 <li style="padding: 0; margin: 0">
   <div class="item_title">
-    <a style="text-decoration:none" href="#">
-      {{item.title}}
-    </a>
+    <a style="text-decoration:none" href="#">{{item.title}}</a>
+  </div>
+  
+  <div class="item_description">
+    {% if item.description %}
+      <p>{{ item.description|markdown }}</p>
+    {% endif %}
+
+    {% if item.is_event %}
+      <p>This activity occurs at {{ item.event_date }}</p>
+    {% endif %}
   </div>
 </li>

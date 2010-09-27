@@ -4,7 +4,7 @@
 <tr>
   <td class="item_info">
     <div class="item_title" style="{% if item.likes %}width: 65%;{% endif %}">
-      <a href="#" style="text-decoration:none;">{{item.title}}</a>
+      <a href="#" style="text-decoration:none">{{item.title}}</a>
     </div>
     {% if item.likes %}
     <div class="item_likes">
@@ -31,6 +31,15 @@
     {% endwith %}
     </div>
     {% endif %}
+    <div class="item_description">
+      {% if item.description %}
+        <p>{{ item.description|markdown }}</p>
+      {% endif %}
+
+      {% if item.is_event %}
+        <p>This activity occurs at {{ item.event_date }}</p>
+      {% endif %}
+    </div>
   </td>
   <td class="item_points">
     {% if item.has_variable_points %}
