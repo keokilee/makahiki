@@ -213,8 +213,10 @@ def __add_commitment(request, commitment_id):
     except ImportError:
       # Facebook not enabled.
       pass
-    
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+      
+  # Redirect back to the referrer or go to the profile if not available.
+  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  return HttpResponseRedirect(next)
 
 def __remove_active_commitment(request, commitment_id):
   """Removes a user's active commitment.  Inactive commitments cannot be removed except by admins."""
@@ -226,7 +228,9 @@ def __remove_active_commitment(request, commitment_id):
   commitment_member.delete()
   user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
     
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  # Redirect back to the referrer or go to the profile if not available.
+  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  return HttpResponseRedirect(next)
 
 def __add_activity(request, activity_id):
   """Commit the current user to the activity."""
@@ -242,7 +246,9 @@ def __add_activity(request, activity_id):
   else:
     return Http404
 
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  # Redirect back to the referrer or go to the profile if not available.
+  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  return HttpResponseRedirect(next)
 
 def __remove_activity(request, activity_id):
   """Remove the current user's activity."""
@@ -253,7 +259,10 @@ def __remove_activity(request, activity_id):
 
   activity_member.delete()
   user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
-  return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  
+  # Redirect back to the referrer or go to the profile if not available.
+  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  return HttpResponseRedirect(next)
     
 def __request_commitment_points(request, commitment_id):
   """Generates a form to add an optional comment."""
