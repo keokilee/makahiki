@@ -75,7 +75,7 @@ def detail(request, item_type, item_id):
     
     # Check for membership in this commitment.
     try:
-      member = CommitmentMember.objects.get(commitment=item, user=request.user)
+      member = CommitmentMember.objects.get(commitment=item, user=request.user, award_date__isnull=True)
     except CommitmentMember.DoesNotExist:
       pass
   else:

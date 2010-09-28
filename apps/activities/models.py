@@ -63,6 +63,16 @@ class CommitmentMember(CommonBase):
   
   def __unicode__(self):
     return "%s : %s" % (self.commitment.title, self.user.username)
+    
+  def days_left(self):
+    """
+    Returns how many days are left before the user can submit the activity.
+    """
+    diff = self.completion_date - datetime.date.today()
+    if diff.days < 0:
+      return 0
+    
+    return diff.days
   
   def save(self):
     """Custom save method to set fields depending on whether or not the item is just added or if the item is completed."""

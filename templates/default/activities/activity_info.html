@@ -5,14 +5,14 @@
     </div>
     <div style="float:right">
     {% if member.approval_status != "pending" and member.approval_status != "approved" %}
-      <a href="/activities/request_{0}_points/{1.id}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+      <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
         <span class="ui-icon ui-icon-circle-check"></span>
         <span class="button-text">I Did This!</span>
       </a>
     {% endif %}
     {% if member.approval_status != "approved" %}
-    <form action="/activities/remove_{0}/{1.id}/" method="post">
-      <a href="#" onclick="confirm_removal(parentNode, \'activity\')" class="option-link ui-state-error ui-corner-all ui-state-hover">
+    <form action="/activities/remove_activity/{{ item.id }}/" method="post">
+      <a href="#" onclick="confirm_removal(parentNode, 'activity')" class="option-link ui-state-error ui-corner-all ui-state-hover">
         <span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span>
       </a>
     </form>
@@ -22,7 +22,7 @@
   </li>
 {% else %}
 <li>
-  <a href="/activities/request_{0}_points/{1.id}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+  <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
     <span class="ui-icon ui-icon-circle-check"></span>
     <span class="button-text">I Did This!</span></a>
   </a>
