@@ -102,7 +102,9 @@ def like(request, item_type, item_id):
     like = Like(user=user, floor=user.get_profile().floor, content_type=content_type, object_id=item_id)
     like.save()
     
-  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,)))   
+  # Redirect back to the referrer or go to the list if not available.
+  next = request.META.get("HTTP_REFERER", reverse("activities.views.list", args=(item_type,)))
+  return HttpResponseRedirect(next)   
   
 @login_required
 def unlike(request, item_type, item_id):
@@ -116,7 +118,9 @@ def unlike(request, item_type, item_id):
   except ObjectDoesNotExist:
     request.user.message_set.create(message="You do not like this item.")
 
-  return HttpResponseRedirect(reverse("activities.views.list", args=(item_type,)))
+  # Redirect back to the referrer or go to the list if not available.
+  next = request.META.get("HTTP_REFERER", reverse("activities.views.list", args=(item_type,)))
+  return HttpResponseRedirect(next)
 
 @login_required
 def add_participation(request, item_type, item_id):
