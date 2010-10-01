@@ -63,8 +63,6 @@ def wall_post(request, dorm_slug, floor_slug):
   """Post to a floor wall."""
   dorm = get_object_or_404(Dorm, slug=dorm_slug)
   floor = get_object_or_404(Floor, dorm=dorm, slug=floor_slug)
-  if request.user.get_profile().floor != floor:
-    raise Http404
   
   if request.method == "POST":
     form = WallForm(request.POST)

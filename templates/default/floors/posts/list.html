@@ -7,8 +7,8 @@
     {% endifequal %}
   </li>
   {% if forloop.last and posts.count == num_posts_to_display %}
-  <li id="view_more_posts" onclick="loadMore({{post.id}})">
-    View More
+  <li id="view_more_posts" onclick="loadMore({{post.id}})" style="cursor:pointer; text-align:center">
+    <h3 style="margin:0">View More</h3>
   </li>
   {% endif %}
 {% endfor %}
