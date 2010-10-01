@@ -63,15 +63,7 @@
         
         {% if posts %}
           <ul id="wall_posts">
-          {% for post in posts %}
-            <li>
-              {% ifequal post.style_class "user_post" %}
-                {% include "floors/posts/user_post.html" %}
-              {% else %}
-                {% include "floors/posts/system_post.html" %}
-              {% endifequal %}
-            </li>
-          {% endfor %}
+            {% include "floors/posts/list.html" %}
           </ul>
         {% else %}
           <p>There are no posts yet!</p>

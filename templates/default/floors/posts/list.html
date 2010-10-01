@@ -1,0 +1,14 @@
+{% for post in posts %}
+  <li>
+    {% ifequal post.style_class "user_post" %}
+      {% include "floors/posts/user_post.html" %}
+    {% else %}
+      {% include "floors/posts/system_post.html" %}
+    {% endifequal %}
+  </li>
+  {% if forloop.last and posts.count == num_posts_to_display %}
+  <li>
+    View more
+  </li>
+  {% endif %}
+{% endfor %}
