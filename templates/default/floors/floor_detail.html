@@ -12,6 +12,16 @@
   <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
   <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastSevenDays.js"></script>
   <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyLastTwentyFourHours.js"></script>
+  
+  <script type="text/javascript">
+    function loadMore(last_post) {
+      $("#view_more_posts").html('<img src="http://www.google.com/ig/images/spinner.gif"/> Loading');
+      $.get("{% url floor_post floor.dorm.slug floor.slug %}", {last_post: last_post}, function(data) {
+        $("#view_more_posts").remove();
+        $("#wall_posts").append(data.posts);
+      });
+    }
+  </script>
 {% endblock %}
   
 

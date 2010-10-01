@@ -1,6 +1,9 @@
+import simplejson as json
+
 from django.shortcuts import get_object_or_404, render_to_response
+from django.template.loader import render_to_string
 from django.template import RequestContext
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -71,17 +74,19 @@ def wall_post(request, dorm_slug, floor_slug):
       messages.success(request, 'Your post was successful!')
       return HttpResponseRedirect(reverse("floors.views.floor", args=(dorm_slug, floor_slug,)))
   
-  raise Http404
-  
-def view_more(request, last_post_id):
-  """Load additional wall items."""
-  if request.is_ajax():
+  elif request.method == "GET" and request.GET.has_key("last_post") and request.is_ajax():
+    last_post_id = request.GET.get('last_post')
     posts = floor.post_set.filter(
               id__lt=last_post_id,
             ).order_by('-created_at')[0:NUM_POSTS_TO_DISPLAY]
-            
+
+    response = render_to_string("floors/posts/list.html", {
+      "posts": posts,
+      "num_posts_to_display": NUM_POSTS_TO_DISPLAY,
+    })
+    
     return HttpResponse(json.dumps({
-        "posts": posts,
+        "posts": response,
     }), mimetype='application/json')
     
   raise Http404
