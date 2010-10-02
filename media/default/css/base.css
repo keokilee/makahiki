@@ -71,6 +71,10 @@ div#login h5 {
   margin: 0;
 }
 
+#login a .button-text {
+  margin: 0pt; padding: 0pt; font-size: 0.8em; color: white;
+}
+
 #color-wrapper {
     background-color: #888;
 }

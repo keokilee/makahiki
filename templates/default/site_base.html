@@ -14,11 +14,11 @@
       {% if user.is_authenticated %}
          <h5 style="display: inline">Aloha, {{user.get_profile.first_name}}.</h5>
           <a href="/account/cas/logout/" class="option-link ui-state-default ui-corner-all ui-state-hover">
-            <span class="button-text" style="margin: 0; padding: 0; font-size: 0.8em; color: white">{% trans "Logout" %}</span>
+            <span class="button-text">{% trans "Logout" %}</span>
           </a>
       {% else %}
         <a href="/account/cas/login" class="option-link ui-state-default ui-corner-all ui-state-hover">
-          <span class="button-text" style="margin: 0; padding: 0; font-size: 0.8em; color: white">{% trans "Login" %}</span>
+          <span class="button-text">{% trans "Login" %}</span>
         </a>
       {% endif %}
     </div>

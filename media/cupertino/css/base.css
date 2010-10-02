@@ -9,12 +9,19 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    background: url("images/ui-bg_highlight-hard_100_f5f3e5_1x100.png") repeat-x scroll 50% top #F5F3E5;
+    background: url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") repeat-x scroll 50% top #F2F5F7;
 }
 
 a:link {
     color: #555;
     font-weight: bold;
+}
+
+#login a .button-text {
+  margin: 0pt; 
+  padding: 0pt; 
+  font-size: 0.8em;
+  color: #2779AA;
 }
 
 a:visited {
@@ -47,7 +54,7 @@ div#website_title {
 }
 
 div#website_title h1 {
-    color: #459E00;
+    color: #3BAAE3;
     /*text-shadow: 1px 1px 1px #444;*/
     padding: 0 0 0.2em 0;
     margin: 0;
@@ -57,7 +64,7 @@ div#website_title h1 {
 
 div#website_title h1 a {
     text-decoration: none;
-    color: #459E00;
+    color: #3BAAE3;
 }
 
 div#login {
@@ -109,14 +116,14 @@ div#login h5 {
 #content h2 {
     font-size: 1.7em;
     font-weight: normal;
-    color: #459E00;
+    color: #3BAAE3;
     margin: 1em 0 0.5em 0;
 }
 
 #content h3 {
     font-size: 15px;
     font-weight: normal;
-    color: #459E00;
+    color: #3BAAE3;
     margin: 1em 0 0.5em 0;
 }
 
@@ -187,7 +194,8 @@ ul#messages li a {
 }
 
 #content .makahiki_content_title {
-  background-color: #459E00;
+  /*background-color: #459E00;*/
+  background: url("images/ui-bg_glass_50_3baae3_1x400.png") repeat-x scroll 50% 50% #3BAAE3;
   color: white;
   margin: 0px;
   padding: 5px;
@@ -199,7 +207,7 @@ ul#messages li a {
   margin: 0px 0px 15px 0px;
   padding: 0px 10px;
   background: none;
-  background-color: #F5F3E5;
+  background-color: #F2F5F7;
 }
 
 /* Content Header */
