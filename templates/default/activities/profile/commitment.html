@@ -1,11 +1,11 @@
-{% load activity_tags %}
 {% load markup %}
+
 <tr>
   <td class="activity_title">{{ item.title }}</td>
   <td class="activity_points">{{ item.point_value }}</td>
   <td class="activity_options">
     {% if is_me %}
-      {% render_user_tools other_user item %}
+      {% include "activities/shared/commitment_member_form.html" %}
     {% endif %}
   </td>
 </tr>

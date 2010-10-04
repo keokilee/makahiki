@@ -1,0 +1,14 @@
+{% if member.days_left == 0 %}
+<a href="/activities/request_commitment_points/{{ item.id }}" class='option-link ui-state-default ui-corner-all ui-state-hover'>
+  <span class="ui-icon ui-icon-circle-check"></span>
+  <span class="button-text">I Did This!</span>
+</a>
+{% else %}
+{{member.days_left}} days remaining.
+{% endif %}
+<form action="/activities/remove_commitment/{{ item.id }}/" method="post" onsubmit="">
+  <a href="#" onclick="confirm_removal(parentNode, 'commitment')" class="option-link ui-state-error ui-corner-all ui-state-hover">
+    <span class="ui-icon ui-icon-circle-minus"></span>
+    <span class="button-text">Remove</span>
+  </a>
+</form>

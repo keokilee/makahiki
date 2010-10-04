@@ -20,6 +20,16 @@ def get_incomplete_tasks(user):
     "activities": user_activities,
   }
   
+def get_incomplete_task_members(user):
+  """Gets user's incomplete activity and commitment members."""
+  commitment_members = get_current_commitment_members(user)
+  activity_members = get_current_activity_members(user)
+  
+  return {
+    "commitments": commitment_members,
+    "activities": activity_members,
+  }
+  
 def can_add_commitments(user):
   """Determines if the user can add additional commitments."""
   return get_current_commitments(user).count() < MAX_COMMITMENTS

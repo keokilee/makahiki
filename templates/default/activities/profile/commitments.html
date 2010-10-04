@@ -15,8 +15,10 @@
         <td class="activity_points">Points</td>
         <td class="activity_options">Options</td>
       </tr>
-      {% for item in user_commitments %}
-        {% include "activities/profile/commitment.html" %}
+      {% for member in user_commitments %}
+        {% with member.commitment as item %}
+          {% include "activities/profile/commitment.html" %}
+        {% endwith %}
       {% endfor %}
     </table>
   {% else %}
