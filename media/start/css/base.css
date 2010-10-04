@@ -47,7 +47,7 @@ div#website_title {
 }
 
 div#website_title h1 {
-    color: #459E00;
+    color: #026890;
     /*text-shadow: 1px 1px 1px #444;*/
     padding: 0 0 0.2em 0;
     margin: 0;
@@ -57,7 +57,7 @@ div#website_title h1 {
 
 div#website_title h1 a {
     text-decoration: none;
-    color: #459E00;
+    color: #026890;
 }
 
 div#login {
@@ -72,9 +72,11 @@ div#login h5 {
 }
 
 #login a .button-text {
-  margin: 0pt; padding: 0pt; font-size: 0.8em; color: white;
+  color: #026890;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
 }
-
 #color-wrapper {
     background-color: #888;
 }
@@ -150,7 +152,7 @@ div#login h5 {
 /* Override for gblock in footer.*/
 #footer .makahiki_content_body {
   border:none;
-  background-image: none;
+  background: none;
 }
 
 #footer p {
@@ -191,7 +193,7 @@ ul#messages li a {
 }
 
 #content .makahiki_content_title {
-  background-color: #459E00;
+  background: url("images/ui-bg_glass_45_0078ae_1x400.png") repeat-x scroll 50% 50% #0078AE;
   color: white;
   margin: 0px;
   padding: 5px;
@@ -203,7 +205,7 @@ ul#messages li a {
   margin: 0px 0px 15px 0px;
   padding: 0px 10px;
   background: none;
-  background-color: #F5F3E5;
+  background-color: white;
 }
 
 /* Content Header */
