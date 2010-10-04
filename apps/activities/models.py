@@ -168,6 +168,9 @@ class Activity(CommonBase):
   verified by asking questions or posting an image attachment that verifies the user did 
   the activity."""
   
+  class Meta:
+    verbose_name_plural = "activities"
+  
   CONFIRM_CHOICES = (
     ('text', 'Text'),
     ('image', 'Image Upload'),
