@@ -1,33 +1,32 @@
-{% if member %}
-  <li>
-    <div style="float:left">
-      <span style="font-weight:bold">Status:</span> {{member.approval_status.capitalize}}
-    </div>
-    <div style="float:right">
-    {% if member.approval_status != "pending" and member.approval_status != "approved" %}
-      <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
-        <span class="ui-icon ui-icon-circle-check"></span>
-        <span class="button-text">I Did This!</span>
-      </a>
-    {% endif %}
-    {% if member.approval_status != "approved" %}
-    <form action="/activities/remove_activity/{{ item.id }}/" method="post">
-      <a href="#" onclick="confirm_removal(parentNode, 'activity')" class="option-link ui-state-error ui-corner-all ui-state-hover">
-        <span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span>
-      </a>
-    </form>
-    {% endif %}
-    </div>
-    <div style="clear:both"></div>
-  </li>
-{% else %}
 <li>
+{% if member %}
+<div style="float:left">
+  <span style="font-weight:bold">Status:</span> {{member.approval_status.capitalize}}
+</div>
+<div style="float:right">
+{% if member.approval_status != "pending" and member.approval_status != "approved" %}
+  <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+    <span class="ui-icon ui-icon-circle-check"></span>
+    <span class="button-text">I Did This!</span>
+  </a>
+{% endif %}
+{% if member.approval_status != "approved" %}
+<form action="/activities/remove_activity/{{ item.id }}/" method="post">
+  <a href="#" onclick="confirm_removal(parentNode, 'activity')" class="option-link ui-state-error ui-corner-all ui-state-hover">
+    <span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span>
+  </a>
+</form>
+{% endif %}
+</div>
+<div style="clear:both"></div>
+
+{% else %}
   <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
     <span class="ui-icon ui-icon-circle-check"></span>
     <span class="button-text">I Did This!</span></a>
   </a>
-</li>
 {% endif %}
+</li>
 
 {% if item.has_variable_points %}
 <li><span style="font-weight: bold">Points:</span> {{ item.point_range_start }}-{{ item.point_range_end }}</li>

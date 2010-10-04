@@ -1,0 +1,38 @@
+{% if member %}
+  {% with member.activity as item %}
+  {% include "activities/list/item_info.html" %}
+  {% endwith %}
+{% else %}
+  {% include "activities/list/item_info.html" %}
+{% endif %}
+
+<td class="item_options">
+{% if member %}
+  <div class="activitymember_status">
+    <span style="font-weight:bold">Status:</span> {{member.approval_status.capitalize}}
+  </div>
+
+  <div class="activitymember_options">
+  {% if member.approval_status != "pending" and member.approval_status != "approved" %}
+  <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+    <span class="ui-icon ui-icon-circle-check"></span>
+    <span class="button-text">I Did This!</span>
+  </a>
+  {% endif %}
+  {% if member.approval_status != "approved" %}
+  <form action="/activities/remove_activity/{{ item.id }}/" method="post">
+    <a href="#" onclick="confirm_removal(parentNode, 'activity')" class="option-link ui-state-error ui-corner-all ui-state-hover">
+      <span class="ui-icon ui-icon-circle-minus"></span><span class="button-text">Remove</span>
+    </a>
+  </form>
+  {% endif %}
+  </div>
+
+{% else %}
+  <a href="/activities/request_activity_points/{{ item.id }}/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+    <span class="ui-icon ui-icon-circle-check"></span>
+    <span class="button-text">I Did This!</span></a>
+  </a>
+{% endif %}
+</td>
+</tr>
