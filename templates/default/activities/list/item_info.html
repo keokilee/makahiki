@@ -1,4 +1,4 @@
-<tr>
+<tr id="{{item_type}}_{{item.id}}">
   <td class="item_info">
     <div class="item_title" style="{% if item.likes %}width: 65%;{% endif %}">
       <a href="{% url activity_detail item_type item.id %}" style="text-decoration:none">{{item.title}}</a>

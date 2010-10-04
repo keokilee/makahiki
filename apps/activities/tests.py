@@ -202,9 +202,11 @@ class ActivitiesFunctionalTestCase(TestCase):
     )[0]
     response = self.client.post('/activities/add_activity/%d/' % activity.pk, {}, "multipart/form-data", True)
     self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
-    self.failUnless(activity in response.context["user_activities"])
+    activities = [member.activity for member in response.context["user_activities"]]
+    self.failUnless(activity in activities)
     response = self.client.get('/activities/activity_list/')
-    self.failUnless(activity in response.context["user_items"])
+    activities = [member.activity for member in response.context["user_members"]]
+    self.failUnless(activity in activities)
     
   def testApprovedActivity(self):
     """Test that approved activities appear in the correct location."""
@@ -320,9 +322,11 @@ class CommitmentsFunctionalTestCase(TestCase):
     commitment = get_available_commitments(self.user)[0]
     response = self.client.post('/activities/add_commitment/%d/' % commitment.pk, {}, "multipart/form-data", True)
     self.assertRedirects(response, "/profiles/profile/%d/" % self.user.pk)
-    self.failUnless(commitment in response.context["user_commitments"])
+    commitments = [member.commitment for member in response.context["user_commitments"]]
+    self.failUnless(commitment in commitments)
     response = self.client.get('/activities/commitment_list/')
-    self.failUnless(commitment in response.context["user_items"])
+    commitments = [member.commitment for member in response.context["user_members"]]
+    self.failUnless(commitment in commitments)
     
   def testCompleteCommitment(self):
     """Test that we can complete a commitment and get the points."""

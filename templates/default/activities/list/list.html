@@ -159,37 +159,5 @@
   });
   </script>
   
-  <!-- Dialogs -->
-  <script type="text/javascript">
-    jQuery(document).ready(function() {
-      jQuery("#active_dialog").dialog({autoOpen: false, modal: true});
-      jQuery("#available_dialog").dialog({autoOpen: false, modal: true});
-      jQuery("#completed_dialog").dialog({autoOpen: false, modal: true});
-
-      jQuery('#active_help').click(function() {
-        jQuery('#active_dialog').dialog('open');
-        return false;
-      });
-      
-      jQuery('#available_help').click(function() {
-        jQuery('#available_dialog').dialog('open');
-        return false;
-      });
-      
-      jQuery('#completed_help').click(function() {
-        jQuery('#completed_dialog').dialog('open');
-        return false;
-      });
-    })
-  </script>
-  
-  <div id="active_dialog" title="Active {{plural_type.capitalize}}">
-    {% gblock "active",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
-  </div>
-  <div id="available_dialog" title="Available {{plural_type.capitalize}}">
-    {% gblock "available",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
-  </div>
-  <div id="completed_dialog" title="Completed {{plural_type.capitalize}}">
-    {% gblock "completed",plural_type for "gblocks.Text" with "activities/gblocks/help.html" %}
-  </div>
+  {% include "activities/list/dialogs.html" %}
 {% endblock %}
