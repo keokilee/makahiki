@@ -34,7 +34,7 @@ def get_available_commitments(user):
   """Get any commitments that the user is not currently active in."""
   return Commitment.objects.exclude(
     commitmentmember__user=user,
-    commitmentmember__completion_date__gt=datetime.datetime.today(),
+    commitmentmember__award_date=None,
   ).order_by("title")
 
 def get_completed_commitments(user):
