@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
-import competition_settings as settings
+from django.conf import settings
 from makahiki_base.models import Article
 from makahiki_base import get_round_info, get_theme, get_current_round
 

@@ -1,7 +1,7 @@
-import competition_settings
 import simplejson as json
 
 from django.http import HttpResponse, Http404
+from django.conf import settings
 
 from standings import get_all_standings
 from floors.models import Dorm
@@ -10,8 +10,8 @@ def rounds(request):
   """Returns a dictionary containing competition dates."""
   
   if request.method == "GET":
-    rounds = competition_settings.COMPETITION_ROUNDS.copy()
-    rounds.update({"Competition": {"start": competition_settings.COMPETITION_START, "end": competition_settings.COMPETITION_END}})
+    rounds = settings.COMPETITION_ROUNDS.copy()
+    rounds.update({"Competition": {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}})
 
     return HttpResponse(json.dumps(rounds), mimetype='application/json')
   

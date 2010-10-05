@@ -5,7 +5,6 @@ from django.test import TestCase
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-import competition_settings
 from floors.models import Floor
 from floors.models import Dorm
 from standings import MAX_INDIVIDUAL_STANDINGS
@@ -35,8 +34,8 @@ class JsonApiFunctionalTestCase(TestCase):
     settings.COMPETITION_START = start.strftime("%Y-%m-%d")
     settings.COMPETITION_END = end.strftime("%Y-%m-%d")
     
-    if competition_settings.COMPETITION_GROUP_NAME:
-      self.floor_label = competition_settings.COMPETITION_GROUP_NAME
+    if settings.COMPETITION_GROUP_NAME:
+      self.floor_label = settings.COMPETITION_GROUP_NAME
     else:
       self.floor_label = "Floor"
     
