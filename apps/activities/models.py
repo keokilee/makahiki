@@ -239,14 +239,17 @@ class Activity(CommonBase):
   
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
+    return self.is_active_for_date(datetime.date.today())
     
-    pub_result = datetime.date.today() - self.pub_date
-    expire_result = self.expire_date - datetime.date.today()
+  is_active = property(_is_active)
+  
+  def is_active_for_date(self, date):
+    """Determines if the activity is available for user participation at the given date."""
+    pub_result = date - self.pub_date
+    expire_result = self.expire_date - date
     if pub_result.days < 0 or expire_result.days < 0:
       return False
     return True
-    
-  is_active = property(_is_active)
   
   def _has_variable_points(self):
     """Returns true if the activity uses variable points, false otherwise."""

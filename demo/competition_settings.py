@@ -1,7 +1,10 @@
 import datetime
 
-DEMO_START_DELTA = datetime.timedelta(days=9)
+DEMO_START_DELTA = datetime.timedelta(days=13)
 DEMO_END_DELTA = datetime.timedelta(days=13)
+
+# The base date of the competition according to the fixtures.
+FIXTURE_BASE_DATE = "2011-01-27"
 
 # The start and end date of the competition.
 COMPETITION_START = (datetime.date.today() - DEMO_START_DELTA).strftime("%Y-%m-%d")
@@ -14,10 +17,10 @@ COMPETITION_END = (datetime.date.today() + DEMO_END_DELTA).strftime("%Y-%m-%d")
 COMPETITION_ROUNDS = {
   "Round 1" : {
     "start": COMPETITION_START,
-    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=7)).strftime("%Y-%m-%d"),
+    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=11)).strftime("%Y-%m-%d"),
   },
   "Round 2" : {
-    "start": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=7)).strftime("%Y-%m-%d"),
-    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=14)).strftime("%Y-%m-%d"),
+    "start": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=11)).strftime("%Y-%m-%d"),
+    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=18)).strftime("%Y-%m-%d"),
   },
 }

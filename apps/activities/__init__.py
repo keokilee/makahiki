@@ -49,8 +49,7 @@ def get_current_commitment_members(user):
 def get_available_commitments(user):
   """Get any commitments that the user is not currently active in."""
   return Commitment.objects.exclude(
-    commitmentmember__user=user,
-    commitmentmember__award_date=None,
+    id__in=get_current_commitments(user),
   ).order_by("title")
 
 def get_completed_commitments(user):
@@ -83,7 +82,7 @@ def get_available_activities(user):
     expire_date__gte=datetime.date.today(),
   ).order_by("priority", "title")
   
-  return [item for item in activities if item.is_active] # Filters out inactive activities.
+  return activities
   
 def get_available_events(user):
   """Retrieves only the events that a user can participate in."""
