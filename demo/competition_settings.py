@@ -21,6 +21,6 @@ COMPETITION_ROUNDS = {
   },
   "Round 2" : {
     "start": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=11)).strftime("%Y-%m-%d"),
-    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=18)).strftime("%Y-%m-%d"),
+    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=19)).strftime("%Y-%m-%d"),
   },
 }

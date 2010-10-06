@@ -7,6 +7,8 @@ from django.conf import settings
 from makahiki_profiles.models import Profile, ScoreboardEntry
 from activities.models import Activity, Commitment, ActivityMember, CommitmentMember
 from activities import get_current_commitments
+from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
+from floors.models import Floor
 
 class Command(management.base.BaseCommand):
   help = 'Simulates activity in the competition.'
@@ -26,9 +28,16 @@ class Command(management.base.BaseCommand):
       
     self.refresh_users()
     self.refresh_activities()
+    self.remove_goals()
+    
     self.adjust_activity_dates()
-    self.simulate_activities_for_round_1()
+    
     self.simulate_commitments()
+    
+    self.simulate_activities_for_round_1()
+    self.simulate_goals_for_round_1()
+    
+    self.simulate_goals_for_round_2()
       
   def refresh_users(self):
     self.stdout.write("Clearing profiles, scoreboard entries, and floors.\n")
@@ -43,6 +52,10 @@ class Command(management.base.BaseCommand):
     management.call_command('reset', 'activities', interactive=False)
     self.stdout.write("Reloading activities and commitments.\n")
     management.call_command('loaddata', 'fixtures/demo_tasks.json', verbosity=0)
+    
+  def remove_goals(self):
+    self.stdout.write("Removing goals and goal votes.\n")
+    management.call_command('reset', 'goals', interactive=False)
       
   def adjust_activity_dates(self):
     self.stdout.write("Adjusting activity publication, expiration, and event dates.\n")
@@ -78,6 +91,57 @@ class Command(management.base.BaseCommand):
         member.approval_status = "approved"
         member.save()
         
+  def simulate_goals_for_round_1(self):
+    round_start = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 1"]["start"], "%Y-%m-%d").date()
+    round_end = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 1"]["end"], "%Y-%m-%d").date()
+    voting_end = round_start + datetime.timedelta(days=2)
+    self.stdout.write("Simulating goal participation in the first round.\n")
+    
+    goal = EnergyGoal(start_date=round_start, end_date=round_end, voting_end_date=voting_end)
+    goal.save()
+    
+    # Simulate votes.
+    for profile in Profile.objects.all():
+      # Assume 1 in 5 users do not vote.
+      if random.randint(0, 4) % 5 != 0:
+        # User likely to vote between 0 and 25% reduction.
+        value = random.randint(0, 5) * 5
+        vote = EnergyGoalVote(user=profile.user, goal=goal, percent_reduction=value)
+        vote.save()
+        
+    # Generate floor energy goals.
+    for floor in Floor.objects.all():
+      results = goal.get_floor_results(floor)
+      percent_reduction = 0
+      if len(results) > 0:
+        percent_reduction = results[0]["percent_reduction"]
+
+      floor_goal = FloorEnergyGoal(floor=floor, goal=goal, percent_reduction=percent_reduction)
+      
+      # Assume 1 in 5 goals fail.
+      if random.randint(0, 4) % 5 != 0:
+        floor_goal.completed = True
+        
+      floor_goal.save()
+      
+  def simulate_goals_for_round_2(self):
+    round_start = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 2"]["start"], "%Y-%m-%d").date()
+    round_end = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 2"]["end"], "%Y-%m-%d").date()
+    voting_end = datetime.date.today() + datetime.timedelta(days=1)
+    self.stdout.write("Simulating goal participation in the second round.\n")
+
+    goal = EnergyGoal(start_date=round_start, end_date=round_end, voting_end_date=voting_end)
+    goal.save()
+
+    # Simulate votes.
+    for profile in Profile.objects.all():
+      # Assume 1 in 5 users do not vote.
+      if random.randint(0, 4) % 5 != 0:
+        # User likely to vote between 0 and 25% reduction.
+        value = random.randint(0, 5) * 5
+        vote = EnergyGoalVote(user=profile.user, goal=goal, percent_reduction=value)
+        vote.save()
+      
   def simulate_commitments(self):
     competition_start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d").date()
     today = datetime.date.today()
