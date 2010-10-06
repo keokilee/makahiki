@@ -17,11 +17,11 @@ class Command(management.base.BaseCommand):
     self.stdout.write("Using %s database '%s'\n" % 
           (settings.DATABASES["default"]["ENGINE"], settings.DATABASES["default"]["NAME"]))
     
-    self.stdout.write("\nWARNING: The following command will result in the IRREVERSIBLE loss of data in the current database.\n")
+    self.stdout.write("\nWARNING: This command will result in the IRREVERSIBLE loss of data in the current database.\n")
     value = raw_input("Do you wish to continue (Y/n)? ")
     while value != "Y" and value != "n":
       self.stdout.write("Invalid option %s\n" % value)
-      value = raw_input("Do you want to continue (y/n)? ")
+      value = raw_input("Do you want to continue (Y/n)? ")
     if value == "n":
       self.stdout.write("Operation cancelled.\n")
       return
@@ -44,6 +44,10 @@ class Command(management.base.BaseCommand):
     management.call_command('reset', 'makahiki_profiles', 'floors', interactive=False)
     self.stdout.write("Reloading users, profiles, and floors.\n")
     management.call_command('loaddata', 'fixtures/demo_users.json', verbosity=0)
+    for profile in Profile.objects.all():
+      profile.points = 0
+      profile.save()
+      
     for entry in ScoreboardEntry.objects.all():
       entry.delete()
       
@@ -80,8 +84,11 @@ class Command(management.base.BaseCommand):
     date_delta = (round_end - round_start).days
     self.stdout.write("Simulating activity participation in the first round.\n")
     
-    activities = Activity.objects.filter(pub_date__gte=round_start, expire_date__lt=round_end)
-    for profile in Profile.objects.exclude(user__username="admin"):
+    activities = Activity.objects.filter(pub_date__gte=round_start, pub_date__lt=round_end)
+    for profile in Profile.objects.all():
+      if(profile.user.username == "admin"):
+        continue
+        
       # Assume user will participate between 0 and 3 activities
       # Random activity from http://stackoverflow.com/questions/962619/how-to-pull-a-random-record-using-djangos-orm
       user_activities = activities.order_by("?")[0:random.randint(0, 3)]
