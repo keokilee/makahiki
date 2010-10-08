@@ -5,6 +5,11 @@
 
 {% block body %}
 <div id="mobile_header">
+  <h5 style="display: inline">Aloha, {{user.get_profile.first_name}}.</h5>
+   <a href="/account/cas/logout/" class="option-link ui-state-default ui-corner-all ui-state-hover">
+     <span class="button-text">Logout</span>
+   </a>
+   
   {% gblock "website_header" for "gblocks.Title" with "gblocks/title/website.html" %}
   <div class="ui-tabs">
     <ul class="ui-tabs-nav">
