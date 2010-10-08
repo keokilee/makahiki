@@ -6,7 +6,7 @@ from django.conf import settings
 
 from makahiki_profiles.models import Profile, ScoreboardEntry
 from activities.models import Activity, Commitment, ActivityMember, CommitmentMember
-from activities import get_current_commitments
+from activities import get_current_commitments, get_available_activities
 from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
 from floors.models import Floor
 
@@ -37,6 +37,7 @@ class Command(management.base.BaseCommand):
     self.simulate_activities_for_round_1()
     self.simulate_goals_for_round_1()
     
+    self.simulate_activities_for_round_2()
     self.simulate_goals_for_round_2()
       
   def refresh_users(self):
@@ -87,6 +88,7 @@ class Command(management.base.BaseCommand):
     activities = Activity.objects.filter(pub_date__gte=round_start, pub_date__lt=round_end)
     for profile in Profile.objects.all():
       if(profile.user.username == "admin"):
+        # We want to skip admin for now.
         continue
         
       # Assume user will participate between 0 and 3 activities
@@ -176,8 +178,14 @@ class Command(management.base.BaseCommand):
   def simulate_activities_for_round_2(self):
     round_start = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 2"]["start"], "%Y-%m-%d").date()
     round_end = datetime.datetime.strptime(settings.COMPETITION_ROUNDS["Round 2"]["end"], "%Y-%m-%d").date()
-    date_delta = (round_end - round_start).days
+    today_diff = (datetime.date.today() - round_start).days
     self.stdout.write("Simulating activity participation in the second round.\n")
     
     for profile in Profile.objects.all():
-      pass
+      # In this case, let's just add a pending activity or two.
+      activities = get_available_activities(profile.user).order_by("?")[0:random.randint(0, 2)]
+      for activity in activities:
+        member = ActivityMember(user=profile.user, activity=activity)
+        member.submission_date = datetime.datetime.today() - datetime.timedelta(days=random.randint(0, today_diff))
+        member.approval_status = "pending"
+        member.save()
