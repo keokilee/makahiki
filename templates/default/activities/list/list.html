@@ -72,6 +72,7 @@
       </div>
 
       <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% if available_events.count > 0 %}
         <table class="activity_list">
         <tr class="column_header">
           <td class="item_info">Title</td>
@@ -86,6 +87,9 @@
             {% endif %}
           {% endfor %}
         </table>
+        {% else %}
+        <p>There are no available events at this time.</p>
+        {% endif %}
       </div>
     </div>
     {% endif %}
@@ -97,6 +101,7 @@
       </div>
 
       <div class="activity_content ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        {% if available_items.count > 0 %}
         <table class="activity_list">
         <tr class="column_header">
           <td class="item_info">Title</td>
@@ -111,6 +116,9 @@
             {% endif %}
           {% endfor %}
         </table>
+        {% else %}
+        <p> There are not available {{plural_type}} at this time.  Check back later!</p>
+        {% endif %}
       </div>
     </div>
   </div>
