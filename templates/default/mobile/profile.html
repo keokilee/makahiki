@@ -37,7 +37,7 @@
   <div style="clear:both"></div>
 
   <h3 style="padding:0">News</h3>
-  <ul style="padding:0">
+  <ul class="mobile_links" style="padding:0">
     {% for article in articles %}
     <li><a href="{% url view_article article.slug %}">{{article.title|truncatewords:5}}</a></li>
     {% endfor %}
@@ -85,7 +85,7 @@
     </div>
   </div>
   
-  <ul>
+  <ul class="mobile_links">
   	<li><a href="/home">Switch to full site.</a></li>
   </ul>
 </div>

@@ -7,7 +7,7 @@ def competition(request):
   """Provides access to standard competition constants within a template."""
   
   # We may want to retrieve theme settings for insertion into CSS.
-  theme = get_theme()
+  theme_name, theme_dict = get_theme()
   
   # Get current round info.
   current_phase = get_current_round()
@@ -17,7 +17,8 @@ def competition(request):
   facebook_app_id = settings.FACEBOOK_APP_ID
   
   return {
-    "THEME": json.dumps(theme),
+    "THEME_NAME": theme_name, 
+    "THEME": json.dumps(theme_dict),
     "ROUNDS": json.dumps(get_round_info()),
     "FLOOR_LABEL": get_floor_label(),
     "CURRENT_PHASE": current_phase,

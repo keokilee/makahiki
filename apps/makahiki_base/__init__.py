@@ -65,11 +65,11 @@ def get_theme():
 
   theme = settings.MAKAHIKI_THEME or "default"
   if settings.MAKAHIKI_THEME_SETTINGS.has_key(theme):
-    return settings.MAKAHIKI_THEME_SETTINGS[theme]
+    return theme, settings.MAKAHIKI_THEME_SETTINGS[theme]
   elif settings.MAKAHIKI_THEME_SETTINGS.has_key("default"):
-    return settings.MAKAHIKI_THEME_SETTINGS["default"]
+    return theme, settings.MAKAHIKI_THEME_SETTINGS["default"]
   else:
-    return {}
+    return None, {}
     
 def restricted(request, message=None):
   """Helper method to return a error message when a user accesses a page they are not allowed to view."""
