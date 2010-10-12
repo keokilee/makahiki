@@ -1,4 +1,4 @@
-#floor_left {
+/*#floor_left {
   float: left;
   width: 245px;
 }
@@ -14,7 +14,7 @@
   float: right;
   width: 210px;
   margin: 15px 10px 0 15px;
-}
+}*/
 
 .floor_content {
   margin: 10px 0 0 15px;

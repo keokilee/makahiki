@@ -24,7 +24,7 @@
   
 
 {% block body %}
-  <div id="floor_left">
+  <div id="two_col_left" style="width: 245px; padding-left: 0">
     <div id="member_list" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
       <div class="ui-accordion-header ui-state-default ui-corner-top list_header">
         Members:
@@ -48,9 +48,15 @@
     </div>
   </div>
   
-  <div id="floor_center">
-    <div id="floor_energy" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-      {% include "energy_data/daily.html" %}
+  <div id="two_col_right" style="width: 710px; ">
+    <div id="floor_energy" class="floor_content">
+      <div id="floor_energy_daily" style="float:left; width: 320px; padding-left: 20px">
+        {% include "energy_data/daily.html" %}
+      </div>
+      <div id="floor_energy_weekly" style="float:right; width: 320px;">
+        {% include "energy_data/weekly.html" %}
+      </div>
+      <div style="clear:both"></div>
     </div>
     
     <div id="wall_title" class="floor_content ui-corner-all ui-accordion ui-widget ui-accordion-icons">
@@ -78,9 +84,6 @@
         {% endif %}
       </div>
     </div>
-  </div>
-  <div id="floor_right">
-    {% include 'floors/monitor_panel.html' %}
   </div>
 {% endblock %}
 
