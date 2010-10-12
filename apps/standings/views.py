@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
 from floors.models import Dorm
-from standings import get_all_standings, MAX_INDIVIDUAL_STANDINGS
+from standings import get_all_standings, _compare_rounds, MAX_INDIVIDUAL_STANDINGS
 
 from django.views.decorators.cache import never_cache
   
@@ -37,8 +37,11 @@ def index(request, dorm_slug=None):
   today = datetime.datetime.today()
   
   rounds = settings.COMPETITION_ROUNDS
+  keys = settings.COMPETITION_ROUNDS.keys()
+  keys.sort(_compare_rounds)
+  
   selected_tab = len(rounds)
-  for index, key in enumerate(rounds.keys()):
+  for index, key in enumerate(keys):
     standings_titles.append(key)
     
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")

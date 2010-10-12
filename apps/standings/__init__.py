@@ -19,11 +19,21 @@ class StandingsException(Exception):
   def __str__(self):
     return repr(self.value)
     
+def _compare_rounds(a, b):
+  """Used to sort the competition rounds."""
+  a_start = datetime.datetime.strptime(settings.COMPETITION_ROUNDS[a]["start"], "%Y-%m-%d")
+  b_start = datetime.datetime.strptime(settings.COMPETITION_ROUNDS[b]["start"], "%Y-%m-%d")
+
+  return cmp(a_start, b_start)
+   
 def get_all_standings(dorm=None, grouping="floor", count=MAX_INDIVIDUAL_STANDINGS):
   """Retrieves standings across all floors for all rounds. Can be grouped by floor or by individual."""
   
   standings = []
-  for round_name in settings.COMPETITION_ROUNDS.keys():
+  keys = settings.COMPETITION_ROUNDS.keys()
+  keys.sort(_compare_rounds)
+  
+  for round_name in keys:
     if grouping == "floor":
       standings.append(get_floor_standings(dorm=dorm, round_name=round_name,))
     else:
@@ -140,7 +150,11 @@ def get_all_standings_for_user(user, is_me=True, group="floor"):
   standings for users in the user's floor.  Returns an array of the different standings."""
     
   standings = []
-  for round_name in settings.COMPETITION_ROUNDS.keys():
+  
+  keys = settings.COMPETITION_ROUNDS.keys()
+  keys.sort(_compare_rounds)
+  
+  for round_name in keys:
     standings.append(get_standings_for_user(user, group=group, round_name=round_name, is_me=is_me))
   
   # Append overall standings.
@@ -277,7 +291,10 @@ def generate_standings_for_profile(user, is_me):
   today = datetime.datetime.today()
   
   rounds = settings.COMPETITION_ROUNDS
-  for index, key in enumerate(rounds.keys()):
+  keys = settings.COMPETITION_ROUNDS.keys()
+  keys.sort(_compare_rounds)
+  
+  for index, key in enumerate(keys):
     return_dict["standings_titles"].append(key)
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
