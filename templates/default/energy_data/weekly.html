@@ -8,27 +8,24 @@
   <script type="text/javascript">
   // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
   (function() {
-    var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
-
-    // The next two variables, source and percentageReductionGoal, must be set by Makahiki.
-    var source = configuration.{{floor.floor_identifier}};
-    {% if goal %}
-    var percentageReductionGoal = {{goal.percent_reduction}};
-    {% else %}
-    var percentageReductionGoal = 0;
-    {% endif %}
-
-    // Get the spreadsheets we need.
-    var rollingDaysEnergyUrl = configuration.getRollingDaysEnergyUrl();
-    var refreshInterval = 0; // don't refresh this spreadsheet.
+    var spreadsheetUrl = 'https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdFRQb3FTYmZBbVFCTFQwLXF4NUloaVE';
+    var refreshInterval = 60 * 60; // refresh once an hour.
 
     // Load the visualization API and the spreadsheet, then call displayEnergy.
-    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, rollingDaysEnergyUrl, refreshInterval);  
+    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetUrl, refreshInterval);  
 
-    function displayEnergy(rollingDaysDatatable) {
-      var energyChart = new org.wattdepot.gdata.makahiki.EnergyLastSevenDays(configuration);
-      var datatable = energyChart.makeDataTable(rollingDaysDatatable, source, percentageReductionGoal);
-      energyChart.draw('weekly_visualization', source, percentageReductionGoal, datatable);
+    function displayEnergy(datatable) {
+      var source = 'SIM_UH_ILIMA_FLOORS_3-4';
+      var percentageReductionGoal = 10;
+      var options = {width : 300, 
+                     height : 150, 
+                     title: '{{floor}} Recent Power',
+                     backgroundColor : '{{THEME.widgetBackgroundColor}}',
+                     captionStyle : {fontSize : '0.70em'}, 
+                     titleStyle : {fontWeight : 'bold'}, 
+                     globalStyle : {fontFamily : 'sans-serif'}};
+      var energyChart = new org.wattdepot.gdata.makahiki.EnergyLastSevenDays();
+      energyChart.draw('weekly_visualization', source, percentageReductionGoal, datatable, options);
     }
   })();
   </script>
