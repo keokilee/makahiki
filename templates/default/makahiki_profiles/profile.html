@@ -41,7 +41,7 @@
   </div>
   {% endif %}
   
-  <div id="profile_left" class="profile_content">
+  <div id="two_col_left" class="profile_content" style="width: 200px">
       <div id="profile_info" class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
         <div class="ui-accordion-header ui-corner-top ui-state-default list_header">
           {{other_user.get_profile.name}}
@@ -71,16 +71,12 @@
         {% include "goals/profile_box.html" %}
       </div>
   </div>
-  <div id="profile_center" class="profile_content">
+  <div id="two_col_right" class="profile_content" style="width: 740px">
     {% include "goals/voting_form.html" %}
     
     {% include "makahiki_profiles/standings.html" %}
       
     {% include "makahiki_profiles/activity_panel.html" %}
-  </div>
-  
-  <div id="profile_right" class="profile_content">
-    {% include "makahiki_profiles/monitor_panel.html" %}
   </div>
 {% endblock %}
 

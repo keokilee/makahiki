@@ -41,14 +41,14 @@
         function displayFloorStandings() {
           var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
           var standingsChart = new org.wattdepot.gdata.makahiki.Standings(configuration);
-          standingsChart.setWidth(240);
+          standingsChart.setWidth(330);
           standingsChart.draw('floor_overall_standings', floorStandings);
         }
         
         function displayAllStandings() {
           var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
           var standingsChart = new org.wattdepot.gdata.makahiki.Standings(configuration);
-          standingsChart.setWidth(240);
+          standingsChart.setWidth(330);
           standingsChart.draw('all_overall_standings', allStandings);
         }
       })();
@@ -73,14 +73,14 @@
         function displayFloor{{forloop.counter}}Standings() {
           var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
           var standingsChart = new org.wattdepot.gdata.makahiki.Standings(configuration);
-          standingsChart.setWidth(240);
+          standingsChart.setWidth(330);
           standingsChart.draw('floor_standings_{{forloop.counter}}', floorStandings);
         }
         
         function displayAll{{forloop.counter}}Standings() {
           var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
           var standingsChart = new org.wattdepot.gdata.makahiki.Standings(configuration);
-          standingsChart.setWidth(240);
+          standingsChart.setWidth(330);
           standingsChart.draw('all_standings_{{forloop.counter}}', allStandings);
         }
       })();
