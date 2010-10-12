@@ -18,7 +18,7 @@ def competition(request):
   
   return {
     "THEME_NAME": theme_name, 
-    "THEME": json.dumps(theme_dict),
+    "THEME": theme_dict,
     "ROUNDS": json.dumps(get_round_info()),
     "FLOOR_LABEL": get_floor_label(),
     "CURRENT_PHASE": current_phase,

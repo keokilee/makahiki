@@ -24,11 +24,27 @@ MAKAHIKI_THEME = "default"
 # for a theme does not exist, default will be used.
 MAKAHIKI_THEME_SETTINGS = {
   "default" : {
-    "widgetBackgroundColor" : '#F5F3E5',
-    "widgetHeaderColor" : '#459E00',
+    "widgetBackgroundColor" : 'F5F3E5',
+    "widgetHeaderColor" : '459E00',
     "widgetHeaderTextColor" : 'white',
-    "widgetTextColor" : '#312E25',
+    "widgetTextColor" : '312E25',
     "widgetTextFont" : 'Ariel, sans serif',
-    "windowNavBarColor" : '#2F6B00',
+    "windowNavBarColor" : '2F6B00',
+  },
+  "cupertino" : {
+    "widgetBackgroundColor" : 'F2F5F7',
+    "widgetHeaderColor" : '459E00',
+    "widgetHeaderTextColor" : 'white',
+    "widgetTextColor" : '312E25',
+    "widgetTextFont" : 'Ariel, sans serif',
+    "windowNavBarColor" : '2F6B00',
+  },
+  "start" : {
+    "widgetBackgroundColor" : 'fff',
+    "widgetHeaderColor" : '459E00',
+    "widgetHeaderTextColor" : 'white',
+    "widgetTextColor" : '312E25',
+    "widgetTextFont" : 'Ariel, sans serif',
+    "windowNavBarColor" : '2F6B00',
   },
 }

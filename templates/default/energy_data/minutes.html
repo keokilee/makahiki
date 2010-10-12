@@ -6,24 +6,23 @@
   <div id="minutes_visualization"></div>
   
   <script type="text/javascript">
-  // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
   (function() {
-    var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
-
-    // The next two variables, source and percentageReductionGoal, must be set by Makahiki.
-    var source = configuration.{{floor.floor_identifier}};
-
-    // Get the spreadsheets we need.
-    var currentPowerDataUrl = configuration.getRollingSecondsPowerUrl();
+    var spreadsheetURL = 'https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdEZOY1djQ014eFd2WkhUcWdvbXRtMEE';
     var refreshInterval = 15; // refresh every 15 seconds.
 
     // Load the visualization API and the spreadsheet, then call displayEnergy.
-    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, currentPowerDataUrl, refreshInterval);  
+    var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetURL, refreshInterval);  
 
-    function displayEnergy(rollingSecondsDatatable) {
-      var energyChart = new org.wattdepot.gdata.makahiki.PowerLastFewMinutes(configuration);
-      var datatable = energyChart.makeDataTable(rollingSecondsDatatable, source);
-      energyChart.draw('minutes_visualization', source, datatable);
+    function displayEnergy(datatable) {
+     var source = 'SIM_UH_ILIMA_FLOORS_3-4';
+     var options = {width : 300, 
+                    title: '{{floor.dorm.name}} {{FLOOR_LABEL}} {{floor.number}} Recent Power',
+                    backgroundColor : '{{THEME.widgetBackgroundColor}}',
+                    captionStyle : {fontSize : '0.80em'}, 
+                    titleStyle : {fontWeight : 'bold'}, 
+                    globalStyle : {fontFamily : 'sans-serif'}};
+     var energyChart = new org.wattdepot.gdata.makahiki.PowerLastFewMinutes();
+     energyChart.draw('minutes_visualization', source, datatable, options);
     }
   })();
   </script>
