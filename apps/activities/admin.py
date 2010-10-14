@@ -183,7 +183,7 @@ class ActivityAdmin(admin.ModelAdmin):
   )
   form = ActivityAdminForm
   inlines = [TextQuestionInline]
-  list_display = ["title", "created_at", "is_active", "pub_date", "expire_date",]
+  list_display = ["title", "priority", "is_active", "pub_date", "expire_date",]
   
 admin.site.register(Activity, ActivityAdmin)
 
