@@ -61,5 +61,6 @@ admin.site.register(EnergyGoal, EnergyGoalAdmin)
 
 class FloorEnergyGoalAdmin(admin.ModelAdmin):
   list_display = ["floor", "goal",]
+  readonly_fields = ("percent_reduction", "goal", "floor")
   
 admin.site.register(FloorEnergyGoal, FloorEnergyGoalAdmin)
