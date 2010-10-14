@@ -36,6 +36,16 @@ class CommonActivityUser(CommonBase):
   approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
   award_date = models.DateTimeField(null=True, blank=True, editable=False)
   submission_date = models.DateTimeField(null=True, blank=True, editable=False)
+  
+class Category(models.Model):
+  """Categories used to group commitments and activities."""
+  name = models.CharField(max_length=255, help_text="255 character maximum")
+
+  class Meta:
+    verbose_name_plural = "categories"
+
+  def __unicode__(self):
+    return self.name
 
 class Commitment(CommonBase):
   """Commitments involve non-verifiable actions that a user can commit to.
@@ -46,6 +56,7 @@ class Commitment(CommonBase):
   point_value = models.IntegerField()
   users = models.ManyToManyField(User, through="CommitmentMember")
   duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
+  category = models.ForeignKey(Category, null=True, blank=True)
   
   def __unicode__(self):
     return self.title
@@ -233,6 +244,7 @@ class Activity(CommonBase):
                           "Activities with lower values (higher priority) will be listed first."
              )
   likes = generic.GenericRelation(Like)
+  category = models.ForeignKey(Category, null=True, blank=True)
                       
   def __unicode__(self):
     return self.title

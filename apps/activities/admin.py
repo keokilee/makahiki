@@ -9,6 +9,9 @@ from django.core.urlresolvers import reverse
 ### Commitment Admin
 admin.site.register(Commitment)
 
+# Category Admin
+admin.site.register(Category)
+
 class CommitmentMemberAdmin(admin.ModelAdmin):
   """Override to use custom delete method."""
   actions = ["delete_selected"]
@@ -177,7 +180,7 @@ class ActivityAdmin(admin.ModelAdmin):
       'fields' : ('title', 'description', 'duration', ('pub_date', 'expire_date')),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
-    ("Ordering", {"fields": ("priority",)}),
+    ("Ordering", {"fields": ("priority", "category")}),
     ("Event", {'fields' : ('is_event', 'event_date')}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
