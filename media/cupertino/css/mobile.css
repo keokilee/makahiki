@@ -1,11 +1,11 @@
-body {
-    background: url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") repeat-x scroll 50% top #F2F5F7; /* Background color */
-    color: #222;            /* Foreground color used for text */
-    font-family: Helvetica; 
-    font-size: 14px;
-    margin: 0;              /* Amount of negative space around the outside of the body */
-    padding: 0;             /* Amount of negative space around the inside of the body */
-    width: 320px;
+#mobile_container {
+  background: url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") repeat-x scroll 50% top #F2F5F7; /* Background color */
+  color: #222;            /* Foreground color used for text */
+  font-family: Helvetica; 
+  font-size: 14px;
+  margin: 0;              /* Amount of negative space around the outside of the body */
+  padding: 0;             /* Amount of negative space around the inside of the body */
+  width: 320px;
 }
 
 #logout {

@@ -17,6 +17,7 @@ def render_css_import(user=None):
   if os.path.isdir(css_dir):
     items = (item for item in os.listdir(css_dir) if string.find(item, "css") >= 0)
     for item in items:
+      if item != "mobile.css":
         return_string += "<link rel=\"stylesheet\" href=\"/site_media/static/" + current_theme
         return_string += "/css/" + item + "\" />\n"
   
