@@ -1,8 +1,11 @@
+{% load generic_flatblocks %}
+
 <div class="makahiki_content_title ui-accordion-header ui-state-default ui-corner-top list_header">
   {% if floor %}{{floor}}: {% endif %}Power Over the Last Few Minutes
 </div>
 <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
   {% if floor %}
+  {% gblock "energy_data_power" for "gblocks.Text" with "energy_data/gblocks/text.html" %}
   <div id="minutes_visualization"></div>
   
   <script type="text/javascript">
