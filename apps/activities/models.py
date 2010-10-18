@@ -56,6 +56,11 @@ class Commitment(CommonBase):
   point_value = models.IntegerField()
   users = models.ManyToManyField(User, through="CommitmentMember")
   duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
+  priority = models.IntegerField(
+                default=1000,
+                help_text="Orders the commitments in the available commitments list. " + 
+                          "Commitments with lower values (higher priority) will be listed first."
+             )
   category = models.ForeignKey(Category, null=True, blank=True)
   
   def __unicode__(self):
