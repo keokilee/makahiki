@@ -51,7 +51,7 @@ class Commitment(CommonBase):
   """Commitments involve non-verifiable actions that a user can commit to.
   Typically, they will be worth fewer points than activities."""
   
-  title = models.CharField(max_length=200)
+  title = models.CharField(max_length=200, default="I will")
   description = models.TextField(help_text=MARKDOWN_TEXT)
   point_value = models.IntegerField()
   users = models.ManyToManyField(User, through="CommitmentMember")
