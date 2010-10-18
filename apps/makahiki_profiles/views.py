@@ -14,6 +14,7 @@ from django.views.decorators.cache import never_cache
 
 from makahiki_base import restricted
 from makahiki_profiles.forms import ProfileForm
+from makahiki_facebook.models import FacebookProfile
 
 # if "notification" in settings.INSTALLED_APPS:
 #     from notification import models as notification
@@ -129,10 +130,9 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
       fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
       if fb_user:
         try:
-          graph = facebook.GraphAPI(fb_user["access_token"])
-          fb_profile = graph.get_object("me")
-        except facebook.GraphAPIError:
-          pass
+          fb_profile = request.user.facebookprofile
+        except FacebookProfile.DoesNotExist:
+          fb_profile = FacebookProfile.create_from_fb_user(request.user, fb_user)
         
     except ImportError:
       pass
@@ -143,5 +143,3 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
         "fb_profile": fb_profile,
         "fb_enabled": fb_enabled,
     }, context_instance=RequestContext(request))
-
-

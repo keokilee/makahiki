@@ -8,7 +8,7 @@
     
     <h1>{% trans "Edit Profile" %}</h1>
     {% if fb_profile %}
-      Connected to <a href="{{fb_profile.link}}">{{fb_profile.name}}</a>
+      Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a>
     {% else %}
       {% if fb_enabled %}
         <fb:login-button id="fb_login" perms="publish_stream" onlogin="location.reload()"></fb:login-button>
