@@ -7,7 +7,18 @@ from django.forms.util import ErrorList
 from django.core.urlresolvers import reverse
 
 ### Commitment Admin
-admin.site.register(Commitment)
+class CommitmentAdmin(admin.ModelAdmin):
+  fieldsets = (
+    ("Basic Information", {
+      'fields' : ('title', 'description', 'duration', ),
+    }),
+    ("Points", {"fields": ("point_value",)}),
+    ("Ordering", {"fields": ("priority", "category")}),
+  )
+  
+  list_display = ["title", "category", "priority",]
+  
+admin.site.register(Commitment, CommitmentAdmin)
 
 # Category Admin
 admin.site.register(Category)
@@ -186,7 +197,7 @@ class ActivityAdmin(admin.ModelAdmin):
   )
   form = ActivityAdminForm
   inlines = [TextQuestionInline]
-  list_display = ["title", "priority", "is_active", "pub_date", "expire_date",]
+  list_display = ["title", "category", "priority", "is_active", "pub_date", "expire_date",]
   
 admin.site.register(Activity, ActivityAdmin)
 
