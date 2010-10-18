@@ -18,6 +18,24 @@ class CommitmentAdmin(admin.ModelAdmin):
   
   list_display = ["title", "category", "priority",]
   
+  actions = ["delete_selected", "increment_priority", "decrement_priority"]
+  def delete_selected(self, request, queryset):
+    for obj in queryset:
+      obj.delete()
+  delete_selected.short_description = "Delete the selected objects."
+      
+  def increment_priority(self, request, queryset):
+    for obj in queryset:
+      obj.priority += 1
+      obj.save()
+  increment_priority.short_description = "Increment selected objects' priority by 1."
+  
+  def decrement_priority(self, request, queryset):
+    for obj in queryset:
+      obj.priority -= 1
+      obj.save()
+  decrement_priority.short_description = "Decrement selected objects' priority by 1."
+  
 admin.site.register(Commitment, CommitmentAdmin)
 
 # Category Admin
@@ -198,6 +216,24 @@ class ActivityAdmin(admin.ModelAdmin):
   form = ActivityAdminForm
   inlines = [TextQuestionInline]
   list_display = ["title", "category", "priority", "is_active", "pub_date", "expire_date",]
+  
+  actions = ["delete_selected", "increment_priority", "decrement_priority"]
+  def delete_selected(self, request, queryset):
+    for obj in queryset:
+      obj.delete()
+  delete_selected.short_description = "Delete the selected objects."
+  
+  def increment_priority(self, request, queryset):
+    for obj in queryset:
+      obj.priority += 1
+      obj.save()
+  increment_priority.short_description = "Increment selected objects' priority by 1."
+  
+  def decrement_priority(self, request, queryset):
+    for obj in queryset:
+      obj.priority -= 1
+      obj.save()
+  decrement_priority.short_description = "Decrement selected objects' priority by 1."
   
 admin.site.register(Activity, ActivityAdmin)
 
