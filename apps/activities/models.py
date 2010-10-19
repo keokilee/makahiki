@@ -188,9 +188,10 @@ class Activity(CommonBase):
     verbose_name_plural = "activities"
   
   CONFIRM_CHOICES = (
-    ('text', 'Text'),
+    ('text', 'Question and Answer'),
     ('image', 'Image Upload'),
-    ('code', 'Confirmation Code')
+    ('code', 'Confirmation Code'),
+    ('free', 'Free Response'),
   )
   
   title = models.CharField(max_length=200)
@@ -234,7 +235,7 @@ class Activity(CommonBase):
   confirm_prompt = models.TextField(
                     blank=True, 
                     verbose_name="Confirmation prompt",
-                    help_text="Text to display to user when requesting points (for images and codes)."
+                    help_text="Text to display to user when requesting points (for images, free response, and codes)."
                    )
   is_event = models.BooleanField(default=False, verbose_name="Is Event?")
   event_date = models.DateTimeField(

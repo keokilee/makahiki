@@ -315,6 +315,8 @@ def __request_activity_points(request, activity_id):
   if request.method == "POST":
     if activity.confirm_type == "image":
       form = ActivityImageForm(request.POST, request.FILES)
+    elif activity.confirm_type == "free":
+      form = ActivityFreeResponseForm(request.POST)
     else:
       form = ActivityTextForm(request.POST)
       
@@ -338,7 +340,7 @@ def __request_activity_points(request, activity_id):
         activity_member.approval_status = "pending"
         user.message_set.create(message="Your request has been submitted!")
         
-      else:
+      elif activity.confirm_type == "code":
         # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
         code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
         code.is_active = False
@@ -347,6 +349,11 @@ def __request_activity_points(request, activity_id):
         points = activity_member.activity.point_value
         message = "You have been awarded %d points for your participation!" % points
         user.message_set.create(message=message)
+        
+      elif activity.confirm_type == "free":
+        activity_member.response = form.cleaned_data["response"]
+        activity_member.approval_status = "pending"
+        user.message_set.create(message="Your request has been submitted!")
 
       activity_member.save()
       return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
@@ -357,6 +364,8 @@ def __request_activity_points(request, activity_id):
   elif activity.confirm_type == "text":
     question = activity.pick_question()
     form = ActivityTextForm(initial={"question" : question.pk})
+  elif activity.confirm_type == "free":
+    form = ActivityFreeResponseForm()
   else:
     form = ActivityTextForm()
     

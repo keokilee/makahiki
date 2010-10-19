@@ -8,7 +8,6 @@ from activities import *
 from activities.models import Activity, ActivityMember, Commitment, CommitmentMember
 
 class ActivitiesUnitTestCase(TestCase):
-  
   def setUp(self):
     """Generate test user and activity. Set the competition settings to the current date for testing."""
     self.user = User(username="test_user", password="changeme")
@@ -207,6 +206,14 @@ class ActivitiesFunctionalTestCase(TestCase):
     response = self.client.get('/activities/activity_list/')
     activities = [member.activity for member in response.context["user_members"]]
     self.failUnless(activity in activities)
+    
+  def testRequestActivityPoints(self):
+    """Test that we can get to the form for getting points."""
+    activity = Activity.objects.exclude(
+      activitymember__user=self.user,
+    )[0]
+    response = self.client.get('/activities/request_activity_points/%d/' % activity.pk)
+    self.assertTemplateUsed(response, "activities/request_activity_points.html")
     
   def testApprovedActivity(self):
     """Test that approved activities appear in the correct location."""

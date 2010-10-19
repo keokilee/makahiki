@@ -29,6 +29,9 @@ class ScoreboardEntry(models.Model):
   round_name = models.CharField(max_length="30", choices=_get_rounds(), editable=False)
   points = models.IntegerField(default=0, editable=False)
   last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
+  
+  class Meta:
+    unique_together = (("profile", "round_name",),)
 
 def _get_available_themes():
   """Retrieves the available themes from the media folder."""

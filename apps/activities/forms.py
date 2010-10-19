@@ -25,6 +25,10 @@ class ActivityTextForm(forms.Form):
       
     return cleaned_data
   
+class ActivityFreeResponseForm(forms.Form):
+  response = forms.CharField(widget=forms.Textarea)
+  comment = forms.CharField(widget=forms.Textarea, required=False)
+  
 class ActivityImageForm(forms.Form):
   image_response = forms.ImageField()
   comment = forms.CharField(widget=forms.Textarea, required=False)
