@@ -66,7 +66,10 @@ class MobileRoundStandingsTestCase(TestCase):
     standings = get_mobile_standings(entry.profile.user)
     test_string = "You are #2 in overall points for %s." % self.current_round
     diff = self.all_entries[0].points - self.all_entries[1].points
-    test_string += " Get %d more points to move to #1." % diff
+    if diff < 2:
+      test_string += " Get 1 more point to move to #1."
+    else:
+      test_string += " Get %d more points to move to #1." % diff
     self.assertEqual(standings["overall"], test_string)
 
     entry.points += diff + 1 # Moves user to first place.
