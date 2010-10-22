@@ -185,11 +185,12 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
         pass
         
     if activity.confirm_type == "text" and count == 0:
-      activity.delete()
+      # Why did I do this?
+      # activity.delete()
       raise forms.ValidationError("At least one question is required if the activity's confirmation type is text.")
         
     elif activity.confirm_type != "text" and count > 0:
-      activity.delete()
+      # activity.delete()
       raise forms.ValidationError("Questions are not required for this confirmation type.")
 
 class TextQuestionInline(admin.TabularInline):
