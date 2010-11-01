@@ -21,3 +21,9 @@
 .setup-navigation {
   padding: 10px 0 30px 0;
 }
+
+/* Styles for the profile page. */
+#setup-uh-info ul {
+  list-style: none;
+  padding: 0;
+}

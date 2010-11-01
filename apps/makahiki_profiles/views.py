@@ -132,7 +132,7 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
         try:
           fb_profile = request.user.facebookprofile
         except FacebookProfile.DoesNotExist:
-          fb_profile = FacebookProfile.create_from_fb_user(request.user, fb_user)
+          fb_profile = FacebookProfile.create_or_update_from_fb_user(request.user, fb_user)
         
     except ImportError:
       pass
