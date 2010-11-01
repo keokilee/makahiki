@@ -1,0 +1,13 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+
+{% block head_title %}{% trans "The Kukui Cup | Terms and Conditions" %}{% endblock %}
+
+{% block body %}
+  <div id="terms" class="makahiki_content" style="padding-top: 10px">
+    {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
+  </div>
+</div>
+{% endblock %}
