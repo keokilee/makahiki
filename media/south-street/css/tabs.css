@@ -2,7 +2,7 @@
 
 #tabhead {
 /*    background-color: #666;*/
-  margin: 0px -6px 26px -3px;
+  margin: 0px -6px 23px -3px;
 }
 
 #tabhead ul {
@@ -42,7 +42,7 @@
 /* SUBNAV */
 
 #subnav {
-    background-color: #2694E8;
+    background-color: #2F6B00;
 }
 
 #subnav a {
@@ -54,7 +54,7 @@
 #goals #goals_subnav,
 #floor #floor_subnav,
 #profile #profile_subnav {
-  background-color: #3BAAE3;
+  background-color: #459E00;
 }
 
 #subnav ul {

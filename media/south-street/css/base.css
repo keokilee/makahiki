@@ -4,28 +4,17 @@ html {
 }
 
 body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    background: url("images/ui-bg_highlight-hard_100_f2f5f7_1x100.png") repeat-x scroll 50% top #F2F5F7;
-    text-align: center;
-}
-
-#container {
-  width: 1000px;
-  margin: 0 auto;
-  text-align: left;
+    background: url("images/ui-bg_highlight-hard_100_f5f3e5_1x100.png") repeat-x scroll 50% top #F5F3E5;
 }
 
 a:link {
     color: #555;
     font-weight: bold;
-}
-
-#login a .button-text {
-  margin: 0pt; 
-  padding: 0pt; 
-  font-size: 0.8em;
-  color: #2779AA;
 }
 
 a:visited {
@@ -46,6 +35,11 @@ hr.clear {
     clear: both;
 }
 
+div#header {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 div#website_title {
   width: 70%;
   float: left;
@@ -53,7 +47,7 @@ div#website_title {
 }
 
 div#website_title h1 {
-    color: #3BAAE3;
+    color: #459E00;
     /*text-shadow: 1px 1px 1px #444;*/
     padding: 0 0 0.2em 0;
     margin: 0;
@@ -63,7 +57,7 @@ div#website_title h1 {
 
 div#website_title h1 a {
     text-decoration: none;
-    color: #3BAAE3;
+    color: #459E00;
 }
 
 div#login {
@@ -77,12 +71,18 @@ div#login h5 {
   margin: 0;
 }
 
+#login a .button-text {
+  margin: 0pt; padding: 0pt; font-size: 0.8em; color: white;
+}
+
 #color-wrapper {
     background-color: #888;
 }
 
 #outline {
-    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    clear: left;
 }
 
 #content-outline {
@@ -113,14 +113,14 @@ div#login h5 {
 #content h2 {
     font-size: 1.7em;
     font-weight: normal;
-    color: #3BAAE3;
+    color: #459E00;
     margin: 1em 0 0.5em 0;
 }
 
 #content h3 {
     font-size: 15px;
     font-weight: normal;
-    color: #3BAAE3;
+    color: #459E00;
     margin: 1em 0 0.5em 0;
 }
 
@@ -141,7 +141,9 @@ div#login h5 {
 }
 
 #footer {
+    margin: 0 auto;
     padding: 1px 0 80px 0;
+    width:  1000px;
     font-size: 0.7em;
 }
 
@@ -189,8 +191,7 @@ ul#messages li a {
 }
 
 #content .makahiki_content_title {
-  /*background-color: #459E00;*/
-  background: url("images/ui-bg_glass_50_3baae3_1x400.png") repeat-x scroll 50% 50% #3BAAE3;
+  background-color: #459E00;
   color: white;
   margin: 0px;
   padding: 5px;
@@ -202,12 +203,13 @@ ul#messages li a {
   margin: 0px 0px 15px 0px;
   padding: 0px 10px;
   background: none;
-  background-color: #F2F5F7;
+  background-color: #F5F3E5;
 }
 
 /* Content Header */
 #content #content_header {
-	margin: 0px auto;
+  width: auto;
+	margin: 0px;
 	padding: 10px;
 }
 

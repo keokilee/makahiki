@@ -36,7 +36,7 @@
 }
 
 #resource_table tr:hover {
-  background-color: #DFD9C3;
+  background-color: #DDDDDD;
   font-weight: bold;
   cursor: pointer;
 }
@@ -62,8 +62,8 @@
   display:block;
   position:absolute;
   top:1em; left:2em; width:15em;
-  border:1px solid #327E04;
-  background-color:#459E00;
+  border:1px solid #2694E8;
+  background-color:#3BAAE3;
   color: white;
   padding: 5px;
   font-weight: normal;
