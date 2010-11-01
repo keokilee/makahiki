@@ -1,0 +1,19 @@
+/*Styles for the terms page.*/
+#terms-opt-in {
+  float:left;
+}
+
+#terms-opt-out {
+  float:right;
+}
+
+.terms-button {
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.terms-button-text {
+  font-weight: bold;
+  font-size: 16px;
+}

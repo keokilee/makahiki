@@ -5,9 +5,49 @@
 
 {% block head_title %}{% trans "The Kukui Cup | Terms and Conditions" %}{% endblock %}
 
+{% block extra_head %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".terms-button").click(function() {
+      this.parentNode.submit();
+    });
+  });
+</script>
+{% endblock %}
+
 {% block body %}
-  <div id="terms" class="makahiki_content" style="padding-top: 10px">
-    {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
-  </div>
+<div id="terms" class="makahiki_content" style="padding-top: 10px">
+  {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
+</div>
+
+<!-- Render the opt in form -->
+<div id="terms-opt-in" class="makahiki_content">
+  <form action="/setup/terms/" method="post">
+    {{opt_in_form.as_p}}
+    {% if opt_in_form.accept %}
+      {{opt_in_form.accept.errors}}
+    {% endif %}
+    <div class="terms-button option-link ui-state-highlight ui-corner-all" href="#" onclick="parentNode.submit()">
+      <div class="button-text">
+        <div class="terms-button-text">Yes!</div>
+        <div class="terms-button-subtext">You can use my data for research</div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Render the opt out form -->
+<div id="terms-opt-out" class="makahiki_content">
+  <form action="/setup/terms/" method="post">
+    {{opt_out_form.as_p}}
+    <div class="terms-button option-link ui-state-error ui-corner-all">
+      <div class="button-text">
+        <div class="terms-button-text">No!</div>
+        <div class="terms-button-subtext">
+          Don&apos;t use my data for research, but I still wish to participate in the Kukui Cup
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 {% endblock %}
