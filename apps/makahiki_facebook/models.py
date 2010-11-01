@@ -16,7 +16,7 @@ class FacebookProfile(models.Model):
   user = models.OneToOneField(User)
   
   @staticmethod
-  def create_from_fb_user(user, fb_user):
+  def create_or_update_from_fb_user(user, fb_user):
     """
     Saves the data retrieved by the cookie so that the we don't need to 
     constantly retrieve data from Facebook. Returns None if the user 
@@ -32,7 +32,7 @@ class FacebookProfile(models.Model):
     except facebook.GraphAPIError:
       return None
     
-    fb_profile = FacebookProfile(user=user)
+    fb_profile, created = FacebookProfile.objects.get_or_create(user=user)
     for key in graph_profile.keys():
       value = graph_profile[key]
       
