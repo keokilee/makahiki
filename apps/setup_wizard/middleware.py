@@ -11,9 +11,9 @@ class CheckSetupMiddleware(object):
     user = request.user
     path = request.path
     # We need to check if the user is going to setup so we don't get caught in a redirect loop.
-    # The page also needs to load it's resources.
+    # We do need to filter out requests for CSS and other resources.
     pattern = re.compile("^/(setup|site_media|media)/")
     if user.is_authenticated() and not pattern.match(path) and not user.get_profile().setup_complete:
       # user.message_set.create(message="%s did not complete the setup." % user.username)
-      return HttpResponseRedirect(reverse("setup_terms"))
+      return HttpResponseRedirect(reverse("setup_intro"))
     return None

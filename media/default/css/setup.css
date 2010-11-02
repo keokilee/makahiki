@@ -1,6 +1,21 @@
+/* Styles for the setup header.*/
+
+#setup-header {
+  text-align: center;
+}
+
+#setup-intro .terms-button {
+  display: block;
+  margin: 0 auto;
+}
+
 /*Styles for the terms page.*/
+#terms .ui-accordion .makahiki_content_body {
+  height: 300px;
+}
+
 #terms-opt-in {
-  float:left;
+  float:right;
 }
 
 #terms-opt-out {

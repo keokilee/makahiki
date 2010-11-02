@@ -16,38 +16,61 @@
 {% endblock %}
 
 {% block body %}
-<div id="terms" class="makahiki_content" style="padding-top: 10px">
-  {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
-</div>
-
-<!-- Render the opt in form -->
-<div id="terms-opt-in" class="makahiki_content">
-  <form action="/setup/terms/" method="post">
-    {{opt_in_form.as_p}}
-    {% if opt_in_form.accept %}
-      {{opt_in_form.accept.errors}}
-    {% endif %}
-    <div class="terms-button option-link ui-state-highlight ui-corner-all" href="#" onclick="parentNode.submit()">
-      <div class="button-text">
-        <div class="terms-button-text">Yes!</div>
-        <div class="terms-button-subtext">You can use my data for research</div>
-      </div>
+<div id="setup-terms" class="makahiki_content" style="padding-top: 10px">
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Introduction: Step 2 of 7
     </div>
-  </form>
-</div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+      {% include "setup_wizard/header.html" %}
+      
+      <p>The Kukui Cup competition is a part of a University of Hawaii research project on energy. Please read the following 
+      information and make a selection below.</p>
+    </div>
+  </div>
+  
+  <div id="terms" style="padding-top: 10px">
+    {% gblock "competition_content_5" for "gblocks.TitleAndText" %}
+  </div>
 
-<!-- Render the opt out form -->
-<div id="terms-opt-out" class="makahiki_content">
-  <form action="/setup/terms/" method="post">
-    {{opt_out_form.as_p}}
-    <div class="terms-button option-link ui-state-error ui-corner-all">
-      <div class="button-text">
-        <div class="terms-button-text">No!</div>
-        <div class="terms-button-subtext">
-          Don&apos;t use my data for research, but I still wish to participate in the Kukui Cup
+  <a class="option-link ui-state-highlight ui-corner-all" href="{% url setup_intro %}" style="float:left">
+    <span class="ui-icon ui-icon-arrowreturnthick-1-w"></span>
+    <span class="button-text">
+      Back
+    </span>
+  </a>
+
+  <!-- Render the opt in form -->
+  <div id="terms-opt-in" class="makahiki_content">
+    <form action="/setup/terms/" method="post">
+      {{opt_in_form.as_p}}
+      {% if opt_in_form.accept %}
+        {{opt_in_form.accept.errors}}
+      {% endif %}
+      <div class="terms-button option-link ui-state-highlight ui-corner-all" href="#" onclick="parentNode.submit()">
+        <div class="button-text">
+          <div class="terms-button-text">I Agree!</div>
+          <div class="terms-button-subtext">You can use my data for research</div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
+  <!-- Render the opt out form -->
+  {% comment %}
+  <div id="terms-opt-out" class="makahiki_content">
+    <form action="/setup/terms/" method="post">
+      {{opt_out_form.as_p}}
+      <div class="terms-button option-link ui-state-error ui-corner-all">
+        <div class="button-text">
+          <div class="terms-button-text">No!</div>
+          <div class="terms-button-subtext">
+            Don&apos;t use my data for research, but I still wish to participate in the Kukui Cup
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endcomment %}
 </div>
 {% endblock %}
