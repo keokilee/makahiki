@@ -2,7 +2,7 @@
 --find-links=http://pypi2.pinaxproject.com
 
 # Upgrade Django.
-Django==1.2.1
+Django==1.2.3
 
 # Get all requirements formerly known as "external_libs" explicitly
 # hashlib

@@ -25,11 +25,13 @@ If you're on Windows, there's also a screencast on installing Pinax in Windows o
 * Once those are set up, send me your Git username so that you can be added as a collaborator.
 * When you are added as a collaborator, you should be able to check out the code by using the private url.  Type `git clone git@github.com:keokilee/makahiki.git` to check out the code.  This will create the new folder and download the code from the repository.
 
-## OPTIONAL: Install South for database migrations
+## Grabbing External Dependencies
+The following steps are to download additional libraries and upgrade some of the default ones.
 
-If you plan on making changes to the database models, it is highly recommended that you use South.  With South, you do not have to blow away the database every time you make a change.  South is able to create intelligent migrations depending on what has changed in a model.  Even if you do not make changes to the database models, it is still recommended because other developers may be using it.
-
-To install South, please go to their [installation wiki](http://south.aeracode.org/docs/installation.html).  If you are not familiar with South, you might want to go through their [tutorial](http://south.aeracode.org/docs/tutorial/index.html) once you are set up.
+* cd into the makahiki folder.
+* Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
+* Check if you have pip installed by typing `pip help`.  If it works, great.  Otherwise, type `easy_install pip` to install it.
+* Type `pip install -r requirements.txt` from the application root.  This will load the dependencies in requirements.txt.
 
 ## Setting up Kukui Cup Pinax
 * cd into the makahiki folder.
@@ -40,8 +42,9 @@ To install South, please go to their [installation wiki](http://south.aeracode.o
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
-* If you have installed South, then you will also need to run `python manage.py migrate` to sync the migrations.
-* The database fixtures should be automatically loaded.  If they are not, type `python manage.py loaddata fixtures/initial_data.json` to load the data in the fixtures folder.
+* NOTE: syncdb may fail at this point because some apps depend on tables that are not loaded until the next step.
+* Run `python manage.py migrate` to sync the migrations.
+* To load some sample data into the application, type `python manage.py loaddata fixtures/base_data.json`.
 
 ## Running the server
 * If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
