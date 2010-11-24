@@ -37,6 +37,11 @@
   padding: 10px 0 30px 0;
 }
 
+/* Styles for the Facebook Connect page.*/
+#setup-facebook .ui-accordion .makahiki_content_body {
+  padding-bottom: 20px;
+}
+
 /* Styles for the profile page. */
 #setup-uh-info ul {
   list-style: none;
