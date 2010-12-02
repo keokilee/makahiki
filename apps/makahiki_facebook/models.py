@@ -14,9 +14,10 @@ class FacebookProfile(models.Model):
   profile_link = models.URLField()
   profile_id = models.BigIntegerField()
   user = models.OneToOneField(User)
+  can_post = models.BooleanField(default=False)
   
   @staticmethod
-  def create_from_fb_user(user, fb_user):
+  def create_or_update_from_fb_user(user, fb_user):
     """
     Saves the data retrieved by the cookie so that the we don't need to 
     constantly retrieve data from Facebook. Returns None if the user 
@@ -32,7 +33,12 @@ class FacebookProfile(models.Model):
     except facebook.GraphAPIError:
       return None
     
-    fb_profile = FacebookProfile(user=user)
+    fb_profile = None
+    try:
+      fb_profile = user.facebookprofile
+    except FacebookProfile.DoesNotExist:
+      fb_profile = FacebookProfile(user=user)
+      
     for key in graph_profile.keys():
       value = graph_profile[key]
       

@@ -11,7 +11,7 @@
       Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a>
     {% else %}
       {% if fb_enabled %}
-        <fb:login-button id="fb_login" perms="publish_stream" onlogin="location.reload()"></fb:login-button>
+        <fb:login-button id="fb_login" perms="publish_stream,offline_access" onlogin="location.reload()"></fb:login-button>
       {% endif %}
     {% endif %}
     

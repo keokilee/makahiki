@@ -1,0 +1,60 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+{% load markup %}
+{% load frontendadmin_tags %}
+
+{% block head_title %}{% trans "The Kukui Cup | Setup Profile" %}{% endblock %}
+
+{% block body %}
+<div id="facebook-connect" class="makahiki_content" style="padding-top: 10px">
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Set Up Your Profile
+    </div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+      <div id="setup-uh-info">
+        <h3>UH Information</h3>
+        <p>Please verify the following information is correct. Click <a href="#">here</a> if there are any errors.</p>
+        <ul>
+          <li>Username: {{user.username}}</li>
+          <li>Name: {{user.get_profile.first_name}} {{user.get_profile.last_name}}</li>
+          <li>Dorm: {{user.get_profile.floor.dorm}}</li>
+          <li>Lounge: {{user.get_profile.floor.number}}</li>
+        </ul>
+      </div>
+      
+      {% if user.facebookprofile %}
+        <div id="setup-facebook-info">
+          <h3>Facebook Connect</h3>
+          <p>
+            <img src="http://graph.facebook.com/{{user.facebookprofile.profile_id}}/picture"/>
+            Connected to the Facebook account <a href="{{user.facebookprofile.profile_link}}" target="_blank">{{user.facebookprofile.name}}</a>
+          </p>
+        </div>
+      {% endif %}
+      
+      <h3>Kukui Cup Info</h3>
+      <form action="{% url setup_profile %}" method="POST">
+        {{form.as_p}}
+        <div class="setup-navigation">
+          <a class="option-link ui-state-highlight ui-corner-all" href="{% url setup_facebook %}" style="float:left">
+            <span class="ui-icon ui-icon-arrowreturnthick-1-w"></span>
+            <span class="button-text">
+              Back
+            </span>
+          </a>
+        
+          <a class="option-link ui-state-highlight ui-corner-all" href="#" onclick="form.submit()" style="float:right">
+            <span class="ui-icon ui-icon-power"></span>
+            <span class="button-text">
+              Get Nuts!
+            </span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

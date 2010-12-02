@@ -17,6 +17,8 @@ def competition(request):
   facebook_app_id = settings.FACEBOOK_APP_ID
   
   return {
+    "COMPETITION_NAME": settings.COMPETITION_NAME,
+    "COMPETITION_POINT_NAME": settings.COMPETITION_POINT_NAME or "point",
     "THEME_NAME": theme_name, 
     "THEME": theme_dict,
     "ROUNDS": json.dumps(get_round_info()),

@@ -1,0 +1,36 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load generic_flatblocks %}
+{% load markup %}
+{% load frontendadmin_tags %}
+
+{% block head_title %}{% trans "The Kukui Cup | Welcome!" %}{% endblock %}
+
+{% block body %}
+<div id="setup-intro" class="makahiki_content" style="padding-top: 10px">
+  <div class="ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="makahiki_content_title ui-accordion-header ui-corner-top">
+      Introduction: Step 1 of 7
+    </div>
+    <div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
+      {% include "setup_wizard/header.html" %}
+      
+      <p>
+        You have successfully logged into the {{COMPETITION_NAME}} website.  You will stay logged into the website 
+        until you click the logout button, so if you are using a public computer remember ot log out when you are 
+        finished just like you would log out of Facebook or your email.
+      </p>
+      
+      <p>Now we will step you through setting up your profile and getting your first {{COMPETITION_POINT_NAME}}s.</p>
+    </div>
+    
+    <a class="terms-button option-link ui-state-highlight ui-corner-all" href="{% url setup_terms %}">
+      <div class="button-text">
+        <div class="terms-button-text">Next</div>
+        <div class="terms-button-subtext">Terms and conditions</div>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

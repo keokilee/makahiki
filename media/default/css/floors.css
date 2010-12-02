@@ -1,23 +1,29 @@
-#floor_left {
+/*#floor_left {
   float: left;
-  width: 255px;
+  width: 245px;
 }
 
 #floor_center {
   float: left;
   width: 510px;
   padding: 0;
+  padding-left: 5px;
 }
 
 #floor_right {
-  float: left;
+  float: right;
   width: 210px;
-  margin: 15px 5px 0 15px;
-}
+  margin: 15px 10px 0 15px;
+}*/
 
 .floor_content {
   margin: 10px 0 0 15px;
   padding: 5px 0px;
+}
+
+#floor_left .floor_content {
+  padding: 5px 5px 0 10px;
+  margin: 10px 0 0 0;
 }
 
 /* Wall styles */
@@ -29,7 +35,7 @@ ul#wall_posts {
 
 ul#wall_posts li {
   padding: 5px 0;
-  border-bottom: 1px solid #DFD9C3;
+  border-bottom: 1px solid #DDDDDD;
 }
 
 li a.wall_image {
@@ -38,7 +44,7 @@ li a.wall_image {
 }
 
 ul#wall_posts .user_post {
-  background-color: #DED8C4;
+  background-color: #DDDDDD;
   padding: 5px 0 0 5px;
 }
 
@@ -50,7 +56,7 @@ li .wall_text {
 
 li .wall_text a {
   text-decoration: none;
-  color: #2F6B00
+  color: #2779AA
 }
 
 li .wall_text p {
@@ -69,7 +75,7 @@ li .post_clear {
 
 li .system_text a {
   text-decoration: none;
-  color: #2F6B00
+  color: #2779AA
 }
 
 li .system_text span {

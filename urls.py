@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^resources/', include('resources.urls')),
     url(r'^energy_data/$', "energy_data.views.index", name="energy_data"),
     url(r'^m/', include('mobile.urls')),
+    url(r'^setup/', include('setup_wizard.urls')),
     
     # Kukui Cup Provided
     (r'^profiles/', include('makahiki_profiles.urls')),
