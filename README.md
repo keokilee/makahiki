@@ -94,5 +94,12 @@ Installed 109 object(s) from 2 fixture(s)
 ## Running tests
 While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
 
+## Other resources
+
+The following tutorials may be helpful when learning about Django and the various packages used by the system.
+
+* [Django Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/)
+* [South Tutorial](http://south.aeracode.org/docs/tutorial/part1.html)
+
 ## Further documentation
 For information on editing views, consult the [Editing Views wiki](http://wiki.github.com/keokilee/makahiki/editing-views).
