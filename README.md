@@ -52,44 +52,26 @@ The following steps are to download additional libraries and upgrade some of the
 * Open a browser and go to http://localhost:8000 to see the website.
 
 ## Adding Facebook Integration
-The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, add the following things to your settings.py file.
+The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, it is recommended that you create a `local_settings.py` file and add the settings below.  Otherwise, you can also add these to `settings.py` directly.
 
-`FACEBOOK_APP_ID = '<APP_ID>'
+<pre>
+<code>
+FACEBOOK_APP_ID = '<APP_ID>'
+
 FACEBOOK_API_KEY = '<API_KEY>'
-FACEBOOK_SECRET_KEY = '<SECRET_KEY>'`
+
+FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
+</code>
+</pre>
 
 These can be found in your application's page within the Facebook Developer page.
 
 ## Troubleshooting
-If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  I have created a backup of my contenttypes data that can be used to reload it.  But first, you need to delete the contents of the contenttypes database.
+If you visit http://localhost:8000 and a NoneType exception appears, it is isn't your fault!  Django/Pinax has an issue with dumping and loading fixtures that depend on foreign keys.  In this case, it is the foreign key that connects the django\_generic\_flatblocks\_genericflatblock table to the django\_content\_type table.  There are several ways of fixing this.
 
-Here's a way to do this using the Python shell:
+The most straightforward way to fix this is to use [SQLite Database Browser](http://sqlitebrowser.sourceforge.net/) to update the tables.  Open the database file (by default, it is "dev.db") and browse the data of the "django\_generic\_flatblocks\_genericflatblock" table.  Note the values of the website header field (which is of type "title"), the website footer field (type "text"), the website image field (type "image"), and the homepage\_content\_1 field (type "titleandtext"). Next, browse the contents of the "django\_content\_type" table.  Find the app_label "gblocks" and the names "title", "text", "image", and "titleandtext".  What you need to do is execute SQL to update the entries in the "django\_generic\_flatblocks\_genericflatblock" table.  An example statement is:
 
-1. Type `python manage.py shell` to start the shell.
-2. Import the ContentType model by typing `from django.contrib.contenttypes.models import ContentType`.
-3. Type the following command: `map(lambda c: c.delete(), ContentType.objects.all())`.  What this does is that it loads all of the objects from the database and deletes each one.
-4. Exit the python shell (type `exit()`) and reload the fixtures with `python manage.py loaddata fixtures/*`.
-
-You should see something similar to this:
-
-<pre>
-<code>
-(pinax-env)gelee-macbook-pro:makahiki gelee$ python manage.py shell
-Python 2.6.1 (r261:67515, Jul  7 2009, 23:51:51) 
-[GCC 4.2.1 (Apple Inc. build 5646)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-(InteractiveConsole)
->>> from django.contrib.contenttypes.models import ContentType
->>> map(lambda c: c.delete(), ContentType.objects.all())
-[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
->>> exit()
-(pinax-env)gelee-macbook-pro:makahiki gelee$ python manage.py loaddata fixtures/*
-Installing json fixture 'fixtures/contenttypes_backup' from absolute path.
-Installing json fixture 'fixtures/initial_data' from absolute path.
-Installed 109 object(s) from 2 fixture(s)
-(pinax-env)gelee-macbook-pro:makahiki gelee$
-</code>
-</pre>
+`UPDATE django_generic_flatblocks_genericflatblock SET content_type_id=<value in django_content_type> WHERE content_type_id=<value in django_generic_flatblocks_genericflatblock>;`
 
 ## Running tests
 While Django/Pinax has support for running tests, some of the out of the box tests fail (as of Pinax 0.7.1).  You can run the tests using `python manage.py test`.  I created my own script to only run my own tests in the system.  You can run those tests by typing `python runtests.py`.  These are the same tests that are run by our continuous integration server.
