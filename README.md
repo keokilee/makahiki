@@ -37,7 +37,6 @@ The following steps are to download additional libraries and upgrade some of the
 * cd into the makahiki folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
 * Copy `settings.py.example` to `settings.py`.  This will work as is, but you might want to make a few changes to it depending on your environment.  Some things you might want to change are the database settings, timezone, and the CAS Login server.
-* If you have installed South, you need to edit settings.py and uncomment 'south' from INSTALLED_APPS.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
@@ -57,9 +56,7 @@ The Javascript required to log in to Facebook is included in this application.  
 <pre>
 <code>
 FACEBOOK_APP_ID = '&lt;APP_ID&gt;'
-
 FACEBOOK_API_KEY = '&lt;API_KEY&gt;'
-
 FACEBOOK_SECRET_KEY = '&lt;SECRET_KEY&gt;'
 </code>
 </pre>

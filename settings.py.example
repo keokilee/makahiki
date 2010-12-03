@@ -210,7 +210,7 @@ INSTALLED_APPS = (
     'django_generic_flatblocks.contrib.gblocks',
     
     # migration support. comment out if module is not installed.
-    # 'south',
+    'south',
 )
 
 FIXTURE_DIRS = [
