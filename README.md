@@ -56,11 +56,11 @@ The Javascript required to log in to Facebook is included in this application.  
 
 <pre>
 <code>
-FACEBOOK_APP_ID = '<APP_ID>'
+FACEBOOK_APP_ID = '&lt;APP_ID&gt;'
 
-FACEBOOK_API_KEY = '<API_KEY>'
+FACEBOOK_API_KEY = '&lt;API_KEY&gt;'
 
-FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
+FACEBOOK_SECRET_KEY = '&lt;SECRET_KEY&gt;'
 </code>
 </pre>
 
