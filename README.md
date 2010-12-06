@@ -73,6 +73,11 @@ While Django/Pinax has support for running tests, some of the out of the box tes
 
 ## Other resources
 
+Here are some online Python books that may be helpful when learning the language.
+
+* [Dive Into Python](http://diveintopython.org/)
+* [Learn Python the Hard Way](http://learnpythonthehardway.org/index) (more geared toward people new to coding)
+
 The following tutorials may be helpful when learning about Django and the various packages used by the system.
 
 * [Django Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/)
