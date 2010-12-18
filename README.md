@@ -29,7 +29,7 @@ The following steps are to download additional libraries and upgrade some of the
 * cd into the makahiki folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
 * Check if you have pip installed by typing `pip help`.  If it works, great.  Otherwise, type `easy_install pip` to install it.
-* Type `pip install -r requirements.txt` from the application root.  This will load the dependencies in requirements.txt.
+* Type `pip install -r requirements.pip` from the application root.  This will load the dependencies in requirements.pip.
 
 ## Setting up Kukui Cup Pinax
 * cd into the makahiki folder.
