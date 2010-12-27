@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.conf import settings
 
 from standings import get_all_standings
-from floors.models import Dorm
+from components.floors.models import Dorm
 
 def rounds(request):
   """Returns a dictionary containing competition dates."""

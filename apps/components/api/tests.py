@@ -5,9 +5,9 @@ from django.test import TestCase
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-from floors.models import Floor
-from floors.models import Dorm
-from standings import MAX_INDIVIDUAL_STANDINGS
+from components.floors.models import Floor
+from components.floors.models import Dorm
+from components.standings import MAX_INDIVIDUAL_STANDINGS
 
 class JsonApiFunctionalTestCase(TestCase):
   """

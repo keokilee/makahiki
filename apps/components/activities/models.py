@@ -7,8 +7,8 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 
-from floors.models import Post
-from makahiki_base.models import Like
+from components.floors.models import Post
+from components.makahiki_base.models import Like
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."

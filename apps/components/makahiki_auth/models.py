@@ -1,4 +1,4 @@
-from django_cas.backends import CASBackend, _verify
+from components.django_cas.backends import CASBackend, _verify
 from django.contrib.auth.models import User, AnonymousUser
 
 class MakahikiCASBackend(CASBackend):
