@@ -4,7 +4,7 @@ import string
 
 from django.contrib.contenttypes import generic
 
-from makahiki_base.models import Like
+from components.makahiki_base.models import Like
 
 
 # Create your models here.

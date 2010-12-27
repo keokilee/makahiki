@@ -10,11 +10,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.cache import never_cache
 
-from makahiki_base.models import Like
+from components.makahiki_base.models import Like
 
-from resources import DEFAULT_NUM_RESOURCES
-from resources.models import Resource
-from resources.forms import TopicSelectForm
+from components.resources import DEFAULT_NUM_RESOURCES
+from components.resources.models import Resource
+from components.resources.forms import TopicSelectForm
 # Create your views here.
 
 @never_cache

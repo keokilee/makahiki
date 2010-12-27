@@ -1,6 +1,6 @@
 from django import forms
 
-from resources.models import Topic
+from components.resources.models import Topic
   
 class TopicChoiceField(forms.ModelMultipleChoiceField):
   """Custom choice field to customize the label for each topic."""
