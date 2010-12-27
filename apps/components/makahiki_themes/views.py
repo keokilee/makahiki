@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from makahiki_themes.forms import ThemeSelect
+from components.makahiki_themes.forms import ThemeSelect
 
 def change_theme(request):
   """Change the current theme."""
