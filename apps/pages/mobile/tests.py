@@ -5,9 +5,9 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from floors.models import Floor
-from makahiki_profiles.models import ScoreboardEntry, Profile
-from mobile import get_mobile_standings
+from components.floors.models import Floor
+from components.makahiki_profiles.models import ScoreboardEntry, Profile
+from pageslmobile import get_mobile_standings
     
 class MobileRoundStandingsTestCase(TestCase):
   """Tests the generation of standings that check a user's placement in a round."""

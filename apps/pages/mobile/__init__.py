@@ -1,7 +1,7 @@
 import simplejson as json
 
-from makahiki_base import get_current_round
-from standings import get_standings_for_user
+from components.makahiki_base import get_current_round
+from components.standings import get_standings_for_user
 
 def get_mobile_standings(user):
   """
