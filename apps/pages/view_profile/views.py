@@ -68,7 +68,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
     
     # Load activities for the user.
     try:
-      from activities import get_incomplete_task_members
+      from compoents.activities import get_incomplete_task_members
       return_dict["activities_enabled"] = True
       
       user_activities = get_incomplete_task_members(other_user)
@@ -80,7 +80,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Load standings for user.
     try:
-      from standings import generate_standings_for_profile
+      from coponents.standings import generate_standings_for_profile
       
       return_dict["standings"] = generate_standings_for_profile(other_user, is_me)
       
@@ -89,7 +89,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Retrieve the current energy goal.
     try:
-      from goals import get_info_for_user
+      from components.energy_goals import get_info_for_user
       
       if is_me:
         return_dict["energy_goal"] = get_info_for_user(other_user)
