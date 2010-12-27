@@ -8,7 +8,7 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
-from floors.models import Floor
+from components.floors.models import Floor
 
 class InvalidRoundException(Exception):
   def __init__(self, value):

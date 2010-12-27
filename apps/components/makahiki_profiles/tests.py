@@ -4,9 +4,9 @@ from django.conf import settings
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from activities.models import Activity, ActivityMember
-from floors.models import Floor
-from makahiki_profiles.models import Profile, ScoreboardEntry
+from components.activities.models import Activity, ActivityMember
+from components.floors.models import Floor
+from components.makahiki_profiles.models import Profile, ScoreboardEntry
     
 class ScoreboardEntryUnitTests(TestCase):
   
