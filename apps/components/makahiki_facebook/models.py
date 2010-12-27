@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-import makahiki_facebook.facebook as facebook
+import components.makahiki_facebook.facebook as facebook
 
 # Create your models here.
 
