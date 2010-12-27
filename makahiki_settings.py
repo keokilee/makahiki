@@ -10,6 +10,9 @@ COMPETITION_GROUP_NAME = "Lounge"
 # The theme to use as default. This corresponds to a folder in media that contains the CSS.
 MAKAHIKI_THEME = "default"
 
+# Kukui Cup Template theme setting.
+MAKAHIKI_TEMPLATE_THEME = 'default'
+
 # Theme settings for Makahiki.  Used to aid in styling the Javascript widgets.
 # The system will insert the colors based on the selected theme.  If an entry 
 # for a theme does not exist, default will be used.

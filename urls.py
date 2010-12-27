@@ -11,26 +11,23 @@ admin.autodiscover()
 import os
 
 urlpatterns = patterns('',
-    # some simple pages
-    url(r'^$', "makahiki_base.views.index", name="index"),
-    url(r'^home/$', "makahiki_base.views.homepage", name="home"),
-    url(r'^billboard/$', direct_to_template, {"template": "billboard.html"}, name="billboard"),
-    url(r'^about_us/$', direct_to_template, {"template": "about_us.html"}, name="about_us"),
-    url(r'^rules/$', direct_to_template, {"template": "rules.html"}, name="rules"),
-    url(r'^standings/', include('standings.urls')),
-    url(r'^resources/', include('resources.urls')),
-    url(r'^energy_data/$', "energy_data.views.index", name="energy_data"),
+    # Main pages.
+    url(r'^$', "pages.index.index", name="index"),
+    url(r'^home/$', "pages.home.index", name="home"),
+    url(r'^activities/', include('pages.activities.urls')),
+    url(r'^energy/', include('pages.energy.urls')),
+    url(r'^help/', include('pages.help.urls')),
+    url(r'^news/', include('pages.news.urls')),
+    url(r'^profile/', include('pages.makahiki_profiles.urls')),
     url(r'^m/', include('mobile.urls')),
-    url(r'^setup/', include('setup_wizard.urls')),
     
-    # Kukui Cup Provided
-    (r'^profiles/', include('makahiki_profiles.urls')),
-    (r'^activities/', include('activities.urls')),
-    (r'^themes/', include('makahiki_themes.urls')),
-    (r'^news/', include('makahiki_base.urls')),
-    (r'^dorms/', include('floors.urls')),
-    (r'^api/', include('api.urls')),
-    (r'^goals/', include('goals.urls')),
+    # Component views.
+    url(r'^account/cas/login/$', 'components.django_cas.views.login'),
+    url(r'^account/cas/logout/$', 'components.django_cas.views.logout'),
+    url(r'^avatar/', include('components.makahiki_avatar.urls')),
+    url(r'^setup/', include('components.setup_wizard.urls')),
+    url(r'^resources/', include('components.resources.urls')),
+    url(r'^themes/', include('components.makahiki_themes.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
@@ -38,10 +35,6 @@ urlpatterns = patterns('',
     
     # pinax provided
     (r'^account/', include('account.urls')),
-    (r'^account/cas/login/$', 'django_cas.views.login'),
-    (r'^account/cas/logout/$', 'django_cas.views.logout'),
-    # (r'^openid/(.*)', PinaxConsumer()),
-    (r'^avatar/', include('makahiki_avatar.urls')),
     (r'^admin/(.*)', admin.site.root),
     # (r'^notifications/', include('notification.urls')),
 )
