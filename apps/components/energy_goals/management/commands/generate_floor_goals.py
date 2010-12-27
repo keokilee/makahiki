@@ -2,8 +2,8 @@ import datetime
 
 from django.core.management.base import BaseCommand
 
-from goals.models import EnergyGoal, FloorEnergyGoal
-from floors.models import Floor
+from components.energy_goals.models import EnergyGoal, FloorEnergyGoal
+from components.floors.models import Floor
 
 class Command(BaseCommand):
   help = "Process the results of goal voting."

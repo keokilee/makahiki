@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.conf import settings
 
-from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
-from goals import generate_floor_goals
-from floors.models import Floor
-from makahiki_profiles.models import Profile, ScoreboardEntry
+from components.energy_goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
+from components.energy_goals import generate_floor_goals
+from components.floors.models import Floor
+from components.makahiki_profiles.models import Profile, ScoreboardEntry
 
 class EnergyGoalUnitTestCase(TestCase):
   def testGetCurrentGoal(self):
@@ -135,57 +135,6 @@ class EnergyGoalHelperTestCase(TestCase):
       
     for floor in Floor.objects.all():
       self.assertEqual(floor.floorenergygoal_set.count(), 1, "Check that there is only one goal.")
-
-class EnergyGoalFunctionalTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
-  
-  def setUp(self):
-    """Create a test goal and log in the user."""
-    self.user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
-    
-    start = datetime.date.today() - datetime.timedelta(days=2)
-    voting_end = start + datetime.timedelta(days=3)
-    end = start + datetime.timedelta(days=7)
-    self.goal = EnergyGoal(
-          start_date=start,
-          voting_end_date=voting_end,
-          end_date=end,
-    )
-    self.goal.save()
-    
-  def testUserVoting(self):
-    """Check that the user goal box appears."""
-    response = self.client.get(reverse("profile_detail", args=(self.user.get_profile().pk,)))
-    goal_dict = response.context["energy_goal"]
-    self.assertTrue(goal_dict.has_key("form"), "Check that the context dictionary contains the voting form.")
-    
-    response = self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
-    
-    # Check the context passed to the template.
-    goal_dict = response.context["energy_goal"]
-    self.assertFalse(goal_dict.has_key("form"), "Check that the context no longer contains a voting form.")
-    self.assertTrue(goal_dict.has_key("results_url"), "Check that the results image is added.")
-    
-  def testUserResults(self):
-    """Check that the results of the vote are accurate."""
-    # Save the current votes.
-    results = self.goal.get_floor_results(self.user.get_profile().floor)
-    votes = 0
-    for result in results:
-      if result["percent_reduction"] == 10:
-        votes = result["votes"]
-        break
-    
-    self.client.post(reverse('goal_vote', args=(self.goal.pk,)), {"percent_reduction": 10}, follow=True)
-    results = self.goal.get_floor_results(self.user.get_profile().floor)
-    
-    for result in results:
-      if result["percent_reduction"] == 10:
-        self.assertEqual(result["votes"], votes + 1, "Check that the number of results for this user's floor has changed.")
-        return
-        
-    self.fail("Could not find the vote matching the percent reduction.")
     
 class FloorEnergyGoalUnitTestCase(TestCase):
   fixtures = ["base_data.json", "user_data.json"]
@@ -236,39 +185,3 @@ class FloorEnergyGoalUnitTestCase(TestCase):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
     
-class FloorEnergyGoalFunctionalTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
-
-  def setUp(self):
-    """Create a test goal and log in the user."""
-    self.user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
-
-    start = datetime.date.today() - datetime.timedelta(days=4)
-    voting_end = start + datetime.timedelta(days=3)
-    end = start + datetime.timedelta(days=7)
-    self.goal = EnergyGoal(
-          start_date=start,
-          voting_end_date=voting_end,
-          end_date=end,
-    )
-    self.goal.save()
-    
-  def testFloorEnergyGoal(self):
-    """Test to check that the goal is available in the web app."""
-    # Create the energy goal
-    floor_goal = FloorEnergyGoal(floor=self.user.get_profile().floor, goal=self.goal, percent_reduction=10)
-    floor_goal.save()
-    
-    response = self.client.get(reverse("profile_detail", args=(self.user.get_profile().pk,)))
-    self.assertEqual(response.status_code, 200, "Test that there is no error in retrieving the profile.")
-    
-    # Check that the goal is added to the context.
-    goal_dict = response.context["energy_goal"]
-    self.assertTrue(goal_dict.has_key("floor_goal"), "Check that the goal is in the context.")
-    self.assertEqual(goal_dict["floor_goal"], floor_goal, "Check that our created goal is in the context.")
-    
-    # Check the contents of the page.
-    label = settings.COMPETITION_GROUP_NAME.lower()
-    goal_text = "Your %s's energy goal is 10%%." % (label,)
-    self.assertContains(response, goal_text, msg_prefix="Test that the goal appears in the contents of the page.")

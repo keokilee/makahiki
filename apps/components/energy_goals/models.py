@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
-from floors.models import Floor
+from components.floors.models import Floor
 
 # Create your models here.
 

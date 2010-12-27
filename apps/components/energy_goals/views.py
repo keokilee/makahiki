@@ -5,9 +5,9 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 
-from goals import generate_chart_url
-from goals.models import EnergyGoal, EnergyGoalVote
-from goals.forms import EnergyGoalVotingForm
+from components.energy_goals import generate_chart_url
+from components.energy_goals.models import EnergyGoal, EnergyGoalVote
+from components.energy_goals.forms import EnergyGoalVotingForm
 
 # Create your views here.
 

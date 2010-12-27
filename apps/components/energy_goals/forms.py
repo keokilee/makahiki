@@ -1,6 +1,6 @@
 from django import forms
 
-from goals.models import EnergyGoalVote
+from components.energy_goals.models import EnergyGoalVote
       
 class EnergyGoalVotingForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):

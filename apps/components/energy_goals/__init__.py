@@ -1,9 +1,9 @@
 import datetime
 
-from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
-from goals.forms import EnergyGoalVotingForm
+from components.energy_goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
+from components.energy_goals.forms import EnergyGoalVotingForm
 
-from floors.models import Floor
+from components.floors.models import Floor
 
 def get_info_for_user(user):
   """Generates a return dictionary for use in rendering the user profile."""
