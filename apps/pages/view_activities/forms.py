@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.util import ErrorList
 
-from activities.models import ConfirmationCode
+from components.activities.models import ConfirmationCode
 
 class ActivityTextForm(forms.Form):
   response = forms.CharField(max_length=255)
