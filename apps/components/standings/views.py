@@ -4,11 +4,10 @@ import datetime
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-
-from floors.models import Dorm
-from standings import get_all_standings, _compare_rounds, MAX_INDIVIDUAL_STANDINGS
-
 from django.views.decorators.cache import never_cache
+
+from components.floors.models import Dorm
+from components.standings import get_all_standings, _compare_rounds, MAX_INDIVIDUAL_STANDINGS
   
 @never_cache
 def index(request, dorm_slug=None):

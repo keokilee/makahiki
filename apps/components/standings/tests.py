@@ -6,9 +6,9 @@ from django.conf import settings
 from django.db.models import Sum, Max
 from django.contrib.auth.models import User
 
-from floors.models import Dorm, Floor
-from makahiki_profiles.models import Profile, ScoreboardEntry
-from standings import get_standings_for_user, get_floor_standings, get_individual_standings, MAX_INDIVIDUAL_STANDINGS
+from components.floors.models import Dorm, Floor
+from components.makahiki_profiles.models import Profile, ScoreboardEntry
+from components.standings import get_standings_for_user, get_floor_standings, get_individual_standings, MAX_INDIVIDUAL_STANDINGS
     
 class UserFloorStandingsTest(TestCase):
   """Tests the generation of standings that check a user's placement in a floor."""

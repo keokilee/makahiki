@@ -5,9 +5,9 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import Sum, Max
 
-from makahiki_base import get_floor_label
-from makahiki_profiles.models import Profile, ScoreboardEntry
-from floors.models import Floor
+from components.makahiki_base import get_floor_label
+from components.makahiki_profiles.models import Profile, ScoreboardEntry
+from components.floors.models import Floor
 
 # Default number of individuals to retrieve standings for when tracking across all dorms.
 MAX_INDIVIDUAL_STANDINGS = 10
