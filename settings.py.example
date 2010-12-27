@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PINAX_THEME = 'default'
 
 # Kukui Cup CSS theme setting.
-MAKAHIKI_THEME = 'blue7'
+MAKAHIKI_THEME = 'cupertino'
 
 # Kukui Cup Template theme setting.
 MAKAHIKI_TEMPLATE_THEME = 'default'
@@ -92,7 +92,7 @@ STATICFILES_DIRS = (
 ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'ka#3i3ay5ekm+j$b)!%-#%@0nk&y350%m-+&+a-mzke9tf#c5h'
+SECRET_KEY = 'o7@06j^w^ptgaj7)$1meped4%^m^!%mae9ki#g6zx_!(11qcu+'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -113,6 +113,7 @@ MIDDLEWARE_CLASSES = (
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
+    'setup_wizard.middleware.CheckSetupMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -243,7 +244,7 @@ EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "feedback@example.com"
 SITE_NAME = "Kukui Cup"
-LOGIN_URL = "/account/login/"
+LOGIN_URL = "/account/cas/login/"
 LOGIN_REDIRECT_URLNAME = "home"
 LOGIN_REDIRECT_URL = "/"
 
@@ -251,14 +252,33 @@ SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
 }
 
-# local_settings.py can be used to override environment-specific settings
-# like database and email that differ between development and production.
+# Load additional settings.
 try:
-    from local_settings import *
+  from local_settings import *
 except ImportError:
-    pass
+  pass
 
 try:
-    from competition_settings import *
+  from makahiki_settings import *
 except ImportError:
+  pass
+    
+try:
+  from competition_settings import *
+except ImportError:
+  pass
+
+# If demo flag is set, use the additional demo settings.
+DEMO = False
+
+# Note that the following settings override the previous settings.
+if DEMO:
+  try:
+    from demo.local_settings import *
+  except ImportError:
+    pass
+
+  try:
+    from demo.competition_settings import *
+  except ImportError:
     pass
