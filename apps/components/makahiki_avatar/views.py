@@ -1,7 +1,7 @@
 import os.path
 
-from makahiki_avatar.models import Avatar, avatar_file_path
-from makahiki_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
+from components.makahiki_avatar.models import Avatar, avatar_file_path
+from components.makahiki_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
