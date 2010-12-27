@@ -1,6 +1,6 @@
 from django import forms
 
-from makahiki_profiles.models import Profile
+from components.makahiki_profiles.models import Profile
 
 class ProfileForm(forms.ModelForm):
 

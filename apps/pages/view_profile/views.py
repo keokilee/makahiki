@@ -4,44 +4,17 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 
-# from django.utils.translation import ugettext_lazy as _
-# from django.utils.translation import ugettext
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from django.views.decorators.cache import never_cache
 
-from makahiki_base import restricted
-from makahiki_profiles.forms import ProfileForm
-from makahiki_facebook.models import FacebookProfile
+from components.makahiki_base import restricted
+from components.makahiki_profiles.forms import ProfileForm
+from components.makahiki_facebook.models import FacebookProfile
 
-# if "notification" in settings.INSTALLED_APPS:
-#     from notification import models as notification
-# else:
-#     notification = None
-
-@login_required
-def user_profile(request):
-  return HttpResponseRedirect(reverse("profile_detail", args=[request.user.id]))
-
-def profiles(request, template_name="makahiki_profiles/profiles.html"):
-    users = User.objects.all().order_by("-date_joined")
-    search_terms = request.GET.get('search', '')
-    order = request.GET.get('order')
-    if not order:
-        order = 'date'
-    if search_terms:
-        users = users.filter(username__icontains=search_terms)
-    if order == 'date':
-        users = users.order_by("-date_joined")
-    elif order == 'name':
-        users = users.order_by("username")
-    return render_to_response(template_name, {
-        'users':users,
-        'order' : order,
-        'search_terms' : search_terms
-    }, context_instance=RequestContext(request))
+def index(request):
+  return render_to_response("index.html", {}, context_instance=RequestContext(request))
 
 @never_cache
 def profile(request, user_id, template_name="makahiki_profiles/profile.html"):    
@@ -80,7 +53,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
       
     # Load standings for user.
     try:
-      from coponents.standings import generate_standings_for_profile
+      from components.standings import generate_standings_for_profile
       
       return_dict["standings"] = generate_standings_for_profile(other_user, is_me)
       
