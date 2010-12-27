@@ -4,10 +4,10 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.conf import settings
-from makahiki_facebook.models import FacebookProfile
+from components.makahiki_facebook.models import FacebookProfile
 
-import makahiki_facebook.facebook as fb
-from setup_wizard.forms import TermsForm, ProfileForm, FacebookForm
+import components.makahiki_facebook.facebook as fb
+from components.setup_wizard.forms import TermsForm, ProfileForm, FacebookForm
 
 def terms(request):
   """Display the terms and conditions."""
