@@ -4,11 +4,11 @@ import random
 from django.core import management
 from django.conf import settings
 
-from makahiki_profiles.models import Profile, ScoreboardEntry
-from activities.models import Activity, Commitment, ActivityMember, CommitmentMember
-from activities import get_current_commitments, get_available_activities
-from goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
-from floors.models import Floor
+from components.makahiki_profiles.models import Profile, ScoreboardEntry
+from components.activities.models import Activity, Commitment, ActivityMember, CommitmentMember
+from components.activities import get_current_commitments, get_available_activities
+from components.goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
+from components.floors.models import Floor
 
 class Command(management.base.BaseCommand):
   help = 'Simulates activity in the competition.'

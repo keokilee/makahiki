@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.template.defaultfilters import slugify
 
-from floors.models import Floor
+from components.floors.models import Floor
 
 # Create your models here.
 
