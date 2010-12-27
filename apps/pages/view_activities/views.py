@@ -15,7 +15,7 @@ from components.activities.forms import *
 from components.activities import *
 
 def index(request):
-  return ""
+  return render_to_response("index.html", {}, context_instance=RequestContext(request))
     
 @login_required
 def view_codes(request, activity_id):
