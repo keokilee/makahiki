@@ -14,11 +14,11 @@ urlpatterns = patterns('',
     # Main pages.
     url(r'^$', "pages.index.index", name="index"),
     url(r'^home/$', "pages.home.index", name="home"),
-    url(r'^activities/', include('pages.activities.urls')),
+    url(r'^activities/', include('pages.view_activities.urls')),
     url(r'^energy/', include('pages.energy.urls')),
     url(r'^help/', include('pages.help.urls')),
     url(r'^news/', include('pages.news.urls')),
-    url(r'^profile/', include('pages.makahiki_profiles.urls')),
+    url(r'^profile/', include('pages.view_profile.urls')),
     url(r'^m/', include('mobile.urls')),
     
     # Component views.
