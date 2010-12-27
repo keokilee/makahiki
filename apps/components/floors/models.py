@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
-from makahiki_base import get_floor_label
+from components.makahiki_base import get_floor_label
 
 # Create your models here.
 
