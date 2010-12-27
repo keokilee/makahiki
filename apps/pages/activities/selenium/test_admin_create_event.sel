@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>test_admin_create_event</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test_admin_create_event</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Log in »']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='tabhead']/div/ul[2]/li[1]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Activitys</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Activitys</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Add activity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add activity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_title</td>
+	<td>Test Activity With Confirmation Codes</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_description</td>
+	<td>A test activity</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_point_value</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_duration</td>
+	<td>120</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_expire_date</td>
+	<td>2010-12-31</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id_is_event</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id_confirm_type</td>
+	<td>label=Confirmation Code</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Events require an event date.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_event_date_0</td>
+	<td>2010-08-31</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Now</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>The number of codes is required for this confirmation type.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_num_codes</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>This confirmation type requires a confirmation prompt.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_confirm_prompt</td>
+	<td>Enter the confirmation code from this event.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_event_date_1</td>
+	<td>12:00:00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Test Activity With Confirmation Codes</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The activity &quot;Test Activity With Confirmation Codes&quot; was added successfully.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Test Activity With Confirmation Codes</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=View codes</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Test Activity With Confirmation Codes</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Logged out</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

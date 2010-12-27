@@ -13,7 +13,7 @@ class MakahikiCASBackend(CASBackend):
       try:
           user = User.objects.get(username=username)
       except User.DoesNotExist:
-          # In our case, we don't want to create the new user at all.
+          # TODO: Fix so that non-participants cannot log in.
           user = AnonymousUser()
       return user
 

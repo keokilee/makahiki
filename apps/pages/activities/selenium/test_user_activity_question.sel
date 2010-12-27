@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>test_user_activity_question</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test_user_activity_question</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//li[@id='user_tab']/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//li[@id='user_tab']/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Points: 0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Activities</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='available_items']/div[2]/table/tbody/tr[3]/td[3]/a/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_response</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_response</td>
+	<td>watt</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_comment</td>
+	<td>Hello.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Your request has been submitted!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='tabhead']/div/ul[2]/li[1]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Activity members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Activity members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Pending approval</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Pending approval</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Watch &quot;Be Energy Akamai!, Episode 1&quot;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Watch &quot;Be Energy Akamai!, Episode 1&quot;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_approval_status_2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id_approval_status_2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Log in again</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//li[@id='user_tab']/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//li[@id='user_tab']/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Points: 10</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Activities</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='completed_items']/div[2]/ul/li/div[1]/a/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=My Lounge</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>has been awarded 10 points for completing &quot;Watch &quot;Be Energy Akamai!, Episode 1&quot;&quot;.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/account/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id_username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_password</td>
+	<td>changeme</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='tabhead']/div/ul[2]/li[1]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Activity members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Activity members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Watch &quot;Be Energy Akamai!, Episode 1&quot;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Watch &quot;Be Energy Akamai!, Episode 1&quot;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value=&quot;Yes, I'm sure&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>The activity member &quot;Watch &quot;Be Energy Akamai!, Episode 1&quot; : user&quot; was deleted successfully.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Log in again</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
