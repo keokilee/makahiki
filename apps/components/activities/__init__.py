@@ -1,7 +1,7 @@
 import datetime
 
 from django.conf import settings
-from activities.models import Activity, Commitment
+from components.activities.models import Activity, Commitment
 
 # Directory in which to save image files for ActivityMember verification.
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
