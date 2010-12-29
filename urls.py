@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),
     (r'^attachments/', include('attachments.urls')),
+    (r'^sentry/', include('sentry.urls')),
     
     # pinax provided
     (r'^account/', include('account.urls')),

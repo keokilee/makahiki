@@ -216,6 +216,13 @@ INSTALLED_APPS = (
     'django_generic_flatblocks',
     'django_generic_flatblocks.contrib.gblocks',
     
+    # Dependencies for Sentry (http://justcramer.com/django-sentry/install.html)
+    # Used for error tracking.
+    'indexer',
+    'paging',
+    'sentry',
+    'sentry.client',
+    
     # migration support. comment out if module is not installed.
     'south',
 )
