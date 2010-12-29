@@ -152,8 +152,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "components.makahiki_base.context_processors.competition",
 )
 
-WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
-
 INSTALLED_APPS = (
     # Makahiki pages
     'pages.view_activities',
