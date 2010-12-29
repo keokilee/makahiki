@@ -155,7 +155,7 @@ def like(request, item_id):
   elif error:
     request.user.message_set.create(message=error)
     
-  return HttpResponseRedirect(reverse("resources.views.resource", args=(item_id,))) 
+  return HttpResponseRedirect(reverse("components.resources.views.resource", args=(item_id,))) 
 
 @login_required
 def unlike(request, item_id):
@@ -178,7 +178,7 @@ def unlike(request, item_id):
   elif error:
     request.user.message_set.create(message=error)
     
-  return HttpResponseRedirect(reverse("resources.views.resource", args=(item_id,)))
+  return HttpResponseRedirect(reverse("components.resources.views.resource", args=(item_id,)))
     
 @never_cache
 def resource(request, resource_id):

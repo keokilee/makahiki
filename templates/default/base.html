@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load theme_tags %}
+{# load theme_tags #}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
@@ -7,7 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
-    {% render_css_import user %}
+    {# render_css_import user #}
+    <link rel="stylesheet" href="{{ STATIC_URL}}default/css/screen.css">
+    <link rel="stylesheet" href="{{ STATIC_URL}}default/css/print.css">
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL}}default/css/ie.css" 
+    type="text/css" media="screen, projection"><![endif]-->
     
     <link rel="stylesheet" href="{{ STATIC_URL }}frontendadmin/css/frontendadmin.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" />
@@ -30,57 +34,43 @@
 </head>
 
 <body>
-<div id="container">
-  {% render_css_select %}
-  
-	<div id="header">
+<div class="container">
+  <div id="header">
     {% block website_title %}{% endblock %}
-  </div> 
+    {% block login %}{% endblock %}
+  </div>
   
-  <div id="outline">
-		 {% spaceless %}
-      <div id="tabhead">
-          <div class="ui-tabs">
-              <ul class="ui-tabs-nav">
-                {% block tabs %}{% endblock %}
-              </ul>
-              <ul class="ui-tabs-nav account">
-                {% block login %}{% endblock %}
-              </ul>
-              <script type="text/javascript">
-                //Set active tab.
-                $({% block tab_id %}{% endblock %}).addClass("ui-state-active");
-              </script>
-          </div>
-      </div>
-      <div id="subnav">
-          {% block subnav %}{% endblock %}
-      </div>
-      {% endspaceless %}
-
-  <div id="content-outline" class="ui-corner-bottom">
-    <div id="content">
-    {% if messages %}
-    <ul id="messages">
-        {% for message in messages %}
-        <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
-          <a href="#" onclick="jQuery('#message_{{ forloop.counter }}').fadeOut(); return false;">
-            <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
-          </a> 
-          {{ message }}
-          <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    
-    {% block body %}
-    {% endblock %}
+  {% if messages %}
+  <ul id="messages">
+      {% for message in messages %}
+      <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
+        <a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;">
+          <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
+        </a> 
+        {{ message }}
+        <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
+      </li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  
+  <h1>Blueprint <span class="caps">CSS</span> Sample</h1>
+  <div class="span-20" id="maincol">
+    <h2>This is a combined header that 
+    includes the left and right columns.</h2>
+    <div class="span-9" id="leftcol">
+      <h2>Left column text < br> goes here.</h2>
     </div>
-		
-    <hr class="clear"/>
+    <div class="span-9" id="rightcol">
+      <h2>Right column text < br> goes here.</h2>
+    </div>
   </div>
+  <div class="span-4 last" id="sidecol">
+    <h3>This must be the side bar over here</h3>
   </div>
+  
+  {# This is where the contents of the page will be inserted #}
+  {% block body %}{% endblock %}
   
   <div id="footer">
       {% block footer %}{% endblock %}

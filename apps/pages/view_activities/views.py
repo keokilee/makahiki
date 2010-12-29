@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
 
+from pages.view_activities.forms import *
 from components.activities.models import *
-from components.activities.forms import *
 from components.activities import *
 
 def index(request):
