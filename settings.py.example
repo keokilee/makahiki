@@ -1,5 +1,4 @@
 ## -*- coding: utf-8 -*-
-# Django settings for company cms project.
 
 import os.path
 import posixpath
@@ -8,14 +7,19 @@ import pinax
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
+# Load makahki settings here because it contains theme information.
+try:
+  from makahiki_settings import *
+except ImportError:
+  pass
+    
+try:
+  from competition_settings import *
+except ImportError:
+  pass
+
 # tells Pinax to use the default theme
 PINAX_THEME = 'default'
-
-# Kukui Cup CSS theme setting.
-MAKAHIKI_THEME = 'cupertino'
-
-# Kukui Cup Template theme setting.
-MAKAHIKI_TEMPLATE_THEME = 'default'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -106,19 +110,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'account.middleware.LocaleMiddleware',
-    'django_cas.middleware.CASMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
-    'setup_wizard.middleware.CheckSetupMiddleware',
+    'components.django_cas.middleware.CASMiddleware',
+    'components.setup_wizard.middleware.CheckSetupMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'makahiki_auth.models.MakahikiCASBackend',
+    'components.makahiki_auth.models.MakahikiCASBackend',
 )
 
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
@@ -145,36 +149,41 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "notification.context_processors.notification",
     # "account.context_processors.openid",
     "account.context_processors.account",
-    "makahiki_base.context_processors.competition",
+    "components.makahiki_base.context_processors.competition",
 )
 
 WATTDEPOT_HOST = 'http://server.wattdepot.org:8184/gviz'
 
 INSTALLED_APPS = (
-    # Kukui Cup specific apps.  Hopefully, they do not interfere with the fixture loading.
-    'django_cas', # Placed here so that it registers as an app during testing.
-    'makahiki_auth',
-    'activities',
-    'makahiki_profiles',
-    'makahiki_themes',
-    'makahiki_base',
-    'resources',
-    'standings',
-    'floors',
-    'api',
-    'goals',
-    'mobile',
-    'makahiki_facebook',
+    # Makahiki pages
+    'pages.view_activities',
+    'pages.view_profile',
+    'pages.energy',
+    'pages.help',
+    'pages.home',
+    'pages.index',
+    'pages.news',
+    'pages.mobile',
     
-    # Source code found at http://code.google.com/p/minidetector/
-    'minidetector',
+    # Makahiki components
+    'components.api',
+    'components.django_cas', # Placed here so that it registers as an app during testing.
+    'components.floors',
+    'components.energy_goals',
+    'components.makahiki_auth',
+    'components.makahiki_avatar',
+    'components.makahiki_base',
+    'components.makahiki_facebook',
+    'components.makahiki_themes',
+    'components.resources',
+    'components.setup_wizard',
+    'components.standings',
     
-    # 'facebookconnect',
-
-		# Testing
-		# 'django_nose',
     
-    # included
+    # 3rd party libraries
+    'lib.minidetector',
+    
+    # Django and Pinax apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -194,7 +203,6 @@ INSTALLED_APPS = (
     'uni_form',
     'dbtemplates',
     'staticfiles',
-    'makahiki_avatar',
     'django_extensions',
     
     # internal (for now)
@@ -231,7 +239,7 @@ MARKUP_CHOICES = (
 )
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = 'makahiki_profiles.Profile'
+AUTH_PROFILE_MODULE = 'components.makahiki_profiles.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 # ACCOUNT_OPEN_SIGNUP is not used by this project, but it acts as if it was
@@ -255,16 +263,6 @@ SERIALIZATION_MODULES = {
 # Load additional settings.
 try:
   from local_settings import *
-except ImportError:
-  pass
-
-try:
-  from makahiki_settings import *
-except ImportError:
-  pass
-    
-try:
-  from competition_settings import *
 except ImportError:
   pass
 

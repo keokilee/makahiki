@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from goals.models import EnergyGoal, FloorEnergyGoal
+from components.energy_goals.models import EnergyGoal, FloorEnergyGoal
 
 class EnergyGoalAdminForm(forms.ModelForm):
   class Meta:
