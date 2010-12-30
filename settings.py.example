@@ -156,12 +156,13 @@ INSTALLED_APPS = (
     # Makahiki pages
     'pages.view_activities',
     'pages.view_profile',
-    'pages.energy',
-    'pages.help',
+    'pages.view_energy',
+    'pages.view_help',
     'pages.home',
     'pages.index',
     'pages.news',
     'pages.mobile',
+    'pages.view_prizes',
     
     # Makahiki components
     'components.api',
@@ -173,6 +174,7 @@ INSTALLED_APPS = (
     'components.makahiki_base',
     'components.makahiki_facebook',
     'components.makahiki_themes',
+    'components.prizes',
     'components.resources',
     'components.setup_wizard',
     'components.standings',
