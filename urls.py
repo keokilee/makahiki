@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^news/', include('pages.news.urls')),
     url(r'^profile/', include('pages.view_profile.urls')),
     url(r'^m/', include('pages.mobile.urls')),
+    url(r'^prizes/', include('pages.view_prizes.urls')),
     
     # Component views.
     url(r'^account/cas/login/$', 'components.django_cas.views.login'),
