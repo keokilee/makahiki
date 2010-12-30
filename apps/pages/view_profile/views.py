@@ -14,7 +14,7 @@ from components.makahiki_profiles.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
 
 def index(request):
-  return render_to_response("index.html", {}, context_instance=RequestContext(request))
+  return render_to_response("view_profile/index.html", {}, context_instance=RequestContext(request))
 
 @never_cache
 def profile(request, user_id, template_name="makahiki_profiles/profile.html"):    
