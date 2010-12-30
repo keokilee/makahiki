@@ -1,79 +1,31 @@
 import os
 import string
 import datetime
-from fabric.api import local, run, settings, require
+from fabric.api import sudo, local, run, settings, require
 
-### Deployment commands.
+env.project = "makahiki"
 
-def local():
-  """Sets up the local environment."""
-  settings.hosts = ["localhost"]
-  settings.user = "gelee"
-  settings.staging = "/Users/gelee/Sites/makahiki-staging/"
-  settings.production = "/Users/gelee/Sites/makahiki-production/"
-  
-def remote():
-  settings.hosts = ["dasha.ics.hawaii.edu"]
-  settings.user = "gelee"
+env.hosts = []
+env.user = "gelee"
 
-def deploy_staging():
-  """Deploys the latest branch to the staging server."""
-  require('hosts', provided_by=["local", "remote"])
-  settings.path = settings.staging
-  settings.release = datetime.datetime.strftime('%Y%m%d%H%M%S')
-  
-  # Staging uses the current master branch.
-  _upload_tar_from_git()
-  _update_settings()
-  _restart_webserver()
-  
-def deploy_production():
-  require("hosts", provided_by=["local", "remote"])
-  settings.release = datetime.datetime.strftime('%Y%m%d%H%M%S')
-  settings.path = settings.production + "current/"
-  
-  # Move staging over to production.
-  _move_from_staging()
-  _symlink_current_release()
-  _update_settings()
-  _restart_webserver()
-  
-def _upload_tar_from_git():
-  require("staging", provided_by=["local"])
-  require("release", provided_by=["deploy_staging", "deploy_production"])
-  
-  local('git archive --format=tar master | gzip > $(release).tar.gz')
-  put("$(release).tar.gz", "$(staging)")
-  run("cd $(staging) && tar -zxf $(release).tar.gz; rm $(release).tar.gz")
-  local("rm $(release).tar.gz")
-  
-def _move_from_staging():
-  require("production", provided_by=["local"])
-  require("staging")
-  require("release", provided_by=["deploy_staging", "deploy_production"])
-  
-  run("cd $(staging) && tar -cvzf $(release).tar.gz *")
-  run("mkdir $(production)/releases/$(release)")
-  run("cd $(production)/releases/$(release); tar -zxf ../../$(release).tar.gz; rm ../../$(release).tar.gz")
-  
-def _symlink_current_release():
-    "Symlink our current release"
-    
-    require("production", provided_by=["local"])
-    require('release', provided_by=[deploy_production])
-    run('cd $(production); ln -s releases/$(release) current')
-    
-def _update_settings():
-  """Updates the requirements, copies the settings, and migrates the database."""
-  require("path", provided_by=["deploy_staging", "deploy_production"])
-  
-  run('cd $(path); pip install -E . -r requirements.txt')
-  run("cd $(path); cp settings.py.example settings.py")
-  run("cd $(path); python manage.py syncdb --noinput; python manage.py migrate")
-  
-def _restart_webserver():
-    "Restart the web server"
-    sudo('apachectl graceful')
+@runs_once
+def production():
+    """The production server."""
+    env.remote_app_dir = "/Users/gelee/Documents/makahiki/"
+    env.hosts.append("dasha.ics.hawaii.edu")
+
+def update():
+    """Update the latest copy on the server."""
+    with cd(env.remote_app_dir):
+        run("workon pinax-0.7.2")
+        run("git pull origin master")
+        run("cp settings.py.example settings.py")
+        run("./manage.py migrate")
+
+def reload():
+    """Reload apache."""
+    with cd(env.remote_app_dir):
+        sudo("apachectl graceful")
 
 ### Test commands.
 def test_selenium():
