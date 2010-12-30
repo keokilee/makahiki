@@ -20,6 +20,7 @@ def update():
         run("workon pinax-0.7.2")
         run("git pull origin master")
         run("cp settings.py.example settings.py")
+        run("pip install -r requirements.pip")
         run("./manage.py migrate")
 
 def reload():
