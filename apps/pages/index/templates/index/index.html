@@ -1,2 +1,9 @@
 {% extends "site_base.html" %}
-<h1>Hello world</h1>
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ STATIC_URL}}default/css/pages/index.css">
+{% endblock %}
+
+{% block body %}
+  <h1>Hello world</h1>
+{% endblock %}
