@@ -7,7 +7,7 @@ def change_theme(request):
   if request.method == "POST":
     form = ThemeSelect(request.POST)
     if form.is_valid():
-      settings.MAKAHIKI_THEME = form.cleaned_data["css_theme"]
+      request.session["css_theme"] = form.cleaned_data["css_theme"]
   
   next = request.META.get("HTTP_REFERER", "/")
   return HttpResponseRedirect(next)

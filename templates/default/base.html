@@ -8,10 +8,10 @@
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
     {# render_css_import user #}
-    <link rel="stylesheet" href="{{ STATIC_URL}}default/css/screen.css">
-    <link rel="stylesheet" href="{{ STATIC_URL}}default/css/print.css">
-    <link rel="stylesheet" href="{{ STATIC_URL}}default/css/jquery-ui.css">
-    <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL}}default/css/ie.css" 
+    <link rel="stylesheet" href="{{ STATIC_URL}}{{CSS_THEME}}/css/screen.css">
+    <link rel="stylesheet" href="{{ STATIC_URL}}{{CSS_THEME}}/css/print.css">
+    <link rel="stylesheet" href="{{ STATIC_URL}}{{CSS_THEME}}/css/jquery-ui.css">
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL}}{{CSS_THEME}}/css/ie.css" 
     type="text/css" media="screen, projection"><![endif]-->
     
     <link rel="stylesheet" href="{{ STATIC_URL }}frontendadmin/css/frontendadmin.css" />
@@ -36,6 +36,13 @@
 
 <body>
 <div class="container">
+  {% if ENABLE_CSS_SELECTOR %}
+    <form action="/themes/change_theme/" method="post">
+      {{CSS_SELECT_FORM.as_p}}
+      <input type="submit" value="Submit"/>
+    </form>
+  {% endif %}
+  
   <div id="header">
     {% block website_title %}{% endblock %}
     {% block login %}{% endblock %}
