@@ -1,5 +1,5 @@
 BeautifulSoup==3.0.7a
-Django==1.2.3
+Django==1.2.4
 Fabric==0.9.1
 Markdown==2.0.1
 MySQL-python==1.2.3
