@@ -1,3 +1,7 @@
+# makahiki_settings.py
+# This file contains organizational-level settings for the competition.
+# These settings include the name of the competition and theme settings.
+
 # The actual name of the competition.
 COMPETITION_NAME = "Kukui Cup"
 

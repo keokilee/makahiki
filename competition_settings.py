@@ -1,3 +1,7 @@
+# competition_settings.py
+# This file contains settings for the current competition.
+# This include start and end dates along with round information.
+
 # The start and end date of the competition.
 COMPETITION_START = '2010-07-28'
 COMPETITION_END = '2010-12-31'

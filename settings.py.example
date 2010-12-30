@@ -1,5 +1,10 @@
 ## -*- coding: utf-8 -*-
 
+# settings.py
+# This file contains system level settings.
+# Settings include database, time zone, authentication, and installed apps.
+# New settings should not be added here.
+
 import os.path
 import posixpath
 import pinax
@@ -7,7 +12,7 @@ import pinax
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-# Load makahki settings here because it contains theme information.
+# Load makahiki settings here because it contains theme information.
 try:
   from makahiki_settings import *
 except ImportError:
@@ -117,7 +122,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
     'components.django_cas.middleware.CASMiddleware',
-    'components.setup_wizard.middleware.CheckSetupMiddleware',
+    # 'components.setup_wizard.middleware.CheckSetupMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -246,7 +251,7 @@ MARKUP_CHOICES = (
 )
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = 'components.makahiki_profiles.Profile'
+AUTH_PROFILE_MODULE = 'makahiki_profiles.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 # ACCOUNT_OPEN_SIGNUP is not used by this project, but it acts as if it was
@@ -273,6 +278,11 @@ try:
 except ImportError:
   pass
 
+try:
+    INSTALLED_APPS += LOCAL_INSTALLED_APPS
+except:
+    pass
+      
 # If demo flag is set, use the additional demo settings.
 DEMO = False
 
