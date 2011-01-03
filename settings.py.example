@@ -148,13 +148,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     'django.contrib.messages.context_processors.messages',
-    
     "pinax.core.context_processors.pinax_settings",
-    
     "notification.context_processors.notification",
     # "account.context_processors.openid",
     "account.context_processors.account",
+    
     "components.makahiki_base.context_processors.competition",
+    "components.makahiki_themes.context_processors.css_selector",
 )
 
 INSTALLED_APPS = (
