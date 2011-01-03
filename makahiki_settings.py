@@ -11,6 +11,9 @@ COMPETITION_POINT_NAME = "Kukui Nut"
 # The name of a standard competition grouping.  Defaults to "Floor" if this is not provided.
 COMPETITION_GROUP_NAME = "Lounge"
 
+# Enable the CSS theme selector at the top of the page.
+ENABLE_CSS_SELECTOR = True
+
 # The theme to use as default. This corresponds to a folder in media that contains the CSS.
 MAKAHIKI_THEME = "default"
 
