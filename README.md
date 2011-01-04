@@ -35,7 +35,7 @@ The following steps are to download additional libraries and upgrade some of the
 * cd into the makahiki folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
 * Update makahiki_settings.py with the settings related to the competition.  Important settings include the CAS authentication server for your organization and your time zone.
-* OPTIONAL: Copy example_settings/local\_settings.py.dev to local_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
+* RECOMMENDED: Copy example_settings/local\_settings.py.dev to local_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "yes".
 * IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
@@ -49,7 +49,7 @@ The following steps are to download additional libraries and upgrade some of the
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
 
-## Adding Facebook Integration and local_settings.py
+## Adding Facebook Integration
 The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, it is recommended that you add this to the local_settings.py file.  These settings can be added to settings.py, but be aware that a) this file is in public version control, and you don't want others knowing your secret keys and b) subsequent updates may reset the settings.py file.
 
 <pre>
