@@ -2,6 +2,14 @@
 # This file contains organizational-level settings for the competition.
 # These settings include the name of the competition and theme settings.
 
+# Local time zone for this installation. Choices can be found here:
+# http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
+# although not all variations may be possible on all operating systems.
+# If running in a Windows environment this must be set to the same as your
+# system time zone.
+# Overrides time zone specified in settings.py
+TIME_ZONE = 'Pacific/Honolulu'
+
 # Settings for the CAS authentication service.
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
 CAS_REDIRECT_URL = '/'
