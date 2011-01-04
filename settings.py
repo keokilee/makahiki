@@ -12,17 +12,6 @@ import pinax
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-# Load makahiki settings here because it contains theme information.
-try:
-  from makahiki_settings import *
-except ImportError:
-  pass
-    
-try:
-  from competition_settings import *
-except ImportError:
-  pass
-
 # tells Pinax to use the default theme
 PINAX_THEME = 'default'
 
@@ -130,14 +119,10 @@ AUTHENTICATION_BACKENDS = (
     'components.makahiki_auth.models.MakahikiCASBackend',
 )
 
-CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
-CAS_REDIRECT_URL = '/'
-CAS_IGNORE_REFERER = True
-
 ROOT_URLCONF = 'makahiki.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), "templates", MAKAHIKI_TEMPLATE_THEME),
+    os.path.join(os.path.dirname(__file__), "templates"),
     os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 )
 
@@ -272,7 +257,17 @@ SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
 }
 
-# Load additional settings.
+# Load additional settings files
+try:
+  from makahiki_settings import *
+except ImportError:
+  pass
+    
+try:
+  from competition_settings import *
+except ImportError:
+  pass
+  
 try:
   from local_settings import *
 except ImportError:

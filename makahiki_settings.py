@@ -2,6 +2,11 @@
 # This file contains organizational-level settings for the competition.
 # These settings include the name of the competition and theme settings.
 
+# Settings for the CAS authentication service.
+CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
+CAS_REDIRECT_URL = '/'
+CAS_IGNORE_REFERER = True
+
 # The actual name of the competition.
 COMPETITION_NAME = "Kukui Cup"
 
