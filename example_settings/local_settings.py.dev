@@ -1,0 +1,28 @@
+from settings import *
+
+# Override for the secret key setting.
+# SECRET_KEY = "<SECRET_KEY>"
+
+# South
+SOUTH_TESTS_MIGRATE = False
+
+# Nose tests.
+LOCAL_INSTALLED_APPS = (
+  # Testing
+	'django_nose',
+	'debug_toolbar',
+)
+
+# Use Nose as the test runner.
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Django Debug Toolbar
+MIDDLEWARE_CLASSES += (
+  'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+
+# Development settings
+# FACEBOOK_APP_ID = '<APP ID>'
+# FACEBOOK_API_KEY = '<API_KEY>'
+# FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
+
