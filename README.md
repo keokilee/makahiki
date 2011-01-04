@@ -50,7 +50,7 @@ The following steps are to download additional libraries and upgrade some of the
 * Open a browser and go to http://localhost:8000 to see the website.
 
 ## Adding Facebook Integration and local_settings.py
-The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, it is recommended that you copy `example_settings/local\_settings.py.dev` to local\_settings.py in your project root.   Otherwise, you can also add these to `settings.py` directly.
+The Javascript required to log in to Facebook is included in this application.  However, you will need to apply for your own application on Facebook at their [Developer Site](http://developers.facebook.com/).  Once this is done, it is recommended that you add this to the local_settings.py file.  These settings can be added to settings.py, but be aware that a) this file is in public version control, and you don't want others knowing your secret keys and b) subsequent updates may reset the settings.py file.
 
 <pre>
 <code>
