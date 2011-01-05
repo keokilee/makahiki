@@ -12,7 +12,7 @@ TIME_ZONE = 'Pacific/Honolulu'
 
 # Settings for the CAS authentication service.
 CAS_SERVER_URL = 'https://login.its.hawaii.edu/cas/'
-CAS_REDIRECT_URL = '/'
+CAS_REDIRECT_URL = '/home'
 CAS_IGNORE_REFERER = True
 
 # The actual name of the competition.
