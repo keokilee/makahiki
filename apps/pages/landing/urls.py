@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    url(r'^$', 'pages.index.views.index', name='index_index'),
+    url(r'^$', 'pages.landing.views.index', name='landing_index'),
 )

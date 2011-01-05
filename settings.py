@@ -149,7 +149,7 @@ INSTALLED_APPS = (
     'pages.view_energy',
     'pages.view_help',
     'pages.home',
-    'pages.index',
+    'pages.landing',
     'pages.news',
     'pages.mobile',
     'pages.view_prizes',
