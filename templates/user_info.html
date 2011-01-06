@@ -1,0 +1,34 @@
+{% load avatar_tags %}
+
+{% if user.is_authenticated %}
+  <div class="span-2">
+    <img src="{% avatar_url user 60 %}"/>
+  </div>
+  <div class="span-4">
+    <div class="span-4 last" style="font-weight: bold; text-align: center">
+      {{user.get_profile.name}} ({{user.username}})
+    </div>
+    <div class="span-2">
+      <h3 style="margin: 0px; display:inline">{{user.get_profile.points}}</h3> 
+      points
+    </div>
+    <div class="span-2 last">
+      <h3 style="margin: 0px; display:inline">#1</h3> out of 52 in Lounge A
+    </div>
+  </div>
+  <div class="span-4">
+    <div class="span-4 last" style="font-weight: bold; text-align: center">
+      {{user.get_profile.floor}}
+    </div>
+    <div class="span-2">
+      <h3 style="margin: 0px; display:inline">{{user.get_profile.points}}</h3> 
+      points
+    </div>
+    <div class="span-2 last">
+      <h3 style="margin: 0px; display:inline">#1</h3> out of 52 in Lounge A
+    </div>
+  </div>
+  <div class="span-2 last">
+    <img src="{{STATIC_URL}}images/hale.ilima.jpg"/>
+  </div>
+{% endif %}

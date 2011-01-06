@@ -8,8 +8,8 @@
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
     {# render_css_import user #}
-    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/screen.css">
-    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/print.css">
+    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/screen.css" media="screen">
+    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/print.css" media="print">
     <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/jquery-ui.css">
     <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/ie.css" 
     type="text/css" media="screen, projection"><![endif]-->
@@ -48,7 +48,7 @@
     </script>
   {% endif %}
   
-  <div id="header">
+  <div id="header" class="span-24 last">
     {% block header %}{% endblock %}
   </div>
   

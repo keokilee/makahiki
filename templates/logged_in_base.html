@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block extra_head_base %}
+    {% block extra_head %}{% endblock %}
+{% endblock %}
+
+{% block header %}
+  <div class="span-2">
+    <img src="{{STATIC_URL}}images/logo.png"/>
+  </div>
+  <div class="span-3">
+    <h3 style="font-weight: bold">Lights off, Game on!</h3>
+  </div>
+  <div class="span-12">
+    {% include "user_info.html" %}
+  </div>
+  <div class="span-7 last">
+    {% include "navigation.html" %}
+  </div>
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('a.frontendadmin_edit').hover(
+        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+        function(){jQuery(this).parent().css('outline', '')}
+    );
+    
+    jQuery('a.frontendadmin_edit').click(function(){
+            jQuery(this).parent().css('outline', '');
+            jQuery(this).parent().load(this.href);
+            return false;
+    });
+    
+    jQuery('a.frontendadmin_delete').hover(
+        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
+        function(){jQuery(this).parent().css('outline', '')}
+    );
+});
+</script>
+{% endblock %}
