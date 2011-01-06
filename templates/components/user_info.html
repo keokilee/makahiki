@@ -1,10 +1,10 @@
 {% load avatar_tags %}
 
 {% if user.is_authenticated %}
-  <div class="span-2">
+  <div id="header_avatar" class="span-2">
     <img src="{% avatar_url user 60 %}"/>
   </div>
-  <div class="span-4">
+  <div id="header_user_info" class="span-4">
     <div class="span-4 last" style="font-weight: bold; text-align: center">
       {{user.get_profile.name}} ({{user.username}})
     </div>
@@ -16,7 +16,7 @@
       <h3 style="margin: 0px; display:inline">#1</h3> out of 52 in Lounge A
     </div>
   </div>
-  <div class="span-4">
+  <div class="span-4" style="border-left: 1px solid gray; margin-left: -1px">
     <div class="span-4 last" style="font-weight: bold; text-align: center">
       {{user.get_profile.floor}}
     </div>
