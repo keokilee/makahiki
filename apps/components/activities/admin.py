@@ -1,4 +1,4 @@
-from activities.models import *
+from components.activities.models import *
 from django.contrib import admin
 from django import forms
 from django.forms.models import BaseInlineFormSet

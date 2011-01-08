@@ -4,8 +4,8 @@ from django.test import TestCase
 from django.conf import settings
 
 from django.contrib.auth.models import User
-from activities import *
-from activities.models import Activity, ActivityMember, Commitment, CommitmentMember
+from components.activities import *
+from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
 
 class ActivitiesUnitTestCase(TestCase):
   def setUp(self):

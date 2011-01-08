@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.db.models import Sum
 
 from components.makahiki_base import get_floor_label
 
@@ -47,6 +48,13 @@ class Floor(models.Model):
   
   def __unicode__(self):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
+    
+  def points(self, round=None):
+    """Returns the total number of points for the floor.  Takes an optional parameter for a round."""
+    from components.makahiki_profiles.models import Profile
+    
+    dictionary = Profile.objects.filter(floor=self).aggregate(Sum("points"))
+    return dictionary["points__sum"]
     
   def save(self):
     """Custom save method to generate slug and set created_at/updated_at."""

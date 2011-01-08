@@ -155,6 +155,7 @@ INSTALLED_APPS = (
     'pages.view_prizes',
     
     # Makahiki components
+    'components.activities',
     'components.api',
     'components.django_cas', # Placed here so that it registers as an app during testing.
     'components.floors',
@@ -163,6 +164,7 @@ INSTALLED_APPS = (
     'components.makahiki_avatar',
     'components.makahiki_base',
     'components.makahiki_facebook',
+    'components.makahiki_profiles',
     'components.makahiki_themes',
     'components.prizes',
     'components.resources',

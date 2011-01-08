@@ -7,7 +7,7 @@ from django.conf import settings
 
 from components.floors.models import Floor
 from components.makahiki_profiles.models import ScoreboardEntry, Profile
-from pageslmobile import get_mobile_standings
+from pages.mobile import get_mobile_standings
     
 class MobileRoundStandingsTestCase(TestCase):
   """Tests the generation of standings that check a user's placement in a round."""
