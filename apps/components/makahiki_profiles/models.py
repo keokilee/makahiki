@@ -61,6 +61,13 @@ class Profile(models.Model):
         return ('profile_detail', None, {'username': self.user.username})
     get_absolute_url = models.permalink(get_absolute_url)
     
+    def floor_rank(self, round=None):
+      """Returns the rank of the user in their own floor."""
+      return Profile.objects.filter(floor=self.floor, points__gt=self.points).count() + 1
+      
+    def overall_rank(self, round=None):
+      return Profile.objects.filter(points__gt=self.points).count() + 1
+    
     def add_points(self, points, submission_date):
       """
       Adds points based on the point value of the submitted object.
@@ -81,8 +88,10 @@ class Profile(models.Model):
         entry.save()
       
     def remove_points(self, points, submission_date):
-      """Removes points from the user. Note that this method does not save the profile.  
-      If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task."""
+      """
+      Removes points from the user. Note that this method does not save the profile.  
+      If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task.
+      """
       self.points -= points
       
       current_round = self._get_round(submission_date)
@@ -121,7 +130,7 @@ class Profile(models.Model):
     def _last_submitted_before(self, submission_date):
       """Time of the last task that was completed before the submission date.  Returns None if there are no other tasks."""
       
-      from activities.models import CommitmentMember, ActivityMember
+      from components.activities.models import CommitmentMember, ActivityMember
       
       last_date = None
       try:

@@ -49,6 +49,14 @@ class Floor(models.Model):
   def __unicode__(self):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
     
+  def member_count(self):
+    """Returns the number of members in the floor."""
+    return self.profile_set.count()
+    
+  def rank(self, round=None):
+    """Returns the rank of the floor across all dorms."""
+    return Floor.objects.annotate(floor_points=Sum("profile__points")).filter(floor_points__gt=self.points).count() + 1
+    
   def points(self, round=None):
     """Returns the total number of points for the floor.  Takes an optional parameter for a round."""
     from components.makahiki_profiles.models import Profile

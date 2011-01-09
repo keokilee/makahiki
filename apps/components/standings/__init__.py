@@ -61,15 +61,15 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
   
   if round_name:
     profiles = profiles.filter(scoreboardentry__round_name=round_name).annotate(
-                points=Sum("scoreboardentry__points"),
-                last_awarded_submission=Max("scoreboardentry__last_awarded_submission")
-             ).order_by("-points", "-last_awarded_submission")[:count]
+                total_points=Sum("scoreboardentry__points"),
+                last_awarded=Max("scoreboardentry__last_awarded_submission")
+             ).order_by("-total_points", "-last_awarded")[:count]
     title += round_name
   else:
     profiles = profiles.annotate(
-                points=Sum("points"), 
-                last_awarded_submission=Max("last_awarded_submission")
-             ).order_by("-points", "-last_awarded_submission")[:count]
+                total_points=Sum("points"), 
+                last_awarded=Max("last_awarded_submission")
+             ).order_by("-total_points", "-last_awarded")[:count]
     title += "Overall"
              
   # Construct the standings info dictionary.
@@ -89,7 +89,7 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
               )
       
     info.append({
-      "points": profile.points,
+      "points": profile.total_points,
       "rank": i + 1,
       "label": label,
     })

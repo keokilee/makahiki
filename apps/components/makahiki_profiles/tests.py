@@ -5,11 +5,10 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from components.activities.models import Activity, ActivityMember
-from components.floors.models import Floor
+from components.floors.models import Dorm, Floor
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
     
 class ScoreboardEntryUnitTests(TestCase):
-  
   def setUp(self):
     """Generate test user and activity. Set the competition settings to the current date for testing."""
     self.user = User(username="test_user", password="changeme")
@@ -89,7 +88,60 @@ class ScoreboardEntryUnitTests(TestCase):
     settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class ProfileUnitTests(TestCase):
-  
+  def testFloorRank(self):
+    """Tests that the floor_rank method accurately computes the rank."""
+    user = User(username="test_user", password="changeme")
+    user.save()
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
+    
+    profile = user.get_profile()
+    profile.floor = floor
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.points = top_user.points + 1
+    profile.save()
+    
+    self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    
+    profile2 = user2.get_profile()
+    profile2.points = profile.points + 1
+    profile2.save()
+    
+    self.assertEqual(profile.floor_rank(), 1, 
+                  "Check that the user is still number 1 if the new profile is not on the same floor.")
+                  
+    profile2.floor = floor
+    profile2.save()
+    
+    self.assertEqual(profile.floor_rank(), 2, "Check that the user is now rank 2.")
+    
+  def testOverallRank(self):
+    """Tests that the rank method accurately computes the rank."""
+    user = User(username="test_user", password="changeme")
+    user.save()
+    
+    profile = user.get_profile()
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.points = top_user.points + 1
+    profile.save()
+    
+    self.assertEqual(profile.overall_rank(), 1, "Check that the user is number 1.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    
+    profile2 = user2.get_profile()
+    profile2.points = profile.points + 1
+    profile2.save()
+    
+    self.assertEqual(profile.overall_rank(), 2, "Check that the user is now rank 2.")
+    
+    
   def testAwardRollback(self):
     """Tests that the last_awarded_submission field rolls back to a previous task."""
     user = User(username="test_user", password="changeme")
@@ -140,121 +192,3 @@ class ProfileUnitTests(TestCase):
     self.assertEqual(points, user.get_profile().points)
     self.assertTrue(abs(submit_date - user.get_profile().last_awarded_submission) < datetime.timedelta(minutes=1))
     
-class ProfilesFunctionalTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
-  
-  def testProfileEdit(self):
-    """Test to check that the user can edit their profile."""
-    
-    user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
-    response = self.client.get(reverse("profile_edit"))
-    self.assertEqual(response.status_code, 200)
-    self.assertTemplateUsed(response, "makahiki_profiles/profile_edit.html", "Check user can access profile edit.")
-    response = self.client.post(reverse("profile_edit"), {
-                  "theme": "default", 
-                  "name": "test",
-                  "about": "Testing test test."
-                }, follow=True)
-    self.assertRedirects(response, reverse("profile_detail", args=(user.get_profile().pk,)), 
-                         msg_prefix="Check the user is redirected to their page.")
-    self.assertContains(response, "Testing test test.", msg_prefix="Check that the info is saved.")
-    
-  def testUnauthenticatedAccess(self):
-    """Test that an unauthenticated user cannot access user profiles."""
-    profile = Profile.objects.all()[0]
-    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
-    self.assertTemplateUsed(response, "restricted.html", msg_prefix="Test that user cannot access a user's profile page.")
-    
-  def testUserProfileAccess(self):
-    """Test that a user can only access their own page and pages of those on their floor."""
-    
-    user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": user.username, "password": "changeme", "remember": False})
-    
-    # Check that the user can access their own page.
-    profile = user.get_profile()
-    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
-    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", msg_prefix="Test that user can access their own page.")
-    
-    # Check that the user can access their fellow floor member's page.
-    floor = profile.floor
-    profile = floor.profile_set.exclude(user=user)[0]
-    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
-    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", 
-            msg_prefix="Test that user can access a fellow floor member's page.")
-    
-    # Check that the user cannot access the profile page of a member of another floor.
-    floor = Floor.objects.exclude(pk=floor.pk)[0]
-    profile = floor.profile_set.all()[0]
-    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
-    self.assertTemplateUsed(response, "restricted.html", 
-            msg_prefix="Test that user cannot access the profile page of a user in another floor.")
-            
-  def testAdminAccess(self):
-    """Test that an admin can access any user's page."""
-    
-    self.client.post('/account/login/', {"username": "admin", "password": "changeme", "remember": False})
-    profile = Profile.objects.exclude(user__username="admin", floor=None)[0]
-    response = self.client.get(reverse("profile_detail", args=(profile.pk,)))
-    self.assertTemplateUsed(response, "makahiki_profiles/profile.html", 
-            msg_prefix="Test that admin can access a member's page.")
-
-  def testLoadProfile(self):
-    """Test that we can load the profile page and the boxes are correct."""
-    
-    self.user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
-    
-    response = self.client.get('/profiles/profile/%s/' % self.user.pk)
-    
-    # Verify standings are correct.
-    self.assertEqual(len(response.context["standings"]["standings_titles"]), len(response.context["standings"]["user_standings"]))
-    
-    activities = self.user.activity_set.filter(activitymember__award_date=None)
-    commitments = self.user.commitment_set.filter(commitmentmember__award_date=None)
-    
-    self.assertEqual(len(activities), len(response.context["user_activities"]))
-    for activity in activities:
-      self.assertTrue(activity in response.context["user_activities"])
-      
-    self.assertEqual(len(commitments), len(response.context["user_commitments"]))
-    for commitment in commitments:
-      self.assertTrue(commitment in response.context["user_commitments"])
-      
-  def testSelectedTab(self):
-    """Test that the current round's tab is selected."""
-    
-    self.user = User.objects.get(username="user")
-    self.client.post('/account/login/', {"username": self.user.username, "password": "changeme", "remember": False})
-    
-    # Set up rounds for test.
-    self.saved_rounds = settings.COMPETITION_ROUNDS
-    self.current_round = "Round 1"
-    start = datetime.date.today()
-    end = start + datetime.timedelta(days=7)
-    
-    settings.COMPETITION_ROUNDS = {
-      "Round 1" : {
-        "start": start.strftime("%Y-%m-%d"),
-        "end": end.strftime("%Y-%m-%d"),
-      },
-    }
-    
-    response = self.client.get('/profiles/profile/%s/' % self.user.pk)
-    self.assertEqual(0, response.context["standings"]["selected_tab"])
-    
-    start = end
-    end = end + datetime.timedelta(days=7)
-    settings.COMPETITION_ROUNDS = {
-      "Round 1" : {
-        "start": start.strftime("%Y-%m-%d"),
-        "end": end.strftime("%Y-%m-%d"),
-      },
-    }
-    
-    response = self.client.get('/profiles/profile/%s/' % self.user.pk)
-    self.assertEqual(1, response.context["standings"]["selected_tab"])
-    
-    # Restore settings.
-    settings.COMPETITION_ROUNDS = self.saved_rounds
