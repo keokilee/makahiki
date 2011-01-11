@@ -1,0 +1,13 @@
+{% load avatar_tags %}
+
+<div class="user_post">
+  <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" class="photo" align="top"/>
+  <div class="wall_text">
+    {{post.user.get_profile.name}}
+    <p>
+      {{post.text}}
+    </p>
+    <div class="date_string">Posted at {{post.date_string}}</div>
+  </div>
+  <div class="post_clear"></div>
+</div>
