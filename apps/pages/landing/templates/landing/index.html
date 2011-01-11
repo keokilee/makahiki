@@ -6,51 +6,49 @@
 {% endblock %}
 
 {% block body %}
-<div id="container">
-<img id="nap3" src="{{ STATIC_URL}}images/logo.png" class="napkeeComponent napkeeImage" />
-<table border="0" id="nap3table" class="napkeeComponent napkeeImageTable" >
-	<tr>
-		<td align="center" valign="middle">
-			<span id="nap3label" class="napkeeImageLabel"></span>
-		</td>
-	</tr>
-</table>
 
-<span id="nap1" class="napkeeComponent napkeeLabel">The Kukui Cup: Lights out, game on!</span>
-	
-<img id="nap12" src="{{ STATIC_URL}}images/landing/personkukui.jpg" class="napkeeComponent napkeeImage" />
-
-<p>
-
-<table border="0" id="nap12table" class="napkeeComponent napkeeImageTable" >
-	<tr>
-		<td align="center" valign="middle">
-			<span id="nap12label" class="napkeeImageLabel"></span>
-		</td>
-	</tr>
-</table>
-
-	
-<div id="nap13" class="napkeeComponent napkeeParagraph" cellspacing="0" cellpadding="0">Welcome! The Kukui Cup is an exciting dorm energy competition scheduled in the Hale Aloha Ilima, Lehua, and Mokihana towers on the University of Hawaii at Manoa campus for Fall 2011.<br/></div>
-
-<p>
-<p>
-	
-<div id="nap14" class="napkeeComponent napkeeMultilineButton">
-	<h3><a href="/home">I live in Ilima, Lehua, or Mokihana</a></h3><h5>You will be prompted for your <br>UH username % password, it's safe</h5>
-</div>
-	
-<p>
-
-<div id="nap15" class="napkeeComponent napkeeMultilineButton">
-	<h3>I don't live in those dorms</h3><h5>but I'd like to know more about the Kukui Cup</h5>
+<div class="span-24 last">	
+<div class="span-2">	
+<img src="{{ STATIC_URL}}images/logo.png"/>
 </div>
 
-<center>	
-<a id="nap17" href="#" class="napkeeComponent napkeeLink">Contact the Kukui Cup administrators</a>
+<div class="span-22 last"> <h2>The Kukui Cup: Lights out, game on!</h2>
 </div>
+
+</div>
+<div class="span-12">
+Welcome! 
+The Kukui Cup is an exciting dorm energy competition scheduled in the 
+Hale Aloha Ilima, Lehua, and Mokihana towers on the University of Hawaii 
+at Manoa campus for Fall 2011.
+<p>
+<p>
+
+<button id="button" class="ui-button ui-widget ui-corner-all ui-state-active">
+	<h3><a href="/home">I live in Ilima, Lehua, or Mokihana</a></h3>
+	<h5><a href="/home">You will be prompted for your <br>
+	UH username % password, it's safe</a></h5>
+</button>
+
+<p>
+
+<button id="button" class="ui-button ui-widget ui-corner-all ui-state-default">
+	<h3><a href="/">I don't live in those dorms</a></h3>
+	<h5><a href="/">but I'd like to know more about the Kukui Cup</a></h5>
+</button>
+
+</div>
+
+<div class="span-12 last">
+<img src="{{ STATIC_URL}}images/landing/personkukui.jpg" height="300" width="400"/>
+</div>
+<p>
+
 {% endblock %}
 
 {% block footer %}
+<div class="span-24 last">	
+<center><a>Contact the Kukui Cup administrators</a></center>
     {% gblock "website_footer" for "gblocks.Text" %}
+</div>
 {% endblock %}
