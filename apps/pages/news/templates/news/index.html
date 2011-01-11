@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="span-8">
+<div class="span-8 colsep">
   <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="widget-title ui-accordion-header ui-corner-top">
       Upcoming Events
@@ -125,7 +125,35 @@
       News Feed
     </div>
     <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      News goes here
+      <div id="wall_form" style="padding: 0; padding-bottom: 5px; border-bottom: 1px solid #DFD9C3">
+        <form action="{% url news_index %}" method="GET">
+          <div id="wall_post" style="display:inline; width: 100%">
+            {{wall_form.post}}
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+
+      {% if posts %}
+        <ul id="wall_posts">
+          {% for post in posts %}
+            <li>
+              {% ifequal post.style_class "user_post" %}
+                {% include "news/user_post.html" %}
+              {% else %}
+                {% include "news/system_post.html" %}
+              {% endifequal %}
+            </li>
+            {% if forloop.last and posts.count == num_posts_to_display %}
+            <li id="view_more_posts" onclick="loadMore({{post.id}})" style="cursor:pointer; text-align:center">
+              <h3 style="margin:0">See More</h3>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>There are no posts yet!</p>
+      {% endif %}
     </div>
   </div>
 </div>
