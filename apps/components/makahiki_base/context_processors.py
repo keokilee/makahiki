@@ -13,8 +13,12 @@ def competition(request):
   current_phase = get_current_round()
   if not current_phase and in_competition():
     current_phase = get_competition_dates()
-    
-  facebook_app_id = settings.FACEBOOK_APP_ID
+  
+  try:
+    facebook_app_id = settings.FACEBOOK_APP_ID
+  except AttributeError:
+    facebook_app_id = None
+  
   
   return {
     "COMPETITION_NAME": settings.COMPETITION_NAME,
@@ -27,5 +31,4 @@ def competition(request):
     "FACEBOOK_APP_ID": facebook_app_id,
   }
 
-    
     

@@ -17,3 +17,5 @@ deploy/*.conf
 # Ignore the result of nosetests.
 nosetests.xml
 
+# Ignore pip log errors.
+pip-log.txt
