@@ -1,0 +1,18 @@
+.widget {
+  margin: 10px 0;
+}
+
+.widget-title {
+  background-color: #4297d7;
+  color: white;
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.0em;
+  text-align: center;
+}
+
+.widget-body {
+  height: auto;
+  margin: 0px 0px 15px 0px;
+  padding: 0px 10px;
+}

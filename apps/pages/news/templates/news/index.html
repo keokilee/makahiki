@@ -9,5 +9,124 @@
 {% endblock %}
 
 {% block body %}
-<h1>News page</h1>
+<div class="span-8">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-accordion-header ui-corner-top">
+      Upcoming Events
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <table>
+        <tr>
+          <th>Event (points)</th>
+          <th>Date</th>
+          <th>Location</th>
+        </tr>
+        <tr>
+          <td>Sustainable UH talk (5)</td>
+          <td>Mon</td>
+          <td>Mokihana Roof Lounge</td>
+        </tr>
+        <tr>
+          <td>An Inconvenient Truth (5)</td>
+          <td>Tue</td>
+          <td>Ilima Roof Lounge</td>
+        </tr>
+        <tr>
+          <td>Surfrider Beach Cleanup (5)</td>
+          <td>Wed</td>
+          <td>Ilima Parking Lot</td>
+        </tr>
+        <tr>
+          <td>Blue Planet Talk(5)</td>
+          <td>Wed</td>
+          <td>Lehua Roof Lounge</td>
+        </tr>
+        <tr>
+          <td>AMP Poetry Slam (5)</td>
+          <td>Fri</td>
+          <td>Hale Aloha Cafeteria</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-accordion-header ui-corner-top">
+      Most Popular
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <form>
+        <select style="margin: 0 auto">
+          <option>Activities</option>
+          <option>Events</option>
+          <option>Commitments</option>
+        </select>  
+      </form>
+      
+      <table>
+        <tr>
+          <th>Activity</th>
+          <th>Completions</th>
+        </tr>
+        <tr>
+          <td>Be Energy Akamai</td>
+          <td>345</td>
+        </tr>
+        <tr>
+          <td>Blue Planet Foundation</td>
+          <td>145</td>
+        </tr>
+        <tr>
+          <td>Energy Audit</td>
+          <td>123</td>
+        </tr>
+        <tr>
+          <td>Power Plant Tour</td>
+          <td>56</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-accordion-header ui-corner-top">
+      My Public Commitments
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <table>
+        <tr>
+          <th>Commitment</th>
+          <th>Expires</th>
+        </tr>
+        <tr>
+          <td>Turn off lights after leaving room</td>
+          <td>Tue</td>
+        </tr>
+        <tr>
+          <td>Wash dishes in cold water</td>
+          <td>Tue</td>
+        </tr>
+        <tr>
+          <td>Use clothesline</td>
+          <td>Wed</td>
+        </tr>
+        <tr>
+          <td>Take bus</td>
+          <td>Thu</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="span-16 last">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-accordion-header ui-corner-top">
+      News Feed
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      News goes here
+    </div>
+  </div>
+</div>
 {% endblock %}
