@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="span-8 colsep">
+<div class="span-8">
   <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="widget-title ui-accordion-header ui-corner-top">
       Upcoming Events
@@ -119,7 +119,7 @@
   </div>
 </div>
 
-<div class="span-16 last">
+<div class="span-15 prepend-1 last">
   <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="widget-title ui-accordion-header ui-corner-top">
       News Feed
@@ -138,11 +138,7 @@
         <ul id="wall_posts">
           {% for post in posts %}
             <li>
-              {% ifequal post.style_class "user_post" %}
-                {% include "news/user_post.html" %}
-              {% else %}
-                {% include "news/system_post.html" %}
-              {% endifequal %}
+              {% include "news/user_post.html" %}
             </li>
             {% if forloop.last and posts.count == num_posts_to_display %}
             <li id="view_more_posts" onclick="loadMore({{post.id}})" style="cursor:pointer; text-align:center">
