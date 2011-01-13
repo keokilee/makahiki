@@ -1,9 +1,302 @@
-{% extends "site_base.html" %}
+{% extends "logged_in_base.html" %}
+
+{% block page_title %}
+  Get Nuts!
+{% endblock %}
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_activities.css">
+<style type="text/css">
+div.transbox
+  {
+  width: 160px;
+  height: 100px;
+  margin:20px 20px;*/
+  background-color:#000000;
+  /* for IE */
+  filter:alpha(opacity=60);
+  /* CSS3 standard */
+  opacity:0.6;
+  }
+div.transbox p
+  {
+  margin:20px 20px;
+  font-weight:bold;
+  color:#ffffff;
+  }
+div.background1
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/burning_match.3.jpg) repeat;
+  }
+div.background2
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electricity.line.1_2.jpg) repeat;
+  }
+div.background3
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electrical.pole.2_2.jpg) repeat;
+  }
+div.background4
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electrical.pole.4_2.jpg) repeat;
+  }
+div.background5
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/bicyclesign.2.jpg) repeat;
+  }
+div.background6
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/wave.2.jpg) repeat;
+  }
+div.background7
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/polarbear.2.jpg) repeat;
+  }
+
+div.background8
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/recycling.2.jpg) repeat;
+  }
+
+</style>
 {% endblock %}
 
 {% block body %}
-<h1>Activities page</h1>
+
+<div class="span-8">
+
+<div class="ui-accordion-header ui-state-default ui-state-active ui-corner-top">
+  Upcoming Events
+</div>
+<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+<table >
+		<thead>
+	<tr>
+		<th class="verticalLine">Event (points)</th>
+		<th class="verticalLine">Date</th>
+		<th>Location</th>
+</tr></thead>
+		<tbody><tr><td class="odd verticalLine"><a href="#">Sustainable UH talk</a> (5)</td><td class="odd verticalLine">Mon</td><td class="odd">Mokihana roof lounge</td></tr>
+<tr><td class="even verticalLine"><a href="#">An Inconvenient Truth</a> (4)</td><td class="even verticalLine">Tue</td><td class="even">Ilima roof lounge</td></tr>
+<tr><td class="odd verticalLine"><a href="#">Surfrider beach cleanup</a> (10)</td><td class="odd verticalLine">Wed</td><td class="odd">Ilima parking lot</td></tr>
+<tr><td class="even verticalLine"><a href="#">Blue Planet talk</a> (5)</td><td class="even verticalLine">Wed</td><td class="even">Lehua roof lounge</td></tr>
+<tr><td class="odd verticalLine"><a href="#">AMP Poetry Slam</a> (10)</td><td class="odd verticalLine">Fri</td><td class="odd">Hale Aloha Cafeteria</td></tr>
+<tr><td class="even filler verticalLine"></td><td class="even filler verticalLine"></td><td class="even filler"></td></tr>
+</tbody>
+	</table>
+</div>
+<br>
+
+<div class="ui-accordion-header ui-state-default ui-state-active ui-corner-top">
+  Points Score Board
+</div>
+<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
+
+<table >
+		<thead>
+	<tr>
+		<th class="verticalLine">Rank</th>
+		<th class="verticalLine">Lounge<br>(Overall)</th>
+		<th class="verticalLine">Individual<br>(Overall)</th>
+		<th>Individual<br>(Ilima A)</th>
+</tr></thead>
+		<tbody><tr><td class="odd verticalLine">1</td><td class="odd verticalLine">Ilima D (2530)</td><td class="odd verticalLine">lehana (180)</td><td class="odd">fredA (95)</td></tr>
+<tr><td class="even verticalLine">2</td><td class="even verticalLine">Lehua A (2430)</td><td class="even verticalLine">boyd (175)</td><td class="even">maile (90)</td></tr>
+<tr><td class="odd verticalLine">3</td><td class="odd verticalLine">Mokihana E (2420)</td><td class="odd verticalLine">fredA (175)</td><td class="odd">alex (85)</td></tr>
+<tr><td class="even verticalLine">4</td><td class="even verticalLine">Lehua C (2400)</td><td class="even verticalLine">gert (175)</td><td class="even"><b>maile (65)</b></td></tr>
+<tr><td class="odd verticalLine">5</td><td class="odd verticalLine"><b>Ilima A (2390)</b></td><td class="odd verticalLine">sue (170)</td><td class="odd">jack (70)</td></tr>
+<tr><td class="even verticalLine">6</td><td class="even verticalLine">Ilima B (2280)</td><td class="even verticalLine">john (165)</td><td class="even">jill (70)</td></tr>
+<tr><td class="odd verticalLine">7</td><td class="odd verticalLine">Ilima C (2130)</td><td class="odd verticalLine">ben (160)</td><td class="odd">leilani (70)</td></tr>
+<tr><td class="even verticalLine">8</td><td class="even verticalLine">Ilima E (2110)</td><td class="even verticalLine">kai (160)</td><td class="even">alice (70)</td></tr>
+<tr><td class="odd verticalLine">9</td><td class="odd verticalLine">Lehua B (2090)</td><td class="odd verticalLine">bob (155)</td><td class="odd">carol (70)</td></tr>
+<tr><td class="even verticalLine">10</td><td class="even verticalLine">Lehua D (1990)</td><td class="even verticalLine">truck (150)</td><td class="even">keia (65)</td></tr>
+<tr><td class="odd filler verticalLine"></td><td class="odd filler verticalLine"></td><td class="odd filler verticalLine"></td><td class="odd filler"></td></tr>
+</tbody>
+	</table>
+
+</div>
+</div>
+
+<div class="span-16 last">
+
+<table>
+<tr>
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a  href="#" >Introduction</a>
+<div class="background1">
+<div class="transbox">
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">5/10</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">65/95</td></tr>
+</tbody>
+</table>
+</div>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a href="#" >Energy: Basics</a>
+<div class="background2">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<span  ><a href="#">Energy: Lighting</a></span>
+<div class="background3">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td></tr>
+
+<tr>
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<span  ><a href="#">Energy: Generation</a></span>
+<div class="background4">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a href="#" >Transportation</a>
+<div class="background5">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a href="#" >Water</a>
+<div class="background6">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td></tr>
+
+<tr>
+<td>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a  href="#" >Climate Change</a>
+<div class="background7">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td>
+
+<td>
+<div class="ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active">
+<a href="#" >Waste &amp; Recycling</a>
+<div class="background8">
+<div class="transbox">
+<p><h3>LOCKED</h3>
+<h5>Complete 2 activities 
+<br>from Electricity 1 
+<br>to unlock.</h5></p>
+</div>
+</div>
+
+<table>
+<tbody><tr><td class="even verticalLine">Activities completed/total</td><td class="even">0/5</td></tr>
+<tr><td class="odd verticalLine">Points<br> awarded/total</td><td class="odd">0/95</td></tr>
+</tbody>
+</table>
+</div>
+</td></tr>
+</table>
+	
+</div>
 {% endblock %}
