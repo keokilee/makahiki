@@ -1,3 +1,7 @@
+ul {
+  list-style: none;
+}
+
 .widget {
   margin: 10px 0;
 }
