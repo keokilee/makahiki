@@ -1,9 +1,112 @@
-{% extends "site_base.html" %}
+{% extends "logged_in_base.html" %}
+
+{% load avatar_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_profile.css">
 {% endblock %}
 
 {% block body %}
-<h1>Profile page</h1>
+<div class="span-8">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Info
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <form>
+        <table>
+          <tr>
+            <td><label for="display-name">Display Name</label></td>
+            <td><input name="display-name"></input></td>
+          </tr>
+          <tr>
+            <td><label for="picture">Picture</label></td>
+            <td><img src="{% avatar_url user 60 %}"/><a href="#" style="padding-left: 15px">change picture</a></td>
+          </tr>
+          <tr>
+            <td><label for="about">About</label></td>
+            <td><textarea class="span-5" style="height: 40px"></textarea></td>
+          </tr>
+          <tr>
+            <td><label for="logged-in">Stay logged in:</label></td>
+            <td><input type="checkbox" name="logged-in"/></td>
+          </tr>
+          <tr>
+            <td colspan="2">Facebook Settings</td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="checkbox"/>Connected to <a href="#">{{user.get_profile.name}}</a></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="checkbox"/>Post to Wall</td>
+          </tr>
+          <tr>
+            <td colspan="2">Event Reminders</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="event-email">Email</label></td>
+            <td><input name="event-email"/></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="event-text">Text</label></td>
+            <td>
+              <input style="width: 100px" name="event-text"/>
+              <select>
+                <option>Sprint</option>
+                <option>T-Mobile</option>
+                <option>AT&amp;T</option>
+                <option>Verizon</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Alert Reminders</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="alert-email">Email</label></td>
+            <td><input name="alert-email"/></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="alert-text">Text</label></td>
+            <td>
+              <input style="width: 100px" name="alert-text"/>
+              <select>
+                <option>Sprint</option>
+                <option>T-Mobile</option>
+                <option>AT&amp;T</option>
+                <option>Verizon</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="span-8">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Badges
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Badges
+    </div>
+  </div>
+</div>
+
+<div class="span-8 last">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Achievements
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      Achievements
+    </div>
+  </div>
+</div>
 {% endblock %}
