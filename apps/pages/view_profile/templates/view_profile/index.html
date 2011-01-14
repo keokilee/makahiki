@@ -1,9 +1,193 @@
-{% extends "site_base.html" %}
+{% extends "logged_in_base.html" %}
+
+{% load avatar_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_profile.css">
 {% endblock %}
 
 {% block body %}
-<h1>Profile page</h1>
+<div class="span-8">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Info
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <form>
+        <table>
+          <tr>
+            <td><label for="display-name">Display Name</label></td>
+            <td><input name="display-name"></input></td>
+          </tr>
+          <tr>
+            <td><label for="picture">Picture</label></td>
+            <td><img src="{% avatar_url user 60 %}"/><a href="#" style="padding-left: 15px">change picture</a></td>
+          </tr>
+          <tr>
+            <td><label for="about">About</label></td>
+            <td><textarea class="span-5" style="height: 40px"></textarea></td>
+          </tr>
+          <tr>
+            <td><label for="logged-in">Stay logged in:</label></td>
+            <td><input type="checkbox" name="logged-in"/></td>
+          </tr>
+          <tr>
+            <td colspan="2">Facebook Settings</td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="checkbox"/>Connected to <a href="#">{{user.get_profile.name}}</a></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="checkbox"/>Post to Wall</td>
+          </tr>
+          <tr>
+            <td colspan="2">Event Reminders</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="event-email">Email</label></td>
+            <td><input name="event-email"/></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="event-text">Text</label></td>
+            <td>
+              <input style="width: 100px" name="event-text"/>
+              <select>
+                <option>Sprint</option>
+                <option>T-Mobile</option>
+                <option>AT&amp;T</option>
+                <option>Verizon</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Alert Reminders</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="alert-email">Email</label></td>
+            <td><input name="alert-email"/></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"/><label for="alert-text">Text</label></td>
+            <td>
+              <input style="width: 100px" name="alert-text"/>
+              <select>
+                <option>Sprint</option>
+                <option>T-Mobile</option>
+                <option>AT&amp;T</option>
+                <option>Verizon</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <input style="margin: 5px 0" type="submit" value="Save changes"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="span-8">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Badges
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <h5>Individual Badges</h5>
+      <table>
+        <tr>
+          <th></th>
+          <th style="width: 30%">Badge</th>
+          <th style="width: 50%">Achievement</th>
+        </tr>
+        <tr>
+          <td><img src="{{STATIC_URL}}images/profile/check_badge.png"/></td>
+          <td style="vertical-align: middle">Daily Login</td>
+          <td style="vertical-align: middle">For logging in 3 days in a row.</td>
+        </tr>
+      </table>
+      
+      <h5>Lounge Badges</h5>
+      <table>
+        <tr>
+          <th></th>
+          <th style="width: 30%">Badge</th>
+          <th style="width: 50%">Achievement</th>
+        </tr>
+        <tr>
+          <td colspan="3" style="text-align: center">No lounge badges achieved so far</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="span-8 last">
+  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
+    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+      My Achievements
+    </div>
+    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+      <h5>Current and Pending</h5>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Task</th>
+          <th>Status</th>
+        </tr>
+        <tr style="color: red">
+          <td>10/28/10</td>
+          <td><a href="#" style="color: red">Activity: Room Audit</a></td>
+          <td>Denied</td>
+        </tr>
+        <tr>
+          <td>10/28/10</td>
+          <td><a href="#">Activity: Energy Blog</a></td>
+          <td>Submitted</td>
+        </tr>
+        <tr>
+          <td>10/24/10</td>
+          <td><a href="#">Commitment: Cold water wash</a></td>
+          <td>In Progress</td>
+        </tr>
+        <tr>
+          <td>10/23/10</td>
+          <td><a href="#">Commitment: Turn off lights</a></td>
+          <td>In Progress</td>
+        </tr>
+      </table>
+      
+      <h5>Previously Awarded</h5>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Task</th>
+          <th>Points</th>
+        </tr>
+        <tr>
+          <td>10/26/10</td>
+          <td><a href="#">Badge: Daily login</a></td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>10/24/10</td>
+          <td><a href="#">Activity: Lights out</a></td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>10/22/10</td>
+          <td><a href="#">Activity: Be Energy Akamai</a></td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>10/21/10</td>
+          <td><a href="#">Activity: Kukui Cup Intro</a></td>
+          <td>15</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}
