@@ -20,71 +20,78 @@
       <form>
         <table>
           <tr>
-            <td><label for="display-name">Display Name</label></td>
-            <td><input name="display-name"></input></td>
+            {% if form.display_name.errors %}
+            <td>{{form.display_name.errors}}</td>
+            {% endif %}
+            <td>{{form.display_name.label_tag}}</td>
+            <td>{{form.display_name}}</td>
           </tr>
           <tr>
             <td><label for="picture">Picture</label></td>
-            <td><img src="{% avatar_url user 60 %}"/><a href="#" style="padding-left: 15px">change picture</a></td>
+            <td>
+              <img src="{% avatar_url user 60 %}"/>
+              <a href="{% url avatar_change %}" style="padding-left: 15px" target="_blank">change picture</a>
+            </td>
           </tr>
           <tr>
-            <td><label for="about">About</label></td>
-            <td><textarea class="span-5" style="height: 40px"></textarea></td>
+            <td>{{form.about.label_tag}}</td>
+            <td>{{form.about}}</td>
           </tr>
           <tr>
-            <td><label for="logged-in">Stay logged in:</label></td>
-            <td><input type="checkbox" name="logged-in"/></td>
+            <td>{{form.stay_logged_in.label_tag}}</td>
+            <td>{{form.stay_logged_in}}</td>
           </tr>
           <tr>
             <td colspan="2">Facebook Settings</td>
           </tr>
           <tr>
-            <td colspan="2"><input type="checkbox"/>Connected to <a href="#">{{user.get_profile.name}}</a></td>
+            <td colspan="2">{{form.facebook_enabled}}Connected to <a href="#">{{user.get_profile.name}}</a></td>
           </tr>
           <tr>
-            <td colspan="2"><input type="checkbox"/>Post to Wall</td>
+            <td colspan="2">{{form.facebook_can_post}}Post to Wall</td>
           </tr>
           <tr>
             <td colspan="2">Event Reminders</td>
           </tr>
           <tr>
-            <td><input type="checkbox"/><label for="event-email">Email</label></td>
-            <td><input name="event-email"/></td>
+            {% if form.event_email.errors %}
+            <td>{{form.event_email.errors}}</td>
+            {% endif %}
+            <td>{{form.event_can_email}}<label for="id_event_email">Email</label></td>
+            <td>{{form.event_email}}</td>
           </tr>
           <tr>
-            <td><input type="checkbox"/><label for="event-text">Text</label></td>
+            {% if form.event_text.errors %}
+            <td>{{form.event_text.errors}}</td>
+            {% endif %}
+            <td>{{form.event_can_text}}<label for="id_event_text">Text</label></td>
             <td>
-              <input style="width: 100px" name="event-text"/>
-              <select>
-                <option>Sprint</option>
-                <option>T-Mobile</option>
-                <option>AT&amp;T</option>
-                <option>Verizon</option>
-              </select>
+              {{form.event_text}}
+              {{form.event_text_carrier}}
             </td>
           </tr>
-          <tr>
+         <tr>
             <td colspan="2">Alert Reminders</td>
           </tr>
           <tr>
-            <td><input type="checkbox"/><label for="alert-email">Email</label></td>
-            <td><input name="alert-email"/></td>
+            {% if form.alert_email.errors %}
+            <td>{{form.alert_email.errors}}</td>
+            {% endif %}
+            <td>{{form.alert_can_email}}<label for="id_event_email">Email</label></td>
+            <td>{{form.alert_email}}</td>
           </tr>
           <tr>
-            <td><input type="checkbox"/><label for="alert-text">Text</label></td>
+            {% if form.alert_text.errors %}
+            <td>{{form.alert_text.errors}}</td>
+            {% endif %}
+            <td>{{form.alert_can_text}}<label for="id_event_text">Text</label></td>
             <td>
-              <input style="width: 100px" name="alert-text"/>
-              <select>
-                <option>Sprint</option>
-                <option>T-Mobile</option>
-                <option>AT&amp;T</option>
-                <option>Verizon</option>
-              </select>
+              {{form.alert_text}}
+              {{form.alert_text_carrier}}
             </td>
           </tr>
         </table>
         <input style="margin: 5px 0" type="submit" value="Save changes"/>
-        <a href="#">Cancel</a>
       </form>
     </div>
   </div>

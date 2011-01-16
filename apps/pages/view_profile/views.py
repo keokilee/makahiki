@@ -10,11 +10,15 @@ from django.contrib.auth.models import User
 from django.views.decorators.cache import never_cache
 
 from components.makahiki_base import restricted
-from components.makahiki_profiles.forms import ProfileForm
+from pages.view_profile.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
 
 def index(request):
-  return render_to_response("view_profile/index.html", {}, context_instance=RequestContext(request))
+  user = request.user
+  form = ProfileForm()
+  return render_to_response("view_profile/index.html", {
+    "form": form,
+  }, context_instance=RequestContext(request))
 
 @never_cache
 def profile(request, user_id, template_name="makahiki_profiles/profile.html"):    
@@ -41,7 +45,7 @@ def profile(request, user_id, template_name="makahiki_profiles/profile.html"):
     
     # Load activities for the user.
     try:
-      from compoents.activities import get_incomplete_task_members
+      from components.activities import get_incomplete_task_members
       return_dict["activities_enabled"] = True
       
       user_activities = get_incomplete_task_members(other_user)
