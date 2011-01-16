@@ -18,6 +18,8 @@ def index(request):
   user = request.user
   form = ProfileForm(initial={
     "display_name": user.get_profile().name,
+    "alert_email": user.email,
+    "event_email": user.email,
   })
   
   # Retrieve Facebook information.
