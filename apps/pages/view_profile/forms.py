@@ -5,7 +5,7 @@ from components.makahiki_profiles.models import Profile
 
 class ProfileForm(forms.Form):
   display_name = forms.CharField(required=True)
-  about = forms.CharField(widget=forms.Textarea(attrs={
+  about = forms.CharField(required=False, widget=forms.Textarea(attrs={
     "class": "span-5",
     "style": "height: 40px",
   }))
@@ -17,9 +17,9 @@ class ProfileForm(forms.Form):
   
   # Event notifications
   event_can_email = forms.BooleanField()
-  event_email = forms.EmailField()
+  event_email = forms.EmailField(required=False)
   event_can_text = forms.BooleanField()
-  event_text = USPhoneNumberField(widget=forms.TextInput(attrs={
+  event_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
     "style": "width: 100px",
   }))
   event_text_carrier = forms.ChoiceField(choices=(
@@ -31,9 +31,9 @@ class ProfileForm(forms.Form):
   
   # Alert notifications
   alert_can_email = forms.BooleanField()
-  alert_email = forms.EmailField()
+  alert_email = forms.EmailField(required=False)
   alert_can_text = forms.BooleanField()
-  alert_text = USPhoneNumberField(widget=forms.TextInput(attrs={
+  alert_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
     "style": "width: 100px",
   }))
   alert_text_carrier = forms.ChoiceField(choices=(

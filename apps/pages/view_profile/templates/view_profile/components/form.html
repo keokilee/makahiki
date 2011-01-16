@@ -1,0 +1,88 @@
+{% load avatar_tags %}
+
+<form>
+  <table>
+    <tr>
+      {% if form.display_name.errors %}
+      <td>{{form.display_name.errors}}</td>
+      {% endif %}
+      <td>{{form.display_name.label_tag}}</td>
+      <td>{{form.display_name}}</td>
+    </tr>
+    <tr>
+      <td><label for="picture">Picture</label></td>
+      <td>
+        <img src="{% avatar_url user 60 %}"/>
+        <a href="{% url avatar_change %}" style="padding-left: 15px" target="_blank">change picture</a>
+      </td>
+    </tr>
+    <tr>
+      <td>{{form.about.label_tag}}</td>
+      <td>{{form.about}}</td>
+    </tr>
+    <tr>
+      <td>{{form.stay_logged_in.label_tag}}</td>
+      <td>{{form.stay_logged_in}}</td>
+    </tr>
+    {% if fb_enabled %}
+    <tr>
+      <td colspan="2">Facebook Settings</td>
+    </tr>
+    {% if fb_profile %}
+      <tr><td colspan="2">
+        {{form.facebook_enabled}}Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a>
+      </td></tr>
+      <tr>
+        <td colspan="2">{{form.facebook_can_post}}Post to Wall</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="2">
+        <fb:login-button id="fb_login" perms="offline_access,publish_stream" onlogin="location.reload()"></fb:login-button>
+      </td></tr>
+    {% endif %}
+    {% endif %}
+    <tr>
+      <td colspan="2">Event Reminders</td>
+    </tr>
+    <tr>
+      {% if form.event_email.errors %}
+      <td>{{form.event_email.errors}}</td>
+      {% endif %}
+      <td>{{form.event_can_email}}<label for="id_event_email">Email</label></td>
+      <td>{{form.event_email}}</td>
+    </tr>
+    <tr>
+      {% if form.event_text.errors %}
+      <td>{{form.event_text.errors}}</td>
+      {% endif %}
+      <td>{{form.event_can_text}}<label for="id_event_text">Text</label></td>
+      <td>
+        {{form.event_text}}
+        {{form.event_text_carrier}}
+      </td>
+    </tr>
+   <tr>
+      <td colspan="2">Alert Reminders</td>
+    </tr>
+    <tr>
+      {% if form.alert_email.errors %}
+      <td>{{form.alert_email.errors}}</td>
+      {% endif %}
+      <td>{{form.alert_can_email}}<label for="id_event_email">Email</label></td>
+      <td>{{form.alert_email}}</td>
+    </tr>
+    <tr>
+      {% if form.alert_text.errors %}
+      <td>{{form.alert_text.errors}}</td>
+      {% endif %}
+      <td>{{form.alert_can_text}}<label for="id_event_text">Text</label></td>
+      <td>
+        {{form.alert_text}}
+        {{form.alert_text_carrier}}
+      </td>
+    </tr>
+  </table>
+  <div style="text-align: center">
+    <a href="#" style="margin: 5px 0" class="ui-button ui-state-default ui-corner-all">Save Changes</a>
+  </div>
+</form>

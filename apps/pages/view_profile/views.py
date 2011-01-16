@@ -13,11 +13,34 @@ from components.makahiki_base import restricted
 from pages.view_profile.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
 
+@login_required
 def index(request):
   user = request.user
-  form = ProfileForm()
+  form = ProfileForm(initial={
+    "display_name": user.get_profile().name,
+  })
+  
+  # Retrieve Facebook information.
+  fb_profile = None
+  fb_enabled = False
+  try:
+    import components.makahiki_facebook.facebook as facebook
+    
+    fb_enabled = True
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    if fb_user:
+      try:
+        fb_profile = request.user.facebookprofile
+      except FacebookProfile.DoesNotExist:
+        fb_profile = FacebookProfile.create_or_update_from_fb_user(request.user, fb_user)
+      
+  except ImportError:
+    pass
+  
   return render_to_response("view_profile/index.html", {
     "form": form,
+    "fb_profile": fb_profile,
+    "fb_enabled": fb_enabled,
   }, context_instance=RequestContext(request))
 
 @never_cache
