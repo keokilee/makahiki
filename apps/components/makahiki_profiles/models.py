@@ -36,10 +36,9 @@ class ScoreboardEntry(models.Model):
 def _get_available_themes():
   """Retrieves the available themes from the media folder."""
   
-  theme_dir = os.path.join(settings.PROJECT_ROOT, "media")
+  theme_dir = os.path.join(settings.PROJECT_ROOT, "media", "css")
   # Returns a list of tuples representing the name of the theme and the directory of the theme
-  return ((item, item) for item in os.listdir(theme_dir) 
-                      if os.path.isdir(os.path.join(theme_dir, item, "css")))
+  return ((item, item) for item in os.listdir(theme_dir))
   
 class Profile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
@@ -49,7 +48,7 @@ class Profile(models.Model):
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
-    theme = models.CharField(max_length=255, default="default", choices=_get_available_themes())
+    theme = models.CharField(max_length=255, default="default", choices=_get_available_themes(), required=False)
     floor = models.ForeignKey(Floor, null=True, blank=True)
     setup_complete = models.BooleanField(default=False, editable=False)
     data_opt_in = models.BooleanField(default=True, editable=False)
