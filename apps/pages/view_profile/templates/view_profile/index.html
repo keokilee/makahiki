@@ -101,26 +101,22 @@
           <th>Task</th>
           <th>Points</th>
         </tr>
-        <tr>
-          <td>10/26/10</td>
-          <td><a href="#">Badge: Daily login</a></td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>10/24/10</td>
-          <td><a href="#">Activity: Lights out</a></td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <td>10/22/10</td>
-          <td><a href="#">Activity: Be Energy Akamai</a></td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>10/21/10</td>
-          <td><a href="#">Activity: Kukui Cup Intro</a></td>
-          <td>15</td>
-        </tr>
+        {% if completed_members %}
+          {% for member in completed_members %}
+            <tr>
+              <td>{{member.award_date|date:"n/j/y"}}</td>
+              {% if member.commitment %}
+              <td>Commitment: {{member.commitment}}</td>
+              <td>{{member.commitment.point_value}}</td>
+              {% else %}
+              <td>Activity: {{member.activity}}</td>
+              <td>{{member.activity.point_value}}</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr><td colspan="3">You have not been awarded anything yet!</td></tr>
+        {% endif %}
       </table>
     </div>
   </div>

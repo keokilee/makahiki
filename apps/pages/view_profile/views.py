@@ -1,3 +1,6 @@
+from itertools import chain
+from operator import attrgetter
+
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
@@ -12,6 +15,7 @@ from django.views.decorators.cache import never_cache
 from components.makahiki_base import restricted
 from pages.view_profile.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
+from components.activities.models import ActivityMember, CommitmentMember
 
 @login_required
 def index(request):
@@ -21,6 +25,16 @@ def index(request):
     "alert_email": user.email,
     "event_email": user.email,
   })
+  
+  # Retrieve previously awarded tasks.
+  completed_activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]
+  completed_commitment_members = user.commitmentmember_set.filter(award_date__isnull=False)[:5]
+  
+  # Merge the two querysets, sort according to award_date, and take 5
+  # Solution found at http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
+  completed_members = sorted(
+    chain(completed_activity_members, completed_commitment_members),
+    key=attrgetter("award_date"))[:5]
   
   # Retrieve Facebook information.
   fb_profile = None
@@ -43,6 +57,7 @@ def index(request):
     "form": form,
     "fb_profile": fb_profile,
     "fb_enabled": fb_enabled,
+    "completed_members": completed_members,
   }, context_instance=RequestContext(request))
 
 @never_cache
