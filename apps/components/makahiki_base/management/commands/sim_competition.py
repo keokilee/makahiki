@@ -7,7 +7,7 @@ from django.conf import settings
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
 from components.activities.models import Activity, Commitment, ActivityMember, CommitmentMember
 from components.activities import get_current_commitments, get_available_activities
-from components.goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
+from components.energy_goals.models import EnergyGoal, EnergyGoalVote, FloorEnergyGoal
 from components.floors.models import Floor
 
 class Command(management.base.BaseCommand):
@@ -60,7 +60,7 @@ class Command(management.base.BaseCommand):
     
   def remove_goals(self):
     self.stdout.write("Removing goals and goal votes.\n")
-    management.call_command('reset', 'goals', interactive=False)
+    management.call_command('reset', 'energy_goals', interactive=False)
       
   def adjust_activity_dates(self):
     self.stdout.write("Adjusting activity publication, expiration, and event dates.\n")
