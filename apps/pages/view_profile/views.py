@@ -15,6 +15,7 @@ from django.views.decorators.cache import never_cache
 from components.makahiki_base import restricted
 from pages.view_profile.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
+from components.activities import get_current_activity_members, get_current_commitment_members
 from components.activities.models import ActivityMember, CommitmentMember
 
 @login_required
@@ -34,7 +35,14 @@ def index(request):
   # Solution found at http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
   completed_members = sorted(
     chain(completed_activity_members, completed_commitment_members),
-    key=attrgetter("award_date"))[:5]
+    key=attrgetter("award_date"), reverse=True)[:5]
+    
+  # Retrieve current tasks.
+  in_progress_activity_members = get_current_activity_members(user)
+  in_progress_commitment_members = get_current_commitment_members(user)
+  in_progress_members = sorted(
+    chain(in_progress_activity_members, in_progress_commitment_members),
+    key=attrgetter("created_at"), reverse=True)
   
   # Retrieve Facebook information.
   fb_profile = None
@@ -57,6 +65,7 @@ def index(request):
     "form": form,
     "fb_profile": fb_profile,
     "fb_enabled": fb_enabled,
+    "in_progress_members": in_progress_members,
     "completed_members": completed_members,
   }, context_instance=RequestContext(request))
 

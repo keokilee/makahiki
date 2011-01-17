@@ -48,7 +48,7 @@ class Profile(models.Model):
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
-    theme = models.CharField(max_length=255, default="default", choices=_get_available_themes(), required=False)
+    theme = models.CharField(max_length=255, default="default", choices=_get_available_themes(), blank=True)
     floor = models.ForeignKey(Floor, null=True, blank=True)
     setup_complete = models.BooleanField(default=False, editable=False)
     data_opt_in = models.BooleanField(default=True, editable=False)

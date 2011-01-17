@@ -72,26 +72,25 @@
           <th>Task</th>
           <th>Status</th>
         </tr>
-        <tr style="color: red">
-          <td>10/28/10</td>
-          <td><a href="#" style="color: red">Activity: Room Audit</a></td>
-          <td>Denied</td>
-        </tr>
-        <tr>
-          <td>10/28/10</td>
-          <td><a href="#">Activity: Energy Blog</a></td>
-          <td>Submitted</td>
-        </tr>
-        <tr>
-          <td>10/24/10</td>
-          <td><a href="#">Commitment: Cold water wash</a></td>
-          <td>In Progress</td>
-        </tr>
-        <tr>
-          <td>10/23/10</td>
-          <td><a href="#">Commitment: Turn off lights</a></td>
-          <td>In Progress</td>
-        </tr>
+        {% if in_progress_members %}
+          {% for member in in_progress_members %}
+            {% if member.activity %}
+            <tr>
+              <td>{{member.created_at|date:"n/j/y"}}</td>
+              <td>Activity: {{member.activity}}</td>
+              <td>{{member.approval_status.capitalize}}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td>{{member.created_at|date:"n/j/y"}}</td>
+              <td>Commitment: {{member.commitment}}</td>
+              <td>In Progress</td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+        <tr><td colspan="3">You have nothing in progress or pending.</td></tr>
+        {% endif %}
       </table>
       
       <h5>Previously Awarded</h5>

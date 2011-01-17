@@ -259,6 +259,9 @@ SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
 }
 
+# If demo flag is set, use the additional demo settings.
+DEMO = False
+
 # Load additional settings files
 try:
   from makahiki_settings import *
@@ -279,9 +282,6 @@ try:
     INSTALLED_APPS += LOCAL_INSTALLED_APPS
 except:
     pass
-      
-# If demo flag is set, use the additional demo settings.
-DEMO = False
 
 # Note that the following settings override the previous settings.
 if DEMO:
