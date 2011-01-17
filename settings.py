@@ -174,6 +174,7 @@ INSTALLED_APPS = (
     
     # 3rd party libraries
     'lib.minidetector',
+    'lib.badges',
     
     # Django and Pinax apps
     'django.contrib.auth',
