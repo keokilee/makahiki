@@ -48,10 +48,11 @@ class Profile(models.Model):
     about = models.TextField(_('about'), null=True, blank=True)
     points = models.IntegerField(default=0, editable=False)
     last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
-    theme = models.CharField(max_length=255, default="default", choices=_get_available_themes(), blank=True)
     floor = models.ForeignKey(Floor, null=True, blank=True)
     setup_complete = models.BooleanField(default=False, editable=False)
     data_opt_in = models.BooleanField(default=True, editable=False)
+    daily_visit_count = models.IntegerField(default=0, editable=False)
+    last_visit_date = models.DateField(null=True, blank=True)
     
     def __unicode__(self):
         return self.user.username
@@ -168,6 +169,7 @@ def create_profile(sender, instance=None, **kwargs):
       entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
 
 post_save.connect(create_profile, sender=User)
+
 
   
   

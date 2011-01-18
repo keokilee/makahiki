@@ -162,6 +162,7 @@ INSTALLED_APPS = (
     'components.energy_goals',
     'components.makahiki_auth',
     'components.makahiki_avatar',
+    'components.makahiki_badges',
     'components.makahiki_base',
     'components.makahiki_facebook',
     'components.makahiki_profiles',
@@ -173,14 +174,14 @@ INSTALLED_APPS = (
     
     
     # 3rd party libraries
+    'lib.brabeion',
     'lib.minidetector',
-    'lib.badges',
     
     # Django and Pinax apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.messages',
     'pinax.templatetags',
