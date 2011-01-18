@@ -255,7 +255,7 @@ EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "feedback@example.com"
 SITE_NAME = "Kukui Cup"
 LOGIN_URL = "/account/cas/login/"
-LOGIN_REDIRECT_URLNAME = "home"
+LOGIN_REDIRECT_URLNAME = "home_index"
 LOGIN_REDIRECT_URL = "/"
 
 SERIALIZATION_MODULES = {
