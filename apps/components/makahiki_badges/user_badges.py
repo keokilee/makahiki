@@ -1,8 +1,12 @@
 from lib.brabeion import badges
-from lib.brabieon.base import Badge, BadgeAwarded
+from lib.brabeion.base import Badge, BadgeAwarded
 from components.makahiki_profiles.models import Profile
 
-class DailyVisitorBadge(badges.MetaBadge):
+class DailyVisitorBadge(Badge):
+  name = "Daily Visitor"
+  description = [
+    "Visited the site 3 days in a row.",
+  ]
   slug = "dailyvisitor"
   levels = ["Awarded",]
   events = ["dailyvisitor",]

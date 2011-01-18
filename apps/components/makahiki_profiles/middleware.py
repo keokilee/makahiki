@@ -1,6 +1,6 @@
 import datetime
 
-from brabieon import badges
+from lib.brabeion import badges
 
 class LoginTrackingMiddleware(object):
   """
@@ -19,7 +19,7 @@ class LoginTrackingMiddleware(object):
       profile.save()
       badges.possibly_award_badge("dailyvisitor", user=request.user)
       
-    elif not last_visit or (today - last_visit) > datetime.timedelta(days=1)::
+    elif not last_visit or (today - last_visit) > datetime.timedelta(days=1):
       # Reset the daily login count.
       profile.last_visit_date = today
       profile.daily_visit_count = 1

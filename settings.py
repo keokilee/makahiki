@@ -112,6 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfResponseMiddleware',
     'components.django_cas.middleware.CASMiddleware',
     # 'components.setup_wizard.middleware.CheckSetupMiddleware',
+    'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
