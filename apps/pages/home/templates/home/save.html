@@ -6,10 +6,8 @@
 
 {% block body %}
 <!-- Top Row-->
-<div class="span-11">
-<a href="/energy">
+<div class="span-12">
 <img src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" Align="Right"/>
-</a>
 <h6 style="text-align: right">Go Low</h6>
 <p style="text-align: right">
 Observe and Conserve Energy<br/>
@@ -17,16 +15,8 @@ Set and track conservation goals<br/>
 Compare to other
 </p>
 </div>
-
-<!-- Space -->
-<div class="span-1">
-&nbsp
-</div>
-
-<div class="span-11 last">
-<a href="/activities">
+<div class="span-12 last">
 <img src="{{ STATIC_URL}}images/icons/activities.png" height="85" width="85" Align="Left"/>
-</a>
 <h6>Get Nutz</h6>
 <p>
 Do activities and make committments<br/>
@@ -36,76 +26,32 @@ See where you stand
 </div>
 
 <!-- Middle Row-->
-<div class="span-2">
-&nbsp
-</div>
-<div class="span-6">
-<CENTER>
-<h6>News</h6>
-<a href="/news">
+<div class="span-12">
 <img src="{{ STATIC_URL}}images/icons/news.png" height="65" width="65" />
-</a>
-<p style="text-align: center">
-What are people doing?<br/>
-Your public comments<br/>
-Top activities and events
-</p>
-</CENTER>
 </div>
-
-<!-- Space -->
-<div class="span-7">
-&nbsp
-</div>
-
-<div class="span-6 last">
-<CENTER>
-<h6>Prizes</h6>
-<a href="/prizes">
+<div class="span-12 last">
 <img src="{{ STATIC_URL}}images/icons/prizes.png" height="65" width="65" />
-</a>
-<p style="text-align: center">
-See the prizes<br/>
-Allocate your points<br/>
-Monitor your chances
-</p>
-</CENTER>
-</div>
-<!-- Bottom Row-->
-<div class="span-5">
-&nbsp
 </div>
 
-<div class="span-6">
-<CENTER>
-<h6>Learn</h6>
-<a href="/help">
-<img src="{{ STATIC_URL}}images/icons/help.png" height="65" width="65" />
-</a>
+<!-- Bottom Row-->
+<div class="span-10">
+<div class="span-8">&nbsp</div><!-- Blank Space -->
+<div class="span-2 last">
+<h6 style="text-align: center">Learn</h6>
+<img src="{{ STATIC_URL}}images/icons/help.png" height="65" width="65" Align="Right"/>
 <p style="text-align: center">
 Get acquainted with the Kukuicup<br/>
 Watch an introductory video<br/>
 Learn the rules
 </p>
-</CENTER>
+</div>
 </div>
 
-<!-- Space -->
-<div class="span-1">
-&nbsp
-</div>
+<!-- Create Space between icons-->
+<div class="span-2">&nbsp</div>
 
-<div class="span-6 last">
-<CENTER>
-<h6>Profile</h6>
-<a href="/profile">
+<div class="span-10 last">
+<h6>Profile<h6>
 <img src="{{ STATIC_URL}}images/icons/profile.png" height="65" width="65" />
-</a>
-<p style="text-align: center">
-Manage your Settings<br/>
-Connect to facebook<br/>
-Change your picture
-</p>
-</CENTER>
 </div>
 {% endblock %}
