@@ -33,11 +33,17 @@
           <th style="width: 30%">Badge</th>
           <th style="width: 50%">Achievement</th>
         </tr>
-        <tr>
-          <td><img src="{{STATIC_URL}}images/profile/check_badge.png"/></td>
-          <td style="vertical-align: middle">Daily Login</td>
-          <td style="vertical-align: middle">For logging in 3 days in a row.</td>
-        </tr>
+        {% if user.badges_earned.count > 0 %}
+          {% for awarded in user.badges_earned.all %}
+          <tr>
+            <td><img src="{{STATIC_URL}}{{awarded.badge.image}}"/></td>
+            <td style="vertical-align: middle">{{awarded.badge.name}}</td>
+            <td style="vertical-align: middle">{{awarded.badge.description.0}}</td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr><td colspan="3">You don't have any badges yet!</td></tr>
+        {% endif %}
       </table>
       
       <h5>Lounge Badges</h5>

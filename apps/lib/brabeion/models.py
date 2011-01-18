@@ -17,7 +17,7 @@ class BadgeAward(models.Model):
     
     @property
     def badge(self):
-        return self
+        return self._badge
     
     @property
     def _badge(self):
