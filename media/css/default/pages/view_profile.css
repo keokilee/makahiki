@@ -17,3 +17,7 @@
   margin: 0px 0px 15px 0px;
   padding: 0px;
 }
+
+/* semantic class names */
+#profile-right {margin-right:0;padding-right:0;float:left;margin-right:10px;margin-right:0;width:310px;}
+#profile-left, #profile-middle {float:left;margin-right:10px;width:310px;}
