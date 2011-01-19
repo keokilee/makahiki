@@ -1,4 +1,8 @@
-{% extends "site_base.html" %}
+{% extends "logged_in_base.html" %}
+
+{% block page_title %}
+  Home Page
+{% endblock %}
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/home.css">
