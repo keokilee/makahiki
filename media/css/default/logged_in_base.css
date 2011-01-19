@@ -1,0 +1,9 @@
+#header-avatar {float:left;margin-right:10px;width:70px;}
+#header-info {float:left;margin-right:10px;width:470px;}
+#header-user-name, #header-floor-name {margin-right:0;padding-right:0;float:left;margin-right:10px;margin-right:0;width:150px;}
+#header-title {float:left;margin-right:10px;width:110px;}
+#header-user-rank, #header-floor-rank, #header-floor-avatar {margin-right:0;padding-right:0;float:left;margin-right:10px;margin-right:0;width:70px;}
+#header-nav, #header-nav div {margin-right:0;padding-right:0;float:left;margin-right:10px;margin-right:0;width:270px;}
+#header-user-points, #header-floor-points {float:left;margin-right:10px;width:70px;}
+#header-logo {float:left;margin-right:10px;width:70px;}
+#header-user-info, #header-floor-info {float:left;margin-right:10px;width:150px;}

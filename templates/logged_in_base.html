@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 
 {% block extra_head_base %}
+    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/logged_in_base.css">
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
 {% block header %}
-  <div id="header-logo" class="span-2">
+  <div id="header-logo">
     <img src="{{STATIC_URL}}images/logo.png"/>
   </div>
-  <div id="header-title" class="span-3">
+  <div id="header-title">
     <h3 style="font-weight: bold">{% block page_title %}{% endblock %}</h3>
   </div>
-  <div id="header_info" class="span-12" style="border: 1px solid black; margin: -1px">
+  <div id="header-info" style="border: 1px solid black; margin: -1px">
     {% include "components/user_info.html" %}
   </div>
-  <div id="header_nav" class="span-7 last">
+  <div id="header-nav">
     {% include "components/navigation.html" %}
   </div>
 {% endblock %}
