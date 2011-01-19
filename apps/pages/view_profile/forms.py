@@ -16,30 +16,15 @@ class ProfileForm(forms.Form):
   facebook_can_post = forms.BooleanField()
   
   # Event notifications
-  event_can_email = forms.BooleanField()
-  event_email = forms.EmailField(required=False)
-  event_can_text = forms.BooleanField()
-  event_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
+  contact_email = forms.EmailField(required=False)
+  contact_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
     "style": "width: 100px",
   }))
-  event_text_carrier = forms.ChoiceField(choices=(
+  contact_text_carrier = forms.ChoiceField(choices=(
     ("t-mobile", "T-Mobile"),
     ("att", "AT&T"),
     ("sprint", "Sprint"),
     ("verizon", "Verizon"),
   ))
-  
-  # Alert notifications
-  alert_can_email = forms.BooleanField()
-  alert_email = forms.EmailField(required=False)
-  alert_can_text = forms.BooleanField()
-  alert_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
-    "style": "width: 100px",
-  }))
-  alert_text_carrier = forms.ChoiceField(choices=(
-    ("t-mobile", "T-Mobile"),
-    ("att", "AT&T"),
-    ("sprint", "Sprint"),
-    ("verizon", "Verizon"),
-  ))
+
   
