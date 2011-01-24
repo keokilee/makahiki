@@ -1,5 +1,7 @@
 {% extends "logged_in_base.html" %}
 
+{% load "class_tags" %}
+
 {% block page_title %}
   Manage Your Profile
 {% endblock %}
@@ -9,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="profile-left">
+<div id="profile-left" {% insert_classes "profile-left" %}>
   <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
     <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
       My Info
