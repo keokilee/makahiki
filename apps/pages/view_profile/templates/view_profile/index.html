@@ -11,23 +11,23 @@
 {% endblock %}
 
 {% block body %}
-<div id="profile-left" {% insert_classes "profile-left" %}>
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div id="profile-left" class="{% insert_classes "profile-left" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       My Info
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       {% include "view_profile/components/form.html" %}
     </div>
   </div>
 </div>
 
-<div id="profile-middle">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div id="profile-middle" class="{% insert_classes "profile-middle" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       My Badges
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <h5>Individual Badges</h5>
       <table>
         <tr>
@@ -67,12 +67,12 @@
   </div>
 </div>
 
-<div id="profile-right">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div id="profile-right" class="{% insert_classes "profile-right" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       My Achievements
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <h5>Current and Pending</h5>
       <table>
         <tr>
