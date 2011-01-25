@@ -18,6 +18,8 @@ from components.makahiki_facebook.models import FacebookProfile
 from components.activities import get_current_activity_members, get_current_commitment_members
 from components.activities.models import ActivityMember, CommitmentMember
 
+import components.makahiki_facebook.facebook as facebook
+
 @login_required
 def index(request):
   user = request.user
@@ -47,17 +49,15 @@ def index(request):
   fb_profile = None
   fb_enabled = False
   try:
-    import components.makahiki_facebook.facebook as facebook
-    
-    fb_enabled = True
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    fb_enabled = True
     if fb_user:
       try:
         fb_profile = request.user.facebookprofile
       except FacebookProfile.DoesNotExist:
         fb_profile = FacebookProfile.create_or_update_from_fb_user(request.user, fb_user)
       
-  except ImportError:
+  except AttributeError:
     pass
   
   return render_to_response("view_profile/index.html", {
