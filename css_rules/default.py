@@ -15,6 +15,10 @@ CSS_CLASSES = {
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "ui-button": "ui-button ui-state-default ui-corner-all",
   
-  "energy-left": "span-7",
-  "energy-right": "span-17 last",
+  "energy-left": "span-6",
+  "energy-right": "span-18 last",
+  
+  "activity-left": "span-9",
+  "activity-right": "span-15 last",
+  "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
 }
