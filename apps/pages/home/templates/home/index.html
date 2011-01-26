@@ -1,5 +1,7 @@
 {% extends "logged_in_base.html" %}
 
+{% load class_tags %}
+
 {% block page_title %}
   Home Page
 {% endblock %}
@@ -10,7 +12,7 @@
 
 {% block body %}
 <!-- Top Row-->
-<div class="span-11">
+<div id="home-top-left" class="{% insert_classes "home-top-left" %}">
 <a href="/energy">
 <img src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" Align="Right"/>
 </a>
@@ -22,12 +24,7 @@ Compare to other
 </p>
 </div>
 
-<!-- Space -->
-<div class="span-1">
-&nbsp
-</div>
-
-<div class="span-11 last">
+<div id="home-top-right" class="{% insert_classes "home-top-right" %}">
 <a href="/activities">
 <img src="{{ STATIC_URL}}images/icons/activities.png" height="85" width="85" Align="Left"/>
 </a>
@@ -40,10 +37,7 @@ See where you stand
 </div>
 
 <!-- Middle Row-->
-<div class="span-2">
-&nbsp
-</div>
-<div class="span-6">
+<div id="home-middle-left" class="{% insert_classes "home-middle-left" %}">
 <CENTER>
 <h6>News</h6>
 <a href="/news">
@@ -57,12 +51,7 @@ Top activities and events
 </CENTER>
 </div>
 
-<!-- Space -->
-<div class="span-7">
-&nbsp
-</div>
-
-<div class="span-6 last">
+<div id="home-middle-right" class="{% insert_classes "home-middle-right" %}">
 <CENTER>
 <h6>Prizes</h6>
 <a href="/prizes">
@@ -75,12 +64,8 @@ Monitor your chances
 </p>
 </CENTER>
 </div>
-<!-- Bottom Row-->
-<div class="span-5">
-&nbsp
-</div>
 
-<div class="span-6">
+<div id="home-bottom-left" class="{% insert_classes "home-bottom-left" %}">
 <CENTER>
 <h6>Learn</h6>
 <a href="/help">
@@ -94,12 +79,7 @@ Learn the rules
 </CENTER>
 </div>
 
-<!-- Space -->
-<div class="span-1">
-&nbsp
-</div>
-
-<div class="span-6 last">
+<div id="home-bottom-right" class="{% insert_classes "home-bottom-right" %}">
 <CENTER>
 <h6>Profile</h6>
 <a href="/profile">
