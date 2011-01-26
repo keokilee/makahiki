@@ -22,4 +22,7 @@ CSS_CLASSES = {
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "ui-button": "ui-button ui-state-default ui-corner-all",
+  
+  "energy-left": "span-7",
+  "energy-right": "span-17 last",
 }

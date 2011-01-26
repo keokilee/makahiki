@@ -1,5 +1,7 @@
 {% extends "logged_in_base.html" %}
 
+{% load class_tags %}
+
 {% block page_title %}
   Go Low!
 {% endblock %}
@@ -10,130 +12,115 @@
 
 {% block body %}
 
-<div class="span-6"> 
-
-<div class="ui-accordion-header ui-state-default ui-state-active ui-corner-top">
-  Current Lounge Power
-</div>
-<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-  <center>
-  <img src="{{ STATIC_URL}}images/energy/power-realtime.png" />
-</center>
-</div>
-
-<p>
-
-<div class="ui-accordion-header ui-state-default ui-state-active ui-corner-top">
-  Overall kWh Score Board
-</div>
-<div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-  <table >
-    <thead>
-      <tr>
-		<th class="verticalLine">Rank</th>
-		<th class="verticalLine">Lounge</th>
-		<th>kWh Used</th>
-      </tr></thead>
-    <tbody>
-<tr> <td class="odd verticalLine">1</td><td class="odd verticalLine">Ilima D</td><td class="odd">1234</td></tr>
-<tr><td class="even verticalLine">2</td><td class="even verticalLine">Lehua A</td><td class="even">1256</td></tr>
-<tr><td class="odd verticalLine">3</td><td class="odd verticalLine">Mokihana E</td><td class="odd">1345</td></tr>
-<tr><td class="even verticalLine">4</td><td class="even verticalLine">Lehua C</td><td class="even">1356</td></tr>
-<tr><td class="odd verticalLine"><b>5</b></td><td class="odd verticalLine"><b>Ilima A</b></td><td class="odd"><b>1377</b></td></tr>
-<tr><td class="even verticalLine">6</td><td class="even verticalLine">Ilima B</td><td class="even">1413</td></tr>
-<tr><td class="odd verticalLine">7</td><td class="odd verticalLine">Ilima C</td><td class="odd">1415</td></tr>
-<tr><td class="even verticalLine">8</td><td class="even verticalLine">Ilima E</td><td class="even">1423</td></tr>
-<tr><td class="odd verticalLine">9</td><td class="odd verticalLine">Lehua B</td><td class="odd">1435</td></tr>
-<tr><td class="even verticalLine">10</td><td class="even verticalLine">Lehua D</td><td class="even">1446</td></tr>
-<tr><td class="odd verticalLine">11</td><td class="odd verticalLine">Lehua E</td><td class="odd">1451</td></tr>
-<tr><td class="even verticalLine">12</td><td class="even verticalLine">Mokihana A</td><td class="even">1453</td></tr>
-<tr><td class="odd verticalLine">13</td><td class="odd verticalLine">Mokihana B</td><td class="odd">1460</td></tr>
-<tr><td class="even verticalLine">14</td><td class="even verticalLine">Mokihana C</td><td class="even">1475</td></tr>
-<tr><td class="odd verticalLine">15</td><td class="odd verticalLine">Mokihana D</td><td class="odd">1489</td></tr>
-      </tbody>
-    </table>
-  <div cellspacing="0" cellpadding="0">#1 at end of round wins a prize!<br/></div>
-</div>
-	
-</div>
-
-<div class="span-18 last">
-  <div class="ui-accordion-header ui-state-default ui-state-active ui-corner-top">
-     Daily Energy Goal Status
+<div id="energy-left" class="{% insert_classes "energy-left" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      Current Lounge Power
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      <img src="{{ STATIC_URL}}images/energy/power-realtime.png" width="180" height="120"/>
+    </div>
   </div>
+  
+  <p>
 
-  <div class="ui-accordion-content ui-widget-content ui-corner-bottom ui-accordion-content-active">
-    <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
-    <font color="red"><b>Goal: 311 kWh (5% reduction).  Status: 314 kWh (3 kWh over goal)</b></font>
-
-    <fieldset>
-	<legend>Daily Energy Goal Progress</legend>
-
-        <table>
-          <tr><td> <img src="{{ STATIC_URL}}images/energy/energyused314.png" /> </td>
-            <td><div cellspacing="0" cellpadding="0">Each Ilima Lounge A member receives 20 points<br/>each day that we make our goal.<br/></div>
-              <div cellspacing="0" cellpadding="0"><a href="#">Want more info about your lounge's energy use?</a><br/><a href="#">Dive into the advanced energy page!</a><br/></div>
-            </td></tr>
-         </table>
-    </fieldset>
-	
-    <fieldset  >
-	<legend>How can we make our daily goal?</legend>
-		
-        <table>
-          <tr><td> <div cellspacing="0" cellpadding="0">We need to conserve energy to meet our goal, but what does 3 kWh mean?<br/></div>
-
-           <br>
-
-           3 kWh =
-           <select > <option>Playing XBox 360</option> </select>
-           <input type="text" value="5.2 hrs" size="6" readonly="yes"/> </td>
-          <td> <div cellspacing="0" cellpadding="0">The following activities can help your lounge conserve energy, and you earn points!<br/></div>
-
-	<table >
-		<thead>
-	<tr>
-		<th class="verticalLine">Activity</th>
-		<th>Points</th>
-</tr></thead>
-		<tbody><tr><td class="odd verticalLine"><a href="#">Watch a video about energy &amp; power</a></td><td class="odd">10</td></tr>
-<tr><td class="even verticalLine"><a href="#">Set your computer to sleep when idle</a></td><td class="even">10</td></tr>
-<tr><td class="odd verticalLine"><a href="#">Watch a video about energy intuition</a></td><td class="odd">10</td></tr>
-<tr><td class="even verticalLine"><a href="#">Audit the energy use in your dorm room</a></td><td class="even">30</td></tr>
-</tbody>
-	</table>
-	
-        </td></tr></table>
-</fieldset>
-
-<fieldset >
-	<legend>Organize with your lounge peeps</legend>
-	
-Got ideas on how to conserve energy? Share it on the lounge wall:
-<br>
-		
-<input type="text" size="50" value="Yeah, air drying your hair looks better anyway!" />
-	
-<button type="button" >Send</button>
-	
-	
-<table >
-<tbody>
-<tr><td class="even">
-<img src="{{ STATIC_URL}}images/energy/generic-profile-pic.png" />
-<b>Shanah</b> says:<br/>We could save energy by not using blow dryers\rPosted at 10/5 11:44am</td></tr>
-<tr><td class="odd">
-<img src="{{ STATIC_URL}}images/energy/pj.facebook.jpg" />
-<b>pj</b> <i>has completed the commitment:<br/>"I will wash only full loads of laundry"</i>\rPosted at 10/5 10:49am</td></tr>
-<tr><td class="even">
-<img src="{{ STATIC_URL}}images/energy/generic-profile-pic.png" />
-<b>Yongwen Xu</b> says:<br/>We gotta work on our energy use!\rPosted at 10/4 10:12pm</td></tr>
-</tbody>
-	</table>
-
-</fieldset>
-
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      Overall kWh Score Board
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      <table >
+        <thead>
+          <th>Rank</th>
+          <th>Lounge</th>
+          <th>kWh Used</th></thead>
+        <tbody>
+          <tr><td>1</td><td>Ilima D</td><td>1234</td></tr>
+          <tr><td>2</td><td>Lehua A</td><td>1256</td></tr>
+          <tr><td>3</td><td>Mokihana E</td><td>1345</td></tr>
+          <tr><td>4</td><td>Lehua C</td><td>1356</td></tr>
+          <tr><td><b>5</b></td><td><b>Ilima A</b></td><td><b>1377</b></td></tr>
+          <tr><td>6</td><td>Ilima B</td><td>1413</td></tr>
+          <tr><td>7</td><td>Ilima C</td><td>1415</td></tr>
+          <tr><td>8</td><td>Ilima E</td><td>1423</td></tr>
+          <tr><td>9</td><td>Lehua B</td><td>1435</td></tr>
+          <tr><td>10</td><td>Lehua D</td><td>1446</td></tr>
+          <tr><td>11</td><td>Lehua E</td><td>1451</td></tr>
+          <tr><td>12</td><td>Mokihana A</td><td>1453</td></tr>
+          <tr><td>13</td><td>Mokihana B</td><td>1460</td></tr>
+          <tr><td>14</td><td>Mokihana C</td><td>1475</td></tr>
+          <tr><td>15</td><td>Mokihana D</td><td>1489</td></tr>
+        </tbody>
+      </table>
+      <div>#1 at end of round wins a prize!</div>
+    </div>
+  </div>	
 </div>
+
+<div id="energy-right" class="{% insert_classes "energy-right" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      Daily Energy Goal Status
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
+      <font color="red"><b>Goal: 311 kWh (5% reduction).  Status: 314 kWh (3 kWh over goal)</b></font>
+
+      <fieldset>
+	    <legend>Daily Energy Goal Progress</legend>
+        <table>
+          <tr><td><img src="{{ STATIC_URL}}images/energy/energyused314.png" /> </td>
+              <td>Each Ilima Lounge A member receives 20 points<br/>
+                  each day that we make our goal.<br/>
+                  <a href="#">Want more info about your lounge's energy use?</a><br/>
+                  <a href="#">Dive into the advanced energy page!</a><br/></td></tr>
+        </table>
+      </fieldset>
+	
+      <fieldset  >
+	    <legend>How can we make our daily goal?</legend>		
+        <table>
+          <tr>
+            <td>We need to conserve energy to meet our goal, but what does 3 kWh mean?<br/>
+                3 kWh =
+                <select > <option>Playing XBox 360</option> </select>
+                <input type="text" value="5.2 hrs" size="6" readonly="yes"/> </td>
+            <td>The following activities can help your lounge conserve energy, and you earn points!
+
+	        <table >
+		      <thead>
+		        <th>Activity</th>
+		        <th>Points</th>
+                </tr></thead>
+		      <tbody>
+		        <tr><td><a href="#">Watch a video about energy &amp; power</a></td><td>10</td></tr>
+		        <tr><td><a href="#">Set your computer to sleep when idle</a></td><td>10</td></tr>
+		        <tr><td><a href="#">Watch a video about energy intuition</a></td><td>10</td></tr>
+		        <tr><td><a href="#">Audit the energy use in your dorm room</a></td><td>30</td></tr>
+		      </tbody>
+	        </table></td>
+	      </tr>
+	    </table>
+      </fieldset>
+
+      <fieldset >
+    	<legend>Organize with your lounge peeps</legend>
+          Got ideas on how to conserve energy? Share it on the lounge wall:<br>
+		  <input type="text" size="50" value="Yeah, air drying your hair looks better anyway!" />
+	      <button type="button" >Send</button>
+			<table >
+			  <tbody>
+				<tr><td><img src="{{ STATIC_URL}}images/energy/generic-profile-pic.png" />
+						<b>Shanah</b> says:<br/>We could save energy by not using blow dryers\rPosted at 10/5 11:44am</td></tr>
+				<tr><td><img src="{{ STATIC_URL}}images/energy/pj.facebook.jpg" />
+						<b>pj</b> <i>has completed the commitment:<br/>"I will wash only full loads of laundry"</i>\rPosted at 10/5 10:49am</td></tr>
+				<tr><td><img src="{{ STATIC_URL}}images/energy/generic-profile-pic.png" />
+						<b>Yongwen Xu</b> says:<br/>We gotta work on our energy use!\rPosted at 10/4 10:12pm</td></tr>
+			  </tbody>
+			</table>
+      </fieldset>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
