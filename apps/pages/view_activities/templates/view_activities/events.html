@@ -1,0 +1,14 @@
+      <table>
+	    <thead><tr>
+		  <th>Event (points)</th>
+		  <th>Date</th>
+		  <th>Location</th></tr></thead>
+	    <tbody>        
+          {% for event in events %}
+          <tr><td><a href="#">{{event.title}}</a> ({{event.point_value}})</td>
+              <td>{{event.event_date}}</td>
+              <td></td></tr>
+          {% endfor %}
+	    </tbody>
+      </table>
+

@@ -23,6 +23,13 @@ CSS_CLASSES = {
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "ui-button": "ui-button ui-state-default ui-corner-all",
   
+  "landing-logo": "span-3",
+  "landing-title": "span-21 last",
+  "landing-intro": "span-12",
+  "landing-poster": "span-12 last",
+  "landing-page": "span-24 last",
+  "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
+  
   "energy-left": "span-6",
   "energy-right": "span-18 last",
   
