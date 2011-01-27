@@ -9,13 +9,50 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
+from django.db.models import Count
 
 from pages.view_activities.forms import *
 from components.activities.models import *
 from components.activities import *
+from components.floors.models import *
+from components.floors import *
+from components.makahiki_profiles.models import *
+from components.makahiki_profiles import *
+
+MAX_INDIVIDUAL_STANDINGS = 10
+ACTIVITIES_COL_COUNT = 3
 
 def index(request):
-  return render_to_response("view_activities/index.html", {}, context_instance=RequestContext(request))
+  user = request.user
+  events = get_available_events(user)
+  floor = user.get_profile().floor
+  
+  ordered_floors = Floor.objects.annotate(f_points=Sum("profile__points")).order_by("-f_points")
+  ordered_all_profiles = Profile.objects.order_by("-points")
+  ordered_floor_profiles = Profile.objects.filter(floor=floor).order_by("-points")
+  standings = zip(ordered_floors,ordered_all_profiles,ordered_floor_profiles)[:MAX_INDIVIDUAL_STANDINGS]
+  
+  categories = Category.objects.annotate(activity_total=Count("activity"), point_total=Sum("activity__point_value"))
+  categories_list = []
+  cat_col_list = []
+  col_count = 0
+  for cat in categories:
+    cat_col_list.append(cat)
+    col_count = col_count + 1
+    if col_count == ACTIVITIES_COL_COUNT:    	  		 	  
+      categories_list.append(cat_col_list)
+      cat_col_list = []
+      col_count = 0
+  		
+  categories_list.append(cat_col_list)
+  		  
+  return render_to_response("view_activities/index.html", {
+    "events": events,
+    "profile":user.get_profile(),
+    "floor": floor,
+    "standings":standings,
+    "categories":categories_list,
+  }, context_instance=RequestContext(request))
     
 @login_required
 def view_codes(request, activity_id):

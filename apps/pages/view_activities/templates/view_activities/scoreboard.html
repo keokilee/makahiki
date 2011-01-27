@@ -1,0 +1,25 @@
+	<table >
+		<thead><tr>
+			<th>Rank</th>
+			<th>Lounge<br>(Overall)</th>
+			<th>Individual<br>(Overall)</th>
+			<th>Individual<br>({{ floor.floor_identifier }})</th></tr>
+		</thead>
+		<tbody>
+			{% for f,ap,fp in standings %}
+			<tr><td>{{forloop.counter}}</td>
+			<td>{% if f == floor %} 
+			     <b> 
+			    {% endif %}
+			    {{f.floor_identifier}} ({{f.f_points}})</td>
+			<td>{% if ap == profile %} 
+			     <b> 
+			    {% endif %}
+			    {{ap.name}} ({{ap.points}})</td>
+			<td>{% if fp == profile %} 
+			     <b> 
+			    {% endif %}
+				{{fp.name}} ({{fp.points}})</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>

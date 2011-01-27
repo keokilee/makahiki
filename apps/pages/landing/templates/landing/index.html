@@ -1,5 +1,10 @@
 {% extends "site_base.html" %}
-{% load generic_flatblocks %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Welcome to KukuiCup!
+{% endblock %}
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/index.css">
@@ -7,39 +12,38 @@
 
 {% block body %}
 
-<div class="span-24 last">	
-<div class="span-2">	
-<img src="{{ STATIC_URL}}images/logo.png"/>
+<div id="landing-page" class="{% insert_classes "landing-page" %}">
+  <div id="landing-logo" class="{% insert_classes "landing-logo" %}">
+    <img src="{{ STATIC_URL}}images/logo.png"/>
+  </div>
+  <div id="landing-title" class="{% insert_classes "landing-title" %}">
+    <h2>The Kukui Cup: Lights out, game on!</h2>
+  </div>
 </div>
 
-<div class="span-22 last"> <h2>The Kukui Cup: Lights out, game on!</h2>
-</div>
-
-</div>
-<div class="span-12">
-Welcome! 
+<div id="landing-intro" class="{% insert_classes "landing-intro" %}">
+Welcome!
 The Kukui Cup is an exciting dorm energy competition scheduled in the 
 Hale Aloha Ilima, Lehua, and Mokihana towers on the University of Hawaii 
 at Manoa campus for Fall 2011.
-<p>
-<p>
+<p> <p>
 
-<button id="button" class="ui-button ui-widget ui-corner-all ui-state-active">
+<button id="landing-button" class="{% insert_classes "landing-button" %}">
 	<h3><a href="/home">I live in Ilima, Lehua, or Mokihana</a></h3>
 	<h5><a href="/home">You will be prompted for your <br>
-	UH username % password, it's safe</a></h5>
+	UH username and password, it's safe</a></h5>
 </button>
 
 <p>
 
-<button id="button" class="ui-button ui-widget ui-corner-all ui-state-default">
+<button id="landing-button" class="{% insert_classes "landing-button" %}">
 	<h3><a href="/">I don't live in those dorms</a></h3>
 	<h5><a href="/">but I'd like to know more about the Kukui Cup</a></h5>
 </button>
 
 </div>
 
-<div class="span-12 last">
+<div id="landing-poster" class="{% insert_classes "landing-poster" %}">
 <img src="{{ STATIC_URL}}images/landing/personkukui.jpg" height="300" width="400"/>
 </div>
 <p>
@@ -47,8 +51,17 @@ at Manoa campus for Fall 2011.
 {% endblock %}
 
 {% block footer %}
-<div class="span-24 last">	
-<center><a>Contact the Kukui Cup administrators</a></center>
-    {% gblock "website_footer" for "gblocks.Text" %}
+<div id="landing-page" class="{% insert_classes "landing-page" %}">
+  <center>
+  <a>Contact the Kukui Cup administrators</a>
+  <p>
+  <div>Sponsored by:<br> 
+       <a href="http://csdl.ics.hawaii.edu"><img src="http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.csdl.gif" width="75px"/></a>
+       <a href="http://reis.manoa.hawaii.edu"><img src="http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.reis.2.png" width="75px"/></a>
+       <a href="http://housing.hawaii.edu"><img src="http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.manoa.2.png" width="75px"/></a>
+       <a href="http://sustainableuh.hawaii.edu"><img src="http://uh-dorm-energy-competition.googlecode.com/svn/logos/logo.sustainable-uh.2.png" width="75px"/></a>
+       <p>Implemented using the open source <a href="http://keokilee.github.com/makahiki">Makahiki Framework</a>
+  </div>
+  </center>
 </div>
 {% endblock %}
