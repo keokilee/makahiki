@@ -14,8 +14,8 @@ CSS_CLASSES = {
   "home-learn": "span-6 prepend-5",
   "home-profile": "span-6 prepend-1 last",
   
-  "news-left": "span-8",
-  "news-right": "span-15 prepend-1 last",
+  "news-events+popular+activities": "span-8",
+  "news-wall": "span-15 prepend-1 last",
   
   "profile-left": "span-8",
   "profile-middle": "span-8",
