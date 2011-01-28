@@ -21,8 +21,16 @@ def insert_classes(key, theme="default"):
   return ""
   
 @register.simple_tag
-def render_id_and_classes(key, theme="default"):
+def get_id_and_classes(key, theme="default"):
   """
-  Renders the id and class attributes for a tag.
+  Outputs the id and class attributes for a tag.
   """
-  pass
+  theme_path = "css_rules.%s" % theme
+  __import__(theme_path)
+  theme = sys.modules[theme_path]
+  
+  return_string = 'id="%s"' % key
+  if theme.RETURN_CLASSES: 
+    return return_string + ' class="%s"' % theme.CSS_IDS[key]
+    
+  return return_string

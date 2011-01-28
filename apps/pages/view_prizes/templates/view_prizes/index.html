@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="prizes-list" class="{% insert_classes "prizes-list" %}">
+<div {% get_id_and_classes "prizes-list" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Prizes and Prize Winners
@@ -75,13 +75,13 @@
   </div>
 </div>
 
-<div id="prizes-raffle" class="{% insert_classes "prizes-raffle" %}">
+<div {% get_id_and_classes "prizes-raffle" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Round 1 Raffle Game
     </div>
     <div class="{% insert_classes "widget-body" %}">
-      <div id="prizes-info" class="{% insert_classes "prizes-info" %}" style="border: 1px solid black; margin: -1px; margin: 10px 50px">
+      <div {% get_id_and_classes "prizes-info" %} style="border: 1px solid black; margin: -1px; margin: 10px 50px">
         Your total raffle tickets: 2 Allocated right now: 1 Available: 1
       </div>
       <table>
