@@ -26,7 +26,8 @@ CSS_IDS = {
   "landing-intro": "span-12",
   "landing-poster": "span-12 last",
   "landing-page": "span-24 last",
-  "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
+  "landing-poster": "",
+  "landing-sponsors": "span-24 last",
   
   "energy-power+scoreboard": "span-6",
   "energy-status": "span-18 last",
@@ -46,14 +47,6 @@ CSS_IDS = {
 }
 
 CSS_CLASSES = {
-  "news-events+popular+activities": "span-8",
-  "news-wall": "span-15 prepend-1 last",
-  
-  "landing-logo": "span-3",
-  "landing-title": "span-21 last",
-  "landing-intro": "span-12",
-  "landing-poster": "span-12 last",
-  "landing-page": "span-24 last",
   "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
   
   "energy-power+scoreboard": "span-6",

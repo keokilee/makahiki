@@ -13,7 +13,7 @@
 
 {% block body %}
 
-<div id="activity-events+scoreboard" class="{% insert_classes "activity-events+scoreboard" %}">
+<div {% get_id_and_classes "activity-events+scoreboard" %}>
   
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
@@ -35,7 +35,7 @@
 
 </div>
 
-<div id="activity-categories" class="{% insert_classes "activity-categories" %}">
+<div {% get_id_and_classes "activity-categories" %}>
   {% include "view_activities/categories.html" %}
 </div>
 
