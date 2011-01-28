@@ -49,13 +49,6 @@ CSS_IDS = {
 CSS_CLASSES = {
   "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
   
-  "energy-power+scoreboard": "span-6",
-  "energy-status": "span-18 last",
-  
-  "activity-events+scoreboard": "span-9",
-  "activity-categories": "span-15 last",
-  "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
-  
   "prizes-add-button": "ui-button ui-state-default ui-corner-all",
   "prizes-remove-button": "ui-button ui-state-error ui-corner-all",
   "prizes-disabled-button": "ui-button ui-state-disabled ui-corner-all",
