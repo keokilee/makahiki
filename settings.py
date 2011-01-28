@@ -173,10 +173,10 @@ INSTALLED_APPS = (
     'components.setup_wizard',
     'components.standings',
     
-    
     # 3rd party libraries
     'lib.brabeion',
     'lib.minidetector',
+    'lib.restclient',
     
     # Django and Pinax apps
     'django.contrib.auth',
