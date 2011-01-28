@@ -1,5 +1,6 @@
 import datetime
 
+from django.db.models import Q
 from django.conf import settings
 from components.activities.models import Activity, Commitment
 
@@ -77,6 +78,20 @@ def get_available_activities(user):
   activities = Activity.objects.exclude(
     activitymember__user=user,
   ).filter(
+    is_event=False,
+    pub_date__lte=datetime.date.today(),
+    expire_date__gte=datetime.date.today(),
+  ).order_by("priority", "title")
+  
+  return activities
+
+def get_available_golow_activities(user):
+  """Retrieves only the golow activities that a user can participate in (excluding events)."""
+  
+  activities = Activity.objects.exclude(
+    activitymember__user=user,
+  ).filter(
+    Q(category__id=2) | Q(category__id=3),
     is_event=False,
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),

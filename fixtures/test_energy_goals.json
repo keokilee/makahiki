@@ -1,0 +1,31 @@
+[
+  {
+    "pk": 1, 
+    "model": "energy_goals.energygoal", 
+    "fields": {
+      "created_at": "2010-06-25 10:10:38", 
+      "end_date": "2010-07-02", 
+      "point_conversion": 10.0, 
+      "minimum_goal": 5, 
+      "updated_at": "2010-06-25 10:10:38", 
+      "goal_increments": 5, 
+      "maximum_goal": 20, 
+      "voting_end_date": "2010-07-02", 
+      "start_date": "2010-06-25", 
+      "default_goal": 5
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "energy_goals.floorenergygoal", 
+    "fields": {
+      "goal": 1, 
+      "floor": 2, 
+      "created_at": "2010-06-25 10:10:38", 
+      "percent_reduction": 15, 
+      "updated_at": "2010-06-25 10:10:38", 
+      "awarded": false, 
+      "completed": false
+    }
+  }
+]

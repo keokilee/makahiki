@@ -1,0 +1,13 @@
+{% load avatar_tags %}
+
+  <table >
+	<tbody>
+      {% for post in posts %}
+      <tr><td>
+        <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" class="photo" align="top"/>
+        <b>{{post.user.get_profile.name}}</b> says: {{post.text}}</p>
+        Posted at {{post.date_string}} 
+      </td></tr>
+     {% endfor %} 
+	</tbody>
+  </table>

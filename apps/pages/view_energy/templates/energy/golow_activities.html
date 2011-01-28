@@ -1,0 +1,14 @@
+      <table>
+	    <thead>
+		  <th>Activity</th>
+		  <th>Points</th>
+		</thead>
+	    <tbody>        
+          {% for a in golow_activities %}
+          <tr><td><a href="#">{{a.title}}</a></td>
+              <td>{{a.point_value}}</td>
+          </tr>
+          {% endfor %}
+	    </tbody>
+      </table>
+    
