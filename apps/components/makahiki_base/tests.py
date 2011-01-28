@@ -94,13 +94,13 @@ class BaseUnitTestCase(TestCase):
     
 class ClassTagsUnitTests(TestCase):
   """Tests the ability to insert class tags."""
-  def testDefaultRetrieval(self):
+  def testDefaultClassRetrieval(self):
     """Checks that default values can be retrieved."""
     tag_id = default.CSS_CLASSES.keys()[0]
     self.assertEqual(insert_classes(tag_id), default.CSS_CLASSES[tag_id], 
                     "Check that insert classes returns the correct value from the dictionary.")
                     
-  def testEmptyRetrieval(self):
+  def testEmptyClassRetrieval(self):
     """Checks that disabling RETURN_CLASSES returns empty strings for classes."""
     saved_setting = default.RETURN_CLASSES
     default.RETURN_CLASSES = False

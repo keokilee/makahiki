@@ -1,7 +1,7 @@
 # default.py
 #
 # This file maps ids to a string of classes.  Templates that use class_tags and insert_classes refer to this file.
-# Note that some of the "ids" are more like css selectors.
+# Note that some of the "ids" are more like class names.  These rules act like "macro expansions" in the templates.
 
 # If True, the classes will be inserted.  Otherwise, the tags will be empty strings.
 RETURN_CLASSES = True
@@ -13,6 +13,9 @@ CSS_CLASSES = {
   "home-middle-right": "span-6 prepend-7 last",
   "home-bottom-left": "span-6 prepend-5",
   "home-bottom-right": "span-6 prepend-1 last",
+  
+  "news-left": "span-8",
+  "news-right": "span-15 prepend-1 last",
   
   "profile-left": "span-8",
   "profile-middle": "span-8",

@@ -1,39 +1,39 @@
 {% load avatar_tags %}
 
 {% if user.is_authenticated %}
-  <div id="header-avatar">
+  <div id="header_avatar" class="span-2">
     <img src="{% avatar_url user 60 %}"/>
   </div>
   
   {% with user.get_profile as profile %}
-  <div id="header-user-info">
-    <div id="header-user-name" style="font-weight: bold; text-align: center">
+  <div id="header_user_info" class="span-4">
+    <div class="span-4 last" style="font-weight: bold; text-align: center">
       {{profile.name}} ({{user.username}})
     </div>
-    <div id="header-user-points">
-      <h3 style="margin: 0px; display:inline">{{profile.points}}</h3> 
+    <div class="span-2">
+      <h3 style="margin: 0px; display:inline">{{profile.points}}</h3>
       points
     </div>
-    <div id="header-user-rank">
+    <div class="span-2 last">
       <h3 style="margin: 0px; display:inline">#{{profile.floor_rank}}</h3> out of 52 in Lounge A
     </div>
   </div>
   {% endwith %}
   
   {% with user.get_profile.floor as floor %}
-  <div id="header-floor-info" style="border-left: 1px solid gray; margin-left: -1px; margin-right: 10px">
-    <div id="header-floor-name" style="font-weight: bold; text-align: center">
+  <div class="span-4" style="border-left: 1px solid gray; margin-left: -1px; margin-right: 5px">
+    <div class="span-4 last" style="font-weight: bold; text-align: center">
       {{floor}}
     </div>
-    <div id="header-floor-points">
-      <h3 style="margin: 0px; display:inline">{{floor.points}}</h3> 
+    <div class="span-2">
+      <h3 style="margin: 0px; display:inline">{{floor.points}}</h3>
       points
     </div>
-    <div id="header-floor-rank">
+    <div class="span-2 last">
       <h3 style="margin: 0px; display:inline">#{{floor.rank}}</h3> out of 15 in all dorms
     </div>
   </div>
-  <div id="header-floor-avatar">
+  <div class="span-2 last">
     <img src="{{STATIC_URL}}images/hale.ilima.jpg"/>
   </div>
   {% endwith %}

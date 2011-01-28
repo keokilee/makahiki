@@ -19,3 +19,10 @@ def insert_classes(key, theme="default"):
     return theme.CSS_CLASSES[key]
     
   return ""
+  
+@register.simple_tag
+def render_id_and_classes(key, theme="default"):
+  """
+  Renders the id and class attributes for a tag.
+  """
+  pass
