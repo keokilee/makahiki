@@ -1,5 +1,7 @@
 {% extends "logged_in_base.html" %}
 
+{% load class_tags %}
+
 {% block page_title %}
   What's going on in the cup?
 {% endblock %}
@@ -9,12 +11,12 @@
 {% endblock %}
 
 {% block body %}
-<div class="span-8">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-accordion-header ui-corner-top">
+<div id="news-left" class="{% insert_classes "news-left" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Upcoming Events
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <table>
         <tr>
           <th>Event (points)</th>
@@ -50,11 +52,11 @@
     </div>
   </div>
   
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-accordion-header ui-corner-top">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Most Popular
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <form>
         <select style="margin: 0 auto">
           <option>Activities</option>
@@ -88,11 +90,11 @@
     </div>
   </div>
   
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-accordion-header ui-corner-top">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       My Public Commitments
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <table>
         <tr>
           <th>Commitment</th>
@@ -119,12 +121,12 @@
   </div>
 </div>
 
-<div class="span-15 prepend-1 last">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-accordion-header ui-corner-top">
+<div id="news-right" class="{% insert_classes "news-right" %}">
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       News Feed
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <div id="wall_form" style="padding: 0; padding-bottom: 5px; border-bottom: 1px solid #DFD9C3">
         <form action="{% url news_index %}" method="GET">
           <div id="wall_post" style="display:inline; width: 100%">
