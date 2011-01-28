@@ -38,6 +38,11 @@ CSS_IDS = {
   "prizes-list": "span-11",
   "prizes-raffle": "span-13 last",
   "prizes-info": "span-10 last",
+  
+  "help-video": "span-8",
+  "help-rules": "span-7 prepend-1",
+  "help-faq": "span-7 prepend-1 last",
+  "help-ask": "span-15 prepend-9 last",
 }
 
 CSS_CLASSES = {
@@ -50,10 +55,6 @@ CSS_CLASSES = {
   
   "news-events+popular+activities": "span-8",
   "news-wall": "span-15 prepend-1 last",
-  
-  "profile-form": "span-8",
-  "profile-badges": "span-8",
-  "profile-history": "span-8 last",
   
   "landing-logo": "span-3",
   "landing-title": "span-21 last",
@@ -68,11 +69,6 @@ CSS_CLASSES = {
   "activity-events+scoreboard": "span-9",
   "activity-categories": "span-15 last",
   "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
-  
-  "help-video": "span-8",
-  "help-rules": "span-7 prepend-1",
-  "help-faq": "span-7 prepend-1 last",
-  "help-ask": "span-15 prepend-9 last",
   
   "prizes-add-button": "ui-button ui-state-default ui-corner-all",
   "prizes-remove-button": "ui-button ui-state-error ui-corner-all",

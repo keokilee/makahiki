@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="help-video" class="{% insert_classes "help-video" %}">
+<div {% get_id_and_classes "help-video" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Two Minute Intro to the Kukui Cup
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div id="help-rules" class="{% insert_classes "help-rules" %}">
+<div {% get_id_and_classes "help-rules" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Rules of the competition
@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<div id="help-faq" class="{% insert_classes "help-faq" %}">
+<div {% get_id_and_classes "help-faq" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Frequently Asked Questions
@@ -65,7 +65,7 @@
   </div>
 </div>
 
-<div id="help-ask" class="{% insert_classes "help-ask" %}">
+<div {% get_id_and_classes "help-ask" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Ask an Admin
