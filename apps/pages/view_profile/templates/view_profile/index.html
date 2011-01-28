@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="profile-left" class="{% insert_classes "profile-left" %}">
+<div {% get_id_and_classes "profile-form" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       My Info
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div id="profile-middle" class="{% insert_classes "profile-middle" %}">
+<div {% get_id_and_classes "profile-badges" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       My Badges
@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<div id="profile-right" class="{% insert_classes "profile-right" %}">
+<div {% get_id_and_classes "profile-history" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       My Achievements

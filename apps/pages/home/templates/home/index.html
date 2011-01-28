@@ -12,19 +12,19 @@
 
 {% block body %}
 <!-- Top Row-->
-<div id="home-top-left" class="{% insert_classes "home-top-left" %}">
-<a href="/energy">
-<img src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" Align="Right"/>
-</a>
-<h6 style="text-align: right">Go Low</h6>
-<p style="text-align: right">
-Observe and Conserve Energy<br/>
-Set and track conservation goals<br/>
-Compare to other
-</p>
+<div {% get_id_and_classes "home-energy" %}>
+  <a href="/energy">
+    <img src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" Align="Right"/>
+  </a>
+  <h6 style="text-align: right">Go Low</h6>
+  <p style="text-align: right">
+    Observe and Conserve Energy<br/>
+    Set and track conservation goals<br/>
+    Compare to other
+  </p>
 </div>
 
-<div id="home-top-right" class="{% insert_classes "home-top-right" %}">
+<div {% get_id_and_classes "home-activities" %}>
 <a href="/activities">
 <img src="{{ STATIC_URL}}images/icons/activities.png" height="85" width="85" Align="Left"/>
 </a>
@@ -37,7 +37,7 @@ See where you stand
 </div>
 
 <!-- Middle Row-->
-<div id="home-middle-left" class="{% insert_classes "home-middle-left" %}">
+<div {% get_id_and_classes "home-news" %}>
 <CENTER>
 <h6>News</h6>
 <a href="/news">
@@ -51,7 +51,7 @@ Top activities and events
 </CENTER>
 </div>
 
-<div id="home-middle-right" class="{% insert_classes "home-middle-right" %}">
+<div {% get_id_and_classes "home-prizes" %}>
 <CENTER>
 <h6>Prizes</h6>
 <a href="/prizes">
@@ -65,7 +65,7 @@ Monitor your chances
 </CENTER>
 </div>
 
-<div id="home-bottom-left" class="{% insert_classes "home-bottom-left" %}">
+<div {% get_id_and_classes "home-learn" %}>
 <CENTER>
 <h6>Learn</h6>
 <a href="/help">
@@ -79,7 +79,7 @@ Learn the rules
 </CENTER>
 </div>
 
-<div id="home-bottom-right" class="{% insert_classes "home-bottom-right" %}">
+<div {% get_id_and_classes "home-profile" %}>
 <CENTER>
 <h6>Profile</h6>
 <a href="/profile">

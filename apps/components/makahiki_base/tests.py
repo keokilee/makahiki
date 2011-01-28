@@ -8,7 +8,7 @@ from django.conf import settings
 
 from components.makahiki_base.models import Article
 from components.makahiki_base import get_round_info, get_theme, get_current_round
-from components.makahiki_base.templatetags.class_tags import insert_classes
+from components.makahiki_base.templatetags.class_tags import insert_classes, get_id_and_classes
 from css_rules import default
 
 class BaseUnitTestCase(TestCase):
@@ -94,19 +94,40 @@ class BaseUnitTestCase(TestCase):
     
 class ClassTagsUnitTests(TestCase):
   """Tests the ability to insert class tags."""
-  def testDefaultRetrieval(self):
+  def testDefaultClassRetrieval(self):
     """Checks that default values can be retrieved."""
-    tag_id = default.CSS_CLASSES.keys()[0]
-    self.assertEqual(insert_classes(tag_id), default.CSS_CLASSES[tag_id], 
+    class_name = default.CSS_CLASSES.keys()[0]
+    self.assertEqual(insert_classes(class_name), default.CSS_CLASSES[class_name], 
                     "Check that insert classes returns the correct value from the dictionary.")
                     
-  def testEmptyRetrieval(self):
+  def testEmptyClassRetrieval(self):
     """Checks that disabling RETURN_CLASSES returns empty strings for classes."""
     saved_setting = default.RETURN_CLASSES
     default.RETURN_CLASSES = False
-    tag_id = default.CSS_CLASSES.keys()[0]
-    self.assertEqual(insert_classes(tag_id), "", 
+    class_name = default.CSS_CLASSES.keys()[0]
+    self.assertEqual(insert_classes(class_name), "", 
                     "Check that insert classes now returns an empty string.")
                     
     # Restore setting
     default.RETURN_CLASSES = saved_setting
+    
+  def testIdAndClassExpansion(self):
+    """Tests the ability to expand an id into an id and classes."""
+    tag_id = default.CSS_IDS.keys()[0]
+    expected_string = 'id="%s" class="%s"' % (tag_id, default.CSS_CLASSES[tag_id])
+    self.assertEqual(get_id_and_classes(tag_id), expected_string, 
+                    "Expected: %s but got %s." % (expected_string, get_id_and_classes(tag_id)))
+                    
+  def testDisabledIdExpansion(self):
+    """Tests the ability to expand an id into an id and classes."""
+    saved_setting = default.RETURN_CLASSES
+    default.RETURN_CLASSES = False
+    
+    tag_id = default.CSS_IDS.keys()[0]
+    expected_string = 'id="%s"' % (tag_id,)
+    self.assertEqual(get_id_and_classes(tag_id), expected_string, 
+                    "Expected: %s but got %s." % (expected_string, get_id_and_classes(tag_id)))
+                    
+    # Restore setting
+    default.RETURN_CLASSES = saved_setting
+    

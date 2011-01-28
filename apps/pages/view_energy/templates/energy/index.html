@@ -12,7 +12,8 @@
 
 {% block body %}
 
-<div id="energy-left" class="{% insert_classes "energy-left" %}">
+<div {% get_id_and_classes "energy-power+scoreboard" %}>
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Current Lounge Power
     </div>
@@ -21,8 +22,11 @@
       {% include "energy/power.html" %}  
       </center>
     </div>
+  </div>
+  
   <p>
 
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Overall kWh Score Board
     </div>
@@ -30,10 +34,10 @@
       {% include "energy/scoreboard.html" %}
       <div>#1 at end of round wins a prize!</div>
     </div>
-  
+  </div>
 </div>
 
-<div id="energy-right" class="{% insert_classes "energy-right" %}">
+<div {% get_id_and_classes "energy-status" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Daily Energy Goal Status

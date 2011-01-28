@@ -12,23 +12,23 @@
 
 {% block body %}
 
-<div id="landing-page" class="{% insert_classes "landing-page" %}">
-  <div id="landing-logo" class="{% insert_classes "landing-logo" %}">
+<div {% get_id_and_classes "landing-page" %}>
+  <div {% get_id_and_classes "landing-logo" %}>
     <img src="{{ STATIC_URL}}images/logo.png"/>
   </div>
-  <div id="landing-title" class="{% insert_classes "landing-title" %}">
+  <div {% get_id_and_classes "landing-title" %}>
     <h2>The Kukui Cup: Lights out, game on!</h2>
   </div>
 </div>
 
-<div id="landing-intro" class="{% insert_classes "landing-intro" %}">
+<div {% get_id_and_classes "landing-intro" %}>
 Welcome!
 The Kukui Cup is an exciting dorm energy competition scheduled in the 
 Hale Aloha Ilima, Lehua, and Mokihana towers on the University of Hawaii 
 at Manoa campus for Fall 2011.
 <p> <p>
 
-<button id="landing-button" class="{% insert_classes "landing-button" %}">
+<button class="{% insert_classes "landing-button" %}">
 	<h3><a href="/home">I live in Ilima, Lehua, or Mokihana</a></h3>
 	<h5><a href="/home">You will be prompted for your <br>
 	UH username and password, it's safe</a></h5>
@@ -36,14 +36,14 @@ at Manoa campus for Fall 2011.
 
 <p>
 
-<button id="landing-button" class="{% insert_classes "landing-button" %}">
+<button class="{% insert_classes "landing-button" %}">
 	<h3><a href="/">I don't live in those dorms</a></h3>
 	<h5><a href="/">but I'd like to know more about the Kukui Cup</a></h5>
 </button>
 
 </div>
 
-<div id="landing-poster" class="{% insert_classes "landing-poster" %}">
+<div {% get_id_and_classes "landing-poster" %}>
 <img src="{{ STATIC_URL}}images/landing/personkukui.jpg" height="300" width="400"/>
 </div>
 <p>
@@ -51,7 +51,7 @@ at Manoa campus for Fall 2011.
 {% endblock %}
 
 {% block footer %}
-<div id="landing-page" class="{% insert_classes "landing-page" %}">
+<div {% get_id_and_classes "landing-sponsors" %}>
   <center>
   <a>Contact the Kukui Cup administrators</a>
   <p>

@@ -1,5 +1,7 @@
 {% extends "logged_in_base.html" %}
 
+{% load class_tags %}
+
 {% block page_title %}
   Compete for Prizes
 {% endblock %}
@@ -9,12 +11,12 @@
 {% endblock %}
 
 {% block body %}
-<div class="span-11">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "prizes-list" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Prizes and Prize Winners
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <form style="text-align: center">
         <select>
           <option>Round 1</option>
@@ -73,13 +75,13 @@
   </div>
 </div>
 
-<div class="span-13 last">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "prizes-raffle" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Round 1 Raffle Game
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-      <div class="span-10 last" style="border: 1px solid black; margin: -1px; margin: 10px 50px">
+    <div class="{% insert_classes "widget-body" %}">
+      <div {% get_id_and_classes "prizes-info" %} style="border: 1px solid black; margin: -1px; margin: 10px 50px">
         Your total raffle tickets: 2 Allocated right now: 1 Available: 1
       </div>
       <table>
@@ -101,8 +103,8 @@
           <td>5</td>
           <td>0%</td>
           <td>
-            <a class="ui-button ui-state-default ui-corner-all" style="width: 40px" href="#">+1</a>
-            <a class="ui-button ui-corner-all ui-state-error" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
+            <a class="{% insert_classes "prizes-remove-button" %}" style="width: 40px" href="#">-1</a>
           </td>
         </tr>
         <tr>
@@ -116,8 +118,8 @@
           <td>13</td>
           <td>0%</td>
           <td>
-            <a class="ui-button ui-state-default ui-corner-all" style="width: 40px" href="#">+1</a>
-            <a class="ui-button ui-corner-all ui-state-disabled" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
+            <a class="{% insert_classes "prizes-disabled-button" %}" style="width: 40px" href="#">-1</a>
           </td>
         </tr>
         <tr>
@@ -131,8 +133,8 @@
           <td>10</td>
           <td>N/A</td>
           <td>
-            <a class="ui-button ui-state-default ui-corner-all" style="width: 40px" href="#">+1</a>
-            <a class="ui-button ui-corner-all ui-state-disabled" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
+            <a class="{% insert_classes "prizes-disabled-button" %}" style="width: 40px" href="#">-1</a>
           </td>
         </tr>
       </table>

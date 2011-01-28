@@ -4,11 +4,13 @@ ul {
 
 .widget {
   margin: 10px 0;
+  padding: 0;
 }
 
 .widget-title {
   color: white;
   margin: 0px;
+  padding: 5px;
   font-size: 1.0em;
   text-align: center;
   cursor: auto;
@@ -19,4 +21,6 @@ ul {
   margin: 0px 0px 15px 0px;
   padding: 0px;
 }
+
+
 
