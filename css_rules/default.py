@@ -40,6 +40,13 @@ CSS_CLASSES = {
   "help-faq": "span-7 prepend-1 last",
   "help-ask": "span-15 prepend-9 last",
   
+  "prizes-list": "span-11",
+  "prizes-raffle": "span-13 last",
+  "prizes-add-button": "ui-button ui-state-default ui-corner-all",
+  "prizes-remove-button": "ui-button ui-state-error ui-corner-all",
+  "prizes-disabled-button": "ui-button ui-state-disabled ui-corner-all",
+  "prizes-info": "span-10 last",
+  
   "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
