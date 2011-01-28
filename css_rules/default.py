@@ -33,8 +33,8 @@ CSS_CLASSES = {
   "landing-page": "span-24 last",
   "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
   
-  "energy-left": "span-6",
-  "energy-right": "span-18 last",
+  "energy-power+scoreboard": "span-6",
+  "energy-status": "span-18 last",
   
   "activity-left": "span-9",
   "activity-right": "span-15 last",
