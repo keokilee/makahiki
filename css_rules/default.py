@@ -7,12 +7,12 @@
 RETURN_CLASSES = True
 
 CSS_CLASSES = {
-  "home-top-left": "span-11",
-  "home-top-right": "span-11 prepend-1 last",
-  "home-middle-left": "span-6 prepend-2",
-  "home-middle-right": "span-6 prepend-7 last",
-  "home-bottom-left": "span-6 prepend-5",
-  "home-bottom-right": "span-6 prepend-1 last",
+  "home-energy": "span-11",
+  "home-activities": "span-11 prepend-1 last",
+  "home-news": "span-6 prepend-2",
+  "home-prizes": "span-6 prepend-7 last",
+  "home-learn": "span-6 prepend-5",
+  "home-profile": "span-6 prepend-1 last",
   
   "news-left": "span-8",
   "news-right": "span-15 prepend-1 last",
