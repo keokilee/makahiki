@@ -31,7 +31,7 @@ def index(request):
   
   
   # wattdepot rest api call
-  conn = Connection("http://localhost:8182/wattdepot/")
+  conn = Connection("http://server.wattdepot.org:8182/wattdepot/")
   
   for f in Floor.objects.all():
     wdsource = "SIM_UH_" + f.dorm.name.upper() + "_FLOORS_" + f.slug
