@@ -17,9 +17,9 @@ CSS_CLASSES = {
   "news-events+popular+activities": "span-8",
   "news-wall": "span-15 prepend-1 last",
   
-  "profile-left": "span-8",
-  "profile-middle": "span-8",
-  "profile-right": "span-8 last",
+  "profile-form": "span-8",
+  "profile-badges": "span-8",
+  "profile-history": "span-8 last",
   
   "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
