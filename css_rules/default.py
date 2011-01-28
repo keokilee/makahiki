@@ -35,6 +35,11 @@ CSS_CLASSES = {
   "activity-categories": "span-15 last",
   "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
   
+  "help-video": "span-8",
+  "help-rules": "span-7 prepend-1",
+  "help-faq": "span-7 prepend-1 last",
+  "help-ask": "span-15 prepend-9 last",
+  
   "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
