@@ -21,11 +21,6 @@ CSS_CLASSES = {
   "profile-badges": "span-8",
   "profile-history": "span-8 last",
   
-  "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
-  "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
-  "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
-  "ui-button": "ui-button ui-state-default ui-corner-all",
-  
   "landing-logo": "span-3",
   "landing-title": "span-21 last",
   "landing-intro": "span-12",
@@ -36,7 +31,12 @@ CSS_CLASSES = {
   "energy-power+scoreboard": "span-6",
   "energy-status": "span-18 last",
   
-  "activity-left": "span-9",
-  "activity-right": "span-15 last",
+  "activity-events+scoreboard": "span-9",
+  "activity-categories": "span-15 last",
   "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
+  
+  "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "ui-button": "ui-button ui-state-default ui-corner-all",
 }
