@@ -15,22 +15,23 @@
 
 <div id="activity-events+scoreboard" class="{% insert_classes "activity-events+scoreboard" %}">
   
-  
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Upcoming Events
     </div>   
     <div class="{% insert_classes "widget-body" %}">    
       {% include "view_activities/events.html" %}
     </div>
+  </div>
   
-  <br>
-
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Points Score Board
     </div>
     <div class="{% insert_classes "widget-body" %}">
       {% include "view_activities/scoreboard.html" %}
     </div>
+  </div>
 
 </div>
 
