@@ -6,7 +6,26 @@
 # If True, the classes will be inserted.  Otherwise, the tags will be empty strings.
 RETURN_CLASSES = True
 
+CSS_IMPORTS = """
+<link rel="stylesheet" href="{0}css/{1}/screen.css" media="screen">
+<link rel="stylesheet" href="{0}css/{1}/print.css" media="print">
+<link rel="stylesheet" href="{0}css/{1}/jquery-ui.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="{0}css/{1}/ie.css" 
+type="text/css" media="screen, projection"><![endif]-->
+
+<link rel="stylesheet" href="{0}frontendadmin/css/frontendadmin.css" />
+<link rel="stylesheet" href="{0}uni_form/uni-form.css" />
+"""
+
+JS_IMPORTS = """
+<script src="{0}js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="{0}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+<script src="{0}js/jquery.countdown.pack.js" type="text/javascript"></script>
+"""
+
 CSS_IDS = {
+  "header": "span-24 last",
+  
   "home-energy": "span-11",
   "home-activities": "span-11 prepend-1 last",
   "home-news": "span-6 prepend-2",

@@ -4,7 +4,7 @@ from django import template
 from django.template import Library
 
 register = Library()
-
+  
 @register.simple_tag
 def insert_classes(key, theme="default"):
   """
@@ -14,9 +14,9 @@ def insert_classes(key, theme="default"):
   # Solution found at http://docs.python.org/library/functions.html#__import__
   theme_path = "css_rules.%s" % theme
   __import__(theme_path)
-  theme = sys.modules[theme_path]
-  if theme.RETURN_CLASSES: 
-    return theme.CSS_CLASSES[key]
+  theme_rules = sys.modules[theme_path]
+  if theme_rules.RETURN_CLASSES: 
+    return theme_rules.CSS_CLASSES[key]
     
   return ""
   
@@ -27,10 +27,36 @@ def get_id_and_classes(key, theme="default"):
   """
   theme_path = "css_rules.%s" % theme
   __import__(theme_path)
-  theme = sys.modules[theme_path]
+  theme_rules = sys.modules[theme_path]
   
   return_string = 'id="%s"' % key
-  if theme.RETURN_CLASSES: 
-    return return_string + ' class="%s"' % theme.CSS_IDS[key]
+  if theme_rules.RETURN_CLASSES: 
+    return return_string + ' class="%s"' % theme_rules.CSS_IDS[key]
     
   return return_string
+  
+@register.simple_tag
+def import_css(static_url, theme="default"):
+  """
+  Returns HTML that imports CSS.  Typically should be used in the header section of a page.
+  """
+  theme_path = "css_rules.%s" % theme
+  __import__(theme_path)
+  theme_rules = sys.modules[theme_path]
+  if theme_rules.RETURN_CLASSES: 
+    return theme_rules.CSS_IMPORTS.format(static_url, theme)
+    
+  return ""
+  
+@register.simple_tag
+def import_js(static_url, theme="default"):
+  """
+  Returns HTML that imports JS.  Typically should be used in the header section of a page.
+  """
+  theme_path = "css_rules.%s" % theme
+  __import__(theme_path)
+  theme_rules = sys.modules[theme_path]
+  if theme_rules.RETURN_CLASSES: 
+    return theme_rules.JS_IMPORTS.format(static_url)
+
+  return ""
