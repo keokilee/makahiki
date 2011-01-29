@@ -18,20 +18,11 @@ def index(request):
   golow_activities = get_available_golow_activities(user)
   golow_posts = Post.objects.filter(floor=floor, style_class="user_post")[:10]
   
-  ## TODO get the enery ranking from wattdepot
-  ## ordered_floors = Floor.objects.annotate(f_points=Sum("profile__points")).order_by("-f_points")
-  ## standings = ordered_floors
   standings = []
-  
-  ## TODO get the power and energy data from wattdepot
-##  conn = Connection("http://server.wattdepot.org:8182/wattdepot/")
-##  resp = conn.request_get("sources/SIM_UH_ILIMA_FLOORS_3-4/sensordata/latest")
-
-  # convert makahiki floor name to wattdepot source name
-  
   
   # wattdepot rest api call
   conn = Connection("http://server.wattdepot.org:8182/wattdepot/")
+  ## conn = Connection("http://localhost:8182/wattdepot/")
   
   for f in Floor.objects.all():
     wdsource = "SIM_UH_" + f.dorm.name.upper() + "_FLOORS_" + f.slug
@@ -54,6 +45,7 @@ def index(request):
   
   ## TODO. create the baseline table
   baseline = 24 
+  energy = 22
   percent_reduce = FloorEnergyGoal.objects.filter(floor=floor)[0].percent_reduction
   
   percent = 100 - percent_reduce  
