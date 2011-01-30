@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/mobile.css">
+  {% import_page_css "mobile" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}

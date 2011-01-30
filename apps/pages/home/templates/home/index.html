@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/home.css">
+  {% import_page_css "home" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}

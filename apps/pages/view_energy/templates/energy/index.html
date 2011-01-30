@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_energy.css">
+  {% import_page_css "view_energy" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}

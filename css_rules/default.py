@@ -23,6 +23,17 @@ JS_IMPORTS = """
 <script src="{0}js/jquery.countdown.pack.js" type="text/javascript"></script>
 """
 
+PAGE_CSS_IMPORT = {
+  "home": '<link rel="stylesheet" href="{0}css/{1}/pages/home.css">',
+  "landing": '<link rel="stylesheet" href="{0}css/{1}/pages/index.css">',
+  "mobile": '<link rel="stylesheet" href="{0}css/{1}/pages/mobile.css">',
+  "news": '<link rel="stylesheet" href="{0}css/{1}/pages/news.css">',
+  "view_activities": '<link rel="stylesheet" href="{0}css/{1}/pages/view_activities.css">',
+  "view_energy": '<link rel="stylesheet" href="{0}css/{1}/pages/view_energy.css">',
+  "view_help": '<link rel="stylesheet" href="{0}css/{1}/pages/view_help.css">',
+  "view_prizes": '<link rel="stylesheet" href="{0}css/{1}/pages/view_prizes.css">',
+  "view_profile": '<link rel="stylesheet" href="{0}css/{1}/pages/view_profile.css">',
+}
 CSS_IDS = {
   "header": "span-24 last",
   

@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/news.css">
+  {% import_page_css "news" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}
-<div id="news-events+popular+activities" class="{% insert_classes "news-events+popular+activities" %}">
+<div {% get_id_and_classes "news-events+popular+activities" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Upcoming Events
@@ -121,7 +121,7 @@
   </div>
 </div>
 
-<div id="news-wall" class="{% insert_classes "news-wall" %}">
+<div {% get_id_and_classes "news-wall" %}>
   <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       News Feed
