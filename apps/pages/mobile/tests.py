@@ -11,7 +11,7 @@ from pages.mobile import get_mobile_standings
     
 class MobileRoundStandingsTestCase(TestCase):
   """Tests the generation of standings that check a user's placement in a round."""
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
 
   def setUp(self):
     """Set the competition settings to the current date for testing."""
@@ -85,7 +85,7 @@ class MobileRoundStandingsTestCase(TestCase):
     
 class MobileOverallStandingsTestCase(TestCase):
   """Tests the generation of standings that check a user's placement in a round."""
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
 
   def setUp(self):
     """Set the competition settings to the current date for testing."""
