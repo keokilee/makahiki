@@ -17,7 +17,7 @@
       Prizes and Prize Winners
     </div>
     <div class="{% insert_classes "widget-body" %}">
-      <form style="text-align: center">
+      <form>
         <select>
           <option>Round 1</option>
           <option>Round 2</option>
@@ -25,11 +25,11 @@
         </select>
       </form>
       
-      <table>
+      <table id="prizes-list-table">
         <tr>
-          <th style="width: 45%">Prize</th>
-          <th style="width: 10%">Number awarded</th>
-          <th>Criteria</th>
+          <th id="prize-table-header">Prize</th>
+          <th id="prize-num-awarded-header">Number awarded</th>
+          <th id="prize-criteria-header">Criteria</th>
         </tr>
         <tr>
           <td>
@@ -81,20 +81,20 @@
       Round 1 Raffle Game
     </div>
     <div class="{% insert_classes "widget-body" %}">
-      <div {% get_id_and_classes "prizes-info" %} style="border: 1px solid black; margin: -1px; margin: 10px 50px">
+      <div {% get_id_and_classes "prizes-info" %}>
         Your total raffle tickets: 2 Allocated right now: 1 Available: 1
       </div>
-      <table>
+      <table id="raffle-table">
         <tr>
-          <th>Prize</th>
-          <th style="width: 10%">Your tickets</th>
-          <th style="width: 10%">Total tickets</th>
-          <th style="width: 10%">Current odds</th>
-          <th style="width: 30%">Change ticket allocation</th>
+          <th id="raffle-prize-header">Prize</th>
+          <th id="raffle-user-tickets-header">Your tickets</th>
+          <th id="raffle-total-tickets-header">Total tickets</th>
+          <th id="raffle-odds-header">Current odds</th>
+          <th id="raffle=-options-header">Change ticket allocation</th>
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/bikehelmet.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/bikehelmet.jpg"/>
             <a href="#">
               Bike helmet 
             </a>
@@ -103,8 +103,8 @@
           <td>5</td>
           <td>0%</td>
           <td>
-            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
-            <a class="{% insert_classes "prizes-remove-button" %}" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
+            <a class="{% insert_classes "prizes-remove-button" %}" href="#">-1</a>
           </td>
         </tr>
         <tr>
@@ -118,13 +118,13 @@
           <td>13</td>
           <td>0%</td>
           <td>
-            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
-            <a class="{% insert_classes "prizes-disabled-button" %}" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
+            <a class="{% insert_classes "prizes-disabled-button" %}" href="#">-1</a>
           </td>
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/carbon-credits.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/carbon-credits.jpg"/>
             <a href="#">
               Carbon credits
             </a>
@@ -133,12 +133,12 @@
           <td>10</td>
           <td>N/A</td>
           <td>
-            <a class="{% insert_classes "prizes-add-button" %}" style="width: 40px" href="#">+1</a>
-            <a class="{% insert_classes "prizes-disabled-button" %}" style="width: 40px" href="#">-1</a>
+            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
+            <a class="{% insert_classes "prizes-disabled-button" %}" href="#">-1</a>
           </td>
         </tr>
       </table>
-      <div style="text-align: center; margin-bottom: 10px">
+      <div id="raffle-footer">
         You receive 1 raffle ticket for every 25 awarded Kukui Cup points.<br/>
         <span style="font-weight: bold">Deadline for allocating tickets for Round 1 Raffle: Sunday, October 9, 2011, 8pm</span><br/>
         Round 1 raffle winners to be notified via email on Monday, October 10, 2011 at 10am
