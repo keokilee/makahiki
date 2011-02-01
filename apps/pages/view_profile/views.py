@@ -23,10 +23,31 @@ import components.makahiki_facebook.facebook as facebook
 @login_required
 def index(request):
   user = request.user
-  form = ProfileForm(initial={
-    "display_name": user.get_profile().name,
-    "contact_email": user.email,
-  })
+  form = None
+  if request.method == "POST":
+    user = request.user
+    form = ProfileForm(request.POST)
+    if form.is_valid():
+      profile = user.get_profile()
+      profile.name = form.display_name
+      profile.about = form.about
+      profile.contact_email = form.contact_email
+      profile.contact_text = form.contact_text
+      profile.contact_carrier = form.contact_carrier
+      try:
+        fb_profile = request.user.facebookprofile
+        fb_profile.can_post = form.facebook_can_post
+        fb_profile.save()
+      except FacebookProfile.DoesNotExist:
+        pass
+        
+      profile.save()
+      
+  if not form:
+    form = ProfileForm(initial={
+      "display_name": user.get_profile().name,
+      "contact_email": user.email,
+    })
   
   # Retrieve previously awarded tasks.
   completed_activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]
