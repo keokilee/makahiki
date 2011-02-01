@@ -1,0 +1,86 @@
+.widget {
+  margin: 10px 0;
+  padding: 0;
+}
+
+.widget-title {
+  color: white;
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.0em;
+  text-align: center;
+  cursor: auto;
+}
+
+.widget .widget-body {
+  height: auto;
+  margin: 0px 0px 15px 0px;
+  padding: 0px;
+}
+
+div.transbox
+  {
+  width: 160px;
+  height: 100px;
+  margin:20px 20px;*/
+  background-color:#000000;
+  /* for IE */
+  filter:alpha(opacity=60);
+  /* CSS3 standard */
+  opacity:0.6;
+  }
+div.transbox p
+  {
+  margin:20px 20px;
+  font-weight:bold;
+  color:#ffffff;
+  }
+div.background1
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/burning_match.3.jpg) repeat;
+  }
+div.background2
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electricity.line.1_2.jpg) repeat;
+  }
+div.background3
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electrical.pole.2_2.jpg) repeat;
+  }
+div.background4
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/electrical.pole.4_2.jpg) repeat;
+  }
+div.background5
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/bicyclesign.2.jpg) repeat;
+  }
+div.background6
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/wave.2.jpg) repeat;
+  }
+div.background7
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/polarbear.2.jpg) repeat;
+  }
+
+div.background8
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/recycling.2.jpg) repeat;
+  }

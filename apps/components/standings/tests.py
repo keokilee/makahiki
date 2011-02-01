@@ -12,7 +12,7 @@ from components.standings import get_standings_for_user, get_floor_standings, ge
     
 class UserFloorStandingsTest(TestCase):
   """Tests the generation of standings that check a user's placement in a floor."""
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     self.floor = Floor.objects.all()[0]
@@ -117,7 +117,7 @@ class UserFloorStandingsTest(TestCase):
     
 class UserRoundStandingsTest(TestCase):
   """Tests the generation of standings that check a user's placement in a round."""
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     """Set the competition settings to the current date for testing."""
@@ -179,7 +179,7 @@ class UserRoundStandingsTest(TestCase):
     
 class UserAllStandingsTest(TestCase):
   """Tests the generation of standings that check a user's placement across all users."""
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     self.profiles = Profile.objects.order_by("-points", "-last_awarded_submission")
@@ -211,7 +211,7 @@ class UserAllStandingsTest(TestCase):
 class UserRoundStandingsTest(TestCase):
   """Tests the generation of standings that check a user's placement in a round across all users."""
   
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     """Set the competition settings to the current date for testing."""
@@ -264,7 +264,7 @@ class UserRoundStandingsTest(TestCase):
 class FloorStandingsTest(TestCase):
   """Tests that check the generated standings for floors."""
   
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     self.saved_rounds = settings.COMPETITION_ROUNDS
@@ -401,7 +401,7 @@ class FloorStandingsTest(TestCase):
 class IndividualStandingsTest(TestCase):
   """Tests that check the generated standings for individuals (not based on a user)."""
 
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
 
   def setUp(self):
     self.saved_rounds = settings.COMPETITION_ROUNDS

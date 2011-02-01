@@ -1,0 +1,20 @@
+    <table >
+		<thead><tr>
+			<th>Rank</th>
+			<th>Lounge</th>
+            <th>kWh Used</th></thead>
+		</thead>
+		<tbody>
+			{% for e,f in standings %}
+			<tr><td>{{forloop.counter}}</td>
+			<td>{% if f == floor %} 
+			     <b> 
+			    {% endif %}
+			    {{f}}</td>
+			<td>{% if f == floor %} 
+			     <b> 
+			    {% endif %}
+				{{e}}</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>

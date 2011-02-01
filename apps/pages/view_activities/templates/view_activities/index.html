@@ -7,35 +7,33 @@
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_activities.css">
-  {% include "view_activities/css.html" %}
+  {% import_page_css "view_activities" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}
-
-<div id="activity-left" class="{% insert_classes "activity-left" %}">
+<div {% get_id_and_classes "activity-events+scoreboard" %}>
   
-  
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Upcoming Events
     </div>   
     <div class="{% insert_classes "widget-body" %}">    
       {% include "view_activities/events.html" %}
     </div>
+  </div>
   
-  <br>
-
+  <div class="{% insert_classes "widget" %}">
     <div class="{% insert_classes "widget-title" %}">
       Points Score Board
     </div>
     <div class="{% insert_classes "widget-body" %}">
       {% include "view_activities/scoreboard.html" %}
     </div>
+  </div>
 
 </div>
 
-<div id="activity-right" class="{% insert_classes "activity-right" %}">
+<div {% get_id_and_classes "activity-categories" %}>
   {% include "view_activities/categories.html" %}
 </div>
-
 {% endblock %}

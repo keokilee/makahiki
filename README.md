@@ -35,13 +35,13 @@ The following steps are to download additional libraries and upgrade some of the
 * cd into the makahiki folder.
 * Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
 * Update makahiki_settings.py with the settings related to the competition.  Important settings include the CAS authentication server for your organization and your time zone.
-* RECOMMENDED: Copy example_settings/local\_settings.py.dev to local_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
+* RECOMMENDED: Copy example\_settings/local\_settings.py.dev to local\_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
 * Type `python manage.py syncdb` to create the database.
-* It will ask you if you want to create a superuser.  Say "yes".
+* It will ask you if you want to create a superuser.  Say "no", as this will be done in a later step.
+* Run `python manage.py migrate` to sync the migrations.
+* Run `python manage.py createsuperuser` to create a user.
 * IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
-* NOTE: syncdb may fail at this point because some apps depend on tables that are not loaded until the next step.
-* Run `python manage.py migrate` to sync the migrations.
 * To load some sample data into the application, type `python manage.py loaddata fixtures/base_data.json`.
 
 ## Running the server

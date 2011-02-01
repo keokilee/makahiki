@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load class_tags %}
 {# load theme_tags #}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -8,26 +9,9 @@
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
     {# render_css_import user #}
-    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/screen.css" media="screen">
-    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/print.css" media="print">
-    <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/jquery-ui.css">
-    <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/ie.css" 
-    type="text/css" media="screen, projection"><![endif]-->
+    {% import_css STATIC_URL CSS_THEME %}
     
-    <link rel="stylesheet" href="{{ STATIC_URL }}frontendadmin/css/frontendadmin.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" />
-    <script src="{{STATIC_URL}}js/jquery-1.4.2.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/jquery.countdown.pack.js" type="text/javascript"></script>
-    
-    <!-- Moved to top level since it is needed when generating configuration information. -->
-    <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refreshoff"></script>
-    <script type="text/javascript">
-      Namespace("org.makahiki.configuration");
-
-      org.makahiki.configuration.Rounds = {{ ROUNDS|safe }};
-      org.makahiki.configuration.Theme = {{ THEME|safe }};
-    </script>
+    {% import_js STATIC_URL %}
       
     {% block extra_head_base %}
         {% block extra_head %}{% endblock %}
@@ -48,23 +32,9 @@
     </script>
   {% endif %}
   
-  <div id="header" class="span-24 last">
+  <div {% get_id_and_classes "header" %}>
     {% block header %}{% endblock %}
   </div>
-  
-  {% if messages %}
-  <ul id="messages">
-      {% for message in messages %}
-      <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
-        <a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;">
-          <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
-        </a> 
-        {{ message }}
-        <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
-      </li>
-      {% endfor %}
-  </ul>
-  {% endif %}
   
   {# This is where the contents of the page will be inserted #}
   {% block body %}{% endblock %}

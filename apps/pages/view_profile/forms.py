@@ -20,7 +20,7 @@ class ProfileForm(forms.Form):
   contact_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
     "style": "width: 100px",
   }))
-  contact_text_carrier = forms.ChoiceField(choices=(
+  contact_carrier = forms.ChoiceField(choices=(
     ("t-mobile", "T-Mobile"),
     ("att", "AT&T"),
     ("sprint", "Sprint"),

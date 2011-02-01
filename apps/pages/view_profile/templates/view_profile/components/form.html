@@ -1,12 +1,12 @@
 {% load avatar_tags %}
 {% load class_tags %}
 
-<form>
+<form action="{% url profile_index %}" method="post">
   <table>
+    {% if form.display_name.errors %}
+    <tr><td colspan="2">{{form.display_name.errors}}</td></tr>
+    {% endif %}
     <tr>
-      {% if form.display_name.errors %}
-      <td>{{form.display_name.errors}}</td>
-      {% endif %}
       <td>{{form.display_name.label_tag}}</td>
       <td>{{form.display_name}}</td>
     </tr>
@@ -45,26 +45,33 @@
     <tr>
       <td colspan="2">Contact Info for Reminders</td>
     </tr>
+    {% if form.contact_email.errors %}
+    <tr><td colspan="2">{{form.contact_email.errors}}</td></tr>
+    {% endif %}
     <tr>
-      {% if form.contact_email.errors %}
-      <td>{{form.contact_email.errors}}</td>
-      {% endif %}
       <td><label for="id_event_email">Email</label></td>
       <td>{{form.contact_email}}</td>
     </tr>
+    {% if form.contact_text.errors %}
+    <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
+    {% endif %}
     <tr>
-      {% if form.contact_text.errors %}
-      <td>{{form.contact_text.errors}}</td>
-      {% endif %}
       <td><label for="id_event_text">Text</label></td>
       <td>
         {{form.contact_text}}
-        {{form.contact_text_carrier}}
+        {{form.contact_carrier}}
       </td>
     </tr>
     </tr>
   </table>
   <div style="text-align: center">
-    <a href="#" style="margin: 5px 0" class="{% insert_classes "ui-button" %}">Save Changes</a>
+    <a href="#" id="profile-submit" style="margin: 5px 0" class="{% insert_classes "ui-button" %}">Save Changes</a>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#profile-submit").click(function() {
+          $(this).parents("form").submit();
+        });
+      });
+    </script>
   </div>
 </form>

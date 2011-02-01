@@ -1,31 +1,33 @@
 {% extends "logged_in_base.html" %}
 
+{% load class_tags %}
+
 {% block page_title %}
   Compete for Prizes
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="stylesheet" href="{{ STATIC_URL}}css/{{CSS_THEME}}/pages/view_help.css">
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block body %}
-<div class="span-8">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "help-video" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Two Minute Intro to the Kukui Cup
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
      <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/q13HWBr9m8w?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/q13HWBr9m8w?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="300" height="180"></embed></object>
     </div>
   </div>
 </div>
 
-<div class="span-7 prepend-1">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "help-rules" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Rules of the competition
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <ul>
         <li><a href="#">What is the Kukui Cup</a></li>
         <li><a href="#">Terms and conditions</a></li>
@@ -46,12 +48,12 @@
   </div>
 </div>
 
-<div class="span-7 prepend-1 last">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "help-faq" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Frequently Asked Questions
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+    <div class="{% insert_classes "widget-body" %}">
       <ul>
         <li><a href="#">How did you figure out the baseline?</a></li>
         <li><a href="#">What is plug load?</a></li>
@@ -63,12 +65,12 @@
   </div>
 </div>
 
-<div class="span-15 prepend-9 last">
-  <div class="widget ui-corner-all ui-accordion ui-widget ui-accordion-icons">
-    <div class="widget-title ui-state-active ui-accordion-header ui-corner-top">
+<div {% get_id_and_classes "help-ask" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
       Ask an Admin
     </div>
-    <div class="widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" style="padding: 10px;">
+    <div class="{% insert_classes "widget-body" %}" style="padding: 10px;">
       Got a question that's not answered here? Type it below and an admin will email you the answer.
       <form>
         <textarea style="margin: 10px; height: auto" class="span-14 last"></textarea>

@@ -70,7 +70,7 @@ class EnergyGoalUnitTestCase(TestCase):
     self.assertFalse(goal.user_can_vote(user), "Check that the user has now submitted a vote.")
     
 class EnergyGoalHelperTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def testGenerateFloorGoals(self):
     """Tests the generation of floor goals."""
@@ -137,7 +137,7 @@ class EnergyGoalHelperTestCase(TestCase):
       self.assertEqual(floor.floorenergygoal_set.count(), 1, "Check that there is only one goal.")
     
 class FloorEnergyGoalUnitTestCase(TestCase):
-  fixtures = ["base_data.json", "user_data.json"]
+  fixtures = ["base_floors.json", "test_users.json"]
   
   def setUp(self):
     self.saved_rounds = settings.COMPETITION_ROUNDS
