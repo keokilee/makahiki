@@ -19,8 +19,22 @@ ul {
 .widget .widget-body {
   height: auto;
   margin: 0px 0px 15px 0px;
-  padding: 0px;
+  padding: 0;
 }
 
+#help-ask .widget-body {
+  padding: 10px;
+}
 
+#ask-form {
+  margin: 10px 0; height: auto
+}
 
+#ask-submit {
+  margin: 0; 
+  padding: 0
+}
+
+#ask-submit input {
+  float: right
+}

@@ -70,12 +70,12 @@
     <div class="{% insert_classes "widget-title" %}">
       Ask an Admin
     </div>
-    <div class="{% insert_classes "widget-body" %}" style="padding: 10px;">
+    <div class="{% insert_classes "widget-body" %}">
       Got a question that's not answered here? Type it below and an admin will email you the answer.
       <form>
-        <textarea style="margin: 10px; height: auto" class="span-14 last"></textarea>
-        <div class="span-14 last" style="margin: 0; padding: 0">
-          <input type="submit" value="Send" style="float: right"/>
+        <textarea {% get_id_and_classes "ask-form" %}></textarea>
+        <div {% get_id_and_classes "ask-submit" %}>
+          <input type="submit" value="Send" />
           <div style="clear: both"></div>
         </div>
       </form>

@@ -79,6 +79,8 @@ CSS_IDS = {
   "help-rules": "span-7 prepend-1",
   "help-faq": "span-7 prepend-1 last",
   "help-ask": "span-15 prepend-9 last",
+  "ask-form": "span-14 last",
+  "ask-submit": "span-14 last",
 }
 
 CSS_CLASSES = {
