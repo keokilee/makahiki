@@ -36,20 +36,6 @@
     {% block header %}{% endblock %}
   </div>
   
-  {% if messages %}
-  <ul id="messages">
-      {% for message in messages %}
-      <li id="message_{{ forloop.counter }}" class="ui-state-highlight">
-        <a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;">
-          <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
-        </a> 
-        {{ message }}
-        <span style="float: left; margin-right: 0.3em; margin-top:1px;" class="ui-icon ui-icon-info"></span>
-      </li>
-      {% endfor %}
-  </ul>
-  {% endif %}
-  
   {# This is where the contents of the page will be inserted #}
   {% block body %}{% endblock %}
   

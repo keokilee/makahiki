@@ -19,3 +19,6 @@ nosetests.xml
 
 # Ignore pip log errors.
 pip-log.txt
+
+# Ignore cache files
+.cache
