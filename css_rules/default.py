@@ -90,6 +90,10 @@ CSS_CLASSES = {
   "prizes-remove-button": "ui-button ui-state-error ui-corner-all",
   "prizes-disabled-button": "ui-button ui-state-disabled ui-corner-all",
   
+  "badge-image-header": "",
+  "badge-text-header": "badge-text-header",
+  "badge-achievement-header": "badge-achievement-header",
+  
   "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "widget-body": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",

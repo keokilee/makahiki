@@ -18,3 +18,18 @@
   padding: 0px;
 }
 
+#user-badge-table td {
+  vertical-align: middle
+}
+
+.badge-text-header {
+  width: 30%
+}
+
+.badge-achievement-header {
+  width: 50%
+}
+
+#badge-catalog-link {
+  text-align: center
+}
