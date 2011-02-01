@@ -46,6 +46,11 @@ CSS_IDS = {
   
   "news-events+popular+activities": "span-8",
   "news-wall": "span-15 prepend-1 last",
+  "news-events": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "news-commitments": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "news-most-popular": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "wall-form": "padding: 0; padding-bottom: 5px; border-bottom: 1px solid #DFD9C3",
+  "wall-post": "",
   
   "profile-form": "span-8",
   "profile-badges": "span-8",

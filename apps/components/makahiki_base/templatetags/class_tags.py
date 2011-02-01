@@ -30,7 +30,7 @@ def get_id_and_classes(key, theme="default"):
   theme_rules = sys.modules[theme_path]
   
   return_string = 'id="%s"' % key
-  if theme_rules.RETURN_CLASSES: 
+  if theme_rules.RETURN_CLASSES and len(theme_rules.CSS_IDS[key]) > 0: 
     return return_string + ' class="%s"' % theme_rules.CSS_IDS[key]
     
   return return_string

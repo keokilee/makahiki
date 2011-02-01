@@ -12,7 +12,7 @@
 
 {% block body %}
 <div {% get_id_and_classes "news-events+popular+activities" %}>
-  <div class="{% insert_classes "widget" %}">
+  <div {% get_id_and_classes "news-events" %}>
     <div class="{% insert_classes "widget-title" %}">
       Upcoming Events
     </div>
@@ -52,13 +52,13 @@
     </div>
   </div>
   
-  <div class="{% insert_classes "widget" %}">
+  <div {% get_id_and_classes "news-most-popular" %}>
     <div class="{% insert_classes "widget-title" %}">
       Most Popular
     </div>
     <div class="{% insert_classes "widget-body" %}">
       <form>
-        <select style="margin: 0 auto">
+        <select>
           <option>Activities</option>
           <option>Events</option>
           <option>Commitments</option>
@@ -90,7 +90,7 @@
     </div>
   </div>
   
-  <div class="{% insert_classes "widget" %}">
+  <div {% get_id_and_classes "news-commitments" %}>
     <div class="{% insert_classes "widget-title" %}">
       My Public Commitments
     </div>
@@ -127,9 +127,9 @@
       News Feed
     </div>
     <div class="{% insert_classes "widget-body" %}">
-      <div id="wall_form" style="padding: 0; padding-bottom: 5px; border-bottom: 1px solid #DFD9C3">
+      <div {% get_id_and_classes "wall-form" %}>
         <form action="{% url news_index %}" method="GET">
-          <div id="wall_post" style="display:inline; width: 100%">
+          <div {% get_id_and_classes "wall-post" %}>
             {{wall_form.post}}
           </div>
           <input type="submit" value="Submit" />

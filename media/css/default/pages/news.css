@@ -23,3 +23,12 @@
   margin: 0;
   padding: 0;
 }
+
+#news-most-popular .widget-body form select {
+  margin: 0 auto;
+}
+
+#wall-post {
+  display:inline; 
+  width: 100%,
+}
