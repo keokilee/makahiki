@@ -5,7 +5,7 @@
 <tr>
 {% for cat in row %}
 <td>
-  <div class="{% insert_classes "activity-category" %}">
+  <div {% get_id_and_classes "activity-category" %}>
   <a  href="#" >{{cat.name}}</a>
   <div class="background{{cat.id}}">
     <div class="transbox">
