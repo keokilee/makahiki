@@ -35,7 +35,7 @@ def index(request):
       profile.contact_text = form.contact_text
       profile.contact_carrier = form.contact_carrier
       try:
-        fb_profile = request.user.facebookprofile
+        fb_profile = user.facebookprofile
         fb_profile.can_post = form.facebook_can_post
         fb_profile.save()
       except FacebookProfile.DoesNotExist:
@@ -43,10 +43,21 @@ def index(request):
         
       profile.save()
       
+  # If this is a new request, initialize the form.
   if not form:
+    try:
+      fb_profile = user.facebookprofile
+      fb_can_post = fb_profile.can_post
+    except FacebookProfile.DoesNotExist:
+      fb_can_post = False
+      
     form = ProfileForm(initial={
       "display_name": user.get_profile().name,
-      "contact_email": user.email,
+      "about": user.get_profile().about,
+      "contact_email": user.get_profile().contact_email or user.email,
+      "contact_text": user.get_profile().contact_text,
+      "contact_carrier": user.get_profile().contact_carrier,
+      "facebook_can_post": fb_can_post,
     })
   
   # Retrieve previously awarded tasks.
