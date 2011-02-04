@@ -9,4 +9,7 @@ class FacebookForm(forms.Form):
 
 class ProfileForm(forms.Form):
   display_name = forms.CharField(max_length=12)
-  about = forms.CharField(widget=forms.Textarea(attrs={"cols": '50', 'rows': '2'}))
+  about = forms.CharField(
+        widget=forms.Textarea(attrs={"cols": '50', 'rows': '2'}),
+        label="What would you like other players on %s to know about you (for your profile)?" % settings.COMPETITION_NAME,
+  )

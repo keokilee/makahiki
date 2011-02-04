@@ -1,0 +1,43 @@
+<h2 style="text-align: center">Customize your Kukui Cup profile</h2>
+
+{% if user.facebookprofile %}
+<p style="text-align: center">Connected to Facebook account <a href="{{user.facebookprofile.profile_link}}" target="_blank">{{user.facebookprofile.name}}</a></p>
+{% endif %}
+
+<div style="margin-bottom: 10px">
+  <p>Each participant has a profile on the Kukui Cup website. You can personalize yours right now and get 5 points immediately!</p>
+  <form id="profile-form">
+    {{form.as_p}}
+  </form>
+</div>
+
+<div style="float: left">
+  <button id="back">&lt;- Back<br/>Facebook connect</button>
+</div>
+<div style="float:right">
+  <button id="skip">Next -><br/>Introduction video</button>
+</div>
+<div style="clear:both"></div>
+
+<div style="text-align: center">
+  <p style="margin: 5px 0">Introduction progress, points: 0</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 400/7
+    });
+    
+    $("#back").button().click(function() {
+      $.get("{% url setup_facebook %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#skip").button().click(function() {
+      alert("button clicked");
+    });
+  });
+</script>
