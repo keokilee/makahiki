@@ -9,9 +9,14 @@
 <div style="float: left">
   <button id="back">&lt;- Back</button>
 </div>
+
 <div style="float:right">
-  <button id="agree">I Agree -&gt;</button>
+  <button id="agree" style="margin-bottom: 10px">I Agree -&gt;</button>
 </div>
+<div style="clear: right; float:right;">
+  <a href="{% url landing %}"><button id="decline">I don't agree<br/>Take me to non-participant page</button></a>
+</div>
+
 <div style="clear:both"></div>
 
 <div style="text-align: center">
@@ -23,6 +28,8 @@
     $("#progressbar").progressbar({
       value: 200/7
     });
+    
+    $("#decline").button();
     
     $("#back").button().click(function() {
       $.get("{% url setup_welcome %}", function(data) {
