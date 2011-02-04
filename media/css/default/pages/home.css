@@ -1,0 +1,2 @@
+/* Hack to hide close button in dialog box.*/
+.ui-dialog .ui-dialog-titlebar-close { display: none; }

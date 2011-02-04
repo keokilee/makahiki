@@ -92,4 +92,23 @@ Change your picture
 </p>
 </CENTER>
 </div>
+<div style="clear:both"></div>
+{% endblock %}
+
+{% block extra_body %}
+{% if not user.get_profile.setup_complete %}
+  <div id="setup-dialog" title="Introduction: Step 1 of 7">
+    {% include "home/first-login/welcome.html" %}
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#setup-dialog").dialog({
+        modal: true,
+        width: 700,
+        closeOnEscape: false,
+        position: ["center", 75]
+      });
+    });
+  </script>
+{% endif %}
 {% endblock %}

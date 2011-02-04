@@ -1,0 +1,30 @@
+<h2 style="text-align: center">Welcome to the Kukui Cup, {{user.get_profile.first_name}}!</h2>
+<div style="margin: 0 20px">
+  <p>You have successfully logged into the Kukui Cup website.  You will stay logged into the website until you click the logout button, so if you are using a public computer remember to log out when you are finished just like you would log out of Facebook or your email.</p>
+  
+  <p>Now we will step you through setting up your profile and getting your first Kukui Nut Points.</p>
+  
+  <div style="border: 1px solid black; padding: 10px; margin-bottom: 5px; text-align: center">
+    <p style="margin: 5px 0">According to our records, your name is {{user.get_profile.first_name}} {{user.get_profile.last_name}} and you live in {{user.get_profile.floor}}.<br/>If this is not correct, please <a href="#">click here</a>.</p>
+  </div>
+</div>
+
+<div style="text-align: center">
+  <button id="next">Next -><br/>Terms and conditions</button>
+  <p style="margin: 5px 0">Introduction progress, points: 0</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 100/7
+    });
+    
+    $("button").button().click(function() {
+      $.get("{% url setup_terms %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+  });
+</script>

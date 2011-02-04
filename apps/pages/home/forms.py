@@ -1,9 +1,5 @@
 from django import forms
 from django.conf import settings
-
-class TermsForm(forms.Form):
-  # Seems that required means that the value must be True.
-  accept = forms.BooleanField(widget=forms.HiddenInput(), required=False)
   
 class FacebookForm(forms.Form):
   can_post = forms.BooleanField(
