@@ -20,7 +20,7 @@
 <div style="clear:both"></div>
 
 <div style="text-align: center">
-  <p style="margin: 5px 0">Introduction progress, points: 0</p>
+  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
 </div>
 <div id="progressbar"></div>
 <script type="text/javascript">
@@ -32,6 +32,7 @@
     $("#decline").button();
     
     $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
       $.get("{% url setup_welcome %}", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);
@@ -39,6 +40,7 @@
     });
     
     $("#agree").button().click(function() {
+      $(this).button("option", "disabled", true);
       $.get("{% url setup_facebook %}", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);

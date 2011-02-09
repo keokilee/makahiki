@@ -8,8 +8,15 @@ class FacebookForm(forms.Form):
   )
 
 class ProfileForm(forms.Form):
-  display_name = forms.CharField(max_length=12)
+  display_name = forms.CharField(
+        max_length=20, 
+        help_text="This name will be shown in scoreboards and on your profile instead of your UH username."
+  )
+  facebook_photo = forms.URLField(widget=forms.HiddenInput, required=False)
+  use_fb_photo = forms.BooleanField(required=False)
+  avatar = forms.ImageField(required=False)
   about = forms.CharField(
+        required=False,
         widget=forms.Textarea(attrs={"cols": '50', 'rows': '2'}),
         label="What would you like other players on %s to know about you (for your profile)?" % settings.COMPETITION_NAME,
   )

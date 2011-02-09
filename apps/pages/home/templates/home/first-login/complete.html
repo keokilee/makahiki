@@ -1,0 +1,36 @@
+<h2 style="text-align: center">Introduction Complete</h2>
+<div style="margin-bottom: 10px">
+  <h3 style="text-align: center; margin: 0 20px">Congratulations, you have finished the Kukui Cup introduction and earned {{user.get_profile.points}} points! When you click the Done button, you will be taken to your personalized Kukui Cup home page.  Your home page connects you to your Lounge's energy usage and standing in the competition, as well as additional activities you can perform to get more Kukui Nut points.<br/><br/>Good luck, and may the most knowledgeable and efficient win!</h3>
+</div>
+
+<div style="float: left">
+  <button id="back">&lt;- Back</button>
+</div>
+
+<div style="float:right">
+  <a href="{% url home_index %}"><button id="home">Go home</button></a>
+</div>
+
+<div style="clear:both"></div>
+
+<div style="text-align: center">
+  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 700/7
+    });
+    
+    $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_question %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#home").button();
+  });
+</script>

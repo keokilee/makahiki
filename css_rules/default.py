@@ -21,6 +21,7 @@ JS_IMPORTS = """
 <script src="{0}js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="{0}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
 <script src="{0}js/jquery.countdown.pack.js" type="text/javascript"></script>
+<script src="{0}js/jquery.form.2.43.js" type="text/javascript"></script>
 """
 
 PAGE_CSS_IMPORT = {

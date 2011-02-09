@@ -6,4 +6,7 @@ urlpatterns = patterns('',
     url(r'^setup/terms/$', 'pages.home.views.terms', name="setup_terms"),
     url(r'^setup/facebook/$', 'pages.home.views.facebook_connect', name="setup_facebook"),
     url(r'^setup/profile/$', 'pages.home.views.setup_profile', name="setup_profile"),
+    url(r'^setup/activity/$', 'pages.home.views.setup_activity', name="setup_activity"),
+    url(r'^setup/question/$', 'pages.home.views.setup_question', name="setup_question"),
+    url(r'^setup/complete/$', 'pages.home.views.setup_complete', name="setup_complete"),
 )

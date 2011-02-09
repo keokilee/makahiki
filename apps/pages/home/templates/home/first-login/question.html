@@ -1,0 +1,75 @@
+<h2 style="text-align: center">Verification Question</h2>
+<div style="margin-bottom: 10px">
+  <h3 style="text-align: center; margin: 0 20px">If you&apos;ve watched the intro video, answer the following question for a generous 15 Kukui Nut points. Many Kukui Cup activities will have verification steps before you earn your points.</h3>
+  
+  <form id="activity-form" style="border: 1px solid black; margin-top: 10px; padding: 5px">
+    <label for="activity-select">Question: Which level of student can participate in the Kukui Cup?</label><br/>
+    Answer: <select name="activity-select" id="activity-select">
+      <option></option>
+      <option value="first-years">First-year students</option>
+      <option value="sophomores">Sophomores</option>
+      <option value="juniors">Juniors</option>
+      <option value="seniors">Seniors</option>
+    </select>
+    <span id="question-response"></span>
+    <input id="response-correct" type="hidden" name="response-correct" value="false">
+  </form>
+</div>
+
+<div style="float: left">
+  <button id="back">&lt;- Back<br/>oops, let me watch that again</button>
+</div>
+
+<div style="float:right">
+  <button id="next" style="margin-bottom: 10px">Submit My Answer -&gt;<br/>almost done</button>
+</div>
+
+<div style="clear:both"></div>
+
+<div style="text-align: center">
+  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 600/7
+    });
+    
+    $("#activity-select").change(function() {
+      if ($("#activity-select option:selected").val() == "first-years") {
+        $("#response-correct").val("true");
+        $("#question-response").html("<span style='color: green'>Correct!</span>")
+      }
+      
+      else {
+        $("#response-correct").val("false");
+        $("#question-response").html("<span style='color: red'>Incorrect!</span>")
+      }
+    });
+    
+    $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_activity %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#next").button().click(function() {
+      $(this).button("option", "disabled", true);
+      if($("#response-correct").val() == "true") {
+        $.post('{% url setup_complete %}', function(data) {
+            $('#ui-dialog-title-setup-dialog').html(data.title);
+            $('#setup-dialog').html(data.contents);
+        });
+      }
+      else {
+        $.get('{% url setup_complete %}', function(data) {
+            $('#ui-dialog-title-setup-dialog').html(data.title);
+            $('#setup-dialog').html(data.contents);
+        });
+      }
+    });
+  });
+</script>

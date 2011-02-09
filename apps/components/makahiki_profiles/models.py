@@ -62,8 +62,8 @@ class Profile(models.Model):
   contact_text = PhoneNumberField(null=True, blank=True)
   contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
   
+  setup_profile = models.BooleanField(default=False, editable=False)
   setup_complete = models.BooleanField(default=False, editable=False)
-  data_opt_in = models.BooleanField(default=True, editable=False)
   
   daily_visit_count = models.IntegerField(default=0, editable=False)
   last_visit_date = models.DateField(null=True, blank=True)
