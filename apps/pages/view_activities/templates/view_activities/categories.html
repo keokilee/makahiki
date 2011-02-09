@@ -3,22 +3,28 @@
 <table>
 {% for row in categories %}
 <tr>
-{% for cat in row %}
+{% for cat,completed,awarded in row %}
 <td>
   <div {% get_id_and_classes "activity-category" %}>
-  <a  href="#" >{{cat.name}}</a>
-  <div class="background{{cat.id}}">
-    <div class="transbox">
-		<p><h3>LOCKED</h3>
-		<h5>Complete 2 activities 
-		<br>from Electricity 1 
-		<br>to unlock.</h5></p>
-    </div>
-  </div>
+  {% if cat.locked %}
+    {{cat.name}}
+    <div class="background{{cat.id}}">
+	  <div class="transbox">
+		<p><h3>LOCKED</h3> <br>
+		<h5>Complete {{cat.id}} activities from {{cat.name}} to unlock</h5>
+		</p>
+      </div>
+    </div>  
+  {% else %}
+    <a href="/activities/category/{{cat.id}}">{{cat.name}}
+    <img src="{{ STATIC_URL}}images/activity/category_{{cat.id}}.jpg"/>
+    </a>
+  {% endif %}
+
 
   <table>
-    <tbody><tr><td>Activities completed/total</td><td>0/{{cat.activity_total}}</td></tr>
-           <tr><td>Points<br> awarded/total</td><td>0/{{cat.point_total}}</td></tr>
+    <tbody><tr><td>Activities completed/total</td><td>{{completed}}/{{cat.total}}</td></tr>
+           <tr><td>Points<br> awarded/total</td><td>{{awarded}}/{{cat.point_total}}</td></tr>
 	</tbody>
   </table>
 </div>

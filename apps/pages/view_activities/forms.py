@@ -5,15 +5,16 @@ from components.activities.models import ConfirmationCode
 
 class ActivityTextForm(forms.Form):
   response = forms.CharField(max_length=255)
-  comment = forms.CharField(widget=forms.Textarea, required=False)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'5'}), required=False)
   question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+  code = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   
   def clean(self):
     """Custom validation to verify confirmation codes."""
     cleaned_data = self.cleaned_data
     
     # Check if we are validating a confirmation code.
-    if not cleaned_data.has_key("question"):
+    if cleaned_data["code"]==1:
       try:
         code = ConfirmationCode.objects.get(code=cleaned_data["response"])
         if not code.is_active:

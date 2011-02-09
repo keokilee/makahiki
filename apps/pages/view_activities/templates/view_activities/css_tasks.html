@@ -1,0 +1,30 @@
+<style type="text/css">
+div.transbox
+  {
+  width: 160px;
+  height: 100px;
+  margin:20px 20px;*/
+  background-color:#000000;
+  /* for IE */
+  filter:alpha(opacity=60);
+  /* CSS3 standard */
+  opacity:0.6;
+  }
+div.transbox p
+  {
+  margin:20px 20px;
+  font-weight:bold;
+  color:#ffffff;
+  }
+{% for row in tasks %}
+{% for t,pau in row %}
+div.background{{t.id}}
+  {
+  width:190px;
+  height:142px;
+  background:url({{ STATIC_URL}}images/activity/task_{{t.id}}.jpg) repeat;
+  }
+{% endfor %}
+{% endfor %}
+
+</style>

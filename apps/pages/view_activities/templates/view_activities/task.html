@@ -1,0 +1,53 @@
+{% extends "logged_in_base.html" %}
+
+{% load markup %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Get Nuts!
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_activities" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+<div {% get_id_and_classes "activity-task-stats" %}>  
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      {{type}} : {{task.title}}
+    </div>   
+    <div class="{% insert_classes "widget-body" %}">    
+      This {{type}} is worth {{task.point_value}} points.
+      <p>
+      {{member_all}} people have done this.
+      <p>
+      {{member_floor}} person in your lounge have done this.
+    </div>
+  </div>
+</div>
+
+<div {% get_id_and_classes "activity-task-details" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      About the {{type}}
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      {{task.description|markdown}}
+
+      {% if pau %}
+        <center> <b> Congratulations! You did it ! </b> <center>
+        <p>
+        
+      {% else %} {% if type == "Commitment" %}
+          <center> <a href="add" id="task-submit" class="{% insert_classes "ui-button" %}">Commit it to get points</a>
+          </center> <p>
+        {% else %} 
+          {% include "view_activities/task_form.html" %}
+      {% endif %} {% endif %} 
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

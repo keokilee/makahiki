@@ -32,12 +32,25 @@ def index(request):
   ordered_floor_profiles = Profile.objects.filter(floor=floor).order_by("-points")
   standings = zip(ordered_floors,ordered_all_profiles,ordered_floor_profiles)[:MAX_INDIVIDUAL_STANDINGS]
   
-  categories = Category.objects.annotate(activity_total=Count("activity"), point_total=Sum("activity__point_value"))
+  categories = Category.objects.annotate(total=Count("activity"),
+        commitment_total=Count("commitment"), 
+        point_total=Sum("activity__point_value"),
+        commitment_point_total=Sum("commitment__point_value"),
+        )
+        
+  ## construct the categories list as 2-dimension array
   categories_list = []
   cat_col_list = []
   col_count = 0
   for cat in categories:
-    cat_col_list.append(cat)
+    cat.total = cat.total + cat.commitment_total
+    cat.locked = cat.id > 2
+    if (cat.commitment_point_total == None):
+      cat.commitment_point_total = 0
+    if (cat.point_total == None):
+      cat.point_total = 0  
+    cat.point_total = cat.point_total + cat.commitment_point_total
+    cat_col_list.append([cat, get_completed_tasks(user, cat), get_awarded_points(user,cat)])
     col_count = col_count + 1
     if col_count == ACTIVITIES_COL_COUNT:    	  		 	  
       categories_list.append(cat_col_list)
@@ -66,7 +79,7 @@ def view_codes(request, activity_id):
   if len(codes) == 0:
     raise Http404
   
-  return render_to_response("activities/view_codes.html", {
+  return render_to_response("view_activities/view_codes.html", {
     "activity": activity,
     "codes": codes,
   }, context_instance = RequestContext(request))
@@ -108,21 +121,8 @@ def __add_commitment(request, commitment_id):
       pass
       
   # Redirect back to the referrer or go to the profile if not available.
-  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  return HttpResponseRedirect(next)
-
-def __remove_active_commitment(request, commitment_id):
-  """Removes a user's active commitment.  Inactive commitments cannot be removed except by admins."""
-  
-  commitment = get_object_or_404(Commitment, pk=commitment_id)
-  user = request.user
-  commitment_member = get_object_or_404(CommitmentMember, user=user, commitment=commitment, award_date__isnull=True)
-  
-  commitment_member.delete()
-  user.message_set.create(message="Commitment \"%s\" has been removed." % commitment.title)
-    
-  # Redirect back to the referrer or go to the profile if not available.
-  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  next = reverse("pages.view_activities.views.category", args=(commitment.category_id,))
   return HttpResponseRedirect(next)
 
 def __add_activity(request, activity_id):
@@ -140,60 +140,8 @@ def __add_activity(request, activity_id):
     return Http404
 
   # Redirect back to the referrer or go to the profile if not available.
-  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  next = reverse("pages.view_activities.views.category", args=(activity.category_id,))
   return HttpResponseRedirect(next)
-
-def __remove_activity(request, activity_id):
-  """Remove the current user's activity."""
-
-  activity = get_object_or_404(Activity, pk=activity_id)
-  user = request.user
-  activity_member = get_object_or_404(ActivityMember, user=user, activity=activity)
-
-  activity_member.delete()
-  user.message_set.create(message="Your participation in the activity \"" + activity.title + "\" has been removed")
-  
-  # Redirect back to the referrer or go to the profile if not available.
-  next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  return HttpResponseRedirect(next)
-    
-def __request_commitment_points(request, commitment_id):
-  """Generates a form to add an optional comment."""
-  commitment = get_object_or_404(Commitment, pk=commitment_id)
-  user = request.user
-  membership = None
-  
-  try:
-    membership = CommitmentMember.objects.get(
-        user=user, 
-        commitment=commitment, 
-        completion_date__lte=datetime.date.today(), 
-        award_date=None,
-    )
-    
-  except ObjectDoesNotExist:
-    user.message_set.create(message="Either the commitment is not active or it is not completed yet.")
-    return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  
-  if request.method == "POST":
-    form = CommitmentCommentForm(request.POST)
-    if form.is_valid():
-      # Currently, nothing in the form needs validation, but just to be safe.
-      membership.comment = form.cleaned_data["comment"]
-      membership.award_date = datetime.datetime.today()
-      
-      # Points are awarded in the save method.
-      membership.save()
-      
-      message = "You have been awarded %d points for your participation!" % commitment.point_value
-      user.message_set.create(message=message)
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-    
-  form = CommitmentCommentForm()
-  return render_to_response("activities/request_commitment_points.html", {
-    "form": form,
-    "commitment": commitment,
-  }, context_instance = RequestContext(request))
     
 def __request_activity_points(request, activity_id):
   """Creates a request for points for an activity."""
@@ -233,14 +181,7 @@ def __request_activity_points(request, activity_id):
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
         activity_member.approval_status = "pending"
         user.message_set.create(message="Your request has been submitted!")
-        
-      # Attach text prompt question if one is provided
-      elif form.cleaned_data.has_key("question"):
-        activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
-        activity_member.response = form.cleaned_data["response"]
-        activity_member.approval_status = "pending"
-        user.message_set.create(message="Your request has been submitted!")
-        
+
       elif activity.confirm_type == "code":
         # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
         code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
@@ -251,34 +192,114 @@ def __request_activity_points(request, activity_id):
         message = "You have been awarded %d points for your participation!" % points
         user.message_set.create(message=message)
         
+      # Attach text prompt question if one is provided
+      elif form.cleaned_data.has_key("question"):
+        activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
+        activity_member.response = form.cleaned_data["response"]
+        activity_member.approval_status = "pending"
+        user.message_set.create(message="Your request has been submitted!")
+                
       elif activity.confirm_type == "free":
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
         user.message_set.create(message="Your request has been submitted!")
 
       activity_member.save()
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-    
-  # Create activity request form.
-  elif activity.confirm_type == "image":
-    form = ActivityImageForm()
-  elif activity.confirm_type == "text":
+      next = reverse("pages.view_activities.views.category", args=(activity.category_id,))
+      return HttpResponseRedirect(next)
+  
     question = activity.pick_question()
-    form = ActivityTextForm(initial={"question" : question.pk})
-  elif activity.confirm_type == "free":
-    form = ActivityFreeResponseForm()
-  else:
-    form = ActivityTextForm()
+                      		  
+    return render_to_response("view_activities/task.html", {
+    "task":activity,
+    "type":"Activity",
+    "pau":False,
+    "form":form,
+    "question":question,
+    "member_all":10,
+    "member_floor":1,
+    }, context_instance=RequestContext(request))    
+
+  
+def category(request, category_id):
+  TASKS_COL_COUNT = 4
+  user = request.user
     
-  admin_message = activity_member.admin_comment if activity_member else None
+  tasks_list = []
+  task_col_list = []
+  col_count = 0
+  
+  title = Category.objects.get(pk=category_id).name
+  activities = Activity.objects.filter(category__id=category_id)
+  for t in activities:
+    pau = ActivityMember.objects.filter(user=user, activity=t).count() > 0
+    t.type="Activity"
+    task_col_list.append([t, pau])
+    col_count = col_count + 1
+    if col_count == TASKS_COL_COUNT: 
+      tasks_list.append(task_col_list)
+      task_col_list = []
+      col_count = 0
+  
+  commitments = Commitment.objects.filter(category__id=category_id)
+  for t in commitments:
+    pau = CommitmentMember.objects.filter(user=user, commitment=t).count() > 0
+    t.type="Commitment"
+    task_col_list.append([t, pau])
+    col_count = col_count + 1
+    if col_count == TASKS_COL_COUNT: 
+      tasks_list.append(task_col_list)
+      task_col_list = []
+      col_count = 0
+  		
+  tasks_list.append(task_col_list)  
+  		  
+  return render_to_response("view_activities/category.html", {
+    "title":title,
+    "tasks":tasks_list,
+  }, context_instance=RequestContext(request))
+    
+def task(request, type, task_id):
+  user = request.user
+  question = None
+  form = None
+  
+  if type == "Activity":
+    task = Activity.objects.get(id=task_id)
+    pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
+    
+    # Create activity request form.
+    if task.confirm_type == "image":
+      form = ActivityImageForm()
+    elif task.confirm_type == "text":
+      question = task.pick_question()
+      form = ActivityTextForm(initial={"question" : question.pk})
+    elif task.confirm_type == "free":
+      form = ActivityFreeResponseForm()
+    else:
+      form = ActivityTextForm(initial={"code" : 1})
+                
+    if task.is_event == 1:
+      type="Event"   
       
-  return render_to_response("activities/request_activity_points.html", {
-    "form": form,
-    "activity": activity,
-    "question" : question,
-    "admin_message": admin_message,
-  }, context_instance = RequestContext(request))
+  else:  ## "Commitment"
+    task = Commitment.objects.get(id=task_id)
+    pau = CommitmentMember.objects.filter(user=user, commitment=task).count() > 0
+  		  
+  return render_to_response("view_activities/task.html", {
+    "task":task,
+    "type":type,
+    "pau":pau,
+    "form":form,
+    "question":question,
+    "member_all":10,
+    "member_floor":1,
+  }, context_instance=RequestContext(request))    
+    
+def add_task(request, type, task_id):
   
-  
-  
+  if type == "Activity":
+    return __request_activity_points(request, task_id)
+  else:
+    return __add_commitment(request, task_id)
   

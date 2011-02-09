@@ -1,0 +1,10 @@
+Confirmation codes for {{ activity.title }}<br/>
+
+{% for code in codes %}
+  <p>
+	{{ code.code }}
+	{% if not code.is_active %}
+	  - Code used
+	{%endif %}
+	</p>
+{% endfor %}
