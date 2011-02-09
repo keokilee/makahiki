@@ -1,0 +1,19 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Get Nuts!
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_activities" STATIC_URL CSS_THEME %}
+  {% include "view_activities/css_tasks.html" %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "activity-category-tasks" %}>
+  {% include "view_activities/tasks.html" %}
+</div>
+{% endblock %}

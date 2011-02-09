@@ -3,6 +3,7 @@ import datetime
 from django.db.models import Q
 from django.conf import settings
 from components.activities.models import Activity, Commitment
+from django.db.models import Sum
 
 # Directory in which to save image files for ActivityMember verification.
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
@@ -117,4 +118,19 @@ def get_completed_activities(user):
   return user.activity_set.filter(
     activitymember__award_date__isnull=False,
   ).order_by("title")
-  
+
+def get_completed_tasks(user, category):
+  """Gets the user's completed tasks by category"""
+  return Activity.objects.filter(activitymember__user=user, category=category).count() + Commitment.objects.filter(commitmentmember__user=user,category=category).count()
+         
+def get_awarded_points(user, category):
+  """Gets the user's awarded points by category"""
+  asum = Activity.objects.filter(activitymember__user=user, category=category).aggregate(Sum('point_value'))
+  apoint = asum['point_value__sum']
+  if apoint == None:
+    apoint = 0;
+  csum = Commitment.objects.filter(commitmentmember__user=user,category=category).aggregate(Sum('point_value'))
+  cpoint = csum['point_value__sum']
+  if cpoint == None:
+    cpoint = 0;
+  return 0 + apoint + cpoint

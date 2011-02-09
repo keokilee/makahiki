@@ -66,10 +66,14 @@ CSS_IDS = {
   
   "energy-power+scoreboard": "span-6",
   "energy-status": "span-18 last",
-  
+
   "activity-events+scoreboard": "span-9",
   "activity-categories": "span-15 last",
-  "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
+  "activity-category": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",  
+  "activity-category-tasks": "span-24 last",
+  "activity-category-task": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
+  "activity-task-stats":"span-9",
+  "activity-task-details":"span-15 last",
   
   "prizes-list": "span-11",
   "prizes-raffle": "span-13 last",

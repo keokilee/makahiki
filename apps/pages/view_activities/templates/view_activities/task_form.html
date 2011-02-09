@@ -1,0 +1,36 @@
+  {% if form.is_multipart %}
+    <form enctype="multipart/form-data" action="add" method="post">
+  {% else %}
+    <form action="add" method="post">
+  {% endif %}
+  
+  {% csrf_token %}
+  {% if form.response %}
+    {{ form.response.errors }}
+  {% else %}
+    {{ form.image_response.errors }}
+  {% endif %}
+  {% if admin_message %}
+    Admin message: {{ admin_message }}
+  {% endif %}
+  <p><label for="id_response">
+    {% if question %}
+      {{task.confirm_prompt}}
+      <p>
+      {{question.question}}
+      {{form.question}}
+    {% else %}
+      {{task.confirm_prompt}}
+      {{form.code}}
+    {% endif %}
+  </label><br/>
+  {% if form.image_response %}
+    {{ form.image_response }}
+  {% else %}
+    {{ form.response }}
+  {%endif%}
+  
+  <br/>Additional Comments<br/>
+  {{ form.comment }} <br/>
+  <input type="submit" value="I Did it, Submit to get points" />
+</form>
