@@ -146,17 +146,19 @@ def _get_profile_form(request, form=None, non_xhr=False):
   """
   Private method to return the profile form.
   """
-  has_form = True if form else False
   if not form:
     user_info = {
       "display_name": request.user.get_profile().name,
     }
-
-    if request.user.facebookprofile:
+    
+    # Update the form with the user's FB picture.
+    try:
       user_info.update({
         "facebook_photo": "http://graph.facebook.com/%s/picture?type=large" % request.user.facebookprofile.profile_id
       })
-
+    except FacebookProfile.DoesNotExist:
+      pass
+      
     form = ProfileForm(initial=user_info)
     
   response = render_to_string("home/first-login/profile.html", {
@@ -214,14 +216,14 @@ def setup_question(request):
 @login_required
 def setup_complete(request):
   if request.is_ajax():
+    profile = request.user.get_profile()
     if request.method == "POST":
       # User got the question right.
-      profile = request.user.get_profile()
       if not profile.setup_complete:
-        profile.setup_complete = True
         profile.add_points(15, datetime.datetime.today())
-        profile.save()
         
+    profile.setup_complete = True
+    profile.save()
     template = render_to_string("home/first-login/complete.html", {}, context_instance=RequestContext(request))
 
     response = HttpResponse(json.dumps({
