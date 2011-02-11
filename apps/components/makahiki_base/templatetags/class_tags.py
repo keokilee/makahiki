@@ -73,3 +73,16 @@ def import_page_css(page, static_url, theme="default"):
     return theme_rules.PAGE_CSS_IMPORT[page].format(static_url, theme)
 
   return ""
+  
+@register.simple_tag
+def import_logged_in_css(static_url, theme="default"):
+  """
+  Returns HTML that imports CSS.  Typically should be used in the header section of a page with a logged in user.
+  """
+  theme_path = "css_rules.%s" % theme
+  __import__(theme_path)
+  theme_rules = sys.modules[theme_path]
+  if theme_rules.RETURN_CLASSES: 
+    return theme_rules.LOGGED_IN_CSS_IMPORT.format(static_url, theme)
+
+  return ""

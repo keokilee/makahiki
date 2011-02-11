@@ -1,14 +1,24 @@
-<div class="span-7 last" style="text-align:right">
+{% load class_tags %}
+
+<div {% get_id_and_classes "header-logout" %}>
   <a href="/account/cas/logout/">Logout</a>
 </div>
-<div class="span-7 last">
-  <ul style="list-style:none; margin: 0; float: right">
-    <li style="display: inline"><a href="{% url home_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/home.png"/></a></li>
-    <li style="display: inline"><a href="{% url energy_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/energy.png"/></a></li>
-    <li style="display: inline"><a href="{% url activity_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/activities.png"/></a></li>
-    <li style="display: inline"><a href="{% url news_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/news.png"/></a></li>
-    <li style="display: inline"><a href="{% url help_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/help.png"/></a></li>
-    <li style="display: inline"><a href="{% url profile_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/profile.png"/></a></li>
-    <li style="display: inline"><a href="{% url prizes_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/prizes.png"/></a></li>
+
+{# renders a button #}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#header-logout a").button()
+  });
+</script>
+
+<div {% get_id_and_classes "header-nav-links" %}>
+  <ul>
+    <li><a href="{% url home_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/home.png"/></a></li>
+    <li><a href="{% url energy_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/energy.png"/></a></li>
+    <li><a href="{% url activity_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/activities.png"/></a></li>
+    <li><a href="{% url news_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/news.png"/></a></li>
+    <li><a href="{% url help_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/help.png"/></a></li>
+    <li><a href="{% url profile_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/profile.png"/></a></li>
+    <li><a href="{% url prizes_index %}?ref=nav-button"><img src="{{STATIC_URL}}images/icons/prizes.png"/></a></li>
   </ul>
 </div>

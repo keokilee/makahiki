@@ -24,6 +24,8 @@ JS_IMPORTS = """
 <script src="{0}js/jquery.form.2.43.js" type="text/javascript"></script>
 """
 
+LOGGED_IN_CSS_IMPORT = '<link rel="stylesheet" href="{0}css/{1}/logged_in_base.css">'
+
 PAGE_CSS_IMPORT = {
   "home": '<link rel="stylesheet" href="{0}css/{1}/pages/home.css">',
   "landing": '<link rel="stylesheet" href="{0}css/{1}/pages/index.css">',
@@ -37,6 +39,25 @@ PAGE_CSS_IMPORT = {
 }
 CSS_IDS = {
   "header": "span-24 last",
+  "header-logo": "span-2",
+  "header-title": "span-3",
+  "header-info": "span-12",
+  "header-nav": "span-7 last",
+  
+  "header-user-info": "span-4",
+  "header-avatar": "span-2",
+  "header-user-username": "span-4 last",
+  "header-user-points": "span-2",
+  "header-user-rank": "span-2 last",
+  
+  "header-floor-info": "span-4",
+  "header-floor-name": "span-4 last",
+  "header-floor-points": "span-2",
+  "header-floor-rank": "span-2 last",
+  "header-floor-image": "span-2 last",
+  
+  "header-nav-links": "span-7 last",
+  "header-logout": "span-7 last",
   
   "home-energy": "span-11",
   "home-activities": "span-11 prepend-1 last",
