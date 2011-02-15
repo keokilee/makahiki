@@ -107,6 +107,14 @@ class Profile(models.Model):
       return ('profile_detail', None, {'username': self.user.username})
   get_absolute_url = models.permalink(get_absolute_url)
   
+  def current_round_points(self):
+    """Returns the amount of points the user has in the current round."""
+    round_info = get_current_round()
+    if round_info:
+      return ScoreboardEntry.objects.get(profile=self, round_name=round_info["title"]).points
+      
+    return None
+  
   def current_round_overall_rank(self):
     """Returns the overall rank of the user for the current round."""
     round_info = get_current_round()

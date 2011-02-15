@@ -411,6 +411,39 @@ class ProfileUnitTests(TestCase):
     # Restore saved rounds.
     settings.COMPETITION_ROUNDS = saved_rounds
     
+  def testCurrentRoundPoints(self):
+    """Tests that we can retrieve the points for the user in the current round."""
+    # Save the round information and set up a test round.
+    saved_rounds = settings.COMPETITION_ROUNDS
+    current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+
+    user = User(username="test_user", password="changeme")
+    user.save()
+
+    profile = user.get_profile()
+    points = profile.points
+    profile.add_points(10, datetime.datetime.today())
+    profile.save()
+
+    self.assertEqual(profile.current_round_points(), points + 10, "Check that the user has 10 more points in the current round.")
+
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=1))
+
+    self.assertEqual(profile.current_round_points(), points + 10, 
+        "Check that the number of points did not change when points are awarded outside of a round.")
+
+    # Restore saved rounds.
+    settings.COMPETITION_ROUNDS = saved_rounds
+    
   def testAwardRollback(self):
     """Tests that the last_awarded_submission field rolls back to a previous task."""
     user = User(username="test_user", password="changeme")
