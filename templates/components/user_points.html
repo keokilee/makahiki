@@ -1,0 +1,45 @@
+{% load class_tags %}
+
+{% if CURRENT_ROUND %}
+<!-- First slideshow element -->
+<div id="header-user-overall-rank">
+  <div {% get_id_and_classes "header-user-points" %}>
+    <h3>{{profile.current_round_points}}</h3>
+    {{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}
+  </div>
+  <div {% get_id_and_classes "header-user-rank" %}>
+    <h3>#{{profile.current_round_floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor}}
+  </div>
+</div>
+<!-- Second slideshow element -->
+<div id="header-user-overall-rank">
+  <div {% get_id_and_classes "header-user-points" %}>
+    <h3>{{profile.current_round_points}}</h3>
+    {{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}
+  </div>
+  <div {% get_id_and_classes "header-user-rank" %}>
+    <h3>#{{profile.current_round_floor_rank}}</h3> out of {{OVERALL_MEMBER_COUNT}} overall
+  </div>
+</div>
+{% endif %}
+
+<!-- Third slideshow element -->
+<div id="header-user-floor-rank">
+  <div {% get_id_and_classes "header-user-points" %}>
+    <h3>{{profile.points}}</h3>
+    {{COMPETITION_POINT_NAME}}s
+  </div>
+  <div {% get_id_and_classes "header-user-rank" %}>
+    <h3>#{{profile.floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor}}
+  </div>
+</div>
+<!-- Fourth slideshow element -->
+<div id="header-user-overall-rank">
+  <div {% get_id_and_classes "header-user-points" %}>
+    <h3>{{profile.points}}</h3>
+    {{COMPETITION_POINT_NAME}}s
+  </div>
+  <div {% get_id_and_classes "header-user-rank" %}>
+    <h3>#{{profile.overall_rank}}</h3> out of {{OVERALL_MEMBER_COUNT}} overall
+  </div>
+</div>

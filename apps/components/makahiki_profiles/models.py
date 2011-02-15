@@ -136,7 +136,8 @@ class Profile(models.Model):
     if round_name:
       return ScoreboardEntry.user_round_floor_rank(self.user, round_name)
     
-    # Compute the rank for the floor
+    # Calculate the rank.  This counts the number of people who are on the floor that have more points 
+    # OR have the same amount of points but a later submission date 
     return Profile.objects.filter(
         floor=self.floor
     ).filter(
@@ -148,7 +149,8 @@ class Profile(models.Model):
     if round_name:
       return ScoreboardEntry.user_round_overall_rank(self.user, round_name)
       
-    # Compute the overall rank.
+    # Compute the overall rank.  This counts the number of people that have more points 
+    # OR have the same amount of points but a later submission date
     return Profile.objects.filter(
         Q(points__gt=self.points) |
         Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
