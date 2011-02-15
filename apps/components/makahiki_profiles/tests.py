@@ -83,13 +83,154 @@ class ScoreboardEntryUnitTests(TestCase):
     self.assertEqual(round_points, entry.points)
     self.assertEqual(round_submission_date, entry.last_awarded_submission)
     
+  def testUserOverallRoundRankWithPoints(self):
+    """Tests that the overall rank calculation for a user in a round is correct based on points."""
+    profile = self.user.get_profile()
+    top_entry  = ScoreboardEntry.objects.filter(round_name=self.current_round).order_by("-points")[0]
+    entry, created = ScoreboardEntry.objects.get_or_create(
+                        profile=self.user.get_profile(), 
+                        round_name=self.current_round,
+                      )
+    entry.points = top_entry.points + 1
+    entry.last_awarded_submission = datetime.datetime.today()
+    entry.save()
+    
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), 1, 
+                    "Check user is ranked #1 for the current round.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+
+    profile2 = user2.get_profile()
+    entry2, created = ScoreboardEntry.objects.get_or_create(
+                        profile=profile2, 
+                        round_name=self.current_round,
+                      )
+    entry2.points = entry.points + 1
+    entry2.last_awarded_submission = entry.last_awarded_submission
+    entry2.save()
+    
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), 2, 
+                    "Check user is now second.")
+                    
+  def testUserOverallRoundRankWithSubmissionDate(self):
+    """Tests that the overall rank calculation for a user in a round is correct based on submission date."""
+    profile = self.user.get_profile()
+    top_entry  = ScoreboardEntry.objects.filter(round_name=self.current_round).order_by("-points")[0]
+    entry, created = ScoreboardEntry.objects.get_or_create(
+                        profile=self.user.get_profile(), 
+                        round_name=self.current_round,
+                      )
+    entry.points = top_entry.points + 1
+    entry.last_awarded_submission = datetime.datetime.today() - datetime.timedelta(days=3)
+    entry.save()
+
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), 1, 
+                    "Check user is ranked #1 for the current round.")
+
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+
+    profile2 = user2.get_profile()
+    entry2, created = ScoreboardEntry.objects.get_or_create(
+                        profile=profile2, 
+                        round_name=self.current_round,
+                      )
+    entry2.points = entry.points
+    entry2.last_awarded_submission = datetime.datetime.today()
+    entry2.save()
+
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), 2, 
+                    "Check user is now second.")             
+    
+  def testUserFloorRoundRankWithPoints(self):
+    """Tests that the floor rank calculation for a round is correct based on points."""
+    # Setup dorm
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
+    
+    profile = self.user.get_profile()
+    profile.floor = floor
+    profile.save()
+    
+    # Set up entry
+    top_entry  = ScoreboardEntry.objects.filter(round_name=self.current_round).order_by("-points")[0]
+    entry, created = ScoreboardEntry.objects.get_or_create(
+                        profile=self.user.get_profile(), 
+                        round_name=self.current_round,
+                      )
+    entry.points = top_entry.points + 1
+    entry.last_awarded_submission = datetime.datetime.today()
+    entry.save()
+    
+    self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), 1, 
+                    "Check user is ranked #1 for the current round.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    profile2 = user2.get_profile()
+    profile2.floor = floor
+    profile2.save()
+    
+    entry2, created = ScoreboardEntry.objects.get_or_create(
+                        profile=profile2, 
+                        round_name=self.current_round,
+                      )
+    entry2.points = entry.points + 1
+    entry2.last_awarded_submission = entry.last_awarded_submission
+    entry2.save()
+    
+    self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), 2, 
+                    "Check user is now second.")
+                    
+  def testUserFloorRoundRankWithSubmissionDate(self):
+    """Tests that the floor rank calculation for a round is correct based on points."""
+    # Set up dorm
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
+    
+    # Create the entry for the test user
+    profile = self.user.get_profile()
+    profile.floor = floor
+    profile.save()
+    top_entry  = ScoreboardEntry.objects.filter(round_name=self.current_round).order_by("-points")[0]
+    entry, created = ScoreboardEntry.objects.get_or_create(
+                        profile=self.user.get_profile(), 
+                        round_name=self.current_round,
+                      )
+    entry.points = top_entry.points + 1
+    entry.last_awarded_submission = datetime.datetime.today() - datetime.timedelta(days=3)
+    entry.save()
+    
+    # Create another test user
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    profile2 = user2.get_profile()
+    profile2.floor = floor
+    profile2.save()
+
+    entry2, created = ScoreboardEntry.objects.get_or_create(
+                        profile=profile2, 
+                        round_name=self.current_round,
+                      )
+    entry2.points = entry.points
+    entry2.last_awarded_submission = datetime.datetime.today()
+    entry2.save()
+
+    self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), 2, 
+                    "Check user is now second.")
+    
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class ProfileUnitTests(TestCase):
-  def testFloorRank(self):
-    """Tests that the floor_rank method accurately computes the rank."""
+  def testFloorRankWithPoints(self):
+    """Tests that the floor_rank method accurately computes the rank based on points."""
     user = User(username="test_user", password="changeme")
     user.save()
     dorm = Dorm(name="Test dorm")
@@ -100,7 +241,7 @@ class ProfileUnitTests(TestCase):
     profile = user.get_profile()
     profile.floor = floor
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.points = top_user.points + 1
+    profile.add_points(top_user.points + 1, datetime.datetime.today())
     profile.save()
     
     self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
@@ -109,7 +250,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.points = profile.points + 1
+    profile2.add_points(profile.points + 1, datetime.datetime.today())
     profile2.save()
     
     self.assertEqual(profile.floor_rank(), 1, 
@@ -120,14 +261,43 @@ class ProfileUnitTests(TestCase):
     
     self.assertEqual(profile.floor_rank(), 2, "Check that the user is now rank 2.")
     
-  def testOverallRank(self):
-    """Tests that the rank method accurately computes the rank."""
+  def testFloorRankWithSubmissionDate(self):
+    """Tests that the floor_rank method accurately computes the rank when users have the same number of points."""
+    user = User(username="test_user", password="changeme")
+    user.save()
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
+    
+    profile = user.get_profile()
+    profile.floor = floor
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.save()
+    
+    self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    
+    profile2 = user2.get_profile()
+    profile2.add_points(profile.points, datetime.datetime.today())
+    profile2.save()
+                  
+    profile2.floor = floor
+    profile2.save()
+    
+    self.assertEqual(profile.floor_rank(), 2, "Check that the user is now rank 2.")
+    
+  def testOverallRankWithPoints(self):
+    """Tests that the rank method accurately computes the rank with points."""
     user = User(username="test_user", password="changeme")
     user.save()
     
     profile = user.get_profile()
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.points = top_user.points + 1
+    profile.add_points(top_user.points + 1, datetime.datetime.today())
     profile.save()
     
     self.assertEqual(profile.overall_rank(), 1, "Check that the user is number 1.")
@@ -136,11 +306,110 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.points = profile.points + 1
+    profile2.add_points(profile.points + 1, datetime.datetime.today())
     profile2.save()
     
     self.assertEqual(profile.overall_rank(), 2, "Check that the user is now rank 2.")
     
+  def testOverallRankWithSubmissionDate(self):
+    """Tests that the overall_rank method accurately computes the rank when two users have the same number of points."""
+    user = User(username="test_user", password="changeme")
+    user.save()
+    
+    profile = user.get_profile()
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(days=1))
+    profile.save()
+    
+    self.assertEqual(profile.overall_rank(), 1, "Check that the user is number 1.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    
+    profile2 = user2.get_profile()
+    profile2.add_points(profile.points, datetime.datetime.today())
+    profile2.save()
+    
+    self.assertEqual(profile.overall_rank(), 2, "Check that the user is now rank 2.")
+    
+  def testOverallRankForCurrentRound(self):
+    """Test that we can retrieve the rank for the user in the current round."""
+    saved_rounds = settings.COMPETITION_ROUNDS
+    current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    user = User(username="test_user", password="changeme")
+    user.save()
+    
+    profile = user.get_profile()
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.save()
+    
+    self.assertEqual(profile.current_round_overall_rank(), 1, "Check that the user is number 1.")
+    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+    
+    profile2 = user2.get_profile()
+    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.save()
+    
+    self.assertEqual(profile.current_round_overall_rank(), 2, "Check that the user is now number 2.")
+    
+    # Restore saved rounds.
+    settings.COMPETITION_ROUNDS = saved_rounds
+    
+  def testFloorRankForCurrentRound(self):
+    """Test that we can retrieve the rank for the user in the current round."""
+    saved_rounds = settings.COMPETITION_ROUNDS
+    current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
+
+    user = User(username="test_user", password="changeme")
+    user.save()
+
+    profile = user.get_profile()
+    top_user  = Profile.objects.all().order_by("-points")[0]
+    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.floor = floor
+    profile.save()
+
+    self.assertEqual(profile.current_round_floor_rank(), 1, "Check that the user is number 1.")
+
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+
+    profile2 = user2.get_profile()
+    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.floor = floor
+    profile2.save()
+
+    self.assertEqual(profile.current_round_floor_rank(), 2, "Check that the user is now number 2.")
+
+    # Restore saved rounds.
+    settings.COMPETITION_ROUNDS = saved_rounds
     
   def testAwardRollback(self):
     """Tests that the last_awarded_submission field rolls back to a previous task."""

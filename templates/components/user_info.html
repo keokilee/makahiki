@@ -11,13 +11,33 @@
     <div {% get_id_and_classes "header-user-username" %}>
       {{profile.name}} ({{user.username}})
     </div>
-    <div {% get_id_and_classes "header-user-points" %}>
-      <h3>{{profile.points}}</h3>
-      points
+    <div id="header-user-points-ranks" class="span-4 last">
+      <!-- First slideshow element -->
+      <div id="header-user-floor-rank">
+        <div {% get_id_and_classes "header-user-points" %}>
+          <h3>{{profile.points}}</h3>
+          points
+        </div>
+        <div {% get_id_and_classes "header-user-rank" %}>
+          <h3>#{{profile.floor_rank}}</h3> out of 52 in Lounge A
+        </div>
+      </div>
+      <!-- Second slideshow element -->
+      <div id="header-user-overall-rank">
+        <div {% get_id_and_classes "header-user-points" %}>
+          <h3>{{profile.points}}</h3>
+          points
+        </div>
+        <div {% get_id_and_classes "header-user-rank" %}>
+          <h3>#{{profile.overall_rank}}</h3> overall
+        </div>
+      </div>
     </div>
-    <div {% get_id_and_classes "header-user-rank" %}>
-      <h3>#{{profile.floor_rank}}</h3> out of 52 in Lounge A
-    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#header-user-points-ranks").cycle();
+      });
+    </script>
   </div>
   {% endwith %}
   
