@@ -1,7 +1,11 @@
-#header-info {
+#header-title h3 {
+  font-weight: bold;
+}
+
+/*#header-info {
   border: 1px solid black; 
   margin: -1px;
-}
+}*/
 
 #header-user-username, #header-floor-name {
   font-weight: bold; 
@@ -14,12 +18,12 @@
   display:inline
 }
 
-#header-floor-info {
+/*#header-floor-info {
   border-left: 1px solid gray; 
   margin-left: -1px; 
-  padding-left: 2px;
+  padding-left: 3px;
   margin-right: 5px
-}
+}*/
 
 #header-logout {text-align: right;}
 

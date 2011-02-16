@@ -26,7 +26,6 @@ urlpatterns = patterns('',
     url(r'^account/cas/login/$', 'components.django_cas.views.login'),
     url(r'^account/cas/logout/$', 'components.django_cas.views.logout'),
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
-    url(r'^setup/', include('components.setup_wizard.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),
     

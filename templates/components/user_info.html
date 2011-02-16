@@ -11,14 +11,9 @@
     <div {% get_id_and_classes "header-user-username" %}>
       {{profile.name}} ({{user.username}})
     </div>
-    <div id="header-user-points-ranks" class="span-4 last">
+    <div id="user-cycle" class="span-4 last">
       {% include "components/user_points.html" %}
     </div>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $("#header-user-points-ranks").cycle();
-      });
-    </script>
   </div>
   {% endwith %}
   
@@ -27,16 +22,19 @@
     <div {% get_id_and_classes "header-floor-name" %}>
       {{floor}}
     </div>
-    <div {% get_id_and_classes "header-floor-points" %}>
-      <h3>{{floor.points}}</h3>
-      {{COMPETITION_POINT_NAME}}s
-    </div>
-    <div {% get_id_and_classes "header-floor-rank" %}>
-      <h3>#{{floor.rank}}</h3> out of 15 in all dorms
+    <div id="floor-cycle" class="span-4 last"> 
+      {% include "components/floor_points.html" %}
     </div>
   </div>
   <div {% get_id_and_classes "header-floor-image" %}>
     <img src="{{STATIC_URL}}images/hale.ilima.jpg"/>
   </div>
   {% endwith %}
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#user-cycle").cycle();
+      $("#floor-cycle").cycle();
+    });
+  </script>
 {% endif %}

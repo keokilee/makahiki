@@ -50,7 +50,7 @@ CSS_IDS = {
   "header-user-points": "span-2",
   "header-user-rank": "span-2 last",
   
-  "header-floor-info": "span-4",
+  "header-floor-info": "span-4 last",
   "header-floor-name": "span-4 last",
   "header-floor-points": "span-2",
   "header-floor-rank": "span-2 last",
