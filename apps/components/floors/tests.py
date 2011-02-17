@@ -3,8 +3,10 @@ import datetime
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models import Sum, Max
 
 from components.floors.models import Dorm, Floor
+from components.makahiki_profiles.models import ScoreboardEntry
 
 class FloorsUnitTestCase(TestCase):
   def setUp(self):
@@ -20,6 +22,9 @@ class FloorsUnitTestCase(TestCase):
     user.save()
     user_points = 10
     user.get_profile().floor = self.test_floor
+    
+    self.assertEqual(self.test_floor.points(), 0, "Check that the floor does not have any points yet.")
+    
     user.get_profile().add_points(user_points, datetime.datetime.today())
     user.get_profile().save()
     
@@ -53,6 +58,10 @@ class FloorsUnitTestCase(TestCase):
     user.save()
     profile = user.get_profile()
     profile.floor = self.test_floor
+    profile.save()
+    
+    self.assertEqual(self.test_floor.current_round_points(), 0, "Check that the floor does not have any points yet.")
+    
     profile.add_points(10, datetime.datetime.today())
     profile.save()
     
@@ -73,6 +82,14 @@ class FloorsUnitTestCase(TestCase):
     user.save()
     user_points = 10
     user.get_profile().floor = self.test_floor
+    
+    # Test the floor is ranked last if they haven't done anything yet.
+    floor_rank = Floor.objects.annotate(
+        floor_points=Sum("profile__points"),
+        last_awarded_submission=Max("profile__last_awarded_submission")
+    ).filter(floor_points__gt=self.test_floor.points).count() + 1
+    self.assertEqual(self.test_floor.rank(), floor_rank, "Check the floor is ranked last.")
+    
     user.get_profile().add_points(user_points, datetime.datetime.today())
     user.get_profile().save()
 
@@ -110,9 +127,18 @@ class FloorsUnitTestCase(TestCase):
     user.save()
     user_points = 10
     user.get_profile().floor = self.test_floor
-    user.get_profile().add_points(user_points, datetime.datetime.today())
     user.get_profile().save()
     
+    ScoreboardEntry.objects.values("profile__floor").filter(
+        round_name=current_round
+    ).annotate(
+        floor_points=Sum("points"),
+        last_awarded=Max("last_awarded_submission")
+    ).filter(floor_points__gt=self.test_floor.points).count() + 1
+    self.assertEqual(self.test_floor.current_round_rank(), 1, "Check the calculation works even if there's no submission.")
+    
+    user.get_profile().add_points(user_points, datetime.datetime.today())
+    user.get_profile().save()
     self.assertEqual(self.test_floor.current_round_rank(), 1, "Check the floor is now ranked number 1.")
     
     test_floor2 = Floor(number="B", dorm=self.dorm)

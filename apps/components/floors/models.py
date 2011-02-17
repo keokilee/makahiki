@@ -66,7 +66,7 @@ class Floor(models.Model):
           round_name=round_name
       ).aggregate(points=Sum("points"), last=Max("last_awarded_submission"))
       
-      points = aggregate["points"]
+      points = aggregate["points"] or 0
       last_awarded_submission = aggregate["last"]
       # Group by floors, filter out other rounds, and annotate.
       annotated_floors = ScoreboardEntry.objects.values("profile__floor").filter(
@@ -77,7 +77,7 @@ class Floor(models.Model):
       )
     else:
       aggregate = self.profile_set.aggregate(points=Sum("points"), last=Max("last_awarded_submission"))
-      points = aggregate["points"]
+      points = aggregate["points"] or 0
       last_awarded_submission = aggregate["last"]
 
       annotated_floors = Floor.objects.annotate(
@@ -86,7 +86,13 @@ class Floor(models.Model):
       )
     
     count = annotated_floors.filter(floor_points__gt=points).count()
-    count = count + annotated_floors.filter(floor_points=points, last_awarded_submission__gt=last_awarded_submission).count()
+    # If there was a submission, tack that on to the count.
+    if last_awarded_submission:
+      count = count + annotated_floors.filter(
+          floor_points=points, 
+          last_awarded_submission__gt=last_awarded_submission
+      ).count()
+      
     return count + 1
     
   def current_round_points(self):
@@ -105,7 +111,7 @@ class Floor(models.Model):
     else:
       dictionary = self.profile_set.aggregate(Sum("points"))
       
-    return dictionary["points__sum"]
+    return dictionary["points__sum"] or 0
     
   def save(self):
     """Custom save method to generate slug and set created_at/updated_at."""
