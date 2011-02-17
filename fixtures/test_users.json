@@ -5751,7 +5751,7 @@
       "is_active": true, 
       "is_superuser": true, 
       "is_staff": true, 
-      "last_login": "2011-01-16 21:29:29", 
+      "last_login": "2011-02-15 10:22:50", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$1ec42$55198a04ae01b5a33a031535dc93e91ca8ddf916", 
@@ -16641,7 +16641,7 @@
       "is_active": true, 
       "is_superuser": true, 
       "is_staff": true, 
-      "last_login": "2011-01-27 12:30:05", 
+      "last_login": "2010-09-07 17:02:47", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$ab1bf$97cf0e4aed03355e9328f7bdbb0b3d5d40cb1f12", 
@@ -17229,21 +17229,21 @@
     "pk": 1, 
     "model": "makahiki_profiles.profile", 
     "fields": {
-      "last_visit_date": null, 
-      "about": "The admin.", 
+      "last_visit_date": "2011-02-15", 
+      "about": "", 
       "last_name": "Lee", 
       "name": "George L.", 
       "floor": 2, 
-      "daily_visit_count": 0, 
-      "last_awarded_submission": "2011-01-14 00:00:00", 
+      "daily_visit_count": 2, 
+      "last_awarded_submission": "2011-02-08 16:20:19", 
       "first_name": "George", 
-      "setup_complete": false, 
+      "setup_complete": true, 
       "contact_text": null, 
-      "points": 30, 
+      "points": 50, 
       "contact_email": null, 
       "user": 1, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": true
     }
   }, 
   {
@@ -17264,7 +17264,7 @@
       "contact_email": null, 
       "user": 2, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17285,7 +17285,7 @@
       "contact_email": null, 
       "user": 3, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17306,7 +17306,7 @@
       "contact_email": null, 
       "user": 4, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17327,7 +17327,7 @@
       "contact_email": null, 
       "user": 5, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17348,7 +17348,7 @@
       "contact_email": null, 
       "user": 6, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17369,7 +17369,7 @@
       "contact_email": null, 
       "user": 7, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17390,7 +17390,7 @@
       "contact_email": null, 
       "user": 8, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17411,7 +17411,7 @@
       "contact_email": null, 
       "user": 9, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17432,7 +17432,7 @@
       "contact_email": null, 
       "user": 10, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17453,7 +17453,7 @@
       "contact_email": null, 
       "user": 11, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17474,7 +17474,7 @@
       "contact_email": null, 
       "user": 12, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17495,7 +17495,7 @@
       "contact_email": null, 
       "user": 13, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17516,7 +17516,7 @@
       "contact_email": null, 
       "user": 14, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17537,7 +17537,7 @@
       "contact_email": null, 
       "user": 15, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17558,7 +17558,7 @@
       "contact_email": null, 
       "user": 16, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17579,7 +17579,7 @@
       "contact_email": null, 
       "user": 17, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17600,7 +17600,7 @@
       "contact_email": null, 
       "user": 18, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17621,7 +17621,7 @@
       "contact_email": null, 
       "user": 19, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17642,7 +17642,7 @@
       "contact_email": null, 
       "user": 20, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17663,7 +17663,7 @@
       "contact_email": null, 
       "user": 21, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17684,7 +17684,7 @@
       "contact_email": null, 
       "user": 22, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17705,7 +17705,7 @@
       "contact_email": null, 
       "user": 23, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17726,7 +17726,7 @@
       "contact_email": null, 
       "user": 24, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17747,7 +17747,7 @@
       "contact_email": null, 
       "user": 25, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17768,7 +17768,7 @@
       "contact_email": null, 
       "user": 26, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17789,7 +17789,7 @@
       "contact_email": null, 
       "user": 27, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17810,7 +17810,7 @@
       "contact_email": null, 
       "user": 28, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17831,7 +17831,7 @@
       "contact_email": null, 
       "user": 29, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17852,7 +17852,7 @@
       "contact_email": null, 
       "user": 30, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17873,7 +17873,7 @@
       "contact_email": null, 
       "user": 31, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17894,7 +17894,7 @@
       "contact_email": null, 
       "user": 32, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17915,7 +17915,7 @@
       "contact_email": null, 
       "user": 33, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17936,7 +17936,7 @@
       "contact_email": null, 
       "user": 34, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17957,7 +17957,7 @@
       "contact_email": null, 
       "user": 35, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17978,7 +17978,7 @@
       "contact_email": null, 
       "user": 36, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -17999,7 +17999,7 @@
       "contact_email": null, 
       "user": 37, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18020,7 +18020,7 @@
       "contact_email": null, 
       "user": 38, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18041,7 +18041,7 @@
       "contact_email": null, 
       "user": 39, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18062,7 +18062,7 @@
       "contact_email": null, 
       "user": 40, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18083,7 +18083,7 @@
       "contact_email": null, 
       "user": 41, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18104,7 +18104,7 @@
       "contact_email": null, 
       "user": 42, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18125,7 +18125,7 @@
       "contact_email": null, 
       "user": 43, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18146,7 +18146,7 @@
       "contact_email": null, 
       "user": 44, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18167,7 +18167,7 @@
       "contact_email": null, 
       "user": 45, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18188,7 +18188,7 @@
       "contact_email": null, 
       "user": 46, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18209,7 +18209,7 @@
       "contact_email": null, 
       "user": 47, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18230,7 +18230,7 @@
       "contact_email": null, 
       "user": 48, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18251,7 +18251,7 @@
       "contact_email": null, 
       "user": 49, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18272,7 +18272,7 @@
       "contact_email": null, 
       "user": 50, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18293,7 +18293,7 @@
       "contact_email": null, 
       "user": 51, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18314,7 +18314,7 @@
       "contact_email": null, 
       "user": 52, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18335,7 +18335,7 @@
       "contact_email": null, 
       "user": 53, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18356,7 +18356,7 @@
       "contact_email": null, 
       "user": 54, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18377,7 +18377,7 @@
       "contact_email": null, 
       "user": 55, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18398,7 +18398,7 @@
       "contact_email": null, 
       "user": 56, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18419,7 +18419,7 @@
       "contact_email": null, 
       "user": 57, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18440,7 +18440,7 @@
       "contact_email": null, 
       "user": 58, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18461,7 +18461,7 @@
       "contact_email": null, 
       "user": 59, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18482,7 +18482,7 @@
       "contact_email": null, 
       "user": 60, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18503,7 +18503,7 @@
       "contact_email": null, 
       "user": 61, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18524,7 +18524,7 @@
       "contact_email": null, 
       "user": 62, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18545,7 +18545,7 @@
       "contact_email": null, 
       "user": 63, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18566,7 +18566,7 @@
       "contact_email": null, 
       "user": 64, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18587,7 +18587,7 @@
       "contact_email": null, 
       "user": 65, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18608,7 +18608,7 @@
       "contact_email": null, 
       "user": 66, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18629,7 +18629,7 @@
       "contact_email": null, 
       "user": 67, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18650,7 +18650,7 @@
       "contact_email": null, 
       "user": 68, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18671,7 +18671,7 @@
       "contact_email": null, 
       "user": 69, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18692,7 +18692,7 @@
       "contact_email": null, 
       "user": 70, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18713,7 +18713,7 @@
       "contact_email": null, 
       "user": 71, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18734,7 +18734,7 @@
       "contact_email": null, 
       "user": 72, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18755,7 +18755,7 @@
       "contact_email": null, 
       "user": 73, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18776,7 +18776,7 @@
       "contact_email": null, 
       "user": 74, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18797,7 +18797,7 @@
       "contact_email": null, 
       "user": 75, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18818,7 +18818,7 @@
       "contact_email": null, 
       "user": 76, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18839,7 +18839,7 @@
       "contact_email": null, 
       "user": 77, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18860,7 +18860,7 @@
       "contact_email": null, 
       "user": 78, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18881,7 +18881,7 @@
       "contact_email": null, 
       "user": 79, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18902,7 +18902,7 @@
       "contact_email": null, 
       "user": 80, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18923,7 +18923,7 @@
       "contact_email": null, 
       "user": 81, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18944,7 +18944,7 @@
       "contact_email": null, 
       "user": 82, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18965,7 +18965,7 @@
       "contact_email": null, 
       "user": 83, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -18986,7 +18986,7 @@
       "contact_email": null, 
       "user": 84, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19007,7 +19007,7 @@
       "contact_email": null, 
       "user": 85, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19028,7 +19028,7 @@
       "contact_email": null, 
       "user": 86, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19049,7 +19049,7 @@
       "contact_email": null, 
       "user": 87, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19070,7 +19070,7 @@
       "contact_email": null, 
       "user": 88, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19091,7 +19091,7 @@
       "contact_email": null, 
       "user": 89, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19112,7 +19112,7 @@
       "contact_email": null, 
       "user": 90, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19133,7 +19133,7 @@
       "contact_email": null, 
       "user": 91, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19154,7 +19154,7 @@
       "contact_email": null, 
       "user": 92, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19175,7 +19175,7 @@
       "contact_email": null, 
       "user": 93, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19196,7 +19196,7 @@
       "contact_email": null, 
       "user": 94, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19217,7 +19217,7 @@
       "contact_email": null, 
       "user": 95, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19238,7 +19238,7 @@
       "contact_email": null, 
       "user": 96, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19259,7 +19259,7 @@
       "contact_email": null, 
       "user": 97, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19280,7 +19280,7 @@
       "contact_email": null, 
       "user": 98, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19301,7 +19301,7 @@
       "contact_email": null, 
       "user": 99, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19322,7 +19322,7 @@
       "contact_email": null, 
       "user": 100, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19343,7 +19343,7 @@
       "contact_email": null, 
       "user": 101, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19364,7 +19364,7 @@
       "contact_email": null, 
       "user": 102, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19385,7 +19385,7 @@
       "contact_email": null, 
       "user": 103, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19406,7 +19406,7 @@
       "contact_email": null, 
       "user": 104, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19427,7 +19427,7 @@
       "contact_email": null, 
       "user": 105, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19448,7 +19448,7 @@
       "contact_email": null, 
       "user": 106, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19469,7 +19469,7 @@
       "contact_email": null, 
       "user": 107, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19490,7 +19490,7 @@
       "contact_email": null, 
       "user": 108, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19511,7 +19511,7 @@
       "contact_email": null, 
       "user": 109, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19532,7 +19532,7 @@
       "contact_email": null, 
       "user": 110, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19553,7 +19553,7 @@
       "contact_email": null, 
       "user": 111, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19574,7 +19574,7 @@
       "contact_email": null, 
       "user": 112, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19595,7 +19595,7 @@
       "contact_email": null, 
       "user": 113, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19616,7 +19616,7 @@
       "contact_email": null, 
       "user": 114, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19637,7 +19637,7 @@
       "contact_email": null, 
       "user": 115, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19658,7 +19658,7 @@
       "contact_email": null, 
       "user": 116, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19679,7 +19679,7 @@
       "contact_email": null, 
       "user": 117, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19700,7 +19700,7 @@
       "contact_email": null, 
       "user": 118, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19721,7 +19721,7 @@
       "contact_email": null, 
       "user": 119, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19742,7 +19742,7 @@
       "contact_email": null, 
       "user": 120, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19763,7 +19763,7 @@
       "contact_email": null, 
       "user": 121, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19784,7 +19784,7 @@
       "contact_email": null, 
       "user": 122, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19805,7 +19805,7 @@
       "contact_email": null, 
       "user": 123, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19826,7 +19826,7 @@
       "contact_email": null, 
       "user": 124, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19847,7 +19847,7 @@
       "contact_email": null, 
       "user": 125, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19868,7 +19868,7 @@
       "contact_email": null, 
       "user": 126, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19889,7 +19889,7 @@
       "contact_email": null, 
       "user": 127, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19910,7 +19910,7 @@
       "contact_email": null, 
       "user": 128, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19931,7 +19931,7 @@
       "contact_email": null, 
       "user": 129, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19952,7 +19952,7 @@
       "contact_email": null, 
       "user": 130, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19973,7 +19973,7 @@
       "contact_email": null, 
       "user": 131, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -19994,7 +19994,7 @@
       "contact_email": null, 
       "user": 132, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20015,7 +20015,7 @@
       "contact_email": null, 
       "user": 133, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20036,7 +20036,7 @@
       "contact_email": null, 
       "user": 134, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20057,7 +20057,7 @@
       "contact_email": null, 
       "user": 135, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20078,7 +20078,7 @@
       "contact_email": null, 
       "user": 136, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20099,7 +20099,7 @@
       "contact_email": null, 
       "user": 137, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20120,7 +20120,7 @@
       "contact_email": null, 
       "user": 138, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20141,7 +20141,7 @@
       "contact_email": null, 
       "user": 139, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20162,7 +20162,7 @@
       "contact_email": null, 
       "user": 140, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20183,7 +20183,7 @@
       "contact_email": null, 
       "user": 141, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20204,7 +20204,7 @@
       "contact_email": null, 
       "user": 142, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20225,7 +20225,7 @@
       "contact_email": null, 
       "user": 143, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20246,7 +20246,7 @@
       "contact_email": null, 
       "user": 144, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20267,7 +20267,7 @@
       "contact_email": null, 
       "user": 145, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20288,7 +20288,7 @@
       "contact_email": null, 
       "user": 146, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20309,7 +20309,7 @@
       "contact_email": null, 
       "user": 147, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20330,7 +20330,7 @@
       "contact_email": null, 
       "user": 148, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20351,7 +20351,7 @@
       "contact_email": null, 
       "user": 149, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20372,7 +20372,7 @@
       "contact_email": null, 
       "user": 150, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20393,7 +20393,7 @@
       "contact_email": null, 
       "user": 151, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20414,7 +20414,7 @@
       "contact_email": null, 
       "user": 152, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20435,7 +20435,7 @@
       "contact_email": null, 
       "user": 153, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20456,7 +20456,7 @@
       "contact_email": null, 
       "user": 154, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20477,7 +20477,7 @@
       "contact_email": null, 
       "user": 155, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20498,7 +20498,7 @@
       "contact_email": null, 
       "user": 156, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20519,7 +20519,7 @@
       "contact_email": null, 
       "user": 157, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20540,7 +20540,7 @@
       "contact_email": null, 
       "user": 158, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20561,7 +20561,7 @@
       "contact_email": null, 
       "user": 159, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20582,7 +20582,7 @@
       "contact_email": null, 
       "user": 160, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20603,7 +20603,7 @@
       "contact_email": null, 
       "user": 161, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20624,7 +20624,7 @@
       "contact_email": null, 
       "user": 162, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20645,7 +20645,7 @@
       "contact_email": null, 
       "user": 163, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20666,7 +20666,7 @@
       "contact_email": null, 
       "user": 164, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20687,7 +20687,7 @@
       "contact_email": null, 
       "user": 165, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20708,7 +20708,7 @@
       "contact_email": null, 
       "user": 166, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20729,7 +20729,7 @@
       "contact_email": null, 
       "user": 167, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20750,7 +20750,7 @@
       "contact_email": null, 
       "user": 168, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20771,7 +20771,7 @@
       "contact_email": null, 
       "user": 169, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20792,7 +20792,7 @@
       "contact_email": null, 
       "user": 170, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20813,7 +20813,7 @@
       "contact_email": null, 
       "user": 171, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20834,7 +20834,7 @@
       "contact_email": null, 
       "user": 172, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20855,7 +20855,7 @@
       "contact_email": null, 
       "user": 173, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20876,7 +20876,7 @@
       "contact_email": null, 
       "user": 174, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20897,7 +20897,7 @@
       "contact_email": null, 
       "user": 175, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20918,7 +20918,7 @@
       "contact_email": null, 
       "user": 176, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20939,7 +20939,7 @@
       "contact_email": null, 
       "user": 177, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20960,7 +20960,7 @@
       "contact_email": null, 
       "user": 178, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -20981,7 +20981,7 @@
       "contact_email": null, 
       "user": 179, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21002,7 +21002,7 @@
       "contact_email": null, 
       "user": 180, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21023,7 +21023,7 @@
       "contact_email": null, 
       "user": 181, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21044,7 +21044,7 @@
       "contact_email": null, 
       "user": 182, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21065,7 +21065,7 @@
       "contact_email": null, 
       "user": 183, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21086,7 +21086,7 @@
       "contact_email": null, 
       "user": 184, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21107,7 +21107,7 @@
       "contact_email": null, 
       "user": 185, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21128,7 +21128,7 @@
       "contact_email": null, 
       "user": 186, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21149,7 +21149,7 @@
       "contact_email": null, 
       "user": 187, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21170,7 +21170,7 @@
       "contact_email": null, 
       "user": 188, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21191,7 +21191,7 @@
       "contact_email": null, 
       "user": 189, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21212,7 +21212,7 @@
       "contact_email": null, 
       "user": 190, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21233,7 +21233,7 @@
       "contact_email": null, 
       "user": 191, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21254,7 +21254,7 @@
       "contact_email": null, 
       "user": 192, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21275,7 +21275,7 @@
       "contact_email": null, 
       "user": 193, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21296,7 +21296,7 @@
       "contact_email": null, 
       "user": 194, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21317,7 +21317,7 @@
       "contact_email": null, 
       "user": 195, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21338,7 +21338,7 @@
       "contact_email": null, 
       "user": 196, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21359,7 +21359,7 @@
       "contact_email": null, 
       "user": 197, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21380,7 +21380,7 @@
       "contact_email": null, 
       "user": 198, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21401,7 +21401,7 @@
       "contact_email": null, 
       "user": 199, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21422,7 +21422,7 @@
       "contact_email": null, 
       "user": 200, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21443,7 +21443,7 @@
       "contact_email": null, 
       "user": 201, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21464,7 +21464,7 @@
       "contact_email": null, 
       "user": 202, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21485,7 +21485,7 @@
       "contact_email": null, 
       "user": 203, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21506,7 +21506,7 @@
       "contact_email": null, 
       "user": 204, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21527,7 +21527,7 @@
       "contact_email": null, 
       "user": 205, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21548,7 +21548,7 @@
       "contact_email": null, 
       "user": 206, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21569,7 +21569,7 @@
       "contact_email": null, 
       "user": 207, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21590,7 +21590,7 @@
       "contact_email": null, 
       "user": 208, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21611,7 +21611,7 @@
       "contact_email": null, 
       "user": 209, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21632,7 +21632,7 @@
       "contact_email": null, 
       "user": 210, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21653,7 +21653,7 @@
       "contact_email": null, 
       "user": 211, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21674,7 +21674,7 @@
       "contact_email": null, 
       "user": 212, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21695,7 +21695,7 @@
       "contact_email": null, 
       "user": 213, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21716,7 +21716,7 @@
       "contact_email": null, 
       "user": 214, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21737,7 +21737,7 @@
       "contact_email": null, 
       "user": 215, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21758,7 +21758,7 @@
       "contact_email": null, 
       "user": 216, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21779,7 +21779,7 @@
       "contact_email": null, 
       "user": 217, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21800,7 +21800,7 @@
       "contact_email": null, 
       "user": 218, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21821,7 +21821,7 @@
       "contact_email": null, 
       "user": 219, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21842,7 +21842,7 @@
       "contact_email": null, 
       "user": 220, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21863,7 +21863,7 @@
       "contact_email": null, 
       "user": 221, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21884,7 +21884,7 @@
       "contact_email": null, 
       "user": 222, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21905,7 +21905,7 @@
       "contact_email": null, 
       "user": 223, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21926,7 +21926,7 @@
       "contact_email": null, 
       "user": 224, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21947,7 +21947,7 @@
       "contact_email": null, 
       "user": 225, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21968,7 +21968,7 @@
       "contact_email": null, 
       "user": 226, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -21989,7 +21989,7 @@
       "contact_email": null, 
       "user": 227, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22010,7 +22010,7 @@
       "contact_email": null, 
       "user": 228, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22031,7 +22031,7 @@
       "contact_email": null, 
       "user": 229, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22052,7 +22052,7 @@
       "contact_email": null, 
       "user": 230, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22073,7 +22073,7 @@
       "contact_email": null, 
       "user": 231, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22094,7 +22094,7 @@
       "contact_email": null, 
       "user": 232, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22115,7 +22115,7 @@
       "contact_email": null, 
       "user": 233, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22136,7 +22136,7 @@
       "contact_email": null, 
       "user": 234, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22157,7 +22157,7 @@
       "contact_email": null, 
       "user": 235, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22178,7 +22178,7 @@
       "contact_email": null, 
       "user": 236, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22199,7 +22199,7 @@
       "contact_email": null, 
       "user": 237, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22220,7 +22220,7 @@
       "contact_email": null, 
       "user": 238, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22241,7 +22241,7 @@
       "contact_email": null, 
       "user": 239, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22262,7 +22262,7 @@
       "contact_email": null, 
       "user": 240, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22283,7 +22283,7 @@
       "contact_email": null, 
       "user": 241, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22304,7 +22304,7 @@
       "contact_email": null, 
       "user": 242, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22325,7 +22325,7 @@
       "contact_email": null, 
       "user": 243, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22346,7 +22346,7 @@
       "contact_email": null, 
       "user": 244, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22367,7 +22367,7 @@
       "contact_email": null, 
       "user": 245, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22388,7 +22388,7 @@
       "contact_email": null, 
       "user": 246, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22409,7 +22409,7 @@
       "contact_email": null, 
       "user": 247, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22430,7 +22430,7 @@
       "contact_email": null, 
       "user": 248, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22451,7 +22451,7 @@
       "contact_email": null, 
       "user": 249, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22472,7 +22472,7 @@
       "contact_email": null, 
       "user": 250, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22493,7 +22493,7 @@
       "contact_email": null, 
       "user": 251, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22514,7 +22514,7 @@
       "contact_email": null, 
       "user": 252, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22535,7 +22535,7 @@
       "contact_email": null, 
       "user": 253, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22556,7 +22556,7 @@
       "contact_email": null, 
       "user": 254, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22577,7 +22577,7 @@
       "contact_email": null, 
       "user": 255, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22598,7 +22598,7 @@
       "contact_email": null, 
       "user": 256, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22619,7 +22619,7 @@
       "contact_email": null, 
       "user": 257, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22640,7 +22640,7 @@
       "contact_email": null, 
       "user": 258, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22661,7 +22661,7 @@
       "contact_email": null, 
       "user": 259, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22682,7 +22682,7 @@
       "contact_email": null, 
       "user": 260, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22703,7 +22703,7 @@
       "contact_email": null, 
       "user": 261, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22724,7 +22724,7 @@
       "contact_email": null, 
       "user": 262, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22745,7 +22745,7 @@
       "contact_email": null, 
       "user": 263, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22766,7 +22766,7 @@
       "contact_email": null, 
       "user": 264, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22787,7 +22787,7 @@
       "contact_email": null, 
       "user": 265, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22808,7 +22808,7 @@
       "contact_email": null, 
       "user": 266, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22829,7 +22829,7 @@
       "contact_email": null, 
       "user": 267, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22850,7 +22850,7 @@
       "contact_email": null, 
       "user": 268, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22871,7 +22871,7 @@
       "contact_email": null, 
       "user": 269, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22892,7 +22892,7 @@
       "contact_email": null, 
       "user": 270, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22913,7 +22913,7 @@
       "contact_email": null, 
       "user": 271, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22934,7 +22934,7 @@
       "contact_email": null, 
       "user": 272, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22955,7 +22955,7 @@
       "contact_email": null, 
       "user": 273, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22976,7 +22976,7 @@
       "contact_email": null, 
       "user": 274, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -22997,7 +22997,7 @@
       "contact_email": null, 
       "user": 275, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23018,7 +23018,7 @@
       "contact_email": null, 
       "user": 276, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23039,7 +23039,7 @@
       "contact_email": null, 
       "user": 277, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23060,7 +23060,7 @@
       "contact_email": null, 
       "user": 278, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23081,7 +23081,7 @@
       "contact_email": null, 
       "user": 279, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23102,7 +23102,7 @@
       "contact_email": null, 
       "user": 280, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23123,7 +23123,7 @@
       "contact_email": null, 
       "user": 281, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23144,7 +23144,7 @@
       "contact_email": null, 
       "user": 282, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23165,7 +23165,7 @@
       "contact_email": null, 
       "user": 283, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23186,7 +23186,7 @@
       "contact_email": null, 
       "user": 284, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23207,7 +23207,7 @@
       "contact_email": null, 
       "user": 285, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23228,7 +23228,7 @@
       "contact_email": null, 
       "user": 286, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23249,7 +23249,7 @@
       "contact_email": null, 
       "user": 287, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23270,7 +23270,7 @@
       "contact_email": null, 
       "user": 288, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23291,7 +23291,7 @@
       "contact_email": null, 
       "user": 289, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23312,7 +23312,7 @@
       "contact_email": null, 
       "user": 290, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23333,7 +23333,7 @@
       "contact_email": null, 
       "user": 291, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23354,7 +23354,7 @@
       "contact_email": null, 
       "user": 292, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23375,7 +23375,7 @@
       "contact_email": null, 
       "user": 293, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23396,7 +23396,7 @@
       "contact_email": null, 
       "user": 294, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23417,7 +23417,7 @@
       "contact_email": null, 
       "user": 295, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23438,7 +23438,7 @@
       "contact_email": null, 
       "user": 296, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23459,7 +23459,7 @@
       "contact_email": null, 
       "user": 297, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23480,7 +23480,7 @@
       "contact_email": null, 
       "user": 298, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23501,7 +23501,7 @@
       "contact_email": null, 
       "user": 299, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23522,7 +23522,7 @@
       "contact_email": null, 
       "user": 300, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23543,7 +23543,7 @@
       "contact_email": null, 
       "user": 301, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23564,7 +23564,7 @@
       "contact_email": null, 
       "user": 302, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23585,7 +23585,7 @@
       "contact_email": null, 
       "user": 303, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23606,7 +23606,7 @@
       "contact_email": null, 
       "user": 304, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23627,7 +23627,7 @@
       "contact_email": null, 
       "user": 305, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23648,7 +23648,7 @@
       "contact_email": null, 
       "user": 306, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23669,7 +23669,7 @@
       "contact_email": null, 
       "user": 307, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23690,7 +23690,7 @@
       "contact_email": null, 
       "user": 308, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23711,7 +23711,7 @@
       "contact_email": null, 
       "user": 309, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23732,7 +23732,7 @@
       "contact_email": null, 
       "user": 310, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23753,7 +23753,7 @@
       "contact_email": null, 
       "user": 311, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23774,7 +23774,7 @@
       "contact_email": null, 
       "user": 312, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23795,7 +23795,7 @@
       "contact_email": null, 
       "user": 313, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23816,7 +23816,7 @@
       "contact_email": null, 
       "user": 314, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23837,7 +23837,7 @@
       "contact_email": null, 
       "user": 315, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23858,7 +23858,7 @@
       "contact_email": null, 
       "user": 316, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23879,7 +23879,7 @@
       "contact_email": null, 
       "user": 317, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23900,7 +23900,7 @@
       "contact_email": null, 
       "user": 318, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23921,7 +23921,7 @@
       "contact_email": null, 
       "user": 319, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23942,7 +23942,7 @@
       "contact_email": null, 
       "user": 320, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23963,7 +23963,7 @@
       "contact_email": null, 
       "user": 321, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -23984,7 +23984,7 @@
       "contact_email": null, 
       "user": 322, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24005,7 +24005,7 @@
       "contact_email": null, 
       "user": 323, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24026,7 +24026,7 @@
       "contact_email": null, 
       "user": 324, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24047,7 +24047,7 @@
       "contact_email": null, 
       "user": 325, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24068,7 +24068,7 @@
       "contact_email": null, 
       "user": 326, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24089,7 +24089,7 @@
       "contact_email": null, 
       "user": 327, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24110,7 +24110,7 @@
       "contact_email": null, 
       "user": 328, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24131,7 +24131,7 @@
       "contact_email": null, 
       "user": 329, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24152,7 +24152,7 @@
       "contact_email": null, 
       "user": 330, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24173,7 +24173,7 @@
       "contact_email": null, 
       "user": 331, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24194,7 +24194,7 @@
       "contact_email": null, 
       "user": 332, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24215,7 +24215,7 @@
       "contact_email": null, 
       "user": 333, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24236,7 +24236,7 @@
       "contact_email": null, 
       "user": 334, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24257,7 +24257,7 @@
       "contact_email": null, 
       "user": 335, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24278,7 +24278,7 @@
       "contact_email": null, 
       "user": 336, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24299,7 +24299,7 @@
       "contact_email": null, 
       "user": 337, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24320,7 +24320,7 @@
       "contact_email": null, 
       "user": 338, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24341,7 +24341,7 @@
       "contact_email": null, 
       "user": 339, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24362,7 +24362,7 @@
       "contact_email": null, 
       "user": 340, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24383,7 +24383,7 @@
       "contact_email": null, 
       "user": 341, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24404,7 +24404,7 @@
       "contact_email": null, 
       "user": 342, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24425,7 +24425,7 @@
       "contact_email": null, 
       "user": 343, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24446,7 +24446,7 @@
       "contact_email": null, 
       "user": 344, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24467,7 +24467,7 @@
       "contact_email": null, 
       "user": 345, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24488,7 +24488,7 @@
       "contact_email": null, 
       "user": 346, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24509,7 +24509,7 @@
       "contact_email": null, 
       "user": 347, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24530,7 +24530,7 @@
       "contact_email": null, 
       "user": 348, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24551,7 +24551,7 @@
       "contact_email": null, 
       "user": 349, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24572,7 +24572,7 @@
       "contact_email": null, 
       "user": 350, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24593,7 +24593,7 @@
       "contact_email": null, 
       "user": 351, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24614,7 +24614,7 @@
       "contact_email": null, 
       "user": 352, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24635,7 +24635,7 @@
       "contact_email": null, 
       "user": 353, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24656,7 +24656,7 @@
       "contact_email": null, 
       "user": 354, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24677,7 +24677,7 @@
       "contact_email": null, 
       "user": 355, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24698,7 +24698,7 @@
       "contact_email": null, 
       "user": 356, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24719,7 +24719,7 @@
       "contact_email": null, 
       "user": 357, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24740,7 +24740,7 @@
       "contact_email": null, 
       "user": 358, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24761,7 +24761,7 @@
       "contact_email": null, 
       "user": 359, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24782,7 +24782,7 @@
       "contact_email": null, 
       "user": 360, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24803,7 +24803,7 @@
       "contact_email": null, 
       "user": 361, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24824,7 +24824,7 @@
       "contact_email": null, 
       "user": 362, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24845,7 +24845,7 @@
       "contact_email": null, 
       "user": 363, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24866,7 +24866,7 @@
       "contact_email": null, 
       "user": 364, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24887,7 +24887,7 @@
       "contact_email": null, 
       "user": 365, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24908,7 +24908,7 @@
       "contact_email": null, 
       "user": 366, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24929,7 +24929,7 @@
       "contact_email": null, 
       "user": 367, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24950,7 +24950,7 @@
       "contact_email": null, 
       "user": 368, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24971,7 +24971,7 @@
       "contact_email": null, 
       "user": 369, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -24992,7 +24992,7 @@
       "contact_email": null, 
       "user": 370, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25013,7 +25013,7 @@
       "contact_email": null, 
       "user": 371, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25034,7 +25034,7 @@
       "contact_email": null, 
       "user": 372, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25055,7 +25055,7 @@
       "contact_email": null, 
       "user": 373, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25076,7 +25076,7 @@
       "contact_email": null, 
       "user": 374, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25097,7 +25097,7 @@
       "contact_email": null, 
       "user": 375, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25118,7 +25118,7 @@
       "contact_email": null, 
       "user": 376, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25139,7 +25139,7 @@
       "contact_email": null, 
       "user": 377, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25160,7 +25160,7 @@
       "contact_email": null, 
       "user": 378, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25181,7 +25181,7 @@
       "contact_email": null, 
       "user": 379, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25202,7 +25202,7 @@
       "contact_email": null, 
       "user": 380, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25223,7 +25223,7 @@
       "contact_email": null, 
       "user": 381, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25244,7 +25244,7 @@
       "contact_email": null, 
       "user": 382, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25265,7 +25265,7 @@
       "contact_email": null, 
       "user": 383, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25286,7 +25286,7 @@
       "contact_email": null, 
       "user": 384, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25307,7 +25307,7 @@
       "contact_email": null, 
       "user": 385, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25328,7 +25328,7 @@
       "contact_email": null, 
       "user": 386, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25349,7 +25349,7 @@
       "contact_email": null, 
       "user": 387, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25370,7 +25370,7 @@
       "contact_email": null, 
       "user": 388, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25391,7 +25391,7 @@
       "contact_email": null, 
       "user": 389, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25412,7 +25412,7 @@
       "contact_email": null, 
       "user": 390, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25433,7 +25433,7 @@
       "contact_email": null, 
       "user": 391, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25454,7 +25454,7 @@
       "contact_email": null, 
       "user": 392, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25475,7 +25475,7 @@
       "contact_email": null, 
       "user": 393, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25496,7 +25496,7 @@
       "contact_email": null, 
       "user": 394, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25517,7 +25517,7 @@
       "contact_email": null, 
       "user": 395, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25538,7 +25538,7 @@
       "contact_email": null, 
       "user": 396, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25559,7 +25559,7 @@
       "contact_email": null, 
       "user": 397, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25580,7 +25580,7 @@
       "contact_email": null, 
       "user": 398, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25601,7 +25601,7 @@
       "contact_email": null, 
       "user": 399, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25622,7 +25622,7 @@
       "contact_email": null, 
       "user": 400, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25643,7 +25643,7 @@
       "contact_email": null, 
       "user": 401, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25664,7 +25664,7 @@
       "contact_email": null, 
       "user": 402, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25685,7 +25685,7 @@
       "contact_email": null, 
       "user": 403, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25706,7 +25706,7 @@
       "contact_email": null, 
       "user": 404, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25727,7 +25727,7 @@
       "contact_email": null, 
       "user": 405, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25748,7 +25748,7 @@
       "contact_email": null, 
       "user": 406, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25769,7 +25769,7 @@
       "contact_email": null, 
       "user": 407, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25790,7 +25790,7 @@
       "contact_email": null, 
       "user": 408, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25811,7 +25811,7 @@
       "contact_email": null, 
       "user": 409, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25832,7 +25832,7 @@
       "contact_email": null, 
       "user": 410, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25853,7 +25853,7 @@
       "contact_email": null, 
       "user": 411, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25874,7 +25874,7 @@
       "contact_email": null, 
       "user": 412, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25895,7 +25895,7 @@
       "contact_email": null, 
       "user": 413, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25916,7 +25916,7 @@
       "contact_email": null, 
       "user": 414, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25937,7 +25937,7 @@
       "contact_email": null, 
       "user": 415, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25958,7 +25958,7 @@
       "contact_email": null, 
       "user": 416, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -25979,7 +25979,7 @@
       "contact_email": null, 
       "user": 417, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26000,7 +26000,7 @@
       "contact_email": null, 
       "user": 418, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26021,7 +26021,7 @@
       "contact_email": null, 
       "user": 419, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26042,7 +26042,7 @@
       "contact_email": null, 
       "user": 420, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26063,7 +26063,7 @@
       "contact_email": null, 
       "user": 421, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26084,7 +26084,7 @@
       "contact_email": null, 
       "user": 422, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26105,7 +26105,7 @@
       "contact_email": null, 
       "user": 423, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26126,7 +26126,7 @@
       "contact_email": null, 
       "user": 424, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26147,7 +26147,7 @@
       "contact_email": null, 
       "user": 425, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26168,7 +26168,7 @@
       "contact_email": null, 
       "user": 426, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26189,7 +26189,7 @@
       "contact_email": null, 
       "user": 427, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26210,7 +26210,7 @@
       "contact_email": null, 
       "user": 428, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26231,7 +26231,7 @@
       "contact_email": null, 
       "user": 429, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26252,7 +26252,7 @@
       "contact_email": null, 
       "user": 430, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26273,7 +26273,7 @@
       "contact_email": null, 
       "user": 431, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26294,7 +26294,7 @@
       "contact_email": null, 
       "user": 432, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26315,7 +26315,7 @@
       "contact_email": null, 
       "user": 433, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26336,7 +26336,7 @@
       "contact_email": null, 
       "user": 434, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26357,7 +26357,7 @@
       "contact_email": null, 
       "user": 435, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26378,7 +26378,7 @@
       "contact_email": null, 
       "user": 436, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26399,7 +26399,7 @@
       "contact_email": null, 
       "user": 437, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26420,7 +26420,7 @@
       "contact_email": null, 
       "user": 438, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26441,7 +26441,7 @@
       "contact_email": null, 
       "user": 439, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26462,7 +26462,7 @@
       "contact_email": null, 
       "user": 440, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26483,7 +26483,7 @@
       "contact_email": null, 
       "user": 441, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26504,7 +26504,7 @@
       "contact_email": null, 
       "user": 442, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26525,7 +26525,7 @@
       "contact_email": null, 
       "user": 443, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26546,7 +26546,7 @@
       "contact_email": null, 
       "user": 444, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26567,7 +26567,7 @@
       "contact_email": null, 
       "user": 445, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26588,7 +26588,7 @@
       "contact_email": null, 
       "user": 446, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26609,7 +26609,7 @@
       "contact_email": null, 
       "user": 447, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26630,7 +26630,7 @@
       "contact_email": null, 
       "user": 448, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26651,7 +26651,7 @@
       "contact_email": null, 
       "user": 449, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26672,7 +26672,7 @@
       "contact_email": null, 
       "user": 450, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26693,7 +26693,7 @@
       "contact_email": null, 
       "user": 451, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26714,7 +26714,7 @@
       "contact_email": null, 
       "user": 452, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26735,7 +26735,7 @@
       "contact_email": null, 
       "user": 453, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26756,7 +26756,7 @@
       "contact_email": null, 
       "user": 454, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26777,7 +26777,7 @@
       "contact_email": null, 
       "user": 455, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26798,7 +26798,7 @@
       "contact_email": null, 
       "user": 456, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26819,7 +26819,7 @@
       "contact_email": null, 
       "user": 457, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26840,7 +26840,7 @@
       "contact_email": null, 
       "user": 458, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26861,7 +26861,7 @@
       "contact_email": null, 
       "user": 459, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26882,7 +26882,7 @@
       "contact_email": null, 
       "user": 460, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26903,7 +26903,7 @@
       "contact_email": null, 
       "user": 461, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26924,7 +26924,7 @@
       "contact_email": null, 
       "user": 462, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26945,7 +26945,7 @@
       "contact_email": null, 
       "user": 463, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26966,7 +26966,7 @@
       "contact_email": null, 
       "user": 464, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -26987,7 +26987,7 @@
       "contact_email": null, 
       "user": 465, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27008,7 +27008,7 @@
       "contact_email": null, 
       "user": 466, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27029,7 +27029,7 @@
       "contact_email": null, 
       "user": 467, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27050,7 +27050,7 @@
       "contact_email": null, 
       "user": 468, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27071,7 +27071,7 @@
       "contact_email": null, 
       "user": 469, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27092,7 +27092,7 @@
       "contact_email": null, 
       "user": 470, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27113,7 +27113,7 @@
       "contact_email": null, 
       "user": 471, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27134,7 +27134,7 @@
       "contact_email": null, 
       "user": 472, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27155,7 +27155,7 @@
       "contact_email": null, 
       "user": 473, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27176,7 +27176,7 @@
       "contact_email": null, 
       "user": 474, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27197,7 +27197,7 @@
       "contact_email": null, 
       "user": 475, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27218,7 +27218,7 @@
       "contact_email": null, 
       "user": 476, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27239,7 +27239,7 @@
       "contact_email": null, 
       "user": 477, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27260,7 +27260,7 @@
       "contact_email": null, 
       "user": 478, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27281,7 +27281,7 @@
       "contact_email": null, 
       "user": 479, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27302,7 +27302,7 @@
       "contact_email": null, 
       "user": 480, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27323,7 +27323,7 @@
       "contact_email": null, 
       "user": 481, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27344,7 +27344,7 @@
       "contact_email": null, 
       "user": 482, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27365,7 +27365,7 @@
       "contact_email": null, 
       "user": 483, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27386,7 +27386,7 @@
       "contact_email": null, 
       "user": 484, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27407,7 +27407,7 @@
       "contact_email": null, 
       "user": 485, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27428,7 +27428,7 @@
       "contact_email": null, 
       "user": 486, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27449,7 +27449,7 @@
       "contact_email": null, 
       "user": 487, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27470,7 +27470,7 @@
       "contact_email": null, 
       "user": 488, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27491,7 +27491,7 @@
       "contact_email": null, 
       "user": 489, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27512,7 +27512,7 @@
       "contact_email": null, 
       "user": 490, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27533,7 +27533,7 @@
       "contact_email": null, 
       "user": 491, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27554,7 +27554,7 @@
       "contact_email": null, 
       "user": 492, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27575,7 +27575,7 @@
       "contact_email": null, 
       "user": 493, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27596,7 +27596,7 @@
       "contact_email": null, 
       "user": 494, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27617,7 +27617,7 @@
       "contact_email": null, 
       "user": 495, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27638,7 +27638,7 @@
       "contact_email": null, 
       "user": 496, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27659,7 +27659,7 @@
       "contact_email": null, 
       "user": 497, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27680,7 +27680,7 @@
       "contact_email": null, 
       "user": 498, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27701,7 +27701,7 @@
       "contact_email": null, 
       "user": 499, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27722,7 +27722,7 @@
       "contact_email": null, 
       "user": 500, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27743,7 +27743,7 @@
       "contact_email": null, 
       "user": 501, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27764,7 +27764,7 @@
       "contact_email": null, 
       "user": 502, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27785,7 +27785,7 @@
       "contact_email": null, 
       "user": 503, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27806,7 +27806,7 @@
       "contact_email": null, 
       "user": 504, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27827,7 +27827,7 @@
       "contact_email": null, 
       "user": 505, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27848,7 +27848,7 @@
       "contact_email": null, 
       "user": 506, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27869,7 +27869,7 @@
       "contact_email": null, 
       "user": 507, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27890,7 +27890,7 @@
       "contact_email": null, 
       "user": 508, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27911,7 +27911,7 @@
       "contact_email": null, 
       "user": 509, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27932,7 +27932,7 @@
       "contact_email": null, 
       "user": 510, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27953,7 +27953,7 @@
       "contact_email": null, 
       "user": 511, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27974,7 +27974,7 @@
       "contact_email": null, 
       "user": 512, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -27995,7 +27995,7 @@
       "contact_email": null, 
       "user": 513, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28016,7 +28016,7 @@
       "contact_email": null, 
       "user": 514, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28037,7 +28037,7 @@
       "contact_email": null, 
       "user": 515, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28058,7 +28058,7 @@
       "contact_email": null, 
       "user": 516, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28079,7 +28079,7 @@
       "contact_email": null, 
       "user": 517, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28100,7 +28100,7 @@
       "contact_email": null, 
       "user": 518, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28121,7 +28121,7 @@
       "contact_email": null, 
       "user": 519, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28142,7 +28142,7 @@
       "contact_email": null, 
       "user": 520, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28163,7 +28163,7 @@
       "contact_email": null, 
       "user": 521, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28184,7 +28184,7 @@
       "contact_email": null, 
       "user": 522, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28205,7 +28205,7 @@
       "contact_email": null, 
       "user": 523, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28226,7 +28226,7 @@
       "contact_email": null, 
       "user": 524, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28247,7 +28247,7 @@
       "contact_email": null, 
       "user": 525, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28268,7 +28268,7 @@
       "contact_email": null, 
       "user": 526, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28289,7 +28289,7 @@
       "contact_email": null, 
       "user": 527, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28310,7 +28310,7 @@
       "contact_email": null, 
       "user": 528, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28331,7 +28331,7 @@
       "contact_email": null, 
       "user": 529, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28352,7 +28352,7 @@
       "contact_email": null, 
       "user": 530, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28373,7 +28373,7 @@
       "contact_email": null, 
       "user": 531, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28394,7 +28394,7 @@
       "contact_email": null, 
       "user": 532, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28415,7 +28415,7 @@
       "contact_email": null, 
       "user": 533, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28436,7 +28436,7 @@
       "contact_email": null, 
       "user": 534, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28457,7 +28457,7 @@
       "contact_email": null, 
       "user": 535, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28478,7 +28478,7 @@
       "contact_email": null, 
       "user": 536, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28499,7 +28499,7 @@
       "contact_email": null, 
       "user": 537, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28520,7 +28520,7 @@
       "contact_email": null, 
       "user": 538, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28541,7 +28541,7 @@
       "contact_email": null, 
       "user": 539, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28562,7 +28562,7 @@
       "contact_email": null, 
       "user": 540, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28583,7 +28583,7 @@
       "contact_email": null, 
       "user": 541, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28604,7 +28604,7 @@
       "contact_email": null, 
       "user": 542, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28625,7 +28625,7 @@
       "contact_email": null, 
       "user": 543, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28646,7 +28646,7 @@
       "contact_email": null, 
       "user": 544, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28667,7 +28667,7 @@
       "contact_email": null, 
       "user": 545, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28688,7 +28688,7 @@
       "contact_email": null, 
       "user": 546, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28709,7 +28709,7 @@
       "contact_email": null, 
       "user": 547, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28730,7 +28730,7 @@
       "contact_email": null, 
       "user": 548, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28751,7 +28751,7 @@
       "contact_email": null, 
       "user": 549, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28772,7 +28772,7 @@
       "contact_email": null, 
       "user": 550, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28793,7 +28793,7 @@
       "contact_email": null, 
       "user": 551, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28814,7 +28814,7 @@
       "contact_email": null, 
       "user": 552, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28835,7 +28835,7 @@
       "contact_email": null, 
       "user": 553, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28856,7 +28856,7 @@
       "contact_email": null, 
       "user": 554, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28877,7 +28877,7 @@
       "contact_email": null, 
       "user": 555, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28898,7 +28898,7 @@
       "contact_email": null, 
       "user": 556, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28919,7 +28919,7 @@
       "contact_email": null, 
       "user": 557, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28940,7 +28940,7 @@
       "contact_email": null, 
       "user": 558, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28961,7 +28961,7 @@
       "contact_email": null, 
       "user": 559, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -28982,7 +28982,7 @@
       "contact_email": null, 
       "user": 560, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29003,7 +29003,7 @@
       "contact_email": null, 
       "user": 561, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29024,7 +29024,7 @@
       "contact_email": null, 
       "user": 562, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29045,7 +29045,7 @@
       "contact_email": null, 
       "user": 563, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29066,7 +29066,7 @@
       "contact_email": null, 
       "user": 564, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29087,7 +29087,7 @@
       "contact_email": null, 
       "user": 565, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29108,7 +29108,7 @@
       "contact_email": null, 
       "user": 566, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29129,7 +29129,7 @@
       "contact_email": null, 
       "user": 567, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29150,7 +29150,7 @@
       "contact_email": null, 
       "user": 568, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29171,7 +29171,7 @@
       "contact_email": null, 
       "user": 569, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29192,7 +29192,7 @@
       "contact_email": null, 
       "user": 570, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29213,7 +29213,7 @@
       "contact_email": null, 
       "user": 571, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29234,7 +29234,7 @@
       "contact_email": null, 
       "user": 572, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29255,7 +29255,7 @@
       "contact_email": null, 
       "user": 573, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29276,7 +29276,7 @@
       "contact_email": null, 
       "user": 574, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29297,7 +29297,7 @@
       "contact_email": null, 
       "user": 575, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29318,7 +29318,7 @@
       "contact_email": null, 
       "user": 576, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29339,7 +29339,7 @@
       "contact_email": null, 
       "user": 577, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29360,7 +29360,7 @@
       "contact_email": null, 
       "user": 578, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29381,7 +29381,7 @@
       "contact_email": null, 
       "user": 579, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29402,7 +29402,7 @@
       "contact_email": null, 
       "user": 580, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29423,7 +29423,7 @@
       "contact_email": null, 
       "user": 581, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29444,7 +29444,7 @@
       "contact_email": null, 
       "user": 582, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29465,7 +29465,7 @@
       "contact_email": null, 
       "user": 583, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29486,7 +29486,7 @@
       "contact_email": null, 
       "user": 584, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29507,7 +29507,7 @@
       "contact_email": null, 
       "user": 585, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29528,7 +29528,7 @@
       "contact_email": null, 
       "user": 586, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29549,7 +29549,7 @@
       "contact_email": null, 
       "user": 587, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29570,7 +29570,7 @@
       "contact_email": null, 
       "user": 588, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29591,7 +29591,7 @@
       "contact_email": null, 
       "user": 589, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29612,7 +29612,7 @@
       "contact_email": null, 
       "user": 590, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29633,7 +29633,7 @@
       "contact_email": null, 
       "user": 591, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29654,7 +29654,7 @@
       "contact_email": null, 
       "user": 592, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29675,7 +29675,7 @@
       "contact_email": null, 
       "user": 593, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29696,7 +29696,7 @@
       "contact_email": null, 
       "user": 594, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29717,7 +29717,7 @@
       "contact_email": null, 
       "user": 595, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29738,7 +29738,7 @@
       "contact_email": null, 
       "user": 596, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29759,7 +29759,7 @@
       "contact_email": null, 
       "user": 597, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29780,7 +29780,7 @@
       "contact_email": null, 
       "user": 598, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29801,7 +29801,7 @@
       "contact_email": null, 
       "user": 599, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29822,7 +29822,7 @@
       "contact_email": null, 
       "user": 600, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29843,7 +29843,7 @@
       "contact_email": null, 
       "user": 601, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29864,7 +29864,7 @@
       "contact_email": null, 
       "user": 602, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29885,7 +29885,7 @@
       "contact_email": null, 
       "user": 603, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29906,7 +29906,7 @@
       "contact_email": null, 
       "user": 604, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29927,19 +29927,19 @@
       "contact_email": null, 
       "user": 605, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
     "pk": 606, 
     "model": "makahiki_profiles.profile", 
     "fields": {
-      "last_visit_date": "2011-01-27", 
+      "last_visit_date": null, 
       "about": null, 
       "last_name": null, 
       "name": "", 
-      "floor": 2, 
-      "daily_visit_count": 1, 
+      "floor": null, 
+      "daily_visit_count": 0, 
       "last_awarded_submission": null, 
       "first_name": null, 
       "setup_complete": false, 
@@ -29948,7 +29948,7 @@
       "contact_email": null, 
       "user": 606, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29969,7 +29969,7 @@
       "contact_email": null, 
       "user": 607, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -29990,7 +29990,7 @@
       "contact_email": null, 
       "user": 608, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30011,7 +30011,7 @@
       "contact_email": null, 
       "user": 609, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30032,7 +30032,7 @@
       "contact_email": null, 
       "user": 610, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30053,7 +30053,7 @@
       "contact_email": null, 
       "user": 611, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30074,7 +30074,7 @@
       "contact_email": null, 
       "user": 612, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30095,7 +30095,7 @@
       "contact_email": null, 
       "user": 613, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30116,7 +30116,7 @@
       "contact_email": null, 
       "user": 614, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30137,7 +30137,7 @@
       "contact_email": null, 
       "user": 615, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30158,7 +30158,7 @@
       "contact_email": null, 
       "user": 616, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30179,7 +30179,7 @@
       "contact_email": null, 
       "user": 617, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30200,7 +30200,7 @@
       "contact_email": null, 
       "user": 618, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30221,7 +30221,7 @@
       "contact_email": null, 
       "user": 619, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30242,7 +30242,7 @@
       "contact_email": null, 
       "user": 620, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30263,7 +30263,7 @@
       "contact_email": null, 
       "user": 621, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30284,7 +30284,7 @@
       "contact_email": null, 
       "user": 622, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30305,7 +30305,7 @@
       "contact_email": null, 
       "user": 623, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30326,7 +30326,7 @@
       "contact_email": null, 
       "user": 624, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30347,7 +30347,7 @@
       "contact_email": null, 
       "user": 625, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30368,7 +30368,7 @@
       "contact_email": null, 
       "user": 626, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30389,7 +30389,7 @@
       "contact_email": null, 
       "user": 627, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30410,7 +30410,7 @@
       "contact_email": null, 
       "user": 628, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30431,7 +30431,7 @@
       "contact_email": null, 
       "user": 629, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30452,7 +30452,7 @@
       "contact_email": null, 
       "user": 630, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30473,7 +30473,7 @@
       "contact_email": null, 
       "user": 631, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30494,7 +30494,7 @@
       "contact_email": null, 
       "user": 632, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30515,7 +30515,7 @@
       "contact_email": null, 
       "user": 633, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30536,7 +30536,7 @@
       "contact_email": null, 
       "user": 634, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30557,7 +30557,7 @@
       "contact_email": null, 
       "user": 635, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30578,7 +30578,7 @@
       "contact_email": null, 
       "user": 636, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30599,7 +30599,7 @@
       "contact_email": null, 
       "user": 637, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }, 
   {
@@ -30620,7 +30620,7 @@
       "contact_email": null, 
       "user": 638, 
       "contact_carrier": null, 
-      "data_opt_in": true
+      "setup_profile": false
     }
   }
 ]

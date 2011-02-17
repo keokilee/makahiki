@@ -9,8 +9,7 @@ class HomeFunctionalTestCase(TestCase):
   def testIndex(self):
     """Check that we can load the index."""
     user = User.objects.create_user("user", "user@test.com", password="changeme")
-    response = self.client.post("/account/login/", {"username": "user", "password": "changeme"}, follow=True)
-    self.assertTemplateUsed(response, "home/index.html")
+    self.client.login(username="user", password="changeme")
     
     response = self.client.get(reverse("home_index"))
     self.failUnlessEqual(response.status_code, 200)
@@ -18,7 +17,7 @@ class HomeFunctionalTestCase(TestCase):
 class SetupWizardFunctionalTestCase(TestCase):
   def setUp(self):
     self.user = User.objects.create_user("user", "user@test.com", password="changeme")
-    self.client.post("/account/login/", {"username": "user", "password": "changeme"}, follow=True)
+    self.client.login(username="user", password="changeme")
   
   def testDisplaySetupWizard(self):
     """Check that the setup wizard is shown for new users."""

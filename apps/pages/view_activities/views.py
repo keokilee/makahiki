@@ -22,6 +22,7 @@ from components.makahiki_profiles import *
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
+@login_required
 def index(request):
   user = request.user
   events = get_available_events(user)

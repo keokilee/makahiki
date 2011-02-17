@@ -13,8 +13,10 @@ def competition(request):
   
   # Get the number of users for the user's floor and overall.
   floor_count = Floor.objects.count()
-  floor_member_count = request.user.get_profile().floor.profile_set.count()
   overall_member_count = Profile.objects.count()
+  floor_member_count = None
+  if request.user.is_authenticated() and request.user.get_profile().floor:
+    floor_member_count = request.user.get_profile().floor.profile_set.count()
   
   # Get current round info.
   current_round = get_current_round()

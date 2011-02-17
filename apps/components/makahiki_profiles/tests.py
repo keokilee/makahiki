@@ -255,9 +255,9 @@ class ScoreboardEntryUnitTests(TestCase):
     entry2.save()
 
     self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), overall_rank + 1, 
-                    "Check that the user has moved down.")
+                    "Check that the user's overall rank has moved down.")
     self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), floor_rank + 1, 
-                    "Check that the user has moved down.")
+                    "Check that the user's floor rank has moved down.")
                     
   def tearDown(self):
     """Restore the saved settings."""
