@@ -223,7 +223,42 @@ class ScoreboardEntryUnitTests(TestCase):
 
     self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), 2, 
                     "Check user is now second.")
+                    
+  def testRoundRankWithoutEntry(self):
+    """Tests that the overall rank calculation is correct even if a user has not done anything yet."""
+    dorm = Dorm(name="Test dorm")
+    dorm.save()
+    floor = Floor(number="A", dorm=dorm)
+    floor.save()
     
+    profile = self.user.get_profile()
+    # Rank will be the number of users who have points plus one.
+    overall_rank = Profile.objects.filter(points__gt=0).count() + 1
+    floor_rank = Profile.objects.filter(points__gt=0, floor=floor).count() + 1
+
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), overall_rank, 
+                    "Check user is last overallfor the current round.")
+    self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), floor_rank, 
+                    "Check user is last in their floor for the current round.")
+                    
+    user2 = User(username="test_user2", password="changeme")
+    user2.save()
+
+    profile2 = user2.get_profile()
+    entry2, created = ScoreboardEntry.objects.get_or_create(
+                        profile=profile2, 
+                        round_name=self.current_round,
+                      )
+    entry2.points = 10
+    entry2.last_awarded_submission = datetime.datetime.today()
+    entry2.floor = floor
+    entry2.save()
+
+    self.assertEqual(ScoreboardEntry.user_round_overall_rank(self.user, self.current_round), overall_rank + 1, 
+                    "Check that the user has moved down.")
+    self.assertEqual(ScoreboardEntry.user_round_floor_rank(self.user, self.current_round), floor_rank + 1, 
+                    "Check that the user has moved down.")
+                    
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
@@ -240,6 +275,12 @@ class ProfileUnitTests(TestCase):
     
     profile = user.get_profile()
     profile.floor = floor
+    
+    # Check that the user is ranked last if they haven't done anything.
+    rank = Profile.objects.filter(floor=floor, points__gt=profile.points).count() + 1
+    self.assertEqual(profile.floor_rank(), rank, "Check that the user is ranked last.")
+    
+    # Make the user number 1 overall.
     top_user  = Profile.objects.all().order_by("-points")[0]
     profile.add_points(top_user.points + 1, datetime.datetime.today())
     profile.save()
@@ -294,8 +335,13 @@ class ProfileUnitTests(TestCase):
     """Tests that the rank method accurately computes the rank with points."""
     user = User(username="test_user", password="changeme")
     user.save()
-    
     profile = user.get_profile()
+    
+    # Check if the rank works if the user has done nothing.
+    rank = Profile.objects.filter(points__gt=profile.points).count() + 1
+    self.assertEqual(profile.overall_rank(), rank, "Check that the user is at least tied for last.")
+    
+    # Make the user ranked 1st.
     top_user  = Profile.objects.all().order_by("-points")[0]
     profile.add_points(top_user.points + 1, datetime.datetime.today())
     profile.save()

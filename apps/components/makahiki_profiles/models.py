@@ -44,11 +44,18 @@ class ScoreboardEntry(models.Model):
       round_name=round_name
     )
     
+    # Check if the user has done anything.
+    if entry.last_awarded_submission:
+      return ScoreboardEntry.objects.filter(
+          Q(points__gt=entry.points) | 
+          Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
+          round_name=round_name,
+      ).count() + 1
+      
+    # Users who have not done anything yet are assumed to be last.
     return ScoreboardEntry.objects.filter(
+        points__gt=entry.points,
         round_name=round_name,
-    ).filter(
-        Q(points__gt=entry.points) | 
-        Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission)
     ).count() + 1
     
   @staticmethod
@@ -59,13 +66,19 @@ class ScoreboardEntry(models.Model):
       round_name=round_name
     )
     
-    return ScoreboardEntry.objects.filter(
-        profile__floor=floor,
-        round_name=round_name,
-    ).filter(
-        Q(points__gt=entry.points) | 
-        Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission)
-    ).count() + 1
+    if entry.last_awarded_submission:
+      return ScoreboardEntry.objects.filter(
+          Q(points__gt=entry.points) | 
+          Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
+          profile__floor=floor,
+          round_name=round_name,
+      ).count() + 1
+    else:
+      return ScoreboardEntry.objects.filter(
+          points__gt=entry.points,
+          profile__floor=floor,
+          round_name=round_name,
+      ).count() + 1
 
 def _get_available_themes():
   """Retrieves the available themes from the media folder."""
@@ -138,12 +151,18 @@ class Profile(models.Model):
     
     # Calculate the rank.  This counts the number of people who are on the floor that have more points 
     # OR have the same amount of points but a later submission date 
+    if self.last_awarded_submission:
+      return Profile.objects.filter(
+          Q(points__gt=self.points) | 
+          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission),
+          floor=self.floor,
+      ).count() + 1
+    
     return Profile.objects.filter(
-        floor=self.floor
-    ).filter(
-        Q(points__gt=self.points) | 
-        Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
+        points__gt=self.points,
+        floor=self.floor,
     ).count() + 1
+      
     
   def overall_rank(self, round_name=None):
     if round_name:
@@ -151,9 +170,14 @@ class Profile(models.Model):
       
     # Compute the overall rank.  This counts the number of people that have more points 
     # OR have the same amount of points but a later submission date
+    if self.last_awarded_submission:
+      return Profile.objects.filter(
+          Q(points__gt=self.points) |
+          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
+      ).count() + 1
+    
     return Profile.objects.filter(
-        Q(points__gt=self.points) |
-        Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
+        points__gt=self.points,
     ).count() + 1
   
   def add_points(self, points, submission_date):
