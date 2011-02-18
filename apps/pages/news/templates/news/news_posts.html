@@ -6,14 +6,16 @@
   {% if forloop.last and more_posts %}
   <li id="view_more_posts">
     See More
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#view_more_posts").click(function() {
+          $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
+            $("#view_more_posts").remove();
+            $("#wall_posts").append(data.contents);
+          });
+        });
+      });
+    </script>
   </li>
   {% endif %}
 {% endfor %}
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#view_more_posts").click(function() {
-      alert("hello");
-    })
-  });
-</script>

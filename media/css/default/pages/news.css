@@ -50,4 +50,5 @@ form input {
 #view_more_posts {
   text-align: center;
   cursor: pointer;
+  text-decoration: underline;
 }
