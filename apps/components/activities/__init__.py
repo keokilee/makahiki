@@ -177,6 +177,17 @@ def completed(user, task_name):
     return is_pau(user, task)
   except ObjectDoesNotExist:
     return False
+
+def afterPublished(task_name):
+  """return true if the event/excursion have been published"""
+  try:
+    task = ActivityBase.objects.get(name=task_name)
+    if task.type == "event" or task.type == "excursion":
+      return task.activity.pub_date <= datetime.date.today()
+      
+    return false;  
+  except ObjectDoesNotExist:
+    return False 
   
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""
@@ -187,10 +198,12 @@ def is_unlock(user, task):
   expr = expr.replace("completedAllOf(", "completedAllOf(user,")
   expr = expr.replace("completedSomeOf(", "completedSomeOf(user,")
   expr = expr.replace("completed(", "completed(user,")
+  expr = expr.replace("afterPublished(", "afterPublished('"+task.name+"'")
 
   allow_dict = {'completedAllOf':completedAllOf,
                 'completedSomeOf':completedSomeOf, 
                 'completed':completed,
+                'afterPublished':afterPublished,
                 'True':True,
                 'False':False,
                 'user':user,
