@@ -13,7 +13,7 @@ import os
 urlpatterns = patterns('',
     # Main pages.
     url(r'^$', "pages.landing.views.index", name="landing"),
-    url(r'^home/$', "pages.home.views.index", name="home_index"),
+    url(r'^home/', include('pages.home.urls')),
     url(r'^activities/', include('pages.view_activities.urls')),
     url(r'^energy/', include('pages.view_energy.urls')),
     url(r'^help/', include('pages.view_help.urls')),
@@ -26,7 +26,6 @@ urlpatterns = patterns('',
     url(r'^account/cas/login/$', 'components.django_cas.views.login'),
     url(r'^account/cas/logout/$', 'components.django_cas.views.logout'),
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
-    url(r'^setup/', include('components.setup_wizard.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),
     

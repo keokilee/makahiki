@@ -2,6 +2,7 @@ import os
 import datetime
 
 from django.db import models
+from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -11,6 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.localflavor.us.models import PhoneNumberField
 
 from components.floors.models import Floor
+from components.makahiki_base import get_current_round
 
 class InvalidRoundException(Exception):
   def __init__(self, value):
@@ -34,6 +36,49 @@ class ScoreboardEntry(models.Model):
   
   class Meta:
     unique_together = (("profile", "round_name",),)
+    
+  @staticmethod
+  def user_round_overall_rank(user, round_name):
+    entry, created = ScoreboardEntry.objects.get_or_create(
+      profile=user.get_profile(), 
+      round_name=round_name
+    )
+    
+    # Check if the user has done anything.
+    if entry.last_awarded_submission:
+      return ScoreboardEntry.objects.filter(
+          Q(points__gt=entry.points) | 
+          Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
+          round_name=round_name,
+      ).count() + 1
+      
+    # Users who have not done anything yet are assumed to be last.
+    return ScoreboardEntry.objects.filter(
+        points__gt=entry.points,
+        round_name=round_name,
+    ).count() + 1
+    
+  @staticmethod
+  def user_round_floor_rank(user, round_name):
+    floor = user.get_profile().floor
+    entry, created = ScoreboardEntry.objects.get_or_create(
+      profile=user.get_profile(), 
+      round_name=round_name
+    )
+    
+    if entry.last_awarded_submission:
+      return ScoreboardEntry.objects.filter(
+          Q(points__gt=entry.points) | 
+          Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
+          profile__floor=floor,
+          round_name=round_name,
+      ).count() + 1
+    else:
+      return ScoreboardEntry.objects.filter(
+          points__gt=entry.points,
+          profile__floor=floor,
+          round_name=round_name,
+      ).count() + 1
 
 def _get_available_themes():
   """Retrieves the available themes from the media folder."""
@@ -62,8 +107,8 @@ class Profile(models.Model):
   contact_text = PhoneNumberField(null=True, blank=True)
   contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
   
+  setup_profile = models.BooleanField(default=False, editable=False)
   setup_complete = models.BooleanField(default=False, editable=False)
-  data_opt_in = models.BooleanField(default=True, editable=False)
   
   daily_visit_count = models.IntegerField(default=0, editable=False)
   last_visit_date = models.DateField(null=True, blank=True)
@@ -75,12 +120,65 @@ class Profile(models.Model):
       return ('profile_detail', None, {'username': self.user.username})
   get_absolute_url = models.permalink(get_absolute_url)
   
-  def floor_rank(self, round=None):
-    """Returns the rank of the user in their own floor."""
-    return Profile.objects.filter(floor=self.floor, points__gt=self.points).count() + 1
+  def current_round_points(self):
+    """Returns the amount of points the user has in the current round."""
+    round_info = get_current_round()
+    if round_info:
+      return ScoreboardEntry.objects.get(profile=self, round_name=round_info["title"]).points
+      
+    return None
+  
+  def current_round_overall_rank(self):
+    """Returns the overall rank of the user for the current round."""
+    round_info = get_current_round()
+    if round_info:
+      return self.overall_rank(round_name=round_info["title"])
+      
+    return None
     
-  def overall_rank(self, round=None):
-    return Profile.objects.filter(points__gt=self.points).count() + 1
+  def current_round_floor_rank(self):
+    """Returns the rank of the user for the current round in their own floor."""
+    round_info = get_current_round()
+    if round_info:
+      return self.floor_rank(round_name=round_info["title"])
+
+    return None
+  
+  def floor_rank(self, round_name=None):
+    """Returns the rank of the user in their own floor."""
+    if round_name:
+      return ScoreboardEntry.user_round_floor_rank(self.user, round_name)
+    
+    # Calculate the rank.  This counts the number of people who are on the floor that have more points 
+    # OR have the same amount of points but a later submission date 
+    if self.last_awarded_submission:
+      return Profile.objects.filter(
+          Q(points__gt=self.points) | 
+          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission),
+          floor=self.floor,
+      ).count() + 1
+    
+    return Profile.objects.filter(
+        points__gt=self.points,
+        floor=self.floor,
+    ).count() + 1
+      
+    
+  def overall_rank(self, round_name=None):
+    if round_name:
+      return ScoreboardEntry.user_round_overall_rank(self.user, round_name)
+      
+    # Compute the overall rank.  This counts the number of people that have more points 
+    # OR have the same amount of points but a later submission date
+    if self.last_awarded_submission:
+      return Profile.objects.filter(
+          Q(points__gt=self.points) |
+          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
+      ).count() + 1
+    
+    return Profile.objects.filter(
+        points__gt=self.points,
+    ).count() + 1
   
   def add_points(self, points, submission_date):
     """

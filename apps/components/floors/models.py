@@ -3,9 +3,9 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from django.db.models import Sum
+from django.db.models import Sum, Max, Q
 
-from components.makahiki_base import get_floor_label
+from components.makahiki_base import get_floor_label, get_current_round
 
 # Create your models here.
 
@@ -49,20 +49,69 @@ class Floor(models.Model):
   def __unicode__(self):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
     
-  def member_count(self):
-    """Returns the number of members in the floor."""
-    return self.profile_set.count()
+  def current_round_rank(self):
+    round_info = get_current_round()
+    if round_info:
+      return self.rank(round_name=round_info["title"])
+
+    return None
     
-  def rank(self, round=None):
+  def rank(self, round_name=None):
     """Returns the rank of the floor across all dorms."""
-    return Floor.objects.annotate(floor_points=Sum("profile__points")).filter(floor_points__gt=self.points).count() + 1
+    if round_name:
+      from components.makahiki_profiles.models import ScoreboardEntry
+      
+      aggregate = ScoreboardEntry.objects.filter(
+          profile__floor=self, 
+          round_name=round_name
+      ).aggregate(points=Sum("points"), last=Max("last_awarded_submission"))
+      
+      points = aggregate["points"] or 0
+      last_awarded_submission = aggregate["last"]
+      # Group by floors, filter out other rounds, and annotate.
+      annotated_floors = ScoreboardEntry.objects.values("profile__floor").filter(
+          round_name=round_name
+      ).annotate(
+          floor_points=Sum("points"),
+          last_awarded=Max("last_awarded_submission")
+      )
+    else:
+      aggregate = self.profile_set.aggregate(points=Sum("points"), last=Max("last_awarded_submission"))
+      points = aggregate["points"] or 0
+      last_awarded_submission = aggregate["last"]
+
+      annotated_floors = Floor.objects.annotate(
+          floor_points=Sum("profile__points"),
+          last_awarded_submission=Max("profile__last_awarded_submission")
+      )
     
-  def points(self, round=None):
+    count = annotated_floors.filter(floor_points__gt=points).count()
+    # If there was a submission, tack that on to the count.
+    if last_awarded_submission:
+      count = count + annotated_floors.filter(
+          floor_points=points, 
+          last_awarded_submission__gt=last_awarded_submission
+      ).count()
+      
+    return count + 1
+    
+  def current_round_points(self):
+    """Returns the number of points for the current round."""
+    round_info = get_current_round()
+    if round_info:
+      return self.points(round_name=round_info["title"])
+
+    return None
+    
+  def points(self, round_name=None):
     """Returns the total number of points for the floor.  Takes an optional parameter for a round."""
-    from components.makahiki_profiles.models import Profile
-    
-    dictionary = Profile.objects.filter(floor=self).aggregate(Sum("points"))
-    return dictionary["points__sum"]
+    if round_name:
+      from components.makahiki_profiles.models import ScoreboardEntry
+      dictionary = ScoreboardEntry.objects.filter(profile__floor=self, round_name=round_name).aggregate(Sum("points"))
+    else:
+      dictionary = self.profile_set.aggregate(Sum("points"))
+      
+    return dictionary["points__sum"] or 0
     
   def save(self):
     """Custom save method to generate slug and set created_at/updated_at."""

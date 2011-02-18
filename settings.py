@@ -111,8 +111,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
     'components.django_cas.middleware.CASMiddleware',
-    # 'components.setup_wizard.middleware.CheckSetupMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
+    'pages.home.middleware.CheckSetupMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -170,7 +170,6 @@ INSTALLED_APPS = (
     'components.makahiki_themes',
     'components.prizes',
     'components.resources',
-    'components.setup_wizard',
     'components.standings',
     
     # 3rd party libraries

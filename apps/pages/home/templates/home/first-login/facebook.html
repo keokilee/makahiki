@@ -1,0 +1,65 @@
+<h2 style="text-align: center">Connect Kukui Cup to Facebook</h2>
+<div style="margin-bottom: 10px">
+  <p>Are you on Facebook? Link your KukuiCup account to your Facebook account!  Linking helps by</p>
+  <ul>
+    <li>Importing your user information (username, bio, and picture) from Facebook</li>
+    <li>Sharing your activities in the Kukui Cup with your Facebook friends!</li>
+  </ul>
+  
+  <p>This is completely optional and you can change this at any time. Click the Facebook login icon to link your account or click on the Skip button to skip this step (you can connect later from your Profile page).</p>
+  
+  <div style="text-align: center">
+    <fb:login-button style="display: block" 
+        id="fb_login" length="long" perms="offline_access,publish_stream" 
+        onlogin="$.post('{% url setup_facebook %}', $('#fbform').serialize(), function(data) {
+            $('#ui-dialog-title-setup-dialog').html(data.title);
+            $('#setup-dialog').html(data.contents);
+        });">
+    </fb:login-button>
+    <form id="fbform">
+      {% csrf_token %}
+      
+      <p style="margin: 10px 0">{{form.can_post}}&nbsp;{{form.can_post.label_tag}}</p>
+      
+      <p>You will be taken to Facebook and asked for your Facebook password</p>
+    </form>
+  </div>
+</div>
+
+<div style="float: left">
+  <button id="back">&lt;- Back<br/>Terms &amp; Conditions</button>
+</div>
+<div style="float:right">
+  <button id="skip">Skip -&gt;</button>
+</div>
+<div style="clear:both"></div>
+
+<div style="text-align: center">
+  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 300/7
+    });
+    
+    $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_terms %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#skip").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_profile %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    FB.init({appId: '{{FACEBOOK_APP_ID}}', status: true, cookie: true, xfbml: true});
+  });
+</script>

@@ -1,0 +1,50 @@
+<h2 style="text-align: center">Terms and Conditions</h2>
+<div style="margin-bottom: 10px">
+  <h3>The Kukui Cup competition is part of a University of Hawaii research project on energy. Please read the following information and make a selection below.</h3>
+  <div style="border: 1px solid black; height: 200px; overflow: auto; padding: 5px">
+    {% include "help/terms.html" %}
+  </div>
+</div>
+
+<div style="float: left">
+  <button id="back">&lt;- Back</button>
+</div>
+
+<div style="float:right">
+  <button id="agree" style="margin-bottom: 10px">I Agree -&gt;</button>
+</div>
+<div style="clear: right; float:right;">
+  <a href="{% url landing %}"><button id="decline">I don't agree<br/>Take me to non-participant page</button></a>
+</div>
+
+<div style="clear:both"></div>
+
+<div style="text-align: center">
+  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div id="progressbar"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 200/7
+    });
+    
+    $("#decline").button();
+    
+    $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_welcome %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#agree").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_facebook %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+  });
+</script>
