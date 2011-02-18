@@ -2,8 +2,9 @@ import datetime
 
 from django.db.models import Q
 from django.conf import settings
-from components.activities.models import Activity, Commitment
+from components.activities.models import *
 from django.db.models import Sum
+from django.core.exceptions import ObjectDoesNotExist
 
 # Directory in which to save image files for ActivityMember verification.
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
@@ -79,7 +80,7 @@ def get_available_activities(user):
   activities = Activity.objects.exclude(
     activitymember__user=user,
   ).filter(
-    is_event=False,
+    type='activity',
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
   ).order_by("priority", "title")
@@ -93,7 +94,7 @@ def get_available_golow_activities(user):
     activitymember__user=user,
   ).filter(
     Q(category__id=2) | Q(category__id=3),
-    is_event=False,
+    type='activity',
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
   ).order_by("priority", "title")
@@ -106,7 +107,7 @@ def get_available_events(user):
   events = Activity.objects.exclude(
     activitymember__user=user,
   ).filter(
-    is_event=True,
+    type='event',
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
   ).order_by("priority", "title")
@@ -134,3 +135,65 @@ def get_awarded_points(user, category):
   if cpoint == None:
     cpoint = 0;
   return 0 + apoint + cpoint
+
+def is_pau(user, task):
+  if task.type != "commitment":
+    is_pau = ActivityMember.objects.filter(user=user, activity__id=task.id).count() > 0
+  else:
+    is_pau = CommitmentMember.objects.filter(user=user, commitment__id=task.id).count() > 0  
+  return is_pau
+
+def completedAllOf(user, cat_name):
+  """completed all of the category"""
+  try:
+    cat = Category.objects.get(name=cat_name)
+    for task in cat.activitybase_set.all():
+      if is_pau(user, task) != True:
+        return False
+  
+    return True
+  except ObjectDoesNotExist:
+    return False
+
+def completedSomeOf(user, some, cat_name):
+  """completed some of the category"""
+  try:
+    cat = Category.objects.get(name=cat_name)
+    count = 0
+    for task in cat.activitybase_set.all():
+      if is_pau(user, task):
+        count = count + 1
+      if count == some:
+        return True
+    
+    return False
+  except ObjectDoesNotExist:
+    return False
+    
+def completed(user, task_name):
+  """completed the task"""
+  try:
+    task = ActivityBase.objects.get(name=task_name)
+    return is_pau(user, task)
+  except ObjectDoesNotExist:
+    return False
+  
+def is_unlock(user, task):
+  """determine the unlock status of a task by dependency expression"""
+  expr = task.depends_on
+  if expr == None:
+    expr = 'False'
+  
+  expr = expr.replace("completedAllOf(", "completedAllOf(user,")
+  expr = expr.replace("completedSomeOf(", "completedSomeOf(user,")
+  expr = expr.replace("completed(", "completed(user,")
+
+  allow_dict = {'completedAllOf':completedAllOf,
+                'completedSomeOf':completedSomeOf, 
+                'completed':completed,
+                'True':True,
+                'False':False,
+                'user':user,
+               }
+
+  return eval(expr, {"__builtins__":None}, allow_dict)

@@ -1,374 +1,1500 @@
 [
   {
     "pk": 1, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-17 14:16:28", 
+      "created_at": "2011-02-17 14:16:28", 
+      "updated_at": "2011-02-17 14:16:28", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-17 14:57:11", 
+      "created_at": "2011-02-17 14:57:11", 
+      "updated_at": "2011-02-17 14:57:11", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-17 17:39:26", 
+      "created_at": "2011-02-17 17:39:26", 
+      "updated_at": "2011-02-17 17:39:26", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 1, 
     "model": "activities.category", 
     "fields": {
-      "name": "Introduction"
+      "name": "Get Started"
     }
   }, 
   {
     "pk": 2, 
     "model": "activities.category", 
     "fields": {
-      "name": "Energy: Basics"
+      "name": "Basic Energy"
     }
   }, 
   {
     "pk": 3, 
     "model": "activities.category", 
     "fields": {
-      "name": "Energy: Lighting"
+      "name": "Lights Out!"
     }
   }, 
   {
     "pk": 4, 
     "model": "activities.category", 
     "fields": {
-      "name": "Energy: Generation"
+      "name": "Make Watts"
     }
   }, 
   {
     "pk": 5, 
     "model": "activities.category", 
     "fields": {
-      "name": "Transportation"
+      "name": "Moving on"
     }
   }, 
   {
     "pk": 6, 
     "model": "activities.category", 
     "fields": {
-      "name": "Water"
+      "name": "Opala"
     }
   }, 
   {
     "pk": 7, 
     "model": "activities.category", 
     "fields": {
-      "name": "Climate Change"
+      "name": "Wet and Wild"
     }
   }, 
   {
     "pk": 8, 
     "model": "activities.category", 
     "fields": {
-      "name": "Waste & Recycling"
+      "name": "Pot Pourri"
     }
   }, 
   {
     "pk": 1, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 2, 
-      "description": "Commit to turning off all appliances in your room (computer, TVs, DVD players, game consoles) every night before you go to sleep. Appliances use a significant amount of electricity, so turning them off when you definitely won't be using them (like when you are asleep) will save energy.", 
-      "title": "I will turn off all appliances every night before going to sleep", 
-      "created_at": "2010-05-12 16:18:35", 
-      "updated_at": "2010-07-16 15:08:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 2, 
-      "description": "Commit to turning off the lights when leaving any room.", 
-      "title": "I will turn off the lights when leaving any room", 
-      "created_at": "2010-05-12 16:19:39", 
-      "updated_at": "2010-07-16 14:14:33", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 2, 
-      "description": "Commit to using task lighting (like a desk lamp) instead of overhead room lights when possible. Often overhead lights provide more light than you need, or might not provide the light where you need it. Using a desk lamp will reduce your electricity use while giving you the light you need, where you need it.", 
-      "title": "I will use task lighting instead of overhead lights", 
-      "created_at": "2010-07-16 14:22:30", 
-      "updated_at": "2010-07-16 14:50:30", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 3, 
-      "description": "A vampire load is a device that uses power when plugged in, even when it is turned off and not doing anything. Commit to turning off any vampire loads (cell phone charger, iPod charger, game consoles, TVs) using a power strip when you are not using them, thereby saving energy.", 
-      "title": "I will turn off vampire loads using a power strip", 
-      "created_at": "2010-07-16 14:33:47", 
-      "updated_at": "2010-07-16 14:49:23", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 6, 
-      "description": "Commit to turning off water at sinks when you aren't actually using the water, such as when brushing your teeth, shaving, applying makeup, etc. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
-      "title": "I will turn off water when brushing my teeth or shaving", 
-      "created_at": "2010-07-16 14:35:27", 
-      "updated_at": "2010-07-16 14:48:31", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 8, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 6, 
-      "description": "Commit to turning off water when showering except when actively rinsing off soap or shampoo. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
-      "title": "I will turn off water when sudsing and scrubbing in shower", 
-      "created_at": "2010-07-16 14:36:37", 
-      "updated_at": "2010-07-16 14:48:11", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 2, 
-      "description": "Commit to using natural light from windows or outdoors instead of turning on electric lighting. This can mean opening shades instead of turning on the lights, and/or planning your day so that tasks that require light (like reading books, doing written homework) are done during the day.", 
-      "title": "I will use natural light instead of electric lighting", 
-      "created_at": "2010-07-16 14:40:17", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 4, 
-      "description": "Commit to turning off your printer when you aren't actively printing something out. This will reduce electricity use, since printers draw some power if they are turned on even when they aren't printing.", 
-      "title": "I will turn off printer when not printing", 
-      "created_at": "2010-07-16 14:41:41", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 4, 
-      "description": "Commit to using the stairs instead of elevators during your day, whenever that is feasible. Elevators use electricity, so by using the stairs you will save some energy. Also, using the stairs is good exercise!", 
-      "title": "I will use stairs instead of elevator", 
-      "created_at": "2010-07-16 14:43:29", 
-      "updated_at": "2010-07-16 14:45:59", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 8, 
-      "description": "Commit to recycling all (recyclable) beverage containers at an appropriate location. Making things from recycled materials generally costs less and uses less energy than making them from raw materials.", 
-      "title": "I will recycle all beverage containers", 
-      "created_at": "2010-07-16 14:45:00", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 13, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 7, 
-      "description": "Commit to not driving off-campus in a car by yourself. Try riding the bus (free using your U-PASS!), riding a bike, walking, driving a moped, or using a vehicle with 3+ occupants instead. Transportation fuel is a major use of energy and it generates a lot of greenhouse gases, so traveling more efficiently saves energy and the planet.", 
-      "title": "I won't drive off-campus alone", 
-      "created_at": "2010-07-16 15:06:52", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 14, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 4, 
-      "description": "Commit to using your TV (watching shows, movies, playing games) for not more than 1 hour per day. Widescreen TVs use a lot of electricity, so putting a limit on how much you use them will reduce your electricity use.", 
-      "title": "I will limit my TV use to 1 hour a day", 
-      "created_at": "2010-07-16 15:11:28", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 15, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 4, 
-      "description": "Commit to always washing full loads of laundry. Washing less than a full load is less efficient, leading to more electricity and hot water being used per piece of laundry washed.", 
-      "title": "I will wash only full loads of laundry", 
-      "created_at": "2010-07-16 15:12:50", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 16, 
-    "model": "activities.commitment", 
+    "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
-      "description": "Commit to wearing your Kukui Cup button every day during the commitment period. Wearing your button will help spread awareness about the competition, and remind others to get involved.", 
-      "title": "I will wear my Kukui Cup button every day", 
-      "created_at": "2010-07-16 15:13:44", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 17, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 7, 
-      "description": "Commit to walking to any destination less than one mile away from your residence hall. Walking saves energy, costs nothing, and is good exercise.", 
-      "title": "I will walk to destinations less than one mile away", 
-      "created_at": "2010-07-16 15:15:45", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 18, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 3, 
-      "description": "Commit to washing your laundry in cold water instead of warm or hot water. There are now detergents designed to be used in cold water, and it takes lots of energy to heat water up. By using cold water, you will be saving energy.", 
-      "title": "I will wash my laundry in cold water", 
-      "created_at": "2010-07-16 15:17:12", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 19, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 4, 
-      "description": "Commit to measuring the length of your shower with a watch or phone, and reducing the time by 1 minute. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
-      "title": "I will reduce my shower time by 1 minute", 
-      "created_at": "2010-07-16 15:18:16", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 20, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 2, 
-      "description": "Commit to turning off your music (from computer, stereo, etc) when you leave your room. You save electricity when you turn off your music when you aren't there to enjoy it.", 
-      "title": "I will turn off my music when leaving my room", 
-      "created_at": "2010-07-16 15:20:58", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 21, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 3, 
-      "description": "Commit to turning off your computer/TV/game console and doing something that doesn't require electricity instead. There are many things you can do both on and off campus that don't require electricity, go find them!", 
-      "title": "I will do something \"unplugged\" every day", 
-      "created_at": "2010-07-16 15:23:09", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 22, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 8, 
-      "description": "Commit to bringing and using reuseable bags when shopping instead of the paper or plastic ones offered by stores. Making disposable bags requires energy, and often the bags end up in our landfills or worse yet they blow away into the ocean. Using a reusable bag saves energy and keeps trash out of our landfills.", 
-      "title": "I will bring reusable bags when shopping", 
-      "created_at": "2010-07-16 15:25:40", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 23, 
-    "model": "activities.commitment", 
-    "fields": {
-      "category": 7, 
-      "description": "Commit to not eating any meat (beef, pork, chicken, fish, shellfish, etc) during the commitment period. Producing meat (beef in particular) uses a great deal of energy, and produces a great deal of greenhouse gasses. A vegetarian diet uses less energy and emits less greenhouse gas. There are many of vegetarian food options on campus, try them out!", 
-      "title": "I will not eat meat", 
-      "created_at": "2010-07-16 15:32:51", 
-      "updated_at": "2010-10-05 14:32:42", 
-      "priority": 1000, 
-      "point_value": 2, 
-      "duration": 5
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "answer", 
-      "question": "question", 
-      "activity": 21
+      "description": "What: Learn about the competition and the cool prizes you can win\r\n\r\nWhen: January 27, 2011 7:00pm\r\n\r\nWhere: Roof lounge of your tower", 
+      "title": "Attend Kukui Cup Orientation meeting", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1, 
+      "type": "event", 
+      "name": "Orientation"
     }
   }, 
   {
     "pk": 2, 
-    "model": "activities.textpromptquestion", 
+    "model": "activities.activitybase", 
     "fields": {
-      "answer": "answer", 
-      "question": "question", 
-      "activity": 7
+      "category": 2, 
+      "description": "Watch this video explaining the difference between power and energy\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video about Power & Energy", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 7, 
+      "type": "activity", 
+      "name": "Power & Energy"
     }
   }, 
   {
     "pk": 3, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Attend a special presentation by the Blue Planet Foundation on what they are doing to get Hawaii off of fossil fuels, and how students can get involved.", 
+      "title": "Attend Blue Planet Foundation Meeting", 
+      "depends_on": "False", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 17, 
+      "type": "event", 
+      "name": "Blue Planet"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Find an incandescent bulb (perhaps from a desk lamp) and replace it with a CFL. You should throw away the incandescent bulb, because even though it isn't burned out it is a massive energy hog and you don't want someone using it later.\r\n\r\nFor verification, please take a single photo showing both the incandescent bulb you replaced and the CFL you installed.", 
+      "title": "Replace incandescent bulb with compact fluorescent (CFL)", 
+      "depends_on": "False", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 18, 
+      "type": "activity", 
+      "name": "CFL bulb"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "SustainableUH is a student-lead organization focused on establishing the University of Hawaii as a world leader in sustainable practices, education, and research. Attend a special meeting and find out what Sustainable UH has accomplished and how you can get involved!", 
+      "title": "Attend SustainableUH meeting", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 12, 
+      "type": "event", 
+      "name": "SustainbableUH"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Who Killed the Electric Car? is a 2006 documentary film that explores the creation, limited commercialization, and subsequent destruction of the battery electric vehicle in the United States, specifically the General Motors EV1 of the mid 1990s. The film explores the roles of automobile manufacturers, the oil industry, the US government, the Californian government, batteries, hydrogen vehicles, and consumers in limiting the development and adoption of this technology.\r\n\r\nShowing in Room [?]", 
+      "title": "Watch the movie \"Who Killed the Electric Car?\"", 
+      "depends_on": "completed('FaceBook')", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "event", 
+      "name": "Electric Car"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Configure your computer and any external monitor to sleep after 20 minutes of inactivity. You can find instructions on enabling sleep functionality at the [EnergySTAR website](http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_users).\r\n\r\nOnce you have changed your settings, please take a screenshot showing the new settings for use in verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "title": "Configure computer to sleep after inactivity", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 13, 
+      "type": "activity", 
+      "name": "Computer Sleep"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "Become a fan of the [Kukui Cup Competition group on Facebook](http://www.facebook.com/group.php?gid=101651363219833).\r\n\r\nOnce you have become a fan, take a screenshot of the Kukui Cup Facebook page for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "title": "Connect to Kukui Cup on Facebook", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 4, 
+      "type": "activity", 
+      "name": "FaceBook"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "If you use [Twitter](http://twitter.com/), tweet a link to the [Kukui Cup website](/) so other folks will learn about the competition.\r\n\r\nOnce you have tweeted, take a screenshot of your tweet for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "title": "Tweet about Kukui Cup", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 6, 
+      "type": "activity", 
+      "name": "Tweet"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "Update your Facebook status with a link to the [Kukui Cup website](/) to promote the competition.\r\n\r\nOnce you have updated your status, take a screenshot for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)\r\n", 
+      "title": "Link to Kukui Cup on Facebook status", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 5, 
+      "type": "activity", 
+      "name": "Link status"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "This is a followup activity to the energy audit activity. If you haven't performed that activity, do it first and keep your notes around for this activity.\r\n\r\nBased on the audit results, make a label for each device in your room that shows the number of watts consumed when on and off, and put it close to the power switch for those devices that have them.\r\n\r\nOnce you have made the labels take a photo of the devices with their labels on to be used for verification.", 
+      "title": "Label power hogs in your room", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 11, 
+      "type": "activity", 
+      "name": "Power Hogs"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Use this [carbon footprint calculator](http://coolclimate.berkeley.edu/) to estimate the size of your carbon footprint. Record the size of your footprint for verification.", 
+      "title": "Determine carbon footprint using calculator", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Carbon footprint"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "Watch this promotional video about the Kukui Cup to learn more about the competition.\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch Kukui Cup Promo video", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 2, 
+      "type": "activity", 
+      "name": "Promo Video"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "Watch this video explaining the competition and this website\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch introduction video", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 3, 
+      "type": "activity", 
+      "name": "Intro Video"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Watch this video that talks about improving your energy intuition.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video on Energy Intuition", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 8, 
+      "type": "activity", 
+      "name": "Energy Intuition"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Watch this video that explains how to figure out how much energy your stuff uses.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video on how to audit your energy use", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 9, 
+      "type": "activity", 
+      "name": "Audit Energy"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Watch this video that talks about the challenges facing Hawaii as we try to keep meeting our energy needs.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch Hawaii Energy Challenges video", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 19, 
+      "type": "activity", 
+      "name": "Hawaii Energy Challenge"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Watch this video that explains how we generate our energy in Hawaii.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch Energy Generation in Hawaii video", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 20, 
+      "type": "activity", 
+      "name": "Energy Hawaii"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "For this event, try turning off everything in your dorm room for 15 minutes: lights, computers, TVs.\r\n\r\nIf you can get most of your Lounge mates to participate, try to see how low you can get your Lounge's power consumption to go. Use a laptop or mobile device to record your Lounge's instantaneous power value from the Energy Data page, and submit that value.", 
+      "title": "Go Dark event", 
+      "depends_on": "completed('FaceBook') and completed('printer')", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 16, 
+      "type": "event", 
+      "name": "Go Dark"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Watch this video about the ways we use energy to generate light.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video about Lighting", 
+      "depends_on": "completedSomeOf(3, 'Get Started')", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 15, 
+      "type": "activity", 
+      "name": "Lighting"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Borrow a Kill-A-Watt meter from your RA, and then check all the plug-in appliances in your room to see how much power they use when turned on & when turned off. Write down both the on and off values for each device as you check them because you will need that to get your points.", 
+      "title": "Audit energy use in your dorm room", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 10, 
+      "type": "activity", 
+      "name": "Dorm Energy Audit"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Watch this video that explains how we can get energy directly from the sun.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video about solar energy", 
+      "depends_on": "completedSomeOf(3, 'Basic Energy')", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 21, 
+      "type": "activity", 
+      "name": "Solar Energy"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Watch this video explaining how energy can be generated from the wind.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video about wind energy", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 22, 
+      "type": "activity", 
+      "name": "Wind Energy"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Attend a special presentation by the Kokua Hawaii Foundation on their work with Hawaii's schools. Meeting will take place in in Lehua's rooftop lounge.", 
+      "title": "Attend Kokua Hawaii Foundation event", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 23, 
+      "type": "event", 
+      "name": "Kokua Hawaii"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Attend a presentation from KYA Sustainability Studio to hear from UH graduates about how they got jobs making Hawaii more sustainable. Meeting will take place in in Lehua's rooftop lounge.", 
+      "title": "Attend KYA Sustainability Studio event", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 24, 
+      "type": "event", 
+      "name": "KYA studio"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Watch this video talking about climate change and how it will affect Hawaii.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch a video about climate change", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 25, 
+      "type": "activity", 
+      "name": "Climate change"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Come see Al Gore's very influential movie about climate change: An Inconvenient Truth. Showing in Ilima's roof lounge.", 
+      "title": "Watch the movie \"An Inconvenient Truth\"", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 26, 
+      "type": "event", 
+      "name": "Inconvenient Truth"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Attend a presentation by Prof. Chip Fletcher on the affects of climate change on Hawaii's shoreline. The presentation will take place in in Mokihana's rooftop lounge.", 
+      "title": "Attend talk by Prof Chip Fletcher", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 27, 
+      "type": "event", 
+      "name": "Talk"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "This is an opportunity to really explore the issue of lighting in more depth. Pick one of the activities below and go do it! Note that these activities will require significantly more effort than normal activities, but they are also worth more points. This task is worth a variable number of points, so the more effort and the higher quality of your result, the more points you will receive.\r\n\r\n  * Make a YouTube video about lighting\r\n  * Write a letter to the editor about lighting\r\n  * Join a local environmental/energy organization", 
+      "title": "Advanced lighting activity", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Advanced lighting"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Commit to turning off all appliances in your room (computer, TVs, DVD players, game consoles) every night before you go to sleep. Appliances use a significant amount of electricity, so turning them off when you definitely won't be using them (like when you are asleep) will save energy.", 
+      "title": "I will turn off all appliances every night before going to sleep", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 3, 
+      "type": "commitment", 
+      "name": "turn off appliance"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Commit to turning off the lights when leaving any room.", 
+      "title": "I will turn off the lights when leaving any room", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 6, 
+      "type": "commitment", 
+      "name": "turn off lights"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Commit to using task lighting (like a desk lamp) instead of overhead room lights when possible. Often overhead lights provide more light than you need, or might not provide the light where you need it. Using a desk lamp will reduce your electricity use while giving you the light you need, where you need it.", 
+      "title": "I will use task lighting instead of overhead lights", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 7, 
+      "type": "commitment", 
+      "name": "task lighting"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "A vampire load is a device that uses power when plugged in, even when it is turned off and not doing anything. Commit to turning off any vampire loads (cell phone charger, iPod charger, game consoles, TVs) using a power strip when you are not using them, thereby saving energy.", 
+      "title": "I will turn off vampire loads using a power strip", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 2, 
+      "type": "commitment", 
+      "name": "turn off vampire"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "description": "Commit to turning off water at sinks when you aren't actually using the water, such as when brushing your teeth, shaving, applying makeup, etc. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+      "title": "I will turn off water when brushing my teeth or shaving", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "turn off water"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "description": "Commit to turning off water when showering except when actively rinsing off soap or shampoo. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+      "title": "I will turn off water when sudsing and scrubbing in shower", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "water in shower"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "description": "Commit to using natural light from windows or outdoors instead of turning on electric lighting. This can mean opening shades instead of turning on the lights, and/or planning your day so that tasks that require light (like reading books, doing written homework) are done during the day.", 
+      "title": "I will use natural light instead of electric lighting", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 8, 
+      "type": "commitment", 
+      "name": "natural light"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Commit to turning off your printer when you aren't actively printing something out. This will reduce electricity use, since printers draw some power if they are turned on even when they aren't printing.", 
+      "title": "I will turn off printer when not printing", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 4, 
+      "type": "commitment", 
+      "name": "printer"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Commit to using the stairs instead of elevators during your day, whenever that is feasible. Elevators use electricity, so by using the stairs you will save some energy. Also, using the stairs is good exercise!", 
+      "title": "I will use stairs instead of elevator", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 9, 
+      "type": "commitment", 
+      "name": "stairs"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "description": "Commit to recycling all (recyclable) beverage containers at an appropriate location. Making things from recycled materials generally costs less and uses less energy than making them from raw materials.", 
+      "title": "I will recycle all beverage containers", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "recycle container"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Commit to not driving off-campus in a car by yourself. Try riding the bus (free using your U-PASS!), riding a bike, walking, driving a moped, or using a vehicle with 3+ occupants instead. Transportation fuel is a major use of energy and it generates a lot of greenhouse gases, so traveling more efficiently saves energy and the planet.", 
+      "title": "I won't drive off-campus alone", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "car pool"
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Commit to using your TV (watching shows, movies, playing games) for not more than 1 hour per day. Widescreen TVs use a lot of electricity, so putting a limit on how much you use them will reduce your electricity use.", 
+      "title": "I will limit my TV use to 1 hour a day", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 10, 
+      "type": "commitment", 
+      "name": "limit TV"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "description": "Commit to always washing full loads of laundry. Washing less than a full load is less efficient, leading to more electricity and hot water being used per piece of laundry washed.", 
+      "title": "I will wash only full loads of laundry", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "full load laundry"
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "description": "Commit to wearing your Kukui Cup button every day during the commitment period. Wearing your button will help spread awareness about the competition, and remind others to get involved.", 
+      "title": "I will wear my Kukui Cup button every day", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1, 
+      "type": "commitment", 
+      "name": "kukui cup button"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Commit to walking to any destination less than one mile away from your residence hall. Walking saves energy, costs nothing, and is good exercise.", 
+      "title": "I will walk to destinations less than one mile away", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "walk"
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "description": "Commit to washing your laundry in cold water instead of warm or hot water. There are now detergents designed to be used in cold water, and it takes lots of energy to heat water up. By using cold water, you will be saving energy.", 
+      "title": "I will wash my laundry in cold water", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "cold laundry"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "description": "Commit to measuring the length of your shower with a watch or phone, and reducing the time by 1 minute. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
+      "title": "I will reduce my shower time by 1 minute", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "reduce shower time"
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "description": "Commit to turning off your music (from computer, stereo, etc) when you leave your room. You save electricity when you turn off your music when you aren't there to enjoy it.", 
+      "title": "I will turn off my music when leaving my room", 
+      "depends_on": "True", 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 5, 
+      "type": "commitment", 
+      "name": "turn off music"
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "description": "Commit to turning off your computer/TV/game console and doing something that doesn't require electricity instead. There are many things you can do both on and off campus that don't require electricity, go find them!", 
+      "title": "I will do something \"unplugged\" every day", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 11, 
+      "type": "commitment", 
+      "name": "unplugged"
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 8, 
+      "description": "Commit to bringing and using reuseable bags when shopping instead of the paper or plastic ones offered by stores. Making disposable bags requires energy, and often the bags end up in our landfills or worse yet they blow away into the ocean. Using a reusable bag saves energy and keeps trash out of our landfills.", 
+      "title": "I will bring reusable bags when shopping", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 1000, 
+      "type": "commitment", 
+      "name": "resuable bag"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "description": "Commit to not eating any meat (beef, pork, chicken, fish, shellfish, etc) during the commitment period. Producing meat (beef in particular) uses a great deal of energy, and produces a great deal of greenhouse gasses. A vegetarian diet uses less energy and emits less greenhouse gas. There are many of vegetarian food options on campus, try them out!", 
+      "title": "I will not eat meat", 
+      "depends_on": null, 
+      "created_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-17 10:35:30", 
+      "priority": 12, 
+      "type": "commitment", 
+      "name": "meat"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "activities.commitment", 
+    "fields": {
+      "duration": 5, 
+      "point_value": 2
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code from the meeting.", 
+      "event_date": "2011-01-27 19:00:00", 
+      "point_value": 10, 
+      "expire_date": "2011-02-04", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-05-12"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2010-05-12"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the ticket code provided at the meeting.", 
+      "event_date": "2011-02-03 19:00:00", 
+      "point_value": 5, 
+      "expire_date": "2011-02-10", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-05-12"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
+      "event_date": null, 
+      "point_value": 4, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2010-05-12"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the meeting.", 
+      "event_date": "2011-01-31 18:00:00", 
+      "point_value": 20, 
+      "expire_date": "2011-02-07", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the movie.", 
+      "event_date": "2010-10-11 20:00:00", 
+      "point_value": 2, 
+      "expire_date": "2010-10-15", 
+      "duration": 100, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-12"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 10, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
+      "event_date": null, 
+      "point_value": 2, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
+      "event_date": null, 
+      "point_value": 2, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "image", 
+      "point_range_start": null, 
+      "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-02-21", 
+      "duration": 15, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter in the carbon footprint you received from the calculator, and any comments you have about your carbon footprint.", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2010-12-31", 
+      "duration": 20, 
+      "point_range_end": null, 
+      "pub_date": "2010-07-16"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-12"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-12"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-15"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 4, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-15"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-15"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-15"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "free", 
+      "point_range_start": 10, 
+      "confirm_prompt": "Enter in the minimum value you saw for your Lounge's power usage, with everything turned off.", 
+      "event_date": "2011-02-09 20:00:00", 
+      "point_value": null, 
+      "expire_date": "2011-02-10", 
+      "duration": 20, 
+      "point_range_end": 20, 
+      "pub_date": "2010-10-15"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the name of each device in your room and both the on and off power use values below.", 
+      "event_date": null, 
+      "point_value": 10, 
+      "expire_date": "2011-02-21", 
+      "duration": 15, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
+      "event_date": "2011-02-17 18:00:00", 
+      "point_value": 5, 
+      "expire_date": "2011-02-21", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
+      "event_date": "2011-02-14 18:00:00", 
+      "point_value": 5, 
+      "expire_date": "2011-02-21", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 3, 
+      "expire_date": "2011-02-21", 
+      "duration": 3, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
+      "event_date": "2011-02-02 19:00:00", 
+      "point_value": 4, 
+      "expire_date": "2011-02-09", 
+      "duration": 110, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
+      "event_date": "2011-02-16 19:00:00", 
+      "point_value": 5, 
+      "expire_date": "2011-02-16", 
+      "duration": 60, 
+      "point_range_end": null, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "activities.activity", 
+    "fields": {
+      "confirm_type": "free", 
+      "point_range_start": 5, 
+      "confirm_prompt": "Enter in the the verification information requested for this type of activity (i.e. URL of your blog, YouTube video, etc).", 
+      "event_date": null, 
+      "point_value": null, 
+      "expire_date": "2011-02-21", 
+      "duration": 120, 
+      "point_range_end": 20, 
+      "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-02-17 12:17:36", 
+      "commitment": 43, 
+      "updated_at": "2011-02-17 12:17:36", 
+      "completion_date": "2011-02-22", 
+      "user": 606
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-02-17 14:01:41", 
+      "commitment": 30, 
+      "updated_at": "2011-02-17 14:01:41", 
+      "completion_date": "2011-02-22", 
+      "user": 606
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-02-17 14:01:46", 
+      "commitment": 33, 
+      "updated_at": "2011-02-17 14:01:46", 
+      "completion_date": "2011-02-22", 
+      "user": 606
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-02-17 15:40:14", 
+      "commitment": 37, 
+      "updated_at": "2011-02-17 15:40:14", 
+      "completion_date": "2011-02-22", 
+      "user": 606
+    }
+  }, 
+  {
+    "pk": 1, 
     "model": "activities.textpromptquestion", 
     "fields": {
       "answer": "kilowatt-hour", 
@@ -377,7 +1503,7 @@
     }
   }, 
   {
-    "pk": 4, 
+    "pk": 2, 
     "model": "activities.textpromptquestion", 
     "fields": {
       "answer": "watt", 
@@ -386,7 +1512,43 @@
     }
   }, 
   {
+    "pk": 4, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "Bogus", 
+      "question": "Bogus", 
+      "activity": 21
+    }
+  }, 
+  {
     "pk": 5, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "burning for light", 
+      "question": "What was the kukui nut used for?", 
+      "activity": 22
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "93%", 
+      "question": "How much energy does Hawaii get from fossil fuels like oil?", 
+      "activity": 22
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "energy conservation, energy literacy", 
+      "question": "What is the purpose of the Kukui Cup?", 
+      "activity": 25
+    }
+  }, 
+  {
+    "pk": 8, 
     "model": "activities.textpromptquestion", 
     "fields": {
       "answer": "power", 
@@ -395,7 +1557,7 @@
     }
   }, 
   {
-    "pk": 6, 
+    "pk": 9, 
     "model": "activities.textpromptquestion", 
     "fields": {
       "answer": "energy", 
@@ -404,409 +1566,135 @@
     }
   }, 
   {
-    "pk": 1, 
-    "model": "activities.confirmationcode", 
+    "pk": 10, 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "code": "atte-mjk0n", 
-      "is_active": true, 
-      "activity": 1
+      "answer": "1.2 GW", 
+      "question": "How is Oahu's peak electrical power usage?", 
+      "activity": 26
     }
   }, 
   {
-    "pk": 2, 
-    "model": "activities.confirmationcode", 
+    "pk": 11, 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "code": "atte-cd28f", 
-      "is_active": true, 
-      "activity": 1
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "activities.confirmationcode", 
-    "fields": {
-      "code": "atte-l3pt4", 
-      "is_active": true, 
-      "activity": 1
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "activities.confirmationcode", 
-    "fields": {
-      "code": "atte-6ljvb", 
-      "is_active": true, 
-      "activity": 1
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "activities.confirmationcode", 
-    "fields": {
-      "code": "atte-16ahv", 
-      "is_active": true, 
-      "activity": 1
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "activities.confirmationcode", 
-    "fields": {
-      "code": "atte-5a4ti", 
-      "is_active": false, 
-      "activity": 4
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 1, 
-      "description": "What: Learn about the competition and the cool prizes you can win\r\nWhen: January 27, 2011 7:00pm\r\nWhere: Roof lounge of your tower", 
-      "title": "Attend Kukui Cup Orientation", 
-      "created_at": "2010-05-12 12:14:09", 
-      "confirm_type": "code", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-04 22:39:58", 
-      "confirm_prompt": "Enter the attendance code from the meeting.", 
-      "priority": 1000, 
-      "event_date": "2011-01-27 19:00:00", 
-      "point_value": 10, 
-      "expire_date": "2011-02-07", 
-      "duration": 60, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": true
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 2, 
-      "description": "Watch this video explaining the difference between power and energy\r\n\r\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>", 
-      "title": "Watch \"Be Energy Akamai!, Episode 1\"", 
-      "created_at": "2010-05-12 12:19:20", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-05 23:18:59", 
-      "confirm_prompt": "Once you are done, answer a question about the information in the video, and **click the summit button** to get your points! ", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-02-07", 
-      "duration": 5, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 3, 
-      "description": "Attend the Blue Planet Foundation meeting.", 
-      "title": "Attend Blue Planet Foundation Meeting", 
-      "created_at": "2010-05-12 12:22:41", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2010-10-05 14:39:07", 
-      "confirm_prompt": "Enter the ticket code provided at the meeting.", 
-      "priority": 1000, 
-      "event_date": "2011-02-03 00:00:00", 
-      "point_value": 5, 
-      "expire_date": "2011-02-07", 
-      "duration": 120, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": true
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 2, 
-      "description": "Attend the Energy Pong Competition happening in your building.\r\n\r\nYou will receive attendance code at the event. Come back to enter the code to get points.", 
-      "title": "Attend the Energy Pong Competition", 
-      "created_at": "2010-05-12 12:23:51", 
-      "confirm_type": "code", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-05 23:50:14", 
-      "confirm_prompt": "Enter attendance code: ", 
-      "priority": 1000, 
-      "event_date": "2010-10-13 19:00:00", 
-      "point_value": 2, 
-      "expire_date": "2010-11-08", 
-      "duration": 60, 
-      "point_range_end": null, 
-      "pub_date": "2010-05-12", 
-      "is_event": true
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 3, 
-      "description": "Find an incandescent bulb (perhaps from a desk lamp) and replace it with a CFL. You should throw away the incandescent bulb, because even though it isn't burned out it is a massive energy hog and you don't want someone using it later.\r\n\r\nFor verification, please take a photo showing both the incandescent bulb you replaced and the CFL you installed.", 
-      "title": "Replace incandescent bulb with compact fluorescent (CFL)", 
-      "created_at": "2010-05-12 12:25:23", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:33:54", 
-      "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 4, 
-      "expire_date": "2011-02-21", 
-      "duration": 5, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 5, 
-      "description": "SustainableUH is a student-lead organization focused on establishing the University of Hawaii as a world leader in sustainable practices, education, and research. Attend a special meeting and find out what Sustainable UH has accomplished and how you can get involved!", 
-      "title": "Attend SustainableUH meeting", 
-      "created_at": "2010-07-16 12:11:12", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2010-10-05 14:40:14", 
-      "confirm_prompt": "Enter the attendance code you received at the meeting.", 
-      "priority": 1000, 
-      "event_date": "2011-01-31 19:00:00", 
-      "point_value": 2, 
-      "expire_date": "2011-02-07", 
-      "duration": 60, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": true
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 4, 
-      "description": "Who Killed the Electric Car? is a 2006 documentary film that explores the creation, limited commercialization, and subsequent destruction of the battery electric vehicle in the United States, specifically the General Motors EV1 of the mid 1990s. The film explores the roles of automobile manufacturers, the oil industry, the US government, the Californian government, batteries, hydrogen vehicles, and consumers in limiting the development and adoption of this technology.\r\n\r\nShowing in Room [?]", 
-      "title": "Watch the movie \"Who Killed the Electric Car?\"", 
-      "created_at": "2010-07-16 12:20:36", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:42:15", 
-      "confirm_prompt": "Enter the attendance code you received at the movie.", 
-      "priority": 1000, 
-      "event_date": "2011-02-20 00:00:00", 
-      "point_value": 2, 
-      "expire_date": "2011-02-21", 
-      "duration": 100, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": true
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "activities.activity", 
-    "fields": {
-      "category": 7, 
-      "description": "[350.org](http://www.350.org/), a climate change advocacy organization, is organizing a series of \"work parties\" to take place on October 10, 2010 (10/10/10). Find a work party on the 350.org website and participate!\r\n\r\nTo verify your participation in the work party, please take a picture of the work going on.", 
-      "title": "Participate in a 10/10/10 work party", 
-      "created_at": "2010-07-16 12:33:23", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:33:00", 
-      "confirm_prompt": "Please upload the image you took of the work party, and describe the work you did in the comments field.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 5, 
-      "expire_date": "2010-10-15", 
-      "duration": 180, 
-      "point_range_end": null, 
-      "pub_date": "2010-07-12", 
-      "is_event": true
+      "answer": "vampire power", 
+      "question": "Why would we measure the power drawn by a device that is off?", 
+      "activity": 27
     }
   }, 
   {
     "pk": 12, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 3, 
-      "description": "Borrow the Kill-A-Watt power meter from your RA, and then for each plug-in appliances in your room, write down its energy consumption when turned on and when turned off. You might be surprised to learn how much power your stuff uses, even when turned off! When you are done, come back and type in your results to receive your points.", 
-      "title": "Perform room energy audit", 
-      "created_at": "2010-07-16 16:41:10", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:32:38", 
-      "confirm_prompt": "List each plug-in device in your room, and how much power it uses when turned on, and when turned off.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 10, 
-      "expire_date": "2011-02-21", 
-      "duration": 20, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "Import from adjacent states or countries", 
+      "question": "What do other states do when they need more energy than they can generate?", 
+      "activity": 28
     }
   }, 
   {
-    "pk": 14, 
-    "model": "activities.activity", 
+    "pk": 13, 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 2, 
-      "description": "Configure your computer and any external monitor to sleep after 20 minutes of inactivity. You can find instructions on enabling sleep functionality at the [EnergySTAR website](http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_users).\r\n\r\nOnce you have changed your settings, please take a screenshot showing the new settings for use in verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
-      "title": "Configure computer to sleep after inactivity", 
-      "created_at": "2010-07-16 17:10:10", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:32:22", 
-      "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-02-21", 
-      "duration": 10, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "Oil", 
+      "question": "What does Hawaii use for most of its energy needs?", 
+      "activity": 29
     }
   }, 
   {
     "pk": 15, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 1, 
-      "description": "Become a member of your floor's team in the Energy Pong tournament for your residence hall.", 
-      "title": "Play in Energy Pong tournament", 
-      "created_at": "2010-07-16 17:15:12", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2010-10-05 14:42:51", 
-      "confirm_prompt": "Enter in the attendance code you received from the Energy Pong referee.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 4, 
-      "expire_date": "2011-02-21", 
-      "duration": 180, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "incandescent", 
+      "question": "What lighting method uses the most energy?", 
+      "activity": 28
     }
   }, 
   {
     "pk": 16, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 1, 
-      "description": "Become a fan of the [Kukui Cup Competition group on Facebook](http://www.facebook.com/group.php?gid=101651363219833).\r\n\r\nOnce you have become a fan, take a screenshot of the Kukui Cup Facebook page for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
-      "title": "Connect to Kukui Cup on Facebook", 
-      "created_at": "2010-07-16 17:20:00", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:31:42", 
-      "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-02-21", 
-      "duration": 5, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "doesn't work at night, or when very cloudy", 
+      "question": "What is one limitation of solar power?", 
+      "activity": 22
     }
   }, 
   {
     "pk": 17, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 1, 
-      "description": "If you use [Twitter](http://twitter.com/), tweet a link to the [Kukui Cup website](http://dasha.ics.hawaii.edu:8100/) so other folks will learn about the competition.\r\n\r\nOnce you have tweeted, take a screenshot of the Kukui Cup Facebook page for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
-      "title": "Tweet about Kukui Cup", 
-      "created_at": "2010-07-16 17:36:56", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:31:09", 
-      "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 2, 
-      "expire_date": "2011-02-21", 
-      "duration": 5, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "they stop generating energy", 
+      "question": "What happens to wind turbines when the wind is blowing very hard?", 
+      "activity": 23
     }
   }, 
   {
     "pk": 18, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 1, 
-      "description": "Update your Facebook status with a link to the [Kukui Cup website](/) to promote the competition.\r\n\r\nOnce you have updated your status, take a screenshot for verification:\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)\r\n\r\nFoo!", 
-      "title": "Link to Kukui Cup on Facebook status", 
-      "created_at": "2010-07-16 17:46:59", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:30:55", 
-      "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 2, 
-      "expire_date": "2011-02-21", 
-      "duration": 5, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "rising sea levels, higher average temperatures, changing rainfall patterns, acidification of the ocean", 
+      "question": "What is one expected impact of climate change?", 
+      "activity": 26
     }
   }, 
   {
     "pk": 19, 
-    "model": "activities.activity", 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 4, 
-      "description": "This is a followup activity to the energy audit activity. If you haven't performed that activity, do it first and keep your notes around for this activity.\r\n\r\nBased on the audit results, make a label for each device in your room that shows the number of watts consumed when on and off, located close to the power switch for those devices that have them.\r\n\r\nOnce you have made the labels take a photo of the devices with their labels on to be used for verification.", 
-      "title": "Label appliance power requirements in your room", 
-      "created_at": "2010-07-16 17:52:24", 
-      "confirm_type": "image", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:35:05", 
-      "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-02-21", 
-      "duration": 15, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "CO2, carbon dioxide, (methane also acceptable)", 
+      "question": "What gas is considered most responsible for climate change?", 
+      "activity": 26
     }
   }, 
   {
-    "pk": 21, 
-    "model": "activities.activity", 
+    "pk": 20, 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "category": 7, 
-      "description": "Use this [carbon footprint calculator](http://coolclimate.berkeley.edu/) to estimate the size of your carbon footprint. Record the size of your footprint for verification.", 
-      "title": "Determine carbon footprint using calculator", 
-      "created_at": "2010-07-16 18:01:04", 
-      "confirm_type": "text", 
-      "point_range_start": null, 
-      "updated_at": "2011-02-01 17:34:51", 
-      "confirm_prompt": "Enter in the carbon footprint you received from the calculator, and any comments you have about your carbon footprint.", 
-      "priority": 1000, 
-      "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-02-21", 
-      "duration": 20, 
-      "point_range_end": null, 
-      "pub_date": "2011-01-11", 
-      "is_event": false
+      "answer": "human activity", 
+      "question": "What is the most likely cause of recent climate change?", 
+      "activity": 26
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
+      "image": "", 
+      "question": 8, 
+      "user": 606, 
+      "activity": 2, 
+      "response": "eeee"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
+      "image": "activities/admin/yongwen.jpg", 
+      "question": null, 
+      "user": 606, 
+      "activity": 8, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
+      "image": "", 
+      "question": null, 
+      "user": 606, 
+      "activity": 21, 
+      "response": "test"
     }
   }
 ]

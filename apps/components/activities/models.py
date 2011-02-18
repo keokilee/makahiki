@@ -47,25 +47,149 @@ class Category(models.Model):
   def __unicode__(self):
     return self.name
 
-class Commitment(CommonBase):
-  """Commitments involve non-verifiable actions that a user can commit to.
-  Typically, they will be worth fewer points than activities."""
+# ActivityBase 
+class ActivityBase(models.Model):
+  TYPE_CHOICES = (
+    ('activity', 'Activity'),
+    ('commitment', 'Commitment'),
+    ('event', 'Event'),
+    ('survey', 'Survey'),
+    ('excursion', 'Excursion'),
+  )
   
-  title = models.CharField(max_length=200, default="I will")
+  name = models.CharField(max_length=20, null=True)
+  title = models.CharField(max_length=200)
   description = models.TextField(help_text=MARKDOWN_TEXT)
-  point_value = models.IntegerField()
-  users = models.ManyToManyField(User, through="CommitmentMember")
-  duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
+  type = models.CharField(
+                  max_length=20, 
+                  choices=TYPE_CHOICES, 
+                  verbose_name="Activity Type"
+                 )
+  category = models.ForeignKey(Category, null=True)
   priority = models.IntegerField(
                 default=1000,
-                help_text="Orders the commitments in the available commitments list. " + 
-                          "Commitments with lower values (higher priority) will be listed first."
+                help_text="Orders the activities in the available activities list. " + 
+                          "Activities with lower values (higher priority) will be listed first."
              )
-  category = models.ForeignKey(Category, null=True, blank=True)
+  likes = generic.GenericRelation(Like)
+  depends_on = models.CharField(max_length=200, null=True)
+
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
+  updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
+    
+class Commitment(ActivityBase):
+  """Commitments involve non-verifiable actions that a user can commit to.
+  Typically, they will be worth fewer points than activities."""
+  duration = models.IntegerField(default=5, help_text="Duration of commitment, in days.")
+  point_value = models.IntegerField(
+                  help_text="Specify a single point value to be awarded."
+                ) # This is validated by the admin form.  
+  users = models.ManyToManyField(User, through="CommitmentMember")
   
   def __unicode__(self):
     return self.title
     
+class Activity(ActivityBase):
+  """Activities involve verifiable actions that users commit to.  These actions can be 
+  verified by asking questions or posting an image attachment that verifies the user did 
+  the activity."""
+  
+  class Meta:
+    verbose_name_plural = "activities"
+  
+  CONFIRM_CHOICES = (
+    ('text', 'Question and Answer'),
+    ('image', 'Image Upload'),
+    ('code', 'Confirmation Code'),
+    ('free', 'Free Response'),
+  )
+  
+  users = models.ManyToManyField(User, through="ActivityMember")
+  duration = models.IntegerField(
+              verbose_name="Expected activity duration",
+              help_text="Time (in minutes) that the activity is expected to take."
+             )
+  point_value = models.IntegerField(
+                  null=True, 
+                  blank=True, 
+                  help_text="Specify a single point value or a range of points to be awarded."
+                ) # This is validated by the admin form.               
+  point_range_start = models.IntegerField(
+                        null=True, 
+                        blank=True, 
+                        help_text="Minimum number of points possible for this activity."
+                      )
+  point_range_end = models.IntegerField(
+                        null=True, 
+                        blank=True, 
+                        help_text="Maximum number of points possible for this activity."
+                      )
+  
+  pub_date = models.DateField(
+              default=datetime.date.today(),
+              verbose_name="Publication date",
+              help_text="Date at which the activity will be available for users."
+             )
+  expire_date = models.DateField(
+                verbose_name="Expiration date", 
+                help_text="Date at which the activity will be removed."
+              )
+  confirm_type = models.CharField(
+                  max_length=20, 
+                  choices=CONFIRM_CHOICES, 
+                  default="text",
+                  verbose_name="Confirmation Type"
+                 )
+  confirm_prompt = models.TextField(
+                    blank=True, 
+                    verbose_name="Confirmation prompt",
+                    help_text="Text to display to user when requesting points (for images, free response, and codes)."
+                   )
+  event_date = models.DateTimeField(
+                null=True, 
+                blank=True, 
+                verbose_name="Date and time of the event",
+                help_text="Required for events."
+               )
+                      
+  def __unicode__(self):
+    return self.title
+    
+  def _is_active(self):
+    """Determines if the activity is available for users to participate."""
+    return self.is_active_for_date(datetime.date.today())
+    
+  is_active = property(_is_active)
+  
+  def is_active_for_date(self, date):
+    """Determines if the activity is available for user participation at the given date."""
+    pub_result = date - self.pub_date
+    expire_result = self.expire_date - date
+    if pub_result.days < 0 or expire_result.days < 0:
+      return False
+    return True
+  
+  def _has_variable_points(self):
+    """Returns true if the activity uses variable points, false otherwise."""
+    if self.point_value > 0:
+      return False
+    else:
+      return True
+      
+  has_variable_points = property(_has_variable_points)
+  
+  def liked_users(self):
+    """Returns an array of users that like this activity."""
+    return [like.user for like in self.likes.all()]
+  
+  def pick_question(self):
+    """Choose a random question to present to a user."""
+    if self.confirm_type != "text":
+      return None
+      
+    questions = TextPromptQuestion.objects.filter(activity=self)
+    return questions[random.randint(0, len(questions) - 1)]
+
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
   commenting on a commitment and whether or not the commitment is currently 
@@ -178,127 +302,16 @@ class ConfirmationCode(models.Model):
         except IntegrityError:
           # Try again.
           code.code = header
-      
-class Activity(CommonBase):
-  """Activities involve verifiable actions that users commit to.  These actions can be 
-  verified by asking questions or posting an image attachment that verifies the user did 
-  the activity."""
-  
-  class Meta:
-    verbose_name_plural = "activities"
-  
-  CONFIRM_CHOICES = (
-    ('text', 'Question and Answer'),
-    ('image', 'Image Upload'),
-    ('code', 'Confirmation Code'),
-    ('free', 'Free Response'),
-  )
-  
-  title = models.CharField(max_length=200)
-  description = models.TextField(help_text=MARKDOWN_TEXT)
-  point_value = models.IntegerField(
-                  null=True, 
-                  blank=True, 
-                  help_text="Specify a single point value or a range of points to be awarded."
-                ) # This is validated by the admin form.
-  point_range_start = models.IntegerField(
-                        null=True, 
-                        blank=True, 
-                        help_text="Minimum number of points possible for this activity."
-                      )
-  point_range_end = models.IntegerField(
-                        null=True, 
-                        blank=True, 
-                        help_text="Maximum number of points possible for this activity."
-                      )
-  
-  duration = models.IntegerField(
-              verbose_name="Expected activity duration",
-              help_text="Time (in minutes) that the activity is expected to take."
-             )
-  pub_date = models.DateField(
-              default=datetime.date.today(),
-              verbose_name="Publication date",
-              help_text="Date at which the activity will be available for users."
-             )
-  expire_date = models.DateField(
-                verbose_name="Expiration date", 
-                help_text="Date at which the activity will be removed."
-              )
-  users = models.ManyToManyField(User, through="ActivityMember")
-  confirm_type = models.CharField(
-                  max_length=20, 
-                  choices=CONFIRM_CHOICES, 
-                  default="text",
-                  verbose_name="Confirmation Type"
-                 )
-  confirm_prompt = models.TextField(
-                    blank=True, 
-                    verbose_name="Confirmation prompt",
-                    help_text="Text to display to user when requesting points (for images, free response, and codes)."
-                   )
-  is_event = models.BooleanField(default=False, verbose_name="Is Event?")
-  event_date = models.DateTimeField(
-                null=True, 
-                blank=True, 
-                verbose_name="Date and time of the event",
-                help_text="Required for events."
-               )
-  priority = models.IntegerField(
-                default=1000,
-                help_text="Orders the activities in the available activities list. " + 
-                          "Activities with lower values (higher priority) will be listed first."
-             )
-  likes = generic.GenericRelation(Like)
-  category = models.ForeignKey(Category, null=True, blank=True)
-                      
-  def __unicode__(self):
-    return self.title
-  
-  def _is_active(self):
-    """Determines if the activity is available for users to participate."""
-    return self.is_active_for_date(datetime.date.today())
-    
-  is_active = property(_is_active)
-  
-  def is_active_for_date(self, date):
-    """Determines if the activity is available for user participation at the given date."""
-    pub_result = date - self.pub_date
-    expire_result = self.expire_date - date
-    if pub_result.days < 0 or expire_result.days < 0:
-      return False
-    return True
-  
-  def _has_variable_points(self):
-    """Returns true if the activity uses variable points, false otherwise."""
-    if self.point_value > 0:
-      return False
-    else:
-      return True
-      
-  has_variable_points = property(_has_variable_points)
-  
-  def liked_users(self):
-    """Returns an array of users that like this activity."""
-    return [like.user for like in self.likes.all()]
-  
-  def pick_question(self):
-    """Choose a random question to present to a user."""
-    if self.confirm_type != "text":
-      return None
-      
-    questions = TextPromptQuestion.objects.filter(activity=self)
-    return questions[random.randint(0, len(questions) - 1)]
 
 def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""
   
-  from activities import ACTIVITY_FILE_DIR
+  from components.activities import ACTIVITY_FILE_DIR
   
   if instance:
     user = user or instance.user
   return os.path.join(ACTIVITY_FILE_DIR, user.username, filename)
-      
+                    
 class ActivityMember(CommonActivityUser):
   """Represents the join between users and activities."""
   
@@ -387,4 +400,3 @@ class ActivityMember(CommonActivityUser):
       profile.save()
       
     super(ActivityMember, self).delete()
-    

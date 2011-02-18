@@ -90,12 +90,11 @@ class ActivityAdminForm(forms.ModelForm):
     cleaned_data = self.cleaned_data
     
     #1 Check that an event has an event date.
-    is_event = cleaned_data.get("is_event")
+    is_event = cleaned_data.get("type") == "event"
     event_date = cleaned_data.get("event_date")
     has_date = cleaned_data.has_key("event_date") #Check if this is in the data dict.
     if is_event and has_date and not event_date:
       self._errors["event_date"] = ErrorList([u"Events require an event date."])
-      del cleaned_data["is_event"]
       del cleaned_data["event_date"]
       
     #2 Check the verification type.
@@ -207,11 +206,11 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('title', 'description', 'duration', ('pub_date', 'expire_date')),
+      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date')),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),
-    ("Event", {'fields' : ('is_event', 'event_date')}),
+#    ("Event", {'fields' : ('event_date')}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
   form = ActivityAdminForm

@@ -8,7 +8,6 @@
 
 {% block extra_head %}
   {% import_page_css "view_activities" STATIC_URL CSS_THEME %}
-  {% include "view_activities/css_categories.html" %}
 {% endblock %}
 
 {% block body %}
@@ -35,6 +34,6 @@
 </div>
 
 <div {% get_id_and_classes "activity-categories" %}>
-  {% include "view_activities/categories.html" %}
+  {% include "view_activities/grid.html" %}
 </div>
 {% endblock %}

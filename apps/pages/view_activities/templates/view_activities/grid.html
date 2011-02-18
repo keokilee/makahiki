@@ -1,0 +1,79 @@
+{% load class_tags %}
+
+<p>
+<center> <h3> The Smart Grid Game </h3> </center>
+
+<table>
+  <tr>
+  {% for cat in categories %}
+  <td>
+      <div {% get_id_and_classes "activity-category" %}>
+      <div class="grid_background1">
+	    <div class="grid_transbox">
+		<p><h5> {{cat.name}}</h5></p>
+        </div>
+       </div>
+      </div> 
+  </td>
+  {% endfor %}
+  </tr>
+<tr>
+  {% for cat in categories %}
+  <td>
+  <table>
+      {% for task in cat.task_list %}
+       <tr><td>
+       <div {% get_id_and_classes "activity-category" %}>
+    
+       {% if task.is_unlock %}
+       <a href="task/Activity/{{task.id}}">
+       {% if task.type != 'commitment' %}
+         <div class="grid_background2">
+       	    <div class="grid_transbox">
+	    {% if task.is_pau %}
+		  <p>{{task.name}}</p>
+		{% else %}
+		 {% if task.activity.point_value %}
+		  <p><h3>{{task.activity.point_value}}</h3></p>
+		 {% else %}
+		   <p><h3>{{task.activity.point_range_end}}</h3></p>
+		 {% endif %}  
+		{% endif %}
+        </div>
+        </div>
+       {% else %}
+       <div class="grid_background3">
+        <div class="grid_transbox">
+	    {% if task.is_pau %}
+		  <p>{{task.name}}</p>
+		{% else %}
+		  <p><h3>{{task.commitment.point_value}}</h3></p>
+		{% endif %}
+        </div>
+        </div>
+       {% endif %}
+       
+       </a>
+       {% else %}
+       {% if task.type != 'commitment' %}
+       <div class="grid_background2">
+       {% else %}
+       <div class="grid_background3">
+       {% endif %}
+	    <div class="grid_transbox">
+		<p> ? </p>
+        </div>
+       </div>  
+       {% endif %}
+       
+       </div>
+       </td></tr>
+       {% endfor %}
+
+   </table>   
+   </td>
+   {% endfor %}
+</tr>   
+</table>
+
+

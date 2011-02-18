@@ -23,7 +23,8 @@ class ActivityTextForm(forms.Form):
       except ConfirmationCode.DoesNotExist:
         self._errors["response"] = ErrorList(["This code is not valid."])
         del cleaned_data["response"]
-      
+      except KeyError:
+        self._errors["response"] = ErrorList(["Please input code."])
     return cleaned_data
   
 class ActivityFreeResponseForm(forms.Form):
