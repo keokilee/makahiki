@@ -1,0 +1,19 @@
+{% for post in posts %}
+  <li>
+    {% include "news/user_post.html" %}
+  </li>
+  
+  {% if forloop.last and more_posts %}
+  <li id="view_more_posts">
+    See More
+  </li>
+  {% endif %}
+{% endfor %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#view_more_posts").click(function() {
+      alert("hello");
+    })
+  });
+</script>

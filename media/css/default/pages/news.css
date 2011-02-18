@@ -32,3 +32,22 @@
   display:inline; 
   width: 100%,
 }
+
+form {
+  margin-bottom: 15px;
+}
+
+form textarea {
+  height: 20px;
+  margin: 0;
+}
+
+form input {
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+#view_more_posts {
+  text-align: center;
+  cursor: pointer;
+}

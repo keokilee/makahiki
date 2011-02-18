@@ -133,21 +133,26 @@
             {{wall_form.post}}
           </div>
           <input type="submit" value="Submit" />
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $("input").button({
+                disabled: true
+              });
+              
+              $("textarea").click(function() {
+                if ($("input").button("option", "disabled")) {
+                  $("input").button("option", "disabled", false);
+                  this.value = "";
+                }
+              });
+            });
+          </script>
         </form>
       </div>
 
       {% if posts %}
         <ul id="wall_posts">
-          {% for post in posts %}
-            <li>
-              {% include "news/user_post.html" %}
-            </li>
-            {% if forloop.last and posts.count == num_posts_to_display %}
-            <li id="view_more_posts" onclick="loadMore({{post.id}})" style="cursor:pointer; text-align:center">
-              <h3 style="margin:0">See More</h3>
-            </li>
-            {% endif %}
-          {% endfor %}
+          {% include "news/news_posts.html" %}
         </ul>
       {% else %}
         <p>There are no posts yet!</p>
