@@ -1,13 +1,14 @@
 {% load avatar_tags %}
-
-<div class="span-14 last">
-  <div class="span-2">
-    <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" class="photo" align="top"/>
+<li>
+  <div class="span-14 last">
+    <div class="span-2">
+      <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" class="photo" align="top"/>
+    </div>
+    <div class="span-12 last">
+      <p>{{post.user.get_profile.name}} {{post.text}}</p>
+      <div class="date_string">Posted at {{post.date_string}}</div>
+    </div>
   </div>
-  <div class="span-12 last">
-    <p>{{post.user.get_profile.name}} {{post.text}}</p>
-    <div class="date_string">Posted at {{post.date_string}}</div>
-  </div>
-</div>
 
-<hr/>
+  <hr/>
+</li>

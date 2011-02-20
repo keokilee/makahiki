@@ -18,7 +18,7 @@
   padding: 0px 10px;
 }
 
-#wall_posts {
+#wall-posts {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -42,12 +42,12 @@ form textarea {
   margin: 0;
 }
 
-form input {
+#wall-post-submit {
   vertical-align: top;
   margin-left: 10px;
 }
 
-#view_more_posts {
+#view-more-posts {
   text-align: center;
   cursor: pointer;
   text-decoration: underline;

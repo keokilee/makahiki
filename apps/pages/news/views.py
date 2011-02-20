@@ -27,6 +27,32 @@ def index(request):
   }, context_instance=RequestContext(request))
   
 @login_required
+def post(request):
+  if request.is_ajax() and request.method == "POST":
+    form = WallForm(request.POST)
+    if form.is_valid():
+      post = Post(
+          user=request.user, 
+          floor=request.user.get_profile().floor, 
+          text=form.cleaned_data["post"]
+      )
+      post.save()
+      
+      # Render the post and send it as a response.
+      template = render_to_string("news/user_post.html", {"post": post}, 
+          context_instance=RequestContext(request))
+      return HttpResponse(json.dumps({
+        "contents": template,
+      }), mimetype="application/json")
+    
+    # At this point there is a form validation error.
+    return HttpResponse(json.dumps({
+        "message": "This should not be blank."
+    }), mimetype="application/json")
+  
+  raise Http404
+  
+@login_required
 def more_posts(request):
   if request.is_ajax():
     floor = request.user.get_profile().floor

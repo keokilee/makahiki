@@ -1,17 +1,15 @@
 {% for post in posts %}
-  <li>
-    {% include "news/user_post.html" %}
-  </li>
+  {% include "news/user_post.html" %}
   
   {% if forloop.last and more_posts %}
-  <li id="view_more_posts">
+  <li id="view-more-posts">
     See More
     <script type="text/javascript">
       $(document).ready(function() {
         $("#view_more_posts").click(function() {
           $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
-            $("#view_more_posts").remove();
-            $("#wall_posts").append(data.contents);
+            $("#view-more-posts").remove();
+            $("#wall-posts").append(data.contents);
           });
         });
       });
