@@ -58,7 +58,7 @@
     
     $("#back").button().click(function() {
       $(this).button("option", "disabled", true);
-      $.get("{% url setup_facebook %}", function(data) {
+      $.get("{% url setup_facebook %}?from=profile", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);
       });
@@ -75,6 +75,7 @@
       $(this).button("option", "disabled", false);
     });
     
+    // Useful for debugging.
     function showRequest(formData, jqForm, options) { 
       // formData is an array; here we use $.param to convert it to a string to display it 
       // but the form plugin does this for you automatically when it submits the data 

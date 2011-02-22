@@ -33,7 +33,7 @@
     
     $("#back").button().click(function() {
       $(this).button("option", "disabled", true);
-      $.get("{% url setup_welcome %}", function(data) {
+      $.get("{% url setup_welcome %}?from=terms", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);
       });

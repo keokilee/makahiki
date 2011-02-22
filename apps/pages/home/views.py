@@ -144,7 +144,7 @@ def setup_profile(request):
   
 def _get_profile_form(request, form=None, non_xhr=False):
   """
-  Private method to return the profile form.
+  Helper method to render the profile form.
   """
   if not form:
     user_info = {

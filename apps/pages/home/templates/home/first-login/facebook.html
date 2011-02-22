@@ -46,7 +46,7 @@
     
     $("#back").button().click(function() {
       $(this).button("option", "disabled", true);
-      $.get("{% url setup_terms %}", function(data) {
+      $.get("{% url setup_terms %}?from=facebook", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);
       });

@@ -90,6 +90,17 @@ class SetupWizardFunctionalTestCase(TestCase):
     })
     user = User.objects.get(username="user")
     self.assertEqual(points + 5, user.get_profile().points, "Check that the user was not awarded any more points.")
+    
+  def testSetupProfileWithoutName(self):
+    """Test that there is an error when the user does not supply a username."""
+    profile = self.user.get_profile()
+    points = profile.points
+    response = self.client.post(reverse("setup_profile"), {
+        "display_name": "",
+        "about": "I'm a test user.",
+    })
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
       
   def testSetupActivity(self):
     """Check that we can access the activity page of the setup wizard."""
