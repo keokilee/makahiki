@@ -13,7 +13,7 @@ class ProfileFunctionalTestCase(TestCase):
     profile = user.get_profile()
     profile.floor = floor
     profile.setup_complete = True
-    profile.profile_setup = True
+    profile.setup_profile = True
     profile.save()
     
     self.client.login(username="user", password="changeme")
