@@ -28,11 +28,13 @@ Hale Aloha Ilima, Lehua, and Mokihana towers on the University of Hawaii
 at Manoa campus for Fall 2011.
 <p> <p>
 
-<button class="{% insert_classes "landing-button" %}">
-	<h3><a href="/home">I live in Ilima, Lehua, or Mokihana</a></h3>
-	<h5><a href="/home">You will be prompted for your <br>
-	UH username and password, it's safe</a></h5>
-</button>
+<a href="{% url home_index %}">
+  <button class="{% insert_classes "landing-button" %}">
+  	<h3>I live in Ilima, Lehua, or Mokihana</h3>
+  	<h5>You will be prompted for your <br>
+  	UH username and password, it's safe</h5>
+  </button>
+</a>
 
 <p>
 

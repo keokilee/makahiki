@@ -28,7 +28,7 @@ LOGGED_IN_CSS_IMPORT = '<link rel="stylesheet" href="{0}css/{1}/logged_in_base.c
 
 PAGE_CSS_IMPORT = {
   "home": '<link rel="stylesheet" href="{0}css/{1}/pages/home.css">',
-  "landing": '<link rel="stylesheet" href="{0}css/{1}/pages/index.css">',
+  "landing": '<link rel="stylesheet" href="{0}css/{1}/pages/landing.css">',
   "mobile": '<link rel="stylesheet" href="{0}css/{1}/pages/mobile.css">',
   "news": '<link rel="stylesheet" href="{0}css/{1}/pages/news.css">',
   "view_activities": '<link rel="stylesheet" href="{0}css/{1}/pages/view_activities.css">',
