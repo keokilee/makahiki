@@ -16,39 +16,8 @@
     <div {% get_id_and_classes "news-events-title" %}>
       Upcoming Events
     </div>
-    <div {% get_id_and_classes "news-events-content" %}>
-      <table>
-        <tr>
-          <th>Event (points)</th>
-          <th>Date</th>
-          <th>Location</th>
-        </tr>
-        <tr>
-          <td>Sustainable UH talk (5)</td>
-          <td>Mon</td>
-          <td>Mokihana Roof Lounge</td>
-        </tr>
-        <tr>
-          <td>An Inconvenient Truth (5)</td>
-          <td>Tue</td>
-          <td>Ilima Roof Lounge</td>
-        </tr>
-        <tr>
-          <td>Surfrider Beach Cleanup (5)</td>
-          <td>Wed</td>
-          <td>Ilima Parking Lot</td>
-        </tr>
-        <tr>
-          <td>Blue Planet Talk(5)</td>
-          <td>Wed</td>
-          <td>Lehua Roof Lounge</td>
-        </tr>
-        <tr>
-          <td>AMP Poetry Slam (5)</td>
-          <td>Fri</td>
-          <td>Hale Aloha Cafeteria</td>
-        </tr>
-      </table>
+    <div class="{% get_id_and_classes "news-events-content" %}">
+      {% include "view_activities/events.html" %}
     </div>
   </div>
   

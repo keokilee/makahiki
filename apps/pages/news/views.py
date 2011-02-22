@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 
 from components.floors.models import Post
+from components.activities import get_available_events
 from pages.news.forms import WallForm
 
 from pages.news import DEFAULT_POST_COUNT
@@ -15,13 +16,18 @@ from pages.news import DEFAULT_POST_COUNT
 def index(request):
   floor = request.user.get_profile().floor
   
+  # Get floor posts.
   posts = Post.objects.filter(floor=floor).order_by("-id")
   post_count = posts.count
   posts = posts[:DEFAULT_POST_COUNT]
   more_posts = True if post_count > DEFAULT_POST_COUNT else False
   
+  # Get upcoming events.
+  events = get_available_events(request.user)
+  
   return render_to_response("news/index.html", {
     "posts": posts,
+    "events": events,
     "wall_form": WallForm(),
     "more_posts": more_posts,
   }, context_instance=RequestContext(request))
