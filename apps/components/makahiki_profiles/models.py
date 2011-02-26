@@ -50,12 +50,16 @@ class ScoreboardEntry(models.Model):
           Q(points__gt=entry.points) | 
           Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
           round_name=round_name,
+          profile__user__is_staff=False,
+          profile__user__is_superuser=False,
       ).count() + 1
       
     # Users who have not done anything yet are assumed to be last.
     return ScoreboardEntry.objects.filter(
         points__gt=entry.points,
         round_name=round_name,
+        profile__user__is_staff=False,
+        profile__user__is_superuser=False,
     ).count() + 1
     
   @staticmethod
@@ -156,11 +160,15 @@ class Profile(models.Model):
           Q(points__gt=self.points) | 
           Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission),
           floor=self.floor,
+          user__is_staff=False,
+          user__is_superuser=False,
       ).count() + 1
     
     return Profile.objects.filter(
         points__gt=self.points,
         floor=self.floor,
+        user__is_staff=False,
+        user__is_superuser=False,
     ).count() + 1
       
     
@@ -173,11 +181,15 @@ class Profile(models.Model):
     if self.last_awarded_submission:
       return Profile.objects.filter(
           Q(points__gt=self.points) |
-          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission)
+          Q(points=self.points, last_awarded_submission__gt=self.last_awarded_submission),
+          user__is_staff=False,
+          user__is_superuser=False,
       ).count() + 1
     
     return Profile.objects.filter(
         points__gt=self.points,
+        user__is_staff=False,
+        user__is_superuser=False,
     ).count() + 1
   
   def add_points(self, points, submission_date):
