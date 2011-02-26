@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
+from components.activities.models import Commitment, CommitmentMember
 from components.floors.models import Floor, Post
 from pages.news import DEFAULT_POST_COUNT
 
@@ -20,8 +21,20 @@ class NewsFunctionalTestCase(TestCase):
   
   def testIndex(self):
     """Check that we can load the index page."""
+    # Create a commitment that will appear on the news page.
+    commitment = Commitment(
+                title="Test commitment",
+                description="A commitment!",
+                point_value=10,
+    )
+    commitment.save()
+    
+    member = CommitmentMember(commitment=commitment, user=self.user)
+    member.save()
+    
     response = self.client.get(reverse("news_index"))
     self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, commitment.title, 2)
     
   def testPost(self):
     """Test that we can add new post via AJAX."""

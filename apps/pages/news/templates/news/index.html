@@ -64,28 +64,22 @@
       My Public Commitments
     </div>
     <div {% get_id_and_classes "news-commitments-content" %}>
+      {% if commitment_members %}
       <table>
         <tr>
           <th>Commitment</th>
           <th>Expires</th>
         </tr>
+        {% for member in commitment_members %}
         <tr>
-          <td>Turn off lights after leaving room</td>
-          <td>Tue</td>
+          <td>{{member.commitment.title}}</td>
+          <td>{{member.completion_date}}</td>
         </tr>
-        <tr>
-          <td>Wash dishes in cold water</td>
-          <td>Tue</td>
-        </tr>
-        <tr>
-          <td>Use clothesline</td>
-          <td>Wed</td>
-        </tr>
-        <tr>
-          <td>Take bus</td>
-          <td>Thu</td>
-        </tr>
+        {% endfor %}
       </table>
+      {% else %}
+      <p>You are not participating in any commitments</p>
+      {% endif %}
     </div>
   </div>
 </div>

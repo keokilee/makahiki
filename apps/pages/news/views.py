@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 
 from components.floors.models import Post
-from components.activities import get_available_events
+from components.activities import get_available_events, get_current_commitment_members
 from pages.news.forms import WallForm
 
 from pages.news import DEFAULT_POST_COUNT
@@ -25,11 +25,15 @@ def index(request):
   # Get upcoming events.
   events = get_available_events(request.user)
   
+  # Get the user's current commitments.
+  members = get_current_commitment_members(request.user)
+  
   return render_to_response("news/index.html", {
     "posts": posts,
     "events": events,
     "wall_form": WallForm(),
     "more_posts": more_posts,
+    "commitment_members": members,
   }, context_instance=RequestContext(request))
   
 @login_required
