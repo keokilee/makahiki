@@ -11,15 +11,34 @@
     <h3>#{{floor.current_round_rank}}</h3> out of {{FLOOR_COUNT}} in all dorms
   </div>
 </div>
+
+<div id="header-floor-overall-rank2">
+  <div {% get_id_and_classes "header-floor-energy" %}>
+    <h3>314</h3>
+    kWh used in {{CURRENT_ROUND.title}}
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3>#3</h3> out of {{FLOOR_COUNT}} in all dorms
+  </div>
+</div>
 {% endif %}
 
-<!-- Second slideshow element -->
-<div id="header-floor-overall-rank2">
+<div id="header-floor-overall-rank3">
   <div {% get_id_and_classes "header-floor-points" %}>
     <h3>{{floor.points}}</h3>
     {{COMPETITION_POINT_NAME}}s overall
   </div>
   <div {% get_id_and_classes "header-floor-rank" %}>
     <h3>#{{floor.rank}}</h3> out of {{FLOOR_COUNT}} in all dorms
+  </div>
+</div>
+
+<div id="header-floor-overall-rank4">
+  <div {% get_id_and_classes "header-floor-energy" %}>
+    <h3>314</h3>
+    kWh used overall
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3>#3</h3> out of {{FLOOR_COUNT}} in all dorms
   </div>
 </div>

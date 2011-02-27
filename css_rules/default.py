@@ -51,6 +51,7 @@ CSS_IDS = {
   "header-floor-info": "span-4 last",
   "header-floor-name": "span-4 last",
   "header-floor-points": "span-2",
+  "header-floor-energy": "span-2",
   "header-floor-rank": "span-2 last",
   "header-floor-image": "span-2 last",
   "header-nav-links": "span-7 last",

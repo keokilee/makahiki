@@ -13,7 +13,8 @@
 }
 
 #header-user-rank h3, #header-floor-points h3, 
-#header-user-points h3, #header-floor-rank h3 {
+#header-user-points h3, #header-floor-rank h3,
+#header-floor-energy h3 {
   margin: 0px; 
   display:inline
 }
