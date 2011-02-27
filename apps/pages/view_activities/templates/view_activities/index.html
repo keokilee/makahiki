@@ -11,22 +11,22 @@
 {% endblock %}
 
 {% block body %}
-<div {% get_id_and_classes "activity-events+scoreboard" %}>
+<div {% get_id_and_classes "activity-events-scoreboard" %}>
   
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "activity-events-box" %}>
+    <div {% get_id_and_classes "activity-events-title" %}>
       Upcoming Events
     </div>   
-    <div class="{% insert_classes "widget-body" %}">    
+    <div {% get_id_and_classes "activity-events-content" %}>    
       {% include "view_activities/events.html" %}
     </div>
   </div>
   
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "activity-scoreboard-box" %}>
+    <div {% get_id_and_classes "activity-scoreboard-title" %}>
       Points Score Board
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "activity-scoreboard-content" %}>
       {% include "view_activities/scoreboard.html" %}
     </div>
   </div>
