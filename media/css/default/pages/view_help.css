@@ -26,15 +26,15 @@ ul {
   padding: 10px;
 }
 
-#ask-form {
+#help-ask-form {
   margin: 10px 0; height: auto
 }
 
-#ask-submit {
+#help-ask-submit {
   margin: 0; 
   padding: 0
 }
 
-#ask-submit input {
+#help-ask-submit input {
   float: right
 }

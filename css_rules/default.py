@@ -43,19 +43,16 @@ CSS_IDS = {
   "header-title": "span-3",
   "header-info": "span-12",
   "header-nav": "span-7 last",
-  
   "header-user-info": "span-4",
   "header-avatar": "span-2",
   "header-user-username": "span-4 last",
   "header-user-points": "span-2",
   "header-user-rank": "span-2 last",
-  
   "header-floor-info": "span-4 last",
   "header-floor-name": "span-4 last",
   "header-floor-points": "span-2",
   "header-floor-rank": "span-2 last",
   "header-floor-image": "span-2 last",
-  
   "header-nav-links": "span-7 last",
   "header-logout": "span-7 last",
   
@@ -129,11 +126,23 @@ CSS_IDS = {
   "prizes-info": "span-10 last",
   
   "help-video": "span-8",
+  "help-video-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-video-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-video-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "help-rules-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-rules-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-rules-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "help-faq-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-faq-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-faq-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "help-ask-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-ask-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-ask-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "help-rules": "span-7 prepend-1",
   "help-faq": "span-7 prepend-1 last",
   "help-ask": "span-15 prepend-9 last",
-  "ask-form": "span-14 last",
-  "ask-submit": "span-14 last",
+  "help-ask-form": "span-14 last",
+  "help-ask-submit": "span-14 last",
 }
 
 CSS_CLASSES = {
