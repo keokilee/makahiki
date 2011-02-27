@@ -12,11 +12,11 @@
 
 {% block body %}
 <div {% get_id_and_classes "profile-form" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "profile-form-box" %}>
+    <div {% get_id_and_classes "profile-form-title" %}>
       My Info
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "profile-form-content" %}>
       {% include "view_profile/components/form.html" %}
     </div>
   </div>

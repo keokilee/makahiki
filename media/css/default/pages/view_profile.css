@@ -18,6 +18,14 @@
   padding: 0px;
 }
 
+#profile-form-submit {
+  text-align: center;
+}
+
+#profile-form-submit-button {
+  margin: 5px 0;
+}
+
 #user-badge-table td {
   vertical-align: middle
 }

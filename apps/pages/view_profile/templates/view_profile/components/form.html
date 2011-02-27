@@ -1,74 +1,76 @@
 {% load avatar_tags %}
 {% load class_tags %}
 
-<form action="{% url profile_index %}" method="post">
-  <table>
+<form {% get_id_and_classes "profile-form-contents" %} action="{% url profile_index %}" method="post">
+  <table {% get_id_and_classes "profile-form-table" %}>
     {% if form.display_name.errors %}
     <tr><td colspan="2">{{form.display_name.errors}}</td></tr>
     {% endif %}
-    <tr>
-      <td>{{form.display_name.label_tag}}</td>
-      <td>{{form.display_name}}</td>
+    <tr {% get_id_and_classes "profile-form-display-name" %}>
+      <td {% get_id_and_classes "profile-form-display-name-label" %}>{{form.display_name.label_tag}}</td>
+      <td {% get_id_and_classes "profile-form-display-name-fields" %}>{{form.display_name}}</td>
     </tr>
-    <tr>
-      <td><label for="picture">Picture</label></td>
-      <td>
+    <tr {% get_id_and_classes "profile-form-picture" %}>
+      <td {% get_id_and_classes "profile-form-picture-label" %}><label for="picture">Picture</label></td>
+      <td {% get_id_and_classes "profile-form-picture-change" %}>
         <img src="{% avatar_url user 60 %}"/>
         <a href="{% url avatar_change %}" style="padding-left: 15px" target="_blank">change picture</a>
       </td>
     </tr>
-    <tr>
-      <td>{{form.about.label_tag}}</td>
-      <td>{{form.about}}</td>
+    <tr {% get_id_and_classes "profile-form-about" %}>
+      <td {% get_id_and_classes "profile-form-about-label" %}>{{form.about.label_tag}}</td>
+      <td {% get_id_and_classes "profile-form-about-fiields" %}>{{form.about}}</td>
     </tr>
-    <tr>
+    <tr {% get_id_and_classes "profile-form-logged-in" %}>
       <td>{{form.stay_logged_in.label_tag}}</td>
       <td>{{form.stay_logged_in}}</td>
     </tr>
     {% if fb_enabled %}
-    <tr>
-      <td colspan="2">Facebook Settings</td>
+    <tr {% get_id_and_classes "profile-form-fb" %}>
+      <td colspan="2" {% get_id_and_classes "profile-form-fb-header" %}>Facebook Settings</td>
     </tr>
     {% if fb_profile %}
-      <tr><td colspan="2">
-        Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a>
-      </td></tr>
-      <tr>
-        <td colspan="2">{{form.facebook_can_post}}Post to Wall</td>
+      <tr {% get_id_and_classes "profile-form-fb-profile" %}>
+        <td {% get_id_and_classes "profile-form-fb-profile-label" %} colspan="2">Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a></td>
+      </tr>
+      <tr {% get_id_and_classes "profile-form-fb-can-post" %}>
+        <td {% get_id_and_classes "profile-form-fb-can-post-fields" %}>{{form.facebook_can_post}}Post to Wall</td>
       </tr>
     {% else %}
-      <tr><td colspan="2">
-        <fb:login-button id="fb_login" length="long" perms="offline_access,publish_stream" onlogin="location.reload()"></fb:login-button>
-      </td></tr>
+      <tr {% get_id_and_classes "profile-form-fb-login" %}>
+        <td colspan="2" {% get_id_and_classes "profile-form-fb-login-button" %}>
+          <fb:login-button id="fb_login" length="long" perms="offline_access,publish_stream" onlogin="location.reload()"></fb:login-button>
+        </td>
+      </tr>
     {% endif %}
     {% endif %}
-    <tr>
-      <td colspan="2">Contact Info for Reminders</td>
+    <tr {% get_id_and_classes "profile-form-contact" %}>
+      <td {% get_id_and_classes "profile-form-contact-label" %} colspan="2">Contact Info for Reminders</td>
     </tr>
     {% if form.contact_email.errors %}
     <tr><td colspan="2">{{form.contact_email.errors}}</td></tr>
     {% endif %}
-    <tr>
-      <td><label for="id_event_email">Email</label></td>
-      <td>{{form.contact_email}}</td>
+    <tr {% get_id_and_classes "profile-form-contact-email" %}>
+      <td {% get_id_and_classes "profile-form-contact-email-label" %}><label for="id_event_email">Email</label></td>
+      <td {% get_id_and_classes "profile-form-contact-email-fields" %}>{{form.contact_email}}</td>
     </tr>
     {% if form.contact_text.errors %}
     <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
     {% endif %}
-    <tr>
-      <td><label for="id_event_text">Text</label></td>
-      <td>
+    <tr {% get_id_and_classes "profile-form-contact-text" %}>
+      <td {% get_id_and_classes "profile-form-contact-text-label" %}><label for="id_event_text">Text</label></td>
+      <td {% get_id_and_classes "profile-form-contact-text-fields" %}>
         {{form.contact_text}}
         {{form.contact_carrier}}
       </td>
     </tr>
     </tr>
   </table>
-  <div style="text-align: center">
-    <a href="#" id="profile-submit" style="margin: 5px 0" class="{% insert_classes "ui-button" %}">Save Changes</a>
+  <div {% get_id_and_classes "profile-form-submit" %}>
+    <a href="#" {% get_id_and_classes "profile-form-submit-button" %}>Save Changes</a>
     <script type="text/javascript">
       $(document).ready(function() {
-        $("#profile-submit").click(function() {
+        $("#profile-form-submit-button").click(function() {
           $(this).parents("form").submit();
         });
       });

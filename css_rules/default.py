@@ -82,8 +82,12 @@ CSS_IDS = {
   "wall-post": "",
   
   "profile-form": "span-8",
+  "profile-form-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "profile-form-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "profile-form-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "profile-badges": "span-8",
   "profile-history": "span-8 last",
+  "profile-form-submit-button": "ui-button ui-state-default ui-corner-all",
   
   "landing-logo": "span-3",
   "landing-title": "span-21 last",
