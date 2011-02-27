@@ -39,7 +39,7 @@
   {# This is where the contents of the page will be inserted #}
   {% block body %}{% endblock %}
   
-  <div id="footer">
+  <div {% get_id_and_classes "footer" %}>
       {% block footer %}{% endblock %}
   </div>
   

@@ -85,6 +85,8 @@ CSS_IDS = {
   "landing-page": "span-24 last",
   "landing-poster": "",
   "landing-sponsors": "span-24 last",
+  "landing-button-participant": "ui-button ui-widget ui-corner-all ui-state-active",
+  "landing-button-non-participant": "ui-button ui-widget ui-corner-all ui-state-active",
   
   "energy-power+scoreboard": "span-6",
   "energy-status": "span-18 last",
@@ -110,8 +112,6 @@ CSS_IDS = {
 }
 
 CSS_CLASSES = {
-  "landing-button": "ui-button ui-widget ui-corner-all ui-state-active",
-  
   "prizes-add-button": "ui-button ui-state-default ui-corner-all",
   "prizes-remove-button": "ui-button ui-state-error ui-corner-all",
   "prizes-disabled-button": "ui-button ui-state-disabled ui-corner-all",

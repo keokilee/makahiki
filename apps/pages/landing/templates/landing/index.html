@@ -29,7 +29,7 @@ at Manoa campus for Fall 2011.
 <p> <p>
 
 <a href="{% url home_index %}">
-  <button class="{% insert_classes "landing-button" %}">
+  <button {% get_id_and_classes "landing-button-participant" %}>
   	<h3>I live in Ilima, Lehua, or Mokihana</h3>
   	<h5>You will be prompted for your <br>
   	UH username and password, it's safe</h5>
@@ -38,7 +38,7 @@ at Manoa campus for Fall 2011.
 
 <p>
 
-<button class="{% insert_classes "landing-button" %}">
+<button {% get_id_and_classes "landing-button-non-participant" %}>
 	<h3><a href="/">I don't live in those dorms</a></h3>
 	<h5><a href="/">but I'd like to know more about the Kukui Cup</a></h5>
 </button>
