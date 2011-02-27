@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Completions</th>
+  </tr>
+  {% for activity in popular_activities %}
+  <tr>
+    <td>{{activity.title}}</td>
+    <td>{{activity.completions}}</td>
+  </tr>
+  {% endfor %}
+</table>

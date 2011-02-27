@@ -3,7 +3,7 @@ import datetime
 from django.db.models import Q
 from django.conf import settings
 from components.activities.models import *
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from django.core.exceptions import ObjectDoesNotExist
 
 # Directory in which to save image files for ActivityMember verification.
@@ -11,6 +11,18 @@ ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
 
 # Maximum number of commitments user can have at one time.
 MAX_COMMITMENTS = 5
+
+def get_popular_activities():
+  """Gets the most popular activities in terms of completions."""
+  return Activity.objects.filter(
+      activitymember__award_date__isnull=False
+  ).annotate(completions=Count("activitymember")).order_by("completions")
+  
+def get_popular_commitments():
+  """Gets the most popular commitments in terms of completions."""
+  return Commitment.objects.filter(
+      commitmentmember__award_date__isnull=False,
+  ).annotate(completions=Count("commitmentmember")).order_by("completions")
 
 def get_incomplete_tasks(user):
   """Gets user's incomplete activities and commitments. Returns a dictionary."""

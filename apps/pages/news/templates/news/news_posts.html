@@ -4,17 +4,14 @@
   
   {% if forloop.last and more_posts %}
   <li {% get_id_and_classes "view-more-posts" %}>
-    See More
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $("#view_more_posts").click(function() {
-          $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
-            $("#view-more-posts").remove();
-            $("#wall-posts").append(data.contents);
-          });
-        });
+    <a href="#" onclick='
+      $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
+        $("#view-more-posts").remove();
+        $("#wall-posts").append(data.contents);
       });
-    </script>
+
+      return false;'>See more</a>
   </li>
   {% endif %}
 {% endfor %}
+

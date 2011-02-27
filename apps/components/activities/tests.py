@@ -20,6 +20,7 @@ class ActivitiesUnitTestCase(TestCase):
                       pub_date=datetime.datetime.today(),
                       expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
                       confirm_type="text",
+                      type="activity",
                     )
     self.activity.save()
     
@@ -35,6 +36,16 @@ class ActivitiesUnitTestCase(TestCase):
       },
     }
     
+  def testPopularActivities(self):
+    """Check which activity is the most popular."""
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
+    activity_member.approval_status = "approved"
+    activity_member.save()
+    
+    activities = get_popular_activities()
+    self.assertEqual(activities[0], self.activity)
+    self.assertEqual(activities[0].completions, 1, "Most popular activity should have one completion.")
+    
   def testActivityOrdering(self):
     """Check the ordering of two activities.  If they do not have priorities, they should be alphabetical."""
     activity2 = Activity(
@@ -45,6 +56,7 @@ class ActivitiesUnitTestCase(TestCase):
                   pub_date=datetime.datetime.today(),
                   expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
                   confirm_type="text",
+                  type="activity"
                 )
     activity2.save()
     
@@ -64,7 +76,7 @@ class ActivitiesUnitTestCase(TestCase):
     
   def testGetEvents(self):
     """Verify that get_available_activities does not retrieve events."""
-    self.activity.is_event = True
+    self.activity.type = "event"
     self.activity.save()
     
     activities = get_available_activities(self.user)
@@ -202,6 +214,16 @@ class CommitmentsUnitTestCase(TestCase):
       },
     }
   
+  def testPopularCommitments(self):
+    """Tests that we can retrieve the most popular commitments."""
+    commitment_member = CommitmentMember(user=self.user, commitment=self.commitment)
+    commitment_member.award_date = datetime.datetime.today()
+    commitment_member.save()
+    
+    commitments = get_popular_commitments()
+    self.assertEqual(commitments[0], self.commitment)
+    self.assertEqual(commitments[0].completions, 1, "Most popular commitment should have one completion.")
+    
   def testCompletionAddsPoints(self):
     """Tests that completing a task adds points."""
     points = self.user.get_profile().points
