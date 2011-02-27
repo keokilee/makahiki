@@ -122,8 +122,14 @@ CSS_IDS = {
   "activity-task-details":"span-15 last",
   
   "prizes-list": "span-11",
+  "prizes-list-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "prizes-list-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "prizes-list-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "prizes-raffle-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "prizes-raffle-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "prizes-raffle-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "prizes-raffle": "span-13 last",
-  "prizes-info": "span-10 last",
+  "prizes-raffle-info": "span-10 last",
   
   "help-video": "span-8",
   "help-video-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",

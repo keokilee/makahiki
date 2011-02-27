@@ -12,11 +12,11 @@
 
 {% block body %}
 <div {% get_id_and_classes "prizes-list" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "prizes-list-box" %}>
+    <div {% get_id_and_classes "prizes-list-title" %}>
       Prizes and Prize Winners
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "prizes-list-content" %}>
       <form>
         <select>
           <option>Round 1</option>
@@ -25,15 +25,15 @@
         </select>
       </form>
       
-      <table id="prizes-list-table">
+      <table {% get_id_and_classes "prizes-list-table" %}>
         <tr>
-          <th id="prize-table-header">Prize</th>
-          <th id="prize-num-awarded-header">Number awarded</th>
-          <th id="prize-criteria-header">Criteria</th>
+          <th {% get_id_and_classes "prizes-list-table-header" %}>Prize</th>
+          <th {% get_id_and_classes "prizes-list-table-awarded-header" %}>Number awarded</th>
+          <th {% get_id_and_classes "prizes-list-table-criteria-header" %}>Criteria</th>
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/ipod-nano.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/ipod-nano.jpg"/>
             <a href="#">
               iPod Nano
             </a>
@@ -46,7 +46,7 @@
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/Pizza.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/Pizza.jpg"/>
             <a href="#">
               Pizza party
             </a>
@@ -59,7 +59,7 @@
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/ice-cream-cone.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/ice-cream-cone.jpg"/>
             <a href="#">
               Ice cream party
             </a>
@@ -76,21 +76,21 @@
 </div>
 
 <div {% get_id_and_classes "prizes-raffle" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "prizes-raffle-box" %}>
+    <div {% get_id_and_classes "prizes-raffle-title" %}>
       Round 1 Raffle Game
     </div>
-    <div class="{% insert_classes "widget-body" %}">
-      <div {% get_id_and_classes "prizes-info" %}>
+    <div {% get_id_and_classes "prizes-raffle-content" %}>
+      <div {% get_id_and_classes "prizes-raffle-info" %}>
         Your total raffle tickets: 2 Allocated right now: 1 Available: 1
       </div>
-      <table id="raffle-table">
+      <table {% get_id_and_classes "prizes-raffle-table" %}>
         <tr>
-          <th id="raffle-prize-header">Prize</th>
-          <th id="raffle-user-tickets-header">Your tickets</th>
-          <th id="raffle-total-tickets-header">Total tickets</th>
-          <th id="raffle-odds-header">Current odds</th>
-          <th id="raffle=-options-header">Change ticket allocation</th>
+          <th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th>
+          <th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th>
+          <th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th>
+          <th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th>
+          <th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th>
         </tr>
         <tr>
           <td>
@@ -109,7 +109,7 @@
         </tr>
         <tr>
           <td>
-            <img src="{{STATIC_URL}}images/prizes/surf_lessons.jpg" style="display:inline"/>
+            <img src="{{STATIC_URL}}images/prizes/surf_lessons.jpg"/>
             <a href="#">
               Surf lessons
             </a>
@@ -138,9 +138,9 @@
           </td>
         </tr>
       </table>
-      <div id="raffle-footer">
+      <div id="prizes-raffle-footer">
         You receive 1 raffle ticket for every 25 awarded Kukui Cup points.<br/>
-        <span style="font-weight: bold">Deadline for allocating tickets for Round 1 Raffle: Sunday, October 9, 2011, 8pm</span><br/>
+        <span id="prizes-raffle-footer-deadline">Deadline for allocating tickets for Round 1 Raffle: Sunday, October 9, 2011, 8pm</span>
         Round 1 raffle winners to be notified via email on Monday, October 10, 2011 at 10am
       </div>
     </div>

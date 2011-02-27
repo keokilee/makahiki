@@ -22,7 +22,11 @@
   text-align: center
 }
 
-#prize-table-header {
+#prizes-list-table img {
+  display: inline;
+}
+
+#prizes-list-table-header {
   width: 45%
 }
 
@@ -30,29 +34,34 @@
   width: 10%;
 }
 
-#prizes-info {
+#prizes-raffle-info {
   border: 1px solid black; 
   margin: -1px; 
   margin: 10px 50px;
 }
 
-#raffle-user-tickets-header, #raffle-total-tickets-header, #raffle-odds-header {
+#prizes-raffle-user-tickets-header, #prizes-raffle-total-tickets-header, #prizes-raffle-odds-header {
   width: 10%;
 }
 
-#raffle-options-header {
+#prizes-raffle-options-header {
   width: 30%;
 }
 
-#raffle-table .ui-button {
+#prizes-raffle-table .ui-button {
   width: 40px;
 }
 
-#raffle-table td img {
+#prizes-raffle-table td img {
   display:inline;
 }
 
-#raffle-footer {
+#prizes-raffle-footer {
   text-align: center; 
   margin-bottom: 10px
+}
+
+#prizes-raffle-footer-deadline {
+  font-weight: bold;
+  display: block;
 }
