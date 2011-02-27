@@ -4,3 +4,11 @@
 #id_about {
   height: 50px;
 }
+
+#home-news, #home-prizes, #home-help, #home-profile {
+  text-align: center;
+}
+
+#home-energy {
+  text-align: right;
+}

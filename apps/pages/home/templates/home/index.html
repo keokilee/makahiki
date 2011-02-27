@@ -14,10 +14,10 @@
 <!-- Top Row-->
 <div {% get_id_and_classes "home-energy" %}>
   <a href="/energy">
-    <img src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" Align="Right"/>
+    <img {% get_id_and_classes "home-energy-icon" %} src="{{ STATIC_URL}}images/icons/energy.png" height="85" width="85" align="right"/>
   </a>
-  <h6 style="text-align: right">Go Low</h6>
-  <p style="text-align: right">
+  <h6 {% get_id_and_classes "home-energy-title" %}>Go Low</h6>
+  <p {% get_id_and_classes "home-energy-content" %}>
     Observe and Conserve Energy<br/>
     Set and track conservation goals<br/>
     Compare to other
@@ -26,10 +26,10 @@
 
 <div {% get_id_and_classes "home-activities" %}>
 <a href="/activities">
-<img src="{{ STATIC_URL}}images/icons/activities.png" height="85" width="85" Align="Left"/>
+<img {% get_id_and_classes "home-activities-icon" %} src="{{ STATIC_URL}}images/icons/activities.png" height="85" width="85" Align="Left"/>
 </a>
-<h6>Get Nutz</h6>
-<p>
+<h6 {% get_id_and_classes "home-activities-title" %}>Get Nutz</h6>
+<p {% get_id_and_classes "home-activities-content" %}>
 Do activities and make committments<br/>
 Earn Kukuicup points<br/>
 See where you stand
@@ -38,59 +38,51 @@ See where you stand
 
 <!-- Middle Row-->
 <div {% get_id_and_classes "home-news" %}>
-<CENTER>
-<h6>News</h6>
+<h6 {% get_id_and_classes "home-news-title" %}>News</h6>
 <a href="/news">
-<img src="{{ STATIC_URL}}images/icons/news.png" height="65" width="65" />
+<img {% get_id_and_classes "home-news-icon" %} src="{{ STATIC_URL}}images/icons/news.png" height="65" width="65" />
 </a>
-<p style="text-align: center">
+<p {% get_id_and_classes "home-news-content" %}>
 What are people doing?<br/>
 Your public comments<br/>
 Top activities and events
 </p>
-</CENTER>
 </div>
 
 <div {% get_id_and_classes "home-prizes" %}>
-<CENTER>
-<h6>Prizes</h6>
+<h6 {% get_id_and_classes "home-prizes-title" %}>Prizes</h6>
 <a href="/prizes">
-<img src="{{ STATIC_URL}}images/icons/prizes.png" height="65" width="65" />
+<img  {% get_id_and_classes "home-prizes-icon" %} src="{{ STATIC_URL}}images/icons/prizes.png" height="65" width="65" />
 </a>
-<p style="text-align: center">
+<p  {% get_id_and_classes "home-prizes-content" %}>
 See the prizes<br/>
 Allocate your points<br/>
 Monitor your chances
 </p>
-</CENTER>
 </div>
 
-<div {% get_id_and_classes "home-learn" %}>
-<CENTER>
-<h6>Learn</h6>
+<div {% get_id_and_classes "home-help" %}>
+<h6 {% get_id_and_classes "home-help-title" %}>Help</h6>
 <a href="/help">
-<img src="{{ STATIC_URL}}images/icons/help.png" height="65" width="65" />
+<img {% get_id_and_classes "home-help-icon" %} src="{{ STATIC_URL}}images/icons/help.png" height="65" width="65" />
 </a>
-<p style="text-align: center">
+<p {% get_id_and_classes "home-help-content" %}>
 Get acquainted with the Kukuicup<br/>
 Watch an introductory video<br/>
 Learn the rules
 </p>
-</CENTER>
 </div>
 
 <div {% get_id_and_classes "home-profile" %}>
-<CENTER>
-<h6>Profile</h6>
+<h6 % get_id_and_classes "home-profile-title" %}>Profile</h6>
 <a href="/profile">
-<img src="{{ STATIC_URL}}images/icons/profile.png" height="65" width="65" />
+<img % get_id_and_classes "home-profile-icon" %} src="{{ STATIC_URL}}images/icons/profile.png" height="65" width="65" />
 </a>
-<p style="text-align: center">
+<p % get_id_and_classes "home-profile-content" %}>
 Manage your Settings<br/>
 Connect to facebook<br/>
 Change your picture
 </p>
-</CENTER>
 </div>
 <div style="clear:both"></div>
 {% endblock %}

@@ -63,7 +63,7 @@ CSS_IDS = {
   "home-activities": "span-11 prepend-1 last",
   "home-news": "span-6 prepend-2",
   "home-prizes": "span-6 prepend-7 last",
-  "home-learn": "span-6 prepend-5",
+  "home-help": "span-6 prepend-5",
   "home-profile": "span-6 prepend-1 last",
   
   "news-events+popular+activities": "span-8",
