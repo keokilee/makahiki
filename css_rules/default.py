@@ -98,8 +98,17 @@ CSS_IDS = {
   "landing-button-participant": "ui-button ui-widget ui-corner-all ui-state-active",
   "landing-button-non-participant": "ui-button ui-widget ui-corner-all ui-state-active",
   
-  "energy-power+scoreboard": "span-6",
+  "energy-power-scoreboard": "span-6",
   "energy-status": "span-18 last",
+  "energy-power": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "energy-power-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "energy-power-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "energy-scoreboard": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "energy-scoreboard-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "energy-scoreboard-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  "energy-status-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "energy-status-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "energy-status-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
 
   "activity-events-scoreboard": "span-9",
   "activity-events-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",

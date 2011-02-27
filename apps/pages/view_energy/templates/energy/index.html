@@ -12,12 +12,12 @@
 
 {% block body %}
 
-<div {% get_id_and_classes "energy-power+scoreboard" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+<div {% get_id_and_classes "energy-power-scoreboard" %}>
+  <div {% get_id_and_classes "energy-power" %}>
+    <div {% get_id_and_classes "energy-power-title" %}>
       Current Lounge Power
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "energy-power-content" %}>
       <center>
       {% include "energy/power.html" %}  
       </center>
@@ -26,11 +26,11 @@
   
   <p>
 
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "energy-scoreboard" %}>
+    <div {% get_id_and_classes "energy-scoreboard-title" %}>
       Overall kWh Score Board
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "energy-scoreboard-content" %}>
       {% include "energy/scoreboard.html" %}
       <div>#1 at end of round wins a prize!</div>
     </div>
@@ -38,15 +38,15 @@
 </div>
 
 <div {% get_id_and_classes "energy-status" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "energy-status-box" %}>
+    <div {% get_id_and_classes "energy-status-title" %}>
       Daily Energy Goal Status
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "energy-status-content" %}>
       <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
       <font color="red"><b>Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  Status: {{actual}} kWh ({{over}} kWh over goal)</b></font>
 
-      <fieldset>
+      <fieldset {% get_id_and_classes "energy-status-progress" %}>
 	    <legend>Daily Energy Goal Progress</legend>
         <table>
           <tr>
@@ -62,7 +62,7 @@
         </table>
       </fieldset>
 	
-      <fieldset  >
+      <fieldset {% get_id_and_classes "energy-status-how" %}>
 	    <legend>How can we make our daily goal?</legend>		
         <table>
           <tr>
@@ -80,7 +80,7 @@
         </table> 
       </fieldset>
 
-      <fieldset >
+      <fieldset {% get_id_and_classes "energy-status-posts" %}>
     	<legend>Organize with your lounge peeps</legend>
           Got ideas on how to conserve energy? Share it on the lounge wall:<br>
 		  <input type="text" size="50" value="" />
