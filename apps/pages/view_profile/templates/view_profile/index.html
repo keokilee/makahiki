@@ -23,17 +23,17 @@
 </div>
 
 <div {% get_id_and_classes "profile-badges" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "profile-badges-box" %}>
+    <div {% get_id_and_classes "profile-badges-title" %}>
       My Badges
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "profile-badges-content" %}>
       <h5>Individual Badges</h5>
-      <table id="user-badge-table">
+      <table {% get_id_and_classes "profile-user-badge-table" %}>
         <tr>
-          <th class="{% insert_classes "badge-image-header" %}"></th>
-          <th class="{% insert_classes "badge-text-header" %}">Badge</th>
-          <th class="{% insert_classes "badge-achievement-header" %}">Achievement</th>
+          <th {% get_id_and_classes "profile-user-badge-image-header" %}></th>
+          <th {% get_id_and_classes "profile-user-badge-text-header" %}>Badge</th>
+          <th {% get_id_and_classes "profile-user-badge-achievement-header" %}>Achievement</th>
         </tr>
         {% if user.badges_earned.count > 0 %}
           {% for awarded in user.badges_earned.all %}
@@ -49,18 +49,18 @@
       </table>
       
       <h5>Lounge Badges</h5>
-      <table id="lounge-badge-table">
+      <table {% get_id_and_classes "profile-lounge-badge-table" %}>
         <tr>
-          <th class="{% insert_classes "badge-image-header" %}"></th>
-          <th class="{% insert_classes "badge-text-header" %}">Badge</th>
-          <th class="{% insert_classes "badge-achievement-header" %}">Achievement</th>
+          <th {% get_id_and_classes "profile-lounge-badge-image-header" %}></th>
+          <th {% get_id_and_classes "profile-lounge-badge-text-header" %}>Badge</th>
+          <th {% get_id_and_classes "profile-lounge-badge-achievement-header" %}>Achievement</th>
         </tr>
         <tr>
-          <td colspan="3" style="text-align: center">No lounge badges achieved so far</td>
+          <td {% get_id_and_classes "profile-lounge-badge-empty" %} colspan="3">No lounge badges achieved so far</td>
         </tr>
       </table>
       
-      <div id="badge-catalog-link">
+      <div {% get_id_and_classes "profile-badge-catalog" %}>
         <a href="#">See Badge Catalog</a>
       </div>
     </div>

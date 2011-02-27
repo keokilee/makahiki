@@ -86,6 +86,9 @@ CSS_IDS = {
   "profile-form-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "profile-form-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "profile-badges": "span-8",
+  "profile-badges-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "profile-badges-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "profile-badges-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "profile-history": "span-8 last",
   "profile-form-submit-button": "ui-button ui-state-default ui-corner-all",
   
@@ -159,10 +162,6 @@ CSS_CLASSES = {
   "prizes-add-button": "ui-button ui-state-default ui-corner-all",
   "prizes-remove-button": "ui-button ui-state-error ui-corner-all",
   "prizes-disabled-button": "ui-button ui-state-disabled ui-corner-all",
-  
-  "badge-image-header": "",
-  "badge-text-header": "badge-text-header",
-  "badge-achievement-header": "badge-achievement-header",
   
   "widget": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "widget-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
