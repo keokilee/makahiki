@@ -90,6 +90,9 @@ CSS_IDS = {
   "profile-badges-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "profile-badges-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "profile-history": "span-8 last",
+  "profile-history-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "profile-history-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "profile-history-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
   "profile-form-submit-button": "ui-button ui-state-default ui-corner-all",
   
   "landing-logo": "span-3",
