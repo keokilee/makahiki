@@ -51,12 +51,12 @@
 {% endblock %}
 
 {% block body %}
-<div {% get_id_and_classes "news-events+popular+activities" %}>
+<div {% get_id_and_classes "news-events-popular-activities" %}>
   <div {% get_id_and_classes "news-events" %}>
-    <div class="{% insert_classes "widget-title" %}">
+    <div {% get_id_and_classes "news-events-title" %}>
       Upcoming Events
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "news-events-content" %}>
       <table>
         <tr>
           <th>Event (points)</th>
@@ -93,10 +93,10 @@
   </div>
   
   <div {% get_id_and_classes "news-most-popular" %}>
-    <div class="{% insert_classes "widget-title" %}">
+    <div {% get_id_and_classes "news-most-popular-title" %}>
       Most Popular
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "news-most-popular-content" %}>
       <form>
         <select>
           <option>Activities</option>
@@ -131,10 +131,10 @@
   </div>
   
   <div {% get_id_and_classes "news-commitments" %}>
-    <div class="{% insert_classes "widget-title" %}">
+    <div {% get_id_and_classes "news-commitments-title" %}>
       My Public Commitments
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "news-commitments-content" %}>
       <table>
         <tr>
           <th>Commitment</th>
@@ -162,11 +162,11 @@
 </div>
 
 <div {% get_id_and_classes "news-wall" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "news-wall-box" %}>
+    <div {% get_id_and_classes "news-wall-title" %}>
       News Feed
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>
         <form id="news-post-form" action="{% url news_post %}" method="POST">
           {% csrf_token %}

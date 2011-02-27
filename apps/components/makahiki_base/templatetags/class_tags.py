@@ -33,10 +33,11 @@ def get_id_and_classes(key, theme="default"):
   try:
     if theme_rules.RETURN_CLASSES and len(theme_rules.CSS_IDS[key]) > 0: 
       return return_string + ' class="%s"' % theme_rules.CSS_IDS[key]
-
-    return return_string
+      
   except KeyError:
-    return ""
+    pass
+    
+  return return_string
   
 @register.simple_tag
 def import_css(static_url, theme="default"):
