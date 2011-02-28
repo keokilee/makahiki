@@ -48,12 +48,12 @@
 
       <fieldset {% get_id_and_classes "energy-status-progress" %}>
 	    <legend>Daily Energy Goal Progress</legend>
-        <table>
+        <table {% get_id_and_classes "energy-status-progress-table" %}>
           <tr>
             <td>
              {% include "energy/usage.html" %}
             </td>
-            <td>Each member receives 20 points<br/>
+            <td {% get_id_and_classes "energy-status-progress-about" %}>Each member receives 20 points<br/>
                   each day that we make our goal.<br/>
                   <a href="#">Want more info about your lounge's energy use?</a><br/>
                   <a href="#">Dive into the advanced energy page!</a><br/>
@@ -64,16 +64,16 @@
 	
       <fieldset {% get_id_and_classes "energy-status-how" %}>
 	    <legend>How can we make our daily goal?</legend>		
-        <table>
-          <tr>
-            <td>We need to conserve energy to meet our goal, but what does {{over}} kWh mean?<br/>
+        <table {% get_id_and_classes "energy-status-how-table" %}>
+          <tr {% get_id_and_classes "energy-status-how-calculator" %}>
+            <td {% get_id_and_classes "energy-status-how-calculator-content" %}>We need to conserve energy to meet our goal, but what does {{over}} kWh mean?<br/>
                 {{over}} kWh =
                 <select > <option>Playing XBox 360</option> </select>
                 <input type="text" value="5.2 hrs" size="6" readonly="yes"/> 
             </td> 
           </tr>
-          <tr>
-            <td>The following activities can help your lounge conserve energy, and you earn points!
+          <tr {% get_id_and_classes "energy-status-how-activities" %}>
+            <td {% get_id_and_classes "energy-status-how-activities-content" %}>The following activities can help your lounge conserve energy, and you earn points!
                  {% include "energy/golow_activities.html" %}
             </td>
           </tr>   
@@ -83,7 +83,7 @@
       <fieldset {% get_id_and_classes "energy-status-posts" %}>
     	<legend>Organize with your lounge peeps</legend>
           Got ideas on how to conserve energy? Share it on the lounge wall:<br>
-		  <input type="text" size="50" value="" />
+		  <input {% get_id_and_classes "energy-status-posts-button" %} type="text" size="50" value="" />
 	      <button type="button" >Send</button>
           {% include "energy/golow_posts.html" %}
       </fieldset>

@@ -1,8 +1,9 @@
-<div style="width: 230px; background-color: #F5F3E5; border: 1px solid green">
-  <div style="width: 200px; text-align: center; font-weight: bold">Energy (kWh)</div>
-  <table>
+{% load class_tags %}
+<div {% get_id_and_classes "energy-power-box" %}>
+  <div {% get_id_and_classes "energy-power-gauge-label" %}>Energy (kWh)</div>
+  <table {% get_id_and_classes "energy-power-gauge-table" %}>
     <tr>
-      <td style="font-size: 12px; font-weight: bold">Goal:</td>
+      <td {% get_id_and_classes "energy-power-gauge-table-goal" %}>Goal:</td>
       <td> 
         <div style="width:{{baseline_px}}px; height:20px; background-color:#F5F3E5; border: 1px solid black">
             <div style="width:{{percent}}%; height:20px; background-color:#3CB371; border-right:1px black solid;">
@@ -13,7 +14,7 @@
       </td>
     </tr>
     <tr>
-      <td style="font-size: 12px; font-weight: bold">Actual:</td>
+      <td {% get_id_and_classes "energy-power-gauge-table-actual" %}>Actual:</td>
       <td>
         <div style="width:{{actual_px}}px; height:20px; background-color:#3CB371; border: 1px solid black">
             <span style="position: absolute; width: 100px; font-size: small; font-weight: bold">&nbsp;{{actual}}</span>
@@ -22,6 +23,6 @@
     </tr>
   </table>
 
-  <div style="width: 200px; text-align: center; font-weight: bold; font-size: 12px">Over daily goal by {{over}}kWh!</div>
-  <div style="text-align: center; font-size: 10px">Last Update: {{last_update}}</div>
+  <div {% get_id_and_classes "energy-power-goal-info" %}>Over daily goal by {{over}}kWh!</div>
+  <div {% get_id_and_classes "energy-power-goal-updated" %}>Last Update: {{last_update}}</div>
 </div>

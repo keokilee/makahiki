@@ -44,7 +44,7 @@
           </tr>
           {% endfor %}
         {% else %}
-          <tr><td colspan="3">You don't have any badges yet!</td></tr>
+          <tr {% get_id_and_classes "profile-user-badge-empty" %}><td colspan="3">You don't have any badges yet!</td></tr>
         {% endif %}
       </table>
       

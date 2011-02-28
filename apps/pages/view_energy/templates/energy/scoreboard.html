@@ -1,7 +1,8 @@
-    <table >
+{% load class_tags %}
+    <table {% get_id_and_classes "energy-scoreboard-table" %}>
 		<thead><tr>
-			<th>Rank</th>
-			<th>Lounge</th>
+			<th {% get_id_and_classes "energy-scoreboard-table-rank" %}>Rank</th>
+			<th {% get_id_and_classes "energy-scoreboard-table-lounge" %}>Lounge</th>
             <th>kWh Used</th></thead>
 		</thead>
 		<tbody>
