@@ -1,3 +1,4 @@
+{% if popular_activities %}
 <table>
   <tr>
     <th>Activity</th>
@@ -10,3 +11,6 @@
   </tr>
   {% endfor %}
 </table>
+{% else %}
+<p>Be the first to complete an activity!</p>
+{% endif %}
