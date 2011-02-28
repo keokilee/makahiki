@@ -122,6 +122,7 @@ def setup_profile(request):
         # Need to download the image from the url and save it.
         photo_temp = NamedTemporaryFile(delete=True)
         fb_url = form.cleaned_data["facebook_photo"]
+        # print fb_url
         photo_temp.write(urllib2.urlopen(fb_url).read())
         photo_temp.flush()
         
