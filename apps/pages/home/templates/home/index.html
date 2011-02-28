@@ -92,12 +92,12 @@ Change your picture
   <div id="fb-root"></div>
   <script src="http://connect.facebook.net/en_US/all.js"></script>
   
-  <div id="setup-dialog" title="Introduction: Step 1 of 7">
+  <div {% get_id_and_classes "home-setup-dialog" %} title="Introduction: Step 1 of 7">
     {% include "home/first-login/welcome.html" %}
   </div>
   <script type="text/javascript">
     $(document).ready(function() {
-      $("#setup-dialog").dialog({
+      $("#home-setup-dialog").dialog({
         modal: true,
         width: 700,
         closeOnEscape: false,

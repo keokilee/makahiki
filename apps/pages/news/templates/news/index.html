@@ -25,11 +25,12 @@
         }
       });
       
-      $("#wall-post-submit").button({
+      var post_button = $("#wall-post-submit");
+      post_button.button({
         disabled: true
       });
       
-      $("#wall-post-submit").click(function() {
+      post_button.click(function() {
         if (!$(this).button("option", "disabled")) {
           $.post("{% url news_post %}", $("#news-post-form").serialize(), function(data) {
             if (data.message) {
@@ -168,18 +169,18 @@
     </div>
     <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>
-        <form id="news-post-form" action="{% url news_post %}" method="POST">
+        <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST">
           {% csrf_token %}
-          <div id="wall-post-errors"></div>
+          <div {% get_id_and_classes "wall-post-errors" %}></div>
           <div {% get_id_and_classes "wall-post" %}>
             {{wall_form.post}}
           </div>
-          <a id="wall-post-submit" href="#">Post</a>
+          <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a>
         </form>
       </div>
 
       {% if posts %}
-        <ul id="wall-posts">
+        <ul {% get_id_and_classes "wall-posts" %}>
           {% include "news/news_posts.html" %}
         </ul>
       {% else %}

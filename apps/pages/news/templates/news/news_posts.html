@@ -2,7 +2,7 @@
   {% include "news/user_post.html" %}
   
   {% if forloop.last and more_posts %}
-  <li id="view-more-posts">
+  <li {% get_id_and_classes "view-more-posts" %}>
     See More
     <script type="text/javascript">
       $(document).ready(function() {
