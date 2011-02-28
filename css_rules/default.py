@@ -30,7 +30,7 @@ PAGE_CSS_IMPORT = {
   "home": '<link rel="stylesheet" href="{0}css/{1}/pages/home.css">',
   "landing": '<link rel="stylesheet" href="{0}css/{1}/pages/landing.css">',
   "mobile": '<link rel="stylesheet" href="{0}css/{1}/pages/mobile.css">',
-  "news": '<link rel="stylesheet" href="{0}css/{1}/pages/news.css">',
+  "news": '<link rel="stylesheet" href="{0}css/{1}/pages/news.css">\n<script src="{0}js/news.js" type="text/javascript"></script>',
   "view_activities": '<link rel="stylesheet" href="{0}css/{1}/pages/view_activities.css">',
   "view_energy": '<link rel="stylesheet" href="{0}css/{1}/pages/view_energy.css">',
   "view_help": '<link rel="stylesheet" href="{0}css/{1}/pages/view_help.css">',
@@ -56,6 +56,9 @@ CSS_IDS = {
   "header-floor-image": "span-2 last",
   "header-nav-links": "span-7 last",
   "header-logout": "span-7 last",
+  
+  "user-cycle": "span-4 last",
+  "floor-cycle": "span-4 last",
   
   "home-energy": "span-11",
   "home-activities": "span-11 prepend-1 last",
@@ -173,5 +176,10 @@ CSS_CLASSES = {
   "ui-button": "ui-button ui-state-default ui-corner-all",
   
   "activity-task-button": "ui-button ui-state-default ui-corner-all",
-
+  
+  "user-post": "span-14 last",
+  'user-post-avatar': "span-2",
+  'news-photo': "photo",
+  'user-post-content': "span-12 last",
+  'user-post-date-string': "date_string",
 }

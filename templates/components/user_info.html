@@ -11,7 +11,7 @@
     <div {% get_id_and_classes "header-user-username" %}>
       {{profile.name}} ({{user.username}})
     </div>
-    <div id="user-cycle" class="span-4 last">
+    <div {% get_id_and_classes "user-cycle" %}>
       {% include "components/user_points.html" %}
     </div>
   </div>
@@ -22,7 +22,7 @@
     <div {% get_id_and_classes "header-floor-name" %}>
       {{floor}}
     </div>
-    <div id="floor-cycle" class="span-4 last"> 
+    <div {% get_id_and_classes "floor-cycle" %}> 
       {% include "components/floor_points.html" %}
     </div>
   </div>
