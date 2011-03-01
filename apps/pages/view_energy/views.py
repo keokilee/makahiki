@@ -48,7 +48,11 @@ def index(request):
   ## TODO. create the baseline table
   baseline = 24 
   energy = 22
-  percent_reduce = FloorEnergyGoal.objects.filter(floor=floor)[0].percent_reduction
+  percent_reduce = 0;
+  
+  goals = FloorEnergyGoal.objects.filter(floor=floor);
+  if goals.count() > 0:
+    percent_reduce = goals[0].percent_reduction
   
   percent = 100 - percent_reduce  
   goal = baseline * percent / 100
