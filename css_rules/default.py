@@ -4,7 +4,7 @@
 # Note that some of the "ids" are more like class names.  These rules act like "macro expansions" in the templates.
 
 # If True, the classes will be inserted.  Otherwise, the tags will be empty strings.
-RETURN_CLASSES = False
+RETURN_CLASSES = True
 
 CSS_IMPORTS = """
 <link rel="stylesheet" href="{0}css/{1}/screen.css" media="screen">

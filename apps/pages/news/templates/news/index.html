@@ -26,15 +26,22 @@
       Most Popular
     </div>
     <div {% get_id_and_classes "news-most-popular-content" %}>
-      <form>
-        <select>
-          <option>Activities</option>
-          <option>Commitments</option>
-          <option>Events</option>
-        </select>  
+      <form {% get_id_and_classes "news-most-popular-form" %} action="{% url news_popular_tasks %}" method="post">
+         {{popular_form.activity_type}}
       </form>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#news-most-popular-form").change(function() {
+            $.post("{% url news_popular_tasks %}", $("#news-most-popular-form").serialize(), function(data) {
+              $("#news-most-popular-tasks").html(data.contents);
+            });
+          })
+        });
+      </script>
       
-      {% include "news/popular_tasks.html" %}
+      <div {% get_id_and_classes "news-most-popular-tasks" %}>
+        {% include "news/popular_tasks.html" %}
+      </div>
     </div>
   </div>
   
@@ -78,6 +85,24 @@
           </div>
           <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a>
         </form>
+        <script type="text/javascript">
+          $("#wall-post-submit").click(function() {
+            if (!$("#wall-post-submit").button("option", "disabled")) {
+              $.post("{% url news_post %}", $("#news-post-form").serialize(), function(data) {
+                if (data.message) {
+                  $("#wall-post-errors").html(data.message);
+                }
+                else {
+                  $("#wall-post-errors").html("");
+                  $(data.contents).hide().prependTo("#wall-posts").fadeIn();
+                  $("textarea").val("");
+                  $("#wall-post-submit").button("option", "disabled", true);
+                }
+              });
+            }
+            return false;
+          });
+        </script>
       </div>
 
       {% if posts %}

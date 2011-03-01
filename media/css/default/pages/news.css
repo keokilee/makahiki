@@ -28,8 +28,9 @@
   padding: 0;
 }
 
-#news-most-popular .widget-body form select {
-  margin: 0 auto;
+#news-most-popular-form {
+  text-align: center;
+  margin: 0;
 }
 
 #wall-post {
