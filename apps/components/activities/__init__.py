@@ -192,8 +192,8 @@ def afterPublished(task_name):
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""
   expr = task.depends_on
-  if expr == None:
-    expr = 'False'
+  if expr == None or expr == "":
+    return False
   
   expr = expr.replace("completedAllOf(", "completedAllOf(user,")
   expr = expr.replace("completedSomeOf(", "completedSomeOf(user,")

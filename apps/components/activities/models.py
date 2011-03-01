@@ -12,31 +12,7 @@ from components.makahiki_base.models import Like
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
-  
-# These models represent the different types of activities users can commit to.
-class CommonBase(models.Model):
-  """Common fields to all models in this file."""
-  
-  created_at = models.DateTimeField(editable=False, auto_now_add=True)
-  updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
     
-  class Meta:
-    abstract = True
-    
-class CommonActivityUser(CommonBase):
-  """Common fields for items that need to be approved by an administrator."""
-  
-  STATUS_TYPES = (
-    ('unapproved', 'Unapproved'),
-    ('pending', 'Pending approval'),
-    ('approved', 'Approved'),
-    ('rejected', 'Rejected'),
-  )
-  
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
-  award_date = models.DateTimeField(null=True, blank=True, editable=False)
-  submission_date = models.DateTimeField(null=True, blank=True, editable=False)
-  
 class Category(models.Model):
   """Categories used to group commitments and activities."""
   name = models.CharField(max_length=255, help_text="255 character maximum")
@@ -47,6 +23,56 @@ class Category(models.Model):
   def __unicode__(self):
     return self.name
 
+class TextPromptQuestion(models.Model):
+  """Represents questions that can be asked of users in order to verify participation in activities."""
+  
+  activity = models.ForeignKey("Activity")
+  question = models.CharField(max_length=255, help_text="255 character max.")
+  answer = models.CharField(max_length=255, help_text="255 character max.", null=True, blank=True)
+  
+  def __unicode__(self):
+    return self.question
+
+class QuestionChoice(models.Model):
+  """Represents questions's multiple choice"""
+  
+  question = models.ForeignKey("TextPromptQuestion")
+  activity = models.ForeignKey("Activity")
+  choice = models.CharField(max_length=255, help_text="255 character max.")
+  
+  def __unicode__(self):
+    return self.choice
+    
+class ConfirmationCode(models.Model):
+  """Represents confirmation codes for activities."""
+  activity = models.ForeignKey("Activity")
+  code = models.CharField(max_length=10, unique=True)
+  is_active = models.BooleanField(default=True, editable=False)
+  
+  @staticmethod
+  def generate_codes_for_activity(activity, num_codes):
+    """Generates a set of random codes for the activity."""
+    
+    values = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    # Use the first 4 characters of the activity title as the start of the code.
+    header = string.join(activity.title.split(), "")
+    header = header.lower()[:4]
+    header += "-"
+    for i in range(0, num_codes):
+      code = ConfirmationCode(activity=activity, code=header)
+      valid = False
+      while not valid:
+        for value in random.sample(values, 5):
+          code.code += value
+        try:
+          # print code.code
+          # Throws exception if the code is a duplicate.
+          code.save()
+          valid = True
+        except IntegrityError:
+          # Try again.
+          code.code = header
+          
 # ActivityBase 
 class ActivityBase(models.Model):
   TYPE_CHOICES = (
@@ -72,7 +98,7 @@ class ActivityBase(models.Model):
                           "Activities with lower values (higher priority) will be listed first."
              )
   likes = generic.GenericRelation(Like)
-  depends_on = models.CharField(max_length=200, null=True)
+  depends_on = models.CharField(max_length=200, null=True, blank=True,)
 
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
@@ -190,6 +216,30 @@ class Activity(ActivityBase):
     questions = TextPromptQuestion.objects.filter(activity=self)
     return questions[random.randint(0, len(questions) - 1)]
 
+# These models represent the different types of activities users can commit to.
+class CommonBase(models.Model):
+  """Common fields to all models in this file."""
+  
+  created_at = models.DateTimeField(editable=False, auto_now_add=True)
+  updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
+    
+  class Meta:
+    abstract = True
+    
+class CommonActivityUser(CommonBase):
+  """Common fields for items that need to be approved by an administrator."""
+  
+  STATUS_TYPES = (
+    ('unapproved', 'Unapproved'),
+    ('pending', 'Pending approval'),
+    ('approved', 'Approved'),
+    ('rejected', 'Rejected'),
+  )
+  
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  award_date = models.DateTimeField(null=True, blank=True, editable=False)
+  submission_date = models.DateTimeField(null=True, blank=True, editable=False)
+
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
   commenting on a commitment and whether or not the commitment is currently 
@@ -263,45 +313,6 @@ class CommitmentMember(CommonBase):
       
     super(CommitmentMember, self).delete()
   
-class TextPromptQuestion(models.Model):
-  """Represents questions that can be asked of users in order to verify participation in activities."""
-  
-  activity = models.ForeignKey("Activity")
-  question = models.CharField(max_length=255, help_text="255 character max.")
-  answer = models.CharField(max_length=255, help_text="255 character max.")
-  
-  def __unicode__(self):
-    return self.question
-    
-class ConfirmationCode(models.Model):
-  """Represents confirmation codes for activities."""
-  activity = models.ForeignKey("Activity")
-  code = models.CharField(max_length=10, unique=True)
-  is_active = models.BooleanField(default=True, editable=False)
-  
-  @staticmethod
-  def generate_codes_for_activity(activity, num_codes):
-    """Generates a set of random codes for the activity."""
-    
-    values = 'abcdefghijklmnopqrstuvwxyz0123456789'
-    # Use the first 4 characters of the activity title as the start of the code.
-    header = string.join(activity.title.split(), "")
-    header = header.lower()[:4]
-    header += "-"
-    for i in range(0, num_codes):
-      code = ConfirmationCode(activity=activity, code=header)
-      valid = False
-      while not valid:
-        for value in random.sample(values, 5):
-          code.code += value
-        try:
-          # print code.code
-          # Throws exception if the code is a duplicate.
-          code.save()
-          valid = True
-        except IntegrityError:
-          # Try again.
-          code.code = header
 
 def activity_image_file_path(instance=None, filename=None, user=None):
   """Returns the file path used to save an activity confirmation image."""

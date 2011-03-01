@@ -19,13 +19,15 @@
       {{type}} : {{task.title}}
     </div>   
     <div class="{% insert_classes "widget-body" %}">    
+      <img src="{{ STATIC_URL}}images/activity/{{type}}.jpg"/>
+      <p>
       This {{type}} is worth {{task.point_value}} points.
       <p>
       {{member_all}} people have done this.
       <p>
       {{member_floor}} person in your lounge have done this.
     </div>
-  </div>
+  </div>  
 </div>
 
 <div {% get_id_and_classes "activity-task-details" %}>
@@ -36,18 +38,50 @@
     <div class="{% insert_classes "widget-body" %}">
       {{task.description|markdown}}
 
+      <center> <b>  
       {% if pau %}
-        <center> <b> Congratulations! You did it ! </b> <center>
-        <p>
-        
-      {% else %} {% if type == "Commitment" %}
-          <center> <a href="add" id="task-submit" class="{% insert_classes "ui-button" %}">Commit it to get points</a>
-          </center> <p>
+        {% if approved %}
+          Congratulations! You did it !
+        {% else %}
+          Thank you! your request for points is pending approval.
+        {% endif %}  
+      {% else %} 
+        {% if type == "Commitment" %}
+          <a href="add" id="task-submit" class="{% insert_classes "ui-button" %}">Commit it to get points</a>
         {% else %} 
-          {% include "view_activities/task_form.html" %}
-      {% endif %} {% endif %} 
-      
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">I Did it, Click here to get points</a> 
+        {% endif %} 
+      {% endif %}
+       <br/> <br/>
+       <a href="/activities/" id="back" class="{% insert_classes "ui-button" %}">Go Back</a>
+      </b></center> <p>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_body %}
+<div id="setup-dialog" title="Task Form" style="visibility: hidden;">
+    {% include "view_activities/task_form.html" %}
+</div>
+
+<script type="text/javascript"> 
+function task_form_overlay()
+{
+  el = document.getElementById("setup-dialog"); 
+  el.style.visibility = "visible";
+  $("#setup-dialog").dialog({
+        modal: true,
+        width: 700,
+        closeOnEscape: false,
+        position: ["center", 75]
+      });
+}
+
+{% if display_form %}
+    $(document).ready(task_form_overlay());
+{% endif %}    
+
+</script>  
+
 {% endblock %}

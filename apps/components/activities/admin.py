@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('title', 'description', 'duration', ),
+      'fields' : ('name', 'title', 'description', 'duration', 'depends_on'),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -192,6 +192,11 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
       # activity.delete()
       raise forms.ValidationError("Questions are not required for this confirmation type.")
 
+class QuestionChoiceInline(admin.TabularInline):  
+  model = QuestionChoice
+  
+  extra = 3
+  
 class TextQuestionInline(admin.TabularInline):
   model = TextPromptQuestion
   fieldset = (
@@ -206,7 +211,7 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date')),
+      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 'depends_on'),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -214,7 +219,7 @@ class ActivityAdmin(admin.ModelAdmin):
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
   form = ActivityAdminForm
-  inlines = [TextQuestionInline]
+  inlines = [TextQuestionInline, QuestionChoiceInline]
   list_display = ["title", "category", "priority", "is_active", "pub_date", "expire_date",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]

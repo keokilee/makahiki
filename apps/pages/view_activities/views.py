@@ -234,8 +234,10 @@ def __request_activity_points(request, activity_id):
       next = reverse("pages.view_activities.views.index", args=())
       return HttpResponseRedirect(next)
   
-    question = activity.pick_question()
-                      		  
+    if activity.confirm_type == "text":
+      question = activity.pick_question()
+      form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+                  		  
     return render_to_response("view_activities/task.html", {
     "task":activity,
     "type":"Activity",
@@ -244,6 +246,7 @@ def __request_activity_points(request, activity_id):
     "question":question,
     "member_all":10,
     "member_floor":1,
+    "display_form":True,
     }, context_instance=RequestContext(request))    
 
   
@@ -287,21 +290,27 @@ def category(request, category_id):
     
 def task(request, type, task_id):
   user = request.user
+  floor = user.get_profile().floor
   question = None
   form = None
+  approved = None
+  member_all_count = 0
+  member_floor_count = 0
   
   task = ActivityBase.objects.get(id=task_id)
   
   if task.type == "activity" or task.type == "event":
     task = task.activity
     pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
-    
+    approved = ActivityMember.objects.filter(user=user, activity=task, approval_status='approved').count() > 0
+    member_all = ActivityMember.objects.filter(activity=task);
+        
     # Create activity request form.
     if task.confirm_type == "image":
       form = ActivityImageForm()
     elif task.confirm_type == "text":
       question = task.pick_question()
-      form = ActivityTextForm(initial={"question" : question.pk})
+      form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
     elif task.confirm_type == "free":
       form = ActivityFreeResponseForm()
     else:
@@ -313,15 +322,22 @@ def task(request, type, task_id):
   else:  ## "Commitment"
     task = task.commitment
     pau = CommitmentMember.objects.filter(user=user, commitment=task).count() > 0
+    member_all = CommitmentMember.objects.filter(commitment=task);
+
+  member_all_count = member_all.count()
+  for member in member_all:
+    if member.user.get_profile().floor == floor:
+      member_floor_count = member_floor_count + 1
   		  
   return render_to_response("view_activities/task.html", {
     "task":task,
     "type":type,
     "pau":pau,
+    "approved":approved,
     "form":form,
     "question":question,
-    "member_all":10,
-    "member_floor":1,
+    "member_all":member_all_count,
+    "member_floor":member_floor_count,
   }, context_instance=RequestContext(request))    
     
 def add_task(request, type, task_id):

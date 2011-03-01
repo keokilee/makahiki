@@ -27,10 +27,14 @@
   {% if form.image_response %}
     {{ form.image_response }}
   {% else %}
-    {{ form.response }}
+    {% if question.questionchoice_set.count > 0 %}
+      {{ form.choice_response }}
+    {% else %}
+      {{ form.response }}
+    {% endif %}  
   {%endif%}
   
   <br/>Additional Comments<br/>
   {{ form.comment }} <br/>
-  <input type="submit" value="I Did it, Submit to get points" />
+  <input type="submit" value="Submit to get points" />
 </form>

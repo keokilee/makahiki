@@ -1,39 +1,6 @@
 [
   {
     "pk": 1, 
-    "model": "activities.commonactivityuser", 
-    "fields": {
-      "award_date": null, 
-      "submission_date": "2011-02-17 14:16:28", 
-      "created_at": "2011-02-17 14:16:28", 
-      "updated_at": "2011-02-17 14:16:28", 
-      "approval_status": "pending"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "activities.commonactivityuser", 
-    "fields": {
-      "award_date": null, 
-      "submission_date": "2011-02-17 14:57:11", 
-      "created_at": "2011-02-17 14:57:11", 
-      "updated_at": "2011-02-17 14:57:11", 
-      "approval_status": "pending"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "activities.commonactivityuser", 
-    "fields": {
-      "award_date": null, 
-      "submission_date": "2011-02-17 17:39:26", 
-      "created_at": "2011-02-17 17:39:26", 
-      "updated_at": "2011-02-17 17:39:26", 
-      "approval_status": "pending"
-    }
-  }, 
-  {
-    "pk": 1, 
     "model": "activities.category", 
     "fields": {
       "name": "Get Started"
@@ -90,6 +57,249 @@
   }, 
   {
     "pk": 1, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "kilowatt-hour", 
+      "question": "What is the unit of measurement for household energy?", 
+      "activity": 2
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "watt", 
+      "question": "What is the unit of measurement for power?", 
+      "activity": 2
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "burning for light", 
+      "question": "What was the kukui nut used for?", 
+      "activity": 22
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "93%", 
+      "question": "How much energy does Hawaii get from fossil fuels like oil?", 
+      "activity": 22
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "energy conservation, energy literacy", 
+      "question": "What is the purpose of the Kukui Cup?", 
+      "activity": 25
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "power", 
+      "question": "What concept in electricity is like a car's speedometer?", 
+      "activity": 2
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "energy", 
+      "question": "What concept in electricity is like a car's odometer?", 
+      "activity": 2
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "1.2 GW", 
+      "question": "How is Oahu's peak electrical power usage?", 
+      "activity": 26
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "vampire power", 
+      "question": "Why would we measure the power drawn by a device that is off?", 
+      "activity": 27
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "Import from adjacent states or countries", 
+      "question": "What do other states do when they need more energy than they can generate?", 
+      "activity": 28
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "Oil", 
+      "question": "What does Hawaii use for most of its energy needs?", 
+      "activity": 29
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "incandescent", 
+      "question": "What lighting method uses the most energy?", 
+      "activity": 28
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "doesn't work at night, or when very cloudy", 
+      "question": "What is one limitation of solar power?", 
+      "activity": 22
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "they stop generating energy", 
+      "question": "What happens to wind turbines when the wind is blowing very hard?", 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "rising sea levels, higher average temperatures, changing rainfall patterns, acidification of the ocean", 
+      "question": "What is one expected impact of climate change?", 
+      "activity": 26
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "CO2, carbon dioxide, (methane also acceptable)", 
+      "question": "What gas is considered most responsible for climate change?", 
+      "activity": 26
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "human activity", 
+      "question": "What is the most likely cause of recent climate change?", 
+      "activity": 26
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "answer", 
+      "question": "test a new question", 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "answer", 
+      "question": "test", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.questionchoice", 
+    "fields": {
+      "choice": "they stop generating energy", 
+      "question": 17, 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.questionchoice", 
+    "fields": {
+      "choice": "they slow down energy", 
+      "question": 17, 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.questionchoice", 
+    "fields": {
+      "choice": "nothing happen", 
+      "question": 17, 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "activities.questionchoice", 
+    "fields": {
+      "choice": "answer", 
+      "question": 21, 
+      "activity": 23
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "activities.questionchoice", 
+    "fields": {
+      "choice": "answer", 
+      "question": 22, 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "atte-vp9rm", 
+      "is_active": true, 
+      "activity": 1
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "atte-veqnd", 
+      "is_active": true, 
+      "activity": 1
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "atte-kwpay", 
+      "is_active": true, 
+      "activity": 1
+    }
+  }, 
+  {
+    "pk": 1, 
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
@@ -97,7 +307,7 @@
       "title": "Attend Kukui Cup Orientation meeting", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-24 11:14:34", 
       "priority": 1, 
       "type": "event", 
       "name": "Orientation"
@@ -307,7 +517,7 @@
       "title": "Watch video on Energy Intuition", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-24 15:42:42", 
       "priority": 8, 
       "type": "activity", 
       "name": "Energy Intuition"
@@ -322,7 +532,7 @@
       "title": "Watch video on how to audit your energy use", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-28 21:02:20", 
       "priority": 9, 
       "type": "activity", 
       "name": "Audit Energy"
@@ -335,12 +545,12 @@
       "category": 4, 
       "description": "Watch this video that talks about the challenges facing Hawaii as we try to keep meeting our energy needs.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch Hawaii Energy Challenges video", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-28 21:01:51", 
       "priority": 19, 
       "type": "activity", 
-      "name": "Hawaii Energy Challenge"
+      "name": "Energy Challenge"
     }
   }, 
   {
@@ -397,7 +607,7 @@
       "title": "Audit energy use in your dorm room", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-24 16:17:39", 
       "priority": 10, 
       "type": "activity", 
       "name": "Dorm Energy Audit"
@@ -423,11 +633,11 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
-      "description": "Watch this video explaining how energy can be generated from the wind.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "description": "Watch this video explaining how energy can be generated from the wind.\r\n\r\n![alt text](http://www.for.gov.bc.ca/hfd/pubs/SSIntroworkbook/chp3icon.gif)\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"><param name=\"wmode\" value=\"opaque\"/></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\" wmode=\"opaque\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video about wind energy", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-24 13:00:33", 
       "priority": 22, 
       "type": "activity", 
       "name": "Wind Energy"
@@ -440,7 +650,7 @@
       "category": 4, 
       "description": "Attend a special presentation by the Kokua Hawaii Foundation on their work with Hawaii's schools. Meeting will take place in in Lehua's rooftop lounge.", 
       "title": "Attend Kokua Hawaii Foundation event", 
-      "depends_on": null, 
+      "depends_on": "afterPublished()", 
       "created_at": "2011-02-17 10:35:30", 
       "updated_at": "2011-02-17 10:35:30", 
       "priority": 23, 
@@ -1015,7 +1225,7 @@
       "confirm_prompt": "Enter the attendance code from the meeting.", 
       "event_date": "2011-01-27 19:00:00", 
       "point_value": 10, 
-      "expire_date": "2011-02-04", 
+      "expire_date": "2011-09-04", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1030,7 +1240,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1045,7 +1255,7 @@
       "confirm_prompt": "Enter the ticket code provided at the meeting.", 
       "event_date": "2011-02-03 19:00:00", 
       "point_value": 5, 
-      "expire_date": "2011-02-10", 
+      "expire_date": "2011-09-10", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1060,7 +1270,7 @@
       "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
       "event_date": null, 
       "point_value": 4, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1075,7 +1285,7 @@
       "confirm_prompt": "Enter the attendance code you received at the meeting.", 
       "event_date": "2011-01-31 18:00:00", 
       "point_value": 20, 
-      "expire_date": "2011-02-07", 
+      "expire_date": "2011-09-07", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1105,7 +1315,7 @@
       "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 10, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1120,7 +1330,7 @@
       "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1135,7 +1345,7 @@
       "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
       "event_date": null, 
       "point_value": 2, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1150,7 +1360,7 @@
       "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
       "event_date": null, 
       "point_value": 2, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1165,7 +1375,7 @@
       "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
       "event_date": null, 
       "point_value": 5, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 15, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1195,7 +1405,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-12"
@@ -1210,7 +1420,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 5, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-12"
@@ -1225,7 +1435,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1235,12 +1445,12 @@
     "pk": 16, 
     "model": "activities.activity", 
     "fields": {
-      "confirm_type": "text", 
+      "confirm_type": "free", 
       "point_range_start": null, 
-      "confirm_prompt": "", 
+      "confirm_prompt": "test", 
       "event_date": null, 
       "point_value": 4, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1250,12 +1460,12 @@
     "pk": 17, 
     "model": "activities.activity", 
     "fields": {
-      "confirm_type": "text", 
+      "confirm_type": "free", 
       "point_range_start": null, 
-      "confirm_prompt": "", 
+      "confirm_prompt": "test", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1270,7 +1480,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1285,7 +1495,7 @@
       "confirm_prompt": "Enter in the minimum value you saw for your Lounge's power usage, with everything turned off.", 
       "event_date": "2011-02-09 20:00:00", 
       "point_value": null, 
-      "expire_date": "2011-02-10", 
+      "expire_date": "2011-09-21", 
       "duration": 20, 
       "point_range_end": 20, 
       "pub_date": "2010-10-15"
@@ -1300,7 +1510,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1315,7 +1525,7 @@
       "confirm_prompt": "Enter the name of each device in your room and both the on and off power use values below.", 
       "event_date": null, 
       "point_value": 10, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 15, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1330,7 +1540,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1345,7 +1555,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1360,7 +1570,7 @@
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-17 18:00:00", 
       "point_value": 5, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1375,7 +1585,7 @@
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-14 18:00:00", 
       "point_value": 5, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1390,7 +1600,7 @@
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1405,7 +1615,7 @@
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-02 19:00:00", 
       "point_value": 4, 
-      "expire_date": "2011-02-09", 
+      "expire_date": "2011-09-21", 
       "duration": 110, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1420,7 +1630,7 @@
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-16 19:00:00", 
       "point_value": 5, 
-      "expire_date": "2011-02-16", 
+      "expire_date": "2011-09-21", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1435,10 +1645,98 @@
       "confirm_prompt": "Enter in the the verification information requested for this type of activity (i.e. URL of your blog, YouTube video, etc).", 
       "event_date": null, 
       "point_value": null, 
-      "expire_date": "2011-02-21", 
+      "expire_date": "2011-09-21", 
       "duration": 120, 
       "point_range_end": 20, 
       "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-17 14:16:28", 
+      "created_at": "2011-02-17 14:16:28", 
+      "updated_at": "2011-02-17 14:16:28", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-17 14:57:11", 
+      "created_at": "2011-02-17 14:57:11", 
+      "updated_at": "2011-02-17 14:57:11", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-22 17:49:01", 
+      "created_at": "2011-02-22 17:49:01", 
+      "updated_at": "2011-02-22 17:49:01", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-24 15:31:26", 
+      "created_at": "2011-02-24 15:31:26", 
+      "updated_at": "2011-02-24 15:31:26", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": "2011-02-24 15:47:05", 
+      "submission_date": "2011-02-24 15:43:59", 
+      "created_at": "2011-02-24 15:43:59", 
+      "updated_at": "2011-02-24 15:47:05", 
+      "approval_status": "approved"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-24 16:16:26", 
+      "created_at": "2011-02-24 16:16:26", 
+      "updated_at": "2011-02-24 16:16:26", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-28 20:30:42", 
+      "created_at": "2011-02-28 20:30:42", 
+      "updated_at": "2011-02-28 20:30:42", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-02-28 21:02:53", 
+      "created_at": "2011-02-28 21:02:53", 
+      "updated_at": "2011-02-28 21:02:53", 
+      "approval_status": "pending"
     }
   }, 
   {
@@ -1495,168 +1793,6 @@
   }, 
   {
     "pk": 1, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "kilowatt-hour", 
-      "question": "What is the unit of measurement for household energy?", 
-      "activity": 2
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "watt", 
-      "question": "What is the unit of measurement for power?", 
-      "activity": 2
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "Bogus", 
-      "question": "Bogus", 
-      "activity": 21
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "burning for light", 
-      "question": "What was the kukui nut used for?", 
-      "activity": 22
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "93%", 
-      "question": "How much energy does Hawaii get from fossil fuels like oil?", 
-      "activity": 22
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "energy conservation, energy literacy", 
-      "question": "What is the purpose of the Kukui Cup?", 
-      "activity": 25
-    }
-  }, 
-  {
-    "pk": 8, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "power", 
-      "question": "What concept in electricity is like a car's speedometer?", 
-      "activity": 2
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "energy", 
-      "question": "What concept in electricity is like a car's odometer?", 
-      "activity": 2
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "1.2 GW", 
-      "question": "How is Oahu's peak electrical power usage?", 
-      "activity": 26
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "vampire power", 
-      "question": "Why would we measure the power drawn by a device that is off?", 
-      "activity": 27
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "Import from adjacent states or countries", 
-      "question": "What do other states do when they need more energy than they can generate?", 
-      "activity": 28
-    }
-  }, 
-  {
-    "pk": 13, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "Oil", 
-      "question": "What does Hawaii use for most of its energy needs?", 
-      "activity": 29
-    }
-  }, 
-  {
-    "pk": 15, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "incandescent", 
-      "question": "What lighting method uses the most energy?", 
-      "activity": 28
-    }
-  }, 
-  {
-    "pk": 16, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "doesn't work at night, or when very cloudy", 
-      "question": "What is one limitation of solar power?", 
-      "activity": 22
-    }
-  }, 
-  {
-    "pk": 17, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "they stop generating energy", 
-      "question": "What happens to wind turbines when the wind is blowing very hard?", 
-      "activity": 23
-    }
-  }, 
-  {
-    "pk": 18, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "rising sea levels, higher average temperatures, changing rainfall patterns, acidification of the ocean", 
-      "question": "What is one expected impact of climate change?", 
-      "activity": 26
-    }
-  }, 
-  {
-    "pk": 19, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "CO2, carbon dioxide, (methane also acceptable)", 
-      "question": "What gas is considered most responsible for climate change?", 
-      "activity": 26
-    }
-  }, 
-  {
-    "pk": 20, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "human activity", 
-      "question": "What is the most likely cause of recent climate change?", 
-      "activity": 26
-    }
-  }, 
-  {
-    "pk": 1, 
     "model": "activities.activitymember", 
     "fields": {
       "admin_comment": "", 
@@ -1684,16 +1820,86 @@
     }
   }, 
   {
-    "pk": 3, 
+    "pk": 4, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "gsdfg", 
+      "image": "activities/admin/yongwen.jpg", 
+      "question": null, 
+      "user": 606, 
+      "activity": 11, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 5, 
     "model": "activities.activitymember", 
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
       "user_comment": "test", 
       "image": "", 
+      "question": 17, 
+      "user": 606, 
+      "activity": 23, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": 22, 
+      "user": 606, 
+      "activity": 15, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "sdfgsdfg", 
+      "image": "", 
       "question": null, 
       "user": 606, 
       "activity": 21, 
+      "response": "etdsgsdfg\r\nsdfgsdfg\r\nsdfgsd"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
+      "image": "activities/admin/yongwen.jpg", 
+      "question": null, 
+      "user": 606, 
+      "activity": 7, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": null, 
+      "user": 606, 
+      "activity": 16, 
       "response": "test"
     }
   }
