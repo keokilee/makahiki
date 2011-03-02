@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
 from django.db.models import Count
+from django.views.decorators.cache import never_cache
 
 from pages.view_activities.forms import *
 from components.activities.models import *
@@ -288,7 +289,9 @@ def category(request, category_id):
     "tasks":tasks_list,
   }, context_instance=RequestContext(request))
     
+@never_cache
 def task(request, type, task_id):
+"""individual task page"""
   user = request.user
   floor = user.get_profile().floor
   question = None
