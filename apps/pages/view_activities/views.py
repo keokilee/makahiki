@@ -36,12 +36,17 @@ def index(request):
   
   categories_list = __get_categories(user)
   
+  helps = ["Upcoming Events", "Points Score Board", "The Smart Grid Game"]
+  helpfiles = ["view_activities/help1.html", "view_activities/help2.html", "view_activities/help3.html"]
+        
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
     "floor": floor,
     "standings":standings,
     "categories":categories_list,
+    "helps":helps,
+    "helpfiles": helpfiles,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info

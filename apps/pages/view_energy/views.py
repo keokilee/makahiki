@@ -71,6 +71,9 @@ def index(request):
   energy = format(energy, '.2f')      ## convert to kWh if needed
   over = format(over, '.2f')
   
+  helps = ["Current Lounge Power", "Overall kWh Score Board", "Daily Energy Goal Status"]
+  helpfiles = ["view_energy/help1.html", "view_energy/help2.html", "view_energy/help3.html"]
+
   return render_to_response("energy/index.html",{
     "baseline": baseline,
     "goal":goal,
@@ -86,6 +89,8 @@ def index(request):
     "floor": floor,
     "standings":standings,
     "golow_activities":golow_activities,
-    "posts":golow_posts
+    "posts":golow_posts,
+    "helps":helps,
+    "helpfiles": helpfiles,
     }
     ,context_instance=RequestContext(request))

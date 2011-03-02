@@ -49,7 +49,7 @@
         {% if type == "Commitment" %}
           <a href="add" id="task-submit" class="{% insert_classes "ui-button" %}">Commit it to get points</a>
         {% else %} 
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">I Did it, Click here to get points</a> 
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="$('#setup-dialog').dialog('open')">I Did it, Click here to get points</a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
@@ -61,27 +61,19 @@
 {% endblock %}
 
 {% block extra_body %}
-<div id="setup-dialog" title="Task Form" style="visibility: hidden;">
+<div id="setup-dialog" title="Task Form">
     {% include "view_activities/task_form.html" %}
 </div>
 
 <script type="text/javascript"> 
-function task_form_overlay()
-{
-  el = document.getElementById("setup-dialog"); 
-  el.style.visibility = "visible";
   $("#setup-dialog").dialog({
         modal: true,
         width: 700,
         closeOnEscape: false,
-        position: ["center", 75]
+        position: ["center", 75],
+        autoOpen: false
       });
-}
-
-{% if display_form %}
-    $(document).ready(task_form_overlay());
-{% endif %}    
-
+      
 </script>  
 
 {% endblock %}

@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block header %}
+
 <div style="margin-top: 10px">
   <div {% get_id_and_classes "header-logo" %}>
     <img src="{{STATIC_URL}}images/logo.png"/>
@@ -21,7 +22,22 @@
   <div {% get_id_and_classes "header-nav" %}>
     {% include "components/navigation.html" %}
   </div>
-</div>
+</div>    
+
+{% if helps %}
+  <div {% get_id_and_classes "notification" %}> 
+  <div {% get_id_and_classes "notification_box" %}>
+   <a href="#" onclick="jQuery('#notification_box').fadeOut(); return false;">
+     <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
+   </a>
+   Help Topics: 
+   {% for help in helps %}
+      <a href="#" class="{% insert_classes "ui-button" %}" onclick="$('#help-dialog{{ forloop.counter }}').dialog('open')">{{help}}</a>  
+   {% endfor %}
+  </div>
+  </div>
+{% endif %}
+
 {% endblock %}
 
 {% block extra_body %}
@@ -44,4 +60,23 @@ jQuery(document).ready(function(){
     );
 });
 </script>
+
+{% if helpfiles %}
+  {% for helpfile in helpfiles %}
+  <div id="help-dialog{{ forloop.counter }}" title="Help">
+    {% include helpfile %}
+  </div>
+  
+  <script type="text/javascript"> 
+    $("#help-dialog{{forloop.counter }}").dialog({
+        modal: true,
+        width: 700,
+        closeOnEscape: false,
+        position: ["center", 75],
+        autoOpen: false
+      });
+  </script>  
+  {% endfor %}
+{% endif %}
+
 {% endblock %}

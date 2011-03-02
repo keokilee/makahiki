@@ -56,6 +56,9 @@ CSS_IDS = {
   "header-floor-image": "span-2 last",
   "header-nav-links": "span-7 last",
   "header-logout": "span-7 last",
+
+  "notification": "span-24 last",
+  "notification_box": "ui-accordion-content ui-widget-content ui-corner-all ui-accordion-content-active",
   
   "user-cycle": "span-4 last",
   "floor-cycle": "span-4 last",
