@@ -28,9 +28,13 @@
   padding: 0;
 }
 
-#news-most-popular-form {
-  text-align: center;
-  margin: 0;
+#news-most-popular-tasks {
+  margin: 10px 0;
+}
+
+#news-most-popular-tasks p {
+  vertical-align: center;
+  margin-left: 45px;
 }
 
 #wall-post {

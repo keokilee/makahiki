@@ -26,22 +26,23 @@
       Most Popular
     </div>
     <div {% get_id_and_classes "news-most-popular-content" %}>
-      <form {% get_id_and_classes "news-most-popular-form" %} action="{% url news_popular_tasks %}" method="post">
-         {{popular_form.activity_type}}
-      </form>
-      <script type="text/javascript">
-        $(document).ready(function() {
-          $("#news-most-popular-form").change(function() {
-            $.post("{% url news_popular_tasks %}", $("#news-most-popular-form").serialize(), function(data) {
-              $("#news-most-popular-tasks").html(data.contents);
-            });
-          })
-        });
-      </script>
-      
-      <div {% get_id_and_classes "news-most-popular-tasks" %}>
+      <div {% get_id_and_classes "news-most-popular-tasks" %} >
         {% include "news/popular_tasks.html" %}
       </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#news-most-popular-tasks").cycle({after: onAfter});
+          
+          //Adjust the height of the container based on the contents.
+          //Found at http://forum.jquery.com/topic/jquery-cycle-auto-height
+          function onAfter(curr, next, opts, fwd) {
+            var $ht = $(this).height();
+
+            //set the container's height to that of the current slide
+            $(this).parent().animate({height: $ht});
+          }
+        })
+      </script>
     </div>
   </div>
   

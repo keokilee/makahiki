@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 
 from components.floors.models import Post
-from components.activities import get_available_events, get_current_commitment_members, get_popular_activities
-from pages.news.forms import WallForm, PopularTasksForm
+from components.activities import get_available_events, get_current_commitment_members, get_popular_tasks
+from pages.news.forms import WallForm
 
 from pages.news import DEFAULT_POST_COUNT
 
@@ -28,27 +28,14 @@ def index(request):
   # Get the user's current commitments.
   members = get_current_commitment_members(request.user)
   
-  # Get popular activities.
-  popular_activities = get_popular_activities()
-  
   return render_to_response("news/index.html", {
     "posts": posts,
     "events": events,
     "wall_form": WallForm(),
     "more_posts": more_posts,
     "commitment_members": members,
-    "popular_activities": popular_activities,
-    "popular_form":  PopularTasksForm(),
+    "popular_tasks": get_popular_tasks(),
   }, context_instance=RequestContext(request))
-  
-@login_required
-def get_popular_tasks(request):
-  if request.is_ajax() and request.method == "POST":
-    form = PopularTasksForm(request.POST)
-    if form.is_valid():
-      pass
-  
-  raise Http404
   
 @login_required
 def post(request):

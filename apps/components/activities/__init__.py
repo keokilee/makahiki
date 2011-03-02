@@ -12,6 +12,21 @@ ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
 # Maximum number of commitments user can have at one time.
 MAX_COMMITMENTS = 5
 
+def get_popular_tasks():
+  """
+  Returns a dictionary containing the most popular tasks.
+  The keys are the type of the task and the values are a list of tasks.
+  """
+  # TODO: Make this more flexible once generic memberships are working.
+  return {
+    "Activity": get_popular_activities(),
+    "Commitment": get_popular_commitments(),
+    "Event": [],
+    "Survey": [],
+    "Excursion": [],
+  }
+    
+
 def get_popular_activities():
   """Gets the most popular activities in terms of completions."""
   return Activity.objects.filter(

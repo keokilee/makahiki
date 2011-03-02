@@ -1,16 +1,22 @@
-{% if popular_tasks %}
-<table>
-  <tr>
-    <th>Activity</th>
-    <th>Completions</th>
-  </tr>
-  {% for activity in popular_tasks %}
-  <tr>
-    <td>{{activity.title}}</td>
-    <td>{{activity.completions}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% else %}
-<p>Be the first to complete an activity!</p>
-{% endif %}
+{% load custom_filters %}
+
+{% for key in popular_tasks.keys %}
+  {% with tasks as popular_tasks|hash:key %}
+  {% if tasks %}
+    <table id="news-popular-{{key}}-table">
+      <tr>
+        <th>{{key}}</th>
+        <th>Completions</th>
+      </tr>
+      {% for task in tasks %}
+      <tr>
+        <td>{{task.title}}</td>
+        <td>{{task.completions}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Be the first to complete an {{key.lower}}!</p>
+  {% endif %}
+  {% endwith %}
+{% endfor %}
