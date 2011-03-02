@@ -31,16 +31,14 @@
       </div>
       <script type="text/javascript">
         $(document).ready(function() {
-          $("#news-most-popular-tasks").cycle({after: onAfter});
-          
-          //Adjust the height of the container based on the contents.
-          //Found at http://forum.jquery.com/topic/jquery-cycle-auto-height
-          function onAfter(curr, next, opts, fwd) {
-            var $ht = $(this).height();
+          var height = 0;
+          $("#news-most-popular-tasks").children().each(function(index, value) {
+            if ($(value).height() > height) {
+              height = $(value).height();
+            }
+          });
 
-            //set the container's height to that of the current slide
-            $(this).parent().animate({height: $ht});
-          }
+          $("#news-most-popular-tasks").cycle({height: "" + height + "px"});
         })
       </script>
     </div>

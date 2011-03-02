@@ -29,12 +29,18 @@
 }
 
 #news-most-popular-tasks {
-  margin: 10px 0;
+  margin-top: 10px;
+  padding: 10px 0;
 }
 
 #news-most-popular-tasks p {
-  vertical-align: center;
-  margin-left: 45px;
+  vertical-align: middle;
+  margin-left: 35px;
+  font-weight: bold;
+}
+
+#news-most-popular-tasks table {
+  padding: 0 10px;
 }
 
 #wall-post {

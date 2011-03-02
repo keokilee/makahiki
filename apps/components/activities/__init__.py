@@ -19,8 +19,8 @@ def get_popular_tasks():
   """
   # TODO: Make this more flexible once generic memberships are working.
   return {
-    "Activity": get_popular_activities(),
-    "Commitment": get_popular_commitments(),
+    "Activity": get_popular_activities()[:5],
+    "Commitment": get_popular_commitments()[:5],
     "Event": [],
     "Survey": [],
     "Excursion": [],
@@ -30,7 +30,7 @@ def get_popular_tasks():
 def get_popular_activities():
   """Gets the most popular activities in terms of completions."""
   return Activity.objects.filter(
-      activitymember__award_date__isnull=False
+      activitymember__approval_status="approved",
   ).annotate(completions=Count("activitymember")).order_by("completions")
   
 def get_popular_commitments():
