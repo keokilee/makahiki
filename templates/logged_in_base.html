@@ -32,7 +32,9 @@
    </a>
    Help Topics: 
    {% for help in helps %}
-      <a href="#" class="{% insert_classes "ui-button" %}" onclick="$('#help-dialog{{ forloop.counter }}').dialog('open')">{{help}}</a>  
+      <a href="#" class="{% insert_classes "ui-button" %}" 
+      onclick="$('#help-dialog{{ forloop.counter }}').dialog('open')">{{help}}
+      </a>  
    {% endfor %}
   </div>
   </div>
@@ -70,9 +72,6 @@ jQuery(document).ready(function(){
   <script type="text/javascript"> 
     $("#help-dialog{{forloop.counter }}").dialog({
         modal: true,
-        width: 700,
-        closeOnEscape: false,
-        position: ["center", 75],
         autoOpen: false
       });
   </script>  

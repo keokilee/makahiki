@@ -20,9 +20,9 @@
 
 div.grid_transbox
   {
-  width: 80px;
+  width: 75px;
   height: 50px;
-  margin:3px 3px;*/
+  margin:1px 1px;*/
   background-color:#000000;
   /* for IE */
   filter:alpha(opacity=60);
@@ -48,19 +48,19 @@ div.grid_transbox h3
 
 div.grid_background1
   {
-  width:80px;
+  width:75px;
   height:50px;
   background:#e5ecf9;
   }
 div.grid_background2
   {
-  width:80px;
+  width:75px;
   height:50px;
   background:#8aa24e;
   }
 div.grid_background3
   {
-  width:80px;
+  width:75px;
   height:50px;
   background:#937ab3;
   } 
