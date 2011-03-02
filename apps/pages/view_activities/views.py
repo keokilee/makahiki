@@ -291,7 +291,7 @@ def category(request, category_id):
     
 @never_cache
 def task(request, type, task_id):
-"""individual task page"""
+  """individual task page"""
   user = request.user
   floor = user.get_profile().floor
   question = None
