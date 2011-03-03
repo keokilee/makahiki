@@ -1,3 +1,8 @@
+--find-links=http://pypi.pinaxproject.com
+--find-links=http://pypi2.pinaxproject.com
+--find-links=http://pypi.pinaxproject.com/releases/0.7/
+--find-links=http://pypi2.pinaxproject.com/releases/0.7/
+
 BeautifulSoup==3.0.7a
 Django==1.2.4
 Fabric==0.9.1
