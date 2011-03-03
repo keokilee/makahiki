@@ -13,13 +13,13 @@
     <td>
       <img src="{{STATIC_URL}}images/prizes/ipod-nano.jpg"/>
       <a href="#">
-        iPod Nano
+        iPod Touch
       </a>
     </td>
     <td>1</td>
     <td>
       Won by the #1 individual point getter across all residence halls. <br/>
-      Current leader: TBD
+      Current leader: {% if name == "Round 1" %}leihana{%else%}TBD{%endif%}
     </td>
   </tr>
   <tr>
@@ -32,7 +32,7 @@
     <td>3</td>
     <td>
       Won by the #1 lounge energy conserver in each residence hall.<br/>
-      Current leader: TBD
+      Current leader: {% if name == "Round 1" %}Mokihana C{%else%}TBD{%endif%}
     </td>
   </tr>
   <tr>
@@ -45,7 +45,7 @@
     <td>3</td>
     <td>
       Won by the #1 lounge point getter in each residence hall.<br/>
-      Current leader: TBD
+      Current leader: {% if name == "Round 1" %}Ilima D{%else%}TBD{%endif%}
     </td>
   </tr>
 </table>

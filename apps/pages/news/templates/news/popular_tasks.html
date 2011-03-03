@@ -1,6 +1,6 @@
 {% for key, value in popular_tasks.items %}
   {% if value %}
-    <table id="news-popular-{{key}}-table">
+    <table id="news-popular-{{key|slugify}}-table">
       <tr>
         <th>{{key}}</th>
         <th>Completions</th>
