@@ -67,7 +67,7 @@ elementtree==1.2.7-20070827-preview
 gdata==1.3.3
 ## FIXME: could not find svn URL in dependency_links for this package:
 geopy==0.93dev-r0
-git-remote-helpers==0.1.0
+## git-remote-helpers==0.1.0
 kid==0.9.6
 logilab-astng==0.20.2
 logilab-common==0.51.1
