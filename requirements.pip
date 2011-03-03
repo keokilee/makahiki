@@ -9,7 +9,7 @@ Fabric==0.9.1
 Markdown==2.0.1
 NoseXUnit==0.3.3
 PIL==1.1.7
-Pinax==0.7.2
+Pinax==0.7.3
 Pygments==1.0
 South==0.7.1
 Werkzeug==0.6.2
