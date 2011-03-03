@@ -25,8 +25,7 @@ def get_popular_tasks():
     "Survey": [],
     "Excursion": [],
   }
-    
-
+  
 def get_popular_activities():
   """Gets the most popular activities in terms of completions."""
   return Activity.objects.filter(
