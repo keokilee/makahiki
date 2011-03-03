@@ -1,10 +1,10 @@
-# Generates XML reports for the Django tests.
-# Requires http://pypi.python.org/pypi/unittest-xml-reporting/1.0.3
-TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.run_tests'
-TEST_OUTPUT_DESCRIPTIONS = True
-TEST_OUTPUT_DIR = "log"
+# Nose tests.
+LOCAL_INSTALLED_APPS = (
+  # Testing
+	'django_nose',
+)
 
 # Use Nose as the test runner.
-# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 SOUTH_TESTS_MIGRATE = False
