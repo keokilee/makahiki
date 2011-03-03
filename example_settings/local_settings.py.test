@@ -4,6 +4,9 @@ LOCAL_INSTALLED_APPS = (
 	'django_nose',
 )
 
+# Hudson/Jenkins use the folder name "workspace"
+ROOT_URLCONF = 'workspace.urls'
+
 # Use Nose as the test runner.
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
