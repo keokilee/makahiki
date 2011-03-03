@@ -1,25 +1,46 @@
-	<table >
-		<thead><tr>
-			<th>Rank</th>
-			<th>Lounge<br>(Overall)</th>
-			<th>Individual<br>(Overall)</th>
-			<th>Individual<br>({{ floor.floor_identifier }})</th></tr>
-		</thead>
-		<tbody>
-			{% for f,ap,fp in standings %}
-			<tr><td>{{forloop.counter}}</td>
-			<td>{% if f == floor %} 
-			     <b> 
-			    {% endif %}
-			    {{f.floor_identifier}} ({{f.f_points}})</td>
-			<td>{% if ap == profile %} 
-			     <b> 
-			    {% endif %}
-			    {{ap.name}} ({{ap.points}})</td>
-			<td>{% if fp == profile %} 
-			     <b> 
-			    {% endif %}
-				{{fp.name}} ({{fp.points}})</td></tr>
-			{% endfor %}
-		</tbody>
-	</table>
+{% load class_tags %}
+
+<table {% get_id_and_classes "activities-scoreboard-table-floor" %}>
+	<thead><tr>
+		<th>Rank</th>
+		<th>Lounge (Overall)</th></tr>
+	</thead>
+	<tbody>
+		{% for f in floor_standings %}
+		<tr><td>{{forloop.counter}}</td>
+		<td style="{% if f == floor %}font-weight: bold{% endif %}">
+		  {{f}} ({{f.f_points}})
+		</td>
+		{% endfor %}
+	</tbody>
+</table>
+
+<table {% get_id_and_classes "activities-scoreboard-table-profile" %}>
+	<thead><tr>
+		<th>Rank</th>
+		<th>Individual (Overall)</th></tr>
+	</thead>
+	<tbody>
+		{% for p in profile_standings %}
+		<tr><td>{{forloop.counter}}</td>
+	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
+		  {{p.name}} ({{p.points}})
+		</td>
+		{% endfor %}
+	</tbody>
+</table>
+
+<table {% get_id_and_classes "activities-scoreboard-table-floor-profile" %}>
+	<thead><tr>
+		<th>Rank</th>
+		<th>Individual ({{ floor }})</th></tr>
+	</thead>
+	<tbody>
+		{% for p in floor_profile_standings %}
+		<tr><td>{{forloop.counter}}</td>
+	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
+		  {{p.name}} ({{p.points}})
+		</td>
+		{% endfor %}
+	</tbody>
+</table>

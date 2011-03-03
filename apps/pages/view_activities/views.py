@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.views.decorators.cache import never_cache
 
 from pages.view_activities.forms import *
@@ -29,10 +29,14 @@ def index(request):
   events = get_available_events(user)
   floor = user.get_profile().floor
   
-  ordered_floors = Floor.objects.annotate(f_points=Sum("profile__points")).order_by("-f_points")
-  ordered_all_profiles = Profile.objects.order_by("-points")
-  ordered_floor_profiles = Profile.objects.filter(floor=floor).order_by("-points")
-  standings = zip(ordered_floors,ordered_all_profiles,ordered_floor_profiles)[:MAX_INDIVIDUAL_STANDINGS]
+  floor_standings = Floor.objects.annotate(
+      f_points=Sum("profile__points"),
+      f_last_awarded_submission=Max("profile__last_awarded_submission")
+  ).order_by("-f_points", "-f_last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
+  profile_standings = Profile.objects.order_by("-points", "-last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
+  floor_profile_standings = Profile.objects.filter(
+      floor=floor
+  ).order_by("-points", "-last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
   
   categories_list = __get_categories(user)
   
@@ -43,10 +47,12 @@ def index(request):
     "events": events,
     "profile":user.get_profile(),
     "floor": floor,
-    "standings":standings,
     "categories":categories_list,
-    "helps":helps,
-    "helpfiles": helpfiles,
+    "floor_standings": floor_standings,
+    "profile_standings": profile_standings,
+    "floor_profile_standings": floor_profile_standings,
+    # "helps":helps,
+    # "helpfiles": helpfiles,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info

@@ -18,6 +18,10 @@
   padding: 0px;
 }
 
+#activity-scoreboard-content {
+  padding: 10px 0;
+}
+
 div.grid_transbox
   {
   width: 75px;
