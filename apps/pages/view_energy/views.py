@@ -90,7 +90,7 @@ def index(request):
     "standings":standings,
     "golow_activities":golow_activities,
     "posts":golow_posts,
-    "helps":helps,
-    "helpfiles": helpfiles,
+    # "helps":helps,
+    # "helpfiles": helpfiles,
     }
     ,context_instance=RequestContext(request))
