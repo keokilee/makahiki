@@ -77,7 +77,7 @@ python-dateutil==1.4.1
 python-memcached==1.45
 python-openid==2.2.4
 python-twitter==0.5
-python-yadis==1.1.0
+## python-yadis==1.1.0
 pytz==2009l
 setuptools-git==0.3.4
 simplejson==2.0.9
