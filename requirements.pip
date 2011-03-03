@@ -2,6 +2,7 @@
 --find-links=http://pypi2.pinaxproject.com
 --find-links=http://pypi.pinaxproject.com/releases/0.7/
 --find-links=http://pypi2.pinaxproject.com/releases/0.7/
+--extra-index-url=http://dist.pinaxproject.com/dev/
 
 BeautifulSoup==3.0.7a
 Django==1.2.4
@@ -55,7 +56,7 @@ django-swaps==0.5.3
 django-tagging==0.3
 django-templatetag-sugar==0.1
 django-threadedcomments==0.5.1
-django-timezones==0.1.4
+django-timezones==0.2.dev1
 django-uni-form==0.6.0
 django-voting==0.1-pre
 django-wikiapp==0.2.0
