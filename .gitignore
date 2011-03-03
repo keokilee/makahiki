@@ -22,3 +22,8 @@ pip-log.txt
 
 # Ignore cache files
 .cache
+
+# Ignore coverage files
+.coverage
+coverage.xml
+htmlcov/
