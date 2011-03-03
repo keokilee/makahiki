@@ -18,7 +18,7 @@ def get_floor_label():
 def get_round_info():
   """Returns a dictionary containing round information."""
   rounds = settings.COMPETITION_ROUNDS.copy()
-  rounds["Competition"] = {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}
+  rounds["Overall"] = {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}
   
   return rounds
   

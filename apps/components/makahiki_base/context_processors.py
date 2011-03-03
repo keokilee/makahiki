@@ -36,7 +36,7 @@ def competition(request):
     "FLOOR_COUNT": floor_count,
     "FLOOR_MEMBER_COUNT": floor_member_count,
     "OVERALL_MEMBER_COUNT": overall_member_count,
-    "ROUNDS": json.dumps(get_round_info()),
+    "ROUNDS": get_round_info(),
     "FLOOR_LABEL": get_floor_label(),
     "CURRENT_ROUND": current_round,
     "FACEBOOK_APP_ID": facebook_app_id,

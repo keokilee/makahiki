@@ -1,0 +1,52 @@
+{% load class_tags %}
+
+{% for name, info in ROUNDS.items reversed %}
+<table {% get_id_and_classes "prizes-list-table" %}>
+  <tr><th colspan=3 style="text-align: center">{{name}} prizes</th>
+  </tr>
+  <tr>
+    <th {% get_id_and_classes "prizes-list-table-header" %}>Prize</th>
+    <th {% get_id_and_classes "prizes-list-table-awarded-header" %}>Number awarded</th>
+    <th {% get_id_and_classes "prizes-list-table-criteria-header" %}>Criteria</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="{{STATIC_URL}}images/prizes/ipod-nano.jpg"/>
+      <a href="#">
+        iPod Nano
+      </a>
+    </td>
+    <td>1</td>
+    <td>
+      Won by the #1 individual point getter across all residence halls. <br/>
+      Current leader: TBD
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="{{STATIC_URL}}images/prizes/Pizza.jpg"/>
+      <a href="#">
+        Pizza party
+      </a>
+    </td>
+    <td>3</td>
+    <td>
+      Won by the #1 lounge energy conserver in each residence hall.<br/>
+      Current leader: TBD
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="{{STATIC_URL}}images/prizes/ice-cream-cone.jpg"/>
+      <a href="#">
+        Ice cream party
+      </a>
+    </td>
+    <td>3</td>
+    <td>
+      Won by the #1 lounge point getter in each residence hall.<br/>
+      Current leader: TBD
+    </td>
+  </tr>
+</table>
+{% endfor %}

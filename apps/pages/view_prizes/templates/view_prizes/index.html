@@ -17,61 +17,20 @@
       Prizes and Prize Winners
     </div>
     <div {% get_id_and_classes "prizes-list-content" %}>
-      <form>
-        <select>
-          <option>Round 1</option>
-          <option>Round 2</option>
-          <option>Overall</option>
-        </select>
-      </form>
-      
-      <table {% get_id_and_classes "prizes-list-table" %}>
-        <tr>
-          <th {% get_id_and_classes "prizes-list-table-header" %}>Prize</th>
-          <th {% get_id_and_classes "prizes-list-table-awarded-header" %}>Number awarded</th>
-          <th {% get_id_and_classes "prizes-list-table-criteria-header" %}>Criteria</th>
-        </tr>
-        <tr>
-          <td>
-            <img src="{{STATIC_URL}}images/prizes/ipod-nano.jpg"/>
-            <a href="#">
-              iPod Nano
-            </a>
-          </td>
-          <td>1</td>
-          <td>
-            Won by the #1 individual point getter across all residence halls. <br/>
-            Winner: TBD
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src="{{STATIC_URL}}images/prizes/Pizza.jpg"/>
-            <a href="#">
-              Pizza party
-            </a>
-          </td>
-          <td>3</td>
-          <td>
-            Won by the #1 lounge energy conserver in each residence hall.<br/>
-            Winner: TBD
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src="{{STATIC_URL}}images/prizes/ice-cream-cone.jpg"/>
-            <a href="#">
-              Ice cream party
-            </a>
-          </td>
-          <td>3</td>
-          <td>
-            Won by the #1 lounge point getter in each residence hall.<br/>
-            Winner: TBD
-          </td>
-        </tr>
-      </table>
+      {% include "view_prizes/prize_list.html" %}
     </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var height = 0;
+        $("#prizes-list-content").children().each(function(index, value) {
+          if ($(value).height() > height) {
+            height = $(value).height();
+          }
+        });
+
+        $("#prizes-list-content").cycle({height: "" + height + "px"});
+      })
+    </script>
   </div>
 </div>
 

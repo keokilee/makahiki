@@ -18,8 +18,8 @@
   padding: 0px;
 }
 
-#prizes-list .widget-body form {
-  text-align: center
+#prizes-list-content {
+  padding: 10px 0;
 }
 
 #prizes-list-table img {
