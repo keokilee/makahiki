@@ -14,7 +14,7 @@ class PrizeTest(TestCase):
   def testConstraints(self):
     """
     Tests that the uniqueness constraints are enforced.
-    A prize with the same round_name, award_to, and award_criteria as another cannot be created.
+    A prize with the same round_name, award_to, and competition_type as another cannot be created.
     """
     image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
     image = ImageFile(open(image_path, "r"))
@@ -23,7 +23,7 @@ class PrizeTest(TestCase):
         description="A test prize",
         image=image,
         award_to="individual_overall",
-        award_criteria="points",
+        competition_type="points",
         round_name="Round 1"
     )
     prize.save()
@@ -33,7 +33,7 @@ class PrizeTest(TestCase):
         description="A duplicate test prize",
         image=image,
         award_to="individual_overall",
-        award_criteria="points",
+        competition_type="points",
         round_name="Round 1"
     )
     try:
@@ -49,13 +49,13 @@ class PrizeTest(TestCase):
       self.fail("IntegrityError exception should not be thrown.")
       
     prize2.round_name = "Round 1"
-    prize2.award_criteria = "energy"
+    prize2.competition_type = "energy"
     try:
       prize2.save()
     except IntegrityError:
       self.fail("IntegrityError exception should not be thrown.")
       
-    prize2.award_criteria = "points"
+    prize2.competition_type = "points"
     prize2.award_to = "floor_overall"
     try:
       prize2.save()

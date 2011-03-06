@@ -22,15 +22,33 @@ class Prize(models.Model):
       ("energy", "Energy")
   )
   
-  title = models.CharField(max_length=30)
-  description = models.TextField()
-  image = models.ImageField(max_length=1024, upload_to="prizes", blank=True)
-  round_name = models.CharField(max_length=20, choices=ROUND_CHOICES)
-  award_to = models.CharField(max_length=20, choices=AWARD_TO_CHOICES)
-  award_criteria = models.CharField(max_length=20, choices=AWARD_CRITERIA_CHOICES)
+  title = models.CharField(max_length=30, help_text="The title of your prize.")
+  description = models.TextField(
+      help_text="Description of the prize. This should include information about who can win it."
+  )
+  image = models.ImageField(
+      max_length=1024, 
+      upload_to="prizes", 
+      blank=True,
+      help_text="A picture of your prize."
+  )
+  round_name = models.CharField(
+      max_length=20, 
+      choices=ROUND_CHOICES,
+      help_text="The round in which this prize can be won."
+  )
+  award_to = models.CharField(
+      max_length=20, 
+      choices=AWARD_TO_CHOICES,
+      help_text="Who the prize is awarded to.  This is used to calculate who's winning."
+  )
+  competition_type = models.CharField(
+      max_length=20, 
+      choices=AWARD_CRITERIA_CHOICES,
+      help_text="The 'competition' this prize is awarded to.")
   
   class Meta:
-    unique_together = ("round_name", "award_to", "award_criteria")
+    unique_together = ("round_name", "award_to", "competition_type")
   
   def num_awarded(self, floor=None):
     """
@@ -41,7 +59,7 @@ class Prize(models.Model):
       return 1
     
   def leader(self, floor=None):
-    if self.award_criteria == "points":
+    if self.competition_type == "points":
       return self._points_leader(floor)
     else:
       return self._energy_leader(floor)

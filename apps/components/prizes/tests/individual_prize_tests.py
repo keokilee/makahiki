@@ -25,7 +25,7 @@ class OverallPrizeTest(TestCase):
         description="A test prize",
         image=image,
         award_to="individual_overall",
-        award_criteria="points",
+        competition_type="points",
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS

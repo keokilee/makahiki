@@ -16,12 +16,12 @@ class Migration(SchemaMigration):
             ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=1024, blank=True)),
             ('round_name', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('award_to', self.gf('django.db.models.fields.CharField')(max_length=20)),
-            ('award_criteria', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('competition_type', self.gf('django.db.models.fields.CharField')(max_length=20)),
         ))
         db.send_create_signal('prizes', ['Prize'])
 
-        # Adding unique constraint on 'Prize', fields ['round_name', 'award_to', 'award_criteria']
-        db.create_unique('prizes_prize', ['round_name', 'award_to', 'award_criteria'])
+        # Adding unique constraint on 'Prize', fields ['round_name', 'award_to', 'competition_type']
+        db.create_unique('prizes_prize', ['round_name', 'award_to', 'competition_type'])
 
 
     def backwards(self, orm):
@@ -29,15 +29,15 @@ class Migration(SchemaMigration):
         # Deleting model 'Prize'
         db.delete_table('prizes_prize')
 
-        # Removing unique constraint on 'Prize', fields ['round_name', 'award_to', 'award_criteria']
-        db.delete_unique('prizes_prize', ['round_name', 'award_to', 'award_criteria'])
+        # Removing unique constraint on 'Prize', fields ['round_name', 'award_to', 'competition_type']
+        db.delete_unique('prizes_prize', ['round_name', 'award_to', 'competition_type'])
 
 
     models = {
         'prizes.prize': {
-            'Meta': {'unique_together': "(('round_name', 'award_to', 'award_criteria'),)", 'object_name': 'Prize'},
-            'award_criteria': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
+            'Meta': {'unique_together': "(('round_name', 'award_to', 'competition_type'),)", 'object_name': 'Prize'},
             'award_to': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
+            'competition_type': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '1024', 'blank': 'True'}),
