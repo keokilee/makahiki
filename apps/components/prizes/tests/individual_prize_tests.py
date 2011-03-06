@@ -7,20 +7,25 @@ from django.core.files.images import ImageFile
 from django.contrib.auth.models import User
 
 from components.makahiki_profiles.models import Profile
-from components.prizes.models import IndividualOverallPointsPrize
+from components.prizes.models import Prize
 
-class IndividualOverallPointsTest(TestCase):
+class OverallPrizeTest(TestCase):
+  """
+  Tests awarding a prize to the individual overall points winner.
+  """
   def setUp(self):
     """
-    Sets up a test prize for the rest of the tests.
-    This prize is not saved, as some test-specific fields are not set.
+    Sets up a test individual prize for the rest of the tests.
+    This prize is not saved, as the round field is not yet set.
     """
     image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
     image = ImageFile(open(image_path, "r"))
-    self.prize = IndividualOverallPointsPrize(
+    self.prize = Prize(
         title="Super prize!",
         description="A test prize",
         image=image,
+        award_to="individual_overall",
+        award_criteria="points",
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS
@@ -37,6 +42,20 @@ class IndividualOverallPointsTest(TestCase):
     
     # Create test users.
     self.users = [User.objects.create_user("test%d" % i, "test@test.com") for i in range(0, 3)]
+    
+  def testNumAwarded(self):
+    """
+    Simple test to check that the number of prizes to be awarded is one.
+    """
+    self.prize.round_name = "Round 1"
+    self.prize.save()
+    
+    self.assertEqual(self.prize.num_awarded(), 1, "This prize should not be awarded to more than one user.")
+    
+    self.prize.round_name = "Overall"
+    self.prize.save()
+    
+    self.assertEqual(self.prize.num_awarded(), 1, "This prize should not be awarded to more than one user.")
     
   def testRoundLeader(self):
     """
@@ -108,6 +127,3 @@ class IndividualOverallPointsTest(TestCase):
     """
     settings.COMPETITION_ROUNDS = self.saved_rounds
     self.prize.delete()
-    
-    
-
