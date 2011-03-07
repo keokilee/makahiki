@@ -125,9 +125,9 @@ class Profile(models.Model):
   get_absolute_url = models.permalink(get_absolute_url)
   
   @staticmethod
-  def overall_points_leaders(num_results=10, round_name=None):
+  def points_leaders(num_results=10, round_name=None):
     """
-    Returns the top points leaders overall or for an optional round.
+    Returns the top points leaders out of all users.
     """
     if round_name:
       return Profile.objects.filter(

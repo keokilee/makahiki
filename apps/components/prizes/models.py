@@ -3,6 +3,7 @@ from django.conf import settings
 
 from components.makahiki_base import get_round_info
 from components.makahiki_profiles.models import Profile
+from components.floors.models import Dorm
 
 class Prize(models.Model):
   """
@@ -57,6 +58,10 @@ class Prize(models.Model):
     if self.award_to in ("individual_overall", "floor_overall", "dorm"):
       # For overall prizes, it is only possible to award one.
       return 1
+      
+    elif self.award_to in ("floor_dorm", "individual_dorm"):
+      # For dorm prizes, this is just the number of dorms.
+      return Dorm.objects.count()
     
   def leader(self, floor=None):
     if self.competition_type == "points":
@@ -65,12 +70,13 @@ class Prize(models.Model):
       return self._energy_leader(floor)
       
   def _points_leader(self, floor):
+    round_name = None if self.round_name == "Overall" else self.round_name
     if self.award_to == "individual_overall":
-      if self.round_name == "Overall":
-        return Profile.overall_points_leaders(num_results=1)[0]
-      else:
-        return Profile.overall_points_leaders(num_results=1, round_name=self.round_name)[0]
+      return Profile.points_leaders(num_results=1, round_name=round_name)[0]
     
+    elif self.award_to == "floor_dorm":
+      return floor.dorm.floor_points_leaders(num_results=1, round_name=round_name)[0]
+      
     raise Exception("Not implemented yet.")
     
   def _energy_leader(self, floor):

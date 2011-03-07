@@ -8,7 +8,6 @@ BeautifulSoup==3.0.7a
 Django==1.2.4
 Fabric==0.9.1
 Markdown==2.0.1
-NoseXUnit==0.3.3
 PIL==1.1.7
 Pygments==1.0
 South==0.7.1
@@ -41,7 +40,7 @@ django-markup==0.3
 django-messages==0.4.2
 django-microblogging==0.1.2
 django-nose==0.1
-django-nose-selenium==0.5
+django-nose-selenium==0.6
 django-notification==0.1.4
 django-oembed==0.1.0
 django-openid==0.2.0
@@ -70,7 +69,7 @@ geopy==0.93dev-r0
 kid==0.9.6
 logilab-astng==0.20.2
 logilab-common==0.51.1
-nose==0.11.3
+nose==1.0.0
 pyflakes==0.4.0
 pylint==0.21.1
 python-dateutil==1.4.1

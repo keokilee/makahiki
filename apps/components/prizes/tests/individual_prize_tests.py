@@ -52,11 +52,6 @@ class OverallPrizeTest(TestCase):
     
     self.assertEqual(self.prize.num_awarded(), 1, "This prize should not be awarded to more than one user.")
     
-    self.prize.round_name = "Overall"
-    self.prize.save()
-    
-    self.assertEqual(self.prize.num_awarded(), 1, "This prize should not be awarded to more than one user.")
-    
   def testRoundLeader(self):
     """
     Tests that we can retrieve the overall individual points leader for a round prize.
