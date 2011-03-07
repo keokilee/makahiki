@@ -153,7 +153,7 @@ class FloorLeadersTestCase(TestCase):
     profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
     profile.save()
     
-    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile.floor, 
+    self.assertEqual(Floor.floor_points_leaders(round_name=self.current_round)[0], profile.floor, 
         "The user's floor is not leading in the prize.")
         
     # Test that a user in a different floor but same dorm changes the leader for the original user.
@@ -161,21 +161,64 @@ class FloorLeadersTestCase(TestCase):
     profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
     profile2.save()
     
-    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile2.floor, 
+    self.assertEqual(Floor.floor_points_leaders(round_name=self.current_round)[0], profile2.floor, 
         "The user's floor should have changed.")
         
     # Test that adding points outside of the round does not affect the leaders.
     profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=2))
     profile.save()
     
-    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile2.floor, 
+    self.assertEqual(Floor.floor_points_leaders(round_name=self.current_round)[0], profile2.floor, 
         "The leader of the floor should not change.")
         
     # Test that a tie is handled properly.
     profile.add_points(1, datetime.datetime.today())
     profile.save()
     
-    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile.floor, 
+    self.assertEqual(Floor.floor_points_leaders(round_name=self.current_round)[0], profile.floor, 
+        "The leader of the floor should have changed back.")
+        
+  def testIndividualPointsInRound(self):
+    """
+    Tests calculating the individual points leaders in a round.
+    """
+    profile = self.users[0].get_profile()
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.save()
+
+    self.assertEqual(profile.floor.points_leaders(round_name=self.current_round)[0], profile, 
+        "The user should be in the lead in his own floor.")
+
+    # Test that a user in a different floor but same dorm does not change the leader for the original floor.
+    profile1 = self.users[1].get_profile()
+    profile1.add_points(15, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile1.save()
+    
+    self.assertEqual(profile.floor.points_leaders(round_name=self.current_round)[0], profile, 
+        "The leader for the user's floor should not have changed.")
+    self.assertEqual(profile1.floor.points_leaders(round_name=self.current_round)[0], profile1, 
+        "User 1 should be leading in their own floor.")
+        
+    # Test another user going ahead in the user's floor.
+    profile2 = self.users[2].get_profile()
+    profile2.add_points(15, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.save()
+
+    self.assertEqual(profile.floor.points_leaders(round_name=self.current_round)[0], profile2, 
+        "User 2 should be in the lead in the user's floor.")
+        
+    # Test that adding points outside of the round does not affect the leaders.
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.save()
+
+    self.assertEqual(profile.floor.points_leaders(round_name=self.current_round)[0], profile2, 
+        "The leader of the floor should not change.")
+
+    # Test that a tie is handled properly.
+    profile.add_points(5, datetime.datetime.today())
+    profile.save()
+
+    self.assertEqual(profile.floor.points_leaders(round_name=self.current_round)[0], profile, 
         "The leader of the floor should have changed back.")
         
   def testFloorPointsOverall(self):
@@ -186,23 +229,32 @@ class FloorLeadersTestCase(TestCase):
     profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
     profile.save()
 
-    self.assertEqual(Floor.points_leaders()[0], profile.floor, 
-        "The user's floor is not leading in the prize.")
+    self.assertEqual(profile.floor.points_leaders()[0], profile, 
+        "The user should be in the lead in his own floor.")
 
-    # Test that a user in a different floor but same dorm changes the leader for the original user.
+    # Test that a user in a different floor but same dorm does not change the leader for the original floor.
+    profile1 = self.users[1].get_profile()
+    profile1.add_points(15, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile1.save()
+
+    self.assertEqual(profile.floor.points_leaders()[0], profile, 
+        "The leader for the user's floor should not have changed.")
+    self.assertEqual(profile1.floor.points_leaders()[0], profile1, 
+        "User 1 should be leading in their own floor.")
+        
+    # Test another user going ahead in the user's floor.
     profile2 = self.users[2].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.add_points(15, datetime.datetime.today() - datetime.timedelta(minutes=1))
     profile2.save()
 
-    self.assertEqual(Floor.points_leaders()[0], profile2.floor, 
-        "The user's floor should have changed.")
+    self.assertEqual(profile.floor.points_leaders()[0], profile2, 
+        "User 2 should be in the lead in the user's floor.")
 
-    # Test that a tie between two different floors is handled properly.
-    profile.add_points(1, datetime.datetime.today())
+    # Test that a tie is handled properly.
+    profile.add_points(5, datetime.datetime.today())
     profile.save()
-    
-    self.assertEqual(profile.points, profile2.points, "The two profiles should have identical points.")
-    self.assertEqual(Floor.points_leaders()[0], profile.floor, 
+
+    self.assertEqual(profile.floor.points_leaders()[0], profile, 
         "The leader of the floor should have changed back.")
         
   def tearDown(self):

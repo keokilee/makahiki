@@ -12,7 +12,7 @@ class Prize(models.Model):
   ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
   AWARD_TO_CHOICES = (
       ("individual_overall", "Individual (Overall)"),
-      # ("individual_floor",  "Individual (" + settings.COMPETITION_GROUP_NAME + ")"),
+      ("individual_floor",  "Individual (" + settings.COMPETITION_GROUP_NAME + ")"),
       # ("individual_dorm", "Individual (Dorm)"),
       ("floor_overall", settings.COMPETITION_GROUP_NAME + " (Overall)"),
       ("floor_dorm", settings.COMPETITION_GROUP_NAME + " (Dorm)"),
@@ -75,7 +75,7 @@ class Prize(models.Model):
     else:
       return self._energy_leader(floor)
       
-  def _points_leader(self, floor):
+  def _points_leader(self, floor=None):
     round_name = None if self.round_name == "Overall" else self.round_name
     if self.award_to == "individual_overall":
       return Profile.points_leaders(num_results=1, round_name=round_name)[0]
@@ -84,7 +84,10 @@ class Prize(models.Model):
       return floor.dorm.floor_points_leaders(num_results=1, round_name=round_name)[0]
       
     elif self.award_to == "floor_overall":
-      return Floor.points_leaders(num_results=1, round_name=round_name)[0]
+      return Floor.floor_points_leaders(num_results=1, round_name=round_name)[0]
+      
+    elif self.award_to == "individual_floor":
+      return floor.points_leaders(num_results=1, round_name=round_name)[0]
       
     raise Exception("Not implemented yet.")
     

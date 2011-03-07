@@ -67,7 +67,7 @@ class Floor(models.Model):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
     
   @staticmethod
-  def points_leaders(num_results=10, round_name=None):
+  def floor_points_leaders(num_results=10, round_name=None):
     if round_name:
       return Floor.objects.filter(
           profile__scoreboardentry__round_name=round_name
@@ -80,6 +80,17 @@ class Floor(models.Model):
         points=Sum("profile__points"), 
         last=Max("profile__last_awarded_submission")
     ).order_by("-points", "-last")[:num_results]
+    
+  def points_leaders(self, num_results=10, round_name=None):
+    """
+    Gets the points leaders for the current floor.
+    """
+    if round_name:
+      return self.profile_set.filter(
+          scoreboardentry__round_name=round_name
+      ).order_by("-scoreboardentry__points", "-scoreboardentry__last_awarded_submission")[:num_results]
+      
+    return self.profile_set.all().order_by("-points", "-last_awarded_submission")[:num_results]
     
   def current_round_rank(self):
     round_info = get_current_round()
