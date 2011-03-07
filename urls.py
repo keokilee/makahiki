@@ -23,8 +23,8 @@ urlpatterns = patterns('',
     url(r'^prizes/', include('pages.view_prizes.urls')),
     
     # Component views.
-    url(r'^account/cas/login/$', 'components.django_cas.views.login'),
-    url(r'^account/cas/logout/$', 'components.django_cas.views.logout'),
+    url(r'^account/cas/login/$', 'lib.django_cas.views.login'),
+    url(r'^account/cas/logout/$', 'lib.django_cas.views.logout'),
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),

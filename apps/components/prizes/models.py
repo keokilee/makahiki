@@ -62,6 +62,12 @@ class Prize(models.Model):
     elif self.award_to in ("floor_dorm", "individual_dorm"):
       # For dorm prizes, this is just the number of dorms.
       return Dorm.objects.count()
+      
+    elif self.award_to == "individual_floor":
+      # This is awarded to each floor.
+      return Floor.objects.count()
+      
+    raise Exception("Unknown award_to value '%s'" % self.award_to)
     
   def leader(self, floor=None):
     if self.competition_type == "points":

@@ -110,7 +110,7 @@ MIDDLEWARE_CLASSES = (
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
-    'components.django_cas.middleware.CASMiddleware',
+    'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
     'pages.home.middleware.CheckSetupMiddleware',
 )
@@ -158,7 +158,7 @@ INSTALLED_APPS = (
     # Makahiki components
     'components.activities',
     'components.api',
-    'components.django_cas', # Placed here so that it registers as an app during testing.
+    'lib.django_cas', # Placed here so that it registers as an app during testing.
     'components.floors',
     'components.energy_goals',
     'components.makahiki_auth',
