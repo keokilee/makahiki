@@ -117,6 +117,96 @@ class DormUnitTestCase(TestCase):
         
   def tearDown(self):
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    
+class FloorLeadersTestCase(TestCase):
+  def setUp(self):
+    self.dorm = Dorm(name="Test Dorm")
+    self.dorm.save()
+    
+    self.floors = [Floor(number=str(i), dorm=self.dorm) for i in range(0, 2)]
+    map(lambda f: f.save(), self.floors)
+    
+    self.users = [User.objects.create_user("test%d" % i, "test@test.com") for i in range(0, 4)]
+    
+    # Assign users to floors.
+    for index, user in enumerate(self.users):
+      user.get_profile().floor = self.floors[index % 2]
+      user.get_profile().save()
+      
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end = start + datetime.timedelta(days=7)
+
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end.strftime("%Y-%m-%d"),
+      },
+    }
+    
+  def testFloorPointsInRound(self):
+    """
+    Tests calculating the floor points leaders in a round.
+    """
+    profile = self.users[0].get_profile()
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.save()
+    
+    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile.floor, 
+        "The user's floor is not leading in the prize.")
+        
+    # Test that a user in a different floor but same dorm changes the leader for the original user.
+    profile2 = self.users[2].get_profile()
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.save()
+    
+    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile2.floor, 
+        "The user's floor should have changed.")
+        
+    # Test that adding points outside of the round does not affect the leaders.
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.save()
+    
+    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile2.floor, 
+        "The leader of the floor should not change.")
+        
+    # Test that a tie is handled properly.
+    profile.add_points(1, datetime.datetime.today())
+    profile.save()
+    
+    self.assertEqual(Floor.points_leaders(round_name=self.current_round)[0], profile.floor, 
+        "The leader of the floor should have changed back.")
+        
+  def testFloorPointsOverall(self):
+    """
+    Tests calculating the floor points leaders in a round.
+    """
+    profile = self.users[0].get_profile()
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.save()
+
+    self.assertEqual(Floor.points_leaders()[0], profile.floor, 
+        "The user's floor is not leading in the prize.")
+
+    # Test that a user in a different floor but same dorm changes the leader for the original user.
+    profile2 = self.users[2].get_profile()
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.save()
+
+    self.assertEqual(Floor.points_leaders()[0], profile2.floor, 
+        "The user's floor should have changed.")
+
+    # Test that a tie between two different floors is handled properly.
+    profile.add_points(1, datetime.datetime.today())
+    profile.save()
+    
+    self.assertEqual(profile.points, profile2.points, "The two profiles should have identical points.")
+    self.assertEqual(Floor.points_leaders()[0], profile.floor, 
+        "The leader of the floor should have changed back.")
+        
+  def tearDown(self):
+    settings.COMPETITION_ROUNDS = self.saved_rounds
 
 class FloorsUnitTestCase(TestCase):
   def setUp(self):

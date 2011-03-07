@@ -66,6 +66,21 @@ class Floor(models.Model):
   def __unicode__(self):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
     
+  @staticmethod
+  def points_leaders(num_results=10, round_name=None):
+    if round_name:
+      return Floor.objects.filter(
+          profile__scoreboardentry__round_name=round_name
+      ).annotate(
+          points=Sum("profile__scoreboardentry__points"), 
+          last=Max("profile__scoreboardentry__last_awarded_submission")
+      ).order_by("-points", "-last")[:num_results]
+      
+    return Floor.objects.annotate(
+        points=Sum("profile__points"), 
+        last=Max("profile__last_awarded_submission")
+    ).order_by("-points", "-last")[:num_results]
+    
   def current_round_rank(self):
     round_info = get_current_round()
     if round_info:

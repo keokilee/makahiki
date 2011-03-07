@@ -3,7 +3,7 @@ from django.conf import settings
 
 from components.makahiki_base import get_round_info
 from components.makahiki_profiles.models import Profile
-from components.floors.models import Dorm
+from components.floors.models import Dorm, Floor
 
 class Prize(models.Model):
   """
@@ -12,11 +12,11 @@ class Prize(models.Model):
   ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
   AWARD_TO_CHOICES = (
       ("individual_overall", "Individual (Overall)"),
-      ("individual_floor",  "Individual (" + settings.COMPETITION_GROUP_NAME + ")"),
-      ("individual_dorm", "Individual (Dorm)"),
+      # ("individual_floor",  "Individual (" + settings.COMPETITION_GROUP_NAME + ")"),
+      # ("individual_dorm", "Individual (Dorm)"),
       ("floor_overall", settings.COMPETITION_GROUP_NAME + " (Overall)"),
       ("floor_dorm", settings.COMPETITION_GROUP_NAME + " (Dorm)"),
-      ("dorm", "Dorm"), # Not implemented yet.
+      # ("dorm", "Dorm"), # Not implemented yet.
   )
   AWARD_CRITERIA_CHOICES = (
       ("points", "Points"),
@@ -77,10 +77,10 @@ class Prize(models.Model):
     elif self.award_to == "floor_dorm":
       return floor.dorm.floor_points_leaders(num_results=1, round_name=round_name)[0]
       
+    elif self.award_to == "floor_overall":
+      return Floor.points_leaders(num_results=1, round_name=round_name)[0]
+      
     raise Exception("Not implemented yet.")
     
   def _energy_leader(self, floor):
     raise Exception("Not implemented yet.")
-
-
-      
