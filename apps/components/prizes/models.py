@@ -48,6 +48,9 @@ class Prize(models.Model):
       choices=AWARD_CRITERIA_CHOICES,
       help_text="The 'competition' this prize is awarded to.")
   
+  def __unicode__(self):
+    return self.round_name + ": " + self.title
+    
   class Meta:
     unique_together = ("round_name", "award_to", "competition_type")
   
@@ -92,4 +95,5 @@ class Prize(models.Model):
     raise Exception("Not implemented yet.")
     
   def _energy_leader(self, floor):
+    # TODO: Implement this.
     raise Exception("Not implemented yet.")
