@@ -114,7 +114,7 @@ class ClassTagsUnitTests(TestCase):
   def testIdAndClassExpansion(self):
     """Tests the ability to expand an id into an id and classes."""
     tag_id = default.CSS_IDS.keys()[0]
-    expected_string = 'id="%s" class="%s"' % (tag_id, default.CSS_CLASSES[tag_id])
+    expected_string = 'id="%s" class="%s"' % (tag_id, default.CSS_IDS[tag_id])
     self.assertEqual(get_id_and_classes(tag_id), expected_string, 
                     "Expected: %s but got %s." % (expected_string, get_id_and_classes(tag_id)))
                     
