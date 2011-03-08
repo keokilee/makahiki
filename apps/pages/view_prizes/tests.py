@@ -1,17 +1,37 @@
+import datetime
+
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from components.floors.models import Floor
+from components.prizes.models import Prize
 
 class PrizesFunctionalTestCase(TestCase):
-  fixtures = ["base_floors.json"]
-  
-  def testIndex(self):
-    """Check that we can load the index page."""
-    user = User.objects.create_user("user", "user@test.com", password="changeme")
+  fixtures = ["base_floors.json", "test_prizes.json"]
+  def setUp(self):
+    """Set up a floor and log in."""
+    self.saved_rounds = settings.COMPETITION_ROUNDS
+    self.current_round = "Round 1"
+    start = datetime.date.today()
+    end1 = start + datetime.timedelta(days=7)
+    end2 = start + datetime.timedelta(days=14)
+    
+    settings.COMPETITION_ROUNDS = {
+      "Round 1" : {
+        "start": start.strftime("%Y-%m-%d"),
+        "end": end1.strftime("%Y-%m-%d"),
+      },
+      "Round 2" : {
+        "start": end1.strftime("%Y-%m-%d"),
+        "end": end2.strftime("%Y-%m-%d"),
+      },
+    }
+    
+    self.user = User.objects.create_user("user", "user@test.com", password="changeme")
     floor = Floor.objects.all()[0]
-    profile = user.get_profile()
+    profile = self.user.get_profile()
     profile.floor = floor
     profile.setup_complete = True
     profile.setup_profile = True
@@ -19,5 +39,28 @@ class PrizesFunctionalTestCase(TestCase):
     
     self.client.login(username="user", password="changeme")
     
+  def testIndex(self):
+    """Check that we can load the index page."""
     response = self.client.get(reverse("prizes_index"))
     self.failUnlessEqual(response.status_code, 200)
+    
+    for prize in Prize.objects.all():
+      self.assertContains(response, prize.title, msg_prefix="Prize not found on prize page")
+      
+  def testLeaders(self):
+    """Test that the leaders are displayed correctly."""
+    profile =  self.user.get_profile()
+    profile.add_points(10, datetime.datetime.today())
+    floor = profile.floor
+    profile.save()
+    
+    response = self.client.get(reverse("prizes_index"))
+    self.assertContains(response, "Current leader: " + str(profile), count=2,
+        msg_prefix="Individual prizes should have user as the leader.")
+    self.assertContains(response, "Current leader: " + str(floor), count=4,
+        msg_prefix="Floor points prizes should have floor as the leader")
+    self.assertContains(response, "Current leader: TBD", count=3,
+        msg_prefix="Round 2 prizes should not have a leader yet.")
+    
+  def tearDown(self):
+    settings.COMPETITION_ROUNDS = self.saved_rounds

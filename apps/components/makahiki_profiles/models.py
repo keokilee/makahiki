@@ -124,6 +124,18 @@ class Profile(models.Model):
       return ('profile_detail', None, {'username': self.user.username})
   get_absolute_url = models.permalink(get_absolute_url)
   
+  @staticmethod
+  def points_leaders(num_results=10, round_name=None):
+    """
+    Returns the top points leaders out of all users.
+    """
+    if round_name:
+      return Profile.objects.filter(
+          scoreboardentry__round_name=round_name,
+      ).order_by("-scoreboardentry__points", "-scoreboardentry__last_awarded_submission")[:num_results]
+    
+    return Profile.objects.all().order_by("-points", "-last_awarded_submission")[:num_results]
+  
   def current_round_points(self):
     """Returns the amount of points the user has in the current round."""
     round_info = get_current_round()

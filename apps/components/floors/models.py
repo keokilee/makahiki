@@ -21,6 +21,23 @@ class Dorm(models.Model):
   def __unicode__(self):
     return self.name
     
+  def floor_points_leaders(self, num_results=10, round_name=None):
+    """
+    Returns the top points leaders for the given dorm.
+    """
+    if round_name:
+      return self.floor_set.filter(
+          profile__scoreboardentry__round_name=round_name
+      ).annotate(
+          points=Sum("profile__scoreboardentry__points"), 
+          last=Max("profile__scoreboardentry__last_awarded_submission")
+      ).order_by("-points", "-last")[:num_results]
+      
+    return self.floor_set.annotate(
+        points=Sum("profile__points"), 
+        last=Max("profile__last_awarded_submission")
+    ).order_by("-points", "-last")[:num_results]
+    
   def save(self, *args, **kwargs):
     """Custom save method to generate slug and set created_at/updated_at."""
     if not self.slug:
@@ -40,14 +57,40 @@ class Floor(models.Model):
   slug = models.SlugField(max_length=10, help_text="Automatically generated if left blank.")
   dorm = models.ForeignKey(Dorm, help_text="The dorm this floor belongs to.")
   floor_identifier = models.CharField(
-                  max_length=200,
-                  blank=True,
-                  null=True,
-                  help_text="Name of the variable used in the kukuicup configuration to refer to this floor."
+      max_length=200,
+      blank=True,
+      null=True,
+      help_text="Name of the variable used in the kukuicup configuration to refer to this floor."
   )
   
   def __unicode__(self):
     return "%s: %s %s" % (self.dorm.name, get_floor_label(), self.number)
+    
+  @staticmethod
+  def floor_points_leaders(num_results=10, round_name=None):
+    if round_name:
+      return Floor.objects.filter(
+          profile__scoreboardentry__round_name=round_name
+      ).annotate(
+          points=Sum("profile__scoreboardentry__points"), 
+          last=Max("profile__scoreboardentry__last_awarded_submission")
+      ).order_by("-points", "-last")[:num_results]
+      
+    return Floor.objects.annotate(
+        points=Sum("profile__points"), 
+        last=Max("profile__last_awarded_submission")
+    ).order_by("-points", "-last")[:num_results]
+    
+  def points_leaders(self, num_results=10, round_name=None):
+    """
+    Gets the points leaders for the current floor.
+    """
+    if round_name:
+      return self.profile_set.filter(
+          scoreboardentry__round_name=round_name
+      ).order_by("-scoreboardentry__points", "-scoreboardentry__last_awarded_submission")[:num_results]
+      
+    return self.profile_set.all().order_by("-points", "-last_awarded_submission")[:num_results]
     
   def current_round_rank(self):
     round_info = get_current_round()

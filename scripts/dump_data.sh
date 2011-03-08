@@ -8,3 +8,5 @@ python manage.py dumpdata --indent=2 floors.post > fixtures/test_posts.json
 
 python manage.py dumpdata --indent=2 energy_goals > fixtures/test_energy_goals.json
 
+python manage.py dumpdata --indent=2 prizes > fixtures/test_prizes.json
+
