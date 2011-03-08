@@ -1,5 +1,5 @@
-from django.conf.urls.defaults import *
-
-urlpatterns = patterns('',
-  
-)
+# from django.conf.urls.defaults import *
+# 
+# urlpatterns = patterns('',
+#   
+# )
