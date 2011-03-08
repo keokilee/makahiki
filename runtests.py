@@ -10,7 +10,7 @@ if len(sys.argv) == 1:
   command = "python manage.py test "
   for app in apps:
     if "tests.py" in os.listdir(os.path.join("apps", app)):
-      command += "%s.tests " % app
+      command += "%s.tests " % app 
       
     if "selenium" in os.listdir(os.path.join("apps", app)):
       command += "%s.selenium " % app
