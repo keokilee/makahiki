@@ -12,6 +12,7 @@ from django.views.decorators.cache import never_cache
 from django.db.models import Count, Max
 from django.views.decorators.cache import never_cache
 
+from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
 from components.activities.models import *
 from components.activities import *
@@ -29,14 +30,11 @@ def index(request):
   events = get_available_events(user)
   floor = user.get_profile().floor
   
-  floor_standings = Floor.objects.annotate(
-      f_points=Sum("profile__points"),
-      f_last_awarded_submission=Max("profile__last_awarded_submission")
-  ).order_by("-f_points", "-f_last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
-  profile_standings = Profile.objects.order_by("-points", "-last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
-  floor_profile_standings = Profile.objects.filter(
-      floor=floor
-  ).order_by("-points", "-last_awarded_submission")[:MAX_INDIVIDUAL_STANDINGS]
+  current_round = get_current_round()
+  round_name = current_round["title"] if current_round else None
+  floor_standings = Floor.floor_points_leaders(num_results=10, round_name=round_name)
+  profile_standings = Profile.points_leaders(num_results=10, round_name=round_name)
+  user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name)
   
   categories_list = __get_categories(user)
   
@@ -50,7 +48,7 @@ def index(request):
     "categories":categories_list,
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
-    "floor_profile_standings": floor_profile_standings,
+    "user_floor_standings": user_floor_standings,
     # "helps":helps,
     # "helpfiles": helpfiles,
   }, context_instance=RequestContext(request))

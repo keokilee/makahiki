@@ -68,6 +68,9 @@ class Floor(models.Model):
     
   @staticmethod
   def floor_points_leaders(num_results=10, round_name=None):
+    """
+    Returns the floor points leaders across all dorms.
+    """
     if round_name:
       return Floor.objects.filter(
           profile__scoreboardentry__round_name=round_name
@@ -83,7 +86,7 @@ class Floor(models.Model):
     
   def points_leaders(self, num_results=10, round_name=None):
     """
-    Gets the points leaders for the current floor.
+    Gets the individual points leaders for the floor.
     """
     if round_name:
       return self.profile_set.filter(
