@@ -99,3 +99,51 @@ class Prize(models.Model):
     
   def _energy_leader(self, floor):
     raise Exception("Energy leader information is not implemented here.  Needs to be implemented at view/controller layer.")
+    
+class RaffleDeadline(models.Model):
+  ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
+  
+  round_name = models.CharField(
+      max_length=20, 
+      choices=ROUND_CHOICES,
+      help_text="The round in which this prize can be won."
+  )
+  pub_date = models.DateTimeField()
+  end_date = models.DateTimeField()
+    
+class RafflePrize(models.Model):
+  ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
+  
+  title = models.CharField(max_length=30, help_text="The title of your prize.")
+  description = models.TextField(
+      help_text="Description of the prize. This should include information about who can win it."
+  )
+  image = models.ImageField(
+      max_length=1024, 
+      upload_to="prizes", 
+      blank=True,
+      help_text="A picture of your prize."
+  )
+  round_name = models.CharField(
+      max_length=20, 
+      choices=ROUND_CHOICES,
+      help_text="The round in which this prize can be won."
+  )
+  winner = models.ForeignKey(Profile, null=True, blank=True)
+  
+class RaffleTicket(models.Model):
+  profile = models.ForeignKey(Profile)
+  raffle_prize = models.ForeignKey(RafflePrize)
+  created_at = models.DateTimeField(auto_now_add=True, editable=False)
+  updated_at = models.DateTimeField(auto_now=True, editable=False)
+  
+  @staticmethod
+  def num_tickets(raffle_prize, profile=None):
+    """
+    Returns the number of tickets for a raffle prize.
+    Takes an optional profile argument to only count the number of tickets for the user.
+    """
+    query = RaffleTicket.objects.filter(raffle_prize=raffle_prize)
+    if profile:
+      query = query.filter(profile=profile)
+    return query.count()
