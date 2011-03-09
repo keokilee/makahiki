@@ -142,7 +142,7 @@ class Profile(models.Model):
     if round_info:
       return ScoreboardEntry.objects.get(profile=self, round_name=round_info["title"]).points
       
-    return None
+    return self.points
   
   def current_round_overall_rank(self):
     """Returns the overall rank of the user for the current round."""

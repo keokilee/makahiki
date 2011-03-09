@@ -9,7 +9,7 @@
 		{% for f in floor_standings %}
 		<tr><td>{{forloop.counter}}</td>
 		<td style="{% if f == floor %}font-weight: bold{% endif %}">
-		  {{f}} ({{f.f_points}})
+		  {{f}} ({{f.points}})
 		</td>
 		{% endfor %}
 	</tbody>
@@ -24,7 +24,7 @@
 		{% for p in profile_standings %}
 		<tr><td>{{forloop.counter}}</td>
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
-		  {{p.name}} ({{p.points}})
+		  {{p.name}} ({{p.current_round_points}})
 		</td>
 		{% endfor %}
 	</tbody>
@@ -39,7 +39,7 @@
 		{% for p in user_floor_standings %}
 		<tr><td>{{forloop.counter}}</td>
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
-		  {{p.name}} ({{p.points}})
+		  {{p.name}} ({{p.current_round_points}})
 		</td>
 		{% endfor %}
 	</tbody>
