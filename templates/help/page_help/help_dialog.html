@@ -1,0 +1,11 @@
+{% load markup %}
+{% load frontendadmin_tags %}
+
+{% if object.title %}
+<div id="help-dialog-{{number}}" title="{{object.title}}">
+{% else %}
+<div id="help-dialog-{{number}}" title="No title">
+{% endif %}
+  {% frontendadmin_change object %}
+  {{object.text|markdown}}
+</div>

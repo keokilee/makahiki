@@ -38,6 +38,14 @@
   display: inline;
 }
 
+#notification {
+  padding: 5px 10px;
+}
+
+#notification-box {
+  float: left;
+}
+
 #help-topics {
   display: inline;
   list-style:none; 
