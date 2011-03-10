@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load class_tags %}
+{% load generic_flatblocks %}
 
 {% block extra_head_base %}
   {% import_logged_in_css STATIC_URL %}
@@ -24,19 +25,28 @@
   </div>
 </div>    
 
-{% if helps %}
+{% if help_count %}
   <div {% get_id_and_classes "notification" %}> 
-  <div {% get_id_and_classes "notification_box" %}>
-   <a href="#" onclick="jQuery('#notification_box').fadeOut(); return false;">
-     <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
-   </a>
-   Help Topics: 
-   {% for help in helps %}
-      <a href="#" class="{% insert_classes "ui-button" %}" 
-      onclick="$('#help-dialog{{ forloop.counter }}').dialog('open')">{{help}}
-      </a>  
-   {% endfor %}
-  </div>
+    <div {% get_id_and_classes "notification_box" %}>
+      <a href="#" onclick="jQuery('#notification_box').fadeOut(); return false;">
+        <span style="margin-top: 1px" class="ui-icon ui-icon-close"></span>
+      </a>
+      Help Topics: 
+      <ul {% get_id_and_classes "help-topics" %}>
+      {% for number in help_count %}
+        {% gblock "activities","index",number for "gblocks.TitleAndText" into "block_object" %}
+        <li>
+          <a id="help-title-{{number}}" href="#" onclick='$("#help-dialog-{{number}}").dialog("open"); return false;'>
+          {% if block_object.title %}
+            {{block_object.title}}
+          {% else %}
+            No title
+          {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
   </div>
 {% endif %}
 
@@ -63,17 +73,19 @@ jQuery(document).ready(function(){
 });
 </script>
 
-{% if helpfiles %}
-  {% for helpfile in helpfiles %}
-  <div id="help-dialog{{ forloop.counter }}" title="Help">
-    {% include helpfile %}
+{% if help_count %}
+  {% for number in help_count %}
+  <div id="help-dialog-{{number}}" title="Help">
+    {% gblock "activities","index",number for "gblocks.TitleAndText" %}
   </div>
   
   <script type="text/javascript"> 
-    $("#help-dialog{{forloop.counter }}").dialog({
-        modal: true,
-        autoOpen: false
+    $(document).ready(function() {
+      $("#help-dialog-{{number}}").dialog({
+          modal: true,
+          autoOpen: false
       });
+    })
   </script>  
   {% endfor %}
 {% endif %}

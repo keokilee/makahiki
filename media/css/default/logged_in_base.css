@@ -37,3 +37,14 @@
 #header-nav-links ul li {
   display: inline;
 }
+
+#help-topics {
+  display: inline;
+  list-style:none; 
+  margin: 0;
+}
+
+#help-topics li {
+  display: inline;
+  margin: 0 5px;
+}
