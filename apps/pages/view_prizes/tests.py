@@ -10,6 +10,7 @@ from components.prizes.models import Prize
 
 class PrizesFunctionalTestCase(TestCase):
   fixtures = ["base_floors.json", "test_prizes.json"]
+  
   def setUp(self):
     """Set up a floor and log in."""
     self.user = User.objects.create_user("user", "user@test.com", password="changeme")
@@ -66,7 +67,7 @@ class PrizesFunctionalTestCase(TestCase):
   def testLeadersInRound2(self):
     """Test that the leaders are displayed correctly in round 2."""
     saved_rounds = settings.COMPETITION_ROUNDS
-    start = datetime.date.today() - + datetime.timedelta(days=8)
+    start = datetime.date.today() - datetime.timedelta(days=8)
     end1 = start + datetime.timedelta(days=7)
     end2 = start + datetime.timedelta(days=14)
 

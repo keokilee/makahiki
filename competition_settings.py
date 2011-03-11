@@ -12,7 +12,7 @@ COMPETITION_END = '2010-12-31'
 # This means that a round that ends on "2010-08-02" will end at 11:59pm of August 2nd.
 COMPETITION_ROUNDS = {
   "Round 1" : {
-    "start": '2010-08-09',
-    "end": '2010-12-31',
+    "start": '2011-01-01',
+    "end": '2011-12-31',
   },
 }
