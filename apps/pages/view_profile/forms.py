@@ -5,8 +5,8 @@ from components.makahiki_profiles.models import Profile
 
 class ProfileForm(forms.Form):
   display_name = forms.CharField(required=True)
+  enable_help = forms.BooleanField(required=False)
   about = forms.CharField(required=False, widget=forms.Textarea(attrs={
-    "class": "span-5",
     "style": "height: 40px",
   }))
   # TODO: check http://docs.djangoproject.com/en/dev/topics/http/sessions/#using-sessions-in-views

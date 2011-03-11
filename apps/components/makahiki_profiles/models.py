@@ -110,6 +110,7 @@ class Profile(models.Model):
   contact_email = models.EmailField(null=True, blank=True)
   contact_text = PhoneNumberField(null=True, blank=True)
   contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
+  enable_help = models.BooleanField(default=True)
   
   setup_profile = models.BooleanField(default=False, editable=False)
   setup_complete = models.BooleanField(default=False, editable=False)

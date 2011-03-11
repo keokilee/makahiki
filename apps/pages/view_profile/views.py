@@ -34,6 +34,7 @@ def index(request):
       profile.contact_email = form.contact_email
       profile.contact_text = form.contact_text
       profile.contact_carrier = form.contact_carrier
+      profile.enable_help = form.enable_help
       try:
         fb_profile = user.facebookprofile
         fb_profile.can_post = form.facebook_can_post
@@ -52,6 +53,7 @@ def index(request):
       fb_can_post = False
       
     form = ProfileForm(initial={
+      "enable_help": user.get_profile().enable_help,
       "display_name": user.get_profile().name,
       "about": user.get_profile().about,
       "contact_email": user.get_profile().contact_email or user.email,

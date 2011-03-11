@@ -25,7 +25,7 @@
   </div>
 </div>    
 
-{% if help_info %}
+{% if help_info and user.get_profile.enable_help %}
   <div {% get_id_and_classes "notification" %}> 
     <div {% get_id_and_classes "notification-box" %}>
       Help Topics: 
@@ -76,7 +76,7 @@ jQuery(document).ready(function(){
 });
 </script>
 
-{% if help_info %}
+{% if help_info and user.get_profile.enable_help %}
   {% for number in help_info.count %}
   {% gblock help_info.prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %}
   

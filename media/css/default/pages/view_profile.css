@@ -45,3 +45,7 @@
 #profile-badge-catalog {
   text-align: center
 }
+
+#profile-form-about-fields textarea {
+  width: 200px;
+}
