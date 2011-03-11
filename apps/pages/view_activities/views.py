@@ -46,6 +46,7 @@ def index(request):
     "profile":user.get_profile(),
     "floor": floor,
     "categories":categories_list,
+    "current_round": round_name or "Overall",
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
