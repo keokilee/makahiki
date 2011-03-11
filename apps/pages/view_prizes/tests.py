@@ -34,6 +34,8 @@ class PrizesFunctionalTestCase(TestCase):
   def testLeadersInRound1(self):
     """Test that the leaders are displayed correctly in round 1."""
     saved_rounds = settings.COMPETITION_ROUNDS
+    saved_start = settings.COMPETITION_START
+    saved_end = settings.COMPETITION_END
     start = datetime.date.today()
     end1 = start + datetime.timedelta(days=7)
     end2 = start + datetime.timedelta(days=14)
@@ -48,6 +50,9 @@ class PrizesFunctionalTestCase(TestCase):
         "end": end2.strftime("%Y-%m-%d"),
       },
     }
+    settings.COMPETITION_START = start.strftime("%Y-%m-%d")
+    settings.COMPETITION_END = end2.strftime("%Y-%m-%d")
+    
     profile =  self.user.get_profile()
     profile.add_points(10, datetime.datetime.today())
     floor = profile.floor
@@ -63,10 +68,14 @@ class PrizesFunctionalTestCase(TestCase):
         
     # Restore rounds.
     settings.COMPETITION_ROUNDS = saved_rounds
+    settings.COMPETITION_START = saved_start
+    settings.COMPETITION_END = saved_end
     
   def testLeadersInRound2(self):
     """Test that the leaders are displayed correctly in round 2."""
     saved_rounds = settings.COMPETITION_ROUNDS
+    saved_start = settings.COMPETITION_START
+    saved_end = settings.COMPETITION_END
     start = datetime.date.today() - datetime.timedelta(days=8)
     end1 = start + datetime.timedelta(days=7)
     end2 = start + datetime.timedelta(days=14)
@@ -81,6 +90,9 @@ class PrizesFunctionalTestCase(TestCase):
         "end": end2.strftime("%Y-%m-%d"),
       },
     }
+    settings.COMPETITION_START = start.strftime("%Y-%m-%d")
+    settings.COMPETITION_END = end2.strftime("%Y-%m-%d")
+    
     profile =  self.user.get_profile()
     profile.add_points(10, datetime.datetime.today())
     floor = profile.floor
@@ -96,3 +108,5 @@ class PrizesFunctionalTestCase(TestCase):
 
     # Restore rounds.
     settings.COMPETITION_ROUNDS = saved_rounds
+    settings.COMPETITION_START = saved_start
+    settings.COMPETITION_END = saved_end
