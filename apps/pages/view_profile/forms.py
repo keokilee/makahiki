@@ -12,7 +12,7 @@ class ProfileForm(forms.Form):
   # TODO: check http://docs.djangoproject.com/en/dev/topics/http/sessions/#using-sessions-in-views
   stay_logged_in = forms.BooleanField(initial=True)
   
-  facebook_can_post = forms.BooleanField()
+  facebook_can_post = forms.BooleanField(required=False)
   
   # Event notifications
   contact_email = forms.EmailField(required=False)

@@ -29,15 +29,16 @@ def index(request):
     form = ProfileForm(request.POST)
     if form.is_valid():
       profile = user.get_profile()
-      profile.name = form.display_name
-      profile.about = form.about
-      profile.contact_email = form.contact_email
-      profile.contact_text = form.contact_text
-      profile.contact_carrier = form.contact_carrier
-      profile.enable_help = form.enable_help
+      profile.name = form.cleaned_data["display_name"]
+      profile.about = form.cleaned_data["about"]
+      profile.contact_email = form.cleaned_data["contact_email"]
+      profile.contact_text = form.cleaned_data["contact_text"]
+      profile.contact_carrier = form.cleaned_data["contact_carrier"]
+      profile.enable_help = form.cleaned_data["enable_help"]
+      print profile.enable_help
       try:
         fb_profile = user.facebookprofile
-        fb_profile.can_post = form.facebook_can_post
+        fb_profile.can_post = form.cleaned_data["facebook_can_post"]
         fb_profile.save()
       except FacebookProfile.DoesNotExist:
         pass
