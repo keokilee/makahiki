@@ -20,7 +20,11 @@
     <td>{{prize.num_awarded}}</td>
     <td>
       {{prize.description}} <br/>
-      Current leader: {{prize.current_leader}}
+      {% if prize.winner %}
+        Winner: {{prize.winner}}
+      {% else %}
+        Current leader: {{prize.current_leader}}
+      {% endif %}
     </td>
   </tr>
   {% endfor %}

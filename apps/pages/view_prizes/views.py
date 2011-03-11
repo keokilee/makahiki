@@ -22,10 +22,16 @@ def index(request):
         prize.current_leader = "TBD"
       else:
         try:
-          prize.current_leader = prize.leader(floor)
+          # If we are in the middle of the round, display the current leader.
+          if today < datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d"):
+            prize.current_leader = prize.leader(floor)
+          else:
+            prize.winner = prize.leader(floor)
         except Exception:
-          # TODO: Implement this properly.
-          prize.current_leader = floor
+          if today < datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d"):
+            prize.current_leader = floor
+          else:
+            prize.winner = floor
       
     prize_dict[key] = prizes
     
