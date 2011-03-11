@@ -31,4 +31,8 @@ def index(request):
     
   return render_to_response("view_prizes/index.html", {
       "prizes": prize_dict,
+      "help_info": {
+        "prefix": "prizes_index",
+        "count": range(0, 2),
+      }
   }, context_instance=RequestContext(request))

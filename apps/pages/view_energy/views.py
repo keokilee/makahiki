@@ -75,22 +75,24 @@ def index(request):
   helpfiles = ["view_energy/help1.html", "view_energy/help2.html", "view_energy/help3.html"]
 
   return render_to_response("energy/index.html",{
-    "baseline": baseline,
-    "goal":goal,
-    "actual":energy,
-    "percent":percent,
-    "percent_reduce":percent_reduce,
-    "actual_px":actual_px,
-    "baseline_px":baseline_px,
-    "over":over,
-    "power":power,
-    "power_max":power_max,
-    "last_update":last_update,
-    "floor": floor,
-    "standings":standings,
-    "golow_activities":golow_activities,
-    "posts":golow_posts,
-    # "helps":helps,
-    # "helpfiles": helpfiles,
+      "baseline": baseline,
+      "goal":goal,
+      "actual":energy,
+      "percent":percent,
+      "percent_reduce":percent_reduce,
+      "actual_px":actual_px,
+      "baseline_px":baseline_px,
+      "over":over,
+      "power":power,
+      "power_max":power_max,
+      "last_update":last_update,
+      "floor": floor,
+      "standings":standings,
+      "golow_activities":golow_activities,
+      "posts":golow_posts,
+      "help_info": {
+        "prefix": "energy_index",
+        "count": range(0, 3),
+      }
     }
     ,context_instance=RequestContext(request))

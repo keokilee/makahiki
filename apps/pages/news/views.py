@@ -35,6 +35,10 @@ def index(request):
     "more_posts": more_posts,
     "commitment_members": members,
     "popular_tasks": get_popular_tasks(),
+    "help_info": {
+      "prefix": "news_index",
+      "count": range(0, 3),
+    }
   }, context_instance=RequestContext(request))
   
 @login_required

@@ -98,6 +98,10 @@ def index(request):
     "fb_enabled": fb_enabled,
     "in_progress_members": in_progress_members,
     "completed_members": completed_members,
+    "help_info": {
+      "prefix": "profile_index",
+      "count": range(0, 3),
+    }
   }, context_instance=RequestContext(request))
 
 @never_cache

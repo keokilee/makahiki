@@ -49,8 +49,10 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
-    "help_prefix": "activities_index",
-    "help_count": range(0, 3),
+    "help_info": {
+      "prefix": "activities_index",
+      "count": range(0, 3),
+    }
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info

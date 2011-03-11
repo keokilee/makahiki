@@ -25,13 +25,13 @@
   </div>
 </div>    
 
-{% if help_count and help_prefix %}
+{% if help_info %}
   <div {% get_id_and_classes "notification" %}> 
     <div {% get_id_and_classes "notification-box" %}>
       Help Topics: 
       <ul {% get_id_and_classes "help-topics" %}>
-      {% for number in help_count %}
-        {% gblock help_prefix,number for "gblocks.TitleAndText" into "block_object" %}
+      {% for number in help_info.count %}
+        {% gblock help_info.prefix,number for "gblocks.TitleAndText" into "block_object" %}
         <li>
           <a id="help-title-{{number}}" href="#" onclick='$("#help-dialog-{{number}}").dialog("open"); return false;'>
           {% if block_object.title %}
@@ -44,7 +44,7 @@
       {% endfor %}
       </ul>
       <div {% get_id_and_classes "help-page" %}>
-        {% gblock help_prefix for "gblocks.Text" with "help/page_help/help_box.html" %}
+        {% gblock help_info.prefix for "gblocks.Text" with "help/page_help/help_box.html" %}
       </div>
     </div>
     <a href="#" onclick="$('#notification_box').fadeOut(); return false;">
@@ -76,9 +76,9 @@ jQuery(document).ready(function(){
 });
 </script>
 
-{% if help_count and help_prefix%}
-  {% for number in help_count %}
-  {% gblock help_prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %}
+{% if help_info %}
+  {% for number in help_info.count %}
+  {% gblock help_info.prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %}
   
   <script type="text/javascript"> 
     $(document).ready(function() {
