@@ -8,6 +8,7 @@ BeautifulSoup==3.0.7a
 Django==1.2.4
 Fabric==0.9.1
 Markdown==2.0.1
+CherryPy==3.2.0
 PIL==1.1.7
 Pygments==1.0
 South==0.7.1
