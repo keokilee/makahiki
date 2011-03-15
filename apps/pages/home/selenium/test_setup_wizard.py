@@ -2,8 +2,6 @@ import time, re
 from noseselenium.cases import SeleniumTestCaseMixin
 from django.test import TestCase
 
-from django.contrib.auth.models import User
-
 class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
   selenium_fixtures = ["fixtures/base_floors.json", "fixtures/test_users.json"]
   def setUp(self):
@@ -111,6 +109,4 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
 
   def tearDown(self):
       self.assertEqual([], self.verificationErrors)
-      
-if __name__ == "__main__":
-    unittest.main()
+

@@ -93,6 +93,9 @@
                 }
                 else {
                   $("#wall-post-errors").html("");
+                  if ($("#wall-no-posts").is(":visible")) {
+                    $("#wall-no-posts").hide();
+                  }
                   $(data.contents).hide().prependTo("#wall-posts").fadeIn();
                   $("textarea").val("");
                   $("#wall-post-submit").button("option", "disabled", true);
@@ -104,13 +107,12 @@
         </script>
       </div>
 
-      {% if posts %}
         <ul {% get_id_and_classes "wall-posts" %}>
           {% include "news/news_posts.html" %}
         </ul>
-      {% else %}
-        <p>There are no posts yet!</p>
-      {% endif %}
+        {% if not posts %}
+          <p {% get_id_and_classes "wall-no-posts" %}>There are no posts yet!</p>
+        {% endif %}
     </div>
   </div>
 </div>

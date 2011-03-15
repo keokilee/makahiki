@@ -142,7 +142,7 @@ class ProfileUnitTests(TestCase):
     profile = user.get_profile()
     profile.floor = floor
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
     profile.save()
     
     self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
@@ -156,7 +156,8 @@ class ProfileUnitTests(TestCase):
                   
     profile2.floor = floor
     profile2.save()
-    
+    print profile.points
+    print profile2.points
     self.assertEqual(profile.floor_rank(), 2, "Check that the user is now rank 2.")
     
   def testOverallRankWithPoints(self):

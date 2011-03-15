@@ -19,7 +19,7 @@
 <tr>
 	<td>type</td>
 	<td>id_username</td>
-	<td>user</td>
+	<td>returning_user</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -37,9 +37,24 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyTextPresent</td>
+	<td>There are no posts yet!</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id_post</td>
 	<td>Hello world</td>
+</tr>
+<tr>
+	<td>keyUp</td>
+	<td>id_post</td>
+	<td>!</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//a[@id='wall-post-submit']/span</td>
+	<td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -48,10 +63,49 @@
 </tr>
 <tr>
 	<td>waitForTextPresent</td>
-	<td>Maile Tanaka Hello world</td>
+	<td>Maile T. Hello world</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>There are no posts yet!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id_post</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id_post</td>
+	<td>Another post</td>
+</tr>
+<tr>
+	<td>keyUp</td>
+	<td>id_post</td>
+	<td>!</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='wall-post-submit']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Maile T. Another post</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Maile T. Hello world</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

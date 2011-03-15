@@ -5742,6 +5742,15 @@
     }
   }, 
   {
+    "pk": 639, 
+    "model": "account.account", 
+    "fields": {
+      "timezone": "Pacific/Honolulu", 
+      "user": 639, 
+      "language": "en"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "auth.user", 
     "fields": {
@@ -5751,7 +5760,7 @@
       "is_active": true, 
       "is_superuser": true, 
       "is_staff": true, 
-      "last_login": "2011-03-10 16:15:45", 
+      "last_login": "2011-03-15 11:14:32", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$1ec42$55198a04ae01b5a33a031535dc93e91ca8ddf916", 
@@ -17212,8 +17221,8 @@
     "model": "auth.user", 
     "fields": {
       "username": "user", 
-      "first_name": "", 
-      "last_name": "", 
+      "first_name": "Maile", 
+      "last_name": "Tanaka", 
       "is_active": true, 
       "is_superuser": false, 
       "is_staff": false, 
@@ -17221,15 +17230,33 @@
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$8e380$9335f6a47f706c87271f5e1618cd7ae610b96719", 
-      "email": "", 
+      "email": "new_user@test.com", 
       "date_joined": "2010-09-27 15:21:01"
+    }
+  }, 
+  {
+    "pk": 639, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "returning_user", 
+      "first_name": "Maile", 
+      "last_name": "Tanaka", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2011-03-15 11:35:44", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$e1b45$e36c262bcb8615488674197409f0a7aa56c85590", 
+      "email": "returning@test.com", 
+      "date_joined": "2011-03-15 11:35:44"
     }
   }, 
   {
     "pk": 1, 
     "model": "makahiki_profiles.profile", 
     "fields": {
-      "last_visit_date": "2011-03-10", 
+      "last_visit_date": "2011-03-15", 
       "about": "", 
       "last_name": "Lee", 
       "name": "George L.", 
@@ -31258,6 +31285,28 @@
       "user": 638, 
       "contact_carrier": null, 
       "setup_profile": false, 
+      "enable_help": true
+    }
+  }, 
+  {
+    "pk": 639, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": null, 
+      "about": "I love sustainability!\r\n(Profile picture from http://www.flickr.com/photos/miyujoey/3259301323/)", 
+      "last_name": "Tanaka", 
+      "name": "Maile T.", 
+      "floor": 2, 
+      "daily_visit_count": 0, 
+      "last_awarded_submission": null, 
+      "first_name": "Maile", 
+      "setup_complete": true, 
+      "contact_text": "", 
+      "points": 0, 
+      "contact_email": "", 
+      "user": 639, 
+      "contact_carrier": null, 
+      "setup_profile": true, 
       "enable_help": true
     }
   }
