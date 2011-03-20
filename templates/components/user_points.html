@@ -12,7 +12,7 @@
   </div>
 </div>
 <!-- Second slideshow element -->
-<div id="header-user-overall-rank2">
+<div id="header-user-overall-rank2" style="display:none">
   <div {% get_id_and_classes "header-user-points" %}>
     <h3>{{profile.current_round_points}}</h3>
     {{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}
@@ -24,7 +24,7 @@
 {% endif %}
 
 <!-- Third slideshow element -->
-<div id="header-user-floor-rank3">
+<div id="header-user-floor-rank3" {% if CURRENT_ROUND %}style="display:none"{% endif %}>
   <div {% get_id_and_classes "header-user-points" %}>
     <h3>{{profile.points}}</h3>
     {{COMPETITION_POINT_NAME}}s
@@ -34,7 +34,7 @@
   </div>
 </div>
 <!-- Fourth slideshow element -->
-<div id="header-user-overall-rank4">
+<div id="header-user-overall-rank4" style="display:none">
   <div {% get_id_and_classes "header-user-points" %}>
     <h3>{{profile.points}}</h3>
     {{COMPETITION_POINT_NAME}}s
