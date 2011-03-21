@@ -47,8 +47,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForTextPresent</td>
-	<td>I don't agree</td>
+	<td>waitForElementPresent</td>
+	<td>//button[@id='agree' and @role=&quot;button&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -58,7 +58,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//button[@id='agree']</td>
+	<td>//button[@id='agree' and @role='button']</td>
 	<td></td>
 </tr>
 <tr>
