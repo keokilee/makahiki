@@ -25,14 +25,19 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
     sel.click("next")
     for i in range(60):
         try:
-            if sel.is_element_present("agree"): break
+            if sel.is_text_present("I don't agree"): break
         except: pass
         time.sleep(1)
     else: self.fail("time out")
-    sel.click("//div[@id='setup-dialog']/h2")
     try: self.failUnless(sel.is_text_present("Terms and Conditions"))
     except AssertionError, e: self.verificationErrors.append(str(e))
-    sel.click("agree")
+    for i in range(60):
+        try:
+            if sel.is_element_present("progressbar"): break
+        except: pass
+        time.sleep(1)
+    else: self.fail("time out")
+    sel.click("//button[@id='agree']")
     for i in range(60):
         try:
             if sel.is_element_present("skip"): break

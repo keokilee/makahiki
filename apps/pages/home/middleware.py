@@ -12,7 +12,7 @@ class CheckSetupMiddleware(object):
     path = request.path
     # We need to check if the user is going to the home page so we don't get caught in a redirect loop.
     # We do need to filter out requests for CSS and other resources.
-    pattern = re.compile("^/(home|site_media|media|favicon.ico)/")
+    pattern = re.compile("^/(account|home|site_media|media|favicon.ico)/")
     if user.is_authenticated() and not pattern.match(path) and not user.get_profile().setup_complete:
       return HttpResponseRedirect(reverse("home_index"))
     return None

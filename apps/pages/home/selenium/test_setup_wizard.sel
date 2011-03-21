@@ -47,13 +47,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>agree</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//div[@id='setup-dialog']/h2</td>
+	<td>waitForTextPresent</td>
+	<td>I don't agree</td>
 	<td></td>
 </tr>
 <tr>
@@ -63,7 +58,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>agree</td>
+	<td>//button[@id='agree']</td>
 	<td></td>
 </tr>
 <tr>
@@ -201,7 +196,6 @@
 	<td>home</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
