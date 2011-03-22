@@ -8,7 +8,7 @@
       <div {% get_id_and_classes "activity-category" %}>
       <div class="grid_background1">
 	    <div class="grid_transbox">
-		<p><h5> {{cat.name}}</h5></p>
+		    <h5> {{cat.name}}</h5>
         </div>
        </div>
       </div> 
@@ -28,27 +28,27 @@
        {% if task.type != 'commitment' %}
          <div class="grid_background2">
        	    <div class="grid_transbox">
-	    {% if task.is_pau %}
-		  <p>{{task.name}}</p>
-		{% else %}
-		 {% if task.activity.point_value %}
-		  <p><h3>{{task.activity.point_value}}</h3></p>
-		 {% else %}
-		   <p><h3>{{task.activity.point_range_end}}</h3></p>
-		 {% endif %}  
-		{% endif %}
-        </div>
-        </div>
+            {% if task.is_pau %}
+	            <p>{{task.name}}</p>
+	          {% else %}
+	            {% if task.activity.point_value %}
+	            <h3>{{task.activity.point_value}}</h3>
+	            {% else %}
+	            <h3>{{task.activity.point_range_end}}</h3>
+	            {% endif %}  {# end task.activity.point_value #}
+		        {% endif %} {# end task.is_pau #}
+            </div><!-- close grid_transbox -->
+          </div><!-- close grid_background2 -->
        {% else %}
        <div class="grid_background3">
-        <div class="grid_transbox">
-	    {% if task.is_pau %}
-		  <p>{{task.name}}</p>
-		{% else %}
-		  <p><h3>{{task.commitment.point_value}}</h3></p>
-		{% endif %}
+         <div class="grid_transbox">
+	         {% if task.is_pau %}
+		        <p>{{task.name}}</p>
+		       {% else %}
+		        <h3>{{task.commitment.point_value}}</h3>
+		       {% endif %} {# end task.is_pau #}
         </div>
-        </div>
+       </div>
        {% endif %}
        
        </a>
