@@ -21,9 +21,9 @@
     <td>
       {{prize.description}} <br/>
       {% if prize.winner %}
-        Winner: {{prize.winner}}
+        Winner: {{prize.winner|safe}}
       {% else %}
-        Current leader: {{prize.current_leader}}
+        Current leader: {{prize.current_leader|safe}}
       {% endif %}
     </td>
   </tr>

@@ -61,8 +61,14 @@ class PrizesFunctionalTestCase(TestCase):
     response = self.client.get(reverse("prizes_index"))
     self.assertContains(response, "Current leader: " + str(profile), count=2,
         msg_prefix="Individual prizes should have user as the leader.")
-    self.assertContains(response, "Current leader: " + str(floor), count=4,
+    self.assertContains(response, "Current leader: " + str(floor), count=2,
         msg_prefix="Floor points prizes should have floor as the leader")
+    self.assertContains(response, "Current leader: <span id='round-1-leader'></span>", count=1,
+        msg_prefix="Span for round 1 energy prize should be inserted.")
+    self.assertNotContains(response, "Current leader: <span id='round-2-leader'></span>",
+        msg_prefix="Span for round 2 energy prize should not be inserted.")
+    self.assertContains(response, "Current leader: <span id='overall-leader'></span>", count=1,
+        msg_prefix="Span for round 1 energy prize should be inserted.")
     self.assertContains(response, "Current leader: TBD", count=3,
         msg_prefix="Round 2 prizes should not have a leader yet.")
         
@@ -103,7 +109,9 @@ class PrizesFunctionalTestCase(TestCase):
         msg_prefix="There should be winners for three prizes.")
     self.assertContains(response, "Current leader: " + str(profile), count=2,
         msg_prefix="Individual prizes should have user as the leader.")
-    self.assertContains(response, "Current leader: " + str(floor), count=4,
+    self.assertContains(response, "Current leader: <span id='round-2-leader'></span>", count=1,
+        msg_prefix="Span for round 2 energy prize should be inserted.")
+    self.assertContains(response, "Current leader: " + str(floor), count=2,
         msg_prefix="Floor points prizes should have floor as the leader")
 
     # Restore rounds.

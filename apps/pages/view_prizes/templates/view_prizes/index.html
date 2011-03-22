@@ -29,7 +29,28 @@
         });
 
         $("#prizes-list-content").cycle({height: "" + height + "px"});
-      })
+      });
+      
+      // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+      (function() {
+        var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
+
+        // Get the spreadsheets we need.
+        var rollingHoursEnergyUrl = configuration.getRollingHoursEnergyUrl();
+        // console.log(rollingHoursEnergyUrl);
+        var refreshInterval = 0; // don't refresh this spreadsheet.
+
+        // Load the visualization API and the spreadsheet, then call displayRank.
+        var loader = new org.wattdepot.gdata.GDataLoader(displayRank, rollingHoursEnergyUrl, refreshInterval);  
+
+        function displayRank(rollingHoursDatatable) {
+          var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank(configuration);
+          var leaderInfo = energyRank.calculateLeader(rollingHoursDatatable);
+          energyRank.insertLeader('round-1-leader', leaderInfo);
+          //energyRank.insertLeader('round-2-leader', leaderInfo);
+          energyRank.insertLeader('overall-leader', leaderInfo);
+        }
+      })();
     </script>
   </div>
 </div>
