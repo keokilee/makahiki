@@ -3,6 +3,7 @@
   <h3 style="text-align: center; margin: 0 20px">If you&apos;ve watched the intro video, answer the following question for a generous 15 Kukui Nut points. Many Kukui Cup activities will have verification steps before you earn your points.</h3>
   
   <form id="activity-form" style="border: 1px solid black; margin-top: 10px; padding: 5px">
+    {% csrf_token %}
     <label for="activity-select">Question: Which level of student can participate in the Kukui Cup?</label><br/>
     Answer: <select name="activity-select" id="activity-select">
       <option></option>
@@ -32,6 +33,28 @@
 <div id="progressbar"></div>
 <script type="text/javascript">
   $(document).ready(function() {
+    $('html').ajaxSend(function(event, xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    });
+    
     $("#progressbar").progressbar({
       value: 600/7
     });

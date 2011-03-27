@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.middleware.csrf.CsrfResponseMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
     'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
     'pages.home.middleware.CheckSetupMiddleware',
@@ -137,7 +137,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "pinax.core.context_processors.pinax_settings",
     "notification.context_processors.notification",
     # "account.context_processors.openid",
-    # "account.context_processors.account",
+    "account.context_processors.account",
     
     "components.makahiki_base.context_processors.competition",
     "components.makahiki_themes.context_processors.css_selector",
