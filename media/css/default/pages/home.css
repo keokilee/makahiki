@@ -1,14 +1,388 @@
-/* Hack to hide close button in dialog box.*/
-.ui-dialog .ui-dialog-titlebar-close { display: none; }
+@charset "UTF-8";
+/* CSS Document */
 
-#id_about {
-  height: 50px;
+body {
+	background: #4A7A28 url(/site_media/static/css/default/images/bkg-grass.jpg);
+	text-align: center;
+	font: normal 10pt Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll;
+	}
+
+a {
+	color: #070000;
 }
 
-#home-news, #home-prizes, #home-help, #home-profile {
-  text-align: center;
+
+.container {
+	width: 960px;
+	background: transparent url(/site_media/static/css/default/images/bkg-page.jpg) top center no-repeat;
+	text-align: center;
+	margin: 0 auto 0 auto;
+	padding: 0;
+	
+	box-shadow: 0px 3px 20px #000;
+	-moz-box-shadow: 0px 3px 20px #000;
+	-webkit-box-shadow: 0px 3px 20px #000;
 }
 
-#home-energy {
-  text-align: right;
+
+.container-top {
+	background: transparent url(/site_media/static/css/default/images/bkg-landing-top.jpg) top center no-repeat;
+	margin: 0;
+	padding: 0;
+	
+}
+
+.container-bottom {
+	background: transparent url(/site_media/static/css/default/images/bkg-landing-bottom.png) bottom center no-repeat;
+	margin: 0;
+	padding: 5px 5px 50px 5px;
+}
+
+
+/********************** header styles ******************************/
+
+#header {
+	width: 926px;
+	height: 126px;
+	background: transparent url(/site_media/static/css/default/images/bkg-profile-topnav.png) top center no-repeat;
+	margin: 1.5em auto 20px auto;
+}
+
+#header-logo {
+	float: left;
+	margin: 5px 0 5px 15px;
+}
+
+#header-title {
+	position: absolute;
+	margin: 65px auto 0 130px;
+	font-size: 14pt;
+	text-transform: capitalize;
+}
+
+#header-logout {
+	position: absolute;
+	margin-left: 800px;
+	margin-top: -1.3em;
+	text-align: right;
+	width: 120px;
+	font-weight: bold;
+}
+
+
+#header-logout a {color: #FFF;}
+
+#header-nav-links {
+	background: transparent url(/site_media/static/css/default/images/bkg-icon-tray.png) 0 10px no-repeat;
+	width: 390px;
+	height: 78px;
+	display: block;
+	margin: 0 0 0 125px;
+	padding: 15px 5px;
+	}
+
+#header-nav-links ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#header-nav-links ul li {
+	float: left;
+	margin-left: .4em;
+}
+
+#header-nav-links img {
+	border: 0;
+}
+
+#header-nav-links a.home img {
+}
+
+#header-nav-links a.energy img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-go-low.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.energy:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-go-low-over.png) top left no-repeat;
+}
+
+#header-nav-links a.activities img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-scoreboard.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.activities:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-scoreboard-over.png) top left no-repeat;
+}
+
+#header-nav-links a.news img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-news.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.news:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-news-over.png) top left no-repeat;
+}
+
+#header-nav-links a.help img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-help.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.help:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-help-over.png) top left no-repeat;
+}
+
+#header-nav-links a.profile img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-profile.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.profile:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-profile-over.png) top left no-repeat;
+}
+
+#header-nav-links a.prizes img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-prizes.png) top left no-repeat;
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+#header-nav-links a.prizes:hover img {
+	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-prizes-over.png) top left no-repeat;
+}
+
+#header-info {
+	width: 362px;
+	height: 98px;
+	float: right;
+	background: transparent url(/site_media/static/css/default/images/bkg-header-info.png) top left no-repeat;
+	display: block;
+	padding: 5px;
+	margin: 15px 5px 0 0;
+	overflow: hidden;
+}
+
+#header-avatar {
+	float: left;
+}
+
+#header-avatar img {
+	width: 50px;
+	margin-right: 5px;
+}
+
+#header-user-info {
+	width: 120px;
+	border-right: 2px solid #000;
+	float: left;
+          padding-right: 4px;
+}
+
+#header-user-username {
+	white-space: nowrap;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: .9em;
+}
+
+#header-user-points, #header-user-rank {
+	font-size: .8em;
+	width: 120px;
+}
+
+#header-user-rank {
+         clear: both;
+}
+
+#header-user-points h3, #header-user-rank h3 {
+	float: left;
+	font: bold 18pt Arial, Helvetica, sans-serif;
+	color: #FF0000;
+	margin: 0;
+	padding: 0;
+}
+
+#header-floor-info {
+	width: 120px;
+	float: left;
+          margin-left: 4px;
+}
+
+#header-floor-name {
+	white-space: nowrap;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: .9em;
+}
+
+#header-floor-points, #header-floor-rank {
+	font-size: .8em;
+	width: 120px;
+}
+
+#header-floor-rank {
+clear: both;
+}
+
+#header-floor-points h3, #header-floor-rank h3 {
+	float: left;
+	font: bold 18pt Arial, Helvetica, sans-serif;
+	color: #FF0000;
+	margin: 0;
+	padding: 0;
+}
+
+#header-floor-image {
+	float: right;
+}
+
+#header-floor-image img {
+	width: 50px;
+	margin-left: 5px;
+}
+/********************** home styles ******************************/
+
+p {
+	background: transparent url(/site_media/static/css/default/images/bullet.png) top left repeat-y;
+	font-size: 8pt;
+	line-height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	padding-left: 13px;
+	margin: 0 2px 5px 2px
+}
+
+img {
+	border: 0;
+}
+
+h6 {
+	margin: 0 ;
+	padding: 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+div#home-energy, #home-activities, #home-news, #home-prizes, #home-help, #home-profile {
+	width: 210px;
+	display: block;
+	padding-bottom: 2px;
+	margin: 20px 20px 0px 20px;
+	float: left;
+}
+
+.tile {
+	background: #E3E3E3;
+	padding: 1px;
+	border: 3px outset #DDD;
+	margin-top: -.7em;
+	
+	
+    background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#E3E3E3), to(#BBB));
+	
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	
+	box-shadow: 3px 3px 5px #000;
+	-moz-box-shadow: 3px 3px 5px #000;
+	-webkit-box-shadow: 3px 3px 5px #000;
+}
+
+.content {
+	width: 750px;
+	height: 440px;
+	margin: 0 auto 0 auto;
+	background: transparent url(/site_media/static/css/default/images/bkg-home-content.png) top center no-repeat;
+	
+}
+
+#home-prizes {
+	clear: left;
+}
+
+#home-energy img, #home-activities img, #home-news img, #home-prizes img, #home-help img, #home-profile img {
+	float: none;
+}
+
+#home-energy-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-energy-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg-over.png) top left no-repeat;
+}
+
+
+#home-activities-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-activities-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg-over.png) top left no-repeat;
+}
+
+#home-news-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-news-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg-over.png) top left no-repeat;
+}
+
+
+#home-prizes-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-prizes-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg-over.png) top left no-repeat;
+}
+
+
+#home-help-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-help-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg-over.png) top left no-repeat;
+}
+
+#home-profile-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg.png) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-profile-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg-over.png) top left no-repeat;
 }

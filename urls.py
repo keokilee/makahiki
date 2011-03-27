@@ -35,8 +35,8 @@ urlpatterns = patterns('',
     (r'^sentry/', include('sentry.urls')),
     
     # pinax provided
-    (r'^account/', include('account.urls')),
-    (r'^admin/(.*)', admin.site.root),
+    # (r'^account/', include('account.urls')),
+    (r'^admin/(.*)', include(admin.site.urls)),
     # (r'^notifications/', include('notification.urls')),
 )
 

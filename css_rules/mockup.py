@@ -1,4 +1,4 @@
-# default.py
+# mockup.py
 #
 # This file maps ids to a string of classes.  Templates that use class_tags and insert_classes refer to this file.
 # Note that some of the "ids" are more like class names.  These rules act like "macro expansions" in the templates.
