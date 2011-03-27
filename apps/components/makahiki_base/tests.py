@@ -93,6 +93,13 @@ class BaseUnitTestCase(TestCase):
     settings.COMPETITION_ROUNDS = saved_rounds
     
 class ClassTagsUnitTests(TestCase):
+  def setUp(self):
+    """Stores the current values of the CSS keys so that we can modify them."""
+    self.saved_classes = default.CSS_CLASSES
+    self.saved_ids = default.CSS_IDS
+    default.CSS_CLASSES = {"foo": "bar"}
+    default.CSS_IDS = {"foo_id": "bar_id"}
+    
   """Tests the ability to insert class tags."""
   def testDefaultClassRetrieval(self):
     """Checks that default values can be retrieved."""
@@ -130,4 +137,7 @@ class ClassTagsUnitTests(TestCase):
                     
     # Restore setting
     default.RETURN_CLASSES = saved_setting
+  def tearDown(self):
+    default.CSS_CLASSES = self.saved_classes
+    default.CSS_IDS = self.saved_ids
     
