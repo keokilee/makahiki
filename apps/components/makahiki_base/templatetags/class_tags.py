@@ -15,8 +15,11 @@ def insert_classes(key, theme="default"):
   theme_path = "css_rules.%s" % theme
   __import__(theme_path)
   theme_rules = sys.modules[theme_path]
-  if theme_rules.RETURN_CLASSES: 
-    return theme_rules.CSS_CLASSES[key]
+  try:
+    if theme_rules.RETURN_CLASSES: 
+      return theme_rules.CSS_CLASSES[key]
+  except KeyError:
+    pass
     
   return ""
   

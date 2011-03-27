@@ -103,69 +103,69 @@ a {
 }
 
 #header-nav-links a.energy img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-go-low.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-go-low.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.energy:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-go-low-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-over.png) top left no-repeat;
 }
 
 #header-nav-links a.activities img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-scoreboard.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.activities:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-scoreboard-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-over.png) top left no-repeat;
 }
 
 #header-nav-links a.news img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-news.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-news.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.news:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-news-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-news-over.png) top left no-repeat;
 }
 
 #header-nav-links a.help img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-help.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-help.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.help:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-help-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-help-over.png) top left no-repeat;
 }
 
 #header-nav-links a.profile img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-profile.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-profile.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.profile:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-profile-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-profile-over.png) top left no-repeat;
 }
 
 #header-nav-links a.prizes img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-prizes.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-prizes.png) top left no-repeat;
 	display: block;
 	width: 54px;
 	height: 54px;
 }
 
 #header-nav-links a.prizes:hover img {
-	background: transparent url(/site_media/static/css/default/images/../activities_files/icon-prizes-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-over.png) top left no-repeat;
 }
 
 #header-info {
