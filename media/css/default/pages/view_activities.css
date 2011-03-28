@@ -267,16 +267,16 @@ clear: both;
 	width: 375px;
 }
 
-#activity-categories {
+#activity-grid {
 	float: right;
-	width: 512px;
+	width: 560px;
 }
 
 #activity-events-box {
 	padding: 0;
 	}
 
-#activity-events-box, #activity-scoreboard-box, #activity-categories {	
+#activity-events-box, #activity-scoreboard-box, #activity-grid-box {	
 	background-color: #EBE7BC;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -289,12 +289,12 @@ clear: both;
 	margin-bottom: 15px;
 }
 
-#activity-events-content, #activity-scoreboard-content {
+#activity-events-content, #activity-scoreboard-content, activity-grid-content {
 	padding: 0;
 	border: 0;
 }
 
-#activity-events-title, #activity-scoreboard-title, #activity-categories h3.activity-categories-title {
+#activity-events-title, #activity-scoreboard-title, #activity-grid-title {
 	background-color: #E3E3E3;
     background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#A1A1A1), to(#E3E3E3));
@@ -316,7 +316,7 @@ clear: both;
 	border-bottom: 1px solid #000;
 	}
 
-#activity-events-content table, #activity-scoreboard-content table {
+#activity-events-content table, #activity-scoreboard-content, activity-grid-content table {
 	margin: 0;
 	padding: 0;
 	border-spacing: 0;
