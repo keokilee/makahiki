@@ -20,6 +20,8 @@
 
 <body>
 <div class="container">
+  <div class="container-top">
+  <div class="container-bottom">
   {% if ENABLE_CSS_SELECTOR %}
     <form action="/themes/change_theme/" method="post">
       {{CSS_SELECT_FORM.as_p}}
@@ -46,6 +48,8 @@
   {% block extra_body_base %}
       {% block extra_body %}{% endblock %}
   {% endblock %}
+  </div>
+  </div>
 </div>
 </body>
 </html>
