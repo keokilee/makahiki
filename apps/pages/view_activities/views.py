@@ -249,7 +249,8 @@ def __request_activity_points(request, activity_id):
   
     if activity.confirm_type == "text":
       question = activity.pick_question()
-      form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+      if question:
+        form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
                   		  
     return render_to_response("view_activities/task.html", {
     "task":activity,
@@ -325,7 +326,8 @@ def task(request, type, task_id):
       form = ActivityImageForm()
     elif task.confirm_type == "text":
       question = task.pick_question()
-      form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
+      if question:
+        form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
     elif task.confirm_type == "free":
       form = ActivityFreeResponseForm()
     else:
