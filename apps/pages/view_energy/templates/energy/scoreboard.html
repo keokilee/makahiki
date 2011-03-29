@@ -1,21 +1,18 @@
 {% load class_tags %}
     <table {% get_id_and_classes "energy-scoreboard-table" %}>
-		<thead><tr>
+		<thead>
 			<th {% get_id_and_classes "energy-scoreboard-table-rank" %}>Rank</th>
-			<th {% get_id_and_classes "energy-scoreboard-table-lounge" %}>Lounge</th>
-            <th>kWh Used</th></thead>
-		</thead>
+			<th {% get_id_and_classes "energy-scoreboard-table-lounge" %}>Lounge (kWh Used)</th>
+        </thead>
 		<tbody>
 			{% for e,f in standings %}
-			<tr><td>{{forloop.counter}}</td>
+			<tr>
+			<td>{{forloop.counter}}</td>
 			<td>{% if f == floor %} 
 			     <b> 
 			    {% endif %}
-			    {{f}}</td>
-			<td>{% if f == floor %} 
-			     <b> 
-			    {% endif %}
-				{{e}}</td></tr>
+			    {{f}} ({{e}})</td>
+			</tr>
 			{% endfor %}
 		</tbody>
 	</table>

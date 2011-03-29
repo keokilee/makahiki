@@ -272,11 +272,18 @@ clear: both;
 	width: 512px;
 }
 
-#activity-events-box {
-	padding: 0;
-	}
+#activity-task-stats {
+	clear: both;
+	float: left;
+	width: 375px;
+}
 
-#activity-events-box, #activity-scoreboard-box, #activity-categories {	
+#activity-task-details {
+	float: right;
+	width: 512px;
+}
+
+#activity-events-box, #activity-scoreboard-box, #activity-categories, #activity-task-stats-box, #activity-task-details-box {	
 	background-color: #EBE7BC;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -289,12 +296,12 @@ clear: both;
 	margin-bottom: 15px;
 }
 
-#activity-events-content, #activity-scoreboard-content {
+#activity-events-content, #activity-scoreboard-content, #activity-task-stats-content, #activity-task-details-content {
 	padding: 0;
 	border: 0;
 }
 
-#activity-events-title, #activity-scoreboard-title, #activity-categories h3.activity-categories-title {
+#activity-events-title, #activity-scoreboard-title, #activity-task-stats-title, #activity-task-details-title, #activity-categories h3.activity-categories-title {
 	background-color: #E3E3E3;
     background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#A1A1A1), to(#E3E3E3));

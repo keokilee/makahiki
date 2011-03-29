@@ -214,7 +214,10 @@ class Activity(ActivityBase):
       return None
       
     questions = TextPromptQuestion.objects.filter(activity=self)
-    return questions[random.randint(0, len(questions) - 1)]
+    if questions:
+      return questions[random.randint(0, len(questions) - 1)]
+    else:
+      return None
 
 # These models represent the different types of activities users can commit to.
 class CommonBase(models.Model):

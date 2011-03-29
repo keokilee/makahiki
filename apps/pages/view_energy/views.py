@@ -36,7 +36,7 @@ def index(request):
         power = Decimal(prop.findtext('Value'))    # in W
       if prop.findtext('Key') == 'energyConsumedToDate':
         floor_energy = Decimal(prop.findtext('Value'))   # in kWh
-        standings.append([format(floor_energy,'.2f'), f])
+        standings.append([format(floor_energy / 1000,'.2f'), f])
         if f==floor:
           energy = floor_energy
     if f==floor:
@@ -87,7 +87,7 @@ def index(request):
       "power_max":power_max,
       "last_update":last_update,
       "floor": floor,
-      "standings":standings,
+      "standings":standings[:10],
       "golow_activities":golow_activities,
       "posts":golow_posts,
       "help_info": {
