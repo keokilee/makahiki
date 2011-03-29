@@ -12,7 +12,7 @@
 
 <div style="margin-top: 10px">
   <div {% get_id_and_classes "header-logo" %}>
-    <img src="{{STATIC_URL}}images/logo.png"/>
+    <a href="{% url home_index %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
   </div>
   <div {% get_id_and_classes "header-title" %}>
     <h3>{% block page_title %}{% endblock %}</h3>
@@ -25,33 +25,34 @@
   </div>
 </div>    
 
-{% if help_info and user.get_profile.enable_help %}
-  <div {% get_id_and_classes "notification" %}> 
-    <div {% get_id_and_classes "notification-box" %}>
-      Help Topics: 
-      <ul {% get_id_and_classes "help-topics" %}>
-      {% for number in help_info.count %}
-        {% gblock help_info.prefix,number for "gblocks.TitleAndText" into "block_object" %}
-        <li>
-          <a id="help-title-{{number}}" href="#" onclick='$("#help-dialog-{{number}}").dialog("open"); return false;'>
-          {% if block_object.title %}
-            {{block_object.title}}
-          {% else %}
-            No title
-          {% endif %}
-          </a>
-        </li>
-      {% endfor %}
-      </ul>
-      <div {% get_id_and_classes "help-page" %}>
-        {% gblock help_info.prefix for "gblocks.Text" with "help/page_help/help_box.html" %}
-      </div>
-    </div>
-    <a href="#" onclick="$('#notification-box').fadeOut(); return false;">
-      <span style="margin-top: 1px; float:right" class="ui-icon ui-icon-close"></span>
-    </a>
-  </div>
-{% endif %}
+{# {% if help_info and user.get_profile.enable_help %} #}
+{#   <div {% get_id_and_classes "notification" %}>  #}
+{#     <div {% get_id_and_classes "notification-box" %}> #}
+{#       Help Topics:  #}
+{#       <ul {% get_id_and_classes "help-topics" %}> #}
+{#       {% for number in help_info.count %} #}
+{#         {% gblock help_info.prefix,number for "gblocks.TitleAndText" into "block_object" %} #}
+{#         <li> #}
+{#           <a id="help-title-{{number}}" href="#" onclick='$("#help-dialog-{{number}}").dialog("open"); return false;'> #}
+{#           {% if block_object.title %} #}
+{#             {{block_object.title}} #}
+{#           {% else %} #}
+{#             No title #}
+{#           {% endif %} #}
+{#           </a> #}
+{#         </li> #}
+{#       {% endfor %} #}
+{#       </ul> #}
+{#       <div {% get_id_and_classes "help-page" %}> #}
+{#         {% gblock help_info.prefix for "gblocks.Text" with "help/page_help/help_box.html" %} #}
+{#       </div> #}
+{#     </div> #}
+{#     <a href="#" onclick="$('#notification-box').fadeOut(); return false;"> #}
+{#       <span style="margin-top: 1px; float:right" class="ui-icon ui-icon-close"></span> #}
+{#     </a> #}
+{#   </div> #}
+{# {% endif %} #}
+
 
 {% endblock %}
 

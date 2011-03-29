@@ -95,5 +95,4 @@ class Prize(models.Model):
     raise Exception("Not implemented yet.")
     
   def _energy_leader(self, floor):
-    # TODO: Implement this.
-    raise Exception("Not implemented yet.")
+    raise Exception("Energy leader information is not implemented here.  Needs to be implemented at view/controller layer.")

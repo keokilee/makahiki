@@ -2,7 +2,7 @@
 {% load class_tags %}
 
 <li>
-  <div class="{% insert_classes 'user-post' %}">
+  <div class="{% insert_classes 'user-post' %} {{cycle_class}}">
     <div class="{% insert_classes 'user-post-avatar' %}">
       <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user }}" class="{% insert_classes 'news-photo' %}" align="top"/>
     </div>

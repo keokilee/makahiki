@@ -11,74 +11,78 @@
 {% endblock %}
 
 {% block body %}
-<div {% get_id_and_classes "help-video" %}>
-  <div {% get_id_and_classes "help-video-box" %}>
-    <div {% get_id_and_classes "help-video-title" %}>
-      Two Minute Intro to the Kukui Cup
+<div class="left-column">
+  <div {% get_id_and_classes "help-video" %}>
+    <div {% get_id_and_classes "help-video-box" %}>
+      <div {% get_id_and_classes "help-video-title" %}>
+        Two Minute Intro to the Kukui Cup
+      </div>
+      <div {% get_id_and_classes "help-video-content" %}>
+       <object width="376" height="225"><param name="movie" value="http://www.youtube.com/v/q13HWBr9m8w?fs=1&amp;hl=en_US"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="help_files/q13HWBr9m8w" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="376" height="225"></embed></object>
+      </div>
     </div>
-    <div {% get_id_and_classes "help-video-content" %}>
-     <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/q13HWBr9m8w?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/q13HWBr9m8w?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="300" height="180"></embed></object>
+  </div>
+
+  <div {% get_id_and_classes "help-rules" %}>
+    <div {% get_id_and_classes "help-rules-box" %}>
+      <div {% get_id_and_classes "help-rules-title" %}>
+        Rules of the competition
+      </div>
+      <div {% get_id_and_classes "help-rules-content" %}>
+        <ul>
+          <li><a href="#">What is the Kukui Cup</a></li>
+          <li><a href="#">Terms and conditions</a></li>
+          <li>
+            <a href="#">The competitions</a>
+            <ul>
+              <li><a href="#">Lounge Energy Conservation</a></li>
+              <li><a href="#">Individual Kukui Nut Points</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Timeline</a></li>
+          <li><a href="#">Performing activities</a></li>
+          <li><a href="#">Making commitments</a></li>
+          <li><a href="#">Setting conservation goals</a></li>
+          <li><a href="#">Award categories and prizes</a></li>
+          <li><a href="#">In the event of ties</a></li>
+      </div>
     </div>
   </div>
 </div>
 
-<div {% get_id_and_classes "help-rules" %}>
-  <div {% get_id_and_classes "help-rules-box" %}>
-    <div {% get_id_and_classes "help-rules-title" %}>
-      Rules of the competition
-    </div>
-    <div {% get_id_and_classes "help-rules-content" %}>
-      <ul>
-        <li><a href="#">What is the Kukui Cup</a></li>
-        <li><a href="#">Terms and conditions</a></li>
-        <li>
-          <a href="#">The competitions</a>
-          <ul>
-            <li><a href="#">Lounge Energy Conservation</a></li>
-            <li><a href="#">Individual Kukui Nut Points</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Timeline</a></li>
-        <li><a href="#">Performing activities</a></li>
-        <li><a href="#">Making commitments</a></li>
-        <li><a href="#">Setting conservation goals</a></li>
-        <li><a href="#">Award categories and prizes</a></li>
-        <li><a href="#">In the event of ties</a></li>
+<div class="right-column">
+  <div {% get_id_and_classes "help-faq" %}>
+    <div {% get_id_and_classes "help-faq-box" %}>
+      <div {% get_id_and_classes "help-faq-title" %}>
+        Frequently Asked Questions
+      </div>
+      <div {% get_id_and_classes "help-faq-content" %}>
+        <ul>
+          <li><a href="#">How did you figure out the baseline?</a></li>
+          <li><a href="#">What is plug load?</a></li>
+          <li><a href="#">Can I collaborate with other people on other lounges?</a></li>
+          <li><a href="#">How do I contact you with questions?</a></li>
+          <li><a href="#">How does the raffle work?</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<div {% get_id_and_classes "help-faq" %}>
-  <div {% get_id_and_classes "help-faq-box" %}>
-    <div {% get_id_and_classes "help-faq-title" %}>
-      Frequently Asked Questions
-    </div>
-    <div {% get_id_and_classes "help-faq-content" %}>
-      <ul>
-        <li><a href="#">How did you figure out the baseline?</a></li>
-        <li><a href="#">What is plug load?</a></li>
-        <li><a href="#">Can I collaborate with other people on other lounges?</a></li>
-        <li><a href="#">How do I contact you with questions?</a></li>
-        <li><a href="#">How does the raffle work?</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div {% get_id_and_classes "help-ask" %}>
-  <div {% get_id_and_classes "help-ask-box" %}>
-    <div {% get_id_and_classes "help-ask-title" %}>
-      Ask an Admin
-    </div>
-    <div {% get_id_and_classes "help-ask-content" %}>
-      Got a question that's not answered here? Type it below and an admin will email you the answer.
-      <form>
-        <textarea {% get_id_and_classes "help-ask-form" %}></textarea>
-        <div {% get_id_and_classes "help-ask-submit" %}>
-          <input type="submit" value="Send" />
-          <div style="clear: both"></div>
-        </div>
-      </form>
+  <div {% get_id_and_classes "help-ask" %}>
+    <div {% get_id_and_classes "help-ask-box" %}>
+      <div {% get_id_and_classes "help-ask-title" %}>
+        Ask an Admin
+      </div>
+      <div {% get_id_and_classes "help-ask-content" %}>
+        Got a question that's not answered here? Type it below and an admin will email you the answer.
+        <form>
+          <textarea {% get_id_and_classes "help-ask-form" %}></textarea>
+          <div {% get_id_and_classes "help-ask-submit" %}>
+            <input type="submit" value="Send" />
+            <div style="clear: both"></div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

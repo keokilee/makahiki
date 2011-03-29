@@ -1,5 +1,6 @@
 {% load class_tags %}
 {% for post in posts %}
+  <!-- {% cycle 'alt-row' '' as cycle_class %} -->
   {% include "news/user_post.html" %}
   
   {% if forloop.last and more_posts %}

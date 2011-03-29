@@ -1,2 +1,2 @@
 [run]
-omit = *migrations*,*management*,*lib*
+omit = *migrations*,*management*,*lib*,*selenium*
