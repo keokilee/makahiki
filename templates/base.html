@@ -39,7 +39,9 @@
   </div>
   
   {# This is where the contents of the page will be inserted #}
-  {% block body %}{% endblock %}
+  <div class="content">
+    {% block body %}{% endblock %}
+  </div>
   
   <div {% get_id_and_classes "footer" %}>
       {% block footer %}{% endblock %}
