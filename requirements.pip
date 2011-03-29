@@ -78,6 +78,7 @@ python-openid==2.2.4
 python-twitter==0.5
 ## python-yadis==1.1.0
 pytz==2009l
+selenium==2.0b2
 setuptools-git==0.3.4
 simplejson==2.0.9
 sorl-thumbnail==3.2.5
