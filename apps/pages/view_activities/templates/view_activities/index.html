@@ -13,7 +13,6 @@
 {% block body %}
 
 <div {% get_id_and_classes "activity-events-scoreboard" %}>
-  <p>
   <div {% get_id_and_classes "activity-events-box" %}>
     <div {% get_id_and_classes "activity-events-title" %}>
       Upcoming Events
@@ -49,21 +48,14 @@
       })
     </script>
   </div>
-
 </div>
 
-<div {% get_id_and_classes "activity-grid" %}>
-<p>
- <div {% get_id_and_classes "activity-grid-box" %}>
- <div {% get_id_and_classes "activity-grid-title" %}>
-   The Smart Grid Game
-   {# <a href="#" onclick="$('#help-dialog3').dialog('open')"> #}
-   {#    <span id="help3" class="ui-icon ui-icon-help"></span> #}
-   {#    </a> #} 
- </div>
- <div {% get_id_and_classes "activity-grid-content" %}>
+<div {% get_id_and_classes "activity-categories" %}>
+  <center>
+    <h3 class="{% insert_classes 'activity-categories-title' %}">
+      The Smart Grid Game
+    </h3>
+  </center>
   {% include "view_activities/grid.html" %}
- </div>
- </div>
 </div>
 {% endblock %}

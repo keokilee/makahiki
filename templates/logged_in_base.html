@@ -12,7 +12,7 @@
 
 <div style="margin-top: 10px">
   <div {% get_id_and_classes "header-logo" %}>
-    <img src="{{STATIC_URL}}css/default/images/logo.png"/>
+    <a href="{% url home_index %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
   </div>
   <div {% get_id_and_classes "header-title" %}>
     <h3>{% block page_title %}{% endblock %}</h3>

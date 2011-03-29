@@ -49,4 +49,6 @@ CSS_CLASSES = {
   "user-post-avatar": "news-image",
   "user-post-content": "news-text",
   "user-post-date-string": "news-posted",
+  "activity-categories-title": "activity-categories-title",
+  
 }
