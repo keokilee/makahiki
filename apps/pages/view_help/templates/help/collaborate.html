@@ -1,0 +1,33 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      Can I collaborate with other people on other lounges?
+     </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			Yes you can. There are also social points that will be added to your accumulated ponts if/when
+			you submit to an activity and say that you worked with another person from another lounge. 
+		</li>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      The competitions
+     </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			The Kukui Cup consists of two types of competitions: <a href="{% url help_kukuinutpoints %}">
+			individual competitions</a> and <a href="{% url help_conservation %}">lounge competitions</a>. 
+		</li>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

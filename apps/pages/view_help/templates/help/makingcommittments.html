@@ -1,0 +1,32 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      Making Committments.
+     </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			Just do it.
+		</li>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

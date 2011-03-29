@@ -14,11 +14,12 @@
 
 {% block body %}
 <div {% get_id_and_classes "activity-task-stats" %}>  
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "activity-task-stats-box" %}>
+    <div {% get_id_and_classes "activity-task-stats-title" %}>
       {{type}} : {{task.title}}
     </div>   
-    <div class="{% insert_classes "widget-body" %}">    
+    <div {% get_id_and_classes "activity-task-stats-content" %}>   
+      <p/>
       <img src="{{ STATIC_URL}}images/activity/{{type}}.jpg"/>
       <p>
       This {{type}} is worth {{task.point_value}} points.
@@ -31,11 +32,11 @@
 </div>
 
 <div {% get_id_and_classes "activity-task-details" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "activity-task-details-box" %}>
+    <div {% get_id_and_classes "activity-task-details-title" %}>
       About the {{type}}
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "activity-task-details-content" %}>
       {{task.description|markdown}}
 
       <center> <b>  

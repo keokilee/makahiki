@@ -1,0 +1,50 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      Timeline
+    </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			The competition will be held for three weeks starting in October, 2011. The official start date will be announced soon. 
+		</li>
+		<br/>
+		<li>
+			To provide multiple chances to win, the competition is divided into two week-long "rounds" as well as an overall "grand prize" round. 
+		</li>
+		<br/>
+		<li>
+			After the first week of competition, the winners of "Round 1" will be announced based upon those individuals who accumulated the most Kukui Nut points and those floors who reduced their energy consumption the most. 
+		</li>
+		<br/>
+		<li>
+			After the second week of competition, the winners of "Round 2" will be announced. Round 2 winners are based only on data from the second week of the competition. 
+		</li>
+		<br/>
+		<li>
+			After the third week of competition, the "Grand Prize" winners will be announced. The Grand Prize winners are based upon all three weeks of data. 
+		</li>
+		<br/>
+		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hp27n91330a92lkesc6bhoqgqo%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=Pacific%2FHonolulu&dates=20111001%2F20111031" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

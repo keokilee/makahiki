@@ -1,0 +1,92 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      What is the Kukui Cup
+    </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			Round 1 Awards:
+			<table border="0">
+				<tr><td>Category</td><td>Award</td>
+				<tr>
+				<td>Individual on each floor who gained the most points.</td>
+				<td>$25 gift certif.</td>
+				</tr>
+				<tr>
+				<td>Floor that gained the most points (across all dorms).</td> 
+				<td>Ice cream party</td>
+
+				</tr>
+				<tr>
+				<td>Floor that reduced energy use the most (across all dorms).</td>
+				<td>Ice cream party</td>
+				</tr>
+			</table>
+
+		</li>
+		<li>
+			Round 2 Awards:
+
+			<table border="0">
+				<tr><td>Category</td><td>Award</td>
+
+				<tr>
+				<td>Individual on each floor who gained the most points.</td>
+				<td>$25 gift certif.</td>
+				</tr>
+				<tr>
+				<td>Floor that gained the most points (across all dorms).</td> 
+				<td>Ice cream party</td>
+				</tr>
+				<tr>
+				<td>Floor that reduced energy use the most (across all dorms).</td>
+				<td>Ice cream party</td>
+
+				</tr>
+			</table>
+
+		</li>
+		<li>
+			Grand Prize Awards:
+
+			<table border="0">
+				<tr><td>Category</td><td>Award</td>
+				<tr>
+				<td>Individual per dorm with highest number of points.</td>
+				<td>iPod touch</td>
+				</tr>
+
+				<tr>
+				<td>Floor with highest number of points.</td> 
+				<td>Pizza party</td>
+				</tr>
+				<tr>
+				<td>Floor that reduced energy use the most.</td>
+				<td>Pizza party</td>
+				</tr>
+			</table>
+
+		</li>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

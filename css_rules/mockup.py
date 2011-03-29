@@ -161,20 +161,29 @@ CSS_IDS = {
   "help-video-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "help-video-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "help-video-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
-  "help-rules-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
-  "help-rules-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
-  "help-rules-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  
+  "help-faq": "span-7 prepend-1 last",
   "help-faq-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "help-faq-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "help-faq-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  
   "help-ask-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
   "help-ask-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
   "help-ask-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  
   "help-rules": "span-7 prepend-1",
-  "help-faq": "span-7 prepend-1 last",
+  "help-rules-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-rules-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-rules-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
+  
   "help-ask": "span-15 prepend-9 last",
   "help-ask-form": "span-14 last",
   "help-ask-submit": "span-14 last",
+  
+  "help-request": "span-7 last",
+  "help-request-box": "widget ui-corner-all ui-accordion ui-widget ui-accordion-icons",
+  "help-request-title": "widget-title ui-state-active ui-accordion-header ui-corner-top",
+  "help-request-content": "widget-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active",
 }
 
 CSS_CLASSES = {

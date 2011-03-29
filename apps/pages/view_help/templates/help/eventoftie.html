@@ -1,0 +1,42 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      In The Event of Ties
+    </div>
+    <div {% get_id_and_classes "help-request-content" %}>
+      <ul>
+	  <li>
+			In the event that two or more individuals (or floors) are tied for the most points, 
+			then the timestamp associated with the final goal, commitment, or activity associated 
+			with the individuals (or floors) will be used to break the tie. In other words, the 
+			individual (or floor) who got to their final point total first will be declared the 
+			winner. Under the remote possibility that the final timestamps are equal, a coin toss 
+			will be used to decide the winner.
+			<br/>
+			<br/>
+			Given that energy consumption is measured down to a fraction of a watt-hour, we do not 
+			anticipate that any floor could tie with respect to their consumption. In case that this 
+			does occur, a coin toss will be used to decide the winner. 
+		</li>
+		<br/>
+		<a href="{% url help_index%}">Return</a>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

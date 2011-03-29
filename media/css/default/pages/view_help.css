@@ -267,7 +267,7 @@ clear: both;
 	float: right;
 }
 
-#help-video, #help-rules, #help-faq, #help-ask {
+#help-video, #help-rules, #help-faq, #help-ask, #help-request {
 	background-color: #EBE7BC;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -281,11 +281,15 @@ clear: both;
 	text-align: left;
 }
 
-#help-video, #help-rules {
+#help-video, #help-rules{
 	width: 376px;
 }
 
-#help-video-title, #help-rules-title, #help-faq-title, #help-ask-title{
+#help-request  {
+	width: 920px;
+}
+
+#help-video-title, #help-rules-title, #help-faq-title, #help-ask-title, #help-request-title{
 	background-color: #E3E3E3;
     background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#A1A1A1), to(#E3E3E3));
@@ -312,16 +316,16 @@ clear: both;
 	margin-bottom: -11px;
 }
 
-#help-video-content a, #help-rules-content a, #help-faq-content a {
+#help-video-content a, #help-rules-content a, #help-faq-content a, #help-reqeuest-content a{
 	color: #db9703;
 }
 
-#help-video-content ul, #help-rules-content ul, #help-faq-content ul {
+#help-video-content ul, #help-rules-content ul, #help-faq-content ul, #help-request-content ul {
 	margin: 0 auto 0 auto;
 	padding: 0 auto 0 auto;
 }
 
-#help-rules-content, #help-faq-content {
+#help-rules-content, #help-faq-content, #help-request-content {
 	padding-top: 1em;
 	padding-bottom: .7em;
 	line-height: 15pt;
