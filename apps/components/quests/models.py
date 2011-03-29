@@ -26,6 +26,7 @@ class QuestMember(models.Model):
   """
   user = models.ForeignKey(User)
   quest = models.ForeignKey(Quest)
-  awarded = models.BooleanField(default=False)
+  completed = models.BooleanField(default=False, help_text="True if the user completed the quest.")
+  opt_out = models.BooleanField(default=False, help_text="True if the user opts out of the quest.")
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
