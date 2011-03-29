@@ -1,0 +1,33 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      How do I contact you with questions?
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      <ul>
+        <li>
+			You could use the "Ask an Admin" on the <a href="{% url help_index%}">learn page.</a> This will send in your question to an Admin
+			who will reply to you with an available answer.
+		</li>
+		<br/>
+		<li><a href="{% url help_index%}">Return</a></li>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

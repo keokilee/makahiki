@@ -1,0 +1,32 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Compete for Prizes
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-request" %}>
+  <div class="{% insert_classes "widget" %}">
+    <div class="{% insert_classes "widget-title" %}">
+      In The Event of Ties
+    </div>
+    <div class="{% insert_classes "widget-body" %}">
+      <ul>
+        <li>
+			NO ONE WINS.
+		</li>
+		<br/>
+		<li><a href="{% url help_index%}">Return</a></li>
+		</ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
