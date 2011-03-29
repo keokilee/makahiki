@@ -11,15 +11,14 @@
 {% endblock %}
 
 {% block body %}
-
 <div {% get_id_and_classes "help-request" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
       What is the Kukui Cup
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "help-request-content" %}>
       <ul>
-        <li>
+	  <li>
 			The Kukui Cup residence hall energy competition is a blend of real world and virtual world 
 			activities.   In the real world, participants attend events, engage in real-world activities like 
 			geocaching, scavenger hunts, and artistic/musical events, win prizes, and most importantly, modify 
@@ -31,10 +30,9 @@
 			<a href="http://www.urgentevoke.com/" target="_blank">Urgent/Evoke.</a>
 		</li>
 		<br/>
-		<li><a href="{% url help_index%}">Return</a></li>
+		<a href="{% url help_index%}">Return</a>
 		</ul>
     </div>
   </div>
 </div>
-
 {% endblock %}

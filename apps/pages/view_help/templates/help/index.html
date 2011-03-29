@@ -31,20 +31,20 @@
       <div {% get_id_and_classes "help-rules-content" %}>
         <ul>
           <li><a href="{% url help_defineKukuiCup%}">What is the Kukui Cup</a></li>
-          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="{% url help_termsConditions %}">Terms and conditions</a></li>
           <li>
-            <a href="#">The competitions</a>
+            <a href="{% url help_competitions %}">The competitions</a>
             <ul>
-              <li><a href="#">Lounge Energy Conservation</a></li>
-              <li><a href="#">Individual Kukui Nut Points</a></li>
+              <li><a href="{% url help_conservation %}">Lounge Energy Conservation</a></li>
+              <li><a href="{% url help_kukuinutpoints %}">Individual Kukui Nut Points</a></li>
             </ul>
           </li>
-          <li><a href="#">Timeline</a></li>
-          <li><a href="#">Performing activities</a></li>
-          <li><a href="#">Making commitments</a></li>
-          <li><a href="#">Setting conservation goals</a></li>
-          <li><a href="#">Award categories and prizes</a></li>
-          <li><a href="#">In the event of ties</a></li>
+          <li><a href="{% url help_timeline %}">Timeline</a></li>
+          <li><a href="{% url help_activities %}">Performing activities</a></li>
+          <li><a href="{% url help_committments %}">Making commitments</a></li>
+          <li><a href="{% url help_conservationgoal %}">Setting conservation goals</a></li>
+          <li><a href="{% url help_awardprizes %}">Award categories and prizes</a></li>
+          <li><a href="{% url help_eventoftie %}">In the event of ties</a></li>
       </div>
     </div>
   </div>
@@ -58,11 +58,11 @@
       </div>
       <div {% get_id_and_classes "help-faq-content" %}>
         <ul>
-          <li><a href="#">How did you figure out the baseline?</a></li>
-          <li><a href="#">What is plug load?</a></li>
-          <li><a href="#">Can I collaborate with other people on other lounges?</a></li>
-          <li><a href="#">How do I contact you with questions?</a></li>
-          <li><a href="#">How does the raffle work?</a></li>
+          <li><a href="{% url help_figureBaseline %}">How did you figure out the baseline?</a></li>
+          <li><a href="{% url help_plugLoad %}">What is plug load?</a></li>
+          <li><a href="{% url help_collaborate %}">Can I collaborate with other people on other lounges?</a></li>
+          <li><a href="{% url help_contact %}">How do I contact you with questions?</a></li>
+          <li><a href="{% url help_raffle %}">How does the raffle work?</a></li>
         </ul>
       </div>
     </div>

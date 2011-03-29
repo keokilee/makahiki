@@ -13,18 +13,18 @@
 {% block body %}
 
 <div {% get_id_and_classes "help-request" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
       How do I contact you with questions?
-    </div>
-    <div class="{% insert_classes "widget-body" %}">
+   </div>
+    <div {% get_id_and_classes "help-request-content" %}>
       <ul>
-        <li>
+	  <li>
 			You could use the "Ask an Admin" on the <a href="{% url help_index%}">learn page.</a> This will send in your question to an Admin
 			who will reply to you with an available answer.
 		</li>
 		<br/>
-		<li><a href="{% url help_index%}">Return</a></li>
+		<a href="{% url help_index%}">Return</a>
 		</ul>
     </div>
   </div>

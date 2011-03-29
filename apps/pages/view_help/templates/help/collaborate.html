@@ -13,18 +13,18 @@
 {% block body %}
 
 <div {% get_id_and_classes "help-request" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
       Can I collaborate with other people on other lounges?
-    </div>
-    <div class="{% insert_classes "widget-body" %}">
+     </div>
+    <div {% get_id_and_classes "help-request-content" %}>
       <ul>
-        <li>
+	  <li>
 			Yes you can. There are also social points that will be added to your accumulated ponts if/when
 			you submit to an activity and say that you worked with another person from another lounge. 
 		</li>
 		<br/>
-		<li><a href="{% url help_index%}">Return</a></li>
+		<a href="{% url help_index%}">Return</a>
 		</ul>
     </div>
   </div>

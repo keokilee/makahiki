@@ -13,17 +13,17 @@
 {% block body %}
 
 <div {% get_id_and_classes "help-request" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
-      IHow does the raffle work?
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
+      How does the raffle work?
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "help-request-content" %}>
       <ul>
-        <li>
-			IDK.
+	  <li>
+			<img src="http://www.fredbecker.com/Magic002.gif" alt="Magic" width="304" height="228" /> 
 		</li>
 		<br/>
-		<li><a href="{% url help_index%}">Return</a></li>
+		<a href="{% url help_index%}">Return</a>
 		</ul>
     </div>
   </div>

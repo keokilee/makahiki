@@ -13,17 +13,21 @@
 {% block body %}
 
 <div {% get_id_and_classes "help-request" %}>
-  <div class="{% insert_classes "widget" %}">
-    <div class="{% insert_classes "widget-title" %}">
+  <div {% get_id_and_classes "help-request-box" %}>
+    <div {% get_id_and_classes "help-request-title" %}>
       What is plug load?
     </div>
-    <div class="{% insert_classes "widget-body" %}">
+    <div {% get_id_and_classes "help-request-content" %}>
       <ul>
-        <li>
+	  <li>
 			A plug load is the energy consumed by any electronic device that's plugged into a socket.
+			<br/>
+			<br/>
+			Currently, the meters in the residence halls only monitor the energy used by the wall 
+			outlets ("plug loads") on floors 3 through 12 (where residence rooms are located). 
 		</li>
 		<br/>
-		<li><a href="{% url help_index%}">Return</a></li>
+		<a href="{% url help_index%}">Return</a>
 		</ul>
     </div>
   </div>
