@@ -1,20 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
 
-body {
-	margin: 0;
-	padding: 0;
-	background: #4A7A28 url(/site_media/static/css/default/images/bkg-grass.jpg);
-	text-align: center;
-	font: normal 10pt Arial, Helvetica, sans-serif;
-	overflow-y: scroll;
-	}
-
-a {
-	color: #070000;
-}
-
-
 .container {
 	width: 960px;
 	background: transparent url(/site_media/static/css/default/images/bkg-page.jpg) top center no-repeat;
@@ -28,9 +14,9 @@ a {
 	min-height: 787px;
 }
 
-
-
-
+.container-top, .container-bottom {
+  background: none;
+}
 
 #header {
 	display: none;
