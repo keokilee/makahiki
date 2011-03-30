@@ -73,6 +73,21 @@ CSS_IDS = {
   "news-events-title": "content-box-title",
   "news-commitments-title": "content-box-title",
   "news-most-popular-title": "content-box-title",
+  
+  "help-video": "content-box",
+  "help-rules": "content-box",
+  "help-faq": "content-box",
+  "help-ask": "content-box",
+  "help-request": "content-box",
+  "help-video-title": "content-box-title",
+  "help-rules-title": "content-box-title",
+  "help-faq-title": "content-box-title",
+  "help-ask-title": "content-box-title",
+  "help-request-title": "content-box-title",
+  "help-video-content": "content-box-contents",
+  "help-rules-content": "content-box-contents",
+  "help-faq-content": "content-box-contents",
+  "help-reqeuest-content": "content-box-contents",
 }
 
 CSS_CLASSES = {
