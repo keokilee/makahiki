@@ -47,12 +47,23 @@ CSS_IDS = {
   "home-prizes": "home-item",
   "home-help": "home-item",
   "home-profile": "home-item",
+  
   "energy-power": "content-box",
   "energy-scoreboard": "content-box",
   "energy-status-box": "content-box",
   "energy-power-title": "content-box-title",
   "energy-scoreboard-title": "content-box-title",
   "energy-status-title": "content-box-title",
+  
+  "activity-events-box": "content-box",
+  "activity-scoreboard-box": "content-box",
+  "activity-categories": "content-box",
+  "activity-task-stats-box": "content-box",
+  "activity-task-details-box": "content-box",
+  "activity-events-title": "content-box-title",
+  "activity-scoreboard-title": "content-box-title",
+  "activity-task-stats-title": "content-box-title",
+  "activity-task-details-title": "content-box-title",
 }
 
 CSS_CLASSES = {
