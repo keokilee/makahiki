@@ -41,7 +41,12 @@ PAGE_CSS_IMPORT = {
   "view_profile": '<link rel="stylesheet" href="{0}css/{1}/pages/view_profile.css">',
 }
 CSS_IDS = {
-
+  "home-energy": "home-item",
+  "home-activities": "home-item",
+  "home-news": "home-item",
+  "home-prizes": "home-item",
+  "home-help": "home-item",
+  "home-profile": "home-item",
 }
 
 CSS_CLASSES = {
