@@ -274,13 +274,12 @@ clear: both;
 
 .content-box-title {
 	background-color: #E3E3E3;
-    background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#A1A1A1), to(#E3E3E3));
+  background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(#A1A1A1), to(#E3E3E3));
 			
 	height: 29px;	
 	margin: 0;
 	padding: 0;
-	height: 29px;
 	line-height: 29px;
 	font-weight: bold;
 	border-top-left-radius: 8px;
@@ -292,5 +291,6 @@ clear: both;
 	-webkit-border-top-right-radius: 8px;
 	
 	border-bottom: 1px solid #000;
-	}
+	text-align: center;
+}
 	

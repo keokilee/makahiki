@@ -64,6 +64,15 @@ CSS_IDS = {
   "activity-scoreboard-title": "content-box-title",
   "activity-task-stats-title": "content-box-title",
   "activity-task-details-title": "content-box-title",
+  
+  "news-wall": "content-box",
+  "news-events": "content-box",
+  "news-commitments": "content-box",
+  "news-most-popular": "content-box",
+  "news-wall-title": "content-box-title",
+  "news-events-title": "content-box-title",
+  "news-commitments-title": "content-box-title",
+  "news-most-popular-title": "content-box-title",
 }
 
 CSS_CLASSES = {
