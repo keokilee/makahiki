@@ -88,6 +88,13 @@ CSS_IDS = {
   "help-rules-content": "content-box-contents",
   "help-faq-content": "content-box-contents",
   "help-reqeuest-content": "content-box-contents",
+  
+  "profile-form-box": "content-box",
+  "profile-badges-box": "content-box",
+  "profile-history-box": "content-box",
+  "profile-form-title": "content-box-title",
+  "profile-badges-title": "content-box-title",
+  "profile-history-title": "content-box-title",
 }
 
 CSS_CLASSES = {
