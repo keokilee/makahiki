@@ -95,6 +95,11 @@ CSS_IDS = {
   "profile-form-title": "content-box-title",
   "profile-badges-title": "content-box-title",
   "profile-history-title": "content-box-title",
+  
+  "prizes-list": "content-box",
+  "prizes-raffle": "content-box",
+  "prizes-raffle-title": "content-box-title",
+  "prizes-list-title": "content-box-title",
 }
 
 CSS_CLASSES = {
