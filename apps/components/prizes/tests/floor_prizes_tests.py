@@ -22,7 +22,8 @@ class DormFloorPrizeTests(TestCase):
     image = ImageFile(open(image_path, "r"))
     self.prize = Prize(
         title="Super prize!",
-        description="A test prize",
+        short_description="A test prize",
+        long_description="A test prize",
         image=image,
         award_to="floor_dorm",
         competition_type="points",
@@ -154,7 +155,8 @@ class OverallFloorPrizeTest(TestCase):
     image = ImageFile(open(image_path, "r"))
     self.prize = Prize(
         title="Super prize!",
-        description="A test prize",
+        short_description="A test prize",
+        long_description="A test prize",
         image=image,
         award_to="floor_overall",
         competition_type="points",

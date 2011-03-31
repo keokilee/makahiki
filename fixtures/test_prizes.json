@@ -3,108 +3,117 @@
     "pk": 1, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 individual point getter across all residence halls", 
       "title": "iPod Touch", 
       "round_name": "Round 1", 
       "image": "prizes/ipod-nano.jpg", 
       "award_to": "individual_overall", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
     }
   }, 
   {
     "pk": 2, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge energy conserver in each residence hall.", 
       "title": "Pizza Party", 
       "round_name": "Round 1", 
       "image": "prizes/Pizza.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "energy"
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
     }
   }, 
   {
     "pk": 3, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge point getter in each residence hall.", 
       "title": "Ice Cream Party", 
       "round_name": "Round 1", 
       "image": "prizes/ice-cream-cone.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
   }, 
   {
     "pk": 4, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 individual point getter across all residence halls", 
       "title": "iPod Touch", 
       "round_name": "Round 2", 
       "image": "prizes/ipod-nano.jpg", 
       "award_to": "individual_overall", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
     }
   }, 
   {
     "pk": 5, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 individual point getter across all residence halls", 
       "title": "iPod Touch", 
       "round_name": "Overall", 
       "image": "prizes/ipod-nano.jpg", 
       "award_to": "individual_overall", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
     }
   }, 
   {
     "pk": 6, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge energy conserver in each residence hall.", 
       "title": "Pizza Party", 
       "round_name": "Round 2", 
       "image": "prizes/Pizza.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "energy"
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
     }
   }, 
   {
     "pk": 7, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge energy conserver in each residence hall.", 
       "title": "Pizza Party", 
       "round_name": "Overall", 
       "image": "prizes/Pizza.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "energy"
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
     }
   }, 
   {
     "pk": 8, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge point getter in each residence hall.", 
       "title": "Ice Cream Party", 
       "round_name": "Round 2", 
       "image": "prizes/ice-cream-cone.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
   }, 
   {
     "pk": 9, 
     "model": "prizes.prize", 
     "fields": {
-      "description": "Won by the #1 lounge point getter in each residence hall.", 
       "title": "Ice Cream Party", 
       "round_name": "Overall", 
       "image": "prizes/ice-cream-cone.jpg", 
       "award_to": "floor_dorm", 
-      "competition_type": "points"
+      "competition_type": "points", 
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
   }
 ]

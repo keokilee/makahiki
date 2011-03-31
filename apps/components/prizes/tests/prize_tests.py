@@ -20,7 +20,8 @@ class PrizeTest(TestCase):
     image = ImageFile(open(image_path, "r"))
     prize = Prize(
         title="Super prize!",
-        description="A test prize",
+        short_description="A test prize",
+        long_description="A test prize",
         image=image,
         award_to="individual_overall",
         competition_type="points",
@@ -30,7 +31,8 @@ class PrizeTest(TestCase):
     
     prize2 = Prize(
         title="Dup prize!",
-        description="A duplicate test prize",
+        short_description="A test prize",
+        long_description="A test prize",
         image=image,
         award_to="individual_overall",
         competition_type="points",
