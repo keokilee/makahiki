@@ -28,7 +28,7 @@
       My Badges
     </div>
     <div {% get_id_and_classes "profile-badges-content" %}>
-      <h5>Individual Badges</h5>
+      {# <h5>Individual Badges</h5> #}
       <table {% get_id_and_classes "profile-user-badge-table" %}>
         <tr>
           <th {% get_id_and_classes "profile-user-badge-image-header" %}></th>
@@ -47,19 +47,6 @@
           <tr {% get_id_and_classes "profile-user-badge-empty" %}><td colspan="3">You don't have any badges yet!</td></tr>
         {% endif %}
       </table>
-      
-      <h5>Lounge Badges</h5>
-      <table {% get_id_and_classes "profile-lounge-badge-table" %}>
-        <tr>
-          <th {% get_id_and_classes "profile-lounge-badge-image-header" %}></th>
-          <th {% get_id_and_classes "profile-lounge-badge-text-header" %}>Badge</th>
-          <th {% get_id_and_classes "profile-lounge-badge-achievement-header" %}>Achievement</th>
-        </tr>
-        <tr>
-          <td {% get_id_and_classes "profile-lounge-badge-empty" %} colspan="3">No lounge badges achieved so far</td>
-        </tr>
-      </table>
-      
       <div {% get_id_and_classes "profile-badge-catalog" %}>
         <a href="#">See Badge Catalog</a>
       </div>
