@@ -68,7 +68,7 @@ fieldset legend {
 
 #energy-scoreboard-table th {
 	background: #d0cb9b;
-	font-family: bold;
+	font-weight: bold;
 	padding: 4px;
 }
 
@@ -80,7 +80,7 @@ fieldset legend {
 	background: #d9d3a6;
 }
 
-.energy-scoreboard-message {
+#energy-scoreboard-message {
 	margin-top: .5em;
 	font-size: 12pt;
 }
