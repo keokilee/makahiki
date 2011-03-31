@@ -31,7 +31,7 @@
       </div>
       <script type="text/javascript">
         $(document).ready(function() {
-          var height = 0;
+          var height = 45; //Minimum height of the box.
           $("#news-most-popular-tasks").children().each(function(index, value) {
             if ($(value).height() > height) {
               height = $(value).height();
@@ -63,7 +63,7 @@
         {% endfor %}
       </table>
       {% else %}
-      <p>You are not participating in any commitments</p>
+      <p style="width: 100%; text-align: center">You are not participating in any commitments</p>
       {% endif %}
     </div>
   </div>
