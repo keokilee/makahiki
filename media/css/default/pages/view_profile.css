@@ -101,24 +101,37 @@ td#profile-form-contact-email-label, td#profile-form-contact-text-label {
 	width: 99%;
 }
 
-#profile-user-badge-image-header, #profile-lounge-badge-image-header {
-	width: 5%;
+#profile-user-badge-image-header {
+	width: 10%;
 	}
 	
+#profile-user-badge-text-header {
+  width: 40%;
+}
+
 #profile-history-current-date-header, #profile-history-previous-date-header {
 	width: 15%;
 	}
 
-#profile-user-badge-text-header, #profile-lounge-badge-text-header, #profile-history-current-task-header, #profile-history-previous-task-header {
+#profile-history-current-task-header, #profile-history-previous-task-header {
 	width: 60%;
 	}
 
-#profile-badges-content td, #profile-history-content td {
-	text-align: left;
-	vertical-align: top;
+#profile-badges-content th, #profile-history-content th {
+  text-align: center;
+}
+
+#profile-badges-content td {
+	text-align: center;
+	vertical-align: middle;
 	padding: 4px;
 }
 
+#profile-history-content td {
+  text-align: center;
+	vertical-align: middle;
+	padding: 4px;
+}
 
 #profile-badges-content h5, #profile-history-content h5 {
 	background-color: #dbd7af;
