@@ -72,6 +72,10 @@ th {
 	color: #c86c09;
 }
 
+.prize-dialog {
+  text-align: left;
+}
+
 .number {
 	font-size: 14pt;
 	font-weight: bold;

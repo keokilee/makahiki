@@ -112,4 +112,5 @@ CSS_CLASSES = {
   "prize-number": "number",
   "prizes-add-button": "plus",
   "prizes-remove-button": "minus",
+  "prize-dialog": "prize-dialog",
 }
