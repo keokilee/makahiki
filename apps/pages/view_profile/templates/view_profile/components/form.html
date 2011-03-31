@@ -39,7 +39,7 @@
         <td {% get_id_and_classes "profile-form-fb-profile-label" %} colspan="2">Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a></td>
       </tr>
       <tr {% get_id_and_classes "profile-form-fb-can-post" %}>
-        <td {% get_id_and_classes "profile-form-fb-can-post-fields" %}>{{form.facebook_can_post}}Post to Wall</td>
+        <td colspan="2" {% get_id_and_classes "profile-form-fb-can-post-fields" %}>{{form.facebook_can_post}}Post to Wall</td>
       </tr>
     {% else %}
       <tr {% get_id_and_classes "profile-form-fb-login" %}>
