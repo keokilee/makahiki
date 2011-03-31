@@ -24,8 +24,11 @@ class Prize(models.Model):
   )
   
   title = models.CharField(max_length=30, help_text="The title of your prize.")
-  description = models.TextField(
-      help_text="Description of the prize. This should include information about who can win it."
+  short_description = models.TextField(
+      help_text="Short description of the prize. This should include information about who can win it."
+  )
+  long_description = models.TextField(
+      help_text="Additional details about the prize."
   )
   image = models.ImageField(
       max_length=1024, 
