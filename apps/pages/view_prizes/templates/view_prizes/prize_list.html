@@ -10,14 +10,14 @@
     <th {% get_id_and_classes "prizes-list-table-criteria-header" %}>Criteria</th>
   </tr>
   {% for prize in prizes %}
-  <tr>
-    <td>
+  <tr class="{% cycle '' 'alt-row' %}">
+    <td class="{% insert_classes "prize-item" %}">
       <img src="{{MEDIA_URL}}{{prize.image}}"/>
       <a href="#">
         {{prize.title}}
       </a>
     </td>
-    <td>{{prize.num_awarded}}</td>
+    <td class="{% insert_classes "prize-number" %}">{{prize.num_awarded}}</td>
     <td>
       {{prize.description}} <br/>
       {% if prize.winner %}
