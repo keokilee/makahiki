@@ -61,13 +61,13 @@
     </div>
     <div {% get_id_and_classes "profile-history-content" %}>
       <h5 {% get_id_and_classes "profile-history-current" %}>Current and Pending</h5>
-      <table {% get_id_and_classes "profile-history-current-table" %}>
-        <tr {% get_id_and_classes "profile-history-current-table-header" %}>
-          <th {% get_id_and_classes "profile-history-current-date-header" %}>Date</th>
-          <th {% get_id_and_classes "profile-history-current-task-header" %}>Task</th>
-          <th {% get_id_and_classes "profile-history-current-status-header" %}>Status</th>
-        </tr>
-        {% if in_progress_members %}
+      {% if in_progress_members %}
+        <table {% get_id_and_classes "profile-history-current-table" %}>
+          <tr {% get_id_and_classes "profile-history-current-table-header" %}>
+            <th {% get_id_and_classes "profile-history-current-date-header" %}>Date</th>
+            <th {% get_id_and_classes "profile-history-current-task-header" %}>Task</th>
+            <th {% get_id_and_classes "profile-history-current-status-header" %}>Status</th>
+          </tr>
           {% for member in in_progress_members %}
             {% if member.activity %}
             <tr>
@@ -91,19 +91,19 @@
             </tr>
             {% endif %}
           {% endfor %}
-        {% else %}
-        <tr {% get_id_and_classes "profile-history-current-empty" %}><td colspan="3">You have nothing in progress or pending.</td></tr>
-        {% endif %}
-      </table>
+        </table>
+      {% else %}
+        <p style="width: 100%; text-align: center">You have nothing in progress or pending.</p>
+      {% endif %}
       
       <h5 {% get_id_and_classes "profile-history-previous-header" %}>Previously Awarded</h5>
-      <table {% get_id_and_classes "profile-history-previous-table" %}>
-        <tr {% get_id_and_classes "profile-history-previous-table-header" %}>
-          <th {% get_id_and_classes "profile-history-previous-date-header" %}>Date</th>
-          <th {% get_id_and_classes "profile-history-previous-task-header" %}>Task</th>
-          <th {% get_id_and_classes "profile-history-previous-points-header" %}>Points</th>
-        </tr>
-        {% if completed_members %}
+      {% if completed_members %}
+        <table {% get_id_and_classes "profile-history-previous-table" %}>
+          <tr {% get_id_and_classes "profile-history-previous-table-header" %}>
+            <th {% get_id_and_classes "profile-history-previous-date-header" %}>Date</th>
+            <th {% get_id_and_classes "profile-history-previous-task-header" %}>Task</th>
+            <th {% get_id_and_classes "profile-history-previous-points-header" %}>Points</th>
+          </tr>
           {% for member in completed_members %}
             <tr>
               <td>{{member.award_date|date:"n/j/y"}}</td>
@@ -124,10 +124,10 @@
               {% endif %}
             </tr>
           {% endfor %}
+          </table>
         {% else %}
-          <tr {% get_id_and_classes "profile-history-previous-empty" %}><td colspan="3">You have not been awarded anything yet!</td></tr>
+          <p style="width: 100%; text-align: center">You have not been awarded anything yet!</p>
         {% endif %}
-      </table>
     </div>
   </div>
 </div>

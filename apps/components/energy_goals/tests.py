@@ -1,7 +1,6 @@
 import datetime
 
 from django.test import TestCase
-from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.conf import settings
