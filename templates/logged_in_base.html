@@ -14,15 +14,18 @@
   <div {% get_id_and_classes "header-logo" %}>
     <a href="{% url home_index %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
   </div>
-  <div {% get_id_and_classes "header-title" %}>
-    <h3>{% block page_title %}{% endblock %}</h3>
-  </div>
+
   <div {% get_id_and_classes "header-info" %}>
     {% include "components/user_info.html" %}
-  </div>
+  </div>  
+  
   <div {% get_id_and_classes "header-nav" %}>
+    <div {% get_id_and_classes "header-title" %}>
+      <h3>{% block page_title %}{% endblock %}</h3>
+    </div>  
     {% include "components/navigation.html" %}
   </div>
+
 </div>    
 
 {# {% if help_info and user.get_profile.enable_help %} #}

@@ -3,7 +3,10 @@
 		  <th>Event (points)</th>
 		  <th>Date</th>
 		  <th>Location</th></tr></thead>
-	    <tbody>        
+	    <tbody>  
+	      {% if events == None %}
+	      <tr><td>No upcoming events</td></tr>
+	      {% endif %}
           {% for event in events %}
           <tr><td><a href="#">{{event.title}}</a> ({{event.point_value}})</td>
               <td>{{event.event_date}}</td>

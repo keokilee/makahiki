@@ -3,13 +3,17 @@
 <table {% get_id_and_classes "activities-scoreboard-table-floor" %}>
 	<thead><tr>
 		<th>Rank</th>
-		<th>Lounge (Overall)</th></tr>
+		<th>Lounge</th>
+		<th>Overall</th></tr>
 	</thead>
 	<tbody>
 		{% for f in floor_standings %}
 		<tr><td>{{forloop.counter}}</td>
 		<td style="{% if f == floor %}font-weight: bold{% endif %}">
-		  {{f}} ({{f.points}})
+		  {{f}}
+		</td>
+		<td style="{% if f == floor %}font-weight: bold{% endif %}">
+		  {{f.points}}
 		</td>
 		{% endfor %}
 	</tbody>
@@ -18,13 +22,17 @@
 <table {% get_id_and_classes "activities-scoreboard-table-profile" %}>
 	<thead><tr>
 		<th>Rank</th>
-		<th>Individual (Overall)</th></tr>
+		<th>Individual</th>
+		<th>Overall</th></tr>
 	</thead>
 	<tbody>
 		{% for p in profile_standings %}
 		<tr><td>{{forloop.counter}}</td>
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
-		  {{p.name}} ({{p.current_round_points}})
+		  {{p.name}}
+		</td>
+		 <td style="{% if p == profile %}font-weight: bold{% endif %}">
+		  {{p.current_round_points}}
 		</td>
 		{% endfor %}
 	</tbody>
@@ -33,13 +41,17 @@
 <table {% get_id_and_classes "activities-scoreboard-table-floor-profile" %}>
 	<thead><tr>
 		<th>Rank</th>
-		<th>Individual ({{ floor }})</th></tr>
+		<th>Individual</th>
+		<th>{{ floor }}</th></tr>
 	</thead>
 	<tbody>
 		{% for p in user_floor_standings %}
 		<tr><td>{{forloop.counter}}</td>
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
-		  {{p.name}} ({{p.current_round_points}})
+		  {{p.name}}
+		</td>
+		<td style="{% if p == profile %}font-weight: bold{% endif %}">
+		 {{p.current_round_points}}
 		</td>
 		{% endfor %}
 	</tbody>
