@@ -72,13 +72,21 @@
             {% if member.activity %}
             <tr>
               <td>{{member.created_at|date:"n/j/y"}}</td>
-              <td>Activity: {{member.activity.name}}</td>
+              <td>
+                <a href="{% url activity_task 'Activity' member.activity.id %}">
+                  Activity: {{member.activity.name}}
+                </a>
+              </td>
               <td>{{member.approval_status.capitalize}}</td>
             </tr>
             {% else %}
             <tr>
               <td>{{member.created_at|date:"n/j/y"}}</td>
-              <td>Commitment: {{member.commitment.name}}</td>
+              <td>
+                <a href="{% url activity_task 'Commitment' member.commitment.id %}">
+                  Commitment: {{member.commitment.name}}
+                </a>
+              </td>
               <td>In Progress</td>
             </tr>
             {% endif %}
@@ -100,10 +108,18 @@
             <tr>
               <td>{{member.award_date|date:"n/j/y"}}</td>
               {% if member.commitment %}
-              <td>Commitment: {{member.commitment.name}}</td>
+              <td>
+                <a href="{% url activity_task 'Commitment' member.commitment.id %}">
+                  Commitment: {{member.commitment.name}}
+                </a>
+              </td>
               <td>{{member.commitment.point_value}}</td>
               {% else %}
-              <td>Activity: {{member.activity.name}}</td>
+              <td>
+                <a href="{% url activity_task 'Activity' member.activity.id %}">
+                  Activity: {{member.activity.name}}
+                </a>
+              </td>
               <td>{{member.activity.point_value}}</td>
               {% endif %}
             </tr>
