@@ -4,14 +4,15 @@
 		  <th>Date</th>
 		  <th>Location</th></tr></thead>
 	    <tbody>  
-	      {% if events == None %}
-	      <tr><td>No upcoming events</td></tr>
-	      {% endif %}
+	    {% if events %}
           {% for event in events %}
           <tr><td><a href="#">{{event.title}}</a> ({{event.point_value}})</td>
               <td>{{event.event_date}}</td>
               <td></td></tr>
           {% endfor %}
+        {% else %}
+	       <tr><td>No upcoming events</td></tr>
+	    {% endif %}
 	    </tbody>
       </table>
 

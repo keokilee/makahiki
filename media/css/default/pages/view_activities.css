@@ -155,8 +155,8 @@ table#activities-grid td table td{
 	margin: -50% auto 0 auto;
 	padding: 2px;
 	}
-
-.green, .brown, .olive, .orange, .red, .yellow-green {
+    
+.activity, .commitment, .event, .survey, .excursion, .yellow-green {
 	width: 53px;
 	height: 40px;
 	border: 1px solid #000;
@@ -165,33 +165,41 @@ table#activities-grid td table td{
 	-webkit-border-radius: 8px;
 	margin: 2px 1px 2px 1px;
 	}
-.green {
+/* green */	
+.activity {
 	background-color: #70A21F;
 	}
-.brown {
+/* brown */
+.commitment {
 	background-color: #845D18;
 	}
-.olive {
+/* olive */
+.event {
 	background-color: #A09E43;
 	}
-.orange {
+
+/* orange */
+.survey {
 	background-color: #C18E22;
 	}
-.red {
+
+/* red */
+.excursion {
 	background-color: #AB441B;
 	}
+	
 .yellow-green {
 	background-color: #CBE02E;
 	}
 	
-.green div, .brown div, .olive div, .orange div, .red div, .yellow-green div {	
+.activity div, .commitment div, .event div, .survey div, .excursion div, .yellow-green div {	
 	position: relative; 
-	top: 25%;
+	top: 15%;
 	font-size: 9pt;
 	padding: 2px;
 }
 
-.green p, .brown p, .olive p, .orange p, .red p, .yellow-green p {
+.activity p, .commitment p, .event p, .survey p, .excursion p, .yellow-green p {
 	font-size: 12pt;
 	font-weight: bold;	
 }

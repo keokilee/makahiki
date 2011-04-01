@@ -68,6 +68,18 @@
 	font-size: 14pt;
 }
 
+#landing-about {
+	background: transparent url(/site_media/static/css/default/images/bkg-landing-content.png) top center no-repeat;
+	width: 690px;
+	height: 480px;
+	margin: 2em auto 0 auto;
+	padding: 30px;
+	float: none;
+	display: block;
+	text-align: left;
+	font-size: 14pt;
+}
+
 .welcome-text {
 	background: transparent url(/site_media/static/css/default/images/bkg-landing-welcome-text.png) top center no-repeat;
 	width: 686px;
