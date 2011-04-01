@@ -41,6 +41,9 @@ PAGE_CSS_IMPORT = {
   "view_profile": '<link rel="stylesheet" href="{0}css/{1}/pages/view_profile.css">',
 }
 CSS_IDS = {
+  "landing-sponsors": "content-box",
+  "landing-sponsors-title": "content-box-title",
+  
   "home-energy": "home-item",
   "home-activities": "home-item",
   "home-news": "home-item",
