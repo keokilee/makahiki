@@ -58,38 +58,44 @@ a {
 	background: transparent url(/site_media/static/css/default/images/bkg-header-info.png) top left no-repeat;
 	display: block;
 	padding: 5px;
-	margin: 8px 5px 5px 40px;
+	margin: 8px 5px 5px 10px;
 	overflow: hidden;
 }
 
 #header-nav {
-    margin-left: 30px;
-	float: left;
-}
-	
-#header-title {
-	font-size: 18pt;
-	margin-top: -10px;
-	text-align: left;
-}
-
-#header-logout {
-	font-weight: bold;
-	font-size: 10pt;
-	text-align: right;
+    margin-left: 10px;
 	float: right;
 }
-
-#header-logout a {color: #0;}
 	
+#header-logout {
+	position: absolute;
+	margin-left: 800px;
+	margin-top: -1.3em;
+	text-align: right;
+	width: 120px;
+	font-weight: bold;
+}
+
+#header-logout a {color: #FFF;}
+
+#header-title {
+	float: right;
+	margin-right: 20px;
+	margin-top: -80px;
+	font-size: 14pt;
+	text-transform: capitalize;
+	text-align: right;
+}
+
 #header-nav-links {
 	background: transparent url(/site_media/static/css/default/images/bkg-icon-tray.png) 0 10px no-repeat;
-	width: 270px;
-	height: 54px;
+	width: 390px;
+	height: 78px;
 	display: block;
 	padding: 15px 2px;
-	margin-top: -25px;
-	float: left;
+	margin-top: -135px;
+	margin-right: 10px;
+	float: right;
 	}
 
 #header-nav-links ul {
@@ -113,8 +119,8 @@ a {
 #header-nav-links a.energy img {
 	background: transparent url(/site_media/static/css/default/images/icon-go-low.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.energy:hover img {
@@ -124,8 +130,8 @@ a {
 #header-nav-links a.activities img {
 	background: transparent url(/site_media/static/css/default/images/icon-scoreboard.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.activities:hover img {
@@ -135,8 +141,8 @@ a {
 #header-nav-links a.news img {
 	background: transparent url(/site_media/static/css/default/images/icon-news.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.news:hover img {
@@ -146,8 +152,8 @@ a {
 #header-nav-links a.help img {
 	background: transparent url(/site_media/static/css/default/images/icon-help.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.help:hover img {
@@ -157,8 +163,8 @@ a {
 #header-nav-links a.profile img {
 	background: transparent url(/site_media/static/css/default/images/icon-profile.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.profile:hover img {
@@ -168,8 +174,8 @@ a {
 #header-nav-links a.prizes img {
 	background: transparent url(/site_media/static/css/default/images/icon-prizes.png) top left no-repeat;
 	display: block;
-	width: 36px;
-	height: 36px;
+	width: 54px;
+	height: 54px;
 }
 
 #header-nav-links a.prizes:hover img {

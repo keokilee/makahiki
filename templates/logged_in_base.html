@@ -11,6 +11,10 @@
 {% block header %}
 
 <div style="margin-top: 10px">
+  <div {% get_id_and_classes "header-logout" %}>
+    <a href="/account/cas/logout/">Logout</a>
+  </div>
+
   <div {% get_id_and_classes "header-logo" %}>
     <a href="{% url home_index %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
   </div>
@@ -20,10 +24,12 @@
   </div>  
   
   <div {% get_id_and_classes "header-nav" %}>
+    {% include "components/navigation.html" %}
+  
     <div {% get_id_and_classes "header-title" %}>
       <h3>{% block page_title %}{% endblock %}</h3>
     </div>  
-    {% include "components/navigation.html" %}
+    
   </div>
 
 </div>    
