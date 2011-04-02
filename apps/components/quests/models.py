@@ -16,8 +16,12 @@ class Quest(models.Model):
   completion_conditions = models.TextField(
       help_text="Conditions a user needs to meet in order to complete the quest."
   )
+  users = models.ManyToManyField(User, through="QuestMember")
   created_at = models.DateTimeField(auto_now_add=True, editable=False)
   updated_at = models.DateTimeField(auto_now=True, editable=False)
+  
+  def __unicode__(self):
+    return self.name
   
 class QuestMember(models.Model):
   """

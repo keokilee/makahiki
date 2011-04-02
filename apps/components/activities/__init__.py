@@ -211,7 +211,7 @@ def afterPublished(task_name):
     if task.type == "event" or task.type == "excursion":
       return task.activity.pub_date <= datetime.date.today()
       
-    return false;  
+    return False;  
   except ObjectDoesNotExist:
     return False 
   
