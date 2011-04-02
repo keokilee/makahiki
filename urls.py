@@ -13,6 +13,7 @@ import os
 urlpatterns = patterns('',
     # Main pages.
     url(r'^$', "pages.landing.views.index", name="landing"),
+    url(r'^about/', "pages.landing.views.about", name="about"),
     url(r'^home/', include('pages.home.urls')),
     url(r'^activities/', include('pages.view_activities.urls')),
     url(r'^energy/', include('pages.view_energy.urls')),

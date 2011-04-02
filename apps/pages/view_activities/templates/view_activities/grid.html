@@ -27,7 +27,7 @@
        {% if task.is_unlock %}
        <a href="task/Activity/{{task.id}}">
        {% if task.type != 'commitment' %}
-         <div class="green">
+         <div class="{{task.type}}">
        	    <div class="">
             {% if task.is_pau %}
 	            {{task.name}}
@@ -41,7 +41,7 @@
             </div>
           </div>
        {% else %}
-       <div class="brown">
+       <div class="{{task.type}}">
          <div class="">
 	         {% if task.is_pau %}
 		        {{task.name}}
@@ -55,9 +55,9 @@
        </a>
        {% else %}
        {% if task.type != 'commitment' %}
-       <div class="green">
+       <div class="{{task.type}}">
        {% else %}
-       <div class="brown">
+       <div class="{{task.type}}">
        {% endif %}
 	    <div class="">
 		<p> ? </p>

@@ -73,7 +73,8 @@ fieldset legend {
 }
 
 #energy-scoreboard-table td {
-	padding: 4px;
+    text-align: left;
+	padding: 4px 4px 4px 20px;
 }
 
 #energy-scoreboard-table .alt-row {
@@ -114,16 +115,11 @@ fieldset legend {
 }
 
 td#energy-status-how-calculator-content {
-	float: left;
-	width: 250px;
-	display: block;
-	position: absolute;
+
 }
 
 td#energy-status-how-activities-content {
-	float: right;
-	padding-left: 270px;
-	display: block;
+
 }
 
 #energy-status-how-calculator-content p {
@@ -139,11 +135,13 @@ td#energy-status-how-activities-content {
 
 #energy-status-how-activities-table th {
 	background: #cec99c;
+	text-align: center;
 	padding: 4px;
 }
 
 #energy-status-how-activities-table td {
-	padding: 4px;
+	padding: 4px 4px 4px 20px;
+	text-align: left;
 }
 
 #energy-status-posts {

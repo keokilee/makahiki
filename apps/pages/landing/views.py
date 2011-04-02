@@ -8,3 +8,6 @@ def index(request):
     return HttpResponseRedirect(reverse("home_index"))
     
   return render_to_response("landing/index.html", {}, context_instance=RequestContext(request))
+  
+def about(request):
+  return render_to_response("landing/about.html", {}, context_instance=RequestContext(request))  

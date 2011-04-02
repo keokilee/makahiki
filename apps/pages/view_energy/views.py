@@ -43,7 +43,6 @@ def index(request):
       last_update = dom.findtext('Timestamp')
   
   standings.sort()
-  standings.reverse()
   
   ## TODO. create the baseline table
   baseline = 24 

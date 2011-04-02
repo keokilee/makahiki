@@ -62,10 +62,9 @@
             <td>
              {% include "energy/usage.html" %}
             </td>
-            <td {% get_id_and_classes "energy-status-progress-about" %}>Each member receives 20 points<br/>
+            <td {% get_id_and_classes "energy-status-progress-about" %}>
+                  Each member receives 20 points<br/>
                   each day that we make our goal.<br/>
-                  <a href="#">Want more info about your lounge's energy use?</a><br/>
-                  <a href="#">Dive into the advanced energy page!</a><br/>
             </td>
           </tr>
         </table>
@@ -75,14 +74,19 @@
 	    <legend>How can we make our daily goal?</legend>		
         <table {% get_id_and_classes "energy-status-how-table" %}>
           <tr {% get_id_and_classes "energy-status-how-calculator" %}>
-            <td {% get_id_and_classes "energy-status-how-calculator-content" %}>We need to conserve energy to meet our goal, but what does {{over}} kWh mean?<br/>
+            <td {% get_id_and_classes "energy-status-how-calculator-content" %}>
+               
+                We need to conserve energy to meet our goal, but what does {{over}} kWh mean?<br/>
                 {{over}} kWh =
-                <select > <option>Playing XBox 360</option> </select>
+                <select > 
+                   <option>Playing XBox 360</option> 
+                   <option>Playing Wii</option> 
+                </select>
                 <p>To save {{over}} kWh, we must reduce our XBox 360 playing by 5.2 hours</p>
+              
             </td> 
-          </tr>
-          <tr {% get_id_and_classes "energy-status-how-activities" %}>
-            <td {% get_id_and_classes "energy-status-how-activities-content" %}>The following activities can help your lounge conserve energy, and you earn points!
+            <td {% get_id_and_classes "energy-status-how-activities-content" %}>
+                The following activities can help your lounge conserve energy, and you earn points!
                  {% include "energy/golow_activities.html" %}
             </td>
           </tr>   

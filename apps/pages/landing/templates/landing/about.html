@@ -1,0 +1,50 @@
+{% extends "site_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Welcome to KukuiCup!
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "landing" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "landing-page" %}>
+  <div {% get_id_and_classes "landing-logo" %}>
+    <a href="{% url landing %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
+  </div>
+  <div {% get_id_and_classes "landing-title" %}>
+    <h2>The Kukui Cup: Lights out, game on!</h2>
+  </div>
+</div>
+
+<div {% get_id_and_classes "landing-about" %}>
+Thanks for your interest in the Kukui Cup!
+<p/>
+The Kukui Cup is a National Science Foundation funded project whose goal is to 
+investigate how information technology can help create sustained, positive 
+changes in energy behaviors.   
+<p/>
+We want to engage first year students living in residence halls at the 
+University of Hawaii in a competition that helps them learn about energy's 
+production, consumption, impacts, and potential future in Hawaii.  
+We provide them with real-time feedback on their energy use, energy 
+conservation goals, a variety of competitions and interactive games, 
+and incentives such as prizes, food, t-shirts, entertainment, and bragging 
+rights.  
+<p/>
+We want the Kukui Cup to be a transformative experience for first year 
+students: providing them with a new way to connect and make friends with 
+other students in their residence halls, to have new opportunities for fun 
+and online interaction, to become more sophisticated in their knowledge of 
+and attitudes toward energy, and to reward at least some of them with prizes. 
+<p/>
+The 2011 competition is scheduled for October, 2011.  Once the competition 
+is underway, we will update this page with standings and other information 
+about the progress of the Kukui Cup.  Check back then for more details!
+</div>
+
+{% endblock %}
