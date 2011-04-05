@@ -23,12 +23,12 @@ class Quest(models.Model):
   def __unicode__(self):
     return self.name
     
-  def can_add_quest(user):
+  def can_add_quest(self, user):
     """Returns True if the user can add the quest."""
     # TODO: Implement by checking the pre-conditions.
     return True
     
-  def completed_quest(user):
+  def completed_quest(self, user):
     """Returns True if the user completed the quest."""
     # TODO: Implement by checking the post-conditions.
     return True
