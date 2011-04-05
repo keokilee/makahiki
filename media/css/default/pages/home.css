@@ -69,64 +69,64 @@ div.home-item {
 }
 
 #home-energy-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-energy-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg-over.jpg) top left no-repeat;
 }
 
 
 #home-activities-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-activities-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg-over.jpg) top left no-repeat;
 }
 
 #home-news-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-news-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-news-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-news-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg-over.jpg) top left no-repeat;
 }
 
 
 #home-prizes-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-prizes-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg-over.jpg) top left no-repeat;
 }
 
 
 #home-help-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-help-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-help-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-help-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg-over.jpg) top left no-repeat;
 }
 
 #home-profile-icon {
-	background: transparent url(/site_media/static/css/default/images/icon-profile-lg.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg.jpg) top left no-repeat;
 	width: 120px;
 	height: 124px;
 }
 
 #home-profile-icon:hover {
-	background: transparent url(/site_media/static/css/default/images/icon-profile-lg-over.png) top left no-repeat;
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg-over.jpg) top left no-repeat;
 }
