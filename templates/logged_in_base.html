@@ -2,6 +2,7 @@
 
 {% load class_tags %}
 {% load generic_flatblocks %}
+{% load markup %}
 
 {% block extra_head_base %}
   {% import_logged_in_css STATIC_URL %}
@@ -31,9 +32,40 @@
     </div>  
     
   </div>
+</div>
 
-</div>    
+{% if QUESTS %}
+<div id="quest-box" class="content-box">
+  <h3>Available Quests</h3>
+  
+  <ul>
+    {% for quest in QUESTS %}
+    <li>
+      <div class="quest-info" style="float: left; width: 85%">
+        <a href="#" class="quest-title" style="display: block">{{quest.name}}</a>
+        <div class="quest-description" style="clear:left">
+          {{quest.description|markdown}}
+        </div>
+      </div>
+      <div class="quest-options" style="float:right">
+        <a href="#">Accept</a>
+        <a href="#">Remove</a>
+      </div>
+      <div style="clear:both"></div>
+    </li>
+    {% endfor %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".quest-description").hide();
+        $(".quest-title").click(function() {
+          $(this).next(".quest-description").toggle();
+        });
+      })
+    </script>
+  </ul>
+</div>
 
+{% endif %}
 {# {% if help_info and user.get_profile.enable_help %} #}
 {#   <div {% get_id_and_classes "notification" %}>  #}
 {#     <div {% get_id_and_classes "notification-box" %}> #}

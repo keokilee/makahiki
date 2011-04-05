@@ -169,6 +169,7 @@ INSTALLED_APPS = (
     'components.makahiki_profiles',
     'components.makahiki_themes',
     'components.prizes',
+    'components.quests',
     'components.resources',
     'components.standings',
     
