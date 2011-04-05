@@ -1,0 +1,44 @@
+[
+  {
+    "pk": 1, 
+    "model": "quests.quest", 
+    "fields": {
+      "completion_conditions": "True", 
+      "name": "Wear a Kukui Cup Button", 
+      "level": 1, 
+      "unlock_conditions": "True", 
+      "created_at": "2011-04-05 10:28:36", 
+      "updated_at": "2011-04-05 10:28:36", 
+      "quest_slug": "wear-kukui-cup-button", 
+      "description": "There are students on-campus who are not aware of the Kukui Cup and the opportunities it provides you to learn how to save energy and win prizes.   You can help spread the word by committing to keeping a button on your backpack or purse for five days.  If you succeed at this quest, you will be awarded Kukui Cup points that raise your place in the standings. \r\n\r\nTo do this quest, go to the Get Nutz page by clicking on the scoreboard icon at the top of this page. Then find the commitment to wear a button (hint: it's in the Getting Started column of the Smart Grid Game).  Finally, carry out the instructions on the page to sign up for the commitment, and start wearing your button!  "
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "quests.quest", 
+    "fields": {
+      "completion_conditions": "True", 
+      "name": "Tweet About the Kukui Cup", 
+      "level": 1, 
+      "unlock_conditions": "True", 
+      "created_at": "2011-04-05 10:58:07", 
+      "updated_at": "2011-04-05 10:58:07", 
+      "quest_slug": "tweet-about-kukui-cup", 
+      "description": "The Kukui Cup is a state of the art energy challenge competition and we want lots of people to know that you are participating.   If you use Twitter, your quest is to inform your followers about the Kukui Cup in 140 characters or less.  If you succeed at this quest, you will be awarded Kukui Cup points that raise your place in the standings. \r\n\r\nTo do this quest, go to the Get Nutz page by clicking on the scoreboard icon at the top of this page. Then find the commitment to tweet about the Kukui Cup (hint: it's in the Getting Started column of the Smart Grid Game).  Finally, carry out the instructions on the page to make your tweet and submit the information required to get your points. "
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "quests.quest", 
+    "fields": {
+      "completion_conditions": "True", 
+      "name": "Make a Facebook Posting About the Kukui Cup", 
+      "level": 1, 
+      "unlock_conditions": "True", 
+      "created_at": "2011-04-05 10:59:18", 
+      "updated_at": "2011-04-05 10:59:18", 
+      "quest_slug": "make-facebook-posting-about-kukui-cup", 
+      "description": "The Kukui Cup is a state of the art energy challenge competition and we want lots of people to know that you are participating.   If you use Facebook, your quest is to inform your friends about the Kukui Cup by making a wall posting about it.  If you succeed at this quest, you will be awarded Kukui Cup points that raise your place in the standings. \r\n\r\nTo do this quest, go to the Get Nutz page by clicking on the scoreboard icon at the top of this page. Then find the activity to post to Facebook about the Kukui Cup (hint: it's in the Getting Started column of the Smart Grid Game).  Finally, carry out the instructions on the page to make your posting and submit the information required to get your points. "
+    }
+  }
+]
