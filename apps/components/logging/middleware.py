@@ -12,7 +12,8 @@ class LoggingMiddleware(object):
 		#File to place the log file.
 		LOG_FILENAME = 'apps/components/logging/LoggingFile/logging.log' 
 		
-		logging.warn("WORKING")
+		logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
+		logging.info(" " + timestamp + " " + user.username + ' "' + "GET " + path + '" ' + request.META['HTTP_REFERER'] + " 200")
 		
 		#Statement to see where user is going to and coming from.
 		if request.META.has_key("HTTP_REFERER"):
