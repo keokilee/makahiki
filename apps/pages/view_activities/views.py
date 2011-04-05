@@ -355,6 +355,7 @@ def task(request, type, task_id):
     "question":question,
     "member_all":member_all_count,
     "member_floor":member_floor_count,
+    "display_form":False,
   }, context_instance=RequestContext(request))    
     
 def add_task(request, type, task_id):
