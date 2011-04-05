@@ -64,10 +64,6 @@ CONDITIONS = {
   "num_activities_completed": num_activities_completed, 
   "badge_awarded": badge_awarded,
 }
-
-def can_add_quest(user, quest):
-  """Returns True if the user can add the quest."""
-  return True
   
 def get_quests(user):
   """
@@ -84,7 +80,7 @@ def get_quests(user):
   if quest_count < MAX_AVAILABLE_QUESTS:
     # If the user doesn't have enough quests, go find some.
     for quest in Quest.objects.exclude(questmember__user=user):
-      if can_add_quest(user, quest):
+      if quest.can_add_quest(user):
         member = QuestMember(user=user, quest=quest)
         member.save()
         
