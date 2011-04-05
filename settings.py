@@ -113,6 +113,7 @@ MIDDLEWARE_CLASSES = (
     'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
     'pages.home.middleware.CheckSetupMiddleware',
+	'components.logging.middleware.LoggingMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -171,6 +172,7 @@ INSTALLED_APPS = (
     'components.prizes',
     'components.resources',
     'components.standings',
+	'components.logging',
     
     # 3rd party libraries
     'lib.brabeion',
