@@ -11,7 +11,7 @@ class DailyVisitorBadge(Badge):
   levels = ["Awarded",]
   events = ["dailyvisitor",]
   multiple = False
-  image = "images/badges/dailyvisitor.png"
+  image = "images/badges/Threepeater.gif"
   
   def award(self, **state):
     user = state["user"]
