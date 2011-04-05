@@ -1,6 +1,10 @@
+import simplejson as json
+
 from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.http import Http404, HttpResponse
 
 from elementtree import ElementTree
 from decimal import *
@@ -10,6 +14,7 @@ from components.activities import *
 from components.floors.models import *
 from components.floors import *
 from components.energy_goals import *
+from pages.view_energy.forms import EnergyWallForm
 
 from lib.restclient.restful_lib import *
 
@@ -18,7 +23,7 @@ def index(request):
   user = request.user
   floor = user.get_profile().floor
   golow_activities = get_available_golow_activities(user)
-  golow_posts = Post.objects.filter(floor=floor, style_class="user_post")[:10]
+  golow_posts = Post.objects.filter(floor=floor, style_class="user_post").order_by("-id")[:5]
   
   standings = []
   
@@ -89,9 +94,36 @@ def index(request):
       "standings":standings[:10],
       "golow_activities":golow_activities,
       "posts":golow_posts,
+      "wall_form": EnergyWallForm(),
       "help_info": {
         "prefix": "energy_index",
         "count": range(0, 3),
       }
     }
     ,context_instance=RequestContext(request))
+    
+@login_required
+def post(request):
+  if request.is_ajax() and request.method == "POST":
+    form = EnergyWallForm(request.POST)
+    if form.is_valid():
+      post = Post(
+          user=request.user, 
+          floor=request.user.get_profile().floor, 
+          text=form.cleaned_data["post"]
+      )
+      post.save()
+      
+      # Render the post and send it as a response.
+      template = render_to_string("news/user_post.html", {"post": post}, 
+          context_instance=RequestContext(request))
+      return HttpResponse(json.dumps({
+        "contents": template,
+      }), mimetype="application/json")
+    
+    # At this point there is a form validation error.
+    return HttpResponse(json.dumps({
+        "message": "This should not be blank."
+    }), mimetype="application/json")
+  
+  raise Http404    

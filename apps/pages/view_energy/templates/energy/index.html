@@ -41,6 +41,7 @@
       <div id="energy-scoreboard-message">#1 at end of round wins a prize!</div>
     </div>
   </div>
+
 </div>
 
 <div {% get_id_and_classes "energy-status" %}>
@@ -96,12 +97,51 @@
       <fieldset {% get_id_and_classes "energy-status-posts" %}>
     	<legend>Organize with your lounge peeps</legend>
           Got ideas on how to conserve energy? Share it on the lounge wall:<br>
-		  <input {% get_id_and_classes "energy-status-posts-button" %} type="text" size="50" value="" />
-	      <button type="button" >Send</button>
-          {% include "energy/golow_posts.html" %}
+
+    <div {% get_id_and_classes "news-wall-content" %}>
+      <div {% get_id_and_classes "wall-form" %}>
+        <form {% get_id_and_classes "news-post-form" %} action="{% url energy_post %}" method="POST">
+          {% csrf_token %}
+          <div {% get_id_and_classes "wall-post-errors" %}></div>
+          <div {% get_id_and_classes "wall-post" %}>
+            {{wall_form.post}}
+          </div>
+          <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a>
+        </form>
+        <script type="text/javascript">
+          $("#wall-post-submit").click(function() {
+            if (!$("#wall-post-submit").button("option", "disabled")) {
+              $.post("{% url energy_post %}", $("#news-post-form").serialize(), function(data) {
+                if (data.message) {
+                  $("#wall-post-errors").html(data.message);
+                }
+                else {
+                  $("#wall-post-errors").html("");
+                  if ($("#wall-no-posts").is(":visible")) {
+                    $("#wall-no-posts").hide();
+                  }
+                  $(data.contents).hide().prependTo("#wall-posts").fadeIn();
+                  $("textarea").val("");
+                  $("#wall-post-submit").button("option", "disabled", true);
+                }
+              });
+            }
+            return false;
+          });
+        </script>
+      </div>
+
+        <ul {% get_id_and_classes "wall-posts" %}>
+          {% include "news/news_posts.html" %}
+        </ul>
+        {% if not posts %}
+          <p {% get_id_and_classes "wall-no-posts" %}>There are no posts yet!</p>
+        {% endif %}
+
       </fieldset>
     </div>
   </div>
+
 </div>
 
 {% endblock %}

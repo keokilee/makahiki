@@ -62,7 +62,7 @@ def __get_categories(user):
 
   for cat in categories:
     task_list = []
-    for task in cat.activitybase_set.all():   
+    for task in cat.activitybase_set.order_by("priority"):   
       task.is_unlock = is_unlock(user, task)
       task.is_pau = is_pau(user, task)
       task_list.append(task)
