@@ -1,0 +1,9 @@
+2011-02-01 11:52:17,316 log_test3.py(30): DEBUG Debug
+2011-02-01 11:52:17,318 log_test3.py(31): INFO Info
+2011-02-01 11:52:17,319 log_test3.py(32): WARNING Warning
+2011-02-01 11:52:17,319 log_test3.py(33): ERROR Error
+2011-02-01 11:52:17,319 log_test3.py(34): CRITICAL Critical
+2011-02-01 11:52:17,323 log_test3.py(31): INFO Info
+2011-02-01 11:52:18,331 log_test3.py(32): WARNING Warning
+2011-02-01 11:52:19,332 log_test3.py(33): ERROR Error
+2011-02-01 11:52:19,332 log_test3.py(34): CRITICAL Critical
