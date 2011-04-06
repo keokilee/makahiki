@@ -118,7 +118,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>next</td>
+	<td>//button[@id='next' and @role=&quot;button&quot;]</td>
 	<td></td>
 </tr>
 <tr>

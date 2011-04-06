@@ -65,7 +65,7 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
         except: pass
         time.sleep(1)
     else: self.fail("time out")
-    sel.click("next")
+    sel.click("//button[@id='next' and @role=\"button\"]")
     for i in range(60):
         try:
             if sel.is_text_present("Next ->\nget your points!"): break
