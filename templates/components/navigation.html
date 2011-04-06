@@ -2,13 +2,12 @@
        
 <div {% get_id_and_classes "header-nav-links" %}>
   <ul>
-    <li><a href="{% url home_index %}?ref=nav-button" class="home"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url energy_index %}?ref=nav-button" class="energy"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url activity_index %}?ref=nav-button" class="activities"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url news_index %}?ref=nav-button" class="news"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url prizes_index %}?ref=nav-button" class="prizes"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url profile_index %}?ref=nav-button" class="profile"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
-    <li><a href="{% url help_index %}?ref=nav-button" class="help"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url energy_index %}?ref=nav-button" class="energy" title="Go Low!"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url activity_index %}?ref=nav-button" class="activities" title="Get Nutz!"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url news_index %}?ref=nav-button" class="news" title="News"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url prizes_index %}?ref=nav-button" class="prizes" title="Prizes"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url profile_index %}?ref=nav-button" class="profile" title="Profile"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
+    <li><a href="{% url help_index %}?ref=nav-button" class="help" title="Help"><img src="{{STATIC_URL}}css/default/images/spacer.png"/></a></li>
   </ul>
 </div>
 
