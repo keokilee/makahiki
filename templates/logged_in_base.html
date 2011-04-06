@@ -35,33 +35,26 @@
 </div>
 
 {% if QUESTS %}
-<div id="quest-box" class="content-box">
-  <h3>Available Quests</h3>
+<div id="quest-box" class="content-box" style="padding: 10px 0">
+  <h3 style="display: inline">Available Quests</h3>
   
-  <ul>
+  <ul style="margin-left: 10px; display: inline">
     {% for quest in QUESTS %}
     <li>
-      <div class="quest-info" style="float: left; width: 85%">
-        <a href="#" class="quest-title" style="display: block">{{quest.name}}</a>
-        <div class="quest-description" style="clear:left">
-          {{quest.description|markdown}}
-        </div>
+      <a href="#" id="quest-{{forloop.counter}}">{{quest.name}}</a>
+      <div id="quest-dialog-{{forloop.counter}}" class="quest-dialog" title="{{quest.name}}">
+        {{quest.description|markdown}}
       </div>
-      <div class="quest-options" style="float:right">
-        <a href="#">Accept</a>
-        <a href="#">Remove</a>
-      </div>
-      <div style="clear:both"></div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#quest-dialog-{{forloop.counter}}").dialog({autoOpen: false, modal: true});
+          $("#quest-{{forloop.counter}}").click(function() {
+            $("#quest-dialog-{{forloop.counter}}").dialog('open');
+          });
+        })
+      </script>
     </li>
     {% endfor %}
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".quest-description").hide();
-        $(".quest-title").click(function() {
-          $(this).next(".quest-description").toggle();
-        });
-      })
-    </script>
   </ul>
 </div>
 

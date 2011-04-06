@@ -3,7 +3,7 @@
 
 /********************** home styles ******************************/
 
-p {
+.content p {
 	background: transparent url(/site_media/static/css/default/images/bullet.png) top left repeat-y;
 	font-size: 8pt;
 	line-height: 14px;

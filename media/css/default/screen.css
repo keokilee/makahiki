@@ -275,7 +275,7 @@ clear: both;
   margin: 0 auto;
   clear:both; 
   text-align: left;
-  background-color: #EBE7BC;
+  background-color: #70A21F;
   border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
@@ -294,23 +294,28 @@ clear: both;
 #quest-box li {
   margin-top: 10px;
   padding: 5px;
-  background-color: #dbd7af;
-  
-  border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+/*  background-color: #dbd7af;
+    
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;*/
+    display: inline;
 }
 
-#quest-box li a {
-  text-decoration: none;
+.quest-dialog {
+  text-align: left;
 }
 
-.quest-title {
-  font-weight: bold;
-}
-
-#quest-box li a:hover {
-  text-decoration: underline;
+.quest-dialog p {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+  white-space: normal;
+  background: none;
+  text-align: left;
 }
 
 /*------- Footer styles -----*/
