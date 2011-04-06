@@ -13,7 +13,7 @@
 	margin: 0 2px 5px 2px
 }
 
-img {
+.content img {
 	border: 0;
 }
 
@@ -33,7 +33,7 @@ div.home-item {
 	float: left;
 }
 
-.tile {
+.content .tile {
 	background: #E3E3E3;
 	padding: 1px;
 	border: 3px outset #DDD;
@@ -50,6 +50,10 @@ div.home-item {
 	box-shadow: 3px 3px 5px #000;
 	-moz-box-shadow: 3px 3px 5px #000;
 	-webkit-box-shadow: 3px 3px 5px #000;
+	
+	/* Force tiles on top of icons.*/
+	position: relative;
+	z-index: 100;
 }
 
 .content {
