@@ -112,6 +112,11 @@
 	<td>Maile Tanaka</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>//button[@id='next' and @role=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>next</td>
 	<td></td>
@@ -194,6 +199,16 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -5,7 +5,7 @@ from django.test import TestCase
 class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
   selenium_fixtures = ["fixtures/base_floors.json", "fixtures/test_users.json"]
   def setUp(self):
-      self.verificationErrors = []
+    self.verificationErrors = []
       
   def test_test_setup_wizard(self):
     sel = self.selenium
@@ -59,6 +59,12 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
         time.sleep(1)
     else: self.fail("time out")
     sel.type("id_display_name", "Maile Tanaka")
+    for i in range(60):
+        try:
+            if sel.is_element_present("//button[@id='next' and @role=\"button\"]"): break
+        except: pass
+        time.sleep(1)
+    else: self.fail("time out")
     sel.click("next")
     for i in range(60):
         try:
@@ -105,7 +111,15 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
     except AssertionError, e: self.verificationErrors.append(str(e))
     sel.click("home")
     sel.wait_for_page_to_load("30000")
+    for i in range(60):
+        try:
+            if sel.is_element_present("link=Logout"): break
+        except: pass
+        time.sleep(1)
+    else: self.fail("time out")
+    sel.click("link=Logout")
+    sel.wait_for_page_to_load("30000")
 
   def tearDown(self):
-      self.assertEqual([], self.verificationErrors)
+    self.assertEqual([], self.verificationErrors)
 
