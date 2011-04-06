@@ -27,6 +27,7 @@ table#profile-form-table {
 	margin: 0;
 	border-spacing: 0;
 	width: 442px;
+	background-color: #dbd7af;
 }
 
 #profile-form-table td {
@@ -52,18 +53,13 @@ table#profile-form-table {
 	font-style: italic;
 }
 
-td#profile-form-fb-header {
-	background: transparent url(/site_media/static/css/default/images/facebook-icon.png) 15px 0 no-repeat;
-	padding-left: 45px;
+td.profile-section-header {
 	font-weight: bold;
+	background-color: #EBE7BC;
 }
 
 td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	padding-left: 45px;
-}
-
-#profile-form-contact-label {
-	font-weight: bold;
 }
 
 td#profile-form-contact-email-label, td#profile-form-contact-text-label {

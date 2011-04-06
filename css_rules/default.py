@@ -98,6 +98,9 @@ CSS_IDS = {
   "profile-form-title": "content-box-title",
   "profile-badges-title": "content-box-title",
   "profile-history-title": "content-box-title",
+  "profile-form-fb-header": "profile-section-header",
+  "profile-form-general-header": "profile-section-header",
+  "profile-form-contact-header": "profile-section-header",
   
   "prizes-list": "content-box",
   "prizes-raffle": "content-box",
