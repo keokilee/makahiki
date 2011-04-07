@@ -17,7 +17,7 @@ class QuestTest(TestCase):
   def testGetQuests(self):
     """Tests that we can get the quests for a user."""
     # Create some sample quests.
-    self.assertEqual(get_quests(self.user).count(), 0, "There are no quests for the user.")
+    self.assertEqual(len(get_quests(self.user)), 0, "There are no quests for the user.")
     for i in range(0, 3):
       quest_name = "Test Quest %d" % i
       quest = Quest(
@@ -31,7 +31,7 @@ class QuestTest(TestCase):
       quest.save()
     
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 3, "User should have 3 quests available.")
+    self.assertEqual(len(quests), 3, "User should have 3 quests available.")
     
     # Test that if we add another quest, the user still has the 3 original quests.
     quest = Quest(
@@ -45,16 +45,17 @@ class QuestTest(TestCase):
     quest.save()
     
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 3, "User should still have 3 quests available.")
+    self.assertEqual(len(quests), 3, "User should still have 3 quests available.")
     self.assertTrue(quest not in quests, "New quest should not be in quests.")
     
     # Mark a quest as completed so that the new quest is picked up.
+    quests[0].accept(self.user)
     member = QuestMember.objects.filter(user=self.user)[0]
     member.completed = True
     member.save()
     
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 3, "User should have 3 quests available.")
+    self.assertEqual(len(quests), 3, "User should have 3 quests available.")
     self.assertTrue(quest in quests, "New quest should be in quests.")
     
   def testBasicPrerequisites(self):
@@ -70,12 +71,12 @@ class QuestTest(TestCase):
     quest.save()
     
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 0, "User should not have this quest available.")
+    self.assertEqual(len(quests), 0, "User should not have this quest available.")
     
     quest.unlock_conditions = "True"
     quest.save()
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 1, "User should now have one quest.")
+    self.assertEqual(len(quests), 1, "User should now have one quest.")
     
   def testBasicCompletion(self):
     """Tests that the user can complete quests."""
@@ -90,7 +91,9 @@ class QuestTest(TestCase):
     quest.save()
     
     quests = get_quests(self.user)
-    self.assertEqual(quests.count(), 1, "User should have one quest.")
+    self.assertEqual(len(quests), 1, "User should have one quest.")
+    
+    quests[0].accept(self.user)
     
     possibly_completed_quests(self.user)
     complete_quests = self.user.quest_set.filter(questmember__completed=True)
@@ -155,6 +158,7 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(self.quest in quests, "User should be able to participate in this quest.")
     
     # Test as a completion condition.
+    self.quest.accept(self.user)
     self.quest.completion_conditions = "num_activities_completed(2)"
     self.quest.save()
     completed_quests = possibly_completed_quests(self.user)
@@ -198,6 +202,7 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(has_task(self.user, "Test"), "User should have a completed task.")
     
     # Test as a completion condition.
+    self.quest.accept(self.user)
     self.quest.completion_conditions = "not has_task('Test')"
     self.quest.save()
     completed_quests = possibly_completed_quests(self.user)
@@ -234,6 +239,7 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(self.quest in get_quests(self.user), "User should be able to participate in this quest.")
     
     # Test as a completion condition
+    self.quest.accept(self.user)
     self.quest.completion_conditions = "num_activities_completed(2)"
     self.quest.save()
     self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")
@@ -268,6 +274,7 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(has_task(self.user, "Test"), "User should have a completed commitment.")
     
     # Test as a completion condition
+    self.quest.accept(self.user)
     self.quest.completion_conditions = "not has_task('Test')"
     self.quest.save()
     self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")
@@ -293,6 +300,7 @@ class QuestConditionsTest(TestCase):
     self.quest.save()
     self.assertTrue(self.quest in get_quests(self.user), "User should be able to participate in this quest.")
     
+    self.quest.accept(self.user)
     self.quest.completion_conditions = "badge_awarded('dailyvisitor')"
     self.quest.save()
     self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")

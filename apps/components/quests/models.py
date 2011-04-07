@@ -48,6 +48,18 @@ class Quest(models.Model):
     allow_dict.update({"True": True, "False": False, "user": user})
     
     return eval(conditions, {"__builtins__":None}, allow_dict)
+    
+  def accept(self, user):
+    """
+    Lets the user accept the quest.  Returns True if successful.
+    """
+    # Check if this quest is in the list.
+    if self in user.quest_set.all():
+      return False
+      
+    member = QuestMember(quest=self, user=user)
+    member.save()
+    return True
   
 class QuestMember(models.Model):
   """

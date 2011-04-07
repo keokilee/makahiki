@@ -80,34 +80,42 @@ def possibly_completed_quests(user):
       completed.append(quest)
   
   return completed
-  
+   
 def get_quests(user):
   """
   Get the quests for the user.
   """
-  # Get the user's incomplete quests.
-  incomplete_quests = user.quest_set.filter(
+  # Get the user's completed quests.
+  quests = get_user_quests(user)
+  
+  # Check if the user can add more quests
+  # Note that if this is the case, what is returned is not a queryset object.
+  if (quests.count() < MAX_AVAILABLE_QUESTS):
+    quests = list(quests)
+    quests = quests + get_available_quests(user, MAX_AVAILABLE_QUESTS - len(quests))
+  
+  return quests
+    
+def get_user_quests(user):
+  """
+  Get the quests the user is participating in.
+  """
+  return user.quest_set.filter(
       questmember__user=user,
       questmember__opt_out=False,
       questmember__completed=False
   )
   
-  quest_count = incomplete_quests.count()
-  if quest_count < MAX_AVAILABLE_QUESTS:
-    # If the user doesn't have enough quests, go find some.
-    for quest in Quest.objects.exclude(questmember__user=user):
-      if quest.can_add_quest(user):
-        member = QuestMember(user=user, quest=quest)
-        member.save()
+def get_available_quests(user, num_quests):
+  """
+  Get the quests the user could participate in.
+  """
+  quests = []
+  for quest in Quest.objects.exclude(questmember__user=user).order_by('-level'):
+    if quest.can_add_quest(user):
+      quests.append(quest)
+      
+      if len(quests) == num_quests:
+        return quests
         
-        quest_count = quest_count + 1
-        if quest_count == MAX_AVAILABLE_QUESTS:
-          break
-  
-    return user.quest_set.filter(
-        questmember__user=user,
-        questmember__opt_out=False,
-        questmember__completed=False
-    )
-  else:
-    return incomplete_quests
+  return quests
