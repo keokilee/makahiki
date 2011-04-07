@@ -65,14 +65,21 @@ CONDITIONS = {
   "badge_awarded": badge_awarded,
 }
 
-def possibly_complete_quests(user):
-  """Check if the user may have completed one of their quests."""
+def possibly_completed_quests(user):
+  """
+  Check if the user may have completed one of their quests.
+  Returns an array of the completed quests.
+  """
   user_quests = user.quest_set.filter(questmember__completed=False)
+  completed = []
   for quest in user_quests:
     if quest.completed_quest(user):
       member = QuestMember.objects.get(user=user, quest=quest)
       member.completed = True
       member.save()
+      completed.append(quest)
+  
+  return completed
   
 def get_quests(user):
   """

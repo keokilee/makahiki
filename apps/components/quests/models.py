@@ -29,7 +29,7 @@ class Quest(models.Model):
     
     conditions = self.unlock_conditions
     for name in CONDITIONS.keys():
-      conditions.replace(name + "(", name + "(user,")
+      conditions = conditions.replace(name + "(", name + "(user,")
       
     allow_dict = CONDITIONS.copy()
     allow_dict.update({"True": True, "False": False, "user": user})
@@ -42,7 +42,7 @@ class Quest(models.Model):
     
     conditions = self.completion_conditions
     for name in CONDITIONS.keys():
-      conditions.replace(name + "(", name + "(user,")
+      conditions = conditions.replace(name + "(", name + "(user,")
       
     allow_dict = CONDITIONS.copy()
     allow_dict.update({"True": True, "False": False, "user": user})
