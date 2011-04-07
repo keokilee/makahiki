@@ -26,13 +26,13 @@
       <td {% get_id_and_classes "profile-form-about-fields" %}>{{form.about}}</td>
     </tr>
     <tr {% get_id_and_classes "profile-form-logged-in" %}>
-      <td>{{form.stay_logged_in.label_tag}}</td>
+      <td {% get_id_and_classes "profile-form-logged-in-label" %}>{{form.stay_logged_in.label_tag}}</td>
       <td>{{form.stay_logged_in}}</td>
     </tr>
-    <tr {% get_id_and_classes "profile-form-enable-help" %}>
-      <td>{{form.enable_help.label_tag}}</td>
-      <td>{{form.enable_help}}</td>
-    </tr>
+    {# <tr {% get_id_and_classes "profile-form-enable-help" %}> #}
+    {#   <td>{{form.enable_help.label_tag}}</td> #}
+    {#   <td>{{form.enable_help}}</td> #}
+    {# </tr> #}
     {% if fb_enabled %}
     <tr {% get_id_and_classes "profile-form-fb" %}>
       <td colspan="2" {% get_id_and_classes "profile-form-fb-header" %}>

@@ -101,6 +101,13 @@ CSS_IDS = {
   "profile-form-fb-header": "profile-section-header",
   "profile-form-general-header": "profile-section-header",
   "profile-form-contact-header": "profile-section-header",
+  "profile-form-display-name-label": "profile-form-label",
+  "profile-form-picture-label": "profile-form-label",
+  "profile-form-about-label": "profile-form-label",
+  "profile-form-logged-in-label": "profile-form-label",
+  "profile-form-fb-profile-label": "profile-form-label",
+  "profile-form-contact-email-label": "profile-form-label",
+  "profile-form-contact-text-label": "profile-form-label",
   
   "prizes-list": "content-box",
   "prizes-raffle": "content-box",

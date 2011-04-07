@@ -33,7 +33,7 @@ table#profile-form-table {
 #profile-form-table td {
 	text-align: left;
 	vertical-align: top;
-	padding: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 15px;
 	margin: 0;
 }
 
@@ -53,17 +53,30 @@ table#profile-form-table {
 	font-style: italic;
 }
 
-td.profile-section-header {
+#profile-form-table td.profile-section-header {
 	font-weight: bold;
 	background-color: #EBE7BC;
+	padding-left: 5px;
 }
 
 td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	padding-left: 45px;
 }
 
-td#profile-form-contact-email-label, td#profile-form-contact-text-label {
-	padding-left: 45px;
+/*td#profile-form-contact-email-label, td#profile-form-contact-text-label {
+  padding-left: 45px;
+}*/
+
+#profile-form-table textarea {
+  height: 60px
+}
+
+#profile-form-table td.profile-form-label {
+	padding-left: 30px;
+}
+
+#profile-form-table #profile-form-fb-login-button {
+  padding-left: 30px;
 }
 
 #profile-form-submit {
