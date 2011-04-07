@@ -25,13 +25,29 @@ class Quest(models.Model):
     
   def can_add_quest(self, user):
     """Returns True if the user can add the quest."""
-    # TODO: Implement by checking the pre-conditions.
-    return True
+    from components.quests import CONDITIONS
+    
+    conditions = self.unlock_conditions
+    for name in CONDITIONS.keys():
+      conditions.replace(name + "(", name + "(user,")
+      
+    allow_dict = CONDITIONS.copy()
+    allow_dict.update({"True": True, "False": False, "user": user})
+    
+    return eval(conditions, {"__builtins__":None}, allow_dict)
     
   def completed_quest(self, user):
     """Returns True if the user completed the quest."""
-    # TODO: Implement by checking the post-conditions.
-    return True
+    from components.quests import CONDITIONS
+    
+    conditions = self.completion_conditions
+    for name in CONDITIONS.keys():
+      conditions.replace(name + "(", name + "(user,")
+      
+    allow_dict = CONDITIONS.copy()
+    allow_dict.update({"True": True, "False": False, "user": user})
+    
+    return eval(conditions, {"__builtins__":None}, allow_dict)
   
 class QuestMember(models.Model):
   """

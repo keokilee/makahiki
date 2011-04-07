@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from lib.brabeion import badges
 
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
-from components.quests import get_quests, has_task, num_activities_completed, badge_awarded
+from components.quests import get_quests, has_task, num_activities_completed, badge_awarded, possibly_complete_quests
 from components.quests.models import Quest, QuestMember
 
 class QuestTest(TestCase):
@@ -56,6 +56,51 @@ class QuestTest(TestCase):
     quests = get_quests(self.user)
     self.assertEqual(quests.count(), 3, "User should have 3 quests available.")
     self.assertTrue(quest in quests, "New quest should be in quests.")
+    
+  def testBasicPrerequisites(self):
+    """Tests that the user can only get quests for which they meet the prerequisites."""
+    quest = Quest(
+        name="Test quest",
+        quest_slug="test_quest",
+        description="test quest",
+        level=1,
+        unlock_conditions="False",
+        completion_conditions="False",
+    )
+    quest.save()
+    
+    quests = get_quests(self.user)
+    self.assertEqual(quests.count(), 0, "User should not have this quest available.")
+    
+    quest.unlock_conditions = "True"
+    quest.save()
+    quests = get_quests(self.user)
+    self.assertEqual(quests.count(), 1, "User should now have one quest.")
+    
+  def testBasicCompletion(self):
+    """Tests that the user can complete quests."""
+    quest = Quest(
+        name="Test quest",
+        quest_slug="test_quest",
+        description="test quest",
+        level=1,
+        unlock_conditions="True",
+        completion_conditions="False",
+    )
+    quest.save()
+    
+    quests = get_quests(self.user)
+    self.assertEqual(quests.count(), 1, "User should have one quest.")
+    
+    possibly_complete_quests(self.user)
+    complete_quests = self.user.quest_set.filter(questmember__completed=True)
+    self.assertTrue(quest not in complete_quests, "Quest should not be completed.")
+    
+    quest.completion_conditions = True
+    quest.save()
+    possibly_complete_quests(self.user)
+    complete_quests = self.user.quest_set.filter(questmember__completed=True)
+    self.assertTrue(quest in complete_quests, "Quest should be in the user's complete quests list.")
     
 class QuestConditionsTest(TestCase):
   """
