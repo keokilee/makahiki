@@ -119,13 +119,37 @@ def get_available_golow_activities(user):
   activities = Activity.objects.exclude(
     activitymember__user=user,
   ).filter(
-    Q(category__id=2) | Q(category__id=3),
-    type='activity',
-    pub_date__lte=datetime.date.today(),
-    expire_date__gte=datetime.date.today(),
-  ).order_by("priority", "title")
+    energy_related=True,
+  ).order_by("type","category", "priority")
   
-  return activities
+  commitments = Commitment.objects.exclude(
+    commitmentmember__user=user,
+  ).filter(
+    energy_related=True,
+  ).order_by("type","category", "priority")
+  
+  golow_tasks = []
+  count = 0
+  type = None
+  for task in commitments:
+    if is_unlock(user, task):
+      golow_tasks.append(task)
+      count = count + 1
+      break
+      
+  for task in activities:
+    if type == task.type:
+      continue
+    
+    if is_unlock(user, task):
+      golow_tasks.append(task)
+      count = count + 1
+      type = task.type
+    
+    if count >= 3:
+      break
+    
+  return golow_tasks
   
 def get_available_events(user):
   """Retrieves only the events that a user can participate in."""

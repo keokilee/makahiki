@@ -41,7 +41,7 @@ def index(request):
         power = Decimal(prop.findtext('Value'))    # in W
       if prop.findtext('Key') == 'energyConsumedToDate':
         floor_energy = Decimal(prop.findtext('Value'))   # in kWh
-        standings.append([format(floor_energy / 1000,'.2f'), f])
+        standings.append([format(floor_energy / 1000,'.1f'), f])
         if f==floor:
           energy = floor_energy
     if f==floor:
@@ -51,8 +51,8 @@ def index(request):
   
   ## TODO. create the baseline table
   baseline = 24 
-  energy = 22
-  percent_reduce = 0;
+  energy = 20
+  percent_reduce = 5;
   
   goals = FloorEnergyGoal.objects.filter(floor=floor);
   if goals.count() > 0:
@@ -60,7 +60,11 @@ def index(request):
   
   percent = 100 - percent_reduce  
   goal = baseline * percent / 100
-  over = energy - goal
+  over = "over"
+  diff = energy - goal
+  if diff <= 0:
+    over = "below"
+    diff = 0 - diff
   
   bar_px = 150  
   if energy <= baseline:
@@ -71,9 +75,9 @@ def index(request):
     actual_px = bar_px
   
   power_max = 1000    
-  power = format(power, '.2f')        ## convert to kW if need
-  energy = format(energy, '.2f')      ## convert to kWh if needed
-  over = format(over, '.2f')
+  power = format(power, '.1f')        ## convert to kW if need
+  energy = format(energy, '.1f')      ## convert to kWh if needed
+  diff = format(diff, '.1f')
   
   helps = ["Current Lounge Power", "Overall kWh Score Board", "Daily Energy Goal Status"]
   helpfiles = ["view_energy/help1.html", "view_energy/help2.html", "view_energy/help3.html"]
@@ -87,6 +91,7 @@ def index(request):
       "actual_px":actual_px,
       "baseline_px":baseline_px,
       "over":over,
+      "diff":diff,
       "power":power,
       "power_max":power_max,
       "last_update":last_update,

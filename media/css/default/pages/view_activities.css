@@ -26,6 +26,14 @@
 	width: 375px;
 }
 
+#activity-task-stats-content {
+	clear: both;
+	width: 300px;
+	text-align: left;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
 #activity-task-details {
 	float: right;
 	width: 512px;

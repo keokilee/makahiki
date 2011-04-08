@@ -23,6 +23,8 @@
     </tr>
   </table>
 
-  <div {% get_id_and_classes "energy-power-goal-info" %}>Over daily goal by {{over}}kWh!</div>
+  <div {% get_id_and_classes "energy-power-goal-info" %}>
+    {{over}} daily goal by {{diff}}kWh!
+  </div>
   <div {% get_id_and_classes "energy-power-goal-updated" %}>Last Update: {{last_update}}</div>
 </div>

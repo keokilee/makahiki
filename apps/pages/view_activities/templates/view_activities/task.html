@@ -2,6 +2,7 @@
 
 {% load markup %}
 
+{% load avatar_tags %}
 {% load class_tags %}
 
 {% block page_title %}
@@ -20,13 +21,25 @@
     </div>   
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
       <p/>
-      <img src="{{ STATIC_URL}}images/activity/{{type}}.jpg"/>
-      <p>
+      <center><img src="{{ STATIC_URL}}images/activity/{{type}}.jpg"/></center>
+      <p/>
       This {{type}} is worth {{task.point_value}} points.
-      <p>
+      {% if type == "commitment" %}
+        It lasts {{task.duration}} days.
+      {% endif %}
+      {% if type == "event" %}
+      <p/>
+      <b>When</b>  : {{task.event_date}} <br/>
+      <b>Where</b> : {{task.event_location}}
+      {% endif %}
+      <p/>
       {{member_all}} people have done this.
-      <p>
+      <p/>
       {{member_floor}} person in your lounge have done this.
+      <br/>
+      {% for user in users %}
+         <img src="{% avatar_url user 40 %}"/>
+     {% endfor %}
     </div>
   </div>  
 </div>
@@ -44,19 +57,40 @@
         {% if approved %}
           Congratulations! You did it !
         {% else %}
-          Thank you! <br/> Your request for points is pending approval.
+          {% if type == "event" %}
+            Thank you! You've earned 2 points by signing up.<br/>
+            After the {{type}}, please come back here to get your points.
+          {% endif %}
+          {% if type == "commitment" %}
+              Thank you! You've earned 2 points by committing.<br/>
+              After the commitment period, you will earn your points automatically.
+          {% endif %}
+          {% if type == "activity" %}
+              Thank you! <br/> Your request for points is pending approval.
+          {% endif %}            
         {% endif %}  
+        
       {% else %} 
-        {% if type == "Commitment" %}
-          <a href="add" id="task-submit" class="{% insert_classes "ui-button" %}">Commit it to get points</a>
-        {% else %} 
+        {% if type == "commitment" %}
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
+            Commit it to get points
+          </a>
+        {% endif %}  
+        {% if type == "event" %}
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
+            I want to sign up
+          </a>
+        {% endif %} 
+        {% if type == "activity"%} 
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
             I Did it, Click here to get points
           </a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
-       <a href="/activities/" id="back" class="{% insert_classes "ui-button" %}">Go Back</a>
+       <!--
+         <a href="/activities/" id="back" class="{% insert_classes "ui-button" %}">Go Back</a>  
+       -->  
       </b></center> <p>
     </div>
   </div>
@@ -64,7 +98,7 @@
 {% endblock %}
 
 {% block extra_body %}
-<div id="setup-dialog" title="Task Form" style="visibility: hidden;">
+<div id="setup-dialog" title="{{form_title}}" style="visibility: hidden;">
     {% include "view_activities/task_form.html" %}
 </div>
 
