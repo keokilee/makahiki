@@ -314,19 +314,7 @@ clear: both;
   text-decoration: underline;
 }
 
-.quest-dialog {
-  text-align: left;
-}
-
-.quest-dialog p {
-  margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-  white-space: normal;
-  background: none;
+#quest-complete-dialog {
   text-align: left;
 }
 

@@ -34,80 +34,9 @@
   </div>
 </div>
 
-{% if QUESTS %}
-<div id="quest-box" class="content-box">
-  <div class="content-box-title">Your Quests</div>
-  
-  <ul>
-    {% for quest in QUESTS.user_quests %}
-    <li>
-      <a href="#" class="quest-title" style="font-weight: bold">{{quest.name}}</a>
-      <div class="quest-description" style="display:none">
-        {{quest.description|markdown}}
-        <div style="clear:both"></div>
-      </div>
-    </li>
-    {% endfor %}
-    {% for quest in QUESTS.available_quests %}
-    <li>
-      <a href="#" class="quest-title">{{quest.name}}</a>
-      <div class="quest-description" style="display:none">
-        {{quest.description|markdown}}
-        <div class="quest-options" style="float: right">
-          <form action="{% url quests_accept quest.id %}" method="POST" style="display: inline">
-            <button type="submit" style="margin-right: 20px">I accept this quest</button>
-          </form>
-          <form action="{% url quests_opt_out quest.id %}" method="POST" style="display: inline">
-            <button type="submit">I am not interested in this quest</button>
-          </form>
-        </div>
-        <div style="clear:both"></div>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-  
-  <div id="quest-details" style="margin: 0px 10px">
-    <a href="#" id="quest-hide" style="float: right; display: block">Hide</a>
-    <div id="quest-contents" style="clear:both"></div>
-  </div>
-  
-  <script type="text/javascript">
-    $(document).ready(function() {
-      // Hide the details until someone clicks on it.
-      $("#quest-details").hide();
-      
-      // Handler for clicking a quest title.
-      $(".quest-title").click(function() {
-        //Set the title as selected if it is not already selected
-        if (!$(this).parent().hasClass("selected")) {
-          $(this).parent().siblings("li").removeClass("selected");
-          $(this).parent().addClass("selected");
-        }
-        
-        //Insert the contents of the quest-description into the details.
-        $("#quest-contents").html($(this).next(".quest-description").html());
-        
-        //Toggle quest-details if it is hidden.
-        if (!$("#quest-details").is(":visible")) {
-          $("#quest-details").slideDown("slow", function() {
-            //Animation complete
-          });
-        }
-      });
-      
-      // Handler for clicking on the hide link.
-      $("#quest-hide").click(function() {
-        $("#quest-box li").removeClass("selected");
-        $("#quest-details").slideUp("slow", function() {
-          //Animation complete
-        });
-      });
-    })
-  </script>
-</div>
+{% include "quests/quest_dialog.html" %}
+{% include "quests/quest_list.html" %}
 
-{% endif %}
 {# {% if help_info and user.get_profile.enable_help %} #}
 {#   <div {% get_id_and_classes "notification" %}>  #}
 {#     <div {% get_id_and_classes "notification-box" %}> #}

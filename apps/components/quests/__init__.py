@@ -96,11 +96,20 @@ def possibly_completed_quests(user):
    
 def get_quests(user):
   """
-  Get the quests for the user.
+  Loads the quests for the user.
+  Returns a dictionary of three things:
+  * The user's completed quests (completed_quests)
+  * The user's current quests (user_quests)
+  * Quests the user can participate in (available_quests)
   """
-  # Get the user's completed quests.
+  return_dict = {}
+  
+  # Check for completed quests.
+  return_dict = {"completed_quests": possibly_completed_quests(user)}
+  
+  # Load the user's quests
   quests = get_user_quests(user)
-  return_dict = {"user_quests": quests}
+  return_dict.update({"user_quests": quests})
   
   # Check if the user can add more quests
   # Note that the second set of quests are not a queryset object.
