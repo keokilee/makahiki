@@ -99,7 +99,8 @@ class ActivityBase(models.Model):
              )
   likes = generic.GenericRelation(Like)
   depends_on = models.CharField(max_length=200, null=True, blank=True,)
-
+  energy_related = models.BooleanField(default=False)
+  
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
     
@@ -177,6 +178,13 @@ class Activity(ActivityBase):
                 verbose_name="Date and time of the event",
                 help_text="Required for events."
                )
+  event_location = models.CharField(
+                    blank=True,
+                    null=True,
+                    max_length=200, 
+                    verbose_name="Event Location",
+                    help_text="Location of the event"
+                )
                       
   def __unicode__(self):
     return self.title

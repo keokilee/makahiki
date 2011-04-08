@@ -8,7 +8,7 @@
           {% for event in events %}
           <tr><td><a href="#">{{event.title}}</a> ({{event.point_value}})</td>
               <td>{{event.event_date}}</td>
-              <td></td></tr>
+              <td>{{event.event_location}}</td></tr>
           {% endfor %}
         {% else %}
 	       <tr><td>No upcoming events</td></tr>

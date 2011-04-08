@@ -83,6 +83,7 @@ fieldset legend {
 
 #energy-scoreboard-message {
 	margin-top: .5em;
+	margin-left: 10px;
 	font-size: 12pt;
 }
 
@@ -95,6 +96,10 @@ fieldset legend {
 	padding: .5em .5em 0 .5em;
 	}
 
+#energy-smiley {
+    font-size:200%;
+    }
+    
 #energy-power-box {
 	border: 1px solid #02ac0e;
 	padding: 5px;
