@@ -13,7 +13,7 @@
 }
 
 #energy-power {
-	background-color: #DDD;
+
 	}
 
 .status-tray {
@@ -69,7 +69,7 @@ fieldset legend {
 #energy-scoreboard-table th {
 	background: #d0cb9b;
 	font-weight: bold;
-	padding: 4px;
+	padding: 4px 4px 4px 20px;
 }
 
 #energy-scoreboard-table td {
@@ -83,7 +83,7 @@ fieldset legend {
 
 #energy-scoreboard-message {
 	margin-top: .5em;
-	margin-left: 10px;
+	margin-left: 30px;
 	font-size: 12pt;
 }
 

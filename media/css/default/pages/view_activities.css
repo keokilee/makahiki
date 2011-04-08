@@ -78,7 +78,9 @@ h3.activity-categories-title {
 
 #activity-events-content th, #activity-scoreboard-content th {
 	background-color: #dbd7af;
-	padding: 4px;
+	
+	padding: 4px 4px 4px 20px;
+	text-align: left;
 	}
 
 #activity-events-content td, #activity-scoreboard-content td {
@@ -86,6 +88,9 @@ h3.activity-categories-title {
 	padding: 4px 4px 4px 20px;
 }
 
+#activity-scoreboard-content td  {
+    padding-right: 30px;
+}
 
 #activity-categories {	
 	margin: 0;

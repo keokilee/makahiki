@@ -44,7 +44,7 @@ class ProfileFunctionalTestCase(TestCase):
     member = ActivityMember(user=self.user, activity=activity, approval_status="pending")
     member.save()
     response = self.client.get(reverse("profile_index"))
-    self.assertContains(response, reverse("activity_task", args=("Activity", activity.id)))
+    self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertContains(response, "Pending")
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
@@ -53,7 +53,7 @@ class ProfileFunctionalTestCase(TestCase):
     member.approval_status = "rejected"
     member.save()
     response = self.client.get(reverse("profile_index"))
-    self.assertContains(response, reverse("activity_task", args=("Activity", activity.id)))
+    self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertContains(response, "Rejected")
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
@@ -62,7 +62,7 @@ class ProfileFunctionalTestCase(TestCase):
     member.approval_status = "approved"
     member.save()
     response = self.client.get(reverse("profile_index"))
-    self.assertContains(response, reverse("activity_task", args=("Activity", activity.id)))
+    self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertNotContains(response, "You have not been awarded anything yet!")
     self.assertContains(response, "You have nothing in progress or pending.")
     
@@ -79,7 +79,7 @@ class ProfileFunctionalTestCase(TestCase):
     member = CommitmentMember(user=self.user, commitment=commitment)
     member.save()
     response = self.client.get(reverse("profile_index"))
-    self.assertContains(response, reverse("activity_task", args=("Commitment", commitment.id)))
+    self.assertContains(response, reverse("activity_task", args=(commitment.id,)))
     self.assertContains(response, "In Progress")
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
@@ -88,7 +88,7 @@ class ProfileFunctionalTestCase(TestCase):
     member.award_date = datetime.datetime.today()
     member.save()
     response = self.client.get(reverse("profile_index"))
-    self.assertContains(response, reverse("activity_task", args=("Commitment", commitment.id)))
+    self.assertContains(response, reverse("activity_task", args=(commitment.id,)))
     self.assertNotContains(response, "You have not been awarded anything yet!")
     self.assertContains(response, "You have nothing in progress or pending.")
     

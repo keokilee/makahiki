@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body %}
+<div {% get_id_and_classes "home-center" %}>
 <!-- Top Row-->
 <div {% get_id_and_classes "home-energy" %}>
   <a href="/energy">
@@ -97,6 +98,7 @@
 </div>
 </div>
 <div style="clear:both"></div>
+</div>
 {% endblock %}
 
 {% block extra_body %}
