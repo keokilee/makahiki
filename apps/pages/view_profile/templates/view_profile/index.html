@@ -73,7 +73,7 @@
             <tr>
               <td>{{member.created_at|date:"n/j/y"}}</td>
               <td>
-                <a href="{% url activity_task 'Activity' member.activity.id %}">
+                <a href="{% url activity_task member.activity.id %}">
                   Activity: {{member.activity.name}}
                 </a>
               </td>
@@ -83,7 +83,7 @@
             <tr>
               <td>{{member.created_at|date:"n/j/y"}}</td>
               <td>
-                <a href="{% url activity_task 'Commitment' member.commitment.id %}">
+                <a href="{% url activity_task member.commitment.id %}">
                   Commitment: {{member.commitment.name}}
                 </a>
               </td>
@@ -109,14 +109,14 @@
               <td>{{member.award_date|date:"n/j/y"}}</td>
               {% if member.commitment %}
               <td>
-                <a href="{% url activity_task 'Commitment' member.commitment.id %}">
+                <a href="{% url activity_task member.commitment.id %}">
                   Commitment: {{member.commitment.name}}
                 </a>
               </td>
               <td>{{member.commitment.point_value}}</td>
               {% else %}
               <td>
-                <a href="{% url activity_task 'Activity' member.activity.id %}">
+                <a href="{% url activity_task member.activity.id %}">
                   Activity: {{member.activity.name}}
                 </a>
               </td>
