@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),
+    url(r'^quests/', include('components.quests.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),

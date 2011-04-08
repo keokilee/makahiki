@@ -65,6 +65,19 @@ CONDITIONS = {
   "badge_awarded": badge_awarded,
 }
 
+def process_conditions_string(conditions_string, user):
+  """
+  Utility method to evaluate conditions.
+  """
+  conditions = conditions_string
+  for name in CONDITIONS.keys():
+    conditions = conditions.replace(name + "(", name + "(user,")
+  
+  allow_dict = CONDITIONS.copy()
+  allow_dict.update({"True": True, "False": False, "user": user})
+  
+  return eval(conditions, {"__builtins__":None}, allow_dict)
+    
 def possibly_completed_quests(user):
   """
   Check if the user may have completed one of their quests.
@@ -87,14 +100,14 @@ def get_quests(user):
   """
   # Get the user's completed quests.
   quests = get_user_quests(user)
+  return_dict = {"user_quests": quests}
   
   # Check if the user can add more quests
-  # Note that if this is the case, what is returned is not a queryset object.
+  # Note that the second set of quests are not a queryset object.
   if (quests.count() < MAX_AVAILABLE_QUESTS):
-    quests = list(quests)
-    quests = quests + get_available_quests(user, MAX_AVAILABLE_QUESTS - len(quests))
+    return_dict.update({"available_quests": get_available_quests(user, MAX_AVAILABLE_QUESTS - len(quests))})
   
-  return quests
+  return return_dict
     
 def get_user_quests(user):
   """

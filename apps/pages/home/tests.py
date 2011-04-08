@@ -13,7 +13,7 @@ class HomeFunctionalTestCase(TestCase):
     
     response = self.client.get(reverse("home_index"))
     self.failUnlessEqual(response.status_code, 200)
-    
+  
 class SetupWizardFunctionalTestCase(TestCase):
   def setUp(self):
     self.user = User.objects.create_user("user", "user@test.com", password="changeme")
