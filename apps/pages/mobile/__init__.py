@@ -11,8 +11,8 @@ def get_mobile_standings(user):
   
   # Retrieve standings. Note that the get_standings_for_user method returns a JSON string.
   if current_round:
-    floor_standings = json.loads(get_standings_for_user(user, "floor", current_round["title"]))
-    overall_standings = json.loads(get_standings_for_user(user, "all", current_round["title"]))
+    floor_standings = json.loads(get_standings_for_user(user, "floor", current_round))
+    overall_standings = json.loads(get_standings_for_user(user, "all", current_round))
   else:
     # Retrieve the overall standings.
     floor_standings = json.loads(get_standings_for_user(user, "floor", None))

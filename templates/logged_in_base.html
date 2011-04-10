@@ -68,40 +68,72 @@
 
 {% endblock %}
 
-{% block extra_body %}
+{% block extra_body_base %}
 <script type="text/javascript">
-jQuery(document).ready(function(){
-    jQuery('a.frontendadmin_edit').hover(
-        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
-        function(){jQuery(this).parent().css('outline', '')}
+  //Normally, we would wrap this in an anonymous function, but we want it to be available for later.
+  // Get the spreadsheet we need.
+  var energyLastThirtyDays = "https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHhxeW1xRURQZUlGd1oxVERnQktsWXc";
+  var refreshInterval = 0; // don't refresh this spreadsheet.
+
+  // Load the visualization API and the spreadsheet, then call displayRank.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);  
+
+  function displayRank(energyDataTable) {
+    // The source for which we want to find the rank must be specified by Makahiki.
+    var source = "{{user.get_profile.floor.floor_identifier}}";
+    var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
+    // Get the usage for the current round and overall.
+    {% for key, value in ROUNDS.items %}
+      {% if key == "Overall" %}
+      var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
+      var info = energyRank.calculateRankInfo(usage, source);
+      energyRank.draw("overall-energy-rank", "overall-energy-value", info);
+      {% else %}
+        {% if CURRENT_ROUND and key == CURRENT_ROUND %}
+        var curr_usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
+        var curr_info = energyRank.calculateRankInfo(curr_usage, source);
+        energyRank.draw("round-energy-rank", "round-energy-value", curr_info);
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  }
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('a.frontendadmin_edit').hover(
+        function(){$(this).parent().css('outline', '4px solid #E9B007')},
+        function(){$(this).parent().css('outline', '')}
     );
     
-    jQuery('a.frontendadmin_edit').click(function(){
-            jQuery(this).parent().css('outline', '');
-            jQuery(this).parent().load(this.href);
+    $('a.frontendadmin_edit').click(function(){
+            $(this).parent().css('outline', '');
+            $(this).parent().load(this.href);
             return false;
     });
     
-    jQuery('a.frontendadmin_delete').hover(
-        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
-        function(){jQuery(this).parent().css('outline', '')}
+    $('a.frontendadmin_delete').hover(
+        function(){$(this).parent().css('outline', '4px solid #E9B007')},
+        function(){$(this).parent().css('outline', '')}
     );
 });
 </script>
 
-{% if help_info and user.get_profile.enable_help %}
-  {% for number in help_info.count %}
-  {% gblock help_info.prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %}
-  
-  <script type="text/javascript"> 
-    $(document).ready(function() {
-      $("#help-dialog-{{number}}").dialog({
-          modal: true,
-          autoOpen: false
-      });
-    })
-  </script>  
-  {% endfor %}
-{% endif %}
+{# {% if help_info and user.get_profile.enable_help %} #}
+{#   {% for number in help_info.count %} #}
+{#   {% gblock help_info.prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %} #}
+{#    #}
+{#   <script type="text/javascript">  #}
+{#     $(document).ready(function() { #}
+{#       $("#help-dialog-{{number}}").dialog({ #}
+{#           modal: true, #}
+{#           autoOpen: false #}
+{#       }); #}
+{#     }) #}
+{#   </script>   #}
+{#   {% endfor %} #}
+{# {% endif %} #}
+
+{% block extra_body %}{% endblock %}
 
 {% endblock %}

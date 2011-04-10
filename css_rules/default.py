@@ -23,7 +23,7 @@ JS_IMPORTS = """
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
 <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script>
-<!--<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>-->
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
 """
 
 LOGGED_IN_CSS_IMPORT = '<link rel="stylesheet" href="{0}css/{1}/logged_in_base.css">'

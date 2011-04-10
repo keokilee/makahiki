@@ -139,25 +139,25 @@ class Profile(models.Model):
   
   def current_round_points(self):
     """Returns the amount of points the user has in the current round."""
-    round_info = get_current_round()
-    if round_info:
-      return ScoreboardEntry.objects.get(profile=self, round_name=round_info["title"]).points
+    current_round = get_current_round()
+    if current_round:
+      return ScoreboardEntry.objects.get(profile=self, round_name=current_round).points
       
     return self.points
   
   def current_round_overall_rank(self):
     """Returns the overall rank of the user for the current round."""
-    round_info = get_current_round()
-    if round_info:
-      return self.overall_rank(round_name=round_info["title"])
+    current_round = get_current_round()
+    if current_round:
+      return self.overall_rank(round_name=current_round)
       
     return None
     
   def current_round_floor_rank(self):
     """Returns the rank of the user for the current round in their own floor."""
-    round_info = get_current_round()
-    if round_info:
-      return self.floor_rank(round_name=round_info["title"])
+    current_round = get_current_round()
+    if current_round:
+      return self.floor_rank(round_name=current_round)
 
     return None
   
