@@ -24,7 +24,7 @@ def get_mobile_standings(user):
   rank = info[index]["rank"]
   
   if current_round:
-    floor_string = "You are #%d in points for %s for %s." % (rank, user.get_profile().floor, current_round["title"])
+    floor_string = "You are #%d in points for %s for %s." % (rank, user.get_profile().floor, current_round)
   else:
     floor_string = "You are #%d in points for %s in the competition." % (rank, user.get_profile().floor)
   if index > 0:
@@ -39,7 +39,7 @@ def get_mobile_standings(user):
   rank = info[index]["rank"]
 
   if current_round:
-    overall_string = "You are #%d in overall points for %s." % (rank, current_round["title"])
+    overall_string = "You are #%d in overall points for %s." % (rank, current_round)
   else:
     overall_string = "You are #%d in overall points in the competition." % rank
   if index > 0:

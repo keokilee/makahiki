@@ -1,23 +1,17 @@
 {% load class_tags %}
-    <table {% get_id_and_classes "energy-scoreboard-table" %}>
-		<thead>
-			<th {% get_id_and_classes "energy-scoreboard-table-rank" %}>Rank</th>
-			<th {% get_id_and_classes "energy-scoreboard-table-lounge" %}>Lounge</th>
-			<th {% get_id_and_classes "energy-scoreboard-table-lounge" %}>kWh Used</th>
-        </thead>
-		<tbody>
-			{% for e,f in standings %}
-			<tr>
-			<td>{{forloop.counter}}</td>
-			<td>{% if f == floor %} 
-			     <b> 
-			    {% endif %}
-			    {{f}}</td>
-			<td>{% if f == floor %} 
-			     <b> 
-			    {% endif %}
-			    {{e}}</td>    
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+
+<div {% get_id_and_classes "energy-scoreboard" %}>
+  {% for round_name in scoreboard_rounds %}
+  <div class="energy-scoreboard-cycle" {% if not forloop.first %}style="display: none"{% endif %}>
+    <div {% get_id_and_classes "energy-scoreboard-title" %} style="width: 100%">
+      {{round_name}} kWh Score Board
+    </div>
+    <div {% get_id_and_classes "energy-scoreboard-content" %}>
+      <table id="{{round_name|slugify}}-energy-scoreboard"></table>
+    </div>
+   <div id="energy-scoreboard-message">#1 at end of round wins a 
+     <a href="/prizes"> prize!</a>
+   </div>
+ </div>
+ {% endfor %}
+</div>

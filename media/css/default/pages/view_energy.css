@@ -58,22 +58,21 @@ fieldset legend {
 	padding: 25px 0 0 0;
 }
 
-#energy-scoreboard-table {
+#energy-scoreboard table {
 	border: 0;
 	margin: 0;
 	padding: 0;
 	border-spacing: 0;
-	width: 100%;
+	width: 298px;
 }
 
-#energy-scoreboard-table th {
+#energy-scoreboard table th {
 	background: #d0cb9b;
 	font-weight: bold;
 	padding: 4px 4px 4px 20px;
 }
 
 #energy-scoreboard-table td {
-    text-align: left;
 	padding: 4px 4px 4px 20px;
 }
 
