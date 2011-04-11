@@ -149,8 +149,7 @@
   {# Usage is already calculated for us there. #}
   {# See PROJECT_ROOT/templates/logged_in_base.html #}
   if ($("#{{key|slugify}}-energy-scoreboard") != null) {
-    leader =  energyRank.drawCompleteStandings(
-        "{{key|slugify}}-energy-scoreboard", "{{user.get_profile.floor.floor_identifier}}", usage);
+    energyRank.drawCompleteStandings("{{key|slugify}}-energy-scoreboard", "{{user.get_profile.floor.floor_identifier}}", usage);
   }
 {% endblock %}
 
