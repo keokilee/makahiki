@@ -1,4 +1,4 @@
-import simplejson as json
+
 
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
@@ -17,7 +17,6 @@ from components.energy_goals import *
 from components.makahiki_base import get_round_info
 from pages.view_energy.forms import EnergyWallForm
 
-from lib.restclient.restful_lib import *
 
 @login_required
 def index(request):

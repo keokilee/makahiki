@@ -176,7 +176,6 @@ INSTALLED_APPS = (
     # 3rd party libraries
     'lib.brabeion',
     'lib.minidetector',
-    'lib.restclient',
     
     # Django and Pinax apps
     'django.contrib.auth',
