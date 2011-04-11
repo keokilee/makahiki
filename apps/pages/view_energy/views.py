@@ -14,6 +14,7 @@ from components.activities import *
 from components.floors.models import *
 from components.floors import *
 from components.energy_goals import *
+from components.makahiki_base import get_round_info
 from pages.view_energy.forms import EnergyWallForm
 
 from lib.restclient.restful_lib import *
@@ -41,13 +42,20 @@ def index(request):
         power = Decimal(prop.findtext('Value'))    # in W
       if prop.findtext('Key') == 'energyConsumedToDate':
         floor_energy = Decimal(prop.findtext('Value'))   # in kWh
-        standings.append([format(floor_energy / 1000,'.1f'), f])
         if f==floor:
           energy = floor_energy
     if f==floor:
       last_update = dom.findtext('Timestamp')
   
-  standings.sort()
+  rounds = get_round_info()
+  scoreboard_rounds = []
+  today = datetime.datetime.today()
+  for key in rounds.keys():
+    # Check if this round happened already or if it is in progress.
+    # We don't care if the round happens in the future.
+    if today >= datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d"):
+      # Slugify to create a div id.
+      scoreboard_rounds.append(key)
   
   ## TODO. create the baseline table
   baseline = 24 
@@ -96,7 +104,7 @@ def index(request):
       "power_max":power_max,
       "last_update":last_update,
       "floor": floor,
-      "standings":standings[:10],
+      "scoreboard_rounds":scoreboard_rounds,
       "golow_activities":golow_activities,
       "posts":golow_posts,
       "wall_form": EnergyWallForm(),

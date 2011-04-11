@@ -251,7 +251,7 @@ a {
 clear: both;
 }
 
-#header-floor-points h3, #header-floor-rank h3 {
+#header-floor-points h3, #header-floor-rank h3, #header-floor-energy h3 {
 	float: left;
 	font: bold 18pt Arial, Helvetica, sans-serif;
 	color: #FF0000;

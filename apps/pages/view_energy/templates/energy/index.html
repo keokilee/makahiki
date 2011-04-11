@@ -28,22 +28,7 @@
   </div>
   
   <p>
-
-  <div {% get_id_and_classes "energy-scoreboard" %}>
-    <div {% get_id_and_classes "energy-scoreboard-title" %}>
-      Overall kWh Score Board
-      {# <a href="#" onclick="$('#help-dialog2').dialog('open')"> #}
-      {# <span id="help2" class="ui-icon ui-icon-help"></span> #}
-      {# </a>  #} 
-    </div>
-    <div {% get_id_and_classes "energy-scoreboard-content" %}>
-      {% include "energy/scoreboard.html" %}
-    </div>
-     <div id="energy-scoreboard-message">#1 at end of round wins a 
-     <a href="/prizes"> prize!</a>
-     </div>
-  </div>
-
+  {% include "energy/scoreboard.html" %}
 </div>
 
 <div {% get_id_and_classes "energy-status" %}>
@@ -157,4 +142,21 @@
 
 </div>
 
+{% endblock %}
+
+{% block extra_round_energy %}
+  {# Note: contents are inserted into Javascript in the middle of the round iterator. #}
+  {# Usage is already calculated for us there. #}
+  {# See PROJECT_ROOT/templates/logged_in_base.html #}
+  if ($("#{{key|slugify}}-energy-scoreboard") != null) {
+    energyRank.drawCompleteStandings("{{key|slugify}}-energy-scoreboard", "{{user.get_profile.floor.floor_identifier}}", usage);
+  }
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#energy-scoreboard").cycle({height: "430px"});
+  })
+</script>
 {% endblock %}

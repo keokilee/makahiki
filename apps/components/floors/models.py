@@ -60,7 +60,7 @@ class Floor(models.Model):
       max_length=200,
       blank=True,
       null=True,
-      help_text="Name of the variable used in the kukuicup configuration to refer to this floor."
+      help_text="Name of the source used in WattDepot to refer to this floor."
   )
   
   def __unicode__(self):
@@ -96,9 +96,9 @@ class Floor(models.Model):
     return self.profile_set.all().order_by("-points", "-last_awarded_submission")[:num_results]
     
   def current_round_rank(self):
-    round_info = get_current_round()
-    if round_info:
-      return self.rank(round_name=round_info["title"])
+    current_round = get_current_round()
+    if current_round:
+      return self.rank(round_name=current_round)
 
     return None
     
@@ -143,9 +143,9 @@ class Floor(models.Model):
     
   def current_round_points(self):
     """Returns the number of points for the current round."""
-    round_info = get_current_round()
-    if round_info:
-      return self.points(round_name=round_info["title"])
+    current_round = get_current_round()
+    if current_round:
+      return self.points(round_name=current_round)
 
     return None
     

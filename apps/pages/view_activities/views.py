@@ -31,7 +31,7 @@ def index(request):
   floor = user.get_profile().floor
   
   current_round = get_current_round()
-  round_name = current_round["title"] if current_round else None
+  round_name = current_round if current_round else None
   floor_standings = Floor.floor_points_leaders(num_results=10, round_name=round_name)
   profile_standings = Profile.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
   user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
