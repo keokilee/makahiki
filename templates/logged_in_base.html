@@ -37,35 +37,6 @@
 {% include "quests/quest_dialog.html" %}
 {% include "quests/quest_list.html" %}
 
-{# {% if help_info and user.get_profile.enable_help %} #}
-{#   <div {% get_id_and_classes "notification" %}>  #}
-{#     <div {% get_id_and_classes "notification-box" %}> #}
-{#       Help Topics:  #}
-{#       <ul {% get_id_and_classes "help-topics" %}> #}
-{#       {% for number in help_info.count %} #}
-{#         {% gblock help_info.prefix,number for "gblocks.TitleAndText" into "block_object" %} #}
-{#         <li> #}
-{#           <a id="help-title-{{number}}" href="#" onclick='$("#help-dialog-{{number}}").dialog("open"); return false;'> #}
-{#           {% if block_object.title %} #}
-{#             {{block_object.title}} #}
-{#           {% else %} #}
-{#             No title #}
-{#           {% endif %} #}
-{#           </a> #}
-{#         </li> #}
-{#       {% endfor %} #}
-{#       </ul> #}
-{#       <div {% get_id_and_classes "help-page" %}> #}
-{#         {% gblock help_info.prefix for "gblocks.Text" with "help/page_help/help_box.html" %} #}
-{#       </div> #}
-{#     </div> #}
-{#     <a href="#" onclick="$('#notification-box').fadeOut(); return false;"> #}
-{#       <span style="margin-top: 1px; float:right" class="ui-icon ui-icon-close"></span> #}
-{#     </a> #}
-{#   </div> #}
-{# {% endif %} #}
-
-
 {% endblock %}
 
 {% block extra_body_base %}
@@ -84,23 +55,29 @@
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
     // Get the usage for the current round and overall.
     {% for key, value in ROUNDS.items %}
-      {% if key == "Overall" %}
       var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
       var info = energyRank.calculateRankInfo(usage, source);
+      
+      // Check if this is overall information.
+      {% if key == "Overall" %}
       energyRank.draw("overall-energy-rank", "overall-energy-value", info);
       {% else %}
+        // Check if this is info for the current round.
         {% if CURRENT_ROUND and key == CURRENT_ROUND %}
-        var curr_usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
-        var curr_info = energyRank.calculateRankInfo(curr_usage, source);
-        energyRank.draw("round-energy-rank", "round-energy-value", curr_info);
+        energyRank.draw("round-energy-rank", "round-energy-value", info);
         {% endif %}
       {% endif %}
+      
+      {% block extra_round_energy %}{% endblock %}
     {% endfor %}
   }
 </script>
 
 <script type="text/javascript">
-$(document).ready(function(){
+$(document).ready(function() {
+    $("#user-cycle").cycle();
+    $("#floor-cycle").cycle();
+    
     $('a.frontendadmin_edit').hover(
         function(){$(this).parent().css('outline', '4px solid #E9B007')},
         function(){$(this).parent().css('outline', '')}
@@ -119,20 +96,9 @@ $(document).ready(function(){
 });
 </script>
 
-{# {% if help_info and user.get_profile.enable_help %} #}
-{#   {% for number in help_info.count %} #}
-{#   {% gblock help_info.prefix,number for "gblocks.TitleAndText" with "help/page_help/help_dialog.html" %} #}
-{#    #}
-{#   <script type="text/javascript">  #}
-{#     $(document).ready(function() { #}
-{#       $("#help-dialog-{{number}}").dialog({ #}
-{#           modal: true, #}
-{#           autoOpen: false #}
-{#       }); #}
-{#     }) #}
-{#   </script>   #}
-{#   {% endfor %} #}
-{# {% endif %} #}
+<script type="text/javascript">
+  {% include "quests/quest.js" %}
+</script>
 
 {% block extra_body %}{% endblock %}
 

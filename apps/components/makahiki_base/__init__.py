@@ -21,6 +21,13 @@ def get_round_info():
   rounds = settings.COMPETITION_ROUNDS.copy()
   rounds["Overall"] = {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}
   
+  return rounds
+  
+def get_rounds_for_header():
+  """Handles the round information that will be used to generate the header."""
+  # Copy the round info and insert the overall round.
+  rounds = get_round_info()
+  
   # Calculate the number of days ago each of the rounds occurred in.
   return_dict = {}
   today = datetime.datetime.combine(datetime.date.today(), datetime.time())
@@ -29,15 +36,6 @@ def get_round_info():
     end_date = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
     start = (today - start_date).days
     end = (today - end_date).days
-    if start < 0:
-      start = 0
-    elif start > 30:
-      start = 30
-      
-    if end < 0:
-      end = 0
-    elif end > 30:
-      end = 30
       
     return_dict.update({
       key: {
