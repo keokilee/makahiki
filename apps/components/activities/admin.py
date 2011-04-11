@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'title', 'description', 'duration', 'depends_on'),
+      'fields' : ('name', 'title', 'description', 'duration', ('depends_on', 'energy_related')),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -211,7 +211,7 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), ('event_date', 'event_location'), 'depends_on'),
+      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), ('event_date', 'event_location'), ('depends_on','energy_related')),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),

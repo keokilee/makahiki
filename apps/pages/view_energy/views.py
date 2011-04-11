@@ -27,26 +27,7 @@ def index(request):
   golow_posts = Post.objects.filter(floor=floor, style_class="user_post").order_by("-id")[:5]
   
   standings = []
-  
-  # wattdepot rest api call
-  conn = Connection("http://server.wattdepot.org:8182/wattdepot/")
-  ## conn = Connection("http://localhost:8182/wattdepot/")
-  
-  for f in Floor.objects.all():
-    wdsource = "SIM_UH_" + f.dorm.name.upper() + "_FLOORS_" + f.slug
-    floor_data_resp = conn.request_get("sources/" + wdsource + "/sensordata/latest")
-    xmlString = floor_data_resp['body']
-    dom = ElementTree.XML(xmlString)  
-    for prop in dom.getiterator('Property'):
-      if prop.findtext('Key') == 'powerConsumed' and f==floor:
-        power = Decimal(prop.findtext('Value'))    # in W
-      if prop.findtext('Key') == 'energyConsumedToDate':
-        floor_energy = Decimal(prop.findtext('Value'))   # in kWh
-        if f==floor:
-          energy = floor_energy
-    if f==floor:
-      last_update = dom.findtext('Timestamp')
-  
+
   rounds = get_round_info()
   scoreboard_rounds = []
   today = datetime.datetime.today()
@@ -60,8 +41,10 @@ def index(request):
   ## TODO. create the baseline table
   baseline = 24 
   energy = 20
-  percent_reduce = 5;
-  
+  percent_reduce = 5
+  power = 150
+  last_update = None
+
   goals = FloorEnergyGoal.objects.filter(floor=floor);
   if goals.count() > 0:
     percent_reduce = goals[0].percent_reduction
@@ -82,11 +65,26 @@ def index(request):
     baseline_px = bar_px * baseline / energy
     actual_px = bar_px
   
-  power_max = 1000    
-  power = format(power, '.1f')        ## convert to kW if need
-  energy = format(energy, '.1f')      ## convert to kWh if needed
+  appliance_type = ["Playing XBox 360",
+                "Using laptop",
+                "Watching plasma TV",
+                "Playing stereo",
+                "Playing Wii",
+                "Playing Playstation 3"]
+  appliance_data = [185.0, 
+                    70.0, 
+                    300.0, 
+                    100.0, 
+                    20.0, 
+                    195.0]
+  appliances = []
+  for ix in range(len(appliance_type)):
+    appliances.append([appliance_type[ix], format(diff * 1000 / appliance_data[ix], ".1f")])
+    
+  power = format(power, '.1f')       
+  energy = format(energy, '.1f')     
   diff = format(diff, '.1f')
-  
+
   helps = ["Current Lounge Power", "Overall kWh Score Board", "Daily Energy Goal Status"]
   helpfiles = ["view_energy/help1.html", "view_energy/help2.html", "view_energy/help3.html"]
 
@@ -100,8 +98,9 @@ def index(request):
       "baseline_px":baseline_px,
       "over":over,
       "diff":diff,
+      "appliances":appliances,
+      "appliance_data":appliance_data,
       "power":power,
-      "power_max":power_max,
       "last_update":last_update,
       "floor": floor,
       "scoreboard_rounds":scoreboard_rounds,
