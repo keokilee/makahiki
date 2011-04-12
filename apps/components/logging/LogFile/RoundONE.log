@@ -1,0 +1,37 @@
+2011-04-12 12:46:47,926 INFO  2011-04-12 12:46:47 nashe "GET nav-button" /energy/ 200
+2011-04-12 12:47:00,467 INFO  2011-04-12 12:47:00 nashe "GET nav-button" /energy/ 200
+2011-04-12 12:47:17,154 INFO  2011-04-12 12:47:17 nashe "GET nav-button" /activities/ 200
+2011-04-12 12:47:48,993 INFO  2011-04-12 12:47:48 nashe "GET nav-button" /news/ 200
+2011-04-12 12:47:58,494 INFO  2011-04-12 12:47:58 nashe "GET nav-button" /prizes/ 200
+2011-04-12 12:48:22,065 INFO  2011-04-12 12:48:22 nashe "GET nav-button" /energy/ 200
+2011-04-12 12:49:31,681 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:49:31,697 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:49:31,697 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:49:31,697 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:49:32,477 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:49:32,493 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:49:32,493 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:49:32,493 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:49:46,226 INFO  2011-04-12 12:49:46 nashe "GET nav-button" /activities/ 200
+2011-04-12 12:49:54,259 INFO  2011-04-12 12:49:54 nashe "GET nav-button" /help/ 200
+2011-04-12 12:50:13,602 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:50:13,618 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:50:13,618 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:50:13,618 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:50:14,257 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:50:14,273 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:50:14,273 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:50:14,273 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:50:20,832 INFO  2011-04-12 12:50:20 nashe "GET nav-button" /energy/ 200
+2011-04-12 12:50:42,905 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:50:42,905 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:50:42,905 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:50:42,905 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:51:14,734 INFO  2011-04-12 12:51:14 nashe "GET nav-button" /help/ 200
+2011-04-12 13:16:07,141 INFO  2011-04-12 13:16:07 nashe "GET nav-button" /help/ 200
+2011-04-12 13:16:16,625 INFO  2011-04-12 13:16:16 nashe "GET nav-button" /profile/ 200
+2011-04-12 13:16:20,854 INFO  2011-04-12 13:16:20 nashe "GET nav-button" /prizes/ 200
+2011-04-12 13:16:24,286 INFO  2011-04-12 13:16:24 nashe "GET nav-button" /news/ 200
+2011-04-12 13:16:26,953 INFO  2011-04-12 13:16:26 nashe "GET nav-button" /energy/ 200
+2011-04-12 13:16:30,104 INFO  2011-04-12 13:16:30 nashe "GET nav-button" /activities/ 200
+2011-04-12 13:18:49,065 INFO  2011-04-12 13:18:49 nashe "GET nav-button" /help/ 200
