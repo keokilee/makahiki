@@ -301,9 +301,7 @@ if DEMO:
     pass
 	
 # Logging module
-PROJECT_DIR = os.path.dirname(__file__)
-PARENT_DIR = os.path.dirname(PROJECT_DIR)
 logging.basicConfig(level=logging.DEBUG,
      format='%(asctime)s %(levelname)s %(message)s',
-     filename=os.path.join(PARENT_DIR, 'django.log'),
+     filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", 'django.log'),
      filemode='a+')

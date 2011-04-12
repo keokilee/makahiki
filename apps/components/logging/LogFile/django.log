@@ -1,0 +1,149 @@
+2011-04-12 12:28:58,957 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:28:58,973 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:28:58,973 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:28:58,973 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:29:03,263 DEBUG hello world!
+2011-04-12 12:29:03,263 INFO this is some interesting info!
+2011-04-12 12:29:03,263 ERROR this is an error!
+2011-04-12 12:29:03,668 DEBUG hello world!
+2011-04-12 12:29:03,668 INFO this is some interesting info!
+2011-04-12 12:29:03,668 ERROR this is an error!
+2011-04-12 12:29:04,730 DEBUG hello world!
+2011-04-12 12:29:04,730 INFO this is some interesting info!
+2011-04-12 12:29:04,730 ERROR this is an error!
+2011-04-12 12:29:04,746 DEBUG hello world!
+2011-04-12 12:29:04,746 INFO this is some interesting info!
+2011-04-12 12:29:04,746 ERROR this is an error!
+2011-04-12 12:29:04,746 DEBUG hello world!
+2011-04-12 12:29:04,746 INFO this is some interesting info!
+2011-04-12 12:29:04,746 ERROR this is an error!
+2011-04-12 12:29:04,760 DEBUG hello world!
+2011-04-12 12:29:04,760 INFO this is some interesting info!
+2011-04-12 12:29:04,760 ERROR this is an error!
+2011-04-12 12:29:04,776 DEBUG hello world!
+2011-04-12 12:29:04,776 INFO this is some interesting info!
+2011-04-12 12:29:04,776 ERROR this is an error!
+2011-04-12 12:29:04,792 DEBUG hello world!
+2011-04-12 12:29:04,792 INFO this is some interesting info!
+2011-04-12 12:29:04,792 ERROR this is an error!
+2011-04-12 12:29:05,759 DEBUG hello world!
+2011-04-12 12:29:05,759 INFO this is some interesting info!
+2011-04-12 12:29:05,759 ERROR this is an error!
+2011-04-12 12:29:08,099 DEBUG hello world!
+2011-04-12 12:29:08,099 INFO this is some interesting info!
+2011-04-12 12:29:08,099 ERROR this is an error!
+2011-04-12 12:29:08,115 DEBUG hello world!
+2011-04-12 12:29:08,115 INFO this is some interesting info!
+2011-04-12 12:29:08,115 ERROR this is an error!
+2011-04-12 12:29:08,193 DEBUG hello world!
+2011-04-12 12:29:08,193 INFO this is some interesting info!
+2011-04-12 12:29:08,193 ERROR this is an error!
+2011-04-12 12:29:08,240 DEBUG hello world!
+2011-04-12 12:29:08,240 INFO this is some interesting info!
+2011-04-12 12:29:08,240 ERROR this is an error!
+2011-04-12 12:29:08,256 DEBUG hello world!
+2011-04-12 12:29:08,256 INFO this is some interesting info!
+2011-04-12 12:29:08,256 ERROR this is an error!
+2011-04-12 12:29:08,270 DEBUG hello world!
+2011-04-12 12:29:08,270 INFO this is some interesting info!
+2011-04-12 12:29:08,270 ERROR this is an error!
+2011-04-12 12:29:09,114 DEBUG hello world!
+2011-04-12 12:29:09,114 INFO this is some interesting info!
+2011-04-12 12:29:09,114 ERROR this is an error!
+2011-04-12 12:29:09,144 DEBUG hello world!
+2011-04-12 12:29:09,144 INFO this is some interesting info!
+2011-04-12 12:29:09,144 ERROR this is an error!
+2011-04-12 12:29:09,207 DEBUG hello world!
+2011-04-12 12:29:09,207 INFO this is some interesting info!
+2011-04-12 12:29:09,207 ERROR this is an error!
+2011-04-12 12:29:09,253 DEBUG hello world!
+2011-04-12 12:29:09,253 INFO this is some interesting info!
+2011-04-12 12:29:09,253 ERROR this is an error!
+2011-04-12 12:29:09,301 DEBUG hello world!
+2011-04-12 12:29:09,301 INFO this is some interesting info!
+2011-04-12 12:29:09,301 ERROR this is an error!
+2011-04-12 12:29:09,316 DEBUG hello world!
+2011-04-12 12:29:09,316 INFO this is some interesting info!
+2011-04-12 12:29:09,316 ERROR this is an error!
+2011-04-12 12:29:10,144 DEBUG hello world!
+2011-04-12 12:29:10,144 INFO this is some interesting info!
+2011-04-12 12:29:10,144 ERROR this is an error!
+2011-04-12 12:29:10,174 DEBUG hello world!
+2011-04-12 12:29:10,174 INFO this is some interesting info!
+2011-04-12 12:29:10,174 ERROR this is an error!
+2011-04-12 12:29:10,221 DEBUG hello world!
+2011-04-12 12:29:10,221 INFO this is some interesting info!
+2011-04-12 12:29:10,221 ERROR this is an error!
+2011-04-12 12:29:10,283 DEBUG hello world!
+2011-04-12 12:29:10,283 INFO this is some interesting info!
+2011-04-12 12:29:10,283 ERROR this is an error!
+2011-04-12 12:30:29,947 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:30:29,963 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:30:29,963 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:30:29,963 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:30:30,634 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:30:30,648 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:30:30,648 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:30:30,648 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:30:34,533 DEBUG hello world!
+2011-04-12 12:30:34,533 INFO this is some interesting info!
+2011-04-12 12:30:34,533 ERROR this is an error!
+2011-04-12 12:30:34,579 DEBUG hello world!
+2011-04-12 12:30:34,579 INFO this is some interesting info!
+2011-04-12 12:30:34,579 ERROR this is an error!
+2011-04-12 12:30:34,579 DEBUG hello world!
+2011-04-12 12:30:34,579 INFO this is some interesting info!
+2011-04-12 12:30:34,579 ERROR this is an error!
+2011-04-12 12:30:35,532 DEBUG hello world!
+2011-04-12 12:30:35,532 INFO this is some interesting info!
+2011-04-12 12:30:35,532 ERROR this is an error!
+2011-04-12 12:30:36,779 DEBUG hello world!
+2011-04-12 12:30:36,779 INFO this is some interesting info!
+2011-04-12 12:30:36,779 ERROR this is an error!
+2011-04-12 12:30:37,871 DEBUG hello world!
+2011-04-12 12:30:37,871 INFO this is some interesting info!
+2011-04-12 12:30:37,871 ERROR this is an error!
+2011-04-12 12:30:58,214 DEBUG hello world!
+2011-04-12 12:30:58,214 INFO this is some interesting info!
+2011-04-12 12:30:58,214 ERROR this is an error!
+2011-04-12 12:30:58,323 DEBUG hello world!
+2011-04-12 12:30:58,323 INFO this is some interesting info!
+2011-04-12 12:30:58,323 ERROR this is an error!
+2011-04-12 12:31:03,190 DEBUG hello world!
+2011-04-12 12:31:03,190 INFO this is some interesting info!
+2011-04-12 12:31:03,190 ERROR this is an error!
+2011-04-12 12:31:04,391 DEBUG hello world!
+2011-04-12 12:31:04,391 INFO this is some interesting info!
+2011-04-12 12:31:04,391 ERROR this is an error!
+2011-04-12 12:31:09,539 DEBUG hello world!
+2011-04-12 12:31:09,539 INFO this is some interesting info!
+2011-04-12 12:31:09,539 ERROR this is an error!
+2011-04-12 12:31:10,897 DEBUG hello world!
+2011-04-12 12:31:10,897 INFO this is some interesting info!
+2011-04-12 12:31:10,897 ERROR this is an error!
+2011-04-12 12:31:18,417 DEBUG hello world!
+2011-04-12 12:31:18,417 INFO this is some interesting info!
+2011-04-12 12:31:18,417 ERROR this is an error!
+2011-04-12 12:31:24,359 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:31:24,359 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:31:24,359 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:31:24,359 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:31:25,092 DEBUG DefaultPluginManager load plugin selenium = noseselenium.plugins:SeleniumPlugin
+2011-04-12 12:31:25,108 DEBUG DefaultPluginManager load plugin djangoliveserver = noseselenium.plugins:DjangoLiveServerPlugin
+2011-04-12 12:31:25,108 DEBUG DefaultPluginManager load plugin cherrypyliveserver = noseselenium.plugins:CherryPyLiveServerPlugin
+2011-04-12 12:31:25,108 DEBUG DefaultPluginManager load plugin selenium_fixtures = noseselenium.plugins:SeleniumFixturesPlugin
+2011-04-12 12:31:27,651 DEBUG hello world!
+2011-04-12 12:31:27,651 INFO this is some interesting info!
+2011-04-12 12:31:27,651 ERROR this is an error!
+2011-04-12 12:31:27,698 DEBUG hello world!
+2011-04-12 12:31:27,698 INFO this is some interesting info!
+2011-04-12 12:31:27,698 ERROR this is an error!
+2011-04-12 12:31:27,713 DEBUG hello world!
+2011-04-12 12:31:27,713 INFO this is some interesting info!
+2011-04-12 12:31:27,713 ERROR this is an error!
+2011-04-12 12:31:28,572 DEBUG hello world!
+2011-04-12 12:31:28,572 INFO this is some interesting info!
+2011-04-12 12:31:28,572 ERROR this is an error!
+2011-04-12 12:31:30,053 DEBUG hello world!
+2011-04-12 12:31:30,053 INFO this is some interesting info!
+2011-04-12 12:31:30,053 ERROR this is an error!

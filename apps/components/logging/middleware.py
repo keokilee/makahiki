@@ -1,4 +1,6 @@
 import logging
+import traceback
+import sys
 
 class LoggingMiddleware(object):
 
@@ -6,5 +8,5 @@ class LoggingMiddleware(object):
 		logging.debug("hello world!")
 		logging.info("this is some interesting info!")
 		logging.error("this is an error!")
-		
-		return None:
+	
+		return None
