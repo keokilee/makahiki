@@ -1,6 +1,7 @@
 from itertools import chain
 from operator import attrgetter
 
+from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
@@ -63,16 +64,24 @@ def index(request):
       "facebook_can_post": fb_can_post,
     })
   
-  # Retrieve previously awarded tasks.
-  completed_activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]
-  completed_commitment_members = user.commitmentmember_set.filter(award_date__isnull=False)[:5]
+  # Retrieve previously awarded tasks, quests, and badges.
+  activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]
+  commitment_members = user.commitmentmember_set.filter(award_date__isnull=False)[:5]
+  quest_members = user.questmember_set.filter(completed=True)[:5]
+  badge_members = user.badges_earned.all()[:5]
   
-  # Merge the two querysets, sort according to award_date, and take 5
+  for member in quest_members:
+    member.award_date = member.updated_at
+    
+  for member in badge_members:
+    member.award_date = member.awarded_at
+  
+  # Merge the querysets, sort according to award_date, and take 5
   # Solution found at http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
   completed_members = sorted(
-    chain(completed_activity_members, completed_commitment_members),
-    key=attrgetter("award_date"), reverse=True)[:5]
-    
+      chain(activity_members, commitment_members, quest_members, badge_members), 
+      key=attrgetter("award_date"), reverse=True)[:5]
+  
   # Retrieve current tasks.
   in_progress_activity_members = get_current_activity_members(user)
   in_progress_commitment_members = get_current_commitment_members(user)
