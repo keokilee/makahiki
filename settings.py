@@ -303,5 +303,5 @@ if DEMO:
 # Logging module
 logging.basicConfig(level=logging.DEBUG,
      format='%(asctime)s %(levelname)s %(message)s',
-     filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", 'django.log'),
+     filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", 'RoundONE.log'),
      filemode='a+')
