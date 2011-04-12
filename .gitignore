@@ -29,4 +29,4 @@ coverage.xml
 htmlcov/
 
 # Ignore log file
-*.log
+RoundONE.log
