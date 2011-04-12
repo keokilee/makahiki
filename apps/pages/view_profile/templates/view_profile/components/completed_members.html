@@ -1,0 +1,31 @@
+{% for member in completed_members %}
+  <tr>
+    <td>{{member.award_date|date:"n/j/y"}}</td>
+    {# Handle each of the individual types of items. #}
+    {% if member.commitment %}
+    <td>
+      <a href="{% url activity_task member.commitment.id %}">
+        Commitment: {{member.commitment.name}}
+      </a>
+    </td>
+    <td>{{member.commitment.point_value}}</td>
+    {% else %}
+      {% if member.activity %}
+      <td>
+        <a href="{% url activity_task member.activity.id %}">
+          Activity: {{member.activity.name}}
+        </a>
+      </td>
+      <td>{{member.activity.point_value}}</td>
+      {% else %}
+        {% if member.quest %}
+          <td>Quest: {{member.quest.name}}</td>
+          <td>0</td>
+        {% else %}
+          <td>Badge: {{member.badge.name}}</td>
+          <td>0</td>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </tr>
+{% endfor %}
