@@ -1,0 +1,10 @@
+{% if QUESTS.completed_quests %}
+  <div id="quest-complete-dialog" title="Congratulations!">
+    Great job!  You completed the following quest(s):
+    <ul>
+      {% for quest in QUESTS.completed_quests %}
+      <li>{{quest.name}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

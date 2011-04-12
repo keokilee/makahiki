@@ -12,7 +12,7 @@
 		<td style="{% if f == floor %}font-weight: bold{% endif %}">
 		  {{f}}
 		</td>
-		<td style="{% if f == floor %}font-weight: bold{% endif %}">
+		<td style="text-align:right;{% if f == floor %}font-weight: bold{% endif %}">
 		  {{f.points}}
 		</td>
 		{% endfor %}
@@ -31,7 +31,7 @@
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
 		  {{p.name}}
 		</td>
-		 <td style="{% if p == profile %}font-weight: bold{% endif %}">
+		 <td style="text-align:right;{% if p == profile %}font-weight: bold{% endif %}">
 		  {{p.current_round_points}}
 		</td>
 		{% endfor %}
@@ -50,7 +50,7 @@
 	  <td style="{% if p == profile %}font-weight: bold{% endif %}">
 		  {{p.name}}
 		</td>
-		<td style="{% if p == profile %}font-weight: bold{% endif %}">
+		<td style="text-align:right;{% if p == profile %}font-weight: bold{% endif %}">
 		 {{p.current_round_points}}
 		</td>
 		{% endfor %}

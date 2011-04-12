@@ -13,28 +13,39 @@
   {% if admin_message %}
     Admin message: {{ admin_message }}
   {% endif %}
-  <p><label for="id_response">
+  
+  <p/>
+  <label for="id_response">
     {% if question %}
       {{task.confirm_prompt}}
-      <p>
+      <p/>
       {{question.question}}
       {{form.question}}
     {% else %}
-      {{task.confirm_prompt}}
-      {{form.code}}
+      {% if pau %}
+        {{task.confirm_prompt}}
+        {{form.code}}
+      {% endif %}  
     {% endif %}
-  </label><br/>
+  </label>
+  
+  <p/>
+  
   {% if form.image_response %}
     {{ form.image_response }}
   {% else %}
     {% if question.questionchoice_set.count > 0 %}
       {{ form.choice_response }}
     {% else %}
-      {{ form.response }}
+      {% if pau %}
+        {{ form.response }}
+      {% endif %}    
     {% endif %}  
   {%endif%}
   
-  <br/>Additional Comments<br/>
-  {{ form.comment }} <br/>
-  <input type="submit" value="Submit to get points" />
+  <p/>Additional Comments:
+    <br/>
+    {{ form.comment }} 
+  <p/>
+  <input type="submit" value="Submit" />
 </form>

@@ -30,38 +30,4 @@
     <img src="{{STATIC_URL}}images/hale.ilima.jpg"/>
   </div>
   {% endwith %}
-  
-  {# <script type="text/javascript"> #}
-  {# // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace. #}
-  {# (function() { #}
-  {#   var configuration = new org.wattdepot.gdata.kukuicup.Configuration(); #}
-  {#  #}
-  {#   // The source for which we want to find the rank must be specified by Makahiki. #}
-  {#   var source = configuration.{{user.get_profile.floor.floor_identifier}}; #}
-  {#  #}
-  {#   // Get the spreadsheets we need. #}
-  {#   var rollingHoursEnergyUrl = configuration.getRollingHoursEnergyUrl(); #}
-  {#   // console.log(rollingHoursEnergyUrl); #}
-  {#   var refreshInterval = 0; // don't refresh this spreadsheet. #}
-  {#  #}
-  {#   // Load the visualization API and the spreadsheet, then call displayRank. #}
-  {#   var loader = new org.wattdepot.gdata.GDataLoader(displayRank, rollingHoursEnergyUrl, refreshInterval);   #}
-  {#  #}
-  {#   function displayRank(rollingHoursDatatable) { #}
-  {#     var energyTable = new org.wattdepot.gdata.makahiki.EnergyRank(configuration); #}
-  {#     var rankInfo = energyTable.calculateRankInfo(rollingHoursDatatable, source); #}
-  {#     {% if CURRENT_ROUND %} #}
-  {#       energyTable.draw('round-energy-rank', 'round-energy-value', rankInfo); #}
-  {#     {% endif %} #}
-  {#     energyTable.draw('overall-energy-rank', 'overall-energy-value', rankInfo); #}
-  {#   } #}
-  {# })(); #}
-  {# </script> #}
-  
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#user-cycle").cycle();
-      $("#floor-cycle").cycle();
-    });
-  </script>
 {% endif %}

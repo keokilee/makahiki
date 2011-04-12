@@ -7,7 +7,7 @@ class ProfileForm(forms.Form):
   display_name = forms.CharField(required=True)
   enable_help = forms.BooleanField(required=False)
   about = forms.CharField(required=False, widget=forms.Textarea(attrs={
-    "style": "height: 40px",
+    "cols": "33",
   }))
   # TODO: check http://docs.djangoproject.com/en/dev/topics/http/sessions/#using-sessions-in-views
   stay_logged_in = forms.BooleanField(initial=True)

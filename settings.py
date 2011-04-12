@@ -169,13 +169,13 @@ INSTALLED_APPS = (
     'components.makahiki_profiles',
     'components.makahiki_themes',
     'components.prizes',
+    'components.quests',
     'components.resources',
     'components.standings',
     
     # 3rd party libraries
     'lib.brabeion',
     'lib.minidetector',
-    'lib.restclient',
     
     # Django and Pinax apps
     'django.contrib.auth',

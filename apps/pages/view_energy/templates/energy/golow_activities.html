@@ -6,7 +6,7 @@
 		</thead>
 	    <tbody {% get_id_and_classes "energy-status-how-activities-table-list" %}>        
           {% for a in golow_activities %}
-          <tr><td><a href="#">{{a.title}}</a></td>
+          <tr><td><a href="/activities/task/Activity/{{a.id}}">{{a.title}}</a></td>
               <td>{{a.point_value}}</td>
           </tr>
           {% endfor %}

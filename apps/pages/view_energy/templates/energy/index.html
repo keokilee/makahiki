@@ -8,6 +8,7 @@
 
 {% block extra_head %}
   {% import_page_css "view_energy" STATIC_URL CSS_THEME %}
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/powermeter/org.wattdepot.gdata.makahiki.PowerMeter.js"></script> 
 {% endblock %}
 
 {% block body %}
@@ -28,20 +29,7 @@
   </div>
   
   <p>
-
-  <div {% get_id_and_classes "energy-scoreboard" %}>
-    <div {% get_id_and_classes "energy-scoreboard-title" %}>
-      Overall kWh Score Board
-      {# <a href="#" onclick="$('#help-dialog2').dialog('open')"> #}
-      {# <span id="help2" class="ui-icon ui-icon-help"></span> #}
-      {# </a>  #} 
-    </div>
-    <div {% get_id_and_classes "energy-scoreboard-content" %}>
-      {% include "energy/scoreboard.html" %}
-      <div id="energy-scoreboard-message">#1 at end of round wins a prize!</div>
-    </div>
-  </div>
-
+  {% include "energy/scoreboard.html" %}
 </div>
 
 <div {% get_id_and_classes "energy-status" %}>
@@ -53,8 +41,19 @@
       {# </a>   #}
     </div>
     <div {% get_id_and_classes "energy-status-content" %}>
-      <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
-      <font color="red"><b>Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  Status: {{actual}} kWh ({{over}} kWh over goal)</b></font>
+      {% if over == "over" %}
+        <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
+        <font color="red"><b>
+        Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  
+        Status: {{actual}} kWh ({{diff}} kWh {{over}} goal)
+      </b></font>
+      {% else %}
+        <img src="{{ STATIC_URL}}images/energy/SmileFaceIcon.png" width="30" height="30" />
+        <font color="green"><b>
+        Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  
+        Status: {{actual}} kWh ({{diff}} kWh {{over}} goal)
+      </b></font>
+      {% endif %}
 
       <fieldset {% get_id_and_classes "energy-status-progress" %}>
 	    <legend>Daily Energy Goal Progress</legend>
@@ -77,14 +76,29 @@
           <tr {% get_id_and_classes "energy-status-how-calculator" %}>
             <td {% get_id_and_classes "energy-status-how-calculator-content" %}>
                
-                We need to conserve energy to meet our goal, but what does {{over}} kWh mean?<br/>
-                {{over}} kWh =
-                <select > 
-                   <option>Playing XBox 360</option> 
-                   <option>Playing Wii</option> 
+                We need to conserve energy to meet our goal, but what does {{diff}} kWh mean?
+                
+                <p/>
+                
+                <div {% get_id_and_classes "energy-status-how-calculator-content-data" %}>
+                  To save {{diff}} kWh, we must reduce
+                
+                <select onchange="cal_energy(this.options[this.selectedIndex]);" >
+                  {% for type,hour in appliances %}
+                   <option value="{{hour}}">{{type}}</option> 
+                  {% endfor %}
                 </select>
-                <p>To save {{over}} kWh, we must reduce our XBox 360 playing by 5.2 hours</p>
-              
+                
+                <div id="cal_energy_text">by {{appliances.0.1}} hours
+                </div>
+                </div>
+              <script type="text/javascript">
+              function cal_energy(selected)
+              {
+                document.getElementById("cal_energy_text").innerHTML = 
+                "by "+selected.value+" hours</p>"
+              }
+              </script>
             </td> 
             <td {% get_id_and_classes "energy-status-how-activities-content" %}>
                 The following activities can help your lounge conserve energy, and you earn points!
@@ -144,4 +158,21 @@
 
 </div>
 
+{% endblock %}
+
+{% block extra_round_energy %}
+  {# Note: contents are inserted into Javascript in the middle of the round iterator. #}
+  {# Usage is already calculated for us there. #}
+  {# See PROJECT_ROOT/templates/logged_in_base.html #}
+  if ($("#{{key|slugify}}-energy-scoreboard") != null) {
+    energyRank.drawCompleteStandings("{{key|slugify}}-energy-scoreboard", "{{user.get_profile.floor.floor_identifier}}", usage);
+  }
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#energy-scoreboard").cycle({height: "430px"});
+  })
+</script>
 {% endblock %}

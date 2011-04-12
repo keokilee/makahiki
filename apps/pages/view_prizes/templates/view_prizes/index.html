@@ -19,39 +19,6 @@
     <div {% get_id_and_classes "prizes-list-content" %}>
       {% include "view_prizes/prize_list.html" %}
     </div>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        var height = 0;
-        $("#prizes-list-content").children().each(function(index, value) {
-          if ($(value).height() > height) {
-            height = $(value).height();
-          }
-        });
-
-        $("#prizes-list-content").cycle({height: "" + height + "px"});
-      });
-      
-      // // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
-      // (function() {
-      //   var configuration = new org.wattdepot.gdata.kukuicup.Configuration();
-      // 
-      //   // Get the spreadsheets we need.
-      //   var rollingHoursEnergyUrl = configuration.getRollingHoursEnergyUrl();
-      //   // console.log(rollingHoursEnergyUrl);
-      //   var refreshInterval = 0; // don't refresh this spreadsheet.
-      // 
-      //   // Load the visualization API and the spreadsheet, then call displayRank.
-      //   var loader = new org.wattdepot.gdata.GDataLoader(displayRank, rollingHoursEnergyUrl, refreshInterval);  
-      // 
-      //   function displayRank(rollingHoursDatatable) {
-      //     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank(configuration);
-      //     var leaderInfo = energyRank.calculateLeader(rollingHoursDatatable);
-      //     energyRank.insertLeader('round-1-leader', leaderInfo);
-      //     //energyRank.insertLeader('round-2-leader', leaderInfo);
-      //     energyRank.insertLeader('overall-leader', leaderInfo);
-      //   }
-      // })();
-    </script>
   </div>
 </div>
 
@@ -126,4 +93,28 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_round_energy %}
+  {# Note: contents are inserted into Javascript in the middle of the round iterator. #}
+  {# Usage is already calculated for us there. #}
+  {# See PROJECT_ROOT/templates/logged_in_base.html #}
+  if ($("#{{key|slugify}}-leader") != null) {
+    leader =  energyRank.insertLeader("{{key|slugify}}-leader", energyRank.calculateLeader(usage));
+  }
+{% endblock %}
+
+{% block extra_body %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var height = 400;
+      $("#prizes-list-content").children().each(function(index, value) {
+        if ($(value).height() > height) {
+          height = $(value).height();
+        }
+      });
+
+      $("#prizes-list-content").cycle({height: "" + height + "px"});
+    });
+  </script>
 {% endblock %}

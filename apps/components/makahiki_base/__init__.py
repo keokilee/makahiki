@@ -17,24 +17,44 @@ def get_floor_label():
   
 def get_round_info():
   """Returns a dictionary containing round information."""
+  # Copy the round info and insert the overall round.
   rounds = settings.COMPETITION_ROUNDS.copy()
   rounds["Overall"] = {"start": settings.COMPETITION_START, "end": settings.COMPETITION_END}
   
   return rounds
   
+def get_rounds_for_header():
+  """Handles the round information that will be used to generate the header."""
+  # Copy the round info and insert the overall round.
+  rounds = get_round_info()
+  
+  # Calculate the number of days ago each of the rounds occurred in.
+  return_dict = {}
+  today = datetime.datetime.combine(datetime.date.today(), datetime.time())
+  for key, value in rounds.items():
+    start_date = datetime.datetime.strptime(value["start"], "%Y-%m-%d")
+    end_date = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
+    start = (today - start_date).days
+    end = (today - end_date).days
+      
+    return_dict.update({
+      key: {
+        "start": start,
+        "end": end,
+      }
+    })
+  
+  return return_dict
+  
 def get_current_round():
   """Gets the current round from the settings."""
   rounds = settings.COMPETITION_ROUNDS
   today = datetime.datetime.today()
-  for index, key in enumerate(rounds.keys()):
+  for key in rounds.keys():
     start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:
-      return {
-        "title": key,
-        "start": start,
-        "end": end,
-      }
+      return key
   
   # No current round.
   return None

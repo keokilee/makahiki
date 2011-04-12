@@ -31,7 +31,7 @@ def index(request):
   floor = user.get_profile().floor
   
   current_round = get_current_round()
-  round_name = current_round["title"] if current_round else None
+  round_name = current_round if current_round else None
   floor_standings = Floor.floor_points_leaders(num_results=10, round_name=round_name)
   profile_standings = Profile.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
   user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
@@ -70,37 +70,6 @@ def __get_categories(user):
     cat.task_list = task_list
     
   return categories
-
-## old design, only get the top level categories and the overview info
-def __get_categories2(user):
-  categories = Category.objects.annotate(total=Count("activity"),
-        commitment_total=Count("commitment"), 
-        point_total=Sum("activity__point_value"),
-        commitment_point_total=Sum("commitment__point_value"),
-        )
-        
-  ## construct the categories list as 2-dimension array
-  categories_list = []
-  cat_col_list = []
-  col_count = 0
-  for cat in categories:
-    cat.total = cat.total + cat.commitment_total
-    cat.locked = cat.id > 2
-    if (cat.commitment_point_total == None):
-      cat.commitment_point_total = 0
-    if (cat.point_total == None):
-      cat.point_total = 0  
-    cat.point_total = cat.point_total + cat.commitment_point_total
-    cat_col_list.append([cat, get_completed_tasks(user, cat), get_awarded_points(user,cat)])
-    col_count = col_count + 1
-    if col_count == ACTIVITIES_COL_COUNT:    	  		 	  
-      categories_list.append(cat_col_list)
-      cat_col_list = []
-      col_count = 0
-  		
-  categories_list.append(cat_col_list)
-  return categories_list
-  
   
 @login_required
 def view_codes(request, activity_id):
@@ -157,7 +126,7 @@ def __add_commitment(request, commitment_id):
       
   # Redirect back to the referrer or go to the profile if not available.
   ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  next = reverse("pages.view_activities.views.index", args=())
+  next = reverse("pages.view_activities.views.task", args=(commitment_id,))
   return HttpResponseRedirect(next)
 
 def __add_activity(request, activity_id):
@@ -170,12 +139,18 @@ def __add_activity(request, activity_id):
   if activity not in user.activity_set.all():
     activity_member = ActivityMember(user=user, activity=activity)
     activity_member.save()
+    
+    #increase point
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    user.get_profile().save()
+    
     user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
   else:
     return Http404
 
   # Redirect back to the referrer or go to the profile if not available.
-  next = reverse("pages.view_activities.views.category", args=(activity.category_id,))
+  ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+  next = reverse("pages.view_activities.views.task", args=(activity_id,))
   return HttpResponseRedirect(next)
     
 def __request_activity_points(request, activity_id):
@@ -244,7 +219,7 @@ def __request_activity_points(request, activity_id):
         user.message_set.create(message="Your request has been submitted!")
 
       activity_member.save()
-      next = reverse("pages.view_activities.views.index", args=())
+      next = reverse("pages.view_activities.views.task", args=(activity_id,))
       return HttpResponseRedirect(next)
   
     if activity.confirm_type == "text":
@@ -258,52 +233,13 @@ def __request_activity_points(request, activity_id):
     "pau":False,
     "form":form,
     "question":question,
-    "member_all":10,
-    "member_floor":1,
+    "member_all":0,
+    "member_floor":0,
     "display_form":True,
     }, context_instance=RequestContext(request))    
 
-  
-def category(request, category_id):
-  TASKS_COL_COUNT = 4
-  user = request.user
-    
-  tasks_list = []
-  task_col_list = []
-  col_count = 0
-  
-  title = Category.objects.get(pk=category_id).name
-  activities = Activity.objects.filter(category__id=category_id)
-  for t in activities:
-    pau = ActivityMember.objects.filter(user=user, activity=t).count() > 0
-    t.type="Activity"
-    task_col_list.append([t, pau])
-    col_count = col_count + 1
-    if col_count == TASKS_COL_COUNT: 
-      tasks_list.append(task_col_list)
-      task_col_list = []
-      col_count = 0
-  
-  commitments = Commitment.objects.filter(category__id=category_id)
-  for t in commitments:
-    pau = CommitmentMember.objects.filter(user=user, commitment=t).count() > 0
-    t.type="Commitment"
-    task_col_list.append([t, pau])
-    col_count = col_count + 1
-    if col_count == TASKS_COL_COUNT: 
-      tasks_list.append(task_col_list)
-      task_col_list = []
-      col_count = 0
-  		
-  tasks_list.append(task_col_list)  
-  		  
-  return render_to_response("view_activities/category.html", {
-    "title":title,
-    "tasks":tasks_list,
-  }, context_instance=RequestContext(request))
-    
 @never_cache
-def task(request, type, task_id):
+def task(request, task_id):
   """individual task page"""
   user = request.user
   floor = user.get_profile().floor
@@ -314,13 +250,15 @@ def task(request, type, task_id):
   member_floor_count = 0
   
   task = ActivityBase.objects.get(id=task_id)
+  type = task.type
   
-  if task.type == "activity" or task.type == "event":
+  if task.type != "commitment":
     task = task.activity
     pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
     approved = ActivityMember.objects.filter(user=user, activity=task, approval_status='approved').count() > 0
     member_all = ActivityMember.objects.filter(activity=task);
-        
+    form_title = "Get your points"
+    
     # Create activity request form.
     if task.confirm_type == "image":
       form = ActivityImageForm()
@@ -333,18 +271,25 @@ def task(request, type, task_id):
     else:
       form = ActivityTextForm(initial={"code" : 1})
                 
-    if task.type == "event":
-      type="Event"   
-      
+    if task.type == "event" or task.type == "excursion":
+      type="event"   
+      if not pau:
+        form_title = "Sign up for this event"
+        
   else:  ## "Commitment"
     task = task.commitment
     pau = CommitmentMember.objects.filter(user=user, commitment=task).count() > 0
     member_all = CommitmentMember.objects.filter(commitment=task);
+    form_title = "Make this commitment"
+    form = CommitmentCommentForm()
 
+  users = []
   member_all_count = member_all.count()
   for member in member_all:
     if member.user.get_profile().floor == floor:
       member_floor_count = member_floor_count + 1
+      print "user="+ member.user.get_profile().name
+      users.append(member.user)
   		  
   return render_to_response("view_activities/task.html", {
     "task":task,
@@ -355,14 +300,20 @@ def task(request, type, task_id):
     "question":question,
     "member_all":member_all_count,
     "member_floor":member_floor_count,
+    "users":users,
+    "display_form":False,
+    "form_title": form_title,
   }, context_instance=RequestContext(request))    
     
-def add_task(request, type, task_id):
+def add_task(request, task_id):
   
   task = ActivityBase.objects.get(id=task_id)
   
-  if task.type != "commitment":
-    return __request_activity_points(request, task_id)
-  else:
+  if task.type == "commitment":
     return __add_commitment(request, task_id)
+  elif task.type == "event" or task.type == "excursion":
+    return __add_activity(request, task_id)
+  else:
+    return __request_activity_points(request, task_id)
+   
   

@@ -21,10 +21,9 @@ JS_IMPORTS = """
 <script src="{0}js/jquery.form.2.43.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
-<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.GDataLoader.js"></script>
-<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.kukuicup.Configuration.js"></script>
-<!--<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/javascript/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>-->
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
 """
 
 LOGGED_IN_CSS_IMPORT = '<link rel="stylesheet" href="{0}css/{1}/logged_in_base.css">'
@@ -98,6 +97,16 @@ CSS_IDS = {
   "profile-form-title": "content-box-title",
   "profile-badges-title": "content-box-title",
   "profile-history-title": "content-box-title",
+  "profile-form-fb-header": "profile-section-header",
+  "profile-form-general-header": "profile-section-header",
+  "profile-form-contact-header": "profile-section-header",
+  "profile-form-display-name-label": "profile-form-label",
+  "profile-form-picture-label": "profile-form-label",
+  "profile-form-about-label": "profile-form-label",
+  "profile-form-logged-in-label": "profile-form-label",
+  "profile-form-fb-profile-label": "profile-form-label",
+  "profile-form-contact-email-label": "profile-form-label",
+  "profile-form-contact-text-label": "profile-form-label",
   
   "prizes-list": "content-box",
   "prizes-raffle": "content-box",

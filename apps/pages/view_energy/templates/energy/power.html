@@ -1,7 +1,31 @@
 {% load class_tags %}
 
-      <div {% get_id_and_classes "energy-power-gauge" %}>
-        <div {% get_id_and_classes "energy-power-gauge-label" %}>Power (W)</div>
-        <img {% get_id_and_classes "energy-power-gauge-image" %}  src="http://chart.apis.google.com/chart?chs=190x100&cht=gom&chd=t:{{power}}&chf=bg,s,F5F3E5&chxl=0:|{{power}}|1:|0W|{{power_max}}W&chxt=x,y&chco=3CB371,FF0000&chds=0,{{power_max}}&chls=2|10" />
-        <div {% get_id_and_classes "energy-power-gauge-last-update" %}>Last Update: {{last_update}}</div>
-      </div>
+<div {% get_id_and_classes "energy-power-gauge" %}>
+
+<div id="visualization"></div> 
+
+</div>
+
+<script type="text/javascript"> 
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
+  var spreadsheetUrl = 'https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdEx3TkRkYjdwdHZkTUo4OGI4NVZ3cmc';
+  var refreshInterval = 15; // refresh every 15 seconds.
+ 
+  // Load the visualization API and the spreadsheet, then call displayEnergy.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetUrl, refreshInterval);  
+ 
+  function displayEnergy(datatable) {
+    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var options = {width : 200, 
+                   title : '{{user.get_profile.floor.name}}', 
+                   captionStyle : {fontSize : '0.80em'}, 
+                   titleStyle : {fontWeight : 'bold'}, 
+                   globalStyle : {fontFamily : 'sans-serif'},
+                   backgroundColor : "EBE7BC",
+                   maxWatts : 7000};
+    var energyChart = new org.wattdepot.gdata.makahiki.PowerMeter();
+    energyChart.draw('visualization', source, datatable, options);
+  }
+})();  
+</script> 

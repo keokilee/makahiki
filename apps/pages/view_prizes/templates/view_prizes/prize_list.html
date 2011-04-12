@@ -2,7 +2,7 @@
 {% load markup %}
 
 {% for name, prizes in prizes.items reversed %}
-<table {% get_id_and_classes "prizes-list-table" %}>
+<table {% get_id_and_classes "prizes-list-table" %} {% if not forloop.first %}style="display:none"{% endif %}>
   <tr><th colspan=3 style="text-align: center">{{name}} prizes</th>
   </tr>
   <tr>
