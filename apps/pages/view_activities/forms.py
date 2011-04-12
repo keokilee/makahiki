@@ -9,7 +9,7 @@ class ActivityTextForm(forms.Form):
   code = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   
   response = forms.CharField(max_length=255, required=False)
-  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'5'}), required=False)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   
   def __init__(self, *args, **kwargs):  
     qid = None
@@ -51,11 +51,11 @@ class ActivityTextForm(forms.Form):
   
 class ActivityFreeResponseForm(forms.Form):
   response = forms.CharField(widget=forms.Textarea)
-  comment = forms.CharField(widget=forms.Textarea, required=False)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   
 class ActivityImageForm(forms.Form):
   image_response = forms.ImageField()
-  comment = forms.CharField(widget=forms.Textarea, required=False)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   
 class CommitmentCommentForm(forms.Form):
-  comment = forms.CharField(widget=forms.Textarea, required=False)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)

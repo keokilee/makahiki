@@ -95,6 +95,7 @@ def __add_commitment(request, commitment_id):
   
   commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
+  floor = user.get_profile().floor
   
   if not can_add_commitments(user):
     message = "You can only have %d active commitments." % MAX_COMMITMENTS
@@ -126,14 +127,40 @@ def __add_commitment(request, commitment_id):
       
   # Redirect back to the referrer or go to the profile if not available.
   ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  next = reverse("pages.view_activities.views.task", args=(commitment_id,))
-  return HttpResponseRedirect(next)
+  ## next = reverse("pages.view_activities.views.task", args=(commitment_id))
+  ## return HttpResponseRedirect(next)
+  member_all = CommitmentMember.objects.filter(commitment=commitment);
+
+  users = []
+  member_all_count = 0
+  member_floor_count = 0
+  member_all_count = member_all.count()
+  for member in member_all:
+    if member.user.get_profile().floor == floor:
+      member_floor_count = member_floor_count + 1
+      users.append(member.user)
+  
+  return render_to_response("view_activities/task.html", {
+    "task":commitment,
+    "type":"commitment",
+    "pau":True,
+    "approved":False,
+    "form":None,
+    "question":None,
+    "member_all":member_all_count,
+    "member_floor":member_floor_count,
+    "users":users,
+    "display_point":True,
+    "display_form":False,
+    "form_title": None,
+  }, context_instance=RequestContext(request))    
 
 def __add_activity(request, activity_id):
   """Commit the current user to the activity."""
 
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
+  floor = user.get_profile().floor
 
   # Search for an existing activity for this user
   if activity not in user.activity_set.all():
@@ -150,9 +177,34 @@ def __add_activity(request, activity_id):
 
   # Redirect back to the referrer or go to the profile if not available.
   ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  next = reverse("pages.view_activities.views.task", args=(activity_id,))
-  return HttpResponseRedirect(next)
-    
+  ## next = reverse("pages.view_activities.views.task", args=(activity_id))
+  ## return HttpResponseRedirect(next)
+  member_all = ActivityMember.objects.filter(activity=activity);
+
+  users = []
+  member_all_count = 0
+  member_floor_count = 0
+  member_all_count = member_all.count()
+  for member in member_all:
+    if member.user.get_profile().floor == floor:
+      member_floor_count = member_floor_count + 1
+      users.append(member.user)
+  
+  return render_to_response("view_activities/task.html", {
+    "task":activity,
+    "type":"event",
+    "pau":True,
+    "approved":False,
+    "form":None,
+    "question":None,
+    "member_all":member_all_count,
+    "member_floor":member_floor_count,
+    "users":users,
+    "display_point":True,
+    "display_form":False,
+    "form_title": None,
+  }, context_instance=RequestContext(request))    
+  
 def __request_activity_points(request, activity_id):
   """Creates a request for points for an activity."""
   
@@ -236,6 +288,7 @@ def __request_activity_points(request, activity_id):
     "member_all":0,
     "member_floor":0,
     "display_form":True,
+    "display_point":False,
     }, context_instance=RequestContext(request))    
 
 @never_cache
@@ -290,7 +343,7 @@ def task(request, task_id):
       member_floor_count = member_floor_count + 1
       print "user="+ member.user.get_profile().name
       users.append(member.user)
-  		  
+  
   return render_to_response("view_activities/task.html", {
     "task":task,
     "type":type,
@@ -301,6 +354,7 @@ def task(request, task_id):
     "member_all":member_all_count,
     "member_floor":member_floor_count,
     "users":users,
+    "display_point":False,
     "display_form":False,
     "form_title": form_title,
   }, context_instance=RequestContext(request))    

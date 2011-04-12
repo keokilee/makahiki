@@ -121,4 +121,30 @@ function task_form_overlay()
 
 </script>  
 
+<div id="signup-point-dialog" title="Thank you" style="visibility: hidden;">
+    <p/>
+    You just got 2 points !
+</div>
+
+<script type="text/javascript"> 
+function signup_point_dialog_overlay()
+{
+  el = document.getElementById("signup-point-dialog"); 
+  el.style.visibility = "visible";
+  $("#signup-point-dialog").dialog({
+    modal: true,
+    width: 300,
+    height: 100,
+    closeOnEscape: false,
+    position: ["center", 200]
+    });
+}
+
+{% if display_point %}
+     $(document).ready(signup_point_dialog_overlay());
+{% endif %}    
+
+</script>  
+
+
 {% endblock %}

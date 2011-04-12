@@ -15,6 +15,14 @@
   {% endif %}
   
   <p/>
+   {% if type == "event" %}
+     You will earn 2 points for signing up for the event.
+   {% endif %}
+   {% if type == "commitment" %}
+     You will earn 2 points for committing to this commitment.
+   {% endif %}   
+  </p>
+  
   <label for="id_response">
     {% if question %}
       {{task.confirm_prompt}}
