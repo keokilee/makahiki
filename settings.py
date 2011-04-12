@@ -8,6 +8,7 @@
 import os.path
 import posixpath
 import pinax
+import logging
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -296,3 +297,11 @@ if DEMO:
     from demo.competition_settings import *
   except ImportError:
     pass
+	
+# Logging module
+# PROJECT_DIR = os.path.dirname(__file__)
+# PARENT_DIR = os.path.dirname(PROJECT_DIR)
+# logging.basicConfig(level=logging.DEBUG,
+     # format='%(asctime)s %(levelname)s %(message)s',
+     # filename=os.path.join(PARENT_DIR, 'django.log'),
+     # filemode='a+')</pre>
