@@ -7,7 +7,7 @@ class LoggingMiddleware(object):
 	def process_response(self, request, response):
 		user = request.user
 		path = request.path
-		pageStatus = response.status_code
+		#pageStatus = response.status_code
 		#Timestamp yyyy-mm-dd Time
 		timestamp = strftime("%Y-%m-%d %H:%M:%S")
 		#File to place the log file.
@@ -19,7 +19,7 @@ class LoggingMiddleware(object):
 			try:
 				if request.GET["ref"] == "nav-button":
 					logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
-					logging.info(" " + timestamp + " " + user.username + ' "' + "GET " + request.GET["ref"] + '" ' + path + " %d" % (pageStatus))
+					logging.info(" " + timestamp + " " + user.username + ' "' + "GET " + request.GET["ref"] + '" ' + path + " 200")
 			except Exception:
 				pass
 		#Testing
