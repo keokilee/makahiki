@@ -27,3 +27,6 @@ pip-log.txt
 .coverage
 coverage.xml
 htmlcov/
+
+# Ignore log file
+*.log
