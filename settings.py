@@ -114,7 +114,7 @@ MIDDLEWARE_CLASSES = (
     'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
     'pages.home.middleware.CheckSetupMiddleware',
-	'components.logging.middleware.LoggingMiddleware',
+	# 'components.logging.middleware.LoggingMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'components.quests',
     'components.resources',
     'components.standings',
-	'components.logging',
+	# 'components.logging',
     
     # 3rd party libraries
     'lib.brabeion',
@@ -301,7 +301,7 @@ if DEMO:
     pass
 	
 # Logging module
-logging.basicConfig(level=logging.INFO,
-     format='%(asctime)s %(levelname)s %(message)s',
-     filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", "RoundONE.log"),
-     filemode='a+')
+# logging.basicConfig(level=logging.INFO,
+     # format='%(asctime)s %(levelname)s %(message)s',
+     # filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", "RoundONE.log"),
+     # filemode='a+')
