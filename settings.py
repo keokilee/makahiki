@@ -301,7 +301,7 @@ if DEMO:
     pass
 	
 # Logging module
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
      format='%(asctime)s %(levelname)s %(message)s',
      filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", 'RoundONE.log'),
      filemode='a+')
