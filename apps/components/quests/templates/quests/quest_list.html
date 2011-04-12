@@ -1,8 +1,8 @@
 {% load markup %}
 
-{% if QUESTS.user_quests or QUESTS.available_quests %}
 <div id="quest-box" class="content-box">
   <div class="content-box-title">Your Quests</div>
+  {% if QUESTS.user_quests or QUESTS.available_quests %}
   <ul>
     {% for quest in QUESTS.user_quests %}
     <li>
@@ -30,6 +30,9 @@
     </li>
     {% endfor %}
   </ul>
+  {% else %}
+  <p style="text-align: center; width: 100%">There are no quests available at this time.  Please check back later!</p>
+  {% endif %}
   
   <div id="quest-details" style="margin: 0px 10px">
     <div id="quest-contents" style="clear:both"></div>
@@ -37,4 +40,3 @@
     <div style="clear:both"></div>
   </div>
 </div>
-{% endif %}
