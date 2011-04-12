@@ -114,6 +114,7 @@ MIDDLEWARE_CLASSES = (
     'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
     'pages.home.middleware.CheckSetupMiddleware',
+	'components.logging.middleware.LoggingMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -173,6 +174,7 @@ INSTALLED_APPS = (
     'components.quests',
     'components.resources',
     'components.standings',
+	'components.logging',
     
     # 3rd party libraries
     'lib.brabeion',
@@ -299,9 +301,9 @@ if DEMO:
     pass
 	
 # Logging module
-# PROJECT_DIR = os.path.dirname(__file__)
-# PARENT_DIR = os.path.dirname(PROJECT_DIR)
-# logging.basicConfig(level=logging.DEBUG,
-     # format='%(asctime)s %(levelname)s %(message)s',
-     # filename=os.path.join(PARENT_DIR, 'django.log'),
-     # filemode='a+')</pre>
+PROJECT_DIR = os.path.dirname(__file__)
+PARENT_DIR = os.path.dirname(PROJECT_DIR)
+logging.basicConfig(level=logging.DEBUG,
+     format='%(asctime)s %(levelname)s %(message)s',
+     filename=os.path.join(PARENT_DIR, 'django.log'),
+     filemode='a+')
