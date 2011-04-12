@@ -104,26 +104,7 @@
             <th {% get_id_and_classes "profile-history-previous-task-header" %}>Task</th>
             <th {% get_id_and_classes "profile-history-previous-points-header" %}>Points</th>
           </tr>
-          {% for member in completed_members %}
-            <tr>
-              <td>{{member.award_date|date:"n/j/y"}}</td>
-              {% if member.commitment %}
-              <td>
-                <a href="{% url activity_task member.commitment.id %}">
-                  Commitment: {{member.commitment.name}}
-                </a>
-              </td>
-              <td>{{member.commitment.point_value}}</td>
-              {% else %}
-              <td>
-                <a href="{% url activity_task member.activity.id %}">
-                  Activity: {{member.activity.name}}
-                </a>
-              </td>
-              <td>{{member.activity.point_value}}</td>
-              {% endif %}
-            </tr>
-          {% endfor %}
+          {% include "view_profile/components/completed_members.html" %}
           </table>
         {% else %}
           <p style="width: 100%; text-align: center">You have not been awarded anything yet!</p>
