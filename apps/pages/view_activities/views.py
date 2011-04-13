@@ -231,9 +231,9 @@ def __request_activity_points(request, activity_id):
     else:
       form = ActivityTextForm(request.POST)
     
-    print activity.confirm_type
+    ## print activity.confirm_type
     if form.is_valid():
-      print 'valid'
+      ## print 'valid'
       if not activity_member:
         activity_member = ActivityMember(user=user, activity=activity)
       
@@ -341,7 +341,7 @@ def task(request, task_id):
   for member in member_all:
     if member.user.get_profile().floor == floor:
       member_floor_count = member_floor_count + 1
-      print "user="+ member.user.get_profile().name
+      ## print "user="+ member.user.get_profile().name
       users.append(member.user)
   
   return render_to_response("view_activities/task.html", {

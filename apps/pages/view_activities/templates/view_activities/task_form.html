@@ -1,3 +1,6 @@
+{% load class_tags %}
+
+<div {% get_id_and_classes "activity-task-form-content" %}>
   {% if form.is_multipart %}
     <form enctype="multipart/form-data" action="add" method="post">
   {% else %}
@@ -15,41 +18,39 @@
   {% endif %}
   
   <p/>
-   {% if type == "event" %}
+   {% if type == "event" %}          {# event #}
      You will earn 2 points for signing up for the event.
+     {% if pau %}
+        {{form.code}}
+        {{ form.response }}
+     {% endif %}
    {% endif %}
-   {% if type == "commitment" %}
+   {% if type == "commitment" %}     {# commitment #}
      You will earn 2 points for committing to this commitment.
    {% endif %}   
   </p>
   
-  <label for="id_response">
-    {% if question %}
-      {{task.confirm_prompt}}
-      <p/>
-      {{question.question}}
-      {{form.question}}
-    {% else %}
-      {% if pau %}
-        {{task.confirm_prompt}}
-        {{form.code}}
+  {% if type == "activity" %}        {# activity #}   
+    {% if form.image_response %}         {# image #}
+      {{task.confirm_prompt}} <p/>
+      {{ form.image_response }}
+    {% else %}                           
+      {% if question %}                                {# question #}
+        {{task.confirm_prompt}} <p/>
+        {{form.question}}
+        {{question.question}}: <br/>
+        
+        {% if question.questionchoice_set.count > 0 %}    {# choice response question #}
+          {{ form.choice_response }}
+        {% else %}                                        {# text response question #}
+          {{ form.response }}
+        {% endif %}  
+      {% else %}                                       {# free text #}
+        {{task.confirm_prompt}} <p/>
+        {{ form.response }}    
       {% endif %}  
-    {% endif %}
-  </label>
-  
-  <p/>
-  
-  {% if form.image_response %}
-    {{ form.image_response }}
-  {% else %}
-    {% if question.questionchoice_set.count > 0 %}
-      {{ form.choice_response }}
-    {% else %}
-      {% if pau %}
-        {{ form.response }}
-      {% endif %}    
-    {% endif %}  
-  {%endif%}
+    {%endif%}
+  {% endif %}
   
   <p/>Additional Comments:
     <br/>
@@ -57,3 +58,4 @@
   <p/>
   <input type="submit" value="Submit" />
 </form>
+</div>
