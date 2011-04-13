@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from components.makahiki_base import get_round_info
 from components.makahiki_profiles.models import Profile
@@ -106,7 +107,8 @@ class RaffleDeadline(models.Model):
   round_name = models.CharField(
       max_length=20, 
       choices=ROUND_CHOICES,
-      help_text="The round in which this prize can be won."
+      help_text="The round in which this prize can be won.",
+      unique=True,
   )
   pub_date = models.DateTimeField()
   end_date = models.DateTimeField()
@@ -129,21 +131,40 @@ class RafflePrize(models.Model):
       choices=ROUND_CHOICES,
       help_text="The round in which this prize can be won."
   )
-  winner = models.ForeignKey(Profile, null=True, blank=True)
+  winner = models.ForeignKey(User, null=True, blank=True)
+  
+  def add_ticket(self, user):
+    """
+    Adds a ticket from the user if they have one.  Throws an exception if they cannot add a ticket.
+    """
+    profile = user.get_profile()
+    if profile.available_tickets() <= 0:
+      raise Exception("This user does not have any tickets to allocate.")
+      
+    ticket = RaffleTicket(raffle_prize=self, user=user)
+    ticket.save()
+  
+  def remove_ticket(self, user):
+    """
+    Removes an allocated ticket.
+    """
+    # Get the first ticket that matches the query.
+    ticket = RaffleTicket.objects.filter(raffle_prize=self, user=user)[0]
+    ticket.delete()
+    
+  def allocated_tickets(self, user=None):
+    """
+    Returns the number of tickets allocated to this prize.
+    Takes an optional argument to return the number of tickets allocated by the user.
+    """
+    query = self.raffleticket_set.filter(raffle_prize=self)
+    if user:
+      query = query.filter(user=user)
+      
+    return query.count()
   
 class RaffleTicket(models.Model):
-  profile = models.ForeignKey(Profile)
+  user = models.ForeignKey(User)
   raffle_prize = models.ForeignKey(RafflePrize)
   created_at = models.DateTimeField(auto_now_add=True, editable=False)
   updated_at = models.DateTimeField(auto_now=True, editable=False)
-  
-  @staticmethod
-  def num_tickets(raffle_prize, profile=None):
-    """
-    Returns the number of tickets for a raffle prize.
-    Takes an optional profile argument to only count the number of tickets for the user.
-    """
-    query = RaffleTicket.objects.filter(raffle_prize=raffle_prize)
-    if profile:
-      query = query.filter(profile=profile)
-    return query.count()

@@ -27,7 +27,6 @@ class RafflePrizeTests(TestCase):
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS
-    self.current_round = "Round 1"
     start = datetime.date.today()
     end = start + datetime.timedelta(days=7)
     
@@ -38,16 +37,59 @@ class RafflePrizeTests(TestCase):
       },
     }
     
-    # Create test dorms, floors, and users.
-    self.dorms = [Dorm(name="Test Dorm %d" % i) for i in range(0, 2)]
-    map(lambda d: d.save(), self.dorms)
+    # Create a test user
+    self.user = User.objects.create_user("user", "user@test.com", password="changeme")
     
-    self.floors = [Floor(number=str(i), dorm=self.dorms[i % 2]) for i in range(0, 4)]
-    map(lambda f: f.save(), self.floors)
+  def testTicketAllocation(self):
+    """
+    Tests that a user can allocate a ticket.
+    """
+    self.prize.round_name = "Round 1"
+    self.prize.save()
     
-    self.users = [User.objects.create_user("test%d" % i, "test@test.com") for i in range(0, 4)]
+    profile = self.user.get_profile()
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
     
-    # Assign users to floors.
-    for index, user in enumerate(self.users):
-      user.get_profile().floor = self.floors[index % 4]
-      user.get_profile().save()
+    # Add a ticket to the prize
+    self.assertEqual(profile.available_tickets(), 1, "User should have one raffle ticket.")
+    self.prize.add_ticket(self.user)
+    self.assertEqual(profile.available_tickets(), 0, "User should not have any raffle tickets.")
+    self.assertEqual(self.prize.allocated_tickets(), 1, "1 ticket should be allocated to this prize.")
+    self.assertEqual(self.prize.allocated_tickets(self.user), 1, "1 ticket should be allocated by this user to this prize.")
+    
+    # Have another user add a ticket to the prize.
+    user2 = User.objects.create_user("user2", "user2@test.com", password="changeme")
+    
+    profile = user2.get_profile()
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
+    
+    # Add a ticket to the prize
+    self.prize.add_ticket(user2)
+    self.assertEqual(self.prize.allocated_tickets(), 2, "2 tickets should be allocated to this prize.")
+    self.assertEqual(self.prize.allocated_tickets(user2), 1, "1 ticket should be allocated by this user to this prize.")
+    
+    # Add another ticket to the prize.
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
+    
+    self.prize.add_ticket(user2)
+    self.assertEqual(self.prize.allocated_tickets(), 3, "3 tickets should be allocated to this prize.")
+    self.assertEqual(self.prize.allocated_tickets(user2), 2, "2 tickets should be allocated by this user to this prize.")
+    
+    # Remove a ticket from the prize.
+    self.prize.remove_ticket(self.user)
+    self.assertEqual(self.prize.allocated_tickets(), 2, "2 tickets should be allocated to this prize.")
+    self.assertEqual(self.prize.allocated_tickets(self.user), 0, "No tickets should be allocated by this user to this prize.")
+    
+    self.prize.remove_ticket(user2)
+    self.assertEqual(self.prize.allocated_tickets(), 1, "1 ticket should be allocated to this prize.")
+    self.assertEqual(self.prize.allocated_tickets(user2), 1, "1 ticket should be allocated by this user to this prize.")
+    
+  def tearDown(self):
+    """
+    Deletes the created image file in prizes.
+    """
+    settings.COMPETITION_ROUNDS = self.saved_rounds
+    self.prize.delete()
