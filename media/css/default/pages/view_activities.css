@@ -39,6 +39,11 @@
 	width: 512px;
 }
 
+#activity-task-form-content {
+    text-align: left;
+    padding-left: 100px;
+}
+
 h3.activity-categories-title {
 	background-color: #E3E3E3;
     background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
