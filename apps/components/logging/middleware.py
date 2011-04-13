@@ -6,7 +6,7 @@ from time import strftime # Timestamp
 class LoggingMiddleware(object):
 
 	def process_response(self, request, response):
-		if (request.user.is_authenticated()):
+		if hasattr(request, "user") and request.user.is_authenticated():
 			user = request.user
 			path = request.path
 		
