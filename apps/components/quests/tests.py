@@ -425,7 +425,7 @@ class QuestFunctionalTestCase(TestCase):
         description="test quest",
         level=1,
         unlock_conditions="True",
-        completion_conditions="False",
+        completion_conditions="True",
     )
     quest.save()
     
@@ -438,6 +438,7 @@ class QuestFunctionalTestCase(TestCase):
     )
     self.assertRedirects(response, reverse("home_index"))
     self.assertNotContains(response, "Test quest", msg_prefix="Test quest should not be shown.")
+    self.assertFalse(response.context["QUESTS"].has_key("completed"), "There should not be any completed quests.")
     
   def testQuestCompletion(self):
     """Test that a user gets a dialog box when they complete a quest."""
@@ -463,6 +464,6 @@ class QuestFunctionalTestCase(TestCase):
     self.assertEqual(len(response.context["QUESTS"]["completed_quests"]), 1, "User should have one completed quest.")
     self.assertTrue(quest in response.context["QUESTS"]["completed_quests"], "Quest should be completed.")
     self.assertTrue(quest not in response.context["QUESTS"]["user_quests"], "Quest should not be loaded as a user quest.")
-    self.assertContains(response, "quest-complete-dialog", msg_prefix="Quest complete dialog should appear.")
+    self.assertContains(response, "Great job!  You completed the following quest(s):", msg_prefix="Quest complete dialog should appear.")
     
     
