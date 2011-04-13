@@ -9,6 +9,7 @@ class LoggingMiddleware(object):
 		if hasattr(request, "user") and request.user.is_authenticated():
 			user = request.user
 			path = request.path
+			code = response.status_code
 		
 			# Timestamp yyyy-mm-dd Time
 			# timestamp = strftime("%Y-%m-%d %H:%M:%S")
@@ -16,7 +17,7 @@ class LoggingMiddleware(object):
 			if request.META.has_key("HTTP_REFERER"):
 				try:
 					if request.GET["ref"] == "nav-button":
-						logging.info(user.username + ' "' + "GET " + request.GET["ref"] + '" ' + path + " 200")
+						logging.info(user.username + ' "' + "GET " + request.GET["ref"] + '" ' + path + " " + str(code))
 				except Exception:
 					pass
 		return response
