@@ -119,15 +119,15 @@ fieldset legend {
 }
 
 td#energy-status-how-calculator-content {
+  
+}
 
+#energy-status-how-calculator-content-data {
+  color: #0000;
 }
 
 td#energy-status-how-activities-content {
 
-}
-
-#energy-status-how-calculator-content-data {
-	color: #02ac0e;
 }
 
 #energy-status-how-activities-table {

@@ -4,11 +4,15 @@
 </div>
 
 <div style="float: left">
-  <button id="back">&lt;- Back</button>
+  <button id="back">
+   <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
+   Back</button>
 </div>
 
 <div style="float:right">
-  <a href="{% url home_index %}"><button id="home">Go home</button></a>
+  <a href="{% url home_index %}"><button id="home">Go home 
+   <img src="{{ STATIC_URL}}/css/default/images/right.png" width="24" align="top">
+   </button></a>
 </div>
 
 <div style="clear:both"></div>
