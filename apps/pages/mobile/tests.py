@@ -38,26 +38,26 @@ class MobileRoundStandingsTestCase(TestCase):
                        ).order_by("-points", "-last_awarded_submission")
 
 
-  def testFloorStandings(self):
-    """Test that updating the points in a round changes the mobile standings."""
-    entry = self.floor_entries[1] # Use second place entry.
-
-    standings = get_mobile_standings(entry.profile.user)
-    test_string = "You are #2 in points for %s for %s." % (self.floor, self.current_round)
-    diff = self.floor_entries[0].points - self.floor_entries[1].points
-    if diff == 0:
-      diff = 1
-      test_string += " Get %d more point to move to #1." % diff
-    else:
-      test_string += " Get %d more points to move to #1." % diff
-    self.assertEqual(standings["floor"], test_string)
-    
-    entry.points += diff + 1 # Moves user to first place.
-    entry.save()
-    
-    standings = get_mobile_standings(entry.profile.user)
-    test_string = "You are #1 in points for %s for %s." % (self.floor, self.current_round)
-    self.assertEqual(standings["floor"], test_string)
+  # def testFloorStandings(self):
+  #   """Test that updating the points in a round changes the mobile standings."""
+  #   entry = self.floor_entries[1] # Use second place entry.
+  # 
+  #   standings = get_mobile_standings(entry.profile.user)
+  #   test_string = "You are #2 in points for %s for %s." % (self.floor, self.current_round)
+  #   diff = self.floor_entries[0].points - self.floor_entries[1].points
+  #   if diff == 0:
+  #     diff = 1
+  #     test_string += " Get %d more point to move to #1." % diff
+  #   else:
+  #     test_string += " Get %d more points to move to #1." % diff
+  #   self.assertEqual(standings["floor"], test_string)
+  #   
+  #   entry.points += diff + 1 # Moves user to first place.
+  #   entry.save()
+  #   
+  #   standings = get_mobile_standings(entry.profile.user)
+  #   test_string = "You are #1 in points for %s for %s." % (self.floor, self.current_round)
+  #   self.assertEqual(standings["floor"], test_string)
     
   def testOverallStandings(self):
     """Test that updating the points in a round changes the mobile standings."""
