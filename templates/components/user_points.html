@@ -8,7 +8,7 @@
     {{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}
   </div>
   <div {% get_id_and_classes "header-user-rank" %}>
-    <h3>#{{profile.current_round_floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor}}
+    <h3>#{{profile.current_round_floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor.dorm.name}}-{{profile.floor.number}}
   </div>
 </div>
 <!-- Second slideshow element -->
@@ -30,7 +30,7 @@
     {{COMPETITION_POINT_NAME}}s
   </div>
   <div {% get_id_and_classes "header-user-rank" %}>
-    <h3>#{{profile.floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor}}
+    <h3>#{{profile.floor_rank}}</h3> out of {{FLOOR_MEMBER_COUNT}} in {{profile.floor.dorm.name}}-{{profile.floor.number}}
   </div>
 </div>
 <!-- Fourth slideshow element -->

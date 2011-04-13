@@ -81,22 +81,21 @@
                 <p/>
                 
                 <div {% get_id_and_classes "energy-status-how-calculator-content-data" %}>
-                  To save {{diff}} kWh, we must reduce
-                
+                  To save {{diff}} kWh, we must reduce our energy use by an amount equivalent to
                 <select onchange="cal_energy(this.options[this.selectedIndex]);" >
                   {% for type,hour in appliances %}
                    <option value="{{hour}}">{{type}}</option> 
                   {% endfor %}
                 </select>
                 
-                <div id="cal_energy_text">by {{appliances.0.1}} hours
+                <div id="cal_energy_text">for {{appliances.0.1}} hours
                 </div>
                 </div>
               <script type="text/javascript">
               function cal_energy(selected)
               {
                 document.getElementById("cal_energy_text").innerHTML = 
-                "by "+selected.value+" hours</p>"
+                "for "+selected.value+" hours</p>"
               }
               </script>
             </td> 
