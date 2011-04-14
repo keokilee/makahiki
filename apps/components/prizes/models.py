@@ -112,6 +112,9 @@ class RaffleDeadline(models.Model):
   )
   pub_date = models.DateTimeField()
   end_date = models.DateTimeField()
+  
+  def __unicode__(self):
+    return "%s deadline" % self.round_name
     
 class RafflePrize(models.Model):
   ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
@@ -128,6 +131,9 @@ class RafflePrize(models.Model):
   )
   deadline = models.ForeignKey(RaffleDeadline)
   winner = models.ForeignKey(User, null=True, blank=True)
+  
+  def __unicode__(self):
+    return "%s: %s" % (self.deadline.round_name, self.title)
   
   def add_ticket(self, user):
     """

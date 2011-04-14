@@ -80,6 +80,9 @@ def _get_raffle_prizes(user):
   available_tickets = profile.available_tickets()
   total_tickets = profile.points / POINTS_PER_TICKET
   allocated_tickets = total_tickets - available_tickets
+  
+  # Get the prizes for the raffle.
+  prizes = RafflePrize.objects.filter(deadline=deadline)
     
   return {
     "deadline": deadline,
@@ -88,5 +91,6 @@ def _get_raffle_prizes(user):
         "available": available_tickets,
         "total": total_tickets,
         "allocated": allocated_tickets,
-    }
+    },
+    "prizes": prizes,
   }

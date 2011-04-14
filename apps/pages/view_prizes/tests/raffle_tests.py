@@ -70,7 +70,15 @@ class RafflePrizesTestCase(TestCase):
     date_string = date_string + str(hour) + self.deadline.end_date.strftime("%p")
     self.assertContains(response, "Deadline for Round 2 submissions: " + date_string, 
         msg_prefix="Raffle should have the correct deadline.")
-
+        
+    # Give the user some points and see if their tickets update.
+    profile = self.user.get_profile()
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
+    response = self.client.get(reverse("prizes_index"))
+    self.assertContains(response, "Your total raffle tickets: 1 Allocated right now: 0 Available: 1",
+        msg_prefix="User should have 1 raffle ticket.")
+        
   def tearDown(self):
     """
     Restores saved settings.
