@@ -9,7 +9,7 @@ def main():
   Executes the tests.  Requires the CherryPy live server to be installed.
   """
   command = "python manage.py test"
-  options = "--exe --with-selenium --with-selenium-fixtures --with-cherrypyliveserver --noinput"
+  options = "--exe --with-selenium --with-selenium-fixtures --with-cherrypyliveserver --failfast"
   apps = []
   if len(sys.argv) > 1:
     apps = sys.argv[1:]

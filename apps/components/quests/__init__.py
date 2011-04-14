@@ -83,7 +83,7 @@ def possibly_completed_quests(user):
   Check if the user may have completed one of their quests.
   Returns an array of the completed quests.
   """
-  user_quests = user.quest_set.filter(questmember__completed=False)
+  user_quests = user.quest_set.filter(questmember__completed=False, questmember__opt_out=False)
   completed = []
   for quest in user_quests:
     if quest.completed_quest(user):
