@@ -119,10 +119,7 @@ CSS_CLASSES = {
   "user-post-content": "news-text",
   "user-post-date-string": "news-posted",
   "activity-categories-title": "activity-categories-title",
-  
   "prize-item": "prize",
   "prize-number": "number",
-  "prizes-add-button": "plus",
-  "prizes-remove-button": "minus",
   "prize-dialog": "prize-dialog",
 }

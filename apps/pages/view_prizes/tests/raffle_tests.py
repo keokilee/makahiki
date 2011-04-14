@@ -79,6 +79,50 @@ class RafflePrizesTestCase(TestCase):
     self.assertContains(response, "Your total raffle tickets: 1 Allocated right now: 0 Available: 1",
         msg_prefix="User should have 1 raffle ticket.")
         
+  def testAddRemoveTicket(self):
+    """Test that we can add and remove a ticket for a prize."""
+    raffle_prize = RafflePrize(
+        title="Test raffle prize",
+        description="A raffle prize for testing",
+        deadline=self.deadline,
+    )
+    raffle_prize.save()
+    
+    profile = self.user.get_profile()
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
+    
+    # Test that we can add a ticket.
+    response = self.client.get(reverse("prizes_index"))
+    self.assertContains(response, reverse("raffle_add_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should be a url to add a ticket.")
+    
+    # Test adding a ticket to a prize.
+    response = self.client.post(reverse("raffle_add_ticket", args=(raffle_prize.id,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "Your total raffle tickets: 1 Allocated right now: 1 Available: 0",
+        msg_prefix="User should have one allocated ticket.")        
+    self.assertContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should be an url to remove a ticket.")
+    self.assertNotContains(response, reverse("raffle_add_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should not be an url to add a ticket.")
+        
+    # Test adding another ticket to the prize.
+    profile.add_points(25, datetime.datetime.today())
+    profile.save()
+    response = self.client.post(reverse("raffle_add_ticket", args=(raffle_prize.id,)), follow=True)
+    self.assertContains(response, "Your total raffle tickets: 2 Allocated right now: 2 Available: 0",
+        msg_prefix="User should have two allocated tickets.")
+    
+    # Test removing a ticket.
+    response = self.client.post(reverse("raffle_remove_ticket", args=(raffle_prize.id,)), follow=True)
+    self.assertContains(response, "Your total raffle tickets: 2 Allocated right now: 1 Available: 1",
+        msg_prefix="User should have one allocated ticket and one available.")
+    self.assertContains(response, reverse("raffle_add_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should be a url to add a ticket.")
+    self.assertContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should be an url to remove a ticket.")
+      
   def tearDown(self):
     """
     Restores saved settings.

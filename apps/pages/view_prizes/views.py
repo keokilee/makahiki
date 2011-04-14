@@ -1,9 +1,11 @@
 import datetime
 
-from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 from components.makahiki_base import get_round_info, get_current_round
 from components.prizes import POINTS_PER_TICKET
@@ -19,6 +21,31 @@ def index(request):
       "prizes": prizes,
       "raffle": raffle_dict,
   }, context_instance=RequestContext(request))
+  
+@login_required
+def add_ticket(request, prize_id):
+  """
+  Adds a user's raffle ticket to the prize.
+  """
+  prize = get_object_or_404(RafflePrize, id=prize_id)
+  profile = request.user.get_profile()
+  if profile.available_tickets > 0:
+    prize.add_ticket(request.user)
+    return HttpResponseRedirect(reverse("prizes_index"))
+    
+  raise Http404
+  
+@login_required
+def remove_ticket(request, prize_id):
+  """
+  Removes a user's raffle ticket from the prize.
+  """
+  prize = get_object_or_404(RafflePrize, id=prize_id)
+  if prize.allocated_tickets(request.user) > 0:
+    prize.remove_ticket(request.user)
+    return HttpResponseRedirect(reverse("prizes_index"))
+    
+  raise Http404
   
 def _get_prizes(floor):
   """
