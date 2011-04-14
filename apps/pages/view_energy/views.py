@@ -50,6 +50,12 @@ def index(request):
   
   percent = 100 - percent_reduce  
   goal = baseline * percent / 100
+  
+  ### TODO. get the goal from gdata
+  
+  goal = 113
+  energy = 119
+  
   over = "over"
   diff = energy - goal
   if diff <= 0:

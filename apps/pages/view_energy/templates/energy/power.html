@@ -19,11 +19,11 @@
     var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
     var options = {width : 200, 
                    title : source, 
-                   captionStyle : {fontSize : '0.80em'}, 
+                   captionStyle : {fontSize : '0.70em'}, 
                    titleStyle : {fontWeight : 'bold'}, 
                    globalStyle : {fontFamily : 'sans-serif'},
                    backgroundColor : "EBE7BC",
-                   maxWatts : 7000};
+                   powerRange : 2000};
     var energyChart = new org.wattdepot.gdata.makahiki.PowerMeter();
     energyChart.draw('visualization', source, datatable, options);
   }
