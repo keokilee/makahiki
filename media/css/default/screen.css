@@ -240,7 +240,7 @@ a {
 	font-size: .9em;
 }
 
-#header-floor-points, #header-floor-rank {
+#header-floor-points, #header-floor-rank, #header-floor-energy {
 	font-size: .9em;
 	width: 120px;
 	margin-top: 5px;
@@ -258,6 +258,10 @@ clear: both;
 	margin: 0;
 	padding-right: 5px;
 }
+
+#header-text {
+}
+
 
 #header-floor-image {
 	float: right;
