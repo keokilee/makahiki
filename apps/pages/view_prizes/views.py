@@ -5,12 +5,26 @@ from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 
-from components.makahiki_base import get_round_info
-from components.prizes.models import Prize
+from components.makahiki_base import get_round_info, get_current_round
+from components.prizes import POINTS_PER_TICKET
+from components.prizes.models import Prize, RafflePrize, RaffleDeadline
 
 @login_required
 def index(request):
   floor = request.user.get_profile().floor
+  prizes = _get_prizes(floor)
+  raffle_dict = _get_raffle_prizes(request.user)
+    
+  return render_to_response("view_prizes/index.html", {
+      "prizes": prizes,
+      "raffle": raffle_dict,
+  }, context_instance=RequestContext(request))
+  
+def _get_prizes(floor):
+  """
+  Private method to process the prizes half of the page.
+  Takes the user's floor and returns a dictionary to be used in the template.
+  """
   prizes = Prize.objects.all()
   rounds = get_round_info()
   prize_dict = {}
@@ -40,10 +54,39 @@ def index(request):
       
     prize_dict[key] = prizes
     
-  return render_to_response("view_prizes/index.html", {
-      "prizes": prize_dict,
-      "help_info": {
-        "prefix": "prizes_index",
-        "count": range(0, 2),
-      }
-  }, context_instance=RequestContext(request))
+  return prize_dict
+  
+def _get_raffle_prizes(user):
+  """
+  Private method to process the raffle half of the prize page.
+  Takes a user and returns a dictionary to be used in the template.
+  """
+  current_round = get_current_round()
+  today = datetime.datetime.today()
+  
+  # Get deadline.
+  try:
+    deadline = RaffleDeadline.objects.get(round_name=current_round)
+  except RaffleDeadline.DoesNotExist:
+    # TODO; Handle if there is no raffle for this round.
+    return None
+    
+  if today < deadline.pub_date:
+    # TODO: Find the pub date of the next round and maybe post something about that.
+    deadline = None
+    
+  # Get the user's tickets.
+  profile = user.get_profile()
+  available_tickets = profile.available_tickets()
+  total_tickets = profile.points / POINTS_PER_TICKET
+  allocated_tickets = total_tickets - available_tickets
+    
+  return {
+    "deadline": deadline,
+    "points_per_ticket": POINTS_PER_TICKET,
+    "tickets": {
+        "available": available_tickets,
+        "total": total_tickets,
+        "allocated": allocated_tickets,
+    }
+  }

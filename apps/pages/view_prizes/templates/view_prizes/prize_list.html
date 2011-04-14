@@ -7,7 +7,6 @@
   </tr>
   <tr>
     <th {% get_id_and_classes "prizes-list-table-header" %}>Prize</th>
-    <th {% get_id_and_classes "prizes-list-table-awarded-header" %}>Number awarded</th>
     <th {% get_id_and_classes "prizes-list-table-criteria-header" %}>Criteria</th>
   </tr>
   {% for prize in prizes %}
@@ -32,7 +31,6 @@
         });
       </script>
     </td>
-    <td class="{% insert_classes "prize-number" %}">{{prize.num_awarded}}</td>
     <td>
       {{prize.short_description|markdown}} <br/>
       {% if prize.winner %}

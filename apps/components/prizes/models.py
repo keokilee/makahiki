@@ -126,11 +126,7 @@ class RafflePrize(models.Model):
       blank=True,
       help_text="A picture of your prize."
   )
-  round_name = models.CharField(
-      max_length=20, 
-      choices=ROUND_CHOICES,
-      help_text="The round in which this prize can be won."
-  )
+  deadline = models.ForeignKey(RaffleDeadline)
   winner = models.ForeignKey(User, null=True, blank=True)
   
   def add_ticket(self, user):

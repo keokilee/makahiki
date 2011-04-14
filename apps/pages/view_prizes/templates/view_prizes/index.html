@@ -25,11 +25,11 @@
 <div {% get_id_and_classes "prizes-raffle" %}>
   <div {% get_id_and_classes "prizes-raffle-box" %}>
     <div {% get_id_and_classes "prizes-raffle-title" %}>
-      Round 1 Raffle Game
+      {{raffle.deadline.round_name}} Raffle Game
     </div>
     <div {% get_id_and_classes "prizes-raffle-content" %}>
       <div {% get_id_and_classes "prizes-raffle-info" %}>
-        Your total raffle tickets: 2 Allocated right now: 1 Available: 1
+        Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
       </div>
       <table {% get_id_and_classes "prizes-raffle-table" %}>
         <tr>
@@ -86,8 +86,8 @@
         </tr>
       </table>
       <div id="prizes-raffle-footer">
-        You receive 1 raffle ticket for every 25 awarded Kukui Cup points.<br/>
-        <span id="prizes-raffle-footer-deadline">Deadline for Round 1 submissions: Sunday, October 9, 2011, 8pm</span>
+        You receive 1 raffle ticket for every {{raffle.points_per_ticket}} awarded Kukui Cup points.<br/>
+        <span id="prizes-raffle-footer-deadline">Deadline for {{raffle.deadline.round_name}} submissions: {{raffle.deadline.end_date|date:"l, F j, Y"}}, {{raffle.deadline.end_date|date:"gA"}}</span>
         Round 1 winners to be notified via email on Monday, October 10, 2011 at 10am
       </div>
     </div>

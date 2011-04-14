@@ -11,7 +11,7 @@ class Migration(SchemaMigration):
         # Adding model 'RaffleDeadline'
         db.create_table('prizes_raffledeadline', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('round_name', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('round_name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=20)),
             ('pub_date', self.gf('django.db.models.fields.DateTimeField')()),
             ('end_date', self.gf('django.db.models.fields.DateTimeField')()),
         ))
@@ -23,15 +23,15 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=30)),
             ('description', self.gf('django.db.models.fields.TextField')()),
             ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=1024, blank=True)),
-            ('round_name', self.gf('django.db.models.fields.CharField')(max_length=20)),
-            ('winner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['makahiki_profiles.Profile'], null=True, blank=True)),
+            ('deadline', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prizes.RaffleDeadline'])),
+            ('winner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
         ))
         db.send_create_signal('prizes', ['RafflePrize'])
 
         # Adding model 'RaffleTicket'
         db.create_table('prizes_raffleticket', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('profile', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['makahiki_profiles.Profile'])),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('raffle_prize', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prizes.RafflePrize'])),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
@@ -88,49 +88,15 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'floors.dorm': {
-            'Meta': {'object_name': 'Dorm'},
-            'created_at': ('django.db.models.fields.DateTimeField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '20', 'db_index': 'True'}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True'})
-        },
-        'floors.floor': {
-            'Meta': {'object_name': 'Floor'},
-            'dorm': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Dorm']"}),
-            'floor_identifier': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'number': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '10', 'db_index': 'True'})
-        },
-        'makahiki_profiles.profile': {
-            'Meta': {'object_name': 'Profile'},
-            'about': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'contact_carrier': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'contact_email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
-            'contact_text': ('django.contrib.localflavor.us.models.PhoneNumberField', [], {'max_length': '20', 'null': 'True', 'blank': 'True'}),
-            'daily_visit_count': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'floor': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Floor']", 'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'last_awarded_submission': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'last_visit_date': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'points': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'setup_complete': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
-            'setup_profile': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'unique': 'True'})
-        },
         'prizes.prize': {
             'Meta': {'unique_together': "(('round_name', 'award_to', 'competition_type'),)", 'object_name': 'Prize'},
             'award_to': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'competition_type': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '1024', 'blank': 'True'}),
+            'long_description': ('django.db.models.fields.TextField', [], {}),
             'round_name': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
+            'short_description': ('django.db.models.fields.TextField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '30'})
         },
         'prizes.raffledeadline': {
@@ -138,24 +104,24 @@ class Migration(SchemaMigration):
             'end_date': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'round_name': ('django.db.models.fields.CharField', [], {'max_length': '20'})
+            'round_name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '20'})
         },
         'prizes.raffleprize': {
             'Meta': {'object_name': 'RafflePrize'},
+            'deadline': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['prizes.RaffleDeadline']"}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '1024', 'blank': 'True'}),
-            'round_name': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
-            'winner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['makahiki_profiles.Profile']", 'null': 'True', 'blank': 'True'})
+            'winner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
         'prizes.raffleticket': {
             'Meta': {'object_name': 'RaffleTicket'},
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'profile': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['makahiki_profiles.Profile']"}),
             'raffle_prize': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['prizes.RafflePrize']"}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
+            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
         }
     }
 
