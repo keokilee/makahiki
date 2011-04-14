@@ -2,7 +2,7 @@ from django.contrib import admin
 from django import forms
 from django.forms.util import ErrorList
 
-from components.prizes.models import Prize, RaffleDeadline
+from components.prizes.models import Prize, RafflePrize, RaffleDeadline
 
 admin.site.register(Prize)
 
@@ -30,3 +30,5 @@ class RaffleDeadlineAdmin(admin.ModelAdmin):
   form = RaffleDeadlineAdminForm
     
 admin.site.register(RaffleDeadline, RaffleDeadlineAdmin)
+
+admin.site.register(RafflePrize)
