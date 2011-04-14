@@ -116,7 +116,7 @@
 
     <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>
-        <form {% get_id_and_classes "news-post-form" %} action="{% url energy_post %}" method="POST">
+        <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST">
           {% csrf_token %}
           <div {% get_id_and_classes "wall-post-errors" %}></div>
           <div {% get_id_and_classes "wall-post" %}>
@@ -127,7 +127,7 @@
         <script type="text/javascript">
           $("#wall-post-submit").click(function() {
             if (!$("#wall-post-submit").button("option", "disabled")) {
-              $.post("{% url energy_post %}", $("#news-post-form").serialize(), function(data) {
+              $.post("{% url news_post %}", $("#news-post-form").serialize(), function(data) {
                 if (data.message) {
                   $("#wall-post-errors").html(data.message);
                 }
@@ -153,7 +153,7 @@
         {% if not posts %}
           <p {% get_id_and_classes "wall-no-posts" %}>There are no posts yet!</p>
         {% endif %}
-
+        
       </fieldset>
     </div>
   </div>
