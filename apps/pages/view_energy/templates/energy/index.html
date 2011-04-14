@@ -44,33 +44,13 @@
       {# </a>   #}
     </div>
     <div {% get_id_and_classes "energy-status-content" %}>
-      {% if over == "over" %}
-        <img src="{{ STATIC_URL}}images/energy/SadFaceIcon.png" width="30" height="30" />
-        <font color="red"><b>
-        Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  
-        Status: {{actual}} kWh ({{diff}} kWh {{over}} goal)
-      </b></font>
-      {% else %}
-        <img src="{{ STATIC_URL}}images/energy/SmileFaceIcon.png" width="30" height="30" />
-        <font color="green"><b>
-        Goal: {{goal}} kWh ({{percent_reduce}}% reduction).  
-        Status: {{actual}} kWh ({{diff}} kWh {{over}} goal)
-      </b></font>
-      {% endif %}
-
       <fieldset {% get_id_and_classes "energy-status-progress" %}>
 	    <legend>Daily Energy Goal Progress</legend>
-        <table {% get_id_and_classes "energy-status-progress-table" %}>
-          <tr>
-            <td>
-             {% include "energy/usage.html" %}
-            </td>
-            <td {% get_id_and_classes "energy-status-progress-about" %}>
-                  Each member receives 20 points<br/>
-                  each day that we make our goal.<br/>
-            </td>
-          </tr>
-        </table>
+       
+           {% include "energy/usage.html" %}
+           <p/> <center> <b>
+           Each member receives 20 points
+           each day that we make our goal. </b></center>   
       </fieldset>
 	
       <fieldset {% get_id_and_classes "energy-status-how" %}>

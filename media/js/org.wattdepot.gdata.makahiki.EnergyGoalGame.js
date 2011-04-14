@@ -62,7 +62,7 @@ org.wattdepot.gdata.makahiki.EnergyGoalGame = function() {
       '<td style="vertical-align: top" align="center">' + goalConsumptionCell + '</td>' +
       '</tr>' +
       '<tr> <td colspan="3" style="font-size: 0.8em">' + captionCell + '</td> </tr>' +
-      '<tr> <td colspan="3" style="font-size: 0.6em">Last check: ' + tstamp + '</td> </tr>' +
+      '<tr> <td colspan="3" style="font-size: 0.7em">Last check: ' + tstamp + '</td> </tr>' +
       '</table>';
     return goalTable;
   }
