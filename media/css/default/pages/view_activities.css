@@ -39,9 +39,16 @@
 	width: 512px;
 }
 
+#activity-task-details-content {
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: left;
+}
+
 #activity-task-form-content {
     text-align: left;
-    padding-left: 100px;
+    padding-left: 50px;
+    font: normal 10pt Arial, Helvetica, sans-serif;
 }
 
 h3.activity-categories-title {

@@ -17,11 +17,9 @@
 <div {% get_id_and_classes "activity-task-stats" %}>  
   <div {% get_id_and_classes "activity-task-stats-box" %}>
     <div {% get_id_and_classes "activity-task-stats-title" %}>
-      {{type}} : {{task.title}}
+      {{type}} : {{task.name}}
     </div>   
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
-      <p/>
-      <center><img src="{{ STATIC_URL}}images/activity/{{type}}.jpg"/></center>
       <p/>
       This {{type}} is worth {{task.point_value}} points.
       {% if type == "commitment" %}
@@ -33,9 +31,21 @@
       <b>Where</b> : {{task.event_location}}
       {% endif %}
       <p/>
-      {{member_all}} people have done this.
+      {{member_all}} people 
+      {% if memer_all <= 1 %}
+        has
+      {% else %}
+        have 
+      {% endif %}
+      done this.
       <p/>
-      {{member_floor}} person in your lounge have done this.
+      {{member_floor}} person in your lounge 
+      {% if member_floor <= 1 %}
+        has
+      {% else %}
+        have 
+      {% endif %}
+      done this.
       <br/>
       {% for user in users %}
          <img src="{% avatar_url user 40 %}"/>
@@ -50,9 +60,15 @@
       About the {{type}}
     </div>
     <div {% get_id_and_classes "activity-task-details-content" %}>
+      <p/>
+      <center><b>{{task.title}}</b></center>
+      
+      <p/>
+      
       {{task.description|markdown}}
 
-      <center> <b>  
+      <p/>  
+      <center> <b>
       {% if pau %}
         {% if approved %}
           Congratulations! You did it !
@@ -63,7 +79,8 @@
           {% endif %}
           {% if type == "commitment" %}
               Thank you! You've earned 2 points by committing.<br/>
-              After the commitment period, you will earn your points automatically.
+              Come back in 5 days of meeting your commitment for the rest of 
+              your points.
           {% endif %}
           {% if type == "activity" %}
               Thank you! <br/> Your request for points is pending approval.
@@ -73,17 +90,17 @@
       {% else %} 
         {% if type == "commitment" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            Commit it to get points
+            <button>I will do this!</button>
           </a>
         {% endif %}  
         {% if type == "event" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            I want to sign up
+            <button>I want to sign up</button>
           </a>
         {% endif %} 
         {% if type == "activity"%} 
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            I Did it, Click here to get points
+            <button>I Did This!</button>
           </a> 
         {% endif %} 
       {% endif %}
@@ -109,7 +126,7 @@ function task_form_overlay()
   el.style.visibility = "visible";
   $("#setup-dialog").dialog({
     modal: true,
-    width: 700,
+    width: 500,
     closeOnEscape: false,
     position: ["center", 75]
     });
