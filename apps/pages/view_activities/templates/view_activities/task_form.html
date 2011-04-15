@@ -26,7 +26,10 @@
      {% endif %}
    {% endif %}
    {% if type == "commitment" %}     {# commitment #}
-     You will earn 2 points for committing to this commitment.
+     You will earn 2 points for making this commitment.
+     <br/>
+     Come back in 5 days of meeting your commitment for the rest of your 
+     points.
    {% endif %}   
   </p>
   
@@ -52,10 +55,13 @@
     {%endif%}
   {% endif %}
   
+  {% if type != "commitment" %} 
   <p/>Additional Comments:
     <br/>
     {{ form.comment }} 
   <p/>
+  {% endif %}
   <input type="submit" value="Submit" />
+  
 </form>
 </div>

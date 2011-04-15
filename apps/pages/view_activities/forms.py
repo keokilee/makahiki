@@ -8,7 +8,7 @@ class ActivityTextForm(forms.Form):
   question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   code = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   
-  response = forms.CharField(max_length=255, required=False)
+  response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=False)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   
   def __init__(self, *args, **kwargs):  
