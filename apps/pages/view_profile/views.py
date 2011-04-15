@@ -35,8 +35,7 @@ def index(request):
       profile.contact_email = form.cleaned_data["contact_email"]
       profile.contact_text = form.cleaned_data["contact_text"]
       profile.contact_carrier = form.cleaned_data["contact_carrier"]
-      profile.enable_help = form.cleaned_data["enable_help"]
-      print profile.enable_help
+      # profile.enable_help = form.cleaned_data["enable_help"]
       try:
         fb_profile = user.facebookprofile
         fb_profile.can_post = form.cleaned_data["facebook_can_post"]
@@ -45,6 +44,9 @@ def index(request):
         pass
         
       profile.save()
+      form.message = "Your changes have been saved"
+    else:
+      form.message = "Please correct the errors below."
       
   # If this is a new request, initialize the form.
   if not form:

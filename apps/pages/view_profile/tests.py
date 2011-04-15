@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from components.floors.models import Floor
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
+from pages.view_profile.forms import ProfileForm
 
 class ProfileFunctionalTestCase(TestCase):
   fixtures = ["base_floors.json"]
@@ -25,6 +26,39 @@ class ProfileFunctionalTestCase(TestCase):
     """Check that we can load the index page."""
     response = self.client.get(reverse("profile_index"))
     self.failUnlessEqual(response.status_code, 200)
+    
+  def testProfileUpdate(self):
+    """Tests updating the user's profile."""
+    # Construct a valid form
+    user_form = {
+        "display_name": "Test User",
+        "about": "I rock",
+        "stay_logged_in": True,
+        "contact_email": "user@test.com",
+        "contact_text": "8088675309",
+        "contact_carrier": "t-mobile",
+    }
+    # Test posting a valid form.
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "Your changes have been saved", 
+        msg_prefix="Successful form update should have a success message.")
+        
+    # Test posting an invalid form.
+    user_form.update({"display_name": ""})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "This field is required", 
+        msg_prefix="User should not have a valid display name.")
+    
+    user_form.update({"display_name": "Test User", "contact_email": "foo"})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "Enter a valid e-mail address", 
+        msg_prefix="User should not have a valid email address")
+        
+    user_form.update({"contact_email": "user@test.com", "contact_text": "foo"})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "Phone numbers must be in XXX-XXX-XXXX format.", 
+        msg_prefix="User should not have a valid contact number.")
+    
     
   def testActivityAchievement(self):
     """Check that the user's activity achievements are loaded."""
