@@ -1,0 +1,31 @@
+{% load class_tags %}
+
+{% with raffle.deadline as deadline %}
+<div {% get_id_and_classes "prizes-raffle" %}>
+  <div {% get_id_and_classes "prizes-raffle-box" %}>
+    <div {% get_id_and_classes "prizes-raffle-title" %}>
+      {{deadline.round_name}} Raffle Game
+    </div>
+    <div {% get_id_and_classes "prizes-raffle-content" %}>
+      <div {% get_id_and_classes "prizes-raffle-info" %}>
+        Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
+      </div>
+      <table {% get_id_and_classes "prizes-raffle-table" %}>
+        <tr>
+          <th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th>
+          <th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th>
+          <th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th>
+          <th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th>
+          <th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th>
+        </tr>
+        {% include "view_prizes/raffle_list.html" %}
+      </table>
+      <div id="prizes-raffle-footer">
+        You receive 1 raffle ticket for every {{raffle.points_per_ticket}} awarded Kukui Cup points.<br/>
+        <span id="prizes-raffle-footer-deadline">Deadline for {{deadline.round_name}} submissions: {{deadline.end_date|date:"l, F j, Y"}}, {{deadline.end_date|date:"gA"}}</span>
+        Winners will be notified via email the following day.
+      </div>
+    </div>
+  </div>
+</div>
+{% endwith %}

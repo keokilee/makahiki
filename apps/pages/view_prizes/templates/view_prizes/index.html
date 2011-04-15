@@ -22,77 +22,7 @@
   </div>
 </div>
 
-<div {% get_id_and_classes "prizes-raffle" %}>
-  <div {% get_id_and_classes "prizes-raffle-box" %}>
-    <div {% get_id_and_classes "prizes-raffle-title" %}>
-      Round 1 Raffle Game
-    </div>
-    <div {% get_id_and_classes "prizes-raffle-content" %}>
-      <div {% get_id_and_classes "prizes-raffle-info" %}>
-        Your total raffle tickets: 2 Allocated right now: 1 Available: 1
-      </div>
-      <table {% get_id_and_classes "prizes-raffle-table" %}>
-        <tr>
-          <th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th>
-          <th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th>
-          <th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th>
-          <th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th>
-          <th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th>
-        </tr>
-        <tr>
-          <td class="{% insert_classes "prize-item" %}">
-            <img src="{{STATIC_URL}}images/prizes/bikehelmet.jpg"/>
-            <a href="#">
-              Bike helmet 
-            </a>
-          </td>
-          <td class="{% insert_classes "prize-number" %}">1</td>
-          <td class="{% insert_classes "prize-number" %}">5</td>
-          <td class="{% insert_classes "prize-number" %}">0%</td>
-          <td>
-            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
-            <a class="{% insert_classes "prizes-remove-button" %}" href="#">-1</a>
-          </td>
-        </tr>
-        <tr class="alt-row">
-          <td class="{% insert_classes "prize-item" %}">
-            <img src="{{STATIC_URL}}images/prizes/surf_lessons.jpg"/>
-            <a href="#">
-              Surf lessons
-            </a>
-          </td>
-          <td class="{% insert_classes "prize-number" %}">0</td>
-          <td class="{% insert_classes "prize-number" %}">13</td>
-          <td class="{% insert_classes "prize-number" %}">0%</td>
-          <td>
-            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
-            <a class="{% insert_classes "prizes-remove-button" %}" href="#">-1</a>
-          </td>
-        </tr>
-        <tr>
-          <td class="{% insert_classes "prize-item" %}">
-            <img src="{{STATIC_URL}}images/prizes/carbon-credits.jpg"/>
-            <a href="#">
-              Carbon credits
-            </a>
-          </td>
-          <td class="{% insert_classes "prize-number" %}">0</td>
-          <td class="{% insert_classes "prize-number" %}">10</td>
-          <td class="{% insert_classes "prize-number" %}">N/A</td>
-          <td>
-            <a class="{% insert_classes "prizes-add-button" %}" href="#">+1</a>
-            <a class="{% insert_classes "prizes-remove-button" %}" href="#">-1</a>
-          </td>
-        </tr>
-      </table>
-      <div id="prizes-raffle-footer">
-        You receive 1 raffle ticket for every 25 awarded Kukui Cup points.<br/>
-        <span id="prizes-raffle-footer-deadline">Deadline for Round 1 submissions: Sunday, October 9, 2011, 8pm</span>
-        Round 1 winners to be notified via email on Monday, October 10, 2011 at 10am
-      </div>
-    </div>
-  </div>
-</div>
+{% include "view_prizes/raffle_box.html" %}
 {% endblock %}
 
 {% block extra_round_energy %}

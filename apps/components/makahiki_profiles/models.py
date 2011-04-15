@@ -13,6 +13,7 @@ from django.contrib.localflavor.us.models import PhoneNumberField
 
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
+from components.prizes import POINTS_PER_TICKET
 
 class InvalidRoundException(Exception):
   def __init__(self, value):
@@ -137,6 +138,15 @@ class Profile(models.Model):
     
     return Profile.objects.all().order_by("-points", "-last_awarded_submission")[:num_results]
   
+  def available_tickets(self):
+    """
+    Returns the number of raffle tickets the user has available.
+    """
+    total_tickets = self.points / POINTS_PER_TICKET
+    allocated_tickets = self.user.raffleticket_set.count()
+    
+    return total_tickets - allocated_tickets
+    
   def current_round_points(self):
     """Returns the amount of points the user has in the current round."""
     current_round = get_current_round()
@@ -265,7 +275,9 @@ class Profile(models.Model):
     return None
       
   def _last_submitted_before(self, submission_date):
-    """Time of the last task that was completed before the submission date.  Returns None if there are no other tasks."""
+    """
+    Time of the last task that was completed before the submission date.  Returns None if there are no other tasks.
+    """
     
     from components.activities.models import CommitmentMember, ActivityMember
     
@@ -299,11 +311,11 @@ class Profile(models.Model):
     verbose_name_plural = _('profiles')
 
 def create_profile(sender, instance=None, **kwargs):
-    if instance is None:
-        return
-    profile, created = Profile.objects.get_or_create(user=instance)
-    for key in settings.COMPETITION_ROUNDS.keys():
-      entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
+  if instance is None:
+      return
+  profile, created = Profile.objects.get_or_create(user=instance)
+  for key in settings.COMPETITION_ROUNDS.keys():
+    entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
 
 post_save.connect(create_profile, sender=User)
 
