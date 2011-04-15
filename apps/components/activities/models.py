@@ -357,7 +357,7 @@ class ActivityMember(CommonActivityUser):
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
   
-  def save(self):
+  def save(self, *args, **kwargs):
     """Custom save method to award/remove points if the activitymember is approved or rejected."""
     if self.approval_status == u"pending":
       # Mark pending items as submitted.
@@ -391,7 +391,6 @@ class ActivityMember(CommonActivityUser):
       
     elif self.approval_status != u"approved" and self.award_date:
       # Removing user points and resetting award date.
-      
       # Determine how many points to remove.
       if self.activity.has_variable_points:
         points = self.points_awarded
@@ -403,7 +402,6 @@ class ActivityMember(CommonActivityUser):
       profile.save()
       self.award_date = None
       self.submission_date = None # User will have to resubmit.
-      
       
     super(ActivityMember, self).save()
     
