@@ -310,14 +310,6 @@ clear: both;
   background-color: #dbd7af;
 }
 
-#quest-box ul a {
-  text-decoration: none;
-}
-
-#quest-box a:hover {
-  text-decoration: underline;
-}
-
 #quest-complete-dialog {
   text-align: left;
 }
