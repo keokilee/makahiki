@@ -2,9 +2,24 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
+from pages.view_help.forms import AskAdminForm
+
 @login_required
 def index(request):
-  return render_to_response("help/index.html", {}, context_instance=RequestContext(request))
+  form = None
+  if request.method == "POST":
+    form = AskAdminForm(request.POST)
+    if form.is_valid():
+      user = request.user
+      email = user.get_profile().contact_email or user.email
+      form.success = "Your question has been sent to the Kukui Cup administrators. We will email a response to " + email
+      
+  if not form:
+    form = AskAdminForm()
+    
+  return render_to_response("help/index.html", {
+      "form": form,
+  }, context_instance=RequestContext(request))
   
 def defineKukuiCup(request):
   return render_to_response("help/theKukuiCup.html", {}, context_instance=RequestContext(request))
