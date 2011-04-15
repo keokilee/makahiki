@@ -19,7 +19,7 @@ class DormFloorPrizeTests(TestCase):
     This prize is not saved, as the round field is not yet set.
     """
     image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
-    self.image = ImageFile(open(image_path, "r"))
+    image = ImageFile(open(image_path, "r"))
     self.prize = Prize(
         title="Super prize!",
         short_description="A test prize",
@@ -249,5 +249,5 @@ class OverallFloorPrizeTest(TestCase):
     Deletes the created image file in prizes.
     """
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    self.prize.image.delete()
     self.prize.delete()
-    self.image.delete()

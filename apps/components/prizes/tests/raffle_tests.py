@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.files.images import ImageFile
 from django.contrib.auth.models import User
 
-from components.prizes.models import RafflePrize, RaffleTicket
+from components.prizes.models import RafflePrize, RaffleTicket, RaffleDeadline
 from components.floors.models import Dorm, Floor
 
 class RafflePrizeTests(TestCase):
@@ -18,14 +18,6 @@ class RafflePrizeTests(TestCase):
     Sets up a test individual prize for the rest of the tests.
     This prize is not saved, as the round field is not yet set.
     """
-    image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
-    image = ImageFile(open(image_path, "r"))
-    self.prize = RafflePrize(
-        title="Super prize!",
-        description="A test prize",
-        image=image,
-    )
-    
     self.saved_rounds = settings.COMPETITION_ROUNDS
     start = datetime.date.today()
     end = start + datetime.timedelta(days=7)
@@ -39,6 +31,23 @@ class RafflePrizeTests(TestCase):
     
     # Create a test user
     self.user = User.objects.create_user("user", "user@test.com", password="changeme")
+    
+    # Set up raffle deadline
+    self.deadline = RaffleDeadline(
+        round_name="Round 1", 
+        pub_date=datetime.datetime.today() - datetime.timedelta(hours=1),
+        end_date=datetime.datetime.today() + datetime.timedelta(days=5),
+    )
+    self.deadline.save()
+    
+    image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
+    image = ImageFile(open(image_path, "r"))
+    self.prize = RafflePrize(
+        title="Super prize!",
+        description="A test prize",
+        image=image,
+        deadline=self.deadline,
+    )
     
   def testTicketAllocation(self):
     """
