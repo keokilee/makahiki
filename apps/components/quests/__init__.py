@@ -3,6 +3,7 @@ from lib.brabeion import badges
 from components.quests.models import Quest, QuestMember
 from components.activities import is_pau
 from components.activities.models import ActivityBase, ActivityMember, CommitmentMember
+from components.prizes.models import RaffleTicket
 
 # The number of quests a user can have at any one time.
 MAX_AVAILABLE_QUESTS = 3
@@ -20,10 +21,9 @@ def has_task(user, task_name):
   
 def allocated_tickets(user):
   """
-  Returns True if the user has ever allocated tickets.
+  Returns True if the user has any allocated tickets.
   """
-  # TODO: Implement when the raffle is implemented.
-  raise Exception("Not implemented yet")
+  return user.raffleticket_set.count() > 0
   
 def num_activities_completed(user, num_activities, category=None):
   """
@@ -71,8 +71,11 @@ def process_conditions_string(conditions_string, user):
   """
   conditions = conditions_string
   for name in CONDITIONS.keys():
-    conditions = conditions.replace(name + "(", name + "(user,")
-  
+    if name == "allocated_tickets":
+      conditions = conditions.replace(name + "(", name + "(user")
+    else:
+      conditions = conditions.replace(name + "(", name + "(user,")
+    
   allow_dict = CONDITIONS.copy()
   allow_dict.update({"True": True, "False": False, "user": user})
   

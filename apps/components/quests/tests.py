@@ -7,9 +7,10 @@ from django.core.urlresolvers import reverse
 from lib.brabeion import badges
 
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
-from components.quests import get_quests, has_task, num_activities_completed, badge_awarded, possibly_completed_quests
+from components.quests import get_quests, has_task, num_activities_completed, badge_awarded, possibly_completed_quests, allocated_tickets
 from components.quests.models import Quest, QuestMember
 from components.quests.admin import QuestAdminForm
+from components.prizes.models import RaffleDeadline, RafflePrize, RaffleTicket
 
 class QuestTest(TestCase):
   def setUp(self):
@@ -170,6 +171,43 @@ class QuestConditionsTest(TestCase):
         completion_conditions="False",
     )
     self.quest.save()
+    
+  def testAllocatedTicket(self):
+    """
+    Test that allocated_ticket works.
+    """
+    # Create a raffle prize.
+    deadline = RaffleDeadline(
+        round_name="Overall", 
+        pub_date=datetime.datetime.today() - datetime.timedelta(hours=1),
+        end_date=datetime.datetime.today() + datetime.timedelta(days=5),
+    )
+    deadline.save()
+    prize = RafflePrize(
+        title="Super prize!",
+        description="A test prize",
+        deadline=deadline,
+    )
+    prize.save()
+    
+    # Test within context of a quest
+    self.quest.unlock_conditions = "allocated_tickets()"
+    self.quest.save()
+    quests = get_quests(self.user)
+    self.assertTrue(self.quest not in quests["available_quests"], "User should not be able to participate in this quest.")
+    
+    self.quest.unlock_conditions = "not allocated_tickets()"
+    self.quest.completion_conditions = "allocated_tickets()"
+    self.quest.save()
+    quests = get_quests(self.user)
+    self.assertTrue(self.quest in quests["available_quests"], "User should be able to participate in this quest.")
+    self.quest.accept(self.user)
+    
+    # Add a raffle ticket and test that the user completed the quest.
+    ticket = RaffleTicket(raffle_prize=prize, user=self.user)
+    ticket.save()
+    completed_quests = possibly_completed_quests(self.user)
+    self.assertTrue(self.quest in completed_quests, "User should have completed the quest.")
     
   def testActivitiesNumCompleted(self):
     """Test that completing an activity works with num_activities_completed and has_task."""
