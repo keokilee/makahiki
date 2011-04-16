@@ -2,13 +2,13 @@ from lib.brabeion import badges
 
 from components.quests.models import Quest, QuestMember
 from components.activities import is_pau
-from components.activities.models import ActivityBase, ActivityMember, CommitmentMember
+from components.activities.models import ActivityBase, ActivityMember, CommitmentMember, Category
 from components.prizes.models import RaffleTicket
 
 # The number of quests a user can have at any one time.
 MAX_AVAILABLE_QUESTS = 3
 
-def has_task(user, task_name):
+def has_task(user, name=None, task_type=None):
   """
   Determines if the user is participating in a task.
   In the case of a activity, this returns True if the user submitted or completed the activity.
@@ -16,39 +16,66 @@ def has_task(user, task_name):
   In the case of a event or excursion, this returns True if the user entered their attendance code.
   In the case of a survey, this returns True if the user completed the survey.
   """
-  task = ActivityBase.objects.get(name=task_name)
-  return is_pau(user, task)
+  if not name and not task_type:
+    raise Exception("Either name or task_type must be specified.")
+    
+  if name:
+    task = ActivityBase.objects.get(name=name)
+    return is_pau(user, task)
+  else:
+    task_type = task_type.lower()
+    if task_type == "commitment":
+      return user.commitmentmember_set.count() > 0
+    else:
+      return user.activitymember_set.filter(activity__type=task_type).count() > 0
   
-def allocated_tickets(user):
+def allocated_ticket(user):
   """
   Returns True if the user has any allocated tickets.
   """
   return user.raffleticket_set.count() > 0
   
-def num_activities_completed(user, num_activities, category=None):
+def num_tasks_completed(user, num_tasks, category_name=None, task_type=None):
   """
   Returns True if the user has completed the requested number of tasks.
   """
-  if category:
-    user_completed = ActivityMember.objects.filter(
+  # Check if we have a type and/or category.
+  if task_type:
+    task_type = task_type.lower()
+    
+  category = None
+  if category_name:
+    category = Category.objects.get(name=category_name)
+    
+  user_completed = 0
+  if not task_type or task_type != "commitment":
+    # Build the query for non-commitment tasks.
+    query = ActivityMember.objects.filter(
         user=user,
         award_date__isnull=False,
-    ).count()
-    user_completed = user_completed + CommitmentMember.objects.filter(
+    )
+    
+    if task_type:
+      query.filter(activity__type=task_type)
+
+    if category:
+      query.filter(activity__category=category)
+    
+    user_completed = user_completed + query.count()
+    
+  if not task_type or task_type == "commitment":
+    # Build the query for commitment tasks.
+    query = CommitmentMember.objects.filter(
         user=user,
-        award_date__isnull=False
-    ).count()
-  else:
-    user_completed = ActivityMember.objects.filter(
-        user=user,
-        award_date__isnull=False
-    ).count()
-    user_completed = user_completed + CommitmentMember.objects.filter(
-        user=user,
-        award_date__isnull=False
-    ).count()
+        award_date__isnull=False,
+    )
+    
+    if category:
+      query.filter(commitment__category=category)
+      
+    user_completed = user_completed + query.count()
   
-  return user_completed >= num_activities
+  return user_completed >= num_tasks
 
 def badge_awarded(user, badge_slug):
   # print user.badges_earned.values("slug").all().values()
@@ -60,8 +87,8 @@ def badge_awarded(user, badge_slug):
   
 CONDITIONS = {
   "has_task": has_task, 
-  "allocated_tickets": allocated_tickets, 
-  "num_activities_completed": num_activities_completed, 
+  "allocated_ticket": allocated_ticket, 
+  "num_tasks_completed": num_tasks_completed, 
   "badge_awarded": badge_awarded,
 }
 
@@ -71,7 +98,7 @@ def process_conditions_string(conditions_string, user):
   """
   conditions = conditions_string
   for name in CONDITIONS.keys():
-    if name == "allocated_tickets":
+    if name == "allocated_ticket":
       conditions = conditions.replace(name + "(", name + "(user")
     else:
       conditions = conditions.replace(name + "(", name + "(user,")
