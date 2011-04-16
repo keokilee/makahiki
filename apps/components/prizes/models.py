@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from components.makahiki_base import get_round_info
 from components.makahiki_profiles.models import Profile
@@ -99,3 +100,73 @@ class Prize(models.Model):
     
   def _energy_leader(self, floor):
     raise Exception("Energy leader information is not implemented here.  Needs to be implemented at view/controller layer.")
+    
+class RaffleDeadline(models.Model):
+  ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
+  
+  round_name = models.CharField(
+      max_length=20, 
+      choices=ROUND_CHOICES,
+      help_text="The round in which this prize can be won.",
+      unique=True,
+  )
+  pub_date = models.DateTimeField()
+  end_date = models.DateTimeField()
+  
+  def __unicode__(self):
+    return "%s deadline" % self.round_name
+    
+class RafflePrize(models.Model):
+  ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
+  
+  title = models.CharField(max_length=30, help_text="The title of your prize.")
+  description = models.TextField(
+      help_text="Description of the prize. This should include information about who can win it."
+  )
+  image = models.ImageField(
+      max_length=1024, 
+      upload_to="prizes", 
+      blank=True,
+      help_text="A picture of your prize."
+  )
+  deadline = models.ForeignKey(RaffleDeadline)
+  winner = models.ForeignKey(User, null=True, blank=True)
+  
+  def __unicode__(self):
+    return "%s: %s" % (self.deadline.round_name, self.title)
+  
+  def add_ticket(self, user):
+    """
+    Adds a ticket from the user if they have one.  Throws an exception if they cannot add a ticket.
+    """
+    profile = user.get_profile()
+    if profile.available_tickets() <= 0:
+      raise Exception("This user does not have any tickets to allocate.")
+      
+    ticket = RaffleTicket(raffle_prize=self, user=user)
+    ticket.save()
+  
+  def remove_ticket(self, user):
+    """
+    Removes an allocated ticket.
+    """
+    # Get the first ticket that matches the query.
+    ticket = RaffleTicket.objects.filter(raffle_prize=self, user=user)[0]
+    ticket.delete()
+    
+  def allocated_tickets(self, user=None):
+    """
+    Returns the number of tickets allocated to this prize.
+    Takes an optional argument to return the number of tickets allocated by the user.
+    """
+    query = self.raffleticket_set.filter(raffle_prize=self)
+    if user:
+      query = query.filter(user=user)
+      
+    return query.count()
+  
+class RaffleTicket(models.Model):
+  user = models.ForeignKey(User)
+  raffle_prize = models.ForeignKey(RafflePrize)
+  created_at = models.DateTimeField(auto_now_add=True, editable=False)
+  updated_at = models.DateTimeField(auto_now=True, editable=False)

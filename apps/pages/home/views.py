@@ -12,8 +12,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 
+from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
-
 import components.makahiki_facebook.facebook as facebook
 from components.makahiki_facebook.models import FacebookProfile
 from pages.home.forms import FacebookForm, ProfileForm
@@ -220,8 +220,15 @@ def setup_complete(request):
     profile = request.user.get_profile()
     if request.method == "POST":
       # User got the question right.
-      if not profile.setup_complete:
-        profile.add_points(15, datetime.datetime.today())
+      # Originally, we added the points directly, but now we're going to link it to an activity.
+      activity_name = settings.SETUP_WIZARD_ACTIVITY_NAME
+      try:
+        activity = Activity.objects.get(name=activity_name)
+        ActivityMember.objects.get_or_create(activity=activity, user=profile.user, approval_status="approved")
+        # If this was created, it's automatically saved.
+      except Activity.DoesNotExist:
+        # profile.add_points(15, datetime.datetime.today())
+        pass # Don't add anything if we can't link to the activity.
         
     profile.setup_complete = True
     profile.save()

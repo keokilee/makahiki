@@ -75,8 +75,11 @@
       </div>
       <div {% get_id_and_classes "help-ask-content" %}>
         Got a question that's not answered here? Type it below and an admin will email you the answer.
-        <form>
-          <textarea {% get_id_and_classes "help-ask-form" %}></textarea>
+        <form {% get_id_and_classes "help-ask-form" %} action="{% url help_index %}" method="POST">
+          {% if form.question.errors %}
+          {{form.question.errors}}
+          {% endif %}
+          {{form.question}}
           <div {% get_id_and_classes "help-ask-submit" %}>
             <input type="submit" value="Send" />
             <div style="clear: both"></div>
@@ -86,4 +89,20 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_body %}
+{% if form.success %}
+<div {% get_id_and_classes "form-success" %} title="Thank you!">
+  {{form.success}}
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#form-success").dialog({
+      modal: true
+    })
+  });
+</script>
+{% endif %}
 {% endblock %}

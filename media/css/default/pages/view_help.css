@@ -58,7 +58,11 @@
 	padding: 1em;
 }
 
-#help-ask-form {
+#help-ask-form textarea {
 	width: 97%;
 	height: 50px;
+}
+
+#form-success {
+  text-align: left;
 }

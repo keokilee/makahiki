@@ -1,30 +1,24 @@
 {% load class_tags %}
 <div {% get_id_and_classes "energy-power-box" %}>
-  <div {% get_id_and_classes "energy-power-gauge-label" %}>Energy (kWh)</div>
-  <table {% get_id_and_classes "energy-power-gauge-table" %}>
-    <tr>
-      <td {% get_id_and_classes "energy-power-gauge-table-goal" %}>Goal:</td>
-      <td> 
-        <div style="width:{{baseline_px}}px; height:20px; background-color:#F5F3E5; border: 1px solid black">
-            <div style="width:{{percent}}%; height:20px; background-color:#3CB371; border-right:1px black solid;">
-            <span style="position: absolute; width: 100px; font-size: small; font-weight: bold">&nbsp;{{goal}}</span>
-            <span style="position: absolute; width: {{baseline_px}}px; text-align: right; font-size: small; font-weight: bold">{{baseline}}</span>
-            </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td {% get_id_and_classes "energy-power-gauge-table-actual" %}>Actual:</td>
-      <td>
-        <div style="width:{{actual_px}}px; height:20px; background-color:#3CB371; border: 1px solid black">
-            <span style="position: absolute; width: 100px; font-size: small; font-weight: bold">&nbsp;{{actual}}</span>
-        </div>
-      </td>
-    </tr>
-  </table>
+  
+<div id="EnergyGoalGame-visualization"></div> 
 
-  <div {% get_id_and_classes "energy-power-goal-info" %}>
-    {{over}} daily goal by {{diff}}kWh!
-  </div>
-  <div {% get_id_and_classes "energy-power-goal-updated" %}>Last Update: {{last_update}}</div>
 </div>
+
+<script type="text/javascript"> 
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
+  var spreadsheetUrl = 'https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdEdmU21FaWtlSlNSSnQ3YmNxUFBWaFE';
+  var refreshInterval = 15; // refresh every 15 seconds.
+ 
+  // Load the visualization API and the spreadsheet, then call displayEnergy.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetUrl, refreshInterval);  
+ 
+  function displayEnergy(datatable) {
+    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var options = {};  // no options currently supported. 
+    var energyChart = new org.wattdepot.gdata.makahiki.EnergyGoalGame();
+    energyChart.draw('EnergyGoalGame-visualization', source, datatable, options);
+  }
+})();
+</script> 

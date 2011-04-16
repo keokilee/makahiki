@@ -240,7 +240,7 @@ a {
 	font-size: .9em;
 }
 
-#header-floor-points, #header-floor-rank {
+#header-floor-points, #header-floor-rank, #header-floor-energy {
 	font-size: .9em;
 	width: 120px;
 	margin-top: 5px;
@@ -258,6 +258,10 @@ clear: both;
 	margin: 0;
 	padding-right: 5px;
 }
+
+#header-text {
+}
+
 
 #header-floor-image {
 	float: right;
@@ -295,7 +299,6 @@ clear: both;
 #quest-box li {
   margin: 10px;
   padding: 5px;
-    
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -304,14 +307,6 @@ clear: both;
 
 #quest-box li.selected {
   background-color: #dbd7af;
-}
-
-#quest-box ul a {
-  text-decoration: none;
-}
-
-#quest-box a:hover {
-  text-decoration: underline;
 }
 
 #quest-complete-dialog {

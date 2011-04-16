@@ -107,7 +107,11 @@ def __add_commitment(request, commitment_id):
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
     user.message_set.create(message="You are now committed to \"%s\"" % commitment.title)
-  
+
+    #increase point
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    user.get_profile().save()
+    
     # Check for Facebook.
     try:
       import makahiki_facebook.facebook as facebook

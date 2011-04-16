@@ -44,14 +44,14 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
     sel.click("skip")
     for i in range(60):
         try:
-            if sel.is_element_present("next"): break
+            if sel.is_element_present("//button[@id='next' and @role=\"button\"]"): break
         except: pass
         time.sleep(1)
     else: self.fail("time out")
     try: self.failUnless(sel.is_text_present("Customize your Kukui Cup profile"))
     except AssertionError, e: self.verificationErrors.append(str(e))
     sel.type("id_display_name", "")
-    sel.click("next")
+    sel.click("//button[@id='next' and @role=\"button\"]")
     for i in range(60):
         try:
             if sel.is_text_present("This field is required."): break
@@ -68,27 +68,23 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
     sel.click("//button[@id='next' and @role=\"button\"]")
     for i in range(60):
         try:
-            if sel.is_text_present("Next ->\nget your points!"): break
+            if sel.is_text_present("Introduction Video"): break
         except: pass
         time.sleep(1)
     else: self.fail("time out")
-    try: self.failUnless(sel.is_text_present("Introduction Video"))
-    except AssertionError, e: self.verificationErrors.append(str(e))
-    sel.click("next")
+    sel.click("//button[@id='next' and @role=\"button\"]")
     for i in range(60):
         try:
-            if sel.is_text_present("Submit My Answer ->\nalmost done"): break
+            if sel.is_text_present("Verification Question"): break
         except: pass
         time.sleep(1)
     else: self.fail("time out")
-    try: self.failUnless(sel.is_text_present("Verification Question"))
-    except AssertionError, e: self.verificationErrors.append(str(e))
     sel.click("activity-select")
     sel.select("activity-select", "label=Sophomores")
     sel.click("//option[@value='sophomores']")
     for i in range(60):
         try:
-            if sel.is_text_present("Incorrect!"): break
+            if sel.is_text_present("Incorrect! Try again."): break
         except: pass
         time.sleep(1)
     else: self.fail("time out")
@@ -100,7 +96,7 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
         except: pass
         time.sleep(1)
     else: self.fail("time out")
-    sel.click("next")
+    sel.click("//button[@id='next' and @role=\"button\"]")
     for i in range(60):
         try:
             if sel.is_text_present("Go home"): break
@@ -109,7 +105,7 @@ class test_setup_wizard(TestCase, SeleniumTestCaseMixin):
     else: self.fail("time out")
     try: self.failUnless(sel.is_text_present("Introduction Complete"))
     except AssertionError, e: self.verificationErrors.append(str(e))
-    sel.click("home")
+    sel.click("//button[@id='home' and @role=\"button\"]")
     sel.wait_for_page_to_load("30000")
     for i in range(60):
         try:

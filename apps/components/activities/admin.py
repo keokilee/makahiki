@@ -220,7 +220,7 @@ class ActivityAdmin(admin.ModelAdmin):
   )
   form = ActivityAdminForm
   inlines = [TextQuestionInline, QuestionChoiceInline]
-  list_display = ["title", "category", "priority", "is_active", "pub_date", "expire_date",]
+  list_display = ["title", "category", "priority", "pub_date", "expire_date",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]
   def delete_selected(self, request, queryset):

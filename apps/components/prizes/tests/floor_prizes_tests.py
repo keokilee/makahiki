@@ -140,6 +140,7 @@ class DormFloorPrizeTests(TestCase):
     Deletes the created image file in prizes.
     """
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    self.prize.image.delete()
     self.prize.delete()
     
 class OverallFloorPrizeTest(TestCase):
@@ -248,4 +249,5 @@ class OverallFloorPrizeTest(TestCase):
     Deletes the created image file in prizes.
     """
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    self.prize.image.delete()
     self.prize.delete()

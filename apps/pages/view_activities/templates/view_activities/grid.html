@@ -25,7 +25,7 @@
        <div {% get_id_and_classes "activity-category" %}>
     
        {% if task.is_unlock %}
-       <a href="task/{{task.id}}">
+       <a href="task/{{task.id}}" title="{{task.name}}">
        {% if task.type != 'commitment' %}
          <div class="{{task.type}}">
        	    <div class="">

@@ -138,3 +138,7 @@ div.home-item {
 #home-profile-icon:hover {
 	background: transparent url(/site_media/static/css/default/images/icon-profile-lg-over.jpg) top left no-repeat;
 }
+
+#setup-dialog {
+  text-align: left;
+}

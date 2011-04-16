@@ -115,7 +115,8 @@
         modal: true,
         width: 700,
         closeOnEscape: false,
-        position: ["center", 75]
+        position: ["center", 75],
+        open: function(event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
       });
     });
   </script>

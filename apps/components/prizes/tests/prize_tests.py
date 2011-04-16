@@ -65,5 +65,7 @@ class PrizeTest(TestCase):
       self.fail("IntegrityError exception should not be thrown.")
       
     # Make sure to clean up!
+    prize.image.delete()
     prize.delete()
+    prize2.image.delete()
     prize2.delete()

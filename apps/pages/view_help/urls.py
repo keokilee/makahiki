@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    url(r'^$', 'pages.view_help.views.index', name='help_index'),
+  url(r'^$', 'pages.view_help.views.index', name='help_index'),
 	url(r'^defineKukuiCup/$', 'pages.view_help.views.defineKukuiCup', name='help_defineKukuiCup'),
 	url(r'^termsConditions/$', 'pages.view_help.views.termsConditions', name='help_termsConditions'),
 	url(r'^figureBaseline/$', 'pages.view_help.views.figureBaseline', name='help_figureBaseline'),
