@@ -8,7 +8,6 @@
 import os.path
 import posixpath
 import pinax
-import logging
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -299,10 +298,3 @@ if DEMO:
     from demo.competition_settings import *
   except ImportError:
     pass
-	
-# Logging module
-# 
-logging.basicConfig(level=logging.INFO,
-     format='%(levelname)s %(asctime)s %(message)s',
-     filename=os.path.join(PROJECT_ROOT, "apps", "components", "logging", "LogFile", "RoundONE.log"),
-     filemode='a+')
