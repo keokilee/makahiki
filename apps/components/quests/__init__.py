@@ -98,10 +98,8 @@ def process_conditions_string(conditions_string, user):
   """
   conditions = conditions_string
   for name in CONDITIONS.keys():
-    if name == "allocated_ticket":
-      conditions = conditions.replace(name + "(", name + "(user")
-    else:
-      conditions = conditions.replace(name + "(", name + "(user,")
+    conditions = conditions.replace(name + "(", name + "(user,")
+      
     
   allow_dict = CONDITIONS.copy()
   allow_dict.update({"True": True, "False": False, "user": user})
@@ -163,7 +161,7 @@ def get_available_quests(user, num_quests):
   Get the quests the user could participate in.
   """
   quests = []
-  for quest in Quest.objects.exclude(questmember__user=user).order_by('-level'):
+  for quest in Quest.objects.exclude(questmember__user=user).order_by('level'):
     if quest.can_add_quest(user):
       quests.append(quest)
       
