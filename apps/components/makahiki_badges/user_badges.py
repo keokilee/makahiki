@@ -1,6 +1,5 @@
 from lib.brabeion import badges
 from lib.brabeion.base import Badge, BadgeAwarded
-from components.makahiki_profiles.models import Profile
 
 class DailyVisitorBadge(Badge):
   name = "Daily Visitor"
@@ -20,5 +19,27 @@ class DailyVisitorBadge(Badge):
       return BadgeAwarded()
       
 badges.register(DailyVisitorBadge)
+
+class FullyCommittedBadge(Badge):
+  name = "Fully Committed"
+  description = [
+    "Participating in 5 commitments at the same time.",
+  ]
+  slug = "fully_committed"
+  levels = ["Awarded",]
+  events = ["fully_committed",]
+  multiple = False
+  image = "images/badges/badge.gif"
   
+  def award(self, **state):
+    user = state["user"]
+    current_members = user.commitmentmember_set.filter(
+        award_date__isnull=True
+    )
+    print current_members.count()
+    if current_members.count() == 5:
+      return BadgeAwarded()
+      
+badges.register(FullyCommittedBadge)
+
   

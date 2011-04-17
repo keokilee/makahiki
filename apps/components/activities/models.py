@@ -7,6 +7,8 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 
+from lib.brabeion import badges
+
 from components.floors.models import Post
 from components.makahiki_base.models import Like
 
@@ -305,9 +307,12 @@ class CommitmentMember(CommonBase):
 
         post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
         post.save()
-
+        
     super(CommitmentMember, self).save()
-  
+    
+    # Note, possibly_award is here because the member needs to be saved.
+    badges.possibly_award_badge("fully_committed", user=self.user)
+    
   def delete(self):
     """Custom delete method to remove the points for completed commitments."""
     profile = self.user.get_profile()

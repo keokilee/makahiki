@@ -1,11 +1,15 @@
+import datetime
+
 from django.test import TestCase
 from django.contrib.auth.models import User
 
 from lib.brabeion import badges
 
-from components.makahiki_badges.user_badges import DailyVisitorBadge
+from components.makahiki_badges.user_badges import DailyVisitorBadge, FullyCommittedBadge
+from components.activities.models import Commitment, CommitmentMember
 
 badges.register(DailyVisitorBadge)
+badges.register(FullyCommittedBadge)
 
 class DailyVisitorBadgeTest(TestCase):
   def test_awarding(self):
@@ -29,3 +33,37 @@ class DailyVisitorBadgeTest(TestCase):
     
     self.assertEqual(user.badges_earned.count(), 1, "Check that a badge has been awarded.")
     self.assertEqual(user.badges_earned.all()[0].slug, "dailyvisitor", "Check that the daily visitor badge was awarded.")
+    
+class FullyCommittedBadgeTest(TestCase):
+  def test_awarding(self):
+    """
+    Tests that the fully committed badge is awarded to a user.
+    """
+    user = User(username="testuser", password="password")
+    user.save()
+    
+    
+    commitments = []
+    # Create 5 test commitments.
+    for i in range(0, 5):
+      commitment = Commitment(
+          title="Test commitment %i" % i,
+          description="A commitment!",
+          point_value=10,
+      )
+      commitment.save()
+      commitments.append(commitment)
+    
+    # Add the commitments one by one and see if the user earned a badge.
+    # The badge should not be awarded until the very end.
+    for index, commitment in enumerate(commitments):
+      self.assertEqual(user.badges_earned.count(), 0, "Badge should not be awarded after %i commitments" % index)
+      member = CommitmentMember(user=user, commitment=commitment, award_date=datetime.datetime.today())
+      member.save()
+      self.assertEqual(user.badges_earned.count(), 0, "Badge should not be awarded after commitment %i is awarded" % index)
+      member.award_date = None
+      member.save()
+      
+    self.assertEqual(user.badges_earned.count(), 1, "A badge should have been awarded.")
+    self.assertEqual(user.badges_earned.all()[0].slug, "fully_committed", "Check that the Fully Committed badge was awarded.")
+      
