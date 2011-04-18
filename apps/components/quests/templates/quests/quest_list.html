@@ -9,6 +9,11 @@
       <a href="#" class="quest-title" style="font-weight: bold">{{quest.name}}</a>
       <div class="quest-description" style="display:none">
         {{quest.description|markdown}}
+        <div class="quest-options" style="float: right">
+          <form action="{% url quests_cancel quest.id %}" method="POST" style="display: inline">
+            <button type="submit" style="margin-right: 20px">Cancel this quest</button>
+          </form>
+        </div>
         <div style="clear:both"></div>
       </div>
     </li>

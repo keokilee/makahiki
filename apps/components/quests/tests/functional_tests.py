@@ -88,6 +88,33 @@ class QuestFunctionalTestCase(TestCase):
     self.assertNotContains(response, "Test quest", msg_prefix="Test quest should not be shown.")
     self.assertFalse(response.context["QUESTS"].has_key("completed"), "There should not be any completed quests.")
     
+  def testCancelQuest(self):
+    """Test that a user can cancel their participation in a quest."""
+    quest = Quest(
+        name="Test quest",
+        quest_slug="test_quest",
+        description="test quest",
+        level=1,
+        unlock_conditions="True",
+        completion_conditions="False",
+    )
+    quest.save()
+    
+    response = self.client.post(
+        reverse("quests_accept", args=(quest.id,)), 
+        follow=True,
+        HTTP_REFERER=reverse("home_index"),
+    )
+    self.assertTrue(quest in response.context["QUESTS"]["user_quests"], "User should be participating in the test quest.")
+    response = self.client.post(
+        reverse("quests_cancel", args=(quest.id,)), 
+        follow=True,
+        HTTP_REFERER=reverse("home_index"),
+    )
+    self.assertRedirects(response, reverse("home_index"))
+    self.assertTrue(quest not in response.context["QUESTS"]["user_quests"], "Test quest should not be in user's quests.")
+    self.assertTrue(quest in response.context["QUESTS"]["available_quests"], "Test quest should be in available quests.")
+    
   def testQuestCompletion(self):
     """Test that a user gets a dialog box when they complete a quest."""
     quest = Quest(

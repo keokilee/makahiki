@@ -30,3 +30,13 @@ def opt_out(request, quest_id):
     return HttpResponseRedirect(referer)
     
   raise Http404
+  
+@login_required
+def cancel(request, quest_id):
+  if request.method == "POST":
+    referer = request.META["HTTP_REFERER"]
+    member = get_object_or_404(QuestMember, quest__id=quest_id, user=request.user)
+    member.delete()
+    return HttpResponseRedirect(referer)
+    
+  raise Http404

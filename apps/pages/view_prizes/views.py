@@ -6,12 +6,14 @@ from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.views.decorators.cache import never_cache
 
 from components.makahiki_base import get_round_info, get_current_round
 from components.prizes import POINTS_PER_TICKET
 from components.prizes.models import Prize, RafflePrize, RaffleDeadline
 
 @login_required
+@never_cache
 def index(request):
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
