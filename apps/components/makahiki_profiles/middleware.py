@@ -1,6 +1,9 @@
 import datetime
 
+from components.makahiki_badges.user_badges import DailyVisitorBadge
 from lib.brabeion import badges
+
+badges.register(DailyVisitorBadge)
 
 class LoginTrackingMiddleware(object):
   """

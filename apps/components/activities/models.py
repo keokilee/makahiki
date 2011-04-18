@@ -7,7 +7,11 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 
+# Register badges immediately.
+from components.makahiki_badges.user_badges import FullyCommittedBadge
 from lib.brabeion import badges
+
+badges.register(FullyCommittedBadge)
 
 from components.floors.models import Post
 from components.makahiki_base.models import Like

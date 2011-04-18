@@ -17,8 +17,6 @@ class DailyVisitorBadge(Badge):
     visits = user.get_profile().daily_visit_count
     if visits >= 3:
       return BadgeAwarded()
-      
-badges.register(DailyVisitorBadge)
 
 class FullyCommittedBadge(Badge):
   name = "Fully Committed"
@@ -36,10 +34,9 @@ class FullyCommittedBadge(Badge):
     current_members = user.commitmentmember_set.filter(
         award_date__isnull=True
     )
-    print current_members.count()
     if current_members.count() == 5:
       return BadgeAwarded()
       
-badges.register(FullyCommittedBadge)
+
 
   
