@@ -1,4 +1,5 @@
 import os.path
+import urllib2
 
 from components.makahiki_avatar.models import Avatar, avatar_file_path
 from components.makahiki_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
@@ -7,6 +8,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+from django.core.urlresolvers import reverse
 
 from django.db.models import get_app
 from django.core.exceptions import ImproperlyConfigured
@@ -42,6 +46,31 @@ def _get_next(request):
         next = request.path
     return next
 
+def upload_fb(request):
+  """Uploads the user's picture from Facebook."""
+  if request.method == "POST":
+    # Need to download the image from the url and save it.
+    photo_temp = NamedTemporaryFile(delete=True)
+    fb_url = "http://graph.facebook.com/%s/picture?type=large" % request.user.facebookprofile.profile_id
+    # print fb_url
+    photo_temp.write(urllib2.urlopen(fb_url).read())
+    photo_temp.flush()
+    
+    path = avatar_file_path(user=request.user, 
+        filename="fb_photo.jpg")
+    avatar = Avatar(
+        user = request.user,
+        primary = True,
+        avatar = path,
+    )
+    # print "saving facebook photo to " + path
+    new_file = avatar.avatar.storage.save(path, File(photo_temp))
+    avatar.save()
+    
+    return HttpResponseRedirect(reverse("profile_index"))
+  
+  raise Http404
+  
 def change(request, extra_context={}, next_override=None):
     avatars = Avatar.objects.filter(user=request.user).order_by('-primary')
     if avatars.count() > 0:
@@ -77,9 +106,11 @@ def change(request, extra_context={}, next_override=None):
         # if updated and notification:
         #     notification.send([request.user], "avatar_updated", {"user": request.user, "avatar": avatar})
         #     notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "avatar_friend_updated", {"user": request.user, "avatar": avatar})
-        return HttpResponseRedirect(next_override or _get_next(request))
+        # return HttpResponseRedirect(next_override or _get_next(request))
+        return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
+        
     return render_to_response(
-        'avatar/change.html',
+        'makahiki_avatar/change.html',
         extra_context,
         context_instance = RequestContext(
             request,

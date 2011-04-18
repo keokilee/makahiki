@@ -23,7 +23,7 @@
       <td {% get_id_and_classes "profile-form-picture-label" %}><label for="picture">Picture</label></td>
       <td {% get_id_and_classes "profile-form-picture-change" %}>
         <img src="{% avatar_url user 60 %}"/>
-        <a href="{% url avatar_change %}" style="padding-left: 15px" target="_blank">change picture</a>
+        <a href="{% url avatar_change %}" style="padding-left: 15px">change picture</a>
       </td>
     </tr>
     <tr {% get_id_and_classes "profile-form-about" %}>

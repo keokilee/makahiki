@@ -108,6 +108,9 @@ CSS_IDS = {
   "profile-form-contact-email-label": "profile-form-label",
   "profile-form-contact-text-label": "profile-form-label",
   
+  "avatar-change": "content-box",
+  "avatar-change-title": "content-box-title",
+  
   "prizes-list": "content-box",
   "prizes-raffle": "content-box",
   "prizes-raffle-title": "content-box-title",

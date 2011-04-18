@@ -65,6 +65,9 @@ def index(request):
       "contact_carrier": user.get_profile().contact_carrier,
       "facebook_can_post": fb_can_post,
     })
+    
+    if request.GET.has_key("changed_avatar"):
+      form.message = "Your avatar has been updated."
   
   # Retrieve previously awarded tasks, quests, and badges.
   activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]

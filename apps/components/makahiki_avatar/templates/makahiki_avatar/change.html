@@ -1,0 +1,31 @@
+{% extends "makahiki_avatar/base.html" %}
+{% load class_tags %}
+{% load avatar_tags %}
+
+{% block body %}
+<div {% get_id_and_classes "avatar-change" %}>
+  <div {% get_id_and_classes "avatar-change-title" %}>Change your avatar</div>
+  <div {% get_id_and_classes "avatar-change-content" %}>
+    <a href="{% url profile_index %}">Back to profile</a>
+    <p>Your current avatar: </p>
+    {% avatar user %}
+    {% if not avatars %}
+        <p>You do not yet have an avatar.  Please upload one now.</p>
+    {% else %}
+        <p>Upload a new avatar.</p>
+    {% endif %}
+    <form enctype="multipart/form-data" method="POST" action="">
+        <input type="file" name="avatar" value="Avatar Image" />
+        <input type="submit" value="Upload New Image" />
+    </form>
+    {% if user.facebookprofile %}
+    <p>Or upload your picture from Facebook</p>
+    <img src="http://graph.facebook.com/{{user.facebookprofile.profile_id}}/picture"/>
+    <form method="POST" action="upload_fb/">
+      {% csrf_token %}
+      <input type="submit" value="Upload Facebook Picture"/>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

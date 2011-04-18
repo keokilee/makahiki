@@ -164,3 +164,14 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 #profile-badge-catalog a {
 	color: #c86c09;
 }
+
+
+/************** Avatar styles **************/
+
+#avatar-change {
+  margin: 0 16px;
+}
+
+#avatar-change-content {
+  padding: 10px;
+}
