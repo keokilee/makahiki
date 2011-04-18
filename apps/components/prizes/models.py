@@ -121,7 +121,7 @@ class RafflePrize(models.Model):
   
   title = models.CharField(max_length=30, help_text="The title of your prize.")
   description = models.TextField(
-      help_text="Description of the prize. This should include information about who can win it."
+      help_text="Description of the prize.  Uses <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> formatting."
   )
   image = models.ImageField(
       max_length=1024, 

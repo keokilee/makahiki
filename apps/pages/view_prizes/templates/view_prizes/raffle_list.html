@@ -1,14 +1,30 @@
 {% load class_tags %}
 {% load prize_tags %}
+{% load markup %}
 
 {% for prize in raffle.prizes %}
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
   <tr class="{{cycle_class}}">
     <td class="{% insert_classes "prize-item" %}">
       <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
-      <a href="#">
+      <a id="raffle-{{prize.title|slugify}}-link" href="#">
         {{prize.title}}
       </a>
+      
+      <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
+        {{prize.description|markdown}}
+      </div>
+      
+      <script type="text/javascript">
+        $("#raffle-{{prize.title|slugify}}-description").dialog({
+          autoOpen: false,
+          modal: true,
+        });
+        
+        $("#raffle-{{prize.title|slugify}}-link").click(function() {
+          $("#raffle-{{prize.title|slugify}}-description").dialog("open");
+        });
+      </script>
     </td>
     <td class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</td>
     <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
