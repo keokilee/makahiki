@@ -39,6 +39,7 @@ a#wall-post-submit {
 	text-decoration: none;
 	padding: 0 auto 0 auto;
 	line-height: 25px;
+	text-transform: uppercase;
 	color: #000;
 }
 
