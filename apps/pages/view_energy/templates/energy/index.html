@@ -81,8 +81,8 @@
             {{wall_form.post}}
           </div>
 		  <div style="text-align: center">
-			<button id="wall-post-submit" style="height: 27px; width: 80px; margin-top:0.7em; margin-left:0.5em; margin-right:0.5em; margin-bottom:0.7em;">
-				<span style="vertical-align: middle">Post</span>
+			<button id="wall-post-submit" style="font-size: 14px; margin-top:0.8em; margin-left:0.5em; margin-right:0.5em; margin-bottom:0.8em;">
+				Post
 			</button>
 		  </div>
           <!--- <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a> -->
@@ -114,7 +114,7 @@
           {% include "news/news_posts.html" %}
         </ul>
         {% if not posts %}
-          <p {% get_id_and_classes "wall-no-posts" %}>There are no posts yet!</p>
+          <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
         {% endif %}
         
       </fieldset>
