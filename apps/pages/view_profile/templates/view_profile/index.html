@@ -93,7 +93,7 @@
           {% endfor %}
         </table>
       {% else %}
-        <p style="width: 100%; text-align: center">You have nothing in progress or pending.</p>
+        <p style="width: 100%; text-align: left; padding: 16px;">You have nothing in progress or pending.</p>
       {% endif %}
       
       <h5 {% get_id_and_classes "profile-history-previous-header" %}>Previously Awarded</h5>
@@ -107,7 +107,7 @@
           {% include "view_profile/components/completed_members.html" %}
           </table>
         {% else %}
-          <p style="width: 100%; text-align: center">You have not been awarded anything yet!</p>
+          <p style="width: 100%; text-align: left; padding: 16px;">You have not been awarded anything yet!</p>
         {% endif %}
     </div>
   </div>

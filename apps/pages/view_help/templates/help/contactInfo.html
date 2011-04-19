@@ -18,14 +18,15 @@
       How do I contact you with questions?
    </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			You could use the "Ask an Admin" on the <a href="{% url help_index%}">learn page.</a> This will send in your question to an Admin
 			who will reply to you with an available answer.
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

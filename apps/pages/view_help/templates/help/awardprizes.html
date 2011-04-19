@@ -18,6 +18,7 @@
       What is the Kukui Cup
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			Round 1 Awards:
@@ -83,8 +84,8 @@
 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+		<button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

@@ -18,6 +18,7 @@
       In The Event of Ties
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			In the event that two or more individuals (or floors) are tied for the most points, 
@@ -33,8 +34,8 @@
 			does occur, a coin toss will be used to decide the winner. 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

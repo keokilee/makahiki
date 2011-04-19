@@ -18,14 +18,15 @@
       Can I collaborate with other people on other lounges?
      </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			Yes you can. There are also social points that will be added to your accumulated ponts if/when
 			you submit to an activity and say that you worked with another person from another lounge. 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

@@ -102,7 +102,12 @@
           <div {% get_id_and_classes "wall-post" %}>
             {{wall_form.post}}
           </div>
-          <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a>
+		  <div style="text-align: center">
+			<button id="wall-post-submit" style="height: 27px; width: 80px; margin-top:0.7em; margin-left:0.5em; margin-right:0.5em; margin-bottom:0.7em;">
+				<span style="vertical-align: middle">Post</span>
+			</button>
+		  </div>
+          <!--- <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a> -->
         </form>
         <script type="text/javascript">
           $("#wall-post-submit").click(function() {
