@@ -17,7 +17,7 @@
 <div {% get_id_and_classes "activity-task-stats" %}>  
   <div {% get_id_and_classes "activity-task-stats-box" %}>
     <div {% get_id_and_classes "activity-task-stats-title" %}>
-      {{type}} : {{task.name}}
+      {{ type|capfirst }} : {{task.name}}
     </div>   
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
       <p/>
@@ -31,19 +31,19 @@
       <b>Where</b> : {{task.event_location}}
       {% endif %}
       <p/>
-      {{member_all}} people 
-      {% if memer_all <= 1 %}
-        has
+      {{member_all}} 
+      {% if member_all == 1 %}
+        person has
       {% else %}
-        have 
+        people have 
       {% endif %}
       done this.
       <p/>
-      {{member_floor}} person in your lounge 
-      {% if member_floor <= 1 %}
-        has
+      {{member_floor}}  
+      {% if member_floor == 1 %}
+        person in your lounge has
       {% else %}
-        have 
+        people in your lounge have 
       {% endif %}
       done this.
       <br/>
@@ -74,34 +74,28 @@
           Congratulations! You did it !
         {% else %}
           {% if type == "event" %}
-            Thank you! You've earned 2 points by signing up.<br/>
+            Thank you! You've earned 2 points by signing up.<p/>
             After the {{type}}, please come back here to get your points.
           {% endif %}
           {% if type == "commitment" %}
-              Thank you! You've earned 2 points by committing.<br/>
+              Thank you! You've earned 2 points by committing.<p/>
               Come back in 5 days of meeting your commitment for the rest of 
               your points.
           {% endif %}
           {% if type == "activity" %}
-              Thank you! <br/> Your request for points is pending approval.
+              Thank you! <p/> Your request for points is pending approval.
           {% endif %}            
         {% endif %}  
         
       {% else %} 
         {% if type == "commitment" %}
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            <button>I will do this!</button>
-          </a>
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
         {% endif %}  
         {% if type == "event" %}
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            <button>I want to sign up</button>
-          </a>
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
         {% endif %} 
         {% if type == "activity"%} 
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-            <button>I Did This!</button>
-          </a> 
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I Did This!</button></a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
@@ -126,7 +120,7 @@ function task_form_overlay()
   el.style.visibility = "visible";
   $("#setup-dialog").dialog({
     modal: true,
-    width: 500,
+    width: 450,
     closeOnEscape: false,
     position: ["center", 75]
     });

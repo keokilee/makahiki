@@ -18,6 +18,7 @@
       Individual Kukui Nut Points
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			In an individual competition, you compete to accumulate the most 
@@ -26,8 +27,8 @@
 			simply have to accumulate the most Kukui Nut points. 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

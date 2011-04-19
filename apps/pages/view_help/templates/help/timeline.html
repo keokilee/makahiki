@@ -18,6 +18,7 @@
       Timeline
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			The competition will be held for three weeks starting in October, 2011. The official start date will be announced soon. 
@@ -41,8 +42,8 @@
 		<br/>
 		<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hp27n91330a92lkesc6bhoqgqo%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=Pacific%2FHonolulu&dates=20111001%2F20111031" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

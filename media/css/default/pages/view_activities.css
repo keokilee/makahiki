@@ -46,9 +46,19 @@
 }
 
 #activity-task-form-content {
+    float: center;
     text-align: left;
-    padding-left: 50px;
+    padding-left: 30px;
     font: normal 10pt Arial, Helvetica, sans-serif;
+}
+
+#activity-task-form-content-button {
+    padding-left: 100px;
+}
+
+.ui-widget-overlay {
+    opacity: .80;
+    filter: Alpha(Opacity=80);
 }
 
 h3.activity-categories-title {
