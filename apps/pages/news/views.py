@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
+from django.views.decorators.cache import never_cache
 
 from components.floors.models import Post
 from components.activities import get_available_events, get_current_commitment_members, get_popular_tasks
@@ -12,6 +13,7 @@ from pages.news.forms import WallForm
 
 from pages.news import DEFAULT_POST_COUNT
 
+@never_cache
 @login_required
 def index(request):
   floor = request.user.get_profile().floor
@@ -41,6 +43,7 @@ def index(request):
     }
   }, context_instance=RequestContext(request))
   
+@never_cache
 @login_required
 def post(request):
   if request.is_ajax() and request.method == "POST":
@@ -66,7 +69,8 @@ def post(request):
     }), mimetype="application/json")
   
   raise Http404
-  
+
+@never_cache
 @login_required
 def more_posts(request):
   if request.is_ajax():

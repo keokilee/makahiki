@@ -1,9 +1,11 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 
 from pages.view_help.forms import AskAdminForm
 
+@never_cache
 @login_required
 def index(request):
   form = None
@@ -20,7 +22,7 @@ def index(request):
   return render_to_response("help/index.html", {
       "form": form,
   }, context_instance=RequestContext(request))
-  
+
 def defineKukuiCup(request):
   return render_to_response("help/theKukuiCup.html", {}, context_instance=RequestContext(request))
   

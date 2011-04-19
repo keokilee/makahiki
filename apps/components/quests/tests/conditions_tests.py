@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from lib.brabeion import badges
 
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Category
-from components.quests import get_quests, has_task, num_tasks_completed, badge_awarded, possibly_completed_quests, allocated_ticket
+from components.quests import get_quests, has_task, num_tasks_completed, badge_awarded, possibly_completed_quests, allocated_ticket, has_points
 from components.quests.models import Quest, QuestMember
 from components.prizes.models import RaffleDeadline, RafflePrize, RaffleTicket
 
@@ -335,6 +335,34 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(badge_awarded(self.user, "dailyvisitor"), "User should have been awarded the daily visitor badge.")
     self.assertTrue(self.quest in possibly_completed_quests(self.user), "User should have completed this quest.")
 
-
+  def testHasPointsOverall(self):
+    """Tests that has_points works for a user."""
+    profile = self.user.get_profile()
+    test_points = 10
+    self.assertFalse(has_points(self.user, test_points), "User should not have any points")
+    profile.points = test_points
+    profile.save()
+    self.assertTrue(has_points(self.user, test_points), "User should have enough points.")
+    
+    # Test within context of a quest.
+    profile.points = 0
+    profile.save()
+    self.quest.unlock_conditions = "has_points(10)"
+    self.quest.save()
+    self.assertTrue(self.quest not in get_quests(self.user), "User should not be able to participate in this quest.")
+    
+    self.quest.unlock_conditions = "not has_points(10)"
+    self.quest.save()
+    print self.user.get_profile().points
+    self.assertTrue(self.quest in get_quests(self.user)["available_quests"], "User should be able to participate in this quest.")
+    
+    self.quest.accept(self.user)
+    self.quest.completion_conditions = "has_points(10)"
+    self.quest.save()
+    self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")
+    
+    profile.points = 10
+    profile.save()
+    self.assertTrue(self.quest in possibly_completed_quests(self.user), "User should have completed this quest.")
     
     

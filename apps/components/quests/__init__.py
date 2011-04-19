@@ -28,6 +28,17 @@ def has_task(user, name=None, task_type=None):
       return user.commitmentmember_set.count() > 0
     else:
       return user.activitymember_set.filter(activity__type=task_type).count() > 0
+      
+def has_points(user, points, round_name=None):
+  """
+  Returns True if the user has at least the requested number of points.
+  """
+  profile = user.get_profile()
+  if round_name:
+    entry = ScoreboardEntry.objects.get(profile=profile, round_name=round_name)
+    return entry.points >= points
+  else:
+    return profile.points >= points
   
 def allocated_ticket(user):
   """
@@ -87,6 +98,7 @@ def badge_awarded(user, badge_slug):
   
 CONDITIONS = {
   "has_task": has_task, 
+  "has_points": has_points,
   "allocated_ticket": allocated_ticket, 
   "num_tasks_completed": num_tasks_completed, 
   "badge_awarded": badge_awarded,
