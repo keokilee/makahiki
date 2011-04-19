@@ -18,13 +18,14 @@
       Terms and Conditions
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			{% include "help/terms.html" %}
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

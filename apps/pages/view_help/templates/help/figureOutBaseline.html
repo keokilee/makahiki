@@ -18,14 +18,15 @@
       How did you figure out the baseline?
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			The baseline is based on the average usage from the months before the competition. I.E. the months
 			when the students have moved into the dorms and have situated themselves within the dorms. 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

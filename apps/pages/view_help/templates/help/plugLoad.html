@@ -18,6 +18,7 @@
       What is plug load?
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			A plug load is the energy consumed by any electronic device that's plugged into a socket.
@@ -27,8 +28,8 @@
 			outlets ("plug loads") on floors 3 through 12 (where residence rooms are located). 
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>

@@ -17,6 +17,7 @@
       What is the Kukui Cup
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
       <ul>
 	  <li>
 			The Kukui Cup residence hall energy competition is a blend of real world and virtual world 
@@ -30,8 +31,8 @@
 			<a href="http://www.urgentevoke.com/" target="_blank">Urgent/Evoke.</a>
 		</li>
 		<br/>
-		<a href="{% url help_index%}">Return</a>
 		</ul>
+	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
     </div>
   </div>
 </div>
