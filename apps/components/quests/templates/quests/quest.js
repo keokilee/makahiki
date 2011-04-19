@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Hide the details until someone clicks on it.
-  $("#quest-details").hide();
+  // $("#quest-details").hide();
   
   // Handler for clicking a quest title.
   $(".quest-title").click(function() {
@@ -31,6 +31,6 @@ $(document).ready(function() {
   
   // If we have a quest dialog, display it.
   if ($("#quest-complete-dialog") != null) {
-    $("#quest-complete-dialog").dialog({modal: true});
+    $("#quest-complete-dialog").dialog({modal: true, width: "520px"});
   }
 })
