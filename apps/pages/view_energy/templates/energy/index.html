@@ -58,29 +58,7 @@
         <table {% get_id_and_classes "energy-status-how-table" %}>
           <tr {% get_id_and_classes "energy-status-how-calculator" %}>
             <td {% get_id_and_classes "energy-status-how-calculator-content" %}>
-               
-                We need to conserve energy to meet our goal, but what does {{diff}} kWh mean?
-                
-                <p/>
-                
-                <div {% get_id_and_classes "energy-status-how-calculator-content-data" %}>
-                  To save {{diff}} kWh, we must reduce our energy use by an amount equivalent to
-                <select onchange="cal_energy(this.options[this.selectedIndex]);" >
-                  {% for type,hour in appliances %}
-                   <option value="{{hour}}">{{type}}</option> 
-                  {% endfor %}
-                </select>
-                
-                <div id="cal_energy_text">for {{appliances.0.1}} hours
-                </div>
-                </div>
-              <script type="text/javascript">
-              function cal_energy(selected)
-              {
-                document.getElementById("cal_energy_text").innerHTML = 
-                "for "+selected.value+" hours</p>"
-              }
-              </script>
+                <div id="energy-calculator"> </div> 
             </td> 
             <td {% get_id_and_classes "energy-status-how-activities-content" %}>
                 The following activities can help your lounge conserve energy, and you earn points!
