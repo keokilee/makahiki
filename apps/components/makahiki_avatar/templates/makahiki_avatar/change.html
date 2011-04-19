@@ -19,11 +19,11 @@
         <input type="submit" value="Upload New Image" />
     </form>
     {% if user.facebookprofile %}
-    <p>Or upload your picture from Facebook</p>
+    <p>Or use your picture from Facebook</p>
     <img src="http://graph.facebook.com/{{user.facebookprofile.profile_id}}/picture"/>
     <form method="POST" action="upload_fb/">
       {% csrf_token %}
-      <input type="submit" value="Upload Facebook Picture"/>
+      <input type="submit" value="Use Facebook Picture"/>
     </form>
     {% endif %}
   </div>
