@@ -135,7 +135,7 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	}
 
 #profile-badges-content th, #profile-history-content th {
-  text-align: center;
+  text-align: left;
 }
 
 #profile-badges-content td {
@@ -145,7 +145,7 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 }
 
 #profile-history-content td {
-  text-align: left;
+    text-align: left;
 	vertical-align: middle;
 	padding: 4px;
 }
