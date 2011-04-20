@@ -1,6 +1,6 @@
 import datetime
 
-DEMO_START_DELTA = datetime.timedelta(days=13)
+DEMO_START_DELTA = datetime.timedelta(days=1)
 DEMO_END_DELTA = datetime.timedelta(days=13)
 
 # The base date of the competition according to the fixtures.
@@ -17,10 +17,6 @@ COMPETITION_END = (datetime.date.today() + DEMO_END_DELTA).strftime("%Y-%m-%d")
 COMPETITION_ROUNDS = {
   "Round 1" : {
     "start": COMPETITION_START,
-    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=11)).strftime("%Y-%m-%d"),
-  },
-  "Round 2" : {
-    "start": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=11)).strftime("%Y-%m-%d"),
-    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=19)).strftime("%Y-%m-%d"),
+    "end": (datetime.date.today() - DEMO_START_DELTA + datetime.timedelta(days=6)).strftime("%Y-%m-%d"),
   },
 }
