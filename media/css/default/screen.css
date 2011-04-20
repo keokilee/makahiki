@@ -106,7 +106,8 @@ a {
 
 #header-nav-links ul li {
 	float: left;
-	margin-left: .4em;
+	margin-left: .6em;
+	padding: .1em;
 }
 
 #header-nav-links img {

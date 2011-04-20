@@ -218,6 +218,7 @@ def __request_activity_points(request, activity_id):
   
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
+  floor = user.get_profile().floor
   question = None
   activity_member = None
   
@@ -279,9 +280,36 @@ def __request_activity_points(request, activity_id):
         user.message_set.create(message="Your request has been submitted!")
 
       activity_member.save()
-      next = reverse("pages.view_activities.views.task", args=(activity_id,))
-      return HttpResponseRedirect(next)
+      
+      ##next = reverse("pages.view_activities.views.task", args=(activity_id,))
+      ##return HttpResponseRedirect(next)
   
+      member_all = ActivityMember.objects.filter(activity=activity);
+
+      users = []
+      member_all_count = 0
+      member_floor_count = 0
+      member_all_count = member_all.count()
+      for member in member_all:
+        if member.user.get_profile().floor == floor:
+          member_floor_count = member_floor_count + 1
+          users.append(member.user)
+  
+      return render_to_response("view_activities/task.html", {
+        "task":activity,
+        "type":"activity",
+        "pau":True,
+        "approved":False,
+        "form":None,
+        "question":None,
+        "member_all":member_all_count,
+        "member_floor":member_floor_count,
+        "users":users,
+        "display_point":True,
+        "display_form":False,
+        "form_title": None,
+      }, context_instance=RequestContext(request))    
+
     if activity.confirm_type == "text":
       question = activity.pick_question()
       if question:
@@ -289,7 +317,7 @@ def __request_activity_points(request, activity_id):
                   		  
     return render_to_response("view_activities/task.html", {
     "task":activity,
-    "type":"Activity",
+    "type":"activity",
     "pau":False,
     "form":form,
     "question":question,
@@ -333,7 +361,7 @@ def task(request, task_id):
       form = ActivityTextForm(initial={"code" : 1})
                 
     if task.type == "event" or task.type == "excursion":
-      type="event"   
+      type = "event"
       if not pau:
         form_title = "Sign up for this event"
         

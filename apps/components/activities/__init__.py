@@ -158,7 +158,7 @@ def get_available_events(user):
     type='event',
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
-  ).order_by("priority", "title")
+  ).order_by("event_date","priority")
 
   return events # Filters out inactive activities.
   
