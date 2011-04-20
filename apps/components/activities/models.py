@@ -253,7 +253,7 @@ class CommonActivityUser(CommonBase):
     ('rejected', 'Rejected'),
   )
   
-  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="unapproved")
+  approval_status = models.CharField(max_length=20, choices=STATUS_TYPES, default="pending")
   award_date = models.DateTimeField(null=True, blank=True, editable=False)
   submission_date = models.DateTimeField(null=True, blank=True, editable=False)
 
