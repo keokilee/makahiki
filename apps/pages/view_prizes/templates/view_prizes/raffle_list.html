@@ -13,6 +13,7 @@
       
       <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
         {{prize.description|markdown}}
+        <div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div>
       </div>
       
       <script type="text/javascript">

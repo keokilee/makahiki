@@ -33,12 +33,12 @@ $(document).ready(function() {
   if ($("#quest-complete-dialog") != null) {
     $("#quest-complete-dialog").dialog({
       modal: true, 
-      width: "520px", 
-      buttons: {
-    	  "OK": function() {
-  		    $( this ).dialog( "close" );
-    		}
-    	}
+      width: "520px"
+      //       buttons: {
+      //   "OK": function() {
+      //          $( this ).dialog( "close" );
+      //  }
+      // }
     });
   }
 })
