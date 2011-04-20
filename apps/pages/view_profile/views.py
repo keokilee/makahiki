@@ -71,10 +71,14 @@ def index(request):
       form.message = "Your avatar has been updated."
   
   # Retrieve previously awarded tasks, quests, and badges.
-  activity_members = user.activitymember_set.filter(award_date__isnull=False)[:5]
-  commitment_members = user.commitmentmember_set.filter(award_date__isnull=False)[:5]
-  quest_members = user.questmember_set.filter(completed=True)[:5]
-  badge_members = user.badges_earned.all()[:5]
+  # Note that we need to check the various activity types because of signup bonuses.
+  activity_members = user.activitymember_set.exclude(
+    activity__type="activity",
+    award_date__isnull=True,
+  )
+  commitment_members = user.commitmentmember_set.all()
+  quest_members = user.questmember_set.filter(completed=True)
+  badge_members = user.badges_earned.all()
   
   for member in quest_members:
     member.award_date = member.updated_at
@@ -86,7 +90,7 @@ def index(request):
   # Solution found at http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
   completed_members = sorted(
       chain(activity_members, commitment_members, quest_members, badge_members), 
-      key=attrgetter("award_date"), reverse=True)[:5]
+      key=attrgetter("award_date"), reverse=True)
   
   # Retrieve current tasks.
   in_progress_activity_members = get_current_activity_members(user)

@@ -4,7 +4,7 @@ from django.conf import settings
 class FacebookForm(forms.Form):
   can_post = forms.BooleanField(
         required=False, 
-        default=True,
+        initial=True,
         label="%s can post to my Facebook feed (at most 2 posts per day)" % settings.COMPETITION_NAME
   )
 

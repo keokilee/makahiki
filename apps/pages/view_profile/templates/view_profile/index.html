@@ -74,10 +74,21 @@
               <td>{{member.created_at|date:"n/j/y"}}</td>
               <td>
                 <a href="{% url activity_task member.activity.id %}">
-                  Activity: {{member.activity.name}}
+                  {{member.activity.type.capitalize}}: {{member.activity.name}}
                 </a>
               </td>
-              <td>{{member.approval_status.capitalize}}</td>
+              {% if member.approval_status == "pending" and member.activity.type == "activity" %}
+              <td title="Your request needs administrator approval.">
+              {% else %}
+                {% if member.approval_status == "pending" %}
+                <td title="You have signed up for the {{member.activity.type}}">
+                {% else %}
+                {# Item is not pending and is not approved, so it should be rejected. #}
+                <td title="Your request has been rejected.">
+                {% endif %}
+              {% endif %}
+                {{member.approval_status.capitalize}}
+              </td>
             </tr>
             {% else %}
             <tr>
@@ -87,7 +98,7 @@
                   Commitment: {{member.commitment.name}}
                 </a>
               </td>
-              <td>In Progress</td>
+              <td title="The commitment is still active.">In Progress</td>
             </tr>
             {% endif %}
           {% endfor %}

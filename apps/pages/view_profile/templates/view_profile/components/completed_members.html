@@ -1,31 +1,64 @@
 {% for member in completed_members %}
   <tr>
+    {% if member.award_date %}
     <td>{{member.award_date|date:"n/j/y"}}</td>
+    {% else %}
+    <td>{{member.updated_at|date:"n/j/y"}}</td>
+    {% endif %}
     {# Handle each of the individual types of items. #}
     {% if member.commitment %}
-    <td>
-      <a href="{% url activity_task member.commitment.id %}">
-        Commitment: {{member.commitment.name}}
-      </a>
-    </td>
-    <td>{{member.commitment.point_value}}</td>
-    {% else %}
-      {% if member.activity %}
+      {% if member.award_date %}
       <td>
-        <a href="{% url activity_task member.activity.id %}">
-          Activity: {{member.activity.name}}
+        <a href="{% url activity_task member.commitment.id %}">
+          Commitment: {{member.commitment.name}}
         </a>
       </td>
-      <td>{{member.activity.point_value}}</td>
+      <td>{{member.commitment.point_value}}</td>
+      {% else %}
+      <td>
+        <a href="{% url activity_task member.commitment.id %}">
+          Made commitment: {{member.commitment.name}}
+        </a>
+      </td>
+      <td>2</td>
+      {% endif %}
+    {% else %}
+      {% if member.activity %}
+        {% if member.award_date %}
+        <td>
+          <a href="{% url activity_task member.activity.id %}">
+            {{member.activity.type.capitalize}}: {{member.activity.name}}
+          </a>
+        </td>
+        <td>{{member.activity.point_value}}</td>
+        {% else %}
+          {% if member.activity.type != "activity" %}
+          <td>
+            <a href="{% url activity_task member.activity.id %}">
+              {{member.activity.type.capitalize}} signup: {{member.activity.name}}
+            </a>
+          </td>
+          <td>2</td>
+          {% endif %}
+        {% endif %}
       {% else %}
         {% if member.quest %}
           <td>Quest: {{member.quest.name}}</td>
-          <td>0</td>
+          <td>-</td>
         {% else %}
           <td>Badge: {{member.badge.name}}</td>
-          <td>0</td>
+          <td>-</td>
         {% endif %}
       {% endif %}
     {% endif %}
   </tr>
 {% endfor %}
+
+{# Extra row for when they complete the setup wizard #}
+<tr>
+  <td>{{user.date_joined|date:"n/j/y"}}</td>
+  <td>
+    Set up profile
+  </td>
+  <td>5</td>
+</tr>

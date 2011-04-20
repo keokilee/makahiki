@@ -80,10 +80,21 @@ class ProfileFunctionalTestCase(TestCase):
     response = self.client.get(reverse("profile_index"))
     self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertContains(response, "Pending")
+    self.assertContains(response, "Activity:")
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
     
+    # Test that the type updates.
+    activity.type = "event"
+    activity.save()
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, reverse("activity_task", args=(activity.id,)))
+    self.assertContains(response, "Event:")
+    self.assertContains(response, "Event signup:", msg_prefix="User should get two points for signing up.") 
+    
     # Test that the profile page has a rejected activity
+    activity.type = "activity"
+    activity.save()
     member.approval_status = "rejected"
     member.save()
     response = self.client.get(reverse("profile_index"))
@@ -99,6 +110,7 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertNotContains(response, "You have not been awarded anything yet!")
     self.assertContains(response, "You have nothing in progress or pending.")
+    self.assertContains(response, "Activity:")
     
   def testCommitmentAchievement(self):
     """Check that the user's achievements are loaded."""
@@ -106,6 +118,7 @@ class ProfileFunctionalTestCase(TestCase):
         title="Test commitment",
         description="A commitment!",
         point_value=10,
+        type="commitment",
     )
     commitment.save()
 
@@ -115,7 +128,8 @@ class ProfileFunctionalTestCase(TestCase):
     response = self.client.get(reverse("profile_index"))
     self.assertContains(response, reverse("activity_task", args=(commitment.id,)))
     self.assertContains(response, "In Progress")
-    self.assertContains(response, "You have not been awarded anything yet!")
+    self.assertContains(response, "Commitment:")
+    self.assertContains(response, "Made commitment:")
     self.assertNotContains(response, "You have nothing in progress or pending.")
 
     # Test that the profile page has a rejected activity
