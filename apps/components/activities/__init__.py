@@ -154,9 +154,7 @@ def get_available_golow_activities(user):
 def get_available_events(user):
   """Retrieves only the events that a user can participate in."""
 
-  events = Activity.objects.exclude(
-    activitymember__user=user,
-  ).filter(
+  events = Activity.objects.filter(
     type='event',
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),

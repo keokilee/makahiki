@@ -115,5 +115,47 @@
       "short_description": "Won by the #1 lounge point getter in each residence hall.", 
       "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
+  }, 
+  {
+    "pk": 1, 
+    "model": "prizes.raffledeadline", 
+    "fields": {
+      "round_name": "Round 2", 
+      "pub_date": "2011-04-17 10:49:25", 
+      "end_date": "2011-04-25 10:49:26"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "prizes.raffleprize", 
+    "fields": {
+      "image": "prizes/bikehelmet_1.jpg", 
+      "winner": null, 
+      "deadline": 1, 
+      "description": "A bike helmet.", 
+      "title": "Bike Helmet"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "prizes.raffleprize", 
+    "fields": {
+      "image": "prizes/surf_lessons_1.jpg", 
+      "winner": null, 
+      "deadline": 1, 
+      "description": "A surfboard.", 
+      "title": "Surfboard"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "prizes.raffleprize", 
+    "fields": {
+      "image": "prizes/bubbies.png", 
+      "winner": null, 
+      "deadline": 1, 
+      "description": "A $10 gift certificate for Bubbies Ice Cream Parlor.", 
+      "title": "Bubbies Gift Certificate"
+    }
   }
 ]
