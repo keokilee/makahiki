@@ -19,6 +19,7 @@
       <!-- Modal Dialog stuff -->
       <div id="{{name|slugify}}-{{prize.title|slugify}}" class="{% insert_classes 'prize-dialog' %}" title="{{name}}: {{prize.title}}">
         {{prize.long_description|markdown}}
+        <div style="text-align: center"><input type="submit" value="OK" onclick='$("#{{name|slugify}}-{{prize.title|slugify}}").dialog("close");' /></div>
       </div>
       <script type="text/javascript">
         $("#{{name|slugify}}-{{prize.title|slugify}}").dialog({
