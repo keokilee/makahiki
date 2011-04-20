@@ -11,6 +11,7 @@ from django.http import Http404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
+from django.views.decorators.cache import never_cache
 
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
@@ -18,6 +19,7 @@ import components.makahiki_facebook.facebook as facebook
 from components.makahiki_facebook.models import FacebookProfile
 from pages.home.forms import FacebookForm, ProfileForm
 
+@never_cache
 @login_required
 def index(request):
   """
@@ -25,6 +27,7 @@ def index(request):
   """
   return render_to_response("home/index.html", {}, context_instance=RequestContext(request))
 
+@never_cache
 @login_required
 def setup_welcome(request):
   """
@@ -40,6 +43,7 @@ def setup_welcome(request):
     
   raise Http404
   
+@never_cache
 @login_required
 def terms(request):
   """
@@ -55,6 +59,7 @@ def terms(request):
     
   raise Http404
   
+@never_cache
 @login_required
 def facebook_connect(request):
   """
@@ -84,6 +89,7 @@ def facebook_connect(request):
     
   raise Http404
   
+@never_cache
 @login_required
 def setup_profile(request):
   """
@@ -143,6 +149,7 @@ def setup_profile(request):
     
   raise Http404
   
+@never_cache
 def _get_profile_form(request, form=None, non_xhr=False):
   """
   Helper method to render the profile form.
@@ -177,6 +184,7 @@ def _get_profile_form(request, form=None, non_xhr=False):
         "contents": response,
     }), mimetype='application/json')
     
+@never_cache
 @login_required
 def setup_activity(request, non_xhr=False):
   if request.is_ajax():
@@ -200,7 +208,8 @@ def setup_activity(request, non_xhr=False):
     return response
     
   raise Http404
-  
+
+@never_cache 
 @login_required
 def setup_question(request):
   if request.is_ajax():
@@ -213,7 +222,8 @@ def setup_question(request):
     
     return response
   raise Http404
-  
+
+@never_cache 
 @login_required
 def setup_complete(request):
   if request.is_ajax():

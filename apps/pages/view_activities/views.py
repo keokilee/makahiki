@@ -24,6 +24,7 @@ from components.makahiki_profiles import *
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
+@never_cache
 @login_required
 def index(request):
   user = request.user
@@ -70,7 +71,8 @@ def __get_categories(user):
     cat.task_list = task_list
     
   return categories
-  
+
+@never_cache
 @login_required
 def view_codes(request, activity_id):
   """View the confirmation codes for a given activity."""
@@ -89,7 +91,7 @@ def view_codes(request, activity_id):
   }, context_instance = RequestContext(request))
 
 ### Private methods.
-
+@never_cache
 def __add_commitment(request, commitment_id):
   """Commit the current user to the commitment."""
   
@@ -159,6 +161,7 @@ def __add_commitment(request, commitment_id):
     "form_title": None,
   }, context_instance=RequestContext(request))    
 
+@never_cache
 def __add_activity(request, activity_id):
   """Commit the current user to the activity."""
 
@@ -209,6 +212,7 @@ def __add_activity(request, activity_id):
     "form_title": None,
   }, context_instance=RequestContext(request))    
   
+@never_cache
 def __request_activity_points(request, activity_id):
   """Creates a request for points for an activity."""
   
@@ -362,7 +366,8 @@ def task(request, task_id):
     "display_form":False,
     "form_title": form_title,
   }, context_instance=RequestContext(request))    
-    
+
+@never_cache   
 def add_task(request, task_id):
   
   task = ActivityBase.objects.get(id=task_id)

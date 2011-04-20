@@ -11,7 +11,7 @@ def accept(request, quest_id):
     referer = request.META["HTTP_REFERER"]
     quest = get_object_or_404(Quest, pk=quest_id)
     if quest.can_add_quest(request.user):
-      member = QuestMember(user=request.user, quest=quest)
+      member, created = QuestMember.objects.get_or_create(user=request.user, quest=quest)
       member.save()
 
     return HttpResponseRedirect(referer)
@@ -24,7 +24,8 @@ def opt_out(request, quest_id):
     referer = request.META["HTTP_REFERER"]
     quest = get_object_or_404(Quest, pk=quest_id)
     if quest.can_add_quest(request.user):
-      member = QuestMember(user=request.user, quest=quest, opt_out=True)
+      member, created = QuestMember.objects.get_or_create(user=request.user, quest=quest)
+      member.opt_out = True
       member.save()
 
     return HttpResponseRedirect(referer)

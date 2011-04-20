@@ -21,6 +21,7 @@ from components.activities.models import ActivityMember, CommitmentMember
 
 import components.makahiki_facebook.facebook as facebook
 
+@never_cache
 @login_required
 def index(request):
   user = request.user

@@ -1,10 +1,9 @@
-
-
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
+from django.views.decorators.cache import never_cache
 
 from elementtree import ElementTree
 from decimal import *
@@ -17,6 +16,7 @@ from components.energy_goals import *
 from components.makahiki_base import get_round_info
 from pages.news.forms import WallForm
 
+@never_cache
 @login_required
 def index(request):
   user = request.user
