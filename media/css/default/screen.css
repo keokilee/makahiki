@@ -273,6 +273,11 @@ clear: both;
 	margin-left: 5px;
 }
 
+/*------- General Dialog style to center the OK button. ---*/
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: center;
+}
+
 /*------- Quest styles -----*/
 #quest-box {
   width: 920px;
