@@ -64,8 +64,14 @@ th {
 	width: 55px;
 }
 
+/*.prize {
+  text-align: center;
+  width: 55px;
+}*/
+
 .prize img {
 	display: block;
+	margin: 0 auto;
 }
 
 .prize a {
@@ -114,3 +120,4 @@ th {
 	font-weight: bold;
 	display: block;
 }
+
