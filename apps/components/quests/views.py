@@ -11,8 +11,7 @@ def accept(request, quest_id):
     referer = request.META["HTTP_REFERER"]
     quest = get_object_or_404(Quest, pk=quest_id)
     if quest.can_add_quest(request.user):
-      member, created = QuestMember.objects.get_or_create(user=request.user, quest=quest)
-      member.save()
+      QuestMember.objects.get_or_create(user=request.user, quest=quest)
 
     return HttpResponseRedirect(referer)
   
