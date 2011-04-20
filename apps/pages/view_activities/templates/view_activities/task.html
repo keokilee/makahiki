@@ -17,11 +17,11 @@
 <div {% get_id_and_classes "activity-task-stats" %}>  
   <div {% get_id_and_classes "activity-task-stats-box" %}>
     <div {% get_id_and_classes "activity-task-stats-title" %}>
-      {{ type|capfirst }} : {{task.name}}
+      {{ task.type|capfirst }} : {{task.name}}
     </div>   
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
       <p/>
-      This {{type}} is worth {{task.point_value}} points.
+      This {{task.type}} is worth {{task.point_value}} points.
       {% if type == "commitment" %}
         It lasts {{task.duration}} days.
       {% endif %}
@@ -57,7 +57,7 @@
 <div {% get_id_and_classes "activity-task-details" %}>
   <div {% get_id_and_classes "activity-task-details-box" %}>
     <div {% get_id_and_classes "activity-task-details-title" %}>
-      About the {{type}}
+      About the {{task.type}}
     </div>
     <div {% get_id_and_classes "activity-task-details-content" %}>
       <p/>
@@ -83,11 +83,13 @@
               your points.
           {% endif %}
           {% if type == "activity" %}
-              Thank you! <p/> Your request for points is pending approval.
+              Thank you for submitting your response.   <p/>
+              An administrator is reviewing your response.  <br/>
+              Come back soon to see your new total.
           {% endif %}            
         {% endif %}  
         
-      {% else %} 
+      {% else %}               <!-- not done yet  -->
         {% if type == "commitment" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
         {% endif %}  
@@ -95,6 +97,8 @@
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
         {% endif %} 
         {% if type == "activity"%} 
+          Once you are done, click the button below to answer a question about the information in the video, and get your points!
+          <p/>
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I Did This!</button></a> 
         {% endif %} 
       {% endif %}
@@ -134,7 +138,27 @@ function task_form_overlay()
 
 <div id="signup-point-dialog" title="Thank you" style="visibility: hidden;">
     <p/>
-    You just got 2 points !
+    {% if type != "activity" %}
+       You just got 2 points !
+    {% else %}
+    <p style="text-align:left">
+     Thank you for submitting your response.   
+     </p>
+     <p style="text-align:left">
+     An administrator will review it and approve your points, usually within a few hours.  
+     You can see the status of your submission on your Profile Page.  
+     </p>
+     
+     <p style="text-align:left">
+      Come back soon to see your new total.
+     </p>
+    {% endif %}        
+    
+    <p/>
+    <center>
+    <input type="submit" value="OK" onclick='$("#signup-point-dialog").dialog("close");' /> 
+    </center>
+   
 </div>
 
 <script type="text/javascript"> 
@@ -144,8 +168,13 @@ function signup_point_dialog_overlay()
   el.style.visibility = "visible";
   $("#signup-point-dialog").dialog({
     modal: true,
-    width: 300,
-    height: 100,
+    {% if type == "activity" %}
+      width: 400,
+      height: 250,
+    {% else %}
+      width: 300,
+      height: 150,
+    {% endif %}
     closeOnEscape: false,
     position: ["center", 200]
     });

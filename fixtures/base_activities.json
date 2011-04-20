@@ -92,15 +92,6 @@
     }
   }, 
   {
-    "pk": 7, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "energy conservation, energy literacy", 
-      "question": "What is the purpose of the Kukui Cup?", 
-      "activity": 25
-    }
-  }, 
-  {
     "pk": 8, 
     "model": "activities.textpromptquestion", 
     "fields": {
@@ -116,24 +107,6 @@
       "answer": "energy", 
       "question": "What concept in electricity is like a car's odometer?", 
       "activity": 2
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "1.2 GW", 
-      "question": "How is Oahu's peak electrical power usage?", 
-      "activity": 26
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "activities.textpromptquestion", 
-    "fields": {
-      "answer": "vampire power", 
-      "question": "Why would we measure the power drawn by a device that is off?", 
-      "activity": 27
     }
   }, 
   {
@@ -185,8 +158,8 @@
     "pk": 18, 
     "model": "activities.textpromptquestion", 
     "fields": {
-      "answer": "rising sea levels, higher average temperatures, changing rainfall patterns, acidification of the ocean", 
-      "question": "What is one expected impact of climate change?", 
+      "answer": "less fresh water, less beach, more drought, more floods, more coral bleaching", 
+      "question": "What is one expected impact of climate change in Hawaii?", 
       "activity": 26
     }
   }, 
@@ -194,8 +167,8 @@
     "pk": 19, 
     "model": "activities.textpromptquestion", 
     "fields": {
-      "answer": "CO2, carbon dioxide, (methane also acceptable)", 
-      "question": "What gas is considered most responsible for climate change?", 
+      "answer": "reduce it, get it under 350 ppm", 
+      "question": "What should we do about carbon dioxide?", 
       "activity": 26
     }
   }, 
@@ -203,8 +176,8 @@
     "pk": 20, 
     "model": "activities.textpromptquestion", 
     "fields": {
-      "answer": "human activity", 
-      "question": "What is the most likely cause of recent climate change?", 
+      "answer": "Reduce our energy use, reduce energy footprint", 
+      "question": "How can we in Hawaii reduce our carbon footprint?", 
       "activity": 26
     }
   }, 
@@ -212,90 +185,882 @@
     "pk": 21, 
     "model": "activities.textpromptquestion", 
     "fields": {
-      "answer": "answer", 
-      "question": "test a new question", 
-      "activity": 23
+      "answer": "90%", 
+      "question": "How much of Hawaii's energy comes from oil?", 
+      "activity": 14
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "bar", 
+      "question": "foo", 
+      "activity": 18
     }
   }, 
   {
     "pk": 22, 
     "model": "activities.textpromptquestion", 
     "fields": {
-      "answer": "answer", 
-      "question": "test", 
+      "answer": "cup", 
+      "question": "what is kukuicup", 
+      "activity": 13
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "Hale Aloha dorms, or Lehua, Ilima, Mokihana", 
+      "question": "Where is the Kukui Cup taking place?", 
+      "activity": 14
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "freshmen, first-year students, residents of Hale Aloha", 
+      "question": "What students can participate?", 
+      "activity": 14
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "1-5 W", 
+      "question": "How much power does an iPhone use?", 
       "activity": 15
     }
   }, 
   {
-    "pk": 1, 
-    "model": "activities.questionchoice", 
+    "pk": 30, 
+    "model": "activities.textpromptquestion", 
     "fields": {
-      "choice": "they stop generating energy", 
-      "question": 17, 
-      "activity": 23
+      "answer": "200 W", 
+      "question": "How much power does a game console use?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "1000+ W", 
+      "question": "How much does power a microwave use?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "175-200 W", 
+      "question": "How much power does a solar panel generate?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "3 MW", 
+      "question": "How much power does a big wind turbine generate?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "3 Wh", 
+      "question": "How much energy is in a AA battery?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "1 kWh", 
+      "question": "How much energy does a solar panel generate per day?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "1500 kWh", 
+      "question": "How much energy does a Hale Aloha tower use per day?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "$0.20-$0.30", 
+      "question": "How much does a kilowatt-hour cost in Hawaii?", 
+      "activity": 15
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "a power plant that turns some of Hawaii's waste into energy", 
+      "question": "What is H-POWER?", 
+      "activity": 57
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "60%", 
+      "question": "What percentage of our trash does H-POWER convert into energy?", 
+      "activity": 57
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "prevent, reuse, recycle", 
+      "question": "What are the three components of the trash pyramid?", 
+      "activity": 57
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "activities.textpromptquestion", 
+    "fields": {
+      "answer": "incandescent", 
+      "question": "What lighting method uses the most energy?", 
+      "activity": 20
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-tjyrs", 
+      "is_active": true, 
+      "activity": 58
     }
   }, 
   {
     "pk": 2, 
-    "model": "activities.questionchoice", 
+    "model": "activities.confirmationcode", 
     "fields": {
-      "choice": "they slow down energy", 
-      "question": 17, 
-      "activity": 23
+      "code": "take-tiq2a", 
+      "is_active": true, 
+      "activity": 58
     }
   }, 
   {
     "pk": 3, 
-    "model": "activities.questionchoice", 
+    "model": "activities.confirmationcode", 
     "fields": {
-      "choice": "nothing happen", 
-      "question": 17, 
-      "activity": 23
+      "code": "take-2ned5", 
+      "is_active": true, 
+      "activity": 58
     }
   }, 
   {
     "pk": 4, 
-    "model": "activities.questionchoice", 
+    "model": "activities.confirmationcode", 
     "fields": {
-      "choice": "answer", 
-      "question": 21, 
-      "activity": 23
+      "code": "take-wit1r", 
+      "is_active": true, 
+      "activity": 58
     }
   }, 
   {
     "pk": 5, 
-    "model": "activities.questionchoice", 
+    "model": "activities.confirmationcode", 
     "fields": {
-      "choice": "answer", 
-      "question": 22, 
-      "activity": 15
+      "code": "take-b9cgl", 
+      "is_active": true, 
+      "activity": 58
     }
   }, 
   {
-    "pk": 1, 
+    "pk": 6, 
     "model": "activities.confirmationcode", 
     "fields": {
-      "code": "atte-vp9rm", 
+      "code": "take-fs96h", 
       "is_active": true, 
-      "activity": 1
+      "activity": 58
     }
   }, 
   {
-    "pk": 2, 
+    "pk": 7, 
     "model": "activities.confirmationcode", 
     "fields": {
-      "code": "atte-veqnd", 
+      "code": "take-ly7cq", 
       "is_active": true, 
-      "activity": 1
+      "activity": 58
     }
   }, 
   {
-    "pk": 3, 
+    "pk": 8, 
     "model": "activities.confirmationcode", 
     "fields": {
-      "code": "atte-kwpay", 
+      "code": "take-rzlxe", 
       "is_active": true, 
-      "activity": 1
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-o195x", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-j4r93", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-v5nod", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-sbwtq", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-pxef7", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-o0krq", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-fekrz", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-38n1w", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-uo6nw", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-jhfu0", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-w2o0e", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-83du2", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ynwbg", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-qle8z", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-gktq9", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-5uole", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-dtesm", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-mlb8w", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ejc5k", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-mztl0", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-go64n", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-dgn9w", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-rinzo", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-5xmsv", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-on6e4", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-90ml3", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-4kz8e", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-4ou3w", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-517ov", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-78rdc", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-x4ida", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-o4qn9", 
+      "is_active": true, 
+      "activity": 58
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-64s37", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ga8ej", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ickhx", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-6bu5r", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-hcnyi", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-i2qnd", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-kltie", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-kexow", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-3moiu", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-y1not", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-e0gib", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-1ymj7", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-28af3", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-y502t", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-6d218", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-rs2kf", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ptum9", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-lqphg", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-l8ajr", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-lgtxn", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-c6ns2", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-m31kj", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-2psgr", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-hfd2j", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-79j2a", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-vsu59", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-u1pdj", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-y2mob", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-jnuh2", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-7tjv5", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-qo98r", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-pn1ho", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-nxzwv", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-6qpud", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-v3wbm", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-4tj0k", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-xa1ke", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-7hr62", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-ihgvw", 
+      "is_active": true, 
+      "activity": 59
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "activities.confirmationcode", 
+    "fields": {
+      "code": "take-7opul", 
+      "is_active": true, 
+      "activity": 59
     }
   }, 
   {
@@ -303,12 +1068,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
+      "energy_related": false, 
       "description": "What: Learn about the competition and the cool prizes you can win\r\n\r\nWhen: January 27, 2011 7:00pm\r\n\r\nWhere: Roof lounge of your tower", 
       "title": "Attend Kukui Cup Orientation meeting", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-24 11:14:34", 
-      "priority": 1, 
+      "updated_at": "2011-04-14 13:47:04", 
+      "priority": 1000, 
       "type": "event", 
       "name": "Orientation"
     }
@@ -318,12 +1084,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "Watch this video explaining the difference between power and energy\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vOIOVTooYmM?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "energy_related": false, 
+      "description": "Watch this video explaining the difference between power and energy\r\n\r\n<object width=\"471\" height=\"383\"><param name=\"movie\" value=\"http://www.youtube.com/v/hBUg7bsR0d0?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/hBUg7bsR0d0?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"383\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video about Power & Energy", 
-      "depends_on": "True", 
+      "depends_on": "completed(\"Intro video\")", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 7, 
+      "updated_at": "2011-04-17 17:16:17", 
+      "priority": 1, 
       "type": "activity", 
       "name": "Power & Energy"
     }
@@ -332,13 +1099,14 @@
     "pk": 3, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 3, 
-      "description": "Attend a special presentation by the Blue Planet Foundation on what they are doing to get Hawaii off of fossil fuels, and how students can get involved.", 
+      "category": 4, 
+      "energy_related": false, 
+      "description": "<center>![Blue Planet Foundation logo](http://blueplanetfoundation.org/images/stories/blue-planet-foundation-logo.gif)\r\n\r\nAttend a special presentation by the Blue Planet Foundation on what they are doing to get Hawaii off of fossil fuels, and how students can get involved.", 
       "title": "Attend Blue Planet Foundation Meeting", 
-      "depends_on": "False", 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 17, 
+      "updated_at": "2011-04-17 22:41:03", 
+      "priority": 12, 
       "type": "event", 
       "name": "Blue Planet"
     }
@@ -348,7 +1116,8 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
-      "description": "Find an incandescent bulb (perhaps from a desk lamp) and replace it with a CFL. You should throw away the incandescent bulb, because even though it isn't burned out it is a massive energy hog and you don't want someone using it later.\r\n\r\nFor verification, please take a single photo showing both the incandescent bulb you replaced and the CFL you installed.", 
+      "energy_related": false, 
+      "description": "Find an incandescent bulb (perhaps from a desk lamp) and replace it with a CFL. You should throw away the incandescent bulb, because even though it isn't burned out it is a massive energy hog and you don't want someone using it later.\n\nFor verification, please take a single photo showing both the incandescent bulb you replaced and the CFL you installed.", 
       "title": "Replace incandescent bulb with compact fluorescent (CFL)", 
       "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
@@ -362,13 +1131,14 @@
     "pk": 5, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 2, 
+      "category": 8, 
+      "energy_related": false, 
       "description": "SustainableUH is a student-lead organization focused on establishing the University of Hawaii as a world leader in sustainable practices, education, and research. Attend a special meeting and find out what Sustainable UH has accomplished and how you can get involved!", 
       "title": "Attend SustainableUH meeting", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 12, 
+      "updated_at": "2011-04-14 14:28:53", 
+      "priority": 1000, 
       "type": "event", 
       "name": "SustainbableUH"
     }
@@ -377,15 +1147,16 @@
     "pk": 6, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 3, 
-      "description": "Who Killed the Electric Car? is a 2006 documentary film that explores the creation, limited commercialization, and subsequent destruction of the battery electric vehicle in the United States, specifically the General Motors EV1 of the mid 1990s. The film explores the roles of automobile manufacturers, the oil industry, the US government, the Californian government, batteries, hydrogen vehicles, and consumers in limiting the development and adoption of this technology.\r\n\r\nShowing in Room [?]", 
+      "category": 5, 
+      "energy_related": false, 
+      "description": "<center>![Electric car crushed by gasoline pump](/site_media/media/gblocks/Who-Killed-The-Electric-Car-cover.jpg)</center>\r\n\r\nWho Killed the Electric Car? is a 2006 documentary film that explores the creation, limited commercialization, and subsequent destruction of the battery electric vehicle in the United States, specifically the General Motors EV1 of the mid 1990s. The film explores the roles of automobile manufacturers, the oil industry, the US government, the Californian government, batteries, hydrogen vehicles, and consumers in limiting the development and adoption of this technology.\r\n\r\nShowing in.", 
       "title": "Watch the movie \"Who Killed the Electric Car?\"", 
-      "depends_on": "completed('FaceBook')", 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-17 22:15:40", 
+      "priority": 25, 
       "type": "event", 
-      "name": "Electric Car"
+      "name": "E-car movie"
     }
   }, 
   {
@@ -393,12 +1164,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "Configure your computer and any external monitor to sleep after 20 minutes of inactivity. You can find instructions on enabling sleep functionality at the [EnergySTAR website](http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_users).\r\n\r\nOnce you have changed your settings, please take a screenshot showing the new settings for use in verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "energy_related": false, 
+      "description": "<center>![Laptop falling asleep](/site_media/media/gblocks/SleepyMacBookPro-small.png)</center>\r\n\r\nConfigure your computer and any external monitor to sleep after 20 minutes of inactivity. You can find instructions on enabling sleep functionality at the [EnergySTAR website](http://www.energystar.gov/index.cfm?c=power_mgt.pr_power_mgt_users).\r\n\r\nOnce you have changed your settings, please take a screenshot showing the new settings for use in verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
       "title": "Configure computer to sleep after inactivity", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 13, 
+      "updated_at": "2011-04-17 21:47:10", 
+      "priority": 5, 
       "type": "activity", 
       "name": "Computer Sleep"
     }
@@ -408,14 +1180,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
-      "description": "Become a fan of the [Kukui Cup Competition group on Facebook](http://www.facebook.com/group.php?gid=101651363219833).\r\n\r\nOnce you have become a fan, take a screenshot of the Kukui Cup Facebook page for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
-      "title": "Connect to Kukui Cup on Facebook", 
+      "energy_related": false, 
+      "description": "<center>![Facebook logo](/site_media/media/gblocks/facebook-logo-small.png)</center>\r\n\r\nShow support for the Kukui Cup by Liking the [Kukui Cup page on Facebook](https://www.facebook.com/pages/Kukui-Cup/198203673552272). Follow the link, click on the \"Like\" button, and then take a screenshot of the Kukui Cup Facebook page for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "title": "Like Kukui Cup on Facebook", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-17 21:10:30", 
       "priority": 4, 
       "type": "activity", 
-      "name": "FaceBook"
+      "name": "Like Kukui Cup"
     }
   }, 
   {
@@ -423,14 +1196,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
-      "description": "If you use [Twitter](http://twitter.com/), tweet a link to the [Kukui Cup website](/) so other folks will learn about the competition.\r\n\r\nOnce you have tweeted, take a screenshot of your tweet for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
+      "energy_related": false, 
+      "description": "<center>![Twitter logo](/site_media/media/gblocks/twitter-logo-small.png)</center>\r\n\r\nIf you use [Twitter](http://twitter.com/), tweet a link to the Kukui Cup website <http://kukuicup.org/> so other folks will learn about the competition.\r\n\r\nOnce you have tweeted, take a screenshot of your tweet for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)", 
       "title": "Tweet about Kukui Cup", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-17 21:42:00", 
       "priority": 6, 
       "type": "activity", 
-      "name": "Tweet"
+      "name": "Tweet link"
     }
   }, 
   {
@@ -438,26 +1212,28 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
-      "description": "Update your Facebook status with a link to the [Kukui Cup website](/) to promote the competition.\r\n\r\nOnce you have updated your status, take a screenshot for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)\r\n", 
-      "title": "Link to Kukui Cup on Facebook status", 
+      "energy_related": false, 
+      "description": "<center>![Facebook logo](/site_media/media/gblocks/facebook-logo-small.png)</center>\r\n\r\nShare a link to the Kukui Cup website <http://kukuicup.org/> on Facebook to get the word out about the competition. Go to [Facebook](https://www.facebook.com/) and click on the Share Link button at the top: \r\n\r\n<center>![Share link area](/site_media/media/gblocks/Facebook-share-link-small.png)</center>\r\n\r\nOnce you have updated your status, take a screenshot for verification:\r\n\r\n  * [How to take a screenshot on Windows](http://www.wikihow.com/Take-a-Screenshot-in-Microsoft-Windows)\r\n  * [How to take a screenshot on Mac OS X](http://www.wikihow.com/Take-a-Screenshot-in-Mac-OS-X)\r\n", 
+      "title": "Share Kukui Cup link on Facebook", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-17 21:26:19", 
       "priority": 5, 
       "type": "activity", 
-      "name": "Link status"
+      "name": "Share link"
     }
   }, 
   {
     "pk": 11, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 2, 
+      "category": 7, 
+      "energy_related": false, 
       "description": "This is a followup activity to the energy audit activity. If you haven't performed that activity, do it first and keep your notes around for this activity.\r\n\r\nBased on the audit results, make a label for each device in your room that shows the number of watts consumed when on and off, and put it close to the power switch for those devices that have them.\r\n\r\nOnce you have made the labels take a photo of the devices with their labels on to be used for verification.", 
       "title": "Label power hogs in your room", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-17 18:33:19", 
       "priority": 11, 
       "type": "activity", 
       "name": "Power Hogs"
@@ -468,6 +1244,7 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 5, 
+      "energy_related": false, 
       "description": "Use this [carbon footprint calculator](http://coolclimate.berkeley.edu/) to estimate the size of your carbon footprint. Record the size of your footprint for verification.", 
       "title": "Determine carbon footprint using calculator", 
       "depends_on": null, 
@@ -483,12 +1260,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
+      "energy_related": false, 
       "description": "Watch this promotional video about the Kukui Cup to learn more about the competition.\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch Kukui Cup Promo video", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 2, 
+      "updated_at": "2011-04-17 21:43:36", 
+      "priority": 900, 
       "type": "activity", 
       "name": "Promo Video"
     }
@@ -498,14 +1276,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
-      "description": "Watch this video explaining the competition and this website\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "energy_related": false, 
+      "description": "If you missed it during your the first login process, watch this video explaining the competition and this website\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/CzAmUxXXeJY?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/CzAmUxXXeJY?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the button below** to answer a question about the information in the video, and get your points!", 
       "title": "Watch introduction video", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 3, 
+      "updated_at": "2011-04-18 16:22:05", 
+      "priority": 1, 
       "type": "activity", 
-      "name": "Intro Video"
+      "name": "Intro video"
     }
   }, 
   {
@@ -513,12 +1292,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "Watch this video that talks about improving your energy intuition.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "energy_related": false, 
+      "description": "Watch this video about improving your energy intuition.\r\n\r\n<object width=\"471\" height=\"383\"><param name=\"movie\" value=\"http://www.youtube.com/v/E4MLXlUiRv0?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/E4MLXlUiRv0?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"383\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video on Energy Intuition", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-24 15:42:42", 
-      "priority": 8, 
+      "updated_at": "2011-04-17 21:47:20", 
+      "priority": 2, 
       "type": "activity", 
       "name": "Energy Intuition"
     }
@@ -528,11 +1308,12 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
+      "energy_related": false, 
       "description": "Watch this video that explains how to figure out how much energy your stuff uses.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video on how to audit your energy use", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-28 21:02:20", 
+      "updated_at": "2011-04-17 21:45:40", 
       "priority": 9, 
       "type": "activity", 
       "name": "Audit Energy"
@@ -542,13 +1323,14 @@
     "pk": 17, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 4, 
+      "category": 5, 
+      "energy_related": false, 
       "description": "Watch this video that talks about the challenges facing Hawaii as we try to keep meeting our energy needs.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch Hawaii Energy Challenges video", 
       "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-28 21:01:51", 
-      "priority": 19, 
+      "updated_at": "2011-04-17 22:06:45", 
+      "priority": 1, 
       "type": "activity", 
       "name": "Energy Challenge"
     }
@@ -558,12 +1340,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
+      "energy_related": false, 
       "description": "Watch this video that explains how we generate our energy in Hawaii.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch Energy Generation in Hawaii video", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 20, 
+      "updated_at": "2011-04-18 17:53:03", 
+      "priority": 900, 
       "type": "activity", 
       "name": "Energy Hawaii"
     }
@@ -573,11 +1356,12 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
-      "description": "For this event, try turning off everything in your dorm room for 15 minutes: lights, computers, TVs.\r\n\r\nIf you can get most of your Lounge mates to participate, try to see how low you can get your Lounge's power consumption to go. Use a laptop or mobile device to record your Lounge's instantaneous power value from the Energy Data page, and submit that value.", 
+      "energy_related": false, 
+      "description": "<center>![Light switch turned off](/site_media/media/gblocks/lightswitch.jpg)</center>\r\n\r\nFor this event, try turning off everything in your dorm room for 15 minutes: lights, computers, TVs, everything.\r\n\r\nIf you can get most of your Lounge mates to participate, try to see how low you can get your Lounge's power consumption to go. Use a laptop or mobile device to record your Lounge's instantaneous power value from the [Go Low](/energy/) page, and submit that value here.", 
       "title": "Go Dark event", 
-      "depends_on": "completed('FaceBook') and completed('printer')", 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-18 17:08:17", 
       "priority": 16, 
       "type": "event", 
       "name": "Go Dark"
@@ -588,14 +1372,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
-      "description": "Watch this video about the ways we use energy to generate light.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "energy_related": false, 
+      "description": "Watch this video about the ways we use energy to generate light.\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/vP9bDqOnUQk?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/vP9bDqOnUQk?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video about Lighting", 
-      "depends_on": "completedSomeOf(3, 'Get Started')", 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 15, 
+      "updated_at": "2011-04-17 22:01:05", 
+      "priority": 1, 
       "type": "activity", 
-      "name": "Lighting"
+      "name": "Lighting video"
     }
   }, 
   {
@@ -603,11 +1388,12 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "Borrow a Kill-A-Watt meter from your RA, and then check all the plug-in appliances in your room to see how much power they use when turned on & when turned off. Write down both the on and off values for each device as you check them because you will need that to get your points.", 
+      "energy_related": true, 
+      "description": "![Kill-A-Watt meter](http://blog.hgtv.com/greenhome/files/2009/05/killawatt.jpg)\r\n\r\nBorrow a Kill-A-Watt meter from your RA, and then check all the plug-in appliances in your room to see how much power they use when turned on & when turned off. Write down both the on and off values for each device as you check them because you will need that to get your points.", 
       "title": "Audit energy use in your dorm room", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-24 16:17:39", 
+      "updated_at": "2011-04-17 21:44:51", 
       "priority": 10, 
       "type": "activity", 
       "name": "Dorm Energy Audit"
@@ -618,12 +1404,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
+      "energy_related": false, 
       "description": "Watch this video that explains how we can get energy directly from the sun.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch video about solar energy", 
       "depends_on": "completedSomeOf(3, 'Basic Energy')", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 21, 
+      "updated_at": "2011-04-18 17:53:33", 
+      "priority": 950, 
       "type": "activity", 
       "name": "Solar Energy"
     }
@@ -633,27 +1420,29 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
-      "description": "Watch this video explaining how energy can be generated from the wind.\r\n\r\n![alt text](http://www.for.gov.bc.ca/hfd/pubs/SSIntroworkbook/chp3icon.gif)\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"><param name=\"wmode\" value=\"opaque\"/></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\" wmode=\"opaque\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
-      "title": "Watch video about wind energy", 
+      "energy_related": false, 
+      "description": "Watch this video explaining how energy can be generated from the wind.\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/Im_im4j9eRY?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/Im_im4j9eRY?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch video about wind energy in Hawaii", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-24 13:00:33", 
-      "priority": 22, 
+      "updated_at": "2011-04-17 19:16:15", 
+      "priority": 1, 
       "type": "activity", 
-      "name": "Wind Energy"
+      "name": "Wind energy"
     }
   }, 
   {
     "pk": 24, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 4, 
+      "category": 8, 
+      "energy_related": false, 
       "description": "Attend a special presentation by the Kokua Hawaii Foundation on their work with Hawaii's schools. Meeting will take place in in Lehua's rooftop lounge.", 
       "title": "Attend Kokua Hawaii Foundation event", 
-      "depends_on": "afterPublished()", 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 23, 
+      "updated_at": "2011-04-18 17:57:27", 
+      "priority": 900, 
       "type": "event", 
       "name": "Kokua Hawaii"
     }
@@ -662,13 +1451,14 @@
     "pk": 25, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 4, 
+      "category": 8, 
+      "energy_related": false, 
       "description": "Attend a presentation from KYA Sustainability Studio to hear from UH graduates about how they got jobs making Hawaii more sustainable. Meeting will take place in in Lehua's rooftop lounge.", 
       "title": "Attend KYA Sustainability Studio event", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 24, 
+      "updated_at": "2011-04-18 17:57:04", 
+      "priority": 800, 
       "type": "event", 
       "name": "KYA studio"
     }
@@ -677,13 +1467,14 @@
     "pk": 26, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 5, 
-      "description": "Watch this video talking about climate change and how it will affect Hawaii.\r\n\r\nPlaceholder video:\r\n\r\n<object width=\"560\" height=\"340\"><param name=\"movie\" value=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/fRzAKp-7DGI?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"560\" height=\"340\"></embed></object>\r\n\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
+      "category": 8, 
+      "energy_related": false, 
+      "description": "Watch this video talking about climate change and how it will affect Hawaii.\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/wSquej2rFXM?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/wSquej2rFXM?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the \"I Did This!\" button** to answer a question about the information in the video, and get your points!", 
       "title": "Watch a video about climate change", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 25, 
+      "updated_at": "2011-04-17 17:48:09", 
+      "priority": 1, 
       "type": "activity", 
       "name": "Climate change"
     }
@@ -692,13 +1483,14 @@
     "pk": 27, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 5, 
-      "description": "Come see Al Gore's very influential movie about climate change: An Inconvenient Truth. Showing in Ilima's roof lounge.", 
+      "category": 8, 
+      "energy_related": false, 
+      "description": "<center>![Image of hurricane coming out of a smokestack](/site_media/media/gblocks/inconvenient-truth-small.jpg)</center>\r\n\r\nCome see Al Gore's very influential movie about climate change: [An Inconvenient Truth](http://www.imdb.com/title/tt0497116/). Showing in Ilima's roof lounge.", 
       "title": "Watch the movie \"An Inconvenient Truth\"", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 26, 
+      "updated_at": "2011-04-18 17:57:49", 
+      "priority": 300, 
       "type": "event", 
       "name": "Inconvenient Truth"
     }
@@ -708,6 +1500,7 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 5, 
+      "energy_related": false, 
       "description": "Attend a presentation by Prof. Chip Fletcher on the affects of climate change on Hawaii's shoreline. The presentation will take place in in Mokihana's rooftop lounge.", 
       "title": "Attend talk by Prof Chip Fletcher", 
       "depends_on": null, 
@@ -723,11 +1516,12 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
-      "description": "This is an opportunity to really explore the issue of lighting in more depth. Pick one of the activities below and go do it! Note that these activities will require significantly more effort than normal activities, but they are also worth more points. This task is worth a variable number of points, so the more effort and the higher quality of your result, the more points you will receive.\r\n\r\n  * Make a YouTube video about lighting\r\n  * Write a letter to the editor about lighting\r\n  * Join a local environmental/energy organization", 
+      "energy_related": false, 
+      "description": "This is an opportunity to really explore the issue of lighting in more depth. Pick one of the activities below and go do it! Note that these activities will require significantly more effort than normal activities, but they are also worth more points. This task is worth a variable number of points, so the more effort and the higher quality of your result, the more points you will receive.\n\n  * Make a YouTube video about lighting\n  * Write a letter to the editor about lighting\n  * Join a local environmental/energy organization", 
       "title": "Advanced lighting activity", 
       "depends_on": null, 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-02-28 00:43:47", 
       "priority": 1000, 
       "type": "activity", 
       "name": "Advanced lighting"
@@ -738,14 +1532,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "Commit to turning off all appliances in your room (computer, TVs, DVD players, game consoles) every night before you go to sleep. Appliances use a significant amount of electricity, so turning them off when you definitely won't be using them (like when you are asleep) will save energy.", 
+      "energy_related": false, 
+      "description": "<center>![Dorm bed](/site_media/media/gblocks/dorm-bed.jpg)</center>\r\n\r\nCommit to turning off all appliances in your room (computer, TVs, DVD players, game consoles) every night before you go to sleep. Appliances use a significant amount of electricity, so turning them off when you definitely won't be using them (like when you are asleep) will save energy.", 
       "title": "I will turn off all appliances every night before going to sleep", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 3, 
+      "updated_at": "2011-04-18 17:02:12", 
+      "priority": 4, 
       "type": "commitment", 
-      "name": "turn off appliance"
+      "name": "Off b4 bed"
     }
   }, 
   {
@@ -753,6 +1548,7 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
+      "energy_related": false, 
       "description": "Commit to turning off the lights when leaving any room.", 
       "title": "I will turn off the lights when leaving any room", 
       "depends_on": null, 
@@ -768,11 +1564,12 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
+      "energy_related": false, 
       "description": "Commit to using task lighting (like a desk lamp) instead of overhead room lights when possible. Often overhead lights provide more light than you need, or might not provide the light where you need it. Using a desk lamp will reduce your electricity use while giving you the light you need, where you need it.", 
       "title": "I will use task lighting instead of overhead lights", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
+      "updated_at": "2011-04-15 17:14:39", 
       "priority": 7, 
       "type": "commitment", 
       "name": "task lighting"
@@ -783,27 +1580,29 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 2, 
-      "description": "A vampire load is a device that uses power when plugged in, even when it is turned off and not doing anything. Commit to turning off any vampire loads (cell phone charger, iPod charger, game consoles, TVs) using a power strip when you are not using them, thereby saving energy.", 
+      "energy_related": false, 
+      "description": "<center>![Power strip with multiple things plugged in](/site_media/media/gblocks/powerstrip.jpg)</center>\r\n\r\nA vampire load is a device that uses power when plugged in, even when it is turned off and not doing anything. Commit to turning off any vampire loads (cell phone charger, iPod charger, game consoles, TVs) using a power strip when you are not using them, thereby saving energy. If you need a power strip, you can buy them at the UH Bookstore, or many other stores (grocery stores, drug stores, etc).", 
       "title": "I will turn off vampire loads using a power strip", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 2, 
+      "updated_at": "2011-04-18 17:01:19", 
+      "priority": 3, 
       "type": "commitment", 
-      "name": "turn off vampire"
+      "name": "Turn off vampires"
     }
   }, 
   {
     "pk": 34, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 7, 
+      "category": 8, 
+      "energy_related": false, 
       "description": "Commit to turning off water at sinks when you aren't actually using the water, such as when brushing your teeth, shaving, applying makeup, etc. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
       "title": "I will turn off water when brushing my teeth or shaving", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:56:06", 
+      "priority": 100, 
       "type": "commitment", 
       "name": "turn off water"
     }
@@ -813,12 +1612,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 7, 
+      "energy_related": false, 
       "description": "Commit to turning off water when showering except when actively rinsing off soap or shampoo. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
       "title": "I will turn off water when sudsing and scrubbing in shower", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:19:47", 
+      "priority": 20, 
       "type": "commitment", 
       "name": "water in shower"
     }
@@ -828,27 +1628,29 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 3, 
-      "description": "Commit to using natural light from windows or outdoors instead of turning on electric lighting. This can mean opening shades instead of turning on the lights, and/or planning your day so that tasks that require light (like reading books, doing written homework) are done during the day.", 
+      "energy_related": false, 
+      "description": "<center>![Sun coming through window](http://dasha.ics.hawaii.edu:8150/site_media/media/gblocks/sun-window.jpg)</center>\r\n\r\nCommit to using natural light from windows or outdoors instead of turning on electric lighting. This can mean opening shades instead of turning on the lights, and/or planning your day so that tasks that require light (like reading books, doing written homework) are done during the day.", 
       "title": "I will use natural light instead of electric lighting", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 8, 
+      "updated_at": "2011-04-18 17:03:28", 
+      "priority": 3, 
       "type": "commitment", 
-      "name": "natural light"
+      "name": "Use sunlight"
     }
   }, 
   {
     "pk": 37, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 2, 
+      "category": 6, 
+      "energy_related": false, 
       "description": "Commit to turning off your printer when you aren't actively printing something out. This will reduce electricity use, since printers draw some power if they are turned on even when they aren't printing.", 
       "title": "I will turn off printer when not printing", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 4, 
+      "updated_at": "2011-04-18 17:30:24", 
+      "priority": 901, 
       "type": "commitment", 
       "name": "printer"
     }
@@ -858,14 +1660,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
-      "description": "Commit to using the stairs instead of elevators during your day, whenever that is feasible. Elevators use electricity, so by using the stairs you will save some energy. Also, using the stairs is good exercise!", 
+      "energy_related": false, 
+      "description": "<center>![Stairwell looking down](/site_media/media/gblocks/stairwell.jpg)</center>\r\n\r\nCommit to using the stairs instead of elevators during your day, whenever that is feasible. Elevators use electricity, so by using the stairs you will save some energy. Also, using the stairs is good exercise!", 
       "title": "I will use stairs instead of elevator", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 9, 
+      "updated_at": "2011-04-18 17:04:39", 
+      "priority": 5, 
       "type": "commitment", 
-      "name": "stairs"
+      "name": "Use stairs"
     }
   }, 
   {
@@ -873,14 +1676,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 6, 
-      "description": "Commit to recycling all (recyclable) beverage containers at an appropriate location. Making things from recycled materials generally costs less and uses less energy than making them from raw materials.", 
+      "energy_related": false, 
+      "description": "<center>![Lid of a recycling bin](/site_media/media/gblocks/recycling-can-lid.jpg)</center>\r\n\r\nCommit to recycling all (recyclable) beverage containers at one of the recycling bins on campus or around town. Making things from recycled materials generally costs less and uses less energy than making them from raw materials.", 
       "title": "I will recycle all beverage containers", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:06:34", 
+      "priority": 3, 
       "type": "commitment", 
-      "name": "recycle container"
+      "name": "Recycle cans"
     }
   }, 
   {
@@ -888,14 +1692,15 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 5, 
-      "description": "Commit to not driving off-campus in a car by yourself. Try riding the bus (free using your U-PASS!), riding a bike, walking, driving a moped, or using a vehicle with 3+ occupants instead. Transportation fuel is a major use of energy and it generates a lot of greenhouse gases, so traveling more efficiently saves energy and the planet.", 
+      "energy_related": false, 
+      "description": "<center>![Picture of 3 people in a car](/site_media/media/gblocks/carpool.jpg)</center>\r\n\r\nCommit to not driving off-campus in a car by yourself. Try riding the bus (free using your U-PASS!), riding a bike, walking, driving a moped, or using a vehicle with 3+ occupants instead. Transportation fuel is a major use of energy and it generates a lot of greenhouse gases, so traveling more efficiently saves energy and the planet.", 
       "title": "I won't drive off-campus alone", 
-      "depends_on": null, 
+      "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:05:42", 
+      "priority": 3, 
       "type": "commitment", 
-      "name": "car pool"
+      "name": "Car pool"
     }
   }, 
   {
@@ -903,6 +1708,7 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
+      "energy_related": false, 
       "description": "Commit to using your TV (watching shows, movies, playing games) for not more than 1 hour per day. Widescreen TVs use a lot of electricity, so putting a limit on how much you use them will reduce your electricity use.", 
       "title": "I will limit my TV use to 1 hour a day", 
       "depends_on": null, 
@@ -918,12 +1724,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 7, 
+      "energy_related": false, 
       "description": "Commit to always washing full loads of laundry. Washing less than a full load is less efficient, leading to more electricity and hot water being used per piece of laundry washed.", 
       "title": "I will wash only full loads of laundry", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:19:59", 
+      "priority": 21, 
       "type": "commitment", 
       "name": "full load laundry"
     }
@@ -933,12 +1740,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 1, 
+      "energy_related": false, 
       "description": "Commit to wearing your Kukui Cup button every day during the commitment period. Wearing your button will help spread awareness about the competition, and remind others to get involved.", 
       "title": "I will wear my Kukui Cup button every day", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1, 
+      "updated_at": "2011-04-14 14:32:30", 
+      "priority": 990, 
       "type": "commitment", 
       "name": "kukui cup button"
     }
@@ -948,12 +1756,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 5, 
+      "energy_related": false, 
       "description": "Commit to walking to any destination less than one mile away from your residence hall. Walking saves energy, costs nothing, and is good exercise.", 
       "title": "I will walk to destinations less than one mile away", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-17 22:08:08", 
+      "priority": 4, 
       "type": "commitment", 
       "name": "walk"
     }
@@ -963,12 +1772,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 7, 
+      "energy_related": false, 
       "description": "Commit to washing your laundry in cold water instead of warm or hot water. There are now detergents designed to be used in cold water, and it takes lots of energy to heat water up. By using cold water, you will be saving energy.", 
       "title": "I will wash my laundry in cold water", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:20:15", 
+      "priority": 25, 
       "type": "commitment", 
       "name": "cold laundry"
     }
@@ -978,12 +1788,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 7, 
+      "energy_related": false, 
       "description": "Commit to measuring the length of your shower with a watch or phone, and reducing the time by 1 minute. Clean water is a valuable resource that shouldn't be wasted. Also pumping water from the ground into a building, heating it, and then treating the used water takes energy, so reducing the amount of water used saves energy.", 
       "title": "I will reduce my shower time by 1 minute", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:21:00", 
+      "priority": 30, 
       "type": "commitment", 
       "name": "reduce shower time"
     }
@@ -992,13 +1803,14 @@
     "pk": 47, 
     "model": "activities.activitybase", 
     "fields": {
-      "category": 2, 
+      "category": 6, 
+      "energy_related": false, 
       "description": "Commit to turning off your music (from computer, stereo, etc) when you leave your room. You save electricity when you turn off your music when you aren't there to enjoy it.", 
       "title": "I will turn off my music when leaving my room", 
-      "depends_on": "True", 
+      "depends_on": "False", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 5, 
+      "updated_at": "2011-04-18 17:30:42", 
+      "priority": 910, 
       "type": "commitment", 
       "name": "turn off music"
     }
@@ -1008,8 +1820,9 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 4, 
+      "energy_related": false, 
       "description": "Commit to turning off your computer/TV/game console and doing something that doesn't require electricity instead. There are many things you can do both on and off campus that don't require electricity, go find them!", 
-      "title": "I will do something \"unplugged\" every day", 
+      "title": "I will do something 'unplugged' every day", 
       "depends_on": null, 
       "created_at": "2011-02-17 10:35:30", 
       "updated_at": "2011-02-17 10:35:30", 
@@ -1023,12 +1836,13 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 8, 
+      "energy_related": false, 
       "description": "Commit to bringing and using reuseable bags when shopping instead of the paper or plastic ones offered by stores. Making disposable bags requires energy, and often the bags end up in our landfills or worse yet they blow away into the ocean. Using a reusable bag saves energy and keeps trash out of our landfills.", 
       "title": "I will bring reusable bags when shopping", 
-      "depends_on": null, 
+      "depends_on": "", 
       "created_at": "2011-02-17 10:35:30", 
-      "updated_at": "2011-02-17 10:35:30", 
-      "priority": 1000, 
+      "updated_at": "2011-04-18 17:56:20", 
+      "priority": 200, 
       "type": "commitment", 
       "name": "resuable bag"
     }
@@ -1038,6 +1852,7 @@
     "model": "activities.activitybase", 
     "fields": {
       "category": 5, 
+      "energy_related": false, 
       "description": "Commit to not eating any meat (beef, pork, chicken, fish, shellfish, etc) during the commitment period. Producing meat (beef in particular) uses a great deal of energy, and produces a great deal of greenhouse gasses. A vegetarian diet uses less energy and emits less greenhouse gas. There are many of vegetarian food options on campus, try them out!", 
       "title": "I will not eat meat", 
       "depends_on": null, 
@@ -1049,11 +1864,235 @@
     }
   }, 
   {
+    "pk": 52, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "energy_related": false, 
+      "description": "<center>![Crane picking up cars from a large pile](http://www.opala.org/images/solid_waste/hmr_crane.jpg)</center>\r\n\r\nFind out more about how Oahu deals with our opala (garbage) in this **all day** tour of several waste and recycling facilities. This tour starts early so make sure you get to the bus on time! Lunch is not provided, so either bring your own, or there will be an opportunity to buy one in a lunch-friendly area.", 
+      "title": "Take a tour of Oahu's trashier side", 
+      "depends_on": "True", 
+      "created_at": "2011-02-28 00:50:45", 
+      "updated_at": "2011-04-18 17:31:51", 
+      "priority": 960, 
+      "type": "excursion", 
+      "name": "Tour de Trash"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "energy_related": false, 
+      "description": "test survey", 
+      "title": "test survey", 
+      "depends_on": null, 
+      "created_at": "2011-02-28 00:51:39", 
+      "updated_at": "2011-02-28 00:51:39", 
+      "priority": 1000, 
+      "type": "survey", 
+      "name": "test survey"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "energy_related": false, 
+      "description": "<center>![Rise Above Plastics spelled out in beach sand with pieces of recovered plastic](/site_media/media/gblocks/rise-above-plastics.jpg)</center>\r\n\r\nHelp make Oahu's beaches more beautiful by participating in this beach cleanup sponsored by the Surfrider Foundation. You need to register for this free event to reserve your seat on the bus by clicking the Register button below. Make sure to wear comfortable clothes, a hat, sunscreen, and some water to keep cool with while you work!", 
+      "title": "Take a trip to clean up one of Oahu's beaches", 
+      "depends_on": "True", 
+      "created_at": "2011-02-28 00:52:31", 
+      "updated_at": "2011-04-18 17:45:38", 
+      "priority": 995, 
+      "type": "excursion", 
+      "name": "Beach cleanup"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "energy_related": false, 
+      "description": "test activity 2", 
+      "title": "test activity 2", 
+      "depends_on": null, 
+      "created_at": "2011-02-28 00:53:34", 
+      "updated_at": "2011-02-28 00:53:34", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "test activity 2"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "energy_related": false, 
+      "description": "<center>![image of tunnel door](http://www.boardofwatersupply.com/images/library/waihee1.gif)</center>\r\n\r\n\"Walk in a 1,500 foot dike tunnel to see, feel and hear water at its very source. This dike water source supplies water to Windward O'ahu, from Kahalu'u to Kailua.\" Wear warm clothing and rain gear (no umbrellas) as it will be wet. Wear comfortable shoes that you don't mind getting wet, and bring a flashlight if you have one. Also make sure you bring your UH student ID card, because you can't go on the tour without it!", 
+      "title": "Check out the Waihee tunnel in Windward Oahu", 
+      "depends_on": "True", 
+      "created_at": "2011-02-28 00:54:10", 
+      "updated_at": "2011-04-18 17:15:36", 
+      "priority": 100, 
+      "type": "excursion", 
+      "name": "Waihee tunnel"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "energy_related": false, 
+      "description": "Check out this video called Trash is Treasure and maybe change your thinking about trash\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/uMxeWJgFLhQ?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/uMxeWJgFLhQ?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the button below** to answer a question about the information in the video, and get your points!", 
+      "title": "Watch Trash is Treasure video", 
+      "depends_on": "True", 
+      "created_at": "2011-04-17 18:12:26", 
+      "updated_at": "2011-04-19 11:31:37", 
+      "priority": 1, 
+      "type": "activity", 
+      "name": "Trash video"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 4, 
+      "energy_related": false, 
+      "description": "<center>![Wind turbine being assembled with crane](http://media.staradvertiser.com/images/312*467/20101009_biz_windfarm.jpg)</center>\r\n\r\nTake a trip to First Wind's Oahu wind farm on the windward side of Oahu, which uses wind turbines to generate up to 30 MW of renewable energy. You need to register for this free event to reserve your seat on the bus by clicking the \"I want to sign up\" button below.", 
+      "title": "Take a trip to a wind farm on the windward side", 
+      "depends_on": "True", 
+      "created_at": "2011-04-18 17:51:47", 
+      "updated_at": "2011-04-18 17:51:47", 
+      "priority": 800, 
+      "type": "excursion", 
+      "name": "Wind farm tour"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 8, 
+      "energy_related": false, 
+      "description": "<center>![Charlie Reppun with the Reppun farm in the background](/site_media/media/gblocks/charliereppun-small.jpg)</center>\r\n\r\nTake a trip to the Waiahole Valley on the windward side of Oahu to see the Reppun farm, which uses renewable energy for all its electrical needs. You need to register for this free event to reserve your seat on the bus by clicking the \"I want to sign up\" button below. Make sure to wear clothes and shoes that you don't mind getting wet or muddy on the farm!", 
+      "title": "Take a trip to the Reppun farm", 
+      "depends_on": "True", 
+      "created_at": "2011-04-18 18:02:01", 
+      "updated_at": "2011-04-18 18:03:31", 
+      "priority": 400, 
+      "type": "excursion", 
+      "name": "Reppun Farm"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 1, 
+      "energy_related": false, 
+      "description": "Filler 1", 
+      "title": "Filler 1", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:05:47", 
+      "updated_at": "2011-04-18 18:05:47", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 1"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 2, 
+      "energy_related": false, 
+      "description": "Filler 2", 
+      "title": "Filler 2", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:06:31", 
+      "updated_at": "2011-04-18 18:06:32", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 2"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 3, 
+      "energy_related": false, 
+      "description": "Filler 3", 
+      "title": "Filler 3", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:07:27", 
+      "updated_at": "2011-04-18 18:07:27", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 3"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 5, 
+      "energy_related": false, 
+      "description": "Filler 4", 
+      "title": "Filler 4", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:08:05", 
+      "updated_at": "2011-04-18 18:08:05", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 4"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 6, 
+      "energy_related": false, 
+      "description": "Filler 5", 
+      "title": "Filler 5", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:08:48", 
+      "updated_at": "2011-04-18 18:08:48", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 5"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "activities.activitybase", 
+    "fields": {
+      "category": 7, 
+      "energy_related": false, 
+      "description": "Filler 6", 
+      "title": "Filler 6", 
+      "depends_on": "", 
+      "created_at": "2011-04-18 18:09:25", 
+      "updated_at": "2011-04-18 18:09:25", 
+      "priority": 1000, 
+      "type": "activity", 
+      "name": "Filler 6"
+    }
+  }, 
+  {
     "pk": 30, 
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1069,7 +2108,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1077,7 +2116,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1085,7 +2124,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1093,7 +2132,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1101,7 +2140,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1117,7 +2156,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1125,7 +2164,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1133,7 +2172,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1149,7 +2188,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1157,7 +2196,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1165,7 +2204,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1173,7 +2212,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1181,7 +2220,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1205,7 +2244,7 @@
     "model": "activities.commitment", 
     "fields": {
       "duration": 5, 
-      "point_value": 2
+      "point_value": 5
     }
   }, 
   {
@@ -1220,12 +2259,13 @@
     "pk": 1, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code from the meeting.", 
       "event_date": "2011-01-27 19:00:00", 
-      "point_value": 10, 
-      "expire_date": "2011-09-04", 
+      "point_value": 30, 
+      "expire_date": "2011-02-04", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1235,12 +2275,13 @@
     "pk": 2, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1250,12 +2291,13 @@
     "pk": 3, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "Lehua rooftop", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the ticket code provided at the meeting.", 
-      "event_date": "2011-02-03 19:00:00", 
-      "point_value": 5, 
-      "expire_date": "2011-09-10", 
+      "event_date": "2011-05-02 19:00:00", 
+      "point_value": 20, 
+      "expire_date": "2011-12-31", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1265,12 +2307,13 @@
     "pk": 4, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": null, 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the photo you took, showing both the incandescent bulb you replaced and the CFL you installed.", 
       "event_date": null, 
       "point_value": 4, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-05-12"
@@ -1280,12 +2323,13 @@
     "pk": 5, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the meeting.", 
       "event_date": "2011-01-31 18:00:00", 
       "point_value": 20, 
-      "expire_date": "2011-09-07", 
+      "expire_date": "2011-02-07", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1295,12 +2339,13 @@
     "pk": 6, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "Mokihana rooftop", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the movie.", 
-      "event_date": "2010-10-11 20:00:00", 
-      "point_value": 2, 
-      "expire_date": "2010-10-15", 
+      "event_date": "2011-04-30 20:00:00", 
+      "point_value": 20, 
+      "expire_date": "2011-12-31", 
       "duration": 100, 
       "point_range_end": null, 
       "pub_date": "2010-07-12"
@@ -1310,12 +2355,13 @@
     "pk": 7, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the screenshot you took of your new, more energy efficient system settings.", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "point_value": 10, 
+      "expire_date": "2011-02-21", 
       "duration": 10, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1325,12 +2371,13 @@
     "pk": 8, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the screenshot showing you joined the Kukui Cup Facebook group.", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1340,12 +2387,13 @@
     "pk": 9, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the screenshot showing your tweet about the Kukui Cup website.", 
       "event_date": null, 
-      "point_value": 2, 
-      "expire_date": "2011-09-21", 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1355,12 +2403,13 @@
     "pk": 10, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the screenshot showing a link to the Kukui Cup in your Facebook newsfeed.", 
       "event_date": null, 
-      "point_value": 2, 
-      "expire_date": "2011-09-21", 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
       "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1370,12 +2419,13 @@
     "pk": 11, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Please upload the photo showing your labels on devices in your room.", 
       "event_date": null, 
       "point_value": 5, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 15, 
       "point_range_end": null, 
       "pub_date": "2010-07-16"
@@ -1385,6 +2435,7 @@
     "pk": 12, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": null, 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "Enter in the carbon footprint you received from the calculator, and any comments you have about your carbon footprint.", 
@@ -1400,13 +2451,14 @@
     "pk": 13, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-12"
     }
@@ -1415,13 +2467,14 @@
     "pk": 14, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 5, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-12"
     }
@@ -1430,12 +2483,13 @@
     "pk": 15, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1445,12 +2499,13 @@
     "pk": 16, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "free", 
       "point_range_start": null, 
-      "confirm_prompt": "test", 
+      "confirm_prompt": "this is a test", 
       "event_date": null, 
       "point_value": 4, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1460,13 +2515,14 @@
     "pk": 17, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "free", 
       "point_range_start": null, 
-      "confirm_prompt": "test", 
+      "confirm_prompt": "input a test", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-02-21", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
     }
@@ -1475,12 +2531,13 @@
     "pk": 18, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-15"
@@ -1490,14 +2547,15 @@
     "pk": 19, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "All dorms", 
       "confirm_type": "free", 
-      "point_range_start": 10, 
+      "point_range_start": null, 
       "confirm_prompt": "Enter in the minimum value you saw for your Lounge's power usage, with everything turned off.", 
-      "event_date": "2011-02-09 20:00:00", 
-      "point_value": null, 
-      "expire_date": "2011-09-21", 
+      "event_date": "2011-05-03 20:00:00", 
+      "point_value": 20, 
+      "expire_date": "2011-12-31", 
       "duration": 20, 
-      "point_range_end": 20, 
+      "point_range_end": null, 
       "pub_date": "2010-10-15"
     }
   }, 
@@ -1505,13 +2563,14 @@
     "pk": 20, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
     }
@@ -1520,12 +2579,13 @@
     "pk": 21, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "free", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the name of each device in your room and both the on and off power use values below.", 
       "event_date": null, 
       "point_value": 10, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 15, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1535,12 +2595,13 @@
     "pk": 22, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
       "point_value": 3, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 3, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1550,13 +2611,14 @@
     "pk": 23, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
     }
@@ -1565,12 +2627,13 @@
     "pk": 24, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-17 18:00:00", 
-      "point_value": 5, 
-      "expire_date": "2011-09-21", 
+      "point_value": 20, 
+      "expire_date": "2011-02-21", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1580,12 +2643,13 @@
     "pk": 25, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-14 18:00:00", 
-      "point_value": 5, 
-      "expire_date": "2011-09-21", 
+      "point_value": 20, 
+      "expire_date": "2011-02-21", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1595,13 +2659,14 @@
     "pk": 26, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": "", 
       "confirm_type": "text", 
       "point_range_start": null, 
       "confirm_prompt": "", 
       "event_date": null, 
-      "point_value": 3, 
-      "expire_date": "2011-09-21", 
-      "duration": 3, 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
     }
@@ -1610,12 +2675,13 @@
     "pk": 27, 
     "model": "activities.activity", 
     "fields": {
-      "confirm_type": "code", 
+      "event_location": "Ilima rooftop", 
+      "confirm_type": "image", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
-      "event_date": "2011-02-02 19:00:00", 
-      "point_value": 4, 
-      "expire_date": "2011-09-21", 
+      "event_date": "2011-04-29 19:00:00", 
+      "point_value": 20, 
+      "expire_date": "2011-12-31", 
       "duration": 110, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1625,12 +2691,13 @@
     "pk": 28, 
     "model": "activities.activity", 
     "fields": {
+      "event_location": null, 
       "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter the attendance code you received at the meeting below.", 
       "event_date": "2011-02-16 19:00:00", 
       "point_value": 5, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-16", 
       "duration": 60, 
       "point_range_end": null, 
       "pub_date": "2010-10-18"
@@ -1640,15 +2707,240 @@
     "pk": 29, 
     "model": "activities.activity", 
     "fields": {
-      "confirm_type": "free", 
+      "event_location": null, 
+      "confirm_type": "text", 
       "point_range_start": 5, 
       "confirm_prompt": "Enter in the the verification information requested for this type of activity (i.e. URL of your blog, YouTube video, etc).", 
       "event_date": null, 
       "point_value": null, 
-      "expire_date": "2011-09-21", 
+      "expire_date": "2011-02-21", 
       "duration": 120, 
       "point_range_end": 20, 
       "pub_date": "2010-10-18"
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "Ilima parking lot", 
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the excursion", 
+      "event_date": "2011-05-08 07:30:00", 
+      "point_value": 35, 
+      "expire_date": "2011-12-31", 
+      "duration": 540, 
+      "point_range_end": null, 
+      "pub_date": "2011-02-27"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": null, 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "test", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-03-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-02-27"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "Ilima parking lot", 
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the end of the excursion.", 
+      "event_date": "2011-05-14 09:00:00", 
+      "point_value": 30, 
+      "expire_date": "2011-12-31", 
+      "duration": 240, 
+      "point_range_end": null, 
+      "pub_date": "2011-02-27"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": null, 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "test", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-03-31", 
+      "duration": 15, 
+      "point_range_end": null, 
+      "pub_date": "2011-02-27"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "Ilima parking lot", 
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the excursion", 
+      "event_date": "2011-05-07 09:00:00", 
+      "point_value": 30, 
+      "expire_date": "2011-12-31", 
+      "duration": 50, 
+      "point_range_end": null, 
+      "pub_date": "2011-02-27"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "text", 
+      "point_range_start": null, 
+      "confirm_prompt": "", 
+      "event_date": null, 
+      "point_value": 10, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-17"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "Ilima parking lot", 
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the end of the excursion.", 
+      "event_date": "2011-05-15 09:00:00", 
+      "point_value": 30, 
+      "expire_date": "2011-12-31", 
+      "duration": 240, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "Ilima parking lot", 
+      "confirm_type": "code", 
+      "point_range_start": null, 
+      "confirm_prompt": "Enter the attendance code you received at the end of the excursion.", 
+      "event_date": "2011-05-21 09:00:00", 
+      "point_value": 30, 
+      "expire_date": "2011-12-31", 
+      "duration": 240, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "Foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "Foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "activities.activity", 
+    "fields": {
+      "event_location": "", 
+      "confirm_type": "free", 
+      "point_range_start": null, 
+      "confirm_prompt": "foo", 
+      "event_date": null, 
+      "point_value": 5, 
+      "expire_date": "2011-12-31", 
+      "duration": 5, 
+      "point_range_end": null, 
+      "pub_date": "2011-04-18"
     }
   }, 
   {
@@ -1674,36 +2966,36 @@
     }
   }, 
   {
-    "pk": 4, 
+    "pk": 3, 
     "model": "activities.commonactivityuser", 
     "fields": {
       "award_date": null, 
-      "submission_date": "2011-02-22 17:49:01", 
-      "created_at": "2011-02-22 17:49:01", 
-      "updated_at": "2011-02-22 17:49:01", 
+      "submission_date": "2011-02-17 17:39:26", 
+      "created_at": "2011-02-17 17:39:26", 
+      "updated_at": "2011-02-17 17:39:26", 
       "approval_status": "pending"
     }
   }, 
   {
-    "pk": 5, 
+    "pk": 9, 
     "model": "activities.commonactivityuser", 
     "fields": {
-      "award_date": null, 
-      "submission_date": "2011-02-24 15:31:26", 
-      "created_at": "2011-02-24 15:31:26", 
-      "updated_at": "2011-02-24 15:31:26", 
-      "approval_status": "pending"
+      "award_date": "2011-04-15 17:46:51", 
+      "submission_date": "2011-04-15 17:45:20", 
+      "created_at": "2011-04-15 17:45:20", 
+      "updated_at": "2011-04-15 17:46:51", 
+      "approval_status": "approved"
     }
   }, 
   {
     "pk": 6, 
     "model": "activities.commonactivityuser", 
     "fields": {
-      "award_date": "2011-02-24 15:47:05", 
-      "submission_date": "2011-02-24 15:43:59", 
-      "created_at": "2011-02-24 15:43:59", 
-      "updated_at": "2011-02-24 15:47:05", 
-      "approval_status": "approved"
+      "award_date": null, 
+      "submission_date": "2011-03-01 14:04:19", 
+      "created_at": "2011-03-01 14:04:19", 
+      "updated_at": "2011-03-01 14:04:19", 
+      "approval_status": "pending"
     }
   }, 
   {
@@ -1711,9 +3003,9 @@
     "model": "activities.commonactivityuser", 
     "fields": {
       "award_date": null, 
-      "submission_date": "2011-02-24 16:16:26", 
-      "created_at": "2011-02-24 16:16:26", 
-      "updated_at": "2011-02-24 16:16:26", 
+      "submission_date": "2011-03-01 14:17:00", 
+      "created_at": "2011-03-01 14:17:00", 
+      "updated_at": "2011-03-01 14:17:00", 
       "approval_status": "pending"
     }
   }, 
@@ -1722,20 +3014,86 @@
     "model": "activities.commonactivityuser", 
     "fields": {
       "award_date": null, 
-      "submission_date": "2011-02-28 20:30:42", 
-      "created_at": "2011-02-28 20:30:42", 
-      "updated_at": "2011-02-28 20:30:42", 
+      "submission_date": "2011-03-01 14:22:25", 
+      "created_at": "2011-03-01 14:22:25", 
+      "updated_at": "2011-03-01 14:22:25", 
       "approval_status": "pending"
     }
   }, 
   {
-    "pk": 9, 
+    "pk": 10, 
     "model": "activities.commonactivityuser", 
     "fields": {
       "award_date": null, 
-      "submission_date": "2011-02-28 21:02:53", 
-      "created_at": "2011-02-28 21:02:53", 
-      "updated_at": "2011-02-28 21:02:53", 
+      "submission_date": null, 
+      "created_at": "2011-04-17 21:56:20", 
+      "updated_at": "2011-04-17 21:56:20", 
+      "approval_status": "unapproved"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": null, 
+      "created_at": "2011-04-18 17:16:34", 
+      "updated_at": "2011-04-18 17:16:34", 
+      "approval_status": "unapproved"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": null, 
+      "created_at": "2011-04-18 17:32:10", 
+      "updated_at": "2011-04-18 17:32:10", 
+      "approval_status": "unapproved"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": null, 
+      "created_at": "2011-04-18 18:04:02", 
+      "updated_at": "2011-04-18 18:04:02", 
+      "approval_status": "unapproved"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-04-19 12:50:00", 
+      "created_at": "2011-04-19 12:50:00", 
+      "updated_at": "2011-04-19 12:50:00", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-04-19 13:30:57", 
+      "created_at": "2011-04-19 13:30:57", 
+      "updated_at": "2011-04-19 13:30:57", 
+      "approval_status": "pending"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.commonactivityuser", 
+    "fields": {
+      "award_date": null, 
+      "submission_date": "2011-04-19 13:46:12", 
+      "created_at": "2011-04-19 13:46:12", 
+      "updated_at": "2011-04-19 13:46:12", 
       "approval_status": "pending"
     }
   }, 
@@ -1792,6 +3150,71 @@
     }
   }, 
   {
+    "pk": 5, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-03-01 14:20:50", 
+      "commitment": 47, 
+      "updated_at": "2011-03-01 14:20:50", 
+      "completion_date": "2011-03-06", 
+      "user": 606
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-04-14 14:33:57", 
+      "commitment": 33, 
+      "updated_at": "2011-04-14 14:33:57", 
+      "completion_date": "2011-04-19", 
+      "user": 605
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-04-14 15:02:10", 
+      "commitment": 30, 
+      "updated_at": "2011-04-14 15:02:10", 
+      "completion_date": "2011-04-19", 
+      "user": 605
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-04-17 13:48:04", 
+      "commitment": 36, 
+      "updated_at": "2011-04-17 13:48:04", 
+      "completion_date": "2011-04-22", 
+      "user": 605
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "activities.commitmentmember", 
+    "fields": {
+      "award_date": null, 
+      "comment": "", 
+      "created_at": "2011-04-17 13:52:32", 
+      "commitment": 30, 
+      "updated_at": "2011-04-17 13:52:32", 
+      "completion_date": "2011-04-22", 
+      "user": 1
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "activities.activitymember", 
     "fields": {
@@ -1820,73 +3243,17 @@
     }
   }, 
   {
-    "pk": 4, 
-    "model": "activities.activitymember", 
-    "fields": {
-      "admin_comment": "", 
-      "points_awarded": null, 
-      "user_comment": "gsdfg", 
-      "image": "activities/admin/yongwen.jpg", 
-      "question": null, 
-      "user": 606, 
-      "activity": 11, 
-      "response": ""
-    }
-  }, 
-  {
-    "pk": 5, 
+    "pk": 3, 
     "model": "activities.activitymember", 
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
       "user_comment": "test", 
-      "image": "", 
-      "question": 17, 
-      "user": 606, 
-      "activity": 23, 
-      "response": ""
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "activities.activitymember", 
-    "fields": {
-      "admin_comment": "", 
-      "points_awarded": null, 
-      "user_comment": "", 
-      "image": "", 
-      "question": 22, 
-      "user": 606, 
-      "activity": 15, 
-      "response": ""
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "activities.activitymember", 
-    "fields": {
-      "admin_comment": "", 
-      "points_awarded": null, 
-      "user_comment": "sdfgsdfg", 
       "image": "", 
       "question": null, 
       "user": 606, 
       "activity": 21, 
-      "response": "etdsgsdfg\r\nsdfgsdfg\r\nsdfgsd"
-    }
-  }, 
-  {
-    "pk": 8, 
-    "model": "activities.activitymember", 
-    "fields": {
-      "admin_comment": "", 
-      "points_awarded": null, 
-      "user_comment": "test", 
-      "image": "activities/admin/yongwen.jpg", 
-      "question": null, 
-      "user": 606, 
-      "activity": 7, 
-      "response": ""
+      "response": "test"
     }
   }, 
   {
@@ -1895,12 +3262,152 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "user_comment": "Yay!", 
+      "image": "", 
+      "question": 23, 
+      "user": 605, 
+      "activity": 14, 
+      "response": "Hale Aloha dorms!"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
       "image": "", 
       "question": null, 
       "user": 606, 
       "activity": 16, 
       "response": "test"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "test", 
+      "image": "", 
+      "question": 22, 
+      "user": 606, 
+      "activity": 13, 
+      "response": "test"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "activities/admin/yongwen.jpg", 
+      "question": null, 
+      "user": 606, 
+      "activity": 11, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": null, 
+      "user": 605, 
+      "activity": 27, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": null, 
+      "user": 605, 
+      "activity": 56, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": null, 
+      "user": 605, 
+      "activity": 52, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": null, 
+      "user": 605, 
+      "activity": 59, 
+      "response": ""
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": 23, 
+      "user": 640, 
+      "activity": 14, 
+      "response": "UH Manoa First Year Student Dorms"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": 8, 
+      "user": 605, 
+      "activity": 2, 
+      "response": "power"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "activities.activitymember", 
+    "fields": {
+      "admin_comment": "", 
+      "points_awarded": null, 
+      "user_comment": "", 
+      "image": "", 
+      "question": 34, 
+      "user": 605, 
+      "activity": 15, 
+      "response": "3 Wh"
     }
   }
 ]
