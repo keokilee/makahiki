@@ -2,6 +2,7 @@
 {% load prize_tags %}
 {% load markup %}
 
+{% with user.get_profile.available_tickets as tickets %}
 {% for prize in raffle.prizes %}
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
   <tr class="{{cycle_class}}">
@@ -31,20 +32,21 @@
     <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
     <td class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</td>
     <td>
-      {% if user.get_profile.available_tickets > 0 %}
+      {% if tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
         <a class="enabled" href="#" onclick="$(this).parent().submit()">+1</a>
       </form>
       {% else %}
-      <a class="disabled" href="#">+1</a>
+      <div class="disabled">+1</div>
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
-        <a class="enabled" href="#" onclick="$(this).parent().submit()">-1</a>
+        <a class="enabled" href="#" onclick="$(this).parent().submit();">-1</a>
       </form>
       {% else %}
-        <a class="disabled" href="#">-1</a>
+        <div class="disabled">-1</div>
       {% endif %}
     </td>
   </tr>
 {% endfor %}
+{% endwith %}
