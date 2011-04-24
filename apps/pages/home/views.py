@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
 
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
@@ -225,6 +226,7 @@ def setup_question(request):
 
 @never_cache 
 @login_required
+@csrf_exempt
 def setup_complete(request):
   if request.is_ajax():
     profile = request.user.get_profile()
