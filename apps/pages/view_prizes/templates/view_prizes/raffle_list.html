@@ -34,14 +34,14 @@
     <td>
       {% if tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
-        <a class="enabled" href="#" onclick="$(this).parent().submit()">+1</a>
+        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">+1</a>
       </form>
       {% else %}
       <div class="disabled">+1</div>
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
-        <a class="enabled" href="#" onclick="$(this).parent().submit();">-1</a>
+        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">-1</a>
       </form>
       {% else %}
         <div class="disabled">-1</div>
