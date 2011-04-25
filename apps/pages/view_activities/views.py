@@ -11,6 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
 from django.db.models import Count, Max
 from django.views.decorators.cache import never_cache
+from django.contrib import messages
 
 from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
@@ -100,15 +101,17 @@ def __add_commitment(request, commitment_id):
   floor = user.get_profile().floor
   
   if not can_add_commitments(user):
-    message = "You can only have %d active commitments." % MAX_COMMITMENTS
-    user.message_set.create(message=message)
+    # message = "You can only have %d active commitments." % MAX_COMMITMENTS
+    #     messages.warning(request, message)
+    pass
   elif commitment in get_current_commitments(user):
-    user.message_set.create(message="You are already committed to this commitment.")
+    # messages.warning(request, "You are already committed to this commitment.")
+    pass
   else:
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
-    user.message_set.create(message="You are now committed to \"%s\"" % commitment.title)
+    # messages.info("You are now committed to \"%s\"" % commitment.title)
 
     #increase point
     user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
@@ -226,7 +229,7 @@ def __request_activity_points(request, activity_id):
     # Retrieve an existing activity member object if it exists.
     activity_member = ActivityMember.objects.get(user=user, activity=activity)
     if activity_member.award_date:
-      user.message_set.create(message="You have already received the points for this activity.")
+      # messages.info("You have already received the points for this activity.")
       return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
       
   except ObjectDoesNotExist:
@@ -255,7 +258,6 @@ def __request_activity_points(request, activity_id):
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
         
         activity_member.approval_status = "pending"
-        user.message_set.create(message="Your request has been submitted!")
 
       elif activity.confirm_type == "code":
         # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
@@ -264,20 +266,16 @@ def __request_activity_points(request, activity_id):
         code.save()
         activity_member.approval_status = "approved" # Model save method will award the points.
         points = activity_member.activity.point_value
-        message = "You have been awarded %d points for your participation!" % points
-        user.message_set.create(message=message)
         
       # Attach text prompt question if one is provided
       elif form.cleaned_data.has_key("question"):
         activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
-        user.message_set.create(message="Your request has been submitted!")
                 
       elif activity.confirm_type == "free":
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
-        user.message_set.create(message="Your request has been submitted!")
 
       activity_member.save()
       

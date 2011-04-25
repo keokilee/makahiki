@@ -152,8 +152,8 @@ def like(request, item_id):
         "error":error
     }), mimetype='application/json')
     
-  elif error:
-    request.user.message_set.create(message=error)
+  # elif error:
+  #     request.user.message_set.create(message=error)
     
   return HttpResponseRedirect(reverse("components.resources.views.resource", args=(item_id,))) 
 
@@ -175,8 +175,8 @@ def unlike(request, item_id):
         "error":error
     }), mimetype='application/json')
   #At this point, this is a non-ajax request.
-  elif error:
-    request.user.message_set.create(message=error)
+  # elif error:
+  #     request.user.message_set.create(message=error)
     
   return HttpResponseRedirect(reverse("components.resources.views.resource", args=(item_id,)))
     

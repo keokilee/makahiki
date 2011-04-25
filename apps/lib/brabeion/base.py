@@ -78,6 +78,6 @@ def send_badge_messages(badge_award, **kwargs):
         message = user_message(badge_award)
     else:
         message = user_message
-    if message is not None:
-        badge_award.user.message_set.create(message=message)
+    # if message is not None:
+    #         badge_award.user.message_set.create(message=message)
 badge_awarded.connect(send_badge_messages)
