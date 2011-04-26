@@ -279,6 +279,18 @@ clear: both;
   text-align: center;
 }
 
+/*------- Notification styles -----*/
+#notification-box {
+  width: 920px;
+  margin: 0 auto;
+  clear:both; 
+  text-align: left;
+  border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	margin-bottom: 10px;
+}
+
 /*------- Quest styles -----*/
 #quest-box {
   width: 920px;

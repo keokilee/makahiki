@@ -418,8 +418,14 @@ class ActivityMember(CommonActivityUser):
     # We check here for a rejected item because it should have an id now.
     if self.approval_status == u"rejected":
       # Construct the message to be sent.
-      message = "Your response to '%s' was not approved." % (self.activity.title,)
-      message = message + " Please check your <a href='%s?rejected_id=%d'>profile</a> for more information." % (reverse("profile_index"), self.id)
+      message = "Your response to <a href='%s'>%s</a> was not approved." % (
+          reverse("activity_task", args=(self.activity.id,)),
+          self.activity.title
+      )
+      message = message + " Please check your <a href='%s?rejected_id=%d'>profile</a> for more information." % (
+          reverse("profile_index"), 
+          self.id
+      )
       self.user.message_set.create(message=message)
     
   def delete(self):

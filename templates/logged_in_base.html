@@ -35,14 +35,14 @@
 </div>
 
 {% if messages %}
-<div id="notification-box" class="content-box">
-  <div class="content-box-title">Notifications</div>
+<div id="notification-box" class="ui-state-error">
   <ul>
     {% for message in messages %}
     <li>
       {{message|safe}}
     </li>
     {% endfor %}
+  </ul>
 </div>
 {% endif %}
 
