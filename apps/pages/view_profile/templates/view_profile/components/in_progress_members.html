@@ -42,6 +42,10 @@
                 autoOpen: false
                 {% endif %}
               });
+              
+              $("#{{member.activity.title|slugify}}-rejected").click(function() {
+                $("#{{member.activity.title|slugify}}-rejected-dialog").dialog("open");
+              });
             });
           </script>
         {% endif %}
