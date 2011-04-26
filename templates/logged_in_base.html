@@ -35,7 +35,7 @@
 </div>
 
 {% if messages %}
-<div id="notification-box" class="ui-state-error">
+<div {% get_id_and_classes "notification-box" %}>
   <ul>
     {% for message in messages %}
     <li>
