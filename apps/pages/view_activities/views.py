@@ -297,7 +297,7 @@ def __request_activity_points(request, activity_id):
         "task":activity,
         "type":"activity",
         "pau":True,
-        "approved":False,
+        "approval":activity_member,
         "form":None,
         "question":None,
         "member_all":member_all_count,
@@ -332,7 +332,7 @@ def task(request, task_id):
   floor = user.get_profile().floor
   question = None
   form = None
-  approved = None
+  approval = None
   member_all_count = 0
   member_floor_count = 0
   
@@ -342,7 +342,11 @@ def task(request, task_id):
   if task.type != "commitment":
     task = task.activity
     pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
-    approved = ActivityMember.objects.filter(user=user, activity=task, approval_status='approved').count() > 0
+    members = ActivityMember.objects.filter(user=user, activity=task)
+    if members.count() > 0:
+      approval = members[0]
+      ## print "status="+approval.approval_status
+      
     member_all = ActivityMember.objects.filter(activity=task);
     form_title = "Get your points"
     
@@ -382,7 +386,7 @@ def task(request, task_id):
     "task":task,
     "type":type,
     "pau":pau,
-    "approved":approved,
+    "approval":approval,
     "form":form,
     "question":question,
     "member_all":member_all_count,

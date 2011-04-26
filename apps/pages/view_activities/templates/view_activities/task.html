@@ -70,7 +70,7 @@
       <p/>  
       <center> <b>
       {% if pau %}
-        {% if approved %}
+        {% if approval.approval_status == "approved" %}
           Congratulations! You did it !
         {% else %}
           {% if type == "event" %}
@@ -83,9 +83,17 @@
               your points.
           {% endif %}
           {% if type == "activity" %}
+            {% if approval.approval_status == "pending" %}
               Thank you for submitting your response.   <p/>
               An administrator is reviewing your response.  <br/>
               Come back soon to see your new total.
+            {% else %}
+              <p style="text-align:left"> The administrator feels that there is a problem with your submission. <br/>
+              Here is the feedback: 
+              {{approval.admin_comment}}    
+              </p>
+              <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will try again</button></a> 
+            {% endif %}
           {% endif %}            
         {% endif %}  
         
