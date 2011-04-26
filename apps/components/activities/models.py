@@ -412,15 +412,15 @@ class ActivityMember(CommonActivityUser):
       profile.save()
       self.award_date = None
       self.submission_date = None # User will have to resubmit.
-    elif self.approval_status == u"rejected":
-      # Construct the message to be sent.
-      message = "Your response to '%s' was not approved." % (self.activity.title,)
-      message = message + " Please check your <a href='" + reverse("profile_index") + "'>profile</a> for more information."
-      self.user.message_set.create(message=message)
-      print self.user.get_and_delete_messages()
-      self.user.message_set.create(message=message)
       
     super(ActivityMember, self).save()
+    
+    # We check here for a rejected item because it should have an id now.
+    if self.approval_status == u"rejected":
+      # Construct the message to be sent.
+      message = "Your response to '%s' was not approved." % (self.activity.title,)
+      message = message + " Please check your <a href='%s?rejected_id=%d'>profile</a> for more information." % (reverse("profile_index"), self.id)
+      self.user.message_set.create(message=message)
     
   def delete(self):
     """Custom delete method to remove awarded points."""

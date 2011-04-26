@@ -62,47 +62,7 @@
     <div {% get_id_and_classes "profile-history-content" %}>
       <h5 {% get_id_and_classes "profile-history-current" %}>Current and Pending</h5>
       {% if in_progress_members %}
-        <table {% get_id_and_classes "profile-history-current-table" %}>
-          <tr {% get_id_and_classes "profile-history-current-table-header" %}>
-            <th {% get_id_and_classes "profile-history-current-date-header" %}>Date</th>
-            <th {% get_id_and_classes "profile-history-current-task-header" %}>Task</th>
-            <th {% get_id_and_classes "profile-history-current-status-header" %}>Status</th>
-          </tr>
-          {% for member in in_progress_members %}
-            {% if member.activity %}
-            <tr>
-              <td>{{member.created_at|date:"n/j/y"}}</td>
-              <td>
-                <a href="{% url activity_task member.activity.id %}">
-                  {{member.activity.type.capitalize}}: {{member.activity.name}}
-                </a>
-              </td>
-              {% if member.approval_status == "pending" and member.activity.type == "activity" %}
-              <td title="Your request needs administrator approval.">
-              {% else %}
-                {% if member.approval_status == "pending" %}
-                <td title="You have signed up for the {{member.activity.type}}">
-                {% else %}
-                {# Item is not pending and is not approved, so it should be rejected. #}
-                <td title="Your request has been rejected.">
-                {% endif %}
-              {% endif %}
-                {{member.approval_status.capitalize}}
-              </td>
-            </tr>
-            {% else %}
-            <tr>
-              <td>{{member.created_at|date:"n/j/y"}}</td>
-              <td>
-                <a href="{% url activity_task member.commitment.id %}">
-                  Commitment: {{member.commitment.name}}
-                </a>
-              </td>
-              <td title="The commitment is still active.">In Progress</td>
-            </tr>
-            {% endif %}
-          {% endfor %}
-        </table>
+        {% include "view_profile/components/in_progress_members.html" %}
       {% else %}
         <p style="width: 100%; text-align: left; padding: 16px;">You have nothing in progress or pending.</p>
       {% endif %}

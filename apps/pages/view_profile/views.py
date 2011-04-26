@@ -110,6 +110,11 @@ def index(request):
       
   except AttributeError:
     pass
+    
+  # Check for a rejected activity member.
+  rejected_member = None
+  if request.GET.has_key("rejected_id"):
+    rejected_member = ActivityMember.objects.get(id=request.GET["rejected_id"])
   
   return render_to_response("view_profile/index.html", {
     "form": form,
@@ -117,6 +122,7 @@ def index(request):
     "fb_enabled": fb_enabled,
     "in_progress_members": in_progress_members,
     "completed_members": completed_members,
+    "rejected_member": rejected_member,
     "help_info": {
       "prefix": "profile_index",
       "count": range(0, 3),
