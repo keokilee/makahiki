@@ -34,6 +34,18 @@
   </div>
 </div>
 
+{% if messages %}
+<div id="notification-box" class="content-box">
+  <div class="content-box-title">Notifications</div>
+  <ul>
+    {% for message in messages %}
+    <li>
+      {{message|safe}}
+    </li>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% include "quests/quest_dialog.html" %}
 {% include "quests/quest_list.html" %}
 

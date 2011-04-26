@@ -6,6 +6,7 @@ import os
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
+from django.core.urlresolvers import reverse
 
 # Register badges immediately.
 from components.makahiki_badges.user_badges import FullyCommittedBadge
@@ -411,6 +412,13 @@ class ActivityMember(CommonActivityUser):
       profile.save()
       self.award_date = None
       self.submission_date = None # User will have to resubmit.
+    elif self.approval_status == u"rejected":
+      # Construct the message to be sent.
+      message = "Your response to '%s' was not approved." % (self.activity.title,)
+      message = message + " Please check your <a href='" + reverse("profile_index") + "'>profile</a> for more information."
+      self.user.message_set.create(message=message)
+      print self.user.get_and_delete_messages()
+      self.user.message_set.create(message=message)
       
     super(ActivityMember, self).save()
     

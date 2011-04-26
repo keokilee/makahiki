@@ -6,7 +6,7 @@ from django.conf import settings
 
 from django.contrib.auth.models import User
 from components.floors.models import Floor
-from components.activities.models import Commitment
+from components.activities.models import Commitment, Activity, ActivityMember
 from components.quests.models import Quest
 
 class ActivitiesFunctionalTestCase(TestCase):
@@ -88,6 +88,29 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     # Don't forget to clean up.
     settings.COMPETITION_ROUNDS = saved_rounds
+    
+  def testRejectedActivity(self):
+    """
+    Test that a rejected activity submission posts a message.
+    """
+    activity = Activity(
+        title="Test activity",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+        type="activity",
+    )
+    activity.save()
+    member = ActivityMember(activity=activity, user=self.user, approval_status="rejected")
+    member.save()
+    response = self.client.get(reverse("activity_index"))
+    print response.content
+    self.assertContains(response, "Your response to '%s' was not approved" % (activity.title,))
+    response = self.client.get(reverse("activity_index"))
+    self.assertNotContains(response, "Your response to '%s' was not approved" % (activity.title,))
     
   def testAddCommitment(self):
     """
