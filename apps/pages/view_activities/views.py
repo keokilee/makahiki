@@ -200,7 +200,7 @@ def __add_activity(request, activity_id):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
     
-      user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
+      # user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
   
   else:
     return Http404

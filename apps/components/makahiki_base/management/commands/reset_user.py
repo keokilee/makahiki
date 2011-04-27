@@ -12,7 +12,7 @@ class Command(management.base.BaseCommand):
     """
     Resets the user as if they never took part in the competition.
     """
-    self.stdout.write("\nWARNING: This command will reset %s.  This process is irreversible.\n", args.join(" "))
+    self.stdout.write("\nWARNING: This command will reset %s.  This process is irreversible.\n" % args)
     value = raw_input("Do you wish to continue (Y/n)? ")
     while value != "Y" and value != "n":
       self.stdout.write("Invalid option %s\n" % value)
