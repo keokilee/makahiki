@@ -27,7 +27,8 @@
         {# Item is not pending and is not approved, so it should be rejected. #}
         <td title="Your request has not been approved.">
           <a id="{{member.activity.title|slugify}}-rejected" href="#">{{member.approval_status.capitalize}}</a>
-          <div id="{{member.activity.title|slugify}}-rejected-dialog">
+          <div id="{{member.activity.title|slugify}}-rejected-dialog" 
+              title="{{member.activity.title}}" style="display:none">
             {{member.admin_comment|markdown}}
             
             <input type="submit" value="OK" onclick='$("#{{member.activity.title|slugify}}-rejected-dialog").dialog("close");' />

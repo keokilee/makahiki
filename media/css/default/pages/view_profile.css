@@ -165,6 +165,10 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	color: #c86c09;
 }
 
+/************** Rejected dialog styles *****/
+.ui-dialog-content p {
+  text-align: left;
+}
 
 /************** Avatar styles **************/
 

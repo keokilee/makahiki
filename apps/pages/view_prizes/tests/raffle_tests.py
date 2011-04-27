@@ -1,4 +1,5 @@
 import datetime
+import re
 
 from django.test import TestCase
 from django.core.urlresolvers import reverse
@@ -68,6 +69,8 @@ class RafflePrizesTestCase(TestCase):
     elif hour > 12:
       hour = hour - 12
     date_string = date_string + str(hour) + self.deadline.end_date.strftime("%p")
+    # Another workaround for days because of the leading 0
+    date_string = re.sub(r"\b0", "", date_string)
     self.assertContains(response, "Deadline for Round 2 submissions: " + date_string, 
         msg_prefix="Raffle should have the correct deadline.")
         
