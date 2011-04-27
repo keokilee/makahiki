@@ -1,14 +1,25 @@
-python manage.py dumpdata --indent=2 floors.dorm floors.floor > fixtures/base_floors.json
+#!/bin/bash
 
-python manage.py dumpdata --indent=2 activities > fixtures/base_activities.json
+var='fixtures/'
 
-python manage.py dumpdata --indent=2 quests > fixtures/base_quests.json
+if [ "$#" -eq 1 ]
+  then
+    var="$1"
+fi
 
-python manage.py dumpdata --indent=2 account auth.user makahiki_profiles.profile > fixtures/test_users.json
+python manage.py dumpdata --indent=2 floors.dorm floors.floor > $var/base_floors.json
 
-python manage.py dumpdata --indent=2 floors.post > fixtures/test_posts.json
+python manage.py dumpdata --indent=2 activities > $var/base_activities.json
 
-python manage.py dumpdata --indent=2 energy_goals > fixtures/test_energy_goals.json
+python manage.py dumpdata --indent=2 quests > $var/base_quests.json
 
-python manage.py dumpdata --indent=2 prizes > fixtures/test_prizes.json
+python manage.py dumpdata --indent=2 account auth.user makahiki_profiles.profile makahiki_avatar > $var/test_users.json
+
+python manage.py dumpdata --indent=2 floors.post > $var/test_posts.json
+
+python manage.py dumpdata --indent=2 energy_goals > $var/test_energy_goals.json
+
+python manage.py dumpdata --indent=2 prizes > $var/test_prizes.json
+
+# python manage.py dumpdata --indent=2 brabeion.badgeaward > $var/test_badges.json
 
