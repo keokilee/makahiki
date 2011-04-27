@@ -73,3 +73,23 @@ else:
 	# Create csv file
 	createCSVFile()
 	
+	x = 0
+	while x < len(array):
+		findName = array[x].split()
+		name = findName[3]
+		line = array[x].split()
+		startTime = dt.datetime.strptime(line[2], '%H:%M:%S')
+		try:
+			getEndTime = array[x+1].split()
+			endTime = dt.datetime.strptime(getEndTime[2], '%H:%M:%S')
+			diff = (endTime - startTime) 
+			diff.seconds/60 
+			diff = str(diff)
+		except IndexError:
+			endTime = dt.datetime.strptime("00:00:00", '%H:%M:%S')
+			diff = (startTime - endTime)
+		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
+		writeToFile = csv.writer(openFile)
+		writeToFile.writerow([line[4]] + ['Visits'] + [diff] + ['Average Time'])
+		openFile.close()
+		x = x + 1	
