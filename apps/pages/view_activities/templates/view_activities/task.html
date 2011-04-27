@@ -89,10 +89,10 @@
               An administrator is reviewing your response.  <br/>
               Come back soon to see your new total.
             {% else %}
-              <b><p style="text-align:left"> The administrator feels that there is a problem with your submission. <br/>
-              Here is the feedback: </b>
-              {{approval.admin_comment}}    
-              </p>
+              <div style="text-align:left"><span style="font-weight: bold">The administrator feels that there is a problem with your submission. <br/>
+              Here is the feedback: </span>
+              {{approval.admin_comment|markdown}}    
+              </div>
               <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will try again</button></a> 
             {% endif %}
           {% endif %}            
