@@ -120,7 +120,7 @@ class Profile(models.Model):
   last_visit_date = models.DateField(null=True, blank=True)
   
   def __unicode__(self):
-      return self.user.username
+      return self.name
   
   def get_absolute_url(self):
       return ('profile_detail', None, {'username': self.user.username})
