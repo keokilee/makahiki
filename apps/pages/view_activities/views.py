@@ -151,7 +151,6 @@ def __add_commitment(request, commitment_id):
   
   return render_to_response("view_activities/task.html", {
     "task":commitment,
-    "type":"commitment",
     "pau":True,
     "approved":False,
     "form":None,
@@ -171,17 +170,38 @@ def __add_activity(request, activity_id):
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   floor = user.get_profile().floor
-
+  approval = None
+  
   # Search for an existing activity for this user
-  if activity not in user.activity_set.all():
-    activity_member = ActivityMember(user=user, activity=activity)
-    activity_member.save()
+  if activity not in user.activity_set.all() and request.method == "POST":
+
+    if activity.type == 'survey':
+      question = TextPromptQuestion.objects.filter(activity=activity)
+      form = SurveyForm(request.POST or None, questions=question)
     
-    #increase point
-    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
-    user.get_profile().save()
+      if form.is_valid():
+        for i,q in enumerate(question):
+          activity_member = ActivityMember(user=user, activity=activity)
+          activity_member.user_comment = form.cleaned_data["comment"]
+          activity_member.question = q
+          activity_member.response = form.cleaned_data['choice_response_%s' % i]
+          activity_member.approval_status = "approved"
+          activity_member.save()
+          approval = activity_member
+
+        user.get_profile().add_points(activity.point_value, datetime.datetime.today() - datetime.timedelta(minutes=1))
+        user.get_profile().save()
+        
+    else:
+      activity_member = ActivityMember(user=user, activity=activity)
+      activity_member.save()
+        
+      #increase point
+      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+      user.get_profile().save()
     
-    user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
+      user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
+  
   else:
     return Http404
 
@@ -202,9 +222,8 @@ def __add_activity(request, activity_id):
   
   return render_to_response("view_activities/task.html", {
     "task":activity,
-    "type":"event",
     "pau":True,
-    "approved":False,
+    "approval":approval,
     "form":None,
     "question":None,
     "member_all":member_all_count,
@@ -224,6 +243,7 @@ def __request_activity_points(request, activity_id):
   floor = user.get_profile().floor
   question = None
   activity_member = None
+  approval = None
   
   try:
     # Retrieve an existing activity member object if it exists.
@@ -278,6 +298,7 @@ def __request_activity_points(request, activity_id):
         activity_member.approval_status = "pending"
 
       activity_member.save()
+      approval = activity_member
       
       ##next = reverse("pages.view_activities.views.task", args=(activity_id,))
       ##return HttpResponseRedirect(next)
@@ -295,9 +316,8 @@ def __request_activity_points(request, activity_id):
   
       return render_to_response("view_activities/task.html", {
         "task":activity,
-        "type":"activity",
         "pau":True,
-        "approval":activity_member,
+        "approval":approval,
         "form":None,
         "question":None,
         "member_all":member_all_count,
@@ -309,13 +329,12 @@ def __request_activity_points(request, activity_id):
       }, context_instance=RequestContext(request))    
 
     if activity.confirm_type == "text":
-      question = activity.pick_question()
+      question = activity.pick_question(user.id)
       if question:
         form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
                   		  
     return render_to_response("view_activities/task.html", {
     "task":activity,
-    "type":"activity",
     "pau":False,
     "form":form,
     "question":question,
@@ -337,7 +356,6 @@ def task(request, task_id):
   member_floor_count = 0
   
   task = ActivityBase.objects.get(id=task_id)
-  type = task.type
   
   if task.type != "commitment":
     task = task.activity
@@ -345,27 +363,31 @@ def task(request, task_id):
     members = ActivityMember.objects.filter(user=user, activity=task)
     if members.count() > 0:
       approval = members[0]
-      ## print "status="+approval.approval_status
       
     member_all = ActivityMember.objects.filter(activity=task);
-    form_title = "Get your points"
     
-    # Create activity request form.
-    if task.confirm_type == "image":
-      form = ActivityImageForm()
-    elif task.confirm_type == "text":
-      question = task.pick_question()
-      if question:
-        form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
-    elif task.confirm_type == "free":
-      form = ActivityFreeResponseForm()
+    if task.type == "survey":
+      question = TextPromptQuestion.objects.filter(activity=task)
+      form = SurveyForm(questions=question)    
+      form_title = "Survey"
     else:
-      form = ActivityTextForm(initial={"code" : 1})
+      form_title = "Get your points"
+    
+      # Create activity request form.
+      if task.confirm_type == "image":
+        form = ActivityImageForm()
+      elif task.confirm_type == "text":
+        question = task.pick_question(user.id)
+        if question:
+          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
+      elif task.confirm_type == "free":
+        form = ActivityFreeResponseForm()
+      else:
+        form = ActivityTextForm(initial={"code" : 1})
                 
-    if task.type == "event" or task.type == "excursion":
-      type = "event"
-      if not pau:
-        form_title = "Sign up for this event"
+      if task.type == "event" or task.type == "excursion":
+        if not pau:
+          form_title = "Sign up for this "+task.type
         
   else:  ## "Commitment"
     task = task.commitment
@@ -384,7 +406,6 @@ def task(request, task_id):
   
   return render_to_response("view_activities/task.html", {
     "task":task,
-    "type":type,
     "pau":pau,
     "approval":approval,
     "form":form,
@@ -404,9 +425,11 @@ def add_task(request, task_id):
   
   if task.type == "commitment":
     return __add_commitment(request, task_id)
-  elif task.type == "event" or task.type == "excursion":
-    return __add_activity(request, task_id)
-  else:
+    
+  if task.type == "activity":
     return __request_activity_points(request, task_id)
+  else:
+    return __add_activity(request, task_id)
+    
    
   

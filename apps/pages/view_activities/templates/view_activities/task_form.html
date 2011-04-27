@@ -18,14 +18,18 @@
   {% endif %}
   
   <p/>
-   {% if type == "event" %}          {# event #}
-     You will earn 2 points for signing up for the event.
+   {% if task.type == "event" or task.type == "excursion" %}          {# event #}
+     You will earn 2 points for signing up for the {{task.type}}.
      {% if pau %}
         {{form.code}}
         {{ form.response }}
      {% endif %}
+     <p/>Additional Comments:<br/>
+         {{ form.comment }} 
+      <p/>
    {% endif %}
-   {% if type == "commitment" %}     {# commitment #}
+   
+   {% if task.type == "commitment" %}     {# commitment #}
      You will earn 2 points for making this commitment.
      <p/>
      Come back in 5 days of meeting your commitment for the rest of your 
@@ -33,7 +37,7 @@
    {% endif %}   
   </p>
   
-  {% if type == "activity" %}        {# activity #}   
+  {% if task.type == "activity" %}          {# activity #}   
     {% if form.image_response %}         {# image #}
       {{task.confirm_prompt}} <p/>
       {{ form.image_response }}
@@ -42,7 +46,6 @@
         {{task.confirm_prompt}} <p/>
         {{form.question}}
         {{question.question}} <br/>
-        
         {% if question.questionchoice_set.count > 0 %}    {# choice response question #}
           {{ form.choice_response }}
         {% else %}                                        {# text response question #}
@@ -53,13 +56,22 @@
         {{ form.response }}    
       {% endif %}  
     {%endif%}
+
+    <p/>Additional Comments:<br/>
+         {{ form.comment }} 
+    <p/>
   {% endif %}
   
-  {% if type != "commitment" %} 
-  <p/>Additional Comments:
-    <br/>
-    {{ form.comment }} 
-  <p/>
+  {% if task.type == "survey" %}          {# survey #}   
+     {{task.confirm_prompt}} <p/>
+     {% for field in form %}
+     {{ field.label }} <br/>
+     {{ field }}
+     <p/>
+     {% endfor %}
+  {% endif %}
+  
+  {% if task.type != "commitment" %} 
   <div {% get_id_and_classes "activity-task-form-content-button" %}>   
   <input type="submit" value="Submit" />
   </div>

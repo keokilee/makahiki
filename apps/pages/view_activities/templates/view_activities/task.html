@@ -22,10 +22,10 @@
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
       <p/>
       This {{task.type}} is worth {{task.point_value}} points.
-      {% if type == "commitment" %}
+      {% if task.type == "commitment" %}
         It lasts {{task.duration}} days.
       {% endif %}
-      {% if type == "event" %}
+      {% if task.type == "event" or task.type == "excursion" %}
       <p/>
       <b>When</b>  : {{task.event_date}} <br/>
       <b>Where</b> : {{task.event_location}}
@@ -68,28 +68,29 @@
       {{task.description|markdown}}
 
       <p/>  
-      <center> <b>
+      <center> 
       {% if pau %}
         {% if approval.approval_status == "approved" %}
-          Congratulations! You did it !
+          <b>Congratulations! You did it and earned {{task.point_value}} points! <br/>
+          Thank you for your participation.
         {% else %}
-          {% if type == "event" %}
-            Thank you! You've earned 2 points by signing up.<p/>
-            After the {{type}}, please come back here to get your points.
+          {% if task.type == "event" or task.type == "excursion" %}
+            <b>Thank you! You've earned 2 points by signing up.<p/>
+            After the {{task.type}}, please come back here to get your points.
           {% endif %}
-          {% if type == "commitment" %}
-              Thank you! You've earned 2 points by committing.<p/>
+          {% if task.type == "commitment" %}
+             <b> Thank you! You've earned 2 points by committing.<p/>
               Come back in 5 days of meeting your commitment for the rest of 
               your points.
-          {% endif %}
-          {% if type == "activity" %}
-            {% if approval.approval_status == "pending" %}
-              Thank you for submitting your response.   <p/>
+          {% endif %}         
+          {% if task.type == "activity" %}
+            {% if approval.approval_status != "rejected" %}
+              <b>Thank you for submitting your response.   <p/>
               An administrator is reviewing your response.  <br/>
               Come back soon to see your new total.
             {% else %}
-              <p style="text-align:left"> The administrator feels that there is a problem with your submission. <br/>
-              Here is the feedback: 
+              <b><p style="text-align:left"> The administrator feels that there is a problem with your submission. <br/>
+              Here is the feedback: </b>
               {{approval.admin_comment}}    
               </p>
               <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will try again</button></a> 
@@ -98,13 +99,16 @@
         {% endif %}  
         
       {% else %}               <!-- not done yet  -->
-        {% if type == "commitment" %}
+        {% if task.type == "commitment" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
         {% endif %}  
-        {% if type == "event" %}
+        {% if task.type == "event" or task.type == "excursion" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
         {% endif %} 
-        {% if type == "activity"%} 
+        {% if task.type == "survey" %}
+          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to do it</button></a>
+        {% endif %} 
+        {% if task.type == "activity"%} 
           Once you are done, click the button below to get your points!
           <p/>
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I Did This!</button></a> 
@@ -146,20 +150,24 @@ function task_form_overlay()
 
 <div id="signup-point-dialog" title="Thank you" style="visibility: hidden;">
     <p/>
-    {% if type != "activity" %}
-       You just got 2 points !
-    {% else %}
-    <p style="text-align:left">
-     Thank you for submitting your response.   
-     </p>
-     <p style="text-align:left">
-     An administrator will review it and approve your points, usually within a few hours.  
-     You can see the status of your submission on your Profile Page.  
-     </p>
+    {% if approval.approval_status == "approved" %}
+       You just got {{task.point_value}} points !
+    {% else %}   
+      {% if task.type == "activity" %}
+       <p style="text-align:left">
+       Thank you for submitting your response.   
+       </p>
+       <p style="text-align:left">
+       An administrator will review it and approve your points, usually within a few hours.  
+       You can see the status of your submission on your Profile Page.  
+       </p>
      
-     <p style="text-align:left">
-      Come back soon to see your new total.
-     </p>
+       <p style="text-align:left">
+        Come back soon to see your new total.
+       </p>
+       {% else %}
+         You just got 2 points !
+       {% endif %}  
     {% endif %}        
     
     <p/>
@@ -176,7 +184,7 @@ function signup_point_dialog_overlay()
   el.style.visibility = "visible";
   $("#signup-point-dialog").dialog({
     modal: true,
-    {% if type == "activity" %}
+    {% if task.type == "activity" %}
       width: 400,
       height: 250,
     {% else %}

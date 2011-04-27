@@ -59,3 +59,22 @@ class ActivityImageForm(forms.Form):
   
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
+
+class SurveyForm(forms.Form):  
+  def __init__(self, *args, **kwargs):  
+    questions = None
+    if 'questions' in kwargs:
+      questions = kwargs.pop('questions')
+      
+    super(SurveyForm, self).__init__(*args, **kwargs)
+    
+    if questions:
+      for i, q in enumerate(questions):
+        self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question,required=False)
+    
+      self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='Additonal Comments:', required=False)
+
+  def clean(self):
+    """Custom validation to verify confirmation codes."""
+    cleaned_data = self.cleaned_data
+    return cleaned_data

@@ -223,14 +223,14 @@ class Activity(ActivityBase):
     """Returns an array of users that like this activity."""
     return [like.user for like in self.likes.all()]
   
-  def pick_question(self):
+  def pick_question(self, user_id):
     """Choose a random question to present to a user."""
     if self.confirm_type != "text":
       return None
       
     questions = TextPromptQuestion.objects.filter(activity=self)
     if questions:
-      return questions[random.randint(0, len(questions) - 1)]
+      return questions[user_id % (len(questions) - 1)]
     else:
       return None
 
