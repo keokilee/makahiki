@@ -1,3 +1,5 @@
+import re
+
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404
@@ -9,6 +11,7 @@ from components.quests.models import Quest, QuestMember
 def accept(request, quest_id):
   if request.method == "POST":
     referer = request.META["HTTP_REFERER"]
+    referer = re.sub(r'\?.*$', '', referer) # Chomp off the query parameters.
     quest = get_object_or_404(Quest, pk=quest_id)
     if quest.can_add_quest(request.user):
       QuestMember.objects.get_or_create(user=request.user, quest=quest)
@@ -21,6 +24,7 @@ def accept(request, quest_id):
 def opt_out(request, quest_id):
   if request.method == "POST":
     referer = request.META["HTTP_REFERER"]
+    referer = re.sub(r'\?.*$', '', referer) # Chomp off the query parameters.
     quest = get_object_or_404(Quest, pk=quest_id)
     if quest.can_add_quest(request.user):
       member, created = QuestMember.objects.get_or_create(user=request.user, quest=quest)
@@ -35,6 +39,7 @@ def opt_out(request, quest_id):
 def cancel(request, quest_id):
   if request.method == "POST":
     referer = request.META["HTTP_REFERER"]
+    referer = re.sub(r'\?.*$', '', referer) # Chomp off the query parameters.
     member = get_object_or_404(QuestMember, quest__id=quest_id, user=request.user)
     member.delete()
     return HttpResponseRedirect(referer)

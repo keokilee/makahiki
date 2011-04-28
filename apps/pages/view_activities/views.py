@@ -118,21 +118,21 @@ def __add_commitment(request, commitment_id):
     user.get_profile().save()
     
     # Check for Facebook.
-    try:
-      import makahiki_facebook.facebook as facebook
-      
-      fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
-      if fb_user:
-        try:
-          graph = facebook.GraphAPI(fb_user["access_token"])
-          graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
-        except facebook.GraphAPIError:
-          # Incorrect user token.
-          pass
-          
-    except ImportError:
-      # Facebook not enabled.
-      pass
+    # try:
+    #   import makahiki_facebook.facebook as facebook
+    #   
+    #   fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    #   if fb_user:
+    #     try:
+    #       graph = facebook.GraphAPI(fb_user["access_token"])
+    #       graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
+    #     except facebook.GraphAPIError:
+    #       # Incorrect user token.
+    #       pass
+    #       
+    # except ImportError:
+    #   # Facebook not enabled.
+    #   pass
       
   # Redirect back to the referrer or go to the profile if not available.
   ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
@@ -149,19 +149,20 @@ def __add_commitment(request, commitment_id):
       member_floor_count = member_floor_count + 1
       users.append(member.user)
   
-  return render_to_response("view_activities/task.html", {
-    "task":commitment,
-    "pau":True,
-    "approved":False,
-    "form":None,
-    "question":None,
-    "member_all":member_all_count,
-    "member_floor":member_floor_count,
-    "users":users,
-    "display_point":True,
-    "display_form":False,
-    "form_title": None,
-  }, context_instance=RequestContext(request))    
+  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
+  # return render_to_response("view_activities/task.html", {
+  #     "task":commitment,
+  #     "pau":True,
+  #     "approved":False,
+  #     "form":None,
+  #     "question":None,
+  #     "member_all":member_all_count,
+  #     "member_floor":member_floor_count,
+  #     "users":users,
+  #     "display_point":True,
+  #     "display_form":False,
+  #     "form_title": None,
+  #   }, context_instance=RequestContext(request))    
 
 @never_cache
 def __add_activity(request, activity_id):
@@ -220,19 +221,20 @@ def __add_activity(request, activity_id):
       member_floor_count = member_floor_count + 1
       users.append(member.user)
   
-  return render_to_response("view_activities/task.html", {
-    "task":activity,
-    "pau":True,
-    "approval":approval,
-    "form":None,
-    "question":None,
-    "member_all":member_all_count,
-    "member_floor":member_floor_count,
-    "users":users,
-    "display_point":True,
-    "display_form":False,
-    "form_title": None,
-  }, context_instance=RequestContext(request))    
+  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
+  # return render_to_response("view_activities/task.html", {
+  #     "task":activity,
+  #     "pau":True,
+  #     "approval":approval,
+  #     "form":None,
+  #     "question":None,
+  #     "member_all":member_all_count,
+  #     "member_floor":member_floor_count,
+  #     "users":users,
+  #     "display_point":True,
+  #     "display_form":False,
+  #     "form_title": None,
+  #   }, context_instance=RequestContext(request))    
   
 @never_cache
 def __request_activity_points(request, activity_id):
@@ -313,26 +315,27 @@ def __request_activity_points(request, activity_id):
         if member.user.get_profile().floor == floor:
           member_floor_count = member_floor_count + 1
           users.append(member.user)
-  
-      return render_to_response("view_activities/task.html", {
-        "task":activity,
-        "pau":True,
-        "approval":approval,
-        "form":None,
-        "question":None,
-        "member_all":member_all_count,
-        "member_floor":member_floor_count,
-        "users":users,
-        "display_point":True,
-        "display_form":False,
-        "form_title": None,
-      }, context_instance=RequestContext(request))    
+          
+      return HttpResponseRedirect(reverse("activity_task", args=(activity.id,)) + "?display_point=true")
+      # return render_to_response("view_activities/task.html", {
+      #   "task":activity,
+      #   "pau":True,
+      #   "approval":approval,
+      #   "form":None,
+      #   "question":None,
+      #   "member_all":member_all_count,
+      #   "member_floor":member_floor_count,
+      #   "users":users,
+      #   "display_point":True,
+      #   "display_form":False,
+      #   "form_title": None,
+      # }, context_instance=RequestContext(request))    
 
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
       if question:
         form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
-                  		  
+                		  
     return render_to_response("view_activities/task.html", {
     "task":activity,
     "pau":False,
@@ -403,6 +406,9 @@ def task(request, task_id):
       member_floor_count = member_floor_count + 1
       ## print "user="+ member.user.get_profile().name
       users.append(member.user)
+      
+  display_point = True if request.GET.has_key("display_point") else False
+  display_form = True if request.GET.has_key("display_form") else False
   
   return render_to_response("view_activities/task.html", {
     "task":task,
@@ -413,8 +419,8 @@ def task(request, task_id):
     "member_all":member_all_count,
     "member_floor":member_floor_count,
     "users":users,
-    "display_point":False,
-    "display_form":False,
+    "display_point": display_point,
+    "display_form":display_form,
     "form_title": form_title,
   }, context_instance=RequestContext(request))    
 
