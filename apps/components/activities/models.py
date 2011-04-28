@@ -34,7 +34,7 @@ class TextPromptQuestion(models.Model):
   """Represents questions that can be asked of users in order to verify participation in activities."""
   
   activity = models.ForeignKey("Activity")
-  question = models.CharField(max_length=255, help_text="255 character max.")
+  question = models.TextField()
   answer = models.CharField(max_length=255, help_text="255 character max.", null=True, blank=True)
   
   def __unicode__(self):
@@ -105,7 +105,7 @@ class ActivityBase(models.Model):
                           "Activities with lower values (higher priority) will be listed first."
              )
   likes = generic.GenericRelation(Like)
-  depends_on = models.CharField(max_length=200, null=True, blank=True,)
+  depends_on = models.CharField(max_length=400, null=True, blank=True,)
   energy_related = models.BooleanField(default=False)
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)

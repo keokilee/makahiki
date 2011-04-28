@@ -48,7 +48,7 @@
       done this.
       <br/>
       {% for user in users %}
-         <img src="{% avatar_url user 40 %}"/>
+         <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
      {% endfor %}
     </div>
   </div>  
@@ -137,8 +137,11 @@ function task_form_overlay()
   $("#setup-dialog").dialog({
     modal: true,
     width: 450,
+    {% if task.type == "survey" %}
+      height: 500,
+    {% endif %}
     closeOnEscape: false,
-    position: ["center", 75]
+    position: ["center", 75],
     });
 }
 

@@ -96,7 +96,9 @@ def get_current_activities(user):
   
 def get_current_activity_members(user):
   """Get the user's incomplete activity members."""
-  return user.activitymember_set.filter(
+  return user.activitymember_set.exclude(
+    activity__type="survey",
+  ).filter(
     award_date=None,
   ).order_by("submission_date")
   
