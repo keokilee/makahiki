@@ -29,12 +29,23 @@ def test():
 
 def removeNotNeededLogs():
 	global array
+	openFile = open('errorLog.csv', 'wb')
+	writeToFile = csv.writer(openFile)
+	writeToFile.writerow(['Date'] + ['Time'] + ['User'] + ['Page'] + ['Status Code'])
 	for line in array:
 		number = "200\n"
+		values = line.split()
+		date = values[1]
+		time = values[2]
+		username = values[3]
+		page = values[4]
+		statusCode = values[5]
 		if line.endswith(number):
 			pass
 		else:
+			writeToFile.writerow([date] + [time] + [username] + [page] + [statusCode])
 			array.remove(line)
+	openFile.close()
 
 def getLogTime():
 	global startTimeOfLog
