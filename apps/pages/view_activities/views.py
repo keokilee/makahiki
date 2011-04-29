@@ -100,14 +100,7 @@ def __add_commitment(request, commitment_id):
   user = request.user
   floor = user.get_profile().floor
   
-  if not can_add_commitments(user):
-    # message = "You can only have %d active commitments." % MAX_COMMITMENTS
-    #     messages.warning(request, message)
-    pass
-  elif commitment in get_current_commitments(user):
-    # messages.warning(request, "You are already committed to this commitment.")
-    pass
-  else:
+  if commitment not in user.commitment_set.all() and can_add_commitments(user):
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
@@ -134,7 +127,7 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
+    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
 
 @never_cache
 def __add_activity(request, activity_id):
@@ -162,6 +155,16 @@ def __add_activity(request, activity_id):
             activity_member.approval_status = "approved"
             
           activity_member.save()
+      else:   # form not valid
+        return render_to_response("view_activities/task.html", {
+            "task":activity,
+            "pau":False,
+            "form":form,
+            "question":question,
+            "display_form":True,
+            "display_point":False,
+            "form_title": "Survey",
+            }, context_instance=RequestContext(request))    
           
     else:
       activity_member = ActivityMember(user=user, activity=activity)
@@ -170,11 +173,8 @@ def __add_activity(request, activity_id):
       #increase point
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
-    
-  else:
-    return Http404
 
-  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
+    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
 
 @never_cache
 def __request_activity_points(request, activity_id):
@@ -206,7 +206,6 @@ def __request_activity_points(request, activity_id):
     
     ## print activity.confirm_type
     if form.is_valid():
-      ## print 'valid'
       if not activity_member:
         activity_member = ActivityMember(user=user, activity=activity)
       
@@ -241,12 +240,12 @@ def __request_activity_points(request, activity_id):
       activity_member.save()
           
       return HttpResponseRedirect(reverse("activity_task", args=(activity.id,)) + "?display_point=true")
-
+    
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
-      if question:
-        form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
-                		  
+      ##if question:
+      ##  form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+      
     return render_to_response("view_activities/task.html", {
     "task":activity,
     "pau":False,
@@ -256,6 +255,7 @@ def __request_activity_points(request, activity_id):
     "member_floor":0,
     "display_form":True,
     "display_point":False,
+    "form_title": "Get your points",
     }, context_instance=RequestContext(request))    
 
 @never_cache
@@ -266,6 +266,7 @@ def task(request, task_id):
   question = None
   form = None
   approval = None
+  can_commit = None
   member_all_count = 0
   member_floor_count = 0
   
@@ -309,6 +310,7 @@ def task(request, task_id):
     member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
     form = CommitmentCommentForm()
+    can_commit = can_add_commitments(user)
 
   users = []
   member_all_count = member_all.count()
@@ -337,6 +339,7 @@ def task(request, task_id):
     "display_point": display_point,
     "display_form":display_form,
     "form_title": form_title,
+    "can_commit":can_commit,
   }, context_instance=RequestContext(request))    
 
 @never_cache   
