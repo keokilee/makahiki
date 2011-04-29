@@ -8,7 +8,7 @@ class ActivityTextForm(forms.Form):
   question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   code = forms.IntegerField(widget=forms.HiddenInput(), required=False)
   
-  response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=False)
+  response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=True)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   
   def __init__(self, *args, **kwargs):  
@@ -19,7 +19,7 @@ class ActivityTextForm(forms.Form):
     super(ActivityTextForm, self).__init__(*args, **kwargs)  
     
     if qid:
-      self.fields['choice_response'] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=qid), required=False)
+      self.fields['choice_response'] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=qid), required=True)
 
   def clean(self):
     """Custom validation to verify confirmation codes."""
@@ -41,7 +41,7 @@ class ActivityTextForm(forms.Form):
     # Check if we are validating quetion
     if cleaned_data["question"]>0:
         if (not cleaned_data.has_key("response")) and (not cleaned_data.has_key("choice_response")):
-          self._errors["question"] = ErrorList(["You need to answer the question."])
+          self._errors["response"] = ErrorList(["You need to answer the question."])
           if cleaned_data.has_key("response"):
             del cleaned_data["response"]
           if cleaned_data.has_key("choice_response"):
@@ -70,7 +70,7 @@ class SurveyForm(forms.Form):
     
     if questions:
       for i, q in enumerate(questions):
-        self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question,required=False)
+        self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question, required=True)
     
       self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='Additonal Comments:', required=False)
 

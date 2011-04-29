@@ -8,11 +8,7 @@
   {% endif %}
   
   {% csrf_token %}
-  {% if form.response %}
-    {{ form.response.errors }}
-  {% else %}
-    {{ form.image_response.errors }}
-  {% endif %}
+  
   {% if admin_message %}
     Admin message: {{ admin_message }}
   {% endif %}
@@ -22,6 +18,7 @@
      You will earn 2 points for signing up for the {{task.type}}.
      {% if pau %}
         {{form.code}}
+        {{ form.response.errors }}
         {{ form.response }}
      {% endif %}
      <p/>Additional Comments:<br/>
@@ -40,6 +37,7 @@
   {% if task.type == "activity" %}          {# activity #}   
     {% if form.image_response %}         {# image #}
       {{task.confirm_prompt}} <p/>
+      {{ form.image_response.errors }}
       {{ form.image_response }}
     {% else %}                           
       {% if question %}                                {# question #}
@@ -47,12 +45,15 @@
         {{form.question}}
         {{question.question}} <br/>
         {% if question.questionchoice_set.count > 0 %}    {# choice response question #}
+          {{ form.choice_response.errors }}
           {{ form.choice_response }}
         {% else %}                                        {# text response question #}
+          {{ form.response.errors }}
           {{ form.response }}
         {% endif %}  
       {% else %}                                       {# free text #}
         {{task.confirm_prompt}} <p/>
+        {{ form.response.errors }}
         {{ form.response }}    
       {% endif %}  
     {%endif%}
@@ -66,6 +67,7 @@
      {{task.confirm_prompt}} <p/>
      {% for field in form %}
      {{ field.label }} <br/>
+     {{ field.errors }}
      {{ field }}
      <p/>
      {% endfor %}
