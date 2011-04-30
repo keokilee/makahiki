@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from lib.brabeion import badges
 
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Category
-from components.quests import get_quests, has_task, num_tasks_completed, badge_awarded, possibly_completed_quests, allocated_ticket, has_points
+from components.quests import get_quests, has_task, num_tasks_completed, badge_awarded, possibly_completed_quests, allocated_ticket, has_points, completed_task
 from components.quests.models import Quest, QuestMember
 from components.prizes.models import RaffleDeadline, RafflePrize, RaffleTicket
 
@@ -170,7 +170,7 @@ class QuestConditionsTest(TestCase):
     self.quest.save()
     completed_quests = possibly_completed_quests(self.user)
     self.assertTrue(self.quest in completed_quests, "User should have completed the quest.")
-      
+    
   def testHasActivity(self):
     """Test that completing an activity works with has_task."""
     activity = Activity(
@@ -223,6 +223,57 @@ class QuestConditionsTest(TestCase):
     self.assertTrue(self.quest not in completed_quests, "User should not be able to complete the quest.")
     
     self.quest.completion_conditions = "has_task(name='Test')"
+    self.quest.save()
+    completed_quests = possibly_completed_quests(self.user)
+    self.assertTrue(self.quest in completed_quests, "User should have completed the quest.")
+  
+  def testCompletedActivity(self):
+    """Tests that completed_task works when a task is completed."""
+    activity = Activity(
+        type="activity",
+        name="Test",
+        title="Test activity",
+        description="Variable points!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+    )
+    activity.save()
+    
+    # Test within context of a quest
+    self.quest.unlock_conditions = "completed_task(name='Test')"
+    self.quest.save()
+    quests = get_quests(self.user)
+    self.assertTrue(self.quest not in quests, "User should not be able to participate in this quest.")
+    
+    member = ActivityMember(user=self.user, activity=activity, approval_status="approved")
+    member.save()
+    self.assertTrue(completed_task(self.user, name="Test"), "User should have completed 'Test'.")
+    self.assertTrue(completed_task(self.user, task_type="activity"), "User should have completed an activity")
+    
+    quests = get_quests(self.user)
+    self.assertTrue(self.quest in quests["available_quests"], "User should be able to participate in this quest.")
+    
+    self.quest.unlock_conditions = "completed_task(task_type='activity')"
+    self.quest.save()
+    quests = get_quests(self.user)
+    self.assertTrue(self.quest in quests["available_quests"], "User should be able to participate in this quest.")
+    
+    # Test as a completion condition.
+    self.quest.accept(self.user)
+    self.quest.completion_conditions = "not completed_task(name='Test')"
+    self.quest.save()
+    completed_quests = possibly_completed_quests(self.user)
+    self.assertTrue(self.quest not in completed_quests, "User should not be able to complete the quest.")
+    
+    self.quest.completion_conditions = "not completed_task(task_type='activity')"
+    self.quest.save()
+    completed_quests = possibly_completed_quests(self.user)
+    self.assertTrue(self.quest not in completed_quests, "User should not be able to complete the quest.")
+    
+    self.quest.completion_conditions = "completed_task(name='Test')"
     self.quest.save()
     completed_quests = possibly_completed_quests(self.user)
     self.assertTrue(self.quest in completed_quests, "User should have completed the quest.")

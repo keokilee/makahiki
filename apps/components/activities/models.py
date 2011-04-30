@@ -248,7 +248,6 @@ class CommonActivityUser(CommonBase):
   """Common fields for items that need to be approved by an administrator."""
   
   STATUS_TYPES = (
-    ('unapproved', 'Unapproved'),
     ('pending', 'Pending approval'),
     ('approved', 'Approved'),
     ('rejected', 'Rejected'),

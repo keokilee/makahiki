@@ -15,6 +15,9 @@ def has_task(user, name=None, task_type=None):
   In the case of a commitment, this returns True if the user made or completed the commitment.
   In the case of a event or excursion, this returns True if the user entered their attendance code.
   In the case of a survey, this returns True if the user completed the survey.
+  
+  If a task_type is specified, then it checks to see if a user has completed a task of that type.
+  Only one of name and task_type should be specified.
   """
   if not name and not task_type:
     raise Exception("Either name or task_type must be specified.")
@@ -28,6 +31,39 @@ def has_task(user, name=None, task_type=None):
       return user.commitmentmember_set.count() > 0
     else:
       return user.activitymember_set.filter(activity__type=task_type).count() > 0
+      
+def completed_task(user, name=None, task_type=None):
+  """
+  Determines if the user has either completed the named task or completed a task of the given type.
+  In general, if a user-task member is approved or has an award date, it is completed.
+  Only one of name and task_type should be specified.  Specifying neither will raise an Exception.  Specifying both will give name priority. 
+  """
+  if not name and not task_type:
+    raise Exception("Either name or task_type must be specified.")
+    
+  if name:
+    task = ActivityBase.objects.get(name=name)
+    if task.type == "commitment":
+      return user.commitmentmember_set.filter(
+          commitment__id=task.id,
+          award_date__isnull=False,
+      ).count() > 0
+    else:
+      return user.activitymember_set.filter(
+          activity__id=task.id,
+          approval_status="approved",
+      ).count() > 0
+  else:
+    task_type = task_type.lower()
+    if task_type == "commitment":
+      return user.commitmentmember_set.filter(
+          award_date__isnull=False,
+      ).count() > 0
+    else:
+      return user.activitymember_set.filter(
+          activity__type=task_type,
+          approval_status="approved",
+      ).count() > 0
       
 def has_points(user, points, round_name=None):
   """
@@ -98,6 +134,7 @@ def badge_awarded(user, badge_slug):
   
 CONDITIONS = {
   "has_task": has_task, 
+  "completed_task": completed_task,
   "has_points": has_points,
   "allocated_ticket": allocated_ticket, 
   "num_tasks_completed": num_tasks_completed, 
