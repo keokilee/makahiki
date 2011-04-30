@@ -39,6 +39,7 @@ urlpatterns = patterns('',
     
     # pinax provided
     (r'^account/', include('account.urls')),
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     # (r'^notifications/', include('notification.urls')),
 )

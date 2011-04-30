@@ -205,6 +205,7 @@ INSTALLED_APPS = (
     # 'basic_profiles',
     'account',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     
     # project specific
     'sorl.thumbnail',
