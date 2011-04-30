@@ -4,13 +4,15 @@ from django import forms
 from django.forms.models import BaseInlineFormSet
 from django.forms.util import ErrorList
 
+from django.forms import TextInput, Textarea
+
 from django.core.urlresolvers import reverse
 
 ### Commitment Admin
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'title', 'description', 'duration', ('depends_on', 'energy_related')),
+      'fields' : ('name', 'title', 'description', 'duration', 'depends_on', 'energy_related'),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -194,8 +196,13 @@ class TextQuestionInlineFormSet(BaseInlineFormSet):
 
 class QuestionChoiceInline(admin.TabularInline):  
   model = QuestionChoice
-  
-  extra = 3
+  fieldset = (
+    (None, {
+      'fields' : ('question', 'choice'),
+      'classes' : ['wide',],
+    })
+  )
+  extra = 4
   
 class TextQuestionInline(admin.TabularInline):
   model = TextPromptQuestion
@@ -205,21 +212,31 @@ class TextQuestionInline(admin.TabularInline):
       'classes' : ['wide',],
     })
   )
+  formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':2, 'cols':80})},
+    }  
+  
   extra = 3
   formset = TextQuestionInlineFormSet
   
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), ('event_date', 'event_location'), ('depends_on','energy_related')),
+      'fields' : ('name', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 
+      'event_date', 'event_location', 'depends_on','energy_related'),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),
-#    ("Event", {'fields' : ('event_date')}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
   form = ActivityAdminForm
   inlines = [TextQuestionInline, QuestionChoiceInline]
+
+  formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size':'100'})},
+    }  
+
+    
   list_display = ["title", "category", "priority", "pub_date", "expire_date",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]

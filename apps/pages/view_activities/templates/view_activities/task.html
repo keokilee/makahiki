@@ -48,7 +48,7 @@
       done this.
       <br/>
       {% for user in users %}
-         <img src="{% avatar_url user 40 %}"/>
+         <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
      {% endfor %}
     </div>
   </div>  
@@ -100,7 +100,13 @@
         
       {% else %}               <!-- not done yet  -->
         {% if task.type == "commitment" %}
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
+          {% if can_commit %}
+            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
+          {% else %}
+            <b>You already have 5 pending commitments. <br/>
+            You can continue making this commitment once any of your pending commitment is approved.
+            </b>
+          {% endif %}
         {% endif %}  
         {% if task.type == "event" or task.type == "excursion" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
@@ -137,8 +143,11 @@ function task_form_overlay()
   $("#setup-dialog").dialog({
     modal: true,
     width: 450,
+    {% if task.type == "survey" %}
+      height: 500,
+    {% endif %}
     closeOnEscape: false,
-    position: ["center", 75]
+    position: [250,75],
     });
 }
 
@@ -192,7 +201,7 @@ function signup_point_dialog_overlay()
       height: 150,
     {% endif %}
     closeOnEscape: false,
-    position: ["center", 200]
+    position: [250,75],
     });
 }
 

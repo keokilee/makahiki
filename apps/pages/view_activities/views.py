@@ -100,14 +100,7 @@ def __add_commitment(request, commitment_id):
   user = request.user
   floor = user.get_profile().floor
   
-  if not can_add_commitments(user):
-    # message = "You can only have %d active commitments." % MAX_COMMITMENTS
-    #     messages.warning(request, message)
-    pass
-  elif commitment in get_current_commitments(user):
-    # messages.warning(request, "You are already committed to this commitment.")
-    pass
-  else:
+  if commitment not in user.commitment_set.all() and can_add_commitments(user):
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
@@ -133,36 +126,8 @@ def __add_commitment(request, commitment_id):
     # except ImportError:
     #   # Facebook not enabled.
     #   pass
-      
-  # Redirect back to the referrer or go to the profile if not available.
-  ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  ## next = reverse("pages.view_activities.views.task", args=(commitment_id))
-  ## return HttpResponseRedirect(next)
-  member_all = CommitmentMember.objects.filter(commitment=commitment);
-
-  users = []
-  member_all_count = 0
-  member_floor_count = 0
-  member_all_count = member_all.count()
-  for member in member_all:
-    if member.user.get_profile().floor == floor:
-      member_floor_count = member_floor_count + 1
-      users.append(member.user)
-  
-  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
-  # return render_to_response("view_activities/task.html", {
-  #     "task":commitment,
-  #     "pau":True,
-  #     "approved":False,
-  #     "form":None,
-  #     "question":None,
-  #     "member_all":member_all_count,
-  #     "member_floor":member_floor_count,
-  #     "users":users,
-  #     "display_point":True,
-  #     "display_form":False,
-  #     "form_title": None,
-  #   }, context_instance=RequestContext(request))    
+        
+    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
 
 @never_cache
 def __add_activity(request, activity_id):
@@ -171,7 +136,6 @@ def __add_activity(request, activity_id):
   activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   floor = user.get_profile().floor
-  approval = None
   
   # Search for an existing activity for this user
   if activity not in user.activity_set.all() and request.method == "POST":
@@ -186,13 +150,22 @@ def __add_activity(request, activity_id):
           activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
-          activity_member.approval_status = "approved"
+          
+          if i == (len(question)-1):
+            activity_member.approval_status = "approved"
+            
           activity_member.save()
-          approval = activity_member
-
-        user.get_profile().add_points(activity.point_value, datetime.datetime.today() - datetime.timedelta(minutes=1))
-        user.get_profile().save()
-        
+      else:   # form not valid
+        return render_to_response("view_activities/task.html", {
+            "task":activity,
+            "pau":False,
+            "form":form,
+            "question":question,
+            "display_form":True,
+            "display_point":False,
+            "form_title": "Survey",
+            }, context_instance=RequestContext(request))    
+          
     else:
       activity_member = ActivityMember(user=user, activity=activity)
       activity_member.save()
@@ -200,42 +173,9 @@ def __add_activity(request, activity_id):
       #increase point
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
-    
-      # user.message_set.create(message="You are now participating in the activity \"" + activity.title + "\"")
-  
-  else:
-    return Http404
 
-  # Redirect back to the referrer or go to the profile if not available.
-  ## next = request.META.get("HTTP_REFERER", reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
-  ## next = reverse("pages.view_activities.views.task", args=(activity_id))
-  ## return HttpResponseRedirect(next)
-  member_all = ActivityMember.objects.filter(activity=activity);
+    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
 
-  users = []
-  member_all_count = 0
-  member_floor_count = 0
-  member_all_count = member_all.count()
-  for member in member_all:
-    if member.user.get_profile().floor == floor:
-      member_floor_count = member_floor_count + 1
-      users.append(member.user)
-  
-  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
-  # return render_to_response("view_activities/task.html", {
-  #     "task":activity,
-  #     "pau":True,
-  #     "approval":approval,
-  #     "form":None,
-  #     "question":None,
-  #     "member_all":member_all_count,
-  #     "member_floor":member_floor_count,
-  #     "users":users,
-  #     "display_point":True,
-  #     "display_form":False,
-  #     "form_title": None,
-  #   }, context_instance=RequestContext(request))    
-  
 @never_cache
 def __request_activity_points(request, activity_id):
   """Creates a request for points for an activity."""
@@ -245,7 +185,6 @@ def __request_activity_points(request, activity_id):
   floor = user.get_profile().floor
   question = None
   activity_member = None
-  approval = None
   
   try:
     # Retrieve an existing activity member object if it exists.
@@ -267,7 +206,6 @@ def __request_activity_points(request, activity_id):
     
     ## print activity.confirm_type
     if form.is_valid():
-      ## print 'valid'
       if not activity_member:
         activity_member = ActivityMember(user=user, activity=activity)
       
@@ -300,42 +238,14 @@ def __request_activity_points(request, activity_id):
         activity_member.approval_status = "pending"
 
       activity_member.save()
-      approval = activity_member
-      
-      ##next = reverse("pages.view_activities.views.task", args=(activity_id,))
-      ##return HttpResponseRedirect(next)
-  
-      member_all = ActivityMember.objects.filter(activity=activity);
-
-      users = []
-      member_all_count = 0
-      member_floor_count = 0
-      member_all_count = member_all.count()
-      for member in member_all:
-        if member.user.get_profile().floor == floor:
-          member_floor_count = member_floor_count + 1
-          users.append(member.user)
           
       return HttpResponseRedirect(reverse("activity_task", args=(activity.id,)) + "?display_point=true")
-      # return render_to_response("view_activities/task.html", {
-      #   "task":activity,
-      #   "pau":True,
-      #   "approval":approval,
-      #   "form":None,
-      #   "question":None,
-      #   "member_all":member_all_count,
-      #   "member_floor":member_floor_count,
-      #   "users":users,
-      #   "display_point":True,
-      #   "display_form":False,
-      #   "form_title": None,
-      # }, context_instance=RequestContext(request))    
-
+    
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
-      if question:
-        form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
-                		  
+      ##if question:
+      ##  form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+      
     return render_to_response("view_activities/task.html", {
     "task":activity,
     "pau":False,
@@ -345,6 +255,7 @@ def __request_activity_points(request, activity_id):
     "member_floor":0,
     "display_form":True,
     "display_point":False,
+    "form_title": "Get your points",
     }, context_instance=RequestContext(request))    
 
 @never_cache
@@ -355,6 +266,7 @@ def task(request, task_id):
   question = None
   form = None
   approval = None
+  can_commit = None
   member_all_count = 0
   member_floor_count = 0
   
@@ -363,12 +275,12 @@ def task(request, task_id):
   if task.type != "commitment":
     task = task.activity
     pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
-    members = ActivityMember.objects.filter(user=user, activity=task)
+    member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
+
+    members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
     if members.count() > 0:
       approval = members[0]
       
-    member_all = ActivityMember.objects.filter(activity=task);
-    
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
       form = SurveyForm(questions=question)    
@@ -395,18 +307,23 @@ def task(request, task_id):
   else:  ## "Commitment"
     task = task.commitment
     pau = CommitmentMember.objects.filter(user=user, commitment=task).count() > 0
-    member_all = CommitmentMember.objects.filter(commitment=task);
+    member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
     form = CommitmentCommentForm()
+    can_commit = can_add_commitments(user)
 
   users = []
   member_all_count = member_all.count()
   for member in member_all:
     if member.user.get_profile().floor == floor:
       member_floor_count = member_floor_count + 1
-      ## print "user="+ member.user.get_profile().name
       users.append(member.user)
-      
+  
+  if pau:
+    member_all_count = member_all_count + 1
+    member_floor_count = member_floor_count +1
+    users.append(user)
+    
   display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
@@ -422,6 +339,7 @@ def task(request, task_id):
     "display_point": display_point,
     "display_form":display_form,
     "form_title": form_title,
+    "can_commit":can_commit,
   }, context_instance=RequestContext(request))    
 
 @never_cache   

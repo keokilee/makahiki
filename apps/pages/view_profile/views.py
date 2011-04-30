@@ -75,7 +75,11 @@ def index(request):
   activity_members = user.activitymember_set.exclude(
     activity__type="activity",
     award_date__isnull=True,
+  ).exclude(
+    activity__type="survey", 
+    approval_status="pending",
   )
+    
   commitment_members = user.commitmentmember_set.all()
   quest_members = user.questmember_set.filter(completed=True)
   badge_members = user.badges_earned.all()
