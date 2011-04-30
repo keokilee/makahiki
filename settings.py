@@ -263,6 +263,8 @@ SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
 }
 
+RESTRICTED_URL = "/restricted/"
+
 # If demo flag is set, use the additional demo settings.
 DEMO = False
 

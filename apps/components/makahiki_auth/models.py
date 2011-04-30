@@ -3,6 +3,9 @@ from django.contrib.auth.models import User, AnonymousUser
 
 class MakahikiCASBackend(CASBackend):
   """Checks if the login name is a admin or a participant in the cup."""
+  supports_object_permissions = False
+  supports_anonymous_user = False
+  supports_inactive_user = True
   
   def authenticate(self, ticket, service):
       """Verifies CAS ticket and gets or creates User object"""
@@ -12,8 +15,6 @@ class MakahikiCASBackend(CASBackend):
           return None
       try:
           user = User.objects.get(username=username)
+          return user if user.is_active else None
       except User.DoesNotExist:
-          # TODO: Fix so that non-participants cannot log in.
-          user = AnonymousUser()
-      return user
-
+          return None

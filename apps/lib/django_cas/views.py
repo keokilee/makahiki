@@ -84,6 +84,9 @@ def login(request, next_page=None, required=False):
             return HttpResponseRedirect(next_page)
         elif settings.CAS_RETRY_LOGIN or required:
             return HttpResponseRedirect(_login_url(service))
+        # User is not authenticated.  Need to handle
+        elif hasattr(settings, "RESTRICTED_URL"):
+            return HttpResponseRedirect(settings.RESTRICTED_URL) 
         else:
             error = "<h1>Forbidden</h1><p>Login failed.</p>"
             return HttpResponseForbidden(error)
