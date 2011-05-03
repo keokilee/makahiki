@@ -4,57 +4,109 @@ import datetime as dt
 
 # Global Variables
 array = []
+startTimeOfLog = ""
+endTimeOfLog = ""
+name = ""
+startTime = ""
+endTime = ""
 
-# Read a file
-if (len(sys.argv) > 2) or (len(sys.argv) <= 1):
-	print "To export a log file you need to..."
-else:
-	# Variables
-	in_file = open(sys.argv[1], "r") 						# Open Log File
-	array = []
+def readFile():
+	global array
+    # Variables
+    # Open log file
+	in_file = open(sys.argv[1], "r")
 	
 	# Go through log file and save each line to an array.
 	for line in in_file:
 		array.append(line)
-	in_file.close() 	                                    # Close Log File
-	
+    #Close log file
+	in_file.close()
+	return
+    
+def test():
+	print array
+	return
+
+def removeNotNeededLogs():
+	global array
+	openFile = open('errorLog.csv', 'wb')
+	writeToFile = csv.writer(openFile)
+	writeToFile.writerow(['Date'] + ['Time'] + ['User'] + ['Page'] + ['Status Code'])
 	for line in array:
 		number = "200\n"
+		values = line.split()
+		date = values[1]
+		time = values[2]
+		username = values[3]
+		page = values[4]
+		statusCode = values[5]
 		if line.endswith(number):
 			pass
 		else:
+			writeToFile.writerow([date] + [time] + [username] + [page] + [statusCode])
 			array.remove(line)
-	
+	openFile.close()
+
+def getLogTime():
+	global startTimeOfLog
+	global endTimeOfLog
+	global array
 	# Get start and end time of log
 	getStartTimeOfLog = array[0].split()
 	getEndTimeOfLog = array[len(array) - 1].split()
 	startTimeOfLog = getStartTimeOfLog[1] + "_" + getStartTimeOfLog[2].replace(":", "-")
 	endTimeOfLog = getEndTimeOfLog[1] + "_" + getEndTimeOfLog[2].replace(":", "-")
-	
-	# Get name
-	getName = array[0].split()
-	name = getName[3]
-	
-	# Create csv file
+
+def getName():
+	global name
+	findName = array[0].split()
+	name = findName[3]
+
+def createCSVFile():
 	x = 0
-	openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'wb')
-	writeToFile = csv.writer(openFile)
-	writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
-	openFile.close()
 	while x < len(array):
-		line = array[x].split()
-		startTime = dt.datetime.strptime(line[2], '%H:%M:%S')
-		try:
-			getEndTime = array[x+1].split()
-			endTime = dt.datetime.strptime(getEndTime[2], '%H:%M:%S')
-			diff = (endTime - startTime) 
-			diff.seconds/60 
-			diff = str(diff)
-		except IndexError:
-			endTime = dt.datetime.strptime("00:00:00", '%H:%M:%S')
-			diff = (startTime - endTime)
+		findName = array[x].split()
+		name = findName[3]
+		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'wb')
+		writeToFile = csv.writer(openFile)
+		writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
+		openFile.close()
+		x = x + 1
+
+def writeToCSVFiles():
+	x = 0
+	while x < len(array):
+		findName = array[x].split()
+		name = findName[3]
+		findPage = array[x].split()
+		page = findPage[4]
+		findDate = array[x].split()
+		date = findDate[1]
+		findTime = array[x].split()
+		time = findTime[2]
 		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
 		writeToFile = csv.writer(openFile)
-		writeToFile.writerow([line[4]] + ['Visits'] + [diff] + ['Average Time'])
+		writeToFile.writerow([page] + [date] + [time])
 		openFile.close()
 		x = x + 1	
+		
+def readCSVFiles():
+	openFile = open('eggs.csv', 'rb')
+	readFile = csv.reader(openFile)
+	for row in readFile:
+		print ', '.join(row)
+	
+# Read a file
+if (len(sys.argv) > 2) or (len(sys.argv) <= 1):
+	print "To export a log file you need to..."
+else:
+	readFile()
+	removeNotNeededLogs()
+	getLogTime()
+	
+	# Create csv file
+	createCSVFile()
+	
+	writeToCSVFiles()
+	
+	

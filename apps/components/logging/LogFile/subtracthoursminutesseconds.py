@@ -1,8 +1,9 @@
 import datetime as dt
-start="09:35:23"
-end="10:23:00"
-start_dt = dt.datetime.strptime(start, '%H:%M:%S')
-end_dt = dt.datetime.strptime(end, '%H:%M:%S')
+start = "2011-05-03 03:00:00"
+end = "2011-05-04 04:00:00"
+start_dt = dt.datetime.strptime(start, '%Y-%m-%d %H:%M:%S')
+end_dt = dt.datetime.strptime(end, '%Y-%m-%d %H:%M:%S')
 diff = (end_dt - start_dt) 
 diff.seconds/60 
-print diff
+# test = dt.datetime.strptime(str(diff), '%Y-%m-%d %H:%M:%S')
+print str(diff)
