@@ -1,202 +1,248 @@
 import sys
 import csv
-import datetime as dt
+import datetime
 
-# Global Variables
-array = []
+# Global Varaiables
+logArray = []
+filenames = []
+name = ""
 startTimeOfLog = ""
 endTimeOfLog = ""
-name = ""
-startTime = ""
-endTime = ""
-copyArray = []
-contents = []
 
 def readFile():
-	global array
-    # Variables
+	global logArray
     # Open log file
 	in_file = open(sys.argv[1], "r")
 	
 	# Go through log file and save each line to an array.
 	for line in in_file:
-		array.append(line)
+		logArray.append(line)
     #Close log file
 	in_file.close()
-	return
-    
-def test():
-	x = 0
-	while x < len(copyArray):
-		print copyArray[x]
-		x = x + 1
-
+	
 def removeNotNeededLogs():
-	global array
+	global logArray
+	keepLogs = []
 	openFile = open('errorLog.csv', 'wb')
 	writeToFile = csv.writer(openFile)
 	writeToFile.writerow(['Date'] + ['Time'] + ['User'] + ['Page'] + ['Status Code'])
-	for line in array:
-		number = "200\n"
-		values = line.split()
+	x = 0
+	while x < len(logArray):
+		status = "200"
+		values = logArray[x].split()
 		date = values[1]
 		time = values[2]
 		username = values[3]
 		page = values[4]
 		statusCode = values[5]
-		if line.endswith(number):
-			pass
+		if (str(statusCode) == status):
+			if page.startswith("/site"):
+				pass
+			else:
+				keepLogs.append(logArray[x])
 		else:
 			writeToFile.writerow([date] + [time] + [username] + [page] + [statusCode])
-			array.remove(line)
+		x = x + 1
 	openFile.close()
-
+	logArray = keepLogs
+	
 def getLogTime():
 	global startTimeOfLog
 	global endTimeOfLog
-	global array
+	global logArray
 	# Get start and end time of log
-	getStartTimeOfLog = array[0].split()
-	getEndTimeOfLog = array[len(array) - 1].split()
+	getStartTimeOfLog = logArray[0].split()
+	getEndTimeOfLog = logArray[len(logArray) - 1].split()
 	startTimeOfLog = getStartTimeOfLog[1] + "_" + getStartTimeOfLog[2].replace(":", "-")
 	endTimeOfLog = getEndTimeOfLog[1] + "_" + getEndTimeOfLog[2].replace(":", "-")
-
-def getName():
-	global name
-	findName = array[0].split()
-	name = findName[3]
-
-def createCSVFile():
+	
+def createCSVFiles():
 	x = 0
-	while x < len(array):
-		findName = array[x].split()
-		name = findName[3]
-		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'wb')
-		writeToFile = csv.writer(openFile)
-		# writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
-		openFile.close()
-		x = x + 1
-
-def writeToCSVFiles():
-	x = 0
-	while x < len(array):
-		findName = array[x].split()
-		name = findName[3]
-		findPage = array[x].split()
-		page = findPage[4]
-		findDate = array[x].split()
-		date = findDate[1]
-		findTime = array[x].split()
-		time = findTime[2]
+	while x < len(logArray):
+		values = logArray[x].split()
+		name = values[3]
+		page = values[4]
+		date = values[1]
+		time = values[2]
 		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
 		writeToFile = csv.writer(openFile)
 		writeToFile.writerow([page] + [date] + [time])
+		# writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
 		openFile.close()
-		x = x + 1	
-		
-def getIndividualFiles():
-	global copyArray
+		x = x + 1
+	
+# Retrieve usernames from the log to open respective files.	
+def getFileNames():
+	global filenames
 	match = "false"
 	x = 0
-	while x < len(array):
-		findName = array[x].split()
-		name = findName[3]
-		if (len(copyArray) == 0):
-			copyArray.append(array[x])
+	while x < len(logArray):
+		values = logArray[x].split()
+		name = values[3]
+		if (len(filenames) == 0):
+			filenames.append(logArray[x])
 			match = "true"
 		else:
 			y = 0
-			while y < len(copyArray):
-				findN = copyArray[y].split()
-				n = findN[3]
-				if (name == n):
+			while y < len(filenames):
+				val = filenames[y].split()
+				nam = val[3]
+				if (name == nam):
 					match = "true"
 				y = y + 1
 		if (match == "false"):
-			copyArray.append(array[x])
+			filenames.append(logArray[x])
 		match = "false"
 		x = x + 1
-
-def printArray():
+		
+# Open Individual Files and Add data up.
+def accessIndividualFiles():
 	global name
 	x = 0
-	while x < len(copyArray):
-		findName = copyArray[x].split()
-		name = findName[3]
+	while x < len(filenames):
+		values = filenames[x].split()
+		name = values[3]
 		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'rb')
-		accessFile(openFile)
+		writeToFile = csv.reader(openFile)
+		# Every row in the file add it to contents[]
+		contents = []
+		for row in writeToFile:
+			line = ' '.join(row)
+			contents.append(line)
 		openFile.close()
+		# print "opening file " + name
+		accessFile(contents)
+		# print "-------------"
 		x = x + 1
-
-def accessFile(openFile):
-	global contents
-	global name
-	addContents = []
-	page = ""
-	match = "false"
 	
-	# print "Opening file " + name
-	writeToFile = csv.reader(openFile)
-	for row in writeToFile:
-		line = ' '.join(row)
-		contents.append(line)
+# Open individual file	
+def accessFile(contents):
+	addContents = []
+	match = "false"
+	# delete everything in the csv file
 	open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'w')
+	
 	x = 0
 	while x < len(contents):
 		try:
-			findPage = contents[x].split()
-			page = findPage[0]
+			values = contents[x].split()
+			page = values[0]
+			startTime = values[2]
+			getEndTime = contents[x+1].split()
+			endTime = getEndTime[2]
+			d1 = datetime.datetime.strptime(startTime, "%H:%M:%S")
+			d2 = datetime.datetime.strptime(endTime, "%H:%M:%S")
+			dt1 = datetime.timedelta(hours=d1.hour, minutes=d1.minute, seconds=d1.second)
+			dt2 = datetime.timedelta(hours=d2.hour, minutes=d2.minute, seconds=d2.second)
+			fin = dt2 - dt1
 			if len(addContents) == 0:
-				addContents.append(page + " 1")
+				addContents.append(page + " 1 " + str(fin))
 			else:
 				y = 0
 				while y < len(addContents):
-					findP = addContents[y].split()
-					p = findP[0]
-					# print "comparing " + p + " with " + page
-					if p == page:
-						visit = int(findP[1]) + 1
-						findP[1] = str(visit)
-						addContents[y] = p + " " + findP[1]
+					val = addContents[y].split()
+					pag = val[0]
+					if pag == page:
+						visits = int(val[1]) + 1
+						val[1] = str(visits)
+						totalTime = val[2]
+						d1 = datetime.datetime.strptime(str(fin), "%H:%M:%S")
+						d2 = datetime.datetime.strptime(totalTime, "%H:%M:%S")
+						dt1 = datetime.timedelta(hours=d1.hour, minutes=d1.minute, seconds=d1.second)
+						dt2 = datetime.timedelta(hours=d2.hour, minutes=d2.minute, seconds=d2.second)
+						total = dt1 + dt2
+						addContents[y] = pag + " " + val[1] + " " + str(total)
 						match = "true"
 					y = y + 1
 				if match == "false":
-					addContents.append(page + " 1")
+					addContents.append(page + " 1 " + str(fin))
 				match = "false"
 		except IndexError:
-			findPage = contents[x].split()
-			page = findPage[0]
+			values = contents[x].split()
+			page = values[0]
+			time = "00:05:00"
 			if len(addContents) == 0:
-				addContents.append(page + " 1")
+				addContents.append(page + " 1 " + time)
 			else:
 				y = 0
 				while y < len(addContents):
-					findP = addContents[y].split()
-					p = findP[0]
-					# print "comparing " + p + " with " + page
-					if p == page:
-						visit = int(findP[1]) + 1
-						findP[1] = str(visit)
-						addContents[y] = p + " " + findP[1]
+					val = addContents[y].split()
+					pag = val[0]
+					if pag == page:
+						visits = int(val[1]) + 1
+						val[1] = str(visits)
+						totalTime = val[2]
+						d1 = datetime.datetime.strptime(time, "%H:%M:%S")
+						d2 = datetime.datetime.strptime(totalTime, "%H:%M:%S")
+						dt1 = datetime.timedelta(hours=d1.hour, minutes=d1.minute, seconds=d1.second)
+						dt2 = datetime.timedelta(hours=d2.hour, minutes=d2.minute, seconds=d2.second)
+						total = dt1 + dt2
+						addContents[y] = pag + " " + val[1] + " " + str(total)
 						match = "true"
 					y = y + 1
 				if match == "false":
-					addContents.append(page + " 1")
+					addContents.append(page + " 1 " + time)
 				match = "false"
 		x = x + 1
+	openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
+	writeToFile = csv.writer(openFile)
+	# writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
+	x = 0
+	while x < len(addContents):
+		values = addContents[x].split()
+		page = values[0]
+		visits = values[1]
+		time = values[2]
+		writeToFile.writerow([page] + [visits] + [time])
+		x = x + 1
+	openFile.close()
+	
+def getAverageOfTotalTimes():
+	global name
+	x = 0
+	while x < len(filenames):
+		values = filenames[x].split()
+		name = values[3]
+		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'rb')
+		writeToFile = csv.reader(openFile)
+		# Every row in the file add it to contents[]
+		contents = []
+		for row in writeToFile:
+			line = ' '.join(row)
+			contents.append(line)
+		openFile.close()
+		averageTimes(contents)
+		x = x + 1
+	
+def averageTimes(contents):
+	addContents = []
+	open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'w')
+	x = 0
+	while x < len(contents):
+		values = contents[x].split()
+		page = values[0]
+		visits = values[1]
+		time = values[2]
+		d1 = datetime.datetime.strptime(time, "%H:%M:%S")
+		dt1 = datetime.timedelta(hours=d1.hour, minutes=d1.minute, seconds=d1.second)
+		averageTime = dt1 / int(visits)
+		addContents.append(page + " " + visits + " " + " " + time + " " + str(averageTime))
+		x = x + 1
+	
 	openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
 	writeToFile = csv.writer(openFile)
 	writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
 	x = 0
 	while x < len(addContents):
-		find = addContents[x].split()
-		page = find[0]
-		visits = find[1]
-		writeToFile.writerow([page] + [visits])
+		values = addContents[x].split()
+		page = values[0]
+		visits = values[1]
+		time = values[2]
+		average = values[3]
+		writeToFile.writerow([page] + [visits] + [time] + [average])
 		x = x + 1
+	openFile.close()
 	
-	contents = []
-		
 # Read a file
 if (len(sys.argv) > 2) or (len(sys.argv) <= 1):
 	print "To export a log file you need to..."
@@ -204,11 +250,7 @@ else:
 	readFile()
 	removeNotNeededLogs()
 	getLogTime()
-	
-	# Create csv file
-	createCSVFile()
-	
-	writeToCSVFiles()
-	
-	getIndividualFiles()
-	printArray()
+	createCSVFiles()
+	getFileNames()
+	accessIndividualFiles()
+	getAverageOfTotalTimes()
