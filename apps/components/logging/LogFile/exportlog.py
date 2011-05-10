@@ -9,6 +9,7 @@ name = ""
 startTimeOfLog = ""
 endTimeOfLog = ""
 
+# Read file from command line and save each line to list "logArray"
 def readFile():
 	global logArray
     # Open log file
@@ -20,6 +21,7 @@ def readFile():
     #Close log file
 	in_file.close()
 	
+# Remove logs that have status codes 304 and save status codes above 400 to an errorlog.
 def removeNotNeededLogs():
 	global logArray
 	keepLogs = []
@@ -40,12 +42,13 @@ def removeNotNeededLogs():
 				pass
 			else:
 				keepLogs.append(logArray[x])
-		else:
+		elif int(statusCode) > 400:
 			writeToFile.writerow([date] + [time] + [username] + [page] + [statusCode])
 		x = x + 1
 	openFile.close()
 	logArray = keepLogs
 	
+# Get benning and end time of the log
 def getLogTime():
 	global startTimeOfLog
 	global endTimeOfLog
@@ -56,6 +59,7 @@ def getLogTime():
 	startTimeOfLog = getStartTimeOfLog[1] + "_" + getStartTimeOfLog[2].replace(":", "-")
 	endTimeOfLog = getEndTimeOfLog[1] + "_" + getEndTimeOfLog[2].replace(":", "-")
 	
+# Create each user's individual file
 def createCSVFiles():
 	x = 0
 	while x < len(logArray):
@@ -67,7 +71,6 @@ def createCSVFiles():
 		openFile = open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'ab')
 		writeToFile = csv.writer(openFile)
 		writeToFile.writerow([page] + [date] + [time])
-		# writeToFile.writerow(['Page'] + ['Visits'] + ['Total Time'] + ['Average Time'])
 		openFile.close()
 		x = x + 1
 	
@@ -95,7 +98,7 @@ def getFileNames():
 		match = "false"
 		x = x + 1
 		
-# Open Individual Files and Add data up.
+# Open Individual Files and call accessFile() to add data up.
 def accessIndividualFiles():
 	global name
 	x = 0
@@ -115,7 +118,7 @@ def accessIndividualFiles():
 		# print "-------------"
 		x = x + 1
 	
-# Open individual file	
+# Add data up from opened file
 def accessFile(contents):
 	addContents = []
 	match = "false"
@@ -197,6 +200,7 @@ def accessFile(contents):
 		x = x + 1
 	openFile.close()
 	
+# Open individual files and call averageTimes() to average the total Times
 def getAverageOfTotalTimes():
 	global name
 	x = 0
@@ -214,6 +218,7 @@ def getAverageOfTotalTimes():
 		averageTimes(contents)
 		x = x + 1
 	
+# Open individual file and average the time with visits
 def averageTimes(contents):
 	addContents = []
 	open(name+'-'+startTimeOfLog+'_'+endTimeOfLog+'.csv', 'w')
