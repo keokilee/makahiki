@@ -1,0 +1,37 @@
+from __future__ import with_statement
+import datetime
+
+from fabric.api import *
+
+env.hosts = ["servername"]
+env.no_keys = True
+
+PRODUCTION_DIR = "PRODUCTION_DIR"
+STAGING_FOLDER = "STAGING_FOLDER"
+FOLDER_NAME_FORMAT = "%Y-%m-%d-%H%M"
+VIRTUALENV_PREFIX = "VIRTUALENV"
+
+def deploy():
+  with cd(PRODUCTION_DIR):
+    # Make the directory
+    folder = datetime.datetime.today().strftime(FOLDER_NAME_FORMAT)
+    run("mkdir %s" % folder)
+    
+    # Copy from staging
+    run("cp -R %s %s" % (STAGING_FOLDER, folder))
+    
+    __update_production(folder)
+    
+def __update_production(folder_name):
+  with cd(folder_name):
+    # Update settings and site media folder
+    run("cp %sproduction_settings.py local_settings.py" % PRODUCTION_DIR)
+    run("ln -s %ssite_media site_media" % PRODUCTION_DIR)
+    
+    with prefix(VIRTUALENV_PREFIX):
+      # Shouldn't need to update requirements since staging already did this, but just in case.
+      run("pip install -r requirements.pip -q; python manage.py syncdb; python manage.py migrate")
+    
+    # Create symlink and restart process
+    run("ln -fns %s %smakahiki" % (PRODUCTION_DIR + folder_name, PRODUCTIION_DIR))
+    run("touch %smakahiki/deploy/pinax.wsgi" % PRODUCTION_DIR)
