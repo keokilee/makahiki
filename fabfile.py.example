@@ -33,5 +33,5 @@ def __update_production(folder_name):
       run("pip install -r requirements.pip -q; python manage.py syncdb; python manage.py migrate")
     
     # Create symlink and restart process
-    run("ln -fns %s %smakahiki" % (PRODUCTION_DIR + folder_name, PRODUCTIION_DIR))
+    run("ln -fns %s %smakahiki" % (PRODUCTION_DIR + folder_name, PRODUCTION_DIR))
     run("touch %smakahiki/deploy/pinax.wsgi" % PRODUCTION_DIR)
