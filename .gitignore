@@ -1,6 +1,9 @@
 # Ignore database files
 *.db
 
+# Ignore fabfile because of potentially sensitive info
+fabfile.py
+
 # Ignore compiled Python files.
 *.pyc
 
