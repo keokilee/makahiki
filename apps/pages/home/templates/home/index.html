@@ -13,20 +13,6 @@
 {% block body %}
 <div {% get_id_and_classes "home-center" %}>
 <!-- Top Row-->
-<div {% get_id_and_classes "home-energy" %}>
-  <a href="/energy">
-    <img {% get_id_and_classes "home-energy-icon" %} src="{{STATIC_URL}}css/default/images/spacer.png" width="65" align="Left" height="65"/>
-  </a>
-  <div class="tile">
-    <h6 {% get_id_and_classes "home-energy-title" %}>Go Low</h6>
-    <p {% get_id_and_classes "home-energy-content" %}>
-      Observe and Conserve Energy<br/>
-      Set and track conservation goals<br/>
-      Compare to other
-    </p>
-  </div>
-</div>
-
 <div {% get_id_and_classes "home-activities" %}>
 <a href="/activities">
 <img {% get_id_and_classes "home-activities-icon" %} src="{{STATIC_URL}}css/default/images/spacer.png" width="65" align="Left" height="65"/>
@@ -39,6 +25,19 @@
   See where you stand
   </p>
 </div>
+</div>
+<div {% get_id_and_classes "home-energy" %}>
+  <a href="/energy">
+    <img {% get_id_and_classes "home-energy-icon" %} src="{{STATIC_URL}}css/default/images/spacer.png" width="65" align="Left" height="65"/>
+  </a>
+  <div class="tile">
+    <h6 {% get_id_and_classes "home-energy-title" %}>Go Low</h6>
+    <p {% get_id_and_classes "home-energy-content" %}>
+      Observe and Conserve Energy<br/>
+      Set and track conservation goals<br/>
+      Compare to other
+    </p>
+  </div>
 </div>
 
 <!-- Middle Row-->
