@@ -8,14 +8,22 @@ $(document).ready(function() {
     if (!$(this).parent().hasClass("selected")) {
       $(this).parent().siblings("li").removeClass("selected");
       $(this).parent().addClass("selected");
+      
+      //Insert the contents of the quest-description into the details.
+      $("#quest-contents").html($(this).next(".quest-description").html());
+
+      //Toggle quest-details if it is hidden.
+      if (!$("#quest-details").is(":visible")) {
+        $("#quest-details").slideDown("slow", function() {
+          //Animation complete
+        });
+      }
     }
     
-    //Insert the contents of the quest-description into the details.
-    $("#quest-contents").html($(this).next(".quest-description").html());
-    
-    //Toggle quest-details if it is hidden.
-    if (!$("#quest-details").is(":visible")) {
-      $("#quest-details").slideDown("slow", function() {
+    else {
+      //Hide quest details and remove selected.
+      $(this).parent().removeClass("selected");
+      $("#quest-details").slideUp("slow", function() {
         //Animation complete
       });
     }
