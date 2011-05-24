@@ -22,6 +22,8 @@
     <li>
       <a href="#" class="quest-title">{{quest.name}}</a>
       <div class="quest-description" style="display:none">
+        {# <h4>This is a level {{quest.level}} quest</h4> #}
+        <h4>Quest Level: {{quest.level}}</h4>
         {{quest.description|markdown}}
         <div class="quest-options" style="float: right">
           <form action="{% url quests_accept quest.id %}" method="POST" style="display: inline">
