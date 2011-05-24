@@ -13,11 +13,17 @@ class Quest(models.Model):
   quest_slug = models.SlugField()
   description = models.TextField(help_text="Outline the steps to completing this quest. %s" % MARKDOWN_TEXT)
   level = models.IntegerField()
-  unlock_conditions = models.TextField(
-      help_text="Conditions a user needs to meet in order to have this quest be available."
+  unlock_conditions = models.TextField(help_text=
+      """
+      Conditions a user needs to meet in order to have this quest be available.<br/>
+      Lines that begin with '#' are ignored and can be used as comments.
+      """
   )
-  completion_conditions = models.TextField(
-      help_text="Conditions a user needs to meet in order to complete the quest."
+  completion_conditions = models.TextField(help_text=
+      """
+      Conditions a user needs to meet in order to complete the quest.<br/>
+      Lines that begin with '#' are ignored and can be used as comments.
+      """
   )
   users = models.ManyToManyField(User, through="QuestMember")
   created_at = models.DateTimeField(auto_now_add=True, editable=False)

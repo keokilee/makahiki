@@ -147,3 +147,24 @@ class QuestTest(TestCase):
     quests = get_quests(self.user)
     self.assertTrue(quest not in quests["available_quests"], "Quest should not be available after completion.")
     self.assertTrue(quest not in quests["user_quests"], "Quest should not be in the user's active quests.")
+    
+  def testCommentsAreIgnored(self):
+    """Tests that any comments in the text are ignored."""
+    quest = Quest(
+        name="Test quest",
+        quest_slug="test_quest",
+        description="test quest",
+        level=1,
+        unlock_conditions="#Hello World\nTrue",
+        completion_conditions="#Hello World\nTrue",
+    )
+    quest.save()
+    
+    quests = get_quests(self.user)
+    self.assertEqual(len(quests["available_quests"]), 1, "User should now have one quest.")
+    
+    quests["available_quests"][0].accept(self.user)
+    
+    possibly_completed_quests(self.user)
+    complete_quests = self.user.quest_set.filter(questmember__completed=True)
+    self.assertTrue(quest in complete_quests, "Quest should be in the user's complete quests list.")
