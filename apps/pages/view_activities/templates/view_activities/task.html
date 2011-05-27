@@ -50,6 +50,11 @@
       {% for user in users %}
          <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
      {% endfor %}
+     
+     <p/><p/>
+     <center> 
+     <a href="/activities" class="{% insert_classes "ui-button" %}"><button>Go back to SmartGrid Game</button></a> 
+    </center>
     </div>
   </div>  
 </div>
