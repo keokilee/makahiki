@@ -230,7 +230,7 @@ class Activity(ActivityBase):
       
     questions = TextPromptQuestion.objects.filter(activity=self)
     if questions:
-      return questions[user_id % (len(questions) - 1)]
+      return questions[user_id % len(questions)]
     else:
       return None
 

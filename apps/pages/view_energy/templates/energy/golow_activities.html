@@ -1,10 +1,10 @@
 {% load class_tags %}
       <table {% get_id_and_classes "energy-status-how-activities-table" %}>
-	    <thead {% get_id_and_classes "energy-status-how-activities-table-header" %}>
-		  <th {% get_id_and_classes "energy-status-how-activities-table-activity-header" %}>Activity</th>
-		  <th {% get_id_and_classes "energy-status-how-activities-table-points-header" %}>Points</th>
+	    <thead>
+		  <th>Activity</th>
+		  <th>Points</th>
 		</thead>
-	    <tbody {% get_id_and_classes "energy-status-how-activities-table-list" %}>        
+	    <tbody>        
           {% for a in golow_activities %}
           <tr><td><a href="/activities/task/{{a.id}}">{{a.title}}</a></td>
               <td>{{a.point_value}}</td>

@@ -136,8 +136,8 @@ td#energy-status-how-activities-content {
 
 #energy-status-how-activities-table th {
 	background: #cec99c;
-	text-align: center;
-	padding: 4px;
+	text-align: left;
+	padding-left: 20px;
 }
 
 #energy-status-how-activities-table td {
