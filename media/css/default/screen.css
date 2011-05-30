@@ -323,6 +323,10 @@ clear: both;
   display: inline;
 }
 
+#quest-box h4 {
+  margin: 5px 0;
+}
+
 #quest-box li.selected {
   background-color: #dbd7af;
 }

@@ -19,5 +19,7 @@ class ProfileForm(forms.Form):
   about = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={"cols": '50', 'rows': '2'}),
-        label="What would you like other players on %s to know about you (for your profile)?" % settings.COMPETITION_NAME,
+        label="""
+              (Optional) What would you like other players of the %s to know about you (for your profile)?
+              """ % settings.COMPETITION_NAME,
   )
