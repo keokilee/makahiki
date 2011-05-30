@@ -39,6 +39,7 @@ urlpatterns = patterns('',
     
     # pinax provided
     (r'^account/', include('account.urls')),
+    (r'^admin/login-as/(?P<user_id>\d+)/$', 'components.makahiki_auth.views.login_as'),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     # (r'^notifications/', include('notification.urls')),
