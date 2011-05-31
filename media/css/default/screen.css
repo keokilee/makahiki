@@ -297,7 +297,8 @@ clear: both;
   margin: 0 auto;
   clear:both; 
   text-align: left;
-  background-color: #EBE7BC;
+  /*background-color: #EBE7BC;*/
+  background-color: #E3E3E3;
   border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
