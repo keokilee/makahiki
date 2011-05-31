@@ -262,6 +262,8 @@ def __request_activity_points(request, activity_id):
 def task(request, task_id):
   """individual task page"""
   user = request.user
+  
+  
   floor = user.get_profile().floor
   question = None
   form = None
@@ -271,6 +273,10 @@ def task(request, task_id):
   member_floor_count = 0
   
   task = ActivityBase.objects.get(id=task_id)
+
+  if is_unlock(user, task) != True:
+    return HttpResponseRedirect(reverse("pages.view_activities.views.index", args=()))
+
   
   if task.type != "commitment":
     task = task.activity
@@ -346,7 +352,7 @@ def task(request, task_id):
 def add_task(request, task_id):
   
   task = ActivityBase.objects.get(id=task_id)
-  
+
   if task.type == "commitment":
     return __add_commitment(request, task_id)
     
