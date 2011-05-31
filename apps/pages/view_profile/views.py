@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -18,8 +17,10 @@ from pages.view_profile.forms import ProfileForm
 from components.makahiki_facebook.models import FacebookProfile
 from components.activities import get_current_activity_members, get_current_commitment_members
 from components.activities.models import ActivityMember, CommitmentMember
-
 import components.makahiki_facebook.facebook as facebook
+
+from lib.brabeion import badges
+from lib.brabeion.models import BadgeAward
 
 @never_cache
 @login_required
@@ -132,3 +133,28 @@ def index(request):
       "count": range(0, 3),
     }
   }, context_instance=RequestContext(request))
+
+@login_required
+def badge_catalog(request):
+  awarded_badges = [earned.badge for earned in request.user.badges_earned.all()]
+  registry = badges._registry.copy()
+  # Remove badges that are already earned
+  for badge in awarded_badges:
+    registry.pop(badge.slug)
+  
+  locked_badges = registry.values()
+  
+  # For each badge, get the number of people who have the badge.
+  floor = request.user.get_profile().floor
+  for badge in awarded_badges:
+    badge.total_users = BadgeAward.objects.filter(slug=badge.slug).count()
+    badge.floor_users = User.objects.filter(badges_earned__slug=badge.slug, profile__floor=floor)
+  for badge in locked_badges:
+    badge.total_users = BadgeAward.objects.filter(slug=badge.slug).count()
+    badge.floor_users = User.objects.filter(badges_earned__slug=badge.slug, profile__floor=floor)
+    
+  return render_to_response("view_profile/badge-catalog.html", {
+    "awarded_badges": awarded_badges,
+    "locked_badges": locked_badges,
+  }, context_instance=RequestContext(request))
+  

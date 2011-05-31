@@ -109,6 +109,9 @@ CSS_IDS = {
   "profile-form-contact-email-label": "profile-form-label",
   "profile-form-contact-text-label": "profile-form-label",
   
+  "badge-catalog-box": "content-box",
+  "badge-catalog-title": "content-box-title",
+  
   "avatar-change": "content-box",
   "avatar-change-title": "content-box-title",
   

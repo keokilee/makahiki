@@ -6,6 +6,7 @@ class DailyVisitorBadge(Badge):
   description = [
     "Visited the site 3 days in a row.",
   ]
+  hint = "Keep coming back!"
   slug = "dailyvisitor"
   levels = ["Awarded",]
   events = ["dailyvisitor",]
@@ -23,6 +24,7 @@ class FullyCommittedBadge(Badge):
   description = [
     "Participating in 5 commitments at the same time.",
   ]
+  hint = "How committed are you?"
   slug = "fully_committed"
   levels = ["Awarded",]
   events = ["fully_committed",]
