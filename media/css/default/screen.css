@@ -117,6 +117,10 @@ a {
 #header-nav-links a.home img {
 }
 
+#header-nav-links a {
+  text-decoration: none;
+}
+
 #header-nav-links a span {
   display: none;
 }
