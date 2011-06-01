@@ -60,7 +60,17 @@
        <div class="{{task.type}}">
        {% endif %}
 	    <div class="">
-		<p> ? </p>
+		<p>
+		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="18" align="top" 
+		title="Click to see how to unlock" 
+		onclick="unlock_dialog(
+		{% if task.depends_on_text %} 
+		'{{task.depends_on_text}}'
+		{% else %}
+		'{{task.depends_on}}'
+		{% endif %}
+		)">
+		</p>
         </div>
        </div>  
        {% endif %}
@@ -74,5 +84,7 @@
    {% endfor %}
 </tr>   
 </table>
+
+
 
 

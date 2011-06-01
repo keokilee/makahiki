@@ -106,6 +106,7 @@ class ActivityBase(models.Model):
              )
   likes = generic.GenericRelation(Like)
   depends_on = models.CharField(max_length=400, null=True, blank=True,)
+  depends_on_text = models.CharField(max_length=400, null=True, blank=True,)
   energy_related = models.BooleanField(default=False)
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
