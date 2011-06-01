@@ -117,6 +117,24 @@ a {
 #header-nav-links a.home img {
 }
 
+#header-nav-links a span {
+  display: none;
+}
+
+#header-nav-links a:hover span {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  background-color: #EBE7BC;
+  width: 70px;
+  margin-left: -10px;
+  margin-top: -75px;
+  font-weight: bold;
+  padding: 2px;
+  -moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
 #header-nav-links a.energy img {
 	background: transparent url(/site_media/static/css/default/images/icon-go-low.png) top left no-repeat;
 	display: block;
@@ -297,7 +315,8 @@ clear: both;
   margin: 0 auto;
   clear:both; 
   text-align: left;
-  background-color: #EBE7BC;
+  /*background-color: #EBE7BC;*/
+  background-color: #E3E3E3;
   border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;

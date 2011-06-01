@@ -145,7 +145,7 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 }
 
 #profile-history-content td {
-    text-align: left;
+  text-align: left;
 	vertical-align: middle;
 	padding: 4px;
 }
@@ -178,4 +178,47 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 
 #avatar-change-content {
   padding: 10px;
+}
+
+/************** Badge catalog styles ********/
+#badge-catalog-box {
+  width: 920px;
+  margin: 1.5em auto 20px;
+}
+
+#badge-catalog-content a {
+  display: block;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+#badge-catalog-table {
+  margin: 10px 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#badge-catalog-table, tr, th, td {
+  border: none;
+}
+
+#badge-catalog-table td {
+  vertical-align: top;
+  padding: 10px 0;
+}
+
+#badge-catalog-table .badge-image {
+  width: 10%;
+}
+
+#badge-catalog-table .badge-title {
+  width: 15%;
+}
+
+#badge-catalog-table .badge-description {
+  width: 30%;
+}
+
+.badge-image img{
+  margin-left: 20px;
 }
