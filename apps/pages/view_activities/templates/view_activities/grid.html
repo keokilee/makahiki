@@ -23,44 +23,33 @@
       {% for task in cat.task_list %}
        <tr><td width="14">
        <div {% get_id_and_classes "activity-category" %}>
-    
-       {% if task.is_unlock %}
-       <a href="task/{{task.id}}" title="{{task.name}}">
-       {% if task.type != 'commitment' %}
-         <div class="{{task.type}}">
-       	    <div class="">
+       <div class="{{task.type}}">
+       <div class="">
+       {% if task.is_unlock %}      
+         {% if task.type != 'commitment' %}
+       	    
             {% if task.is_pau %}
-	            {{task.name}}
+	            <a href="task/{{task.id}}" title="{{task.name}}">{{task.name}}</a>
 	          {% else %}
 	            {% if task.activity.point_value %}
-	            <p></p><h3>{{task.activity.point_value}}</h3>
+	             <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.activity.point_value}}</a></h3>
 	            {% else %}
-	            <p></p><h3>{{task.activity.point_range_end}}</h3>
+	             <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.activity.point_range_end}}</a></h3>
 	            {% endif %}  {# end task.activity.point_value #}
 		        {% endif %} {# end task.is_pau #}
-            </div>
-          </div>
-       {% else %}
-       <div class="{{task.type}}">
-         <div class="">
+         
+         {% else %}
+            <a href="task/{{task.id}}" title="{{task.name}}">
 	         {% if task.is_pau %}
-		        {{task.name}}
+		        <a href="task/{{task.id}}" title="{{task.name}}">{{task.name}}</a>
 		       {% else %}
-		        <h3>{{task.commitment.point_value}}</h3>
+		        <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.commitment.point_value}}</a></h3>
 		       {% endif %} {# end task.is_pau #}
-        </div>
-       </div>
-       {% endif %}
-       
-       </a>
+            </a>
+        
+         {% endif %}
        {% else %}
-       {% if task.type != 'commitment' %}
-       <div class="{{task.type}}">
-       {% else %}
-       <div class="{{task.type}}">
-       {% endif %}
-	    <div class="">
-		<p>
+ 		<p>
 		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="18" align="top" 
 		title="Click to see how to unlock" 
 		onclick="unlock_dialog(
@@ -71,10 +60,10 @@
 		{% endif %}
 		)">
 		</p>
-        </div>
-       </div>  
+
        {% endif %}
-       
+       </div>
+       </div>
        </div>
        </td></tr>
        {% endfor %}
