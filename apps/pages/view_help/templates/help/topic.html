@@ -12,16 +12,16 @@
 
 {% block body %}
 
-<div {% get_id_and_classes "help-request" %}>
-  <div {% get_id_and_classes "help-request-box" %}>
-    <div {% get_id_and_classes "help-request-title" %}>
+<div {% get_id_and_classes "help-topic" %}>
+  <div {% get_id_and_classes "help-topic-box" %}>
+    <div {% get_id_and_classes "help-topic-title" %}>
       {{topic.title}}
     </div>
-    <div {% get_id_and_classes "help-request-content" %}>
+    <div {% get_id_and_classes "help-topic-content" %}>
 	    <a href="{% url help_index %}">Back to help page</a>
-      <div>
+      <p>
         {{topic.contents}}
-      </div>
+      </p>
 	    <a href="{% url help_index %}">Back to help page</a>
     </div>
   </div>

@@ -26,10 +26,6 @@
 	width: 376px;
 }
 
-#help-request  {
-	width: 920px;
-}
-
 #help-video-content object {
 	margin-bottom: -11px;
 }
@@ -43,7 +39,7 @@
 	padding: 0 auto 0 auto;
 }
 
-#help-rules-content, #help-faq-content, #help-request-content {
+#help-rules-content, #help-faq-content {
 	padding-top: 1em;
 	padding-bottom: .7em;
 	line-height: 15pt;
@@ -65,4 +61,11 @@
 
 #form-success {
   text-align: left;
+}
+
+/******* Help topic styles *******/
+
+#help-topic-content {
+  padding: 1em 1em 0.7em 1em;
+	line-height: 15pt;
 }
