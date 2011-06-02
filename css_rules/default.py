@@ -122,6 +122,9 @@ CSS_IDS = {
 }
 
 CSS_CLASSES = {
+  "system-post": "news-system-post",
+  "system-post-date-string": "news-system-posted",
+  "system-post-content": "news-system-text",
   "user-post-avatar": "news-image",
   "user-post-content": "news-text",
   "user-post-date-string": "news-posted",

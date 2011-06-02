@@ -1,7 +1,11 @@
 {% load class_tags %}
 {% for post in posts %}
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
-  {% include "news/user_post.html" %}
+  {% if post.style_class == "user_post" %}
+    {% include "news/user_post.html" %}
+  {% else %}
+    {% include "news/system_post.html" %}
+  {% endif %} 
   
   {% if forloop.last and more_posts %}
   <li {% get_id_and_classes "view-more-posts" %}>

@@ -89,6 +89,18 @@ a#wall-post-submit {
 	color: #777;
 }
 
+#news-wall-content .news-system-text p {
+	margin: 0 0 10px 20px;
+	font-style: italic;
+}
+
+#news-wall-content .news-system-posted {
+	font-size: 8pt;
+	margin: 0 0 0 20px;
+	font-style: italic;
+	color: #777;
+}
+
 #view-more-posts {
 	padding: .5em 0 0 .5em;
 	text-align: center;
