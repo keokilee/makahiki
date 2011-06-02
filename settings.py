@@ -159,9 +159,10 @@ INSTALLED_APPS = (
     # Makahiki components
     'components.activities',
     'components.api',
-    'lib.django_cas', # Placed here so that it registers as an app during testing.
-    'components.floors',
     'components.energy_goals',
+    'components.floors',
+    'components.help_topics',
+    'components.logging',
     'components.makahiki_auth',
     'components.makahiki_avatar',
     'components.makahiki_badges',
@@ -173,9 +174,9 @@ INSTALLED_APPS = (
     'components.quests',
     'components.resources',
     'components.standings',
-	'components.logging',
     
     # 3rd party libraries
+    'lib.django_cas',
     'lib.brabeion',
     'lib.minidetector',
     

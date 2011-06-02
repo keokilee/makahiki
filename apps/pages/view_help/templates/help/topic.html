@@ -3,7 +3,7 @@
 {% load class_tags %}
 
 {% block page_title %}
-  Help
+  {{topic.title}}
 {% endblock %}
 
 {% block extra_head %}
@@ -15,17 +15,14 @@
 <div {% get_id_and_classes "help-request" %}>
   <div {% get_id_and_classes "help-request-box" %}>
     <div {% get_id_and_classes "help-request-title" %}>
-      Terms and Conditions
+      {{topic.title}}
     </div>
     <div {% get_id_and_classes "help-request-content" %}>
-	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
-      <ul>
-	  <li>
-			{% include "help/terms.html" %}
-		</li>
-		<br/>
-		</ul>
-	  <button onclick="document.location.href='{% url help_index%}'; return false;">Return</button>
+	    <a href="{% url help_index %}">Back to help page</a>
+      <div>
+        {{topic.contents}}
+      </div>
+	    <a href="{% url help_index %}">Back to help page</a>
     </div>
   </div>
 </div>
