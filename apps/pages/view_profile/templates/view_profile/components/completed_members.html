@@ -56,7 +56,7 @@
 
 {# Extra row for when they complete the setup wizard #}
 <tr>
-  <td>{{user.date_joined|date:"n/j/y"}}</td>
+  <td>{{user.get_profile.completion_date|date:"n/j/y"}}</td>
   <td>
     Set up profile
   </td>

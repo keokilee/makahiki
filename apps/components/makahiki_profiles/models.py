@@ -115,6 +115,7 @@ class Profile(models.Model):
   
   setup_profile = models.BooleanField(default=False, editable=False)
   setup_complete = models.BooleanField(default=False, editable=False)
+  completion_date = models.DateTimeField(null=True, blank=True, editable=False)
   
   daily_visit_count = models.IntegerField(default=0, editable=False)
   last_visit_date = models.DateField(null=True, blank=True)

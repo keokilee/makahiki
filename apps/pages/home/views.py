@@ -243,6 +243,7 @@ def setup_complete(request):
         pass # Don't add anything if we can't link to the activity.
         
     profile.setup_complete = True
+    profile.completion_date = datetime.datetime.today()
     profile.save()
     template = render_to_string("home/first-login/complete.html", {}, context_instance=RequestContext(request))
 
