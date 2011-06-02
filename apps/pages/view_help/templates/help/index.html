@@ -31,16 +31,7 @@
       <div {% get_id_and_classes "help-rules-content" %}>
         <ul>
           {% for topic in rules %}
-            <li>
-              <a href="{% url help_rules_topic slug=topic.slug %}">{{topic.title}}</a>
-              {% if topic.sub_topics %}
-              <ul>
-                {% for sub_topic in topic.sub_topics.all %}
-                  <a href="{% url help_rules_topic slug=sub_topic.slug %}">{{sub_topic.title}}</a>
-                {% endfor %}
-              </ul>
-              {% endif %}
-            </li>
+            {% include "help/topic-item.html" %}
           {% endfor %}
         </ul>
       </div>
@@ -57,16 +48,7 @@
       <div {% get_id_and_classes "help-faq-content" %}>
         <ul>
           {% for topic in faqs %}
-            <li>
-              <a href="{% url help_faq_topic slug=topic.slug %}">{{topic.title}}</a>
-              {% if topic.sub_topics %}
-              <ul>
-                {% for sub_topic in topic.sub_topics.all %}
-                  <a href="{% url help_faq_topic slug=sub_topic.slug %}">{{sub_topic.title}}</a>
-                {% endfor %}
-              </ul>
-              {% endif %}
-            </li>
+            {% include "help/topic-item.html" %}
           {% endfor %}
         </ul>
       </div>

@@ -28,15 +28,9 @@ def index(request):
   }, context_instance=RequestContext(request))
 
 @login_required
-def rules(request, slug):
-  topic = get_object_or_404(HelpTopic, slug=slug, category="rules")
+def topic(request, category, slug):
+  topic = get_object_or_404(HelpTopic, slug=slug, category=category)
   return render_to_response("help/topic.html", {
       "topic": topic,
   }, context_instance=RequestContext(request))
-  
-@login_required
-def faq(request, slug):
-  topic = get_object_or_404(HelpTopic, slug=slug, category="faq")
-  return render_to_response("help/topic.html", {
-      "topic": topic,
-  }, context_instance=RequestContext(request))
+
