@@ -67,6 +67,11 @@ def __get_categories(user):
     for task in cat.activitybase_set.order_by("priority"):   
       task.is_unlock = is_unlock(user, task)
       task.is_pau = is_pau(user, task)
+      
+      members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
+      if members.count() > 0:
+        task.approval = members[0]
+     
       task_list.append(task)
     
     cat.task_list = task_list
