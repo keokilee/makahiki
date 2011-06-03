@@ -136,9 +136,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     'django.contrib.messages.context_processors.messages',
     "pinax.core.context_processors.pinax_settings",
-    "notification.context_processors.notification",
+    # "notification.context_processors.notification",
     # "account.context_processors.openid",
-    "account.context_processors.account",
+    # "account.context_processors.account",
     
     "components.makahiki_base.context_processors.competition",
     "components.makahiki_themes.context_processors.css_selector",
@@ -168,6 +168,7 @@ INSTALLED_APPS = (
     'components.makahiki_badges',
     'components.makahiki_base',
     'components.makahiki_facebook',
+    'components.makahiki_notifications',
     'components.makahiki_profiles',
     'components.makahiki_themes',
     'components.prizes',
@@ -190,7 +191,7 @@ INSTALLED_APPS = (
     'pinax.templatetags',
     
     # external
-    'notification', # must be first
+    # 'notification', # must be first
     # 'django_openid',
     'emailconfirmation',
     'mailer',
