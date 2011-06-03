@@ -17298,7 +17298,8 @@
       "user": 1, 
       "contact_carrier": "t-mobile", 
       "setup_profile": true, 
-      "enable_help": true
+      "enable_help": true, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }, 
   {
@@ -17320,7 +17321,8 @@
       "user": 2, 
       "contact_carrier": "verizon", 
       "setup_profile": true, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }, 
   {
@@ -17342,7 +17344,8 @@
       "user": 3, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17364,7 +17367,8 @@
       "user": 4, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17386,7 +17390,8 @@
       "user": 5, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17408,7 +17413,8 @@
       "user": 6, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17430,7 +17436,8 @@
       "user": 7, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17452,7 +17459,8 @@
       "user": 8, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17474,7 +17482,8 @@
       "user": 9, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17496,7 +17505,8 @@
       "user": 10, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17518,7 +17528,8 @@
       "user": 11, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17540,7 +17551,8 @@
       "user": 12, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17562,7 +17574,8 @@
       "user": 13, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17584,7 +17597,8 @@
       "user": 14, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17606,7 +17620,8 @@
       "user": 15, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17628,7 +17643,8 @@
       "user": 16, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17650,7 +17666,8 @@
       "user": 17, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17672,7 +17689,8 @@
       "user": 18, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17694,7 +17712,8 @@
       "user": 19, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17716,7 +17735,8 @@
       "user": 20, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17738,7 +17758,8 @@
       "user": 21, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17760,7 +17781,8 @@
       "user": 22, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17782,7 +17804,8 @@
       "user": 23, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17804,7 +17827,8 @@
       "user": 24, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17826,7 +17850,8 @@
       "user": 25, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17848,7 +17873,8 @@
       "user": 26, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17870,7 +17896,8 @@
       "user": 27, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17892,7 +17919,8 @@
       "user": 28, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17914,7 +17942,8 @@
       "user": 29, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17936,7 +17965,8 @@
       "user": 30, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17958,7 +17988,8 @@
       "user": 31, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -17980,7 +18011,8 @@
       "user": 32, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18002,7 +18034,8 @@
       "user": 33, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18024,7 +18057,8 @@
       "user": 34, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18046,7 +18080,8 @@
       "user": 35, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18068,7 +18103,8 @@
       "user": 36, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18090,7 +18126,8 @@
       "user": 37, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18112,7 +18149,8 @@
       "user": 38, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18134,7 +18172,8 @@
       "user": 39, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18156,7 +18195,8 @@
       "user": 40, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18178,7 +18218,8 @@
       "user": 41, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18200,7 +18241,8 @@
       "user": 42, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18222,7 +18264,8 @@
       "user": 43, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18244,7 +18287,8 @@
       "user": 44, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18266,7 +18310,8 @@
       "user": 45, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18288,7 +18333,8 @@
       "user": 46, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18310,7 +18356,8 @@
       "user": 47, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18332,7 +18379,8 @@
       "user": 48, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18354,7 +18402,8 @@
       "user": 49, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18376,7 +18425,8 @@
       "user": 50, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18398,7 +18448,8 @@
       "user": 51, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18420,7 +18471,8 @@
       "user": 52, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18442,7 +18494,8 @@
       "user": 53, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18464,7 +18517,8 @@
       "user": 54, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18486,7 +18540,8 @@
       "user": 55, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18508,7 +18563,8 @@
       "user": 56, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18530,7 +18586,8 @@
       "user": 57, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18552,7 +18609,8 @@
       "user": 58, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18574,7 +18632,8 @@
       "user": 59, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18596,7 +18655,8 @@
       "user": 60, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18618,7 +18678,8 @@
       "user": 61, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18640,7 +18701,8 @@
       "user": 62, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18662,7 +18724,8 @@
       "user": 63, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18684,7 +18747,8 @@
       "user": 64, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18706,7 +18770,8 @@
       "user": 65, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18728,7 +18793,8 @@
       "user": 66, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18750,7 +18816,8 @@
       "user": 67, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18772,7 +18839,8 @@
       "user": 68, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18794,7 +18862,8 @@
       "user": 69, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18816,7 +18885,8 @@
       "user": 70, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18838,7 +18908,8 @@
       "user": 71, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18860,7 +18931,8 @@
       "user": 72, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18882,7 +18954,8 @@
       "user": 73, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18904,7 +18977,8 @@
       "user": 74, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18926,7 +19000,8 @@
       "user": 75, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18948,7 +19023,8 @@
       "user": 76, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18970,7 +19046,8 @@
       "user": 77, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -18992,7 +19069,8 @@
       "user": 78, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19014,7 +19092,8 @@
       "user": 79, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19036,7 +19115,8 @@
       "user": 80, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19058,7 +19138,8 @@
       "user": 81, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19080,7 +19161,8 @@
       "user": 82, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19102,7 +19184,8 @@
       "user": 83, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19124,7 +19207,8 @@
       "user": 84, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19146,7 +19230,8 @@
       "user": 85, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19168,7 +19253,8 @@
       "user": 86, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19190,7 +19276,8 @@
       "user": 87, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19212,7 +19299,8 @@
       "user": 88, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19234,7 +19322,8 @@
       "user": 89, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19256,7 +19345,8 @@
       "user": 90, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19278,7 +19368,8 @@
       "user": 91, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19300,7 +19391,8 @@
       "user": 92, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19322,7 +19414,8 @@
       "user": 93, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19344,7 +19437,8 @@
       "user": 94, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19366,7 +19460,8 @@
       "user": 95, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19388,7 +19483,8 @@
       "user": 96, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19410,7 +19506,8 @@
       "user": 97, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19432,7 +19529,8 @@
       "user": 98, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19454,7 +19552,8 @@
       "user": 99, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19476,7 +19575,8 @@
       "user": 100, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19498,7 +19598,8 @@
       "user": 101, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19520,7 +19621,8 @@
       "user": 102, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19542,7 +19644,8 @@
       "user": 103, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19564,7 +19667,8 @@
       "user": 104, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19586,7 +19690,8 @@
       "user": 105, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19608,7 +19713,8 @@
       "user": 106, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19630,7 +19736,8 @@
       "user": 107, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19652,7 +19759,8 @@
       "user": 108, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19674,7 +19782,8 @@
       "user": 109, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19696,7 +19805,8 @@
       "user": 110, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19718,7 +19828,8 @@
       "user": 111, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19740,7 +19851,8 @@
       "user": 112, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19762,7 +19874,8 @@
       "user": 113, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19784,7 +19897,8 @@
       "user": 114, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19806,7 +19920,8 @@
       "user": 115, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19828,7 +19943,8 @@
       "user": 116, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19850,7 +19966,8 @@
       "user": 117, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19872,7 +19989,8 @@
       "user": 118, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19894,7 +20012,8 @@
       "user": 119, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19916,7 +20035,8 @@
       "user": 120, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19938,7 +20058,8 @@
       "user": 121, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19960,7 +20081,8 @@
       "user": 122, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -19982,7 +20104,8 @@
       "user": 123, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20004,7 +20127,8 @@
       "user": 124, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20026,7 +20150,8 @@
       "user": 125, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20048,7 +20173,8 @@
       "user": 126, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20070,7 +20196,8 @@
       "user": 127, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20092,7 +20219,8 @@
       "user": 128, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20114,7 +20242,8 @@
       "user": 129, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20136,7 +20265,8 @@
       "user": 130, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20158,7 +20288,8 @@
       "user": 131, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20180,7 +20311,8 @@
       "user": 132, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20202,7 +20334,8 @@
       "user": 133, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20224,7 +20357,8 @@
       "user": 134, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20246,7 +20380,8 @@
       "user": 135, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20268,7 +20403,8 @@
       "user": 136, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20290,7 +20426,8 @@
       "user": 137, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20312,7 +20449,8 @@
       "user": 138, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20334,7 +20472,8 @@
       "user": 139, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20356,7 +20495,8 @@
       "user": 140, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20378,7 +20518,8 @@
       "user": 141, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20400,7 +20541,8 @@
       "user": 142, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20422,7 +20564,8 @@
       "user": 143, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20444,7 +20587,8 @@
       "user": 144, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20466,7 +20610,8 @@
       "user": 145, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20488,7 +20633,8 @@
       "user": 146, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20510,7 +20656,8 @@
       "user": 147, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20532,7 +20679,8 @@
       "user": 148, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20554,7 +20702,8 @@
       "user": 149, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20576,7 +20725,8 @@
       "user": 150, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20598,7 +20748,8 @@
       "user": 151, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20620,7 +20771,8 @@
       "user": 152, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20642,7 +20794,8 @@
       "user": 153, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20664,7 +20817,8 @@
       "user": 154, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20686,7 +20840,8 @@
       "user": 155, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20708,7 +20863,8 @@
       "user": 156, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20730,7 +20886,8 @@
       "user": 157, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20752,7 +20909,8 @@
       "user": 158, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20774,7 +20932,8 @@
       "user": 159, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20796,7 +20955,8 @@
       "user": 160, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20818,7 +20978,8 @@
       "user": 161, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20840,7 +21001,8 @@
       "user": 162, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20862,7 +21024,8 @@
       "user": 163, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20884,7 +21047,8 @@
       "user": 164, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20906,7 +21070,8 @@
       "user": 165, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20928,7 +21093,8 @@
       "user": 166, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20950,7 +21116,8 @@
       "user": 167, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20972,7 +21139,8 @@
       "user": 168, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -20994,7 +21162,8 @@
       "user": 169, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21016,7 +21185,8 @@
       "user": 170, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21038,7 +21208,8 @@
       "user": 171, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21060,7 +21231,8 @@
       "user": 172, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21082,7 +21254,8 @@
       "user": 173, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21104,7 +21277,8 @@
       "user": 174, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21126,7 +21300,8 @@
       "user": 175, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21148,7 +21323,8 @@
       "user": 176, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21170,7 +21346,8 @@
       "user": 177, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21192,7 +21369,8 @@
       "user": 178, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21214,7 +21392,8 @@
       "user": 179, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21236,7 +21415,8 @@
       "user": 180, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21258,7 +21438,8 @@
       "user": 181, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21280,7 +21461,8 @@
       "user": 182, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21302,7 +21484,8 @@
       "user": 183, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21324,7 +21507,8 @@
       "user": 184, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21346,7 +21530,8 @@
       "user": 185, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21368,7 +21553,8 @@
       "user": 186, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21390,7 +21576,8 @@
       "user": 187, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21412,7 +21599,8 @@
       "user": 188, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21434,7 +21622,8 @@
       "user": 189, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21456,7 +21645,8 @@
       "user": 190, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21478,7 +21668,8 @@
       "user": 191, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21500,7 +21691,8 @@
       "user": 192, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21522,7 +21714,8 @@
       "user": 193, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21544,7 +21737,8 @@
       "user": 194, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21566,7 +21760,8 @@
       "user": 195, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21588,7 +21783,8 @@
       "user": 196, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21610,7 +21806,8 @@
       "user": 197, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21632,7 +21829,8 @@
       "user": 198, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21654,7 +21852,8 @@
       "user": 199, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21676,7 +21875,8 @@
       "user": 200, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21698,7 +21898,8 @@
       "user": 201, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21720,7 +21921,8 @@
       "user": 202, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21742,7 +21944,8 @@
       "user": 203, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21764,7 +21967,8 @@
       "user": 204, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21786,7 +21990,8 @@
       "user": 205, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21808,7 +22013,8 @@
       "user": 206, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21830,7 +22036,8 @@
       "user": 207, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21852,7 +22059,8 @@
       "user": 208, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21874,7 +22082,8 @@
       "user": 209, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21896,7 +22105,8 @@
       "user": 210, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21918,7 +22128,8 @@
       "user": 211, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21940,7 +22151,8 @@
       "user": 212, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21962,7 +22174,8 @@
       "user": 213, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -21984,7 +22197,8 @@
       "user": 214, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22006,7 +22220,8 @@
       "user": 215, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22028,7 +22243,8 @@
       "user": 216, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22050,7 +22266,8 @@
       "user": 217, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22072,7 +22289,8 @@
       "user": 218, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22094,7 +22312,8 @@
       "user": 219, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22116,7 +22335,8 @@
       "user": 220, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22138,7 +22358,8 @@
       "user": 221, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22160,7 +22381,8 @@
       "user": 222, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22182,7 +22404,8 @@
       "user": 223, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22204,7 +22427,8 @@
       "user": 224, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22226,7 +22450,8 @@
       "user": 225, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22248,7 +22473,8 @@
       "user": 226, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22270,7 +22496,8 @@
       "user": 227, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22292,7 +22519,8 @@
       "user": 228, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22314,7 +22542,8 @@
       "user": 229, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22336,7 +22565,8 @@
       "user": 230, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22358,7 +22588,8 @@
       "user": 231, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22380,7 +22611,8 @@
       "user": 232, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22402,7 +22634,8 @@
       "user": 233, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22424,7 +22657,8 @@
       "user": 234, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22446,7 +22680,8 @@
       "user": 235, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22468,7 +22703,8 @@
       "user": 236, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22490,7 +22726,8 @@
       "user": 237, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22512,7 +22749,8 @@
       "user": 238, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22534,7 +22772,8 @@
       "user": 239, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22556,7 +22795,8 @@
       "user": 240, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22578,7 +22818,8 @@
       "user": 241, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22600,7 +22841,8 @@
       "user": 242, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22622,7 +22864,8 @@
       "user": 243, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22644,7 +22887,8 @@
       "user": 244, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22666,7 +22910,8 @@
       "user": 245, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22688,7 +22933,8 @@
       "user": 246, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22710,7 +22956,8 @@
       "user": 247, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22732,7 +22979,8 @@
       "user": 248, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22754,7 +23002,8 @@
       "user": 249, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22776,7 +23025,8 @@
       "user": 250, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22798,7 +23048,8 @@
       "user": 251, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22820,7 +23071,8 @@
       "user": 252, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22842,7 +23094,8 @@
       "user": 253, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22864,7 +23117,8 @@
       "user": 254, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22886,7 +23140,8 @@
       "user": 255, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22908,7 +23163,8 @@
       "user": 256, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22930,7 +23186,8 @@
       "user": 257, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22952,7 +23209,8 @@
       "user": 258, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22974,7 +23232,8 @@
       "user": 259, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -22996,7 +23255,8 @@
       "user": 260, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23018,7 +23278,8 @@
       "user": 261, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23040,7 +23301,8 @@
       "user": 262, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23062,7 +23324,8 @@
       "user": 263, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23084,7 +23347,8 @@
       "user": 264, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23106,7 +23370,8 @@
       "user": 265, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23128,7 +23393,8 @@
       "user": 266, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23150,7 +23416,8 @@
       "user": 267, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23172,7 +23439,8 @@
       "user": 268, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23194,7 +23462,8 @@
       "user": 269, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23216,7 +23485,8 @@
       "user": 270, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23238,7 +23508,8 @@
       "user": 271, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23260,7 +23531,8 @@
       "user": 272, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23282,7 +23554,8 @@
       "user": 273, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23304,7 +23577,8 @@
       "user": 274, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23326,7 +23600,8 @@
       "user": 275, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23348,7 +23623,8 @@
       "user": 276, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23370,7 +23646,8 @@
       "user": 277, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23392,7 +23669,8 @@
       "user": 278, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23414,7 +23692,8 @@
       "user": 279, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23436,7 +23715,8 @@
       "user": 280, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23458,7 +23738,8 @@
       "user": 281, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23480,7 +23761,8 @@
       "user": 282, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23502,7 +23784,8 @@
       "user": 283, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23524,7 +23807,8 @@
       "user": 284, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23546,7 +23830,8 @@
       "user": 285, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23568,7 +23853,8 @@
       "user": 286, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23590,7 +23876,8 @@
       "user": 287, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23612,7 +23899,8 @@
       "user": 288, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23634,7 +23922,8 @@
       "user": 289, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23656,7 +23945,8 @@
       "user": 290, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23678,7 +23968,8 @@
       "user": 291, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23700,7 +23991,8 @@
       "user": 292, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23722,7 +24014,8 @@
       "user": 293, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23744,7 +24037,8 @@
       "user": 294, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23766,7 +24060,8 @@
       "user": 295, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23788,7 +24083,8 @@
       "user": 296, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23810,7 +24106,8 @@
       "user": 297, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23832,7 +24129,8 @@
       "user": 298, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23854,7 +24152,8 @@
       "user": 299, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23876,7 +24175,8 @@
       "user": 300, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23898,7 +24198,8 @@
       "user": 301, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23920,7 +24221,8 @@
       "user": 302, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23942,7 +24244,8 @@
       "user": 303, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23964,7 +24267,8 @@
       "user": 304, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -23986,7 +24290,8 @@
       "user": 305, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24008,7 +24313,8 @@
       "user": 306, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24030,7 +24336,8 @@
       "user": 307, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24052,7 +24359,8 @@
       "user": 308, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24074,7 +24382,8 @@
       "user": 309, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24096,7 +24405,8 @@
       "user": 310, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24118,7 +24428,8 @@
       "user": 311, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24140,7 +24451,8 @@
       "user": 312, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24162,7 +24474,8 @@
       "user": 313, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24184,7 +24497,8 @@
       "user": 314, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24206,7 +24520,8 @@
       "user": 315, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24228,7 +24543,8 @@
       "user": 316, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24250,7 +24566,8 @@
       "user": 317, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24272,7 +24589,8 @@
       "user": 318, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24294,7 +24612,8 @@
       "user": 319, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24316,7 +24635,8 @@
       "user": 320, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24338,7 +24658,8 @@
       "user": 321, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24360,7 +24681,8 @@
       "user": 322, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24382,7 +24704,8 @@
       "user": 323, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24404,7 +24727,8 @@
       "user": 324, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24426,7 +24750,8 @@
       "user": 325, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24448,7 +24773,8 @@
       "user": 326, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24470,7 +24796,8 @@
       "user": 327, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24492,7 +24819,8 @@
       "user": 328, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24514,7 +24842,8 @@
       "user": 329, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24536,7 +24865,8 @@
       "user": 330, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24558,7 +24888,8 @@
       "user": 331, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24580,7 +24911,8 @@
       "user": 332, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24602,7 +24934,8 @@
       "user": 333, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24624,7 +24957,8 @@
       "user": 334, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24646,7 +24980,8 @@
       "user": 335, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24668,7 +25003,8 @@
       "user": 336, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24690,7 +25026,8 @@
       "user": 337, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24712,7 +25049,8 @@
       "user": 338, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24734,7 +25072,8 @@
       "user": 339, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24756,7 +25095,8 @@
       "user": 340, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24778,7 +25118,8 @@
       "user": 341, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24800,7 +25141,8 @@
       "user": 342, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24822,7 +25164,8 @@
       "user": 343, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24844,7 +25187,8 @@
       "user": 344, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24866,7 +25210,8 @@
       "user": 345, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24888,7 +25233,8 @@
       "user": 346, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24910,7 +25256,8 @@
       "user": 347, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24932,7 +25279,8 @@
       "user": 348, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24954,7 +25302,8 @@
       "user": 349, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24976,7 +25325,8 @@
       "user": 350, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -24998,7 +25348,8 @@
       "user": 351, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25020,7 +25371,8 @@
       "user": 352, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25042,7 +25394,8 @@
       "user": 353, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25064,7 +25417,8 @@
       "user": 354, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25086,7 +25440,8 @@
       "user": 355, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25108,7 +25463,8 @@
       "user": 356, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25130,7 +25486,8 @@
       "user": 357, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25152,7 +25509,8 @@
       "user": 358, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25174,7 +25532,8 @@
       "user": 359, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25196,7 +25555,8 @@
       "user": 360, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25218,7 +25578,8 @@
       "user": 361, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25240,7 +25601,8 @@
       "user": 362, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25262,7 +25624,8 @@
       "user": 363, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25284,7 +25647,8 @@
       "user": 364, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25306,7 +25670,8 @@
       "user": 365, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25328,7 +25693,8 @@
       "user": 366, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25350,7 +25716,8 @@
       "user": 367, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25372,7 +25739,8 @@
       "user": 368, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25394,7 +25762,8 @@
       "user": 369, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25416,7 +25785,8 @@
       "user": 370, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25438,7 +25808,8 @@
       "user": 371, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25460,7 +25831,8 @@
       "user": 372, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25482,7 +25854,8 @@
       "user": 373, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25504,7 +25877,8 @@
       "user": 374, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25526,7 +25900,8 @@
       "user": 375, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25548,7 +25923,8 @@
       "user": 376, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25570,7 +25946,8 @@
       "user": 377, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25592,7 +25969,8 @@
       "user": 378, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25614,7 +25992,8 @@
       "user": 379, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25636,7 +26015,8 @@
       "user": 380, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25658,7 +26038,8 @@
       "user": 381, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25680,7 +26061,8 @@
       "user": 382, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25702,7 +26084,8 @@
       "user": 383, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25724,7 +26107,8 @@
       "user": 384, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25746,7 +26130,8 @@
       "user": 385, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25768,7 +26153,8 @@
       "user": 386, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25790,7 +26176,8 @@
       "user": 387, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25812,7 +26199,8 @@
       "user": 388, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25834,7 +26222,8 @@
       "user": 389, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25856,7 +26245,8 @@
       "user": 390, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25878,7 +26268,8 @@
       "user": 391, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25900,7 +26291,8 @@
       "user": 392, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25922,7 +26314,8 @@
       "user": 393, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25944,7 +26337,8 @@
       "user": 394, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25966,7 +26360,8 @@
       "user": 395, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -25988,7 +26383,8 @@
       "user": 396, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26010,7 +26406,8 @@
       "user": 397, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26032,7 +26429,8 @@
       "user": 398, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26054,7 +26452,8 @@
       "user": 399, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26076,7 +26475,8 @@
       "user": 400, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26098,7 +26498,8 @@
       "user": 401, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26120,7 +26521,8 @@
       "user": 402, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26142,7 +26544,8 @@
       "user": 403, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26164,7 +26567,8 @@
       "user": 404, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26186,7 +26590,8 @@
       "user": 405, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26208,7 +26613,8 @@
       "user": 406, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26230,7 +26636,8 @@
       "user": 407, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26252,7 +26659,8 @@
       "user": 408, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26274,7 +26682,8 @@
       "user": 409, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26296,7 +26705,8 @@
       "user": 410, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26318,7 +26728,8 @@
       "user": 411, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26340,7 +26751,8 @@
       "user": 412, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26362,7 +26774,8 @@
       "user": 413, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26384,7 +26797,8 @@
       "user": 414, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26406,7 +26820,8 @@
       "user": 415, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26428,7 +26843,8 @@
       "user": 416, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26450,7 +26866,8 @@
       "user": 417, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26472,7 +26889,8 @@
       "user": 418, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26494,7 +26912,8 @@
       "user": 419, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26516,7 +26935,8 @@
       "user": 420, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26538,7 +26958,8 @@
       "user": 421, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26560,7 +26981,8 @@
       "user": 422, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26582,7 +27004,8 @@
       "user": 423, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26604,7 +27027,8 @@
       "user": 424, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26626,7 +27050,8 @@
       "user": 425, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26648,7 +27073,8 @@
       "user": 426, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26670,7 +27096,8 @@
       "user": 427, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26692,7 +27119,8 @@
       "user": 428, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26714,7 +27142,8 @@
       "user": 429, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26736,7 +27165,8 @@
       "user": 430, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26758,7 +27188,8 @@
       "user": 431, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26780,7 +27211,8 @@
       "user": 432, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26802,7 +27234,8 @@
       "user": 433, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26824,7 +27257,8 @@
       "user": 434, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26846,7 +27280,8 @@
       "user": 435, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26868,7 +27303,8 @@
       "user": 436, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26890,7 +27326,8 @@
       "user": 437, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26912,7 +27349,8 @@
       "user": 438, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26934,7 +27372,8 @@
       "user": 439, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26956,7 +27395,8 @@
       "user": 440, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -26978,7 +27418,8 @@
       "user": 441, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27000,7 +27441,8 @@
       "user": 442, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27022,7 +27464,8 @@
       "user": 443, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27044,7 +27487,8 @@
       "user": 444, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27066,7 +27510,8 @@
       "user": 445, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27088,7 +27533,8 @@
       "user": 446, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27110,7 +27556,8 @@
       "user": 447, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27132,7 +27579,8 @@
       "user": 448, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27154,7 +27602,8 @@
       "user": 449, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27176,7 +27625,8 @@
       "user": 450, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27198,7 +27648,8 @@
       "user": 451, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27220,7 +27671,8 @@
       "user": 452, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27242,7 +27694,8 @@
       "user": 453, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27264,7 +27717,8 @@
       "user": 454, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27286,7 +27740,8 @@
       "user": 455, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27308,7 +27763,8 @@
       "user": 456, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27330,7 +27786,8 @@
       "user": 457, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27352,7 +27809,8 @@
       "user": 458, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27374,7 +27832,8 @@
       "user": 459, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27396,7 +27855,8 @@
       "user": 460, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27418,7 +27878,8 @@
       "user": 461, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27440,7 +27901,8 @@
       "user": 462, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27462,7 +27924,8 @@
       "user": 463, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27484,7 +27947,8 @@
       "user": 464, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27506,7 +27970,8 @@
       "user": 465, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27528,7 +27993,8 @@
       "user": 466, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27550,7 +28016,8 @@
       "user": 467, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27572,7 +28039,8 @@
       "user": 468, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27594,7 +28062,8 @@
       "user": 469, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27616,7 +28085,8 @@
       "user": 470, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27638,7 +28108,8 @@
       "user": 471, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27660,7 +28131,8 @@
       "user": 472, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27682,7 +28154,8 @@
       "user": 473, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27704,7 +28177,8 @@
       "user": 474, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27726,7 +28200,8 @@
       "user": 475, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27748,7 +28223,8 @@
       "user": 476, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27770,7 +28246,8 @@
       "user": 477, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27792,7 +28269,8 @@
       "user": 478, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27814,7 +28292,8 @@
       "user": 479, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27836,7 +28315,8 @@
       "user": 480, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27858,7 +28338,8 @@
       "user": 481, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27880,7 +28361,8 @@
       "user": 482, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27902,7 +28384,8 @@
       "user": 483, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27924,7 +28407,8 @@
       "user": 484, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27946,7 +28430,8 @@
       "user": 485, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27968,7 +28453,8 @@
       "user": 486, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -27990,7 +28476,8 @@
       "user": 487, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28012,7 +28499,8 @@
       "user": 488, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28034,7 +28522,8 @@
       "user": 489, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28056,7 +28545,8 @@
       "user": 490, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28078,7 +28568,8 @@
       "user": 491, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28100,7 +28591,8 @@
       "user": 492, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28122,7 +28614,8 @@
       "user": 493, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28144,7 +28637,8 @@
       "user": 494, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28166,7 +28660,8 @@
       "user": 495, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28188,7 +28683,8 @@
       "user": 496, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28210,7 +28706,8 @@
       "user": 497, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28232,7 +28729,8 @@
       "user": 498, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28254,7 +28752,8 @@
       "user": 499, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28276,7 +28775,8 @@
       "user": 500, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28298,7 +28798,8 @@
       "user": 501, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28320,7 +28821,8 @@
       "user": 502, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28342,7 +28844,8 @@
       "user": 503, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28364,7 +28867,8 @@
       "user": 504, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28386,7 +28890,8 @@
       "user": 505, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28408,7 +28913,8 @@
       "user": 506, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28430,7 +28936,8 @@
       "user": 507, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28452,7 +28959,8 @@
       "user": 508, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28474,7 +28982,8 @@
       "user": 509, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28496,7 +29005,8 @@
       "user": 510, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28518,7 +29028,8 @@
       "user": 511, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28540,7 +29051,8 @@
       "user": 512, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28562,7 +29074,8 @@
       "user": 513, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28584,7 +29097,8 @@
       "user": 514, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28606,7 +29120,8 @@
       "user": 515, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28628,7 +29143,8 @@
       "user": 516, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28650,7 +29166,8 @@
       "user": 517, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28672,7 +29189,8 @@
       "user": 518, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28694,7 +29212,8 @@
       "user": 519, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28716,7 +29235,8 @@
       "user": 520, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28738,7 +29258,8 @@
       "user": 521, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28760,7 +29281,8 @@
       "user": 522, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28782,7 +29304,8 @@
       "user": 523, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28804,7 +29327,8 @@
       "user": 524, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28826,7 +29350,8 @@
       "user": 525, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28848,7 +29373,8 @@
       "user": 526, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28870,7 +29396,8 @@
       "user": 527, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28892,7 +29419,8 @@
       "user": 528, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28914,7 +29442,8 @@
       "user": 529, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28936,7 +29465,8 @@
       "user": 530, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28958,7 +29488,8 @@
       "user": 531, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -28980,7 +29511,8 @@
       "user": 532, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29002,7 +29534,8 @@
       "user": 533, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29024,7 +29557,8 @@
       "user": 534, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29046,7 +29580,8 @@
       "user": 535, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29068,7 +29603,8 @@
       "user": 536, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29090,7 +29626,8 @@
       "user": 537, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29112,7 +29649,8 @@
       "user": 538, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29134,7 +29672,8 @@
       "user": 539, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29156,7 +29695,8 @@
       "user": 540, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29178,7 +29718,8 @@
       "user": 541, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29200,7 +29741,8 @@
       "user": 542, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29222,7 +29764,8 @@
       "user": 543, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29244,7 +29787,8 @@
       "user": 544, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29266,7 +29810,8 @@
       "user": 545, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29288,7 +29833,8 @@
       "user": 546, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29310,7 +29856,8 @@
       "user": 547, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29332,7 +29879,8 @@
       "user": 548, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29354,7 +29902,8 @@
       "user": 549, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29376,7 +29925,8 @@
       "user": 550, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29398,7 +29948,8 @@
       "user": 551, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29420,7 +29971,8 @@
       "user": 552, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29442,7 +29994,8 @@
       "user": 553, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29464,7 +30017,8 @@
       "user": 554, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29486,7 +30040,8 @@
       "user": 555, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29508,7 +30063,8 @@
       "user": 556, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29530,7 +30086,8 @@
       "user": 557, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29552,7 +30109,8 @@
       "user": 558, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29574,7 +30132,8 @@
       "user": 559, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29596,7 +30155,8 @@
       "user": 560, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29618,7 +30178,8 @@
       "user": 561, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29640,7 +30201,8 @@
       "user": 562, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29662,7 +30224,8 @@
       "user": 563, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29684,7 +30247,8 @@
       "user": 564, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29706,7 +30270,8 @@
       "user": 565, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29728,7 +30293,8 @@
       "user": 566, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29750,7 +30316,8 @@
       "user": 567, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29772,7 +30339,8 @@
       "user": 568, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29794,7 +30362,8 @@
       "user": 569, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29816,7 +30385,8 @@
       "user": 570, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29838,7 +30408,8 @@
       "user": 571, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29860,7 +30431,8 @@
       "user": 572, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29882,7 +30454,8 @@
       "user": 573, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29904,7 +30477,8 @@
       "user": 574, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29926,7 +30500,8 @@
       "user": 575, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29948,7 +30523,8 @@
       "user": 576, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29970,7 +30546,8 @@
       "user": 577, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -29992,7 +30569,8 @@
       "user": 578, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30014,7 +30592,8 @@
       "user": 579, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30036,7 +30615,8 @@
       "user": 580, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30058,7 +30638,8 @@
       "user": 581, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30080,7 +30661,8 @@
       "user": 582, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30102,7 +30684,8 @@
       "user": 583, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30124,7 +30707,8 @@
       "user": 584, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30146,7 +30730,8 @@
       "user": 585, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30168,7 +30753,8 @@
       "user": 586, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30190,7 +30776,8 @@
       "user": 587, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30212,7 +30799,8 @@
       "user": 588, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30234,7 +30822,8 @@
       "user": 589, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30256,7 +30845,8 @@
       "user": 590, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30278,7 +30868,8 @@
       "user": 591, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30300,7 +30891,8 @@
       "user": 592, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30322,7 +30914,8 @@
       "user": 593, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30344,7 +30937,8 @@
       "user": 594, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30366,7 +30960,8 @@
       "user": 595, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30388,7 +30983,8 @@
       "user": 596, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30410,7 +31006,8 @@
       "user": 597, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30432,7 +31029,8 @@
       "user": 598, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30454,7 +31052,8 @@
       "user": 599, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30476,7 +31075,8 @@
       "user": 600, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30498,7 +31098,8 @@
       "user": 601, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30520,7 +31121,8 @@
       "user": 602, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30542,7 +31144,8 @@
       "user": 603, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30564,7 +31167,8 @@
       "user": 604, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30586,7 +31190,8 @@
       "user": 605, 
       "contact_carrier": null, 
       "setup_profile": true, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }, 
   {
@@ -30608,7 +31213,8 @@
       "user": 606, 
       "contact_carrier": null, 
       "setup_profile": true, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }, 
   {
@@ -30630,7 +31236,8 @@
       "user": 607, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30652,7 +31259,8 @@
       "user": 608, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30674,7 +31282,8 @@
       "user": 609, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30696,7 +31305,8 @@
       "user": 610, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30718,7 +31328,8 @@
       "user": 611, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30740,7 +31351,8 @@
       "user": 612, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30762,7 +31374,8 @@
       "user": 613, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30784,7 +31397,8 @@
       "user": 614, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30806,7 +31420,8 @@
       "user": 615, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30828,7 +31443,8 @@
       "user": 616, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30850,7 +31466,8 @@
       "user": 617, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30872,7 +31489,8 @@
       "user": 618, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30894,7 +31512,8 @@
       "user": 619, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30916,7 +31535,8 @@
       "user": 620, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30938,7 +31558,8 @@
       "user": 621, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30960,7 +31581,8 @@
       "user": 622, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -30982,7 +31604,8 @@
       "user": 623, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31004,7 +31627,8 @@
       "user": 624, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31026,7 +31650,8 @@
       "user": 625, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31048,7 +31673,8 @@
       "user": 626, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31070,7 +31696,8 @@
       "user": 627, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31092,7 +31719,8 @@
       "user": 628, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31114,7 +31742,8 @@
       "user": 629, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31136,7 +31765,8 @@
       "user": 630, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31158,7 +31788,8 @@
       "user": 631, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31180,7 +31811,8 @@
       "user": 632, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31202,7 +31834,8 @@
       "user": 633, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31224,7 +31857,8 @@
       "user": 634, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31246,7 +31880,8 @@
       "user": 635, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31268,7 +31903,8 @@
       "user": 636, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31290,7 +31926,8 @@
       "user": 637, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31312,7 +31949,8 @@
       "user": 638, 
       "contact_carrier": null, 
       "setup_profile": false, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": null
     }
   }, 
   {
@@ -31334,7 +31972,8 @@
       "user": 639, 
       "contact_carrier": null, 
       "setup_profile": true, 
-      "enable_help": false
+      "enable_help": false, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }, 
   {
@@ -31356,7 +31995,8 @@
       "user": 640, 
       "contact_carrier": null, 
       "setup_profile": true, 
-      "enable_help": true
+      "enable_help": true, 
+      "completion_date": "2011-06-01 17:51:43"
     }
   }
 ]
