@@ -10,10 +10,11 @@ class Migration(SchemaMigration):
         
         # Adding field 'Profile.completion_date'
         db.add_column('makahiki_profiles_profile', 'completion_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True), keep_default=False)
-        for profile in orm.Profile.objects.all():
-          if profile.setup_complete:
-            profile.completion_date = datetime.datetime.today()
-            profile.save()
+        if not db.dry_run:
+          for profile in orm.Profile.objects.all():
+            if profile.setup_complete:
+              profile.completion_date = datetime.datetime.today()
+              profile.save()
 
     def backwards(self, orm):
         
