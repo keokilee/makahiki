@@ -1,6 +1,7 @@
 {% extends "logged_in_base.html" %}
 
 {% load class_tags %}
+{% load markup %}
 
 {% block page_title %}
   Help
@@ -20,7 +21,7 @@
     <div {% get_id_and_classes "help-topic-content" %}>
 	    <a href="{% url help_index %}">Back to help page</a>
       <p>
-        {{topic.contents}}
+        {{topic.contents|markdown}}
       </p>
 	    <a href="{% url help_index %}">Back to help page</a>
     </div>
