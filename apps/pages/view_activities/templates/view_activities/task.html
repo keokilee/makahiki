@@ -69,21 +69,21 @@
         {% if approval.approval_status == "approved" %}
           <div {% get_id_and_classes "activity-task-details-info" %}>
           <p/><br/>
-          <b>Congratulations! You did it and earned {{task.point_value}} points! <br/>
+          Congratulations! You did it and earned {{task.point_value}} points! <br/>
           Thank you for your participation.
            </div>
         {% else %}
           {% if task.type == "event" or task.type == "excursion" %}
             <div {% get_id_and_classes "activity-task-details-info" %}>
             <br/>
-            <b>Thank you! You've earned 2 points by signing up.<br/>
+            Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
              </div>
           {% endif %}
           {% if task.type == "commitment" %}
              <div {% get_id_and_classes "activity-task-details-info" %}>
              <br/>
-             <b> Thank you! You've earned 2 points by committing.<br/>
+              Thank you! You've earned 2 points by committing.<br/>
               Come back in 5 days of meeting your commitment <br/>
               for the rest of your points.
              </div>
@@ -92,7 +92,7 @@
             {% if approval.approval_status != "rejected" %}
               <div {% get_id_and_classes "activity-task-details-info" %}>
               <br/>
-              <b>Thank you for submitting your response.   <br/>
+              Thank you for submitting your response.   <br/>
               An administrator is reviewing your response.  <br/>
               Come back soon to see your new total.
               </div>
@@ -110,8 +110,6 @@
             {% endif %}
           {% endif %}            
         {% endif %}  
-        
-      
       {% endif %}
       
       
@@ -174,7 +172,7 @@ function task_form_overlay()
       height: 500,
     {% endif %}
     closeOnEscape: false,
-    position: [250,75],
+    position: [400,100],
     });
 }
 
@@ -228,13 +226,9 @@ function signup_point_dialog_overlay()
       height: 150,
     {% endif %}
     closeOnEscape: false,
-    position: [250,75],
+    position: [400,100],
     });
 }
-
-{% if display_point %}
-     $(document).ready(signup_point_dialog_overlay());
-{% endif %}    
 
 </script>  
 
