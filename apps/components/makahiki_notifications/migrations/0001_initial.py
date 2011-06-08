@@ -13,9 +13,9 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('recipient', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('contents', self.gf('django.db.models.fields.TextField')()),
-            ('processed_at', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('read_at', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('level', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('style_class', self.gf('django.db.models.fields.CharField')(default='notification-info', max_length=20)),
             ('notification_type', self.gf('django.db.models.fields.CharField')(max_length=20)),
         ))
         db.send_create_signal('makahiki_notifications', ['Notification'])
@@ -69,10 +69,10 @@ class Migration(SchemaMigration):
             'contents': ('django.db.models.fields.TextField', [], {}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'level': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'notification_type': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'processed_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
-            'recipient': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+            'read_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'recipient': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'style_class': ('django.db.models.fields.CharField', [], {'default': "'notification-info'", 'max_length': '20'})
         }
     }
 
