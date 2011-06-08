@@ -66,7 +66,7 @@
     </div>
     <div {% get_id_and_classes "activity-task-details-content" %}>
       {% if pau %}
-        {% if approval.approval_status == "approved" %}
+        {% if approval.approval_status == "approved" or approval.award_date %}
           <div {% get_id_and_classes "activity-task-details-info" %}>
           <p/><br/>
           Congratulations! You did it and earned {{task.point_value}} points! <br/>
@@ -83,9 +83,17 @@
           {% if task.type == "commitment" %}
              <div {% get_id_and_classes "activity-task-details-info" %}>
              <br/>
+              {% if approval.days_left != 0 %}
               Thank you! You've earned 2 points by committing.<br/>
-              Come back in 5 days of meeting your commitment <br/>
-              for the rest of your points.
+              You have {{approval.days_left}} days left to come back to <br/>
+              get the rest of your points.
+              {% else %}
+              Thank you for committing to this for {{task.duration}} days. <br/>
+              Click on the "I Did it" button to get <br/>
+              the rest of your points. <br/>
+              <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
+              <button>I Did it</button></a> 
+              {% endif %}
              </div>
           {% endif %}         
           {% if task.type == "activity" %}

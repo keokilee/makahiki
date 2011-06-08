@@ -105,6 +105,13 @@ def __add_commitment(request, commitment_id):
   user = request.user
   floor = user.get_profile().floor
   
+  members = CommitmentMember.objects.filter(user=user, commitment=commitment);
+  if members.count() > 0 and members[0].days_left() == 0:
+    #commitment end
+    member = members[0]
+    member.award_date = datetime.datetime.today()
+    member.save()
+      
   if commitment not in user.commitment_set.all() and can_add_commitments(user):
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
@@ -132,7 +139,7 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
+  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
 
 @never_cache
 def __add_activity(request, activity_id):
@@ -270,6 +277,7 @@ def task(request, task_id):
   
   
   floor = user.get_profile().floor
+  pau = False
   question = None
   form = None
   approval = None
@@ -285,11 +293,10 @@ def task(request, task_id):
   
   if task.type != "commitment":
     task = task.activity
-    pau = ActivityMember.objects.filter(user=user, activity=task).count() > 0
     member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
-
     members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
     if members.count() > 0:
+      pau = True
       approval = members[0]
       
     if task.type == "survey":
@@ -317,12 +324,16 @@ def task(request, task_id):
         
   else:  ## "Commitment"
     task = task.commitment
-    pau = CommitmentMember.objects.filter(user=user, commitment=task).count() > 0
+    members = CommitmentMember.objects.filter(user=user, commitment=task);
+    if members.count() > 0:
+      pau = True
+      approval = members[0]
+    
     member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
     form = CommitmentCommentForm()
     can_commit = can_add_commitments(user)
-
+    
   users = []
   member_all_count = member_all.count()
   for member in member_all:

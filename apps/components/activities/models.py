@@ -265,8 +265,8 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  award_date = models.DateTimeField(blank=True, null=True, editable=False)
   completion_date = models.DateField()
+  award_date = models.DateTimeField(blank=True, null=True)
   comment = models.TextField(blank=True)
   
   def __unicode__(self):

@@ -27,10 +27,16 @@
    {% endif %}
    
    {% if task.type == "commitment" %}     {# commitment #}
+     {% if approval.days_left != 0 %}
      You will earn 2 points for making this commitment.
      <p/>
      Come back in 5 days of meeting your commitment for the rest of your 
      points.
+     {% else %}
+     Thank you for the commitment.
+     <p/>
+     You've earned {{task.point_value}} points.
+     {% endif %}
    {% endif %}   
   </p>
   
