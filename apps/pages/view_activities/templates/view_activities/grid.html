@@ -26,48 +26,40 @@
        <div class="{{task.type}}">
        <div class="">
        {% if task.is_unlock %}      
-         {% if task.type != 'commitment' %}
+          <a href="task/{{task.id}}" title="{{task.name}}">
+          {% if task.type != 'commitment' %}
             {% if task.is_pau %}
-            
                 {% if task.approval.approval_status == "rejected" %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"> 
+                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
                 {% else %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
-                {% endif %}
-                
+                    {% if task.approval.approval_status == "pending" and task.is_event_pau %}
+                      <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
+                    {% else %}
+                      <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"/> 
+                    {% endif %}
+                {% endif %}                
                 <br/>
-                <a href="task/{{task.id}}" title="{{task.name}}">
-                {{task.name}}
-                </a>              
-	          {% else %}
+                {{task.name}}       
+	        {% else %}
 	            {% if task.activity.point_value %}
 	             <br/>
-	             <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.activity.point_value}}</a></h3>
+	             <h3>{{task.activity.point_value}}</h3>
 	            {% else %}
-	             <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.activity.point_range_end}}</a></h3>
-	            {% endif %}  {# end task.activity.point_value #}
-		        {% endif %} {# end task.is_pau #}
-         
-         {% else %}
-            <a href="task/{{task.id}}" title="{{task.name}}">
-	         {% if task.is_pau %}
-	           
-                {% if task.approval.approval_status == "rejected" %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"> 
-                {% else %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
-                {% endif %}
+	             <h3>{{task.activity.point_range_end}}</h3>
+	            {% endif %}  
+		    {% endif %}  
+          {% else %}     {# ------ is commitment #}             
+	           {% if task.is_pau %}
+                <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
                 <br/>
-		        <a href="task/{{task.id}}" title="{{task.name}}">{{task.name}}</a>
+		        {{task.name}}
 		       {% else %}
 		        <br/>
-		        <h3><a href="task/{{task.id}}" title="{{task.name}}">{{task.commitment.point_value}}</a></h3>
-		       {% endif %} {# end task.is_pau #}
-            </a>
-        
-         {% endif %}
-       {% else %}
- 		
+		        <h3>{{task.commitment.point_value}}</h3>
+		       {% endif %} {# end task.is_pau #}        
+          {% endif %}    {# ------- end task.type #}
+          </a>
+       {% else %}        {# ------ is lock #}      
  		<br/>
 		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="18" align="top" 
 		title="Click to see how to unlock" 

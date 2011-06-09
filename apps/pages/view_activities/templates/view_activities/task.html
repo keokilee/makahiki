@@ -53,7 +53,11 @@
      
      <p/><p/>
      <center> 
-     <a href="/activities" class="{% insert_classes "ui-button" %}"><button>Go back to SmartGrid Game</button></a> 
+     <a href="/activities" class="{% insert_classes "ui-button" %}">
+     <button>
+     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top"><br/>
+     Back to SmartGrid Game
+     </button></a> 
     </center>
     </div>
   </div>  
@@ -76,8 +80,16 @@
           {% if task.type == "event" or task.type == "excursion" %}
             <div {% get_id_and_classes "activity-task-details-info" %}>
             <br/>
+            {% if task.is_event_completed %}
+            Thank you for attending the event. <br/>
+            Click on the "I Did it" button to get <br/>
+            the rest of your points. <br/>
+            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
+              <button>I Did it</button></a> 
+            {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
+            {% endif %}
              </div>
           {% endif %}
           {% if task.type == "commitment" %}
@@ -142,7 +154,13 @@
           {% endif %}
         {% endif %}  
         {% if task.type == "event" or task.type == "excursion" %}
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
+           {% if task.is_event_completed %}
+            <b>This event was already completed at {{task.event_date}}. <br/>
+            You can continue to sign up for other events. Thanks you!
+            </b>
+           {% else %}
+            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
+           {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}
           <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to do it</button></a>

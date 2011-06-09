@@ -15,11 +15,13 @@
   
   <p/>
    {% if task.type == "event" or task.type == "excursion" %}          {# event #}
-     You will earn 2 points for signing up for the {{task.type}}.
-     {% if pau %}
-        {{form.code}}
+     {% if task.is_event_completed %}
+        Please enter the confirmation code you receieved from the event:
+        {{ form.code }}
         {{ form.response.errors }}
         {{ form.response }}
+     {% else %}
+        You will earn 2 points for signing up for the {{task.type}}.
      {% endif %}
      <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
          {{ form.comment }} 

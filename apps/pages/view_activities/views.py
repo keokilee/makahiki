@@ -67,6 +67,8 @@ def __get_categories(user):
     for task in cat.activitybase_set.order_by("priority"):   
       task.is_unlock = is_unlock(user, task)
       task.is_pau = is_pau(user, task)
+      if task.type == "event" or task.type == "excursion":
+        task.is_event_pau = Activity.objects.get(pk=task.pk).is_event_completed()
       
       members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
       if members.count() > 0:
@@ -375,7 +377,11 @@ def add_task(request, task_id):
   if task.type == "activity":
     return __request_activity_points(request, task_id)
   else:
-    return __add_activity(request, task_id)
+    task = Activity.objects.get(pk=task.pk)
+    if task.is_event_completed():
+      return __request_activity_points(request, task_id)
+    else:  
+      return __add_activity(request, task_id)
     
    
   
