@@ -319,8 +319,7 @@ clear: both;
   list-style: none;
 }
 
-#notification-list li {
-  width: 920px;
+#notification-list li, #notification-dialog li {
   margin: 5px auto;
   padding: 5px;
   clear:both; 
@@ -330,8 +329,29 @@ clear: both;
 	-webkit-border-radius: 8px;
 }
 
-.notification-info, .notification-success {
-  background-color: #E3E3E3;
+#notification-list li.ui-state-highlight {
+  background: none;
+  background-color: #fce988;
+  border: 1px solid #fed22f;
+}
+
+.notification-item .ui-icon {
+  float: left; 
+  margin-right: .3em;
+}
+
+.notification-contents {
+  float: left;
+}
+
+.notification-options {
+  float: right;
+}
+
+#notification-dialog ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
 }
 
 /*------- Quest styles -----*/

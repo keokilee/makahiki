@@ -8,13 +8,6 @@
   {% endif %}
 
   {% if NOTIFICATIONS.alerts %}
-  <div id="notification-dialog" title="Notifications">
-    <h3>The following item(s) need your attention</h3>
-    <ul>
-      {% for notification in NOTIFICATIONS.alerts %}
-      <li class="{{notification.style_class}}">{{notification.contents|safe}}</li>
-      {% endfor %}
-    </ul>
-  </div>
+  {% include "notifications/dialog.html" %}
   {% endif %}
 {% endif %}

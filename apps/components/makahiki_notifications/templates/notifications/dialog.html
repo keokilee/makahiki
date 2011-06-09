@@ -1,0 +1,24 @@
+<div id="notification-dialog" title="Notifications" style="display: none">
+  <ul>
+    {% for notification in NOTIFICATIONS.alerts %}
+    <li class="{{notification.style_class}} notification-item">
+      {% if notification.style_class == "ui-state-error" %}
+      <span class="ui-icon ui-icon-alert"></span>
+      {% else %}
+      <span class="ui-icon ui-icon-info"></span>
+      {% endif %}
+      {{notification.contents|safe}}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#notification-dialog").dialog({
+      modal: true,
+      width: 700,
+      closeOnEscape: false,
+      position: ["center", 150]
+    });
+  });
+</script>

@@ -128,7 +128,8 @@ class QuestFunctionalTestCase(TestCase):
     quest.save()
     
     response = self.client.get(reverse("home_index"))
-    self.assertEqual(len(response.context["QUESTS"]["completed_quests"]), 0, "User should not have any completed quests.")
+    self.assertEqual(len(response.context["NOTIFICATIONS"]["alerts"]), 
+        0, "User should not have any completed quests.")
     
     response = self.client.post(
         reverse("quests_accept", args=(quest.id,)), 
@@ -136,7 +137,9 @@ class QuestFunctionalTestCase(TestCase):
         HTTP_REFERER=reverse("home_index"),
     )
     self.assertRedirects(response, reverse("home_index"))
-    self.assertEqual(len(response.context["QUESTS"]["completed_quests"]), 1, "User should have one completed quest.")
-    self.assertTrue(quest in response.context["QUESTS"]["completed_quests"], "Quest should be completed.")
-    self.assertTrue(quest not in response.context["QUESTS"]["user_quests"], "Quest should not be loaded as a user quest.")
-    self.assertContains(response, "Great job!  You completed the following quest(s):", msg_prefix="Quest complete dialog should appear.")
+    self.assertEqual(len(response.context["NOTIFICATIONS"]["alerts"]), 
+        1, "User should have one completed quest.")
+    self.assertFalse(quest in response.context["QUESTS"]["user_quests"], 
+        "Quest should not be loaded as a user quest.")
+    message = "Congratulations! You completed the '%s' quest." % quest.name
+    self.assertContains(response, message, msg_prefix="Notification dialog should appear.")

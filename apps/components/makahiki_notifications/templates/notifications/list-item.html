@@ -1,6 +1,9 @@
 <li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
-  <div style="float: left">{{notification.contents|safe}}</div>
-  <div style="float: right"><a href="javascript:void(0);">Mark as read</a></div>
+  <div class="notification-contents">
+    <span class="ui-icon {{notification.icon_class}}"></span>
+    {{notification.contents|safe}}
+  </div>
+  <div class="notification-options"><a href="javascript:void(0);">Mark as read</a></div>
   <div style="clear:both"></div>
   <script type="text/javascript">
     $(document).ready(function() {

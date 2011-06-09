@@ -126,29 +126,3 @@ class ActivitiesFunctionalTestCase(TestCase):
     response = self.client.post(reverse("activity_add_task", args=(commitment.id,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
     
-    # TODO: Test the quest.
-    quest = Quest(
-        name="Get the fully committed badge.",
-        quest_slug="fully_committed",
-        description="Get the fully committed badge",
-        level=1,
-        unlock_conditions="not badge_awarded('fully_committed')",
-        completion_conditions="badge_awarded('fully_committed')",
-    )
-    quest.save()
-    quest.accept(self.user)
-    
-    # Add four more commitments and check to see if the quest is completed.
-    for i in range(0, 4):
-      commitment = Commitment(
-          title="Test commitment %d" % i,
-          description="A commitment!",
-          point_value=10,
-          type="commitment",
-      )
-      commitment.save()
-      response = self.client.post(reverse("activity_add_task", args=(commitment.id,)), follow=True)
-      
-    # After the loop, the user should have the quest complete.
-    self.assertTrue(response.context["QUESTS"].has_key("completed_quests"), "There should be a completed quest.")
-    self.assertTrue(quest in response.context["QUESTS"]["completed_quests"], "The quest should be completed.")

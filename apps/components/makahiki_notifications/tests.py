@@ -58,10 +58,17 @@ class NotificationFunctionalTests(TestCase):
           msg_prefix="Notification %i is not shown" % i
       )
       
+  def testAlertNotifications(self):
     alert = UserNotification(recipient=self.user, contents="Alert notification", display_alert=True)
     alert.save()
     response = self.client.get(reverse("home_index"))
     self.assertContains(response, "Alert notification", msg_prefix="Alert should be shown")
+    
+    response = self.client.get(reverse("home_index"))
+    self.assertContains(response, "Alert notification", 
+        msg_prefix="Notification should still be displayed.")
+    self.assertNotContains(response, "The following item(s) need your attention", 
+        msg_prefix="Alert should not be displayed.")
     
   def testAjaxReadNotifications(self):
     """Test that notifications can be marked as read via AJAX."""

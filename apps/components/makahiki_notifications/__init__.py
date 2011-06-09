@@ -5,25 +5,28 @@ from components.makahiki_notifications.models import UserNotification
 def get_unread_notifications(user, limit=None):
   """
   Retrieves the user's unread notifications that are to be displayed on the web.
-  Returns a dictionary containing their alerts and their regular notifications.
+  Returns a dictionary containing their alerts, their unread notifications, and if there are
+  more unread notifications.
   """
   if not user:
     return None
     
-  notifications = {}
+  notifications = {"has_more": False}
 
   # Find undisplayed alert notifications.
   notifications.update({"alerts": get_user_alert_notifications(user)})
 
   # Get unread notifications
-  unread_notifications = UserNotification.objects.filter(
-      recipient=user,
+  unread_notifications = user.usernotification_set.filter(
       unread=True,
-  ).order_by("-created_at")
+  ).order_by("-level", "-created_at")
   if limit:
+    if unread_notifications.count() > limit:
+      notifications.update({"has_more": True})
     unread_notifications = unread_notifications[:limit]
 
   notifications.update({"unread": unread_notifications})
+  
   return notifications
   
 def get_unread_count(user):
@@ -34,17 +37,17 @@ def get_unread_count(user):
   
 def get_user_alert_notifications(user):
   """
-  Retrieves notifications that should be displayed in an alert.  These notifications are
-  automatically marked as read so that they don't appear again.
+  Retrieves notifications that should be displayed in an alert.  The notifications are
+  then marked as displayed so that they don't display again.
   """
-  notifications = UserNotification.objects.filter(
-      recipient=user,
+  notifications = user.usernotification_set.filter(
+      unread=True,
       display_alert=True,
-  ).order_by("-created_at")
+  ).order_by("-level", "-created_at")
   
   # Make sure these alerts are not displayed again.
   for notification in notifications:
-    display_alert = False
+    notification.display_alert = False
     notification.save()
     
   return notifications

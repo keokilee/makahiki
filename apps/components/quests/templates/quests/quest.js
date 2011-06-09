@@ -36,17 +36,4 @@ $(document).ready(function() {
       //Animation complete
     });
   });
-  
-  // If we have a quest dialog, display it.
-  if ($("#quest-complete-dialog") != null) {
-    $("#quest-complete-dialog").dialog({
-      modal: true, 
-      width: "520px"
-      //       buttons: {
-      //   "OK": function() {
-      //          $( this ).dialog( "close" );
-      //  }
-      // }
-    });
-  }
 })

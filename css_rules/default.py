@@ -41,7 +41,6 @@ PAGE_CSS_IMPORT = {
 }
 CSS_IDS = {
   "quest-box": "content-box",
-  "notification-box": "ui-state-error",
   "landing-sponsors": "content-box",
   "landing-sponsors-title": "content-box-title",
   

@@ -13,11 +13,11 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('recipient', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('contents', self.gf('django.db.models.fields.TextField')()),
+            ('unread', self.gf('django.db.models.fields.BooleanField')(default=True, blank=True)),
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('level', self.gf('django.db.models.fields.IntegerField')(default=20)),
             ('display_alert', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
-            ('unread', self.gf('django.db.models.fields.BooleanField')(default=True, blank=True)),
-            ('style_class', self.gf('django.db.models.fields.CharField')(default='notification-info', max_length=20)),
         ))
         db.send_create_signal('makahiki_notifications', ['UserNotification'])
 
@@ -71,8 +71,8 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'display_alert': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'level': ('django.db.models.fields.IntegerField', [], {'default': '20'}),
             'recipient': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
-            'style_class': ('django.db.models.fields.CharField', [], {'default': "'notification-info'", 'max_length': '20'}),
             'unread': ('django.db.models.fields.BooleanField', [], {'default': 'True', 'blank': 'True'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
         }

@@ -3,6 +3,7 @@ from lib.brabeion import badges
 from components.quests.models import Quest, QuestMember
 from components.activities import is_pau
 from components.activities.models import ActivityBase, ActivityMember, CommitmentMember, Category
+from components.makahiki_notifications.models import UserNotification
 from components.prizes.models import RaffleTicket
 
 # The number of quests a user can have at any one time.
@@ -168,21 +169,24 @@ def possibly_completed_quests(user):
       member.completed = True
       member.save()
       completed.append(quest)
-  
+      
+      # Create quest notification.
+      message = "Congratulations! You completed the '%s' quest." % quest.name
+      UserNotification.create_success_notification(user, message, display_alert=True)
+      
   return completed
    
 def get_quests(user):
   """
   Loads the quests for the user.
-  Returns a dictionary of three things:
-  * The user's completed quests (completed_quests)
+  Returns a dictionary of two things:
   * The user's current quests (user_quests)
   * Quests the user can participate in (available_quests)
   """
   return_dict = {}
   
   # Check for completed quests.
-  return_dict = {"completed_quests": possibly_completed_quests(user)}
+  possibly_completed_quests(user)
   
   # Load the user's quests
   quests = get_user_quests(user)
