@@ -1,0 +1,20 @@
+{% if NOTIFICATIONS %}
+  {% if NOTIFICATIONS.unread %}
+  <ul id="notification-list">
+    {% for notification in NOTIFICATIONS.unread %}
+    {% include "notifications/list-item.html" %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if NOTIFICATIONS.alerts %}
+  <div id="notification-dialog" title="Notifications">
+    <h3>The following item(s) need your attention</h3>
+    <ul>
+      {% for notification in NOTIFICATIONS.alerts %}
+      <li class="{{notification.style_class}}">{{notification.contents|safe}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endif %}

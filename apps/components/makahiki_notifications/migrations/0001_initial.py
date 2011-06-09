@@ -8,23 +8,24 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Notification'
-        db.create_table('makahiki_notifications_notification', (
+        # Adding model 'UserNotification'
+        db.create_table('makahiki_notifications_usernotification', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('recipient', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('contents', self.gf('django.db.models.fields.TextField')()),
-            ('read_at', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('display_alert', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
+            ('unread', self.gf('django.db.models.fields.BooleanField')(default=True, blank=True)),
             ('style_class', self.gf('django.db.models.fields.CharField')(default='notification-info', max_length=20)),
-            ('notification_type', self.gf('django.db.models.fields.CharField')(max_length=20)),
         ))
-        db.send_create_signal('makahiki_notifications', ['Notification'])
+        db.send_create_signal('makahiki_notifications', ['UserNotification'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Notification'
-        db.delete_table('makahiki_notifications_notification')
+        # Deleting model 'UserNotification'
+        db.delete_table('makahiki_notifications_usernotification')
 
 
     models = {
@@ -64,15 +65,16 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'makahiki_notifications.notification': {
-            'Meta': {'object_name': 'Notification'},
+        'makahiki_notifications.usernotification': {
+            'Meta': {'object_name': 'UserNotification'},
             'contents': ('django.db.models.fields.TextField', [], {}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'display_alert': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'notification_type': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'read_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'recipient': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
-            'style_class': ('django.db.models.fields.CharField', [], {'default': "'notification-info'", 'max_length': '20'})
+            'style_class': ('django.db.models.fields.CharField', [], {'default': "'notification-info'", 'max_length': '20'}),
+            'unread': ('django.db.models.fields.BooleanField', [], {'default': 'True', 'blank': 'True'}),
+            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
         }
     }
 

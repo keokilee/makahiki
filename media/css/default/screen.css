@@ -296,34 +296,47 @@ clear: both;
 	margin-left: 5px;
 }
 
+#header .content-box {
+  width: 920px;
+  margin: 0 auto;
+  clear:both; 
+  text-align: left;
+  border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+  background-color: #EBE7BC;
+}
+
 /*------- General Dialog style to center the OK button. ---*/
 .ui-dialog .ui-dialog-buttonpane {
   text-align: center;
 }
 
 /*------- Notification styles -----*/
-#notification-box {
+
+#notification-list {
+  padding: 0; 
+  list-style: none;
+}
+
+#notification-list li {
   width: 920px;
-  margin: 0 auto;
+  margin: 5px auto;
+  padding: 5px;
   clear:both; 
   text-align: left;
   border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	margin-bottom: 10px;
+}
+
+.notification-info, .notification-success {
+  background-color: #E3E3E3;
 }
 
 /*------- Quest styles -----*/
-#quest-box {
-  width: 920px;
-  margin: 0 auto;
-  clear:both; 
-  text-align: left;
-  /*background-color: #EBE7BC;*/
+#header #quest-box {
   background-color: #E3E3E3;
-  border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
 }
 
 /*#quest-box h3 {
