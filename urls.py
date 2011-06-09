@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),
     url(r'^quests/', include('components.quests.urls')),
+    url(r'^notifications/', include('components.makahiki_notifications.urls')),
     
     # 3rd party
     (r'^frontendadmin/', include('frontendadmin.urls')),

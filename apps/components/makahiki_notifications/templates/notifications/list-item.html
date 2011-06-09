@@ -1,5 +1,14 @@
-<li class="{{notification.style_class}} notification-item">
+<li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
   <div style="float: left">{{notification.contents|safe}}</div>
-  <div style="float: right"><a href="#">Mark as read</a></div>
+  <div style="float: right"><a href="javascript:void(0);">Mark as read</a></div>
   <div style="clear:both"></div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#notification-item-{{notification.id}} a").click(function() {
+        $.post("{% url notifications_read notification.id %}", function(data) {
+          $("#notification-item-{{notification.id}}").fadeOut();
+        });
+      });
+    });
+  </script>
 </li>

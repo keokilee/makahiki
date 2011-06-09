@@ -42,6 +42,9 @@ class NotificationFunctionalTests(TestCase):
     self.client.login(username="user", password="test")
     
   def testShowNotifications(self):
+    """
+    Test that we can show notifications to the user.
+    """
     for i in range(0, 3):
       notification = UserNotification(recipient=self.user, contents="Test notification %i" % i)
       notification.save()
@@ -59,4 +62,40 @@ class NotificationFunctionalTests(TestCase):
     alert.save()
     response = self.client.get(reverse("home_index"))
     self.assertContains(response, "Alert notification", msg_prefix="Alert should be shown")
+    
+  def testAjaxReadNotifications(self):
+    """Test that notifications can be marked as read via AJAX."""
+    notification = UserNotification(recipient=self.user, contents="Test notification")
+    notification.save()
+      
+    response = self.client.post(reverse("notifications_read", args=(notification.pk,)), {}, 
+                HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    
+    response = self.client.get(reverse("home_index"))
+    self.assertNotContains(response, "Test notification", msg_prefix="Notification should be read")
+  
+  def testReadNotifications(self):
+    """Test that notifications can be marked as read without AJAX."""
+    notification = UserNotification(recipient=self.user, contents="Test notification")
+    notification.save()
+      
+    response = self.client.post(reverse("notifications_read", args=(notification.pk,)), {})
+    self.assertRedirects(response, reverse("home_index"), msg_prefix="Marking as read should redirect.")
+    
+    response = self.client.get(reverse("home_index"))
+    self.assertNotContains(response, "Test notification", msg_prefix="Notification should be read")
+    
+    # Test with a referring page.
+    notification = UserNotification(recipient=self.user, contents="Test notification 2")
+    notification.save()
+      
+    response = self.client.post(reverse("notifications_read", args=(notification.pk,)), {},
+        HTTP_REFERER=reverse("help_index"))
+    self.assertRedirects(response, reverse("help_index"), msg_prefix="Marking as read should redirect.")
+    
+    response = self.client.get(reverse("home_index"))
+    self.assertNotContains(response, "Test notification 2", msg_prefix="Notification should be read")
+    
+    
 
