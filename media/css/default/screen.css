@@ -329,7 +329,7 @@ clear: both;
 	-webkit-border-radius: 8px;
 }
 
-#notification-list li.ui-state-highlight {
+#notification-list li.ui-state-highlight, #notification-dialog li.ui-state-highlight {
   background: none;
   background-color: #fce988;
   border: 1px solid #fed22f;
@@ -352,6 +352,7 @@ clear: both;
   list-style: none;
   padding: 0;
   text-align: left;
+  font-weight: bold;
 }
 
 /*------- Quest styles -----*/

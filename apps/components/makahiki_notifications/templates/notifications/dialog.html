@@ -2,15 +2,14 @@
   <ul>
     {% for notification in NOTIFICATIONS.alerts %}
     <li class="{{notification.style_class}} notification-item">
-      {% if notification.style_class == "ui-state-error" %}
-      <span class="ui-icon ui-icon-alert"></span>
-      {% else %}
-      <span class="ui-icon ui-icon-info"></span>
-      {% endif %}
+      <span class="ui-icon {{notification.icon_class}}"></span>
       {{notification.contents|safe}}
     </li>
     {% endfor %}
   </ul>
+  <center>
+  <button>Close</button>
+  </center>
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -19,6 +18,10 @@
       width: 700,
       closeOnEscape: false,
       position: ["center", 150]
+    });
+    
+    $("#notification-dialog button").click(function() {
+      $("#notification-dialog").dialog("close");
     });
   });
 </script>
