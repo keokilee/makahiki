@@ -38,8 +38,8 @@ def index(request):
       # Slugify to create a div id.
       scoreboard_rounds.append(key)
     
-  help_energy = get_object_or_404(HelpTopic, slug="energy-goal-game", category="widget")     
-  help_power = get_object_or_404(HelpTopic, slug="lounge-power", category="widget")     
+  help_energy = HelpTopic.objects.get(slug="energy-goal-game", category="widget")     
+  help_power = HelpTopic.objects.get(slug="lounge-power", category="widget")     
   
   return render_to_response("energy/index.html",{
       "floor": floor,

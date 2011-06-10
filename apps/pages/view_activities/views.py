@@ -42,7 +42,7 @@ def index(request):
   
   categories_list = __get_categories(user)
   
-  help = get_object_or_404(HelpTopic, slug="smart-grid-game", category="widget")     
+  help = HelpTopic.objects.get(slug="smart-grid-game", category="widget")     
   
   return render_to_response("view_activities/index.html", {
     "events": events,
@@ -346,7 +346,7 @@ def task(request, task_id):
     member_floor_count = member_floor_count +1
     users.append(user)
   
-  help = get_object_or_404(HelpTopic, slug="task-details-widget-help", category="widget")
+  help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
    
   display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
