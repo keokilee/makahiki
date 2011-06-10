@@ -84,14 +84,3 @@
   </div>
 </div>
 {% endblock %}
-
-{% block extra_body %}
-  {% if fb_enabled %}
-  <div id="fb-root"></div>
-  <script src="http://connect.facebook.net/en_US/all.js"></script>
-  <script>
-    FB.init({appId: '{{FACEBOOK_APP_ID}}', status: true, cookie: true, xfbml: true});
-  </script>
-  {% endif %}
-
-{% endblock %}
