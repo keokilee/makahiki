@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.views.decorators.cache import never_cache
+from django.shortcuts import get_object_or_404
 
 from elementtree import ElementTree
 from decimal import *
@@ -15,6 +16,7 @@ from components.floors import *
 from components.energy_goals import *
 from components.makahiki_base import get_round_info
 from pages.news.forms import WallForm
+from components.help_topics.models import HelpTopic
 
 @never_cache
 @login_required
@@ -36,19 +38,17 @@ def index(request):
       # Slugify to create a div id.
       scoreboard_rounds.append(key)
     
-  helps = ["Current Lounge Power", "Overall kWh Score Board", "Daily Energy Goal Status"]
-  helpfiles = ["view_energy/help1.html", "view_energy/help2.html", "view_energy/help3.html"]
-
+  help_energy = get_object_or_404(HelpTopic, slug="energy-goal-game", category="widget")     
+  help_power = get_object_or_404(HelpTopic, slug="lounge-power", category="widget")     
+  
   return render_to_response("energy/index.html",{
       "floor": floor,
       "scoreboard_rounds":scoreboard_rounds,
       "golow_activities":golow_activities,
       "posts":golow_posts,
       "wall_form": WallForm(),
-      "help_info": {
-        "prefix": "energy_index",
-        "count": range(0, 3),
-      }
+      "help_energy": help_energy,
+      "help_power": help_power,
     }
     ,context_instance=RequestContext(request))
     

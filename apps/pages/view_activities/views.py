@@ -22,6 +22,8 @@ from components.floors import *
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 
+from components.help_topics.models import HelpTopic
+
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
@@ -40,9 +42,8 @@ def index(request):
   
   categories_list = __get_categories(user)
   
-  # helps = ["Upcoming Events", "Points Score Board", "The Smart Grid Game"]
-  # helpfiles = ["view_activities/help1.html", "view_activities/help2.html", "view_activities/help3.html"]
-        
+  help = get_object_or_404(HelpTopic, slug="smart-grid-game", category="widget")     
+  
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
@@ -52,10 +53,7 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
-    "help_info": {
-      "prefix": "activities_index",
-      "count": range(0, 3),
-    }
+    "help":help,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info
@@ -347,7 +345,9 @@ def task(request, task_id):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
-    
+  
+  help = get_object_or_404(HelpTopic, slug="task-details-widget-help", category="widget")
+   
   display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
@@ -364,6 +364,7 @@ def task(request, task_id):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
+    "help":help,
   }, context_instance=RequestContext(request))    
 
 @never_cache   

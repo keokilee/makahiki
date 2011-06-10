@@ -5,6 +5,7 @@ MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdo
 HELP_CATEGORIES = (
     ("faq", "Frequently Asked Questions"),
     ("rules", "Rules of the competition"),
+    ("widget", "Widget Help"),
 )
 
 class HelpTopic(models.Model):
