@@ -1,16 +1,34 @@
 <li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
   <div class="notification-contents">
     <span class="ui-icon {{notification.icon_class}}"></span>
-    {{notification.contents|safe}}
+    {{notification.contents}}
   </div>
-  <div class="notification-options"><a href="javascript:void(0);">Mark as read</a></div>
+  <div class="notification-options">
+    {% if notification.is_success %}
+    <a class="notification-share" href="javascript:void(0);">Share on Facebook</a>&nbsp;
+    {% endif %}
+    <a class="notification-read" href="javascript:void(0);">Hide</a>
+  </div>
   <div style="clear:both"></div>
   <script type="text/javascript">
     $(document).ready(function() {
-      $("#notification-item-{{notification.id}} a").click(function() {
+      $("#notification-item-{{notification.id}} .notification-read").click(function() {
         $.post("{% url notifications_read notification.id %}", function(data) {
           $("#notification-item-{{notification.id}}").fadeOut();
         });
+      });
+      
+      $("#notification-item-{{notification.id}} .notification-share").click(function() {
+        FB.ui(
+           {
+             method: 'feed',
+             name: 'Kukui Cup',
+             link: 'http://{{request.META.HTTP_HOST}}',
+             picture: 'http://{{request.META.HTTP_HOST}}{{STATIC_URL}}css/default/images/logo.png',
+             description: '{{notification.contents}}',
+             display: 'popup'
+           }
+         );
       });
     });
   </script>

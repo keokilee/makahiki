@@ -47,8 +47,8 @@ def get_user_alert_notifications(user):
   
   # Make sure these alerts are not displayed again.
   for notification in notifications:
-    notification.display_alert = False
-    notification.save()
+      notification.display_alert = False
+      notification.save()
     
   return notifications
   
