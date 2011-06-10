@@ -37,10 +37,14 @@ def index(request):
     if today >= datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d"):
       # Slugify to create a div id.
       scoreboard_rounds.append(key)
-    
-  help_energy = HelpTopic.objects.get(slug="energy-goal-game", category="widget")     
-  help_power = HelpTopic.objects.get(slug="lounge-power", category="widget")     
   
+  try:
+    help_energy = HelpTopic.objects.get(slug="energy-goal-game", category="widget")     
+    help_power = HelpTopic.objects.get(slug="lounge-power", category="widget")     
+  except ObjectDoesNotExist:
+    help_energy = None
+    help_power = None
+    
   return render_to_response("energy/index.html",{
       "floor": floor,
       "scoreboard_rounds":scoreboard_rounds,

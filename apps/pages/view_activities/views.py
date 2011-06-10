@@ -42,8 +42,11 @@ def index(request):
   
   categories_list = __get_categories(user)
   
-  help = HelpTopic.objects.get(slug="smart-grid-game", category="widget")     
-  
+  try:
+    help = HelpTopic.objects.get(slug="smart-grid-game", category="widget")     
+  except ObjectDoesNotExist:
+    help = None
+
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
@@ -346,8 +349,11 @@ def task(request, task_id):
     member_floor_count = member_floor_count +1
     users.append(user)
   
-  help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
-   
+  try:
+    help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
+  except ObjectDoesNotExist:
+    help = None
+    
   display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
