@@ -211,6 +211,13 @@ class Activity(ActivityBase):
       return False
     return True
   
+  def is_event_completed(self):
+    """Determines if the event is completed."""
+    result = datetime.datetime.today() - self.event_date
+    if result.days >= 0 and result.seconds >= 0:
+      return True
+    return False
+    
   def _has_variable_points(self):
     """Returns true if the activity uses variable points, false otherwise."""
     if self.point_value > 0:
@@ -265,8 +272,8 @@ class CommitmentMember(CommonBase):
   
   user = models.ForeignKey(User)
   commitment = models.ForeignKey(Commitment)
-  award_date = models.DateTimeField(blank=True, null=True, editable=False)
   completion_date = models.DateField()
+  award_date = models.DateTimeField(blank=True, null=True)
   comment = models.TextField(blank=True)
   
   def __unicode__(self):

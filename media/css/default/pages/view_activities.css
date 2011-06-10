@@ -45,6 +45,18 @@
 	text-align: left;
 }
 
+#activity-task-details-info {
+	background: transparent url(/site_media/static/css/default/images/bkg-message-tray-large.png) top left no-repeat;
+	width: 450px;
+	height: 108px;
+	line-height: 20px;
+	display: block;
+	margin: .5em auto 5px auto;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+}
+
 #activity-task-form-content {
     float: center;
     text-align: left;
@@ -57,8 +69,8 @@
 }
 
 .ui-widget-overlay {
-    opacity: .80;
-    filter: Alpha(Opacity=80);
+    opacity: .50;
+    filter: Alpha(Opacity=50);
 }
 
 h3.activity-categories-title {
@@ -198,7 +210,7 @@ table#activities-grid td table td{
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	margin: 2px 1px 2px 1px;
+	
 	}
 /* green */	
 .activity {
@@ -228,10 +240,8 @@ table#activities-grid td table td{
 	}
 	
 .activity div, .commitment div, .event div, .survey div, .excursion div, .yellow-green div {	
-	position: relative; 
-	top: 15%;
 	font-size: 9pt;
-	padding: 2px;
+	padding: 1px;
 }
 
 .activity p, .commitment p, .event p, .survey p, .excursion p, .yellow-green p {
