@@ -22,16 +22,24 @@ class UserNotification(Notification):
   display_alert = models.BooleanField(default=False)
   
   @property
+  def is_success(self):
+    if self.level == constants.SUCCESS:
+      return True
+    
+    return False
+    
+  @property
   def icon_class(self):
     if self.level == constants.ERROR:
       return "ui-icon-alert"
     elif self.level == constants.SUCCESS:
       return "ui-icon-star"
+      
     return "ui-icon-info"
     
   @property
   def style_class(self):
-    if self.level == constants.ERROR:
+    if self.level == constants.ERROR or self.level == constants.WARNING:
       return "ui-state-error"
       
     return "ui-state-highlight"
