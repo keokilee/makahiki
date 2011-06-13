@@ -1,6 +1,7 @@
 {% extends "logged_in_base.html" %}
 
 {% load class_tags %}
+{% load markup %}
 
 {% block page_title %}
   Go Low!
@@ -19,10 +20,15 @@
 <div {% get_id_and_classes "energy-power-scoreboard" %}>
   <div {% get_id_and_classes "energy-power" %}>
     <div {% get_id_and_classes "energy-power-title" %}>
-      Current Lounge Power
-      {# <a href="#" onclick="$('#help-dialog1').dialog('open')"> #}
-      {# <span id="help1" class="ui-icon ui-icon-help"></span> #}
-      {# </a>   #}
+      <table><tr><td align=center>Current Lounge Power
+      </td>
+      <td width="1%">
+      <a href="#">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="help_dialog('{{help_power.contents|markdown}}')"
+	   /></a>
+	   </td></tr></table>
     </div>
     <div {% get_id_and_classes "energy-power-content" %}>
       <center>
@@ -37,11 +43,16 @@
 
 <div {% get_id_and_classes "energy-status" %}>
   <div {% get_id_and_classes "energy-status-box" %}>
-    <div {% get_id_and_classes "energy-status-title" %}>
-      Daily Energy Goal Game
-      {# <a href="#" onclick="$('#help-dialog3').dialog('open')"> #}
-      {# <span id="help3" class="ui-icon ui-icon-help"></span> #}
-      {# </a>   #}
+    <div {% get_id_and_classes "energy-status-title" %}>     
+      <table><tr><td align=center>Daily Energy Goal Game
+      </td>
+      <td width="1%">
+      <a href="#">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="help_dialog('{{help_energy.contents|markdown}}')"
+	   /></a>
+	   </td></tr></table>
     </div>
     <div {% get_id_and_classes "energy-status-content" %}>
       <fieldset {% get_id_and_classes "energy-status-progress" %}>
@@ -137,4 +148,33 @@
     $("#energy-scoreboard").cycle({height: "450px"});
   })
 </script>
+
+<div id="help-dialog" title="Help" style="visibility: hidden;">
+  <div style="text-align:left">
+    <div id="content">
+    </div>
+    </p>
+     <center>
+    <input type="submit" value="OK" onclick='$("#help-dialog").dialog("close");' /> 
+    </center>
+  </div>
+</div>
+
+<script type="text/javascript"> 
+function help_dialog(content)
+{
+  el = document.getElementById("help-dialog"); 
+  el.style.visibility = "visible";
+  $("#help-dialog").dialog({
+    modal: true,
+    width: 450,
+    closeOnEscape: false,
+    position: [400,100],
+    });
+    
+  document.getElementById("content").innerHTML = content;
+  return false;
+}
+
+</script>  
 {% endblock %}

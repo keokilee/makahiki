@@ -50,7 +50,11 @@
 		    {% endif %}  
           {% else %}     {# ------ is commitment #}             
 	           {% if task.is_pau %}
-                <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
+	             {% if task.approval.days_left != 0 or task.approval.award_date %}
+                  <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
+                 {% else %}
+                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
+                 {% endif %}
                 <br/>
 		        {{task.name}}
 		       {% else %}
@@ -61,6 +65,7 @@
           </a>
        {% else %}        {# ------ is lock #}      
  		<br/>
+ 		<a class="whatever" href="#">
 		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="18" align="top" 
 		title="Click to see how to unlock" 
 		onclick="unlock_dialog(
@@ -70,7 +75,7 @@
 		'{{task.depends_on}}'
 		{% endif %}
 		)">
-		</p>
+		</a>
 
        {% endif %}
        </div>

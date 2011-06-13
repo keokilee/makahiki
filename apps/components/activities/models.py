@@ -23,6 +23,7 @@ MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdo
 class Category(models.Model):
   """Categories used to group commitments and activities."""
   name = models.CharField(max_length=255, help_text="255 character maximum")
+  slug = models.SlugField(help_text="Automatically generated if left blank.", null=True)
 
   class Meta:
     verbose_name_plural = "categories"
@@ -91,6 +92,7 @@ class ActivityBase(models.Model):
   )
   
   name = models.CharField(max_length=20, null=True)
+  slug = models.SlugField(help_text="Automatically generated if left blank.", null=True)
   title = models.CharField(max_length=200)
   description = models.TextField(help_text=MARKDOWN_TEXT)
   type = models.CharField(

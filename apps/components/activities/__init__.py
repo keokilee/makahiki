@@ -196,48 +196,65 @@ def is_pau(user, task):
 def completedAllOf(user, cat_name):
   """completed all of the category"""
   try:
-    cat = Category.objects.get(name=cat_name)
-    for task in cat.activitybase_set.all():
-      if is_pau(user, task) != True:
-        return False
+    cat = Category.objects.get(slug=cat_name)
+  except ObjectDoesNotExist:  
+    try:
+      cat = Category.objects.get(name=cat_name)
+    except ObjectDoesNotExist:
+      return False  
+
+  for task in cat.activitybase_set.all():
+    if is_pau(user, task) != True:
+      return False
   
-    return True
-  except ObjectDoesNotExist:
-    return False
+  return True
+    
 
 def completedSomeOf(user, some, cat_name):
   """completed some of the category"""
   try:
-    cat = Category.objects.get(name=cat_name)
-    count = 0
-    for task in cat.activitybase_set.all():
-      if is_pau(user, task):
-        count = count + 1
-      if count == some:
-        return True
+    cat = Category.objects.get(slug=cat_name)
+  except ObjectDoesNotExist: 
+    try:
+      cat = Category.objects.get(name=cat_name)
+    except ObjectDoesNotExist:
+      return False
+      
+  count = 0
+  for task in cat.activitybase_set.all():
+    if is_pau(user, task):
+      count = count + 1
+    if count == some:
+      return True
     
-    return False
-  except ObjectDoesNotExist:
-    return False
+  return False  
     
 def completed(user, task_name):
   """completed the task"""
   try:
-    task = ActivityBase.objects.get(name=task_name)
-    return is_pau(user, task)
+    task = ActivityBase.objects.get(slug=task_name)
   except ObjectDoesNotExist:
-    return False
+    try:
+      task = ActivityBase.objects.get(name=task_name)
+    except ObjectDoesNotExist:
+      return False
+      
+  return is_pau(user, task)  
 
 def afterPublished(task_name):
   """return true if the event/excursion have been published"""
   try:
-    task = ActivityBase.objects.get(name=task_name)
-    if task.type == "event" or task.type == "excursion":
-      return task.activity.pub_date <= datetime.date.today()
+    task = ActivityBase.objects.get(slug=task_name)
+  except ObjectDoesNotExist: 
+    try:
+      task = ActivityBase.objects.get(name=task_name)
+    except ObjectDoesNotExist:
+      return False 
+    
+  if task.type == "event" or task.type == "excursion":
+    return task.activity.pub_date <= datetime.date.today()
       
-    return False;  
-  except ObjectDoesNotExist:
-    return False 
+  return False;    
   
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""

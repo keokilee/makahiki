@@ -1,6 +1,7 @@
 {% extends "logged_in_base.html" %}
 
 {% load class_tags %}
+{% load markup %}
 
 {% block page_title %}
   Get Nuts!
@@ -16,9 +17,6 @@
   <div {% get_id_and_classes "activity-events-box" %}>
     <div {% get_id_and_classes "activity-events-title" %}>
       Upcoming Events
-      {# <a href="#" onclick="$('#help-dialog1').dialog('open')"> #}
-      {# <span id="help1" class="ui-icon ui-icon-help"></span> #}
-      {# </a>  #} 
     </div>   
     <div {% get_id_and_classes "activity-events-content" %}>    
       {% include "view_activities/events.html" %}
@@ -53,7 +51,16 @@
 <div {% get_id_and_classes "activity-categories" %}>
   <center>
     <h3 class="{% insert_classes 'activity-categories-title' %}">
-      The Smart Grid Game
+      <table><tr><td align=center>The Smart Grid Game
+      </td>
+      <td width="1%">
+      <a href="#">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="help_dialog('{{help.contents|markdown}}')"
+	   /></a>
+	   </td></tr></table>
+      
     </h3>
   </center>
   {% include "view_activities/grid.html" %}
@@ -89,4 +96,34 @@ function unlock_dialog(depends_on)
   document.getElementById("depends_on").innerHTML = depends_on;
 }
 </script>  
+
+<div id="help-dialog" title="Help" style="visibility: hidden;">
+  <div style="text-align:left">
+    <div id="content">
+    </div>
+    </p>
+     <center>
+    <input type="submit" value="OK" onclick='$("#help-dialog").dialog("close");' /> 
+    </center>
+  </div>
+</div>
+
+<script type="text/javascript"> 
+function help_dialog(content)
+{
+  el = document.getElementById("help-dialog"); 
+  el.style.visibility = "visible";
+  $("#help-dialog").dialog({
+    modal: true,
+    width: 450,
+    closeOnEscape: false,
+    position: [400,100],
+    });
+    
+  document.getElementById("content").innerHTML = content;
+  return false;
+}
+
+</script>  
+
 {% endblock %}

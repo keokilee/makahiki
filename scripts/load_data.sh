@@ -10,6 +10,7 @@ fi
 python manage.py loaddata $var/base_floors.json 
 python manage.py loaddata $var/base_activities.json 
 python manage.py loaddata $var/base_quests.json 
+python manage.py loaddata $var/base_help.json 
 python manage.py loaddata $var/test_users.json 
 python manage.py loaddata $var/test_posts.json 
 python manage.py loaddata $var/test_energy_goals.json 

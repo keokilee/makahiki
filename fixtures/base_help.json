@@ -174,5 +174,50 @@
       "contents": "The Raffle Game provides a different way to win prizes, a way that does not require you to be the number 1 ranked lounge or person. Each time you accumulate 25 Kukui Cup points, you receive 1 raffle ticket, which you can allocate into a drawing for one or more of the prizes in the raffle. Your chances of winning that prize correspond to the percentage of tickets allocated to that prize that you contributed. You can change your ticket allocation at any time during a round. The more points you earn, the more tickets you receive, and the higher your chances of winning prizes in the raffle. ", 
       "title": "How does the raffle work?"
     }
+  },
+  {
+    "pk": 17, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "widget", 
+      "parent_topic": null, 
+      "slug": "task-details-widget-help", 
+      "contents": "You will see the detailed information of the activity in this widget.  <p/> You will be asked to either complete the activity or sign up for an event. after event or commitment period, you can come back here to claim the rest of your points.", 
+      "title": "Task Details Widget Help"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "widget", 
+      "parent_topic": null, 
+      "slug": "smart-grid-game", 
+      "contents": "Welcome to the Smart Grid Game. Here you can carry on a grid of activities.  <p/>The lock icon indicates the activity is locked, you can click on the lock icon to see how to unlock it. Normally, you need to complete some other activities in order to unlock an activity.  <p/> The numbers on the grid indicate that the activities are unlock and you have not completed them yet. <p/> Once the activities are completed, the little check tag will display on the top-left corner of the grid.   If you see a little exclamation tag instead, that means there is something about this activity need your attention, usually is because your submission to the activity is rejected and is begging for your re-submission, or the event or excursion has completed so that you can come back to claim the rest of your points.", 
+      "title": "Smart Grid Game"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "widget", 
+      "parent_topic": null, 
+      "slug": "energy-goal-game", 
+      "contents": "Welcome to the Energy Goal Game. <p/> If the stop light is red, it means you are currently exceeding your energy consumption goal. At midnight, if the stop light is green, your lounge will be rewarded points for consume less than your predefined consumption goal.", 
+      "title": "Energy Goal Game"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "widget", 
+      "parent_topic": null, 
+      "slug": "lounge-power", 
+      "contents": "You will see the real-time power usage of your lounge.", 
+      "title": "Lounge Power"
+    }
   }
+
 ]
