@@ -50,7 +50,7 @@
 		    {% endif %}  
           {% else %}     {# ------ is commitment #}             
 	           {% if task.is_pau %}
-	             {% if task.approval.days_left != 0 %}
+	             {% if task.approval.days_left != 0 or task.approval.award_date %}
                   <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
                  {% else %}
                   <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 

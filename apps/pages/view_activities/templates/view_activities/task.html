@@ -53,11 +53,12 @@
      
      <p/><p/>
      <center> 
-     <a href="/activities" class="{% insert_classes "ui-button" %}">
-     <button>
-     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top"><br/>
-     Back to SmartGrid Game
-     </button></a> 
+     <a href="/activities">
+     <button style="cursor:pointer;">
+     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
+     <br/> Back to Smart Grid Game
+     </button>
+     </a> 
     </center>
     </div>
   </div>  
@@ -91,8 +92,7 @@
             Thank you for attending the event. <br/>
             Click on the "I Did it" button to get <br/>
             the rest of your points. <br/>
-            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-              <button>I Did it</button></a> 
+            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
@@ -110,8 +110,7 @@
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get <br/>
               the rest of your points. <br/>
-              <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-              <button>I Did it</button></a> 
+              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
               {% endif %}
              </div>
           {% endif %}         
@@ -131,8 +130,7 @@
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>  
               </div>
-              <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()">
-              <button>I will try again</button></a> 
+              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will try again</button></a> 
               </div>
             {% endif %}
           {% endif %}            
@@ -153,7 +151,7 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I will do this!</button></a>
+            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this!</button></a>
           {% else %}
             <b>You already have 5 pending commitments. <br/>
             You can continue making this commitment once any of your pending commitment is approved.
@@ -166,22 +164,19 @@
             You can continue to sign up for other events. Thanks you!
             </b>
            {% else %}
-            <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to sign up</button></a>
+            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I want to sign up</button></a>
            {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I want to do it</button></a>
+          <a onclick="task_form_overlay()"><button style="cursor:pointer;">I want to do it</button></a>
         {% endif %} 
         {% if task.type == "activity"%} 
           Once you are done, click the button below to get your points!
           <p/>
-          <a href="#" class="{% insert_classes "ui-button" %}" onclick="task_form_overlay()"><button>I Did This!</button></a> 
+          <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did This!</button></a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
-       <!--
-         <a href="/activities/" id="back" class="{% insert_classes "ui-button" %}">Go Back</a>  
-       -->  
       </b></center> <p>
     </div>
   </div>
@@ -207,12 +202,12 @@ function task_form_overlay()
     closeOnEscape: false,
     position: [400,100],
     });
+    return false;
 }
 
 {% if display_form %}
    $(document).ready(task_form_overlay());
 {% endif %}    
-
 </script>  
 
 <div id="signup-point-dialog" title="Thank you" style="visibility: hidden;">
@@ -261,6 +256,7 @@ function signup_point_dialog_overlay()
     closeOnEscape: false,
     position: [400,100],
     });
+    return true;
 }
 </script>  
 
