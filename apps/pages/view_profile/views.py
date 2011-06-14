@@ -1,6 +1,3 @@
-from itertools import chain
-from operator import attrgetter
-
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -12,10 +9,11 @@ from django.contrib.auth.models import User
 
 from django.views.decorators.cache import never_cache
 
-from components.makahiki_base import restricted
 from pages.view_profile.forms import ProfileForm
+from pages.view_profile import get_completed_members, get_in_progress_members
+
+from components.makahiki_base import restricted
 from components.makahiki_facebook.models import FacebookProfile
-from components.activities import get_current_activity_members, get_current_commitment_members
 from components.activities.models import ActivityMember, CommitmentMember
 import components.makahiki_facebook.facebook as facebook
 
@@ -71,42 +69,15 @@ def index(request):
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
   
-  # Retrieve previously awarded tasks, quests, and badges.
-  # Note that we need to check the various activity types because of signup bonuses.
-  activity_members = user.activitymember_set.exclude(
-    activity__type="activity",
-    award_date__isnull=True,
-  ).exclude(
-    activity__type="survey", 
-    approval_status="pending",
-  )
-    
-  commitment_members = user.commitmentmember_set.all()
-  quest_members = user.questmember_set.filter(completed=True)
-  badge_members = user.badges_earned.all()
-    
-  for member in badge_members:
-    member.updated_at = member.awarded_at
-  
-  # Merge the querysets, sort according to award_date, and take 5
-  # Solution found at http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
-  completed_members = sorted(
-      chain(activity_members, commitment_members, quest_members, badge_members), 
-      key=attrgetter("updated_at"), reverse=True)
-  
-  # Retrieve current tasks.
-  in_progress_activity_members = get_current_activity_members(user)
-  in_progress_commitment_members = get_current_commitment_members(user)
-  in_progress_members = sorted(
-    chain(in_progress_activity_members, in_progress_commitment_members),
-    key=attrgetter("created_at"), reverse=True)
-  
   # Retrieve Facebook information.
   fb_profile = None
   fb_enabled = False
   try:
-    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, 
+        settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+        
     fb_enabled = True
+    
     if fb_user:
       try:
         fb_profile = request.user.facebookprofile
@@ -125,9 +96,10 @@ def index(request):
     "form": form,
     "fb_profile": fb_profile,
     "fb_enabled": fb_enabled,
-    "in_progress_members": in_progress_members,
-    "completed_members": completed_members,
+    "in_progress_members": get_in_progress_members(user),
+    "completed_members": get_completed_members(user),
     "rejected_member": rejected_member,
+    "notifications": user.usernotification_set.order_by("-created_at"),
     "help_info": {
       "prefix": "profile_index",
       "count": range(0, 3),

@@ -319,7 +319,7 @@ clear: both;
   list-style: none;
 }
 
-#notification-list li, #notification-dialog li {
+.notification-item {
   margin: 5px auto;
   padding: 5px;
   clear:both; 
@@ -348,11 +348,21 @@ clear: both;
   float: right;
 }
 
+.notification-share {
+ float: left;
+ margin-right: 5px;
+}
+
+.notification-read {
+  float: right;
+  cursor: pointer;
+}
+
 #notification-dialog ul {
   list-style: none;
   padding: 0;
   text-align: left;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 /*------- Quest styles -----*/

@@ -95,18 +95,17 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	color: #c86c09;
 }
 
-#profile-badges {
+#profile-badges, #profile-history, #profile-notifications {
 	width: 436px;
-	float: right;
-	margin-right: 14px;
-}
-#profile-history-box {
-	width: 436px;
-	display: block;
 	float: right;
 	margin-right: 14px;
 }
 
+#profile-badges, #profile-history, #profile-notifications {
+	width: 436px;
+	float: right;
+	margin-right: 14px;
+}
 
 #profile-badges-content, #profile-history-content {
 	padding: 0px 8px 0 2px;
@@ -163,6 +162,38 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 
 #profile-badge-catalog a {
 	color: #c86c09;
+}
+
+#profile-notifications-list {
+  list-style: none;
+  padding: 0 10px;
+}
+
+#profile-notifications-list li {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+#profile-notifications-list li.ui-state-highlight {
+  background: none;
+  background-color: #fce988;
+  border: 1px solid #fed22f;
+}
+
+#profile-notifications-list .notification-contents {
+  float: none;
+}
+
+#profile-notifications-list .notification-timestamp {
+  clear: left;
+  float: left;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+#profile-notifications-list .notification-options {
+  float: right;
+  margin-top: 5px;
 }
 
 /************** Rejected dialog styles *****/
