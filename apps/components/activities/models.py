@@ -430,9 +430,9 @@ class ActivityMember(CommonActivityUser):
           reverse("activity_task", args=(self.activity.id,)),
           self.activity.title
       )
-      message = message + " Please check your <a href='%s?rejected_id=%d'>profile</a> for more information." % (
-          reverse("profile_index"), 
-          self.id
+      
+      message += " Please check your <a href='%s'>profile</a> for more information." % (
+          reverse("profile_rejected", args=(self.id,)),
       )
       
       UserNotification.create_error_notification(self.user, message)

@@ -44,11 +44,6 @@ def get_user_alert_notifications(user):
       unread=True,
       display_alert=True,
   ).order_by("-level", "-created_at")
-  
-  # Make sure these alerts are not displayed again.
-  for notification in notifications:
-      notification.display_alert = False
-      notification.save()
     
   return notifications
   

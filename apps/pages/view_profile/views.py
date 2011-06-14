@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -12,7 +13,6 @@ from django.views.decorators.cache import never_cache
 from pages.view_profile.forms import ProfileForm
 from pages.view_profile import get_completed_members, get_in_progress_members
 
-from components.makahiki_base import restricted
 from components.makahiki_facebook.models import FacebookProfile
 from components.activities.models import ActivityMember, CommitmentMember
 import components.makahiki_facebook.facebook as facebook
@@ -89,8 +89,9 @@ def index(request):
     
   # Check for a rejected activity member.
   rejected_member = None
-  if request.GET.has_key("rejected_id"):
-    rejected_member = ActivityMember.objects.get(id=request.GET["rejected_id"])
+  if request.session.has_key("rejected_id"):
+    rejected_member = ActivityMember.objects.get(id=request.session["rejected_id"])
+    del request.session["rejected_id"]
   
   return render_to_response("view_profile/index.html", {
     "form": form,
@@ -130,3 +131,7 @@ def badge_catalog(request):
     "locked_badges": locked_badges,
   }, context_instance=RequestContext(request))
   
+@login_required
+def view_rejected(request, rejected_id):
+  request.session["rejected_id"] = rejected_id
+  return HttpResponseRedirect(reverse("profile_index"))

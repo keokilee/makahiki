@@ -82,6 +82,7 @@ class UserNotification(Notification):
         level=constants.ERROR,
         display_alert=display_alert,
     )
+    print display_alert
     notification.save()
   
   

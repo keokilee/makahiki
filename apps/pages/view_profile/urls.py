@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     #url(r'^$', 'makahiki_profiles.views.profiles', name='profile_list'),
     url(r'^$', 'pages.view_profile.views.index', name="profile_index"),
     url(r'^badges/$', 'pages.view_profile.views.badge_catalog', name="profile_badges"),
+    url(r'^view_rejected/(\d+)/$', 'pages.view_profile.views.view_rejected', name="profile_rejected"),
 )
