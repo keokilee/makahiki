@@ -1,3 +1,4 @@
+{% load notice_tags %}
 <div id="notification-dialog" title="Notifications" style="display: none">
   <ul>
     {% for notification in NOTIFICATIONS.alerts %}
@@ -25,3 +26,5 @@
     });
   });
 </script>
+
+{% mark_alerts_displayed NOTIFICATIONS.alerts %}

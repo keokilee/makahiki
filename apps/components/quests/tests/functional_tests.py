@@ -137,9 +137,8 @@ class QuestFunctionalTestCase(TestCase):
         HTTP_REFERER=reverse("home_index"),
     )
     self.assertRedirects(response, reverse("home_index"))
-    self.assertEqual(len(response.context["NOTIFICATIONS"]["alerts"]), 
-        1, "User should have one completed quest.")
     self.assertFalse(quest in response.context["QUESTS"]["user_quests"], 
         "Quest should not be loaded as a user quest.")
     message = "Congratulations! You completed the '%s' quest." % quest.name
-    self.assertContains(response, message, msg_prefix="Notification dialog should appear.")
+    self.assertContains(response, message, msg_prefix="Quest completion message should be shown.")
+    self.assertContains(response, "notification-dialog", msg_prefix="Notification dialog should be shown.")

@@ -15,7 +15,7 @@ def get_unread_notifications(user, limit=None):
 
   # Find undisplayed alert notifications.
   notifications.update({"alerts": get_user_alert_notifications(user)})
-
+  
   # Get unread notifications
   unread_notifications = user.usernotification_set.filter(
       unread=True,
@@ -37,8 +37,7 @@ def get_unread_count(user):
   
 def get_user_alert_notifications(user):
   """
-  Retrieves notifications that should be displayed in an alert.  The notifications are
-  then marked as displayed so that they don't display again.
+  Retrieves notifications that should be displayed in an alert.
   """
   notifications = user.usernotification_set.filter(
       unread=True,
