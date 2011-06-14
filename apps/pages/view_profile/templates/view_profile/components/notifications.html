@@ -1,0 +1,16 @@
+{% load class_tags %}
+
+<div {% get_id_and_classes "profile-notifications" %}>
+  <div {% get_id_and_classes "profile-notifications-box" %}>
+    <div {% get_id_and_classes "profile-notifications-title" %}>
+      My Notifications
+    </div>
+    <div {% get_id_and_classes "profile-notifications-content" %}>
+      <ul {% get_id_and_classes "profile-notifications-list" %}>
+        {% for notification in notifications %}
+        {% include "view_profile/components/notification_item.html" %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

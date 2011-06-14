@@ -16,6 +16,7 @@ badges.register(FullyCommittedBadge)
 
 from components.floors.models import Post
 from components.makahiki_base.models import Like
+from components.makahiki_notifications.models import UserNotification
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
@@ -431,11 +432,12 @@ class ActivityMember(CommonActivityUser):
           reverse("activity_task", args=(self.activity.id,)),
           self.activity.title
       )
-      message = message + " Please check your <a href='%s?rejected_id=%d'>profile</a> for more information." % (
-          reverse("profile_index"), 
-          self.id
+      
+      message += " Please check your <a href='%s'>profile</a> for more information." % (
+          reverse("profile_rejected", args=(self.id,)),
       )
-      self.user.message_set.create(message=message)
+      
+      UserNotification.create_error_notification(self.user, message)
     
   def delete(self):
     """Custom delete method to remove awarded points."""

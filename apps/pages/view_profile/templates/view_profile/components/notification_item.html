@@ -1,24 +1,29 @@
-<li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
+<li id="profile-notice-{{notification.id}}" class="{{notification.style_class}} notification-item">
   <div class="notification-contents">
     <span class="ui-icon {{notification.icon_class}}"></span>
-    {{notification.contents|safe}}
+    {{notification.contents}}
+  </div>
+  <div class="notification-timestamp">
+    {{notification.created_at|date:"n/j/y f A"}}
   </div>
   <div class="notification-options">
     {% if notification.is_success %}
-    <a class="notification-share" href="javascript:void(0);">Share on Facebook</a>
+    <a class="notification-share" href="javascript:void(0);">Share on Facebook</a>&nbsp;
     {% endif %}
-    <span class="notification-read ui-icon ui-icon-circle-close"></span>
+    {% if notification.unread %}
+    <a class="notification-read" href="javascript:void(0);">Mark as read</a>
+    {% endif %}
   </div>
   <div style="clear:both"></div>
   <script type="text/javascript">
     $(document).ready(function() {
-      $("#notification-item-{{notification.id}} .notification-read").click(function() {
+      $("#profile-notice-{{notification.id}} .notification-read").click(function() {
         $.post("{% url notifications_read notification.id %}", function(data) {
-          $("#notification-item-{{notification.id}}").fadeOut();
+          $("#profile-notice-{{notification.id}} .notification-read").fadeOut();
         });
       });
       
-      $("#notification-item-{{notification.id}} .notification-share").click(function() {
+      $("#profile-notice-{{notification.id}} .notification-share").click(function() {
         FB.ui(
            {
              method: 'feed',
