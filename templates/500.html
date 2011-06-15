@@ -1,2 +1,29 @@
-<h1>HTTP 500</h1>
-Server error.
+{% extends "site_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Welcome to KukuiCup!
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "landing" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "landing-page" %}>
+  <div {% get_id_and_classes "landing-logo" %}>
+    <a href="{% url landing %}"><img src="{{STATIC_URL}}css/default/images/logo.png"/></a>
+  </div>
+  <div {% get_id_and_classes "landing-title" %}>
+    <h2>The Kukui Cup: Lights out, game on!</h2>
+  </div>
+</div>
+
+<div {% get_id_and_classes "landing-about" %}>
+There was an error processing your request.  Please try again later.
+<a href="{% url landing %}" style="display:block; margin-top: 10px;">Back to the home page</a>
+</div>
+
+{% endblock %}
