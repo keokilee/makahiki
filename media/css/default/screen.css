@@ -395,7 +395,7 @@ clear: both;
 }
 
 #quest-box li.selected {
-  background-color: #dbd7af;
+  background-color: #D0D0D0;
 }
 
 #quest-complete-dialog {
