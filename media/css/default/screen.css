@@ -87,16 +87,28 @@ a {
 	text-align: right;
 }
 
+/*#header-nav-links {
+  background: transparent url(/site_media/static/css/default/images/bkg-icon-tray.png) 0 10px no-repeat;
+  width: 390px;
+  height: 78px;
+  display: block;
+  padding: 15px 2px;
+  margin-top: -135px;
+  margin-right: 10px;
+  float: right;
+  }*/
+  
 #header-nav-links {
-	background: transparent url(/site_media/static/css/default/images/bkg-icon-tray.png) 0 10px no-repeat;
-	width: 390px;
-	height: 78px;
-	display: block;
-	padding: 15px 2px;
-	margin-top: -135px;
-	margin-right: 10px;
-	float: right;
-	}
+  background-color: #404242;
+  border: 2px solid gray;
+  height: 90px;
+  margin-top: -128px;
+  margin-right: 10px;
+  padding: 10px 2px 0 2px;
+  float: right;
+  -moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
 
 #header-nav-links ul {
 	margin: 0;
@@ -106,8 +118,16 @@ a {
 
 #header-nav-links ul li {
 	float: left;
-	margin-left: .6em;
+	margin-left: .4em;
 	padding: .1em;
+	width: 55px;
+}
+
+#header-nav-links ul li h4 {
+  color: white;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
 }
 
 #header-nav-links img {
@@ -121,22 +141,8 @@ a {
   text-decoration: none;
 }
 
-#header-nav-links a span {
-  display: none;
-}
-
-#header-nav-links a:hover span {
-  display: block;
-  position: absolute;
-  z-index: 5;
-  background-color: #EBE7BC;
-  width: 70px;
-  margin-left: -10px;
-  margin-top: -75px;
-  font-weight: bold;
-  padding: 2px;
-  -moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+#header-nav-links a:hover h4 {
+  color: #FCE988;
 }
 
 #header-nav-links a.energy img {
@@ -150,6 +156,10 @@ a {
 	background: transparent url(/site_media/static/css/default/images/icon-go-low-over.png) top left no-repeat;
 }
 
+.selected-energy #header-nav-links a.energy h4 {
+  color: #FCE988;
+}
+
 #header-nav-links a.activities img {
 	background: transparent url(/site_media/static/css/default/images/icon-scoreboard.png) top left no-repeat;
 	display: block;
@@ -159,6 +169,10 @@ a {
 
 #header-nav-links a.activities:hover img {
 	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-over.png) top left no-repeat;
+}
+
+.selected-activities #header-nav-links a.activities h4 {
+  color: #FCE988;
 }
 
 #header-nav-links a.news img {
@@ -172,6 +186,10 @@ a {
 	background: transparent url(/site_media/static/css/default/images/icon-news-over.png) top left no-repeat;
 }
 
+.selected-news #header-nav-links a.news h4 {
+  color: #FCE988;
+}
+
 #header-nav-links a.help img {
 	background: transparent url(/site_media/static/css/default/images/icon-help.png) top left no-repeat;
 	display: block;
@@ -181,6 +199,10 @@ a {
 
 #header-nav-links a.help:hover img {
 	background: transparent url(/site_media/static/css/default/images/icon-help-over.png) top left no-repeat;
+}
+
+.selected-help #header-nav-links a.help h4 {
+  color: #FCE988;
 }
 
 #header-nav-links a.profile img {
@@ -194,6 +216,10 @@ a {
 	background: transparent url(/site_media/static/css/default/images/icon-profile-over.png) top left no-repeat;
 }
 
+.selected-profile #header-nav-links a.profile h4 {
+  color: #FCE988;
+}
+
 #header-nav-links a.prizes img {
 	background: transparent url(/site_media/static/css/default/images/icon-prizes.png) top left no-repeat;
 	display: block;
@@ -205,7 +231,9 @@ a {
 	background: transparent url(/site_media/static/css/default/images/icon-prizes-over.png) top left no-repeat;
 }
 
-
+.selected-prizes #header-nav-links a.prizes h4 {
+  color: #FCE988;
+}
 
 #header-avatar {
 	float: left;

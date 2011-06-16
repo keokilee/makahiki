@@ -10,6 +10,8 @@
   {% import_page_css "view_prizes" STATIC_URL CSS_THEME %}
 {% endblock %}
 
+{% block selected_icon %}selected-prizes{% endblock %}
+
 {% block body %}
 <div {% get_id_and_classes "prizes-list" %}>
   <div {% get_id_and_classes "prizes-list-box" %}>

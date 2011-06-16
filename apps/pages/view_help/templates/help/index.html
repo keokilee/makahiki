@@ -10,6 +10,8 @@
   {% import_page_css "view_help" STATIC_URL CSS_THEME %}
 {% endblock %}
 
+{% block selected_icon %}selected-help{% endblock %}
+
 {% block body %}
 <div class="left-column">
   <div {% get_id_and_classes "help-video" %}>

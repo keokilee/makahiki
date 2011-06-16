@@ -25,11 +25,12 @@
   </div>  
   
   <div {% get_id_and_classes "header-nav" %}>
-    {% include "components/navigation.html" %}
-  
-    <div {% get_id_and_classes "header-title" %}>
-      <h3>{% block page_title %}{% endblock %}</h3>
-    </div>  
+    <div class="{% block selected_icon %}{% endblock %}">
+      {% include "components/navigation.html" %}
+    </div>
+    {# <div {% get_id_and_classes "header-title" %}> #}
+    {#   <h3>{% block page_title %}{% endblock %}</h3> #}
+    {# </div>   #}
     
   </div>
 </div>
