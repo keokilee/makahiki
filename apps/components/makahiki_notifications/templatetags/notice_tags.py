@@ -11,3 +11,4 @@ def mark_alerts_displayed(alerts):
   Simple tag to mark the alerts displayed.
   """
   alerts.update(display_alert=False)
+  return ""
