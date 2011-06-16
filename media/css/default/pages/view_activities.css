@@ -45,6 +45,7 @@
 	text-align: left;
 }
 
+/*
 #activity-task-details-info {
 	background: transparent url(/site_media/static/css/default/images/bkg-message-tray-large.png) top left no-repeat;
 	width: 450px;
@@ -55,6 +56,23 @@
 	color: #FFF;
 	font-weight: bold;
 	text-align: center;
+}
+*/
+
+#activity-task-details-info {
+  background-color: #404242;
+  border: 2px solid gray;
+  height: auto;
+  margin: .5em auto 5px auto;
+  padding: 10px 2px 0 2px;
+  float: center;
+  -moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+    color: #FFF;
+	font-weight: bold;
+	text-align: center;
+    line-height: 20px;
+	display: block;
 }
 
 #activity-task-form-content {
@@ -180,8 +198,8 @@ table#activities-grid td table td{
 }
 
 #activity-category .get-started, #activity-category .basic-energy, #activity-category .lights-out, #activity-category .make-watts, #activity-category .moving-on, #activity-category .opala, #activity-category .wet-wild, #activity-category .potpourri {
-	width: 53px;
-	height: 40px; 
+	width: 55px;
+	height: 40px;
 	display: table-cell; 
 	vertical-align: middle;
 	text-align: center;
@@ -204,8 +222,8 @@ table#activities-grid td table td{
 	}
     
 .activity, .commitment, .event, .survey, .excursion, .yellow-green {
-	width: 53px;
-	height: 40px;
+	width: 55px;
+	height: 48px;
 	border: 1px solid #000;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
