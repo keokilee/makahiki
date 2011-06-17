@@ -92,8 +92,7 @@
             <p/>
             {% if task.is_event_completed %}
             Thank you for attending the event. <br/>
-            Click on the "I Did it" button to get <br/>
-            the rest of your points. <br/>
+            Click on the "I Did it" button to get the rest of your points. <br/>
             <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
@@ -109,8 +108,7 @@
               You have {{approval.days_left}} days left to come back to get the rest of your points.
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
-              Click on the "I Did it" button to get <br/>
-              the rest of your points. <br/>
+              Click on the "I Did it" button to get the rest of your points. <br/>
               <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
               {% endif %}
              </div>
@@ -172,14 +170,16 @@
         {% if task.type == "survey" %}
           <a onclick="task_form_overlay()"><button style="cursor:pointer;">I want to do it</button></a>
         {% endif %} 
-        {% if task.type == "activity"%} 
+        {% if task.type == "activity"%}
+          <b>
           Once you are done, click the button below to get your points!
+          </b>
           <p/>
           <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did This!</button></a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
-      </b></center> <p>
+      </center> <p>
     </div>
   </div>
 </div>
