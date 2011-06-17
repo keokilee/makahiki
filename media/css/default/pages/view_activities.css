@@ -87,8 +87,8 @@
 }
 
 .ui-widget-overlay {
-    opacity: .50;
-    filter: Alpha(Opacity=50);
+    opacity: .75;
+    filter: Alpha(Opacity=75);
 }
 
 h3.activity-categories-title {
