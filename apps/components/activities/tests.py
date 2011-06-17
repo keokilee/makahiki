@@ -77,6 +77,7 @@ class ActivitiesUnitTestCase(TestCase):
   def testGetEvents(self):
     """Verify that get_available_activities does not retrieve events."""
     self.activity.type = "event"
+    self.activity.depends_on = "True"
     self.activity.save()
     
     activities = get_available_activities(self.user)
