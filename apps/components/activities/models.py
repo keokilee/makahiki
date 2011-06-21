@@ -433,9 +433,10 @@ class ActivityMember(CommonActivityUser):
           self.activity.title
       )
       
-      message += " Please check your <a href='%s'>profile</a> for more information." % (
-          reverse("profile_rejected", args=(self.id,)),
-      )
+      message += " Please click on the link to try again."
+      # message += " Please check your <a href='%s'>profile</a> for more information." % (
+      #           reverse("profile_rejected", args=(self.id,)),
+      #       )
       
       UserNotification.create_error_notification(self.user, message)
     
