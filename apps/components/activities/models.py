@@ -433,7 +433,7 @@ class ActivityMember(CommonActivityUser):
           self.activity.title
       )
       
-      message += " Please click on the link to try again."
+      message += " You can still get points by clicking on the link and trying again."
       # message += " Please check your <a href='%s'>profile</a> for more information." % (
       #           reverse("profile_rejected", args=(self.id,)),
       #       )
