@@ -90,7 +90,6 @@ class ProfileFunctionalTestCase(TestCase):
     response = self.client.get(reverse("profile_index"))
     self.assertContains(response, reverse("activity_task", args=(activity.id,)))
     self.assertContains(response, "Rejected")
-    self.assertContains(response, reverse("profile_rejected", args=(member.id,)))
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
     

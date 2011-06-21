@@ -104,7 +104,6 @@ class Profile(models.Model):
   name = models.CharField(_('name'), max_length=50)
   first_name = models.CharField(_('first_name'), max_length=50, null=True, blank=True)
   last_name = models.CharField(_('last_name'), max_length=50, null=True, blank=True)
-  about = models.TextField(_('about'), null=True, blank=True)
   points = models.IntegerField(default=0, editable=False)
   last_awarded_submission = models.DateTimeField(null=True, blank=True, editable=False)
   floor = models.ForeignKey(Floor, null=True, blank=True)
@@ -113,10 +112,12 @@ class Profile(models.Model):
   contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
   enable_help = models.BooleanField(default=True)
   
+  # Check first login completion.
   setup_profile = models.BooleanField(default=False, editable=False)
   setup_complete = models.BooleanField(default=False, editable=False)
   completion_date = models.DateTimeField(null=True, blank=True, editable=False)
   
+  # Check visits for daily visitor badge.
   daily_visit_count = models.IntegerField(default=0, editable=False)
   last_visit_date = models.DateField(null=True, blank=True)
   

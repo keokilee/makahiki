@@ -31,7 +31,6 @@ def index(request):
     if form.is_valid():
       profile = user.get_profile()
       profile.name = form.cleaned_data["display_name"]
-      profile.about = form.cleaned_data["about"]
       profile.contact_email = form.cleaned_data["contact_email"]
       profile.contact_text = form.cleaned_data["contact_text"]
       profile.contact_carrier = form.cleaned_data["contact_carrier"]
@@ -59,7 +58,6 @@ def index(request):
     form = ProfileForm(initial={
       "enable_help": user.get_profile().enable_help,
       "display_name": user.get_profile().name,
-      "about": user.get_profile().about,
       "contact_email": user.get_profile().contact_email or user.email,
       "contact_text": user.get_profile().contact_text,
       "contact_carrier": user.get_profile().contact_carrier,
