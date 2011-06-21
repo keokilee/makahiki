@@ -7,7 +7,9 @@
   <ul>
     {% for quest in QUESTS.user_quests %}
     <li>
-      <a href="#" class="quest-title" style="font-weight: bold">{{quest.name}}</a>
+      <a href="#" id="{{quest.quest_slug}}" class="quest-title" style="font-weight: bold">
+        {{quest.name}}
+      </a>
       <div class="quest-description" style="display:none">
         {{quest.description|markdown}}
         <div class="quest-options" style="float: right">
@@ -21,7 +23,7 @@
     {% endfor %}
     {% for quest in QUESTS.available_quests %}
     <li>
-      <a href="#" class="quest-title">{{quest.name}}</a>
+      <a href="#" id="{{quest.quest_slug}}" class="quest-title">{{quest.name}}</a>
       <div class="quest-description" style="display:none">
         {# <h4>This is a level {{quest.level}} quest</h4> #}
         <h4>Quest Level: {{quest.level}}</h4>

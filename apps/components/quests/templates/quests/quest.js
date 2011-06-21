@@ -14,6 +14,7 @@ $(document).ready(function() {
 
       //Toggle quest-details if it is hidden.
       if (!$("#quest-details").is(":visible")) {
+        console.log($(this).attr('id'));
         $("#quest-details").slideDown("slow", function() {
           //Animation complete
         });
