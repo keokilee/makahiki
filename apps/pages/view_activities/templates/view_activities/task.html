@@ -57,7 +57,7 @@
      <center> 
      <a href="/activities">
      <button style="cursor:pointer;">
-     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
+     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="36" align="top">
      <br/> Back to Smart Grid Game
      </button>
      </a> 
@@ -82,18 +82,17 @@
       {% if pau %}
         {% if approval.approval_status == "approved" or approval.award_date %}
           <div {% get_id_and_classes "activity-task-details-info" %}>
-          <p/><br/>
+          <p/>
           Congratulations! You did it and earned {{task.point_value}} points! <br/>
           Thank you for your participation.
            </div>
         {% else %}
           {% if task.type == "event" or task.type == "excursion" %}
             <div {% get_id_and_classes "activity-task-details-info" %}>
-            <br/>
+            <p/>
             {% if task.is_event_completed %}
             Thank you for attending the event. <br/>
-            Click on the "I Did it" button to get <br/>
-            the rest of your points. <br/>
+            Click on the "I Did it" button to get the rest of your points. <br/>
             <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
@@ -103,15 +102,13 @@
           {% endif %}
           {% if task.type == "commitment" %}
              <div {% get_id_and_classes "activity-task-details-info" %}>
-             <br/>
+             <p/>
               {% if approval.days_left != 0 %}
               Thank you! You've earned 2 points by committing.<br/>
-              You have {{approval.days_left}} days left to come back to <br/>
-              get the rest of your points.
+              You have {{approval.days_left}} days left to come back to get the rest of your points.
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
-              Click on the "I Did it" button to get <br/>
-              the rest of your points. <br/>
+              Click on the "I Did it" button to get the rest of your points. <br/>
               <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
               {% endif %}
              </div>
@@ -119,14 +116,14 @@
           {% if task.type == "activity" %}
             {% if approval.approval_status != "rejected" %}
               <div {% get_id_and_classes "activity-task-details-info" %}>
-              <br/>
+              <p/>
               Thank you for submitting your response.   <br/>
               An administrator is reviewing your response.  <br/>
               Come back soon to see your new total.
               </div>
             {% else %}
               <div {% get_id_and_classes "activity-task-details-info" %}>
-              <br/>
+              <p/>
               <div style="text-align:left; margin-left:10px;">
               Administrator feels that there is a problem with your submission. <br/>
               Please try again. Here is the feedback: <br/>             
@@ -163,7 +160,8 @@
         {% if task.type == "event" or task.type == "excursion" %}
            {% if task.is_event_completed %}
             <b>This event was already completed at {{task.event_date}}. <br/>
-            You can continue to sign up for other events. Thanks you!
+               If you attended the event, Click on the "I Did it" button to get your points. <br/>
+            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a>
             </b>
            {% else %}
             <a onclick="task_form_overlay()"><button style="cursor:pointer;">I want to sign up</button></a>
@@ -172,14 +170,16 @@
         {% if task.type == "survey" %}
           <a onclick="task_form_overlay()"><button style="cursor:pointer;">I want to do it</button></a>
         {% endif %} 
-        {% if task.type == "activity"%} 
+        {% if task.type == "activity"%}
+          <b>
           Once you are done, click the button below to get your points!
+          </b>
           <p/>
           <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did This!</button></a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
-      </b></center> <p>
+      </center> <p>
     </div>
   </div>
 </div>
