@@ -305,7 +305,8 @@ if DEMO:
   except ImportError:
     pass
     
-# Logging is defined down here to give local_settings a chance to override the default log file.
+# Logging is defined down here to give local_settings a chance to override 
+# the default log file location.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
