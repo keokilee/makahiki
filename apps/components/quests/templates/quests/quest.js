@@ -14,7 +14,8 @@ $(document).ready(function() {
 
       //Toggle quest-details if it is hidden.
       if (!$("#quest-details").is(":visible")) {
-        console.log($(this).attr('id'));
+        log_js_action("quest", $(this).attr('id'), 'show');
+        // console.log($(this).attr('id'));
         $("#quest-details").slideDown("slow", function() {
           //Animation complete
         });
@@ -24,6 +25,7 @@ $(document).ready(function() {
     else {
       //Hide quest details and remove selected.
       $(this).parent().removeClass("selected");
+      log_js_action("quest", $(this).attr('id'), 'hide');
       $("#quest-details").slideUp("slow", function() {
         //Animation complete
       });
@@ -33,6 +35,7 @@ $(document).ready(function() {
   // Handler for clicking on the hide link.
   $("#quest-hide").click(function() {
     $("#quest-box li").removeClass("selected");
+    log_js_action("quest", $(this).attr('id'), 'hide');
     $("#quest-details").slideUp("slow", function() {
       //Animation complete
     });
