@@ -26,7 +26,7 @@ def __update_production(folder_name):
   with cd(folder_name):
     # Update settings and site media folder
     run("cp %sproduction_settings.py local_settings.py" % PRODUCTION_DIR)
-    run("ln -s %ssite_media site_media" % PRODUCTION_DIR)
+    run("rm site_media; ln -s %ssite_media site_media" % PRODUCTION_DIR)
     
     with prefix(VIRTUALENV_PREFIX):
       # Shouldn't need to update requirements since staging already did this, but just in case.
