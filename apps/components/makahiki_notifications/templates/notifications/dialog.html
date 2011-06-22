@@ -14,6 +14,7 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
+    log_js_action("notifications", "alert", "display");
     $("#notification-dialog").dialog({
       modal: true,
       width: 700,
@@ -22,6 +23,7 @@
     });
     
     $("#notification-dialog button").click(function() {
+      log_js_action("notifications", "alert", "close");
       $("#notification-dialog").dialog("close");
     });
   });

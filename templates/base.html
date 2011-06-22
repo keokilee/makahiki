@@ -11,34 +11,17 @@
     {# render_css_import user #}
     {% import_css STATIC_URL CSS_THEME %}
     
-    {% import_js STATIC_URL %}
+    <script src="{{STATIC_URL}}js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery.cycle.lite.1.0.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery.form.2.43.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}/js/makahiki.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+    <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script>
+    <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
     
-    <!-- Script to handle CSRF tokens for AJAX requests. -->
-    <script type="text/javascript">
-      $.ajaxSetup({ 
-           beforeSend: function(xhr, settings) {
-               function getCookie(name) {
-                   var cookieValue = null;
-                   if (document.cookie && document.cookie != '') {
-                       var cookies = document.cookie.split(';');
-                       for (var i = 0; i < cookies.length; i++) {
-                           var cookie = jQuery.trim(cookies[i]);
-                           // Does this cookie string begin with the name we want?
-                       if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                           break;
-                       }
-                   }
-               }
-               return cookieValue;
-               }
-               if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                   // Only send the token to relative URLs i.e. locally.
-                   xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-               }
-           } 
-      });
-    </script>
       
     {% block extra_head_base %}
         {% block extra_head %}{% endblock %}

@@ -56,20 +56,6 @@ def import_css(static_url, theme="default"):
   return ""
   
 @register.simple_tag
-def import_js(static_url, theme="default"):
-  """
-  Returns HTML that imports JS.  Typically should be used in the header section of a page.
-  """
-  theme_path = "css_rules.%s" % theme
-  __import__(theme_path)
-  theme_rules = sys.modules[theme_path]
-  return theme_rules.JS_IMPORTS.format(static_url)
-  # if theme_rules.RETURN_CLASSES: 
-  #   return theme_rules.JS_IMPORTS.format(static_url)
-  # 
-  # return ""
-  
-@register.simple_tag
 def import_page_css(page, static_url, theme="default"):
   """
   Returns HTML that imports CSS.  Typically should be used in the header section of a page.

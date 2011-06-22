@@ -195,6 +195,7 @@ function task_form_overlay()
 {
   el = document.getElementById("setup-dialog"); 
   el.style.visibility = "visible";
+  log_js_action("activities", "{{task.id}}", "show-form");
   $("#setup-dialog").dialog({
     modal: true,
     width: 450,
@@ -278,6 +279,7 @@ function help_dialog(content)
 {
   el = document.getElementById("help-dialog"); 
   el.style.visibility = "visible";
+  log_js_action("activities", "smart-grid", "view-help");
   $("#help-dialog").dialog({
     modal: true,
     width: 450,
