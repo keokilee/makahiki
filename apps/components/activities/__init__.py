@@ -157,12 +157,17 @@ def get_available_events(user):
   """Retrieves only the events that a user can participate in."""
 
   events = Activity.objects.filter(
-    type='event',
+    Q(type='event')|Q(type='excursion'),
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
   ).order_by("event_date","priority")
 
-  return events # Filters out inactive activities.
+  unlock_events = []
+  for event in events:
+    if is_unlock(user, event):
+      unlock_events.append(event)
+
+  return unlock_events # Filters out inactive activities.
   
 def get_completed_activities(user):
   """Gets the user's completed activities"""

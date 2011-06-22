@@ -10,7 +10,7 @@ This README describes how to set up your computer for developing the [Pinax impl
 * [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL).
 
 ## Installing Pinax
-* Download the latest official release from the [Pinax web site](http://pinaxproject.com/download/).
+* Download the latest official release from the [Pinax web site](http://pinaxproject.com/downloads/).
 * Extract the bundle and using the terminal or a command prompt, change into the new directory.
 * Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
 * TROUBLESHOOTING: On Mac OS X Snow Leopard, you may see an issue where the virtual environment fails to install.  One way to avoid this is to use the [virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/).  Follow the steps in the introduction and make a virtualenv for Pinax (i.e. `mkvirtualenv pinax-env`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script. Then, you can go back to the pinax folder you downloaded and type `python scripts/pinax-boot.py $WORKON_HOME/pinax-env` to install Pinax into the virtual environment.

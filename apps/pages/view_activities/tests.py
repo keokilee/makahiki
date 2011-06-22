@@ -107,8 +107,10 @@ class ActivitiesFunctionalTestCase(TestCase):
     member = ActivityMember(activity=activity, user=self.user, approval_status="rejected")
     member.save()
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response,
-        "Please check your <a href='%s" % reverse("profile_rejected", args=(member.id,)))
+    self.assertContains(response, "Your response to <a href='%s'>%s</a> was not approved" % (
+        reverse("activity_task", args=(activity.id,)),
+        activity.title,
+    ))
     response = self.client.get(reverse("activity_index"))
     self.assertNotContains(response, "notification-box")
     

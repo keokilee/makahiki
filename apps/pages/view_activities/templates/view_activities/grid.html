@@ -30,10 +30,10 @@
           {% if task.type != 'commitment' %}
             {% if task.is_pau %}
                 {% if task.approval.approval_status == "rejected" %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
+                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="12" align="left"/>
                 {% else %}
                     {% if task.approval.approval_status == "pending" and task.is_event_pau %}
-                      <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
+                      <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="12" align="left"/>
                     {% else %}
                       <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"/> 
                     {% endif %}
@@ -53,7 +53,7 @@
 	             {% if task.approval.days_left != 0 or task.approval.award_date %}
                   <img src="{{ STATIC_URL}}/css/default/images/icon-done.png" width="12" align="left"> 
                  {% else %}
-                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="14" align="left"/> 
+                  <img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="12" align="left"/>
                  {% endif %}
                 <br/>
 		        {{task.name}}
@@ -66,7 +66,7 @@
        {% else %}        {# ------ is lock #}      
  		<br/>
  		<a class="whatever" href="#">
-		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="18" align="top" 
+		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="22" align="top"
 		title="Click to see how to unlock" 
 		onclick="unlock_dialog(
 		{% if task.depends_on_text %} 

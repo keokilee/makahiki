@@ -266,10 +266,11 @@ SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
 }
 
-RESTRICTED_URL = "/restricted/"
-
 # If demo flag is set, use the additional demo settings.
 DEMO = False
+
+# Default log file location.
+LOG_FILE = '../makahiki.log'
 
 # Load additional settings files
 try:
@@ -303,3 +304,55 @@ if DEMO:
     from demo.competition_settings import *
   except ImportError:
     pass
+    
+# Logging is defined down here to give local_settings a chance to override 
+# the default log file location.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level':'DEBUG',
+            'class':'django.utils.log.NullHandler',
+        },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': LOG_FILE,
+            'formatter': 'simple',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers':['null'],
+            'propagate': True,
+            'level':'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'makahiki_logger': {
+            'handlers': ['file'],
+            'level': 'INFO',
+        }
+    }
+}
