@@ -19,13 +19,15 @@ class LoggingMiddleware(object):
       method = request.method
       # Timestamp yyyy-mm-dd Time
       timestamp = strftime("%Y-%m-%d %H:%M:%S")
-      
+    
       if not re.match(media_regexp, path) and path != "/favicon.ico":
         entry = "%s %s %s %s %d" % (timestamp, user.username, method, path, code)
         if request.method == "POST":
           # Dump the POST parameters, but we don't need the CSRF token.
           query_dict = request.POST.copy()
-          query_dict.__delitem__(u'csrfmiddlewaretoken')
+          # print query_dict
+          if query_dict.has_key(u"csrfmiddlewaretoken"):
+            del query_dict[u'csrfmiddlewaretoken']
           
           entry += " %s" % (query_dict,)
         
