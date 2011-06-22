@@ -1,48 +1,66 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>jQuery Mobile Test</title> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
-</head> 
+<html>
+<head> 
+  <title>Kukui Cup</title> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+</head>
 <body>
 
-<div data-role="header" data-theme="b" class="ui-bar-b ui-header" role="banner"><a href="#" class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-b" data-icon="arrow-l" data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Logout</span><span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span></span></a>
-	<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Kukui Cup</h1>
-</div>
-<br>
+<div data-role="page">
+  <header data-role="header" data-theme="b">
+    <h1>Kukui Cup</h1>
+  </header>
+  
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      <li>
+        <a href="news.html">Summary</a>
+      </li>
+      <li>
+        <a href="news.html">Quests</a>
+      </li>
+      <li>
+        <a href="news.html">Events</a>
+      </li>
+      <li>
+        <a href="smartgrid/">Smart Grid Game</a>
+      </li>
+      <li>
+        <a href="news.html">Scoreboard</a>
+      </li>
+      <li>
+        <a href="news.html">Power & Energy</a>
+      </li>
+      <li>
+        <a href="news.html">News Feed</a>
+      </li>
+      <li>
+        <a href="news.html">Commitments</a>
+      </li>
+      <li>
+        <a href="news.html">Prizes & Winners</a>
+      </li>
+      <li>
+        <a href="news.html">Raffle</a>
+      </li>
+      <li>
+        <a href="news.html">My Achievements</a>
+      </li>
+      <li>
+        <a href="news.html">My Profile</a>
+      </li>
+      <li>
+        <a href="news.html">Help</a>
+      </li>
+    </ul>
+  
+  </div>
 
-<div data-role="content" class="ui-content" role="main">
-
-
-<div data-role="listview">
-
-<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-    <li role="option" tabindex="0" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="summary.html" class="ui-link-inherit">Summary</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Quests</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Events</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Smart Grid Game</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Scoreboards</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Power & Energy</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">News Feed</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Commitments</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Prizes & Winners</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Raffle</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">My Achievements</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">My Profile</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-    <li role="option" tabindex="-1" data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-bottom ui-btn-up-c"><div class="ui-btn-inner"><div class="ui-btn-text"><a href="news.html" class="ui-link-inherit">Help</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
-        <!--<li><a href="api-pages.html">API documentation</a></li>-->
-</ul>
-
-</div><!-- /page -->
-
-
+  <footer data-role="footer" data-theme="e">
+  <h1>Footer</h1>
+  </footer>
 </div>
 
 </body>
 </html>
-
-
-
-
