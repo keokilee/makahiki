@@ -10,3 +10,8 @@ def smartgrid(request):
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
 
+def sevent(request):
+  return render_to_response("mobile/events/sevent/index.html", {}, context_instance=RequestContext(request))
+
+def events(request):
+  return render_to_response("mobile/events/index.html", {}, context_instance=RequestContext(request))
