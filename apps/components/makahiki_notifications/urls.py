@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('components.makahiki_notifications.views',
-    url(r'^read/(\d+)/$', 'read', name="notifications_read"),
+    url(r'^(\d+)/read/$', 'read', name="notifications_read"),
 )

@@ -80,6 +80,7 @@ def get_individual_standings(dorm=None, round_name=None, count=MAX_INDIVIDUAL_ST
     else:
       initials = profile.name[0]
       
+    label = ""
     if profile.floor:
       label = "%s: %s %s (%s)" % (
                 profile.floor.dorm.name,

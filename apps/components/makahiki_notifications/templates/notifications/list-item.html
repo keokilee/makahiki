@@ -19,6 +19,7 @@
       });
       
       $("#notification-item-{{notification.id}} .notification-share").click(function() {
+        log_js_action("notification", "{{notification.id}}", "share");
         FB.ui(
            {
              method: 'feed',
