@@ -20,10 +20,12 @@
   <div data-role="content">
     
     <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      {% for activity in activities %}
       <li>
-        <img src="img/favicon.ico" alt="Tweet-Link" class="ui-li-icon"/>
-        <a href="news.html">Tweet Link</a>
+        <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
+        <a href="{% url mobile_smartgrid_task activity activity.id %}">{{activity.category.name}}: {{activity.title}}</a>
       </li>
+      {% endfor %}
     </ul>
   </div>
   
