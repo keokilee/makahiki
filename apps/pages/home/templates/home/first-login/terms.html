@@ -1,7 +1,9 @@
-<h2 style="text-align: center">Terms and Conditions</h2>
-<div style="margin-bottom: 10px">
-  <h3>The Kukui Cup competition is part of a University of Hawaii research project on energy. Please read the following information and make a selection below.</h3>
-  <div style="border: 1px solid black; height: 200px; overflow: auto; padding: 5px">
+{% load class_tags %}
+
+<h2>Terms and Conditions</h2>
+<div {% get_id_and_classes "setup-content" %}>
+  <p>The Kukui Cup competition is part of a University of Hawaii research project on energy. Please read the following information and make a selection below.</p>
+  <div {% get_id_and_classes "setup-terms-content" %}>
     {% include "help/terms.html" %}
   </div>
 </div>
@@ -25,10 +27,10 @@
 
 <div style="clear:both"></div>
 
-<div style="text-align: center">
-  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+<div {% get_id_and_classes "progressbar-header" %}>
+  <p>Introduction progress, points: {{user.get_profile.points}}</p>
 </div>
-<div id="progressbar"></div>
+<div {% get_id_and_classes "progressbar" %}></div>
 <script type="text/javascript">
   $(document).ready(function() {
     $("#progressbar").progressbar({

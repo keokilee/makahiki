@@ -140,6 +140,26 @@ div.home-item {
 }
 
 /* Setup wizard styles */
+
+#setup-dialog h2 {
+  text-align: center;
+}
+
+#progressbar-header {
+  text-align: center;
+}
+
+#progressbar-header p {
+  margin: 5px 0;
+}
+
+#setup-welcome-info {
+  border: 1px solid black; 
+  padding: 10px; 
+  margin-bottom: 5px; 
+  text-align: center
+}
+
 #setup-dialog {
   text-align: left;
 }
@@ -149,6 +169,65 @@ div.home-item {
   background-color: #528EE3;
 }
 
+#profile-form ul {
+  list-style: none; 
+  padding: 0; 
+  padding-bottom: 5px; 
+  margin: 5px 0;
+}
+
+#profile-form ul li {
+  padding: 0; 
+  margin: 5px 0;
+}
+
+.setup-profile-help-text {
+  font-style: italic; 
+  font-size: 0.8em; 
+  margin: 5px 0;
+}
+
+.setup-form-photo {
+  float: left; 
+  width: 40%; 
+  padding-right: 5px
+}
+
+.setup-form-photo p {
+  margin: 5px 0;
+}
+
+#profile-picture-facebook {
+  margin-top: 10px;
+}
+
+#profile-picture-facebook p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 #profile-form img {
   vertical-align: baseline;
+}
+
+#setup-content {
+  margin-bottom: 10px;
+}
+
+#setup-terms-content {
+  border: 1px solid black;
+  height: 200px; 
+  overflow: auto; 
+  padding: 5px;
+}
+
+#setup-activity-form {
+  border: 1px solid black; 
+  margin-top: 10px; 
+  padding: 5px;
+}
+
+#setup-activity-form label {
+  margin-bottom: 5px;
+  display: block;
 }

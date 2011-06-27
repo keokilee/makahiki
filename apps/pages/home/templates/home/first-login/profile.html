@@ -1,28 +1,25 @@
 {% load avatar_tags %}
-<h2 style="text-align: center">Customize your Kukui Cup profile</h2>
+{% load class_tags %}
+<h2>Customize your Kukui Cup profile</h2>
 
-{% if user.facebookprofile %}
-<p style="text-align: center">Connected to Facebook account <a href="{{user.facebookprofile.profile_link}}" target="_blank">{{user.facebookprofile.name}}</a></p>
-{% endif %}
-
-<div style="margin-bottom: 10px">
+<div {% get_id_and_classes "setup-content" %}>
   <p>Each participant has a profile on the Kukui Cup website. You can personalize yours right now and get 5 points immediately!</p>
-  <form id="profile-form" action="{% url setup_profile %}" method="post">
+  <form {% get_id_and_classes "profile-form" %} action="{% url setup_profile %}" method="post">
     {% csrf_token %}
-    <ul style="list-style: none; padding: 0; padding-bottom: 5px; margin: 5px 0">
-      <li style="padding: 0; margin: 0">
+    <ul>
+      <li>
         {{form.display_name.label_tag}}: {{form.display_name}}
-        <p style="font-style: italic; font-size: 0.8em; margin: 0">{{form.display_name.help_text}}</p>
+        <p class="setup-profile-help-text">{{form.display_name.help_text}}</p>
       </li>
-      <li style="padding: 0; margin: 5px 0">
-        <div style="float: left; width: 40%">
-          <p style="margin: 0">Your profile picture:</p>
+      <li>
+        <div class="setup-form-photo">
+          <p>Your profile picture:</p>
           {% avatar user %}
         </div>
-        <div style="float: left; width: 40%; padding-left: 5px">
-          <p style="margin: 0">Upload a new picture:</p>
+        <div class="setup-form-photo">
+          <p>Upload a new picture:</p>
           {{form.avatar}}
-          <div id="profile-picture-facebook" style="margin-top: 10px">
+          <div id="profile-picture-facebook">
             {% include "home/first-login/profile-facebook.html" %}
           </div>
         </div>
@@ -44,10 +41,10 @@
 </div>
 <div style="clear:both"></div>
 
-<div style="text-align: center">
-  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+<div {% get_id_and_classes "progressbar-header" %}>
+  <p>Introduction progress, points: {{user.get_profile.points}}</p>
 </div>
-<div id="progressbar"></div>
+<div {% get_id_and_classes "progressbar" %}></div>
 
 <script type="text/javascript">
   {% include "home/first-login/profile.js" %}
