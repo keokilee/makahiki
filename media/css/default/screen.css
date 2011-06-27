@@ -340,6 +340,12 @@ clear: both;
   text-align: center;
 }
 
+/*------- Modal Overlay override -------*/
+.ui-widget-overlay {
+    opacity: .75;
+    filter: Alpha(Opacity=75);
+}
+
 /*------- Notification styles -----*/
 
 #notification-list {

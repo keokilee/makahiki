@@ -86,11 +86,6 @@
     padding-left: 100px;
 }
 
-.ui-widget-overlay {
-    opacity: .75;
-    filter: Alpha(Opacity=75);
-}
-
 h3.activity-categories-title {
 	background-color: #E3E3E3;
     background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
