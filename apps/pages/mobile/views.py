@@ -21,7 +21,7 @@ def task(request, activity_id):
     "activity": activity,
   }, context_instance=RequestContext(request))
 
-def sgresponse(request):
+def sgresponse(request, activity_id):
   return render_to_response("mobile/smartgrid/response.html",{}, context_instance=RequestContext(request))
 
 def landing(request):
