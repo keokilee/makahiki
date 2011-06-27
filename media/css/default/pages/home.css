@@ -148,3 +148,7 @@ div.home-item {
   background: none;
   background-color: #528EE3;
 }
+
+#profile-form img {
+  vertical-align: baseline;
+}

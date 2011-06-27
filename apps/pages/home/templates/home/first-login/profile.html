@@ -9,36 +9,33 @@
   <p>Each participant has a profile on the Kukui Cup website. You can personalize yours right now and get 5 points immediately!</p>
   <form id="profile-form" action="{% url setup_profile %}" method="post">
     {% csrf_token %}
-    {% if form.display_name.errors %}
-      {{form.display_name.errors}}
-    {% endif %}
-    <p>
-      {{form.display_name.label_tag}}: {{form.display_name}}<br/>
-      {{form.display_name.help_text}}
-    </p>
-    <p style="float:left">Your profile picture:</p>
-    <div style="float:left; padding-left: 20px">
-      {% avatar user %}
-    </div>
-    <div style="float:left; padding-left: 40px">
-      {{form.avatar}}
-      {% if user.facebookprofile %}
-        <p style="margin-top: 5px">
-          or<br/>
-          {{form.use_fb_photo}} Use your photo from Facebook<br/>
-          <img src="http://graph.facebook.com/{{user.facebookprofile.profile_id}}/picture"/>
-          {{form.facebook_photo}}
-        </p>
-      {% endif %}
-    </div>
-    <div style="clear:both"></div>
+    <ul style="list-style: none; padding: 0; padding-bottom: 5px; margin: 5px 0">
+      <li style="padding: 0; margin: 0">
+        {{form.display_name.label_tag}}: {{form.display_name}}
+        <p style="font-style: italic; font-size: 0.8em; margin: 0">{{form.display_name.help_text}}</p>
+      </li>
+      <li style="padding: 0; margin: 5px 0">
+        <div style="float: left; width: 40%">
+          <p style="margin: 0">Your profile picture:</p>
+          {% avatar user %}
+        </div>
+        <div style="float: left; width: 40%; padding-left: 5px">
+          <p style="margin: 0">Upload a new picture:</p>
+          {{form.avatar}}
+          <div id="profile-picture-facebook" style="margin-top: 10px">
+            {% include "home/first-login/profile-facebook.html" %}
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </li>
+    </ul>
   </form>
 </div>
 
 <div style="float: left">
   <button id="back" style="text-align: left">
    <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
-   Back<br/>Facebook connect</button>
+   Back<br/>Terms & Conditions</button>
 </div>
 <div style="float:right">
   <button id="next" style="text-align: right">Next 
@@ -51,60 +48,7 @@
   <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
 </div>
 <div id="progressbar"></div>
+
 <script type="text/javascript">
-  $(document).ready(function() {
-    // bind 'myForm' and provide a simple callback function 
-    $('#profile-form').ajaxForm();
-                
-    $("#progressbar").progressbar({
-      value: 400/7
-    });
-    
-    $("#back").button().click(function() {
-      $(this).button("option", "disabled", true);
-      $.get("{% url setup_facebook %}?from=profile", function(data) {
-        $("#ui-dialog-title-setup-dialog").html(data.title);
-        $("#setup-dialog").html(data.contents);
-      });
-    });
-    
-    $("#next").button().click(function() {
-      $(this).button("option", "disabled", true);
-      $('#profile-form').ajaxSubmit({
-        //beforeSubmit: showRequest,
-        dataType: "json",
-        success: showResponse,
-        error: handleError
-      });
-      $(this).button("option", "disabled", false);
-    });
-    
-    // Useful for debugging.
-    function showRequest(formData, jqForm, options) { 
-      // formData is an array; here we use $.param to convert it to a string to display it 
-      // but the form plugin does this for you automatically when it submits the data 
-      var queryString = $.param(formData); 
-
-      // jqForm is a jQuery object encapsulating the form element.  To access the 
-      // DOM element for the form do this: 
-      // var formElement = jqForm[0]; 
-
-      alert('About to submit: \n\n' + queryString); 
-
-      // here we could return false to prevent the form from being submitted; 
-      // returning anything other than false will allow the form submit to continue 
-      return true; 
-    }
-    
-    function handleError(xhr, text, error) {
-      alert("Error" + text);
-      alert(xhr.status);
-      alert(error);
-    }
-    
-    function showResponse(data) {
-      $("#ui-dialog-title-setup-dialog").html(data.title);
-      $("#setup-dialog").html(data.contents);
-    }
-  });
+  {% include "home/first-login/profile.js" %}
 </script>

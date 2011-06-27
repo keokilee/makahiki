@@ -41,18 +41,6 @@ class SetupWizardFunctionalTestCase(TestCase):
       response_dict = json.loads(response.content)
     except ValueError:
       self.fail("Response JSON could not be decoded.")
-      
-  def testSetupFacebook(self):
-    """Check that we can access the facebook page of the setup wizard."""
-    response = self.client.get(reverse("setup_facebook"), {}, 
-                HTTP_X_REQUESTED_WITH='XMLHttpRequest')
-    self.assertTemplateUsed(response, "home/first-login/facebook.html")
-    try:
-      response_dict = json.loads(response.content)
-    except ValueError:
-      self.fail("Response JSON could not be decoded.")
-      
-    # TODO: Test post method (requires a FB profile attached to the user)
     
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""
