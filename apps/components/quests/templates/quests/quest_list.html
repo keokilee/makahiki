@@ -2,7 +2,11 @@
 {% load markup %}
 
 <div {% get_id_and_classes "quest-box" %} style="clear: both">
-  <div class="content-box-title">Your Quests</div>
+  <div class="content-box-title">
+    Your Quests
+    {% include "quests/quest_help.html" %}
+	</div>
+	
   {% if QUESTS.user_quests or QUESTS.available_quests %}
   <ul>
     {% for quest in QUESTS.user_quests %}

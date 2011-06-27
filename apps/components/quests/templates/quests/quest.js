@@ -40,4 +40,10 @@ $(document).ready(function() {
       //Animation complete
     });
   });
-})
+  
+  $("#quest-help-dialog").dialog({
+    modal: true,
+    width: 450,
+    autoOpen: false
+  });
+});

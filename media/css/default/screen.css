@@ -436,6 +436,13 @@ clear: both;
   text-align: left;
 }
 
+#quest-help-icon {
+  height: 20px; 
+  margin: 5px 0; 
+  cursor: pointer;
+  float: right;
+}
+
 /*------- Footer styles -----*/
 #footer {
 	clear: both;
