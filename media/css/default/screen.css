@@ -86,21 +86,10 @@ a {
 	text-transform: capitalize;
 	text-align: right;
 }
-
-/*#header-nav-links {
-  background: transparent url(/site_media/static/css/default/images/bkg-icon-tray.png) 0 10px no-repeat;
-  width: 390px;
-  height: 78px;
-  display: block;
-  padding: 15px 2px;
-  margin-top: -135px;
-  margin-right: 10px;
-  float: right;
-  }*/
   
 #header-nav-links {
   background-color: #404242;
-  border: 2px solid gray;
+  border: 3px solid #B7AAAA;
   height: 90px;
   margin-top: -128px;
   margin-right: 10px;
