@@ -1,0 +1,20 @@
+{% if fb_id %}
+<p>Or, use your picture from Facebook:</p>
+<form action="{% url avatar_upload_fb %}" method="POST">
+  {% csrf_token %}
+  <img src="http://graph.facebook.com/{{fb_id}}/picture"/>
+  {{form.facebook_photo}}
+  <button type="submit">Use Facebook Photo</button>
+</div>
+{% else %}
+<p>Or, to use your Facebook picture, click here to log in:</p>
+<fb:login-button style="display: block" 
+   id="fb_login" length="long" perms="" 
+   onlogin="
+    $('#avatar-facebook').fadeOut(); 
+    $.get('{% url avatar_get_fb %}', function(data) {
+      $('#avatar-facebook').html(data.contents);
+      $('#avatar-facebook').fadeIn();
+    });">
+</fb:login-button>
+{% endif %}

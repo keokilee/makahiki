@@ -211,6 +211,23 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
   padding: 10px;
 }
 
+#avatar-change-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#avatar-change-content ul li {
+  display: inline;
+  float: left;
+  padding-right: 20px;
+}
+
+#avatar-change-content form button {
+  display: block;
+  margin-top: 5px;
+}
+
 /************** Badge catalog styles ********/
 #badge-catalog-box {
   width: 920px;

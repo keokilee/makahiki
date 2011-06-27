@@ -6,26 +6,26 @@
 <div {% get_id_and_classes "avatar-change" %}>
   <div {% get_id_and_classes "avatar-change-title" %}>Change your avatar</div>
   <div {% get_id_and_classes "avatar-change-content" %}>
-    <a href="{% url profile_index %}">Back to profile</a>
-    <p>Your current avatar: </p>
-    {% avatar user %}
-    {% if not avatars %}
-        <p>You do not yet have an avatar.  Please upload one now.</p>
-    {% else %}
+    <div id="avatar-back">
+      <a href="{% url profile_index %}">Back to profile</a>
+    </div>
+    <ul>
+      <li {% get_id_and_classes "avatar-current" %}>
+        <p>Your current avatar: </p>
+        {% avatar user %}
+      </li>
+      <li {% get_id_and_classes "avatar-upload" %}>
         <p>Upload a new avatar.</p>
-    {% endif %}
-    <form enctype="multipart/form-data" method="POST" action="">
-        <input type="file" name="avatar" value="Avatar Image" />
-        <input type="submit" value="Upload New Image" />
-    </form>
-    {% if user.facebookprofile %}
-    <p>Or use your picture from Facebook</p>
-    <img src="http://graph.facebook.com/{{user.facebookprofile.profile_id}}/picture"/>
-    <form method="POST" action="upload_fb/">
-      {% csrf_token %}
-      <input type="submit" value="Use Facebook Picture"/>
-    </form>
-    {% endif %}
+        <form enctype="multipart/form-data" method="POST" action="">
+            <input type="file" name="avatar" value="Avatar Image" />
+            <button type="submit">Upload New Image</button>
+        </form>
+      </li>
+      <li {% get_id_and_classes "avatar-facebook" %}>
+        {% include "makahiki_avatar/avatar_facebook.html" %}
+      </li>
+    </ul>
+    <div style="clear: both"></div>
   </div>
 </div>
 {% endblock %}

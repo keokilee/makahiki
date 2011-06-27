@@ -8,6 +8,9 @@ def avatar_img(avatar, size):
     return mark_safe("""<img src="%s" alt="%s" width="%s" height="%s" />""" % 
         (avatar.avatar_url(size), unicode(avatar), size, size))
 
+class FacebookPictureForm(forms.Form):
+    facebook_photo = forms.URLField(widget=forms.HiddenInput)
+  
 class PrimaryAvatarForm(forms.Form):
     
     def __init__(self, *args, **kwargs):

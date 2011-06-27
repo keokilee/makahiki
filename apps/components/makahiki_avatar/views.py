@@ -1,11 +1,14 @@
 import os.path
 import urllib2
+import simplejson as json
 
 from components.makahiki_avatar.models import Avatar, avatar_file_path
-from components.makahiki_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm
-from django.http import HttpResponseRedirect
+from components.makahiki_avatar.forms import PrimaryAvatarForm, DeleteAvatarForm, FacebookPictureForm
+import components.makahiki_facebook.facebook as facebook
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 from django.core.files import File
@@ -45,6 +48,38 @@ def _get_next(request):
     if not next:
         next = request.path
     return next
+    
+def get_facebook_photo(request):
+  """
+  Connect to Facebook to get the user's facebook photo..
+  """
+  if request.is_ajax():
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    fb_id = None
+    try:
+      graph = facebook.GraphAPI(fb_user["access_token"])
+      graph_profile = graph.get_object("me")
+      fb_id = graph_profile["id"]
+    except facebook.GraphAPIError:
+      return HttpResponse(json.dumps({
+          "contents": "Facebook is not available at the moment, please try later",
+      }), mimetype='application/json')
+    
+    # Insert the form into the response.
+    form = FacebookPictureForm(initial={
+      "facebook_photo": "http://graph.facebook.com/%s/picture?type=large" % fb_id
+    })
+    
+    response = render_to_string("makahiki_avatar/avatar_facebook.html", {
+      "fb_id": fb_id,
+      "form": form,
+    }, context_instance=RequestContext(request))
+
+    return HttpResponse(json.dumps({
+        "contents": response,
+    }), mimetype='application/json')
+
+  raise Http404
 
 def upload_fb(request):
   """Uploads the user's picture from Facebook."""
@@ -109,6 +144,15 @@ def change(request, extra_context={}, next_override=None):
         # return HttpResponseRedirect(next_override or _get_next(request))
         return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
         
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    fb_id = None
+    try:
+      graph = facebook.GraphAPI(fb_user["access_token"])
+      graph_profile = graph.get_object("me")
+      fb_id = graph_profile["id"]
+    except facebook.GraphAPIError:
+      pass
+      
     return render_to_response(
         'makahiki_avatar/change.html',
         extra_context,
@@ -117,7 +161,8 @@ def change(request, extra_context={}, next_override=None):
             { 'avatar': avatar, 
               'avatars': avatars,
               'primary_avatar_form': primary_avatar_form,
-              'next': next_override or _get_next(request), }
+              'next': next_override or _get_next(request), 
+              'fb_id': fb_id,}
         )
     )
 change = login_required(change)
