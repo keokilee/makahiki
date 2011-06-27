@@ -35,12 +35,6 @@ def index(request):
       profile.contact_text = form.cleaned_data["contact_text"]
       profile.contact_carrier = form.cleaned_data["contact_carrier"]
       # profile.enable_help = form.cleaned_data["enable_help"]
-      try:
-        fb_profile = user.facebookprofile
-        fb_profile.can_post = form.cleaned_data["facebook_can_post"]
-        fb_profile.save()
-      except FacebookProfile.DoesNotExist:
-        pass
         
       profile.save()
       form.message = "Your changes have been saved"
@@ -48,42 +42,17 @@ def index(request):
       form.message = "Please correct the errors below."
       
   # If this is a new request, initialize the form.
-  if not form:
-    try:
-      fb_profile = user.facebookprofile
-      fb_can_post = fb_profile.can_post
-    except FacebookProfile.DoesNotExist:
-      fb_can_post = False
-      
+  if not form:    
     form = ProfileForm(initial={
       "enable_help": user.get_profile().enable_help,
       "display_name": user.get_profile().name,
       "contact_email": user.get_profile().contact_email or user.email,
       "contact_text": user.get_profile().contact_text,
       "contact_carrier": user.get_profile().contact_carrier,
-      "facebook_can_post": fb_can_post,
     })
     
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
-  
-  # Retrieve Facebook information.
-  fb_profile = None
-  fb_enabled = False
-  try:
-    fb_user = facebook.get_user_from_cookie(request.COOKIES, 
-        settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
-        
-    fb_enabled = True
-    
-    if fb_user:
-      try:
-        fb_profile = request.user.facebookprofile
-      except FacebookProfile.DoesNotExist:
-        fb_profile = FacebookProfile.create_or_update_from_fb_user(request.user, fb_user)
-      
-  except AttributeError:
-    pass
     
   # Check for a rejected activity member.
   rejected_member = None
@@ -93,8 +62,6 @@ def index(request):
   
   return render_to_response("view_profile/index.html", {
     "form": form,
-    "fb_profile": fb_profile,
-    "fb_enabled": fb_enabled,
     "in_progress_members": get_in_progress_members(user),
     "completed_members": get_completed_members(user),
     "rejected_member": rejected_member,
