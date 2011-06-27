@@ -390,12 +390,25 @@ clear: both;
 
 /*------- Quest styles -----*/
 #header #quest-box {
-  background-color: #E3E3E3;
+  background: none;
+  background-color: rgba(64,66,66,0.9);
+  color: white;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 5px;
 }
 
-/*#quest-box h3 {
-  margin: 10px 0 0 10px;
-}*/
+#quest-title {
+  margin: 0;
+  display: inline;
+  vertical-align: bottom;
+}
+
+#quest-help-icon {
+  height: 20px; 
+  cursor: pointer;
+  float: right;
+}
 
 #quest-box ul {
   list-style: none;
@@ -413,23 +426,41 @@ clear: both;
   display: inline;
 }
 
-#quest-box h4 {
-  margin: 5px 0;
+#quest-box li a {
+  color: white;
+  font-size: 1.1em;
 }
 
-#quest-box li.selected {
-  background-color: #D0D0D0;
+a.quest-user-quest {
+  font-weight: bold;
+}
+
+.quest-options {
+  float: right;
+}
+
+#quest-contents {
+  text-align: left;
+}
+
+#quest-box h4 {
+  margin: 5px 0;
+  color: white;
+}
+
+#quest-box li.selected a {
+  color: #FCE988;
 }
 
 #quest-complete-dialog {
   text-align: left;
 }
 
-#quest-help-icon {
-  height: 20px; 
-  margin: 5px 0; 
-  cursor: pointer;
-  float: right;
+#quest-hide {
+  color: white;
+  float: left;
+  display: block;
+  font-weight: bold;
 }
 
 /*------- Footer styles -----*/

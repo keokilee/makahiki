@@ -44,8 +44,6 @@ div.home-item {
     background-image: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#E3E3E3), to(#BBB));
 	
 	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 	
 	box-shadow: 3px 3px 5px #000;
 	-moz-box-shadow: 3px 3px 5px #000;
@@ -57,11 +55,13 @@ div.home-item {
 }
 
 .content {
-	width: 930px;
+	width: 920px;
 	height: 440px;
 	margin: 0 auto 0 auto;
-	background: transparent url(/site_media/static/css/default/images/bkg-home-content.png) top center no-repeat;
 	
+	background: none;
+	background-color: rgba(255,255,255,0.8);
+	border: 2px solid #167000;
 }
 
 #home-center {
