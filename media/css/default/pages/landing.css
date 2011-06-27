@@ -23,12 +23,16 @@
 }
 
 #landing-page {
-	background: transparent url(/site_media/static/css/default/images/bkg-landing-title.png) top center no-repeat;
+	background: none;
+	background-color: rgba(255,255,255,0.8);
+	border: 2px solid #167000;
+	
 	width: 460px;
 	height: 130px;
 	float: none;
 	margin: 0 auto 0 auto;
 	padding: 8px;
+	padding-bottom: 0;
 }
 
 #landing-logo {
@@ -57,10 +61,6 @@
 }
 
 #landing-intro {
-	/* 
-	  Transparent background info found at:
-	  http://www.w3schools.com/css/css_image_transparency.asp
-	*/
 	background: none;
 	background-color: rgba(255,255,255,0.6);
 	border: 2px solid #167000;
@@ -79,6 +79,7 @@
 	/* 
 	  Transparent background info found at:
 	  http://www.w3schools.com/css/css_image_transparency.asp
+	  http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
 	*/
 	background: none;
 	background-color: rgba(255,255,255,0.6);
