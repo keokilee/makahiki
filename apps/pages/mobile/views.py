@@ -14,7 +14,7 @@ def smartgrid(request):
     "activities": activities,
   }, context_instance=RequestContext(request))
 
-def task(request):
+def task(request, activity_id):
   activity = get_object_or_404(ActivityBase, id=activity_id)
 
   return render_to_response("mobile/smartgrid/task.html", {
