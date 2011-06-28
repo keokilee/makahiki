@@ -46,4 +46,8 @@ $(document).ready(function() {
     width: 450,
     autoOpen: false
   });
+  
+  $("#quest-help-icon").click(function() {
+    $('#quest-help-dialog').dialog('open');
+  });
 });

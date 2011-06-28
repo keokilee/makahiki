@@ -3,7 +3,7 @@
 {% if QUEST_HELP %}
 <div id="quest-help-dialog" title="{{QUEST_HELP.title}}" style="display: none">
   <div style="text-align:left">
-    <div id="content">
+    <div id="quest-help-content">
       {{QUEST_HELP.contents}}
     </div>
     </p>
@@ -15,6 +15,5 @@
 
 <img {% get_id_and_classes "quest-help-icon" %} 
   src="{{ STATIC_URL }}/css/default/images/icon-help-sm.png"
-  title="Click to get help about this window" 
-  onclick="$('#quest-help-dialog').dialog('open');"/>
+  title="Click to get help about this window" />
 {% endif %}
