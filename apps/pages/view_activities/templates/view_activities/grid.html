@@ -65,10 +65,11 @@
           </a>
        {% else %}        {# ------ is lock #}      
  		<br/>
- 		<a class="whatever" href="#">
+ 		<a class="whatever" href="javascript:void(0);">
 		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="22" align="top"
 		title="Click to see how to unlock" 
-		onclick="unlock_dialog(
+		onclick="log_js_action('{{task.type}}', '{{task.id}}', 'view-lock');
+		unlock_dialog(
 		{% if task.depends_on_text %} 
 		'{{task.depends_on_text}}'
 		{% else %}
