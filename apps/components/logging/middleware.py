@@ -15,7 +15,7 @@ class LoggingMiddleware(object):
     """
     if hasattr(request, "user") and request.user.is_authenticated():
       user = request.user
-      path = request.path
+      path = request.get_full_path()
       code = response.status_code
       method = request.method
       ip_addr = request.META["REMOTE_ADDR"] if request.META.has_key("REMOTE_ADDR") else "no-ip"
