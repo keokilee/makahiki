@@ -5,6 +5,5 @@ urlpatterns = patterns('',
     url(r'^landing/$', 'pages.mobile.views.landing', name='mobile_landing'),
     url(r'^smartgrid/$', 'pages.mobile.views.smartgrid', name='mobile_smartgrid'),
     url(r'^smartgrid/task/(\d+)/$', 'pages.mobile.views.task', name='mobile_smartgrid_task'),
-    url(r'^events/$', 'pages.mobile.views.events', name='mobile_events'),
-    url(r'^events/sevent/$', 'pages.mobile.views.sevent', name='mobile_sevent')
+    url(r'^events/(\w*)/$', 'pages.mobile.views.events', name='mobile_events')
 )
