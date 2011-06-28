@@ -107,7 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'pinax.middleware.security.HideSensistiveFieldsMiddleware',
+    # 'pinax.middleware.security.HideSensistiveFieldsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.csrf.CsrfResponseMiddleware',
     'lib.django_cas.middleware.CASMiddleware',
@@ -129,7 +129,7 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
+    "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
