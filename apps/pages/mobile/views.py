@@ -30,7 +30,11 @@ def task(request, activity_id):
   }, context_instance=RequestContext(request))
 
 def sgresponse(request, activity_id):
-  return render_to_response("mobile/smartgrid/response.html",{}, context_instance=RequestContext(request))
+  activity = get_object_or_404(ActivityBase, id=activity_id)
+
+  return render_to_response("mobile/smartgrid/response.html", {
+    "activity": activity,
+  }, context_instance=RequestContext(request))
 
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
