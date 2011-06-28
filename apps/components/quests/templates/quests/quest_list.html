@@ -1,56 +1,16 @@
-{% load class_tags %}
 {% load markup %}
+{% load class_tags %}
 
-<div {% get_id_and_classes "quest-box" %} style="clear: both">
-  <div class="content-box-title">
-    Your Quests
-    {% include "quests/quest_help.html" %}
-	</div>
-	
-  {% if QUESTS.user_quests or QUESTS.available_quests %}
-  <ul>
+<ul id="quest-list">
+  {# set variable to indicate that these are user quests. #}
+  {% with "true" as user_quest %}
     {% for quest in QUESTS.user_quests %}
-    <li>
-      <a href="javascript:void(0)" id="{{quest.quest_slug}}" class="quest-title" style="font-weight: bold">
-        {{quest.name}}
-      </a>
-      <div class="quest-description" style="display:none">
-        {{quest.description|markdown}}
-        <div class="quest-options" style="float: right">
-          <form action="{% url quests_cancel quest.id %}" method="POST" style="display: inline">
-            <button type="submit" style="margin-right: 20px">Cancel this quest</button>
-          </form>
-        </div>
-        <div style="clear:both"></div>
-      </div>
-    </li>
+      {% include "quests/quest_item.html" %}
     {% endfor %}
-    {% for quest in QUESTS.available_quests %}
-    <li>
-      <a href="javascript:void(0)" id="{{quest.quest_slug}}" class="quest-title">{{quest.name}}</a>
-      <div class="quest-description" style="display:none">
-        {# <h4>This is a level {{quest.level}} quest</h4> #}
-        <h4>Quest Level: {{quest.level}}</h4>
-        {{quest.description|markdown}}
-        <div class="quest-options" style="float: right">
-          <form action="{% url quests_accept quest.id %}" method="POST" style="display: inline">
-            <button type="submit" style="margin-right: 20px">I accept this quest</button>
-          </form>
-          <form action="{% url quests_opt_out quest.id %}" method="POST" style="display: inline">
-            <button type="submit">I am not interested in this quest</button>
-          </form>
-        </div>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p style="text-align: center; width: 100%">There are no quests available at this time.  Please check back later!</p>
-  {% endif %}
+  {% endwith %}
   
-  <div {% get_id_and_classes "quest-details" %} style="margin: 0px 10px; display: none">
-    <div {% get_id_and_classes "quest-contents" %} style="clear:both"></div>
-    <a href="javascript:void(0)" {% get_id_and_classes "quest-hide" %} style="float: left; display: block">Hide</a>
-    <div style="clear:both"></div>
-  </div>
-</div>
+  {# render available quests #}
+  {% for quest in QUESTS.available_quests %}
+    {% include "quests/quest_item.html" %}
+  {% endfor %}
+</ul>

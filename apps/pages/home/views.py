@@ -17,7 +17,6 @@ from django.views.decorators.csrf import csrf_exempt
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
 import components.makahiki_facebook.facebook as facebook
-from components.makahiki_facebook.models import FacebookProfile
 from pages.home.forms import FacebookForm, ProfileForm
 
 @never_cache
@@ -38,7 +37,7 @@ def setup_welcome(request):
     response = render_to_string("home/first-login/welcome.html", {}, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 1 of 7",
+        "title": "Introduction: Step 1 of 6",
         "contents": response,
     }), mimetype='application/json')
     
@@ -54,7 +53,7 @@ def terms(request):
     response = render_to_string("home/first-login/terms.html", {}, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 2 of 7",
+        "title": "Introduction: Step 2 of 6",
         "contents": response,
     }), mimetype='application/json')
     
@@ -62,32 +61,42 @@ def terms(request):
   
 @never_cache
 @login_required
-def facebook_connect(request):
+def profile_facebook(request):
   """
-  Displays the Facebook connect page.
+  Connect to Facebook to get the user's facebook photo..
   """
   if request.is_ajax():
-    if request.method == "POST":
-      form = FacebookForm(request.POST)
-      if form.is_valid(): # Should always be valid since nothing is required.
-        fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
-        fb_profile = FacebookProfile.create_or_update_from_fb_user(request.user, fb_user)
-        fb_profile.can_post = form.cleaned_data["can_post"]
-        fb_profile.save()
-        
-        return _get_profile_form(request)
-      
-    else:
-      form = FacebookForm()
-      response = render_to_string("home/first-login/facebook.html", {
-        "form": form,
-      }, context_instance=RequestContext(request))
-
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    fb_id = None
+    if not fb_user:
       return HttpResponse(json.dumps({
-          "title": "Introduction: Step 3 of 7",
-          "contents": response,
+          "error": "We could not access your info.  Please log in again."
+      }), mimetype="application/json")
+      
+    try:
+      graph = facebook.GraphAPI(fb_user["access_token"])
+      graph_profile = graph.get_object("me")
+      fb_id = graph_profile["id"]
+    except facebook.GraphAPIError:
+      return HttpResponse(json.dumps({
+          "contents": "Facebook is not available at the moment, please try later",
       }), mimetype='application/json')
+      
+    # Insert the form into the response.
+    user_info = {
+      "facebook_photo": "http://graph.facebook.com/%s/picture?type=large" % fb_id
+    }
+    form = ProfileForm(initial=user_info)
     
+    response = render_to_string("home/first-login/profile-facebook.html", {
+      "fb_id": fb_id,
+      "form": form,
+    }, context_instance=RequestContext(request))
+    
+    return HttpResponse(json.dumps({
+        "contents": response,
+    }), mimetype='application/json')
+      
   raise Http404
   
 @never_cache
@@ -156,19 +165,9 @@ def _get_profile_form(request, form=None, non_xhr=False):
   Helper method to render the profile form.
   """
   if not form:
-    user_info = {
+    form = ProfileForm(initial={
       "display_name": request.user.get_profile().name,
-    }
-    
-    # Update the form with the user's FB picture.
-    try:
-      user_info.update({
-        "facebook_photo": "http://graph.facebook.com/%s/picture?type=large" % request.user.facebookprofile.profile_id
-      })
-    except FacebookProfile.DoesNotExist:
-      pass
-      
-    form = ProfileForm(initial=user_info)
+    })
     
   response = render_to_string("home/first-login/profile.html", {
     "form": form,
@@ -176,12 +175,12 @@ def _get_profile_form(request, form=None, non_xhr=False):
 
   if non_xhr:
     return HttpResponse('<textarea>' + json.dumps({
-        "title": "Introduction: Step 4 of 7",
+        "title": "Introduction: Step 3 of 6",
         "contents": cgi.escape(response),
     }) + '</textarea>', mimetype='text/html')
   else:
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 4 of 7",
+        "title": "Introduction: Step 3 of 6",
         "contents": response,
     }), mimetype='application/json')
     
@@ -192,7 +191,7 @@ def setup_activity(request, non_xhr=False):
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 5 of 7",
+        "title": "Introduction: Step 4 of 6",
         "contents": template,
     }), mimetype='application/json')
     
@@ -202,7 +201,7 @@ def setup_activity(request, non_xhr=False):
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse("<textarea>" + json.dumps({
-        "title": "Introduction: Step 5 of 7",
+        "title": "Introduction: Step 4 of 6",
         "contents": cgi.escape(template),
     }) + "</textarea>", mimetype='text/html')
     
@@ -217,7 +216,7 @@ def setup_question(request):
     template = render_to_string("home/first-login/question.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 6 of 7",
+        "title": "Introduction: Step 5 of 6",
         "contents": template,
     }), mimetype='application/json')
     
@@ -248,7 +247,7 @@ def setup_complete(request):
     template = render_to_string("home/first-login/complete.html", {}, context_instance=RequestContext(request))
 
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 7 of 7",
+        "title": "Introduction: Step 6 of 6",
         "contents": template,
     }), mimetype='application/json')
 

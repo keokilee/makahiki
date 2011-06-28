@@ -1,5 +1,7 @@
-<h2 style="text-align: center">Introduction Video</h2>
-<div style="margin-bottom: 10px">
+{% load class_tags %}
+
+<h2>Introduction Video</h2>
+<div {% get_id_and_classes "setup-content" %}>
   <p>Please watch this short video that explains the Kukui Cup competition and how to use this website. Pay close attention, because on the next screen you will be asked a question about the video to earn some more Kukui Nut points!</p>
 
   <iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/CzAmUxXXeJY" frameborder="0" allowfullscreen></iframe>
@@ -19,14 +21,14 @@
 
 <div style="clear:both"></div>
 
-<div style="text-align: center">
-  <p style="margin: 5px 0">Introduction progress, points: {{user.get_profile.points}}</p>
+<div {% get_id_and_classes "progressbar-header" %}>
+  <p>Introduction progress, points: {{user.get_profile.points}}</p>
 </div>
-<div id="progressbar"></div>
+<div {% get_id_and_classes "progressbar" %}></div>
 <script type="text/javascript">
   $(document).ready(function() {
     $("#progressbar").progressbar({
-      value: 500/7
+      value: 400/6
     });
     
     $("#back").button().click(function() {

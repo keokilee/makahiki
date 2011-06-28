@@ -1,5 +1,6 @@
 import datetime
 import random
+import string
 
 from django.core import management
 from django.conf import settings
@@ -14,17 +15,20 @@ class Command(management.base.BaseCommand):
     """
     Resets the user as if they never took part in the competition.
     """
-    self.stdout.write("\nWARNING: This command will reset %s.  This process is irreversible.\n" % args)
+    if len(args) == 0:
+      self.stdout.write("Need at least one username to reset.\n")
+      return
+      
+    self.stdout.write("WARNING: This command will reset the following user(s):\n%s" % (
+        string.join(args, "\n")
+    ))
+    self.stdout.write("\n\nThis process is irreversible.\n")
     value = raw_input("Do you wish to continue (Y/n)? ")
     while value != "Y" and value != "n":
       self.stdout.write("Invalid option %s\n" % value)
       value = raw_input("Do you wish to continue (Y/n)? ")
     if value == "n":
       self.stdout.write("Operation cancelled.\n")
-      return
-      
-    if len(args) == 0:
-      self.stdout.write("Need at least one username to reset.\n")
       return
       
     users = []
@@ -37,44 +41,40 @@ class Command(management.base.BaseCommand):
         
     for user in users:
       self.stdout.write("Resetting user %s\n" % user.username)
-      self.delete_members(user)
       self.reset_user(user)
-      
-
-  def delete_members(self, user):
-    """
-    Deletes the user's activities, commitments, quests, badges, and tickets.
-    """
-    for member in user.activitymember_set.all():
-      member.delete()
-    for member in user.commitmentmember_set.all():
-      member.delete()
-    for member in user.questmember_set.all():
-      member.delete()
-    for ticket in user.raffleticket_set.all():
-      ticket.delete()
-    for awarded in user.badges_earned.all():
-      awarded.delete()
-    for vote in user.energygoalvote_set.all():
-      vote.delete()
       
   def reset_user(self, user):
     """
-    Resets user attributes, like their score or if they did the first login.
+    Resets user by deleting them and then restoring them. Preserves the following attributes:
+    * username
+    * email
+    * staff/superuser status
+    * display_name
+    * First and last name
+    * Floor/lounge
     """
-    profile = user.get_profile()
-    profile.points = 0
-    profile.last_awarded_submission = None
-    profile.setup_profile = False
-    profile.setup_complete = False
-    profile.save()
+    username = user.username
+    email = user.email
+    is_staff = user.is_staff
+    is_superuser = user.is_superuser
     
-    try:
-      user.facebookprofile.delete()
-    except FacebookProfile.DoesNotExist:
-	    pass
-      
-    for entry in profile.scoreboardentry_set.all():
-      entry.points = 0
-      entry.last_awarded_submission = None
-      entry.save()
+    profile = user.get_profile()
+    d_name = profile.name
+    f_name = profile.first_name
+    l_name = profile.last_name
+    floor = profile.floor
+    
+    # Delete the user and create a new one.
+    user.delete()
+    new_user = User.objects.create_user(username=username, email=email, password="")
+    new_user.is_staff = is_staff
+    new_user.is_superuser = is_superuser
+    new_user.save()
+    
+    profile = new_user.get_profile()
+    profile.name = d_name
+    profile.first_name = f_name
+    profile.last_name = l_name
+    profile.floor = floor
+    
+    profile.save()

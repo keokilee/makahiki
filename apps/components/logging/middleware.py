@@ -30,6 +30,8 @@ class LoggingMiddleware(object):
           # print query_dict
           if query_dict.has_key(u"csrfmiddlewaretoken"):
             del query_dict[u'csrfmiddlewaretoken']
+          if query_dict.has_key(u"password"):
+            del query_dict[u'password']
             
           entry += " %s" % (query_dict,)
           

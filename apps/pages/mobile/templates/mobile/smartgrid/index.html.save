@@ -1,6 +1,6 @@
 <html>
-<head>
-  <title>{{activity.name}}</title> 
+<head> 
+  <title>Smart Grid Game</title> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
   <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
@@ -9,7 +9,7 @@
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
-    <h1>{{activity.name}}</h1>
+    <h1>{{}}</h1>
   </header>
 <!--
   <fieldset class="ui-grid-a">
@@ -17,13 +17,14 @@
     <div class="ui-block-b"><button type="submit">Completed</button></div>
   </fieldset>
 -->
-   <div data-role="content">
-    {{activity.description|safe}}
-
-    <a href="response/" data-role="button" data-rel="dialog" data-transition="pop">
-      I did this!
-    </a>
- 
+  <div data-role="content">
+    
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      <li>
+        <img src="img/favicon.ico" alt="Tweet-Link" class="ui-li-icon"/>
+        <a href="news.html">Tweet Link</a>
+      </li>
+    </ul>
   </div>
   
   <footer>
@@ -31,4 +32,4 @@
 </div>
 
 </body>
-</html>
+<html>

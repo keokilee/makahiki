@@ -34,27 +34,6 @@
     {#   <td>{{form.enable_help.label_tag}}</td> #}
     {#   <td>{{form.enable_help}}</td> #}
     {# </tr> #}
-    {% if fb_enabled %}
-    <tr {% get_id_and_classes "profile-form-fb" %}>
-      <td colspan="2" {% get_id_and_classes "profile-form-fb-header" %}>
-        Facebook Settings <img src="/site_media/static/css/default/images/facebook-icon.png" />
-      </td>
-    </tr>
-    {% if fb_profile %}
-      <tr {% get_id_and_classes "profile-form-fb-profile" %}>
-        <td {% get_id_and_classes "profile-form-fb-profile-label" %} colspan="2">Connected to <a href="{{fb_profile.profile_link}}">{{fb_profile.name}}</a></td>
-      </tr>
-      <tr {% get_id_and_classes "profile-form-fb-can-post" %}>
-        <td colspan="2" {% get_id_and_classes "profile-form-fb-can-post-fields" %}>{{form.facebook_can_post}}Post to Wall</td>
-      </tr>
-    {% else %}
-      <tr {% get_id_and_classes "profile-form-fb-login" %}>
-        <td colspan="2" {% get_id_and_classes "profile-form-fb-login-button" %}>
-          <fb:login-button id="fb_login" length="long" perms="offline_access,publish_stream" onlogin="location.reload()"></fb:login-button>
-        </td>
-      </tr>
-    {% endif %}
-    {% endif %}
     <tr {% get_id_and_classes "profile-form-contact" %}>
       <td {% get_id_and_classes "profile-form-contact-header" %} colspan="2">Reminder Settings</td>
     </tr>

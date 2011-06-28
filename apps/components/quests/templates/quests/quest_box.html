@@ -1,0 +1,21 @@
+{% load class_tags %}
+
+<div {% get_id_and_classes "quest-box" %} style="clear: both">
+  <div {% get_id_and_classes "quest-header" %}>
+    <h3 {% get_id_and_classes "quest-title" %}>Your Quests</h3>
+    {% include "quests/quest_help.html" %}
+	</div>
+	<div style="clear: both"></div>
+	
+  {% if QUESTS.user_quests or QUESTS.available_quests %}
+    {% include "quests/quest_list.html" %}
+  {% else %}
+  <p style="text-align: center; width: 100%">There are no quests available at this time.  Please check back later!</p>
+  {% endif %}
+  
+  <div {% get_id_and_classes "quest-details" %} style="margin: 0px 10px; display: none">
+    <div {% get_id_and_classes "quest-contents" %} style="clear:both"></div>
+    <a href="javascript:void(0)" {% get_id_and_classes "quest-hide" %}>Hide</a>
+    <div style="clear:both"></div>
+  </div>
+</div>
