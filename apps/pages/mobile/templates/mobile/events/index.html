@@ -13,149 +13,147 @@
 
 <body> 
 <div data-role="page" >
-	<div data-role="header" data-theme="b" data-add-back-btn="True"> 
-		<h1>Events</h1>
-		 <div data-role="navbar" data-add-back-btn="True">
-		   <ul>
-			  <li><a href="a.html" class="ui-btn-active">Upcoming</a></li>
-			  <li><a href="b.html">Attending</a></li>
-			<li><a href="b.html">Past Events</a></li>
-		    </ul>
-	</div>
-		<a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-	</div><!-- /header -->
- 
+  <div data-role="header" data-theme="b" data-add-back-btn="True"> 
+    <h1>Events</h1>
+    <div data-role="navbar" data-add-back-btn="True">
+      <ul>
+	<li>
+          <a href="{% url mobile_events 'Upcoming' %}" 
+		{% if view == "Upcoming" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Upcoming
+          </a>
+        </li>
+			  
+       <!--Change script to account for events the user is attending-->
+       <!--idk how to determine atm-->
+	<li>
+          <a href="{% url mobile_events 'Attending' %}"		
+		{% if view == "Attending" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Attending
+          </a>
+        </li>
 
-    <div data-role="content"></div>
-    
-    <div data-role="collapsible" data-collapsed="false" data-theme="b">
-    	 <h3><li data-role="list-divider">Sunday June 19, 2011 <span class="ui-li-count">2</span></li></h3>
-       <ul data-role="listview">
-		 <li>  
-			 <a href="sevent/">
-			   <img src="night.gif" />
-				<h3>Nuite Noir</h3>
-		   	<p><strong>Black out party at Hale Aloha!</strong></p>
-	      	<p>Party starts at 8, come on down!</p>
-				<p class="ui-li-aside"><strong>8:00 </strong>PM</p>
-			 </a>
-		  </li> 
-		  
-		  <li>  
-			 <a href="index.html">
-			   <img src="events/night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-		
-		
-		
-    <div data-role="collapsible" data-collapsed="True" data-theme="b">
-    	 <h3><li data-role="list-divider">Monday June 20, 2011 <span class="ui-li-count">count</span></li></h3>
+	<li>
+          <a href="{% url mobile_events 'Past' %}"
+		{% if view == "Past" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Past Events
+          </a>
+        </li>
+      </ul>
+    </div>
+    <a href="/../m" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">
+      Home
+    </a>
+  </div><!-- /header -->
+ 
+ <!-- upcoming events-->
+ {% if view == "Upcoming" or view == "upcoming" %}
+ <div data-role="content"></div>
+   {{eventlist.count}}
+   {% for day in datelist %}
+    <!--day is a 2d array-->
+   	<!--day[0] is the text representation-->
+   	<!--day[1] holds the date as a date object-->
+   <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
+     
+     <h3>
+        <li data-role="list-divider">
+          {{day.1}}
+          <span class="ui-li-count">2</span>
+        </li>
+     </h3>
        <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-		
-		
-		
-    <div data-role="collapsible" data-collapsed="true" data-theme="b">
-    	 <h3><li data-role="list-divider">Tuesday June 21, 2011 <span class="ui-li-count">count</span></li></h3>
+	 {% for events in eventlist %} 
+           {% if events.event_date.date == day.0 %}
+	     <li> 
+               <a href="{% url mobile_smartgrid_task events.id %}">
+	         <!--img tag would goes here-->
+	         <h3>{{events.title}}</h3>
+	         <p><strong>{{events.event_location}}</strong></p> 
+		 <p> ({{events.point_value}} points)</p>
+	         <p class="ui-li-aside">
+                 <strong>{{events.event_date.time}}</strong></p>
+               </a>
+	     </li> 
+           {% endif %}
+	 {% endfor %}
+       </ul>
+     </div>  
+     {% endfor %}
+  </div> 
+  {% endif %}
+
+
+  <!-- Past events-->
+  {% if view == "Past" or view == "past" %}
+    <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
+     
+     <h3>
+        <li data-role="list-divider">
+          Past Events
+          <span class="ui-li-count">2</span>
+        </li>
+     </h3>
        <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-		    
-		    
-		    
-    <div data-role="collapsible" data-collapsed="true" data-theme="b">		    
-    	 <h3><li data-role="list-divider">Wednesday June 22, 2011 <span class="ui-li-count">count</span></li></h3>
+	 {% for events in eventlist %}  
+	     <li> 
+               <a href="{% url mobile_smartgrid_task events.id %}">
+	         <img src="events/night.gif" />
+	         <h3>{{events.title}}</h3> 
+	         <p><strong>{{events.event_location}}</strong></p> 
+		 <p> ({{events.point_value}} points)</p>
+	         <p class="ui-li-aside">
+                 <strong>{{events.event_date.time}}</strong></p>
+               </a>
+	     </li>  
+	 {% endfor %}
+       </ul>
+     </div>   
+  {% endif %}
+
+  <!--Attending-->
+  {% if view == "Attending" or view == "attending" %}
+   <div data-role="content"></div>
+   {{eventlist.count}}
+   {% for day in datelist %}
+   <!--day is a 2d array-->
+   	<!--day[0] is the text representation-->
+   	<!--day[1] holds the date as a date object-->
+   <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
+     
+     <h3>
+        <li data-role="list-divider">
+          {{day.1}}
+          <span class="ui-li-count">2</span>
+        </li>
+     </h3>
        <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-				    
-		    
-    <div data-role="collapsible" data-collapsed="true" data-theme="b">		    
-    	 <h3><li data-role="list-divider">Thursday June 23, 2011 <span class="ui-li-count">count</span></li></h3>
-       <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-	 
-	 
-	 
-     <div data-role="collapsible" data-collapsed="true" data-theme="b">		    
-    	 <h3><li data-role="list-divider">Friday June 24, 2011 <span class="ui-li-count">count</span></li></h3>
-       <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-				  
-				  
-				    
- 	 <div data-role="collapsible" data-collapsed="true" data-theme="b">		    
-    	 <h3><li data-role="list-divider">Saturday June 25, 2011 <span class="ui-li-count">count</span></li></h3>
-       <ul data-role="listview"> 
-		  <li>  
-			 <a href="index.html">
-			   <img src="night.gif" />
-				<h3>Event Name</h3>
-		   	<p><strong>Bold detail text</strong></p>
-	      	<p>Plain detail text.</p>
-				<p class="ui-li-aside"><strong>Start/End Time </strong>AM/PM</p>
-			 </a>
-		  </li>
-		  </ul>
-	 </div>
-				    
-		   
-</div> 
+	 {% for events in eventlist %} 
+           {% if events.event_date.date == day.0 %}
+	     <li> 
+               <a href="{% url mobile_smartgrid_task events.id %}">
+	         <img src="events/night.gif" />
+	         <h3>{{events.title}}</h3>
+	         <p><strong>{{events.event_location}}</strong></p> 
+		 <p> ({{events.point_value}} points)</p>
+	         <p class="ui-li-aside">
+                 <strong>{{events.event_date.time}}</strong></p>
+               </a>
+	     </li> 
+           {% endif %}
+           {{events.title}}
+	 {% endfor %}
+       </ul>
+     </div>  
+     {% endfor %}
+  </div> 
+  {% endif %}
 </body>
 
 

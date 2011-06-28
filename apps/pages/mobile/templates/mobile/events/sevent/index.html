@@ -19,12 +19,11 @@
     
     <div data-role="content">
     <div align="left" id="pic">
-    	 <img src="../night.gif" alt="Nuite Noir" align="left" height="150" width="150"/>
+    	 <!--image tag could go here-->
     </div>
     <div  id="text" align="left">
-    	<p><h1>Nuite Noir</h1></p>
-    	<p>Hale Aloha Lawn, 8:00pm </p>
-    	<p>Come have a blast in the dark, and earn some points!</p>
+    	<p><h1>{{activity.name}}</h1></p> 
+    	<p>{{activity.description|safe}}</p>
     </div>
     
     <hr>
