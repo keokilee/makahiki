@@ -26,7 +26,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     """Check that the setup wizard is shown for new users."""
     response = self.client.get(reverse("home_index"))
     self.failUnlessEqual(response.status_code, 200)
-    self.assertContains(response, "Introduction: Step 1 of 7")
+    self.assertContains(response, "Introduction: Step 1 of 6")
     
     # Check that the user is redirected to the setup wizard even if they visit another page.
     response = self.client.get(reverse("profile_index"))

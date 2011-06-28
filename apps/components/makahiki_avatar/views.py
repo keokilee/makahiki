@@ -56,6 +56,11 @@ def get_facebook_photo(request):
   if request.is_ajax():
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
     fb_id = None
+    if not fb_user:
+      return HttpResponse(json.dumps({
+          "error": "We could not access your info.  Please log in again."
+      }), mimetype="application/json")
+    
     try:
       graph = facebook.GraphAPI(fb_user["access_token"])
       graph_profile = graph.get_object("me")
@@ -64,6 +69,7 @@ def get_facebook_photo(request):
       return HttpResponse(json.dumps({
           "contents": "Facebook is not available at the moment, please try later",
       }), mimetype='application/json')
+      
     
     # Insert the form into the response.
     form = FacebookPictureForm(initial={
@@ -71,6 +77,7 @@ def get_facebook_photo(request):
     })
     
     response = render_to_string("makahiki_avatar/avatar_facebook.html", {
+      "fb_error": fb_error,
       "fb_id": fb_id,
       "form": form,
     }, context_instance=RequestContext(request))
@@ -146,12 +153,14 @@ def change(request, extra_context={}, next_override=None):
         
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
     fb_id = None
-    try:
-      graph = facebook.GraphAPI(fb_user["access_token"])
-      graph_profile = graph.get_object("me")
-      fb_id = graph_profile["id"]
-    except facebook.GraphAPIError:
-      pass
+    
+    if fb_user:
+      try:
+        graph = facebook.GraphAPI(fb_user["access_token"])
+        graph_profile = graph.get_object("me")
+        fb_id = graph_profile["id"]
+      except facebook.GraphAPIError:
+        pass
       
     return render_to_response(
         'makahiki_avatar/change.html',

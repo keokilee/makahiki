@@ -68,6 +68,11 @@ def profile_facebook(request):
   if request.is_ajax():
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
     fb_id = None
+    if not fb_user:
+      return HttpResponse(json.dumps({
+          "error": "We could not access your info.  Please log in again."
+      }), mimetype="application/json")
+      
     try:
       graph = facebook.GraphAPI(fb_user["access_token"])
       graph_profile = graph.get_object("me")

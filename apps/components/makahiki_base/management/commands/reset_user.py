@@ -64,12 +64,17 @@ class Command(management.base.BaseCommand):
     l_name = profile.last_name
     floor = profile.floor
     
-    try:
-      user.facebookprofile.delete()
-    except FacebookProfile.DoesNotExist:
-	    pass
-      
-    for entry in profile.scoreboardentry_set.all():
-      entry.points = 0
-      entry.last_awarded_submission = None
-      entry.save()
+    # Delete the user and create a new one.
+    user.delete()
+    new_user = User.objects.create_user(username=username, email=email, password="")
+    new_user.is_staff = is_staff
+    new_user.is_superuser = is_superuser
+    new_user.save()
+    
+    profile = new_user.get_profile()
+    profile.name = d_name
+    profile.first_name = f_name
+    profile.last_name = l_name
+    profile.floor = floor
+    
+    profile.save()
