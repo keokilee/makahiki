@@ -7,6 +7,7 @@ from django.conf import settings
 
 # Filter out requests to media and site_media.
 media_regexp = r'^\/(site_)?media'
+logout_regexp = r'^\/account\/cas\/logout'
 
 class LoggingMiddleware(object):
   def process_response(self, request, response):

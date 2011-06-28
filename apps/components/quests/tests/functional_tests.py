@@ -57,7 +57,7 @@ class QuestFunctionalTestCase(TestCase):
     response = self.client.get(reverse("home_index"))
     self.assertContains(response, "Test quest", msg_prefix="Test quest should be available to the user.")
     response = self.client.post(
-        reverse("quests_accept", args=(quest.id,)), 
+        reverse("quests_accept", args=(quest.quest_slug,)), 
         follow=True,
         HTTP_REFERER=reverse("home_index"),
     )
@@ -80,7 +80,7 @@ class QuestFunctionalTestCase(TestCase):
     response = self.client.get(reverse("home_index"))
     self.assertContains(response, "Test quest", msg_prefix="Test quest should be available to the user.")
     response = self.client.post(
-        reverse("quests_opt_out", args=(quest.id,)), 
+        reverse("quests_opt_out", args=(quest.quest_slug,)), 
         follow=True,
         HTTP_REFERER=reverse("home_index"),
     )
@@ -101,13 +101,13 @@ class QuestFunctionalTestCase(TestCase):
     quest.save()
     
     response = self.client.post(
-        reverse("quests_accept", args=(quest.id,)), 
+        reverse("quests_accept", args=(quest.quest_slug,)), 
         follow=True,
         HTTP_REFERER=reverse("home_index"),
     )
     self.assertTrue(quest in response.context["QUESTS"]["user_quests"], "User should be participating in the test quest.")
     response = self.client.post(
-        reverse("quests_cancel", args=(quest.id,)), 
+        reverse("quests_cancel", args=(quest.quest_slug,)), 
         follow=True,
         HTTP_REFERER=reverse("home_index"),
     )
@@ -132,7 +132,7 @@ class QuestFunctionalTestCase(TestCase):
         0, "User should not have any completed quests.")
     
     response = self.client.post(
-        reverse("quests_accept", args=(quest.id,)), 
+        reverse("quests_accept", args=(quest.quest_slug,)), 
         follow=True,
         HTTP_REFERER=reverse("home_index"),
     )

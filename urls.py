@@ -30,7 +30,7 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),
-    url(r'^quests/', include('components.quests.urls')),
+    url(r'^quest/', include('components.quests.urls')),
     url(r'^notifications/', include('components.makahiki_notifications.urls')),
     url(r'^log/', include('components.logging.urls')),
     

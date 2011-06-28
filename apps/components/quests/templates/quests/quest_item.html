@@ -10,14 +10,14 @@
     {{quest.description|markdown}}
     <div class="quest-options">
       {% if user_quest %}
-      <form action="{% url quests_cancel quest.id %}" method="POST" style="display: inline">
+      <form action="{% url quests_cancel quest.quest_slug %}" method="POST" style="display: inline">
         <button type="submit" style="margin-right: 20px">Cancel this quest</button>
       </form>
       {% else %}
-      <form action="{% url quests_accept quest.id %}" method="POST" style="display: inline">
+      <form action="{% url quests_accept quest.quest_slug %}" method="POST" style="display: inline">
         <button type="submit" style="margin-right: 20px">I accept this quest</button>
       </form>
-      <form action="{% url quests_opt_out quest.id %}" method="POST" style="display: inline">
+      <form action="{% url quests_opt_out quest.quest_slug %}" method="POST" style="display: inline">
         <button type="submit">I am not interested in this quest</button>
       </form>
       {% endif %}
