@@ -19,7 +19,7 @@ class LoggingMiddleware(object):
     
     # Retrieve the username either from a cookie (when logging out) or the authenticated user.
     username = None
-    if request.session.has_key("logged-out-user"):
+    if hasattr(request, "session") and request.session.has_key("logged-out-user"):
       username = request.session["logged-out-user"]
       del request.session["logged-out-user"]
     elif hasattr(request, "user") and request.user.is_authenticated():
