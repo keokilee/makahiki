@@ -22,6 +22,18 @@ def smartgrid(request):
     "activities": activities,
   }, context_instance=RequestContext(request))
 
+def basicenrg(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/basicenrg.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def getstarted(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/getstarted.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
 def task(request, activity_id):
   activity = get_object_or_404(ActivityBase, id=activity_id)
 
