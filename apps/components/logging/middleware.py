@@ -7,6 +7,7 @@ from django.conf import settings
 
 # Filter out requests to media and site_media.
 media_regexp = r'^\/(site_)?media'
+url_filter = ("/favicon.ico", "/admin/jsi18n/",)
 
 class LoggingMiddleware(object):
   def process_response(self, request, response):
@@ -14,7 +15,7 @@ class LoggingMiddleware(object):
     Log the actions of logged in users.
     """
     # Filter out the following paths.  Logs will not be created for these paths.
-    if re.match(media_regexp, request.path) or request.path == "/favicon.ico":
+    if re.match(media_regexp, request.path) or request.path in url_filter:
       return response
     
     # Retrieve the username either from a cookie (when logging out) or the authenticated user.
