@@ -16,7 +16,7 @@ def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
 def smartgrid(request):
-  activities = ActivityBase.objects.order_by("category__name")
+  activities = ActivityBase.objects.order_by("priority")
 
   return render_to_response("mobile/smartgrid/index.html", {
     "activities": activities,
