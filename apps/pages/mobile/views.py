@@ -12,6 +12,7 @@ from components.makahiki_profiles import *
 from datetime import timedelta, date
 from time import strftime
 from string import lower
+from django.contrib.auth.decorators import login_required
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
@@ -81,6 +82,7 @@ def sgresponse(request, activity_id):
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
+@login_required
 def events(request,option): 
   eventlist = []
   user = request.user
@@ -89,7 +91,7 @@ def events(request,option):
 
   #handle the date functionality
   day = timedelta(days = 1)
-  today= datetime.date(2011,05,02)
+  today= datetime.date(2011,05,20)
   datelist = []
   #uncomment the below line to bring things up to date
   #today = date.today()
@@ -105,8 +107,11 @@ def events(request,option):
 
   #upcoming
   if string.lower(option) == options[0] :
-    eventlist = get_available_events(user)
-
+    #eventlist = get_available_events(user)
+    allObjects = ActivityBase.objects.all()
+    for item in allObjects:
+      if item.type == 'event' or item.type == 'excursion':
+        eventlist.append(item.activity)
   #attending
   elif string.lower(option) == options[1]:
     avail = get_available_events(user)  

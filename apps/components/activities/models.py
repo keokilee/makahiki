@@ -40,7 +40,7 @@ class TextPromptQuestion(models.Model):
   answer = models.CharField(max_length=255, help_text="255 character max.", null=True, blank=True)
   
   def __unicode__(self):
-    return self.question
+    return "Question: '%s' Answer: '%s'" % (self.question, self.answer)
 
 class QuestionChoice(models.Model):
   """Represents questions's multiple choice"""
