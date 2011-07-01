@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Make Watts</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+  <header data-role="header" data-theme="b">
+    <h1>Make Watts</h1>
+  </header>
+
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      {% for activity in activities %}
+        {% if "Make Watts" == activity.category.name %}
+        <li>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
+          <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+</body>
+
+</html>
