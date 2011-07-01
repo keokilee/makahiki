@@ -22,10 +22,13 @@
         {{ form.response }}
         <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
+          <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
+        </div>
      {% else %}
         You will earn 2 points for signing up for the {{task.type}}.
          <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">OK</button>
+         </div>
       {% endif %}
    <!--
      <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
@@ -47,6 +50,7 @@
      {% endif %}
      <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">OK</button>
+     </div>
    {% endif %}
   
   {% if task.type == "activity" %}          {# activity #}
@@ -82,6 +86,8 @@
     -->
       <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
+          <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
+      </div>
   {% endif %}
   
   {% if task.type == "survey" %}          {# survey #}   
@@ -94,13 +100,11 @@
      {% endfor %}
       <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
+          <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
+      </div>
    {% endif %}
 
-   <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
-   </div>
-
  </form>
-
 
 </div>
 
