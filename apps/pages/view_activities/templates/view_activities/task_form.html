@@ -96,12 +96,11 @@
           <button style="cursor:pointer;">Submit</button>
    {% endif %}
 
-    <a href="/activities/task/{{task.id}}">
-     <button style="cursor:pointer;">Cancel</button>
-     </a>
+   <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
    </div>
 
  </form>
+
 
 </div>
 
