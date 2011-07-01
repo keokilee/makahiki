@@ -23,6 +23,48 @@ def smartgrid(request):
     "activities": activities,
   }, context_instance=RequestContext(request))
 
+def basicenrg(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/basicenrg.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def getstarted(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/getstarted.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def movingon(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/movingon.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def lightsout(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/lightsout.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def makewatts(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/makewatts.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def potpourri(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/potpourri.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def opala(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/opala.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
 def task(request, activity_id):
   activity = get_object_or_404(ActivityBase, id=activity_id)
 
