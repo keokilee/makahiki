@@ -166,7 +166,7 @@ def __add_activity(request, activity_id):
       if form.is_valid():
         for i,q in enumerate(question):
           activity_member = ActivityMember(user=user, activity=activity)
-          activity_member.user_comment = form.cleaned_data["comment"]
+##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
           
@@ -278,6 +278,7 @@ def __request_activity_points(request, activity_id):
     }, context_instance=RequestContext(request))    
 
 @never_cache
+@login_required
 def task(request, task_id):
   """individual task page"""
   user = request.user
@@ -300,8 +301,14 @@ def task(request, task_id):
   
   if task.type != "commitment":
     task = task.activity
-    member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
-    members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
+
+    if task.type == "survey":
+      member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
+      members = ActivityMember.objects.filter(user=user, activity=task, approval_status="approved")
+    else:
+      member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
+      members = ActivityMember.objects.filter(user=user, activity=task)
+
     if members.count() > 0:
       pau = True
       approval = members[0]
@@ -377,7 +384,8 @@ def task(request, task_id):
     "help":help,
   }, context_instance=RequestContext(request))    
 
-@never_cache   
+@never_cache
+@login_required
 def add_task(request, task_id):
   
   task = ActivityBase.objects.get(id=task_id)
@@ -387,6 +395,8 @@ def add_task(request, task_id):
     
   if task.type == "activity":
     return __request_activity_points(request, task_id)
+  elif task.type == "survey":
+    return __add_activity(request, task_id)
   else:
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():

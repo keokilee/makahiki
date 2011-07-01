@@ -57,8 +57,8 @@
      <center> 
      <a href="/activities">
      <button style="cursor:pointer;">
-     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="36" align="top">
-     <br/> Back to Smart Grid Game
+     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="50" align="top">
+     <br/>Back to Smart Grid Game
      </button>
      </a> 
     </center>
@@ -198,13 +198,16 @@ function task_form_overlay()
   log_js_action("activities", "{{task.id}}", "show-form");
   $("#setup-dialog").dialog({
     modal: true,
-    width: 450,
+    width: 500,
     {% if task.type == "survey" %}
       height: 500,
     {% endif %}
     closeOnEscape: false,
-    position: [400,100],
+    position: [400,100]
     });
+
+   $('#id_response').focus();
+
     return false;
 }
 
@@ -257,7 +260,7 @@ function signup_point_dialog_overlay()
       height: 150,
     {% endif %}
     closeOnEscape: false,
-    position: [400,100],
+    position: [400,100]
     });
     return true;
 }
@@ -284,7 +287,7 @@ function help_dialog(content)
     modal: true,
     width: 450,
     closeOnEscape: false,
-    position: [400,100],
+    position: [400,100]
     });
     
   document.getElementById("content").innerHTML = content;

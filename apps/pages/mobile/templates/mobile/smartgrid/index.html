@@ -12,118 +12,40 @@
     <h1>Smart Grid Game</h1>
   </header>
 
-
   <div data-role="content">
     
     <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-
-      <li data-role="list-divider">Basic Energy</li>
-      {% for activity in activities %}
-        {% if "Basic Energy" == activity.category.name %}
         <li>
-          <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-          <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Basic Energy" class="ui-li-icon"/>
+          <a href="{% url mobile_basic_enrg %}">Basic Energy</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Get Started</li>
-      {% for activity in activities %}
-        {% if "Get Started" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Get Started" class="ui-li-icon"/>
+          <a href="{% url mobile_get_started %}">Get Started</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Moving on</li>
-      {% for activity in activities %}
-        {% if "Moving on" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Moving On" class="ui-li-icon"/>
+          <a href="{% url mobile_moving_on %}">Moving On</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Lights Out!</li>
-      {% for activity in activities %}
-        {% if "Lights Out!" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Lights Out!" class="ui-li-icon"/>
+          <a href="{% url mobile_lights_out %}">Lights Out!</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Make Watts</li>
-      {% for activity in activities %}
-        {% if "Make Watts" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Make Watts" class="ui-li-icon"/>
+          <a href="{% url mobile_make_watts %}">Make Watts</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Pot Pourri</li>
-      {% for activity in activities %}
-        {% if "Pot Pourri" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Pot Pourri" class="ui-li-icon"/>
+          <a href="{% url mobile_pot_pourri %}">Pot Pourri</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Opala</li>
-      {% for activity in activities %}
-        {% if "Opala" == activity.category.name %}
         <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
+          <img src="/site_media/static/css/default/images/favicon.ico" alt="Opala" class="ui-li-icon"/>
+          <a href="{% url mobile_opala %}">Opala</a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
-      <li data-role="list-divider">Wet and Wild</li>
-      {% for activity in activities %}
-        {% if "Wet and Wild" == activity.category.name %}
-        <li>
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-            <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
-        </li>
-        {% endif %}
-      {% endfor %}
     </ul>
 
-
-      <li data-role="list-divider">TEST LINE</li>
-
-      {% regroup activity.cagetory by name as reordered %}
-
-      <ul>
-      {% for name in reordered %}
-        <li>{{ name.grouper }}
-        <ul>
-          {% for item in name.list %}
-          <li>{{ item.title }}</li>
-          {% endfor %}
-        </ul>
-        </li>
-      {% endfor %}
-      </ul>
-
-
-
+ 
   </div>
   
   <footer>

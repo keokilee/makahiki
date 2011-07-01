@@ -15,7 +15,49 @@
 
   <div data-role="content" data-theme="c">
     <h1>filler</h1>
-    <p>This is a filler paragraph.</p>
+    <p>This is a filler paragraph.
+
+
+   {% if activity.type == "event" or activity.type == "excursion" %}     {# event #}
+     {% if activity.is_event_completed %}
+        <br/>Please enter the confirmation code you receieved from the event:
+     {% else %}
+        <br/>You will earn 2 points for signing up for the {{activity.type}}.
+     {% endif %}
+       <br/>(Optional) Provide comment for Kukui Cup Admin:
+   {% endif %}
+
+   {% if activity.type == "commitment" %}     {# commitment #}
+     {% if approval.days_left != 0 %}
+     <br/>
+     You will earn 2 points for making this commitment.
+     <br/>
+     Come back in 5 days of meeting your commitment for the rest of your 
+     points.
+     {% else %}
+     <br/>
+     Thank you for the commitment.
+     <br/>
+     You've earned {{activity.point_value}} points.
+     {% endif %}
+   {% endif %}  
+
+
+  {% if activity.type == "activity" %}          {# activity #}   
+    <br/>Activity response goes here
+
+    <br/>(Optional) Provide comment for Kukui Cup Admin:<br/>
+
+  {% endif %}
+  
+  {% if activity.type == "survey" %}          {# survey #}   
+     {{activity.confirm_prompt}}
+     <br/>survey goes here
+  {% endif %}
+  
+
+
+    </p>
 
     <a href="" data-role="button" data-rel="back" data-theme="b">OK</a>
     <a href="" data-role="button" data-rel="back" data-theme="a">Cancel</a>

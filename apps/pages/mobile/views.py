@@ -23,6 +23,48 @@ def smartgrid(request):
     "activities": activities,
   }, context_instance=RequestContext(request))
 
+def basicenrg(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/basicenrg.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def getstarted(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/getstarted.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def movingon(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/movingon.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def lightsout(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/lightsout.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def makewatts(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/makewatts.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def potpourri(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/potpourri.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
+def opala(request):
+  activities = ActivityBase.objects.order_by("priority")
+  return render_to_response("mobile/smartgrid/opala.html", {
+    "activities": activities,
+  }, context_instance=RequestContext(request))
+
 def task(request, activity_id):
   activity = get_object_or_404(ActivityBase, id=activity_id)
 
@@ -49,7 +91,7 @@ def events(request,option):
 
   #handle the date functionality
   day = timedelta(days = 1)
-  today= datetime.date(2011,05,02)
+  today= datetime.date(2011,05,20)
   datelist = []
   #uncomment the below line to bring things up to date
   #today = date.today()
@@ -65,8 +107,11 @@ def events(request,option):
 
   #upcoming
   if string.lower(option) == options[0] :
-    eventlist = get_available_events(user)
-
+    #eventlist = get_available_events(user)
+    allObjects = ActivityBase.objects.all()
+    for item in allObjects:
+      if item.type == 'event' or item.type == 'excursion':
+        eventlist.append(item.activity)
   #attending
   elif string.lower(option) == options[1]:
     avail = get_available_events(user)  

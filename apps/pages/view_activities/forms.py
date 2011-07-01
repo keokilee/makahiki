@@ -72,7 +72,7 @@ class SurveyForm(forms.Form):
       for i, q in enumerate(questions):
         self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question, required=True)
     
-      self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='Additonal Comments:', required=False)
+    ##TODO. self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='(Optional)Additonal Comments:', required=False)
 
   def clean(self):
     """Custom validation to verify confirmation codes."""
