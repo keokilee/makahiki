@@ -2,9 +2,9 @@
 
 <div {% get_id_and_classes "activity-task-form-content" %}>
   {% if form.is_multipart %}
-    <form enctype="multipart/form-data" action="add" method="post">
+    <form id="myform" enctype="multipart/form-data" action="add" method="post">
   {% else %}
-    <form action="add" method="post">
+    <form id="myform" action="add" method="post">
   {% endif %}
   
   {% csrf_token %}
@@ -23,9 +23,11 @@
      {% else %}
         You will earn 2 points for signing up for the {{task.type}}.
      {% endif %}
+   <!--
      <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
          {{ form.comment }} 
       <p/>
+   -->
    {% endif %}
    
    {% if task.type == "commitment" %}     {# commitment #}
@@ -42,7 +44,10 @@
    {% endif %}   
   </p>
   
-  {% if task.type == "activity" %}          {# activity #}   
+  {% if task.type == "activity" %}          {# activity #}
+    Please answer the following question(s) and submit your answer(s).
+    <br>You can also click on the "Cancel" button to go back to review the activity.
+
     {% if form.image_response %}         {# image #}
       {{task.confirm_prompt}} <p/>
       {{ form.image_response.errors }}
@@ -51,7 +56,7 @@
       {% if question %}                                {# question #}
         {{task.confirm_prompt}} <p/>
         {{form.question}}
-        {{question.question}} <br/>
+        <b>{{question.question}}</b> <br/>
         {% if question.questionchoice_set.count > 0 %}    {# choice response question #}
           {{ form.choice_response.errors }}
           {{ form.choice_response }}
@@ -65,32 +70,39 @@
         {{ form.response }}    
       {% endif %}  
     {%endif%}
-
+    <!--
     <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
          {{ form.comment }} 
     <p/>
+    -->
   {% endif %}
   
   {% if task.type == "survey" %}          {# survey #}   
      {{task.confirm_prompt}} <p/>
      {% for field in form %}
-     {{ field.label }} <br/>
+     <b>{{ field.label }}</b> <br/>
      {{ field.errors }}
      {{ field }}
      <p/>
      {% endfor %}
   {% endif %}
-  
-  {% if task.type != "commitment" %} 
-  <div {% get_id_and_classes "activity-task-form-content-button" %}>   
+
+  <div {% get_id_and_classes "activity-task-form-content-button" %}>
+
+  {% if task.type != "commitment" %}
   <input type="submit" value="Submit" />
-  </div>
   {% else %}
-  <div {% get_id_and_classes "activity-task-form-content-button" %}>   
-  <input type="submit" value="OK" /> 
-  </div>
+  <input type="submit" value="OK" />
   {% endif %}
-  
-  
-</form>
+
+  <a href="/activities/task/{{task.id}}">
+     <button style="cursor:pointer;">
+    Cancel
+     </button>
+  </a>
+
+  </div>
+ </form>
+
 </div>
+

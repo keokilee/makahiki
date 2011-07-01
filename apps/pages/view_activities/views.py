@@ -166,7 +166,7 @@ def __add_activity(request, activity_id):
       if form.is_valid():
         for i,q in enumerate(question):
           activity_member = ActivityMember(user=user, activity=activity)
-          activity_member.user_comment = form.cleaned_data["comment"]
+##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
           
@@ -387,6 +387,8 @@ def add_task(request, task_id):
     
   if task.type == "activity":
     return __request_activity_points(request, task_id)
+  elif task.type == "survey":
+    return __add_activity(request, task_id)
   else:
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():
