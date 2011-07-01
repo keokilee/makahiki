@@ -45,15 +45,15 @@
   </p>
   
   {% if task.type == "activity" %}          {# activity #}
-    Please answer the following question(s) and submit your answer(s).
-    <br>You can also click on the "Cancel" button to go back to review the activity.
-
     {% if form.image_response %}         {# image #}
       {{task.confirm_prompt}} <p/>
       {{ form.image_response.errors }}
       {{ form.image_response }}
     {% else %}                           
       {% if question %}                                {# question #}
+    Please answer the following question(s) and submit your answer(s).
+    <br>You can also click on the "Cancel" button to go back to review the activity.
+    <p/>
         {{task.confirm_prompt}} <p/>
         {{form.question}}
         <b>{{question.question}}</b> <br/>
