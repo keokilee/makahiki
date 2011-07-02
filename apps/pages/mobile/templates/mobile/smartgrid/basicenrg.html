@@ -17,7 +17,7 @@
 
       {% for activity in activities %}
         {% if "Basic Energy" == activity.category.name %}
-          {% if activity.is_active %}
+          {% if activity.is_unlock %}
           <li>
             <a href="{% url mobile_smartgrid_task activity.id %}">
               <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
@@ -26,7 +26,7 @@
           </li>
           {% else %}
           <li> 
-            <a href="{% url mobile_smartgrid_task activity.id %}" data-icon="delete">
+            <a href="" data-icon="delete">
               <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
               Not Available
             </a>
