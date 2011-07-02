@@ -9,7 +9,7 @@ from components.prizes.models import RaffleTicket
 # The number of quests a user can have at any one time.
 MAX_AVAILABLE_QUESTS = 3
 
-def has_task(user, name=None, task_type=None):
+def has_task(user, name=None, slug=None, task_type=None):
   """
   Determines if the user is participating in a task.
   In the case of a activity, this returns True if the user submitted or completed the activity.
@@ -20,10 +20,13 @@ def has_task(user, name=None, task_type=None):
   If a task_type is specified, then it checks to see if a user has completed a task of that type.
   Only one of name and task_type should be specified.
   """
-  if not name and not task_type:
+  if not (name or slug) and not task_type:
     raise Exception("Either name or task_type must be specified.")
     
-  if name:
+  if slug:
+    task = ActivityBase.objects.get(slug=slug)
+    return is_pau(user, task)
+  elif name:
     task = ActivityBase.objects.get(name=name)
     return is_pau(user, task)
   else:
@@ -33,28 +36,17 @@ def has_task(user, name=None, task_type=None):
     else:
       return user.activitymember_set.filter(activity__type=task_type).count() > 0
       
-def completed_task(user, name=None, task_type=None):
+def completed_task(user, name=None, slug=None, task_type=None):
   """
   Determines if the user has either completed the named task or completed a task of the given type.
   In general, if a user-task member is approved or has an award date, it is completed.
-  Only one of name and task_type should be specified.  Specifying neither will raise an Exception.  Specifying both will give name priority. 
+  Only one of name and task_type should be specified.  Specifying neither will raise an Exception.  
+  Specifying both will result in an error.
   """
-  if not name and not task_type:
+  if not (name or slug) and not task_type:
     raise Exception("Either name or task_type must be specified.")
     
-  if name:
-    task = ActivityBase.objects.get(name=name)
-    if task.type == "commitment":
-      return user.commitmentmember_set.filter(
-          commitment__id=task.id,
-          award_date__isnull=False,
-      ).count() > 0
-    else:
-      return user.activitymember_set.filter(
-          activity__id=task.id,
-          approval_status="approved",
-      ).count() > 0
-  else:
+  if task_type:
     task_type = task_type.lower()
     if task_type == "commitment":
       return user.commitmentmember_set.filter(
@@ -65,6 +57,25 @@ def completed_task(user, name=None, task_type=None):
           activity__type=task_type,
           approval_status="approved",
       ).count() > 0
+    
+  task = None
+  if slug:
+    task = ActivityBase.objects.get(slug=slug)
+  else:
+    task = ActivityBase.objects.get(name=name)
+  
+  if task.type == "commitment":
+    return user.commitmentmember_set.filter(
+        commitment__id=task.id,
+        award_date__isnull=False,
+    ).count() > 0
+  else:
+    return user.activitymember_set.filter(
+        activity__id=task.id,
+        approval_status="approved",
+    ).count() > 0
+      
+  
       
 def has_points(user, points, round_name=None):
   """
@@ -109,7 +120,7 @@ def num_tasks_completed(user, num_tasks, category_name=None, task_type=None):
     if category:
       query.filter(activity__category=category)
     
-    user_completed = user_completed + query.count()
+    user_completed += query.count()
     
   if not task_type or task_type == "commitment":
     # Build the query for commitment tasks.
@@ -121,7 +132,7 @@ def num_tasks_completed(user, num_tasks, category_name=None, task_type=None):
     if category:
       query.filter(commitment__category=category)
       
-    user_completed = user_completed + query.count()
+    user_completed += query.count()
   
   return user_completed >= num_tasks
 
