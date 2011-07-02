@@ -14,7 +14,6 @@ from time import strftime
 from string import lower
 from django.contrib.auth.decorators import login_required
 
-@login_required
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
@@ -91,7 +90,6 @@ def sgresponse(request, activity_id):
     "activity": activity,
   }, context_instance=RequestContext(request))
 
-@login_required
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
