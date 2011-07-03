@@ -151,43 +151,31 @@ def events(request,option):
 
 @login_required
 def quests(request,option): 
-  eventlist = []
+  questlist = []
   user = request.user
   options = ["available","accepted","completed"] 
   view = option
 
    
   #available
-  if string.lower(option) == options[0] : 
-    allObjects = QuestMember.objects.all() 
-    for quest in allObjects:
-      if quest.completed and quest.user == request.user:
-        eventlist.append(quest.quest)
+  #if string.lower(option) == options[0] :  
 
   #accpeted
-  elif string.lower(option) == options[1]:
-    avail = Quest.objects.all()  
-    try:
-      for event in avail:
-        member = ActivityMember.objects.get(user=request.user,activity=event)
-        if member.approval_status == "pending":
-          eventlist.append(event) 
-    except ActivityMember.DoesNotExist: 
-      eventlist = ' '
+  #elif string.lower(option) == options[1]: 
 
   #completed
-  elif string.lower(option) == options[2]:
-    avail = Quest.objects.filter(questmember__user=request.user,questmember__completed=True) 
-    try:
-      for quest in avail:
-        member = QuestMember.objects.get(user=request.user,quest=quest)
-        if member.completed:
-          eventlist.append(quest) 
-    except QuestMember.DoesNotExist: 
-      eventlist.append(' ')
+  if string.lower(option) == options[2]:
+    questlist = Quest.objects.filter(questmember__user=request.user,questmember__completed=True) 
+    #try:
+    #  for quest in avail:
+    #    member = QuestMember.objects.get(user=request.user,quest=quest)
+    #    if member.completed:
+    #      questlist.append(quest) 
+   # except QuestMember.DoesNotExist: 
+   #   questlist.append(' ')
 
   return render_to_response("mobile/quests/index.html", {
   "view": view,
-  "eventlist": eventlist,
+  "questlist": questlist,
   "options": options, 
   }, context_instance=RequestContext(request))
