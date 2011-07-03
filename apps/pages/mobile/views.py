@@ -154,25 +154,11 @@ def quests(request,option):
   questlist = []
   user = request.user
   options = ["available","accepted","completed"] 
-  view = option
-
-   
-  #available
-  #if string.lower(option) == options[0] :  
-
-  #accpeted
-  #elif string.lower(option) == options[1]: 
+  view = option 
 
   #completed
   if string.lower(option) == options[2]:
-    questlist = Quest.objects.filter(questmember__user=request.user,questmember__completed=True) 
-    #try:
-    #  for quest in avail:
-    #    member = QuestMember.objects.get(user=request.user,quest=quest)
-    #    if member.completed:
-    #      questlist.append(quest) 
-   # except QuestMember.DoesNotExist: 
-   #   questlist.append(' ')
+    questlist = Quest.objects.filter(questmember__user=request.user,questmember__completed=True)  
 
   return render_to_response("mobile/quests/index.html", {
   "view": view,
