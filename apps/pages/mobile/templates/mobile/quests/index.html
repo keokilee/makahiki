@@ -1,0 +1,94 @@
+<html>
+<head> 
+  <title>Quests</title> 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+  <header data-role="header" data-theme="b">
+    <h1>Quests</h1>
+<div data-role="navbar" data-add-back-btn="True">
+      <ul>
+	<li>
+          <a href="{% url mobile_quests 'available' %}" 
+		{% if view == "available" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Available
+          </a>
+        </li>
+			  
+       <!--Change script to account for events the user is attending-->
+       <!--idk how to determine atm-->
+	<li>
+          <a href="{% url mobile_quests 'accepted' %}"		
+		{% if view == "accepted" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Accepted
+          </a>
+        </li>
+
+	<li>
+          <a href="{% url mobile_quests 'completed' %}"
+		{% if view == "completed" %}
+			class="ui-btn-active"
+		{% endif %}>
+            Completed
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+  <div data-role="content">
+    
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+    
+      {% if view == "available" %}
+        <li data-role="list-divider">Available</li>
+        {% for activity in QUESTS.available_quests %} 
+          <li> 
+          <a href="temp">{{activity}}</a> 
+          </li> 
+        {% endfor %}
+      {% endif %}
+      
+      {% if view == "completed" %}
+      <li data-role="list-divider">Completed</li>
+      {% for activity in questlist %} 
+        <li> 
+        <a href="temp">{{activity}}</a> 
+        </li> 
+      {% endfor %}
+      {% endif %}
+      
+      {% if view == "accepted" %}
+      <li data-role="list-divider">Accepted</li>
+        {% for activity in QUESTS.user_quests %} 
+          <li> 
+          <a href="temp">{{activity}}</a> 
+          </li> 
+        {% endfor %}
+      {% endif %}
+       
+    </ul> 
+    
+
+       
+
+
+
+  </div>
+  
+  <footer>
+  </footer>
+</div>
+
+</body>
+
+<html>
