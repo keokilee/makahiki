@@ -13,12 +13,9 @@ urlpatterns = patterns('',
     url(r'^smartgrid/opala/$', 'pages.mobile.views.opala', name='mobile_opala'),
     url(r'^smartgrid/task/(\d+)/$', 'pages.mobile.views.task', name='mobile_smartgrid_task'), 
     url(r'^events/(\w*)/$', 'pages.mobile.views.events', name='mobile_events'), 
-<<<<<<< HEAD
     url(r'^smartgrid/task/(\d+)/form/$', 'pages.mobile.views.sgform', name='mobile_smartgrid_form'),
     url(r'^events/$', 'pages.mobile.views.events', name='mobile_events') 
-=======
     url(r'^smartgrid/task/(\d+)/response/$', 'pages.mobile.views.sgresponse', name='mobile_smartgrid_response'),
     url(r'^events/$', 'pages.mobile.views.events', name='mobile_events'),
     url(r'^quests/(\w*)/$', 'pages.mobile.views.quests', name='mobile_quests') 
->>>>>>> 5d1f0406de5fd0079dd5c56a6a4fa9133f4eb018
 )
