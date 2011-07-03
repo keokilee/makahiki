@@ -85,10 +85,10 @@ def task(request, activity_id):
   }, context_instance=RequestContext(request))
 
 @login_required
-def sgresponse(request, activity_id):
+def sgform(request, activity_id):
   activity = get_object_or_404(ActivityBase, id=activity_id)
 
-  return render_to_response("mobile/smartgrid/response.html", {
+  return render_to_response("mobile/smartgrid/form.html", {
     "activity": activity,
   }, context_instance=RequestContext(request))
 
