@@ -1,9 +1,10 @@
+<!DOCTYPE html> 
 <html>
 <head>
   <title>Moving On</title>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
-  <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
 </head>
 <body>
 
@@ -16,10 +17,21 @@
     <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
       {% for activity in activities %}
         {% if "Moving on" == activity.category.name %}
-        <li>
-          <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
-          <a href="{% url mobile_smartgrid_task activity.id %}">{{activity.title}}</a>
-        </li>
+          {% if activity.activity.is_active %}
+          <li>
+            <a href="{% url mobile_smartgrid_task activity.id %}">
+              <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>
+              {{activity.title}} ({{activity.activity.point_value}}{{activity.commitment.point_value}} pts)
+            </a>
+          </li>
+          {% else %}
+          <li> 
+            <a href="" data-icon="delete">
+              <img src="/site_media/static/css/default/images/lock24.png" alt="{{activity.title}}" class="ui-li-icon"/>
+              Mystery {{activity.type}}
+            </a>
+          </li>
+          {% endif %}
         {% endif %}
       {% endfor %}
     </ul>
