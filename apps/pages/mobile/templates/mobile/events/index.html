@@ -4,10 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"> 
 	<title>Events</title> 
-	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />  
-	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
 
 </head> 
 
@@ -103,8 +102,7 @@
        <ul data-role="listview"> 
 	 {% for events in eventlist %}  
 	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}">
-	         <img src="events/night.gif" />
+               <a href="{% url mobile_smartgrid_task events.id %}"> 
 	         <h3>{{events.title}}</h3> 
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
@@ -137,8 +135,7 @@
 	 {% for events in eventlist %} 
            {% if events.event_date.date == day.0 %}
 	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}">
-	         <img src="events/night.gif" />
+               <a href="{% url mobile_smartgrid_task events.id %}"> 
 	         <h3>{{events.title}}</h3>
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
