@@ -209,7 +209,7 @@ def events(request,option):
   #handle the date functionality
   day = timedelta(days = 1)
   #today= datetime.date(2011,05,20)
-  today= datetime.date(2011,05,03)
+  today= datetime.date(2011,05,20)
   datelist = []
   #uncomment the below line to bring things up to date
   #today = date.today()
