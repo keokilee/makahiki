@@ -312,3 +312,7 @@ def quest_detail(request, slug):
   return render_to_response("mobile/quests/details.html", {
     "quest": quest,
   }, context_instance=RequestContext(request))
+
+@login_required
+def popup(request):
+  return render_to_response("mobile/quests/popup.html", {}, context_instance=RequestContext(request))

@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^smartgrid/task/(\d+)/?$', 'pages.mobile.views.task', name='mobile_smartgrid_task'), 
     url(r'^events/(\w*)/?$', 'pages.mobile.views.events', name='mobile_events'), 
     url(r'^smartgrid/task/(\d+)/form/?$', 'pages.mobile.views.sgform', name='mobile_smartgrid_form'),
+    url(r'^quests/popup/?$', 'pages.mobile.views.popup', name='mobile_quest_popup'),
     url(r'^quests/(\w*)/?$', 'pages.mobile.views.quests', name='mobile_quests'),
-    url(r'^quests/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.quest_detail', name='mobile_quest_detail') 
+    url(r'^quests/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.quest_detail', name='mobile_quest_detail')
 )
