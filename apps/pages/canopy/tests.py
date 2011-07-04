@@ -1,16 +1,17 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class CanopyFunctionalTestCase(TestCase):
+  def testIndex(self):
+    """Check that we can load the index."""
+    user = User.objects.create_user("user", "user@test.com", password="changeme")
+    profile = user.get_profile()
+    profile.setup_complete = True
+    profile.setup_profile = True
+    profile.save()
+    self.client.login(username="user", password="changeme")
+    
+    response = self.client.get(reverse("canopy_index"))
+    self.failUnlessEqual(response.status_code, 200)
