@@ -13,6 +13,7 @@ from datetime import timedelta, date
 from time import strftime
 from string import lower
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 from components.quests.models import *
 from components.quests import *
 
@@ -186,6 +187,209 @@ def sgform(request, task_id):
     "can_commit":can_commit,
     "help":help,
   }, context_instance=RequestContext(request))
+
+
+###################################################################################################
+
+### Private methods.
+@never_cache
+def __add_commitment(request, commitment_id):
+  """Commit the current user to the commitment."""
+  
+  commitment = get_object_or_404(Commitment, pk=commitment_id)
+  user = request.user
+  floor = user.get_profile().floor
+  
+  members = CommitmentMember.objects.filter(user=user, commitment=commitment);
+  if members.count() > 0 and members[0].days_left() == 0:
+    #commitment end
+    member = members[0]
+    member.award_date = datetime.datetime.today()
+    member.save()
+      
+  if commitment not in user.commitment_set.all() and can_add_commitments(user):
+    # User can commit to this commitment.
+    member = CommitmentMember(user=user, commitment=commitment)
+    member.save()
+    # messages.info("You are now committed to \"%s\"" % commitment.title)
+
+    #increase point
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    user.get_profile().save()
+    
+    # Check for Facebook.
+    # try:
+    #   import makahiki_facebook.facebook as facebook
+    #   
+    #   fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    #   if fb_user:
+    #     try:
+    #       graph = facebook.GraphAPI(fb_user["access_token"])
+    #       graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
+    #     except facebook.GraphAPIError:
+    #       # Incorrect user token.
+    #       pass
+    #       
+    # except ImportError:
+    #   # Facebook not enabled.
+    #   pass
+        
+  return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(commitment.id,)) + "?display_point=true")
+
+@never_cache
+def __add_activity(request, activity_id):
+  """Commit the current user to the activity."""
+
+  activity = get_object_or_404(Activity, pk=activity_id)
+  user = request.user
+  floor = user.get_profile().floor
+  
+  # Search for an existing activity for this user
+  if activity not in user.activity_set.all() and request.method == "POST":
+
+    if activity.type == 'survey':
+      question = TextPromptQuestion.objects.filter(activity=activity)
+      form = SurveyForm(request.POST or None, questions=question)
+    
+      if form.is_valid():
+        for i,q in enumerate(question):
+          activity_member = ActivityMember(user=user, activity=activity)
+##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
+          activity_member.question = q
+          activity_member.response = form.cleaned_data['choice_response_%s' % i]
+          
+          if i == (len(question)-1):
+            activity_member.approval_status = "approved"
+            
+          activity_member.save()
+      else:   # form not valid
+        return render_to_response("smartgrid/task.html", {
+            "task":activity,
+            "pau":False,
+            "form":form,
+            "question":question,
+            "display_form":True,
+            "display_point":False,
+            "form_title": "Survey",
+            }, context_instance=RequestContext(request))    
+          
+    else:
+      activity_member = ActivityMember(user=user, activity=activity)
+      activity_member.save()
+        
+      #increase point
+      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+      user.get_profile().save()
+
+    return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(activity.id,)) + "?display_point=true")
+
+@never_cache
+def __request_activity_points(request, activity_id):
+  """Creates a request for points for an activity."""
+  
+  activity = get_object_or_404(Activity, pk=activity_id)
+  user = request.user
+  floor = user.get_profile().floor
+  question = None
+  activity_member = None
+  
+  try:
+    # Retrieve an existing activity member object if it exists.
+    activity_member = ActivityMember.objects.get(user=user, activity=activity)
+    if activity_member.award_date:
+      # messages.info("You have already received the points for this activity.")
+      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
+      
+  except ObjectDoesNotExist:
+    pass # Ignore for now.
+
+  if request.method == "POST":
+    if activity.confirm_type == "image":
+      form = ActivityImageForm(request.POST, request.FILES)
+    elif activity.confirm_type == "free":
+      form = ActivityFreeResponseForm(request.POST)
+    else:
+      form = ActivityTextForm(request.POST)
+    
+    ## print activity.confirm_type
+    if form.is_valid():
+      if not activity_member:
+        activity_member = ActivityMember(user=user, activity=activity)
+      
+      activity_member.user_comment = form.cleaned_data["comment"]
+      # Attach image if it is an image form.
+      if form.cleaned_data.has_key("image_response"):
+        path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
+        activity_member.image = path
+        
+        new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
+        
+        activity_member.approval_status = "pending"
+
+      elif activity.confirm_type == "code":
+        # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
+        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+        code.is_active = False
+        code.save()
+        activity_member.approval_status = "approved" # Model save method will award the points.
+        points = activity_member.activity.point_value
+        
+      # Attach text prompt question if one is provided
+      elif form.cleaned_data.has_key("question"):
+        activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
+        activity_member.response = form.cleaned_data["response"]
+        activity_member.approval_status = "pending"
+                
+      elif activity.confirm_type == "free":
+        activity_member.response = form.cleaned_data["response"]
+        activity_member.approval_status = "pending"
+
+      activity_member.save()
+          
+      return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(activity.id,)) + "?display_point=true")
+    
+    if activity.confirm_type == "text":
+      question = activity.pick_question(user.id)
+      ##if question:
+      ##  form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+      
+    return render_to_response("smartgrid/task.html", {
+    "task":activity,
+    "pau":False,
+    "form":form,
+    "question":question,
+    "member_all":0,
+    "member_floor":0,
+    "display_form":True,
+    "display_point":False,
+    "form_title": "Get your points",
+    }, context_instance=RequestContext(request))    
+
+
+###################################################################################################
+
+
+@login_required
+def sgadd(request, task_id):
+  
+  task = ActivityBase.objects.get(id=task_id)
+
+  if task.type == "commitment":
+    return __add_commitment(request, task_id)
+    
+  if task.type == "activity":
+    return __request_activity_points(request, task_id)
+  elif task.type == "survey":
+    return __add_activity(request, task_id)
+  else:
+    task = Activity.objects.get(pk=task.pk)
+    if task.is_event_completed():
+      return __request_activity_points(request, task_id)
+    else:  
+      return __add_activity(request, task_id)
+    
+   
+  
 
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
