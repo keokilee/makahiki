@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'pages.view_profile',
     'pages.view_energy',
     'pages.view_help',
+    'pages.canopy',
     'pages.home',
     'pages.landing',
     'pages.news',

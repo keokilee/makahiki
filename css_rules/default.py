@@ -26,6 +26,7 @@ PAGE_CSS_IMPORT = {
   "view_help": '<link rel="stylesheet" href="{0}css/{1}/pages/view_help.css">',
   "view_prizes": '<link rel="stylesheet" href="{0}css/{1}/pages/view_prizes.css">',
   "view_profile": '<link rel="stylesheet" href="{0}css/{1}/pages/view_profile.css">',
+  "canopy": '<link rel="stylesheet" href="{0}css/{1}/pages/canopy.css">',
 }
 CSS_IDS = {
   # "quest-box": "content-box",
