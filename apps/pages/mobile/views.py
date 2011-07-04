@@ -199,6 +199,10 @@ class EventDay:
   def __str__(self):
     return "obj= " + str(self.date) + " " +  " " + str(self.eventlist)
 
+#used for sorting lists of events
+def get_date(obj):
+  return obj.event_date
+
 @login_required
 def events(request,option): 
   objlist = []
@@ -207,12 +211,11 @@ def events(request,option):
   view = option
 
   #handle the date functionality
-  day = timedelta(days = 1)
-  #today= datetime.date(2011,05,20)
-  today= datetime.date(2011,05,20)
+  day = timedelta(days = 1) 
+  today= datetime.date(2011,07,10)
   datelist = []
   #uncomment the below line to bring things up to date
-  #today = date.today()
+  today = date.today()
   datelist.append([])
   datelist[0].append(today)
   datelist[0].append(today.strftime("%A, %B %d"))
@@ -233,24 +236,27 @@ def events(request,option):
       obj.datestring = element[1]
       temparray = [] 
       count = 0
-      for event in events:
-        aux = event.event_date.date
-        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):
+      for event in events: 
+        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"): 
           temparray.append(event)
-          count = count + 1 
+          count = count + 1  
       obj.count = count
       obj.eventlist = temparray
       objlist.append(obj)
   #attending
   elif string.lower(option) == options[1]:
-    avail = get_available_events(user)  
+    #avail = get_available_events(user)  
+    avail = ActivityBase.objects.filter(type='event')
     attending = []
-    try:
-      for event in avail:
-        member = ActivityMember.objects.get(user=request.user,activity=event)
+    
+    for event in avail:
+      #delete
+      #attending.append(event.activity)
+      try:
+        member = ActivityMember.objects.get(user=request.user,activity=event) 
         if member.approval_status == "pending":
-          attending.append(event) 
-    except ActivityMember.DoesNotExist: 
+          attending.append(event.activity) 
+      except ActivityMember.DoesNotExist: 
           boolean = False
     for element in datelist:
       obj = EventDay()
@@ -264,16 +270,17 @@ def events(request,option):
           count = count + 1 
       obj.count = count
       obj.eventlist = temparray
+      #obj.eventlist = attending
       objlist.append(obj)
   
 
   #past
   elif string.lower(option) == options[2]:   
-    avail = get_available_events(user)
+    avail = ActivityBase.objects.filter(type='event')
     for event in avail:
-      if event.event_date.date() < today:
-        objlist.append(event)
-
+      if event.activity.event_date.date() < today:
+        objlist.append(event.activity) 
+    objlist.sort(key=get_date)
   return render_to_response("mobile/events/index.html", {
   "view": view, 
   "objlist": objlist,

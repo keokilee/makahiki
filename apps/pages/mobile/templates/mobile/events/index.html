@@ -63,7 +63,7 @@
      <h3>
         <li data-role="list-divider">
           {{object.datestring}}
-          <span class="ui-li-count">{{object.eventlist.count}}</span>
+          <span class="ui-li-count">{{object.count}}</span>
         </li>
      </h3>
        <ul data-role="listview"> 
@@ -103,7 +103,7 @@
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
 	         <p class="ui-li-aside">
-                 <strong>{{events.event_date.time}}</strong></p>
+                 <strong>{{events.event_date}}</strong></p>
                </a>
 	     </li>  
 	 {% endfor %}
@@ -124,7 +124,7 @@
      <h3>
         <li data-role="list-divider">
           {{object.datestring}}
-          <span class="ui-li-count">{{object.eventlist.count}}</span>
+          <span class="ui-li-count">{{object.count}}</span>
         </li>
      </h3>
        <ul data-role="listview"> 
