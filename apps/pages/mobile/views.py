@@ -95,22 +95,33 @@ def sgform(request, activity_id):
 def landing(request):
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
+class EventDay:
+  def __init__(self):
+    self.date = ''
+    self.datestring = ''
+    self.eventlist = []
+    self.count = 0
+  def __str__(self):
+    return "obj= " + str(self.date) + " " +  " " + str(self.eventlist)
+
 @login_required
 def events(request,option): 
-  eventlist = []
+  objlist = []
   user = request.user
   options = ["upcoming","attending","past"] 
   view = option
 
   #handle the date functionality
   day = timedelta(days = 1)
-  today= datetime.date(2011,05,20)
+  #today= datetime.date(2011,05,20)
+  today= datetime.date(2011,05,03)
   datelist = []
   #uncomment the below line to bring things up to date
   #today = date.today()
   datelist.append([])
   datelist[0].append(today)
   datelist[0].append(today.strftime("%A, %B %d"))
+ 
   temp = today
   for i in range(1,7,1):
     datelist.append([])
@@ -120,31 +131,58 @@ def events(request,option):
 
   #upcoming
   if string.lower(option) == options[0] :
-    eventlist = get_available_events(user)
-
+    events = get_available_events(user) 
+    for element in datelist:
+      obj = EventDay()
+      obj.date = element[0]
+      obj.datestring = element[1]
+      temparray = [] 
+      count = 0
+      for event in events:
+        aux = event.event_date.date
+        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):
+          temparray.append(event)
+          count = count + 1 
+      obj.count = count
+      obj.eventlist = temparray
+      objlist.append(obj)
   #attending
   elif string.lower(option) == options[1]:
     avail = get_available_events(user)  
+    attending = []
     try:
       for event in avail:
         member = ActivityMember.objects.get(user=request.user,activity=event)
         if member.approval_status == "pending":
-          eventlist.append(event) 
+          attending.append(event) 
     except ActivityMember.DoesNotExist: 
-      eventlist = ' '
+          boolean = False
+    for element in datelist:
+      obj = EventDay()
+      obj.date = element[0]
+      obj.datestring = element[1]
+      count = 0
+      temparray = [] 
+      for event in attending: 
+        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):
+          temparray.append(event)
+          count = count + 1 
+      obj.count = count
+      obj.eventlist = temparray
+      objlist.append(obj)
+  
 
   #past
   elif string.lower(option) == options[2]:   
     avail = get_available_events(user)
     for event in avail:
       if event.event_date.date() < today:
-        eventlist.append(event)
+        objlist.append(event)
 
   return render_to_response("mobile/events/index.html", {
-  "view": view,
-  "eventlist": eventlist,
-  "options": options,
-  "datelist": datelist,
+  "view": view, 
+  "objlist": objlist,
+  "options": options, 
   }, context_instance=RequestContext(request))
 
 
@@ -164,4 +202,11 @@ def quests(request,option):
   "view": view,
   "questlist": questlist,
   "options": options, 
+  }, context_instance=RequestContext(request))
+
+@login_required
+def quest_detail(request, slug):
+  quest=get_object_or_404(Quest,quest_slug=slug)  
+  return render_to_response("mobile/quests/details.html", {
+    "quest": quest,
   }, context_instance=RequestContext(request))

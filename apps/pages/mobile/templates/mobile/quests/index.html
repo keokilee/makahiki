@@ -53,7 +53,7 @@
         <li data-role="list-divider">Available</li>
         {% for activity in QUESTS.available_quests %} 
           <li> 
-          <a href="temp">{{activity}}</a> 
+          <a href="{% url mobile_quest_detail  activity.quest_slug %}">{{activity}}</a> 
           </li> 
         {% endfor %}
       {% endif %}
@@ -62,7 +62,7 @@
       <li data-role="list-divider">Completed</li>
       {% for activity in questlist %} 
         <li> 
-        <a href="temp">{{activity}}</a> 
+        <a href="{% url mobile_quest_detail activity.quest_slug %}">{{activity}}</a> 
         </li> 
       {% endfor %}
       {% endif %}
@@ -71,7 +71,7 @@
       <li data-role="list-divider">Accepted</li>
         {% for activity in QUESTS.user_quests %} 
           <li> 
-          <a href="temp">{{activity}}</a> 
+          <a href="{% url mobile_quest_detail activity.quest_slug %}">{{activity}}</a> 
           </li> 
         {% endfor %}
       {% endif %}
