@@ -1,0 +1,46 @@
+/*Background overrides.*/
+.container-top {
+    background: none;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container-bottom {
+    background: transparent url(/site_media/static/css/default/images/bkg-landing-top.jpg) bottom center no-repeat;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container {
+	background: none;
+	background-color: white;
+}
+
+/***** Canopy styles ******/
+.content {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#canopy-about {
+  padding: 5px;
+  background-color: rgba(255,255,255,0.8);
+	border: 2px solid #167000;
+	margin-bottom: 10px;
+}
+
+.content-box {
+  margin-bottom: 20px;
+}
+
+#canopy-feed-members .content-box {
+  float: left;
+  width: 455px;
+}
+
+#canopy-feed {
+  margin-right: 20px;
+}

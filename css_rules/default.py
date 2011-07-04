@@ -110,6 +110,15 @@ CSS_IDS = {
   "prizes-raffle": "content-box",
   "prizes-raffle-title": "content-box-title",
   "prizes-list-title": "content-box-title",
+  
+  "canopy-quests": "content-box",
+  "canopy-quests-title": "content-box-title",
+  "canopy-viz": "content-box",
+  "canopy-viz-title": "content-box-title",
+  "canopy-feed": "content-box",
+  "canopy-feed-title": "content-box-title",
+  "canopy-members": "content-box",
+  "canopy-members-title": "content-box-title",
 }
 
 CSS_CLASSES = {
