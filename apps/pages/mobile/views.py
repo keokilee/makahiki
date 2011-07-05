@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, get_host
 
 from components.activities.models import ActivityBase
 from components.makahiki_base import get_current_round
@@ -16,11 +16,15 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from components.quests.models import *
 from components.quests import *
+from django.contrib.auth import REDIRECT_FIELD_NAME
+from urlparse import urljoin
+from urllib import urlencode
 
 from components.help_topics.models import HelpTopic
 
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
+
 
 ## new design, return the category list with the tasks info
 def __get_categories(user):
