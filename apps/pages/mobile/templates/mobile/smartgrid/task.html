@@ -10,14 +10,11 @@
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
+    <a href="" data-icon="back" data-rel="back">Back</a>
     <h1>{{activity.name}}</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
-<!--
-  <fieldset class="ui-grid-a">
-    <div class="ui-block-a"><button type="submit">Available</button></div>
-    <div class="ui-block-b"><button type="submit">Completed</button></div>
-  </fieldset>
--->
+
    <div data-role="content">
     {{activity.description|safe}}
 

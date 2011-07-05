@@ -22,6 +22,58 @@ from components.help_topics.models import HelpTopic
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
+## new design, return the category list with the tasks info
+def __get_categories(user):
+  categories = Category.objects.all() 
+
+  for cat in categories:
+    task_list = []
+    for task in cat.activitybase_set.order_by("priority"):   
+      task.is_unlock = is_unlock(user, task)
+      task.is_pau = is_pau(user, task)
+      if task.type == "event" or task.type == "excursion":
+        task.is_event_pau = Activity.objects.get(pk=task.pk).is_event_completed()
+      
+      if task.type != "commitment":
+        members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
+      else:
+        members = CommitmentMember.objects.filter(user=user, commitment=task)
+
+      if members.count() > 0:
+        task.approval = members[0]
+        
+      task_list.append(task)
+    
+    cat.task_list = task_list
+    
+  return categories
+
+@login_required
+def scoreboard(request):
+  user = request.user
+  events = get_available_events(user)
+  floor = user.get_profile().floor
+  
+  current_round = get_current_round()
+  round_name = current_round if current_round else None
+  floor_standings = Floor.floor_points_leaders(num_results=10, round_name=round_name)
+  profile_standings = Profile.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
+  user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
+  
+  categories_list = __get_categories(user)
+
+  return render_to_response("mobile/scoreboard/index.html",{
+    "events": events,
+    "profile":user.get_profile(),
+    "floor": floor,
+    "categories":categories_list,
+    "current_round": round_name or "Overall",
+    "floor_standings": floor_standings,
+    "profile_standings": profile_standings,
+    "user_floor_standings": user_floor_standings,
+    "help":help,
+  }, context_instance=RequestContext(request))
+
 @login_required
 def smartgrid(request):
   activities = ActivityBase.objects.order_by("priority")

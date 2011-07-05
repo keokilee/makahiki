@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^events/(\w*)/?$', 'pages.mobile.views.events', name='mobile_events'), 
     url(r'^quests/popup/?$', 'pages.mobile.views.popup', name='mobile_quest_popup'),
     url(r'^quests/(\w*)/?$', 'pages.mobile.views.quests', name='mobile_quests'),
-    url(r'^quests/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.quest_detail', name='mobile_quest_detail')
+    url(r'^quests/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.quest_detail', name='mobile_quest_detail'),
+    url(r'^scoreboard/?$', 'pages.mobile.views.scoreboard', name='mobile_scoreboard'),
 )
