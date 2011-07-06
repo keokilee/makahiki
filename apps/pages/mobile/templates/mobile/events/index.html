@@ -52,10 +52,9 @@
   </div><!-- /header -->
  
  <!-- upcoming events-->
- {% if view == "Upcoming" or view == "upcoming" %}
- <div data-role="content"></div>
-   {{eventlist.count}}
-   {% for day in datelist %}
+ {% if view == "Upcoming" or view == "upcoming" %} 
+ <div data-role="content"></div> 
+   {% for object in objlist %}
     <!--day is a 2d array-->
    	<!--day[0] is the text representation-->
    	<!--day[1] holds the date as a date object-->
@@ -63,13 +62,12 @@
      
      <h3>
         <li data-role="list-divider">
-          {{day.1}}
-          <span class="ui-li-count">2</span>
+          {{object.datestring}}
+          <span class="ui-li-count">{{object.count}}</span>
         </li>
      </h3>
        <ul data-role="listview"> 
-	 {% for events in eventlist %} 
-           {% if events.event_date.date == day.0 %}
+	 {% for events in object.eventlist %}  
 	     <li> 
                <a href="{% url mobile_smartgrid_task events.id %}">
 	         <!--img tag would goes here-->
@@ -79,8 +77,7 @@
 	         <p class="ui-li-aside">
                  <strong>{{events.event_date.time}}</strong></p>
                </a>
-	     </li> 
-           {% endif %}
+	     </li>  
 	 {% endfor %}
        </ul>
      </div>  
@@ -95,19 +92,18 @@
      
      <h3>
         <li data-role="list-divider">
-          Past Events
-          <span class="ui-li-count">2</span>
+          Past Events 
         </li>
      </h3>
        <ul data-role="listview"> 
-	 {% for events in eventlist %}  
+	 {% for events in objlist %}  
 	     <li> 
                <a href="{% url mobile_smartgrid_task events.id %}"> 
 	         <h3>{{events.title}}</h3> 
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
 	         <p class="ui-li-aside">
-                 <strong>{{events.event_date.time}}</strong></p>
+                 <strong>{{events.event_date}}</strong></p>
                </a>
 	     </li>  
 	 {% endfor %}
@@ -116,41 +112,41 @@
   {% endif %}
 
   <!--Attending-->
-  {% if view == "Attending" or view == "attending" %}
-   <div data-role="content"></div>
-   {{eventlist.count}}
-   {% for day in datelist %}
-   <!--day is a 2d array-->
+  {% if view == "Attending" or view == "attending" %} 
+
+ <div data-role="content">
+   {% for object in objlist %}
+    <!--day is a 2d array-->
    	<!--day[0] is the text representation-->
    	<!--day[1] holds the date as a date object-->
    <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
      
      <h3>
         <li data-role="list-divider">
-          {{day.1}}
-          <span class="ui-li-count">2</span>
+          {{object.datestring}}
+          <span class="ui-li-count">{{object.count}}</span>
         </li>
      </h3>
        <ul data-role="listview"> 
-	 {% for events in eventlist %} 
-           {% if events.event_date.date == day.0 %}
+	 {% for events in object.eventlist %}  
 	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}"> 
+               <a href="{% url mobile_smartgrid_task events.id %}">
+	         <!--img tag would goes here-->
 	         <h3>{{events.title}}</h3>
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
 	         <p class="ui-li-aside">
                  <strong>{{events.event_date.time}}</strong></p>
                </a>
-	     </li> 
-           {% endif %}
-           {{events.title}}
+	     </li>  
 	 {% endfor %}
        </ul>
      </div>  
+
      {% endfor %}
   </div> 
   {% endif %}
+</div>  
 </body>
 
 

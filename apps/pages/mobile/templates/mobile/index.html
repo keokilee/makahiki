@@ -5,11 +5,13 @@
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head>
 <body>
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
+    <a href="" data-icon="gear">Logout</a>
     <h1>Kukui Cup</h1>
   </header>
   
@@ -25,10 +27,10 @@
         <a href="{% url mobile_events 'Upcoming' %}">Events</a>
       </li>
       <li>
-        <a href="smartgrid/">Smart Grid Game</a>
+        <a href="smartgrid/" rel="external">Smart Grid Game</a>
       </li>
       <li>
-        <a href="">Scoreboard</a>
+        <a href="scoreboard/">Scoreboard</a>
       </li>
       <li>
         <a href="">Power & Energy</a>
@@ -54,10 +56,7 @@
     </ul>
   
   </div>
-
-  <footer data-role="footer" data-theme="e">
-  <h1>Footer</h1>
-  </footer>
+ 
 </div>
 
 </body>

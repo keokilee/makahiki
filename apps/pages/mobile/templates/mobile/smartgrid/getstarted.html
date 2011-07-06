@@ -5,12 +5,15 @@
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head>
 <body>
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
+    <a href="" data-icon="back" data-rel="back">Back</a>
     <h1>Get Started</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
 
   <div data-role="content">
