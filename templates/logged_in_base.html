@@ -49,7 +49,10 @@
 
 {% include "notifications/list.html" %}
 
-{% include "quests/quest_box.html" %}
+{% block quests %}
+  {% include "quests/quest_box.html" %}
+{% endblock %}
+
 {% endblock %}
 
 {% block extra_body_base %}
