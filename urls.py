@@ -12,7 +12,8 @@ import os
 
 urlpatterns = patterns('',
     # Main pages.
-    url(r'^$', "pages.landing.views.index", name="landing"),
+    url(r'^$', "pages.landing.views.index", name="root_index"),
+    url(r'^landing/$', "pages.landing.views.landing", name="landing"),
     url(r'^restricted/$', direct_to_template, {"template": 'landing/restricted.html'}),
     url(r'^about/', "pages.landing.views.about", name="about"),
     url(r'^home/', include('pages.home.urls')),
