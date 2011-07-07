@@ -22,6 +22,7 @@ from urllib import urlencode
 
 from components.help_topics.models import HelpTopic
 
+@login_required
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 

@@ -159,5 +159,5 @@ class MobileOverallStandingsTestCase(TestCase):
 class MobileFunctionalTestCase(TestCase):
   def testIndex(self):
     """Check that we can load the index."""
-    response = self.client.get(reverse("mobile_index"))
+    response = self.client.get(reverse("mobile_landing"))
     self.failUnlessEqual(response.status_code, 200)
