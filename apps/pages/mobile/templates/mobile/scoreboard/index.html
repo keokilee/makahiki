@@ -7,35 +7,50 @@
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head>
-<body>
+<body class="ui-mobile-viewport">
 
-<div data-role="page" id="default">
+<div data-role="dialog" id="filter" data-url="filter" role="dialog">
+  <div data-role="header">
+    <h1>Pick a Scoreboard</h1>
+  </div>
+
+  <div data-role="content" role="main">
+    <a href="{% url mobile_index %}/scoreboard/#ind-overall" data-role="button">Individual Overall</a>
+    <a href="{% url mobile_index %}/scoreboard/#ind-lounge" data-role="button">Individual Lounge</a>
+    <a href="{% url mobile_index %}/scoreboard/#over-lounge" data-role="button">Overall Lounge</a>
+    <a href="{% url mobile_index %}/scoreboard/" data-role="button" data-rel="back" data-direction="reverse">Cancel</a>
+  </div>
+
+  <div data-role="footer">
+  </div>
+</div>
+
+<div data-role="page" id="over-lounge" data-url="over-lounge">
   <header data-role="header" data-theme="b">
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a>
+    <a href="{% url mobile_index %}/scoreboard/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
 
   <div data-role="content">
-    <a href="#scoreboard/ind-overall" data-ajax="false" data-role="button">Individual Overall</a>
-<table {# get_id_and_classes "activities-scoreboard-table-floor" #}>
-	<thead><tr>
-		<th>Rank</th>
-		<th>Lounge</th>
-		<th>Overall</th></tr>
-	</thead>
-	<tbody>
-		{% for f in floor_standings %}
-		<tr><td>{{forloop.counter}}</td>
-		<td style="{% if f == floor %}font-weight: bold{% endif %}">
-		  {{f}}
-		</td>
-		<td style="text-align:right;{% if f == floor %}font-weight: bold{% endif %}">
-		  {{f.points}}
-		</td>
-		{% endfor %}
-	</tbody>
-</table>
+      <table {# get_id_and_classes "activities-scoreboard-table-floor" #}>
+        <thead><tr>
+          <th>Rank</th>
+          <th>Lounge</th>
+          <th>Overall</th></tr>
+        </thead>
+        <tbody>
+          {% for f in floor_standings %}
+            <tr><td>{{forloop.counter}}</td>
+            <td style="{% if f == floor %}font-weight: bold{% endif %}">
+              {{f}}
+            </td>
+            <td style="text-align:right;{% if f == floor %}font-weight: bold{% endif %}">
+              {{f.points}}
+            </td>
+          {% endfor %}
+        </tbody>
+      </table>
 
   </div>
   <footer>
@@ -43,9 +58,9 @@
 </div>
 
 
-<div data-role="page" id="ind-overall">
+<div data-role="page" id="ind-overall" data-url="ind-overall">
   <header data-role="header" data-theme="b">
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a>
+    <a href="{% url mobile_index %}/scoreboard/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
@@ -69,16 +84,16 @@
         {% endfor %}
       </tbody>
     </table>
-
   </div>
+
   <footer>
   </footer>
 </div>
 
 
-<div data-role="page" id="ind-lounge">
+<div data-role="page" id="ind-lounge" data-url="ind-lounge">
   <header data-role="header" data-theme="b">
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a>
+    <a href="{% url mobile_index %}/scoreboard/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
@@ -102,9 +117,8 @@
           {% endfor %}
         </tbody>
     </table>
-
-
   </div>
+
   <footer>
   </footer>
 </div>
