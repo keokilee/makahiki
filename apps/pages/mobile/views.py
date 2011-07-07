@@ -449,6 +449,9 @@ def sgadd(request, task_id):
   
 
 def landing(request):
+  if request.user.is_authenticated():
+    return HttpResponseRedirect(reverse("mobile_index"))
+    
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
 class EventDay:
