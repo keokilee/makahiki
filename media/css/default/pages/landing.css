@@ -18,6 +18,10 @@
   min-height: 787px;
 }
 
+.container-bottom {
+/*  height: 2500px;*/
+}
+
 #header {
 	display: none;
 }
@@ -184,7 +188,8 @@
 	float: none;
 	display: block;
 	text-align: left;
-	font-size: 14pt;
+	font-size: 12pt;
+	clear:both;
 }
 
 #standings-header {
