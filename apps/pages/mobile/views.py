@@ -89,8 +89,6 @@ def smartgrid(request):
     "categories":categories_list,
   }, context_instance=RequestContext(request))
 
-
-
 @login_required
 def sgactivities(request, slug):
   activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
@@ -120,8 +118,7 @@ def sgform(request, task_id):
   task = get_object_or_404(ActivityBase, id=task_id)
 
   user = request.user
-  
-  
+    
   floor = user.get_profile().floor
   pau = False
   question = None
