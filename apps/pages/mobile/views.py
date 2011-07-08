@@ -82,9 +82,26 @@ def scoreboard(request):
 @login_required
 def smartgrid(request):
   activities = ActivityBase.objects.order_by("priority")
+  categories_list = __get_categories(request.user)
 
   return render_to_response("mobile/smartgrid/index.html", {
     "activities": activities,
+    "categories":categories_list,
+  }, context_instance=RequestContext(request))
+
+@login_required
+def sgactivities(request, slug):
+  activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
+  choices = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
+    "wet-and-wild", "pot-pourri"]
+  category = ""
+  for x in choices:
+    if x == string.lower(slug):
+      category = x
+
+  return render_to_response("mobile/smartgrid/activities.html", {
+    "activities": activities,
+    "category": category,
   }, context_instance=RequestContext(request))
 
 @login_required
