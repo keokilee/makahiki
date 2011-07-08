@@ -112,6 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfResponseMiddleware',
     'lib.django_cas.middleware.CASMiddleware',
     'components.makahiki_profiles.middleware.LoginTrackingMiddleware',
+    'lib.minidetector.Middleware',
     'pages.home.middleware.CheckSetupMiddleware',
     'components.logging.middleware.LoggingMiddleware',
 )

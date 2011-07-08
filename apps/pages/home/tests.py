@@ -21,6 +21,15 @@ class SetupWizardFunctionalTestCase(TestCase):
   def setUp(self):
     self.user = User.objects.create_user("user", "user@test.com", password="changeme")
     self.client.login(username="user", password="changeme")
+    
+  def testMobileRedirect(self):
+    """Check that a new user is taken to the mobile splash page."""
+    # Make the request emulating a mobile browser.
+    response = self.client.get(reverse("mobile_index"), 
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a",
+        follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "mobile/setup.html")
   
   def testDisplaySetupWizard(self):
     """Check that the setup wizard is shown for new users."""
@@ -162,3 +171,21 @@ class SetupWizardFunctionalTestCase(TestCase):
     self.assertEqual(points + 15, user.get_profile().points, "Check that the user has been awarded points as well.")
     member = ActivityMember.objects.get(user=user, activity=activity)
     self.assertEqual(member.approval_status, "approved", "Test that the user completed the linked activity.")
+    
+  def testMobileSetupComplete(self):
+    """Check that the link at the end of the setup takes the user to the mobile page.."""
+    # Make the request emulating a mobile browser.
+    response = self.client.get(reverse("setup_complete"), 
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a",
+        HTTP_X_REQUESTED_WITH='XMLHttpRequest',
+        follow=True,)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, reverse("mobile_index"), count=1)
+    
+    # Test that the user can now access the mobile home page.
+    response = self.client.get(reverse("mobile_index"), 
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a",
+        follow=True,)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "mobile/index.html")
+      
