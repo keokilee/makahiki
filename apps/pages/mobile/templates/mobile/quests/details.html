@@ -1,12 +1,7 @@
-<html>
-<head> 
-  <title>{{quest}}</title> 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
-</head>
-<body>
+{% extends "mobile/base.html" %}
 
+{% block body %}
+{% load markup %}
 <div data-role="page">
   <header data-role="header" data-theme="b"> 
     <h1>{{quest.name}}</h1>
@@ -15,7 +10,7 @@
 
 
   <div data-role="content"> 
-   {{quest.description|safe}}
+   {{quest.description|markdown}}
       
   </div>
   
@@ -23,6 +18,4 @@
   </footer>
 </div>
 
-</body>
-
-<html>
+{% endblock %}
