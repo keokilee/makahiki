@@ -1,13 +1,8 @@
-<!DOCTYPE html> 
-<html>
-<head> 
-  <title>Smart Grid Game</title> 
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
-  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-</head>
-<body>
+{% extends "mobile/base.html" %}
+
+
+{% block body %}
+
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
@@ -18,54 +13,29 @@
 
   <div data-role="content">
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      {% for cat in categories %}
         <li>
-          <a href="{% url mobile_basic_enrg %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Basic Energy" class="ui-li-icon"/>
-            Basic Energy
-          </a>
+          <a href="{% url mobile_smartgrid %}/{{cat.name|slugify}}">{{cat.name}}</a>
         </li>
-        <li>
-          <a href="{% url mobile_get_started %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Get Started" class="ui-li-icon"/>
-            Get Started
-          </a>
-        </li>
-        <li>
-          <a href="{% url mobile_moving_on %}">          
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Moving On" class="ui-li-icon"/>
-            Moving On
-          </a>
-        </li>
-        <li>
-          <a href="{% url mobile_lights_out %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Lights Out!" class="ui-li-icon"/>
-            Lights Out!
-          </a>
-        </li>
-        <li>
-          <a href="{% url mobile_make_watts %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Make Watts" class="ui-li-icon"/>
-            Make Watts
-          </a>
-        </li>
-        <li>
-          <a href="{% url mobile_pot_pourri %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Pot Pourri" class="ui-li-icon"/>
-            Pot Pourri
-          </a>
-        </li>
-        <li>
-          <a href="{% url mobile_opala %}">
-            <img src="/site_media/static/css/default/images/favicon.ico" alt="Opala" class="ui-li-icon"/>
-            Opala
-          </a>
-        </li>
+      {% endfor %}
+<!--
+      <li>
+        <a href="{% url mobile_basic_enrg %}">
+          Basic Energy
+        </a>
+      </li>
+
+      <li><a href="{% url mobile_get_started %}">Get Started</a></li>
+      <li><a href="{% url mobile_moving_on %}">Moving On</a></li>
+      <li><a href="{% url mobile_lights_out %}">Lights Out!</a></li>
+      <li><a href="{% url mobile_make_watts %}">Make Watts</a></li>
+      <li><a href="{% url mobile_pot_pourri %}">Pot Pourri</a></li>
+      <li><a href="{% url mobile_opala %}">Opala</a></li>
+-->
     </ul>
   </div>
   <footer>
   </footer>
 </div>
 
-</body>
-
-<html>
+{% endblock %}

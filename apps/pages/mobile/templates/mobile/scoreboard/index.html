@@ -1,25 +1,16 @@
-<!DOCTYPE html> 
-<html>
-<head> 
-  <title>Scoreboard</title> 
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
-  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-</head>
-<body class="ui-mobile-viewport">
+{% extends "mobile/base.html" %}
+
+
+{% block body %}
 
 <div data-role="page" id="over-lounge" data-url="over-lounge">
   <header data-role="header" data-theme="b">
-<!--    <a href="{% url mobile_scoreboard %}" rel="external" data-role="button" data-icon="grid">Home</a>
--->    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
+    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
 
   <div data-role="content">
-<!--    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
--->
     <h2>{{current_round}} Points</h2>
     <table {# get_id_and_classes "activities-scoreboard-table-floor" #}>
       <thead><tr>
@@ -48,15 +39,12 @@
 
 <div data-role="page" id="ind-overall" data-url="ind-overall">
   <header data-role="header" data-theme="b">
-<!--    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="grid">Home</a>  -->
     <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
 
   <div data-role="content">
-<!--    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
--->
     <h2>{{current_round}} Points</h2>
     <table {# get_id_and_classes "activities-scoreboard-table-profile" #}>
       <thead><tr>
@@ -91,8 +79,6 @@
   </header>
 
   <div data-role="content">
-<!--    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
--->
     <h2>{{current_round}} Points</h2>
     <table {# get_id_and_classes "activities-scoreboard-table-floor-profile" #}>
       <thead><tr>
@@ -118,9 +104,41 @@
   </footer>
 </div>
 
+<div data-role="page" id="over-lounge" data-url="rnd-kwh">
+  <header data-role="header" data-theme="b">
+    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
+    <h1>Scoreboard</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+  </header>
+
+  <div data-role="content">
+    <h2>{{current_round}} kWh Usage</h2>
+
+  </div>
+
+  <footer>
+  </footer>
+</div>
+
+<div data-role="page" id="over-lounge" data-url="over-kwh">
+  <header data-role="header" data-theme="b">
+    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
+    <h1>Scoreboard</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+  </header>
+
+  <div data-role="content">
+    <h2>Overall kWh Usage</h2>
+
+  </div>
+
+  <footer>
+  </footer>
+</div>
+
 <div data-role="dialog" id="filter" data-url="filter" role="dialog">
   <div data-role="header">
-    <h1>Pick a Scoreboard</h1>
+    <h1>Options</h1>
   </div>
 
   <div data-role="content" role="main">
@@ -128,15 +146,17 @@
     <a href="{% url mobile_scoreboard %}/#ind-overall" data-role="button">Individual Overall</a>
     <a href="{% url mobile_scoreboard %}/#ind-lounge" data-role="button">Individual Lounge</a>
     <a href="{% url mobile_scoreboard %}/#over-lounge" data-role="button">Overall Lounge</a>
-    <a href="{% url mobile_scoreboard %}" data-role="button" data-rel="back" data-direction="reverse">Cancel</a>
+
     <h2>kWh Scores</h2>
+    <a href="{% url mobile_scoreboard %}/#rnd-kwh" data-role="button">{{current_round}} kWh Usage</a>
+    <a href="{% url mobile_scoreboard %}/#over-kwh" data-role="button">Overall kWh Usage</a>
+    <br/>
+    <br/>
+    <a href="{% url mobile_scoreboard %}" data-role="button" data-rel="back">Cancel</a>
   </div>
 
   <div data-role="footer">
   </div>
 </div>
 
-
-</body>
-
-<html>
+{% endblock %}
