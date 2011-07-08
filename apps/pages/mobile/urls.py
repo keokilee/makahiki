@@ -1,8 +1,10 @@
 from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('',
     url(r'^$', 'pages.mobile.views.landing', name='mobile_landing'),
     url(r'^home/?$', 'pages.mobile.views.index', name='mobile_index'),
+    url(r'^setup/$', direct_to_template, {"template": 'mobile/setup.html'}, name='mobile_setup'),
     url(r'^smartgrid/?$', 'pages.mobile.views.smartgrid', name='mobile_smartgrid'),
     url(r'^smartgrid/basicenrg/?$', 'pages.mobile.views.basicenrg', name='mobile_basic_enrg'),
     url(r'^smartgrid/getstarted/?$', 'pages.mobile.views.getstarted', name='mobile_get_started'),
