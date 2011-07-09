@@ -428,6 +428,7 @@ class EventDay:
     self.datestring = ''
     self.eventlist = []
     self.count = 0
+    self.attending = False
   def __str__(self):
     return "obj= " + str(self.date) + " " +  " " + str(self.eventlist)
 
@@ -469,43 +470,19 @@ def events(request,option):
       temparray = [] 
       count = 0
       for event in events: 
-        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"): 
+        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):  
+          try:
+            member = ActivityMember.objects.get(user=request.user,activity=event) 
+            if member.approval_status == "pending":  
+              event.attending = True
+          except ActivityMember.DoesNotExist: 
+            boolean = False
           temparray.append(event)
           count = count + 1  
       obj.count = count
       obj.eventlist = temparray
       objlist.append(obj)
-  #attending
-  elif string.lower(option) == options[1]:
-    #avail = get_available_events(user)  
-    avail = ActivityBase.objects.filter(type='event')
-    attending = []
-    
-    for event in avail:
-      #delete
-      #attending.append(event.activity)
-      try:
-        member = ActivityMember.objects.get(user=request.user,activity=event) 
-        if member.approval_status == "pending":
-          attending.append(event.activity) 
-      except ActivityMember.DoesNotExist: 
-          boolean = False
-    for element in datelist:
-      obj = EventDay()
-      obj.date = element[0]
-      obj.datestring = element[1]
-      count = 0
-      temparray = [] 
-      for event in attending: 
-        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):
-          temparray.append(event)
-          count = count + 1 
-      obj.count = count
-      obj.eventlist = temparray
-      #obj.eventlist = attending
-      objlist.append(obj)
   
-
   #past
   elif string.lower(option) == options[2]:   
     avail = ActivityBase.objects.filter(type='event')
@@ -548,3 +525,7 @@ def quest_detail(request, slug):
 @login_required
 def popup(request):
   return render_to_response("mobile/quests/popup.html", {}, context_instance=RequestContext(request))
+
+@login_required
+def summary(request):
+  return render_to_response("mobile/summary/index.html", {}, context_instance=RequestContext(request))
