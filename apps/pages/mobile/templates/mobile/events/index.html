@@ -1,7 +1,6 @@
 {% extends "mobile/base.html" %}
-
 {% block body %}
-<div data-role="page" >
+<div data-role="page">
   <div data-role="header" data-theme="b" data-add-back-btn="True"> 
     <h1>Events</h1>
     <div data-role="navbar" data-add-back-btn="True">
@@ -17,16 +16,7 @@
 			  
        <!--Change script to account for events the user is attending-->
        <!--idk how to determine atm-->
-	<li>
-          <a href="{% url mobile_events 'Attending' %}"		
-		{% if view == "Attending" %}
-			class="ui-btn-active"
-		{% endif %}>
-            Attending
-          </a>
-        </li>
-
-	<li>
+ 
           <a href="{% url mobile_events 'Past' %}"
 		{% if view == "Past" %}
 			class="ui-btn-active"
@@ -56,12 +46,17 @@
           <span class="ui-li-count">{{object.count}}</span>
         </li>
      </h3>
-       <ul data-role="listview"> 
+       <ul data-role="listview" > 
 	 {% for events in object.eventlist %}  
 	     <li> 
                <a href="{% url mobile_smartgrid_task events.id %}">
-	         <!--img tag would goes here-->
-	         <h3>{{events.title}}</h3>
+                 {%if events.attending %} 
+                    <img align="middle" src="/site_media/static/css/default/images/star.png" alt="attending">
+                 {% endif %}
+	        
+	         <h4>{{events.title}}
+                 
+                    </h4> 
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
 	         <p class="ui-li-aside">
@@ -99,42 +94,6 @@
 	 {% endfor %}
        </ul>
      </div>   
-  {% endif %}
-
-  <!--Attending-->
-  {% if view == "Attending" or view == "attending" %} 
-
- <div data-role="content">
-   {% for object in objlist %}
-    <!--day is a 2d array-->
-   	<!--day[0] is the text representation-->
-   	<!--day[1] holds the date as a date object-->
-   <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
-     
-     <h3>
-        <li data-role="list-divider">
-          {{object.datestring}}
-          <span class="ui-li-count">{{object.count}}</span>
-        </li>
-     </h3>
-       <ul data-role="listview"> 
-	 {% for events in object.eventlist %}  
-	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}">
-	         <!--img tag would goes here-->
-	         <h3>{{events.title}}</h3>
-	         <p><strong>{{events.event_location}}</strong></p> 
-		 <p> ({{events.point_value}} points)</p>
-	         <p class="ui-li-aside">
-                 <strong>{{events.event_date.time}}</strong></p>
-               </a>
-	     </li>  
-	 {% endfor %}
-       </ul>
-     </div>  
-
-     {% endfor %}
-  </div> 
-  {% endif %}
-</div>  
+  {% endif %} 
+</div>
 {% endblock %}
