@@ -1,0 +1,27 @@
+{% load class_tags %}
+
+<div {% get_id_and_classes "quest-box" %} style="clear: both">
+  <div {% get_id_and_classes "quest-header" %}>
+    <h3 {% get_id_and_classes "quest-title" %}>Canopy Quests</h3>
+    {# {% include "quests/quest_help.html" %} #}
+	</div>
+	<div style="clear: both"></div>
+	
+  {% if canopy_quests %}
+    <ul {% get_id_and_classes "quest-list" %}>
+      {% for quest in canopy_quests %}
+        {% include "canopy/quest_item.html" %}
+        {% cycle '' '' '<br style="clear:both"/>' %}
+      {% endfor %}
+      <br style='clear:both'/>
+    </ul>
+  {% else %}
+  <p style="text-align: center; width: 100%">There are no quests available at this time.  Please check back later!</p>
+  {% endif %}
+  
+  <div {% get_id_and_classes "quest-details" %} style="margin: 0px 10px; display: none">
+    <div {% get_id_and_classes "quest-contents" %} style="clear:both"></div>
+    <a href="javascript:void(0)" {% get_id_and_classes "quest-hide" %}>Hide</a>
+  </div>
+  <br style="clear: both"/>
+</div>

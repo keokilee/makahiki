@@ -29,9 +29,10 @@ PAGE_CSS_IMPORT = {
   "canopy": '<link rel="stylesheet" href="{0}css/{1}/pages/canopy.css">',
 }
 CSS_IDS = {
-  # "quest-box": "content-box",
   "landing-sponsors": "content-box",
   "landing-sponsors-title": "content-box-title",
+  
+  "quest-list": "quest-list",
   
   "home-energy": "home-item",
   "home-activities": "home-item",
