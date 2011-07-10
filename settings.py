@@ -151,7 +151,7 @@ INSTALLED_APPS = (
     'pages.view_profile',
     'pages.view_energy',
     'pages.view_help',
-    'pages.canopy',
+    'pages.view_canopy',
     'pages.home',
     'pages.landing',
     'pages.news',
@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     # Makahiki components
     'components.activities',
     'components.api',
+    'components.canopy',
     'components.energy_goals',
     'components.floors',
     'components.help_topics',
