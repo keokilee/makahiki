@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
+from django.db.models import Q
 
 from components.canopy.models import Quest, Post
 
@@ -13,7 +14,7 @@ def index(request):
   """
   Directs the user to the canopy page.
   """
-  canopy_quests = Quest.objects.all()
+  canopy_quests = Quest.objects.exclude(users__pk=request.user.pk)
   return render_to_response("canopy/index.html", {
       "canopy_quests": canopy_quests,
   }, context_instance=RequestContext(request))

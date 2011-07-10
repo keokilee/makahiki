@@ -7,11 +7,17 @@
 	</div>
 	<div style="clear: both"></div>
 	
-  {% if canopy_quests %}
+	{# Cycle for breaking columns #}
+	{% cycle '' '' '<br style="clear:both"/>' as break %}
+  {% if canopy_quests or user.canopyquest_set.count > 0 %}
     <ul {% get_id_and_classes "quest-list" %}>
+      {% for quest in user.canopyquests.all %}
+        {% include "canopy/quest_item.html" %}
+        {{break}}
+      {% endfor %}
       {% for quest in canopy_quests %}
         {% include "canopy/quest_item.html" %}
-        {% cycle '' '' '<br style="clear:both"/>' %}
+        {{break}}
       {% endfor %}
       <br style='clear:both'/>
     </ul>
