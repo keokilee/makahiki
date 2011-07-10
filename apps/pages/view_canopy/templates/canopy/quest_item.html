@@ -1,8 +1,8 @@
 {% load markup %}
 {% load avatar_tags %}
 
-<li>
-  <a href="javascript:void(0)" id="{{quest.quest_slug}}" 
+<li class="canopy-quest">
+  <a href="javascript:void(0)" id="{{quest.slug}}" 
   class="quest-title {% if user in quest.users.all %}quest-user-quest{%endif%}">
     {{quest.name}}
   </a>
