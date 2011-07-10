@@ -15,7 +15,7 @@
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
       {% for cat in categories %}
         <li>
-          <a href="{% url mobile_smartgrid %}/{{cat.name|slugify}}">{{cat.name}}</a>
+          <a href="{% url mobile_smartgrid %}/{{cat.name|slugify}}" rel="external">{{cat.name}}</a>
         </li>
       {% endfor %}
 
