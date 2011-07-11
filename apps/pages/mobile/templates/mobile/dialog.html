@@ -1,0 +1,32 @@
+{% load notice_tags %}
+<div id="notification-dialog" title="Notifications" style="display: none">
+  <ul>
+    {% for notification in NOTIFICATIONS.alerts %}
+    <li class="{{notification.style_class}} notification-item">
+      <span class="ui-icon {{notification.icon_class}}"></span>
+      {{notification.contents|safe}}
+    </li>
+    {% endfor %}
+  </ul>
+  <center>
+  <button>OK</button>
+  </center>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    log_js_action("notifications", "alert", "display");
+    $("#notification-dialog").dialog({
+      modal: true,
+      width: 700,
+      closeOnEscape: false,
+      position: ["center", 150]
+    });
+    
+    $("#notification-dialog button").click(function() {
+      log_js_action("notifications", "alert", "close");
+      $("#notification-dialog").dialog("close");
+    });
+  });
+</script>
+
+{% mark_alerts_displayed NOTIFICATIONS.alerts %}

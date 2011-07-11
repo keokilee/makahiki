@@ -1,0 +1,11 @@
+ {% if NOTIFICATIONS %} 
+  {% if NOTIFICATIONS.unread %}  
+    {% for notification in NOTIFICATIONS.unread %} 
+      {% include "mobile/mlist-item.html" %}
+    {% endfor %} 
+  {% endif %}  
+  {% if NOTIFICATIONS.alerts %}
+   an alert!
+    {% include "notifications/dialog.html" %}
+  {% endif %}
+{% endif %} 
