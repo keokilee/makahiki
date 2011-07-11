@@ -410,14 +410,14 @@ clear: both;
   float: right;
 }
 
-.quest-list {
+#quest-list {
   list-style: none;
   padding: 0 5px 5px 5px;
   margin: 10px auto 5px;
   text-align: center;
 }
 
-.quest-list li {
+#quest-list li {
   margin: 10px;
   padding: 5px;
   border-radius: 8px;
@@ -426,7 +426,7 @@ clear: both;
   display: inline;
 }
 
-.quest-list li a {
+#quest-list li a {
   color: white;
   font-size: 1.1em;
 }
