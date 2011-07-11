@@ -100,7 +100,7 @@
         <script type="text/javascript">
           $("#wall-post-submit").click(function() {
             if (!$("#wall-post-submit").button("option", "disabled")) {
-              $.post("{% url news_post %}", $("#news-post-form").serialize(), function(data) {
+              $.post("{% url news_post %}?from=energy_page", $("#news-post-form").serialize(), function(data) {
                 if (data.message) {
                   $("#wall-post-errors").html(data.message);
                 }
