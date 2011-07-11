@@ -39,6 +39,18 @@
 #canopy-viz-list li {
   display: inline;
   margin: 0 10px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+#canopy-viz-list li.selected {
+  background-color: #DBD7AF;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+#canopy-viz-list li.selected a {
+  text-decoration: none;
 }
 
 #canopy-viz-list li h3 {
