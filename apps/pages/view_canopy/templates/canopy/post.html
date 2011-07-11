@@ -10,6 +10,7 @@
       <p><span style="font-weight: bold">{{post.user.get_profile.name}}</span> {{post.text}}</p>
       <div class="{% insert_classes 'user-post-date-string' %}">Posted {{post.created_at|date:"D, M d \a\t h:i A"}}</div>
     </div>
+    
+    <br style="clear:both"/>
   </div>
-  <br style="clear:both"/>
 </li>

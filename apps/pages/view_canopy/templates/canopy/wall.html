@@ -5,11 +5,11 @@
     <div {% get_id_and_classes "wall-post-errors" %}></div>
     <div {% get_id_and_classes "wall-post" %}>
       {{wall_form.post}}
-    </div>
-    <div style="text-align: center">
-      <button {% get_id_and_classes "wall-post-submit" %} style="font-size: 12px; margin-top:1.2em; margin-left:0.5em; margin-right:0.5em; margin-bottom:1.2em;">
+      
+      <button {% get_id_and_classes "wall-post-submit" %}>
       	Post
       </button>
+      <br style="clear:both"/>
     </div>
   </form>
 </div>
@@ -17,6 +17,7 @@
 <ul {% get_id_and_classes "wall-posts" %}>
   {% include "canopy/wall_posts.html" %}
 </ul>
+
 {% if not posts %}
   <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
 {% endif %}
