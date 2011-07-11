@@ -27,5 +27,14 @@
     <h2><u>Cumulative Energy Use</u></h2>
     <h4 id="overall-energy-value"> kWh used overall</h4>
     <h4 id="overall-energy-rank"> out of {{FLOOR_COUNT}} dorms</h4>
+
+      <div {% get_id_and_classes "header-floor-energy" %}>
+    <h3 id="overall-energy-value"></h3>
+     <div {% get_id_and_classes "header-text" %}>kWh used overall</div>
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3 id="overall-energy-rank"></h3> 
+    <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
+  </div>
   </div>
 </di>
