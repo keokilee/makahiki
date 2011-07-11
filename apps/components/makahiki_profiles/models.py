@@ -111,6 +111,7 @@ class Profile(models.Model):
   contact_text = PhoneNumberField(null=True, blank=True)
   contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
   enable_help = models.BooleanField(default=True)
+  canopy_member = models.BooleanField(default=False)
   
   # Check first login completion.
   setup_profile = models.BooleanField(default=False, editable=False)

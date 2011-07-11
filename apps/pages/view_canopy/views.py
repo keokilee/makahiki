@@ -9,13 +9,15 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 
 from components.canopy.models import Quest, Post
+from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
 
 # Number of posts to load at a time.
 DEFAULT_POST_COUNT = 10
 
-@never_cache
 @login_required
+@never_cache
+@can_access_canopy
 def index(request):
   """
   Directs the user to the canopy page.
@@ -38,6 +40,7 @@ def index(request):
   }, context_instance=RequestContext(request))
   
 @login_required
+@can_access_canopy
 def quest_accept(request, slug):
   if request.method == "POST":
     user = request.user
@@ -50,6 +53,7 @@ def quest_accept(request, slug):
   raise Http404
   
 @login_required
+@can_access_canopy
 def quest_cancel(request, slug):
   if request.method == "POST":
     user = request.user
@@ -62,6 +66,7 @@ def quest_cancel(request, slug):
   raise Http404
   
 @login_required
+@can_access_canopy
 def post(request):
   if request.method == "POST":
     form = WallForm(request.POST)
@@ -84,8 +89,8 @@ def post(request):
   
   raise Http404
   
-@never_cache
 @login_required
+@can_access_canopy
 def more_posts(request):
   if request.is_ajax():
     floor = request.user.get_profile().floor
