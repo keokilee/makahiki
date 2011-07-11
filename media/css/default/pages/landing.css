@@ -149,6 +149,10 @@
   background-color: #E3E3E3;
 }
 
+#landing-sponsors-list {
+  padding: 5px;
+}
+
 #landing-sponsors-list img {
 	border: 0;
 }
