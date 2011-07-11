@@ -1,12 +1,14 @@
 import simplejson as json
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
+from django.db.models import Q
 
 from components.canopy.models import Quest, Post
 from pages.view_canopy.decorators import can_access_canopy
@@ -32,11 +34,15 @@ def index(request):
   posts = posts[:DEFAULT_POST_COUNT]
   more_posts = True if post_count > DEFAULT_POST_COUNT else False
   
+  # Load members
+  members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
+  
   return render_to_response("canopy/index.html", {
       "canopy_quests": canopy_quests,
       "wall_form": form,
       "posts": posts,
       "more_posts": more_posts,
+      "members": members,
   }, context_instance=RequestContext(request))
   
 @login_required
