@@ -36,6 +36,8 @@ def get_rounds_for_header():
     end_date = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
     start = (today - start_date).days
     end = (today - end_date).days
+    if end < 0:
+      end = 0
       
     return_dict.update({
       key: {
