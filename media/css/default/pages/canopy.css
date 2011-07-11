@@ -1,4 +1,4 @@
-.quest-list {
+#quest-list {
   margin: 0;
   margin-left: 120px;
   text-align: left;
@@ -29,6 +29,20 @@
 #canopy-feed-members .content-box {
   float: left;
   width: 450px;
+}
+
+/***** Visualization styles *******/
+#canopy-viz-list {
+  list-style: none;
+}
+
+#canopy-viz-list li {
+  display: inline;
+  margin: 0 10px;
+}
+
+#canopy-viz-list li h3 {
+  display: inline;
 }
 
 /**** Wall styles *****/
