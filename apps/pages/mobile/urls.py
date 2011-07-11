@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^quests/(\w*)/?$', 'pages.mobile.views.quests', name='mobile_quests'),
     url(r'^quests/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.quest_detail', name='mobile_quest_detail'),
     url(r'^scoreboard/?$', 'pages.mobile.views.scoreboard', name='mobile_scoreboard'),
+    url(r'^summary/?$', 'pages.mobile.views.summary', name='mobile_summary')
 )
