@@ -1,7 +1,8 @@
 {% extends "mobile/base.html" %}
 
-{% block body %}
-<div data-role="page">
+{% block body %} 
+  <!-- remove this tag-->
+  <div data-role="page">
   <header data-role="header" data-theme="b">
     <a href="https://login.its.hawaii.edu/cas/logout" data-icon="gear">Logout</a>
     <h1>Kukui Cup</h1>
@@ -10,7 +11,7 @@
   <div data-role="content">
     <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
       <li>
-        <a href="">Summary</a>
+        <a href="{% url mobile_summary %}">Summary</a>
       </li>
       <li>
         <a href="{% url mobile_quests 'available' %}">Quests</a>
@@ -48,7 +49,6 @@
     </ul>
   
   </div>
- 
+  
 </div>
-
 {% endblock %}

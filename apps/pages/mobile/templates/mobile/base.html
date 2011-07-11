@@ -6,8 +6,11 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-</head>
-<body>
-  {% block body %}{% endblock %}
+</head> 
+<body>  
+  <!--div data-role="page"-->
+   {% include "mobile/mlist.html" %} 
+   {% block body %}{% endblock %}
+  <!--/div-->
 </body>
 </html>
