@@ -7,6 +7,7 @@ class CanopyFunctionalTestCase(TestCase):
     """Check that superusers, staff, and canopy members can access the canopy."""
     user = User.objects.create_user("user", "user@test.com", password="atest")
     profile = user.get_profile()
+    profile.name = "Test U."
     profile.setup_complete = True
     profile.setup_profile = True
     profile.save()
@@ -21,6 +22,7 @@ class CanopyFunctionalTestCase(TestCase):
     user.save()
     response = self.client.get(reverse("canopy_index"))
     self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, 'alt="Photo of Test U."', count=1)
     
     # Test that staff can access the canopy
     user.is_superuser = False
@@ -28,6 +30,7 @@ class CanopyFunctionalTestCase(TestCase):
     user.save()
     response = self.client.get(reverse("canopy_index"))
     self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, 'alt="Photo of Test U."', count=1)
     
     # Test that canopy members can access the canopy
     user.is_staff = False
@@ -35,6 +38,7 @@ class CanopyFunctionalTestCase(TestCase):
     profile = user.get_profile()
     profile.canopy_member = True
     profile.save()
-    
     response = self.client.get(reverse("canopy_index"))
     self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, 'alt="Photo of Test U."', count=1)
+    
