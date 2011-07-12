@@ -25,9 +25,13 @@
         $("#{{name|slugify}}-{{prize.title|slugify}}").dialog({
           autoOpen: false,
           modal: true,
+          close: function(event, ui) {
+            log_js_action("prizes", "{{name|slugify}}-{{prize.title|slugify}}", "close");
+          }
         });
         
         $("#{{name|slugify}}-{{prize.title|slugify}}-link").click(function() {
+          log_js_action("prizes", "{{name|slugify}}-{{prize.title|slugify}}", "open");
           $("#{{name|slugify}}-{{prize.title|slugify}}").dialog("open");
         });
       </script>
