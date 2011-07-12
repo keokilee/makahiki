@@ -20,9 +20,13 @@
         $("#raffle-{{prize.title|slugify}}-description").dialog({
           autoOpen: false,
           modal: true,
+          close: function(event, ui) {
+            log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "close");
+          }
         });
         
         $("#raffle-{{prize.title|slugify}}-link").click(function() {
+          log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "open");
           $("#raffle-{{prize.title|slugify}}-description").dialog("open");
         });
       </script>

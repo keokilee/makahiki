@@ -14,7 +14,6 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
-    log_js_action("notifications", "alert", "display");
     $("#notification-dialog").dialog({
       modal: true,
       width: 700,
@@ -29,4 +28,4 @@
   });
 </script>
 
-{% mark_alerts_displayed NOTIFICATIONS.alerts %}
+{% mark_alerts_displayed request NOTIFICATIONS.alerts %}
