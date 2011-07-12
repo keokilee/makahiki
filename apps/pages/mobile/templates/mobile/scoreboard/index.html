@@ -1,7 +1,43 @@
-{% extends "mobile/base.html" %}
+<head><base href="http://127.0.0.1:8000/m/scoreboard"> 
+  <title>Scoreboard</title> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
 
-{% block body %}
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/powermeter/org.wattdepot.gdata.makahiki.PowerMeter.js"></script>
+<script type="text/javascript" src="/site_media/static//js/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script>
+<script type="text/javascript"> 
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
+  // Get the spreadsheet we need.
+  var energyLastThirtyDays = "https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHhxeW1xRURQZUlGd1oxVERnQktsWXc";
+  var refreshInterval = 0; // don't refresh this spreadsheet.
+ 
+  // Load the visualization API and the spreadsheet, then call displayRank.
+//  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);  
+ 
+  function displayRank(energyDataTable) {
+    // The source for which we want to find the rank must be specified by Makahiki.
+//    var source = "{{floor}}".replace(': Lounge ','-');
+var source = "{{profile.floor.dorm.name}}-{{profile.floor.number}}";
+    var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
+    var usage = energyRank.processDataTable(energyDataTable, 0, 0);
+     console.log("Leader is " + energyRank.calculateLeader(usage).source);
+    var info = energyRank.calculateRankInfo(usage, source);
+     console.log(source + " is ranked " + info.rank + " with " + info.usage + " watts");
+    
+    energyRank.draw("rank", "energy", info);
+    energyRank.insertLeader("leader", energyRank.calculateLeader(usage));
+    energyRank.drawCompleteStandings("partial-standings-table", source, usage, true);
+    energyRank.drawCompleteStandings("full-standings-table", source, usage);
+  }
+})();
+</script>
+</head>
+<body>
 
 <div data-role="page" id="over-lounge" data-url="over-lounge">
   <header data-role="header" data-theme="b">
@@ -104,7 +140,7 @@
   </footer>
 </div>
 
-<div data-role="page" id="over-lounge" data-url="rnd-kwh">
+<div data-role="page" id="rnd-lounge" data-url="rnd-kwh">
   <header data-role="header" data-theme="b">
     <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
@@ -121,14 +157,37 @@
 </div>
 
 <div data-role="page" id="over-lounge" data-url="over-kwh">
-  <header data-role="header" data-theme="b">
+  <div data-role="header" data-theme="b">
     <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-  </header>
+  </div>
 
   <div data-role="content">
     <h2>Overall kWh Usage</h2>
+
+  <h2>Info for {{floor}}</h2> 
+  <div id="header-rank"> 
+    <h3 style="display:inline" id="rank"></h3> out of 15 lounges in all dorms.
+  </div> 
+  <div id="header-energy"> 
+    <h3 style="display:inline" id="energy"></h3> kWh used today.
+  </div> 
+  
+  <h2>Standings for today</h2> 
+  <div id="current-leader"> 
+    Current Leader: <span id="leader"></span> 
+  </div> 
+  
+  <div id="complete-standings"> 
+    <h3>This is for dorms with data</h3> 
+    <table id="partial-standings-table"> 
+    </table> 
+    
+    <h3>These are the complete standings</h3> 
+    <table id="full-standings-table"> 
+    </table> 
+  </div> 
 
   </div>
 
@@ -149,7 +208,7 @@
 
     <h2>kWh Scores</h2>
     <a href="{% url mobile_scoreboard %}/#rnd-kwh" data-role="button">{{current_round}} kWh Usage</a>
-    <a href="{% url mobile_scoreboard %}/#over-kwh" data-role="button">Overall kWh Usage</a>
+    <a href="{% url mobile_scoreboard %}/#over-kwh" data-role="button">Overall kWh Usage: {{floor}}</a>
     <br/>
     <br/>
     <a href="{% url mobile_scoreboard %}" data-role="button" data-rel="back">Cancel</a>
@@ -159,4 +218,6 @@
   </div>
 </div>
 
-{% endblock %}
+
+</body>
+</html>

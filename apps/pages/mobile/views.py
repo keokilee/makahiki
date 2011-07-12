@@ -5,6 +5,7 @@ from django.http import Http404, HttpResponseRedirect, get_host
 from components.activities.models import ActivityBase
 from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
+from pages.view_help.forms import AskAdminForm
 from components.activities.models import *
 from components.activities import * 
 from components.makahiki_profiles.models import *
@@ -621,3 +622,31 @@ def popup(request):
 @login_required
 def summary(request):
   return render_to_response("mobile/summary/index.html", {}, context_instance=RequestContext(request))
+
+@login_required
+def help(request):
+  form = None
+  if request.method == "POST":
+    form = AskAdminForm(request.POST)
+    if form.is_valid():
+      user = request.user
+      email = user.get_profile().contact_email or user.email
+      form.success = "Your question has been sent to the Kukui Cup administrators. We will email a response to " + email
+      
+  if not form:
+    form = AskAdminForm()
+    
+  rules = HelpTopic.objects.filter(category="rules", parent_topic__isnull=True)
+  faqs = HelpTopic.objects.filter(category="faq", parent_topic__isnull=True)
+  return render_to_response("mobile/help/index.html", {
+      "form": form,
+      "rules": rules,
+      "faqs": faqs,
+  }, context_instance=RequestContext(request))
+
+@login_required
+def helptopic(request, category, slug):
+  topic = get_object_or_404(HelpTopic, slug=slug, category=category)
+  return render_to_response("mobile/help/topic.html", {
+      "topic": topic,
+  }, context_instance=RequestContext(request))
