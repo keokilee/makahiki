@@ -46,10 +46,12 @@ class SetupWizardFunctionalTestCase(TestCase):
     response = self.client.get(reverse("setup_terms"), {}, 
                 HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.assertTemplateUsed(response, "home/first-login/terms.html")
+    self.assertContains(response, "/account/cas/logout?next=" + reverse("about"))
     try:
       response_dict = json.loads(response.content)
     except ValueError:
       self.fail("Response JSON could not be decoded.")
+    
     
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""
