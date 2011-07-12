@@ -75,7 +75,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "Test User",
         "about": "I'm a test user.",
-    })
+    }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/activity.html")
     

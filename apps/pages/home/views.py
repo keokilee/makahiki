@@ -7,12 +7,13 @@ from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
+from django.core.urlresolvers import reverse
 
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
@@ -153,7 +154,7 @@ def setup_profile(request):
         new_file = avatar.avatar.storage.save(path, File(photo_temp))
         avatar.save()
         
-      return setup_activity(request, non_xhr=True)
+      return HttpResponseRedirect(reverse("setup_activity"))
         
     return _get_profile_form(request, form=form, non_xhr=True)
     
@@ -186,7 +187,7 @@ def _get_profile_form(request, form=None, non_xhr=False):
     
 @never_cache
 @login_required
-def setup_activity(request, non_xhr=False):
+def setup_activity(request):
   if request.is_ajax():
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
@@ -197,7 +198,7 @@ def setup_activity(request, non_xhr=False):
     
     return response
     
-  elif non_xhr:
+  else:
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse("<textarea>" + json.dumps({
@@ -206,8 +207,6 @@ def setup_activity(request, non_xhr=False):
     }) + "</textarea>", mimetype='text/html')
     
     return response
-    
-  raise Http404
 
 @never_cache 
 @login_required
