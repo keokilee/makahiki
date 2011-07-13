@@ -9,7 +9,7 @@
   {% with user.get_profile as profile %}
   <div {% get_id_and_classes "header-user-info" %}>
     <div {% get_id_and_classes "header-user-username" %}>
-      {{profile.name}} ({{user.username}})
+      {{profile.name}}
     </div>
     <div {% get_id_and_classes "user-cycle" %}>
       {% include "components/user_points.html" %}
