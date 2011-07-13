@@ -93,10 +93,6 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "You have not been awarded anything yet!")
     self.assertNotContains(response, "You have nothing in progress or pending.")
     
-    # Use the argument and check that the context has a rejected member.
-    response = self.client.get(reverse("profile_rejected", args=(member.id,)), follow=True)
-    self.assertEqual(response.context["rejected_member"], member)
-    
     # Test that the profile page has a completed activity
     member.approval_status = "approved"
     member.save()

@@ -402,37 +402,15 @@ clear: both;
   margin: 0;
   display: inline;
   vertical-align: bottom;
+  float: left;
+  width: 55%%;
+  text-align: right;
 }
 
 #quest-help-icon {
   height: 17px; 
   cursor: pointer;
   float: right;
-}
-
-#quest-list {
-  list-style: none;
-  padding: 0 5px 5px 5px;
-  margin: 10px auto 5px;
-  text-align: center;
-}
-
-#quest-list li {
-  margin: 10px;
-  padding: 5px;
-  border-radius: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  display: inline;
-}
-
-#quest-list li a {
-  color: white;
-  font-size: 1.1em;
-}
-
-a.quest-user-quest {
-  font-weight: bold;
 }
 
 .quest-options {
@@ -448,7 +426,33 @@ a.quest-user-quest {
   color: white;
 }
 
-#quest-box li.selected a {
+#quest-list {
+  list-style: none;
+  padding: 0 10px 5px 5px;
+  margin: 10px auto 5px;
+  text-align: center;
+}
+
+#quest-list li {
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  display: inline;
+}
+
+#quest-list li a {
+  color: white;
+  font-size: 1.1em;
+}
+
+#quest-list li.selected {
+  background-color: rgba(40,42,42, 1.0);
+/*  font-weight: bold;*/
+}
+
+#quest-list li a.quest-user-quest {
   color: #FCE988;
 }
 
