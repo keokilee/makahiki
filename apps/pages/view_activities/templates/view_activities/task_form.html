@@ -27,8 +27,8 @@
      {% else %}
         You will earn 2 points for signing up for the {{task.type}}.
          <div {% get_id_and_classes "activity-task-form-content-button" %}>
-          <button style="cursor:pointer;">OK, Let's do it</button>
-          <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>I don't want to do it</button>
+          <button style="cursor:pointer;">OK</button>
+          <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
          </div>
       {% endif %}
    <!--
@@ -50,8 +50,8 @@
      You've earned {{task.point_value}} points.
      {% endif %}
      <div {% get_id_and_classes "activity-task-form-content-button" %}>
-          <button style="cursor:pointer;">OK, Let's do it</button>
-         <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>I don't want to do it</button>
+          <button style="cursor:pointer;">OK</button>
+         <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
      </div>
    {% endif %}
   

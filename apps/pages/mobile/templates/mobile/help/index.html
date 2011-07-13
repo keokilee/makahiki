@@ -1,0 +1,73 @@
+{% extends "mobile/base.html" %}
+
+{% block body %}
+<div data-role="page" id="index">
+  <div data-role="header">
+    <a href="{% url mobile_help %}/#ask" data-rel="dialog" data-role="button">Ask Admin</a>
+    <h1>Help</h1>  
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      <li data-role="list-divider">Introduction to the Kukui Cup</li>
+      <li>
+        <a href="{% url mobile_help %}/#intro" data-rel="dialog">Watch the video</a></li>
+      <li data-role="list-divider">Rules of the competition</li>
+      {% for topic in rules %}
+        <li>
+          <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}" data-rel="dialog">{{topic.title}}</a>
+        </li>
+        {% if topic.sub_topics %}
+        
+        {% for sub_topic in topic.sub_topics.all %}
+          <li>
+            <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">-{{sub_topic.title}}</a>
+          </li>
+          {% endfor %}
+        
+        {% endif %}
+      {% endfor %}
+      <li data-role="list-divider">Frequently Asked Questions</li>
+      {% for topic in faqs %}
+        <li>
+          <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
+        </li>
+        {% if topic.sub_topics %}
+
+          {% for sub_topic in topic.sub_topics.all %}
+            <li>
+              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">-{{sub_topic.title}}</a>
+            </li>
+          {% endfor %}
+
+        {% endif %}
+      {% endfor %}      
+    </ul>
+  </div>
+
+
+</div>
+
+<div data-role="page" id="ask" data-url="ask">
+  <div data-role="header">
+    <h1>Ask an Admin</a>
+  </div>
+  <div data-role="content">
+    <a href="{% url mobile_help %}" data-role="button" data-rel="back">Cancel</a>
+  </div>
+
+</div>
+
+<div data-role="page" id="intro" data-url="intro">
+  <div data-role="header">
+    <h1>Intro Video</h1>
+  </div>
+
+  <div data-role="content">
+    <iframe title="YouTube video player" width="376" height="225" src="http://www.youtube.com/embed/CzAmUxXXeJY" frameborder="0" allowfullscreen></iframe>
+    <a href="{% url mobile_help %}" data-role="button" data-rel="back">Go Back</a>
+  </div>
+</div>
+
+{% endblock %}
