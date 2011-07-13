@@ -9,54 +9,43 @@
   </div>
 
   <div data-role="content">
-    <div>
-      Rules of the competition
-    </div>
-    <div>
-      <ul>
-        {% for topic in rules %}
-         <li>
-           <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
-         </li>
-          {% if topic.sub_topics %}
-          <ul>
+    <ul data-role="listview" data-inset="true" class="ui-listview-inset ui-corner-all ui-shadow" role="listbox">
+      <li data-role="list-divider">Introduction to the Kukui Cup</li>
+      <li>
+        <a href="{% url mobile_help %}/#intro" data-rel="dialog">Watch the video</a></li>
+      <li data-role="list-divider">Rules of the competition</li>
+      {% for topic in rules %}
+        <li>
+          <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}" data-rel="dialog">{{topic.title}}</a>
+        </li>
+        {% if topic.sub_topics %}
+        
+        {% for sub_topic in topic.sub_topics.all %}
+          <li>
+            <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">-{{sub_topic.title}}</a>
+          </li>
+          {% endfor %}
+        
+        {% endif %}
+      {% endfor %}
+      <li data-role="list-divider">Frequently Asked Questions</li>
+      {% for topic in faqs %}
+        <li>
+          <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
+        </li>
+        {% if topic.sub_topics %}
+
           {% for sub_topic in topic.sub_topics.all %}
             <li>
-              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">{{sub_topic.title}}</a>
+              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">-{{sub_topic.title}}</a>
             </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+          {% endfor %}
 
-    <div>
-      Frequently Asked Questions
-    </div>
-    <div>
-      <ul>
-        {% for topic in faqs %}
-         <li>
-           <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
-         </li>
-          {% if topic.sub_topics %}
-          <ul>
-          {% for sub_topic in topic.sub_topics.all %}
-            <li>
-              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">{{sub_topic.title}}</a>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+        {% endif %}
+      {% endfor %}      
+    </ul>
   </div>
 
-  <div data-role="footer">
-
-  </div>
 
 </div>
 
@@ -65,8 +54,20 @@
     <h1>Ask an Admin</a>
   </div>
   <div data-role="content">
+    <a href="{% url mobile_help %}" data-role="button" data-rel="back">Cancel</a>
   </div>
 
+</div>
+
+<div data-role="page" id="intro" data-url="intro">
+  <div data-role="header">
+    <h1>Intro Video</h1>
+  </div>
+
+  <div data-role="content">
+    <iframe title="YouTube video player" width="376" height="225" src="http://www.youtube.com/embed/CzAmUxXXeJY" frameborder="0" allowfullscreen></iframe>
+    <a href="{% url mobile_help %}" data-role="button" data-rel="back">Go Back</a>
+  </div>
 </div>
 
 {% endblock %}
