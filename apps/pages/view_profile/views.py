@@ -12,9 +12,9 @@ from django.views.decorators.cache import never_cache
 
 from pages.view_profile.forms import ProfileForm
 from pages.view_profile import get_completed_members, get_in_progress_members
-
 from components.makahiki_facebook.models import FacebookProfile
 from components.activities.models import ActivityMember, CommitmentMember
+from components.activities import get_current_commitment_members
 import components.makahiki_facebook.facebook as facebook
 
 from lib.brabeion import badges
@@ -53,18 +53,12 @@ def index(request):
     
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
-    
-  # Check for a rejected activity member.
-  rejected_member = None
-  if request.session.has_key("rejected_id"):
-    rejected_member = ActivityMember.objects.get(id=request.session["rejected_id"])
-    del request.session["rejected_id"]
   
   return render_to_response("view_profile/index.html", {
     "form": form,
     "in_progress_members": get_in_progress_members(user),
+    "commitment_members": get_current_commitment_members(user),
     "completed_members": get_completed_members(user),
-    "rejected_member": rejected_member,
     "notifications": user.usernotification_set.order_by("-created_at"),
     "help_info": {
       "prefix": "profile_index",

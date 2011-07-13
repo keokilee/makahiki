@@ -51,22 +51,7 @@
       My Public Commitments
     </div>
     <div {% get_id_and_classes "news-commitments-content" %}>
-      {% if commitment_members %}
-      <table>
-        <tr>
-          <th>Commitment</th>
-          <th>Expires</th>
-        </tr>
-        {% for member in commitment_members %}
-        <tr>
-          <td>{{member.commitment.title}}</td>
-          <td>{{member.completion_date}}</td>
-        </tr>
-        {% endfor %}
-      </table>
-      {% else %}
-      <p style="width: 100%; text-align: center">You are not participating in any commitments</p>
-      {% endif %}
+      {% include "activities/user_commitments.html" %}
     </div>
   </div>
 </div>

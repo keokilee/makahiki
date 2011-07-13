@@ -95,22 +95,20 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 	color: #c86c09;
 }
 
-#profile-badges, #profile-history, #profile-notifications {
+#profile-badges, #profile-history, #profile-notifications, #profile-commitments {
 	width: 436px;
 	float: right;
 	margin-right: 14px;
 }
 
-#profile-badges, #profile-history, #profile-notifications {
-	width: 436px;
-	float: right;
-	margin-right: 14px;
-}
-
-#profile-badges-content, #profile-history-content {
+#profile-badges-content, #profile-history-content, #profile-commitment-content {
 	padding: 0px 8px 0 2px;
 	border: 0;
 	
+}
+
+#profile-commitments-content .commitments-title {
+  width: 310px;
 }
 
 #profile-badges-content table, #profile-history-content table {
