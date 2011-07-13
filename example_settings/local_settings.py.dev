@@ -21,6 +21,8 @@ MIDDLEWARE_CLASSES += (
   'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+# INTERNAL_IPS = ('127.0.0.1',)
+
 # Development settings
 # FACEBOOK_APP_ID = '<APP ID>'
 # FACEBOOK_API_KEY = '<API_KEY>'
