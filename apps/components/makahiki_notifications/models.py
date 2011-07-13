@@ -75,7 +75,7 @@ class UserNotification(Notification):
     notification.save()
 
   @staticmethod
-  def create_error_notification(recipient, contents, display_alert=True):
+  def create_error_notification(recipient, contents, display_alert=True, send_email=True):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
@@ -84,6 +84,7 @@ class UserNotification(Notification):
     )
     # print display_alert
     notification.save()
+    
   
   
   

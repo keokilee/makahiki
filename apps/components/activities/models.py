@@ -427,18 +427,21 @@ class ActivityMember(CommonActivityUser):
     
     # We check here for a rejected item because it should have an id now.
     if self.approval_status == u"rejected":
-      # Construct the message to be sent.
-      message = "Your response to <a href='%s'>%s</a> was not approved." % (
-          reverse("activity_task", args=(self.activity.id,)),
-          self.activity.title
-      )
+      self._handle_rejected()
       
-      message += " You can still get points by clicking on the link and trying again."
-      # message += " Please check your <a href='%s'>profile</a> for more information." % (
-      #           reverse("profile_rejected", args=(self.id,)),
-      #       )
-      
-      UserNotification.create_error_notification(self.user, message)
+  def _handle_rejected(self):
+    """
+    Creates a notification for rejected tasks.  This also creates an email message if it is configured.
+    """
+    # Construct the message to be sent.
+    message = "Your response to <a href='%s'>%s</a> was not approved." % (
+        reverse("activity_task", args=(self.activity.id,)),
+        self.activity.title
+    )
+    
+    message += " You can still get points by clicking on the link and trying again."
+    
+    UserNotification.create_error_notification(self.user, message)
     
   def delete(self):
     """Custom delete method to remove awarded points."""
