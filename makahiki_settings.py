@@ -65,4 +65,4 @@ MAKAHIKI_THEME_SETTINGS = {
 
 # This is the name of the activity in the setup wizard.
 # If the user answers that question correctly, this activity will be marked as completed.
-SETUP_WIZARD_ACTIVITY_NAME = "Intro Video"
+SETUP_WIZARD_ACTIVITY_NAME = "Intro video"
