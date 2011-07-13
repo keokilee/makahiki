@@ -3,11 +3,55 @@
 {% block body %}
 <div data-role="page" id="index">
   <div data-role="header">
+    <a href="{% url mobile_help %}/#ask" data-rel="dialog" data-role="button">Ask Admin</a>
     <h1>Help</h1>  
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </div>
 
   <div data-role="content">
-  
+    <div>
+      Rules of the competition
+    </div>
+    <div>
+      <ul>
+        {% for topic in rules %}
+         <li>
+           <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
+         </li>
+          {% if topic.sub_topics %}
+          <ul>
+          {% for sub_topic in topic.sub_topics.all %}
+            <li>
+              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">{{sub_topic.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      Frequently Asked Questions
+    </div>
+    <div>
+      <ul>
+        {% for topic in faqs %}
+         <li>
+           <a href="{% url mobile_help_topic category=topic.category slug=topic.slug %}">{{topic.title}}</a>
+         </li>
+          {% if topic.sub_topics %}
+          <ul>
+          {% for sub_topic in topic.sub_topics.all %}
+            <li>
+              <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">{{sub_topic.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 
   <div data-role="footer">
@@ -16,7 +60,12 @@
 
 </div>
 
-<div data-role="page" id="topic-item" data-url="topic-item">
+<div data-role="page" id="ask" data-url="ask">
+  <div data-role="header">
+    <h1>Ask an Admin</a>
+  </div>
+  <div data-role="content">
+  </div>
 
 </div>
 

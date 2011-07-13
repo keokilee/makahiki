@@ -3,11 +3,13 @@
 {% block body %}
 <div data-role="page">
   <div data-role="header">
-    <h1>Help</h1>  
+    <a href="" data-icon="back" data-rel="back">Back</a>
+    <h1>{{topic.title}}</h1>  
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </div>
 
   <div data-role="content">
-  
+    {{topic.contents|safe}}
   </div>
 
   <div data-role="footer">
