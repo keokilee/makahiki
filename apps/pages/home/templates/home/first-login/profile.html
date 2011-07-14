@@ -8,6 +8,7 @@
     {% csrf_token %}
     <ul>
       <li>
+        <div style="color: red; font-style: italic">{{form.display_name.errors}}</div>
         {{form.display_name.label_tag}}: {{form.display_name}}
         <p class="setup-profile-help-text">{{form.display_name.help_text}}</p>
       </li>

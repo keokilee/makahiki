@@ -4,6 +4,8 @@ from django.conf import settings
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.db import IntegrityError
+
 from components.activities.models import Activity, ActivityMember
 from components.floors.models import Dorm, Floor
 from components.makahiki_profiles.models import Profile
@@ -92,6 +94,24 @@ class ProfileLeadersTests(TestCase):
     settings.COMPETITION_ROUNDS = self.saved_rounds
     
 class ProfileUnitTests(TestCase):
+  def testDisplayNameUnique(self):
+    user1 = User(username="test_user", password="changeme")
+    user1.save()
+    user2 = User(username="test_user1", password="changeme")
+    user2.save()
+    
+    profile1 = user1.get_profile()
+    profile1.name = "Test User"
+    profile1.save()
+    
+    profile2 = user2.get_profile()
+    profile2.name = "Test User"
+    try:
+      profile2.save()
+      self.fail("Exception should be raised.")
+    except IntegrityError:
+      pass
+    
   def testFloorRankWithPoints(self):
     """Tests that the floor_rank method accurately computes the rank based on points."""
     user = User(username="test_user", password="changeme")

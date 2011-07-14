@@ -117,7 +117,6 @@ def setup_profile(request):
     # print request
     if form.is_valid():
       profile.name = form.cleaned_data["display_name"]
-      profile.about = form.cleaned_data["about"]
       if not profile.setup_profile:
         profile.setup_profile = True
         profile.add_points(5, datetime.datetime.today())

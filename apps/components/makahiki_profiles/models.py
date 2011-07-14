@@ -101,7 +101,7 @@ class Profile(models.Model):
   )
   
   user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-  name = models.CharField(_('name'), max_length=50)
+  name = models.CharField(_('name'), unique=True, max_length=50)
   first_name = models.CharField(_('first_name'), max_length=50, null=True, blank=True)
   last_name = models.CharField(_('last_name'), max_length=50, null=True, blank=True)
   points = models.IntegerField(default=0, editable=False)
@@ -316,7 +316,7 @@ class Profile(models.Model):
 def create_profile(sender, instance=None, **kwargs):
   if instance is None:
       return
-  profile, created = Profile.objects.get_or_create(user=instance)
+  profile, created = Profile.objects.get_or_create(user=instance, name=instance.username)
   for key in settings.COMPETITION_ROUNDS.keys():
     entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
 

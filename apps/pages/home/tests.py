@@ -76,7 +76,6 @@ class SetupWizardFunctionalTestCase(TestCase):
     points = profile.points
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "Test User",
-        "about": "I'm a test user.",
     }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/activity.html")
@@ -88,7 +87,6 @@ class SetupWizardFunctionalTestCase(TestCase):
     # Check that updating again does not award more points.
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "Test User",
-        "about": "I'm not a test user.",
     })
     user = User.objects.get(username="user")
     self.assertEqual(points + 5, user.get_profile().points, "Check that the user was not awarded any more points.")
@@ -96,13 +94,28 @@ class SetupWizardFunctionalTestCase(TestCase):
   def testSetupProfileWithoutName(self):
     """Test that there is an error when the user does not supply a username."""
     profile = self.user.get_profile()
-    points = profile.points
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "",
-        "about": "I'm a test user.",
     })
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
+    
+  def testSetupProfileWithDupName(self):
+    """Test that there is an error when the user uses a duplicate display name."""
+    profile = self.user.get_profile()
+    
+    user2 = User.objects.create_user("user2", "user2@test.com")
+    profile2 = user2.get_profile()
+    profile2.name = "Test U."
+    profile2.save()
+    
+    response = self.client.post(reverse("setup_profile"), {
+        "display_name": "Test U.",
+    })
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    self.assertContains(response, "please enter another name.", 
+        msg_prefix="Duplicate name should raise an error.")
       
   def testSetupActivity(self):
     """Check that we can access the activity page of the setup wizard."""

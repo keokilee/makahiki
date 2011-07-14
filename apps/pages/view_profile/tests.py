@@ -59,6 +59,24 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "Phone numbers must be in XXX-XXX-XXXX format.", 
         msg_prefix="User should not have a valid contact number.")
     
+  def testProfileWithDupName(self):
+    user = User.objects.create_user("user2", "user2@test.com")
+    profile = user.get_profile()
+    profile.name = "Test U."
+    profile.save()
+    
+    user_form = {
+        "display_name": "Test U.",
+        "about": "I rock",
+        "stay_logged_in": True,
+        "contact_email": "user@test.com",
+        "contact_text": "8088675309",
+        "contact_carrier": "t-mobile",
+    }
+    # Test posting a valid form.
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "'Test U.' is taken, please enter another name.", 
+        msg_prefix="Duplicate name should raise an error.")
     
   def testActivityAchievement(self):
     """Check that the user's activity achievements are loaded."""
