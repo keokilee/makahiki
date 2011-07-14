@@ -14,7 +14,7 @@
 
       {% for activity in activities %}
         {% if activity.category.name|slugify == category %}
-          {% if activity.activity.is_active %}
+          {% if activity.is_unlock %}
           <li>
             <a href="{% url mobile_smartgrid_task activity.id %}" rel="external">
               <img src="/site_media/static/css/default/images/favicon.ico" alt="{{activity.title}}" class="ui-li-icon"/>

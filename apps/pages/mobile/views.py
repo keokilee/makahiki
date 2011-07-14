@@ -99,6 +99,9 @@ def sgactivities(request, slug):
   for x in choices:
     if x == string.lower(slug):
       category = x
+      
+  for task in activities:
+    annotate_task_status(request.user, task)
 
   return render_to_response("mobile/smartgrid/activities.html", {
     "activities": activities,
@@ -352,7 +355,7 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-  return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(commitment.id,)) + "?display_point=true")
+  return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(commitment.id,)))
 
 @never_cache
 def __add_activity(request, activity_id):
