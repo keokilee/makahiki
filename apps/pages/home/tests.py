@@ -116,6 +116,14 @@ class SetupWizardFunctionalTestCase(TestCase):
     self.assertTemplateUsed(response, "home/first-login/profile.html")
     self.assertContains(response, "please enter another name.", 
         msg_prefix="Duplicate name should raise an error.")
+        
+    response = self.client.post(reverse("setup_profile"), {
+        "display_name": "   Test U.    ",
+    })
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    self.assertContains(response, "please enter another name.", 
+        msg_prefix="Duplicate name with whitespace should raise an error.")
       
   def testSetupActivity(self):
     """Check that we can access the activity page of the setup wizard."""

@@ -27,7 +27,7 @@ class ProfileForm(forms.Form):
     """
     data = self.cleaned_data['display_name']
     try:
-      profile = Profile.objects.get(name=data)
+      profile = Profile.objects.get(name=data.strip())
       raise forms.ValidationError("'%s' is taken, please enter another name." % data)
     except Profile.DoesNotExist:
       pass

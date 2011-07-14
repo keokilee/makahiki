@@ -6,7 +6,7 @@ from django.core import management
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from components.makahiki_facebook.models import FacebookProfile
+from components.makahiki_profiles.models import Profile
 
 class Command(management.base.BaseCommand):
   help = 'Cleans out users with duplicate ids.  Renames users with duplicate display names.'
@@ -26,7 +26,7 @@ class Command(management.base.BaseCommand):
         for profile in profiles:
           profile.name = "%s %s." % (profile.name, letters[index])
           profile.save()
-          counter += 1
+          index += 1
 
     users = Profile.objects.values("user").distinct()
     for user in users:
