@@ -132,11 +132,7 @@
   </div>
 
   <div data-role="content">
-    {% if form.is_multipart %}
-      <form id="myform" enctype="multipart/form-data" action="add" method="post">
-    {% else %}
-      <form id="myform" action="add" method="post">
-    {% endif %}
+    <form id="myform" action="{% url mobile_smartgrid_add task.id %}" method="post">
 
     {% csrf_token %}
 

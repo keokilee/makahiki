@@ -399,7 +399,7 @@ def __add_activity(request, activity_id):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(activity.id,)) + "?display_point=true")
+    return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(activity.id,)))
 
 @never_cache
 def __request_activity_points(request, activity_id):
@@ -414,9 +414,6 @@ def __request_activity_points(request, activity_id):
   try:
     # Retrieve an existing activity member object if it exists.
     activity_member = ActivityMember.objects.get(user=user, activity=activity)
-    if activity_member.award_date:
-      # messages.info("You have already received the points for this activity.")
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
       
   except ObjectDoesNotExist:
     pass # Ignore for now.
@@ -464,7 +461,7 @@ def __request_activity_points(request, activity_id):
 
       activity_member.save()
           
-      return HttpResponseRedirect(reverse("pages.mobile.smartgrid.views.task", args=(activity.id,)) + "?display_point=true")
+      return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(activity.id,)))
     
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
