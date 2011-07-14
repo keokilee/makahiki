@@ -314,11 +314,10 @@ class Profile(models.Model):
     verbose_name_plural = _('profiles')
 
 def create_profile(sender, instance=None, **kwargs):
-  if instance is None:
-      return
-  profile, created = Profile.objects.get_or_create(user=instance, name=instance.username)
-  for key in settings.COMPETITION_ROUNDS.keys():
-    entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
+  if (kwargs.get('created', True) and not kwargs.get('raw', False)):
+    profile, created = Profile.objects.get_or_create(user=instance, name=instance.username)
+    for key in settings.COMPETITION_ROUNDS.keys():
+      entry, created = ScoreboardEntry.objects.get_or_create(profile=profile, round_name=key)
 
 post_save.connect(create_profile, sender=User)
 

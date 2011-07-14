@@ -15,7 +15,7 @@ python manage.py dumpdata --indent=2 quests > $var/base_quests.json
 
 python manage.py dumpdata --indent=2 help_topics > $var/base_help.json
 
-python manage.py dumpdata --indent=2 account auth.user makahiki_profiles.profile makahiki_avatar > $var/test_users.json
+python manage.py dumpdata --indent=2 auth.user makahiki_profiles makahiki_avatar > $var/test_users.json
 
 python manage.py dumpdata --indent=2 floors.post > $var/test_posts.json
 

@@ -75,7 +75,7 @@ class ProfileFunctionalTestCase(TestCase):
     }
     # Test posting a valid form.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
-    self.assertContains(response, "'Test U.' is taken, please enter another name.", 
+    self.assertContains(response, "please enter another name.", 
         msg_prefix="Duplicate name should raise an error.")
     
   def testActivityAchievement(self):
