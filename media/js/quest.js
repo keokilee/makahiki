@@ -11,6 +11,9 @@ $(document).ready(function() {
       
       //Insert the contents of the quest-description into the details.
       $("#quest-contents").html($(this).next(".quest-description").html());
+      
+      // Set cookie that identifies this quest as open.
+      setCookie("visible-quest", "#" + $(this).attr('id'));
 
       //Toggle quest-details if it is hidden.
       if (!$("#quest-details").is(":visible")) {
@@ -30,6 +33,10 @@ $(document).ready(function() {
     else {
       //Hide quest details and remove selected.
       $(this).parent().removeClass("selected");
+      
+      // Remove cookie.
+      deleteCookie("visible-quest");
+      
       if($(this).parent().hasClass('canopy-quest')) {
         log_js_action("canopy-quest", $(this).attr('id'), 'hide');
       }
@@ -45,6 +52,7 @@ $(document).ready(function() {
   // Handler for clicking on the hide link.
   $("#quest-hide").click(function() {
     $("#quest-box li").removeClass("selected");
+    deleteCookie("visible-quest");
     if($(this).parent().hasClass('canopy-quest')) {
       log_js_action("canopy-quest", $(this).attr('id'), 'hide');
     }
@@ -65,4 +73,20 @@ $(document).ready(function() {
   $("#quest-help-icon").click(function() {
     $('#quest-help-dialog').dialog('open');
   });
+  
+  // If the cookie is set, display the quest.
+  var value = getCookie("visible-quest");
+  if (value) {
+    $(value).parent().addClass("selected");
+    $("#quest-contents").html($(value).next(".quest-description").html());
+
+    if($(value).parent().hasClass('canopy-quest')) {
+      log_js_action("canopy-quest", $(value).attr('id'), 'show');
+    }
+    else {
+      log_js_action("quest", $(value).attr('id'), 'show'); 
+    }
+    // console.log($(this).attr('id'));
+    $("#quest-details").show();
+  }
 });
