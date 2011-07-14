@@ -462,9 +462,11 @@ clear: both;
 
 #quest-hide {
   color: white;
-  float: left;
+  float: right;
   display: block;
   font-weight: bold;
+  padding-right: 10px;
+  padding-top: 3px;
 }
 
 /*------- Footer styles -----*/
