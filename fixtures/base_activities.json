@@ -1277,7 +1277,7 @@
     "fields": {
       "category": 1, 
       "energy_related": false, 
-      "description": "If you missed it during your the first login process, watch this video explaining the competition and this website\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/CzAmUxXXeJY?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/CzAmUxXXeJY?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the button below** to answer a question about the information in the video, and get your points!", 
+      "description": "If you missed it during your the first login process, watch this video explaining the competition and this website\r\n\r\n<object width=\"471\" height=\"295\"><param name=\"movie\" value=\"http://www.youtube.com/v/T37kNTkZCrA?fs=1&amp;hl=en_US&amp;rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/T37kNTkZCrA?fs=1&amp;hl=en_US&amp;rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"471\" height=\"295\" wmode=\"opaque\"></embed></object>\r\n\r\nOnce you are done, **click the button below** to answer a question about the information in the video, and get your points!", 
       "title": "Watch introduction video", 
       "depends_on": "True", 
       "created_at": "2011-02-17 10:35:30", 
