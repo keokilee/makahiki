@@ -43,6 +43,11 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "Your changes have been saved", 
         msg_prefix="Successful form update should have a success message.")
         
+    # Try posting the form again.
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "Your changes have been saved", 
+        msg_prefix="Second form update should have a success message.")
+        
     # Test posting an invalid form.
     user_form.update({"display_name": ""})
     response = self.client.post(reverse("profile_index"), user_form, follow=True)

@@ -87,9 +87,11 @@ class SetupWizardFunctionalTestCase(TestCase):
     # Check that updating again does not award more points.
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "Test User",
-    })
+    }, follow=True)
     user = User.objects.get(username="user")
     self.assertEqual(points + 5, user.get_profile().points, "Check that the user was not awarded any more points.")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/activity.html")
     
   def testSetupProfileWithoutName(self):
     """Test that there is an error when the user does not supply a username."""
@@ -111,7 +113,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "Test U.",
-    })
+    }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
     self.assertContains(response, "please enter another name.", 
@@ -119,7 +121,7 @@ class SetupWizardFunctionalTestCase(TestCase):
         
     response = self.client.post(reverse("setup_profile"), {
         "display_name": "   Test U.    ",
-    })
+    }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
     self.assertContains(response, "please enter another name.", 

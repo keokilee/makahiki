@@ -14,6 +14,7 @@ from django.core.files.temp import NamedTemporaryFile
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
+from django.db import IntegrityError
 
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
@@ -116,11 +117,15 @@ def setup_profile(request):
     
     # print request
     if form.is_valid():
-      profile.name = form.cleaned_data["display_name"]
+      profile.name = form.cleaned_data["display_name"].strip()
       if not profile.setup_profile:
         profile.setup_profile = True
         profile.add_points(5, datetime.datetime.today())
-      profile.save()
+      try:
+        profile.save()
+      except IntegrityError:
+        form.errors.update({"display_name": "'%s' is taken, please enter another name." % profile.name})
+        return _get_profile_form(request, form=form, non_xhr=True)
       
       if 'avatar' in request.FILES:
         path = avatar_file_path(user=request.user, 

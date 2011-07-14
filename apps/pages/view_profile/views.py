@@ -1,13 +1,12 @@
+from django.db import IntegrityError
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 from django.views.decorators.cache import never_cache
 
 from pages.view_profile.forms import ProfileForm
@@ -30,14 +29,18 @@ def index(request):
     form = ProfileForm(request.POST)
     if form.is_valid():
       profile = user.get_profile()
-      profile.name = form.cleaned_data["display_name"]
+      profile.name = form.cleaned_data["display_name"].strip()
       profile.contact_email = form.cleaned_data["contact_email"]
       profile.contact_text = form.cleaned_data["contact_text"]
       profile.contact_carrier = form.cleaned_data["contact_carrier"]
       # profile.enable_help = form.cleaned_data["enable_help"]
         
-      profile.save()
-      form.message = "Your changes have been saved"
+      try:
+        profile.save()
+        form.message = "Your changes have been saved"
+      except IntegrityError:
+        form.message = "Please correct the errors below."
+        form.errors.update({"display_name": "'%s' is taken, please enter another name." % profile.name})
     else:
       form.message = "Please correct the errors below."
       
