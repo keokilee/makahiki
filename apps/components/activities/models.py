@@ -360,7 +360,7 @@ class ActivityMember(CommonActivityUser):
   user = models.ForeignKey(User)
   activity = models.ForeignKey(Activity)
   question = models.ForeignKey(TextPromptQuestion, null=True, blank=True)
-  response = models.CharField(blank=True, max_length=255, help_text="255 character max.")
+  response = models.TextField(blank=True)
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
   user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")
   image = models.ImageField(max_length=1024, 
