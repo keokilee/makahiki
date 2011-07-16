@@ -2,7 +2,7 @@ import simplejson as json
 
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
-from django.core.mail import mail_admins
+from django.core.mail.message import EmailMultiAlternatives
 from django.contrib.sites.models import Site
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -24,9 +24,17 @@ def send_feedback(request):
           "question": form.cleaned_data["url"],
       })
       
+      # Using adapted version from Django source code
       current_site = Site.objects.get(id=settings.SITE_ID)
-      mail_admins("[%s] Message for admins" % current_site.domain,
-          message, html_message=html_message)
+      subject = u'[%s] Message for admins' % current_site.domain
+      mail = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, 
+          [a[1] for a in settings.ADMINS], headers={"Reply-To": request.user.email})
+      
+      mail.attach_alternative(html_message, 'text/html')
+      mail.send()
+      
+      # mail_admins("[%s] Message for admins" % current_site.domain,
+      #           message, html_message=html_message, headers={'Reply-To': request.user.email})
           
       if request.is_ajax():
         return HttpResponse(json.dumps({"success": True}), mimetype="application/json")

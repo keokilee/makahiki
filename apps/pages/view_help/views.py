@@ -4,21 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
 from components.help_topics.models import HelpTopic
-from pages.view_help.forms import AskAdminForm
+from components.ask_admin.forms import FeedbackForm
 
 @login_required
 def index(request):
-  form = None
-  if request.method == "POST":
-    form = AskAdminForm(request.POST)
-    if form.is_valid():
-      user = request.user
-      email = user.get_profile().contact_email or user.email
-      form.success = "Your question has been sent to the Kukui Cup administrators. We will email a response to " + email
-      
-  if not form:
-    form = AskAdminForm()
-    
+  form = FeedbackForm(auto_id="help_%s")
   rules = HelpTopic.objects.filter(category="rules", parent_topic__isnull=True)
   faqs = HelpTopic.objects.filter(category="faq", parent_topic__isnull=True)
   return render_to_response("help/index.html", {

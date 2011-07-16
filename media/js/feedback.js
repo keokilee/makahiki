@@ -15,7 +15,7 @@ $(document).ready(function() {
     modal: true,
     width: 500,
     position: ["center", 150],
-    autoOpen: false,
+    autoOpen: false
   });
   
   $("#feedback-form textarea").keyup(function() {
@@ -33,17 +33,20 @@ $(document).ready(function() {
   });
   
   $("#feedback-submit").button({
-    disabled: true,
+    disabled: true
   });
   
   $("#feedback-submit").click(function() {
-    $(this).button("option", "disabled", true);
-    // alert(this.form.action);
-    $("#feedback-spinner").show();
-    $.post(this.form.action, $("#feedback-form").serialize(), function(data) {
-      $("#feedback-dialog").dialog("close");
-      $("#feedback-success").dialog("open");
-    });
+    if(!$(this).button("option", "disabled")) {
+      $(this).button("option", "disabled", true);
+      // alert(this.form.action);
+      $("#feedback-spinner").show();
+      $.post(this.form.action, $("#feedback-form").serialize(), function(data) {
+        $("#feedback-dialog").dialog("close");
+        $("#feedback-success").dialog("open");
+        $("#feedback-spinner").hide();
+      });
+    }
     
     return false;
   });
