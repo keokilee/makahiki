@@ -1,6 +1,6 @@
 import simplejson as json
 
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
 from django.core.mail import mail_admins
 from django.contrib.sites.models import Site
@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from components.ask_admin.forms import FeedbackForm
 
 def send_feedback(request):
-  if request.method == "POST" and request.is_ajax():
+  if request.method == "POST":
     form = FeedbackForm(request.POST)
     if form.is_valid():
       html_message = render_to_string("email/ask_admin.html", {
@@ -28,6 +28,9 @@ def send_feedback(request):
       mail_admins("[%s] Message for admins" % current_site.domain,
           message, html_message=html_message)
           
-      return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
+      if request.is_ajax():
+        return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
+      
+      return HttpResponseRedirect(form.cleaned_data["url"])
   
   raise Http404
