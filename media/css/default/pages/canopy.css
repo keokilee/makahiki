@@ -1,3 +1,16 @@
+.container {
+  background: transparent url(/site_media/static/css/default/images/canopy.jpg) top center no-repeat;
+/*  min-height: 1200px;*/
+}
+
+.container-top {
+  background: none;
+}
+
+.container-bottom {
+  background: none;
+}
+
 #quest-list {
   margin: 0;
   margin-left: 40px;
