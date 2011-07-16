@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var textarea = $("textarea");
+  var textarea = $("#wall-post textarea");
   textarea.click(function() {
     if ($("#wall-post-submit").button("option", "disabled")) {
       this.value = "";

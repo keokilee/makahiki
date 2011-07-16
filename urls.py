@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     # Component views.
     url(r'^account/cas/login/$', 'lib.django_cas.views.login'),
     url(r'^account/cas/logout/$', 'lib.django_cas.views.logout'),
+    url(r'^ask-admin/', include('components.ask_admin.urls')),
     url(r'^avatar/', include('components.makahiki_avatar.urls')),
     url(r'^resources/', include('components.resources.urls')),
     url(r'^themes/', include('components.makahiki_themes.urls')),

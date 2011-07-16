@@ -69,11 +69,15 @@ a {
 	
 #header-logout {
 	position: absolute;
-	margin-left: 800px;
-	margin-top: -1.3em;
+	margin-left: 675px;
+	margin-top: -1.5em;
 	text-align: right;
-	width: 120px;
+	width: 240px;
 	font-weight: bold;
+}
+
+#header-feedback {
+  margin-right: 15px;
 }
 
 #header-logout a {color: #FFF;}
@@ -514,3 +518,11 @@ clear: both;
 	background: #dbd7af;
 }
 	
+/***** Feedback form styles ******/
+#feedback-form {
+  text-align: left;
+}
+
+#feedback-form p {
+  margin: 5px 0;
+}

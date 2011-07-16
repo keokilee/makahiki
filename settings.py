@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     # Makahiki components
     'components.activities',
     'components.api',
+    'components.ask_admin',
     'components.canopy',
     'components.energy_goals',
     'components.floors',
@@ -188,7 +189,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.messages',
     'pinax.templatetags',

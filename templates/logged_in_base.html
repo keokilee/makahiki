@@ -13,6 +13,7 @@
 
 <div style="margin-top: 10px">
   <div {% get_id_and_classes "header-logout" %}>
+    <button {% get_id_and_classes "header-feedback" %} disabled="disabled" href="javascript:void(0);">Send Feedback</button>
     <a href="/account/cas/logout/?next=/landing/">Logout</a>
   </div>
 
@@ -56,6 +57,8 @@
 {% endblock %}
 
 {% block extra_body_base %}
+{% include "ask_admin/feedback_dialog.html" %}
+
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
