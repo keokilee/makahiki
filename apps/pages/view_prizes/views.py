@@ -111,7 +111,7 @@ def _get_raffle_prizes(user):
   allocated_tickets = total_tickets - available_tickets
   
   # Get the prizes for the raffle.
-  prizes = RafflePrize.objects.filter(deadline=deadline)
+  prizes = RafflePrize.objects.filter(deadline=deadline).order_by("-value")
     
   return {
     "deadline": deadline,

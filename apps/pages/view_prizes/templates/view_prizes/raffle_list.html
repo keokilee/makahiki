@@ -6,12 +6,12 @@
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
   <tr class="{{cycle_class}}">
     <td class="{% insert_classes "prize-item" %}">
-      <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
-      <a id="raffle-{{prize.title|slugify}}-link" href="#">
+      <a id="raffle-{{prize.title|slugify}}" href="javascript:void(0);">
         {{prize.title}}
       </a>
       
       <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
+        <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
         {{prize.description|markdown}}
         <div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div>
       </div>
@@ -25,12 +25,13 @@
           }
         });
         
-        $("#raffle-{{prize.title|slugify}}-link").click(function() {
-          log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "open");
+        $("#raffle-{{prize.title|slugify}}").click(function() {
+          log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "view");
           $("#raffle-{{prize.title|slugify}}-description").dialog("open");
         });
       </script>
     </td>
+    <td class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</td>
     <td class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</td>
     <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
     <td class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</td>
