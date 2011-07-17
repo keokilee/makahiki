@@ -132,7 +132,7 @@
   </div>
 
   <div data-role="content">
-    <form id="myform" action="{% url mobile_smartgrid_add task.id %}" method="post">
+    <form id="myform" action="{% url mobile_smartgrid_add task.id %}" method="post" data-ajax="false">
 
     {% csrf_token %}
 
@@ -148,7 +148,7 @@
           {{ form.response.errors }}
           {{ form.response }}
           <div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
             <a href="{% url mobile_smartgrid %}/task/{{task.id}}" data-role="button" data-rel="back">
               Cancel</a>
           </div>

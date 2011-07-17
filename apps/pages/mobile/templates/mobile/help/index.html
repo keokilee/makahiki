@@ -54,6 +54,20 @@
     <h1>Ask an Admin</a>
   </div>
   <div data-role="content">
+        Got a question that's not answered here? Type it below and an admin will email you the answer.
+        <form action="{% url ask_admin_feedback %}" method="POST">
+          {{form.url}}
+          {% if form.question.errors %}
+          {{form.question.errors}}
+          {% endif %}
+          {{form.question}}
+          <div>
+            <button type="submit">Submit</button>
+            <input type="submit" value="Send" />
+            </span>
+          </div>
+        </form>
+
     <a href="{% url mobile_help %}" data-role="button" data-rel="back">Cancel</a>
   </div>
 
