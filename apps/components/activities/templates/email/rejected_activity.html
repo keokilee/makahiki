@@ -1,1 +1,19 @@
-Your response to <a href='{{}}'>%s</a> was not approved.
+Hi {{object.user.get_profile.name}},
+
+{% with object.activity as activity %}
+<p>
+  Your response to "<a href='{% url activity_task activity.id %}'>{{activity.title}}</a>" was not approved.  Here is their feedback:
+</p>
+
+<p>
+  {{object.admin_comment}}
+</p>
+
+<p>
+  You can still receive points for this {{activity.type.lower}}.  Please click <a href='{% url activity_task activity.id %}'>here</a> to try again.
+</p>
+{% endwith %}
+
+Thank you,<br/><br/>
+
+{{COMPETITION_NAME}} Administrators

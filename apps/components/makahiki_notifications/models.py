@@ -3,6 +3,8 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.messages import constants as message_constants
+from django.core.mail.message import EmailMultiAlternatives
+from django.conf import settings
 
 # Notification Levels
 constants = message_constants
@@ -45,7 +47,7 @@ class UserNotification(Notification):
     return "ui-state-highlight"
     
   @staticmethod
-  def create_info_notification(recipient, contents, display_alert=False):
+  def create_info_notification(recipient, contents, display_alert=False, object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
@@ -55,7 +57,7 @@ class UserNotification(Notification):
     notification.save()
     
   @staticmethod
-  def create_success_notification(recipient, contents, display_alert=False):
+  def create_success_notification(recipient, contents, display_alert=False, object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
@@ -65,7 +67,7 @@ class UserNotification(Notification):
     notification.save()
 
   @staticmethod
-  def create_warning_notification(recipient, contents, display_alert=True):
+  def create_warning_notification(recipient, contents, display_alert=True, object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
@@ -75,7 +77,7 @@ class UserNotification(Notification):
     notification.save()
 
   @staticmethod
-  def create_error_notification(recipient, contents, display_alert=True, send_email=True):
+  def create_error_notification(recipient, contents, display_alert=True, object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
@@ -85,8 +87,13 @@ class UserNotification(Notification):
     # print display_alert
     notification.save()
     
-  
-  
+  @staticmethod
+  def create_email_notification(recipient, subject, message, html_message=None):
+    msg = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, [recipient.email])
+    if html_message:
+      msg.attach_alternative(html_message, "text/html")
+      
+    msg.send()
   
   
 

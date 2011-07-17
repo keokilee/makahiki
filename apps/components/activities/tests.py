@@ -2,8 +2,9 @@ import datetime
 
 from django.test import TestCase
 from django.conf import settings
-
 from django.contrib.auth.models import User
+from django.core import mail
+
 from components.activities import *
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
 
@@ -140,6 +141,7 @@ class ActivitiesUnitTestCase(TestCase):
     activity_member.approval_status = "rejected"
     activity_member.save()
     new_points = self.user.get_profile().points
+    self.assertEqual(len(mail.outbox), 1, "Check that the rejection sent an email.")
     
     self.assertTrue(activity_member.award_date is None)
     self.assertEqual(points, new_points)

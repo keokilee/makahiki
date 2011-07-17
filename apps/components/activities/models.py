@@ -7,6 +7,8 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.template.loader import render_to_string
 
 # Register badges immediately.
 from components.makahiki_badges.user_badges import FullyCommittedBadge
@@ -442,6 +444,18 @@ class ActivityMember(CommonActivityUser):
     message += " You can still get points by clicking on the link and trying again."
     
     UserNotification.create_error_notification(self.user, message)
+    
+    subject = "[%s]Your response to '%s' was not approved" % (settings.COMPETITION_NAME, self.activity.title) 
+    message = render_to_string("email/rejected_activity.txt", {
+      "object": self,
+      "COMPETITION_NAME": settings.COMPETITION_NAME,
+    })
+    html_message = render_to_string("email/rejected_activity.html", {
+      "object": self,
+      "COMPETITION_NAME": settings.COMPETITION_NAME,
+    })
+    
+    UserNotification.create_email_notification(self.user, subject, message, html_message)
     
   def delete(self):
     """Custom delete method to remove awarded points."""

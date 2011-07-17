@@ -21,7 +21,7 @@ def send_feedback(request):
       message = render_to_string("email/ask_admin.txt", {
           "user": request.user,
           "url": form.cleaned_data["url"],
-          "question": form.cleaned_data["url"],
+          "question": form.cleaned_data["question"],
       })
       
       # Using adapted version from Django source code

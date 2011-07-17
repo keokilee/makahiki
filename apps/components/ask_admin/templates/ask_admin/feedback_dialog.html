@@ -1,4 +1,4 @@
-<div id="feedback-dialog" title="Send Feedback">
+<div id="feedback-dialog" title="Send Feedback" style="display: none">
   <form id="feedback-form" action="{% url ask_admin_feedback %}" method="POST">
     <p>Having issues?  Just want to tell us something?  Let us know!</p>
     <input id="id_url" type="hidden" name="url" value=""/>
@@ -11,7 +11,7 @@
   </form>
 </div>
 
-<div id="feedback-success" title="Thank You!">
+<div id="feedback-success" title="Thank You!" style="display: none">
   <p style="text-align: left">
     Your feedback has been sent to the administrators.  If you asked a question, they will email
     you a response as soon as possible.
