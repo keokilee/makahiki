@@ -43,6 +43,7 @@ class QuestConditionsTest(TestCase):
         title="Super prize!",
         description="A test prize",
         deadline=deadline,
+        value=5,
     )
     prize.save()
     
