@@ -31,6 +31,7 @@ class Prize(models.Model):
   long_description = models.TextField(
       help_text="Additional details about the prize."
   )
+  value = models.IntegerField(help_text="The value of the prize.")
   image = models.ImageField(
       max_length=1024, 
       upload_to="prizes", 
@@ -96,7 +97,7 @@ class Prize(models.Model):
     elif self.award_to == "individual_floor":
       return floor.points_leaders(num_results=1, round_name=round_name)[0]
       
-    raise Exception("Not implemented yet.")
+    raise Exception("'%s' is not implemented yet." % self.award_to)
     
   def _energy_leader(self, floor):
     raise Exception("Energy leader information is not implemented here.  Needs to be implemented at view/controller layer.")
@@ -120,6 +121,7 @@ class RafflePrize(models.Model):
   ROUND_CHOICES = ((round_name, round_name) for round_name in get_round_info().keys())
   
   title = models.CharField(max_length=30, help_text="The title of your prize.")
+  value = models.IntegerField(help_text="The value of your prize")
   description = models.TextField(
       help_text="Description of the prize.  Uses <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> formatting."
   )
