@@ -27,6 +27,7 @@ class DormFloorPrizeTests(TestCase):
         image=image,
         award_to="floor_dorm",
         competition_type="points",
+        value=5,
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS
@@ -161,6 +162,7 @@ class OverallFloorPrizeTest(TestCase):
         image=image,
         award_to="floor_overall",
         competition_type="points",
+        value=5,
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS

@@ -25,7 +25,8 @@ class PrizeTest(TestCase):
         image=image,
         award_to="individual_overall",
         competition_type="points",
-        round_name="Round 1"
+        round_name="Round 1",
+        value=5,
     )
     prize.save()
     
@@ -36,7 +37,8 @@ class PrizeTest(TestCase):
         image=image,
         award_to="individual_overall",
         competition_type="points",
-        round_name="Round 1"
+        round_name="Round 1",
+        value=5,
     )
     try:
       prize2.save()

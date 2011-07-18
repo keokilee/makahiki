@@ -2,9 +2,9 @@
 
 <div {% get_id_and_classes "activity-task-form-content" %}>
   {% if form.is_multipart %}
-    <form id="myform" enctype="multipart/form-data" action="add" method="post">
+    <form id="myform" enctype="multipart/form-data" action="{% url activity_add_task task.type task.slug %}" method="post">
   {% else %}
-    <form id="myform" action="add" method="post">
+    <form id="myform" action="{% url activity_add_task task.type task.slug %}" method="post">
   {% endif %}
 
   {% csrf_token %}

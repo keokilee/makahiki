@@ -346,23 +346,27 @@ class ProfileUnitTests(TestCase):
     
     activity1 = Activity(
                 title="Test activity",
+                slug="test-activity",
                 description="Testing!",
                 duration=10,
                 point_value=10,
                 pub_date=datetime.datetime.today(),
                 expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
                 confirm_type="text",
+                type="activity",
     )
     activity1.save()
     
     activity2 = Activity(
                 title="Test activity 2",
+                slug="test-activity-2",
                 description="Testing!",
                 duration=10,
                 point_value=15,
                 pub_date=datetime.datetime.today(),
                 expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
                 confirm_type="text",
+                type="activity",
     )
     activity2.save()
     activities = [activity1, activity2]

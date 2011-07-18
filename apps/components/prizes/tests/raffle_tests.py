@@ -46,6 +46,7 @@ class RafflePrizeTests(TestCase):
         title="Super prize!",
         description="A test prize",
         image=image,
+        value=5,
         deadline=self.deadline,
     )
     

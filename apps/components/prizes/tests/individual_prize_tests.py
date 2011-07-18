@@ -28,6 +28,7 @@ class OverallPrizeTest(TestCase):
         image=image,
         award_to="individual_overall",
         competition_type="points",
+        value=5,
     )
     
     self.saved_rounds = settings.COMPETITION_ROUNDS
@@ -144,6 +145,7 @@ class FloorPrizeTest(TestCase):
         image=image,
         award_to="individual_floor",
         competition_type="points",
+        value=5,
     )
 
     self.saved_rounds = settings.COMPETITION_ROUNDS

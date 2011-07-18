@@ -88,6 +88,7 @@ class RafflePrizesTestCase(TestCase):
         title="Test raffle prize",
         description="A raffle prize for testing",
         deadline=self.deadline,
+        value=5,
     )
     raffle_prize.save()
     

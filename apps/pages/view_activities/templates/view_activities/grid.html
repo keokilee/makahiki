@@ -26,7 +26,7 @@
        <div class="{{task.type}}">
        <div class="">
        {% if task.is_unlock %}      
-          <a href="task/{{task.id}}" title="{{task.name}}">
+          <a href="{% url activity_task task.type task.slug %}" title="{{task.name}}">
           {% if task.type != 'commitment' %}
             {% if task.is_pau %}
                 {% if task.approval.approval_status == "rejected" %}
@@ -68,7 +68,7 @@
  		<a class="whatever" href="javascript:void(0);">
 		<img src="{{ STATIC_URL}}/css/default/images/lock24.png" width="22" align="top"
 		title="Click to see how to unlock" 
-		onclick="log_js_action('{{task.type}}', '{{task.id}}', 'view-lock');
+		onclick="log_js_action('{{task.type}}', '{{task.slug}}', 'view-lock');
 		unlock_dialog(
 		{% if task.depends_on_text %} 
 		'{{task.depends_on_text}}'

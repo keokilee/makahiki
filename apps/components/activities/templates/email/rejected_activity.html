@@ -2,7 +2,7 @@ Hi {{object.user.get_profile.name}},
 
 {% with object.activity as activity %}
 <p>
-  Your response to "<a href='{% url activity_task activity.id %}'>{{activity.title}}</a>" was not approved.  Here is their feedback:
+  Your response to "<a href='{% url activity_task activity.type activity.slug %}'>{{activity.title}}</a>" was not approved.  Here is their feedback:
 </p>
 
 <p>
@@ -10,7 +10,7 @@ Hi {{object.user.get_profile.name}},
 </p>
 
 <p>
-  You can still receive points for this {{activity.type.lower}}.  Please click <a href='{% url activity_task activity.id %}'>here</a> to try again.
+  You can still receive points for this {{activity.type.lower}}.  Please click <a href='{% url activity_task activity.type activity.slug %}'>here</a> to try again.
 </p>
 {% endwith %}
 

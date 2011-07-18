@@ -193,7 +193,6 @@ def task(request, task_id):
   except ObjectDoesNotExist:
     help = None
     
-  display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
   return render_to_response("mobile/smartgrid/task.html", {
@@ -205,7 +204,6 @@ def task(request, task_id):
     "member_all":member_all_count,
     "member_floor":member_floor_count,
     "users":users,
-    "display_point": display_point,
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
@@ -293,7 +291,6 @@ def sgform(request, task_id):
   except ObjectDoesNotExist:
     help = None
     
-  display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
   return render_to_response("mobile/smartgrid/form.html", {
@@ -305,7 +302,6 @@ def sgform(request, task_id):
     "member_all":member_all_count,
     "member_floor":member_floor_count,
     "users":users,
-    "display_point": display_point,
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
@@ -393,7 +389,6 @@ def __add_activity(request, activity_id):
             "form":form,
             "question":question,
             "display_form":True,
-            "display_point":False,
             "form_title": "Survey",
             }, context_instance=RequestContext(request))    
           
@@ -482,7 +477,6 @@ def __request_activity_points(request, activity_id):
     "member_all":0,
     "member_floor":0,
     "display_form":True,
-    "display_point":False,
     "form_title": "Get your points",
     }, context_instance=RequestContext(request))    
 

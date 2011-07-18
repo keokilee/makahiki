@@ -98,6 +98,7 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
 #profile-badges, #profile-history, #profile-notifications, #profile-commitments {
 	width: 436px;
 	float: right;
+	clear: right;
 	margin-right: 14px;
 }
 

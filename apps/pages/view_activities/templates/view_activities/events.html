@@ -6,7 +6,7 @@
 	    <tbody>  
 	    {% if events %}
           {% for event in events %}
-          <tr><td><a href="{% url activity_task event.id %}">{{event.title}}</a> ({{event.point_value}})</td>
+          <tr><td><a href="{% url activity_task event.type event.slug %}">{{event.title}}</a> ({{event.point_value}})</td>
               <td>{{ event.event_date|date:"D m/d, f A"}}</td>
               <td>{{event.event_location}}</td></tr>
           {% endfor %}
