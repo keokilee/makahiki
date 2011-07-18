@@ -3,9 +3,10 @@
 {% block body %}
 <div data-role="page" id="index">
   <div data-role="header">
+    <h1>Profile Info</h1>
   </div>
   <div data-role="body">
-    <a href="{% url mobile_profile %}/#form">Update My Info</a>
+    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
   </div>
 
 </div>
@@ -15,64 +16,59 @@
     <h1>Update My Data</h1>
   </div>
   <div data-role="body">
-<form action="{% url profile_index %}" method="post">
-  {% if form.message %}
-  <div style="text-align: center">
-    <span>{{form.message}}</span>
-  </div>
-  {% endif %}
+    <form action="{% url profile_index %}" method="post">
+      {% if form.message %}
+        <div style="text-align: center">
+          <span>{{form.message}}</span>
+        </div>
+      {% endif %}
   
-  <table>
-    <tr>
-      <td colspan="2">General</td>
-    </tr>
-    {% if form.display_name.errors %}
-    <tr><td colspan="2">{{form.display_name.errors}}</td></tr>
-    {% endif %}
-    <tr>
-      <td>{{form.display_name.label_tag}}</td>
-      <td>{{form.display_name}}</td>
-    </tr>
-    <tr>
-      <td><label for="picture">Picture</label></td>
-      <td>
-        <img src="{# avatar_url user 60 #}"/>
-        <a href="{% url avatar_change %}" style="padding-left: 15px">change picture</a>
-      </td>
-    </tr>
-    <tr>
-      <td>{{form.stay_logged_in.label_tag}}</td>
-      <td>{{form.stay_logged_in}}</td>
-    </tr>
-    {# <tr> #}
-    {#   <td>{{form.enable_help.label_tag}}</td> #}
-    {#   <td>{{form.enable_help}}</td> #}
-    {# </tr> #}
-    <tr >
-      <td colspan="2">Reminder Settings</td>
-    </tr>
-    {% if form.contact_email.errors %}
-    <tr><td colspan="2">{{form.contact_email.errors}}</td></tr>
-    {% endif %}
-    <tr>
-      <td><label for="id_event_email">Email</label></td>
-      <td>{{form.contact_email}}</td>
-    </tr>
-    {% if form.contact_text.errors %}
-    <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
-    {% endif %}
-    <tr>
-      <td><label for="id_event_text">Text</label></td>
-      <td>
-        {{form.contact_text}}
-        {{form.contact_carrier}}
-      </td>
-    </tr>
-    </tr>
-  </table>
-    <button type="submit">Save Changes</button>
-    {# <a href="#" {% get_id_and_classes "profile-form-submit-button" %}>Save Changes</a> #}
-</form>
+      <table>
+        <tr>
+          <td colspan="2">General</td>
+        </tr>
+        {% if form.display_name.errors %}
+        <tr><td colspan="2">{{form.display_name.errors}}</td></tr>
+        {% endif %}
+        <tr>
+          <td>{{form.display_name.label_tag}}</td>
+          <td>{{form.display_name}}</td>
+        </tr>
+        <tr>
+          <td><label for="picture">Picture</label></td>
+          <td>
+            <img src="{# avatar_url user 60 #}"/>
+            <a href="{% url avatar_change %}" style="padding-left: 15px">change picture</a>
+          </td>
+        </tr>
+        <tr>
+          <td>{{form.stay_logged_in.label_tag}}</td>
+          <td>{{form.stay_logged_in}}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Reminder Settings</td>
+        </tr>
+        {% if form.contact_email.errors %}
+        <tr><td colspan="2">{{form.contact_email.errors}}</td></tr>
+        {% endif %}
+        <tr>
+          <td><label for="id_event_email">Email</label></td>
+          <td>{{form.contact_email}}</td>
+        </tr>
+        {% if form.contact_text.errors %}
+        <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
+        {% endif %}
+        <tr>
+          <td><label for="id_event_text">Text</label></td>
+          <td>
+            {{form.contact_text}}
+            {{form.contact_carrier}}
+          </td>
+        </tr>
+      </table>
+      <button type="submit">Save Changes</button>
+      {# <a href="#" {% get_id_and_classes "profile-form-submit-button" %}>Save Changes</a> #}
+    </form>
   </div>
 </div>
 
