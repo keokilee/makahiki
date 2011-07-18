@@ -195,7 +195,7 @@
 
     <h2>kWh Scores</h2>
     <a href="{% url mobile_scoreboard %}/#rnd-kwh" data-role="button">{{current_round}} kWh Usage</a>
-    <a href="{% url mobile_scoreboard %}/#over-kwh" data-role="button">Overall kWh Usage: {{floor}}</a>
+    <a href="scoreboard/overallkwh" data-role="button" rel="external">Overall kWh Usage: {{floor}}</a>
     <br/>
     <br/>
     <a href="{% url mobile_scoreboard %}" data-role="button" data-rel="back">Cancel</a>

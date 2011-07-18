@@ -697,3 +697,7 @@ def profile(request):
       "count": range(0, 3),
     }
   }, context_instance=RequestContext(request))
+
+@login_required
+def overallkwh(request):
+  return render_to_response("mobile/scoreboard/overallkwh.html", {}, context_instance=RequestContext(request))
