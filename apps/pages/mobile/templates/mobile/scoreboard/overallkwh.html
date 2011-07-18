@@ -14,27 +14,15 @@
 <body>
 <div data-role="page" id="over-lounge" data-url="over-kwh">
   <div data-role="header" data-theme="b">
-    <a href="{% url mobile_scoreboard %}/#filter" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
+    <a href="{% url mobile_scoreboard %}/#filter" rel="external" data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </div>
 
   <div data-role="content">
     <h2>Overall kWh Usage for {{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}</h2> 
-  <div id="header-rank"  style="display:none"> 
-    <h3 id="rank"></h3> out of 15 lounges in all dorms.
-  </div> 
-  <div id="header-energy" style="display:none"> 
-    <h3 id="energy"></h3> kWh used today.
-  </div> 
-   
-  <div id="current-leader" style="display:none"> 
-    Current Leader: <span id="leader"></span> 
-  </div> 
   
   <div id="complete-standings" >  
-    <table id="partial-standings-table" style="display:none"> 
-    </table>  
 
     <table id="full-standings-table"> 
     </table> 
@@ -64,12 +52,9 @@
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
     var usage = energyRank.processDataTable(energyDataTable, 0, 0);
     // console.log("Leader is " + energyRank.calculateLeader(usage).source);
-    var info = energyRank.calculateRankInfo(usage, source);
+    //var info = energyRank.calculateRankInfo(usage, source);
     // console.log(source + " is ranked " + info.rank + " with " + info.usage + " watts");
     
-    energyRank.draw("rank", "energy", info);
-    energyRank.insertLeader("leader", energyRank.calculateLeader(usage));
-    energyRank.drawCompleteStandings("partial-standings-table", source, usage, true);
     energyRank.drawCompleteStandings("full-standings-table", source, usage);
   }
 })();
