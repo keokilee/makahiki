@@ -119,7 +119,7 @@
 
   <div data-role="content">
     <h2>{{current_round}} kWh Usage</h2>
-
+    
   </div>
 
   <footer>
@@ -134,27 +134,7 @@
   </div>
 
   <div data-role="content">
-    <h2>Overall kWh Usage</h2>
-
-    <h2>Info for {{floor}}</h2> 
-    <div id="header-rank"> 
-      <h3 style="display:inline" id="rank"></h3> out of 15 lounges in all dorms.
-    </div> 
-    <div id="header-energy"> 
-      <h3 style="display:inline" id="energy"></h3> kWh used today.
-    </div> 
-  
-    <h2>Standings for today</h2> 
-    <div id="current-leader"> 
-      Current Leader: <span id="leader"></span> 
-    </div> 
-  
-    <div id="complete-standings"> 
-      <h3>This is for dorms with data</h3> 
-      <table id="partial-standings-table"> 
-      </table> 
-    
-      <h3>These are the complete standings</h3> 
+    <h2>Overall kWh Usage</h2>  
       <table id="full-standings-table"> 
       </table> 
     </div> 
@@ -206,33 +186,29 @@
 </div>
 
 
-<script type="text/javascript"> 
-  // Normally, we would wrap this in an anonymous function, but we want it to be available for later.
+<script type="text/javascript">
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
   // Get the spreadsheet we need.
   var energyLastThirtyDays = "https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHhxeW1xRURQZUlGd1oxVERnQktsWXc";
-  var refreshInterval = 0; // don't refresh this spreadsheet. 
+  var refreshInterval = 0; // don't refresh this spreadsheet.
+
   // Load the visualization API and the spreadsheet, then call displayRank.
-  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);   
+  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);  
+
   function displayRank(energyDataTable) {
     // The source for which we want to find the rank must be specified by Makahiki.
-    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var source = "{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}";
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
-    // Get the usage for the current round and overall.
-    {% for key, value in ROUNDS.items %}
-      var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
-      var info = energyRank.calculateRankInfo(usage, source); 
-      // Check if this is overall information.
-      {% if key == "Overall" %}
-      energyRank.draw("overall-energy-rank", "overall-energy-value", info);
-      {% else %}
-        // Check if this is info for the current round.
-        {% if CURRENT_ROUND and key == CURRENT_ROUND %}
-        energyRank.draw("round-energy-rank", "round-energy-value", info);
-        {% endif %}
-      {% endif %} 
-      {% block extra_round_energy %}{% endblock %}
-    {% endfor %}
+    var usage = energyRank.processDataTable(energyDataTable, 0, 0);
+    // console.log("Leader is " + energyRank.calculateLeader(usage).source);
+    var info = energyRank.calculateRankInfo(usage, source);
+    // console.log(source + " is ranked " + info.rank + " with " + info.usage + " watts"); 
+    energyRank.drawCompleteStandings("full-standings-table", source, usage);
   }
+})();
+</script>
+
 
 
 {% endblock %}
