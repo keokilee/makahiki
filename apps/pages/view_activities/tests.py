@@ -108,7 +108,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     member.save()
     response = self.client.get(reverse("activity_index"))
     self.assertContains(response, "Your response to <a href='%s'>%s</a> was not approved" % (
-        reverse("activity_task", args=(activity.id,)),
+        reverse("activity_task", args=(activity.type, activity.slug,)),
         activity.title,
     ))
     response = self.client.get(reverse("activity_index"))
@@ -120,12 +120,13 @@ class ActivitiesFunctionalTestCase(TestCase):
     """
     commitment = Commitment(
         title="Test commitment",
+        slug="test-commitment",
         description="A commitment!",
         point_value=10,
         type="commitment",
     )
     commitment.save()
     
-    response = self.client.post(reverse("activity_add_task", args=(commitment.id,)), follow=True)
+    response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
     

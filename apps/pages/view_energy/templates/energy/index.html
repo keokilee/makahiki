@@ -71,7 +71,7 @@
         <table {% get_id_and_classes "energy-status-how-table" %}>
           <tr {% get_id_and_classes "energy-status-how-calculator" %}>
             <td {% get_id_and_classes "energy-status-how-activities-content" %}>
-                The following activities can help your lounge conserve energy, and you earn points!
+                The following activities can help your {{FLOOR_LABEL.lower}} conserve energy, and you earn points!
                  {% include "energy/golow_activities.html" %}
             </td>
           </tr>   
@@ -79,8 +79,8 @@
       </fieldset>
 
       <fieldset {% get_id_and_classes "energy-status-posts" %}>
-    	<legend>Organize with your lounge peeps</legend>
-          Got ideas on how to conserve energy? Share it on the lounge wall:<br>
+    	<legend>Organize with your {{FLOOR_LABEL.lower}} peeps</legend>
+          Got ideas on how to conserve energy? Share it on the {{FLOOR_LABEL.lower}} wall:<br>
 
     <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>

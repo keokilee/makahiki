@@ -9,14 +9,14 @@
     {% if member.commitment %}
       {% if member.award_date %}
       <td>
-        <a href="{% url activity_task member.commitment.id %}">
+        <a href="{% url activity_task 'commitment' member.commitment.slug %}">
           Commitment: {{member.commitment.name}}
         </a>
       </td>
       <td>{{member.commitment.point_value}}</td>
       {% else %}
       <td>
-        <a href="{% url activity_task member.commitment.id %}">
+        <a href="{% url activity_task 'commitment' member.commitment.slug %}">
           Made commitment: {{member.commitment.name}}
         </a>
       </td>
@@ -26,7 +26,7 @@
       {% if member.activity %}
         {% if member.award_date %}
         <td>
-          <a href="{% url activity_task member.activity.id %}">
+          <a href="{% url activity_task 'commitment' member.activity.slug %}">
             {{member.activity.type.capitalize}}: {{member.activity.name}}
           </a>
         </td>
@@ -34,7 +34,7 @@
         {% else %}
           {% if member.activity.type != "activity" %}
           <td>
-            <a href="{% url activity_task member.activity.id %}">
+            <a href="{% url activity_task member.activity.type member.activity.slug %}">
               {{member.activity.type.capitalize}} signup: {{member.activity.name}}
             </a>
           </td>

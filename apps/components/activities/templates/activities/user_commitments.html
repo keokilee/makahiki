@@ -6,7 +6,7 @@
   </tr>
   {% for member in commitment_members %}
   <tr>
-    <td class="commitments-title"><a href="{% url activity_task member.commitment.id %}">{{member.commitment.title}}</a></td>
+    <td class="commitments-title"><a href="{% url activity_task 'commitment' member.commitment.slug %}">{{member.commitment.title}}</a></td>
     <td class="commitments-expire">{{member.completion_date}}</td>
   </tr>
   {% endfor %}

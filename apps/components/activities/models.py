@@ -437,7 +437,7 @@ class ActivityMember(CommonActivityUser):
     """
     # Construct the message to be sent.
     message = "Your response to <a href='%s'>%s</a> was not approved." % (
-        reverse("activity_task", args=(self.activity.id,)),
+        reverse("activity_task", args=(self.activity.type, self.activity.slug,)),
         self.activity.title
     )
     

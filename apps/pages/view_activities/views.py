@@ -74,13 +74,13 @@ def __get_categories(user):
 
 @never_cache
 @login_required
-def view_codes(request, activity_id):
+def view_codes(request, slug):
   """View the confirmation codes for a given activity."""
   
   if not request.user or not request.user.is_staff:
     raise Http404
     
-  activity = get_object_or_404(Activity, pk=activity_id)
+  activity = get_object_or_404(Activity, slug=slug)
   codes = ConfirmationCode.objects.filter(activity=activity)
   if len(codes) == 0:
     raise Http404
@@ -91,11 +91,8 @@ def view_codes(request, activity_id):
   }, context_instance = RequestContext(request))
 
 ### Private methods.
-@never_cache
-def __add_commitment(request, commitment_id):
+def __add_commitment(request, commitment):
   """Commit the current user to the commitment."""
-  
-  commitment = get_object_or_404(Commitment, pk=commitment_id)
   user = request.user
   floor = user.get_profile().floor
   
@@ -133,19 +130,15 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-  return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(commitment.id,)) + "?display_point=true")
+  return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
 
-@never_cache
-def __add_activity(request, activity_id):
+def __add_activity(request, activity):
   """Commit the current user to the activity."""
-
-  activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   floor = user.get_profile().floor
   
   # Search for an existing activity for this user
   if activity not in user.activity_set.all() and request.method == "POST":
-
     if activity.type == 'survey':
       question = TextPromptQuestion.objects.filter(activity=activity)
       form = SurveyForm(request.POST or None, questions=question)
@@ -168,7 +161,6 @@ def __add_activity(request, activity_id):
             "form":form,
             "question":question,
             "display_form":True,
-            "display_point":False,
             "form_title": "Survey",
             }, context_instance=RequestContext(request))    
           
@@ -180,13 +172,11 @@ def __add_activity(request, activity_id):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("pages.view_activities.views.task", args=(activity.id,)) + "?display_point=true")
+    return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
 
-@never_cache
-def __request_activity_points(request, activity_id):
+def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
   
-  activity = get_object_or_404(Activity, pk=activity_id)
   user = request.user
   floor = user.get_profile().floor
   question = None
@@ -245,7 +235,7 @@ def __request_activity_points(request, activity_id):
 
       activity_member.save()
           
-      return HttpResponseRedirect(reverse("activity_task", args=(activity.id,)) + "?display_point=true")
+      return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
     
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
@@ -260,16 +250,14 @@ def __request_activity_points(request, activity_id):
     "member_all":0,
     "member_floor":0,
     "display_form":True,
-    "display_point":False,
     "form_title": "Get your points",
     }, context_instance=RequestContext(request))    
 
 @never_cache
 @login_required
-def task(request, task_id):
+def task(request, activity_type, slug):
   """individual task page"""
   user = request.user
-  
   
   floor = user.get_profile().floor
   pau = False
@@ -280,7 +268,7 @@ def task(request, task_id):
   member_all_count = 0
   member_floor_count = 0
   
-  task = ActivityBase.objects.get(id=task_id)
+  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.view_activities.views.index", args=()))
@@ -352,7 +340,6 @@ def task(request, task_id):
   except ObjectDoesNotExist:
     help = None
     
-  display_point = True if request.GET.has_key("display_point") else False
   display_form = True if request.GET.has_key("display_form") else False
   
   return render_to_response("view_activities/task.html", {
@@ -364,7 +351,6 @@ def task(request, task_id):
     "member_all":member_all_count,
     "member_floor":member_floor_count,
     "users":users,
-    "display_point": display_point,
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
@@ -373,23 +359,23 @@ def task(request, task_id):
 
 @never_cache
 @login_required
-def add_task(request, task_id):
+def add_task(request, activity_type, slug):
   
-  task = ActivityBase.objects.get(id=task_id)
+  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
 
   if task.type == "commitment":
-    return __add_commitment(request, task_id)
+    return __add_commitment(request, task.commitment)
     
   if task.type == "activity":
-    return __request_activity_points(request, task_id)
+    return __request_activity_points(request, task.activity)
   elif task.type == "survey":
-    return __add_activity(request, task_id)
+    return __add_activity(request, task)
   else:
-    task = Activity.objects.get(pk=task.pk)
+    task = task.activity
     if task.is_event_completed():
-      return __request_activity_points(request, task_id)
+      return __request_activity_points(request, task)
     else:  
-      return __add_activity(request, task_id)
+      return __add_activity(request, task)
     
    
   

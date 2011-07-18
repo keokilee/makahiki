@@ -43,9 +43,9 @@
       <p/>
       {{member_floor}}  
       {% if member_floor == 1 %}
-        person in your lounge has
+        person in your {{FLOOR_LABEL.lower}} has
       {% else %}
-        people in your lounge have 
+        people in your {{FLOOR_LABEL.lower}} have 
       {% endif %}
       done this.
       <br/>
@@ -152,8 +152,8 @@
           {% if can_commit %}
             <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this!</button></a>
           {% else %}
-            <b>You already have 5 pending commitments. <br/>
-            You can continue making this commitment once any of your pending commitment is approved.
+            <b>You already have 5 active commitments. <br/>
+            You can make this commitment once any of your active commitments are completed.
             </b>
           {% endif %}
         {% endif %}  
