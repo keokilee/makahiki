@@ -337,8 +337,12 @@ def task(request, activity_type, slug):
   
   try:
     help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
+    help_social_bonus = HelpTopic.objects.get(slug="social-bonus", category="widget")
+    print help_social_bonus.contents
   except ObjectDoesNotExist:
     help = None
+    help_social_bonus = None
+    
     
   display_form = True if request.GET.has_key("display_form") else False
   
@@ -355,6 +359,7 @@ def task(request, activity_type, slug):
     "form_title": form_title,
     "can_commit":can_commit,
     "help":help,
+    "help_social_bonus":help_social_bonus,
   }, context_instance=RequestContext(request))    
 
 @never_cache

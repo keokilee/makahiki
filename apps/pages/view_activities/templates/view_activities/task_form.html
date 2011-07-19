@@ -20,6 +20,12 @@
         {{ form.code }}
         {{ form.response.errors }}
         {{ form.response }}
+        {% if task.social_bonus > 0 %}
+          <p/>
+          If you did this with a friend or friends, please enter 
+          one of their UH email addresses here for a social bonus: (Optional)<br/>
+          {{ form.social_email }}
+        {% endif %}  
         <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
@@ -80,7 +86,13 @@
         {{ form.response.errors }}
         {{ form.response }}    
       {% endif %}  
-    {%endif%}
+    {% endif %}
+    {% if task.social_bonus > 0 %}
+          <p/>
+          If you did this with a friend or friends, please enter 
+          one of their UH email addresses here for a social bonus: <br/>
+          {{ form.social_email }}
+    {% endif %} 
     <!--
     <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
          {{ form.comment }} 
