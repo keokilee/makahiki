@@ -1,14 +1,53 @@
 {% extends "mobile/base.html" %}
+{% load avatar_tags %}
 
 {% block body %}
 <div data-role="page" id="index">
   <div data-role="header">
+    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
     <h1>Profile Info</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
+        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+      </ul>
+    </div>
   </div>
   <div data-role="body">
-    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
-  </div>
 
+    <table>
+        <tr>
+          <td colspan="2">General</td>
+        </tr>
+        <tr>
+          <td>{{form.display_name.label_tag}}</td>
+          <td>{{profile.name}}</td>
+        </tr>
+        <tr>
+          <td>Picture</td>
+          <td><img src="{% avatar_url user 60 %}"/></td>
+        </tr>
+        <tr>
+          <td colspan="2">Reminder Settings</td>
+        </tr>
+        <tr>
+          <td><label for="id_event_email">Email</label></td>
+          <td>{{profile.contact_email}}</td>
+        </tr>
+        <tr>
+          <td><label for="id_event_text">Text</label></td>
+          <td>
+            {{profile.contact_text}}
+            {{profile.contact_carrier}}
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+    </table>
+  </div>
 </div>
 
 <div data-role="page" id="form" data-url="form">
@@ -37,8 +76,8 @@
         <tr>
           <td><label for="picture">Picture</label></td>
           <td>
-            <img src="{# avatar_url user 60 #}"/>
-            <a href="{% url avatar_change %}" style="padding-left: 15px">change picture</a>
+            <img src="{% avatar_url user 60 %}"/>
+            <a href="" style="padding-left: 15px">Cannot change picture on mobile</a>
           </td>
         </tr>
         <tr>
@@ -69,6 +108,41 @@
       <button type="submit">Save Changes</button>
       {# <a href="#" {% get_id_and_classes "profile-form-submit-button" %}>Save Changes</a> #}
     </form>
+    <a href="{% url mobile_profile %}" data-role="button" data-rel="back">Cancel</a>
+  </div>
+</div>
+
+<div data-role="page" id="achievements" data-url="achievements">
+  <div data-role="header">
+    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
+    <h1>Profile Info</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="{% url mobile_profile %}">Profile</a></li>
+        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="body">
+    {% include "mobile/profile/achievements.html" %}
+  </div>
+</div>
+
+<div data-role="page" id="badges" data-url="badges">
+  <div data-role="header">
+    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
+    <h1>Profile Info</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="{% url mobile_profile %}">Profile</a></li>
+        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="body">
+    {% include "mobile/profile/badges.html" %}
   </div>
 </div>
 

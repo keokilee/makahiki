@@ -653,6 +653,7 @@ def helptopic(request, category, slug):
 def profile(request):
   user = request.user
   form = None
+
   if request.method == "POST":
     user = request.user
     form = ProfileForm(request.POST)
@@ -687,6 +688,7 @@ def profile(request):
       form.message = "Your avatar has been updated."
   
   return render_to_response("mobile/profile/index.html", {
+    "profile": user.get_profile(),
     "form": form,
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
