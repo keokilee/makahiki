@@ -270,6 +270,14 @@ class CommonActivityUser(CommonBase):
   award_date = models.DateTimeField(null=True, blank=True, editable=False)
   submission_date = models.DateTimeField(null=True, blank=True, editable=False)
 
+class CommitmentMemberManager(models.Manager):
+  """
+  Custom manager for retrieving active commitments.
+  """
+  def active(self):
+    return self.get_query_set().filter(award_date__isnull=True)
+  
+  
 class CommitmentMember(CommonBase):
   """Represents the join between commitments and users.  Has fields for 
   commenting on a commitment and whether or not the commitment is currently 
@@ -280,6 +288,7 @@ class CommitmentMember(CommonBase):
   completion_date = models.DateField()
   award_date = models.DateTimeField(blank=True, null=True)
   comment = models.TextField(blank=True)
+  objects = CommitmentMemberManager()
   
   def __unicode__(self):
     return "%s : %s" % (self.commitment.title, self.user.username)

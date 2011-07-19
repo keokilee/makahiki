@@ -11,4 +11,7 @@ urlpatterns = patterns('pages.view_canopy.views',
     # Wall URLS
     url(r'^wall/post/$', 'post', name="canopy_wall_post"),
     url(r'^wall/more-posts/$', 'more_posts', name="canopy_more_posts"),
+    
+    # User Directory urls
+    url(r'members/$', 'members', name="canopy_members"),
 )

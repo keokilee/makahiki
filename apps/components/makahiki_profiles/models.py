@@ -51,16 +51,12 @@ class ScoreboardEntry(models.Model):
           Q(points__gt=entry.points) | 
           Q(points=entry.points, last_awarded_submission__gt=entry.last_awarded_submission),
           round_name=round_name,
-          profile__user__is_staff=False,
-          profile__user__is_superuser=False,
       ).count() + 1
       
     # Users who have not done anything yet are assumed to be last.
     return ScoreboardEntry.objects.filter(
         points__gt=entry.points,
         round_name=round_name,
-        profile__user__is_staff=False,
-        profile__user__is_superuser=False,
     ).count() + 1
     
   @staticmethod

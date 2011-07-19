@@ -45,6 +45,22 @@ def index(request):
       "members": members,
   }, context_instance=RequestContext(request))
   
+### User methods -------------------------
+@login_required
+@can_access_canopy
+def members(request):
+  """
+  Lists all of the members of the canopy.
+  """
+  canopy_quests = Quest.objects.exclude(users__pk=request.user.pk)
+  members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
+  
+  return render_to_response("canopy/directory/members.html", {
+      "canopy_quests": canopy_quests,
+      "members": members,
+  }, context_instance=RequestContext(request))
+  
+### Quest methods -------------------------
 @login_required
 @can_access_canopy
 def quest_accept(request, slug):
@@ -95,6 +111,7 @@ def post(request):
   
   raise Http404
   
+### Wall methods -------------------------
 @login_required
 @can_access_canopy
 def more_posts(request):

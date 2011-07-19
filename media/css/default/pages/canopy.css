@@ -1,12 +1,16 @@
 #quest-list {
   margin: 0;
-  margin-left: 120px;
+  margin-left: 30px;
   text-align: left;
 }
 
-.quest-list li {
+#quest-list .canopy-quest {
   float: left;
-  width: 200px;
+  width: 175px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /***** Canopy styles ******/
@@ -134,4 +138,42 @@
 
 #canopy-member-list li img {
   padding: 2px;
+}
+
+#canopy-member-detail-list, #canopy-member-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#canopy-member-detail-list>li {
+  padding: 5px 0;
+}
+
+#canopy-member-detail-list>li .member-image {
+  padding: 4px 2px;
+  float: left;
+}
+
+#canopy-member-details {
+  float: left;
+  margin-left: 5px;
+}
+
+#canopy-member-details>li {
+  padding: 2px 0;
+}
+
+#canopy-member-details .canopy-member-name {
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+#canopy-member-details .member-badges {
+  vertical-align: middle;
+  padding-left: 2px;
+}
+
+#canopy-member-details .canopy-member-admin {
+  font-style: italic;
 }
