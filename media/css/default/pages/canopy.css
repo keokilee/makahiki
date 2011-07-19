@@ -1,16 +1,15 @@
 #quest-list {
   margin: 0;
-  margin-left: 30px;
+  margin-left: 40px;
   text-align: left;
 }
 
 #quest-list .canopy-quest {
   float: left;
   width: 175px;
-  margin-top: 10px;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  text-align: center;
+  margin: 10px 5px 0;
+  padding: 5px;
 }
 
 /***** Canopy styles ******/
