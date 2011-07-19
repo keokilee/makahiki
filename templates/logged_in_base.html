@@ -59,6 +59,9 @@
 {% block extra_body_base %}
 {% include "ask_admin/feedback_dialog.html" %}
 
+<div id="widget-help-dialog" title="Help" style="display: none">
+</div>
+
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
@@ -77,6 +80,7 @@
     // The source for which we want to find the rank must be specified by Makahiki.
     var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
+    
     // Get the usage for the current round and overall.
     {% for key, value in ROUNDS.items %}
       var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
@@ -95,29 +99,6 @@
       {% block extra_round_energy %}{% endblock %}
     {% endfor %}
   }
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-      $("#user-cycle").cycle();
-      $("#floor-cycle").cycle();
-    
-      $('a.frontendadmin_edit').hover(
-          function(){$(this).parent().css('outline', '4px solid #E9B007')},
-          function(){$(this).parent().css('outline', '')}
-      );
-    
-      $('a.frontendadmin_edit').click(function(){
-              $(this).parent().css('outline', '');
-              $(this).parent().load(this.href);
-              return false;
-      });
-    
-      $('a.frontendadmin_delete').hover(
-          function(){$(this).parent().css('outline', '4px solid #E9B007')},
-          function(){$(this).parent().css('outline', '')}
-      );
-  });
 </script>
 
 {% block extra_body %}{% endblock %}

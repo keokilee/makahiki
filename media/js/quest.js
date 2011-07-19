@@ -64,14 +64,9 @@ $(document).ready(function() {
     });
   });
   
-  $("#quest-help-dialog").dialog({
-    modal: true,
-    width: 450,
-    autoOpen: false
-  });
-  
   $("#quest-help-icon").click(function() {
-    $('#quest-help-dialog').dialog('open');
+    toggle_help("widget", "quests");
+    return false;
   });
   
   // If the cookie is set, display the quest.

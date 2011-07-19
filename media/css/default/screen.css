@@ -518,6 +518,11 @@ clear: both;
 	background: #dbd7af;
 }
 	
+/***** Help styles *****/
+#widget-help-dialog {
+  text-align: left;
+}
+
 /***** Feedback form styles ******/
 #feedback-form {
   text-align: left;

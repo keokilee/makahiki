@@ -1,3 +1,15 @@
+// Setup the header cycle.
+$(document).ready(function() {
+  $("#user-cycle").cycle();
+  $("#floor-cycle").cycle();
+  
+  //Set up the help dialog.
+  $("#widget-help-dialog").dialog({
+    autoOpen: false,
+    modal: true
+  });
+});
+
 // Function to handle AJAX post requests.
 $.ajaxSetup({ 
      beforeSend: function(xhr, settings) {
@@ -29,8 +41,15 @@ var log_js_action = function(type, object, action) {
   $.get("/log/" + type + "/" + object + "/" + action + "/");
 }
 
-// Utility functions for get/set/delete cookies
+var toggle_help = function(category, slug) {
+  $("#widget-help-dialog").dialog("open");
+  $.get("/help/" + category + "/" + slug + "/", function(data) {
+    $("#ui-dialog-title-widget-help-dialog").html(data.title);
+    $("#widget-help-dialog").html(data.contents);
+  });
+}
 
+// Utility functions for get/set/delete cookies
 function setCookie(name,value,days) {
     if (days) {
         var date = new Date();
