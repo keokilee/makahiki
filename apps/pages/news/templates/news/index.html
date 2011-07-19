@@ -1,6 +1,7 @@
 {% extends "logged_in_base.html" %}
 
 {% load class_tags %}
+{% load avatar_tags %}
 
 {% block page_title %}
   News
@@ -56,6 +57,27 @@
   </div>
 </div>
 
+<div {% get_id_and_classes "news-members" %}>
+  <div {% get_id_and_classes "news-members-title" %}>{{FLOOR_LABEL}} members</div>
+  <div {% get_id_and_classes "news-members-content" %}>
+    <ul {% get_id_and_classes "news-members-list" %}>
+      {% for member in floor_members %}
+      <li>
+        <a href="{% url news_floor_members %}#{{member.get_profile.name|slugify}}">
+          <img src="{% avatar_url member 40 %}" alt="Photo of {{ member.get_profile.name }}" title="Photo of {{ member.get_profile.name }}" align="top" />
+          <div>
+            {{member.get_profile.name}}
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div style="text-align: center">
+      <a href="{% url news_floor_members %}">View all members</a>
+    </div>
+  </div>
+</div>
+
 <div {% get_id_and_classes "news-wall" %}>
   <div {% get_id_and_classes "news-wall-box" %}>
     <div {% get_id_and_classes "news-wall-title" %}>
@@ -77,13 +99,13 @@
           <!-- <a {% get_id_and_classes "wall-post-submit" %} href="#">Post</a> -->
         </form>
       </div>
-
-        <ul {% get_id_and_classes "wall-posts" %}>
-          {% include "news/news_posts.html" %}
-        </ul>
-        {% if not posts %}
-          <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
-        {% endif %}
+      
+      <ul {% get_id_and_classes "wall-posts" %}>
+        {% include "news/news_posts.html" %}
+      </ul>
+      {% if not posts %}
+        <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
+      {% endif %}
     </div>
   </div>
 </div>

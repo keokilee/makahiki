@@ -7,7 +7,7 @@ th {
 	background: #dbd7af;
 	}
 
-#news-wall {
+#news-wall, #news-members {
 	width: 480px;
 	float: left;
 	margin-left: 20px;
@@ -120,4 +120,85 @@ a#wall-post-submit {
 
 .news-event-name, .news-event-date, .news-most-popular-activity, .news-commitments-name {
 	border-right: 1px solid #000;
+}
+
+#news-members-list {
+  list-style: none;
+  margin: 0;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+#news-members-list li {
+  float: left;
+  width: 75px;
+  text-align: center;
+  min-height: 80px;
+}
+
+/**** Floor members list styles *******/
+#floor-members {
+  margin: 0 15px;
+}
+
+#floor-members-content {
+  text-align: left;
+  margin: 0;
+  padding: 5px 20px;
+}
+
+#floor-member-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#floor-member-list li {
+  float: left;
+  width: 60px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#floor-member-list li img {
+  padding: 2px;
+}
+
+#floor-member-detail-list, #floor-member-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#floor-member-detail-list>li {
+  padding: 5px 0;
+}
+
+#floor-member-detail-list>li .member-image {
+  padding: 4px 2px;
+  float: left;
+}
+
+#floor-member-details {
+  float: left;
+  margin-left: 5px;
+}
+
+#floor-member-details>li {
+  padding: 2px 0;
+}
+
+#floor-member-details .floor-member-name {
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+#floor-member-details .member-badges {
+  vertical-align: middle;
+  padding-left: 2px;
+}
+
+#floor-member-details .floor-member-admin {
+  font-style: italic;
 }

@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.views.decorators.cache import never_cache
+from django.contrib.auth.models import User
 
 from components.floors.models import Post
 from components.activities import get_available_events, get_current_commitment_members, get_popular_tasks
@@ -28,22 +29,34 @@ def index(request):
   events = get_available_events(request.user)
   
   # Get the user's current commitments.
-  members = get_current_commitment_members(request.user)
+  commitment_members = get_current_commitment_members(request.user)
+  
+  # Get the floor members.
+  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by("-profile__points")[:12]
   
   return render_to_response("news/index.html", {
     "posts": posts,
     "events": events,
     "wall_form": WallForm(),
     "more_posts": more_posts,
-    "commitment_members": members,
+    "commitment_members": commitment_members,
+    "floor_members": floor_members,
     "popular_tasks": get_popular_tasks(),
     "help_info": {
       "prefix": "news_index",
       "count": range(0, 3),
     }
   }, context_instance=RequestContext(request))
-  
+
 @never_cache
+@login_required
+def floor_members(request):
+  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by("-profile__points")
+  
+  return render_to_response("news/directory/floor_members.html", {
+    "floor_members": floor_members,
+  }, context_instance=RequestContext(request))
+  
 @login_required
 def post(request):
   if request.is_ajax() and request.method == "POST":
@@ -70,7 +83,6 @@ def post(request):
   
   raise Http404
 
-@never_cache
 @login_required
 def more_posts(request):
   if request.is_ajax():
