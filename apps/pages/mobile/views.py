@@ -26,6 +26,10 @@ from urllib import urlencode
 
 from components.help_topics.models import HelpTopic
 
+from pages.view_prizes.views import _get_prizes
+from pages.view_prizes.views import _get_raffle_prizes
+
+
 @login_required
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
@@ -703,3 +707,13 @@ def profile(request):
 @login_required
 def overallkwh(request):
   return render_to_response("mobile/scoreboard/overallkwh.html", {}, context_instance=RequestContext(request))
+
+def raffle(request):
+  floor = request.user.get_profile().floor
+  prizes = _get_prizes(floor)
+  raffle_dict = _get_raffle_prizes(request.user)
+    
+  return render_to_response("mobile/raffle/index.html", {
+      "prizes": prizes,
+      "raffle": raffle_dict,
+  }, context_instance=RequestContext(request))
