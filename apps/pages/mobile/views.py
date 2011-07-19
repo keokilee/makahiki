@@ -6,6 +6,9 @@ from components.activities.models import ActivityBase
 from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
 from pages.view_help.forms import AskAdminForm
+from pages.view_profile.forms import ProfileForm
+from pages.view_profile import get_completed_members, get_in_progress_members
+from components.makahiki_facebook.models import FacebookProfile
 from components.activities.models import *
 from components.activities import * 
 from components.makahiki_profiles.models import *
@@ -644,3 +647,57 @@ def helptopic(request, category, slug):
   return render_to_response("mobile/help/topic.html", {
       "topic": topic,
   }, context_instance=RequestContext(request))
+
+@never_cache
+@login_required
+def profile(request):
+  user = request.user
+  form = None
+  if request.method == "POST":
+    user = request.user
+    form = ProfileForm(request.POST)
+    if form.is_valid():
+      profile = user.get_profile()
+      profile.name = form.cleaned_data["display_name"].strip()
+      profile.contact_email = form.cleaned_data["contact_email"]
+      profile.contact_text = form.cleaned_data["contact_text"]
+      profile.contact_carrier = form.cleaned_data["contact_carrier"]
+      # profile.enable_help = form.cleaned_data["enable_help"]
+        
+      try:
+        profile.save()
+        form.message = "Your changes have been saved"
+      except IntegrityError:
+        form.message = "Please correct the errors below."
+        form.errors.update({"display_name": "'%s' is taken, please enter another name." % profile.name})
+    else:
+      form.message = "Please correct the errors below."
+      
+  # If this is a new request, initialize the form.
+  if not form:    
+    form = ProfileForm(initial={
+      "enable_help": user.get_profile().enable_help,
+      "display_name": user.get_profile().name,
+      "contact_email": user.get_profile().contact_email or user.email,
+      "contact_text": user.get_profile().contact_text,
+      "contact_carrier": user.get_profile().contact_carrier,
+    })
+    
+    if request.GET.has_key("changed_avatar"):
+      form.message = "Your avatar has been updated."
+  
+  return render_to_response("mobile/profile/index.html", {
+    "form": form,
+    "in_progress_members": get_in_progress_members(user),
+    "commitment_members": get_current_commitment_members(user),
+    "completed_members": get_completed_members(user),
+    "notifications": user.usernotification_set.order_by("-created_at"),
+    "help_info": {
+      "prefix": "profile_index",
+      "count": range(0, 3),
+    }
+  }, context_instance=RequestContext(request))
+
+@login_required
+def overallkwh(request):
+  return render_to_response("mobile/scoreboard/overallkwh.html", {}, context_instance=RequestContext(request))
