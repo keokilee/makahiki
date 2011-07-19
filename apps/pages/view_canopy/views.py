@@ -37,12 +37,18 @@ def index(request):
   # Load members
   members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
   
+  # Check for the about cookie.
+  hide_about = False
+  if request.COOKIES.has_key("hide-about"):
+    hide_about = True
+  
   return render_to_response("canopy/index.html", {
       "canopy_quests": canopy_quests,
       "wall_form": form,
       "posts": posts,
       "more_posts": more_posts,
       "members": members,
+      "hide_about": hide_about,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------

@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  $("#canopy-hide-about").click(function() {
+    setCookie("hide-about", "true", 0);
+    $("#canopy-about").fadeOut();
+    return false;
+  });
+  
   var textarea = $("#wall-post textarea");
   textarea.click(function() {
     if ($("#wall-post-submit").button("option", "disabled")) {

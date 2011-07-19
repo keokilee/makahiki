@@ -3,11 +3,16 @@
 {% load class_tags %}
 
 {% block body %}
+{% if not hide_about %}
 <div {% get_id_and_classes "canopy-about" %}>
+  <div style="text-align: right">
+    <a id="canopy-hide-about" href="javascript:void(0);">Close</a>
+  </div>
   <p>
     Welcome to the canopy! As one of the top players of the Kukui Cup, you now have exclusive access to this advanced area that provides: advanced energy visualizations, advanced quests, and a private Wall for communication among Canopy members as well as the administrators of the Kukui Cup.  Use the Canopy to gain greater insight into the Hale Aloha energy usage and how you can help your lounge as well as all of the students play the Kukui Cup more effectively.
   </p>
 </div>
+{% endif %}
 
 <div {% get_id_and_classes "canopy-viz" %}>
   <div {% get_id_and_classes "canopy-viz-title" %}>
