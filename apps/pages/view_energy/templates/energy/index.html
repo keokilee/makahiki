@@ -28,7 +28,7 @@
       <a href="#">
       <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 		title="Click to get help about this window" 
-		onclick="help_dialog('{{help_power.contents|markdown}}')"
+		onclick="toggleHelp('widget', 'lounge-power'); return false;"
 	   /></a>
 	   </td></tr></table>
     </div>
@@ -52,7 +52,7 @@
       <a href="#">
       <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 		title="Click to get help about this window" 
-		onclick="help_dialog('{{help_energy.contents|markdown}}')"
+		onclick="toggleHelp('widget', 'energy-goal-game'); return false;"
 	   /></a>
 	   </td></tr></table>
     </div>
