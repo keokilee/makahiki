@@ -18,4 +18,24 @@ $(document).ready(function() {
   $("#wall-post-submit").button({
     disabled: true
   });
+  
+  $("#wall-post-submit").click(function() {
+    if (!$("#wall-post-submit").button("option", "disabled")) {
+      $.post(this.form.action, $("#news-post-form").serialize(), function(data) {
+        if (data.message) {
+          $("#wall-post-errors").html(data.message);
+        }
+        else {
+          $("#wall-post-errors").html("");
+          if ($("#wall-no-posts").is(":visible")) {
+            $("#wall-no-posts").hide();
+          }
+          $(data.contents).hide().prependTo("#wall-posts").fadeIn();
+          $("textarea").val("");
+          $("#wall-post-submit").button("option", "disabled", true);
+        }
+      });
+    }
+    return false;
+  });
 });
