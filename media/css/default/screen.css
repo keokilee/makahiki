@@ -523,6 +523,10 @@ clear: both;
   text-align: left;
 }
 
+#widget-help-dialog-close {
+  text-align: center;
+}
+
 /***** Feedback form styles ******/
 #feedback-form {
   text-align: left;

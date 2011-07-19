@@ -41,11 +41,6 @@ def index(request):
   user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
   
   categories_list = __get_categories(user)
-  
-  try:
-    help = HelpTopic.objects.get(slug="smart-grid-game", category="widget")     
-  except ObjectDoesNotExist:
-    help = None
 
   return render_to_response("view_activities/index.html", {
     "events": events,

@@ -65,7 +65,7 @@ $(document).ready(function() {
   });
   
   $("#quest-help-icon").click(function() {
-    toggle_help("widget", "quests");
+    toggleHelp("widget", "quests");
     return false;
   });
   

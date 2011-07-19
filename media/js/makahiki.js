@@ -41,7 +41,7 @@ var log_js_action = function(type, object, action) {
   $.get("/log/" + type + "/" + object + "/" + action + "/");
 }
 
-var toggle_help = function(category, slug) {
+var toggleHelp = function(category, slug) {
   $("#widget-help-dialog").dialog("open");
   $.get("/help/" + category + "/" + slug + "/", function(data) {
     $("#ui-dialog-title-widget-help-dialog").html(data.title);
