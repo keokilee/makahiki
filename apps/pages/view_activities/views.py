@@ -49,7 +49,6 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
-    "help":help,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info
@@ -342,8 +341,6 @@ def task(request, activity_type, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-    "help":help,
-    "help_social_bonus":help_social_bonus,
   }, context_instance=RequestContext(request))    
 
 @never_cache
