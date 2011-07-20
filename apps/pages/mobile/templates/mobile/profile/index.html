@@ -5,10 +5,11 @@
 <div data-role="page" id="index">
   <div data-role="header">
 
-    <h1>Profile Info</h1>
+    <h1>My Profile</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
     <div data-role="navbar">
       <ul>
+        <li><a href="">Profile</a></li>
         <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
         <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
         <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
@@ -122,8 +123,9 @@
     <div data-role="navbar">
       <ul>
         <li><a href="{% url mobile_profile %}">Profile</a></li>
-        <li><a href="{% url mobile_profile %}/#badges">Commitments</a></li>
+        <li><a href="">Achievements</a></li>
         <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
       </ul>
     </div>
   </div>
@@ -140,7 +142,8 @@
     <div data-role="navbar">
       <ul>
         <li><a href="{% url mobile_profile %}">Profile</a></li>
-        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
+        <li><a href="">Badges</a></li>
         <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
       </ul>
     </div>
@@ -160,6 +163,7 @@
         <li><a href="{% url mobile_profile %}">Profile</a></li>
         <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
         <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="">Commitments</a></li>
       </ul>
     </div>
   </div>
