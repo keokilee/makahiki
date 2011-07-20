@@ -518,6 +518,15 @@ clear: both;
 	background: #dbd7af;
 }
 	
+/***** Help styles *****/
+#widget-help-dialog {
+  text-align: left;
+}
+
+#widget-help-dialog-close {
+  text-align: center;
+}
+
 /***** Feedback form styles ******/
 #feedback-form {
   text-align: left;

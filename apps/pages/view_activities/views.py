@@ -22,8 +22,6 @@ from components.floors import *
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 
-from components.help_topics.models import HelpTopic
-
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
@@ -41,11 +39,6 @@ def index(request):
   user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
   
   categories_list = __get_categories(user)
-  
-  try:
-    help = HelpTopic.objects.get(slug="smart-grid-game", category="widget")     
-  except ObjectDoesNotExist:
-    help = None
 
   return render_to_response("view_activities/index.html", {
     "events": events,
@@ -56,7 +49,6 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
-    "help":help,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info
@@ -338,15 +330,6 @@ def task(request, activity_type, slug):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
-  
-  try:
-    help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
-    help_social_bonus = HelpTopic.objects.get(slug="social-bonus", category="widget")
-    print help_social_bonus.contents
-  except ObjectDoesNotExist:
-    help = None
-    help_social_bonus = None
-    
     
   display_form = True if request.GET.has_key("display_form") else False
   
@@ -362,8 +345,6 @@ def task(request, activity_type, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-    "help":help,
-    "help_social_bonus":help_social_bonus,
   }, context_instance=RequestContext(request))    
 
 @never_cache

@@ -4,13 +4,15 @@
 {% block body %}
 <div data-role="page" id="index">
   <div data-role="header">
-    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
-    <h1>Profile Info</h1>
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+
+    <h1>My Profile</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
     <div data-role="navbar">
       <ul>
+        <li><a href="">Profile</a></li>
         <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
         <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
       </ul>
     </div>
   </div>
@@ -47,6 +49,7 @@
           <td></td>
         </tr>
     </table>
+    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
   </div>
 </div>
 
@@ -114,13 +117,15 @@
 
 <div data-role="page" id="achievements" data-url="achievements">
   <div data-role="header">
-    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
-    <h1>Profile Info</h1>
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+
+    <h1>My Achievements</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
     <div data-role="navbar">
       <ul>
         <li><a href="{% url mobile_profile %}">Profile</a></li>
+        <li><a href="">Achievements</a></li>
         <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
       </ul>
     </div>
   </div>
@@ -131,13 +136,15 @@
 
 <div data-role="page" id="badges" data-url="badges">
   <div data-role="header">
-    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
-    <h1>Profile Info</h1>
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+
+    <h1>My Badges</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
     <div data-role="navbar">
       <ul>
         <li><a href="{% url mobile_profile %}">Profile</a></li>
-        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
+        <li><a href="">Badges</a></li>
+        <li><a href="{% url mobile_profile %}/#commitments">Commitments</a></li>
       </ul>
     </div>
   </div>
@@ -146,4 +153,22 @@
   </div>
 </div>
 
+<div data-role="page" id="commitments" data-url="commitments">
+  <div data-role="header">
+
+    <h1>My Commitments</h1>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="{% url mobile_profile %}">Profile</a></li>
+        <li><a href="{% url mobile_profile %}/#achievements">Achievements</a></li>
+        <li><a href="{% url mobile_profile %}/#badges">Badges</a></li>
+        <li><a href="">Commitments</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="body">
+    {% include "mobile/profile/commitments.html" %}
+  </div>
+</div>
 {% endblock %}

@@ -4,6 +4,11 @@
   <div {% get_id_and_classes "profile-commitments-box" %}>
     <div {% get_id_and_classes "profile-commitments-title" %}>
       My Commitments
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'my-commitments'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "profile-commitments-content" %}>
       {% include "activities/user_commitments.html" %}

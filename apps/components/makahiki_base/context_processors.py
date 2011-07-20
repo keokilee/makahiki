@@ -4,7 +4,6 @@ from django.conf import settings
 from components.makahiki_notifications import get_unread_notifications
 from components.makahiki_base import get_floor_label, get_rounds_for_header, get_theme, get_current_round, get_competition_dates, in_competition
 from components.makahiki_profiles.models import Profile
-from components.help_topics.models import HelpTopic
 from components.floors.models import Floor
 from components.quests import get_quests
 
@@ -20,14 +19,7 @@ def competition(request):
   overall_member_count = Profile.objects.count()
   floor_member_count = None
   quests = None
-  quest_help = None
   notifications = None
-  
-  # Try to load quest_help from the database.
-  try:
-    quest_help = HelpTopic.objects.get(slug="quests", category="widget")
-  except HelpTopic.DoesNotExist:
-    pass
     
   if user.is_authenticated():
     quests = get_quests(user)
@@ -57,7 +49,6 @@ def competition(request):
     "CURRENT_ROUND": current_round,
     "FACEBOOK_APP_ID": facebook_app_id,
     "QUESTS": quests,
-    "QUEST_HELP": quest_help,
     "NOTIFICATIONS": notifications,
   }
 

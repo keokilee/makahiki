@@ -38,7 +38,7 @@
       <a href="#">
       <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 		title="What is Social Bonus ?" 
-		onclick="help_dialog('{{help_social_bonus.contents|markdown}}')"
+		onclick="toggleHelp('widget', 'social-bonus'); return false;"
 	   /></a>
       {% endif %}
       <p/>
@@ -83,7 +83,7 @@
       <a href="#">
       <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 		title="Click to get help about this window" 
-		onclick="help_dialog('{{help.contents|markdown}}')"
+		onclick="toggleHelp('widget', 'task-details-widget-help'); return false;"
 	   /></a>
 	   </td></tr></table>
     </div>
@@ -290,35 +290,4 @@ function signup_point_dialog_overlay()
     return true;
 }
 </script>  
-
-<div id="help-dialog" title="Help" style="visibility: hidden;">
-  <div style="text-align:left">
-    <div id="content">
-    </div>
-    </p>
-     <center>
-    <input type="submit" value="OK" onclick='$("#help-dialog").dialog("close");' /> 
-    </center>
-  </div>
-</div>
-
-<script type="text/javascript"> 
-function help_dialog(content)
-{
-  el = document.getElementById("help-dialog"); 
-  el.style.visibility = "visible";
-  log_js_action("activities", "smart-grid", "view-help");
-  $("#help-dialog").dialog({
-    modal: true,
-    width: 450,
-    closeOnEscape: false,
-    position: [400,100]
-    });
-    
-  document.getElementById("content").innerHTML = content;
-  return false;
-}
-
-</script>  
-
 {% endblock %}

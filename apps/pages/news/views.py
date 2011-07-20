@@ -42,10 +42,6 @@ def index(request):
     "commitment_members": commitment_members,
     "floor_members": floor_members,
     "popular_tasks": get_popular_tasks(),
-    "help_info": {
-      "prefix": "news_index",
-      "count": range(0, 3),
-    }
   }, context_instance=RequestContext(request))
 
 @never_cache

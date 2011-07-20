@@ -1,0 +1,55 @@
+{% load class_tags %}
+{% load prize_tags %}
+{% load markup %}
+
+{% for prize in raffle.prizes %}
+  <!-- {% cycle 'alt-row' '' as cycle_class %} -->
+  <tr class="{{cycle_class}}">
+    <td class="{% insert_classes "prize-item" %}">
+      <a id="raffle-{{prize.title|slugify}}" href="javascript:void(0);">
+        {{prize.title}}
+      </a>
+      
+      <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
+        <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
+        {{prize.description|markdown}}
+        <div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div>
+      </div>
+      
+      <script type="text/javascript">
+        $("#raffle-{{prize.title|slugify}}-description").dialog({
+          autoOpen: false,
+          modal: true,
+          close: function(event, ui) {
+            log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "close");
+          }
+        });
+        
+        $("#raffle-{{prize.title|slugify}}").click(function() {
+          log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "view");
+          $("#raffle-{{prize.title|slugify}}-description").dialog("open");
+        });
+      </script>
+    </td>
+    <td class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</td>
+    <td class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</td>
+    <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
+    <td class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</td>
+    <td>
+      {% if user.get_profile.available_tickets > 0 %}
+      <form action="{% url raffle_add_ticket prize.id %}" method="POST">
+        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">+1</a>
+      </form>
+      {% else %}
+      <div class="disabled">+1</div>
+      {% endif %}
+      {% if prize|user_tickets:user > 0 %}
+      <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
+        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">-1</a>
+      </form>
+      {% else %}
+        <div class="disabled">-1</div>
+      {% endif %}
+    </td>
+  </tr>
+{% endfor %}

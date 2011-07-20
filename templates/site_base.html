@@ -18,25 +18,3 @@
     {#   {% endif %} #}
     {# </div> #}
 {% endblock %}
-
-{% block extra_body %}
-<script type="text/javascript">
-jQuery(document).ready(function(){
-    jQuery('a.frontendadmin_edit').hover(
-        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
-        function(){jQuery(this).parent().css('outline', '')}
-    );
-    
-    jQuery('a.frontendadmin_edit').click(function(){
-            jQuery(this).parent().css('outline', '');
-            jQuery(this).parent().load(this.href);
-            return false;
-    });
-    
-    jQuery('a.frontendadmin_delete').hover(
-        function(){jQuery(this).parent().css('outline', '4px solid #E9B007')},
-        function(){jQuery(this).parent().css('outline', '')}
-    );
-});
-</script>
-{% endblock %}

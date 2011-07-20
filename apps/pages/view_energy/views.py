@@ -16,7 +16,6 @@ from components.floors import *
 from components.energy_goals import *
 from components.makahiki_base import get_round_info
 from pages.news.forms import WallForm
-from components.help_topics.models import HelpTopic
 
 @never_cache
 @login_required
@@ -37,13 +36,6 @@ def index(request):
     if today >= datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d"):
       # Slugify to create a div id.
       scoreboard_rounds.append(key)
-  
-  try:
-    help_energy = HelpTopic.objects.get(slug="energy-goal-game", category="widget")     
-    help_power = HelpTopic.objects.get(slug="lounge-power", category="widget")     
-  except ObjectDoesNotExist:
-    help_energy = None
-    help_power = None
     
   return render_to_response("energy/index.html",{
       "floor": floor,
@@ -51,8 +43,6 @@ def index(request):
       "golow_activities":golow_activities,
       "posts":golow_posts,
       "wall_form": WallForm(),
-      "help_energy": help_energy,
-      "help_power": help_power,
     }
     ,context_instance=RequestContext(request))
     

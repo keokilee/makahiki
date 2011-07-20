@@ -4,12 +4,7 @@
 <div {% get_id_and_classes "prizes-raffle" %}>
   <div {% get_id_and_classes "prizes-raffle-box" %}>
     <div {% get_id_and_classes "prizes-raffle-title" %}>
-      {{deadline.round_name}} Raffle Game 
-      <a href="#" style="float: right">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
-		title="Click to get help about this window" 
-		onclick="toggleHelp('widget', 'raffle-game'); return false;"
-	   /></a>
+      {{deadline.round_name}} Raffle Game
     </div>
     <div {% get_id_and_classes "prizes-raffle-content" %}>
       <div {% get_id_and_classes "prizes-raffle-info" %}>
@@ -24,7 +19,7 @@
           <th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th>
           <th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th>
         </tr>
-        {% include "view_prizes/raffle_list.html" %}
+        {% include "mobile/raffle/raffle_list.html" %}
       </table>
       <div id="prizes-raffle-footer">
         You receive 1 raffle ticket for every {{raffle.points_per_ticket}} awarded Kukui Cup points.<br/>

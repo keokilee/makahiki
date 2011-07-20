@@ -1,3 +1,15 @@
+// Setup the header cycle.
+$(document).ready(function() {
+  $("#user-cycle").cycle();
+  $("#floor-cycle").cycle();
+  
+  //Set up the help dialog.
+  $("#widget-help-dialog").dialog({
+    autoOpen: false,
+    modal: true
+  });
+});
+
 // Function to handle AJAX post requests.
 $.ajaxSetup({ 
      beforeSend: function(xhr, settings) {
@@ -29,8 +41,26 @@ var log_js_action = function(type, object, action) {
   $.get("/log/" + type + "/" + object + "/" + action + "/");
 }
 
-// Utility functions for get/set/delete cookies
+var toggleHelp = function(category, slug) {
+  $("#widget-help-dialog").dialog("open");
+  $("#ui-dialog-title-widget-help-dialog").html("");
+  $("#widget-help-dialog").html("");
+  $.ajax({
+    url: "/help/" + category + "/" + slug + "/", 
+    success: function(data) {
+      $("#ui-dialog-title-widget-help-dialog").html(data.title);
+      $("#widget-help-dialog").html(data.contents);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      $("#ui-dialog-title-widget-help-dialog").html("(empty)");
+      $("#widget-help-dialog").html("There is no help content for this widget. " +
+          "If you are an admin, please create a new topic in category '" + category + 
+          "' and slug '" + slug + "'.");
+    }
+  });
+}
 
+// Utility functions for get/set/delete cookies
 function setCookie(name,value,days) {
     if (days) {
         var date = new Date();
