@@ -222,7 +222,7 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'slug', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 
+      'fields' : ('name', 'slug', 'type', 'title', 'description', 'social_bonus', 'duration', ('pub_date', 'expire_date'), 
       'event_date', 'event_location', 'depends_on','depends_on_text','energy_related'),
     }),
     ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),

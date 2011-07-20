@@ -113,6 +113,7 @@ class ActivityBase(models.Model):
   depends_on = models.CharField(max_length=400, null=True, blank=True,)
   depends_on_text = models.CharField(max_length=400, null=True, blank=True,)
   energy_related = models.BooleanField(default=False)
+  social_bonus = models.IntegerField(default=0, help_text="socal bonus points.")
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)

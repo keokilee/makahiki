@@ -343,6 +343,7 @@ def task(request, activity_type, slug):
     "form_title": form_title,
     "can_commit":can_commit,
     "help":help,
+    "help_social_bonus":help_social_bonus,
   }, context_instance=RequestContext(request))    
 
 @never_cache

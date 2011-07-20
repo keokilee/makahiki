@@ -1,10 +1,9 @@
 {% extends "mobile/base.html" %}
 
 {% block body %} 
-  <!-- remove this tag-->
   <div data-role="page">
   <header data-role="header" data-theme="b">
-    <a href="{% url root_index %}/account/cas/logout" data-icon="gear">Logout</a>
+    <a href="/account/cas/logout/?next=/m" data-icon="gear" rel="external">Logout</a>
     <h1>Kukui Cup</h1>
   </header>
   
@@ -35,13 +34,10 @@
         <a href="">Prizes & Winners</a>
       </li>
       <li>
-        <a href="">Raffle</a>
+        <a href="{% url mobile_raffle %}" rel="external">Raffle</a>
       </li>
       <li>
-        <a href="">My Achievements</a>
-      </li>
-      <li>
-        <a href="{% url mobile_profile %}">My Profile</a>
+        <a href="{% url mobile_profile %}" rel="external">My Profile</a>
       </li>
       <li>
         <a href="{% url mobile_help %}" rel="external">Help</a>
