@@ -22,8 +22,9 @@
         {{ form.response }}
         {% if task.social_bonus > 0 %}
           <p/>
-          If you did this with a friend or friends, please enter 
-          one of their UH email addresses here for a social bonus: (Optional)<br/>
+          (Optional) If you did this with a friend or friends, please enter 
+          one of their UH email addresses here for a social bonus:<br/>
+          {{ form.social_email.errors }}
           {{ form.social_email }}
         {% endif %}  
         <div {% get_id_and_classes "activity-task-form-content-button" %}>
@@ -54,6 +55,13 @@
      Thank you for the commitment.
      <p/>
      You've earned {{task.point_value}} points.
+     {% if task.social_bonus > 0 %}
+          <p/>
+          (Optional) If you did this with a friend or friends, please enter 
+          one of their UH email addresses here for a social bonus: (Optional)<br/>
+          {{ form.social_email.errors }}
+          {{ form.social_email }}
+     {% endif %}  
      {% endif %}
      <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">OK</button>
@@ -89,8 +97,9 @@
     {% endif %}
     {% if task.social_bonus > 0 %}
           <p/>
-          If you did this with a friend or friends, please enter 
+          (Optional) If you did this with a friend or friends, please enter 
           one of their UH email addresses here for a social bonus: <br/>
+          {{ form.social_email.errors }}
           {{ form.social_email }}
     {% endif %} 
     <!--

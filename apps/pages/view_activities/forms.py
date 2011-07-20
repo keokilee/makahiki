@@ -3,6 +3,7 @@ from django.forms.util import ErrorList
 
 from components.activities.models import ConfirmationCode
 from components.activities.models import QuestionChoice
+from components.activities import *
 
 class ActivityTextForm(forms.Form):
   question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
@@ -10,7 +11,7 @@ class ActivityTextForm(forms.Form):
   
   response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=True)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.EmailField(required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
   
   def __init__(self, *args, **kwargs):  
     qid = None
@@ -47,22 +48,54 @@ class ActivityTextForm(forms.Form):
             del cleaned_data["response"]
           if cleaned_data.has_key("choice_response"):
             del cleaned_data["choice_response"]
-        
+    
+    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
+      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data["social_email"]
+          
     return cleaned_data
   
 class ActivityFreeResponseForm(forms.Form):
   response = forms.CharField(widget=forms.Textarea)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.EmailField(required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
   
+  def clean(self):
+    cleaned_data = self.cleaned_data
+
+    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
+      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data["social_email"]
+
+    return cleaned_data
+    
 class ActivityImageForm(forms.Form):
   image_response = forms.ImageField()
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.EmailField(required=False)
-  
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+
+  def clean(self):
+    cleaned_data = self.cleaned_data
+
+    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
+      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data["social_email"]
+
+    return cleaned_data
+    
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
 
+  def clean(self):
+    cleaned_data = self.cleaned_data
+
+    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
+      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data["social_email"]
+
+    return cleaned_data
+    
 class SurveyForm(forms.Form):  
   def __init__(self, *args, **kwargs):  
     questions = None
@@ -78,6 +111,5 @@ class SurveyForm(forms.Form):
     ##TODO. self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='(Optional)Additonal Comments:', required=False)
 
   def clean(self):
-    """Custom validation to verify confirmation codes."""
     cleaned_data = self.cleaned_data
     return cleaned_data

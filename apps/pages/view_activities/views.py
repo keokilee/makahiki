@@ -210,9 +210,7 @@ def __request_activity_points(request, activity):
       if form.cleaned_data.has_key("image_response"):
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
         activity_member.image = path
-        
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
-        
         activity_member.approval_status = "pending"
 
       elif activity.confirm_type == "code":
@@ -233,6 +231,7 @@ def __request_activity_points(request, activity):
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
 
+      activity_member.user_comment = form.cleaned_data["social_email"]
       activity_member.save()
           
       return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
@@ -287,6 +286,11 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      ref_user = User.objects.get(email=approval.user_comment)
+      ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+      for m in ref_members:
+        if m.approval_status == 'approved':
+          approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)

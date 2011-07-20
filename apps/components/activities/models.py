@@ -9,6 +9,7 @@ from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.template.loader import render_to_string
+from components.activities import *
 
 # Register badges immediately.
 from components.makahiki_badges.user_badges import FullyCommittedBadge
@@ -408,10 +409,27 @@ class ActivityMember(CommonActivityUser):
       if not self.submission_date:
         # This may happen if it is an item with a confirmation code.
         self.submission_date = self.award_date
+        
       profile = self.user.get_profile()
       profile.add_points(points, self.submission_date)
+      
+      ## award social bonus to myself if the ref user had successfully completed the activity
+      ref_user = User.objects.get(email=self.user_comment)
+      ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
+      for m in ref_members:
+        if m.approval_status == 'approved':
+          profile.add_points(self.activity.social_bonus, self.submission_date)
+        
       profile.save()
       
+      ## award social bonus to others referenced my email and successfully completed the activity
+      ref_members = ActivityMember.objects.filter(activity=self.activity, user_comment=self.user.email)
+      for m in ref_members:
+        if m.approval_status == 'approved':
+          ref_profile = m.user.get_profile()
+          ref_profile.add_points(self.activity.social_bonus, self.submission_date)
+          ref_profile.save()
+
       if profile.floor:
         # Post on the user's floor wall.
         message = " has been awarded %d points for completing \"%s\"." % (
