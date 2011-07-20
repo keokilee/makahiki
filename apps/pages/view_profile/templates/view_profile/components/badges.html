@@ -4,6 +4,11 @@
   <div {% get_id_and_classes "profile-badges-box" %}>
     <div {% get_id_and_classes "profile-badges-title" %}>
       My Badges
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'my-badges'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "profile-badges-content" %}>
       {# <h5>Individual Badges</h5> #}

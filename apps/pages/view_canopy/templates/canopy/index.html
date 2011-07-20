@@ -17,6 +17,11 @@
 <div {% get_id_and_classes "canopy-viz" %}>
   <div {% get_id_and_classes "canopy-viz-title" %}>
     Advanced Visualizations
+    <a href="#" style="float: right">
+    <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	title="Click to get help about this window" 
+	onclick="toggleHelp('widget', 'advanced-visualizations'); return false;"
+   /></a>
   </div>
   <div {% get_id_and_classes "canopy-viz-content" %}>
     {% include "canopy/visualizations/list.html" %}
@@ -27,6 +32,11 @@
   <div {% get_id_and_classes "canopy-feed" %}>
     <div {% get_id_and_classes "canopy-feed-title" %}>
       Canopy Feed
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'canopy-feed'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "canopy-feed-content" %}>
       {% include "canopy/wall.html" %}
@@ -36,6 +46,11 @@
   <div {% get_id_and_classes "canopy-members" %}>
     <div {% get_id_and_classes "canopy-members-title" %}>
       Canopy Members
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'canopy-directory'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "canopy-members-content" %}>
       {% include "canopy/users.html" %}

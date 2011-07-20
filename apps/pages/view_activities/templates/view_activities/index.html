@@ -19,6 +19,11 @@
   <div {% get_id_and_classes "activity-events-box" %}>
     <div {% get_id_and_classes "activity-events-title" %}>
       Upcoming Events
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'upcoming-events'); return false;"
+	   /></a>
     </div>   
     <div {% get_id_and_classes "activity-events-content" %}>    
       {% include "view_activities/events.html" %}
@@ -28,6 +33,11 @@
   <div {% get_id_and_classes "activity-scoreboard-box" %}>
     <div {% get_id_and_classes "activity-scoreboard-title" %}>
       {{current_round}} Points Scoreboard
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'points-scoreboard'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "activity-scoreboard-content" %}>
       {% include "view_activities/scoreboard.html" %}

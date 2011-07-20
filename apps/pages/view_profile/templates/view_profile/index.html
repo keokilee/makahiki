@@ -18,6 +18,11 @@
   <div {% get_id_and_classes "profile-form-box" %}>
     <div {% get_id_and_classes "profile-form-title" %}>
       My Info
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'my-info'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "profile-form-content" %}>
       {% include "view_profile/components/form.html" %}

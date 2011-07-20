@@ -3,7 +3,11 @@
 <div {% get_id_and_classes "quest-box" %} style="clear: both">
   <div {% get_id_and_classes "quest-header" %}>
     <h3 {% get_id_and_classes "quest-title" %}>Canopy Quests</h3>
-    {# {% include "quests/quest_help.html" %} #}
+    <a href="#" style="float: right">
+    <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	title="Click to get help about this window" 
+	onclick="toggleHelp('widget', 'canopy-quests'); return false;"
+   /></a>
 	</div>
 	<div style="clear: both"></div>
 	
