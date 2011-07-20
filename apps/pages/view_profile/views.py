@@ -63,10 +63,6 @@ def index(request):
     "commitment_members": get_current_commitment_members(user),
     "completed_members": get_completed_members(user),
     "notifications": user.usernotification_set.order_by("-created_at"),
-    "help_info": {
-      "prefix": "profile_index",
-      "count": range(0, 3),
-    }
   }, context_instance=RequestContext(request))
 
 @login_required

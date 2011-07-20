@@ -16,7 +16,6 @@ from components.floors import *
 from components.energy_goals import *
 from components.makahiki_base import get_round_info
 from pages.news.forms import WallForm
-from components.help_topics.models import HelpTopic
 
 @never_cache
 @login_required

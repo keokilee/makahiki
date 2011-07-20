@@ -4,7 +4,6 @@ from django.conf import settings
 from components.makahiki_notifications import get_unread_notifications
 from components.makahiki_base import get_floor_label, get_rounds_for_header, get_theme, get_current_round, get_competition_dates, in_competition
 from components.makahiki_profiles.models import Profile
-from components.help_topics.models import HelpTopic
 from components.floors.models import Floor
 from components.quests import get_quests
 
