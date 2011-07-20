@@ -22,8 +22,6 @@ from components.floors import *
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 
-from components.help_topics.models import HelpTopic
-
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
@@ -329,11 +327,6 @@ def task(request, activity_type, slug):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
-  
-  try:
-    help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
-  except ObjectDoesNotExist:
-    help = None
     
   display_form = True if request.GET.has_key("display_form") else False
   

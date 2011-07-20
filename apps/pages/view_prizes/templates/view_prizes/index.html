@@ -17,6 +17,11 @@
   <div {% get_id_and_classes "prizes-list-box" %}>
     <div {% get_id_and_classes "prizes-list-title" %}>
       Prizes and Prize Winners
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'prizes'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "prizes-list-content" %}>
       {% include "view_prizes/prize_list.html" %}

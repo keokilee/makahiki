@@ -4,7 +4,12 @@
 <div {% get_id_and_classes "prizes-raffle" %}>
   <div {% get_id_and_classes "prizes-raffle-box" %}>
     <div {% get_id_and_classes "prizes-raffle-title" %}>
-      {{deadline.round_name}} Raffle Game
+      {{deadline.round_name}} Raffle Game 
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'raffle-game'); return false;"
+	   /></a>
     </div>
     <div {% get_id_and_classes "prizes-raffle-content" %}>
       <div {% get_id_and_classes "prizes-raffle-info" %}>

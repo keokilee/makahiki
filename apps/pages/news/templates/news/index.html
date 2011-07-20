@@ -18,6 +18,11 @@
   <div {% get_id_and_classes "news-events" %}>
     <div {% get_id_and_classes "news-events-title" %}>
       Upcoming Events
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+  	title="Click to get help about this window" 
+  	onclick="toggleHelp('widget', 'upcoming-events'); return false;"
+     /></a>
     </div>
     <div {% get_id_and_classes "news-events-content" %}>
       {% include "view_activities/events.html" %}
@@ -27,6 +32,11 @@
   <div {% get_id_and_classes "news-most-popular" %}>
     <div {% get_id_and_classes "news-most-popular-title" %}>
       Most Popular
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+  	title="Click to get help about this window" 
+  	onclick="toggleHelp('widget', 'most-popular'); return false;"
+     /></a>
     </div>
     <div {% get_id_and_classes "news-most-popular-content" %}>
       <div {% get_id_and_classes "news-most-popular-tasks" %} >
@@ -50,6 +60,11 @@
   <div {% get_id_and_classes "news-commitments" %}>
     <div {% get_id_and_classes "news-commitments-title" %}>
       My Public Commitments
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+  	title="Click to get help about this window" 
+  	onclick="toggleHelp('widget', 'my-public-commitments'); return false;"
+     /></a>
     </div>
     <div {% get_id_and_classes "news-commitments-content" %}>
       {% include "activities/user_commitments.html" %}
@@ -58,7 +73,15 @@
 </div>
 
 <div {% get_id_and_classes "news-members" %}>
-  <div {% get_id_and_classes "news-members-title" %}>{{FLOOR_LABEL}} members</div>
+  <div {% get_id_and_classes "news-members-title" %}>
+    {{FLOOR_LABEL}} members
+    <a href="#" style="float: right">
+    <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	title="Click to get help about this window" 
+	onclick="toggleHelp('widget', 'news-directory'); return false;"
+   /></a>
+   <br style="clear: both"/>
+  </div>
   <div {% get_id_and_classes "news-members-content" %}>
     <ul {% get_id_and_classes "news-members-list" %}>
       {% for member in floor_members %}
@@ -82,6 +105,11 @@
   <div {% get_id_and_classes "news-wall-box" %}>
     <div {% get_id_and_classes "news-wall-title" %}>
       News Feed
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+  	title="Click to get help about this window" 
+  	onclick="toggleHelp('widget', 'news-feed'); return false;"
+     /></a>
     </div>
     <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>
