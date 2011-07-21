@@ -406,9 +406,10 @@ clear: both;
   margin: 0;
   display: inline;
   vertical-align: bottom;
-  float: left;
-  width: 55%%;
-  text-align: right;
+  float:left;
+  text-align: center;
+  width: 850px;
+  margin-left: 25px;
 }
 
 #quest-help-icon {
