@@ -17,7 +17,8 @@ class CommitmentAdmin(admin.ModelAdmin):
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
   )
-  
+  prepopulated_fields = {"slug": ("name",)}
+
   list_display = ["title", "category", "priority",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]
