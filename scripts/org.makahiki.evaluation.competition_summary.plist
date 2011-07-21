@@ -25,6 +25,13 @@
       <integer>12</integer>
     </dict>
     
+    <key>StandardErrorPath</key>
+  	<string>/Users/kukuicup/evaluation/log/competition-summary.err</string>
+  	<key>StandardOutPath</key>
+  	<string>/Users/kukuicup/evaluation/log/competition-summary.out</string>
+    	
+    <key>KeepAlive</key>
+    <true/>
     <key>RunAtLoad</key>
     <true/>
 </dict>

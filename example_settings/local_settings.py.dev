@@ -28,6 +28,12 @@ MIDDLEWARE_CLASSES += (
 # FACEBOOK_API_KEY = '<API_KEY>'
 # FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
 
+# GData settings
+
+GDATA_EMAIL = "EMAIL"
+GDATA_PASSWORD = 'PASSWORD'
+GDATA_KEY = 'KEY'
+
 # Email settings
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
