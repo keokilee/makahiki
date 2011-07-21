@@ -87,14 +87,29 @@ def __add_commitment(request, commitment):
   """Commit the current user to the commitment."""
   user = request.user
   floor = user.get_profile().floor
-  
-  members = CommitmentMember.objects.filter(user=user, commitment=commitment);
-  if members.count() > 0 and members[0].days_left() == 0:
-    #commitment end
-    member = members[0]
-    member.award_date = datetime.datetime.today()
-    member.save()
-      
+
+  if request.method == "POST":
+    form = CommitmentCommentForm(request.POST, request=request)
+    if form.is_valid():  
+      members = CommitmentMember.objects.filter(user=user, commitment=commitment);
+      if members.count() > 0 and members[0].days_left() == 0:
+        #commitment end, award full point
+        member = members[0]
+        member.award_date = datetime.datetime.today()
+        member.comment = form.cleaned_data["social_email"]
+        member.save()
+    else:
+       return render_to_response("view_activities/task.html", {
+         "task":commitment,
+         "pau":True,
+         "form":form,
+         "question":None,
+         "member_all":0,
+         "member_floor":0,
+         "display_form":True,
+         "form_title": "Get your points",
+         }, context_instance=RequestContext(request))    
+    
   if commitment not in user.commitment_set.all() and can_add_commitments(user):
     # User can commit to this commitment.
     member = CommitmentMember(user=user, commitment=commitment)
@@ -130,7 +145,7 @@ def __add_activity(request, activity):
   floor = user.get_profile().floor
   
   # Search for an existing activity for this user
-  if activity not in user.activity_set.all() and request.method == "POST":
+  if activity not in user.activity_set.all():
     if activity.type == 'survey':
       question = TextPromptQuestion.objects.filter(activity=activity)
       form = SurveyForm(request.POST or None, questions=question)
@@ -138,7 +153,6 @@ def __add_activity(request, activity):
       if form.is_valid():
         for i,q in enumerate(question):
           activity_member = ActivityMember(user=user, activity=activity)
-##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
           
@@ -186,18 +200,17 @@ def __request_activity_points(request, activity):
 
   if request.method == "POST":
     if activity.confirm_type == "image":
-      form = ActivityImageForm(request.POST, request.FILES)
+      form = ActivityImageForm(request.POST, request.FILES, request=request)
     elif activity.confirm_type == "free":
-      form = ActivityFreeResponseForm(request.POST)
+      form = ActivityFreeResponseForm(request.POST, request=request)
     else:
-      form = ActivityTextForm(request.POST)
+      form = ActivityTextForm(request.POST, request=request)
     
     ## print activity.confirm_type
     if form.is_valid():
       if not activity_member:
         activity_member = ActivityMember(user=user, activity=activity)
       
-      activity_member.user_comment = form.cleaned_data["comment"]
       # Attach image if it is an image form.
       if form.cleaned_data.has_key("image_response"):
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
@@ -278,11 +291,12 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
-      ref_user = User.objects.get(email=approval.user_comment)
-      ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
-      for m in ref_members:
-        if m.approval_status == 'approved':
-          approval.social_bonus_awarded = True
+      if approval.user_comment:
+        ref_user = User.objects.get(email=approval.user_comment)
+        ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+        for m in ref_members:
+          if m.approval_status == 'approved':
+            approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
@@ -293,15 +307,15 @@ def task(request, activity_type, slug):
     
       # Create activity request form.
       if task.confirm_type == "image":
-        form = ActivityImageForm()
+        form = ActivityImageForm(request=request)
       elif task.confirm_type == "text":
         question = task.pick_question(user.id)
         if question:
-          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
+          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk,request=request)
       elif task.confirm_type == "free":
-        form = ActivityFreeResponseForm()
+        form = ActivityFreeResponseForm(request=request)
       else:
-        form = ActivityTextForm(initial={"code" : 1})
+        form = ActivityTextForm(initial={"code" : 1},request=request)
                 
       if task.type == "event" or task.type == "excursion":
         if not pau:
@@ -313,10 +327,16 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      if approval.comment:
+        ref_user = User.objects.get(email=approval.comment)
+        ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=task)
+        for m in ref_members:
+          if m.award_date:
+            approval.social_bonus_awarded = True
     
     member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
-    form = CommitmentCommentForm()
+    form = CommitmentCommentForm(request=request)
     can_commit = can_add_commitments(user)
     
   users = []
@@ -360,7 +380,7 @@ def add_task(request, activity_type, slug):
     return __request_activity_points(request, task.activity)
   elif task.type == "survey":
     return __add_activity(request, task)
-  else:
+  else:       ## event or excursion
     task = task.activity
     if task.is_event_completed():
       return __request_activity_points(request, task)

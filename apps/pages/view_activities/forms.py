@@ -14,6 +14,7 @@ class ActivityTextForm(forms.Form):
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
   
   def __init__(self, *args, **kwargs):  
+    self.request = kwargs.pop('request', None)
     qid = None
     if 'question_id' in kwargs:
       qid = kwargs.pop('question_id')
@@ -49,9 +50,7 @@ class ActivityTextForm(forms.Form):
           if cleaned_data.has_key("choice_response"):
             del cleaned_data["choice_response"]
     
-    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
-      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
-      del cleaned_data["social_email"]
+    _validate_social_email(self, cleaned_data)    
           
     return cleaned_data
   
@@ -59,14 +58,14 @@ class ActivityFreeResponseForm(forms.Form):
   response = forms.CharField(widget=forms.Textarea)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+
+  def __init__(self, *args, **kwargs):  
+    self.request = kwargs.pop('request', None)
+    super(ActivityFreeResponseForm, self).__init__(*args, **kwargs)  
   
   def clean(self):
     cleaned_data = self.cleaned_data
-
-    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
-      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
-      del cleaned_data["social_email"]
-
+    _validate_social_email(self, cleaned_data)    
     return cleaned_data
     
 class ActivityImageForm(forms.Form):
@@ -74,26 +73,26 @@ class ActivityImageForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
 
+  def __init__(self, *args, **kwargs):  
+    self.request = kwargs.pop('request', None)
+    super(ActivityImageForm, self).__init__(*args, **kwargs)  
+
   def clean(self):
     cleaned_data = self.cleaned_data
-
-    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
-      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
-      del cleaned_data["social_email"]
-
+    _validate_social_email(self, cleaned_data)    
     return cleaned_data
     
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
 
+  def __init__(self, *args, **kwargs):  
+    self.request = kwargs.pop('request', None)
+    super(CommitmentCommentForm, self).__init__(*args, **kwargs)  
+
   def clean(self):
     cleaned_data = self.cleaned_data
-
-    if cleaned_data["social_email"] and get_user_by_email(cleaned_data["social_email"]) == None:
-      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
-      del cleaned_data["social_email"]
-
+    _validate_social_email(self, cleaned_data)
     return cleaned_data
     
 class SurveyForm(forms.Form):  
@@ -108,8 +107,14 @@ class SurveyForm(forms.Form):
       for i, q in enumerate(questions):
         self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question, required=True)
     
-    ##TODO. self.fields['comment'] = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), label='(Optional)Additonal Comments:', required=False)
-
   def clean(self):
     cleaned_data = self.cleaned_data
     return cleaned_data
+    
+def _validate_social_email(self, cleaned_data):
+  
+  if cleaned_data["social_email"]:
+    user = get_user_by_email(cleaned_data["social_email"]) 
+    if user == None or user == self.request.user:
+      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data["social_email"]

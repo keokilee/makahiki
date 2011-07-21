@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'title', 'description', 'duration', 'depends_on', 'depends_on_text','energy_related'),
+      'fields' : ('name', 'title', 'description', 'social_bonus', 'duration', 'depends_on', 'depends_on_text','energy_related'),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),

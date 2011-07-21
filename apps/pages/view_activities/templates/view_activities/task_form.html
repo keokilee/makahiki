@@ -38,15 +38,11 @@
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
          </div>
       {% endif %}
-   <!--
-     <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
-         {{ form.comment }} 
-      <p/>
-   -->
+
    {% endif %}
    
    {% if task.type == "commitment" %}     {# commitment #}
-     {% if approval.days_left != 0 %}
+     {% if approval.days_left > 0 %}
      You will earn 2 points for making this commitment.
      <p/>
      Come back in 5 days of meeting your commitment for the rest of your 
@@ -58,7 +54,7 @@
      {% if task.social_bonus > 0 %}
           <p/>
           (Optional) If you did this with a friend or friends, please enter 
-          one of their UH email addresses here for a social bonus: (Optional)<br/>
+          one of their UH email addresses here for a social bonus:<br/>
           {{ form.social_email.errors }}
           {{ form.social_email }}
      {% endif %}  
@@ -102,11 +98,7 @@
           {{ form.social_email.errors }}
           {{ form.social_email }}
     {% endif %} 
-    <!--
-    <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
-         {{ form.comment }} 
-    <p/>
-    -->
+
       <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
