@@ -64,11 +64,6 @@ $(document).ready(function() {
     });
   });
   
-  $("#quest-help-icon").click(function() {
-    toggleHelp("widget", "quests");
-    return false;
-  });
-  
   // If the cookie is set, display the quest.
   var value = getCookie("visible-quest");
   if (value) {
