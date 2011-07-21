@@ -3,9 +3,11 @@
 <div {% get_id_and_classes "quest-box" %} style="clear: both">
   <div {% get_id_and_classes "quest-header" %}>
     <h3 {% get_id_and_classes "quest-title" %}>Your Quests</h3>
-    <img {% get_id_and_classes "quest-help-icon" %} 
-      src="{{ STATIC_URL }}/css/default/images/icon-help-sm.png"
-      title="Click to get help about this window" />
+    <a href="#" style="float: right">
+    <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	title="Click to get help about this window" 
+	onclick="toggleHelp('widget', 'quests'); return false;"
+   /></a>
 	</div>
 	<div style="clear: both"></div>
 	

@@ -12,12 +12,13 @@ from django.core.urlresolvers import reverse
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'title', 'description', 'social_bonus', 'duration', 'depends_on', 'depends_on_text','energy_related'),
+      'fields' : ('name', 'slug', 'title', 'description', 'social_bonus', 'duration', 'depends_on', 'depends_on_text','energy_related'),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
   )
-  
+  prepopulated_fields = {"slug": ("name",)}
+
   list_display = ["title", "category", "priority",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]
@@ -222,10 +223,10 @@ class TextQuestionInline(admin.TabularInline):
 class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'slug', 'type', 'title', 'description', 'social_bonus', 'duration', ('pub_date', 'expire_date'), 
+      'fields' : ('name', 'slug', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 
       'event_date', 'event_location', 'depends_on','depends_on_text','energy_related'),
     }),
-    ("Points", {"fields": ("point_value", ("point_range_start", "point_range_end",))}),
+    ("Points", {"fields": ("point_value", 'social_bonus', ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),
     ("Confirmation Type", {'fields': ('confirm_type', 'num_codes', 'confirm_prompt')}),
   )
