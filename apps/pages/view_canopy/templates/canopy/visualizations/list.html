@@ -2,45 +2,49 @@
 <ul {% get_id_and_classes "canopy-viz-list" %}>
   <li id="canopy-hot-spot-link">
     <h3><a href="javascript:void(0);">Hot Spots</a></h3>
-    <div {% get_id_and_classes "canopy-viz-hot-spots" %} style="display: none">
+    <div {% get_id_and_classes "canopy-viz-hot-spots" %} style="Display : None">
       {% include "canopy/visualizations/hot_spots.html" %}
     </div>
   </li>
   <li>|</li>
   <li id="canopy-heat-map-link">
     <h3><a href="javascript:void(0);">Heat Map</a></h3>
-    <div {% get_id_and_classes "canopy-viz-heat-map" %} style="display: none">
+    <div {% get_id_and_classes "canopy-viz-heat-map" %} style="Display : None">
       {% include "canopy/visualizations/heat_map.html" %}
     </div>
   </li>
   <li>|</li>
   <li id="canopy-wattdepot-link">
     <h3><a href="javascript:void(0);">WattDepot Visualizer</a></h3>
-    <div {% get_id_and_classes "canopy-viz-wattdepot" %} style="display: none">
+    <div {% get_id_and_classes "canopy-viz-wattdepot" %} style="Display : None">
       {% include "canopy/visualizations/wattdepot_visualizer.html" %}
     </div>
   </li>
 </ul>
 
-<div {% get_id_and_classes "canopy-visualizations" %}></div>
+<div {% get_id_and_classes "canopy-visualizations" %}>
+<b> Click one of the links above to go deep into the advance energy visualization. </b>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#canopy-visualizations").html($("#canopy-viz-hot-spots").html());
-    $("#canopy-hot-spot-link").addClass("selected");
+    displayHotSpot();
     
     $("#canopy-viz-list li").click(function() {
       if(!$(this).hasClass("selected")) {
         if($(this).attr('id') === "canopy-hot-spot-link") {
+          
           $("#canopy-visualizations").html($("#canopy-viz-hot-spots").html());
         }
 
         else if($(this).attr('id') === "canopy-heat-map-link") {
           $("#canopy-visualizations").html($("#canopy-viz-heat-map").html());
+          
         }
         
         else if($(this).attr('id') === "canopy-wattdepot-link") {
           $("#canopy-visualizations").html($("#canopy-viz-wattdepot").html());
+          
         }
         
         $("#canopy-viz-list > li").removeClass("selected");
@@ -50,4 +54,7 @@
       return false;
     });
   });
+  
+
+                
 </script>
