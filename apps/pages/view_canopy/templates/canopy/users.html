@@ -7,7 +7,7 @@
     <div>
       <a href="{% url canopy_members %}#{{member.get_profile.name|slugify}}">
         <img src="{% avatar_url member 40 %}" alt="Photo of {{ member.get_profile.name }}" align="top" />
-        {{member.get_profile.name}}
+        <div>{{member.get_profile.name}}</div>
       </a>
     </div>
   </li>
