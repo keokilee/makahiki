@@ -1,14 +1,19 @@
+body {
+  background: none;
+  background-color: #BDCBDF;
+}
+
 .container {
-  background: transparent url(/site_media/static/css/default/images/canopy.jpg) top center no-repeat;
-/*  min-height: 1200px;*/
+  background: none;
+  background-color: #BDCBDF;
 }
 
 .container-top {
-  background: none;
+  background: transparent url(/site_media/static/css/default/images/canopytop.png) top center no-repeat;
 }
 
 .container-bottom {
-  background: none;
+  background: transparent url(/site_media/static/css/default/images/canopybottom.png) bottom center no-repeat;
 }
 
 #quest-list {
@@ -142,10 +147,11 @@
 
 #canopy-member-list li {
   float: left;
-  width: 60px;
+  width: 68px;
   margin: 0;
   padding: 0;
   text-align: center;
+  min-height: 80px;
 }
 
 #canopy-member-list li img {
