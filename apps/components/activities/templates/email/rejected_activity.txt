@@ -7,7 +7,7 @@ Your response to {{activity.title}} was not approved.  Here is their feedback:
 
 You can still receive the points for this {{activity.type}}!  Please click the following link to try again.
 
-{% url activity_task activity.type activity.slug %}
+http://{{domain}}{% url activity_task activity.type activity.slug %}
 
 Thank you,
 
