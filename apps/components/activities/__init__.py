@@ -5,6 +5,7 @@ from django.conf import settings
 from components.activities.models import *
 from django.db.models import Sum, Count
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 
 # Directory in which to save image files for ActivityMember verification.
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
@@ -300,3 +301,10 @@ def annotate_task_status(user, task):
     task.approval = members[0]
     
   return task
+  
+def get_user_by_email(email):
+  """return the user from given email"""
+  try:
+    return User.objects.get(email=email);
+  except ObjectDoesNotExist:
+    return None
