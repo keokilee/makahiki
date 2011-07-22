@@ -15,23 +15,26 @@
       <div {% get_id_and_classes "prizes-raffle-info" %}>
         Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
       </div>
-      <table {% get_id_and_classes "prizes-raffle-table" %}>
-        <tr>
-          <th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th>
-          <th {% get_id_and_classes "prizes-raffle-value-header" %}>Value</th>
-          <th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th>
-          <th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th>
-          <th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th>
-          <th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th>
-        </tr>
-        {% include "view_prizes/raffle_list.html" %}
-      </table>
-      <div id="prizes-raffle-footer">
-        You receive 1 raffle ticket for every {{raffle.points_per_ticket}} awarded Kukui Cup points.<br/>
-        These tickets are separate from your score and will not affect your rank.<br/>
-        <span id="prizes-raffle-footer-deadline">Deadline for {{deadline.round_name}} submissions: {{deadline.end_date|date:"l, F j, Y"}}, {{deadline.end_date|date:"gA"}}</span>
-        Winners will be notified via email the following day.
-      </div>
+      
+      {% if raffle.today > deadline.pub_date  and raffle.today < deadline.end_date %}
+        {% if raffle.prizes.count > 0 %}
+        {% include "view_prizes/raffle_table.html" %}
+        {% else %}
+        <h4 style="text-align: center">There are no raffle prizes for this round yet.  Please check back later.</h4>
+        {% endif %}
+      {% else %}
+        <h4 style="text-align: center">
+        {% if raffle.today < deadline.pub_date %}
+          Raffle prizes for this round are not available yet. 
+          They will be available on {{deadline.pub_date|date:"N jS"}} at {{deadline.pub_date|date:"P"}}
+        {% else %}
+          The raffle is now over. 
+          {% if raffle.prizes.count > 0 %}
+          Please check back in the next round for more prizes!
+          {% endif %}
+        {% endif %}
+        </h4>
+      {% endif %}
     </div>
   </div>
 </div>

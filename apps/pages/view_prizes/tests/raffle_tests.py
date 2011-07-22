@@ -56,6 +56,14 @@ class RafflePrizesTestCase(TestCase):
 
   def testIndex(self):
     """Check that we can load the index page."""
+    raffle_prize = RafflePrize(
+        title="Test raffle prize",
+        description="A raffle prize for testing",
+        deadline=self.deadline,
+        value=5,
+    )
+    raffle_prize.save()
+    
     response = self.client.get(reverse("prizes_index"))
     self.failUnlessEqual(response.status_code, 200)
     self.assertContains(response, "Round 2 Raffle", msg_prefix="We should be in round 2 of the raffle.")
@@ -126,6 +134,46 @@ class RafflePrizesTestCase(TestCase):
         msg_prefix="There should be a url to add a ticket.")
     self.assertContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
         msg_prefix="There should be an url to remove a ticket.")
+        
+  def testBeforePublication(self):
+    """
+    Test what happens when the prizes for the round are not published yet.
+    """
+    self.deadline.pub_date = datetime.datetime.today() + datetime.timedelta(hours=1)
+    self.deadline.save()
+    response = self.client.get(reverse("prizes_index"))
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "Raffle prizes for this round are not available yet.")
+    
+  def testAfterDeadline(self):
+    """
+    Test what happens when the page is accessed after the deadline.
+    """
+    self.deadline.end_date = datetime.datetime.today() - datetime.timedelta(minutes=30)
+    self.deadline.save()
+    response = self.client.get(reverse("prizes_index"))
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "The raffle is now over.")
+    
+  def testPrizeOutsideOfRound(self):
+    """
+    Test that a raffle prize outside of the round does not appear in the list."""
+    deadline = RaffleDeadline(
+        round_name="Round 1", 
+        pub_date=datetime.datetime.today() - datetime.timedelta(days=7),
+        end_date=datetime.datetime.today() - datetime.timedelta(days=1),
+    )
+    deadline.save()
+    raffle_prize = RafflePrize(
+        title="Test raffle prize",
+        description="A raffle prize for testing",
+        deadline=deadline,
+        value=5,
+    )
+    raffle_prize.save()
+    response = self.client.get(reverse("prizes_index"))
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertNotContains(response, "Test raffle prize")
       
   def tearDown(self):
     """

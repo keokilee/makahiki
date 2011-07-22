@@ -100,21 +100,23 @@ def _get_raffle_prizes(user):
     # TODO; Handle if there is no raffle for this round.
     return None
     
-  if today < deadline.pub_date:
-    # TODO: Find the pub date of the next round and maybe post something about that.
-    deadline = None
-    
   # Get the user's tickets.
   profile = user.get_profile()
   available_tickets = profile.available_tickets()
   total_tickets = profile.points / POINTS_PER_TICKET
   allocated_tickets = total_tickets - available_tickets
   
-  # Get the prizes for the raffle.
-  prizes = RafflePrize.objects.filter(deadline=deadline).order_by("-value")
+  prizes = None
+  if deadline.pub_date < today < deadline.end_date:
+    # Get the prizes for the raffle.
+    prizes = RafflePrize.objects.filter(deadline=deadline).order_by("-value")
+  elif today > deadline.end_date:
+    # Determine if there are more prizes.
+    prizes = RafflePrize.objects.filter(deadline__pub_date__gt=today)
     
   return {
     "deadline": deadline,
+    "today": today,
     "points_per_ticket": POINTS_PER_TICKET,
     "tickets": {
         "available": available_tickets,
