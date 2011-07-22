@@ -119,7 +119,7 @@
 
   <div data-role="content">
     <h2>{{current_round}} kWh Usage</h2>
-    
+    <table id="{{current_round|slugify}}-energy-scoreboard"></table>
   </div>
 
   <footer>
@@ -134,28 +134,11 @@
   </div>
 
   <div data-role="content">
-    <h2>Overall kWh Usage</h2>  
-      <table id="full-standings-table"> 
-      </table> 
-    </div> 
-
-<div {% get_id_and_classes "energy-scoreboard" %}>
-  {% for round_name in scoreboard_rounds %}
-  <div class="energy-scoreboard-cycle" {% if not forloop.first %}style="display: none"{% endif %}>
-    <div {% get_id_and_classes "energy-scoreboard-title" %} style="width: 100%">
-      {{round_name}} kWh Score Board
-    </div>
-    <div {% get_id_and_classes "energy-scoreboard-content" %}>
-      <table id="{{round_name|slugify}}-energy-scoreboard"></table>
-    </div>
-   <div id="energy-scoreboard-message">#1 at end of round wins a 
-     <a href="/prizes"> prize!</a>
-   </div>
- </div>
- {% endfor %}
-</div>
-
-
+    <h2>Overall kWh Usage</h2>   
+      <table id="overall-energy-scoreboard"> 
+      </table>  
+    </div>  
+</div> 
   </div>
 
   <div data-role="footer">
@@ -175,7 +158,7 @@
 
     <h2>kWh Scores</h2>
     <a href="{% url mobile_scoreboard %}/#rnd-kwh" data-role="button">{{current_round}} kWh Usage</a>
-    <a href="{% url mobile_overallkwh %}" data-role="button" rel="external">Overall kWh Usage: {{floor}}</a>
+    <a href="{% url mobile_scoreboard %}/#over-kwh" data-role="button" rel="external">Overall kWh Usage: {{floor}}</a>
     <br/>
     <br/>
     <a href="{% url mobile_scoreboard %}" data-role="button" data-rel="back">Cancel</a>
@@ -194,17 +177,23 @@
   var refreshInterval = 0; // don't refresh this spreadsheet.
 
   // Load the visualization API and the spreadsheet, then call displayRank.
-  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);  
+  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);   
 
   function displayRank(energyDataTable) {
     // The source for which we want to find the rank must be specified by Makahiki.
     var source = "{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}";
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
-    var usage = energyRank.processDataTable(energyDataTable, 0, 0);
-    // console.log("Leader is " + energyRank.calculateLeader(usage).source);
-    var info = energyRank.calculateRankInfo(usage, source);
-    // console.log(source + " is ranked " + info.rank + " with " + info.usage + " watts"); 
-    energyRank.drawCompleteStandings("full-standings-table", source, usage);
+
+   //draw round specific standing table
+//test
+    {% for key, value in ROUNDS.items %}
+      var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
+      var info = energyRank.calculateRankInfo(usage, source); 
+       //if ($("#{{key|slugify}}-energy-scoreboard") != null) {
+       energyRank.drawCompleteStandings("{{key|slugify}}-energy-scoreboard", "{{user.get_profile.floor.floor_identifier}}", usage);
+       //}
+    {% endfor %}
+//test
   }
 })();
 </script>
