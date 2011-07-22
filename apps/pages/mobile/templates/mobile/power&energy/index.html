@@ -1,0 +1,49 @@
+{% extends "mobile/base.html" %}
+{% block body %} 
+{% load class_tags %}   
+{% load markup %} 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<!--dynamic-->
+  <!--import_page_css "view_energy" STATIC_URL CSS_THEME %}
+  <!--script type="text/javascript" src="{{ STATIC_URL}}js/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script> 
+<!--static-->
+<!--script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script> 
+<!--hardcoded-->
+<script type="text/javascript" src="mobile/power&energy/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script> 
+
+ 
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script> 
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
+<script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script> 
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/powermeter/org.wattdepot.gdata.makahiki.PowerMeter.js"></script> 
+
+
+
+  <div data-role="page">
+		<div data-role="header" data-theme="b" data-add-back-btn="True">
+			<a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a> 
+      <h1>Power and Energy</h1> 
+    </div>
+    <div data-role="content">
+      <div id="EnergyGoalGame-visualization"></div> 
+
+ <script type="text/javascript">  
+(function() {
+  var spreadsheetUrl = 'https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdEdmU21FaWtlSlNSSnQ3YmNxUFBWaFE';
+  var refreshInterval = 15; // refresh every 15 seconds.
+ 
+  // Load the visualization API and the spreadsheet, then call displayEnergy.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetUrl, refreshInterval);  
+ 
+  function displayEnergy(datatable) {
+    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var options = {};  // no options currently supported. 
+    var energyChart = new org.wattdepot.gdata.makahiki.EnergyGoalGame();
+    energyChart.draw('EnergyGoalGame-visualization', source, datatable, options); 
+  } 
+              
+})();
+</script> 
+    </div>  
+  </div>
+{% endblock %}
