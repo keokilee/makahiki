@@ -69,11 +69,20 @@ a {
 	
 #header-logout {
 	position: absolute;
-	margin-left: 675px;
+	margin-left: 410px;
 	margin-top: -1.5em;
 	text-align: right;
-	width: 240px;
+	width: 510px;
 	font-weight: bold;
+}
+
+#header-canopy-link {
+  float: left;
+  text-align: center;
+  background-color: rgba(64,66,66,0.9);
+  padding: 2px 8px;
+  -moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 }
 
 #header-feedback {

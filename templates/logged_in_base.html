@@ -11,8 +11,16 @@
 
 {% block header %}
 
+
 <div style="margin-top: 10px">
+  
   <div {% get_id_and_classes "header-logout" %}>
+    {% if user.get_profile.canopy_member and not canopy_quests %}
+    <div id="header-canopy-link">
+      <a href="{% url canopy_index %}">Head up to the canopy</a>
+    </div>
+    {% endif %}
+    
     <button {% get_id_and_classes "header-feedback" %} disabled="disabled" href="javascript:void(0);">Send Feedback</button>
     <a href="/account/cas/logout/?next=/landing/">Logout</a>
   </div>

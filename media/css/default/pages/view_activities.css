@@ -158,6 +158,7 @@ table#activities-grid-legend td{
 table#activities-grid {
 	padding-left: 4px;
 	border: 0;
+	margin: 0 auto;
 }
 
 table#activities-grid td {
