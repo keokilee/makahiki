@@ -41,9 +41,9 @@ sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 
-__EMAIL__ = 'kukuicup@gmail.com'
-__PASSWORD__ = 'IwantKnuts'
-__KEY__ = 'tGfSmEikeJSRJt7bcqPPVhQ'
+__EMAIL__ = settings.GDATA_EMAIL
+__PASSWORD__ = settings.GDATA_PASSWORD
+__KEY__ = settings.GDATA_KEY
 
 class GDataGoal:
 
