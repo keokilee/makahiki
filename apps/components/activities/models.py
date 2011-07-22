@@ -131,6 +131,11 @@ class Commitment(ActivityBase):
   
   def __unicode__(self):
     return self.title
+
+  def save(self):
+    """Custom save method to set fields."""
+    self.type = "commitment"
+    super(Commitment, self).save()
     
 class Activity(ActivityBase):
   """Activities involve verifiable actions that users commit to.  These actions can be 

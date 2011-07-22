@@ -24,7 +24,7 @@ org.wattdepot.gdata.makahiki.EnergyGoalGame = function() {
 
     // Obtain the data from the table, formatting the timestamp.
     var dateFormatter = new google.visualization.DateFormat({pattern: 'MM/dd/yy h:mm:ss a'});
-    dateFormatter.format(datatable, 0);
+    dateFormatter.format(datatable, 1);
     var row = findRow(datatable, source);
     var tstamp = datatable.getFormattedValue(row,1);
     var actualConsumption = parseInt(datatable.getValue(row,2));
