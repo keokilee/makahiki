@@ -19,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^help/(?P<category>\w+)/(?P<slug>[\w\d\-]+)/$', 'pages.mobile.views.helptopic', name='mobile_help_topic'),
     url(r'^profile/?$', 'pages.mobile.views.profile', name='mobile_profile'),
     url(r'^raffle/?$', 'pages.mobile.views.raffle', name='mobile_raffle'),
+    url(r'^power_and_energy/?$', 'pages.mobile.views.power_and_energy', name='mobile_power_and_energy'), 
+    url(r'^news/?$', 'pages.mobile.templates.mobile.news.views.news' , name='mobile_news'),
 )

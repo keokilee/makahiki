@@ -29,6 +29,7 @@ from components.help_topics.models import HelpTopic
 from pages.view_prizes.views import _get_prizes
 from pages.view_prizes.views import _get_raffle_prizes
 
+ 
 
 @login_required
 def index(request):
@@ -616,3 +617,10 @@ def raffle(request):
       "prizes": prizes,
       "raffle": raffle_dict,
   }, context_instance=RequestContext(request))
+
+@login_required
+def power_and_energy(request): 
+  return render_to_response("mobile/power&energy/index.html", { 
+  }, context_instance=RequestContext(request))
+
+ 
