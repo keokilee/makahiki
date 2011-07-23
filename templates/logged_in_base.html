@@ -44,17 +44,17 @@
   </div>
 </div>
 
-{% if messages %}
-<div {% get_id_and_classes "notification-box" %}>
-  <ul>
-    {% for message in messages %}
-    <li>
-      {{message|safe}}
-    </li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
+{# {% if messages %} #}
+{# <div {% get_id_and_classes "notification-box" %}> #}
+{#   <ul> #}
+{#     {% for message in messages %} #}
+{#     <li> #}
+{#       {{message|safe}} #}
+{#     </li> #}
+{#     {% endfor %} #}
+{#   </ul> #}
+{# </div> #}
+{# {% endif %} #}
 
 {% include "notifications/list.html" %}
 
