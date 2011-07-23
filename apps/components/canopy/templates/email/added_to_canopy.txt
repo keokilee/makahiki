@@ -1,0 +1,9 @@
+Congratulations on your success in the {{competition_name}}!  You are now eligible to access a new part of the site called the Canopy.  To enter, copy and paste the following link:
+
+http://{{domain}}{% url canopy_index %}
+
+There you will have access to more detailed information and you will also have new quests to complete.  You will also be able to interact with other canopy members and us, the administrators of the {{competition_name}}.
+
+Welcome to the canopy!
+
+{{competition_name}} administrators
