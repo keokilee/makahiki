@@ -1,58 +1,58 @@
-$(document).ready(function() {
-  $("#feedback-dialog").dialog({
+jQuery(document).ready(function() {
+  jQuery("#feedback-dialog").dialog({
     modal: true,
     width: 500,
     position: ["center", 150],
     autoOpen: false,
     open: function() {
-      $("#id_url").val(window.location);
-      $("#feedback-form textarea").focus();
-      $("#feedback-form textarea").val("");
+      jQuery("#id_url").val(window.location);
+      jQuery("#feedback-form textarea").focus();
+      jQuery("#feedback-form textarea").val("");
     }
   });
   
-  $("#feedback-success").dialog({
+  jQuery("#feedback-success").dialog({
     modal: true,
     width: 500,
     position: ["center", 150],
     autoOpen: false
   });
   
-  $("#feedback-form textarea").keyup(function() {
+  jQuery("#feedback-form textarea").keyup(function() {
     if (this.value.length == 0) {
-      $("#feedback-submit").button("option", "disabled", true);
+      jQuery("#feedback-submit").button("option", "disabled", true);
     }
     else {
-      $("#feedback-submit").button("option", "disabled", false);
+      jQuery("#feedback-submit").button("option", "disabled", false);
     }
   });
   
-  $("#header-feedback").click(function() {
+  jQuery("#header-feedback").click(function() {
     log_js_action("ask-admin", "form", "show");
-    $("#feedback-dialog").dialog("open");
+    jQuery("#feedback-dialog").dialog("open");
   });
   
-  $("#feedback-submit").button({
+  jQuery("#feedback-submit").button({
     disabled: true
   });
   
-  $("#feedback-submit").click(function() {
-    if(!$(this).button("option", "disabled")) {
-      $(this).button("option", "disabled", true);
+  jQuery("#feedback-submit").click(function() {
+    if(!jQuery(this).button("option", "disabled")) {
+      jQuery(this).button("option", "disabled", true);
       // alert(this.form.action);
-      $("#feedback-spinner").show();
-      $.post(this.form.action, $("#feedback-form").serialize(), function(data) {
-        $("#feedback-dialog").dialog("close");
-        $("#feedback-success").dialog("open");
-        $("#feedback-spinner").hide();
+      jQuery("#feedback-spinner").show();
+      $.post(this.form.action, jQuery("#feedback-form").serialize(), function(data) {
+        jQuery("#feedback-dialog").dialog("close");
+        jQuery("#feedback-success").dialog("open");
+        jQuery("#feedback-spinner").hide();
       });
     }
     
     return false;
   });
   
-  $("#feedback-success button").click(function() {
-    $("#feedback-success").dialog("close");
+  jQuery("#feedback-success button").click(function() {
+    jQuery("#feedback-success").dialog("close");
   })
-  $("#header-feedback").removeAttr("disabled");
+  jQuery("#header-feedback").removeAttr("disabled");
 });

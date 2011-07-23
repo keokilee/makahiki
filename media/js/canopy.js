@@ -1,43 +1,46 @@
-$(document).ready(function() {
-  $("#canopy-hide-about").click(function() {
+
+     
+  // Use jQuery via jQuery(...)
+  jQuery(document).ready(function(){
+  jQuery("#canopy-hide-about").click(function() {
     setCookie("hide-about", "true", 0);
-    $("#canopy-about").fadeOut();
+    jQuery("#canopy-about").fadeOut();
     return false;
   });
   
-  var textarea = $("#wall-post textarea");
+  var textarea = jQuery("#wall-post textarea");
   textarea.click(function() {
-    if ($("#wall-post-submit").button("option", "disabled")) {
+    if (jQuery("#wall-post-submit").button("option", "disabled")) {
       this.value = "";
     }
   });
   textarea.keyup(function() {
     if (this.value.length == 0) {
-      $("#wall-post-submit").button("option", "disabled", true);
+      jQuery("#wall-post-submit").button("option", "disabled", true);
     }
     else {
-      $("#wall-post-submit").button("option", "disabled", false);
+      jQuery("#wall-post-submit").button("option", "disabled", false);
     }
   });
   
-  $("#wall-post-submit").button({
+  jQuery("#wall-post-submit").button({
     disabled: true
   });
   
-  $("#wall-post-submit").click(function() {
-    if (!$("#wall-post-submit").button("option", "disabled")) {
-      $.post($("#news-post-form").attr("action"), $("#news-post-form").serialize(), function(data) {
+  jQuery("#wall-post-submit").click(function() {
+    if (!jQuery("#wall-post-submit").button("option", "disabled")) {
+      $.post(jQuery("#news-post-form").attr("action"), jQuery("#news-post-form").serialize(), function(data) {
         if (data.message) {
-          $("#wall-post-errors").html(data.message);
+          jQuery("#wall-post-errors").html(data.message);
         }
         else {
-          $("#wall-post-errors").html("");
-          if ($("#wall-no-posts").is(":visible")) {
-            $("#wall-no-posts").hide();
+          jQuery("#wall-post-errors").html("");
+          if (jQuery("#wall-no-posts").is(":visible")) {
+            jQuery("#wall-no-posts").hide();
           }
-          $(data.contents).hide().prependTo("#wall-posts").fadeIn();
-          $("textarea").val("");
-          $("#wall-post-submit").button("option", "disabled", true);
+          jQuery(data.contents).hide().prependTo("#wall-posts").fadeIn();
+          jQuery("textarea").val("");
+          jQuery("#wall-post-submit").button("option", "disabled", true);
         }
       });
     }

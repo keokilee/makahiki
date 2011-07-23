@@ -1,1 +1,31 @@
-<h1>Heat map goes here</h1>
+  <script type="text/javascript" src="{{ STATIC_URL}}/js/prototype.js"></script> 
+  <script type="text/javascript" src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
+      
+  <script type="text/javascript" src="{{ STATIC_URL}}/js/org.wattdepot.makahiki.HeatMap.js"></script> 
+
+<p/>
+<div id="HeatMap">
+      <div id="title" style="font-weight: bold; text-align: center;">Heat Map Analysis</div>
+      
+      <!-- Loading div that displays an animated gif, display is set to none when displaying a BioHeatMap -->
+      <div id="loading"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    
+      <!-- Container to display the BioHeatMap, style is set to display error messages -->
+      <div id="datadiv" align="center" style="font-family: Arial;font-size: 12px;color: red"></div>
+  
+      <!-- Container to display when the Gadget was last updated. -->
+      <div id="lastchecked" align="center" style="font-family: Arial;font-size: 12px;font-weight: bold;"> </div>
+  
+      <!-- Container to display the Gadget's onboard options to change Time / Date. -->
+      <div id="onboardoptions" style="font-family: Arial;font-size: 12px"></div>
+  
+      <!-- Container to display the Time / Date pickers -->
+      <div id="onboarduidiv" style="font-family: Arial;font-size: 12px;display: none"></div>
+      
+      <p/>
+      <div id="description" style="margin-left: 210px; text-align: left; width: 510px;">
+      Greener area note when your current data type was particularly low while redder areas note when the values are particularly high. 
+      By using this you are comparing the values within your data range and not beyond it, so in some instances a greener spot may not be classified as that when compared with other dates.
+      You can use this visualization to find the times when you are comparatively using the most resources and take steps to decrease that value.
+      </div>
+</div>

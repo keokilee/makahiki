@@ -1,60 +1,83 @@
 {% load class_tags %}
-<ul {% get_id_and_classes "canopy-viz-list" %}>
-  <li id="canopy-hot-spot-link">
-    <h3><a href="javascript:void(0);">Hot Spots</a></h3>
-    <div {% get_id_and_classes "canopy-viz-hot-spots" %} style="Display : None">
-      {% include "canopy/visualizations/hot_spots.html" %}
-    </div>
+<ul {% get_id_and_classes "canopy-viz-list" %} >
+
+  <li id="canopy-hot-spot-link" 
+    {% if viz == '1' %} 
+      class="selected"
+    {% endif %}  
+   >
+    <h3><a href="/canopy?viz=1">Hot Spots</a></h3>
   </li>
   <li>|</li>
-  <li id="canopy-heat-map-link">
-    <h3><a href="javascript:void(0);">Heat Map</a></h3>
-    <div {% get_id_and_classes "canopy-viz-heat-map" %} style="Display : None">
-      {% include "canopy/visualizations/heat_map.html" %}
-    </div>
+  <li id="canopy-heat-map-link"
+    {% if viz == '2' %} 
+      class="selected"
+    {% endif %}  
+  >
+    <h3><a href="/canopy?viz=2">Heat Map</a></h3>
   </li>
   <li>|</li>
-  <li id="canopy-wattdepot-link">
-    <h3><a href="javascript:void(0);">WattDepot Visualizer</a></h3>
-    <div {% get_id_and_classes "canopy-viz-wattdepot" %} style="Display : None">
-      {% include "canopy/visualizations/wattdepot_visualizer.html" %}
-    </div>
+   <li id="canopy-wattdepot-link"
+    {% if viz == '3' %} 
+      class="selected"
+    {% endif %}  
+    >
+    <h3><a href="/canopy?viz=3">WattDepot Visualizer</a></h3>
   </li>
 </ul>
 
 <div {% get_id_and_classes "canopy-visualizations" %}>
-<b> Click one of the links above to go deep into the advance energy visualization. </b>
+  {% if viz == None %}
+  <div style='margin-left: 250px; width: 500px; text-align:left;'>
+    "You can't manage what you can't measure".
+    In the canopy, you can work with several advanced visualizations to measure the live energy data in the dorms. 
+    <p/>
+    <b>Click on the link above to see the advanced energy data visualizations.</b>
+  </div>
+  {% endif %}
+  
+  {% if viz == '1' %}
+      {% include "canopy/visualizations/hot_spots.html" %}
+  {% endif %}
+    
+  {% if viz == '2' %}
+      {% include "canopy/visualizations/heat_map.html" %}
+  {% endif %}
+  
+  {% if viz == '3' %}
+      {% include "canopy/visualizations/wattdepot_visualizer.html" %}
+  {% endif %}
+  
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    displayHotSpot();
-    
-    $("#canopy-viz-list li").click(function() {
-      if(!$(this).hasClass("selected")) {
-        if($(this).attr('id') === "canopy-hot-spot-link") {
-          
-          $("#canopy-visualizations").html($("#canopy-viz-hot-spots").html());
+  
+  // Use jQuery via jQuery(...)
+  jQuery(document).ready(function(){
+            
+    jQuery("#canopy-viz-list li").click(function() {    
+      
+      if(!jQuery(this).hasClass("selected")) {
+        if(jQuery(this).attr('id') === "canopy-hot-spot-link") {
+          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-hot-spots").html());
         }
 
-        else if($(this).attr('id') === "canopy-heat-map-link") {
-          $("#canopy-visualizations").html($("#canopy-viz-heat-map").html());
-          
+        else if(jQuery(this).attr('id') === "canopy-heat-map-link") {
+          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-heat-map").html());         
         }
         
-        else if($(this).attr('id') === "canopy-wattdepot-link") {
-          $("#canopy-visualizations").html($("#canopy-viz-wattdepot").html());
-          
+        else if(jQuery(this).attr('id') === "canopy-wattdepot-link") {
+        
+          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-wattdepot").html());
         }
         
-        $("#canopy-viz-list > li").removeClass("selected");
-        $(this).addClass("selected");
+        jQuery("#canopy-viz-list li").removeClass("selected");
+        jQuery(this).addClass("selected");
       }
       
-      return false;
+      //return false;
     });
-  });
-  
 
+  });
                 
 </script>

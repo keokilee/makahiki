@@ -42,6 +42,9 @@ def index(request):
   if request.COOKIES.has_key("hide-about"):
     hide_about = True
   
+  viz = request.REQUEST.get("viz", None)
+  
+  
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
       "canopy_quests": canopy_quests,
@@ -50,6 +53,7 @@ def index(request):
       "more_posts": more_posts,
       "members": members,
       "hide_about": hide_about,
+      "viz":viz,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------

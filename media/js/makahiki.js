@@ -1,17 +1,19 @@
 // Setup the header cycle.
-$(document).ready(function() {
-  $("#user-cycle").cycle();
-  $("#floor-cycle").cycle();
+ 
+  // Use jQuery via jQuery(...)
+  jQuery(document).ready(function(){
+  jQuery("#user-cycle").cycle();
+  jQuery("#floor-cycle").cycle();
   
   //Set up the help dialog.
-  $("#widget-help-dialog").dialog({
+  jQuery("#widget-help-dialog").dialog({
     autoOpen: false,
     modal: true
   });
 });
 
 // Function to handle AJAX post requests.
-$.ajaxSetup({ 
+jQuery.ajaxSetup({ 
      beforeSend: function(xhr, settings) {
          function getCookie(name) {
              var cookieValue = null;
@@ -38,22 +40,22 @@ $.ajaxSetup({
 // Make sure to load jQuery before this.
 var log_js_action = function(type, object, action) {
   // Send a request to the logging URL.
-  $.get("/log/" + type + "/" + object + "/" + action + "/");
+  jQuery.get("/log/" + type + "/" + object + "/" + action + "/");
 }
 
 var toggleHelp = function(category, slug) {
-  $("#widget-help-dialog").dialog("open");
-  $("#ui-dialog-title-widget-help-dialog").html("");
-  $("#widget-help-dialog").html("");
-  $.ajax({
+  jQuery("#widget-help-dialog").dialog("open");
+  jQuery("#ui-dialog-title-widget-help-dialog").html("");
+  jQuery("#widget-help-dialog").html("");
+  jQuery.ajax({
     url: "/help/" + category + "/" + slug + "/", 
     success: function(data) {
-      $("#ui-dialog-title-widget-help-dialog").html(data.title);
-      $("#widget-help-dialog").html(data.contents);
+      jQuery("#ui-dialog-title-widget-help-dialog").html(data.title);
+      jQuery("#widget-help-dialog").html(data.contents);
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-      $("#ui-dialog-title-widget-help-dialog").html("(empty)");
-      $("#widget-help-dialog").html("There is no help content for this widget. " +
+      jQuery("#ui-dialog-title-widget-help-dialog").html("(empty)");
+      jQuery("#widget-help-dialog").html("There is no help content for this widget. " +
           "If you are an admin, please create a new topic in category '" + category + 
           "' and slug '" + slug + "'.");
     }
