@@ -43,6 +43,7 @@ def index(request):
     hide_about = True
   
   return render_to_response("canopy/index.html", {
+      "in_canopy": True,
       "canopy_quests": canopy_quests,
       "wall_form": form,
       "posts": posts,
@@ -62,6 +63,7 @@ def members(request):
   members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
   
   return render_to_response("canopy/directory/members.html", {
+      "in_canopy": True,
       "canopy_quests": canopy_quests,
       "members": members,
   }, context_instance=RequestContext(request))
