@@ -23,7 +23,13 @@
     </div>   
     <div {% get_id_and_classes "activity-task-stats-content" %}>   
       <p/>
-      This {{task.type}} is worth {{task.point_value}} points.
+      This {{task.type}} is worth
+      {% if task.point_value %}        
+	    <b>{{task.point_value}}</b>
+	  {% else %}
+	    from <b>{{task.point_range_start}}</b> to <b>{{task.point_range_end}}</b>
+	  {% endif %}  
+      points.
       {% if task.type == "commitment" %}
         It lasts {{task.duration}} days.
       {% endif %}

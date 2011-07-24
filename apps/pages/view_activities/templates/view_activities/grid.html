@@ -41,8 +41,8 @@
                 <br/>
                 {{task.name}}       
 	        {% else %}
-	            {% if task.activity.point_value %}
 	             <br/>
+	            {% if task.activity.point_value %}        
 	             <h3>{{task.activity.point_value}}</h3>
 	            {% else %}
 	             <h3>{{task.activity.point_range_end}}</h3>
