@@ -123,36 +123,42 @@ def get_available_golow_activities(user):
     activitymember__user=user,
   ).filter(
     energy_related=True,
-  ).order_by("type","category", "priority")
+  ).order_by("type", "priority")
   
   commitments = Commitment.objects.exclude(
     commitmentmember__user=user,
   ).filter(
     energy_related=True,
-  ).order_by("type","category", "priority")
+  ).order_by("type", "priority")
   
   golow_tasks = []
-  count = 0
-  type = None
   for task in commitments:
     if is_unlock(user, task):
       golow_tasks.append(task)
-      count = count + 1
       break
-      
+          
+  _pick_one_activity_per_type(user, activities, golow_tasks)
+  
+  if len(golow_tasks) < 3:
+    _pick_one_activity_per_type(user, activities, golow_tasks)
+    
+  return golow_tasks
+
+def _pick_one_activity_per_type(user, activities, golow_tasks):
+  type = None
   for task in activities:
+    if task in golow_tasks:
+      continue;
+      
     if type == task.type:
       continue
     
     if is_unlock(user, task):
       golow_tasks.append(task)
-      count = count + 1
       type = task.type
-    
-    if count >= 3:
-      break
-    
-  return golow_tasks
+        
+      if len(golow_tasks) == 3:
+        break
   
 def get_available_events(user):
   """Retrieves only the events that a user can participate in."""

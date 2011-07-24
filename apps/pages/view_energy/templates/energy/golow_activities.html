@@ -6,8 +6,14 @@
 		</thead>
 	    <tbody>        
           {% for a in golow_activities %}
-          <tr><td><a href="/activities/task/{{a.id}}">{{a.title}}</a></td>
-              <td>{{a.point_value}}</td>
+          <tr><td><a href="/activities/{{a.type}}/{{a.slug}}">{{a.title}}</a></td>
+              <td>
+                {% if a.point_value %}        
+	              {{a.point_value}}
+	            {% else %}
+	              {{a.point_range_end}}
+	            {% endif %}  
+              </td>
           </tr>
           {% endfor %}
 	    </tbody>
