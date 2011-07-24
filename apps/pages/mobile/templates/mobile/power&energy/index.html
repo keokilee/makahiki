@@ -5,7 +5,7 @@
 
 {% block body %}
 <style type="text/css">
-div.a {height:250px;width:200px;}
+div.a {width:400px;}
 </style>
   {% import_page_css "view_energy" STATIC_URL %}
    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -16,8 +16,17 @@ div.a {height:250px;width:200px;}
   <script type="text/javascript" src="{{ STATIC_URL}}/js/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script> 
  
 <div data-role="page"> 
+    <div data-role="header" data-theme="b" data-add-back-btn="True">
+       <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a> 
+      <h1>Power and Energy</h1> 
+    </div>
+
+ 
+ 
   <div {% get_id_and_classes "energy-power" %}>
-     Current Lounge Power 
+<div class="ui-body ui-body-b" style="height:40px;">
+     <h3 align="center">Current Lounge Power </h3>
+</div>
     <div {% get_id_and_classes "energy-power-content" %}>
       <center>
       {% include "energy/power.html" %}  
@@ -26,25 +35,20 @@ div.a {height:250px;width:200px;}
   </div>
   
  
-
-<div {% get_id_and_classes "energy-status" %}>
-  <div {% get_id_and_classes "energy-status-box" %}>
-    <div {% get_id_and_classes "energy-status-title" %}>     
-     Daily Energy Goal Game 
-	 
-    </div>
-  <div algn="center">
-    <div class="a"{% get_id_and_classes "energy-status-content" %}> 
-	    <legend>Current Status</legend>
-       
-           {% include "energy/usage.html" %}
-           <p/>   <b>
-           Each member receives 20 points
-           each day that we make our goal. </b>   
-    </div>
-  </div>
+<div class="ui-body ui-body-b" style="height:40px;">
+<h3 align="center">Daily Energy Goal Game </h3>
 </div>
+<h3 align="center">Current Status</h3>
+<div {% get_id_and_classes "energy-status" %}> 
+  <div algn="center">
+    <div class="a"{% get_id_and_classes "energy-status-content" %}>  
+           {% include "energy/usage.html" %}
+            <h4  align="center">*Each member receives 20 points<br> each day that we make our goal.</h4> 
+    </div> 
+  </div>
+    
 </div> 
+
 {% endblock %}
  
 
