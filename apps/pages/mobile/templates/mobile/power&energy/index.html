@@ -5,7 +5,7 @@
 
 {% block body %}
 <style type="text/css">
-div.a {width:400px;}
+div.a {width:400px;overflow:"hidden"}
 </style>
   {% import_page_css "view_energy" STATIC_URL %}
    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -13,7 +13,7 @@ div.a {width:400px;}
     <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script>
     <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
   <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/powermeter/org.wattdepot.gdata.makahiki.PowerMeter.js"></script> 
-  <script type="text/javascript" src="{{ STATIC_URL}}/js/org.wattdepot.gdata.makahiki.EnergyGoalGame.js"></script> 
+  <script type="text/javascript" src="{{ STATIC_URL}}/js/test.js"></script> 
  
 <div data-role="page"> 
     <div data-role="header" data-theme="b" data-add-back-btn="True">
@@ -26,29 +26,24 @@ div.a {width:400px;}
   <div {% get_id_and_classes "energy-power" %}>
 <div class="ui-body ui-body-b" style="height:40px;">
      <h3 align="center">Current Lounge Power </h3>
-</div>
-    <div {% get_id_and_classes "energy-power-content" %}>
-      <center>
-      {% include "energy/power.html" %}  
-      </center>
-    </div>
+</div> 
+      {% include "energy/power.html" %}    
   </div>
   
  
 <div class="ui-body ui-body-b" style="height:40px;">
-<h3 align="center">Daily Energy Goal Game </h3>
+  <h3 align="center">Daily Energy Goal Game </h3>
 </div>
-<h3 align="center">Current Status</h3>
-<div {% get_id_and_classes "energy-status" %}> 
-  <div algn="center">
+
+<h3 align="center">Current Status</h3> 
+  <div >
     <div class="a"{% get_id_and_classes "energy-status-content" %}>  
-           {% include "energy/usage.html" %}
-            <h4  align="center">*Each member receives 20 points<br> each day that we make our goal.</h4> 
-    </div> 
+      {% include "energy/usage.html" %}
+            <h4  align="center">*Each member receives 20 points<br> each day that we make our goal.</h4>  
   </div>
     
 </div> 
-
+</div> 
 {% endblock %}
  
 
