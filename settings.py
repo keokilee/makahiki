@@ -52,6 +52,9 @@ TIME_ZONE = 'Pacific/Honolulu'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'en'
 
+# Locale setting for currency conversion.
+LOCALE_SETTING = ''
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not

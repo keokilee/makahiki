@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -20,7 +21,7 @@ register.filter("user_odds", user_odds)
 # Borrowed from http://djangosnippets.org/snippets/552/
 # This locale setting uses the environment's locale setting.
 import locale
-locale.setlocale(locale.LC_ALL, '') 
+locale.setlocale(locale.LC_ALL, settings.LOCALE_SETTING) 
  
 @register.filter()
 def currency(value):
