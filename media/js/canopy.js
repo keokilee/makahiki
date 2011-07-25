@@ -29,7 +29,7 @@
   
   jQuery("#wall-post-submit").click(function() {
     if (!jQuery("#wall-post-submit").button("option", "disabled")) {
-      $.post(jQuery("#news-post-form").attr("action"), jQuery("#news-post-form").serialize(), function(data) {
+      jQuery.post(jQuery("#news-post-form").attr("action"), jQuery("#news-post-form").serialize(), function(data) {
         if (data.message) {
           jQuery("#wall-post-errors").html(data.message);
         }
