@@ -18,8 +18,9 @@ register.filter("user_tickets", user_tickets)
 register.filter("user_odds", user_odds)
 
 # Borrowed from http://djangosnippets.org/snippets/552/
+# This locale setting uses the environment's locale setting.
 import locale
-locale.setlocale(locale.LC_ALL, 'en_US') 
+locale.setlocale(locale.LC_ALL, '') 
  
 @register.filter()
 def currency(value):
