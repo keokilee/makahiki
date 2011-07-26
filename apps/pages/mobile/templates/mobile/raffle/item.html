@@ -1,5 +1,7 @@
 {% load class_tags %}
 {% load prize_tags %}
+{% load markup %}
+
   <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
     <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
     {{prize.description|markdown}}

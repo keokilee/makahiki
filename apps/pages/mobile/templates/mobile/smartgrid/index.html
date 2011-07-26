@@ -10,7 +10,6 @@
     <h1>Smart Grid Game</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </header>
-
   <div data-role="content">
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
       {% for cat in categories %}
@@ -18,11 +17,8 @@
           <a href="{% url mobile_smartgrid %}/{{cat.name|slugify}}" rel="external">{{cat.name}}</a>
         </li>
       {% endfor %}
-
     </ul>
   </div>
-  <footer>
-  </footer>
 </div>
 
 {% endblock %}
