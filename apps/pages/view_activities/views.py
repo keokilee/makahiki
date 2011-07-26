@@ -191,9 +191,6 @@ def __request_activity_points(request, activity):
   try:
     # Retrieve an existing activity member object if it exists.
     activity_member = ActivityMember.objects.get(user=user, activity=activity)
-    if activity_member.award_date:
-      # messages.info("You have already received the points for this activity.")
-      return HttpResponseRedirect(reverse("makahiki_profiles.views.profile", args=(request.user.id,)))
       
   except ObjectDoesNotExist:
     pass # Ignore for now.
@@ -224,7 +221,6 @@ def __request_activity_points(request, activity):
         code.is_active = False
         code.save()
         activity_member.approval_status = "approved" # Model save method will award the points.
-        points = activity_member.activity.point_value
         
       # Attach text prompt question if one is provided
       elif form.cleaned_data.has_key("question"):
@@ -372,7 +368,7 @@ def task(request, activity_type, slug):
 def add_task(request, activity_type, slug):
   
   task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
-
+  
   if task.type == "commitment":
     return __add_commitment(request, task.commitment)
     

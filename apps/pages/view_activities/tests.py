@@ -6,7 +6,7 @@ from django.conf import settings
 
 from django.contrib.auth.models import User
 from components.floors.models import Floor
-from components.activities.models import Commitment, Activity, ActivityMember
+from components.activities.models import Commitment, Activity, ActivityMember, ConfirmationCode
 from components.quests.models import Quest
 
 class ActivitiesFunctionalTestCase(TestCase):
@@ -88,6 +88,68 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     # Don't forget to clean up.
     settings.COMPETITION_ROUNDS = saved_rounds
+    
+  def testConfirmationCode(self):
+    """
+    Tests the submission of a confirmation code.
+    """
+    activity = Activity(
+        title="Test activity",
+        slug="test-activity",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() - datetime.timedelta(days=1, seconds=30),
+    )
+    activity.save()
+    
+    ConfirmationCode.generate_codes_for_activity(activity, 10)
+    code = ConfirmationCode.objects.filter(activity=activity)[0]
+    
+    response = self.client.post(reverse("activity_add_task", args=("event", "test-activity")), {
+        "response": code.code,
+        "code": 1,
+    }, follow=True)
+    
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(ConfirmationCode.objects.filter(activity=activity, is_active=False).count(), 1)
+    code = ConfirmationCode.objects.filter(activity=activity)[0]
+    self.assertTrue(activity in self.user.activity_set.filter(activitymember__award_date__isnull=False))
+    
+    # Try submitting the code again and check if we have an error message.
+    code = ConfirmationCode.objects.filter(activity=activity)[1]
+    response = self.client.post(reverse("activity_add_task", args=("event", "test-activity")), {
+        "response": code.code,
+        "code": 1,
+    }, follow=True)
+    self.assertContains(response, "You have already redemmed a code for this activity.")
+    
+    # Try creating a new activity with codes and see if we can submit a code for one activity for another.
+    code = ConfirmationCode.objects.filter(activity=activity)[2]
+    activity = Activity(
+        title="Test activity 2",
+        slug="test-activity2",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() - datetime.timedelta(days=1, seconds=30),
+    )
+    activity.save()
+    ConfirmationCode.generate_codes_for_activity(activity, 1)
+    
+    response = self.client.post(reverse("activity_add_task", args=("event", "test-activity2")), {
+        "response": code.code,
+        "code": 1,
+    }, follow=True)
+    self.assertContains(response, "This confirmation code is not valid for this activity.")
     
   def testRejectedActivity(self):
     """
