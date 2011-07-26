@@ -34,17 +34,17 @@
     <div class="ui-block-f">
       {% if user.get_profile.available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
-        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">+1</a>
+        <button class="enabled" type="submit">+1</button>
       </form>
       {% else %}
-      <div class="disabled">+1</div>
+      <button class="disabled">+1</button>
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
-        <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">-1</a>
+        <button class="enabled" type="submit">-1</button>
       </form>
       {% else %}
-        <div class="disabled">-1</div>
+        <button class="disabled">-1</button>
       {% endif %}
     </div>
   <!--/tr-->

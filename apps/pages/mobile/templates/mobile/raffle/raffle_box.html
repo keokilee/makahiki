@@ -40,12 +40,7 @@
   <div data-role="header">
   </div>
   <div data-role="body">
-      <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
-        <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
-        {{prize.description|markdown}}
-        <!--div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div-->
-      </div>
-    <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
+    {% include "mobile/raffle/item.html" %}
   </div>
 </div>
 <!--
