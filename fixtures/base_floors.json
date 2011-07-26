@@ -34,7 +34,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
-      "floor_identifier": "lehua_3_4", 
+      "floor_identifier": "Lehua-A", 
       "number": "A", 
       "slug": "3-4"
     }
@@ -44,7 +44,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 2, 
-      "floor_identifier": "ilima_3_4", 
+      "floor_identifier": "Ilima-A", 
       "number": "A", 
       "slug": "3-4"
     }
@@ -54,7 +54,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 3, 
-      "floor_identifier": "mokihana_3_4", 
+      "floor_identifier": "Mokihana-A", 
       "number": "A", 
       "slug": "3-4"
     }
@@ -64,7 +64,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
-      "floor_identifier": "lehua_5_6", 
+      "floor_identifier": "Lehua-B", 
       "number": "B", 
       "slug": "5-6"
     }
@@ -74,7 +74,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
-      "floor_identifier": "lehua_7_8", 
+      "floor_identifier": "Lehua-C", 
       "number": "C", 
       "slug": "7-8"
     }
@@ -84,7 +84,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
-      "floor_identifier": "lehua_9_10", 
+      "floor_identifier": "Lehua-D", 
       "number": "D", 
       "slug": "9-10"
     }
@@ -94,7 +94,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
-      "floor_identifier": "lehua_11_12", 
+      "floor_identifier": "Lehua-E", 
       "number": "E", 
       "slug": "11-12"
     }
@@ -104,7 +104,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 2, 
-      "floor_identifier": "ilima_5_6", 
+      "floor_identifier": "Ilima-B", 
       "number": "B", 
       "slug": "5-6"
     }
@@ -114,7 +114,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 2, 
-      "floor_identifier": "ilima_7_8", 
+      "floor_identifier": "Ilima-C", 
       "number": "C", 
       "slug": "7-8"
     }
@@ -124,7 +124,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 2, 
-      "floor_identifier": "ilima_9_10", 
+      "floor_identifier": "Ilima-D", 
       "number": "D", 
       "slug": "9-10"
     }
@@ -134,7 +134,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 2, 
-      "floor_identifier": "ilima_11_12", 
+      "floor_identifier": "Ilima-E", 
       "number": "E", 
       "slug": "11-12"
     }
@@ -144,7 +144,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 3, 
-      "floor_identifier": "mokihana_5_6", 
+      "floor_identifier": "Mokihana-B", 
       "number": "B", 
       "slug": "5-6"
     }
@@ -154,7 +154,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 3, 
-      "floor_identifier": "mokihana_7_8", 
+      "floor_identifier": "Mokihana-C", 
       "number": "C", 
       "slug": "7-8"
     }
@@ -164,7 +164,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 3, 
-      "floor_identifier": "mokihana_9_10", 
+      "floor_identifier": "Mokihana-D", 
       "number": "D", 
       "slug": "9-10"
     }
@@ -174,7 +174,7 @@
     "model": "floors.floor", 
     "fields": {
       "dorm": 3, 
-      "floor_identifier": "mokihana_11_12", 
+      "floor_identifier": "Mokihana-E", 
       "number": "E", 
       "slug": "11-12"
     }

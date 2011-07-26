@@ -77,83 +77,6 @@
     }
   }, 
   {
-    "pk": 8, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "Yo yo yo homies!", 
-      "created_at": "2010-07-13 10:54:32", 
-      "user": 605, 
-      "style_class": "user_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off all appliances every night before going to sleep'.", 
-      "created_at": "2010-07-16 18:01:52", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-07-16 18:02:02", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off water when sudsing and scrubbing in shower'.", 
-      "created_at": "2010-07-16 18:02:09", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will use stairs instead of elevator'.", 
-      "created_at": "2010-07-16 18:02:17", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 13, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will walk to destinations less than one mile away'.", 
-      "created_at": "2010-07-16 18:02:28", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 14, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has added the goal 'Find your floor's minimum power' to the floor.", 
-      "created_at": "2010-07-16 18:07:59", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 15, 
     "model": "floors.post", 
     "fields": {
@@ -253,61 +176,6 @@
     }
   }, 
   {
-    "pk": 24, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off all appliances every night before going to sleep'.", 
-      "created_at": "2010-08-12 13:50:13", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 25, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-08-30 12:30:49", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 26, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off water when sudsing and scrubbing in shower'.", 
-      "created_at": "2010-08-30 12:31:00", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 27, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will use stairs instead of elevator'.", 
-      "created_at": "2010-08-30 12:31:07", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 28, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will walk to destinations less than one mile away'.", 
-      "created_at": "2010-08-30 12:31:12", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 29, 
     "model": "floors.post", 
     "fields": {
@@ -341,105 +209,6 @@
     }
   }, 
   {
-    "pk": 32, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will bring reusable bags when shopping'.", 
-      "created_at": "2010-09-07 11:14:12", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 33, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off my music when leaving my room'.", 
-      "created_at": "2010-09-07 11:14:53", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will wash only full loads of laundry'.", 
-      "created_at": "2010-09-07 11:15:06", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-09-07 11:15:13", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will use task lighting instead of overhead lights'.", 
-      "created_at": "2010-09-07 11:15:34", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 37, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will bring reusable bags when shopping'.", 
-      "created_at": "2010-09-13 15:37:57", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 38, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off my music when leaving my room'.", 
-      "created_at": "2010-09-13 16:13:51", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 39, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will wash only full loads of laundry'.", 
-      "created_at": "2010-09-13 16:13:59", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 40, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-09-13 17:43:20", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 41, 
     "model": "floors.post", 
     "fields": {
@@ -462,28 +231,6 @@
     }
   }, 
   {
-    "pk": 43, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-09-14 11:51:30", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 44, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will use task lighting instead of overhead lights'.", 
-      "created_at": "2010-09-14 11:51:36", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 45, 
     "model": "floors.post", 
     "fields": {
@@ -501,61 +248,6 @@
       "text": "is participating in the commitment 'I will do something 'unplugged' every day'.", 
       "created_at": "2010-09-16 15:50:44", 
       "user": 637, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off all appliances every night before going to sleep'.", 
-      "created_at": "2010-09-20 14:58:15", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-09-20 14:58:24", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 49, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will use task lighting instead of overhead lights'.", 
-      "created_at": "2010-09-20 14:58:33", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 50, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will use stairs instead of elevator'.", 
-      "created_at": "2010-09-20 14:58:45", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 51, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will bring reusable bags when shopping'.", 
-      "created_at": "2010-09-20 14:59:04", 
-      "user": 605, 
       "style_class": "system_post", 
       "floor": 2
     }
@@ -589,116 +281,6 @@
       "text": "is participating in the commitment 'I will turn off all appliances every night before going to sleep'.", 
       "created_at": "2010-09-27 15:26:05", 
       "user": 638, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 55, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off all appliances every night before going to sleep'.", 
-      "created_at": "2010-09-28 15:09:05", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 56, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off the lights when leaving any room'.", 
-      "created_at": "2010-09-28 15:09:12", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 57, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will use task lighting instead of overhead lights'.", 
-      "created_at": "2010-09-28 15:09:31", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 58, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will use stairs instead of elevator'.", 
-      "created_at": "2010-09-28 15:09:37", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 59, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will bring reusable bags when shopping'.", 
-      "created_at": "2010-09-28 15:10:38", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 60, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will wash only full loads of laundry'.", 
-      "created_at": "2010-09-28 15:13:25", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 61, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will use task lighting instead of overhead lights'.", 
-      "created_at": "2010-09-28 15:13:35", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 62, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will recycle all beverage containers'.", 
-      "created_at": "2010-09-28 15:13:39", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 63, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off water when brushing my teeth or shaving'.", 
-      "created_at": "2010-09-28 15:13:45", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 64, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off water when sudsing and scrubbing in shower'.", 
-      "created_at": "2010-09-28 15:13:48", 
-      "user": 605, 
       "style_class": "system_post", 
       "floor": 2
     }
@@ -36520,28 +36102,6 @@
     }
   }, 
   {
-    "pk": 3321, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will turn off water when brushing my teeth or shaving'.", 
-      "created_at": "2011-01-16 21:25:21", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 3322, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will turn off water when brushing my teeth or shaving'.", 
-      "created_at": "2011-01-16 21:25:21", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 3323, 
     "model": "floors.post", 
     "fields": {
@@ -47781,39 +47341,6 @@
       "user": 604, 
       "style_class": "system_post", 
       "floor": 7
-    }
-  }, 
-  {
-    "pk": 4345, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has been awarded 2 points for completing 'Link to Kukui Cup on Facebook status'.", 
-      "created_at": "2011-01-16 21:26:05", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 4346, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has been awarded 4 points for completing 'Replace incandescent bulb with compact fluorescent (CFL)'.", 
-      "created_at": "2011-01-16 21:26:05", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 4347, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has been awarded 3 points for completing 'Configure computer to sleep after inactivity'.", 
-      "created_at": "2011-01-16 21:26:05", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
     }
   }, 
   {
@@ -83809,50 +83336,6 @@
     }
   }, 
   {
-    "pk": 7620, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will reduce my shower time by 1 minute'.", 
-      "created_at": "2011-01-25 10:46:57", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 7621, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will reduce my shower time by 1 minute'.", 
-      "created_at": "2011-01-25 10:46:57", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 7622, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment 'I will do something 'unplugged' every day'.", 
-      "created_at": "2011-01-25 10:46:57", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
-    "pk": 7623, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "has completed the commitment 'I will do something 'unplugged' every day'.", 
-      "created_at": "2011-01-25 10:46:57", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 7624, 
     "model": "floors.post", 
     "fields": {
@@ -95238,17 +94721,6 @@
     }
   }, 
   {
-    "pk": 8659, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has been awarded 2 points for completing 'Link to Kukui Cup on Facebook status'.", 
-      "created_at": "2011-01-25 10:47:20", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 2
-    }
-  }, 
-  {
     "pk": 8660, 
     "model": "floors.post", 
     "fields": {
@@ -95854,45 +95326,23 @@
     }
   }, 
   {
-    "pk": 8715, 
+    "pk": 8843, 
     "model": "floors.post", 
     "fields": {
-      "text": "is participating in the commitment \"I will turn off vampire loads using a power strip\".", 
-      "created_at": "2011-04-14 14:33:57", 
-      "user": 605, 
+      "text": "has completed the commitment \"I will turn off all appliances every night before going to sleep\".", 
+      "created_at": "2011-06-12 15:03:26", 
+      "user": 606, 
       "style_class": "system_post", 
       "floor": 1
     }
   }, 
   {
-    "pk": 8716, 
+    "pk": 8844, 
     "model": "floors.post", 
     "fields": {
-      "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
-      "created_at": "2011-04-14 15:02:10", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 1
-    }
-  }, 
-  {
-    "pk": 8717, 
-    "model": "floors.post", 
-    "fields": {
-      "text": " has been awarded 10 points for completing \"Watch introduction video\".", 
-      "created_at": "2011-04-15 17:46:51", 
-      "user": 605, 
-      "style_class": "system_post", 
-      "floor": 1
-    }
-  }, 
-  {
-    "pk": 8718, 
-    "model": "floors.post", 
-    "fields": {
-      "text": "is participating in the commitment \"I will use natural light instead of electric lighting\".", 
-      "created_at": "2011-04-17 13:48:04", 
-      "user": 605, 
+      "text": " has been awarded 20 points for completing \"Watch introduction video\".", 
+      "created_at": "2011-06-20 15:49:25", 
+      "user": 1, 
       "style_class": "system_post", 
       "floor": 1
     }
@@ -95948,6 +95398,336 @@
       "text": "Nate Da Great is participating in the commitment \"Looking cool\".", 
       "created_at": "2011-04-19 06:11:44", 
       "user": 640, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8724, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 10 points for completing \"Watch introduction video\".", 
+      "created_at": "2011-04-19 14:15:51", 
+      "user": 1, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8725, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is no longer participating in \"I will turn off all appliances every night before going to sleep\".", 
+      "created_at": "2011-04-19 14:27:32", 
+      "user": 1, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8726, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in \"Being fly\"", 
+      "created_at": "2011-04-19 14:29:11", 
+      "user": 640, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8727, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "Our meeting just started.", 
+      "created_at": "2011-04-19 14:30:06", 
+      "user": 640, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8728, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will use natural light instead of electric lighting\".", 
+      "created_at": "2011-04-19 15:02:32", 
+      "user": 2, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8729, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 10 points for completing \"Watch video about Power & Energy\".", 
+      "created_at": "2011-04-19 15:22:06", 
+      "user": 2, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8730, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 5 points for completing \"Like Kukui Cup on Facebook\".", 
+      "created_at": "2011-04-19 15:33:25", 
+      "user": 2, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8731, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 5 points for completing \"Share Kukui Cup link on Facebook\".", 
+      "created_at": "2011-04-19 15:35:38", 
+      "user": 2, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8732, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "We are over our goal!  Please turn off lights!", 
+      "created_at": "2011-04-19 15:45:29", 
+      "user": 2, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8733, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "pmj has been awarded 10,000 points for \"being awesome\"", 
+      "created_at": "2011-04-19 15:50:53", 
+      "user": 2, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8842, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 20 points for completing \"Watch introduction video\".", 
+      "created_at": "2011-05-02 12:58:13", 
+      "user": 649, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8739, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will turn off vampire loads using a power strip\".", 
+      "created_at": "2011-04-19 23:10:47", 
+      "user": 1, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8740, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 5 points for completing \"Like Kukui Cup on Facebook\".", 
+      "created_at": "2011-04-20 10:07:39", 
+      "user": 640, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8780, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is no longer participating in \"I will turn off vampire loads using a power strip\".", 
+      "created_at": "2011-04-27 14:58:03", 
+      "user": 1, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8754, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 20 points for completing \"Watch introduction video\".", 
+      "created_at": "2011-04-23 15:32:19", 
+      "user": 642, 
+      "style_class": "system_post", 
+      "floor": 7
+    }
+  }, 
+  {
+    "pk": 8852, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will turn off vampire loads using a power strip\".", 
+      "created_at": "2011-06-27 14:06:39", 
+      "user": 1, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8856, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 20 points for completing \"Test your energy literacy\".", 
+      "created_at": "2011-06-30 16:57:58", 
+      "user": 606, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8857, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 20 points for completing \"Test your energy literacy\".", 
+      "created_at": "2011-07-01 00:35:35", 
+      "user": 606, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8858, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will use natural light instead of electric lighting\".", 
+      "created_at": "2011-07-01 00:35:55", 
+      "user": 606, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8860, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 20 points for completing \"Watch introduction video\".", 
+      "created_at": "2011-07-05 14:53:43", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8861, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 30 points for completing \"Take a trip to the Reppun farm\".", 
+      "created_at": "2011-07-05 15:34:24", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8862, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 30 points for completing \"Take a trip to clean up one of Oahu's beaches\".", 
+      "created_at": "2011-07-05 15:39:37", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8863, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 30 points for completing \"Take a trip to a wind farm on the windward side\".", 
+      "created_at": "2011-07-05 15:40:20", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8864, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will turn off vampire loads using a power strip\".", 
+      "created_at": "2011-07-05 15:44:35", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8865, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will turn off all appliances every night before going to sleep\".", 
+      "created_at": "2011-07-05 15:44:45", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8866, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will use natural light instead of electric lighting\".", 
+      "created_at": "2011-07-05 15:44:51", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8867, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "test", 
+      "created_at": "2011-07-22 00:30:26", 
+      "user": 653, 
+      "style_class": "user_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8868, 
+    "model": "floors.post", 
+    "fields": {
+      "text": " has been awarded 30 points for completing \"Check out the Waihee tunnel in Windward Oahu\".", 
+      "created_at": "2011-07-22 18:15:11", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8869, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "is participating in the commitment \"I will use stairs instead of elevator\".", 
+      "created_at": "2011-07-22 18:15:33", 
+      "user": 656, 
+      "style_class": "system_post", 
+      "floor": 1
+    }
+  }, 
+  {
+    "pk": 8776, 
+    "model": "floors.post", 
+    "fields": {
+      "text": "Let's meet tonight at 7pm to organize room audits", 
+      "created_at": "2011-04-27 13:45:17", 
+      "user": 2, 
       "style_class": "user_post", 
       "floor": 1
     }

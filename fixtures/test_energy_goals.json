@@ -32,16 +32,6 @@
     }
   }, 
   {
-    "pk": 1, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:21", 
-      "percent_reduction": 10, 
-      "user": 1, 
-      "goal": 1
-    }
-  }, 
-  {
     "pk": 2, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -4812,16 +4802,6 @@
     }
   }, 
   {
-    "pk": 479, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:23", 
-      "percent_reduction": 0, 
-      "user": 605, 
-      "goal": 1
-    }
-  }, 
-  {
     "pk": 480, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -5079,16 +5059,6 @@
       "percent_reduction": 20, 
       "user": 638, 
       "goal": 1
-    }
-  }, 
-  {
-    "pk": 506, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:35", 
-      "percent_reduction": 15, 
-      "user": 1, 
-      "goal": 2
     }
   }, 
   {
