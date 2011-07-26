@@ -85,10 +85,10 @@ class GDataGoal:
 
   def award_point(self, source):
     for profile in Profile.objects.all():
-      if profile.floor and profile.floor.dorm.name +"-"+ profile.floor.number == source:
-        print "reward point "+source+" for "+profile.name
-        ##profile.add_points(20, datetime.datetime.today())
-        ##profile.save()
+      if profile.floor and profile.floor.dorm.name + "-" + profile.floor.number == source:
+        print "reward point " + source + " for " + profile.name
+        profile.add_points(20, datetime.datetime.today())
+        profile.save()
         
   def Run(self):
     self._checkCellGoal()
