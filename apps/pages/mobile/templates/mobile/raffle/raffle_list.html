@@ -4,8 +4,8 @@
 
 {% for prize in raffle.prizes %}
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
-  <tr class="{{cycle_class}}">
-    <td class="{% insert_classes "prize-item" %}">
+<!--  <tr class="{{cycle_class}}"-->
+    <div class="ui-block-a" class="{% insert_classes "prize-item" %}">
       <a id="raffle-{{prize.title|slugify}}" href="javascript:void(0);">
         {{prize.title}}
       </a>
@@ -30,12 +30,12 @@
           $("#raffle-{{prize.title|slugify}}-description").dialog("open");
         });
       </script>
-    </td>
-    <td class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</td>
-    <td>
+    </div>
+    <div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</div>
+    <div class="ui-block-c" class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</div>
+    <div class="ui-block-d" class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</div>
+    <div class="ui-block-e" class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</div>
+    <div class="ui-block-f">
       {% if user.get_profile.available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
         <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">+1</a>
@@ -50,6 +50,6 @@
       {% else %}
         <div class="disabled">-1</div>
       {% endif %}
-    </td>
-  </tr>
+    </div>
+  <!--/tr-->
 {% endfor %}

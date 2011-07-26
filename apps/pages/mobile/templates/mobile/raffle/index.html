@@ -1,15 +1,9 @@
 {% extends "mobile/base.html" %}
 {% load class_tags %}
 {% block body %} 
-<div data-role="page">
-  <div data-role="header" data-theme="b">
-    <h1>{{deadline.round_name}} Raffle Game</h1>
-    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
-  </div>
 
-  <div data-role="body">
-    {% include "mobile/raffle/raffle_box.html" %}
-  </div>
 
-</div>
+{% include "mobile/raffle/raffle_box.html" %}
+
+
 {% endblock %}
