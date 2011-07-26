@@ -35,6 +35,9 @@ class ActivityTextForm(forms.Form):
         if not code.is_active:
           self._errors["response"] = ErrorList(["This code has already been used."])
           del cleaned_data["response"]
+        if code.activity in self.request.user.activity_set.filter(activitymember__award_date__isnull=False):
+          self._errors["response"] = ErrorList(["You have already redemmed a code for this activity."])
+          del cleaned_data["response"]
       except ConfirmationCode.DoesNotExist:
         self._errors["response"] = ErrorList(["This code is not valid."])
         del cleaned_data["response"]
