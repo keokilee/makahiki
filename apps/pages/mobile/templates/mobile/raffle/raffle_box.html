@@ -1,7 +1,7 @@
 {% load class_tags %}
 
 {% with raffle.deadline as deadline %}
-<div data-role="page">
+<div data-role="page" id="box">
   <div data-role="header" data-theme="b">
     <h1>{{deadline.round_name}} Raffle Game</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
@@ -35,6 +35,19 @@
   </div>
 </div>
 {% endwith %}
+
+<div data-role="page" id="item" data-url="item">
+  <div data-role="header">
+  </div>
+  <div data-role="body">
+      <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
+        <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
+        {{prize.description|markdown}}
+        <!--div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div-->
+      </div>
+    <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
+  </div>
+</div>
 <!--
 <div {% get_id_and_classes "prizes-raffle" %}>
   <div {% get_id_and_classes "prizes-raffle-box" %}>
