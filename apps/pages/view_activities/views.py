@@ -204,7 +204,7 @@ def __request_activity_points(request, activity):
     elif activity.confirm_type == "free":
       form = ActivityFreeResponseForm(request.POST, request=request)
     else:
-      form = ActivityTextForm(request.POST, request=request)
+      form = ActivityTextForm(request.POST, request=request, activity=activity)
     
     ## print activity.confirm_type
     if form.is_valid():

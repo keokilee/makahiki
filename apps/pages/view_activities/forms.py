@@ -15,6 +15,7 @@ class ActivityTextForm(forms.Form):
   
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
     qid = None
     if 'question_id' in kwargs:
       qid = kwargs.pop('question_id')
@@ -32,10 +33,16 @@ class ActivityTextForm(forms.Form):
     if cleaned_data["code"]==1:
       try:
         code = ConfirmationCode.objects.get(code=cleaned_data["response"])
+        # Check if the code is inactive.
         if not code.is_active:
           self._errors["response"] = ErrorList(["This code has already been used."])
           del cleaned_data["response"]
-        if code.activity in self.request.user.activity_set.filter(activitymember__award_date__isnull=False):
+        # Check if this activity is the same as the added activity (if provided)
+        elif self.activity and code.activity != self.activity:
+          self._errors["response"] = ErrorList(["This confirmation code is not valid for this activity."])
+          del cleaned_data["response"]
+        # Check if the user has already submitted a code for this activity.
+        elif code.activity in self.request.user.activity_set.filter(activitymember__award_date__isnull=False):
           self._errors["response"] = ErrorList(["You have already redemmed a code for this activity."])
           del cleaned_data["response"]
       except ConfirmationCode.DoesNotExist:
