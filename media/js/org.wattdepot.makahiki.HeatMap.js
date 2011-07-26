@@ -1,7 +1,6 @@
 Namespace("org.wattdepot.makahiki");
 
    google.load("visualization", "1", {});
-   systemsbiology.load("visualization", "1.0", {packages:["bioheatmap"]});
   
         // Global variables to store user preferences.
 
