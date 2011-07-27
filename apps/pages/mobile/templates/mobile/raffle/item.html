@@ -7,5 +7,5 @@
     {{prize.description|markdown}}
     <!--div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div-->
   </div>
-  Valued at {{prize.value|currency}}.
+  Valued at {{prize.value}}.
   <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>

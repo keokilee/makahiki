@@ -13,7 +13,7 @@
         Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
       </div>
       </br>
-      <div {% get_id_and_classes "prizes-raffle-table" %} class="ui-grid-e ui-body ui-body-d">
+      <div {% get_id_and_classes "prizes-raffle-table" %} class="ui-grid-d ui-body ui-body-e">
           <div class="ui-block-a"><th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th></div>
           <!--div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-value-header" %}>Value</th></div-->
           <div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th></div>
@@ -36,7 +36,7 @@
 </div>
 {% endwith %}
 
-<div data-role="page" id="item" data-url="item">
+<div data-role="dialog" id="item" data-url="item">
   <div data-role="header">
     {{prize}}
   </div>
