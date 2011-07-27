@@ -16,7 +16,7 @@
         {% if activity.category.name|slugify == category %}
           {% if activity.is_unlock %}
           <li>
-            <a href="{% url mobile_smartgrid_task activity.id %}" rel="external">
+            <a href="{% url mobile_task category activity.name|slugify %}" rel="external">
             {% if activity.type != 'commitment' %}
               {% if activity.is_pau %}
                 {% if activity.approval.approval_status == "rejected" %}

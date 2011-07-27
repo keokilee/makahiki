@@ -24,6 +24,8 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from urlparse import urljoin
 from urllib import urlencode
 
+from pages.view_activities.views import __get_categories
+
 from components.help_topics.models import HelpTopic
 
 from pages.view_prizes.views import _get_prizes
@@ -35,32 +37,6 @@ from pages.view_prizes.views import _get_raffle_prizes
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
-
-## new design, return the category list with the tasks info
-def __get_categories(user):
-  categories = Category.objects.all() 
-
-  for cat in categories:
-    task_list = []
-    for task in cat.activitybase_set.order_by("priority"):   
-      task.is_unlock = is_unlock(user, task)
-      task.is_pau = is_pau(user, task)
-      if task.type == "event" or task.type == "excursion":
-        task.is_event_pau = Activity.objects.get(pk=task.pk).is_event_completed()
-      
-      if task.type != "commitment":
-        members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
-      else:
-        members = CommitmentMember.objects.filter(user=user, commitment=task)
-
-      if members.count() > 0:
-        task.approval = members[0]
-        
-      task_list.append(task)
-    
-    cat.task_list = task_list
-    
-  return categories
 
 @login_required
 def scoreboard(request):
@@ -99,13 +75,13 @@ def smartgrid(request):
   }, context_instance=RequestContext(request))
 
 @login_required
-def sgactivities(request, slug):
+def sgactivities(request, activity_type):
   activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
   choices = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
     "wet-and-wild", "pot-pourri"]
   category = ""
   for x in choices:
-    if x == string.lower(slug):
+    if x == string.lower(activity_type):
       category = x
       
   for task in activities:
@@ -116,13 +92,12 @@ def sgactivities(request, slug):
     "category": category,
   }, context_instance=RequestContext(request))
 
-
+@never_cache
 @login_required
-def task(request, task_id):
-  task = get_object_or_404(ActivityBase, id=task_id)
-
+def task(request, activity_type, slug):
+  """individual task page"""
   user = request.user
-    
+  
   floor = user.get_profile().floor
   pau = False
   question = None
@@ -131,7 +106,13 @@ def task(request, task_id):
   can_commit = None
   member_all_count = 0
   member_floor_count = 0
+  
+  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
 
+  if is_unlock(user, task) != True:
+    return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
+
+  
   if task.type != "commitment":
     task = task.activity
 
@@ -145,6 +126,12 @@ def task(request, task_id):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      if approval.user_comment:
+        ref_user = User.objects.get(email=approval.user_comment)
+        ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+        for m in ref_members:
+          if m.approval_status == 'approved':
+            approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
@@ -155,15 +142,15 @@ def task(request, task_id):
     
       # Create activity request form.
       if task.confirm_type == "image":
-        form = ActivityImageForm()
+        form = ActivityImageForm(request=request)
       elif task.confirm_type == "text":
         question = task.pick_question(user.id)
         if question:
-          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk)
+          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk,request=request)
       elif task.confirm_type == "free":
-        form = ActivityFreeResponseForm()
+        form = ActivityFreeResponseForm(request=request)
       else:
-        form = ActivityTextForm(initial={"code" : 1})
+        form = ActivityTextForm(initial={"code" : 1},request=request)
                 
       if task.type == "event" or task.type == "excursion":
         if not pau:
@@ -175,10 +162,16 @@ def task(request, task_id):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      if approval.comment:
+        ref_user = User.objects.get(email=approval.comment)
+        ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=task)
+        for m in ref_members:
+          if m.award_date:
+            approval.social_bonus_awarded = True
     
     member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
-    form = CommitmentCommentForm()
+    form = CommitmentCommentForm(request=request)
     can_commit = can_add_commitments(user)
     
   users = []
@@ -192,15 +185,10 @@ def task(request, task_id):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
-  
-  try:
-    help = HelpTopic.objects.get(slug="task-details-widget-help", category="widget")
-  except ObjectDoesNotExist:
-    help = None
     
   display_form = True if request.GET.has_key("display_form") else False
   
-  return render_to_response("mobile/smartgrid/task.html", {
+  return render_to_response("smartgrid/task.html", {
     "task":task,
     "pau":pau,
     "approval":approval,
@@ -212,9 +200,7 @@ def task(request, task_id):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-    "help":help,
-  }, context_instance=RequestContext(request))
-
+  }, context_instance=RequestContext(request))    
 
 
 ###################################################################################################
@@ -262,7 +248,7 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-  return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(commitment.id,)))
+  return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
 
 @never_cache
 def __add_activity(request, activity_id):
@@ -308,7 +294,7 @@ def __add_activity(request, activity_id):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(activity.id,)))
+    return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
 
 @never_cache
 def __request_activity_points(request, activity_id):
@@ -370,7 +356,7 @@ def __request_activity_points(request, activity_id):
 
       activity_member.save()
           
-      return HttpResponseRedirect(reverse("mobile_smartgrid_task", args=(activity.id,)))
+      return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
     
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
