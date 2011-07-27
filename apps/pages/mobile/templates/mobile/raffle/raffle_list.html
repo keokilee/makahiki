@@ -27,11 +27,11 @@
         });
       </script-->
     </div>
-    <div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</div>
-    <div class="ui-block-c" class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</div>
-    <div class="ui-block-d" class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</div>
-    <div class="ui-block-e" class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</div>
-    <div class="ui-block-f" data-role="controlgroup" data-type="horizontal">
+    <!--div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</div-->
+    <div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</div>
+    <div class="ui-block-c" class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</div>
+    <div class="ui-block-d" class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</div>
+    <div class="ui-block-e" data-role="controlgroup" data-type="horizontal">
       {% if user.get_profile.available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
         <button class="enabled" type="submit">+1</button>

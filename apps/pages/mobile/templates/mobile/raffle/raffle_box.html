@@ -13,13 +13,13 @@
         Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
       </div>
       </br>
-      <div {% get_id_and_classes "prizes-raffle-table" %} class="ui-grid-e ui-body ui-body-e">
+      <div {% get_id_and_classes "prizes-raffle-table" %} class="ui-grid-e ui-body ui-body-d">
           <div class="ui-block-a"><th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th></div>
-          <div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-value-header" %}>Value</th></div>
-          <div class="ui-block-c"><th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th></div>
-          <div class="ui-block-d"><th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th></div>
-          <div class="ui-block-e"><th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th></div>
-          <div class="ui-block-f"><th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th></div>
+          <!--div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-value-header" %}>Value</th></div-->
+          <div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-user-tickets-header" %}>Your tickets</th></div>
+          <div class="ui-block-c"><th {% get_id_and_classes "prizes-raffle-total-tickets-header" %}>Total tickets</th></div>
+          <div class="ui-block-d"><th {% get_id_and_classes "prizes-raffle-odds-header" %}>Current odds</th></div>
+          <div class="ui-block-e"><th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th></div>
 
         {% include "mobile/raffle/raffle_list.html" %}
       </div>
@@ -38,6 +38,7 @@
 
 <div data-role="page" id="item" data-url="item">
   <div data-role="header">
+    {{prize}}
   </div>
   <div data-role="body">
     {% include "mobile/raffle/item.html" %}
