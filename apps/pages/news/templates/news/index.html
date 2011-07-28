@@ -93,6 +93,9 @@
           </div>
         </a>
       </li>
+      {% if forloop.counter|divisibleby:6 %}
+      <br style="clear: left"/>
+      {% endif %}
       {% endfor %}
     </ul>
     <div style="text-align: center">

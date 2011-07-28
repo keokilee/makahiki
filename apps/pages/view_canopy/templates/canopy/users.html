@@ -11,5 +11,8 @@
       </a>
     </div>
   </li>
+  {% if forloop.counter|divisibleby:6 %}
+  <br style="clear: left"/>
+  {% endif %}
   {% endfor %}
 </ul>

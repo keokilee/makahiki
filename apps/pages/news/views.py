@@ -32,7 +32,10 @@ def index(request):
   commitment_members = get_current_commitment_members(request.user)
   
   # Get the floor members.
-  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by("-profile__points")[:12]
+  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by(
+      "-profile__points", 
+      "-profile__last_awarded_submission"
+  )[:12]
   
   return render_to_response("news/index.html", {
     "posts": posts,
@@ -47,7 +50,10 @@ def index(request):
 @never_cache
 @login_required
 def floor_members(request):
-  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by("-profile__points")
+  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by(
+      "-profile__points",
+      "-profile__last_awarded_submission",
+  )
   
   return render_to_response("news/directory/floor_members.html", {
     "floor_members": floor_members,
