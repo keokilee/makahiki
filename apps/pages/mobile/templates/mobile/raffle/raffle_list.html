@@ -27,24 +27,24 @@
         });
       </script-->
     </div>
-    <!--div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</div-->
+    <!--div class="ui-block-b" class="{% insert_classes "prize-number" %}"></div-->
     <div class="ui-block-b" class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</div>
     <div class="ui-block-c" class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</div>
     <div class="ui-block-d" class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</div>
     <div class="ui-block-e" data-role="controlgroup" data-type="horizontal">
       {% if user.get_profile.available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
-        <button class="enabled" type="submit">+1</button>
+        <button class="enabled" type="submit" data-icon="plus"></button>
       </form>
       {% else %}
-      <button class="disabled">+1</button>
+      <button class="disabled" data-icon="plus"></button>
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
-        <button class="enabled" type="submit">-1</button>
+        <button class="enabled" type="submit" data-icon="minus"></button>
       </form>
       {% else %}
-        <button class="disabled">-1</button>
+        <button class="disabled" data-icon="minus"></button>
       {% endif %}
     </div>
   <!--/tr-->

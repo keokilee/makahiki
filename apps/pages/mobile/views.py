@@ -75,13 +75,13 @@ def smartgrid(request):
   }, context_instance=RequestContext(request))
 
 @login_required
-def sgactivities(request, activity_type):
+def sgactivities(request, category_slug):
   activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
   choices = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
     "wet-and-wild", "pot-pourri"]
   category = ""
   for x in choices:
-    if x == string.lower(activity_type):
+    if x == string.lower(category_slug):
       category = x
       
   for task in activities:
@@ -94,7 +94,7 @@ def sgactivities(request, activity_type):
 
 @never_cache
 @login_required
-def task(request, activity_type, slug):
+def task(request, category_slug, slug):
   """individual task page"""
   user = request.user
   
@@ -107,7 +107,7 @@ def task(request, activity_type, slug):
   member_all_count = 0
   member_floor_count = 0
   
-  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
+  task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
@@ -188,7 +188,7 @@ def task(request, activity_type, slug):
     
   display_form = True if request.GET.has_key("display_form") else False
   
-  return render_to_response("smartgrid/task.html", {
+  return render_to_response("mobile/smartgrid/task.html", {
     "task":task,
     "pau":pau,
     "approval":approval,
@@ -277,7 +277,7 @@ def __add_activity(request, activity_id):
             
           activity_member.save()
       else:   # form not valid
-        return render_to_response("smartgrid/task.html", {
+        return render_to_response("mobile/smartgrid/task.html", {
             "task":activity,
             "pau":False,
             "form":form,
@@ -363,7 +363,7 @@ def __request_activity_points(request, activity_id):
       ##if question:
       ##  form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
       
-    return render_to_response("smartgrid/task.html", {
+    return render_to_response("mobile/smartgrid/task.html", {
     "task":activity,
     "pau":False,
     "form":form,
@@ -379,23 +379,23 @@ def __request_activity_points(request, activity_id):
 
 
 @login_required
-def sgadd(request, task_id):
+def sgadd(request, category_slug, slug):
   
-  task = ActivityBase.objects.get(id=task_id)
+  task = ActivityBase.objects.get(category__slug=category_slug, slug=slug)
 
   if task.type == "commitment":
-    return __add_commitment(request, task_id)
+    return __add_commitment(request, task)
     
   if task.type == "activity":
-    return __request_activity_points(request, task_id)
+    return __request_activity_points(request, task)
   elif task.type == "survey":
-    return __add_activity(request, task_id)
+    return __add_activity(request, task)
   else:
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():
-      return __request_activity_points(request, task_id)
+      return __request_activity_points(request, task)
     else:  
-      return __add_activity(request, task_id)
+      return __add_activity(request, task)
     
    
   
