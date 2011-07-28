@@ -4,152 +4,90 @@ Namespace("org.wattdepot.makahiki");
   /**loads the visualization for both annotated timelines and for table. */
   google.load('visualization','1',{'packages':['annotatedtimeline', 'table']}); 
 
-/**connects the Time dropdown menu to the google visualization system. */
-// google.setOnLoadCallback(addTime); 
- /**connects the init function (which runs a query) to the google visualization. */
- google.setOnLoadCallback(init); 
+ google.setOnLoadCallback(initialize); 
   
-
-     var host_uri = 'http://server.wattdepot.org:8192/gviz/'; 
-      var begTimestamp = 'T00:00:00.000-10:00'; 
-      var endTimestamp = 'T23:59:00.000-10:00'; 
-      var begDate = ''; 
-      var endDate = ''; 
-      var powerSource = new Array();      
-      var dataType = ''; 
-      var isError = false; 
-      var interval= 15;
-      var table = new Array();
-      var lastFlag = false;
-      var sourceNo = 0;
+ var host_uri = 'http://server.wattdepot.org:8192/gviz/'; 
       
- /**intializes the variables used in the visualization page. */
- var begTimestamp = 'T00:00:00.000-10:00'; 
- var endTimestamp = 'T23:59:00.000-10:00'; 
- var begDate = ''; 
- var endDate = ''; 
- var powerSource = new Array();      
- var dataType = ''; 
- var isError = false; 
- //presets the interval for a query to 15 minutes.
- var interval= 15;
- var table = new Array();
- var lastFlag = false;
- var sourceNo = 0;
-       
- /**
- * Contains the function which cancels an processing query by stopping the browser.
- * 
- * @author Edward Meyer, Kendyll Doi, Bao Huy Ung
- */
- function cancelquery(){ 
-     /**particularly checks for Internet Explorer since it uses a different command to stop the page from loading. */
-     if(navigator.appName == "Microsoft Internet Explorer") {  
-         window.document.execCommand('Stop'); 
-     } 
-     /**stops the page to other browsers specifications. */
-     else { 
-         window.stop(); 
-     } 
-     /**removes the now working notification */
-     document.getElementById('working').style.display="none"; 
- }      
+ var powerSource;      
+ var table;
+ var sourceNo;       
   
   /**
  * Contains the function which calls the queries based on input from the html.
  * 
  * @author Edward Meyer, Kendyll Doi, Bao Huy Ung
  */
- function init(){ 
-     /**Sets necessary variables to the input from the html page. */
-     interval = 15; 
-     begDate = new Date("07/14/2011"); 
-     endDate = new Date("07/21/2011"); 
-    /** Clears the values from any previously entered queries which are stored in the variables.*/
-     dataType = 'powerConsumed';
-     table = [];
-     sourceNo = 0;
-     lastFlag = false;
-     /**sensorFlag and calcFlag to differentiate between calculated data and sensor data.  */
-     var sensorFlag = false; 
-     var calcFlag = false; 
+ function initialize(){ 
+   powerSource = [];
+   table = [];
+   sourceNo = 0;       
+   
+          /**Sets necessary variables to the input from the html page. */
+          var periods = document.getElementsByName("period");
+          for (i = 0; i<periods.length; i++)
+            if (periods[i].checked) 
+              dateRange = periods[i].value;
+
+          var datatypes = document.getElementsByName("datatype");
+          for (i = 0; i<datatypes.length; i++)
+            if (datatypes[i].checked) 
+              dataType = datatypes[i].value;
+ 
+          
+          var lounges = document.getElementsByName("lounge");
+          for (i = 0; i<lounges.length; i++)
+            if (lounges[i].checked) 
+              powerSource.push(lounges[i].value);
+          
+          // Depending on the data range selected,
+          // changed the sample-interval to WattDepot to compensate for daily or hourly values.
+          // Only need to overwrite for last7 and last 14 days since defaults are already set for 24 hours.
+          if (dateRange == "last21days") {
+            interval = 60; // How many minutes in a day, for WattDepot query.
+            goBack = 480; // 24 hrs * 20 days, go back 6 days from now to get a weeks worth of data.
+          }
+          if (dateRange == "last7days") {
+            interval = 60; // How many minutes in a day, for WattDepot query.
+            goBack = 144; // 24 hrs * 6 days, go back 6 days from now to get a weeks worth of data.
+          }
+          if (dateRange == "last24hours") {
+            interval = 15; // How many minutes in a day, for WattDepot query.
+            goBack = 24; // 24 hrs 
+          }
+
+          // Set the beginning and end dates
+          endDate = new Date();
+          // Get on the hour data starting from last midnight.
+          endDate.setMinutes(0);
+          endDate.setHours(0);
+
+          // Copy the endDate then subtract the necessary hours.
+          // Last two 0's of the constructor sets the seconds and milliseconds to 0.
+          begDate = new Date(endDate.getFullYear(), endDate.getMonth(), 
+              endDate.getDate(), endDate.getHours(), endDate.getMinutes(), 0, 0);
+          begDate.setHours(0);
+          begDate.setHours( begDate.getHours() - goBack );
+          begDate.setMinutes(0);
+
+          // Initialize beginning and ending variables to hold the timestamp 
+          // in XMLGregorian format that WattDepot requires.
+          // Use the appendZero function for hour and minutes to append extra 0 if the value is less than 10.
+          // This is used to conform to XMLGregorian format.
+          var begHour = appendZero( begDate.getHours() );
+          var begMin = appendZero( begDate.getMinutes() );
+          var endHour = appendZero( endDate.getHours() );
+          var endMin = appendZero( endDate.getMinutes() );
+
+          var endTimestamp = 'T' + endHour + ":" + endMin + ':00.000-10:00';
+          var begTimestamp = 'T' + begHour + ":" + begMin + ':00.000-10:00';
+
+          // Put together the year, month, and day into Gregorian timestamp
+          var startTime = begDate.getFullYear() + '-' + appendZero( begDate.getMonth() + 1 ) + '-' 
+                       + appendZero ( begDate.getDate() ) + begTimestamp;
+          
+          var endTime = endDate.getFullYear() + '-' + appendZero( endDate.getMonth() + 1 ) + '-' 
+                       + appendZero ( endDate.getDate() ) + endTimestamp;
        
-     powerSource = ["Lehua-A"];    
-       
-      /**time conversion code courtesy of Carbonomter http://code.google.com/p/ekolugical-carbonometer/ 
-      modified to function by Kendyll Doi, Edward Meyer, and Bao Huy Ung */
-       
-      /**Resets the variables to retrieve information from webpage.*/
-      var day = ''; 
-      var month = ''; 
-      var year = ''; 
-      var startTime = ''; 
-      var endTime = '';      
-      /**Obtains values from dropdown menus in webpage.*/
-      var begHour = "12"; 
-      var begMin = "00"; 
-      var endHour = "11"; 
-      var endMin = "59"; 
-      var begm = "AM"; 
-      var endm = "PM"; 
-  
-      /**modify time picker numbers into military time. */
-      if (begm == 'PM' && begHour < 12){ 
-           begHour = parseInt(begHour)+12; 
-      } 
-      else if (begm == 'AM' && begHour == '12'){ 
-           begHour = '00'; 
-      } 
-       
-      if (endm == 'PM' && endHour < 12){ 
-           endHour = parseInt(endHour)+12; 
-      } 
-      else if (endm == 'PM' && endHour == '12'){ 
-           endHour = '00'; 
-      } 
-      
-      /**Converts the time stamp into gregorian timestamp format.*/
-      var begTimestamp = 'T' + begHour + ":" + begMin + ':00.000-10:00'; 
-      var endTimestamp = 'T' + endHour + ":" + endMin + ':00.000-10:00'; 
-  
-      /**Concerts dates and month to conform with gregorian timestamp format.*/
-      if (begDate.getDate() < 10) { 
-            day = '0' + begDate.getDate();
-      } 
-      else { 
-            day = begDate.getDate(); 
-      } 
-      if (begDate.getMonth() < 10) { 
-            month = '0' + (begDate.getMonth() +1); 
-      } 
-      else { 
-            month = (begDate.getMonth() + 1); 
-      } 
-      /**Assigns years from the selected year on the webpage.*/
-      year = begDate.getFullYear(); 
-      /**Puts together the year, month, and day into Gregorian timestamp form for the beginning time.*/ 
-      startTime = year + '-' + month + '-' + day + begTimestamp; 
-    
-      /**Converts dates and month to conform with gregorian timestamp format.*/
-      if (endDate.getDate() < 10) { 
-           day = '0' + endDate.getDate(); 
-      } 
-      else { 
-           day = endDate.getDate(); 
-      } 
-      if (endDate.getMonth() < 10) { 
-            month = '0' + (endDate.getMonth() +1); 
-      } 
-      else { 
-            month = (endDate.getMonth() + 1); 
-      } 
-      /**Assigns years from the selected year on the webpage.*/
-      year = endDate.getFullYear(); 
-      /**Converts dates and month to conform with gregorian timestamp format.*/
-      endTime = year + '-' + month + '-' + day + endTimestamp;      
-            
-      calcFlag = true; 
-      
       /**sensor data and calculated data have different query a uri.  */
       var query = new Array();
       for (i=0; i<powerSource.length; i++){
@@ -160,18 +98,7 @@ Namespace("org.wattdepot.makahiki");
         query[i] = new google.visualization.Query(url); 
         query[i].setQuery('select timePoint, ' + dataType);
       }
-       
-      /**get a total difference in time (in minutes) between the beginning and end dates. */
-      var dateDiff = (endDate.getDate() - begDate.getDate())*60*24; 
-      var monthDiff = (endDate.getMonth() - begDate.getMonth())*60*24*30; 
-      var yearDiff = (endDate.getFullYear() - begDate.getFullYear())*60*24*365; 
-      var hourDiff = (endHour - begHour)*60; 
-      var minDiff = endMin - begMin; 
-      var totalDiff = dateDiff + monthDiff + yearDiff + hourDiff + minDiff; 
-       
-       
-      /**displays "now working" dialogue with cancel button.*/
-      document.getElementById('working').style.display="block"; 
+              
       /**begin processing query with first entry in array. passing the query response, the whole query, and the current index.*/
       query[0].send(function(response) { handleQueryResponse(response, query, 0)});  
  } 
@@ -193,16 +120,19 @@ function debug(msg) {
  */
   function handleQueryResponse(response, query, number) { 
     if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    /**Removes the "now working" notification from the webpage.*/
-    document.getElementById('working').style.display="none";
-    return;
-   }
-  var data = response.getDataTable(); 
+      alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+      /**Removes the "now working" notification from the webpage.*/
+      document.getElementById('working').style.display="none";
+      return;
+    }
+    
+    var data = response.getDataTable(); 
+    
     /**appends the columns in the datatable with the source which it came from.*/
     for(k = 1; k < data.getNumberOfColumns(); k++){
        data.setColumnLabel(k, powerSource[number] + " " + data.getColumnLabel(k));
     }
+    
     /**increments source number for next query and power source.*/
     sourceNo++;
     /**pushes table on to arrway for processing*/
@@ -266,23 +196,40 @@ function debug(msg) {
      return cols;
   }
   
-/**
- * Contains the function which takes the data table to be displayed and produces the googlevisualization onto the id on the webpage.
- * 
- * @author Edward Meyer, Kendyll Doi, Bao Huy Ung
- * @param data is the data table returned from a query.
- */
+ /**
+  * Contains the function which takes the data table to be displayed and produces the googlevisualization onto the id on the webpage.
+  * 
+  * @author Edward Meyer, Kendyll Doi, Bao Huy Ung
+  * @param data is the data table returned from a query.
+  */
   function processData(data){
-     
+     document.getElementById('loading').style.display = 'none';
      
      var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div')); 
      chart.draw(data, {displayAnnotations: false, wmode: "opaque", legendPosition: "newRow"}); 
 
      //var table = new google.visualization.Table(document.getElementById('chart_div')); 
      //table.draw(data, {showRowNumber: true});  
-
-    /**Removes the "now working" notification from the webpage.*/
-    document.getElementById('working').style.display="none"; 
     
- } 
+  } 
+ 
+         /* 
+        * Appends a 0 at the beginning of a variable if it is less than 10.
+        * Convenience method to convert to XML Gregorian standards. 
+        *
+        * @param number is the number to append '0' if less than 10.
+        */
+        function appendZero ( number ) {
+          if (number < 10) {
+            return '0' + number;
+          }
+          return number;
+        }
 
+
+  function update() {
+            // Clear the contents of the drop-down menus, and re-display the loading sign.
+            document.getElementById("chart_div").innerHTML = "";
+            document.getElementById("loading").style.display = '';
+            initialize();
+  }

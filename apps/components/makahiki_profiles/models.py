@@ -125,6 +125,9 @@ class Profile(models.Model):
       return ('profile_detail', None, {'username': self.user.username})
   get_absolute_url = models.permalink(get_absolute_url)
   
+  def get_lounge_name(self):
+    return self.floor.dorm.name + '-' + self.floor.number
+    
   @staticmethod
   def points_leaders(num_results=10, round_name=None):
     """

@@ -2,7 +2,15 @@
 <p/>
 <div id="HeatMap">
       <div id="title" style="font-weight: bold; text-align: center;">Heat Map Analysis</div>
+     
+      <div id="control">
+        <input type="radio" name="period" value="last24hours" checked="checked" onchange="updatePeriod();" /> 
+          last 24 hours 
+        <input type="radio" name="period" value="last21days" onchange="updatePeriod();"/> 
+          last 21 days
+      </div>        
       
+
       <!-- Loading div that displays an animated gif, display is set to none when displaying a BioHeatMap -->
       <div id="loading"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
     
