@@ -16,8 +16,10 @@
   
   <div {% get_id_and_classes "header-logout" %}>
     {% if user.get_profile.canopy_member and not in_canopy %}
-    <div id="header-canopy-link">
-      <a href="{% url canopy_index %}">Head up to the canopy</a>
+    <div id="link-container" style="float: left">
+      <div id="header-canopy-link" class="hidden">
+        <a href="{% url canopy_index %}">Head up to the canopy</a>
+      </div>
     </div>
     {% endif %}
     

@@ -1,7 +1,6 @@
 // Setup the header cycle.
- 
-  // Use jQuery via jQuery(...)
-  jQuery(document).ready(function(){
+
+jQuery(document).ready(function($) {
   jQuery("#user-cycle").cycle();
   jQuery("#floor-cycle").cycle();
   
@@ -10,6 +9,18 @@
     autoOpen: false,
     modal: true
   });
+  
+  $("#link-container").hover(function() {
+    if ($("#header-canopy-link").hasClass("hidden")) {
+      $("#header-canopy-link").removeClass("hidden").css({display: "none"}).fadeIn("slow");
+      setCookie("display-canopy", true, 0);
+    }
+  });
+  
+  if(getCookie("display-canopy")) {
+    // deleteCookie("display-canopy");
+    $("#header-canopy-link").removeClass("hidden");
+  }
 });
 
 // Function to handle AJAX post requests.
