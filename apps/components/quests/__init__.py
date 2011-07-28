@@ -9,7 +9,7 @@ from components.prizes.models import RaffleTicket
 # The number of quests a user can have at any one time.
 MAX_AVAILABLE_QUESTS = 3
 
-def has_task(user, name=None, slug=None, task_type=None):
+def has_task(user, slug=None, task_type=None, name=None):
   """
   Determines if the user is participating in a task.
   In the case of a activity, this returns True if the user submitted or completed the activity.
@@ -21,14 +21,19 @@ def has_task(user, name=None, slug=None, task_type=None):
   Only one of name and task_type should be specified.
   """
   if not (name or slug) and not task_type:
-    raise Exception("Either name or task_type must be specified.")
+    raise Exception("Either slug or task_type must be specified.")
     
-  if slug:
-    task = ActivityBase.objects.get(slug=slug)
-    return is_pau(user, task)
-  elif name:
+  # Only provided for backwards compatibility
+  if name:
     task = ActivityBase.objects.get(name=name)
     return is_pau(user, task)
+  elif slug:
+    try:
+      task = ActivityBase.objects.get(slug=slug)
+      return is_pau(user, task)
+    except ActivityBase.DoesNotExist:
+      task = ActivityBase.objects.get(name=slug)
+      return is_pau(user, task)
   else:
     task_type = task_type.lower()
     if task_type == "commitment":
