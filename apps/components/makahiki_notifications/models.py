@@ -94,7 +94,7 @@ class UserNotification(Notification):
       msg.attach_alternative(html_message, "text/html")
       
     msg.send()
-  
+    
   
 
     
