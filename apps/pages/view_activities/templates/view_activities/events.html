@@ -1,3 +1,5 @@
+{% load class_tags %}
+
       <table>
 	    <thead><tr>
 		  <th>Event (points)</th>
@@ -13,6 +15,37 @@
         {% else %}
 	       <tr><td>No upcoming events</td></tr>
 	    {% endif %}
+	    
+	    
 	    </tbody>
       </table>
+       <p/>
+       
+        <form {% get_id_and_classes "event-code-form" %} action="{% url activity_attend_code %}" method="POST">
+          {% csrf_token %}
+          <div {% get_id_and_classes "event-code" %}>
+           <b>I have an attendance code : </b>
+            {{event_form.response}}  <a href="#">
+             <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	        	title="What is an Attendance Code?" 
+		     onclick="toggleHelp('widget', 'attendance-code'); return false;"/></a>
+          </div>
+          <br/>
+          <div {% get_id_and_classes "social_email" %} style="display: None">
+            You may add a friend's email for social bonus(Optional):
+            {{event_form.social_email}} <a href="#">
+             <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+	        	title="What is an Attendance Code?" 
+		     onclick="toggleHelp('widget', 'social-bonus'); return false;"/></a>
+          </div>
+  
+           <div {% get_id_and_classes "event-code-errors" %} style="color:red;"></div>
+          
 
+		  <div style="text-align: center">
+			<button id="event-code-submit">
+				Submit
+			</button>
+		  </div>
+        </form>
+    

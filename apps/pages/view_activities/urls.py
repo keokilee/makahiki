@@ -12,5 +12,7 @@ urlpatterns = patterns('',
     
     # url(r'^view_codes/(\d+)/$', 'pages.view_activities.views.view_codes', name="activity_view_codes"),
     url(r'^view-codes/(?P<slug>[\w\d\-]+)/$', 'pages.view_activities.views.view_codes', name='activity_view_codes'),
+
+    url(r'^attend_code/$', 'pages.view_activities.views.attend_code', name="activity_attend_code"),
     
 )

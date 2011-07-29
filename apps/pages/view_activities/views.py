@@ -3,6 +3,7 @@ import simplejson as json
 
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -54,6 +55,8 @@ def index(request):
   if request.COOKIES.has_key("grid-hide-about"):
     hide_about = True
  
+  form = EventCodeForm()
+  
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
@@ -65,6 +68,7 @@ def index(request):
     "user_floor_standings": user_floor_standings,
     "notification":notification,
     "hide_about": hide_about,
+    "event_form": form,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info
@@ -97,7 +101,80 @@ def view_codes(request, slug):
     "activity": activity,
     "codes": codes,
   }, context_instance = RequestContext(request))
+  
+def attend_code(request):
+  """claim the attendance code"""
+  
+  user = request.user
+  activity_member = None
+  message = None
+  social_email = None
+  
+  if request.is_ajax() and request.method == "POST":
+    form = EventCodeForm(request.POST)
+    if form.is_valid():
+      try:
+        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+     
+        if not code.is_active:
+          message = "This code has already been used."
+        # Check if the user has already submitted a code for this activity.
+        elif code.activity in user.activity_set.filter(activitymember__award_date__isnull=False):
+          message = "You have already redemmed a code for this event/excursion."          
+        elif code.activity.social_bonus:
+          if form.cleaned_data["social_email"]:
+            if form.cleaned_data["social_email"] != "Email":
+              ref_user = get_user_by_email(form.cleaned_data["social_email"]) 
+              if ref_user == None or ref_user == user:
+                message = "Invalid email. Please input only one valid email."
+                social_email = "true"
+            else: 
+              message = " "
+              social_email = "true"
+      except ConfirmationCode.DoesNotExist:
+        message = "This code is not valid."
+      except KeyError:
+        message = "Please input code."
+      
+      print message
+      
+      if message:
+        return HttpResponse(json.dumps({
+          "message": message,
+          "social_email": social_email
+          }), mimetype="application/json")
+      
+      code.is_active = False
+      code.save()
+      
+      try:
+        activity_member = ActivityMember.objects.get(user=user, activity=code.activity)
+        # decrease sign up points
+        user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+        user.get_profile().save()
+      except ObjectDoesNotExist:
+        activity_member = ActivityMember(user=user, activity=code.activity)
+        
+      activity_member.approval_status = "approved" # Model save method will award the points.
+      value = code.activity.point_value  
 
+      activity_member.user_comment = form.cleaned_data["social_email"]
+      activity_member.save()
+      
+      return HttpResponse(json.dumps({
+        "type":code.activity.type,
+        "slug":code.activity.slug,
+        "notify": "add_point",
+        "value":str(value)
+      }), mimetype="application/json")
+          
+    # At this point there is a form validation error.
+    return HttpResponse(json.dumps({
+        "message": "Please input code."
+    }), mimetype="application/json")
+  
+  raise Http404
+            
 ### Private methods.
 def __add_commitment(request, commitment):
   """Commit the current user to the commitment."""
