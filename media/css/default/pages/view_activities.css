@@ -302,3 +302,40 @@ table#activities-grid td table td{
 .excursion-legend {
 	background-color: #AB441B;
 	}
+		
+#purr-container {
+	position: fixed;
+	top: 400px;
+	left: 450px;
+}
+
+.notice {
+  background-color: #646666;
+  border: 1px solid #fed22f;
+  height: auto;
+  padding: 15px 10px 15px 10px;
+  float: center;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  line-height: 15px;
+  display: block;
+   filter:alpha(opacity=90); 
+   -moz-opacity: 0.9; 
+   opacity: 0.9; 
+}
+
+.notice .body {
+    margin-left: 60px;
+    margin-top: -25px;
+    margin-right: 20px;
+}
+
+.notice .close	{
+	position: absolute; top: 5px; right: 5px; display: block; 
+	width: 18px; height: 17px; text-indent: -9999px; 
+	background: url(/site_media/static/css/default/images/purrClose.png) no-repeat 0 10px;
+}
+		

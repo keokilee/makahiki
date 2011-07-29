@@ -73,10 +73,12 @@
     </h3>
   </center>
   {% include "view_activities/grid.html" %}
+  
 </div>
 {% endblock %}
 
 {% block extra_body %}
+
 <div id="unlock-dialog" title="Locked Activity" style="visibility: hidden;">
   <div style="text-align:left">
     <p> <b>This activity is locked.</b></p>
@@ -91,6 +93,26 @@
 </div>
 
 <script type="text/javascript"> 
+$( document ).ready( function ()
+ {
+    {% if notification %}
+	var notice = '<div class="notice">'
+		+ '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
+		+ '<div class="body"> {{notification}} </div>' 
+		+ '</div>';
+
+	$(notice).purr(
+	   {
+			usingTransparentPNG: true,
+			fadeInSpeed: 600,
+            fadeOutSpeed: 600,
+            removeTimer: 2500,
+            isSticky: false
+	   }
+    );		
+    {% endif %}
+ });
+
 function unlock_dialog(depends_on)
 {
   el = document.getElementById("unlock-dialog"); 
