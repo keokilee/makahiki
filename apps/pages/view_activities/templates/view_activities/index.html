@@ -92,9 +92,26 @@
   </div>
 </div>
 
+{% if not hide_about %}
+<div id="grid-about">
+  <div class="notice">
+    <img src="/site_media/static//css/default/images/icon-help-sm.png" width="30" align="center">
+    <div style="text-align:right; padding-left: 5px; margin-top: -35px;"><a id="grid-hide-about" href="javascript:void(0);">Close</a>
+    </div>
+    <div class="body" style="margin-left: 60px; margin-top: -5px;">
+      Welcome to the Smart Grid Game!<p></p>
+      Click on squares to view activities. Numbers represent <br>
+      the points earned for completing an activity. Locked <br>
+      squares can be unlocked by completing other activities. 
+    </div>
+  </div>
+</div>
+{% endif %}
+
 <script type="text/javascript"> 
 $( document ).ready( function ()
  {
+  
     {% if notification %}
 	var notice = '<div class="notice">'
 		+ '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
@@ -104,14 +121,26 @@ $( document ).ready( function ()
 	$(notice).purr(
 	   {
 			usingTransparentPNG: true,
-			fadeInSpeed: 600,
+			fadeInSpeed: 100,
             fadeOutSpeed: 600,
             removeTimer: 2500,
             isSticky: false
 	   }
     );		
     {% endif %}
+
+    {% if not hide_about %}
+      $("#grid-about").fadeIn();
+    {% endif %}
+
+    $("#grid-hide-about").click(function() {
+      setCookie("grid-hide-about", "true", 0);
+      $("#grid-about").fadeOut();
+      return false;
+    });
+
  });
+
 
 function unlock_dialog(depends_on)
 {

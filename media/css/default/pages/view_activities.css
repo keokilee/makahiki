@@ -339,3 +339,8 @@ table#activities-grid td table td{
 	background: url(/site_media/static/css/default/images/purrClose.png) no-repeat 0 10px;
 }
 		
+#grid-about {
+	position: fixed;
+	top: 380px;
+	left: 500px;
+}

@@ -48,6 +48,11 @@ def index(request):
       notification = "Your commitment is dropped, " + value + " points are reduced."
     if notify == "drop_activity":
       notification = "You are removed from the signup list, " + value + " points are reduced."
+
+  # Check for the about cookie.
+  hide_about = False
+  if request.COOKIES.has_key("grid-hide-about"):
+    hide_about = True
  
   return render_to_response("view_activities/index.html", {
     "events": events,
@@ -59,6 +64,7 @@ def index(request):
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
     "notification":notification,
+    "hide_about": hide_about,
   }, context_instance=RequestContext(request))
 
 ## new design, return the category list with the tasks info
