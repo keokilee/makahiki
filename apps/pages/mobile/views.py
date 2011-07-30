@@ -504,10 +504,12 @@ def quests(request,option):
   }, context_instance=RequestContext(request))
 
 @login_required
-def quest_detail(request, slug):
+def quest_detail(request, ref, slug):
+  ref=ref.lower 
   quest=get_object_or_404(Quest,quest_slug=slug)  
   return render_to_response("mobile/quests/details.html", {
     "quest": quest,
+    "referer": ref,
   }, context_instance=RequestContext(request))
 
 @login_required

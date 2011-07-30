@@ -9,7 +9,7 @@
 <div data-role="navbar" data-add-back-btn="True">
       <ul>
 	<li>
-          <a href="{% url mobile_quests 'available' %}" 
+          <a href="{% url mobile_quests 'available' %}" rel="external"
 		{% if view == "available" %}
 			class="ui-btn-active"
 		{% endif %}>
@@ -20,7 +20,7 @@
        <!--Change script to account for events the user is attending-->
        <!--idk how to determine atm-->
 	<li>
-          <a href="{% url mobile_quests 'accepted' %}"		
+          <a href="{% url mobile_quests 'accepted' %}"	rel="external"	
 		{% if view == "accepted" %}
 			class="ui-btn-active"
 		{% endif %}>
@@ -29,7 +29,7 @@
         </li>
 
 	<li>
-          <a href="{% url mobile_quests 'completed' %}"
+          <a href="{% url mobile_quests 'completed' %}" rel="external"
 		{% if view == "completed" %}
 			class="ui-btn-active"
 		{% endif %}>
@@ -49,7 +49,7 @@
         <li data-role="list-divider">Available</li>
         {% for activity in QUESTS.available_quests %} 
           <li> 
-          <a href="{% url mobile_quest_detail  activity.quest_slug %}">{{activity}}</a> 
+          <a href="{% url mobile_quest_detail  'available' activity.quest_slug %}">{{activity}}</a> 
           </li> 
         {% endfor %}
       {% endif %}
@@ -58,7 +58,7 @@
       <li data-role="list-divider">Completed</li>
       {% for activity in questlist %} 
         <li> 
-        <a href="{% url mobile_quest_detail activity.quest_slug %}">{{activity}}</a> 
+        <a href="{% url mobile_quest_detail 'completed' activity.quest_slug %}">{{activity}}</a> 
         </li> 
       {% endfor %}
       {% endif %}
@@ -67,7 +67,7 @@
       <li data-role="list-divider">Accepted</li>
         {% for activity in QUESTS.user_quests %} 
           <li> 
-          <a href="{% url mobile_quest_detail activity.quest_slug %}">{{activity}}</a> 
+          <a href="{% url mobile_quest_detail 'accepted' activity.quest_slug %}">{{activity}}</a> 
           </li> 
         {% endfor %}
       {% endif %}
