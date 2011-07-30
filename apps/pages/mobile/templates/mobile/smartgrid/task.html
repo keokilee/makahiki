@@ -27,7 +27,7 @@
             {% if task.is_event_completed %}
             Thank you for attending the event. <br/>
             Click on the "I Did it" button to get the rest of your points. <br/>
-            <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
+            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
@@ -43,7 +43,7 @@
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
-              <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
+              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
               {% endif %}
              </div>
           {% endif %}         
@@ -63,7 +63,7 @@
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>
               </div>
-              <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will try again</a> 
+              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will try again</a> 
               </div>
             {% endif %}
           {% endif %}            
@@ -84,7 +84,7 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will do this!</a>
+            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will do this!</a>
           {% else %}
             <b>You already have 5 pending commitments. <br/>
             You can continue making this commitment once any of your pending commitment is approved.
@@ -95,21 +95,21 @@
            {% if task.is_event_completed %}
             <b>This event was already completed at {{task.event_date}}. <br/>
                If you attended the event, Click on the "I Did it" button to get your points. <br/>
-            <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a>
+            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a>
             </b>
            {% else %}
-            <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to sign up</a>
+            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to sign up</a>
            {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}
-          <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
+          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
         {% endif %} 
-        {% if task.type == "activity"%}
+        {% if task.type == "activity" %}
           <b>
           Once you are done, click the button below to get your points!
           </b>
           <p/>
-          <a href="{% url mobile_task task.type task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
+          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
         {% endif %} 
       {% endif %}
        <br/> <br/>
@@ -123,13 +123,15 @@
   </div>
 </div>
 
+
+<!---------- form ---------->
 <div data-role="page" id="form" data-url="form">
   <div data-role="header">
     <h1>{{task.name}}</h1>
   </div>
 
   <div data-role="content">
-    <form id="myform" action="{% url mobile_task_add task.category.slug task.slug %}" method="post" data-ajax="false">
+    <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
 
     {% csrf_token %}
 
@@ -146,14 +148,14 @@
           {{ form.response }}
           <div>
             <button type="submit">Submit</button>
-            <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
               Cancel</a>
           </div>
         {% else %}
           You will earn 2 points for signing up for the {{task.type}}.
           <div>
             <button>OK, Let's do it</button>
-            <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
               I don't want to do it</a>
           </div>
         {% endif %}
@@ -177,7 +179,7 @@
       {% endif %}
       <div>
         <button>OK, Let's do it</button>
-        <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+        <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
           I don't want to do it</a>
       </div>
     {% endif %}
@@ -218,7 +220,7 @@
     -->
       <div>
         <button>Submit</button>
-        <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+        <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
            Cancel</a>
       </div>
     {% endif %}
@@ -233,7 +235,7 @@
         {% endfor %}
         <div>
           <button>Submit</button>
-          <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+          <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
             Cancel</a>
         </div>
     {% endif %}
