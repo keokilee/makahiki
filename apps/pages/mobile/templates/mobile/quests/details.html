@@ -13,12 +13,12 @@
   <div data-role="content"> 
    {{quest.description|markdown}}
    {% if referer == "accepted" %}
-   <form action="{% url quests_cancel quest.quest_slug %}" method="POST" style="display: inline">
+   <form action="{% url quests_cancel quest.quest_slug %}" rel="external" method="POST" style="display: inline">
         <button type="submit" onClick="history.go(0)" style="margin-right: 20px">Cancel this quest</button>
       </form> 
    {% endif %}
    {% if referer == "available" %}
-      <form action="{% url quests_accept quest.quest_slug %}" method="POST" style="display: inline">
+      <form action="{% url quests_accept quest.quest_slug %}" rel="external" method="POST" style="display: inline">
         <button type="submit" onClick="history.go(1)" style="margin-right: 20px">I accept this quest</button>
       </form> 
    {% endif %}
