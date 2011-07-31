@@ -123,6 +123,8 @@ def get_available_golow_activities(user):
     activitymember__user=user,
   ).filter(
     energy_related=True,
+    pub_date__lte=datetime.date.today(),
+    expire_date__gte=datetime.date.today(),    
   ).order_by("type", "priority")
   
   commitments = Commitment.objects.exclude(
@@ -167,6 +169,7 @@ def get_available_events(user):
     Q(type='event')|Q(type='excursion'),
     pub_date__lte=datetime.date.today(),
     expire_date__gte=datetime.date.today(),
+    event_date__gte=datetime.date.today(),
   ).order_by("event_date","priority")
 
   unlock_events = []

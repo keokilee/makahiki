@@ -239,7 +239,7 @@ class ActivityAdmin(admin.ModelAdmin):
     }  
 
     
-  list_display = ["title", "category", "priority", "pub_date", "expire_date",]
+  list_display = ["title", "type", "category", "priority", "pub_date", "event_date", "expire_date",]
   
   actions = ["delete_selected", "increment_priority", "decrement_priority"]
   def delete_selected(self, request, queryset):
