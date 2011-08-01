@@ -1,6 +1,21 @@
-{% extends "mobile/base.html" %}
+<!DOCTYPE html> 
+<html>
+<head> 
+  <title>Kukui Cup</title> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+ 
 
-{% block body %}
+  <meta name="viewport" http-equiv="cache-control"  content="width=device-width, minimum-scale=1, maximum-scale=1, no-cache">
+</head> 
+<body onLoad="if (location.href.indexOf('reload')==-1) location.replace(location.href+'?reload')">  
+  <!--div data-role="page"-->
+   {% load class_tags %}
+   {% load generic_flatblocks %}
+   {% include "mobile/mlist.html" %} 
+
+<!-- django block body -->
 
 <div data-role="page">
   <header data-role="header" data-theme="b">
@@ -84,4 +99,6 @@
   <footer>
   </footer>
 </div>
-{% endblock %}
+<!-- django endblock body -->
+</body>
+</html>
