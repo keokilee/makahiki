@@ -147,9 +147,9 @@ REMINDER_TIME_CHOICES = (
     ("5", "5 hours"),
 )
 class ReminderForm(forms.Form):
-  send_email = forms.BooleanField()
+  send_email = forms.BooleanField(required=False)
   email = forms.EmailField(required=False, label="Email Address")
-  send_text = forms.BooleanField()
+  send_text = forms.BooleanField(required=False)
   email_advance = forms.ChoiceField(choices=REMINDER_TIME_CHOICES, label="Send reminder how far in advance?")
   text_number = USPhoneNumberField(required=False, label="Mobile phone number")
   text_carrier = forms.ChoiceField(choices=Profile.TEXT_CARRIERS, required=False, label="Carrier")

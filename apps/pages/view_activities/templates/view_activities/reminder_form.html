@@ -1,7 +1,7 @@
 {% load class_tags %}
 
 <form id="task-reminder-form" action="{% url activity_reminder task.type task.slug %}" method="post">
-  {# {% csrf_token %} #}
+  {% csrf_token %}
   {{ reminders.form.non_field_errors }}
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>
@@ -73,9 +73,9 @@
     });
     
     $("#task-reminder-form-submit").click(function() {
-      $.post($(this).form.action, $(this).form.serialize(), function(data) {
+      $.post("{% url activity_reminder task.type task.slug %}", $("#task-reminder-form").serialize(), function(data) {
         if(data.success) {
-          $("#task-reminder-dialog").dialog("close");
+          window.location.reload();
         }
         else {
           $("#task-reminder-dialog").html(data.form);
@@ -83,8 +83,9 @@
         
         return false;
       });
-      
       return false;
     });
+    
+    return false;
   });
 </script>

@@ -578,24 +578,58 @@ def reminder(request, activity_type, slug):
       task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
       form = ReminderForm(request.POST)
       if form.is_valid():
-        if form.cleaned_data["send_email"]:
-          reminder = EmailReminder(
-              user=request.user, 
-              activity=task, 
-              email_address=form.cleaned_data["email"],
-              send_at=task.activity.event_date - datetime.timedelta(days=int(form.cleaned_data["email_advance"])),
-          )
-          reminder.save()
+        email_reminder = None
+        text_reminder = None
+        
+        # Try and retrieve the reminders.
+        try:
+          email_reminder = EmailReminder.objects.get(user=request.user, activity=task)
+          if form.cleaned_data["send_email"]:
+            email_reminder.email_address = form.cleaned_data["email"]
+            email_reminder.send_at = task.activity.event_date - datetime.timedelta(
+                hours=int(form.cleaned_data["email_advance"])
+            )
+            email_reminder.save()
+          else:
+            # If send_email is false, the user does not want the reminder anymore.
+            email_reminder.delete()
+            
+        except EmailReminder.DoesNotExist:
+          # Create a email reminder
+          if form.cleaned_data["send_email"]:
+            email_reminder = EmailReminder.objects.create(
+                user=request.user,
+                activity=task,
+                email_address=form.cleaned_data["email"],
+                send_at=task.activity.event_date - datetime.timedelta(
+                    hours=int(form.cleaned_data["email_advance"])
+                )
+            )
           
-        if form.cleaned_data["send_text"]:
-          reminder = TextReminder(
-              user=request.user,
-              activity=task,
-              text_number=form.cleaned_data["text_number"],
-              text_carrier=form.cleaned_data["text_carrier"],
-              send_at=task.activity.event_date - datetime.timedelta(days=int(form.cleaned_data["text_advance"])),
-          )
-          reminder.save()
+        try:
+          text_reminder = TextReminder.objects.get(user=request.user, activity=task)
+          if form.cleaned_data["send_text"]:
+            text_reminder.text_number = form.cleaned_data["text_number"]
+            text_reminder.text_carrier = form.cleaned_data["text_carrier"]
+            text_reminder.send_at = task.activity.event_date - datetime.timedelta(
+                hours=int(form.cleaned_data["text_advance"])
+            )
+            text_reminder.save()
+            
+          else:
+            text_reminder.delete()
+            
+        except TextReminder.DoesNotExist:
+          if form.cleaned_data["send_text"]:
+            text_reminder = TextReminder.objects.create(
+                user=request.user,
+                activity=task,
+                text_number=form.cleaned_data["text_number"],
+                text_carrier=form.cleaned_data["text_carrier"],
+                send_at=task.activity.event_date - datetime.timedelta(
+                    hours=int(form.cleaned_data["text_advance"])
+                ),
+            )
           
         return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
         
