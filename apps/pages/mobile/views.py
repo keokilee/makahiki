@@ -37,6 +37,9 @@ from pages.view_prizes.views import _get_raffle_prizes
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
+@login_required
+def logout(request):
+  return render_to_response("mobile/logout.html", {}, context_instance=RequestContext(request))
 
 @login_required
 def scoreboard(request):
