@@ -192,3 +192,121 @@ class ActivitiesFunctionalTestCase(TestCase):
     response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
     
+  def testAddEmailReminder(self):
+    """
+    Test that the user can create a email reminder.
+    """
+    event = Activity(
+        title="Test event",
+        slug="test-event",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() + datetime.timedelta(days=1),
+    )
+    event.save()
+    
+    reminders = self.user.emailreminder_set.count()
+    
+    # Test invalid forms
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": True,
+        "email": "",
+        "email_advance": "1",
+        "send_text": False,
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "A valid email address is required.", 
+        count=1, msg_prefix="Error text should be displayed.")
+    self.assertEqual(self.user.emailreminder_set.count(), reminders, "Should not have added a reminder")
+    
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": True,
+        "email": "foo",
+        "email_advance": "1",
+        "send_text": False,
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "A valid email address is required.", 
+        count=1, msg_prefix="Error text should be displayed.")
+    self.assertEqual(self.user.emailreminder_set.count(), reminders, "Should not have added a reminder")
+    
+    # Test valid form
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": True,
+        "email": "foo@test.com",
+        "email_advance": "1",
+        "send_text": False,
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(self.user.emailreminder_set.count(), reminders + 1, "Should have added a reminder")
+    
+  def testAddTextReminder(self):
+    """
+    Test that a user can create a text reminder.
+    """
+    event = Activity(
+        title="Test event",
+        slug="test-event",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() + datetime.timedelta(days=1),
+    )
+    event.save()
+    
+    reminders = self.user.textreminder_set.count()
+    
+    # Test invalid forms
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": False,
+        "email": "",
+        "email_advance": "1",
+        "send_text": True,
+        "text_number": "",
+        "text_carrier": "att",
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "A valid phone number is required.", 
+        count=1, msg_prefix="Error text should be displayed.")
+    self.assertEqual(self.user.textreminder_set.count(), reminders, "Should not have added a reminder")
+    
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": False,
+        "email": "",
+        "email_advance": "1",
+        "send_text": True,
+        "text_number": "555",
+        "text_carrier": "att",
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "A valid phone number is required.", 
+        count=1, msg_prefix="Error text should be displayed.")
+    self.assertEqual(self.user.textreminder_set.count(), reminders, "Should not have added a reminder")
+    
+    
+    # Test valid form
+    response = self.client.post(reverse("activity_reminder", args=(event.type, event.slug,)), {
+        "send_email": False,
+        "email": "",
+        "email_advance": "1",
+        "send_text": True,
+        "text_number": "8085551234",
+        "text_carrier": "att",
+        "text_advance": "1",
+    }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(self.user.textreminder_set.count(), reminders + 1, "Should have added a reminder")

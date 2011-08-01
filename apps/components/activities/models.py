@@ -543,8 +543,8 @@ class Reminder(models.Model):
   """
   Sends a reminder for an activity to a user.  Reminders are queued up and sent later.
   """
-  user = models.ForeignKey(User)
-  activity = models.ForeignKey(ActivityBase)
+  user = models.ForeignKey(User, editable=False)
+  activity = models.ForeignKey(ActivityBase, editable=False)
   send_at = models.DateTimeField()
   sent = models.BooleanField(default=False, editable=False)
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
@@ -557,5 +557,5 @@ class EmailReminder(Reminder):
   email_address = models.EmailField()
     
 class TextReminder(Reminder):
-  text_number = PhoneNumberField(null=True, blank=True)
+  text_number = PhoneNumberField()
   text_carrier = models.CharField(max_length=50, choices=Profile.TEXT_CARRIERS, null=True, blank=True)

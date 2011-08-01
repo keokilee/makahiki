@@ -115,14 +115,17 @@ class SurveyForm(forms.Form):
     
     if questions:
       for i, q in enumerate(questions):
-        self.fields['choice_response_%s' % i] = forms.ModelChoiceField(queryset=QuestionChoice.objects.filter(question__id=q.pk), label=q.question, required=True)
+        self.fields['choice_response_%s' % i] = forms.ModelChoiceField(
+            queryset=QuestionChoice.objects.filter(question__id=q.pk), 
+            label=q.question, 
+            required=True
+        )
     
   def clean(self):
     cleaned_data = self.cleaned_data
     return cleaned_data
-    
-def _validate_social_email(self, cleaned_data):
   
+def _validate_social_email(self, cleaned_data):
   if cleaned_data["social_email"]:
     user = get_user_by_email(cleaned_data["social_email"]) 
     if user == None or user == self.request.user:
@@ -132,3 +135,40 @@ def _validate_social_email(self, cleaned_data):
 class EventCodeForm(forms.Form):
   response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}))
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'20'}), initial="Email", required=False)
+            
+#------ Reminder form ---------
+from django.contrib.localflavor.us.forms import USPhoneNumberField
+
+REMINDER_TIME_CHOICES = (
+    ("1", "1 hour"),
+    ("2", "2 hours"),
+    ("3", "3 hours"),
+    ("4", "4 hours"),
+    ("5", "5 hours"),
+)
+class ReminderForm(forms.Form):
+  send_email = forms.NullBooleanField()
+  email = forms.EmailField(required=False, label="Email Address")
+  send_text = forms.NullBooleanField()
+  email_advance = forms.ChoiceField(choices=REMINDER_TIME_CHOICES, label="Send reminder how far in advance?")
+  text_number = USPhoneNumberField(required=False, label="Mobile phone number")
+  text_carrier = forms.ChoiceField(choices=Profile.TEXT_CARRIERS, required=False, label="Carrier")
+  text_advance = forms.ChoiceField(choices=REMINDER_TIME_CHOICES, label="Send reminder how far in advance?")
+    
+  def clean(self):
+    cleaned_data = self.cleaned_data
+    send_email = cleaned_data.get("send_email")
+    email = None
+    if cleaned_data.has_key("email"):
+      email = cleaned_data.get("email")
+    if send_email and (not email or len(email) == 0):
+      raise forms.ValidationError("A valid email address is required.")
+      
+    send_text = cleaned_data.get("send_text")
+    number = None
+    if cleaned_data.has_key("text_number"):
+      number = cleaned_data.get("text_number")
+    if send_text and (not number or len(number) == 0):
+      raise forms.ValidationError("A valid phone number is required.")
+      
+    return cleaned_data

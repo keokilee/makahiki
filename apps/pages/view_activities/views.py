@@ -2,11 +2,11 @@ import datetime
 import simplejson as json
 
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect, Http404
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
@@ -488,6 +488,41 @@ def task(request, activity_type, slug):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
+   
+  # Load reminders
+  reminders = {}
+  if task.type == "event" or task.type == "excursion":
+    # Store initial reminder fields.
+    reminder_init = {
+        "email": user.get_profile().contact_email or user.email,
+        "text_number": user.get_profile().contact_text,
+        "text_carrier": user.get_profile().contact_carrier,
+    }
+    # Retrieve an existing reminder and update it accordingly.
+    try:
+      email = user.emailreminder_set.get(activity=task)
+      reminders.update({"email": email})
+      reminder_init.update({
+          "email": email.email, 
+          "send_email": True,
+          "email_advance": str((task.activity.event_date - email.send_at).hours)
+      })
+    except ObjectDoesNotExist:
+      pass
+    
+    try:
+      text = user.textreminder_set.get(activity=task)
+      reminders.update({"text": text})
+      reminder_init.update({
+          "text_number": text.text_number, 
+          "text_carrier": text.text_carrier,
+          "send_text": True,
+          "text_advance": str((task.activity.event_date - text.send_at).hours)
+      })
+    except ObjectDoesNotExist:
+      pass
+      
+    reminders.update({"form": ReminderForm(initial=reminder_init)})
     
   display_form = True if request.GET.has_key("display_form") else False
 
@@ -510,13 +545,16 @@ def task(request, activity_type, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
+<<<<<<< HEAD
     "notification":notification,
+=======
+    "reminders": reminders,
+>>>>>>> Implemented form validations for the reminder form.
   }, context_instance=RequestContext(request))    
 
 @never_cache
 @login_required
 def add_task(request, activity_type, slug):
-  
   task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
   
   if task.type == "commitment":
@@ -532,6 +570,46 @@ def add_task(request, activity_type, slug):
       return __request_activity_points(request, task)
     else:  
       return __add_activity(request, task)
+      
+@login_required
+def reminder(request, activity_type, slug):
+  if request.is_ajax():
+    if request.method == "POST":
+      task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
+      form = ReminderForm(request.POST)
+      if form.is_valid():
+        if form.cleaned_data["send_email"]:
+          reminder = EmailReminder(
+              user=request.user, 
+              activity=task, 
+              email_address=form.cleaned_data["email"],
+              send_at=task.activity.event_date - datetime.timedelta(days=int(form.cleaned_data["email_advance"])),
+          )
+          reminder.save()
+          
+        if form.cleaned_data["send_text"]:
+          reminder = TextReminder(
+              user=request.user,
+              activity=task,
+              text_number=form.cleaned_data["text_number"],
+              text_carrier=form.cleaned_data["text_carrier"],
+              send_at=task.activity.event_date - datetime.timedelta(days=int(form.cleaned_data["text_advance"])),
+          )
+          reminder.save()
+          
+        return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
+        
+      template = render_to_string("view_activities/reminder_form.html", {
+          "reminders": {"form": form},
+          "task": task,
+      })
+      
+      return HttpResponse(json.dumps({
+          "success": False,
+          "form": template,
+      }), mimetype="application/json")
+  
+  raise Http404
     
 @never_cache
 @login_required
