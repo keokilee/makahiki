@@ -76,20 +76,27 @@ def smartgrid(request):
 
 @login_required
 def sgactivities(request, category_slug):
-  activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
-  choices = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
+  activities = ActivityBase.objects.order_by("priority") 
+  category_slugs = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
     "wet-and-wild", "pot-pourri"]
+  categories = ["Get Started", "Basic Energy", "Lights Out", "Make Watts", "Moving On", "Opala",
+    "Wet & Wild", "Pot Pourri"]
+  i = -1
   category = ""
-  for x in choices:
+  for x in category_slugs:
     if x == string.lower(category_slug):
       category = x
-      
+      i = i + 1
+
+  category_no_slug = categories[i]
+
   for task in activities:
     annotate_task_status(request.user, task)
 
   return render_to_response("mobile/smartgrid/activities.html", {
     "activities": activities,
     "category": category,
+    "title": category_no_slug,
   }, context_instance=RequestContext(request))
 
 @never_cache
