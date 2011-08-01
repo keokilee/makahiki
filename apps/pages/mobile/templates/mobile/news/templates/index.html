@@ -14,14 +14,14 @@
     </div>
     <div {% get_id_and_classes "news-wall-content" %}>
       <div {% get_id_and_classes "wall-form" %}>
-        <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST">
+        <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST" onSubmit="setTimeout('parent.location.reload()',500); return true;">
           {% csrf_token %}
           <div {% get_id_and_classes "wall-post-errors" %}></div>
           <div {% get_id_and_classes "wall-post" %}>
             {{wall_form.post}}
           </div>
 		  <div style="text-align: center">
-			<button id="wall-post-submit" style="font-size: 12px; margin-top:1.2em; margin-left:0.5em; margin-right:0.5em; margin-bottom:1.2em;">
+			<button id="wall-post-submit"  style="font-size: 12px; margin-top:1.2em; margin-left:0.5em; margin-right:0.5em; margin-bottom:1.2em;">
 				Post
 			</button>
 		  </div>
