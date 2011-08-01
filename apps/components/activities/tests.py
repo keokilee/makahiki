@@ -80,6 +80,10 @@ class ActivitiesUnitTestCase(TestCase):
     self.activity.type = "event"
     self.activity.depends_on = "True"
     self.activity.name = "name"
+    self.pub_date=datetime.datetime.today()
+    self.expire_date=datetime.datetime.today() + datetime.timedelta(days=7)
+    self.event_date = datetime.datetime.today()
+    
     self.activity.save()
     
     activities = get_available_activities(self.user)
