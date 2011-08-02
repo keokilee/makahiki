@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
   //Set up the help dialog.
   jQuery("#widget-help-dialog").dialog({
     autoOpen: false,
+    width: 550,
     modal: true
   });
   
