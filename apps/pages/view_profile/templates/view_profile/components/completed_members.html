@@ -25,12 +25,19 @@
     {% else %}
       {% if member.activity %}
         {% if member.award_date %}
-        <td>
-          <a href="{% url activity_task 'commitment' member.activity.slug %}">
-            {{member.activity.type.capitalize}}: {{member.activity.name}}
-          </a>
-        </td>
-        <td>{{member.activity.point_value}}</td>
+          <td>
+            <a href="{% url activity_task member.activity.type member.activity.slug %}">{{member.activity.type.capitalize}}: {{member.activity.name}}</a>
+            {# Handle social bonus case #}
+            {% if member.social_bonus_awarded %}
+            plus social bonus
+            {% endif %}
+          </td>
+          <td>
+            {{member.activity.point_value}}
+            {% if member.social_bonus_awarded %}
+            + {{member.activity.social_bonus}}
+            {% endif %}
+          </td>
         {% else %}
           {% if member.activity.type != "activity" %}
           <td>

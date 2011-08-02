@@ -416,6 +416,22 @@ class ActivityMember(CommonActivityUser):
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
   
+  def social_bonus_awarded(self):
+    """
+    Try to check if there is a social bonus.
+    """
+    if self.user_comment:
+      try:
+        ref_user = User.objects.get(email=self.user_comment)
+        ref_count = ActivityMember.objects.filter(user=ref_user, activity=self.activity, 
+            approval_status="approved").count()
+        if ref_count > 0:
+          return True
+      except User.DoesNotExist:
+        pass
+        
+    return False
+        
   def save(self, *args, **kwargs):
     """Custom save method to award/remove points if the activitymember is approved or rejected."""
     if self.approval_status == u"pending":

@@ -154,7 +154,7 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertNotContains(response, "You have nothing in progress or pending.")
     
   def testCommitmentAchievement(self):
-    """Check that the user's achievements are loaded."""
+    """Check that the user's commitment achievements are loaded."""
     commitment = Commitment(
         title="Test commitment",
         description="A commitment!",
@@ -180,4 +180,39 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, reverse("activity_task", args=(commitment.type, commitment.slug,)))
     self.assertNotContains(response, "You have not been awarded anything yet!")
     self.assertContains(response, "You have nothing in progress or pending.")
+    
+  def testSocialBonusAchievement(self):
+    """Check that the social bonus appears in the my achievements list."""
+    # Create a second test user.
+    user2 = User.objects.create_user("user2", "user2@test.com")
+    event = Activity.objects.create(
+        title="Test event",
+        slug="test-event",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        social_bonus=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+    )
+    
+    # Create membership for the two users.
+    member = ActivityMember.objects.create(
+        user=self.user,
+        activity=event,
+        approval_status="approved",
+        user_comment="user2@test.com",
+    )
+    member2 = ActivityMember.objects.create(
+        user=user2,
+        activity=event,
+        approval_status="approved",
+        user_comment="user@test.com",
+    )
+    
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, reverse("activity_task", args=(event.type, event.slug,)))
+    self.assertContains(response, "plus social bonus", count=1, msg_prefix="Achievements should contain a social bonus entry")
     

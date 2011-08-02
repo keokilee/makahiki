@@ -2,6 +2,7 @@ from itertools import chain
 from operator import attrgetter
 
 from components.activities import get_current_activity_members, get_current_commitment_members
+from components.activities.models import ActivityMember
 
 def get_completed_members(user):
   # Retrieve previously awarded tasks, quests, and badges.
