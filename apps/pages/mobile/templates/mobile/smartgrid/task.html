@@ -168,15 +168,17 @@
           <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
         {% endif %} 
         {% if task.type == "activity" and not form.image_response %}
+          {% if form.image_response %}
+            <div data-role="content" data-theme="e" class="ui-corner-all">Sorry, image uploading is currently unsuported on mobile devices.</div> 
+          {% else %}
           <b>
           Once you are done, click the button below to get your points!
           </b>
           <p/>
           <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
+          {% endif %}
         {% endif %}
-        {% if form.image_response %}
-          <div data-role="content" data-theme="e" class="ui-corner-all">Sorry, image uploading is currently unsuported on mobile devices.</div>
-        {% endif %} 
+
       {% endif %}
        <br/> <br/>
       </center> <p>
@@ -254,10 +256,10 @@
       {% if form.image_response %}         {# image #}
         {{task.confirm_prompt}} <p/>
         <div data-role="content" data-theme="e" class="ui-corner-all">Sorry, image uploading is currently unsuported on mobile devices.</div>
-        <!--
+        <
         {{ form.image_response.errors }}
         {{ form.image_response }}
-        -->
+        
       {% else %}                           
         {% if question %}                                {# question #}
         Please answer the following question(s) and submit your answer(s).

@@ -292,6 +292,7 @@ def __add_activity(request, activity_id, slug):
       else:   # form not valid
         return render_to_response("mobile/smartgrid/task.html", {
             "task":activity,
+            "category":category,
             "pau":False,
             "form":form,
             "question":question,
@@ -329,11 +330,11 @@ def __request_activity_points(request, activity_id, slug):
 
   if request.method == "POST":
     if activity.confirm_type == "image":
-      form = ActivityImageForm(request.POST, request.FILES)
+      form = ActivityImageForm(request.POST, request.FILES, request=request)
     elif activity.confirm_type == "free":
-      form = ActivityFreeResponseForm(request.POST)
+      form = ActivityFreeResponseForm(request.POST, request=request)
     else:
-      form = ActivityTextForm(request.POST)
+      form = ActivityTextForm(request.POST, request=request, activity=activity)
     
     ## print activity.confirm_type
     if form.is_valid():
@@ -379,6 +380,7 @@ def __request_activity_points(request, activity_id, slug):
       
     return render_to_response("mobile/smartgrid/task.html", {
     "task":activity,
+    "category": category,
     "pau":False,
     "form":form,
     "question":question,
