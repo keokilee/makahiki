@@ -12,7 +12,8 @@ from django.core.urlresolvers import reverse
 class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
-      'fields' : ('name', 'slug', 'title', 'description', 'social_bonus', 'duration', 'depends_on', 'depends_on_text','energy_related'),
+      'fields' : ('name', 'slug', 'title', 'description', 'social_bonus', 'duration', 
+          'depends_on', 'depends_on_text','energy_related', 'mobile_restricted'),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -224,7 +225,7 @@ class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
       'fields' : ('name', 'slug', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 
-      'event_date', 'event_location', 'depends_on','depends_on_text','energy_related'),
+      'event_date', 'event_location', 'depends_on','depends_on_text','energy_related', 'mobile_restricted'),
     }),
     ("Points", {"fields": ("point_value", 'social_bonus', ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),

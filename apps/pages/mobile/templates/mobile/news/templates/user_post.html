@@ -7,10 +7,11 @@
       <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user.get_profile.name }}" class="{% insert_classes 'news-photo' %}" align="top"/>
     </div>
     <div class="{% insert_classes 'user-post-content' %}">
+      <br>
       <p><span style="font-weight: bold">{{post.user.get_profile.name}}</span> {{post.text}}</p>
       <div class="{% insert_classes 'user-post-date-string' %}">Posted at {{post.date_string}}</div>
     </div>
   </div>
 
-  <hr/>
+
 </li>
