@@ -1,9 +1,9 @@
 {% load class_tags %}
 {% for post in posts %} 
   {% if post.style_class == "user_post" %}
-    {% include "news/user_post.html" %}
+    {% include "mobile/news/templates/user_post.html" %}
   {% else %}
-    {% include "news/system_post.html" %}
+    {% include "mobile/news/templates/system_post.html" %}
   {% endif %} 
   
   {% if forloop.last and more_posts %}
