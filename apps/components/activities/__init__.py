@@ -18,19 +18,19 @@ def get_popular_tasks():
   Returns a dictionary containing the most popular tasks.
   The keys are the type of the task and the values are a list of tasks.
   """
-  # TODO: Make this more flexible once generic memberships are working.
   return {
-    "Activity": get_popular_activities()[:5],
+    "Activity": get_popular_activities("activity")[:5],
     "Commitment": get_popular_commitments()[:5],
-    "Event": [],
-    "Survey": [],
-    "Excursion": [],
+    "Event": get_popular_activities("event")[:5],
+    "Survey": get_popular_activities("survey")[:5],
+    "Excursion": get_popular_activities("excursion")[:5],
   }
   
-def get_popular_activities():
+def get_popular_activities(activity_type="activity"):
   """Gets the most popular activities in terms of completions."""
   return Activity.objects.filter(
       activitymember__approval_status="approved",
+      type=activity_type,
   ).annotate(completions=Count("activitymember")).order_by("-completions")
   
 def get_popular_commitments():
