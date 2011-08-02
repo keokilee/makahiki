@@ -1,0 +1,14 @@
+<li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
+  <div class="notification-contents">
+    <span class="ui-icon {{notification.icon_class}}"></span>
+    {{notification.contents|safe}}
+  </div> 
+       <form action="{% url notifications_read notification.id %}" rel="external" method="POST" style="display: inline">
+        <button type="submit"  onClick="this.parent.parent.style.visibility='hidden'"class="notification-read ui-icon ui-icon-circle-close"/>
+      </form> 
+  <script>
+    function close() {
+        $.post("{% url notifications_read notification.id %}");
+      }
+  </script>
+</li>
