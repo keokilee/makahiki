@@ -128,3 +128,7 @@ def _validate_social_email(self, cleaned_data):
     if user == None or user == self.request.user:
       self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
       del cleaned_data["social_email"]
+
+class EventCodeForm(forms.Form):
+  response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}))
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'20'}), initial="Email", required=False)

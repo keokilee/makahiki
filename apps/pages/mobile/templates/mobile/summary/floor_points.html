@@ -16,11 +16,11 @@
       <h2><u>{{CURRENT_ROUND.title}} Score</u></h2>
       {% if CURRENT_ROUND %} 
         <div id="points in floor this round"> 
-          <h4> {{floor.current_round_points}} {{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}</h4> 
-          <h4>#{{floor.current_round_rank}} out of {{FLOOR_COUNT}} in all dorms</h4>
+          <h4> {{floor.current_round_points}} {{COMPETITION_POINT_NAME}}s <br>in  {{CURRENT_ROUND.title}}</h4> 
+          <h4>#{{floor.current_round_rank}} out of {{FLOOR_COUNT}} <br>in all dorms</h4>
           <h2><u>{{CURRENT_ROUND.title}} Energy Use</u></h2>
-          <h4><span id="round-energy-value"></span> kWh used in {{CURRENT_ROUND.title}}</h4> 
-          <h4><span id="round-energy-rank"> </span> out of {{FLOOR_COUNT}} in all dorms</h4>  
+          <h4><span id="round-energy-value"></span> kWh used <br>in {{CURRENT_ROUND.title}}</h4> 
+          <h4><span id="round-energy-rank"> </span> out of <br>{{FLOOR_COUNT}} in all dorms</h4>  
         </div>
       {% endif %}
     </div>
@@ -29,11 +29,11 @@
       <h2><u>Cumulative Score</u></h2>
       <div id="header-floor-overall-rank3">
         <h4>{{floor.points}} {{COMPETITION_POINT_NAME}}s overall </h4>
-        <h4>#{{floor.rank}} out of {{FLOOR_COUNT}} dorms</h4>
+        <h4>#{{floor.rank}} out of </br>{{FLOOR_COUNT}} dorms</h4>
       </div>
     <h2><u>Cumulative Energy Use</u></h2>
     <h4><span id="overall-energy-value"> </span>kWh used overall</h4>
-    <h4><span id="overall-energy-rank"></span> out of {{FLOOR_COUNT}} dorms</h4>
+    <h4><span id="overall-energy-rank"></span> out of {{FLOOR_COUNT}} </br>dorms</h4>
   </div>
   </div>
 </di>

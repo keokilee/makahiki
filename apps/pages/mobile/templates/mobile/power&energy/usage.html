@@ -1,7 +1,7 @@
 {% load class_tags %}
 <div {% get_id_and_classes "energy-power-box" %}>
   
-<div align="left" id="EnergyGoalGame-visualization" height="200px" width="200px"></div> 
+<div id="EnergyGoalGame-visualization" height="200px" width="200px">Sorry, Visuaization is Unavailable!</div> 
 
 </div>
 
@@ -19,11 +19,8 @@
     var options = {};  // no options currently supported. 
     var energyChart = new org.wattdepot.gdata.makahiki.EnergyGoalGame();
     energyChart.draw('EnergyGoalGame-visualization', source, datatable, options);
-    
-    //display_energy_calculator("energy-calculator", source, datatable);   
+      
   } 
               
-})();
-
-  
+})(); 
 </script> 

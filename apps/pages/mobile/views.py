@@ -37,6 +37,9 @@ from pages.view_prizes.views import _get_raffle_prizes
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
+@login_required
+def logout(request):
+  return render_to_response("mobile/logout.html", {}, context_instance=RequestContext(request))
 
 @login_required
 def scoreboard(request):
@@ -76,20 +79,27 @@ def smartgrid(request):
 
 @login_required
 def sgactivities(request, category_slug):
-  activities = ActivityBase.objects.order_by("priority") # if not dynamic, still needed
-  choices = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
+  activities = ActivityBase.objects.order_by("priority") 
+  category_slugs = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
     "wet-and-wild", "pot-pourri"]
+  categories = ["Get Started", "Basic Energy", "Lights Out", "Make Watts", "Moving On", "Opala",
+    "Wet & Wild", "Pot Pourri"]
+  i = -1
   category = ""
-  for x in choices:
+  for x in category_slugs:
     if x == string.lower(category_slug):
       category = x
-      
+      i = i + 1
+
+  category_no_slug = categories[i]
+
   for task in activities:
     annotate_task_status(request.user, task)
 
   return render_to_response("mobile/smartgrid/activities.html", {
     "activities": activities,
     "category": category,
+    "title": category_no_slug,
   }, context_instance=RequestContext(request))
 
 @never_cache
@@ -190,6 +200,7 @@ def task(request, category_slug, slug):
   
   return render_to_response("mobile/smartgrid/task.html", {
     "task":task,
+    "category":category_slug,
     "pau":pau,
     "approval":approval,
     "form":form,
@@ -207,10 +218,11 @@ def task(request, category_slug, slug):
 
 ### Private methods.
 @never_cache
-def __add_commitment(request, commitment_id):
+def __add_commitment(request, commitment_id, slug):
   """Commit the current user to the commitment."""
-  
-  commitment = get_object_or_404(Commitment, pk=commitment_id)
+
+  category = commitment_id
+  commitment = get_object_or_404(Commitment, category__slug=commitment_id, slug=slug)
   user = request.user
   floor = user.get_profile().floor
   
@@ -248,13 +260,14 @@ def __add_commitment(request, commitment_id):
     #   # Facebook not enabled.
     #   pass
         
-  return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
+  return HttpResponseRedirect(reverse("mobile_task", args=(category, commitment.slug,)))
 
 @never_cache
-def __add_activity(request, activity_id):
+def __add_activity(request, activity_id, slug):
   """Commit the current user to the activity."""
 
-  activity = get_object_or_404(Activity, pk=activity_id)
+  category = activity_id
+  activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
   user = request.user
   floor = user.get_profile().floor
   
@@ -294,13 +307,14 @@ def __add_activity(request, activity_id):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
       user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
+    return HttpResponseRedirect(reverse("mobile_task", args=(category, activity.slug,)))
 
 @never_cache
-def __request_activity_points(request, activity_id):
+def __request_activity_points(request, activity_id, slug):
   """Creates a request for points for an activity."""
   
-  activity = get_object_or_404(Activity, pk=activity_id)
+  category = activity_id
+  activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
   user = request.user
   floor = user.get_profile().floor
   question = None
@@ -356,7 +370,7 @@ def __request_activity_points(request, activity_id):
 
       activity_member.save()
           
-      return HttpResponseRedirect(reverse("mobile_task", args=(activity.type, activity.slug,)))
+      return HttpResponseRedirect(reverse("mobile_task", args=(category, activity.slug,)))
     
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
@@ -384,18 +398,18 @@ def sgadd(request, category_slug, slug):
   task = ActivityBase.objects.get(category__slug=category_slug, slug=slug)
 
   if task.type == "commitment":
-    return __add_commitment(request, task)
+    return __add_commitment(request, category_slug, slug)
     
   if task.type == "activity":
-    return __request_activity_points(request, task)
+    return __request_activity_points(request, category_slug, slug)
   elif task.type == "survey":
-    return __add_activity(request, task)
+    return __add_activity(request, category_slug, slug)
   else:
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():
-      return __request_activity_points(request, task)
+      return __request_activity_points(request, category_slug, slug)
     else:  
-      return __add_activity(request, task)
+      return __add_activity(request, category_slug, slug)
     
    
   
@@ -500,10 +514,12 @@ def quests(request,option):
   }, context_instance=RequestContext(request))
 
 @login_required
-def quest_detail(request, slug):
+def quest_detail(request, ref, slug):
+  ref=ref.lower 
   quest=get_object_or_404(Quest,quest_slug=slug)  
   return render_to_response("mobile/quests/details.html", {
     "quest": quest,
+    "referer": ref,
   }, context_instance=RequestContext(request))
 
 @login_required

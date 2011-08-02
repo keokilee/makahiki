@@ -73,10 +73,12 @@
     </h3>
   </center>
   {% include "view_activities/grid.html" %}
+  
 </div>
 {% endblock %}
 
 {% block extra_body %}
+
 <div id="unlock-dialog" title="Locked Activity" style="visibility: hidden;">
   <div style="text-align:left">
     <p> <b>This activity is locked.</b></p>
@@ -90,7 +92,77 @@
   </div>
 </div>
 
+{% if not hide_about %}
+<div id="grid-about">
+  <div class="notice">
+    <img src="/site_media/static//css/default/images/icon-help-sm.png" width="30" align="center">
+    <div style="text-align:right; padding-left: 5px; margin-top: -35px;"><a id="grid-hide-about" href="javascript:void(0);">Close</a>
+    </div>
+    <div class="body" style="margin-left: 60px; margin-top: -5px;">
+      Welcome to the Smart Grid Game!<p></p>
+      Click on squares to view activities. Numbers represent <br>
+      the points earned for completing an activity. Locked <br>
+      squares can be unlocked by completing other activities. 
+    </div>
+  </div>
+</div>
+{% endif %}
+
 <script type="text/javascript"> 
+$( document ).ready( function ()
+ {
+  
+    {% if notification %}
+	var notice = '<div class="notice">'
+		+ '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
+		+ '<div class="body"> {{notification}} </div>' 
+		+ '</div>';
+
+	$(notice).purr(
+	   {
+			usingTransparentPNG: true,
+			fadeInSpeed: 100,
+            fadeOutSpeed: 600,
+            removeTimer: 2500,
+            isSticky: false
+	   }
+    );		
+    {% endif %}
+
+    {% if not hide_about %}
+      $("#grid-about").fadeIn();
+    {% endif %}
+
+    $("#grid-hide-about").click(function() {
+      setCookie("grid-hide-about", "true", 0);
+      $("#grid-about").fadeOut();
+      return false;
+    });
+
+          $("#event-code-submit").click(function() {
+             
+              $.post("{% url activity_attend_code %}", $("#event-code-form").serialize(), function(data) {
+                if (data.message) {
+                  $("#event-code-errors").html(data.message);
+                  if (data.social_email) {
+                    $("#social_email").show();
+                  }
+                }
+                else {
+                  window.location.replace("/activities/"+data.type+"/"+data.slug+"/?notify="+data.notify+"&value="+data.value);
+                }
+              });
+           
+            return false;
+          });
+          
+  $("#social_email input").click(function() {
+      this.value = "";
+  });
+
+ });
+
+
 function unlock_dialog(depends_on)
 {
   el = document.getElementById("unlock-dialog"); 

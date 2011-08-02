@@ -2,7 +2,6 @@
 {% block body %}
 <div data-role="page">
   <div data-role="header" data-theme="b" data-add-back-btn="True"> 
-     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home">Home</a>
     <h1>Events</h1>
     <div data-role="navbar" data-add-back-btn="True">
       <ul>
@@ -27,9 +26,7 @@
         </li>
       </ul>
     </div>
-    <a href="/../m" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">
-      Home
-    </a>
+    <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
   </div><!-- /header -->
  
  <!-- upcoming events-->
@@ -50,7 +47,7 @@
        <ul data-role="listview" > 
 	 {% for events in object.eventlist %}  
 	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}">
+               <a href="{% url mobile_task events.category.name|slugify events.name|slugify %}">
                  {%if events.attending %} 
                     <img align="middle" src="/site_media/static/css/default/images/star.png" alt="attending">
                  {% endif %}
@@ -83,8 +80,9 @@
      </h3>
        <ul data-role="listview"> 
 	 {% for events in objlist %}  
+            {% if events.is_unlock %} <!--remove line if no work debug-->
 	     <li> 
-               <a href="{% url mobile_smartgrid_task events.id %}"> 
+               <a href="{% url mobile_task events.category.name|slugify events.name|slugify%}"> 
 	         <h3>{{events.title}}</h3> 
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>
@@ -92,6 +90,7 @@
                  <strong>{{events.event_date}}</strong></p>
                </a>
 	     </li>  
+           {% endif %}
 	 {% endfor %}
        </ul>
      </div>   

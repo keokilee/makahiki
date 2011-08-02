@@ -96,7 +96,7 @@ org.wattdepot.gdata.makahiki.EnergyGoalGame = function() {
     else {
       stoplightFile = "stop_light_green.png";
     }
-    return '<img src=/site_media/static/images/energy/' + stoplightFile + ' width="50" height="70"/>';
+    return '<img src=/site_media/static/images/energy/' + stoplightFile + ' width="50" height="70" alt="Sorry Visualization Unavailable!"/>';
   }
 
 
