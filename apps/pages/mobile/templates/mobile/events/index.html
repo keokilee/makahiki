@@ -80,7 +80,7 @@
      </h3>
        <ul data-role="listview"> 
 	 {% for events in objlist %}  
-            {% if events.is_unlock %} <!--remove line if no work debug-->
+              <!--if events.is_unlock-->
 	     <li> 
                <a href="{% url mobile_task events.category.name|slugify events.name|slugify%}" rel="external"> 
 	         <h3>{{events.title}}</h3> 
@@ -90,7 +90,7 @@
                  <strong>{{events.event_date}}</strong></p>
                </a>
 	     </li>  
-           {% endif %}
+           <!--end if events.is_unlock-->
 	 {% endfor %}
        </ul>
      </div>   
