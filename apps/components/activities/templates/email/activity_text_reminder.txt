@@ -1,0 +1,1 @@
+This is a reminder that the '{{activity.title}}' {{activity.type.lower}} is happening on {{activity.activity.event_date}}{% if activity.activity.event_location %} at {{activity.activity.event_location}}{% endif %}.  If you do attend, you will receive a code which can be redeemed for {{activity.activity.point_value}} points.

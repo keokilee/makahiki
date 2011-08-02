@@ -503,9 +503,9 @@ def task(request, activity_type, slug):
       email = user.emailreminder_set.get(activity=task)
       reminders.update({"email": email})
       reminder_init.update({
-          "email": email.email, 
+          "email": email.email_address, 
           "send_email": True,
-          "email_advance": str((task.activity.event_date - email.send_at).hours)
+          "email_advance": str((task.activity.event_date - email.send_at).seconds / 3600)
       })
     except ObjectDoesNotExist:
       pass
@@ -517,7 +517,7 @@ def task(request, activity_type, slug):
           "text_number": text.text_number, 
           "text_carrier": text.text_carrier,
           "send_text": True,
-          "text_advance": str((task.activity.event_date - text.send_at).hours)
+          "text_advance": str((task.activity.event_date - text.send_at).seconds / 3600)
       })
     except ObjectDoesNotExist:
       pass
@@ -545,11 +545,8 @@ def task(request, activity_type, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-<<<<<<< HEAD
     "notification":notification,
-=======
     "reminders": reminders,
->>>>>>> Implemented form validations for the reminder form.
   }, context_instance=RequestContext(request))    
 
 @never_cache

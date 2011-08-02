@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.core import mail
 
 from components.activities import *
-from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
+from components.activities.models import *
 
 class ActivitiesUnitTestCase(TestCase):
   def setUp(self):
@@ -292,3 +292,115 @@ class CommitmentsUnitTestCase(TestCase):
   def tearDown(self):
     """Restore the saved settings."""
     settings.COMPETITION_ROUNDS = self.saved_rounds
+    
+class RemindersUnitTestCase(TestCase):
+  def setUp(self):
+    """
+    Create a test event and a test user.
+    """
+    self.event = Activity.objects.create(
+        title="Test event",
+        slug="test-event",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+        type="event",
+        event_date=datetime.datetime.today() + datetime.timedelta(days=1),
+    )
+    
+    self.user = User.objects.create_user("testuser", "test@test.com")
+    
+  def testSendEmailReminder(self):
+    """Test that we can send an email reminder."""
+    reminder = EmailReminder.objects.create(
+        user=self.user,
+        activity=self.event,
+        email_address="test@tester.com",
+        send_at=datetime.datetime.today(),
+    )
+    
+    reminder.send()
+    sent_mail = mail.outbox[0]
+    self.assertTrue("test@tester.com" in sent_mail.to, "Email address should be in the recipient list.")
+    reminder = self.user.emailreminder_set.get(activity=self.event)
+    self.assertTrue(reminder.sent, "Reminder should be marked as sent.")
+    
+    # Try to send the reminder again.
+    mail_count = len(mail.outbox)
+    reminder.send()
+    self.assertEqual(len(mail.outbox), mail_count, "A duplicate email should not be sent.")
+    
+  def testSendAttTextReminder(self):
+    """
+    Test that we construct the appropriate email address for AT&T customers.
+    """
+    reminder = TextReminder.objects.create(
+        user=self.user,
+        activity=self.event,
+        text_number="808-555-1234",
+        text_carrier="att",
+        send_at=datetime.datetime.today(),
+    )
+    
+    reminder.send()
+    sent_mail = mail.outbox[0]
+    att_email = "8085551234@txt.att.net"
+    self.assertTrue(att_email in sent_mail.to, "AT&T email address should be in the recipient list.")
+    
+    mail_count = len(mail.outbox)
+    reminder.send()
+    self.assertEqual(len(mail.outbox), mail_count, "A duplicate email should not be sent.")
+    
+  def testSendTmobileTextReminder(self):
+    """
+    Test that we construct the appropriate email address for T-Mobile customers.
+    """
+    reminder = TextReminder.objects.create(
+        user=self.user,
+        activity=self.event,
+        text_number="808-555-1234",
+        text_carrier="tmobile",
+        send_at=datetime.datetime.today(),
+    )
+    
+    reminder.send()
+    sent_mail = mail.outbox[0]
+    tmobile_mail = "8085551234@tmomail.net"
+    self.assertTrue(tmobile_mail in sent_mail.to, "T-Mobile email address should be in the recipient list.")
+    
+  def testSendSprintTextReminder(self):
+    """
+    Test that we construct the appropriate email address for Sprint customers.
+    """
+    reminder = TextReminder.objects.create(
+        user=self.user,
+        activity=self.event,
+        text_number="808-555-1234",
+        text_carrier="sprint",
+        send_at=datetime.datetime.today(),
+    )
+
+    reminder.send()
+    sent_mail = mail.outbox[0]
+    sprint_mail = "8085551234@messaging.sprintpcs.com"
+    self.assertTrue(sprint_mail in sent_mail.to, "Sprint email address should be in the recipient list.")
+    
+  def testSendVerizonTextReminder(self):
+    """
+    Test that we construct the appropriate email address for Verizon customers.
+    """
+    reminder = TextReminder.objects.create(
+        user=self.user,
+        activity=self.event,
+        text_number="808-555-1234",
+        text_carrier="verizon",
+        send_at=datetime.datetime.today(),
+    )
+
+    reminder.send()
+    sent_mail = mail.outbox[0]
+    tmobile_mail = "8085551234@vtext.com"
+    self.assertTrue(tmobile_mail in sent_mail.to, "Verizon email address should be in the recipient list.")

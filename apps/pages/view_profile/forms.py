@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 
-from components.makahiki_profiles.models import Profile
+from components.activities.models import TextReminder
 
 class ProfileForm(forms.Form):
   display_name = forms.CharField(required=True)
@@ -14,12 +14,7 @@ class ProfileForm(forms.Form):
   contact_text = USPhoneNumberField(required=False, widget=forms.TextInput(attrs={
     "style": "width: 100px",
   }))
-  contact_carrier = forms.ChoiceField(choices=(
-    ("t-mobile", "T-Mobile"),
-    ("att", "AT&T"),
-    ("sprint", "Sprint"),
-    ("verizon", "Verizon"),
-  ))
+  contact_carrier = forms.ChoiceField(choices=TextReminder.TEXT_CARRIERS)
   
   # def clean_display_name(self):
   #   """

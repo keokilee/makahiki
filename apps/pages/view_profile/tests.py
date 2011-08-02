@@ -36,7 +36,7 @@ class ProfileFunctionalTestCase(TestCase):
         "stay_logged_in": True,
         "contact_email": "user@test.com",
         "contact_text": "8088675309",
-        "contact_carrier": "t-mobile",
+        "contact_carrier": "tmobile",
     }
     # Test posting a valid form.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
@@ -76,7 +76,7 @@ class ProfileFunctionalTestCase(TestCase):
         "stay_logged_in": True,
         "contact_email": "user@test.com",
         "contact_text": "8088675309",
-        "contact_carrier": "t-mobile",
+        "contact_carrier": "tmobile",
     }
     # Test posting form with dup name.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)

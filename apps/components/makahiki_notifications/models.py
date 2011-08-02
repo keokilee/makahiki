@@ -88,8 +88,8 @@ class UserNotification(Notification):
     notification.save()
     
   @staticmethod
-  def create_email_notification(recipient, subject, message, html_message=None):
-    msg = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, [recipient.email])
+  def create_email_notification(recipient_email, subject, message, html_message=None):
+    msg = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, [recipient_email,])
     if html_message:
       msg.attach_alternative(html_message, "text/html")
       

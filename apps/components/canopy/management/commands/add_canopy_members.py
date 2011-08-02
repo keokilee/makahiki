@@ -59,7 +59,7 @@ class Command(management.base.BaseCommand):
           "domain": current_site.domain,
       })
 
-      UserNotification.create_email_notification(user, subject, message, html_message)
+      UserNotification.create_email_notification(user.email, subject, message, html_message)
       
     else:
       self.stdout.write("'%s' does not have a valid email address.  Skipping\n" % user.username)

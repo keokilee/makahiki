@@ -7,6 +7,7 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
+from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from components.activities import *
@@ -512,7 +513,7 @@ class ActivityMember(CommonActivityUser):
       "domain": current_site.domain,
     })
     
-    UserNotification.create_email_notification(self.user, subject, message, html_message)
+    UserNotification.create_email_notification(self.user.email, subject, message, html_message)
     
   def delete(self):
     """Custom delete method to remove awarded points."""
@@ -553,9 +554,75 @@ class Reminder(models.Model):
   class Meta:
     abstract = True
     
+  def send(self):
+    raise NotImplementedError("Reminder subclasses need to implement send.")
+    
 class EmailReminder(Reminder):
   email_address = models.EmailField()
+  
+  def send(self):
+    """
+    Sends a reminder email to the user.
+    """
+    if not self.sent:
+      subject = "[%s] Reminder for %s" % (settings.COMPETITION_NAME, self.activity.title) 
+      current_site = Site.objects.get(id=settings.SITE_ID)
+      message = render_to_string("email/activity_reminder.txt", {
+        "activity": self.activity,
+        "user": self.user,
+        "COMPETITION_NAME": settings.COMPETITION_NAME,
+        "domain": current_site.domain,
+      })
+      html_message = render_to_string("email/activity_reminder.html", {
+        "activity": self.activity,
+        "user": self.user,
+        "COMPETITION_NAME": settings.COMPETITION_NAME,
+        "domain": current_site.domain,
+      })
+
+      UserNotification.create_email_notification(self.email_address, subject, message, html_message)
+      self.sent = True
+      self.save()
     
 class TextReminder(Reminder):
+  TEXT_CARRIERS = (
+    ('att', 'AT&T'),
+    ('sprint', 'Sprint'),
+    ('tmobile', 'T-Mobile'),
+    ('verizon', 'Verizon'),
+    ('mobi', 'Mobi PCS'),
+    ('virgin', 'Virgin Mobile'),
+    ('alltel', "AllTel"),
+  )
+  TEXT_EMAILS = {
+      "att": "txt.att.net",
+      "verizon": "vtext.com",
+      "tmobile": "tmomail.net",
+      "sprint": "messaging.sprintpcs.com",
+      "mobi": "mobipcs.net",
+      "virgin": "vmobl.com",
+      "alltel": "message.alltel.com",
+  }
   text_number = PhoneNumberField()
-  text_carrier = models.CharField(max_length=50, choices=Profile.TEXT_CARRIERS, null=True, blank=True)
+  text_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
+  
+  def send(self):
+    """
+    Sends a reminder text to the user.
+    """
+    number = self.text_number.replace("-", "")
+    email = number + "@" + self.TEXT_EMAILS[self.text_carrier]
+    if not self.sent:
+      subject = "[%s] Reminder for %s" % (settings.COMPETITION_NAME, self.activity.title) 
+      current_site = Site.objects.get(id=settings.SITE_ID)
+      message = render_to_string("email/activity_text_reminder.txt", {
+        "activity": self.activity,
+        "user": self.user,
+        "COMPETITION_NAME": settings.COMPETITION_NAME,
+        "domain": current_site.domain,
+      })
+
+      UserNotification.create_email_notification(email, subject, message)
+      self.sent = True
+      self.save()
+      

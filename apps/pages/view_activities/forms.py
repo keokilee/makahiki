@@ -1,8 +1,7 @@
 from django import forms
 from django.forms.util import ErrorList
 
-from components.activities.models import ConfirmationCode
-from components.activities.models import QuestionChoice
+from components.activities.models import ConfirmationCode, QuestionChoice, TextReminder
 from components.activities import *
 
 class ActivityTextForm(forms.Form):
@@ -152,7 +151,7 @@ class ReminderForm(forms.Form):
   send_text = forms.BooleanField(required=False)
   email_advance = forms.ChoiceField(choices=REMINDER_TIME_CHOICES, label="Send reminder how far in advance?")
   text_number = USPhoneNumberField(required=False, label="Mobile phone number")
-  text_carrier = forms.ChoiceField(choices=Profile.TEXT_CARRIERS, required=False, label="Carrier")
+  text_carrier = forms.ChoiceField(choices=TextReminder.TEXT_CARRIERS, required=False, label="Carrier")
   text_advance = forms.ChoiceField(choices=REMINDER_TIME_CHOICES, label="Send reminder how far in advance?")
     
   def clean(self):
