@@ -613,16 +613,14 @@ class TextReminder(Reminder):
     number = self.text_number.replace("-", "")
     email = number + "@" + self.TEXT_EMAILS[self.text_carrier]
     if not self.sent:
-      subject = "[%s] Reminder for %s" % (settings.COMPETITION_NAME, self.activity.title) 
+      # subject = "[%s] Reminder for %s" % (settings.COMPETITION_NAME, self.activity.title) 
       current_site = Site.objects.get(id=settings.SITE_ID)
       message = render_to_string("email/activity_text_reminder.txt", {
         "activity": self.activity,
         "user": self.user,
-        "COMPETITION_NAME": settings.COMPETITION_NAME,
-        "domain": current_site.domain,
       })
 
-      UserNotification.create_email_notification(email, subject, message)
+      UserNotification.create_email_notification(email, "", message)
       self.sent = True
       self.save()
       
