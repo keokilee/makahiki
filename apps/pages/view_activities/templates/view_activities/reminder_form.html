@@ -1,0 +1,91 @@
+{% load class_tags %}
+
+<form id="task-reminder-form" action="{% url activity_reminder task.type task.slug %}" method="post">
+  {% csrf_token %}
+  {{ reminders.form.non_field_errors }}
+  <ul style="list-style: none">
+    <li {% get_id_and_classes "task-reminder-form-email" %}>
+      <div style="float: left; width: 5%; padding-top: 5px">
+        {{reminders.form.send_email}}
+      </div>
+      <div style="float: left;">
+        {{reminders.form.email.label}}: {{reminders.form.email}}<br/>
+        {{reminders.form.email_advance.label}}: {{reminders.form.email_advance}}<br/>
+        Reminder time: <span id="task-reminder-form-email-date"></span>
+      </div>
+    </li>
+    <li {% get_id_and_classes "task-reminder-form-text" %} style="clear: both; padding-top: 15px">
+      <div style="float: left; width: 5%; padding-top: 5px">
+        {{reminders.form.send_text}}
+      </div>
+      <div style="float: left;">
+        {{reminders.form.text_number.label}}: {{reminders.form.text_number}} {{reminders.form.text_carrier.label}}: {{reminders.form.text_carrier}}<br/>
+        {{reminders.form.text_advance.label}}: {{reminders.form.text_advance}}<br/>
+        Reminder time: <span id="task-reminder-form-text-date"></span>
+      </div>
+    </li>
+  </ul>
+  
+  <div style="clear: both; padding-top: 15px">
+    <button {% get_id_and_classes "task-reminder-form-submit" %} style="display: inline">Remind Me</button>
+    <button {% get_id_and_classes "task-reminder-form-cancel" %}>Close</button>
+  </div>
+</form>
+
+<script type="text/javascript">
+  function createDateString(offset) {
+    var d = new Date('{{task.activity.event_date|date:"r"}}');
+    var hour = d.getHours() - offset;
+    var minutes = d.getMinutes();
+    var ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    }
+    else if (hour == 0) {
+      hour = 12;
+    }
+    if(minutes < 10) {
+      minutes = "0"  + minutes;
+    }
+    var timeString = "" + hour + ":" + minutes + " " + ampm;
+    return d.toDateString() + ", " + timeString;
+  }
+  
+  jQuery(document).ready(function($) {
+    // alert(d);
+    $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));
+    $("#task-reminder-form-email-date").html(createDateString($("#id_email_advance").val()));
+    
+    $("#id_text_advance").change(function() {
+      $("#task-reminder-form-text-date").html(createDateString($(this).val()));
+      return false;
+    });
+    
+    $("#id_email_advance").change(function() {
+      $("#task-reminder-form-email-date").html(createDateString($(this).val()));
+      return false;
+    });
+    
+    $("#task-reminder-form-cancel").click(function() {
+      $("#task-reminder-dialog").dialog("close");
+      return false;
+    });
+    
+    $("#task-reminder-form-submit").click(function() {
+      $.post("{% url activity_reminder task.type task.slug %}", $("#task-reminder-form").serialize(), function(data) {
+        if(data.success) {
+          window.location.reload();
+        }
+        else {
+          $("#task-reminder-dialog").html(data.form);
+        }
+        
+        return false;
+      });
+      return false;
+    });
+    
+    return false;
+  });
+</script>

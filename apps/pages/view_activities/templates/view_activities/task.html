@@ -68,6 +68,10 @@
          <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
      {% endfor %}
      
+     {% if task.type == "event" or task.type == "excursion" %}
+     {% include "view_activities/reminder.html" %}
+     {% endif %}
+     
      <p/><p/>
      <center> 
      <a href="/activities">

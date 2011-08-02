@@ -4,8 +4,8 @@
 import datetime # Only used to dynamically set the round dates.
 
 # The start and end date of the competition.
-COMPETITION_START = (datetime.date.today() - datetime.timedelta(days=20)).strftime("%Y-%m-%d")
-COMPETITION_END = (datetime.date.today() + datetime.timedelta(days=10)).strftime("%Y-%m-%d")
+COMPETITION_START = (datetime.date.today() - datetime.timedelta(days=3)).strftime("%Y-%m-%d")
+COMPETITION_END = (datetime.date.today() + datetime.timedelta(days=6)).strftime("%Y-%m-%d")
 
 # The rounds of the competition. Specify dates using "yyyy-mm-dd".
 # Start means the competition will start at midnight on that date.

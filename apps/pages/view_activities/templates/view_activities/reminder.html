@@ -1,0 +1,38 @@
+{% load class_tags %}
+
+{% if not task.is_event_completed %}
+<div {% get_id_and_classes "task-reminder"%}>
+  <p>
+    {% if reminders.email or reminders.text %}
+      {% if reminders.email %}
+      Email reminder will be sent: {{reminders.email.send_at}}
+      {% endif %}
+      {% if reminders.text %}
+      Text reminder will be sent: {{reminders.text.send_at}}
+      {% endif %}
+      <button {% get_id_and_classes "task-reminder-button" %}>Change Reminder</button>
+    {% else %}
+    Get a text or email reminder
+    <button {% get_id_and_classes "task-reminder-button" %}>Remind Me</button>
+    {% endif %}
+  </p>
+</div>
+
+<div {% get_id_and_classes "task-reminder-dialog" %} title="Remind Me" style="display: none">
+  {% include "view_activities/reminder_form.html" %}
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $("#task-reminder-dialog").dialog({
+      modal: true,
+      autoOpen: false,
+      width: 600
+    });
+    
+    $("#task-reminder-button").click(function() {
+      $("#task-reminder-dialog").dialog("open");
+    });
+  });
+</script>
+{% endif %}

@@ -66,3 +66,11 @@ MAKAHIKI_THEME_SETTINGS = {
 # This is the name of the activity in the setup wizard.
 # If the user answers that question correctly, this activity will be marked as completed.
 SETUP_WIZARD_ACTIVITY_NAME = "Intro video"
+
+# This is the url to the last 30 days spreadsheet.
+ENERGY_THIRTY_DAYS_URL = "https://spreadsheets.google.com/spreadsheet/tq?key=0An9ynmXUoikYdGNBUHFNdThYUXBMRTY4T2Q5LTRxZGc"
+
+# This is the url to th energy goal game spreadsheet.
+ENERGY_GOAL_URL = "https://spreadsheets.google.com/spreadsheet/tq?key=0An9ynmXUoikYdGVvRmZQVmVIMFJfa00wWFhPaXdyWUE"
+
+POWER_GAUGE_URL = "https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdEx3TkRkYjdwdHZkTUo4OGI4NVZ3cmc"

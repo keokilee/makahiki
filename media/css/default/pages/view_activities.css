@@ -344,3 +344,19 @@ table#activities-grid td table td{
 	top: 380px;
 	left: 500px;
 }
+
+/****** Task Reminder styles ******/
+#task-reminder-form {
+  text-align: left;
+}
+
+#task-reminder-form ul {
+  padding: 0;
+  margin: 0;
+}
+
+#task-reminder-form ul li {
+  padding: 0;
+  margin: 0;
+}
+

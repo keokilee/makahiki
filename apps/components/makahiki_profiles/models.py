@@ -89,13 +89,6 @@ def _get_available_themes():
   return ((item, item) for item in os.listdir(theme_dir))
   
 class Profile(models.Model):
-  TEXT_CARRIERS = (
-    ('att', 'AT&T'),
-    ('sprint', 'Sprint'),
-    ('tmobile', 'T-Mobile'),
-    ('verizon', 'Verizon'),
-  )
-  
   user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
   name = models.CharField(_('name'), unique=True, max_length=50)
   first_name = models.CharField(_('first_name'), max_length=50, null=True, blank=True)
@@ -105,7 +98,7 @@ class Profile(models.Model):
   floor = models.ForeignKey(Floor, null=True, blank=True)
   contact_email = models.EmailField(null=True, blank=True)
   contact_text = PhoneNumberField(null=True, blank=True)
-  contact_carrier = models.CharField(max_length=50, choices=TEXT_CARRIERS, null=True, blank=True)
+  contact_carrier = models.CharField(max_length=50, null=True, blank=True)
   enable_help = models.BooleanField(default=True)
   canopy_member = models.BooleanField(default=False)
   
