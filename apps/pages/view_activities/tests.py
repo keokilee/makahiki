@@ -266,11 +266,12 @@ class ActivitiesFunctionalTestCase(TestCase):
     )
     event.save()
     
+    original_date = event.event_date - datetime.timedelta(hours=2)
     reminder = EmailReminder(
         user=self.user,
         activity=event,
         email_address="foo@foo.com",
-        send_at=event.event_date - datetime.timedelta(hours=2),
+        send_at=original_date,
     )
     reminder.save()
     reminder_count = self.user.emailreminder_set.count()
@@ -286,7 +287,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     reminder = self.user.emailreminder_set.get(activity=event)
     self.assertEqual(reminder.email_address, "foo@test.com", "Email address should have changed.")
-    self.assertEqual(reminder.send_at, event.event_date - datetime.timedelta(hours=1), "Send time should have changed.")
+    self.assertNotEqual(reminder.send_at, original_date, "Send time should have changed.")
     self.assertEqual(self.user.emailreminder_set.count(), reminder_count, "No new reminders should have been created.")
     
   def testRemoveEmailReminder(self):
