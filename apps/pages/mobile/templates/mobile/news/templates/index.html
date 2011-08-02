@@ -28,9 +28,11 @@
             </form>
       </div>
       <br>
+      <div class="content-primary">
       <ul {% get_id_and_classes "wall-posts" %} data-role="listview" class="ui-listview">
         {% include "mobile/news/templates/mnews_posts.html" %}
       </ul>
+      </div>
       {% if not posts %}
         <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
       {% endif %}

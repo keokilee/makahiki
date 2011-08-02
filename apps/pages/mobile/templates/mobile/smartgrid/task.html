@@ -21,7 +21,7 @@
     {%  endif %}
     <div>
     <div {% get_id_and_classes "activity-task-stats-content" %} data-role="collapsible" data-collapsed="true" data-theme="b" class="ui-body-b">   
-      <h1>Miscellaneous Info</h1>
+      <h1>Additional Info</h1>
       <p/>
       This {{task.type}} is worth
       {% if task.point_value %}        
@@ -167,12 +167,15 @@
         {% if task.type == "survey" %}
           <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
         {% endif %} 
-        {% if task.type == "activity" %}
+        {% if task.type == "activity" and not form.image_response %}
           <b>
           Once you are done, click the button below to get your points!
           </b>
           <p/>
           <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
+        {% endif %}
+        {% if form.image_response %}
+          <div data-role="content" data-theme="e" class="ui-corner-all">Sorry, image uploading is currently unsuported on mobile devices.</div>
         {% endif %} 
       {% endif %}
        <br/> <br/>
@@ -188,7 +191,7 @@
 
 
 <!---------- form ---------->
-<div data-role="pag	e" id="form" data-url="form">
+<div data-role="page" id="form" data-url="form">
   <div data-role="header">
     <h1>{{task.name}}</h1>
   </div>

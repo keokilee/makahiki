@@ -1,7 +1,7 @@
 {% load avatar_tags %}
 {% load class_tags %}
 
-<li>
+<!--li>
   <div class="{% insert_classes 'user-post' %} {{cycle_class}}">
     <div class="{% insert_classes 'user-post-avatar' %}">
       <img src="{% avatar_url post.user 40 %}" alt="Photo of {{ post.user.get_profile.name }}" class="{% insert_classes 'news-photo' %}" align="top"/>
@@ -14,4 +14,27 @@
   </div>
 
 
+</li-->
+
+<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-thumb ui-btn-down-c ui-btn-up-c">
+  <div class="ui-btn-inner ui-li">
+    <div class="ui-btn-text">
+      <a href="#" class="ui-link-inherit">
+        <img src="{% avatar_url post.user 40 %}" class="ui-li-thumb">
+        <h3 class="ui-li-heading">{{post.user.get_profile.name}}</h3>
+        <p class="ui-li-desc">{{post.text}}<br>Posted at {{post.date_string}}</p>
+      </a>
+    </div>
+  </div>
 </li>
+
+<!--
+<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-thumb ui-btn-down-c ui-btn-up-c">
+  <div class="ui-btn-inner ui-li">
+    <div class="ui-btn-text">
+      <a href="index.html" class="ui-link-inherit">
+				<img src="images/album-bb.jpg" class="ui-li-thumb">
+				<h3 class="ui-li-heading">Broken Bells</h3>
+				<p class="ui-li-desc">Broken Bells</p>
+			</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>
+-->

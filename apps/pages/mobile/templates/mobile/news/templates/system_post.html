@@ -1,6 +1,6 @@
 {% load class_tags %}
 
-<li>
+<!--li>
   <div class="{% insert_classes 'system-post' %} {{cycle_class}}">
     <div class="{% insert_classes 'system-post-content' %}">
       <div word-wrap:break-word><b>{{post.user.get_profile.name}}</b> <font size="2">{{post.text}}</font></div>
@@ -9,4 +9,15 @@
   </div>
 
 
+</li-->
+
+<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-icon ui-btn-down-c ui-btn-up-c">
+  <div class="ui-btn-inner ui-li">
+    <div class="ui-btn-text">
+      <a href="#" class="ui-link-inherit">
+        <h3 class="ui-li-heading">{{post.user.get_profile.name}}</h3>
+        <p class="ui-li-desc">{{post.text}}<br>Posted at {{post.date_string}}</p>
+      </a>
+    </div>
+  </div>
 </li>
