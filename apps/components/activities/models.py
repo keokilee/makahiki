@@ -116,7 +116,7 @@ class ActivityBase(models.Model):
   depends_on_text = models.CharField(max_length=400, null=True, blank=True,)
   energy_related = models.BooleanField(default=False)
   social_bonus = models.IntegerField(default=0, help_text="Social bonus points.")
-  mobile_restricted = models.BooleanField(default=False)
+  mobile_restricted = models.BooleanField(default=False, help_text="Set to true if this task should not be displayed on mobile devices.")
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
