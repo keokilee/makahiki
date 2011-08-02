@@ -195,6 +195,10 @@ td#profile-form-fb-profile-label, td#profile-form-fb-can-post-fields {
   margin-top: 5px;
 }
 
+#profile-history-previous-table td {
+  vertical-align: top;
+}
+
 /************** Rejected dialog styles *****/
 .ui-dialog-content p {
   text-align: left;

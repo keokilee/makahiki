@@ -429,12 +429,6 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
-      if approval.user_comment:
-        ref_user = User.objects.get(email=approval.user_comment)
-        ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
-        for m in ref_members:
-          if m.approval_status == 'approved':
-            approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
