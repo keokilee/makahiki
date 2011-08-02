@@ -1,12 +1,10 @@
 {% extends "mobile/base.html" %}
-
-{% load class_tags %}
-{% load markup %}  
-
 {% block body %}
 <style type="text/css">
 div.a {width:400px;overflow:"hidden";}
 </style>
+  {% load class_tags %}
+  {% load markup %} 
   {% import_page_css "view_energy" STATIC_URL %}
    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>

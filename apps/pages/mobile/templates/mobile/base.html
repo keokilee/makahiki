@@ -10,7 +10,9 @@
 <body>  
   <!--div data-role="page"-->
    {% load class_tags %}
-   {% load generic_flatblocks %}
+   {% load generic_flatblocks %}  
+   {% load markup %} 
+   {% import_page_css "view_energy" STATIC_URL %}
    {% include "mobile/mlist.html" %} 
    {% block body %}{% endblock %}
   <!--/div-->
