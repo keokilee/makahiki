@@ -437,6 +437,7 @@ def get_date(obj):
   return obj.event_date
 
 @login_required
+@never_cache
 def events(request,option): 
   objlist = []
   user = request.user
@@ -499,6 +500,7 @@ def events(request,option):
 
 
 @login_required
+@never_cache
 def quests(request,option): 
   questlist = []
   user = request.user
