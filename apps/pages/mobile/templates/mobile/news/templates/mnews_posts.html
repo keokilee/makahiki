@@ -1,13 +1,13 @@
 {% load class_tags %}
 {% for post in posts %} 
   {% if post.style_class == "user_post" %}
-    {% include "news/user_post.html" %}
+    {% include "mobile/news/templates/user_post.html" %}
   {% else %}
-    {% include "news/system_post.html" %}
+    {% include "mobile/news/templates/system_post.html" %}
   {% endif %} 
   
   {% if forloop.last and more_posts %}
-  <li {% get_id_and_classes "view-more-posts" %}>
+  <li {% get_id_and_classes "view-more-posts" %} data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-thumb ui-btn-down-c ui-btn-up-c">
     <a href="#" onclick='
       $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
         $("#view-more-posts").remove();
