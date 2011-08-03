@@ -125,7 +125,7 @@ AUTHENTICATION_BACKENDS = (
     'components.makahiki_auth.models.MakahikiCASBackend',
 )
 
-ROOT_URLCONF = 'makahiki.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates"),
