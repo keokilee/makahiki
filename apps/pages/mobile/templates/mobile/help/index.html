@@ -22,7 +22,7 @@
         
         {% for sub_topic in topic.sub_topics.all %}
           <li>
-            <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">-{{sub_topic.title}}</a>
+            <a href="{% url mobile_help_topic category=sub_topic.category slug=sub_topic.slug %}">{{sub_topic.title}}</a>
           </li>
           {% endfor %}
         
@@ -63,7 +63,6 @@
           {{form.question}}
           <div>
             <button type="submit">Submit</button>
-            <input type="submit" value="Send" />
             </span>
           </div>
         </form>
