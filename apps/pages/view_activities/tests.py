@@ -416,13 +416,14 @@ class ActivitiesFunctionalTestCase(TestCase):
         event_date=datetime.datetime.today() + datetime.timedelta(days=1),
     )
     event.save()
-
+    
+    original_date = event.event_date - datetime.timedelta(hours=2)
     reminder = TextReminder(
         user=self.user,
         activity=event,
         text_number="8085551234",
         text_carrier="att",
-        send_at=event.event_date - datetime.timedelta(hours=2),
+        send_at=original_date,
     )
     reminder.save()
     reminder_count = self.user.textreminder_set.count()
@@ -443,7 +444,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     profile = Profile.objects.get(user=self.user)
     self.assertEqual(reminder.text_number, "808-555-6789", "Text number should have updated.")
     self.assertEqual(profile.contact_text, "808-555-6789", "Profile text number should have updated.")
-    self.assertEqual(reminder.send_at, event.event_date - datetime.timedelta(hours=1), "Send time should have changed.")
+    self.assertNotEqual(reminder.send_at, original_date, "Send time should have changed.")
     self.assertEqual(self.user.textreminder_set.count(), reminder_count, "No new reminders should have been created.")
     
   def testRemoveTextReminder(self):
