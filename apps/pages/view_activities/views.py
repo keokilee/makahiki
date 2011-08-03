@@ -566,6 +566,7 @@ def add_task(request, activity_type, slug):
 def reminder(request, activity_type, slug):
   if request.is_ajax():
     if request.method == "POST":
+      profile = request.user.get_profile()
       task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
       form = ReminderForm(request.POST)
       if form.is_valid():
@@ -581,6 +582,9 @@ def reminder(request, activity_type, slug):
                 hours=int(form.cleaned_data["email_advance"])
             )
             email_reminder.save()
+            
+            profile.contact_email = form.cleaned_data["email"]
+            profile.save()
           else:
             # If send_email is false, the user does not want the reminder anymore.
             email_reminder.delete()
@@ -596,6 +600,9 @@ def reminder(request, activity_type, slug):
                     hours=int(form.cleaned_data["email_advance"])
                 )
             )
+            
+            profile.contact_email = form.cleaned_data["email"]
+            profile.save()
           
         try:
           text_reminder = TextReminder.objects.get(user=request.user, activity=task)
@@ -606,6 +613,10 @@ def reminder(request, activity_type, slug):
                 hours=int(form.cleaned_data["text_advance"])
             )
             text_reminder.save()
+            
+            profile.contact_text = form.cleaned_data["text_number"]
+            profile.contact_carrier = form.cleaned_data["text_carrier"]
+            profile.save()
             
           else:
             text_reminder.delete()
@@ -621,6 +632,10 @@ def reminder(request, activity_type, slug):
                     hours=int(form.cleaned_data["text_advance"])
                 ),
             )
+            
+            profile.contact_text = form.cleaned_data["text_number"]
+            profile.contact_carrier = form.cleaned_data["text_carrier"]
+            profile.save()
           
         return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
         

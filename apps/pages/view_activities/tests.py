@@ -6,6 +6,7 @@ from django.conf import settings
 
 from django.contrib.auth.models import User
 from components.floors.models import Floor
+from components.makahiki_profiles.models import Profile
 from components.activities.models import Commitment, Activity, ActivityMember, ConfirmationCode, EmailReminder, TextReminder
 from components.quests.models import Quest
 
@@ -246,6 +247,8 @@ class ActivitiesFunctionalTestCase(TestCase):
         "text_advance": "1",
     }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
     self.failUnlessEqual(response.status_code, 200)
+    profile = Profile.objects.get(user=self.user)
+    self.assertEqual(profile.contact_email, "foo@test.com", "Profile should now have a contact email.")
     self.assertEqual(self.user.emailreminder_set.count(), reminders + 1, "Should have added a reminder")
     
   def testChangeEmailReminder(self):
@@ -286,7 +289,9 @@ class ActivitiesFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     
     reminder = self.user.emailreminder_set.get(activity=event)
+    profile = Profile.objects.get(user=self.user)
     self.assertEqual(reminder.email_address, "foo@test.com", "Email address should have changed.")
+    self.assertEqual(profile.contact_email, "foo@test.com", "Profile email address should have changed.")
     self.assertNotEqual(reminder.send_at, original_date, "Send time should have changed.")
     self.assertEqual(self.user.emailreminder_set.count(), reminder_count, "No new reminders should have been created.")
     
@@ -383,12 +388,16 @@ class ActivitiesFunctionalTestCase(TestCase):
         "email": "",
         "email_advance": "1",
         "send_text": True,
-        "text_number": "8085551234",
+        "text_number": "808-555-1234",
         "text_carrier": "att",
         "text_advance": "1",
     }, HTTP_X_REQUESTED_WITH="XMLHttpRequest")
+    
     self.failUnlessEqual(response.status_code, 200)
     self.assertEqual(self.user.textreminder_set.count(), reminders + 1, "Should have added a reminder")
+    profile = Profile.objects.get(user=self.user)
+    self.assertEqual(profile.contact_text, "808-555-1234", "Check that the user now has a contact number.")
+    self.assertEqual(profile.contact_carrier, "att", "Check that the user now has a contact carrier.")
     
   def testChangeTextReminder(self):
     """
@@ -430,11 +439,14 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     self.failUnlessEqual(response.status_code, 200)
     reminder = self.user.textreminder_set.get(activity=event)
+    # print profile.contact_text
+    profile = Profile.objects.get(user=self.user)
     self.assertEqual(reminder.text_number, "808-555-6789", "Text number should have updated.")
+    self.assertEqual(profile.contact_text, "808-555-6789", "Profile text number should have updated.")
     self.assertEqual(reminder.send_at, event.event_date - datetime.timedelta(hours=1), "Send time should have changed.")
     self.assertEqual(self.user.textreminder_set.count(), reminder_count, "No new reminders should have been created.")
     
-  def testChangeTextReminder(self):
+  def testRemoveTextReminder(self):
     """
     Test that we can adjust a text reminder.
     """
