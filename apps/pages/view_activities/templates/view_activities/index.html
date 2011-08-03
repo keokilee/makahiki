@@ -133,8 +133,8 @@ $( document ).ready( function ()
       $("#grid-about").fadeIn();
     {% endif %}
 
-    $("#grid-hide-about").click(function() {
-      setCookie("grid-hide-about", "true", 0);
+    $("#grid-about").click(function() {
+      setCookie("grid-hide-about", "true", 21);
       $("#grid-about").fadeOut();
       return false;
     });
