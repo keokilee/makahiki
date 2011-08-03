@@ -35,10 +35,12 @@
 <script type="text/javascript">
   function createDateString(offset) {
     var d = new Date('{{task.activity.event_date|date:"r"}}');
-    var hour = d.getHours() - offset;
+    // Subtract the milliseconds from the event date.
+    d = new Date(d.getTime() - (offset * 60 * 60 * 1000));
+    var hour = d.getHours();
     var minutes = d.getMinutes();
     var ampm = "AM";
-    if (hour > 12) {
+    if (hour >= 12) {
       hour = hour - 12;
       ampm = "PM";
     }

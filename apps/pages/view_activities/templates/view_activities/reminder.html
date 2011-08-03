@@ -5,10 +5,10 @@
   <p>
     {% if reminders.email or reminders.text %}
       {% if reminders.email %}
-      Email reminder will be sent: {{reminders.email.send_at}}
+      Email reminder: {{reminders.email.send_at}}<br/>
       {% endif %}
       {% if reminders.text %}
-      Text reminder will be sent: {{reminders.text.send_at}}
+      Text reminder: {{reminders.text.send_at}}<br/>
       {% endif %}
       <button {% get_id_and_classes "task-reminder-button" %}>Change Reminder</button>
     {% else %}
