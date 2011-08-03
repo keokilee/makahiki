@@ -304,7 +304,7 @@ table#activities-grid td table td{
 	}
 		
 #purr-container {
-	position: fixed;
+	position: absolute;
 	top: 400px;
 	left: 450px;
 }
@@ -340,7 +340,7 @@ table#activities-grid td table td{
 }
 		
 #grid-about {
-	position: fixed;
+	position: absolute;
 	top: 380px;
 	left: 500px;
 }

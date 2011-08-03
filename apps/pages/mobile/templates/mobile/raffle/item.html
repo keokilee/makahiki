@@ -1,11 +1,20 @@
+{% extends "mobile/base.html" %}
+
 {% load class_tags %}
 {% load prize_tags %}
 {% load markup %}
 
-  <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{prize.title}}">
-    <img src="{{MEDIA_URL}}{{prize.image}}" width="50"/>
-    {{prize.description|markdown}}
+<div data-role="dialog" id="item" data-url="item">
+  <div data-role="header">
+    {{title}}
+  </div>
+  <div data-role="body">
+  <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
+    <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
+    {#{prize.description|markdown}#}
     <!--div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div-->
   </div>
-  Valued at {{prize.value}}.
+  Valued at {#{prize.value}#}.
   <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
+  </div>
+</div>

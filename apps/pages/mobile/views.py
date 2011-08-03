@@ -15,6 +15,7 @@ from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 from datetime import timedelta, date
 from time import strftime
+from django.template.defaultfilters import slugify
 from string import lower
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
@@ -622,6 +623,20 @@ def raffle(request):
   return render_to_response("mobile/raffle/index.html", {
       "prizes": prizes,
       "raffle": raffle_dict,
+  }, context_instance=RequestContext(request))
+
+def raffle_item(request, prize_slug):
+
+  floor = request.user.get_profile().floor
+  prizes = _get_prizes(floor)
+  prize = prize_slug
+  for i in prizes:
+    if prize_slug == slugify(i.title):
+      prize = i
+
+  return render_to_response("mobile/raffle/item.html", {
+    "title":prize_slug,
+    "prize":prize,
   }, context_instance=RequestContext(request))
 
 @login_required
