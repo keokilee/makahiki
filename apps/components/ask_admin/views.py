@@ -28,7 +28,7 @@ def send_feedback(request):
       current_site = Site.objects.get(id=settings.SITE_ID)
       subject = u'[%s] Message for admins' % current_site.domain
       mail = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, 
-          [settings.SERVER_EMAIL,], headers={"Reply-To": request.user.email})
+          [settings.CONTACT_EMAIL,], headers={"Reply-To": request.user.email})
       
       mail.attach_alternative(html_message, 'text/html')
       mail.send()
