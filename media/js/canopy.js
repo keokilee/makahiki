@@ -3,7 +3,7 @@
   // Use jQuery via jQuery(...)
   jQuery(document).ready(function(){
   jQuery("#canopy-hide-about").click(function() {
-    setCookie("hide-about", "true", 0);
+    setCookie("hide-about", "true", 21);
     jQuery("#canopy-about").fadeOut();
     return false;
   });

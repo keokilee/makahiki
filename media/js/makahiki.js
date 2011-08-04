@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
   $("#link-container").hover(function() {
     if ($("#header-canopy-link").hasClass("hidden")) {
       $("#header-canopy-link").removeClass("hidden").css({display: "none"}).fadeIn("slow");
-      setCookie("display-canopy", true, 0);
+      setCookie("display-canopy", true, 21);
     }
   });
   
