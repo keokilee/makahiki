@@ -569,6 +569,7 @@ class Reminder(models.Model):
   
   class Meta:
     abstract = True
+    unique_together = ("user", "activity")
     
   def send(self):
     raise NotImplementedError("Reminder subclasses need to implement send.")
@@ -624,7 +625,7 @@ class TextReminder(Reminder):
   
   def send(self):
     """
-    Sends a reminder text to the user.
+    Sends a reminder text to the user via an email.
     """
     number = self.text_number.replace("-", "")
     email = number + "@" + self.TEXT_EMAILS[self.text_carrier]

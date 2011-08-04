@@ -75,6 +75,7 @@
     });
     
     $("#task-reminder-form-submit").click(function() {
+      $("#task-reminder-form button").attr("disabled", "disabled");
       $.post("{% url activity_reminder task.type task.slug %}", $("#task-reminder-form").serialize(), function(data) {
         if(data.success) {
           window.location.reload();
