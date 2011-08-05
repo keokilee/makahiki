@@ -92,6 +92,7 @@
   </div>
 </div>
 
+<!--
 {% if not hide_about %}
 <div id="grid-about">
   <div class="notice">
@@ -107,6 +108,7 @@
   </div>
 </div>
 {% endif %}
+-->
 
 <script type="text/javascript"> 
 $( document ).ready( function ()
@@ -129,6 +131,7 @@ $( document ).ready( function ()
     );		
     {% endif %}
 
+/* TODO. comment out temporary
     {% if not hide_about %}
       $("#grid-about").fadeIn();
     {% endif %}
@@ -138,10 +141,9 @@ $( document ).ready( function ()
       $("#grid-about").fadeOut();
       return false;
     });
-
-          $("#event-code-submit").click(function() {
-             
-              $.post("{% url activity_attend_code %}", $("#event-code-form").serialize(), function(data) {
+*/
+    $("#event-code-submit").click(function() {             
+            $.post("{% url activity_attend_code %}", $("#event-code-form").serialize(), function(data) {
                 if (data.message) {
                   $("#event-code-errors").html(data.message);
                   if (data.social_email) {
@@ -154,11 +156,11 @@ $( document ).ready( function ()
               });
            
             return false;
-          });
+    });
           
-  $("#social_email input").click(function() {
+    $("#social_email input").click(function() {
       this.value = "";
-  });
+    });
 
  });
 

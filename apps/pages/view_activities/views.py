@@ -46,9 +46,9 @@ def index(request):
   value = request.REQUEST.get("value", None)
   if value and value != "None":
     if notify == "drop_commit":
-      notification = "Your commitment is dropped, " + value + " points are reduced."
+      notification = "Commitment dropped, you lose " + value + " points."
     if notify == "drop_activity":
-      notification = "You are removed from the signup list, " + value + " points are reduced."
+      notification = "Removed from signup list, you lose " + value + " points."
 
   # Check for the about cookie.
   hide_about = False
@@ -143,10 +143,7 @@ def attend_code(request):
           "message": message,
           "social_email": social_email
           }), mimetype="application/json")
-      
-      code.is_active = False
-      code.save()
-      
+            
       try:
         activity_member = ActivityMember.objects.get(user=user, activity=code.activity)
         # decrease sign up points
@@ -158,8 +155,13 @@ def attend_code(request):
       activity_member.approval_status = "approved" # Model save method will award the points.
       value = code.activity.point_value  
 
-      activity_member.user_comment = form.cleaned_data["social_email"]
+      if form.cleaned_data.has_key("social_email") and form.cleaned_data["social_email"] != "Email":
+        activity_member.user_comment = form.cleaned_data["social_email"]
+        
       activity_member.save()
+
+      code.is_active = False
+      code.save()
       
       return HttpResponse(json.dumps({
         "type":code.activity.type,

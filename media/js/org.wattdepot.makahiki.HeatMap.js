@@ -4,7 +4,7 @@ Namespace("org.makahiki");
    // Store user preferences in corresponding variables.
    var title = "Energy Consumed"; 
    var host_uri = 'http://server.wattdepot.org:8192/gviz/';
-   var source = ['Lehua-A','Lehua-B', 'Lehua-C', 'Lehua-D', 'Lehua-E'];
+   var source = ['Lehua-E','Lehua-D', 'Lehua-C', 'Lehua-B', 'Lehua-A'];
    var dataType = "energyConsumed";
 
     // an array for collected tables which will be combined for display.

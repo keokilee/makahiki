@@ -141,3 +141,34 @@
   </div>
 </div>
 {% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript"> 
+$( document ).ready( function ()
+ {
+    $("#event-code-submit").click(function() {             
+            $.post("{% url activity_attend_code %}", $("#event-code-form").serialize(), function(data) {
+                if (data.message) {
+                  $("#event-code-errors").html(data.message);
+                  if (data.social_email) {
+                    $("#social_email").show();
+                  }
+                }
+                else {
+                  window.location.replace("/activities/"+data.type+"/"+data.slug+"/?notify="+data.notify+"&value="+data.value);
+                }
+              });
+           
+            return false;
+    });
+          
+    $("#social_email input").click(function() {
+      this.value = "";
+    });
+
+ });
+
+
+</script>  
+
+{% endblock %}
