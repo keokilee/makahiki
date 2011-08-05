@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from components.floors.models import Post
 from components.activities import get_available_events, get_current_commitment_members, get_popular_tasks
 from pages.news.forms import WallForm
+from pages.view_activities.forms import EventCodeForm
 
 from pages.news import DEFAULT_POST_COUNT
 
@@ -37,6 +38,8 @@ def index(request):
       "-profile__last_awarded_submission"
   )[:12]
   
+  form = EventCodeForm()
+    
   return render_to_response("news/index.html", {
     "posts": posts,
     "events": events,
@@ -45,6 +48,7 @@ def index(request):
     "commitment_members": commitment_members,
     "floor_members": floor_members,
     "popular_tasks": get_popular_tasks(),
+    "event_form":form,
   }, context_instance=RequestContext(request))
 
 @never_cache
