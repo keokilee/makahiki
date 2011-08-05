@@ -22,7 +22,7 @@ TEMPLATE_DEBUG = DEBUG
 SERVE_MEDIA = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ("Makahiki Developers", "makahiki-dev@googlegroups.com")
 )
 
 MANAGERS = ADMINS
