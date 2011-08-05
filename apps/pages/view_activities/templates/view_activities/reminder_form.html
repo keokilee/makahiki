@@ -55,26 +55,25 @@
   }
   
   jQuery(document).ready(function($) {
-    // alert(d);
     $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));
     $("#task-reminder-form-email-date").html(createDateString($("#id_email_advance").val()));
     
-    $("#id_text_advance").change(function() {
+    $("#id_text_advance").unbind("change").change(function() {
       $("#task-reminder-form-text-date").html(createDateString($(this).val()));
       return false;
     });
     
-    $("#id_email_advance").change(function() {
+    $("#id_email_advance").unbind("change").change(function() {
       $("#task-reminder-form-email-date").html(createDateString($(this).val()));
       return false;
     });
     
-    $("#task-reminder-form-cancel").click(function() {
+    $("#task-reminder-form-cancel").unbind("click").click(function() {
       $("#task-reminder-dialog").dialog("close");
       return false;
     });
     
-    $("#task-reminder-form-submit").click(function() {
+    $("#task-reminder-form-submit").unbind("click").click(function() {
       $("#task-reminder-form button").attr("disabled", "disabled");
       $.post("{% url activity_reminder task.type task.slug %}", $("#task-reminder-form").serialize(), function(data) {
         if(data.success) {
@@ -87,8 +86,6 @@
         return false;
       });
       return false;
-    });
-    
-    return false;
+    });  
   });
 </script>
