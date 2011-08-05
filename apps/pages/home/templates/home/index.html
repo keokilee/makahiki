@@ -106,14 +106,28 @@
     {% include "home/first-login/welcome.html" %}
   </div>
   <script type="text/javascript">
-    $(document).ready(function() {
+    jQuery(document).ready(function($) {
       $("#setup-dialog").dialog({
         modal: true,
         width: 700,
         closeOnEscape: false,
         position: ["center", 25],
-        open: function(event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
+        open: function(event, ui) { $('.ui-dialog-titlebar-close').hide(); }
       });
+      
+      $("#progressbar").progressbar({
+        value: 100/6
+      });
+
+      $("#next").button().click(function() {
+        $(this).button("option", "disabled", true);
+        $.get("{% url setup_terms %}", function(data) {
+          $("#ui-dialog-title-setup-dialog").html(data.title);
+          $("#setup-dialog").html(data.contents);
+        });
+      });
+
+      $("#next").button("option", "disabled", false);
     });
   </script>
 {% endif %}

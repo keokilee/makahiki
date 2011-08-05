@@ -22,20 +22,3 @@
   </div>
 </div>
 <div {% get_id_and_classes "progressbar" %}></div>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#progressbar").progressbar({
-      value: 100/6
-    });
-    
-    $("button").button().click(function() {
-      $(this).button("option", "disabled", true);
-      $.get("{% url setup_terms %}", function(data) {
-        $("#ui-dialog-title-setup-dialog").html(data.title);
-        $("#setup-dialog").html(data.contents);
-      });
-    });
-    
-    $("button").button("option", "disabled", false);
-  });
-</script>
