@@ -43,7 +43,7 @@
           </li>
           {% else %}          {# if locked #}
           <li data-icon="delete"> 
-            <a href="{% url mobile_task_deny category %}" data-rel="dialog">
+            <a href="{% url mobile_task_deny category activity.slug %}" data-rel="dialog">
               <img src="/site_media/static/css/default/images/lock24.png" alt="{{activity.title}}" class="ui-li-icon"/>
               Mystery {{activity.type}}
             </a>
