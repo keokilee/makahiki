@@ -1,0 +1,20 @@
+{% extends "mobile/base.html" %}
+
+
+{% block body %}
+<div data-role="daialog">
+  <div data-role="header">
+    <h1>Header</h1>
+  </div>
+  <div data-role="body">
+    <div data-role="content">
+      {% if activity.depends_on_text %} 
+        {{activity.depends_on_text}}
+      {% else %}
+       {{activity.depends_on}}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -105,6 +105,15 @@ def sgactivities(request, category_slug):
 
 @never_cache
 @login_required
+def taskdeny(request, category_slug, activity):
+  """locked task denial of entry"""
+
+  return render_to_response("mobile/smartgrid/denied.html", {
+    "activity":activity,
+  }, context_instance=RequestContext(request))   
+
+@never_cache
+@login_required
 def task(request, category_slug, slug):
   """individual task page"""
   user = request.user

@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
+from components.activities.models import ActivityBase
 
 urlpatterns = patterns('',
     url(r'^$', 'pages.mobile.views.landing', name='mobile_landing'),
@@ -7,9 +8,8 @@ urlpatterns = patterns('',
     url(r'^logout/?$', 'pages.mobile.views.logout', name='mobile_logout'),
     url(r'^setup/$', direct_to_template, {"template": 'mobile/setup.html'}, name='mobile_setup'),
     url(r'^smartgrid/?$', 'pages.mobile.views.smartgrid', name='mobile_smartgrid'),
-#    url(r'^smartgrid/(?P<slug>[-\w]+)/?$', 'pages.mobile.views.sgactivities', name='mobile_activities'),
-#    url(r'^smartgrid/task/(\d+)/?$', 'pages.mobile.views.task', name='mobile_smartgrid_task'), 
     url(r'^smartgrid/(?P<category_slug>[\w\d\-]+)/?$', 'pages.mobile.views.sgactivities', name='mobile_activities'),
+    url(r'^smartgrid/(?P<category_slug>[\w\d\-]+)/denied/?$', 'pages.mobile.views.taskdeny', name='mobile_task_deny'),
     url(r'^smartgrid/(?P<category_slug>[\w\d\-]+)/(?P<slug>[\w\d\-]+)/?$', 'pages.mobile.views.task', name='mobile_task'),
     url(r'^smartgrid/(?P<category_slug>[\w\d\-]+)/(?P<slug>[\w\d\-]+)/add/?$', 'pages.mobile.views.sgadd', name='mobile_task_add'),
     url(r'^events/(\w*)/?$', 'pages.mobile.views.events', name='mobile_events'), 
