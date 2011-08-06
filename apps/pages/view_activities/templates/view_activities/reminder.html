@@ -31,6 +31,7 @@
     });
     
     $("#task-reminder-button").click(function() {
+      log_js_action("{{task.type}}", "{{task.slug}}", "reminder-open");
       $("#task-reminder-dialog").dialog("open");
     });
     
@@ -72,6 +73,7 @@
       });
 
       $("#task-reminder-form-cancel").click(function() {
+        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-close");
         $("#task-reminder-dialog").dialog("close");
         return false;
       });
