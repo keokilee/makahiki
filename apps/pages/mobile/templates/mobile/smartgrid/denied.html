@@ -2,9 +2,9 @@
 
 
 {% block body %}
-<div data-role="daialog">
+<div data-role="dialog">
   <div data-role="header">
-    <h1>Header</h1>
+    <h1>{{activity.title}}</h1>
   </div>
   <div data-role="body">
     <div data-role="content">
@@ -13,6 +13,8 @@
       {% else %}
        {{activity.depends_on}}
       {% endif %}
+      <a href="{% url mobile_activities category %}" data-role="button" data-rel="back">
+        Cancel</a>
     </div>
   </div>
 </div>

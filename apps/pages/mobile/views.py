@@ -110,6 +110,7 @@ def taskdeny(request, category_slug, slug):
   activity = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
   
   return render_to_response("mobile/smartgrid/denied.html", {
+    "category":category_slug,
     "activity":activity,
   }, context_instance=RequestContext(request))   
 
