@@ -110,6 +110,7 @@ def taskdeny(request, category_slug, slug):
   activity = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
   
   return render_to_response("mobile/smartgrid/denied.html", {
+    "category":category_slug,
     "activity":activity,
   }, context_instance=RequestContext(request))   
 
@@ -637,16 +638,16 @@ def raffle(request):
 
 def raffle_item(request, prize_slug):
 
-#  floor = request.user.get_profile().floor
-#  prizes = _get_prizes(floor)
-#  prize = prize_slug
-#  for i in prizes:
-#    if prize_slug == slugify(i.title):
-#      prize = i
+  floor = request.user.get_profile().floor
+  prizes = _get_prizes(floor)
+  prize = prize_slug
+  for i in prizes:
+    if prize_slug == slugify(i.title):
+      prize = i
 
   return render_to_response("mobile/raffle/item.html", {
     "title":prize_slug,
-#    "prize":prize,
+    "prize":prize,
   }, context_instance=RequestContext(request))
 
 @login_required
