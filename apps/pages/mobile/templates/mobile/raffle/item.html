@@ -4,19 +4,24 @@
 {% load prize_tags %}
 {% load markup %}
 
-<div data-role="dialog" id="item" data-url="item">
+
+{% block body %} 
+<div data-role="dialog">
   <div data-role="header">
-    {{title}}
-{#  </div>
-  <!--div data-role="body">
-  <div id="raffle-{{prize.title|slugify}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
-    <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
-    {{prize.description|markdown}}
-
+    <h1>{{prize.title}}</h1>
   </div>
-  Valued at {{prize.value}}.
-  <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
-  </div-->#}
-</div>
+  <div data-role="body">
+    <div data-role="content">
+      <div id="raffle-{{title}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
+        <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
+        {{prize.description|markdown}}
+        </div>
+        Valued at {{prize.value}}.                            {# prizes.value|currency does not work#}
+        <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
+      </div>
+    </div>
+  </div>
+  
 
-    <!--div style="text-align: center"><input type="submit" value="OK" onclick='$("#raffle-{{prize.title|slugify}}-description").dialog("close");' /></div-->
+</div>
+{% endblock %}

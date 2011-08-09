@@ -6,7 +6,7 @@
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
 <!--  <tr class="{{cycle_class}}"-->
     <div class="ui-block-a" class="{% insert_classes "prize-item" %}">
-      <a id="raffle-{{prize.title|slugify}}" {# href="{% url mobile_raffle_item prize.title|slugify %}" #}>
+      <a id="raffle-{{prize.title|slugify}}" href="{% url mobile_raffle_item prize.title|slugify %}" data-rel="dialog">
         {{prize.title}}
       </a>
     </div>
