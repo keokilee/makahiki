@@ -8,28 +8,27 @@ from components.makahiki_profiles.models import Profile
 from components.makahiki_notifications.models import UserNotification
 
 class Command(management.base.BaseCommand):
-  help = 'Cleans out users with duplicate ids.  Renames users with duplicate display names.'
+  help = 'Adds the top n users in points to the canopy.'
   
   def handle(self, *args, **options):
     """
-    Adds the top users to the canopy.
+    Adds the top n users to the canopy.
     """
     if len(args) != 1:
-      self.stdout.write("Usage: python manage.py add_canopy_members <percent>\n")
+      self.stdout.write("Usage: python manage.py add_canopy_members <num_users>\n")
       return
       
-    percent = 0
+    count = 0
     try:
-      percent = int(args[0])
+      count = int(args[0])
     except ValueError:
-      self.stdout.write("Percent must be an integer value\n")
+      self.stdout.write("Num users must be an integer value\n")
       return
       
-    if percent <= 0:
-      self.stdout.write("Percent must be greater than 0\n")
+    if count <= 0:
+      self.stdout.write("Num users must be greater than 0\n")
       return
       
-    count = Profile.objects.count() * percent / 100
     eligible_members = Profile.objects.order_by("-points")[:count]
     self.stdout.write("%d members are eligible for the canopy.\n" % count)
     for member in eligible_members:

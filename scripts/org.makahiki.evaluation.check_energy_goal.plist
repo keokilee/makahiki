@@ -16,13 +16,13 @@
     <key>UserName</key>
     <string>kukuicup</string>
     
-    <!-- Run this task daily at 12:15 AM -->
+    <!-- Run this task daily at 11:55 PM -->
     <key>StartCalendarInterval</key>
     <dict>
       <key>Hour</key>
-      <integer>0</integer>
+      <integer>23</integer>
       <key>Minute</key>
-      <integer>15</integer>
+      <integer>55</integer>
     </dict>
     
     <key>StandardErrorPath</key>

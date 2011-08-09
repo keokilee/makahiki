@@ -56,7 +56,7 @@ var log_js_action = function(type, object, action) {
 }
 
 var toggleHelp = function(category, slug) {
-  log_js_action("ask-admin", "dialog", "open");
+  // log_js_action("ask-admin", "dialog", "open");
   jQuery("#widget-help-dialog").dialog("open");
   jQuery("#ui-dialog-title-widget-help-dialog").html("");
   jQuery("#widget-help-dialog").html("");
