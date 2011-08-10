@@ -308,9 +308,11 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
   # Requires Django 1.2
   readonly_fields = ("question", "response", "user_comment",)
-  list_display = ("activity", "user", "approval_status", "question", "response", "image")
+  list_display = ("activity", "submission_date", "user", "approval_status", "question", "response", "image")
   list_filter = ["approval_status"]
   actions = ["delete_selected"]
+  date_hierarchy = "submission_date"
+  ordering = ["submission_date"]
   form = ActivityMemberAdminForm
     
   def delete_selected(self, request, queryset):

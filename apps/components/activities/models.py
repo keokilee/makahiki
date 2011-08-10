@@ -210,7 +210,7 @@ class Activity(ActivityBase):
                 )
                       
   def __unicode__(self):
-    return self.title
+    return "%s: %s" % (self.type.capitalize(), self.title)
     
   def _is_active(self):
     """Determines if the activity is available for users to participate."""
