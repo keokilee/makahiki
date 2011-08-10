@@ -23,6 +23,7 @@ SERVE_MEDIA = DEBUG
 
 ADMINS = (
     ("Makahiki Developers", "makahiki-dev@googlegroups.com")
+    
 )
 
 MANAGERS = ADMINS
