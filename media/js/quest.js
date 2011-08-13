@@ -66,7 +66,7 @@ jQuery(document).ready(function() {
   
   // If the cookie is set, display the quest.
   var value = getCookie("visible-quest");
-  if (value) {
+  if (value && (jQuery(value).attr('id') != null)) {
     jQuery(value).parent().addClass("selected");
     jQuery("#quest-contents").html(jQuery(value).next(".quest-description").html());
 
@@ -78,5 +78,10 @@ jQuery(document).ready(function() {
     }
     // console.log(jQuery(this).attr('id'));
     jQuery("#quest-details").show();
+  }
+  else if (value) {
+    // alert("delete");
+    // Could not find this quest item, so let's delete the cookie.
+    deleteCookie("visible-quest");
   }
 });
