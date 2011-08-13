@@ -6,6 +6,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- Use the chrome frame -->
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
     
     {# render_css_import user #}
@@ -68,5 +70,23 @@
   </div>
   </div>
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>  <style>   
+/*     
+  CSS rules to use for styling the overlay:      
+  .chromeFrameOverlayContent      
+  .chromeFrameOverlayContent iframe      
+  .chromeFrameOverlayCloseBar
+  .chromeFrameOverlayUnderlay   */  
+</style>   
+
+<script>
+  // You may want to place these lines inside an onload handler  
+  jQuery(document).ready(function() {
+    CFInstall.check({     
+      mode: "overlay"
+    });
+  });
+</script>
 </body>
 </html>
