@@ -32,12 +32,14 @@ def index(request):
   user = request.user
   events = get_available_events(user)
   floor = user.get_profile().floor
+  user_floor_standings = None
   
   current_round = get_current_round()
   round_name = current_round if current_round else None
   floor_standings = Floor.floor_points_leaders(num_results=10, round_name=round_name)
   profile_standings = Profile.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
-  user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
+  if floor:
+    user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name).select_related("scoreboardentry")
   
   categories_list = __get_categories(user)
   
