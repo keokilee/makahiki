@@ -11,4 +11,5 @@ def login_as(request, user_id):
   user = get_object_or_404(User, id=user_id)
   if user.is_active:
     request.session[SESSION_KEY] = user_id
+    request.session.set_expiry(0) # Expire this session when the browser closes.
   return HttpResponseRedirect("/")
