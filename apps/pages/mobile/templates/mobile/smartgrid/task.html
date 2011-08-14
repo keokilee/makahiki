@@ -210,7 +210,7 @@
     <p/>
       {% if task.type == "event" or task.type == "excursion" %}          {# event #}
         {% if task.is_event_completed %}
-          Please enter the confirmation code you receieved from the event:
+          Please enter the attendance code you receieved from the event:
           {{ form.code }}
           {{ form.response.errors }}
           {{ form.response }}
