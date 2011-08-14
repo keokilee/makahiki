@@ -1,5 +1,5 @@
-{% extends "mobile/base.html" %}
-
+{% extends "mobile/base.html" %} 
+{% load markup %}
 {% block body %}
 <div data-role="page">
   <div data-role="header">
@@ -9,7 +9,7 @@
   </div>
 
   <div data-role="content">
-    {{topic.contents|safe}}
+    {{topic.contents|markdown}}
     <br/>
     <a href="{% url mobile_help %}" data-role="button" data-rel="back">Go Back</a>
   </div>
