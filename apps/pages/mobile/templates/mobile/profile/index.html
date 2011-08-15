@@ -1,7 +1,12 @@
 {% extends "mobile/base.html" %}
 {% load avatar_tags %}
-
+{% load class_tags %}
 {% block body %}
+<script>
+$(document).bind("mobileinit",function(){ 
+    $.mobile.ajaxFormEnabled=false; 
+});
+</script>
 <div data-role="page" id="index">
   <div data-role="header">
 
@@ -17,99 +22,18 @@
     </div>
   </div>
   <div data-role="body">
-
-    <table>
-        <tr>
-          <td colspan="2">General</td>
-        </tr>
-        <tr>
-          <td>{{form.display_name.label_tag}}</td>
-          <td>{{profile.name}}</td>
-        </tr>
-        <tr>
-          <td>Picture</td>
-          <td><img src="{% avatar_url user 60 %}"/></td>
-        </tr>
-        <tr>
-          <td colspan="2">Reminder Settings</td>
-        </tr>
-        <tr>
-          <td><label for="id_event_email">Email</label></td>
-          <td>{{profile.contact_email}}</td>
-        </tr>
-        <tr>
-          <td><label for="id_event_text">Text</label></td>
-          <td>
-            {{profile.contact_text}}
-            {{profile.contact_carrier}}
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-    </table>
-    <a href="{% url mobile_profile %}/#form" data-role="button" rel="external" data-rel="dialog">Update My Info</a>
+errs
+{% if form.message %}
+  MESSAGE
+  <div style="text-align: center">
+    <span {% get_id_and_classes "profile-form-message" %}>{{form.message}}</span>
   </div>
-</div>
-
-<div data-role="page" id="form" data-url="form">
-  <div data-role="header">
-    <h1>Update My Data</h1>
-  </div>
-  <div data-role="body">
-    <form action="{% url profile_index %}" method="post">
-      {% if form.message %}
-        <div style="text-align: center">
-          <span>{{form.message}}</span>
-        </div>
-      {% endif %}
-  
-      <table>
-        <tr>
-          <td colspan="2">General</td>
-        </tr>
-        {% if form.display_name.errors %}
-        <tr><td colspan="2">{{form.display_name.errors}}</td></tr>
-        {% endif %}
-        <tr>
-          <td>{{form.display_name.label_tag}}</td>
-          <td>{{form.display_name}}</td>
-        </tr>
-        <tr>
-          <td><label for="picture">Picture</label></td>
-          <td>
-            <img src="{% avatar_url user 60 %}"/>
-            <a href="" style="padding-left: 15px">Cannot change picture on mobile</a>
-          </td>
-        </tr>
-        {# <tr> #}
-        {#   <td>{{form.stay_logged_in.label_tag}}</td> #}
-        {#   <td>{{form.stay_logged_in}}</td> #}
-        {# </tr> #}
-        <tr>
-          <td colspan="2">Reminder Settings</td>
-        </tr>
-        {% if form.contact_email.errors %}
-        <tr><td colspan="2">{{form.contact_email.errors}}</td></tr>
-        {% endif %}
-        <tr>
-          <td><label for="id_event_email">Email</label></td>
-          <td>{{form.contact_email}}</td>
-        </tr>
-        {% if form.contact_text.errors %}
-        <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
-        {% endif %}
-        <tr>
-          <td><label for="id_event_text">Text</label></td>
-          <td>
-            {{form.contact_text}}
-            {{form.contact_carrier}}
-          </td>
-        </tr>
-      </table>
-      <button type="submit">Save Changes</button>
-      {# <a href="#" {% get_id_and_classes "profile-form-submit-button" %}>Save Changes</a> #}
+  {% endif %} 
+<form {% get_id_and_classes "profile-form-contents" %} action="{% url mobile_profile %}" rel="external" method="post">
+    <table> 
+	{{form}}  
+    </table> <input type="submit" rel="external" value="sumbit"/>
+ 
     </form>
     <a href="{% url mobile_profile %}" data-role="button" data-rel="back">Cancel</a>
   </div>
