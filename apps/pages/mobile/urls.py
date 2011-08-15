@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^raffle/(?P<prize_slug>[\w\d\-]+)/?$', 'pages.mobile.views.raffle_item', name="mobile_raffle_item"),
     url(r'^power_and_energy/?$', 'pages.mobile.views.power_and_energy', name='mobile_power_and_energy'), 
     url(r'^news/?$', 'pages.mobile.templates.mobile.news.views.news' , name='mobile_news'),
+    url(r'^news/(\d+)/?$', 'pages.mobile.templates.mobile.news.views.more_posts' , name='news_more'),
 )
