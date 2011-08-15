@@ -7,7 +7,7 @@
   {% endif %} 
   
   {% if forloop.last and more_posts %}
-  <li {% get_id_and_classes "view-more-posts" %} data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-li-has-thumb ui-btn-down-c ui-btn-up-c">
+  <li {% get_id_and_classes "view-more-posts" %} >
     <a href="#" onclick='
       $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
         $("#view-more-posts").remove();
