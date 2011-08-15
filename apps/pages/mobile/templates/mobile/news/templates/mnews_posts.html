@@ -7,7 +7,7 @@
   {% endif %} 
   
   {% if forloop.last and more_posts %}
-  <li {% get_id_and_classes "view-more-posts" %} >
+  <!--li {% get_id_and_classes "view-more-posts" %} >
     <a href="#" onclick='
       $.mobile.pageLoading();
       $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
@@ -17,7 +17,15 @@
       });
 
       return false;'>See more</a>
-  </li>
+  </li--> 
+<div align="center"
+{% if next >= 3 %}> 
+<a href="{% url news_more last %}" data-role="button" data-icon="arrow-l" data-theme="b"data-inline="true"> Back</a> 
+{% endif %}
+{% if posts.count == 10%}
+<a href="{% url news_more next %}" data-role="button" data-icon="arrow-r"data-theme="b" data-inline="true"> Next</a> 
+{% endif %}	 
+</div>
   {% endif %}
 {% endfor %}
 
