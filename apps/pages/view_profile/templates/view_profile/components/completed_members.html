@@ -33,7 +33,12 @@
             {% endif %}
           </td>
           <td>
+            {% if member.points_awarded %}
+            {{member.points_awarded}}
+            {% else %}
             {{member.activity.point_value}}
+            {% endif %}
+            
             {% if member.social_bonus_awarded %}
             + {{member.activity.social_bonus}}
             {% endif %}
