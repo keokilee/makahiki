@@ -9,9 +9,11 @@
   {% if forloop.last and more_posts %}
   <li {% get_id_and_classes "view-more-posts" %} >
     <a href="#" onclick='
+      $.mobile.pageLoading();
       $.get("{% url news_more_posts %}?last_post={{post.id}}", function(data) {
         $("#view-more-posts").remove();
         $("#wall-posts").append(data.contents);
+      $.mobile.pageLoading(true);
       });
 
       return false;'>See more</a>
