@@ -21,10 +21,8 @@ $(document).bind("mobileinit",function(){
       </ul>
     </div>
   </div>
-  <div data-role="body">
-errs
-{% if form.message %}
-  MESSAGE
+  <div data-role="body"> 
+{% if form.message %} 
   <div style="text-align: center">
     <span {% get_id_and_classes "profile-form-message" %}>{{form.message}}</span>
   </div>
