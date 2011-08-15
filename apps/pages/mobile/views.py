@@ -612,9 +612,10 @@ def profile(request):
     
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
-  
+  members = get_current_commitment_members(user)
   return render_to_response("mobile/profile/index.html", {
     "profile": user.get_profile(),
+    "user": user,
     "form": form,
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
