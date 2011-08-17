@@ -102,7 +102,7 @@
         {% if approval.approval_status == "approved" or approval.award_date %}
           <div {% get_id_and_classes "activity-task-details-info" %}>
             <p/>
-            Congratulations! You did it and earned {{task.point_value}} points! <br/>
+            Congratulations! You did it and earned {{approval.points_awarded}} points! <br/>
             {% if approval.social_bonus_awarded %}
               <span style="color:orange"> Plus {{task.social_bonus}} social bonus points!</span>
             {% endif %}  
