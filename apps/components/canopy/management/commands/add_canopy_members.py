@@ -40,7 +40,7 @@ class Command(management.base.BaseCommand):
         member.save()
         
   def __create_notifications(self, user):
-    message = "Congratulations! You have been added to the canopy!  Click <a href='%s'>here</a> to enter!" % (reverse("canopy_index")) 
+    message = "Congratulations! You have been added to the canopy!" 
     
     UserNotification.create_success_notification(user, message)
 
