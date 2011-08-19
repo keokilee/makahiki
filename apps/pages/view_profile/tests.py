@@ -33,7 +33,6 @@ class ProfileFunctionalTestCase(TestCase):
     user_form = {
         "display_name": "Test User",
         "about": "I rock",
-        "stay_logged_in": True,
         "contact_email": "user@test.com",
         "contact_text": "8088675309",
         "contact_carrier": "tmobile",
@@ -42,7 +41,14 @@ class ProfileFunctionalTestCase(TestCase):
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     self.assertContains(response, "Your changes have been saved", 
         msg_prefix="Successful form update should have a success message.")
-        
+    
+    # Try getting the form again to see if info sticked.
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, "user@test.com", count=1, msg_prefix="Contact email should be saved.")
+    self.assertContains(response, "808-867-5309", count=1, msg_prefix="Phone number should be saved.")
+    self.assertContains(response, '<option value="tmobile" selected="selected">', 
+        msg_prefix="Carrier should be saved.")
+    
     # Try posting the form again.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     self.assertContains(response, "Your changes have been saved", 

@@ -29,7 +29,10 @@ def index(request):
     form = ProfileForm(request.POST)
     if form.is_valid():
       profile = user.get_profile()
-      profile.name = form.cleaned_data["display_name"].strip()
+      name = form.cleaned_data["display_name"].strip()
+      if name != profile.name:
+        profile.name = name
+        
       profile.contact_email = form.cleaned_data["contact_email"]
       profile.contact_text = form.cleaned_data["contact_text"]
       profile.contact_carrier = form.cleaned_data["contact_carrier"]
@@ -45,13 +48,14 @@ def index(request):
       form.message = "Please correct the errors below."
       
   # If this is a new request, initialize the form.
-  if not form:    
+  if not form:
+    profile = user.get_profile()
     form = ProfileForm(initial={
-      "enable_help": user.get_profile().enable_help,
-      "display_name": user.get_profile().name,
-      "contact_email": user.get_profile().contact_email or user.email,
-      "contact_text": user.get_profile().contact_text,
-      "contact_carrier": user.get_profile().contact_carrier,
+      # "enable_help": user.get_profile().enable_help,
+      "display_name": profile.name,
+      "contact_email": profile.contact_email or user.email,
+      "contact_text": profile.contact_text,
+      "contact_carrier": profile.contact_carrier,
     })
     
     if request.GET.has_key("changed_avatar"):

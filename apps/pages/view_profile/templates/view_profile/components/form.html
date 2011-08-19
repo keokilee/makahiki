@@ -45,7 +45,7 @@
       <td {% get_id_and_classes "profile-form-contact-email-fields" %}>{{form.contact_email}}</td>
     </tr>
     {% if form.contact_text.errors %}
-    <tr><td colspan="2">{{form.contact_text.errors}}</td></tr>
+    <tr><td colspan="2">{{form.contact_text.errors}}{{form.contact_carrier.errors}}</td></tr>
     {% endif %}
     <tr {% get_id_and_classes "profile-form-contact-text" %}>
       <td {% get_id_and_classes "profile-form-contact-text-label" %}><label for="id_event_text">Text</label></td>

@@ -5,9 +5,9 @@ from components.activities.models import TextReminder
 
 class ProfileForm(forms.Form):
   display_name = forms.CharField(required=True)
-  enable_help = forms.BooleanField(required=False)
+  # enable_help = forms.BooleanField(required=False)
   # TODO: check http://docs.djangoproject.com/en/dev/topics/http/sessions/#using-sessions-in-views
-  stay_logged_in = forms.BooleanField(initial=True)
+  # stay_logged_in = forms.BooleanField(initial=True)
   
   # Event notifications
   contact_email = forms.EmailField(required=False)
