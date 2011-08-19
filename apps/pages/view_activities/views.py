@@ -196,8 +196,6 @@ def __add_commitment(request, commitment):
         member.award_date = datetime.datetime.today()
         member.comment = form.cleaned_data["social_email"]
         member.save()
-        user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
-        user.get_profile().save()
         value = commitment.point_value
     else:
        return render_to_response("view_activities/task.html", {
@@ -363,9 +361,6 @@ def __request_activity_points(request, activity):
         code.is_active = False
         code.save()
         activity_member.approval_status = "approved" # Model save method will award the points.
-        # decrease sign up points
-        user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
-        user.get_profile().save()
         value = activity.point_value
         
       # Attach text prompt question if one is provided
@@ -433,6 +428,8 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      if not task.has_variable_points:
+        approval.points_awarded = task.point_value
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
@@ -463,12 +460,14 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      approval.points_awarded = task.point_value
       if approval.comment:
         ref_user = User.objects.get(email=approval.comment)
         ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=task)
         for m in ref_members:
           if m.award_date:
             approval.social_bonus_awarded = True
+
     
     member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
     form_title = "Make this commitment"
