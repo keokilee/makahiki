@@ -512,9 +512,12 @@ class ActivityMember(CommonActivityUser):
     Creates a notification for rejected tasks.  This also creates an email message if it is configured.
     """
     # Construct the message to be sent.
-    message = "Your response to <a href='%s'>%s</a> was not approved." % (
+    message = "Your response to <a href='%s'>%s</a> %s was not approved." % (
         reverse("activity_task", args=(self.activity.type, self.activity.slug,)),
-        self.activity.title
+        self.activity.title, 
+        # The below is to tell the javascript to convert into a pretty date.
+        # See the prettyDate function in media/js/makahiki.js
+        "<span class='rejection-date' title='%s'></span>" % self.submission_date.isoformat(),
     )
     
     message += " You can still get points by clicking on the link and trying again."

@@ -1,17 +1,22 @@
+{% load notice_tags %}
+
 <li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
   <div class="notification-contents">
     <span class="ui-icon {{notification.icon_class}}"></span>
     {{notification.contents|safe}}
   </div>
+  
   <div class="notification-options">
     {% if notification.is_success %}
     <a class="notification-share" href="javascript:void(0);">Share on Facebook</a>
     {% endif %}
     <span class="notification-read ui-icon ui-icon-circle-close"></span>
+    <br style="clear: both"/>
   </div>
   <div style="clear:both"></div>
+  
   <script type="text/javascript">
-    $(document).ready(function() {
+    jQuery(document).ready(function($) {
       $("#notification-item-{{notification.id}} .notification-read").click(function() {
         $.post("{% url notifications_read notification.id %}", function(data) {
           $("#notification-item-{{notification.id}}").fadeOut();

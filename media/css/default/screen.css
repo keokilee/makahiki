@@ -387,6 +387,7 @@ clear: both;
 
 .notification-contents {
   float: left;
+/*  width: 800px;*/
 }
 
 .notification-options {
