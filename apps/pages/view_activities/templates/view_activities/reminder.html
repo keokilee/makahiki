@@ -27,11 +27,16 @@
     $("#task-reminder-dialog").dialog({
       modal: true,
       autoOpen: false,
-      width: 650
+      width: 650,
+      open: function (event, ui) {
+        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-open");
+      },
+      close: function(event, ui) {
+        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-close");
+      }
     });
     
     $("#task-reminder-button").click(function() {
-      log_js_action("{{task.type}}", "{{task.slug}}", "reminder-open");
       $("#task-reminder-dialog").dialog("open");
     });
     
@@ -61,6 +66,10 @@
     function bindReminderForm() {
       $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));
       $("#task-reminder-form-email-date").html(createDateString($("#id_email_advance").val()));
+      
+      // Variables for the mobile and email checkboxes.
+      var $mobile = $("#id_send_text");
+      var $email = $("#id_send_email");
 
       $("#id_text_advance").change(function() {
         $("#task-reminder-form-text-date").html(createDateString($(this).val()));
@@ -71,9 +80,20 @@
         $("#task-reminder-form-email-date").html(createDateString($(this).val()));
         return false;
       });
-
+      
+      $("#id_text_number").click(function() {
+        if (!$mobile.checked) {
+          $mobile.attr("checked", "checked");
+        }
+      });
+      
+      $("#id_email").click(function() {
+        if (!$email.checked) {
+          $email.attr("checked", "checked");
+        }
+      });
+      
       $("#task-reminder-form-cancel").click(function() {
-        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-close");
         $("#task-reminder-dialog").dialog("close");
         return false;
       });
