@@ -285,7 +285,6 @@ function task_form_overlay()
 {
   el = document.getElementById("setup-dialog"); 
   el.style.visibility = "visible";
-  log_js_action("activities", "{{task.id}}", "show-form");
   $("#setup-dialog").dialog({
     modal: true,
     width: 500,
@@ -293,7 +292,13 @@ function task_form_overlay()
       height: 500,
     {% endif %}
     closeOnEscape: false,
-    position: [400,100]
+    position: [400,100],
+    open: function(event, ui) {
+      log_js_action("activities", "{{task.slug}}", "show-form");
+    },
+    close: function(event, ui) {
+      log_js_action("activities", "{{task.slug}}", "close-form");
+    }
     });
 
    $('#id_response').focus();
