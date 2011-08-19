@@ -7,6 +7,7 @@ from django.core import mail
 
 from components.activities import *
 from components.activities.models import *
+from components.makahiki_notifications.models import UserNotification
 
 class ActivitiesUnitTestCase(TestCase):
   def setUp(self):
@@ -193,6 +194,27 @@ class ActivitiesUnitTestCase(TestCase):
     )
     activity.save()
     self.assertTrue(activity.has_variable_points)
+    
+  def testRejectionNotifications(self):
+    """
+    Test that notifications are created by rejections and 
+    are marked as read when the member changes back to pending.
+    """
+    notifications = UserNotification.objects.count()
+    activity_member = ActivityMember(user=self.user, activity=self.activity)
+    activity_member.approval_status = "rejected"
+    activity_member.save()
+    
+    self.assertEqual(UserNotification.objects.count(), notifications + 1, 
+        "New notification should have been created.")
+    notice = activity_member.notifications.all()[0]
+    self.assertTrue(notice.unread, "Notification should be unread.")
+        
+    activity_member.approval_status = "pending"
+    activity_member.save()
+    
+    notice = activity_member.notifications.all()[0]
+    self.assertFalse(notice.unread, "Notification should be marked as read.")
     
   def tearDown(self):
     """Restore the saved settings."""

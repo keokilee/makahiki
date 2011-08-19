@@ -412,6 +412,7 @@ class ActivityMember(CommonActivityUser):
       null=True, 
       help_text="Number of points to award for activities with variable point values."
   )
+  notifications = generic.GenericRelation(UserNotification, editable=False)
   
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
@@ -434,6 +435,10 @@ class ActivityMember(CommonActivityUser):
         
   def save(self, *args, **kwargs):
     """Custom save method to award/remove points if the activitymember is approved or rejected."""
+    if self.approval_status != "rejected":
+      # Check for any notifications and mark them as read.
+      self.notifications.all().update(unread=False)
+      
     if self.approval_status == u"pending":
       # Mark pending items as submitted.
       self.submission_date = datetime.datetime.today()
@@ -514,7 +519,7 @@ class ActivityMember(CommonActivityUser):
     
     message += " You can still get points by clicking on the link and trying again."
     
-    UserNotification.create_error_notification(self.user, message)
+    UserNotification.create_error_notification(self.user, message, content_object=self)
     
     subject = "[%s] Your response to '%s' was not approved" % (settings.COMPETITION_NAME, self.activity.title) 
     current_site = Site.objects.get(id=settings.SITE_ID)

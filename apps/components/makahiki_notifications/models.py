@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.messages import constants as message_constants
 from django.core.mail.message import EmailMultiAlternatives
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 
 # Notification Levels
 constants = message_constants
@@ -22,6 +24,9 @@ class Notification(models.Model):
 
 class UserNotification(Notification):
   display_alert = models.BooleanField(default=False)
+  content_type = models.ForeignKey(ContentType, null=True, blank=True)
+  object_id = models.PositiveIntegerField(null=True, blank=True)
+  content_object = generic.GenericForeignKey('content_type', 'object_id')
   
   @property
   def is_success(self):
@@ -47,43 +52,55 @@ class UserNotification(Notification):
     return "ui-state-highlight"
     
   @staticmethod
-  def create_info_notification(recipient, contents, display_alert=False, object=None):
+  def create_info_notification(recipient, contents, display_alert=False, content_object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
         level=constants.INFO,
         display_alert=display_alert,
     )
+    if content_object:
+      notification.content_object = content_object
+      
     notification.save()
     
   @staticmethod
-  def create_success_notification(recipient, contents, display_alert=False, object=None):
+  def create_success_notification(recipient, contents, display_alert=False, content_object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
         level=constants.SUCCESS,
         display_alert=display_alert,
     )
+    if content_object:
+      notification.content_object = content_object
+      
     notification.save()
 
   @staticmethod
-  def create_warning_notification(recipient, contents, display_alert=True, object=None):
+  def create_warning_notification(recipient, contents, display_alert=True, content_object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
         level=constants.WARNING,
         display_alert=display_alert,
     )
+    if content_object:
+      notification.content_object = content_object
+      
     notification.save()
 
   @staticmethod
-  def create_error_notification(recipient, contents, display_alert=True, object=None):
+  def create_error_notification(recipient, contents, display_alert=True, content_object=None):
     notification = UserNotification(
         recipient=recipient,
         contents=contents,
         level=constants.ERROR,
         display_alert=display_alert,
     )
+    if content_object:
+      notification.content_object = content_object
+      
     # print display_alert
     notification.save()
     
