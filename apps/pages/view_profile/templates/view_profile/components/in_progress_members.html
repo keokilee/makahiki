@@ -27,10 +27,11 @@
         {# Item is not pending and is not approved, so it should be rejected. #}
         <td title="Your request has not been approved.">
           <a id="{{member.activity.title|slugify}}-rejected" href="#">{{member.approval_status.capitalize}}</a>
+          
           <div id="{{member.activity.title|slugify}}-rejected-dialog" 
               title="{{member.activity.title}}" style="display:none">
             <p>Your response for this activity was not approved.  Here's the feedback from the administrator:</p>
-            {{member.admin_comment|markdown}}
+            <div style="font-style:italic">{{member.admin_comment|markdown}}</div>
             <p><a href="{% url activity_task member.activity.type member.activity.slug %}">Go to the activity page</a> to try again.</p>
             
             <input type="submit" value="OK" onclick='$("#{{member.activity.title|slugify}}-rejected-dialog").dialog("close");' />
@@ -39,11 +40,13 @@
             $(document).ready(function() {
               $("#{{member.activity.title|slugify}}-rejected-dialog").dialog({
                 modal: true,
-                {% if rejected_member and rejected_member == member %}
-                autoOpen: true
-                {% else %}
-                autoOpen: false
-                {% endif %}
+                autoOpen: false,
+                open: function(event, ui) {
+                  log_js_action("profile", "{{member.activity.title|slugify}}-rejected", "dialog-open");
+                },
+                close: function(event, ui) {
+                  log_js_action("profile", "{{member.activity.title|slugify}}-rejected", "dialog-close");
+                }
               });
               
               $("#{{member.activity.title|slugify}}-rejected").click(function() {
