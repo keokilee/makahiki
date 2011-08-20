@@ -87,10 +87,15 @@ def sgactivities(request, category_slug):
     "Wet & Wild", "Pot Pourri"]
   i = -1
   category = ""
+  reached = False
   for x in category_slugs:
     if x == string.lower(category_slug):
       category = x
       i = i + 1
+      reached = True
+    else:
+      if reached == False:
+        i = i + 1
 
   category_no_slug = categories[i]
 
