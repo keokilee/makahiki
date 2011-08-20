@@ -15,6 +15,10 @@
 	width: 375px;
 }
 
+#activity-scoreboard-content table {
+  width: 100%;
+}
+
 #activity-categories {
 	float: right;
 	width: 512px;
@@ -135,8 +139,8 @@ h3.activity-categories-title {
 	padding: 4px 4px 4px 8px;
 }
 
-#activity-scoreboard-content td  {
-    padding-right: 30px;
+#activity-scoreboard-content td, #activity-scoreboard-content th {
+    padding-right: 20px;
 }
 
 #activity-categories {	
