@@ -138,7 +138,7 @@ class ActivitiesUnitTestCase(TestCase):
     (entry, created) = self.user.get_profile().scoreboardentry_set.get_or_create(round_name=self.current_round)
     round_points = entry.points
     
-    activity_member = ActivityMember(user=self.user, activity=self.activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity, submission_date=datetime.datetime.today())
     activity_member.approval_status = "approved"
     activity_member.save()
     award_date = activity_member.award_date
@@ -201,7 +201,7 @@ class ActivitiesUnitTestCase(TestCase):
     are marked as read when the member changes back to pending.
     """
     notifications = UserNotification.objects.count()
-    activity_member = ActivityMember(user=self.user, activity=self.activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity, submission_date=datetime.datetime.today())
     activity_member.approval_status = "rejected"
     activity_member.save()
     

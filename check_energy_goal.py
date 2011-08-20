@@ -84,14 +84,13 @@ class GDataGoal:
         print '%s %s\n' % (entry.title.text, entry.content.text)
 
   def award_point(self, source, goal, actual):
-    for floor in Floor.objects.all():
-      if floor.dorm.name + "-" + floor.number == source:
-        goal = FloorEnergyGoal(
-            floor=floor,
-            goal_usage=goal,
-            actual_usage=actual,
-        )
-        goal.save()
+    floor = Floor.objects.get(floor_identifier=source)
+    goal = FloorEnergyGoal(
+        floor=floor,
+        goal_usage=goal,
+        actual_usage=actual,
+    )
+    goal.save()
         
   def Run(self):
     self._checkCellGoal()

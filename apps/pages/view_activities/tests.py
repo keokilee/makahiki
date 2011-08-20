@@ -159,6 +159,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     activity = Activity(
         title="Test activity",
         description="Testing!",
+        slug="test-activity",
         duration=10,
         point_value=10,
         pub_date=datetime.datetime.today(),
@@ -167,10 +168,15 @@ class ActivitiesFunctionalTestCase(TestCase):
         type="activity",
     )
     activity.save()
-    member = ActivityMember(activity=activity, user=self.user, approval_status="rejected")
+    member = ActivityMember(
+        activity=activity, 
+        user=self.user, 
+        submission_date=datetime.datetime.today(),
+        approval_status="rejected"
+    )
     member.save()
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response, "Your response to <a href='%s'>%s</a> was not approved" % (
+    self.assertContains(response, "Your response to <a href='%s'>%s</a>" % (
         reverse("activity_task", args=(activity.type, activity.slug,)),
         activity.title,
     ))

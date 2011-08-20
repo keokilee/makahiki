@@ -499,7 +499,6 @@ class ActivityMember(CommonActivityUser):
       profile.remove_points(points, self.submission_date)
       profile.save()
       self.award_date = None
-      self.submission_date = None # User will have to resubmit.
       
     super(ActivityMember, self).save()
     

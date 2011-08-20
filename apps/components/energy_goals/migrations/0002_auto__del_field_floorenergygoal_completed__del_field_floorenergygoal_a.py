@@ -8,9 +8,6 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Deleting field 'FloorEnergyGoal.goal'
-        db.delete_column('energy_goals_floorenergygoal', 'goal_id')
-
         # Deleting field 'FloorEnergyGoal.completed'
         db.delete_column('energy_goals_floorenergygoal', 'completed')
 
@@ -18,17 +15,17 @@ class Migration(SchemaMigration):
         db.delete_column('energy_goals_floorenergygoal', 'awarded')
 
         # Adding field 'FloorEnergyGoal.goal_usage'
-        db.add_column('energy_goals_floorenergygoal', 'goal_usage', self.gf('django.db.models.fields.DecimalField')(default=0.0, max_digits=10, decimal_places=2), keep_default=False)
+        db.add_column('energy_goals_floorenergygoal', 'goal_usage', self.gf('django.db.models.fields.DecimalField')(default=0, max_digits=10, decimal_places=2), keep_default=False)
 
         # Adding field 'FloorEnergyGoal.actual_usage'
-        db.add_column('energy_goals_floorenergygoal', 'actual_usage', self.gf('django.db.models.fields.DecimalField')(default=0.0, max_digits=10, decimal_places=2), keep_default=False)
+        db.add_column('energy_goals_floorenergygoal', 'actual_usage', self.gf('django.db.models.fields.DecimalField')(default=0, max_digits=10, decimal_places=2), keep_default=False)
+
+        # Changing field 'FloorEnergyGoal.goal'
+        db.alter_column('energy_goals_floorenergygoal', 'goal_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['energy_goals.EnergyGoal'], null=True, blank=True))
 
 
     def backwards(self, orm):
         
-        # Adding field 'FloorEnergyGoal.goal'
-        db.add_column('energy_goals_floorenergygoal', 'goal', self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['energy_goals.EnergyGoal']), keep_default=False)
-
         # Adding field 'FloorEnergyGoal.completed'
         db.add_column('energy_goals_floorenergygoal', 'completed', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True), keep_default=False)
 
@@ -40,6 +37,9 @@ class Migration(SchemaMigration):
 
         # Deleting field 'FloorEnergyGoal.actual_usage'
         db.delete_column('energy_goals_floorenergygoal', 'actual_usage')
+
+        # Changing field 'FloorEnergyGoal.goal'
+        db.alter_column('energy_goals_floorenergygoal', 'goal_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['energy_goals.EnergyGoal']))
 
 
     models = {
@@ -106,6 +106,7 @@ class Migration(SchemaMigration):
             'actual_usage': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'floor': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['floors.Floor']"}),
+            'goal': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['energy_goals.EnergyGoal']", 'null': 'True', 'blank': 'True'}),
             'goal_usage': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'percent_reduction': ('django.db.models.fields.IntegerField', [], {'default': '0'}),

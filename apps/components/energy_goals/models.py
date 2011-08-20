@@ -78,7 +78,7 @@ class FloorEnergyGoal(models.Model):
   GOAL_POINTS = 20
   
   floor = models.ForeignKey(Floor)
-  # goal = models.ForeignKey(EnergyGoal)
+  goal = models.ForeignKey(EnergyGoal, null=True, blank=True)
   percent_reduction = models.IntegerField(default=0, editable=False)
   goal_usage = models.DecimalField(decimal_places=2, max_digits=10, editable=False)
   actual_usage = models.DecimalField(decimal_places=2, max_digits=10, editable=False)
