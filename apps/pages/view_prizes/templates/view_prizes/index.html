@@ -51,11 +51,11 @@
         }
       });
 
-      $("#prizes-list-content").before("<div id='prize-nav'>").cycle({
+      $("#prizes-list-content").after("<div id='prize-cycle-nav'>").cycle({
           height: "" + height + "px",
           pause: 1,
           timeout: 7000,
-          pager: '#prize-nav'
+          pager: '#prize-cycle-nav'
       });
     });
   </script>

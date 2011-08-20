@@ -121,3 +121,17 @@ th {
 	display: block;
 }
 
+/**** Prize cycle styles ****/
+#prize-cycle-nav {
+  text-align: center;
+}
+
+#prize-cycle-nav a {
+  padding: 1px 5px;
+}
+
+#prize-cycle-nav a.activeSlide {
+  font-weight: bold;
+/*  background-color: #DBD7AF;*/
+}
+
