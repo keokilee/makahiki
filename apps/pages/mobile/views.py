@@ -35,6 +35,7 @@ from pages.view_prizes.views import _get_raffle_prizes
  
 
 @login_required
+@never_cache
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
@@ -246,6 +247,7 @@ def __add_commitment(request, commitment_id, slug):
   members = CommitmentMember.objects.filter(user=user, commitment=commitment);
   if members.count() > 0 and members[0].days_left() == 0:
     #commitment end
+    user.get_profile().add_points(-2, datetime.datetime.today() - datetime.timedelta(minutes=1))
     member = members[0]
     member.award_date = datetime.datetime.today()
     member.save()
