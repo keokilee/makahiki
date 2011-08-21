@@ -35,6 +35,7 @@ from pages.view_prizes.views import _get_raffle_prizes
  
 
 @login_required
+@never_cache
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
