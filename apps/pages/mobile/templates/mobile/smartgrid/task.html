@@ -105,7 +105,9 @@
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
-              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
+    	      <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+              <input type="submit" value="I Did it"/>
+              </from>
               {% endif %}
 
           {% endif %}         
@@ -147,10 +149,12 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will do this!</a>
+            <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+              <input type="submit" value="I will do this!"/>
+            </form>
           {% else %}
             <b>You already have 5 pending commitments. <br/>
-            You can continue making this commitment once any of your pending commitment is approved.
+            You can continue making this commitment once any of your pending commitments are approved.
             </b>
           {% endif %}
         {% endif %}  
@@ -192,7 +196,10 @@
 </div>
 
 
-<!---------- form ---------->
+<!---------- form ----------
+---------------------------
+-----------------------------
+------------------------------>
 <div data-role="page" id="form" data-url="form">
   <div data-role="header">
     <h1>{{task.name}}</h1>
@@ -288,8 +295,7 @@
     -->
       <div>
         <button>Submit</button>
-        <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-           Cancel</a>
+        <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">Cancel</a>
       </div>
     {% endif %}
   
@@ -303,8 +309,7 @@
         {% endfor %}
         <div>
           <button>Submit</button>
-          <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-            Cancel</a>
+          <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">Cancel</a>
         </div>
     {% endif %}
     </form>
