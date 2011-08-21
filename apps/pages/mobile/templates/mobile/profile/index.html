@@ -7,8 +7,10 @@ $(document).bind("mobileinit",function(){
     $.mobile.ajaxFormEnabled=false; 
 });
 </script>
-<div data-role="page" id="index">
-  <div data-role="header">
+<div data-role="page" id="index" >
+
+<p id="test">hi</p>
+  <div data-role="header" >
 
     <h1>My Profile</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
@@ -21,7 +23,7 @@ $(document).bind("mobileinit",function(){
       </ul>
     </div>
   </div>
-  <div data-role="body"> 
+  <div data-role="body" > 
 {% if form.message %} 
   <div style="text-align: center">
     <span {% get_id_and_classes "profile-form-message" %}>{{form.message}}</span>
@@ -29,10 +31,21 @@ $(document).bind("mobileinit",function(){
   {% endif %} 
 <form {% get_id_and_classes "profile-form-contents" %} action="{% url mobile_profile %}" rel="external" method="post">
     <table> 
-	{{form}}  
-    </table> <input type="submit" rel="external" value="sumbit"/>
+	{{form}}      
+
+    </table> <input type="submit" rel="external" value="Submit"/>
  
     </form>
+<input type=submit onclick="changeText()" value="button"/>
+<script >
+function changeText(){
+	document.getElementById("id_contact_carrier").style.display ="none";
+        document.getElementById('id_stay_logged_in').style.display ="none";
+        document.getElementById('id_enable_help').style.display ='none';
+        alert("HI");
+}
+</script>
+
     <a href="{% url mobile_profile %}" data-role="button" data-rel="back">Cancel</a>
   </div>
 </div>
