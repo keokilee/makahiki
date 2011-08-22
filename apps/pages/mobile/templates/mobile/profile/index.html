@@ -22,18 +22,9 @@ $(document).bind("mobileinit",function(){
     </div>
   </div>
   <div data-role="body"> 
-{% if form.message %} 
-  <div style="text-align: center">
-    <span {% get_id_and_classes "profile-form-message" %}>{{form.message}}</span>
-  </div>
-  {% endif %} 
-<form {% get_id_and_classes "profile-form-contents" %} action="{% url mobile_profile %}" rel="external" method="post">
-    <table> 
-	{{form}}  
-    </table> <input type="submit" rel="external" value="sumbit"/>
- 
-    </form>
-    <a href="{% url mobile_profile %}" data-role="button" data-rel="back">Cancel</a>
+    <div {% get_id_and_classes "profile-form-content" %}>
+      {% include "mobile/profile/user.html" %}
+    </div>
   </div>
 </div>
 
