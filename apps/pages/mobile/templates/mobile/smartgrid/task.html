@@ -41,10 +41,11 @@
       <p/>
       {% if task.social_bonus > 0 %}
       <b>Social Bonus : {{task.social_bonus}} points. </b>
-      <a href="#">
+
+      <a href="{% url mobile_help_topic 'widget' 'social-bonus' %}" data-rel="dialog">
       <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 		title="What is Social Bonus ?" 
-		onclick="toggleHelp('widget', 'social-bonus'); return false;"
+		
 	   /></a>
       {% endif %}
       <p/>
