@@ -247,7 +247,9 @@ def __add_commitment(request, commitment_id, slug):
   members = CommitmentMember.objects.filter(user=user, commitment=commitment);
   if members.count() > 0 and members[0].days_left() == 0:
     #commitment end
-    user.get_profile().add_points(-2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    message = "Commitment: %s (Cancelled)" % commitment.title
+    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
+    user.get_profile().save()
     member = members[0]
     member.award_date = datetime.datetime.today()
     member.save()
@@ -259,7 +261,8 @@ def __add_commitment(request, commitment_id, slug):
     # messages.info("You are now committed to \"%s\"" % commitment.title)
 
     #increase point
-    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    message = "Commitment: %s (Signup)" % commitment.title
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
     user.get_profile().save()
     
     # Check for Facebook.
@@ -324,7 +327,8 @@ def __add_activity(request, activity_id, slug):
       activity_member.save()
         
       #increase point
-      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+      message = "%s: %s (Sign up)" % (activity.type.capitalize(), activity.title)
+      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
       user.get_profile().save()
 
     return HttpResponseRedirect(reverse("mobile_task", args=(category, activity.slug,)))

@@ -43,7 +43,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     # Give the user points in the round and then check the queryset used in the page.
     profile = self.user.get_profile()
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "test")
     profile.save()
     
     response = self.client.get(reverse("activity_index"))
@@ -63,7 +63,7 @@ class ActivitiesFunctionalTestCase(TestCase):
         "The user should have 10 points this round.")
         
     # Get points outside of the round and see if affects the standings.
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=2), "test")
     profile.save()
     
     response = self.client.get(reverse("activity_index"))

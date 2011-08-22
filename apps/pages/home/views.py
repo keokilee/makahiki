@@ -120,7 +120,7 @@ def setup_profile(request):
       profile.name = form.cleaned_data["display_name"].strip()
       if not profile.setup_profile:
         profile.setup_profile = True
-        profile.add_points(5, datetime.datetime.today())
+        profile.add_points(5, datetime.datetime.today(), "Set up profile")
       try:
         profile.save()
       except IntegrityError:
@@ -241,7 +241,7 @@ def setup_complete(request):
         ActivityMember.objects.get_or_create(activity=activity, user=profile.user, approval_status="approved")
         # If this was created, it's automatically saved.
       except Activity.DoesNotExist:
-        # profile.add_points(15, datetime.datetime.today())
+        # profile.add_points(15, datetime.datetime.today(), "First login activity")
         pass # Don't add anything if we can't link to the activity.
         
     profile.setup_complete = True

@@ -84,7 +84,7 @@ class RafflePrizesTestCase(TestCase):
         
     # Give the user some points and see if their tickets update.
     profile = self.user.get_profile()
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     response = self.client.get(reverse("prizes_index"))
     self.assertContains(response, "Your total raffle tickets: 1 Allocated right now: 0 Available: 1",
@@ -101,7 +101,7 @@ class RafflePrizesTestCase(TestCase):
     raffle_prize.save()
     
     profile = self.user.get_profile()
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     
     # Test that we can add a ticket.
@@ -120,7 +120,7 @@ class RafflePrizesTestCase(TestCase):
         msg_prefix="There should not be an url to add a ticket.")
         
     # Test adding another ticket to the prize.
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     response = self.client.post(reverse("raffle_add_ticket", args=(raffle_prize.id,)), follow=True)
     self.assertContains(response, "Your total raffle tickets: 2 Allocated right now: 2 Available: 0",

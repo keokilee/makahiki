@@ -215,8 +215,9 @@ def __add_commitment(request, commitment):
     member.save()
     # messages.info("You are now committed to \"%s\"" % commitment.title)
 
-    #decrease the point from signup
-    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    #increase the point from signup
+    message = "Commitment: %s (Sign up)" % (commitment.title)
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
     user.get_profile().save()
     value = 2
     
@@ -297,7 +298,8 @@ def __add_activity(request, activity):
       activity_member.save()
         
       #increase point
-      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+      message = "%s: %s (Sign up)" % (activity.type.capitalize(), activity.title)
+      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
       user.get_profile().save()
       value = 2
       

@@ -217,7 +217,7 @@ class ProfileFunctionalTestCase(TestCase):
     
     # Kludge to change point value for the info bar.
     profile = self.user.get_profile()
-    profile.add_points(3, datetime.datetime.today())
+    profile.add_points(3, datetime.datetime.today(), "test")
     profile.save()
     
     response = self.client.get(reverse("profile_index"))
@@ -259,5 +259,6 @@ class ProfileFunctionalTestCase(TestCase):
     
     response = self.client.get(reverse("profile_index"))
     self.assertContains(response, reverse("activity_task", args=(event.type, event.slug,)))
-    self.assertContains(response, "plus social bonus", count=1, msg_prefix="Achievements should contain a social bonus entry")
+    entry = "Event: Test event (Social Bonus)"
+    self.assertContains(response, entry, count=1, msg_prefix="Achievements should contain a social bonus entry")
     

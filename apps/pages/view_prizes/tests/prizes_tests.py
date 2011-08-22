@@ -55,7 +55,7 @@ class PrizesFunctionalTestCase(TestCase):
     
     profile =  self.user.get_profile()
     profile.name = "Test User"
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "test")
     floor = profile.floor
     profile.save()
     
@@ -101,7 +101,7 @@ class PrizesFunctionalTestCase(TestCase):
     settings.COMPETITION_END = end2.strftime("%Y-%m-%d")
     
     profile =  self.user.get_profile()
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "test")
     profile.name = "Test User"
     floor = profile.floor
     profile.save()
