@@ -159,12 +159,12 @@ class Floor(models.Model):
       
     return dictionary["points__sum"] or 0
     
-  def save(self):
+  def save(self, *args, **kwargs):
     """Custom save method to generate slug and set created_at/updated_at."""
     if not self.slug:
       self.slug = slugify(self.number)
 
-    super(Floor, self).save()
+    super(Floor, self).save(*args, **kwargs)
     
 class Post(models.Model):
   """Represents a wall post on a user's wall."""

@@ -74,27 +74,33 @@ class EnergyGoalVote(models.Model):
     unique_together = ("user", "goal")
     
 class FloorEnergyGoal(models.Model):
+  # The amount of points to award for completing a goal.
+  GOAL_POINTS = 20
+  
   floor = models.ForeignKey(Floor)
-  goal = models.ForeignKey(EnergyGoal)
+  goal = models.ForeignKey(EnergyGoal, null=True, blank=True)
   percent_reduction = models.IntegerField(default=0, editable=False)
-  completed = models.BooleanField(default=False, help_text="Check this box if the floor has completed the goal.")
-  awarded = models.BooleanField(default=False, editable=False)
+  goal_usage = models.DecimalField(decimal_places=2, max_digits=10, editable=False)
+  actual_usage = models.DecimalField(decimal_places=2, max_digits=10, editable=False)
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True)
   
-  def save(self):
+  def save(self, *args, **kwargs):
     """Overrided save method to award the goal's points to members of the floor."""
-    if self.completed and not self.awarded:
-      points = int(self.goal.point_conversion * self.percent_reduction)
-      # Subtract a minute from the end date in order to get around energy goals tied to rounds, which
-      # also end at midnight.
-      # Conversion from http://stackoverflow.com/questions/1937622/convert-date-to-datetime-in-python
-      award_date = datetime.datetime.combine(self.goal.end_date, datetime.time()) - datetime.timedelta(minutes=1)
+    goal_completed = self.goal_usage and self.actual_usage and (self.actual_usage <= self.goal_usage)
+    if self.floor and goal_completed:
+      # Award points to the members of the floor.
       for profile in self.floor.profile_set.all():
-        profile.add_points(points, award_date)
-        profile.save()
-        
-      self.awarded = True
+        if profile.setup_complete:
+          today = datetime.datetime.today()
+          # Hack to get around executing this script at midnight.  We want to award
+          # points earlier to ensure they are within the round they were completed.
+          if today.hour == 0:
+            today = today - datetime.timedelta(hours=1)
+
+          profile.add_points(self.GOAL_POINTS, today)
+          profile.save()
+          
       
-    super(FloorEnergyGoal, self).save()
+    super(FloorEnergyGoal, self).save(*args, **kwargs)

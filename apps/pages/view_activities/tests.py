@@ -159,6 +159,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     activity = Activity(
         title="Test activity",
         description="Testing!",
+        slug="test-activity",
         duration=10,
         point_value=10,
         pub_date=datetime.datetime.today(),

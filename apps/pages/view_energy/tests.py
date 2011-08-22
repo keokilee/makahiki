@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from components.floors.models import Floor
 
 class EnergyFunctionalTestCase(TestCase):
-  fixtures = ["base_floors.json", "test_energy_goals.json"]
+  fixtures = ["base_floors.json"]
   
   def testIndex(self):
     """Check that we can load the index page."""

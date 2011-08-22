@@ -201,7 +201,7 @@ class ActivitiesUnitTestCase(TestCase):
     are marked as read when the member changes back to pending.
     """
     notifications = UserNotification.objects.count()
-    activity_member = ActivityMember(user=self.user, activity=self.activity)
+    activity_member = ActivityMember(user=self.user, activity=self.activity, submission_date=datetime.datetime.today())
     activity_member.approval_status = "rejected"
     activity_member.submission_date = datetime.datetime.today()
     activity_member.save()

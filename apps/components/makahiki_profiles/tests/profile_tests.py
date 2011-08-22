@@ -372,7 +372,7 @@ class ProfileUnitTests(TestCase):
     activities = [activity1, activity2]
     
     # Submit the first activity.  This is what we're going to rollback to.
-    activity_member = ActivityMember(user=user, activity=activities[0])
+    activity_member = ActivityMember(user=user, activity=activities[0], submission_date=datetime.datetime.today())
     activity_member.approval_status = "approved"
     activity_member.submission_date = datetime.datetime.today() - datetime.timedelta(days=1)
     activity_member.save()
@@ -381,7 +381,7 @@ class ProfileUnitTests(TestCase):
     submit_date = user.get_profile().last_awarded_submission
     
     # Submit second activity.
-    activity_member = ActivityMember(user=user, activity=activities[1])
+    activity_member = ActivityMember(user=user, activity=activities[1], submission_date=datetime.datetime.today())
     activity_member.approval_status = "approved"
     activity_member.submission_date = datetime.datetime.today()
     activity_member.save()

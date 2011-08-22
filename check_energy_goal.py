@@ -76,22 +76,21 @@ class GDataGoal:
           print '---- %s actual=%d goal=%d' % (source, actual, goal) 
           if is_meet_goal:
             print "**** "+ source + " MEET the GOAL!"
-            self.award_point(source)
+            self.award_point(source, goal, actual)
 			
   def _PrintFeed(self, feed):
     for i, entry in enumerate(feed.entry):
       if isinstance(feed, gdata.spreadsheet.SpreadsheetsCellsFeed):
         print '%s %s\n' % (entry.title.text, entry.content.text)
 
-  def award_point(self, source):
-    for profile in Profile.objects.all():
-      if profile.floor and (profile.floor.dorm.name + "-" + profile.floor.number == source) and profile.setup_complete:
-        print "reward point " + source + " for " + profile.name
-        profile.add_points(20, datetime.datetime.today())
-        profile.save()
-        
-      elif profile.floor and (profile.floor.dorm.name + "-" + profile.floor.number == source):
-        print "User %s has not completed the setup.  Ignoring." % profile.user.username
+  def award_point(self, source, goal, actual):
+    floor = Floor.objects.get(floor_identifier=source)
+    goal = FloorEnergyGoal(
+        floor=floor,
+        goal_usage=goal,
+        actual_usage=actual,
+    )
+    goal.save()
         
   def Run(self):
     self._checkCellGoal()
