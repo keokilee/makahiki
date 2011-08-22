@@ -364,7 +364,7 @@ class PointsTransaction(models.Model):
       content_type = ContentType.objects.get_for_model(related_object)
       return PointsTransaction.objects.filter(
           object_id=related_object.id,
-          content_type__pk=content_type,
+          content_type=content_type,
       )[0]
       
     except IndexError:

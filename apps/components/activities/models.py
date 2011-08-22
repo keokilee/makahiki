@@ -372,7 +372,8 @@ class CommitmentMember(CommonBase):
     profile = self.user.get_profile()
     
     if self.award_date:
-      profile.remove_points(self.commitment.point_value, self.award_date)
+      title = "Commitment: %s (Removed)" % self.commitment.title
+      profile.remove_points(self.commitment.point_value, self.award_date, title, self)
       profile.save()
     elif profile.floor:
       message = "is no longer participating in \"%s\"." % (
@@ -498,9 +499,8 @@ class ActivityMember(CommonActivityUser):
         points = self.activity.point_value
         
       profile = self.user.get_profile()
-      # Rejecting a previously approved activity will write a log entry.
-      title = "%s: %s (Rejected)" % (self.activity.type.capitalize(), self.activity.title)
-      profile.remove_points(points, self.submission_date, title, related_object=self)
+      message = "%s: %s (Rejected)" % (self.activity.type.capitalize(), self.activity.title)
+      profile.remove_points(points, self.submission_date, message, self)
       profile.save()
       self.award_date = None
       # self.submission_date = None # User will have to resubmit.
