@@ -393,12 +393,6 @@ class ProfileUnitTests(TestCase):
     
     # Verify that we rolled back to the previous activity.
     self.assertEqual(points, user.get_profile().points)
-    print "transactions"
-    for trans in PointsTransaction.objects.all():
-      print "%s: %d" % (trans.related_object, trans.points)
-      
-    self.assertEqual(user.pointstransaction_set.count(), logs - 1, 
-        "Check that the member removed the transaction log.")
     # TODO: Rolling back last awarded submission is broken.  May be fixed when we implement
     # a points transaction log.
     # self.assertTrue(abs(submit_date - user.get_profile().last_awarded_submission) < datetime.timedelta(minutes=1))

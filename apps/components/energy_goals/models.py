@@ -98,8 +98,9 @@ class FloorEnergyGoal(models.Model):
           # points earlier to ensure they are within the round they were completed.
           if today.hour == 0:
             today = today - datetime.timedelta(hours=1)
-
-          profile.add_points(self.GOAL_POINTS, today)
+            
+          date = "%d/%d/%d" % (today.month, today.day, today.year)
+          profile.add_points(self.GOAL_POINTS, today, "Floor Energy Goal for %s"  % date, self)
           profile.save()
           
       

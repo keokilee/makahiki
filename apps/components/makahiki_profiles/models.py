@@ -246,26 +246,19 @@ class Profile(models.Model):
   def remove_points(self, points, submission_date, message, related_object=None):
     """
     Removes points from the user. Note that this method does not save the profile.  
-    If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task.
+    If the submission date is the same as the last_awarded_submission field, we rollback 
+    to a previously completed task.
     """
-    # Try to find the related transaction and delete it.
-    rel_transaction = None
-    if related_object:
-      rel_transaction = PointsTransaction.get_transaction_for_object(related_object, points)
-      if rel_transaction:
-        rel_transaction.delete()
-      
-    # If there is no object or we can't find the transaction, create one.
-    if not related_object or not rel_transaction:
-      transaction = PointsTransaction(
-          user=self.user,
-          points=points * -1,
-          submission_date=submission_date,
-          message=message,
-          related_object=related_object
-      )
-      
-      transaction.save()
+    # Log the transaction.
+    transaction = PointsTransaction(
+        user=self.user,
+        points=points * -1,
+        submission_date=submission_date,
+        message=message,
+        related_object=related_object
+    )
+    
+    transaction.save()
     
     self.points -= points
     
