@@ -251,7 +251,7 @@ class Profile(models.Model):
     # Try to find the related transaction and delete it.
     rel_transaction = None
     if related_object:
-      rel_transaction = PointsTransaction.get_transaction_for_object(related_object)
+      rel_transaction = PointsTransaction.get_transaction_for_object(related_object, points)
       if rel_transaction:
         rel_transaction.delete()
       
@@ -358,10 +358,11 @@ class PointsTransaction(models.Model):
   related_object = generic.GenericForeignKey("content_type", "object_id") 
   
   @staticmethod
-  def get_transaction_for_object(related_object):
+  def get_transaction_for_object(related_object, points):
     try:
       content_type = ContentType.objects.get_for_model(related_object)
       return PointsTransaction.objects.filter(
+          points=points,
           object_id=related_object.id,
           content_type=content_type,
       )[0]
