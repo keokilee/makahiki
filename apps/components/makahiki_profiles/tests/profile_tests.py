@@ -32,7 +32,7 @@ class ProfileLeadersTests(TestCase):
     """
     # Test one user
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "Test")
     profile.save()
     
     self.assertEqual(Profile.points_leaders(round_name=self.current_round)[0], profile, 
@@ -40,7 +40,7 @@ class ProfileLeadersTests(TestCase):
     
     # Have another user move ahead in points
     profile2 = self.users[1].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.save()
     
     self.assertEqual(Profile.points_leaders(round_name=self.current_round)[0], profile2, 
@@ -48,14 +48,14 @@ class ProfileLeadersTests(TestCase):
     
     # Have this user get the same amount of points, but an earlier award date.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1), "Test")
     profile3.save()
     
     self.assertEqual(Profile.points_leaders(round_name=self.current_round)[0], profile2, 
         "User 2 should still be the leading profile.")
     
     # Have the first user earn more points outside of the round.
-    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2), "Test")
     profile.save()
     
     self.assertEqual(Profile.points_leaders(round_name=self.current_round)[0], profile2, 
@@ -67,7 +67,7 @@ class ProfileLeadersTests(TestCase):
     """
     # Test one user
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "Test")
     profile.save()
 
     self.assertEqual(Profile.points_leaders()[0], profile, 
@@ -75,7 +75,7 @@ class ProfileLeadersTests(TestCase):
 
     # Have another user move ahead in points
     profile2 = self.users[1].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.save()
 
     self.assertEqual(Profile.points_leaders()[0], profile2, 
@@ -83,7 +83,7 @@ class ProfileLeadersTests(TestCase):
 
     # Have this user get the same amount of points, but an earlier award date.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1), "Test")
     profile3.save()
 
     self.assertEqual(Profile.points_leaders()[0], profile2, 
@@ -130,7 +130,7 @@ class ProfileUnitTests(TestCase):
     
     # Make the user number 1 overall.
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.add_points(top_user.points + 1, datetime.datetime.today(), "Test")
     profile.save()
     
     self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
@@ -139,7 +139,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.save()
     
     self.assertEqual(profile.floor_rank(), 1, 
@@ -162,7 +162,7 @@ class ProfileUnitTests(TestCase):
     profile = user.get_profile()
     profile.floor = floor
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "Test")
     profile.save()
     
     self.assertEqual(profile.floor_rank(), 1, "Check that the user is number 1.")
@@ -171,7 +171,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points, datetime.datetime.today())
+    profile2.add_points(profile.points, datetime.datetime.today(), "Test")
     profile2.save()
                   
     profile2.floor = floor
@@ -192,7 +192,7 @@ class ProfileUnitTests(TestCase):
     
     # Make the user ranked 1st.
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.add_points(top_user.points + 1, datetime.datetime.today(), "Test")
     profile.save()
     
     self.assertEqual(profile.overall_rank(), 1, "Check that the user is number 1.")
@@ -201,7 +201,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.save()
     
     self.assertEqual(profile.overall_rank(), 2, "Check that the user is now rank 2.")
@@ -213,7 +213,7 @@ class ProfileUnitTests(TestCase):
     
     profile = user.get_profile()
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(days=1))
+    profile.add_points(top_user.points + 1, datetime.datetime.today() - datetime.timedelta(days=1), "Test")
     profile.save()
     
     self.assertEqual(profile.overall_rank(), 1, "Check that the user is number 1.")
@@ -222,7 +222,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points, datetime.datetime.today())
+    profile2.add_points(profile.points, datetime.datetime.today(), "Test")
     profile2.save()
     
     self.assertEqual(profile.overall_rank(), 2, "Check that the user is now rank 2.")
@@ -246,7 +246,7 @@ class ProfileUnitTests(TestCase):
     
     profile = user.get_profile()
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.add_points(top_user.points + 1, datetime.datetime.today(), "Test")
     profile.save()
     
     self.assertEqual(profile.current_round_overall_rank(), 1, "Check that the user is number 1.")
@@ -255,7 +255,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
     
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.save()
     
     self.assertEqual(profile.current_round_overall_rank(), 2, "Check that the user is now number 2.")
@@ -287,7 +287,7 @@ class ProfileUnitTests(TestCase):
 
     profile = user.get_profile()
     top_user  = Profile.objects.all().order_by("-points")[0]
-    profile.add_points(top_user.points + 1, datetime.datetime.today())
+    profile.add_points(top_user.points + 1, datetime.datetime.today(), "Test")
     profile.floor = floor
     profile.save()
 
@@ -297,7 +297,7 @@ class ProfileUnitTests(TestCase):
     user2.save()
 
     profile2 = user2.get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "Test")
     profile2.floor = floor
     profile2.save()
 
@@ -326,12 +326,12 @@ class ProfileUnitTests(TestCase):
 
     profile = user.get_profile()
     points = profile.points
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "Test")
     profile.save()
 
     self.assertEqual(profile.current_round_points(), points + 10, "Check that the user has 10 more points in the current round.")
 
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(days=1), "Test")
 
     self.assertEqual(profile.current_round_points(), points + 10, 
         "Check that the number of points did not change when points are awarded outside of a round.")

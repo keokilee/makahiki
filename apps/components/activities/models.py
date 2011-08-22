@@ -458,7 +458,8 @@ class ActivityMember(CommonActivityUser):
         self.submission_date = self.award_date
         
       profile = self.user.get_profile()
-      profile.add_points(points, self.submission_date)
+      title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
+      profile.add_points(points, self.submission_date, title, self)
       
       ## award social bonus to myself if the ref user had successfully completed the activity
       if self.user_comment:
@@ -466,7 +467,8 @@ class ActivityMember(CommonActivityUser):
         ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
         for m in ref_members:
           if m.approval_status == 'approved':
-            profile.add_points(self.activity.social_bonus, self.submission_date)
+            title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
+            profile.add_points(self.activity.social_bonus, self.submission_date, title)
         
       profile.save()
       

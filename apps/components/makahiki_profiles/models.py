@@ -5,6 +5,8 @@ from django.db import models
 from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
@@ -210,11 +212,24 @@ class Profile(models.Model):
         user__is_superuser=False,
     ).count() + 1
   
-  def add_points(self, points, submission_date):
+  def add_points(self, points, submission_date, message, related_object=None):
     """
     Adds points based on the point value of the submitted object.
     Note that this method does not save the profile.
     """
+    # Create a transaction first.
+    transaction = PointsTransaction(
+        user=self.user,
+        points=points,
+        submission_date=submission_date,
+        message=message,
+    )
+    
+    if related_object:
+      transaction.content_object = related_object
+      
+    transaction.save()
+    
     self.points += points
     if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
       self.last_awarded_submission = submission_date
@@ -313,6 +328,15 @@ def create_profile(sender, instance=None, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
-
-  
+class PointsTransaction(models.Model):
+  """
+  Entries that track points awarded to users.
+  """
+  user = models.ForeignKey(User)
+  points = models.IntegerField()
+  submission_date = models.DateTimeField()
+  message = models.CharField(max_length=255)
+  object_id = models.PositiveIntegerField(null=True)
+  content_type = models.ForeignKey(ContentType, null=True)
+  related_object = generic.GenericForeignKey("content_type", "object_id") 
   
