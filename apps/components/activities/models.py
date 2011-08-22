@@ -498,7 +498,9 @@ class ActivityMember(CommonActivityUser):
         points = self.activity.point_value
         
       profile = self.user.get_profile()
-      profile.remove_points(points, self.submission_date)
+      # Rejecting a previously approved activity will write a log entry.
+      title = "%s: %s (Rejected)" % (self.activity.type.capitalize(), self.activity.title)
+      profile.remove_points(points, self.submission_date, title, related_object=self)
       profile.save()
       self.award_date = None
       # self.submission_date = None # User will have to resubmit.

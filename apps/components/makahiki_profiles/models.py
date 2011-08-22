@@ -244,15 +244,24 @@ class Profile(models.Model):
         entry.last_awarded_submission = submission_date
       entry.save()
     
-  def remove_points(self, points, submission_date):
+  def remove_points(self, points, submission_date, message, related_object=None):
     """
     Removes points from the user. Note that this method does not save the profile.  
     If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task.
     """
+    transaction = PointsTransaction(
+        user=self.user,
+        points=points * -1,
+        submission_date=submission_date,
+        message=message,
+    )
+    if related_object:
+      transaction.content_object = related_object
+    transaction.save()
+    
     self.points -= points
     
-    current_round = self._get_round(submission_date)
-        
+    current_round = self._get_round(submission_date)    
     # If we have a round, then update the scoreboard entry.  Otherwise, this just counts towards overall.
     if current_round:
       try:
