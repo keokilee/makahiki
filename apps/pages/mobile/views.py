@@ -648,6 +648,7 @@ def raffle_item(request, prize_slug):
 
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
+  raffle_dict = _get_raffle_prizes(request.user)
 #  prize = ""
 #  for i in prizes:
 #    if prize_slug == slugify(i.title):
@@ -656,6 +657,7 @@ def raffle_item(request, prize_slug):
   return render_to_response("mobile/raffle/item.html", {
     "slug":prize_slug,
     "prizes":prizes,
+    "raffle": raffle_dict,
   }, context_instance=RequestContext(request))
 
 @login_required

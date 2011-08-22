@@ -8,8 +8,8 @@
 {% block body %} 
 <div data-role="dialog">
 
-  {% for prize in prizes %}
-    {% if prize.title|slugify != slug %}
+  {% for prize in raffle.prizes %}
+    {% if prize.title|slugify == slug %}
     <div data-role="header">
       <h1>{{prize.title}}</h1>
     </div>
@@ -19,7 +19,7 @@
           <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
           {{prize.description|markdown}}
           </div>
-          Valued at {{prize.value}}.                            {# prizes.value|currency does not work#}
+          Valued at {{prize.value|currency}}.
           <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
         </div>
       </div>
