@@ -249,15 +249,24 @@ class Profile(models.Model):
     Removes points from the user. Note that this method does not save the profile.  
     If the submission date is the same as the last_awarded_submission field, we rollback to a previously completed task.
     """
-    transaction = PointsTransaction(
-        user=self.user,
-        points=points * -1,
-        submission_date=submission_date,
-        message=message,
-    )
+    # Try to find the related transaction and delete it.
+    rel_transaction = None
     if related_object:
-      transaction.content_object = related_object
-    transaction.save()
+      rel_transaction = PointsTransaction.get_transaction_for_object(related_object)
+      if rel_transaction:
+        rel_transaction.delete()
+      
+    # If there is no object or we can't find the transaction, create one.
+    if not related_object or not rel_transaction:
+      transaction = PointsTransaction(
+          user=self.user,
+          points=points * -1,
+          submission_date=submission_date,
+          message=message,
+      )
+      if related_object:
+        transaction.content_object = related_object
+      transaction.save()
     
     self.points -= points
     
@@ -349,3 +358,14 @@ class PointsTransaction(models.Model):
   content_type = models.ForeignKey(ContentType, null=True)
   related_object = generic.GenericForeignKey("content_type", "object_id") 
   
+  @staticmethod
+  def get_transaction_for_object(related_object):
+    try:
+      content_type = ContentType.objects.get_for_model(related_object)
+      return PointsTransaction.objects.filter(
+          object_id=related_object.id,
+          content_type__pk=content_type,
+      )[0]
+      
+    except IndexError:
+      return None
