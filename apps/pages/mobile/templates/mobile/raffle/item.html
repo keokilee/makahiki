@@ -7,21 +7,24 @@
 
 {% block body %} 
 <div data-role="dialog">
-  <div data-role="header">
-    <h1>{{prize.title}}</h1>
-  </div>
-  <div data-role="body">
-    <div data-role="content">
-      <div id="raffle-{{title}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
-        <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
-        {{prize.description|markdown}}
+
+  {% for prize in raffle.prizes %}
+    {% if prize.title|slugify == slug %}
+    <div data-role="header">
+      <h1>{{prize.title}}</h1>
+    </div>
+    <div data-role="body">
+      <div data-role="content">
+        <div id="raffle-{{title}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
+          <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
+          {{prize.description|markdown}}
+          </div>
+          Valued at {{prize.value|currency}}.
+          <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
         </div>
-        Valued at {{prize.value}}.                            {# prizes.value|currency does not work#}
-        <a href="{% url mobile_raffle %}" data-role="button" data-rel="back">Cancel</a>
       </div>
     </div>
-  </div>
-  
-
+    {% endif %}
+  {% endfor %}
 </div>
 {% endblock %}

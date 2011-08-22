@@ -35,6 +35,7 @@ from pages.view_prizes.views import _get_raffle_prizes
  
 
 @login_required
+@never_cache
 def index(request):
   return render_to_response("mobile/index.html", {}, context_instance=RequestContext(request))
 
@@ -87,10 +88,15 @@ def sgactivities(request, category_slug):
     "Wet & Wild", "Pot Pourri"]
   i = -1
   category = ""
+  reached = False
   for x in category_slugs:
     if x == string.lower(category_slug):
       category = x
       i = i + 1
+      reached = True
+    else:
+      if reached == False:
+        i = i + 1
 
   category_no_slug = categories[i]
 
@@ -241,6 +247,7 @@ def __add_commitment(request, commitment_id, slug):
   members = CommitmentMember.objects.filter(user=user, commitment=commitment);
   if members.count() > 0 and members[0].days_left() == 0:
     #commitment end
+    user.get_profile().add_points(-2, datetime.datetime.today() - datetime.timedelta(minutes=1))
     member = members[0]
     member.award_date = datetime.datetime.today()
     member.save()
@@ -641,14 +648,16 @@ def raffle_item(request, prize_slug):
 
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
-  prize = prize_slug
-  for i in prizes:
-    if prize_slug == slugify(i.title):
-      prize = i
+  raffle_dict = _get_raffle_prizes(request.user)
+#  prize = ""
+#  for i in prizes:
+#    if prize_slug == slugify(i.title):
+#      prize = i
 
   return render_to_response("mobile/raffle/item.html", {
-    "title":prize_slug,
-    "prize":prize,
+    "slug":prize_slug,
+    "prizes":prizes,
+    "raffle": raffle_dict,
   }, context_instance=RequestContext(request))
 
 @login_required
