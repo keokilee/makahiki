@@ -444,52 +444,6 @@ class ActivityMember(CommonActivityUser):
       # Mark pending items as submitted.
       self.submission_date = datetime.datetime.today()
       
-    elif self.approval_status == u"approved" and not self.award_date:
-      # Award users points and update wall.
-      self.award_date = datetime.datetime.today()
-      
-      # Determine how many points to award.
-      if self.activity.has_variable_points:
-        points = self.points_awarded
-      else:
-        points = self.activity.point_value
-        
-      if not self.submission_date:
-        # This may happen if it is an item with a confirmation code.
-        self.submission_date = self.award_date
-        
-      profile = self.user.get_profile()
-      title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
-      profile.add_points(points, self.submission_date, title, self)
-      
-      ## award social bonus to myself if the ref user had successfully completed the activity
-      if self.user_comment:
-        ref_user = User.objects.get(email=self.user_comment)
-        ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
-        for m in ref_members:
-          if m.approval_status == 'approved':
-            title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
-            profile.add_points(self.activity.social_bonus, self.submission_date, title)
-        
-      profile.save()
-      
-      ## award social bonus to others referenced my email and successfully completed the activity
-      ref_members = ActivityMember.objects.filter(activity=self.activity, user_comment=self.user.email)
-      for m in ref_members:
-        if m.approval_status == 'approved':
-          ref_profile = m.user.get_profile()
-          ref_profile.add_points(self.activity.social_bonus, self.submission_date)
-          ref_profile.save()
-
-      if profile.floor:
-        # Post on the user's floor wall.
-        message = " has been awarded %d points for completing \"%s\"." % (
-          points,
-          self.activity.title,
-        )
-        post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
-        post.save()
-      
     elif self.approval_status != u"approved" and self.award_date:
       # Removing user points and resetting award date.
       # Determine how many points to remove.
@@ -507,10 +461,59 @@ class ActivityMember(CommonActivityUser):
       
     super(ActivityMember, self).save()
     
-    # We check here for a rejected item because it should have an id now.
+    # We check here for approved and rejected items because the object needs to be saved first.
+    if self.approval_status == u"approved" and not self.award_date:
+      self._handle_approved()
+      
     if self.approval_status == u"rejected":
       self._handle_rejected()
+     
+  def _handle_approved(self):
+    # Award users points and update wall.
+    self.award_date = datetime.datetime.today()
+    
+    # Determine how many points to award.
+    if self.activity.has_variable_points:
+      points = self.points_awarded
+    else:
+      points = self.activity.point_value
       
+    if not self.submission_date:
+      # This may happen if it is an item with a confirmation code.
+      self.submission_date = self.award_date
+      
+    profile = self.user.get_profile()
+    title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
+    profile.add_points(points, self.submission_date, title, self)
+    
+    ## award social bonus to myself if the ref user had successfully completed the activity
+    social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
+    if self.user_comment:
+      ref_user = User.objects.get(email=self.user_comment)
+      ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
+      for m in ref_members:
+        if m.approval_status == 'approved':
+          profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+      
+    profile.save()
+    
+    ## award social bonus to others referenced my email and successfully completed the activity
+    ref_members = ActivityMember.objects.filter(activity=self.activity, user_comment=self.user.email)
+    for m in ref_members:
+      if m.approval_status == 'approved':
+        ref_profile = m.user.get_profile()
+        ref_profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+        ref_profile.save()
+
+    if profile.floor:
+      # Post on the user's floor wall.
+      message = " has been awarded %d points for completing \"%s\"." % (
+        points,
+        self.activity.title,
+      )
+      post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+      post.save()
+       
   def _handle_rejected(self):
     """
     Creates a notification for rejected tasks.  This also creates an email message if it is configured.

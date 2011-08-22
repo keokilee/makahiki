@@ -223,10 +223,9 @@ class Profile(models.Model):
         points=points,
         submission_date=submission_date,
         message=message,
-    )
-    
+    ) 
     if related_object:
-      transaction.content_object = related_object
+      transaction.related_object = related_object
       
     transaction.save()
     
@@ -263,9 +262,9 @@ class Profile(models.Model):
           points=points * -1,
           submission_date=submission_date,
           message=message,
+          related_object=related_object
       )
-      if related_object:
-        transaction.content_object = related_object
+      
       transaction.save()
     
     self.points -= points
