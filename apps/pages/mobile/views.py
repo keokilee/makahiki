@@ -43,6 +43,7 @@ def index(request):
 def logout(request):
   return render_to_response("mobile/logout.html", {}, context_instance=RequestContext(request))
 
+@never_cache
 @login_required
 def scoreboard(request):
   user = request.user
@@ -69,6 +70,7 @@ def scoreboard(request):
     "help":help,
   }, context_instance=RequestContext(request))
 
+@never_cache
 @login_required
 def smartgrid(request):
   activities = ActivityBase.objects.order_by("priority")
@@ -80,6 +82,7 @@ def smartgrid(request):
   }, context_instance=RequestContext(request))
 
 @login_required
+@never_cache
 def sgactivities(request, category_slug):
   activities = ActivityBase.objects.order_by("priority") 
   category_slugs = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 

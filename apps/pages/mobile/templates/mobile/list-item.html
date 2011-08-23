@@ -9,6 +9,8 @@
   <script>
     function close() {
         $.post("{% url notifications_read notification.id %}");
+        $("#notification-item-{{notification.id}}").fadeOut();
+        });
       }
   </script>
 </li>
