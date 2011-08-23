@@ -65,27 +65,27 @@ class OverallPrizeTest(TestCase):
     # Test one user
     profile = self.users[0].get_profile()
     top_points = Profile.objects.all().order_by("-points")[0].points
-    profile.add_points(top_points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(top_points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(), profile, "Current prize leader is not the leading user.")
     
     # Have another user move ahead in points
     profile2 = self.users[1].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(), profile2, "User 2 should be the leading profile.")
     
     # Have this user get the same amount of points, but an earlier award date.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile3.save()
     
     self.assertEqual(self.prize.leader(), profile2, "User 2 should still be the leading profile.")
     
     # Have the first user earn more points outside of the round.
-    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(), profile2, "User 2 should still be the leading profile.")
@@ -100,21 +100,21 @@ class OverallPrizeTest(TestCase):
     # Test one user
     profile = self.users[0].get_profile()
     top_points = Profile.objects.all().order_by("-points")[0].points
-    profile.add_points(top_points + 1, datetime.datetime.today())
+    profile.add_points(top_points + 1, datetime.datetime.today(), "test")
     profile.save()
 
     self.assertEqual(self.prize.leader(), profile, "Current prize leader is not the leading user.")
     
     # Have another user move ahead in points
     profile2 = self.users[1].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today())
+    profile2.add_points(profile.points + 1, datetime.datetime.today(), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(), profile2, "User 2 should be the leading profile.")
     
     # Have this user get the same amount of points, but an earlier award date.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile3.add_points(profile2.points, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile3.save()
     
     self.assertEqual(self.prize.leader(), profile2, "User 2 should still be the leading profile.")
@@ -192,27 +192,27 @@ class FloorPrizeTest(TestCase):
 
     # Test one user
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "test")
     profile.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile, "Current prize leader is not the leading user.")
 
     # Have a user on the same floor move ahead in points.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(11, datetime.datetime.today())
+    profile3.add_points(11, datetime.datetime.today(), "test")
     profile3.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile3, "User 3 should be the the leader.")
 
     # Have the first user earn more points outside of the round.
-    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2))
+    profile.add_points(2, datetime.datetime.today() - datetime.timedelta(days=2), "test")
     profile.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile3, "User 3 should still be the leading profile.")
     
     # Try a user on a different floor.
     profile2 = self.users[1].get_profile()
-    profile2.add_points(20, datetime.datetime.today())
+    profile2.add_points(20, datetime.datetime.today(), "test")
     profile2.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile3, 
@@ -229,21 +229,21 @@ class FloorPrizeTest(TestCase):
 
     # Test one user
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today())
+    profile.add_points(10, datetime.datetime.today(), "test")
     profile.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile, "Current prize leader is not the leading user.")
 
     # Have a user on the same floor move ahead in points.
     profile3 = self.users[2].get_profile()
-    profile3.add_points(11, datetime.datetime.today())
+    profile3.add_points(11, datetime.datetime.today(), "test")
     profile3.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile3, "User 3 should be the the leader.")
     
     # Try a user on a different floor.
     profile2 = self.users[1].get_profile()
-    profile2.add_points(20, datetime.datetime.today())
+    profile2.add_points(20, datetime.datetime.today(), "test")
     profile2.save()
 
     self.assertEqual(self.prize.leader(floor=profile.floor), profile3, 

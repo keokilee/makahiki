@@ -58,7 +58,7 @@ class RafflePrizeTests(TestCase):
     self.prize.save()
     
     profile = self.user.get_profile()
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     
     # Add a ticket to the prize
@@ -72,7 +72,7 @@ class RafflePrizeTests(TestCase):
     user2 = User.objects.create_user("user2", "user2@test.com", password="changeme")
     
     profile = user2.get_profile()
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     
     # Add a ticket to the prize
@@ -81,7 +81,7 @@ class RafflePrizeTests(TestCase):
     self.assertEqual(self.prize.allocated_tickets(user2), 1, "1 ticket should be allocated by this user to this prize.")
     
     # Add another ticket to the prize.
-    profile.add_points(25, datetime.datetime.today())
+    profile.add_points(25, datetime.datetime.today(), "test")
     profile.save()
     
     self.prize.add_ticket(user2)

@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -88,3 +90,12 @@ class QuestMember(models.Model):
   
   class Meta:
     unique_together = ["user", "quest"]
+    
+  def save(self, *args, **kwargs):
+    """
+    Custom save method to create a points transaction after the object is saved.
+    """
+    super(QuestMember, self).save(*args, **kwargs)
+    if self.completed:
+      message = "Quest: %s" % self.quest.name
+      self.user.get_profile().add_points(0, datetime.datetime.today(), message, self)

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from components.floors.models import Floor
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember
+from components.quests.models import Quest
 from pages.view_profile.forms import ProfileForm
 
 class ProfileFunctionalTestCase(TestCase):
@@ -166,6 +167,7 @@ class ProfileFunctionalTestCase(TestCase):
         description="A commitment!",
         point_value=10,
         type="commitment",
+        slug="test-commitment",
     )
     commitment.save()
 
@@ -176,7 +178,6 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, reverse("activity_task", args=(commitment.type, commitment.slug,)))
     self.assertContains(response, "In Progress")
     self.assertContains(response, "Commitment:")
-    self.assertContains(response, "Made commitment:")
     self.assertNotContains(response, "You have nothing in progress or pending.")
 
     # Test that the profile page has a rejected activity
@@ -261,4 +262,26 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, reverse("activity_task", args=(event.type, event.slug,)))
     entry = "Event: Test event (Social Bonus)"
     self.assertContains(response, entry, count=1, msg_prefix="Achievements should contain a social bonus entry")
+    
+  def testQuestAchievement(self):
+    quest = Quest(
+        name="Test quest",
+        quest_slug="test_quest",
+        description="test quest",
+        level=1,
+        unlock_conditions="True",
+        completion_conditions="True",
+    )
+    quest.save()
+    
+    # Accept the quest, which should be automatically completed.
+    response = self.client.post(
+        reverse("quests_accept", args=(quest.quest_slug,)), 
+        follow=True,
+        HTTP_REFERER=reverse("home_index"),
+    )
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, "Quest: Test quest", count=1, 
+        msg_prefix="Achievements should contain a social bonus entry")
+    
     

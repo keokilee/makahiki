@@ -1,76 +1,34 @@
-{% for member in completed_members %}
+{% for log in points_logs %}
   <tr>
-    {% if member.award_date %}
-    <td>{{member.award_date|date:"n/j/y"}}</td>
-    {% else %}
-    <td>{{member.updated_at|date:"n/j/y"}}</td>
-    {% endif %}
-    {# Handle each of the individual types of items. #}
-    {% if member.commitment %}
-      {% if member.award_date %}
-      <td>
-        <a href="{% url activity_task 'commitment' member.commitment.slug %}">
-          Commitment: {{member.commitment.name}}
-        </a>
-      </td>
-      <td>{{member.commitment.point_value}}</td>
-      {% else %}
-      <td>
-        <a href="{% url activity_task 'commitment' member.commitment.slug %}">
-          Made commitment: {{member.commitment.name}}
-        </a>
-      </td>
-      <td>2</td>
-      {% endif %}
-    {% else %}
-      {% if member.activity %}
-        {% if member.award_date %}
+    <td>{{log.submission_date|date:"n/j/y"}}</td>
+    {# Determine if the log is an activity #}
+    {% if log.related_object %}
+      {# Need to handle the various types of objects #}
+      {% with log.related_object as member %}
+        {% if member.commitment or member.activity %}
+          {% if member.commitment %}
           <td>
-            <a href="{% url activity_task member.activity.type member.activity.slug %}">{{member.activity.type.capitalize}}: {{member.activity.name}}</a>
-            {# Handle social bonus case #}
-            {% if member.social_bonus_awarded %}
-            plus social bonus
-            {% endif %}
-          </td>
-          <td>
-            {% if member.points_awarded %}
-            {{member.points_awarded}}
-            {% else %}
-            {{member.activity.point_value}}
-            {% endif %}
-            
-            {% if member.social_bonus_awarded %}
-            + {{member.activity.social_bonus}}
-            {% endif %}
-          </td>
-        {% else %}
-          {% if member.activity.type != "activity" %}
-          <td>
-            <a href="{% url activity_task member.activity.type member.activity.slug %}">
-              {{member.activity.type.capitalize}} signup: {{member.activity.name}}
+            <a href="{% url activity_task 'commitment' member.commitment.slug %}">
+              {{log.message}}
             </a>
           </td>
-          <td>2</td>
+          {% else %}
+          <td>
+            <a href="{% url activity_task member.activity.type member.activity.slug %}">
+              {{log.message}}
+            </a>
+          </td>
           {% endif %}
-        {% endif %}
-      {% else %}
-        {% if member.quest %}
-          <td>Quest: {{member.quest.name}}</td>
-          <td>-</td>
+          <td>{{log.points}}</td>
         {% else %}
-          <td>Badge: {{member.badge.name}}</td>
-          <td>-</td>
+          <td>{{log.message}}</td>
+          <td>{{log.points}}</td>
         {% endif %}
-      {% endif %}
+      {% endwith %}
+    {% else %}
+      <td>{{log.message}}</td>
+      <td>{{log.points}}</td>
     {% endif %}
   </tr>
 {% endfor %}
 
-{# Extra row for when they complete the setup wizard #}
-<tr>
-  <td>{{user.get_profile.completion_date|date:"n/j/y"}}</td>
-  <td>
-    Set up profile
-  </td>
-  <td>5</td>
-</tr>

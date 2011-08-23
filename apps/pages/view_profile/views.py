@@ -61,11 +61,12 @@ def index(request):
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
   
+  points_logs = user.pointstransaction_set.order_by("-submission_date").all()
   return render_to_response("view_profile/index.html", {
     "form": form,
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
-    "completed_members": get_completed_members(user),
+    "points_logs": points_logs,
     "notifications": user.usernotification_set.order_by("-created_at"),
   }, context_instance=RequestContext(request))
 

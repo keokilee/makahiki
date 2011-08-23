@@ -75,7 +75,7 @@ class DormFloorPrizeTests(TestCase):
     
     # Test one user will go ahead in points.
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -83,7 +83,7 @@ class DormFloorPrizeTests(TestCase):
         
     # Test a user in a different dorm.
     profile1 = self.users[1].get_profile()
-    profile1.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile1.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile1.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -93,7 +93,7 @@ class DormFloorPrizeTests(TestCase):
         
     # Test that a user in a different floor but same dorm changes the leader for the original user.
     profile2 = self.users[2].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile2.floor, 
@@ -110,7 +110,7 @@ class DormFloorPrizeTests(TestCase):
 
     # Test one user will go ahead in points.
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -118,7 +118,7 @@ class DormFloorPrizeTests(TestCase):
         
     # Test a user in a different dorm.
     profile1 = self.users[1].get_profile()
-    profile1.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile1.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile1.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -128,7 +128,7 @@ class DormFloorPrizeTests(TestCase):
         
     # Test that a user in a different floor but same dorm changes the leader for the original user.
     profile2 = self.users[2].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile2.floor, 
@@ -209,7 +209,7 @@ class OverallFloorPrizeTest(TestCase):
     
     # Test one user will go ahead in points.
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -217,7 +217,7 @@ class OverallFloorPrizeTest(TestCase):
         
     # Test that a user in a different floor changes the leader for the original user.
     profile2 = self.users[2].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile2.floor, 
@@ -232,7 +232,7 @@ class OverallFloorPrizeTest(TestCase):
 
     # Test one user will go ahead in points.
     profile = self.users[0].get_profile()
-    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile.add_points(10, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile.floor, 
@@ -240,7 +240,7 @@ class OverallFloorPrizeTest(TestCase):
         
     # Test that a user in a different floor but same dorm changes the leader for the original user.
     profile2 = self.users[2].get_profile()
-    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    profile2.add_points(profile.points + 1, datetime.datetime.today() - datetime.timedelta(minutes=1), "test")
     profile2.save()
     
     self.assertEqual(self.prize.leader(profile.floor), profile2.floor, 

@@ -333,7 +333,7 @@ class CommitmentMember(CommonBase):
       # Award the points
       profile = self.user.get_profile()
       message = "Commitment: %s"  % self.commitment.title
-      profile.add_points(self.commitment.point_value, self.award_date, message)
+      profile.add_points(self.commitment.point_value, self.award_date, message, self)
       profile.save()
 
       ## award social bonus to myself if the ref user had successfully completed the activity
@@ -446,9 +446,6 @@ class ActivityMember(CommonActivityUser):
       # Mark pending items as submitted.
       self.submission_date = datetime.datetime.today()
       
-    elif self.approval_status == u"approved" and not self.award_date:
-      self._handle_approved()
-      
     elif self.approval_status != u"approved" and self.award_date:
       # Removing user points and resetting award date.
       # Determine how many points to remove.
@@ -468,27 +465,28 @@ class ActivityMember(CommonActivityUser):
     
     # We check here for approved and rejected items because the object needs to be saved first.
     if self.approval_status == u"approved" and not self.award_date:
-      profile = self.user.get_profile()
-      title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
-      profile.add_points(points, self.submission_date, title, self)
+      # Record dates.
+      self.award_date = datetime.datetime.today()
+      if not self.submission_date:
+        # This may happen if it is an item with a confirmation code.
+        self.submission_date = self.award_date
+        
+      self._handle_approved()
+      super(ActivityMember, self).save()
       
     if self.approval_status == u"rejected":
       self._handle_rejected()
      
   def _handle_approved(self):
     profile = self.user.get_profile()
-    # Award users points and update wall.
-    self.award_date = datetime.datetime.today()
-    
     # Determine how many points to award.
     if self.activity.has_variable_points:
       points = self.points_awarded
     else:
       points = self.activity.point_value
-      
-    if not self.submission_date:
-      # This may happen if it is an item with a confirmation code.
-      self.submission_date = self.award_date
+    
+    title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
+    profile.add_points(points, self.submission_date, title, self)
     
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
@@ -561,7 +559,8 @@ class ActivityMember(CommonActivityUser):
         points = self.activity.point_value
         
       profile = self.user.get_profile()
-      profile.remove_points(points, self.submission_date)
+      message = "%s: %s (Removed)" % (self.activity.type.capitalize(), self.activity.title)
+      profile.remove_points(points, self.submission_date, message)
       profile.save()
       
     super(ActivityMember, self).delete()
