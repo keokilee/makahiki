@@ -196,7 +196,7 @@ class ProfileFunctionalTestCase(TestCase):
                 description="Variable points!",
                 duration=10,
                 point_range_start=5,
-                point_range_end=20,
+                point_range_end=314160,
                 pub_date=datetime.datetime.today(),
                 expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
                 confirm_type="text",
@@ -209,11 +209,11 @@ class ProfileFunctionalTestCase(TestCase):
         user=self.user,
         activity=activity,
         approval_status="approved",
-        points_awarded=13,
+        points_awarded=314159,
     )
     member.save()
     
-    self.assertEqual(self.user.get_profile().points, points + 13, 
+    self.assertEqual(self.user.get_profile().points, points + 314159, 
         "Variable number of points should have been awarded.")
     
     # Kludge to change point value for the info bar.
@@ -223,9 +223,9 @@ class ProfileFunctionalTestCase(TestCase):
     
     response = self.client.get(reverse("profile_index"))
     self.assertContains(response, reverse("activity_task", args=(activity.type, activity.slug,)))
-    # Note, this test may break if something in the page has the value 13.  Try finding another suitable number.
+    # Note, this test may break if something in the page has the value 314159.  Try finding another suitable number.
     # print response.content
-    self.assertContains(response, "13", count=1, msg_prefix="13 points should appear for the activity.")
+    self.assertContains(response, "314159", count=1, msg_prefix="314159 points should appear for the activity.")
         
   def testSocialBonusAchievement(self):
     """Check that the social bonus appears in the my achievements list."""
