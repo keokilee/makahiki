@@ -38,13 +38,13 @@ class FloorEnergyGoalTest(TestCase):
     profile.setup_complete = True
     profile.save()
     
-    goal.actual_usage = 1.5
+    goal.actual_usage = "1.5"
     goal.save()
     profile = Profile.objects.get(user__username="user")
     self.assertEqual(profile.points, points, 
         "Floor that failed the goal should not be awarded any points.")
         
-    goal.actual_usage = 0.5
+    goal.actual_usage = "0.5"
     goal.save()
     profile = Profile.objects.get(user__username="user")
     self.assertEqual(profile.points, points + FloorEnergyGoal.GOAL_POINTS,
