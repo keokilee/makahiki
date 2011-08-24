@@ -42,7 +42,7 @@ CSS_IDS = {
   "home-profile": "home-item",
   
   "energy-power": "content-box",
-  "energy-scoreboard": "content-box",
+  "energy-scoreboard-box": "content-box",
   "energy-status-box": "content-box",
   "energy-power-title": "content-box-title",
   "energy-scoreboard-title": "content-box-title",

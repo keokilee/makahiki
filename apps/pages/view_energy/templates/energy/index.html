@@ -40,7 +40,9 @@
   </div>
   
   <p>
-  {% include "energy/scoreboard.html" %}
+  <div {% get_id_and_classes "energy-scoreboard-box" %}>
+    {% include "energy/scoreboard.html" %}
+  </div>
 </div>
 
 <div {% get_id_and_classes "energy-status" %}>
@@ -125,8 +127,13 @@
 
 {% block extra_body %}
 <script type="text/javascript">
-  $(document).ready(function() {
-    $("#energy-scoreboard").cycle({height: "450px"});
+  jQuery(document).ready(function($) {
+    $("#energy-scoreboard").cycle({
+        height: "400px",
+        pause: 1,
+        timeout: 7000,
+        pager: '#scoreboard-cycle-nav'
+    });
   })
 </script>
 

@@ -14,9 +14,10 @@
     <div {% get_id_and_classes "energy-scoreboard-content" %}>
       <table id="{{round_name|slugify}}-energy-scoreboard"></table>
     </div>
-   <div id="energy-scoreboard-message">#1 at end of round wins a 
-     <a href="/prizes"> prize!</a>
-   </div>
  </div>
  {% endfor %}
 </div>
+<div id="scoreboard-cycle-nav"></div>
+<div id="energy-scoreboard-message">#1 at end of round wins a 
+   <a href="/prizes"> prize!</a>
+ </div>

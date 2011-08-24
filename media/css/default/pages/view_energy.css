@@ -266,3 +266,17 @@ a#wall-post-submit {
 .news-event-name, .news-event-date, .news-most-popular-activity, .news-commitments-name {
 	border-right: 1px solid #000;
 }
+
+/******* Scoreboard cycle styles ******/
+#scoreboard-cycle-nav {
+  text-align: center;
+}
+
+#scoreboard-cycle-nav a {
+  padding: 1px 5px;
+}
+
+#scoreboard-cycle-nav a.activeSlide {
+  font-weight: bold;
+/*  background-color: #DBD7AF;*/
+}
