@@ -364,3 +364,19 @@ table#activities-grid td table td{
   margin: 0;
 }
 
+/******* Scoreboard cycle styles ******/
+/**** Prize cycle styles ****/
+#scoreboard-cycle-nav {
+  text-align: center;
+}
+
+#scoreboard-cycle-nav a {
+  padding: 1px 5px;
+}
+
+#scoreboard-cycle-nav a.activeSlide {
+  font-weight: bold;
+/*  background-color: #DBD7AF;*/
+}
+
+

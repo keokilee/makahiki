@@ -42,18 +42,6 @@
     <div {% get_id_and_classes "activity-scoreboard-content" %}>
       {% include "view_activities/scoreboard.html" %}
     </div>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        var height = 0;
-        $("#activity-scoreboard-content").children().each(function(index, value) {
-          if ($(value).height() > height) {
-            height = $(value).height();
-          }
-        });
-
-        $("#activity-scoreboard-content").cycle({height: "" + height + "px"});
-      })
-    </script>
   </div>
 </div>
 
@@ -130,7 +118,23 @@ $( document ).ready( function ()
 	   }
     );		
     {% endif %}
+    
+    jQuery(document).ready(function($) {
+      var height = 0;
+      $("#activity-scoreboard-content").children().each(function(index, value) {
+        if ($(value).height() > height) {
+          height = $(value).height();
+        }
+      });
 
+      $("#activity-scoreboard-content").after("<div id='scoreboard-cycle-nav'>").cycle({
+          height: "" + height + "px",
+          pause: 1,
+          timeout: 7000,
+          pager: '#scoreboard-cycle-nav'
+      });
+    });
+    
 /* TODO. comment out temporary
     {% if not hide_about %}
       $("#grid-about").fadeIn();
