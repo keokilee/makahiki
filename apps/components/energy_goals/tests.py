@@ -27,8 +27,8 @@ class FloorEnergyGoalTest(TestCase):
     
     goal = FloorEnergyGoal(
         floor=self.floor, 
-        goal_usage=1.0, 
-        actual_usage=0.5,
+        goal_usage=str(1.0), 
+        actual_usage=str(0.5),
     )
     goal.save()
     profile = Profile.objects.get(user__username="user")

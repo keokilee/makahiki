@@ -64,9 +64,9 @@ class GDataGoal:
         if i % 5 == 0:
           source = entry.content.text
         if i % 5 == 2:
-   	      actual = float(entry.content.text)
+   	      actual = entry.content.text
         if i % 5 == 3:
-          goal = float(entry.content.text)
+          goal = entry.content.text
           if goal != 0 and actual <= goal:
             is_meet_goal = True
           else:
