@@ -5,9 +5,13 @@ jQuery(document).ready(function() {
     position: ["center", 150],
     autoOpen: false,
     open: function() {
+      log_js_action("ask-admin", "form", "show");
       jQuery("#id_url").val(window.location);
       jQuery("#feedback-form textarea").focus();
       jQuery("#feedback-form textarea").val("");
+    },
+    close: function(event, ui) {
+      log_js_action("ask-admin", "form", "close");
     }
   });
   
@@ -15,7 +19,10 @@ jQuery(document).ready(function() {
     modal: true,
     width: 500,
     position: ["center", 150],
-    autoOpen: false
+    autoOpen: false,
+    close: function(event, ui) {
+      log_js_action("ask-admin", "confirmation", "close");
+    }
   });
   
   jQuery("#feedback-form textarea").keyup(function() {
@@ -28,7 +35,6 @@ jQuery(document).ready(function() {
   });
   
   jQuery("#header-feedback").click(function() {
-    log_js_action("ask-admin", "form", "show");
     jQuery("#feedback-dialog").dialog("open");
   });
   
