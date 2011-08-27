@@ -358,10 +358,29 @@ clear: both;
 }
 
 /*------- Notification styles -----*/
-
-#notification-list {
+#notification-list, .messages {
   padding: 0; 
   list-style: none;
+}
+
+.messages li {
+  margin: 5px auto;
+  padding: 5px;
+  clear:both; 
+  border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+  text-align: center;
+  background-color: #fce988;
+  border: 1px solid #fed22f;
+}
+
+.messages li.error {
+  border: 1px solid #CD0A0A;
+  background: #FEF1EC url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x;
+  color: #CD0A0A;
+  text-align: center;
+  font-weight: bold;
 }
 
 .notification-item {

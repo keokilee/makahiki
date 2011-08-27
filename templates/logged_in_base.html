@@ -46,23 +46,21 @@
   </div>
 </div>
 
-{# {% if messages %} #}
-{# <div {% get_id_and_classes "notification-box" %}> #}
-{#   <ul> #}
-{#     {% for message in messages %} #}
-{#     <li> #}
-{#       {{message|safe}} #}
-{#     </li> #}
-{#     {% endfor %} #}
-{#   </ul> #}
-{# </div> #}
-{# {% endif %} #}
-
 {% include "notifications/list.html" %}
 
 {% block quests %}
   {% include "quests/quest_box.html" %}
 {% endblock %}
+
+{% if messages %}
+<div id="messages">
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+</div>
+{% endif %}
 
 {% endblock %}
 

@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import never_cache
@@ -30,9 +31,14 @@ def add_ticket(request, prize_id):
   Adds a user's raffle ticket to the prize.
   """
   prize = get_object_or_404(RafflePrize, id=prize_id)
+  deadline = prize.deadline
   profile = request.user.get_profile()
-  if profile.available_tickets > 0:
+  in_deadline = (deadline.pub_date <= datetime.datetime.today()) and (deadline.end_date >= datetime.datetime.today())
+  if profile.available_tickets > 0 and in_deadline:
     prize.add_ticket(request.user)
+    return HttpResponseRedirect(reverse("prizes_index"))
+  elif not in_deadline:
+    messages.error(request, "The raffle for this round is over.")
     return HttpResponseRedirect(reverse("prizes_index"))
     
   raise Http404

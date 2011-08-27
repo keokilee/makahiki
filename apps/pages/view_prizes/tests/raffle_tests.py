@@ -174,7 +174,12 @@ class RafflePrizesTestCase(TestCase):
     response = self.client.get(reverse("prizes_index"))
     self.failUnlessEqual(response.status_code, 200)
     self.assertNotContains(response, "Test raffle prize")
-      
+    
+    # Try allocating a ticket to this prize.
+    response = self.client.post(reverse("raffle_add_ticket", args=(raffle_prize.id,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "The raffle for this round is over.")
+    
   def tearDown(self):
     """
     Restores saved settings.
