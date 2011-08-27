@@ -45,6 +45,7 @@ jQuery(document).ready(function($) {
   jQuery("#widget-help-dialog").dialog({
     autoOpen: false,
     width: 550,
+    position: ["center", 100],
     modal: true
   });
   
