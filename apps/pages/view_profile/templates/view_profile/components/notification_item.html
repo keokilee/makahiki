@@ -16,7 +16,7 @@
   </div>
   <div style="clear:both"></div>
   <script type="text/javascript">
-    $(document).ready(function() {
+    jQuery(document).ready(function($) {
       $("#profile-notice-{{notification.id}} .notification-read").click(function() {
         $.post("{% url notifications_read notification.id %}", function(data) {
           $("#profile-notice-{{notification.id}} .notification-read").fadeOut();
