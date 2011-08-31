@@ -16,9 +16,9 @@
         {% if activity.activity.confirm_type != "image" %}
         {% if activity.category.name|slugify == category %}
           {% if activity.is_unlock %}
-          <li>
-            <a href="{% url mobile_task category activity.name|slugify %}" rel="external">
-            {% if activity.type != 'commitment' %}
+            <li>
+              <a href="{% url mobile_task category activity.name|slugify %}" rel="external">
+            {% if activity.type != "commitment" %}
               {% if activity.is_pau %}
                 {% if activity.approval.approval_status == "rejected" %}
                   <img src="/site_media/static/css/default/images/icon-exclamation2.png"  class="ui-li-icon" width="14"/>
@@ -29,17 +29,20 @@
                     <img src="/site_media/static/css/default/images/icon-done.png"  class="ui-li-icon" width="14"/> 
                   {% endif %}
                 {% endif %}          {# approval_status #}
-              {% else %}     {# ------ is commitment #}             
-	        {% if activity.is_pau %}
-	          {% if activity.approval.days_left != 0 or activity.approval.award_date %}
-                    <img src="/site_media/static/css/default/images/icon-done.png"  class="ui-li-icon" width="14"> 
+
+              {% endif %}
+              {% else %}     else{# ------ is commitment #}             
+	        {% if activity.is_pau %} commitment-pau
+	          {% if activity.approval.award_date %} 
+                    <img src="/site_media/static/css/default/images/icon-done.png"  class="ui-li-icon" width="14"/> 
                   {% else %}
+                    {% if activity.approval.days_left <= 0 %}
                     <img src="/site_media/static/css/default/images/icon-exclamation2.png" class="ui-li-icon" width="14"/>
+		    {% endif %}
                   {% endif %}
                 {% endif %}
-              {% endif %}
             {% endif %}
-            {{activity.title}} ({{activity.activity.point_value}}{{activity.commitment.point_value}} pts)
+            {{activity.title}} {% if activity.approval.days_left <= 0 and activity.approval.award_date %} dac{% endif %}pau={{activity.is_pau}}{{activity.approval.award_date}}{{activity.approval.days_left}}({{activity.activity.point_value}}{{activity.commitment.point_value}} pts)
             </a>
           </li>
           {% else %}          {# if locked #}
