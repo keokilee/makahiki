@@ -89,11 +89,47 @@
             <p/>
             {% if task.is_event_completed %}
             Thank you for attending the event. <br/>
-            Click on the "I Did it" button to get the rest of your points. <br/>
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
+            Enter your code below to get points for this activity.
+<!-- insert-->
+      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
+        {% if task.is_event_completed %}
+<!-- code goes here-->
+<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+
+    {% csrf_token %}
+
+    {% if admin_message %}
+      Admin message: {{ admin_message }}
+    {% endif %}
+  
+            Please enter the confirmation code you receieved from the event:
+          <label for="id_response">Code:</label>{{form.response}}<br/>
+	  
+	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>{{form.social_email}} 
+          {{ form.response.errors }} 
+
+          <div>
+<div style="visibility:hidden; display:none">
+	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
+	  </div>
+            <button type="submit">Submit</button>
+          </div>
+     <!-- code goes here-->
+        {% else %}
+          You will earn 2 points for signing up for the {{task.type}}.
+          <div>
+            <button>OK, Let's do it</button>
+            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+              I don't want to do it</a>
+          </div>
+        {% endif %} 
+    {% endif %}
+
+<!-- end insert-->
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
+
             {% endif %}
 
           {% endif %}
@@ -106,7 +142,9 @@
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
-              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a> 
+              <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+		<input type="submit" value="I Did it"/>
+ 	      </from>
               {% endif %}
 
           {% endif %}         
@@ -120,7 +158,7 @@
 
             {% else %}
 
-              <p/>
+               <p/>
 
               Administrator feels that there is a problem with your submission. <br/>
               Please try again. Here is the feedback: <br/>             
@@ -148,7 +186,9 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will do this!</a>
+            <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+ 	      <input type="submit" value="I will do this!"/>
+ 	    </form>
           {% else %}
             <b>You already have 5 pending commitments. <br/>
             You can continue making this commitment once any of your pending commitment is approved.
@@ -209,37 +249,9 @@
     {% endif %}
   
     <p/>
-      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
-        {% if task.is_event_completed %}
-<!-- code goes here-->
-            Please enter the confirmation code you receieved from the event:
-          <label for="id_response">Code:</label>{{form.response}}<br/>
-	  
-	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label>{{form.social_email}} 
-          {{ form.response.errors }} 
-<!-- code goes here-->
-          <div>
-<div style="visibility:hidden; display:none">
-	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
-	  </div>
-            <button type="submit">Submit</button>
-            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-              Cancel</a>
-          </div>
-        {% else %}
-          You will earn 2 points for signing up for the {{task.type}}.
-          <div>
-            <button>OK, Let's do it</button>
-            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-              I don't want to do it</a>
-          </div>
-        {% endif %}
-     <!--
-        <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
-          {{ form.comment }} 
-        <p/>
-     -->
-    {% endif %}
+
+<!---------------- EVENT CODE WENT HERE  ----->
+
    
     {% if task.type == "commitment" %}     {# commitment #}
       {% if approval.days_left != 0 %}
@@ -288,11 +300,6 @@
         {{ form.response }}    
       {% endif %}  
     {%endif%}
-    <!--
-    <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
-         {{ form.comment }} 
-    <p/>
-    -->
       <div>
         <button>Submit</button>
         <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
@@ -316,7 +323,6 @@
     {% endif %}
     </form>
 
-    <!--a href="{% url mobile_task task.category.slug task.slug %}" data-role="button" data-rel="back">Cancel</a-->
   </div>
 </div>
 
