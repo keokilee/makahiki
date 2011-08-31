@@ -61,11 +61,6 @@ a {
 	margin: 8px 5px 5px 10px;
 	overflow: hidden;
 }
-
-#header-nav {
-    margin-left: 10px;
-	float: right;
-}
 	
 #header-logout {
 	position: absolute;
@@ -74,6 +69,8 @@ a {
 	font-weight: bold;
 	width: 920px;
 }
+
+#header-logout a {color: #FFF;}
 
 #link-container {
   padding-left:410px;
@@ -98,8 +95,6 @@ a {
   margin-right: 15px;
 }
 
-#header-logout a {color: #FFF;}
-
 #header-title {
 	float: right;
 	margin-right: 20px;
@@ -108,14 +103,19 @@ a {
 	text-transform: capitalize;
 	text-align: right;
 }
-  
+
+#header-nav {
+  margin-left: 10px;
+	float: right;
+}
+
 #header-nav-links {
   background-color: #404242;
   border: 3px solid #B7AAAA;
-  height: 90px;
+  height: 75px;
   margin-top: -128px;
   margin-right: 10px;
-  padding: 10px 2px 0 2px;
+  padding: 2px 2px 0 2px;
   float: right;
   -moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -138,7 +138,7 @@ a {
   color: white;
   margin: 0;
   padding: 0;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 #header-nav-links img {
