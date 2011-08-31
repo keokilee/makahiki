@@ -47,7 +47,7 @@ def logout(request):
 @login_required
 def scoreboard(request,page):
   if( page == "index"):
-    page = "overall_kwh"
+    page = "overall_lounge"
   user = request.user
   events = get_available_events(user)
   floor = user.get_profile().floor
