@@ -45,7 +45,9 @@ def logout(request):
 
 @never_cache
 @login_required
-def scoreboard(request):
+def scoreboard(request,page):
+  if( page == "index"):
+    page = "overall_kwh"
   user = request.user
   events = get_available_events(user)
   floor = user.get_profile().floor
@@ -58,7 +60,7 @@ def scoreboard(request):
   
   categories_list = __get_categories(user)
 
-  return render_to_response("mobile/scoreboard/index.html",{
+  return render_to_response("mobile/scoreboard/"+page+".html",{
     "events": events,
     "profile":user.get_profile(),
     "floor": floor,
@@ -590,7 +592,7 @@ def helptopic(request, category, slug):
 
 @never_cache
 @login_required
-def profile(request):
+def profile(request,page):
   user = request.user
   form = None
   if request.method == "POST":
@@ -626,7 +628,7 @@ def profile(request):
     if request.GET.has_key("changed_avatar"):
       form.message = "Your avatar has been updated."
   
-  return render_to_response("mobile/profile/index.html", {
+  return render_to_response("mobile/profile/"+page+".html", {
     "profile": user.get_profile(),
     "user": user,
     "form": form,

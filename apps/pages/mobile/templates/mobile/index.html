@@ -12,9 +12,6 @@
       <li>
         <a href="{% url mobile_summary %}"rel="external">Summary</a>
       </li>
-      <!--li>
-        <a href="{% url mobile_quests 'accepted' %}" rel="external">Quests</a>
-      </li-->
       <li>
         <a href="{% url mobile_events 'Upcoming' %}" rel="external">Events</a>
       </li>
@@ -22,7 +19,7 @@
         <a href="{% url mobile_smartgrid %}" rel="external">Smart Grid Game</a>
       </li>
       <li>
-        <a href="{% url mobile_scoreboard %}" rel="external">Scoreboard</a>
+        <a href="{% url mobile_scoreboard 'index' %}" rel="external">Scoreboard</a>
       </li>
       <li>
         <a href="{% url mobile_power_and_energy %}" rel="external">Power & Energy</a>
@@ -37,7 +34,7 @@
         <a href="{% url mobile_raffle %}" rel="external">Raffle</a>
       </li>
       <li>
-        <a href="{% url mobile_profile %}" rel="external">My Profile</a>
+        <a href="{% url mobile_profile 'index'%}" rel="external">My Profile</a>
       </li>
       <li>
         <a href="{% url mobile_help %}" rel="external">Help</a>

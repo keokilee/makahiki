@@ -15,10 +15,10 @@
         </div>
         <div {% get_id_and_classes "news-wall-content" %}>
           <div {% get_id_and_classes "wall-form" %}>
-            <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST" onSubmit="setTimeout('parent.location.reload()',500); return true;">
+            <form {% get_id_and_classes "news-post-form" %} data-ajax="false" action="{% url news_post %}" method="POST" onSubmit="setTimeout('parent.location.reload()',500); return true;">
               {% csrf_token %}
               <div {% get_id_and_classes "wall-post-errors" %}></div>
-              <div {% get_id_and_classes "wall-post" %}>
+              <div {% get_id_and_classes "wall-post" %} onfocus="clearContents(this);">
                 {{wall_form.post}}
               </div>
               <div style="text-align: center">
