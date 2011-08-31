@@ -61,6 +61,7 @@ def scoreboard(request,page):
   categories_list = __get_categories(user)
 
   return render_to_response("mobile/scoreboard/"+page+".html",{
+    "page": page,
     "events": events,
     "profile":user.get_profile(),
     "floor": floor,

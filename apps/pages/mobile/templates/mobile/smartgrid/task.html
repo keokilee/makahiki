@@ -300,11 +300,6 @@
         {{ form.response }}    
       {% endif %}  
     {%endif%}
-    <!--
-    <p/>(Optional) Provide comment for Kukui Cup Admin:<br/>
-         {{ form.comment }} 
-    <p/>
-    -->
       <div>
         <button>Submit</button>
         <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
@@ -328,7 +323,6 @@
     {% endif %}
     </form>
 
-    <!--a href="{% url mobile_task task.category.slug task.slug %}" data-role="button" data-rel="back">Cancel</a-->
   </div>
 </div>
 

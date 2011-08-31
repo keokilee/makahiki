@@ -1,6 +1,6 @@
 {% extends "mobile/scoreboard/base.html" %} 
 {% block child %} 
-<div data-role="page" id="over-lounge" data-url="over-kwh">
+<div data-role="page" >
   <div data-role="header" data-theme="b">
     <a href="{% url mobile_scoreboard  'form' %}"  data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
@@ -11,6 +11,7 @@
     <h2>Overall kWh Usage</h2>   
       <table id="overall-energy-scoreboard"> 
       </table>  
+
   </div>  
 </div>  
 {% endblock %}
