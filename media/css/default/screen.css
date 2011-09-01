@@ -255,6 +255,12 @@ a {
 #header-round-info h3 {
   margin: 0;
   padding: 0;
+  display: inline;
+}
+
+#header-round-info .ending {
+  color: red;
+  font-weight: bold;
 }
 
 #header-avatar {

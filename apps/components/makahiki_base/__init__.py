@@ -58,6 +58,33 @@ def get_current_round():
   
   # No current round.
   return None
+  
+def get_current_round_info():
+  """Gets the current round and associated dates."""
+  rounds = settings.COMPETITION_ROUNDS
+  today = datetime.datetime.today()
+  for key in rounds.keys():
+    start = datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d")
+    end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
+    if today >= start and today < end:
+      return {
+          "name": key,
+          "start": start,
+          "end": end,
+      }
+      
+  # Check for overall round info.
+  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+  end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+  if today >= start and today < end:
+    return {
+        "name": "Overall",
+        "start": start,
+        "end": end,
+    }
+  
+  # No current round.
+  return None
 
 def in_competition():
   """Returns true if we are still in the competition."""

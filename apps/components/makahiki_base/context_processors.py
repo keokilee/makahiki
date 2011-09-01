@@ -2,7 +2,7 @@ import simplejson as json
 from django.conf import settings
 
 from components.makahiki_notifications import get_unread_notifications
-from components.makahiki_base import get_floor_label, get_rounds_for_header, get_theme, get_current_round, get_competition_dates, in_competition
+from components.makahiki_base import get_floor_label, get_rounds_for_header, get_theme, get_current_round, get_current_round_info, get_competition_dates, in_competition
 from components.makahiki_profiles.models import Profile
 from components.floors.models import Floor
 from components.quests import get_quests
@@ -47,6 +47,7 @@ def competition(request):
     "ROUNDS": get_rounds_for_header(),
     "FLOOR_LABEL": get_floor_label(),
     "CURRENT_ROUND": current_round,
+    "CURRENT_ROUND_INFO": get_current_round_info(),
     "FACEBOOK_APP_ID": facebook_app_id,
     "QUESTS": quests,
     "NOTIFICATIONS": notifications,
