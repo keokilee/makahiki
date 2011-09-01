@@ -46,6 +46,8 @@ def logout(request):
 @never_cache
 @login_required
 def scoreboard(request,page):
+   
+  page = string.lower(page)
   if( page == "index"):
     page = "overall_lounge"
   user = request.user
@@ -564,7 +566,10 @@ def summary(request):
   return render_to_response("mobile/summary/index.html", {}, context_instance=RequestContext(request))
 
 @login_required
-def help(request):
+def help(request, page):
+  page = string.lower(page)
+  if page == '':
+    page = 'index'
   form = None
   if request.method == "POST":
     form = AskAdminForm(request.POST)
@@ -578,7 +583,7 @@ def help(request):
     
   rules = HelpTopic.objects.filter(category="rules", parent_topic__isnull=True)
   faqs = HelpTopic.objects.filter(category="faq", parent_topic__isnull=True)
-  return render_to_response("mobile/help/index.html", {
+  return render_to_response("mobile/help/"+page+".html", {
       "form": form,
       "rules": rules,
       "faqs": faqs,
@@ -593,7 +598,8 @@ def helptopic(request, category, slug):
 
 @never_cache
 @login_required
-def profile(request,page):
+def profile(request,page): 
+  page = string.lower(page)
   user = request.user
   form = None
   if request.method == "POST":

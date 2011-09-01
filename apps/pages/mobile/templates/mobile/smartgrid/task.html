@@ -34,7 +34,7 @@
         It lasts {{task.duration}} days.
       {% endif %}
       {% if task.type == "event" or task.type == "excursion" %}
-      <p/>
+      <p/> 
       <b>When</b>  : {{task.event_date}} <br/>
       <b>Where</b> : {{task.event_location}}
       {% endif %}
@@ -74,7 +74,64 @@
 
     </div>
     <div>
+<!-- insert-->
+      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
+       
+        {% if task.is_event_completed %}
+<!-- code goes here-->
+<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
+    {% csrf_token %}  
+    {% if admin_message %}
+      Admin message: {{ admin_message }}  
+     {% endif %}
+            Please enter the confirmation code you receieved from the event:<br/>
+	   {{form.response.errors}}
+          <label for="id_response">Code:</label><div id="find">{{form.response}}</div><br/> 
+          
+	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>
+          {{ form.social_email.errors }}  <br/>
+          {{form.social_email}}  
+          <div>
+<div style="visibility:hidden; display:none">
+	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
+	  </div>
+            <button type="submit">Submit</button>
+          </div> 
+	</form>
+<script type="text/javascript">
+$(document).ready((changeTB2TA("id_response"))); 
+function changeTB2TA( elementId ) {
+  var _el = document.getElementById( elementId );
+  var _parent = _el.parentNode;
+  var form = document.getElementById("myform");
+index=6; 
+  // we remove the element from the DOM (optional as seen below...)
+  _parent.removeChild( _el );
 
+  // property is read-only so we replace the element
+  if ( _el.type == 'text' ) {  
+    _parent.innerHTML = '<textarea id="' + _el.id + '">' + _el.value + '</textarea>';
+  } 
+  else {
+    _parent.innerHTML = '<input type="text" id="' + _el.id+'" name="id_response" />';
+  } 
+form.insertBefore(_parent.firstChild,form.childNodes[7]);
+  _el = null; // remove any reference to the old element
+form.removeChild(_parent);
+}
+</script>
+     <!-- code goes here-->
+        {% else %}
+          You will earn 2 points for signing up for the {{task.type}}.
+          <div>
+            <button>OK, Let's do it</button>
+            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+              I don't want to do it</a>
+          </div>
+        {% endif %} 
+    {% endif %}
+
+<!-- end insert-->
       {% if pau %}
       <div data-role="content" class="ui body ui-body-a ui-corner-all">
         {% if approval.approval_status == "approved" or approval.award_date %}
@@ -90,42 +147,7 @@
             {% if task.is_event_completed %}
             Thank you for attending the event. <br/>
             Enter your code below to get points for this activity.
-<!-- insert-->
-      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
-        {% if task.is_event_completed %}
-<!-- code goes here-->
-<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
 
-    {% csrf_token %}
-
-    {% if admin_message %}
-      Admin message: {{ admin_message }}
-    {% endif %}
-  
-            Please enter the confirmation code you receieved from the event:
-          <label for="id_response">Code:</label>{{form.response}}<br/>
-	  
-	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>{{form.social_email}} 
-          {{ form.response.errors }} 
-
-          <div>
-<div style="visibility:hidden; display:none">
-	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
-	  </div>
-            <button type="submit">Submit</button>
-          </div>
-     <!-- code goes here-->
-        {% else %}
-          You will earn 2 points for signing up for the {{task.type}}.
-          <div>
-            <button>OK, Let's do it</button>
-            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-              I don't want to do it</a>
-          </div>
-        {% endif %} 
-    {% endif %}
-
-<!-- end insert-->
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
