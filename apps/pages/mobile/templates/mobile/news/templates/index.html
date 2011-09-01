@@ -18,8 +18,19 @@
             <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST" onSubmit="setTimeout('parent.location.reload()',500); return true;">
               {% csrf_token %}
               <div {% get_id_and_classes "wall-post-errors" %}></div>
-              <div {% get_id_and_classes "wall-post" %} onfocus="clearContents(this);">
+              <div {% get_id_and_classes "wall-post" %}>
                 {{wall_form.post}}
+
+<script type="text/javascript">
+  $(document).ready((change("id_post"))); 
+  function change( elementId ) {
+    var ele = document.getElementById(elementId);
+    ele.onclick = clear; 
+  }
+  function clear() {
+    this.value='';
+  }
+</script>
               </div>
               <div style="text-align: center">
                 <button id="wall-post-submit">Post</button>
