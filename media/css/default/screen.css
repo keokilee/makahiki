@@ -246,6 +246,17 @@ a {
   color: #FCE988;
 }
 
+/***** Round info ******/
+
+#header-round-info {
+  margin-top: -40px;
+}
+
+#header-round-info h3 {
+  margin: 0;
+  padding: 0;
+}
+
 #header-avatar {
 	float: left;
 }
@@ -310,7 +321,7 @@ a {
 }
 
 #header-floor-rank {
-clear: both;
+  clear: both;
 }
 
 #header-floor-points h3, #header-floor-rank h3, #header-floor-energy h3 {
@@ -320,10 +331,6 @@ clear: both;
 	margin: 0;
 	padding-right: 5px;
 }
-
-#header-text {
-}
-
 
 #header-floor-image {
 	float: right;

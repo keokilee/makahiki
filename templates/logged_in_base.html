@@ -39,10 +39,9 @@
     <div class="{% block selected_icon %}{% endblock %}">
       {% include "components/navigation.html" %}
     </div>
-    {# <div {% get_id_and_classes "header-title" %}> #}
-    {#   <h3>{% block page_title %}{% endblock %}</h3> #}
-    {# </div>   #}
-    
+    <div {% get_id_and_classes "header-round-info" %}>
+      <h3>{{CURRENT_ROUND}}</h3>
+    </div>
   </div>
 </div>
 
