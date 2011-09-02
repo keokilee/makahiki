@@ -141,3 +141,28 @@ function getCookie(name) {
 function deleteCookie(name) {
     setCookie(name,"",-1);
 }
+
+function onPlayerError(errorCode) {
+  var videoSlug = window.location.pathname.split('/'); 
+  log_js_action("video_"+videoSlug[videoSlug.length -2], "error", errorCode);
+}
+      
+function onPlayerStateChange(newState) {
+  var state = "";
+  switch (newState) {
+    case -1: state = "unstarted"; break;
+    case 0:  state = "end"; break;
+    case 1: state = "playing"; break;
+    case 2: state = "paused"; break;
+    case 3: state = "buffering"; break;
+    case 5: state = "cued"; break;
+  }
+  var videoSlug = window.location.pathname.split('/'); 
+  log_js_action("video_"+videoSlug[videoSlug.length -2], "state", state);
+}
+            
+function onYouTubePlayerReady(playerId) {
+  ytplayer = document.getElementById("ytPlayer");
+  ytplayer.addEventListener("onStateChange", "onPlayerStateChange");
+  ytplayer.addEventListener("onError", "onPlayerError");
+}
