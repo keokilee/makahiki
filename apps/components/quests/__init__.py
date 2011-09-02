@@ -153,7 +153,7 @@ def posted_to_wall(user):
   """
   Returns True if the user posted to their wall and False otherwise.
   """
-  if user.post_set.count() > 0:
+  if user.post_set.filter(style_class="user_post").count() > 0:
     return True
   return False
   
