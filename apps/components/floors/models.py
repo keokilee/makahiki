@@ -181,11 +181,11 @@ class Post(models.Model):
     """Formats the created date into a pretty string."""
     return self.created_at.strftime("%m/%d %I:%M %p")
   
-  def save(self):
+  def save(self, *args, **kwargs):
     if not self.created_at:
       self.created_at = datetime.datetime.today()
     
-    super(Post, self).save()
+    super(Post, self).save(*args, **kwargs)
   
 class PostComment(models.Model):
   user = models.ForeignKey(User)

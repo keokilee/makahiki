@@ -1,12 +1,18 @@
 import datetime
+import os
 
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.core.files.images import ImageFile
+from django.db.models import signals
 
 from lib.brabeion import badges
 
 from components.activities.models import Activity, ActivityMember, Commitment, CommitmentMember, Category
-from components.quests import get_quests, has_task, num_tasks_completed, badge_awarded, possibly_completed_quests, allocated_ticket, has_points, completed_task
+from components.makahiki_avatar import create_default_thumbnails
+from components.makahiki_avatar.models import Avatar, avatar_file_path
+from components.quests import *
 from components.quests.models import Quest, QuestMember
 from components.prizes.models import RaffleDeadline, RafflePrize, RaffleTicket
 
@@ -420,4 +426,79 @@ class QuestConditionsTest(TestCase):
     profile.save()
     self.assertTrue(self.quest in possibly_completed_quests(self.user), "User should have completed this quest.")
     
+  def testPostedToWall(self):
+    """
+    Tests that this predicate is completed when the user posts something to their wall.
+    """
+    from components.floors.models import Dorm, Floor, Post
+    from components.quests import posted_to_wall
     
+    dorm = Dorm.objects.create(name="test", slug="test")
+    floor = Floor.objects.create(number="a", slug="a", dorm=dorm)
+    profile = self.user.get_profile()
+    profile.floor = floor
+    profile.save()
+    
+    self.assertFalse(posted_to_wall(self.user), "User should not have posted to their wall.")
+    post = Post.objects.create(user=self.user, floor=floor, text="text")
+    self.assertTrue(posted_to_wall(self.user), "User should have posted to their own wall.")
+    
+    # Test within context of a quest.
+    post.delete()
+    self.quest.unlock_conditions = "posted_to_wall()"
+    self.quest.save()
+    self.assertTrue(self.quest not in get_quests(self.user), "User should not be able to participate in this quest.")
+
+    self.quest.unlock_conditions = "not posted_to_wall()"
+    self.quest.save()
+    self.assertTrue(self.quest in get_quests(self.user)["available_quests"], "User should be able to participate in this quest.")
+
+    self.quest.accept(self.user)
+    self.quest.completion_conditions = "posted_to_wall()"
+    self.quest.save()
+    self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")
+
+    post = Post.objects.create(user=self.user, floor=floor, text="text")
+    self.assertTrue(self.quest in possibly_completed_quests(self.user), "User should have completed this quest.")
+    
+  def testSetProfilePic(self):
+    """
+    Tests that this predicate is completed when the user sets a profile pic.
+    """
+    # Need to disconnect create thumbnail signal temporarily for test so that additional image
+    # files don't get created.
+    signals.post_save.disconnect(create_default_thumbnails, Avatar)
+    
+    self.assertFalse(set_profile_pic(self.user), "User should not have their profile pic set.")
+    image_path = os.path.join(settings.PROJECT_ROOT, "fixtures", "test_images", "test.jpg")
+    image = ImageFile(open(image_path, "r"))
+    path = avatar_file_path(user=self.user, filename="test.jpg")
+    avatar = Avatar(user=self.user, avatar=path, primary=True)
+    new_file = avatar.avatar.storage.save(path, image)
+    avatar.save()
+    self.assertTrue(set_profile_pic(self.user), "User should have their profile pic set.")
+    
+    # Test within context of a quest.
+    avatar.delete()
+    self.quest.unlock_conditions = "set_profile_pic()"
+    self.quest.save()
+    self.assertTrue(self.quest not in get_quests(self.user), "User should not be able to participate in this quest.")
+
+    self.quest.unlock_conditions = "not set_profile_pic()"
+    self.quest.save()
+    self.assertTrue(self.quest in get_quests(self.user)["available_quests"], "User should be able to participate in this quest.")
+
+    self.quest.accept(self.user)
+    self.quest.completion_conditions = "set_profile_pic()"
+    self.quest.save()
+    self.assertTrue(self.quest not in possibly_completed_quests(self.user), "User should not be able to complete this quest.")
+
+    avatar = Avatar(user=self.user, avatar=path, primary=True)
+    avatar.save()
+    self.assertTrue(self.quest in possibly_completed_quests(self.user), "User should have completed this quest.")
+    
+    # Be sure to clean up test files and reconnect post_save signal.
+    signals.post_save.connect(create_default_thumbnails, sender=Avatar)
+    for avatar in self.user.avatar_set.all():
+      avatar.avatar.delete()
+      avatar.delete()

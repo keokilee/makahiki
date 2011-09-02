@@ -149,6 +149,22 @@ def badge_awarded(user, badge_slug):
       
   return False
   
+def posted_to_wall(user):
+  """
+  Returns True if the user posted to their wall and False otherwise.
+  """
+  if user.post_set.count() > 0:
+    return True
+  return False
+  
+def set_profile_pic(user):
+  """
+  Returns True if the user posted to their wall and False otherwise.
+  """
+  if user.avatar_set.filter(primary=True).count() > 0:
+    return True
+  return False
+  
 CONDITIONS = {
   "has_task": has_task, 
   "completed_task": completed_task,
@@ -156,6 +172,8 @@ CONDITIONS = {
   "allocated_ticket": allocated_ticket, 
   "num_tasks_completed": num_tasks_completed, 
   "badge_awarded": badge_awarded,
+  "posted_to_wall": posted_to_wall,
+  "set_profile_pic": set_profile_pic,
 }
 
 def process_conditions_string(conditions_string, user):
