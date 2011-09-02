@@ -39,12 +39,34 @@
     <div class="{% block selected_icon %}{% endblock %}">
       {% include "components/navigation.html" %}
     </div>
-    {# <div {% get_id_and_classes "header-title" %}> #}
-    {#   <h3>{% block page_title %}{% endblock %}</h3> #}
-    {# </div>   #}
-    
+    <div {% get_id_and_classes "header-round-info" %}>
+      <h3>{{CURRENT_ROUND}}</h3>
+      <span {% get_id_and_classes "header-round-countdown" %}></span>
+    </div>
   </div>
 </div>
+<script type="text/javascript">
+  var endDate = new Date("{{CURRENT_ROUND_INFO.end.isoformat}}");
+  var today = new Date();
+  // Calculate the number of days in the difference.
+  var hourDiff = (endDate - today) / (1000 * 60 * 60);
+  if (hourDiff > 24) {
+    $("#header-round-countdown").countdown({
+      until: endDate,
+      tickInterval: 60,
+      layout: '(ends in {dn} {dl}, {hn} {hl}, and {mn} {ml})'
+    });
+  }
+  else {
+    if (hourDiff < 6) {
+      $("#header-round-info").addClass("ending");
+    }
+    $("#header-round-countdown").countdown({
+      until: endDate,
+      layout: '(ends in {hn} {hl}, {mn} {ml}, and {sn} {sl})'
+    });
+  }
+</script>
 
 {% include "notifications/list.html" %}
 
