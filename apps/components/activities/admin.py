@@ -306,8 +306,8 @@ class ActivityMemberAdminForm(forms.ModelForm):
 
 class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
-  # Requires Django 1.2
-  readonly_fields = ("question", "response", "user_comment",)
+  fields = ("user", "activity", "question", "response", "image", "admin_comment", "approval_status", "social_email")
+  readonly_fields = ("question", "response", "social_email",)
   list_display = ("activity", "submission_date", "approval_status", "question", "response", "image")
   list_filter = ["approval_status"]
   actions = ["delete_selected"]
@@ -322,9 +322,9 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   
   def get_form(self, request, obj=None, **kwargs):
     """Override to remove the points_awarded field if the activity does not have variable points."""
-    self.exclude = []
-    if obj and not obj.activity.has_variable_points:
-      self.exclude.append("points_awarded")
+    if obj and obj.activity.has_variable_points:
+      self.fields = ("user", "activity", "question", "response", "image", 
+          "admin_comment", "approval_status", "points_awarded", "social_email")
       
     return super(ActivityMemberAdmin, self).get_form(request, obj, **kwargs)
   

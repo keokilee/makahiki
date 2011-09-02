@@ -23,7 +23,7 @@ function prettyDate(time){
 			diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
 		day_diff == 1 && "yesterday" ||
 		day_diff < 7 && day_diff + " days ago" ||
-		day_diff < 14 && Math.ceil( day_diff / 7 ) + " week ago" ||
+		day_diff < 13 && Math.ceil( day_diff / 7 ) + " week ago" ||
 		day_diff < 31 && Math.ceil( day_diff / 7 ) + " weeks ago";
 }
 

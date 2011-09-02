@@ -249,13 +249,13 @@ class ProfileFunctionalTestCase(TestCase):
         user=self.user,
         activity=event,
         approval_status="approved",
-        user_comment="user2@test.com",
+        social_email="user2@test.com",
     )
     member2 = ActivityMember.objects.create(
         user=user2,
         activity=event,
         approval_status="approved",
-        user_comment="user@test.com",
+        social_email="user@test.com",
     )
     
     response = self.client.get(reverse("profile_index"))

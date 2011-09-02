@@ -158,7 +158,7 @@ def attend_code(request):
       value = code.activity.point_value  
 
       if form.cleaned_data.has_key("social_email") and form.cleaned_data["social_email"] != "Email":
-        activity_member.user_comment = form.cleaned_data["social_email"]
+        activity_member.social_email = form.cleaned_data["social_email"]
         
       activity_member.save()
 
@@ -375,7 +375,7 @@ def __request_activity_points(request, activity):
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
 
-      activity_member.user_comment = form.cleaned_data["social_email"]
+      activity_member.social_email = form.cleaned_data["social_email"]
       activity_member.save()
           
       return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,))+"?notify=add_point&value="+str(value))

@@ -404,7 +404,7 @@ class ActivityMember(CommonActivityUser):
   question = models.ForeignKey(TextPromptQuestion, null=True, blank=True)
   response = models.TextField(blank=True)
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
-  user_comment = models.TextField(blank=True, help_text="Comment from user about their submission.")
+  social_email = models.TextField(blank=True, help_text="Email address of the person the user went with.")
   image = models.ImageField(max_length=1024, 
                             blank=True, 
                             upload_to=activity_image_file_path,
@@ -424,9 +424,9 @@ class ActivityMember(CommonActivityUser):
     """
     Try to check if there is a social bonus.
     """
-    if self.user_comment:
+    if self.social_email:
       try:
-        ref_user = User.objects.get(email=self.user_comment)
+        ref_user = User.objects.get(email=self.social_email)
         ref_count = ActivityMember.objects.filter(user=ref_user, activity=self.activity, 
             approval_status="approved").count()
         if ref_count > 0:
@@ -490,8 +490,8 @@ class ActivityMember(CommonActivityUser):
     
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
-    if self.user_comment:
-      ref_user = User.objects.get(email=self.user_comment)
+    if self.social_email:
+      ref_user = User.objects.get(email=self.social_email)
       ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
       for m in ref_members:
         if m.approval_status == 'approved':
@@ -500,7 +500,7 @@ class ActivityMember(CommonActivityUser):
     profile.save()
     
     ## award social bonus to others referenced my email and successfully completed the activity
-    ref_members = ActivityMember.objects.filter(activity=self.activity, user_comment=self.user.email)
+    ref_members = ActivityMember.objects.filter(activity=self.activity, social_email=self.user.email)
     for m in ref_members:
       if m.approval_status == 'approved':
         ref_profile = m.user.get_profile()
