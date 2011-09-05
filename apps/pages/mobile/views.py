@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect, get_host
-
+import unicodedata
 from components.activities.models import ActivityBase
 from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
@@ -162,8 +162,8 @@ def task(request, category_slug, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
-      if approval.social_email:
-        ref_user = User.objects.get(email=approval.social_email)
+      if approval.user_comment:
+        ref_user = User.objects.get(email=approval.user_comment)
         ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
         for m in ref_members:
           if m.approval_status == 'approved':
@@ -311,7 +311,7 @@ def __add_activity(request, activity_id, slug):
       if form.is_valid():
         for i,q in enumerate(question):
           activity_member = ActivityMember(user=user, activity=activity)
-##TODO.          activity_member.social_email = form.cleaned_data["comment"]
+##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
           
@@ -372,7 +372,7 @@ def __request_activity_points(request, activity_id, slug):
       if not activity_member:
         activity_member = ActivityMember(user=user, activity=activity)
       
-      activity_member.social_email = form.cleaned_data["comment"]
+      activity_member.user_comment = form.cleaned_data["comment"]
       # Attach image if it is an image form.
       if form.cleaned_data.has_key("image_response"):
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
@@ -473,7 +473,8 @@ def events(request,option):
   objlist = []
   user = request.user
   options = ["upcoming","attending","past"] 
-  view = option
+  option = uniToStr(option)
+  view = str.lower(option)
 
   #handle the date functionality
   day = timedelta(days = 1) 
@@ -681,3 +682,6 @@ def power_and_energy(request):
   }, context_instance=RequestContext(request))
 
  
+def uniToStr(uni) :
+  str = unicodedata.normalize('NFKD', uni).encode('ascii','ignore')
+  return str

@@ -8,15 +8,17 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head> 
 <body>  
-  <!--div data-role="page"-->
+  <div data-role="page">
+   <!--endbase-->
    {% load class_tags %}
    {% load generic_flatblocks %}  
    {% load markup %} 
    {% block body %}{% endblock %}
+   <!--startbase-->
 <div data-role="footer">
 <a href="{% url home_index %}" rel="external">Go to desktop site</a> 
 </div>
-  <!--/div-->
+  </div>
  
 </body>
 </html>

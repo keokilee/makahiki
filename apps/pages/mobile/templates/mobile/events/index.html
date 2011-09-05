@@ -1,9 +1,8 @@
 {% extends "mobile/base.html" %}
-{% block body %}
-<div data-role="page">
+{% block body %} 
   <div data-role="header" data-theme="b" data-add-back-btn="True"> 
     <h1>Events</h1>
-    <div data-role="navbar" data-add-back-btn="True">
+    <div data-role="navbar">
       <ul>
 	<li>
           <a href="{% url mobile_events 'Upcoming' %}" rel="external"
@@ -14,8 +13,7 @@
           </a>
         </li>
 			  
-       <!--Change script to account for events the user is attending-->
-       <!--idk how to determine atm-->
+       <!--Change script to account for events the user is attending--> 
  
           <a href="{% url mobile_events 'Past' %}" rel="external"
 		{% if view == "Past" %}
@@ -30,8 +28,8 @@
   </div><!-- /header -->
  
  <!-- upcoming events-->
- {% if view == "Upcoming" or view == "upcoming" %} 
- <div data-role="content"></div> 
+ {% if view == "upcoming" %} 
+ <div data-role="content">
    {% for object in objlist %}
     <!--day is a 2d array-->
    	<!--day[0] is the text representation-->
@@ -70,7 +68,7 @@
 
 
   <!-- Past events-->
-  {% if view == "Past" or view == "past" %}
+  {% if view == "past" %}
     <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
      
      <h3>
@@ -94,6 +92,5 @@
 	 {% endfor %}
        </ul>
      </div>   
-  {% endif %} 
-</div>
+  {% endif %}   
 {% endblock %}
