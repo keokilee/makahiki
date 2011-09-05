@@ -33,8 +33,8 @@ class EnergyFunctionalTestCase(TestCase):
       
     goal = FloorEnergyGoal.objects.create(
         floor=self.floor,
-        goal_usage=1.0,
-        actual_usage=2.0,
+        goal_usage="1.0",
+        actual_usage="2.0",
     )
     
     response = self.client.get(reverse("energy_index"))
@@ -44,8 +44,8 @@ class EnergyFunctionalTestCase(TestCase):
       
     goal = FloorEnergyGoal.objects.create(
         floor=self.floor,
-        goal_usage=1.0,
-        actual_usage=0.5,
+        goal_usage="1.0",
+        actual_usage="0.5",
     )
 
     response = self.client.get(reverse("energy_index"))
