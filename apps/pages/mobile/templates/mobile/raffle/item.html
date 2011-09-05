@@ -16,7 +16,7 @@
     <div data-role="body">
       <div data-role="content">
         <div id="raffle-{{title}}-description" class="{% insert_classes 'prize-dialog' %}" title="{{title}}">
-          <img src="{#MEDIA_URL}}{{prize.image#}" width="50"/>
+          <img src="{#MEDIA_URL}}{{prize.image}}" width="50"/>
           {{prize.description|markdown}}
           </div>
           Valued at {{prize.value|currency}}.
