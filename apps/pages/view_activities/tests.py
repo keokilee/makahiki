@@ -7,7 +7,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from components.floors.models import Floor
 from components.makahiki_profiles.models import Profile
-from components.activities.models import Commitment, Activity, ActivityMember, ConfirmationCode, EmailReminder, TextReminder
+from components.activities.models import *
 from components.quests.models import Quest
 
 class ActivitiesFunctionalTestCase(TestCase):
@@ -198,6 +198,38 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
+    
+  def testMobileRedirect(self):
+    """Tests that the mobile redirection and the cookie that forces the desktop version."""
+    category = Category.objects.create(
+        name="test category",
+        slug="test-category",
+    )
+    commitment = Commitment(
+        title="Test commitment",
+        slug="test-commitment",
+        description="A commitment!",
+        point_value=10,
+        type="commitment",
+        category=category,
+    )
+    commitment.save()
+    
+    response = self.client.get(reverse("activity_task", args=(commitment.type, commitment.slug)),
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a",
+        follow=True
+    )
+    # self.failUnlessEqual(response.status_code, 302, "Mobile device should redirect.")
+    self.assertTemplateUsed(response, "mobile/smartgrid/index.html")
+
+    self.client.cookies['mobile-desktop'] = True
+
+    response = self.client.get(reverse("activity_task", args=(commitment.type, commitment.slug)),
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a",
+        follow=True
+    )
+    # self.failUnlessEqual(response.status_code, 200, "Mobile device should not redirect.")
+    self.assertTemplateUsed(response, "view_activities/index.html")
     
   def testAddEmailReminder(self):
     """
