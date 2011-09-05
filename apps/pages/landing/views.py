@@ -5,11 +5,11 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 
 def index(request):
-  if request.mobile:
+  if request.mobile and not request.COOKIES.has_key("mobile-desktop"):
     return HttpResponseRedirect(reverse("mobile_landing"))
-  if request.user.is_authenticated():
+  elif request.user.is_authenticated():
     return HttpResponseRedirect(reverse("home_index"))
-  if hasattr(settings, "REDIRECT_TO_ABOUT") and settings.REDIRECT_TO_ABOUT:
+  elif hasattr(settings, "REDIRECT_TO_ABOUT") and settings.REDIRECT_TO_ABOUT:
     return HttpResponseRedirect(reverse("about"))
     
   return landing(request)

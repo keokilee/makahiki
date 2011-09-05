@@ -41,3 +41,19 @@ class LandingFunctionalTestCase(TestCase):
     response = self.client.get(reverse("root_index"))
     self.assertRedirects(response, reverse("home_index"),
         msg_prefix="Landing page should redirect to home page for logged in users.")
+        
+  def testMobileRedirect(self):
+    """Tests that the mobile redirection and the cookie that forces the desktop version."""
+    response = self.client.get(reverse("root_index"),
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a"
+    )
+    self.failUnlessEqual(response.status_code, 302, "Mobile device should redirect.")
+    
+    self.client.cookies['mobile-desktop'] = True
+    
+    response = self.client.get(reverse("root_index"),
+        HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a"
+    )
+    self.failUnlessEqual(response.status_code, 200, "Mobile device should not redirect.")
+    self.assertTemplateUsed(response, "landing/index.html")
+    

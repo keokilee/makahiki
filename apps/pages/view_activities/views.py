@@ -400,6 +400,11 @@ def __request_activity_points(request, activity):
 @login_required
 def task(request, activity_type, slug):
   """individual task page"""
+  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
+  # Check here for mobile redirect.
+  if request.mobile and not request.COOKIES.has_key("mobile-desktop"):
+    return HttpResponseRedirect(reverse("mobile_task", args=(task.category.slug, slug)))
+    
   user = request.user
   
   floor = user.get_profile().floor
@@ -410,12 +415,9 @@ def task(request, activity_type, slug):
   can_commit = None
   member_all_count = 0
   member_floor_count = 0
-  
-  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.view_activities.views.index", args=()))
-
   
   if task.type != "commitment":
     task = task.activity
