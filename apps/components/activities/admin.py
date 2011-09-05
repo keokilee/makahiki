@@ -314,6 +314,20 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   date_hierarchy = "submission_date"
   ordering = ["submission_date"]
   form = ActivityMemberAdminForm
+  
+  def changelist_view(self, request, extra_context=None):
+    """
+    Set the default filter of the admin view to pending.
+    Based on iridescent's answer to http://stackoverflow.com/questions/851636/default-filter-in-django-admin
+    """
+    test = request.META['HTTP_REFERER'].split(request.META['PATH_INFO'])
+    if test[-1] and not test[-1].startswith('?'):
+      if not request.GET.has_key('approval_status__exact'):
+        q = request.GET.copy()
+        q['approval_status__exact'] = 'pending'
+        request.GET = q
+        request.META['QUERY_STRING'] = request.GET.urlencode()
+    return super(ActivityMemberAdmin,self).changelist_view(request, extra_context=extra_context)
     
   def delete_selected(self, request, queryset):
     for obj in queryset:
