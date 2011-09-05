@@ -1,7 +1,6 @@
 {% load class_tags %}
 
-{% with raffle.deadline as deadline %}
-<div data-role="page" id="box">
+{% with raffle.deadline as deadline %} 
   <div data-role="header" data-theme="b">
     <h1>{{deadline.round_name}} Raffle Game</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
@@ -12,7 +11,7 @@
       <div {% get_id_and_classes "prizes-raffle-info" %} class="ui-body ui-body-a">
         Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
       </div>
-      </br>
+      </br><font size = 2pt>
       <div {% get_id_and_classes "prizes-raffle-table" %} class="ui-grid-d ui-body ui-body-e">
           <div class="ui-block-a"><th {% get_id_and_classes "prizes-raffle-prize-header" %}>Prize</th></div>
           <!--div class="ui-block-b"><th {% get_id_and_classes "prizes-raffle-value-header" %}>Value</th></div-->
@@ -22,7 +21,7 @@
           <div class="ui-block-e"><th {% get_id_and_classes "prizes-raffle-options-header" %}>Change ticket allocation</th></div>
 
         {% include "mobile/raffle/raffle_list.html" %}
-      </div>
+      </div></font>
       </br>
       <div id="prizes-raffle-footer">
         You receive 1 raffle ticket for every {{raffle.points_per_ticket}} awarded Kukui Cup points.<br/>
@@ -32,8 +31,7 @@
       </div>
 
     </div>
-  </div>
-</div>
+  </div> 
 {% endwith %}
 
 
