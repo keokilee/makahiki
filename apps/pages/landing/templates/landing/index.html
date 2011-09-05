@@ -25,22 +25,23 @@
  Aloha! The Kukui Cup is an energy challenge that can be played by all first year UH students living in the Hale Aloha residence halls.
 <p> <p>
 
-<a href="{% url home_index %}">
-  <button {% get_id_and_classes "landing-button-participant" %}>
+<button {% get_id_and_classes "landing-button-participant" %}>
+  <a href="{% url home_index %}">
   	<h3>I live in Hale Aloha</h3>
   	<h5>You will be prompted for your <br>
   	UH username and password, it's safe</h5>
-  </button>
-</a>
+  </a>
+</button>
+
 
 <p>
 
-<a href="{% url about %}">
 <button {% get_id_and_classes "landing-button-non-participant" %}>
-	<h3>I don't live in these residence halls</h3>
-	<h5>but I'd like to know more about the Kukui Cup</h5>
+  <a href="{% url about %}">
+  	<h3>I don't live in these residence halls</h3>
+  	<h5>but I'd like to know more about the Kukui Cup</h5>
+  </a>
 </button>
-</a>
 
 </div>
 
