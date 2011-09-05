@@ -1,3 +1,6 @@
+from elementtree import ElementTree
+from decimal import *
+
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.template import RequestContext
@@ -5,9 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.views.decorators.cache import never_cache
 from django.shortcuts import get_object_or_404
-
-from elementtree import ElementTree
-from decimal import *
+from django.db.models import Count, F
 
 from components.activities.models import *
 from components.activities import *
@@ -34,8 +35,18 @@ def index(request):
     # Check if this round happened already or if it is in progress.
     # We don't care if the round happens in the future.
     if today >= datetime.datetime.strptime(rounds[key]["start"], "%Y-%m-%d"):
-      # Slugify to create a div id.
       scoreboard_rounds.append(key)
+      
+  # Generate the scoreboard for energy goals.
+  # We could aggregate the energy goals in floors, but there's a bug in Django.
+  # See https://code.djangoproject.com/ticket/13461
+  goals_scoreboard = FloorEnergyGoal.objects.filter(
+      actual_usage__lte=F("goal_usage")
+  ).values(
+      "floor__number", 
+      "floor__dorm__name"
+  ).annotate(completions=Count("floor")).order_by("-completions")
+  
     
   return render_to_response("energy/index.html",{
       "floor": floor,
@@ -43,6 +54,6 @@ def index(request):
       "golow_activities":golow_activities,
       "posts":golow_posts,
       "wall_form": WallForm(),
-    }
-    ,context_instance=RequestContext(request))
+      "goals_scoreboard": goals_scoreboard,
+  }, context_instance=RequestContext(request))
     
