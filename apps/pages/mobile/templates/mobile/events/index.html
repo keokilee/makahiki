@@ -6,7 +6,7 @@
     <div data-role="navbar" data-add-back-btn="True">
       <ul>
 	<li>
-          <a href="{% url mobile_events 'Upcoming' %}" 
+          <a href="{% url mobile_events 'Upcoming' %}" rel="external"
 		{% if view == "Upcoming" %}
 			class="ui-btn-active"
 		{% endif %}>
@@ -17,7 +17,7 @@
        <!--Change script to account for events the user is attending-->
        <!--idk how to determine atm-->
  
-          <a href="{% url mobile_events 'Past' %}"
+          <a href="{% url mobile_events 'Past' %}" rel="external"
 		{% if view == "Past" %}
 			class="ui-btn-active"
 		{% endif %}>

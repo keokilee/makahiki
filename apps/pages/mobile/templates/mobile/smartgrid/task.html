@@ -9,7 +9,7 @@
 {% load markup %}
 <div data-role="page" id="task">
   <div data-role="header" data-theme="b">
-    <a href="{% url mobile_smartgrid %}" data-icon="back" >Back</a>
+    <a href="{{request.META.HTTP_REFERER}}" data-icon="back" rel="external">Back</a>
     <h1>{{task.name}}</h1>
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
   </div>

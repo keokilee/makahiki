@@ -17,14 +17,14 @@
     <div class="ui-block-e" data-role="controlgroup" data-type="horizontal" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
       {% if user.get_profile.available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST" >
-        <button class="enabled" type="submit" data-icon="plus" onClick="location.reload();"></button>
+        <button class="enabled" type="submit" data-icon="plus" onClick="setTimeout('parent.location.reload()',500);return true;"></button>
       </form>
       {% else %}
       <button class="disabled" data-icon="plus"></button>
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
-        <button class="enabled" type="submit" data-icon="minus" onClick="location.reload();"></button>
+        <button class="enabled" type="submit" data-icon="minus" onClick="setTimeout('parent.location.reload()',500);return true;"></button>
       </form>
       {% else %}
         <button class="disabled" data-icon="minus"></button>
