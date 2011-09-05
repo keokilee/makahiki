@@ -5774,7 +5774,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 8, 
       "user": 606, 
@@ -5788,7 +5788,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "test", 
+      "social_email": "test", 
       "image": "activities/admin/yongwen.jpg", 
       "question": null, 
       "user": 606, 
@@ -5802,7 +5802,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "test", 
+      "social_email": "test", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -5816,7 +5816,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "test", 
+      "social_email": "test", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -5830,7 +5830,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "test", 
+      "social_email": "test", 
       "image": "", 
       "question": 22, 
       "user": 606, 
@@ -5844,7 +5844,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "activities/admin/yongwen.jpg", 
       "question": null, 
       "user": 606, 
@@ -5858,7 +5858,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 56, 
       "user": 606, 
@@ -5872,7 +5872,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 23, 
       "user": 640, 
@@ -5886,7 +5886,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 21, 
       "user": 2, 
@@ -5900,7 +5900,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 2, 
@@ -5914,7 +5914,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 1, 
       "user": 2, 
@@ -5928,7 +5928,7 @@
     "fields": {
       "admin_comment": "While individual solar panels don't generate a lot, they can help. We're looking for a number here, try watching the video again to find the answer.", 
       "points_awarded": null, 
-      "user_comment": "Please deny me!", 
+      "social_email": "Please deny me!", 
       "image": "", 
       "question": 32, 
       "user": 2, 
@@ -5942,7 +5942,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "activities/johnson/llikekukui.tiff", 
       "question": null, 
       "user": 2, 
@@ -5956,7 +5956,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "activities/johnson/llikekukui.tiff", 
       "question": null, 
       "user": 2, 
@@ -5970,7 +5970,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 41, 
       "user": 2, 
@@ -5984,7 +5984,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 28, 
       "user": 653, 
@@ -5998,7 +5998,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 642, 
@@ -6012,7 +6012,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 23, 
       "user": 1, 
@@ -6026,7 +6026,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -6040,7 +6040,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -6054,7 +6054,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 21, 
       "user": 606, 
@@ -6068,7 +6068,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "activities/nashe/photo.jpg", 
       "question": null, 
       "user": 640, 
@@ -6082,7 +6082,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6096,7 +6096,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 40, 
       "user": 656, 
@@ -6110,7 +6110,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6124,7 +6124,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 30, 
       "user": 656, 
@@ -6138,7 +6138,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6152,7 +6152,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 1, 
       "user": 656, 
@@ -6166,7 +6166,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6180,7 +6180,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -6194,7 +6194,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 2, 
@@ -6208,7 +6208,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 43, 
       "user": 606, 
@@ -6222,7 +6222,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6236,7 +6236,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 653, 
@@ -6250,7 +6250,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -6264,7 +6264,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 606, 
@@ -6278,7 +6278,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 649, 
@@ -6292,7 +6292,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 2, 
@@ -6306,7 +6306,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 44, 
       "user": 606, 
@@ -6320,7 +6320,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 45, 
       "user": 606, 
@@ -6334,7 +6334,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 46, 
       "user": 606, 
@@ -6348,7 +6348,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 47, 
       "user": 606, 
@@ -6362,7 +6362,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 48, 
       "user": 606, 
@@ -6376,7 +6376,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 49, 
       "user": 606, 
@@ -6390,7 +6390,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 50, 
       "user": 606, 
@@ -6404,7 +6404,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 51, 
       "user": 606, 
@@ -6418,7 +6418,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 52, 
       "user": 606, 
@@ -6432,7 +6432,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 53, 
       "user": 606, 
@@ -6446,7 +6446,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 54, 
       "user": 606, 
@@ -6460,7 +6460,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 55, 
       "user": 606, 
@@ -6474,7 +6474,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 36, 
       "user": 606, 
@@ -6488,7 +6488,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 57, 
       "user": 606, 
@@ -6502,7 +6502,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": 58, 
       "user": 606, 
@@ -6516,7 +6516,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "", 
+      "social_email": "", 
       "image": "", 
       "question": null, 
       "user": 656, 
@@ -6530,7 +6530,7 @@
     "fields": {
       "admin_comment": "", 
       "points_awarded": null, 
-      "user_comment": "johnson@hawaii.edu", 
+      "social_email": "johnson@hawaii.edu", 
       "image": "", 
       "question": null, 
       "user": 656, 
