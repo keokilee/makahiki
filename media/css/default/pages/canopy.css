@@ -164,6 +164,13 @@ body {
   padding-right: 5px;
 }
 
+#canopy-karma-prize {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 /******* Member styles *******/
 #canopy-feed-members #canopy-members{
   float: right;
