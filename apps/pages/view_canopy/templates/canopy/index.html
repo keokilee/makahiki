@@ -43,6 +43,20 @@
     </div>
   </div>
   
+  <div {% get_id_and_classes "canopy-karma" %}>
+    <div {% get_id_and_classes "canopy-karma-title" %}>
+      Canopy Karma Scoreboard
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		    title="Click to get help about this window" 
+		    onclick="toggleHelp('widget', 'canopy-karma'); return false;"/>
+		  </a>
+	  </div>
+	  <div {% get_id_and_classes "canopy-karma-content"%}>
+	    {% include "canopy/karma_scoreboard.html" %}
+	  </div>
+	</div>
+	
   <div {% get_id_and_classes "canopy-members" %}>
     <div {% get_id_and_classes "canopy-members-title" %}>
       Canopy Members

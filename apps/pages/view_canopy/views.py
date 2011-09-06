@@ -11,6 +11,7 @@ from django.views.decorators.cache import never_cache
 from django.db.models import Q
 
 from components.canopy.models import Quest, Post
+from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
 
@@ -37,13 +38,17 @@ def index(request):
   # Load members
   members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
   
+  # Load canopy karma scoreboard.
+  karma_scoreboard = Profile.objects.filter(
+      canopy_member=True,
+  ).order_by("-canopy_karma")[:10]
+  
   # Check for the about cookie.
   hide_about = False
   if request.COOKIES.has_key("hide-about"):
     hide_about = True
   
   viz = request.REQUEST.get("viz", None)
-  
   
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
@@ -54,6 +59,7 @@ def index(request):
       "members": members,
       "hide_about": hide_about,
       "viz":viz,
+      "karma_scoreboard": karma_scoreboard,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------

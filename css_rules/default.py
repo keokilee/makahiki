@@ -126,6 +126,8 @@ CSS_IDS = {
   "canopy-feed-title": "content-box-title",
   "canopy-members": "content-box",
   "canopy-members-title": "content-box-title",
+  "canopy-karma": "content-box",
+  "canopy-karma-title": "content-box-title",
 }
 
 CSS_CLASSES = {
