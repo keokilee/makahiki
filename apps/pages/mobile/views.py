@@ -128,6 +128,117 @@ def taskdeny(request, category_slug, slug):
     "activity":activity,
   }, context_instance=RequestContext(request))   
 
+@login_required
+@never_cache
+def task_form(request,category_slug,slug):
+  """individual task page"""
+  user = request.user
+  
+  floor = user.get_profile().floor
+  pau = False
+  question = None
+  form = None
+  approval = None
+  can_commit = None
+  member_all_count = 0
+  member_floor_count = 0
+  
+  task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+
+  if is_unlock(user, task) != True:
+    return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
+
+  
+  if task.type != "commitment":
+    task = task.activity
+
+    if task.type == "survey":
+      member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
+      members = ActivityMember.objects.filter(user=user, activity=task, approval_status="approved")
+    else:
+      member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
+      members = ActivityMember.objects.filter(user=user, activity=task)
+
+    if members.count() > 0:
+      pau = True
+      approval = members[0]
+      if approval.social_email:
+        ref_user = User.objects.get(email=approval.user_comment)
+        ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+        for m in ref_members:
+          if m.approval_status == 'approved':
+            approval.social_bonus_awarded = True
+      
+    if task.type == "survey":
+      question = TextPromptQuestion.objects.filter(activity=task)
+      form = SurveyForm(questions=question)    
+      form_title = "Survey"
+    else:
+      form_title = "Get your points"
+    
+      # Create activity request form.
+      if task.confirm_type == "image":
+        form = ActivityImageForm(request=request)
+      elif task.confirm_type == "text":
+        question = task.pick_question(user.id)
+        if question:
+          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk,request=request)
+      elif task.confirm_type == "free":
+        form = ActivityFreeResponseForm(request=request)
+      else:
+        form = ActivityTextForm(initial={"code" : 1},request=request)
+                
+      if task.type == "event" or task.type == "excursion":
+        if not pau:
+          form_title = "Sign up for this "+task.type
+        
+  else:  ## "Commitment"
+    task = task.commitment
+    members = CommitmentMember.objects.filter(user=user, commitment=task);
+    if members.count() > 0:
+      pau = True
+      approval = members[0]
+      if approval.comment:
+        ref_user = User.objects.get(email=approval.comment)
+        ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=task)
+        for m in ref_members:
+          if m.award_date:
+            approval.social_bonus_awarded = True
+    
+    member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
+    form_title = "Make this commitment"
+    form = CommitmentCommentForm(request=request)
+    can_commit = can_add_commitments(user)
+    
+  users = []
+  member_all_count = member_all.count()
+  for member in member_all:
+    if member.user.get_profile().floor == floor:
+      member_floor_count = member_floor_count + 1
+      users.append(member.user)
+  
+  if pau:
+    member_all_count = member_all_count + 1
+    member_floor_count = member_floor_count +1
+    users.append(user)
+    
+  display_form = True if request.GET.has_key("display_form") else False
+  
+  return render_to_response("mobile/smartgrid/form.html", {
+    "task":task,
+    "category":category_slug,
+    "pau":pau,
+    "approval":approval,
+    "form":form,
+    "question":question,
+    "member_all":member_all_count,
+    "member_floor":member_floor_count,
+    "users":users,
+    "display_form":display_form,
+    "form_title": form_title,
+    "can_commit":can_commit,
+  }, context_instance=RequestContext(request))   
+
 @never_cache
 @login_required
 def task(request, category_slug, slug):

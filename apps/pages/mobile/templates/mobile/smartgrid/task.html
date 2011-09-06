@@ -1,8 +1,12 @@
-{% extends "mobile/base.html" %} 
+{% extends "mobile/base.html" %}
+
+
 {% load avatar_tags %}
-{% load class_tags %} 
-{% block body %} 
-{% load markup %} 
+{% load class_tags %}
+
+{% block body %}
+
+{% load markup %}  
   <div data-role="header" data-theme="b">
     <a href="{{request.META.HTTP_REFERER}}" data-icon="back" rel="external">Back</a>
     <h1>{{task.name}}</h1>
@@ -87,7 +91,9 @@
           {{ form.social_email.errors }}  <br/>
           {{form.social_email}}  
           <div>
- 
+<div style="visibility:hidden; display:none">
+	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
+	  </div>
             <button type="submit">Submit</button>
           </div> 
 	</form>
@@ -179,7 +185,7 @@ form.removeChild(_parent);
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>
 
-              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will try again</a> 
+              <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I will try again</a> 
 
             {% endif %}
           {% endif %}            
@@ -214,14 +220,14 @@ form.removeChild(_parent);
            {% if task.is_event_completed %}
             <b>This event was already completed at {{task.event_date}}. <br/>
                If you attended the event, Click on the "I Did it" button to get your points. <br/>
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a>
+            <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I Did it</a>
             </b>
            {% else %}
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to sign up</a>
+            <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I want to sign up</a>
            {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}
-          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
+          <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I want to do it</a>
         {% endif %} 
         {% if task.type == "activity" and not form.image_response %}
           {% if form.image_response %}
@@ -231,7 +237,7 @@ form.removeChild(_parent);
           Once you are done, click the button below to get your points!
           </b>
           <p/>
-          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
+          <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I Did This!</a> 
           {% endif %}
         {% endif %}
 
@@ -244,5 +250,5 @@ form.removeChild(_parent);
 {#      I did this! - not part of desktop #}
 {#    </a> #}
 
-  </div> 
+  </div>  
 {% endblock %}
