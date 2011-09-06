@@ -12,7 +12,7 @@
       {% if mission.users.count > 0 %}
         <h4>The following users are participating in this mission.</h4>
         {% for user in mission.users.all %}
-        <img src="{% avatar_url user 40 %}" style="margin-right: 10px"/>
+        <img src="{% avatar_url user 40 %}" alt="Photo of {{user.get_profile.name}}" style="margin-right: 10px"/>
         {% endfor %}
       {% else %}
       <h4>No users are currently participating in this mission.</h4>
@@ -25,7 +25,7 @@
       </form>
       {% else %}
       <form action="{% url canopy_mission_accept mission.slug %}" method="POST" style="display: inline">
-        <button type="submit" style="margin-right: 20px">I accept this mission</button>
+        <button type="submit" style="margin-right: 20px">I am up for this mission</button>
       </form>
       {# <form action="" method="POST" style="display: inline"> #}
       {#   <button type="submit">I am not interested in this mission</button> #}
