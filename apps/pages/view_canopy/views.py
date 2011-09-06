@@ -26,7 +26,7 @@ def index(request):
   Directs the user to the canopy page.
   """
   # Load quests
-  canopy_quests = Quest.objects.exclude(users__pk=request.user.pk)
+  canopy_missions = Quest.objects.exclude(users__pk=request.user.pk)
   
   # Load wall
   form = WallForm()
@@ -52,7 +52,7 @@ def index(request):
   
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
-      "canopy_quests": canopy_quests,
+      "canopy_missions": canopy_missions,
       "wall_form": form,
       "posts": posts,
       "more_posts": more_posts,

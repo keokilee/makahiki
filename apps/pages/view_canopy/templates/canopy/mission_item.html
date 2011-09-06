@@ -1,0 +1,36 @@
+{% load markup %}
+{% load avatar_tags %}
+
+<li class="canopy-mission">
+  <a href="javascript:void(0)" id="{{mission.slug}}" 
+  class="mission-title {% if user in mission.users.all %}mission-user-mission{%endif%}">
+    {{mission.name}}
+  </a>
+  <div class="mission-description" style="display:none">
+    {{mission.description|markdown}}
+    <div class="mission-users">
+      {% if mission.users.count > 0 %}
+        <h4>The following users are participating in this mission.</h4>
+        {% for user in mission.users.all %}
+        <img src="{% avatar_url user 40 %}" style="margin-right: 10px"/>
+        {% endfor %}
+      {% else %}
+      <h4>No users are currently participating in this mission.</h4>
+      {% endif %}
+    </div>
+    <div class="mission-options">
+      {% if user in mission.users.all %}
+      <form action="{% url canopy_mission_cancel mission.slug%}" method="POST" style="display: inline">
+        <button type="submit" style="margin-right: 20px">Cancel this mission</button>
+      </form>
+      {% else %}
+      <form action="{% url canopy_mission_accept mission.slug %}" method="POST" style="display: inline">
+        <button type="submit" style="margin-right: 20px">I accept this mission</button>
+      </form>
+      {# <form action="" method="POST" style="display: inline"> #}
+      {#   <button type="submit">I am not interested in this mission</button> #}
+      {# </form> #}
+      {% endif %}
+    </div>
+  </div>
+</li>
