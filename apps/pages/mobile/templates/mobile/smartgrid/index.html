@@ -1,10 +1,5 @@
-{% extends "mobile/base.html" %}
-
-
-{% block body %}
-
-
-<div data-role="page">
+{% extends "mobile/base.html" %} 
+{% block body %} 
   <header data-role="header" data-theme="b">
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="back">Back</a>
     <h1>Smart Grid Game</h1>
@@ -18,7 +13,5 @@
         </li>
       {% endfor %}
     </ul>
-  </div>
-</div>
-
+  </div> 
 {% endblock %}

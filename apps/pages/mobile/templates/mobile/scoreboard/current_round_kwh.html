@@ -1,6 +1,5 @@
 {% extends "mobile/scoreboard/base.html" %} 
-{% block child %} 
-<div data-role="page" >
+{% block child %}  
   <div data-role="header" data-theme="b">
     <a href="{% url mobile_scoreboard  'form' %}"  data-rel="dialog" data-role="button" data-icon="grid">Filter</a>
     <h1>Scoreboard</h1>
@@ -14,7 +13,6 @@
     <table id="{{current_round|slugify}}-energy-scoreboard">
     </table>
 
-  </div>
-</div>
+  </div> 
  
 {% endblock %}

@@ -6,8 +6,7 @@
 $(document).bind("mobileinit",function(){ 
     $.mobile.ajaxFormEnabled=false; 
 });
-</script>
-<div data-role="page"  >
+</script> 
   <div data-role="header">
 
     <h1>My Profile</h1>
@@ -25,6 +24,5 @@ $(document).bind("mobileinit",function(){
     <div {% get_id_and_classes "profile-form-content" %}>
       {% include "mobile/profile/user.html" %}
     </div>
-  </div>
-</div> 
+  </div> 
 {% endblock %}

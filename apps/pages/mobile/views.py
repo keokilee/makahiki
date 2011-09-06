@@ -162,7 +162,7 @@ def task(request, category_slug, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
-      if approval.user_comment:
+      if approval.social_email:
         ref_user = User.objects.get(email=approval.user_comment)
         ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
         for m in ref_members:

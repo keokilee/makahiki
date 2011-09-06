@@ -1,6 +1,5 @@
 {% extends "mobile/scoreboard/base.html" %} 
-{% block child %}
-<div data-role="page" id="filter" data-url="filter">
+{% block child %} 
   <div data-role="header">
     <h1>Options</h1>
   </div>
@@ -17,7 +16,5 @@
     <br/>
     <br/>
     <a href="{% url mobile_scoreboard 'index'%}" rel="external" data-role="button" data-rel="back">Cancel</a>
-  </div>
-
-</div>
+  </div> 
 {% endblock %}
