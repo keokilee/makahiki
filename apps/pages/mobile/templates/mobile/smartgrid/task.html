@@ -97,28 +97,7 @@
             <button type="submit">Submit</button>
           </div> 
 	</form>
-<script type="text/javascript">
-$(document).ready((changeTB2TA("id_response"))); 
-function changeTB2TA( elementId ) {
-  var _el = document.getElementById( elementId );
-  var _parent = _el.parentNode;
-  var form = document.getElementById("myform");
-index=6; 
-  // we remove the element from the DOM (optional as seen below...)
-  _parent.removeChild( _el );
-
-  // property is read-only so we replace the element
-  if ( _el.type == 'text' ) {  
-    _parent.innerHTML = '<textarea id="' + _el.id + '">' + _el.value + '</textarea>';
-  } 
-  else {
-    _parent.innerHTML = '<input type="text" id="' + _el.id+'" name="id_response" />';
-  } 
-form.insertBefore(_parent.firstChild,form.childNodes[7]);
-  _el = null; // remove any reference to the old element
-form.removeChild(_parent);
-}
-</script>
+ 
      <!-- code goes here-->
         {% else %}
           You will earn 2 points for signing up for the {{task.type}}.
