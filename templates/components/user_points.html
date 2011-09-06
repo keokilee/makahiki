@@ -47,3 +47,19 @@
     <div {% get_id_and_classes "header-text" %}>out of {{OVERALL_MEMBER_COUNT}} overall</div>
   </div>
 </div>
+
+{% if profile.canopy_member %}
+<!-- Fifth slideshow element -->
+{% with canopy_info=profile.canopy_karma_info %}
+<div id="header-user-overall-rank5" style="display:none">
+  <div {% get_id_and_classes "header-user-points" %}>
+    <h3>{{profile.canopy_karma}}</h3>
+    <div {% get_id_and_classes "header-text" %}>Canopy Karma points</div>
+  </div>
+  <div {% get_id_and_classes "header-user-rank" %}>
+    <h3>#{{canopy_info.rank}}</h3>
+    <div {% get_id_and_classes "header-text" %}>out of {{canopy_info.total}} overall</div>
+  </div>
+</div>
+{% endwith %}
+{% endif %}

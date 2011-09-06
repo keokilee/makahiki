@@ -213,6 +213,16 @@ class Profile(models.Model):
         user__is_superuser=False,
     ).count() + 1
   
+  def canopy_karma_info(self):
+    """
+    Returns a dictionary containing the user's rank and the total number of canopy members.
+    """
+    query = Profile.objects.filter(canopy_member=True)
+    return {
+      "rank":query.filter(canopy_karma__gt=self.canopy_karma).count() + 1,
+      "total": query.count(),
+    }
+    
   def add_points(self, points, submission_date, message, related_object=None):
     """
     Adds points based on the point value of the submitted object.
