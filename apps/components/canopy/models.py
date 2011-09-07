@@ -21,6 +21,26 @@ class Mission(models.Model):
   
   def __unicode__(self):
     return self.name
+    
+  def is_completed(self, user):
+    """
+    Checks if the mission is completed.
+    """
+    # If this is a group mission, we need to check if the user is a member as well.
+    if self.is_group and user not in self.users.all():
+      return False
+      
+    for activity in self.activities.all():
+      try:
+        member = ActivityMember.objects.get(
+            user=user,
+            activity=activity,
+            approval_status="approved",
+        )
+      except ActivityMember.DoesNotExist:
+        return False
+        
+    return True
   
 class MissionMember(models.Model):
   user = models.ForeignKey(User)
@@ -31,19 +51,6 @@ class MissionMember(models.Model):
   
   class Meta:
     unique_together = ("user", "mission")
-    
-  def check_completed(self):
-    for activity in self.mission.activities.all():
-      try:
-        member = ActivityMember.objects.get(
-            user=self.user,
-            activity=activity,
-            approval_status="approved"
-        )
-      except ActivityMember.DoesNotExist:
-        return False
-        
-    return True
   
 @receiver(post_save, sender=ActivityMember)
 def mission_activity_handler(sender, instance=None, **kwargs):
@@ -56,18 +63,19 @@ def mission_activity_handler(sender, instance=None, **kwargs):
     return
   if not instance.approval_status == "approved":
     return
-    
-  members = MissionMember.objects.filter(
-      mission__activities__pk=instance.activity.id,
-      user=instance.user,
-      completed=False,
+  
+  # Check completion for all missions
+  missions = Mission.objects.filter(
+      activities__pk=instance.activity.id,
   )
-  if members.count() > 0:
-    for member in members:
-      if member.check_completed():
+  
+  for mission in missions:
+    if mission.is_completed(instance.user):
+      member, created = MissionMember.objects.get_or_create(user=instance.user, mission=mission)
+      if not member.completed:
         member.completed = True
         member.save()
-      
+    
 class Post(models.Model):
   user = models.ForeignKey(User, related_name="canopyposts")
   text = models.TextField()
