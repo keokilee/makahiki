@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from components.canopy.models import Quest
+from components.canopy.models import Mission
 
-class QuestAdmin(admin.ModelAdmin):
+class MissionAdmin(admin.ModelAdmin):
   # Automatically populates the slug field.
   prepopulated_fields = {"slug": ("name",)}
   
-admin.site.register(Quest, QuestAdmin)
+admin.site.register(Mission, MissionAdmin)
