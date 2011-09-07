@@ -6,12 +6,11 @@ from components.activities import *
 
 class ActivityTextForm(forms.Form):
   question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
-  code = forms.IntegerField(widget=forms.HiddenInput(), required=False)
-  
+
   response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=True)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
-  
+
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
     self.activity = kwargs.pop('activity', None)
@@ -27,28 +26,6 @@ class ActivityTextForm(forms.Form):
   def clean(self):
     """Custom validation to verify confirmation codes."""
     cleaned_data = self.cleaned_data
-    
-    # Check if we are validating a confirmation code.
-    if cleaned_data["code"]==1:
-      try:
-        code = ConfirmationCode.objects.get(code=cleaned_data["response"])
-        # Check if the code is inactive.
-        if not code.is_active:
-          self._errors["response"] = ErrorList(["This code has already been used."])
-          del cleaned_data["response"]
-        # Check if this activity is the same as the added activity (if provided)
-        elif self.activity and code.activity != self.activity:
-          self._errors["response"] = ErrorList(["This confirmation code is not valid for this activity."])
-          del cleaned_data["response"]
-        # Check if the user has already submitted a code for this activity.
-        elif code.activity in self.request.user.activity_set.filter(activitymember__award_date__isnull=False):
-          self._errors["response"] = ErrorList(["You have already redemmed a code for this activity."])
-          del cleaned_data["response"]
-      except ConfirmationCode.DoesNotExist:
-        self._errors["response"] = ErrorList(["This code is not valid."])
-        del cleaned_data["response"]
-      except KeyError:
-        self._errors["response"] = ErrorList(["Please input code."])
 
     # Check if we are validating quetion
     if cleaned_data["question"]>0:
@@ -62,7 +39,47 @@ class ActivityTextForm(forms.Form):
     _validate_social_email(self, cleaned_data)    
           
     return cleaned_data
-  
+
+class ActivityCodeForm(forms.Form):
+  response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}), required=True)
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+
+  def __init__(self, *args, **kwargs):
+    self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
+
+    super(ActivityCodeForm, self).__init__(*args, **kwargs)
+
+  def clean(self):
+    """Custom validation to verify confirmation codes."""
+    cleaned_data = self.cleaned_data
+
+    # Check if we are validating a confirmation code.
+    try:
+        code = ConfirmationCode.objects.get(code=cleaned_data["response"])
+        # Check if the code is inactive.
+        if not code.is_active:
+          self._errors["response"] = ErrorList(["This code has already been used."])
+          del cleaned_data["response"]
+        # Check if this activity is the same as the added activity (if provided)
+        elif self.activity and code.activity != self.activity:
+          self._errors["response"] = ErrorList(["This confirmation code is not valid for this activity."])
+          del cleaned_data["response"]
+        # Check if the user has already submitted a code for this activity.
+        elif code.activity in self.request.user.activity_set.filter(activitymember__award_date__isnull=False):
+          self._errors["response"] = ErrorList(["You have already redemmed a code for this activity."])
+          del cleaned_data["response"]
+    except ConfirmationCode.DoesNotExist:
+        self._errors["response"] = ErrorList(["This code is not valid."])
+        del cleaned_data["response"]
+    except KeyError:
+        self._errors["response"] = ErrorList(["Please input code."])
+
+    _validate_social_email(self, cleaned_data)
+
+    return cleaned_data
+
 class ActivityFreeResponseForm(forms.Form):
   response = forms.CharField(widget=forms.Textarea)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
@@ -134,7 +151,7 @@ def _validate_social_email(self, cleaned_data):
 class EventCodeForm(forms.Form):
   response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}))
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'20'}), initial="Email", required=False)
-            
+
 #------ Reminder form ---------
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 

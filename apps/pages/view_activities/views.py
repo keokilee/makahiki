@@ -342,6 +342,8 @@ def __request_activity_points(request, activity):
       form = ActivityImageForm(request.POST, request.FILES, request=request)
     elif activity.confirm_type == "free":
       form = ActivityFreeResponseForm(request.POST, request=request)
+    elif activity.confirm_type == "code":
+      form = ActivityCodeForm(request.POST, request=request, activity=activity)
     else:
       form = ActivityTextForm(request.POST, request=request, activity=activity)
     
@@ -452,7 +454,7 @@ def task(request, activity_type, slug):
       elif task.confirm_type == "free":
         form = ActivityFreeResponseForm(request=request)
       else:
-        form = ActivityTextForm(initial={"code" : 1},request=request)
+        form = ActivityCodeForm(request=request)
                 
       if task.type == "event" or task.type == "excursion":
         if not pau:

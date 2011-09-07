@@ -16,10 +16,10 @@
   <p/>
    {% if task.type == "event" or task.type == "excursion" %}          {# event #}
      {% if task.is_event_completed %}
-        Please enter the confirmation code you receieved from the event:
-        {{ form.code }}
+        Please enter the confirmation code you received from the event:
         {{ form.response.errors }}
         {{ form.response }}
+       
         {% if task.social_bonus > 0 %}
           <p/>
           (Optional) If you did this with a friend or friends, please enter 
