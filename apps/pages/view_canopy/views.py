@@ -54,6 +54,11 @@ def index(request):
 
   all_lounges = Floor.objects.order_by('floor_identifier').all()
 
+  if request.user.get_profile().floor:
+    dorm_lounges = request.user.get_profile().floor.dorm.floor_set.all()
+  else:
+    dorm_lounges = ['Lehua-A','Lehua-B','Lehua-C','Lehua-D','Lehua-E']
+
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
       "canopy_quests": canopy_quests,
@@ -65,6 +70,7 @@ def index(request):
       "viz":viz,
       "karma_scoreboard": karma_scoreboard,
       "all_lounges":all_lounges,
+      "dorm_lounges":dorm_lounges,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------

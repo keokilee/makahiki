@@ -8,7 +8,7 @@
 <p/>
 
 <table> <tr>
-{%  for floor in user.get_profile.floor.dorm.floor_set.all %}
+{%  for floor in dorm_lounges %}
     <td>
         <div id="loading_{{ forloop.counter }}"><img src="{{STATIC_URL}}/images/spinner.gif" /></div>
 
@@ -16,7 +16,7 @@
         <div>
            <select id='lounge_{{ forloop.counter }}' onchange="updateLounge('{{ forloop.counter }}');">
                {% for lounge in all_lounges %}
-                  <option {%if floor == lounge %} selected {% endif %}
+                  <option {%if floor == lounge or floor == lounge.floor_identifier %} selected {% endif %}
                           value='{{ lounge.floor_identifier}}'>{{ lounge.floor_identifier}}
                   </option>
                 {% endfor %}
