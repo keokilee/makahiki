@@ -18,12 +18,20 @@
   </li>
   <li>|</li>
    <li id="canopy-wattdepot-link"
-    {% if viz == '3' %} 
+    {% if viz == '3' %}
       class="selected"
     {% endif %}  
     >
     <h3><a href="/canopy?viz=3">Line Graph</a></h3>
   </li>
+   <li>|</li>
+   <li id="canopy-power-meters-link"
+      {% if viz == '4' %}
+        class="selected"
+      {% endif %}
+      >
+      <h3><a href="/canopy?viz=4">Power Meters</a></h3>
+   </li>
 </ul>
 
 <div {% get_id_and_classes "canopy-visualizations" %}>
@@ -47,7 +55,11 @@
   {% if viz == '3' %}
       {% include "canopy/visualizations/wattdepot_visualizer.html" %}
   {% endif %}
-  
+
+  {% if viz == '4' %}
+        {% include "canopy/visualizations/power_meters.html" %}
+  {% endif %}
+
 </div>
 
 <script type="text/javascript">
@@ -58,19 +70,6 @@
     jQuery("#canopy-viz-list li").click(function() {    
       
       if(!jQuery(this).hasClass("selected")) {
-        if(jQuery(this).attr('id') === "canopy-hot-spot-link") {
-          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-hot-spots").html());
-        }
-
-        else if(jQuery(this).attr('id') === "canopy-heat-map-link") {
-          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-heat-map").html());         
-        }
-        
-        else if(jQuery(this).attr('id') === "canopy-wattdepot-link") {
-        
-          //jQuery("#canopy-visualizations").html(jQuery("#canopy-viz-wattdepot").html());
-        }
-        
         jQuery("#canopy-viz-list li").removeClass("selected");
         jQuery(this).addClass("selected");
       }

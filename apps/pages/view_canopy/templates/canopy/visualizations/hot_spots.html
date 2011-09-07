@@ -5,19 +5,18 @@
   
     <div id="title" style="font-weight: bold; text-align: center;">
       Hot Spot Analysis : Lounge  
-        <select id='lounge' onchange='updateLounge();'> 
-                <option {%if user.get_profile.get_lounge_name == 'Lehua-A' %} selected {% endif %} value='Lehua-A'>Lehua-A</option>
-                <option {%if user.get_profile.get_lounge_name == 'Lehua-B' %} selected {% endif %} value='Lehua-B'>Lehua-B</option>
-                <option {%if user.get_profile.get_lounge_name == 'Lehua-C' %} selected {% endif %} value='Lehua-C'>Lehua-C</option>
-                <option {%if user.get_profile.get_lounge_name == 'Lehua-D' %} selected {% endif %} value='Lehua-D'>Lehua-D</option>
-                <option {%if user.get_profile.get_lounge_name == 'Lehua-E' %} selected {% endif %} value='Lehua-E'>Lehua-E</option>
+        <select id='lounge' onchange='updateLounge();'>
+                {% for lounge in all_lounges %}
+                  <option {%if user.get_profile.get_lounge_name == lounge.floor_identifier %} selected {% endif %}
+                          value='{{ lounge.floor_identifier}}'>{{ lounge.floor_identifier}}
+                  </option>
+                {% endfor %}
         </select>
-     
     </div>
     <p/>
     
     <!-- Loading div that displays an animated gif, display is set to none when displaying a BioHeatMap -->
-    <div id="loading"><img src="http://www.google.com/ig/images/spinner.gif" /></div>
+    <div id="loading"><img src="{{STATIC_URL}}/images/spinner.gif" /></div>
 
     <div id="img"></div>
     <div id="tooltip" style="margin-left: 210px;"></div>

@@ -68,7 +68,7 @@ Namespace("org.makahiki");
             var url = host_uri + 'sources/' + source +  '/calculated?startTime=' + 
                   startTime + '&endTime=' + endTime + '&samplingInterval=' + interval;
             query = new google.visualization.Query(url);
-            debug(url);
+           // debug(url);
             query.setQuery('select timePoint, ' + dataType);
           
           query.send(function(response) {responseHandler(response, query, source, 0);});
@@ -192,7 +192,7 @@ function getChartUrl(data) {
 
   // Get the URL without URL encoding of commas, pipes, and colons, since they take up too many characters and we have a 2K limit
   var gvizChartUrl = chart.getImageUrl().replace(/%2C/g, ',').replace(/%7C/g, '|').replace(/%3A/g, ':');
-  debug('Gviz URL is: ' + gvizChartUrl);
+  //debug('Gviz URL is: ' + gvizChartUrl);
 
   return gvizChartUrl;
 }

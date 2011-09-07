@@ -14,8 +14,10 @@ from components.canopy.models import Quest, Post
 from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
+from apps.components.floors.models import Floor
 
 # Number of posts to load at a time.
+
 DEFAULT_POST_COUNT = 10
 
 @login_required
@@ -49,7 +51,9 @@ def index(request):
     hide_about = True
   
   viz = request.REQUEST.get("viz", None)
-  
+
+  all_lounges = Floor.objects.order_by('floor_identifier').all()
+
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
       "canopy_quests": canopy_quests,
@@ -60,6 +64,7 @@ def index(request):
       "hide_about": hide_about,
       "viz":viz,
       "karma_scoreboard": karma_scoreboard,
+      "all_lounges":all_lounges,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------
