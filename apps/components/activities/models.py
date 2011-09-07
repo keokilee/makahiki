@@ -208,7 +208,11 @@ class Activity(ActivityBase):
                     verbose_name="Event Location",
                     help_text="Location of the event"
                 )
-                      
+  event_max_seat = models.IntegerField(
+                  default=1000,
+                  help_text="Specify the max number of seats available to the event."
+                ) 
+
   def __unicode__(self):
     return "%s: %s" % (self.type.capitalize(), self.title)
     

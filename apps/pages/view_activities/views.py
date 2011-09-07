@@ -535,6 +535,8 @@ def task(request, activity_type, slug):
   if value and value != "None":
     if notify == "add_point":
       notification = "You just earned " + value + " points."
+
+  task.available_seat = task.event_max_seat - member_all_count
   
   return render_to_response("view_activities/task.html", {
     "task":task,

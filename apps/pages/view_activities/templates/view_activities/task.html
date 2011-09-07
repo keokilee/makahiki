@@ -36,7 +36,8 @@
       {% if task.type == "event" or task.type == "excursion" %}
       <p/>
       <b>When</b>  : {{task.event_date}} <br/>
-      <b>Where</b> : {{task.event_location}}
+      <b>Where</b> : {{task.event_location}} <br/>
+      <b>Seats still available</b> : {{ task.available_seat }}
       {% endif %}
       <p/>
       {% if task.social_bonus > 0 %}
