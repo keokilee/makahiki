@@ -1,8 +1,12 @@
-{% extends "mobile/base.html" %} 
+{% extends "mobile/base.html" %}
+
+
 {% load avatar_tags %}
-{% load class_tags %} 
-{% block body %} 
-{% load markup %} 
+{% load class_tags %}
+
+{% block body %}
+
+{% load markup %}  
   <div data-role="header" data-theme="b">
     <a href="{{request.META.HTTP_REFERER}}" data-icon="back" rel="external">Back</a>
     <h1>{{task.name}}</h1>
@@ -79,40 +83,22 @@
     {% if admin_message %}
       Admin message: {{ admin_message }}  
      {% endif %}
-            Please enter the confirmation code you receieved from the event:<br/>
-	   {{form.response.errors}}
-          <label for="id_response">Code:</label><div id="find">{{form.response}}</div><br/> 
+            <br/>
+          <label for="id_response">Please enter the confirmation code you receieved from the event:</label><br/>{{form.response.errors}} {{form.response}}<br/> 
           
+
+	   {{form.code}}
 	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>
           {{ form.social_email.errors }}  <br/>
           {{form.social_email}}  
           <div>
- 
+<div style="visibility:hidden; display:none">
+	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
+	  </div>
             <button type="submit">Submit</button>
           </div> 
 	</form>
-<script type="text/javascript">
-$(document).ready((changeTB2TA("id_response"))); 
-function changeTB2TA( elementId ) {
-  var _el = document.getElementById( elementId );
-  var _parent = _el.parentNode;
-  var form = document.getElementById("myform");
-index=6; 
-  // we remove the element from the DOM (optional as seen below...)
-  _parent.removeChild( _el );
-
-  // property is read-only so we replace the element
-  if ( _el.type == 'text' ) {  
-    _parent.innerHTML = '<textarea id="' + _el.id + '">' + _el.value + '</textarea>';
-  } 
-  else {
-    _parent.innerHTML = '<input type="text" id="' + _el.id+'" name="id_response" />';
-  } 
-form.insertBefore(_parent.firstChild,form.childNodes[7]);
-  _el = null; // remove any reference to the old element
-form.removeChild(_parent);
-}
-</script>
+ 
      <!-- code goes here-->
         {% else %}
           You will earn 2 points for signing up for the {{task.type}}.
@@ -179,7 +165,7 @@ form.removeChild(_parent);
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>
 
-              <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I will try again</a> 
+              <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I will try again</a> 
 
             {% endif %}
           {% endif %}            
@@ -214,14 +200,14 @@ form.removeChild(_parent);
            {% if task.is_event_completed %}
             <b>This event was already completed at {{task.event_date}}. <br/>
                If you attended the event, Click on the "I Did it" button to get your points. <br/>
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did it</a>
+            <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I Did it</a>
             </b>
            {% else %}
-            <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to sign up</a>
+            <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I want to sign up</a>
            {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}
-          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I want to do it</a>
+          <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I want to do it</a>
         {% endif %} 
         {% if task.type == "activity" and not form.image_response %}
           {% if form.image_response %}
@@ -231,7 +217,7 @@ form.removeChild(_parent);
           Once you are done, click the button below to get your points!
           </b>
           <p/>
-          <a href="{% url mobile_task category task.name|slugify %}/#form" data-role="button" data-rel="dialog">I Did This!</a> 
+          <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I Did This!</a> 
           {% endif %}
         {% endif %}
 
@@ -244,5 +230,5 @@ form.removeChild(_parent);
 {#      I did this! - not part of desktop #}
 {#    </a> #}
 
-  </div> 
+  </div>  
 {% endblock %}
