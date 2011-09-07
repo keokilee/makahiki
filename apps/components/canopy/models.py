@@ -10,6 +10,10 @@ class Mission(models.Model):
   name = models.CharField(max_length=255, help_text="Title of the mission.")
   slug = models.SlugField(help_text="Automatically generated in the admin.")
   description = models.TextField(help_text="Description of the mission.")
+  is_group = models.BooleanField(default=False, 
+      verbose_name="Group Mission", 
+      help_text="Check this box if this is a group mission."
+  )
   users = models.ManyToManyField(User, through='MissionMember', editable=False)
   activities = models.ManyToManyField(ActivityBase, related_name="missionactivities")
   created_at = models.DateTimeField(auto_now_add=True, editable=False)

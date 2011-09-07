@@ -31,6 +31,7 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
             ('description', self.gf('django.db.models.fields.TextField')()),
+            ('is_group', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
@@ -136,13 +137,14 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_group': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'users': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'through': "orm['canopy.MissionMember']", 'symmetrical': 'False'})
         },
         'canopy.missionmember': {
-            'Meta': {'object_name': 'MissionMember'},
+            'Meta': {'unique_together': "(('user', 'mission'),)", 'object_name': 'MissionMember'},
             'completed': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
