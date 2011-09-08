@@ -22,11 +22,29 @@ class Mission(models.Model):
   def __unicode__(self):
     return self.name
     
+  def participating_users(self):
+    """
+    Return the users who are participating in this mission.
+    """
+    return self.users.filter(
+        missionmember__mission=self,
+        missionmember__completed=False,
+    )
+    
+  def completed_users(self):
+    """
+    Return the users who completed this mission.
+    """
+    return self.users.filter(
+        missionmember__mission=self,
+        missionmember__completed=True,
+    )
+    
   def is_completed(self, user):
     """
     Checks if the mission is completed.
     """
-    # If this is a group mission, we need to check if the user is a member as well.
+    # If this is a group mission, we need to check if the user is a member of the mission.
     if self.is_group and user not in self.users.all():
       return False
       
@@ -56,7 +74,7 @@ class MissionMember(models.Model):
 def mission_activity_handler(sender, instance=None, **kwargs):
   """
   Signal handler for ActivityMembers to see if we completed any missions.
-  This is to be triggered when the ActivityMember finishes it's save.
+  This is to be triggered when the ActivityMember finishes its save.
   """
   # Check if we need to handle the instance.
   if not instance:
@@ -64,7 +82,7 @@ def mission_activity_handler(sender, instance=None, **kwargs):
   if not instance.approval_status == "approved":
     return
   
-  # Check completion for all missions
+  # Check completion for all missions that contain this instance's activity
   missions = Mission.objects.filter(
       activities__pk=instance.activity.id,
   )

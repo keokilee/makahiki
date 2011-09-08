@@ -15,7 +15,7 @@
 	{% cycle '' '' '<br style="clear:both"/>' as break %}
   {% if canopy_missions or user.mission_set.count > 0 %}
     <ul {% get_id_and_classes "mission-list" %}>
-      {% for mission in user.canopymissions.all %}
+      {% for mission in user.missionmember_set.all %}
         {% include "canopy/mission_item.html" %}
         {{break}}
       {% endfor %}
@@ -29,9 +29,9 @@
   <p style="text-align: center; width: 100%">There are no missions available at this time.  Please check back later!</p>
   {% endif %}
   
-  <div {% get_id_and_classes "mission-details" %} style="margin: 0px 10px; display: none">
-    <div {% get_id_and_classes "mission-contents" %} style="clear:both"></div>
-    <a href="javascript:void(0)" {% get_id_and_classes "mission-hide" %}>Hide</a>
+  <div {% get_id_and_classes "quest-details" %} style="margin: 0px 10px; display: none">
+    <div {% get_id_and_classes "quest-contents" %} style="clear:both"></div>
+    <a href="javascript:void(0)" {% get_id_and_classes "quest-hide" %}>Hide</a>
   </div>
   <br style="clear: both"/>
 </div>

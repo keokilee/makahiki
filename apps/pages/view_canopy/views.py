@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 from django.db.models import Q
 
-from components.canopy.models import Mission, Post
+from components.canopy.models import Mission, Post, MissionMember
 from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
@@ -26,7 +26,7 @@ def index(request):
   Directs the user to the canopy page.
   """
   # Load quests
-  canopy_missions = Mission.objects.exclude(users__pk=request.user.pk)
+  canopy_missions = Mission.objects.all()
   
   # Load wall
   form = WallForm()
@@ -81,25 +81,31 @@ def members(request):
 ### Quest methods -------------------------
 @login_required
 @can_access_canopy
-def quest_accept(request, slug):
+def mission_accept(request, slug):
   if request.method == "POST":
     user = request.user
     mission = get_object_or_404(Mission, slug=slug)
-    if user not in quest.users.all():
-      mission.users.add(user)
-    
+    if user not in mission.users.all():
+      member = MissionMember.objects.create(
+          mission=mission,
+          user=user,
+      )
+      
     return HttpResponseRedirect(reverse("canopy_index"))
     
   raise Http404
   
 @login_required
 @can_access_canopy
-def quest_cancel(request, slug):
+def mission_cancel(request, slug):
   if request.method == "POST":
     user = request.user
-    mission = get_object_or_404(Mission, slug=slug)
-    if user in mission.users.all():
-      mission.users.remove(user)
+    member = get_object_or_404(MissionMember, 
+        mission__slug=slug, 
+        user=user, 
+        completed=False,
+    )
+    member.delete()
     
     return HttpResponseRedirect(reverse("canopy_index"))
     
