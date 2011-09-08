@@ -15,13 +15,9 @@
 	{% cycle '' '' '<br style="clear:both"/>' as break %}
   {% if canopy_missions or user.mission_set.count > 0 %}
     <ul {% get_id_and_classes "mission-list" %}>
-      {% for mission in user.missionmember_set.all %}
-        {% include "canopy/mission_item.html" %}
-        {{break}}
-      {% endfor %}
       {% for mission in canopy_missions %}
         {% include "canopy/mission_item.html" %}
-        {{break}}
+        {# {{break}} #}
       {% endfor %}
       <br style='clear:both'/>
     </ul>

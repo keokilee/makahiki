@@ -81,6 +81,23 @@ body {
   float: right;
 }
 
+#mission-box .mission-links h4 {
+  color: #FCE988;
+}
+.mission-links a {
+  color: white;
+}
+
+.mission-users {
+  float: left;
+  padding-left: 10px;
+  width: 48%;
+}
+
+.mission-users>h4 {
+  text-align: center;
+}
+
 .mission-options {
   float: right;
 }
