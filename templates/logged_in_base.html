@@ -5,6 +5,13 @@
 {% load markup %}
 
 {% block extra_head_base %}
+  <script src="{{STATIC_URL}}/js/quest.js" type="text/javascript"></script>
+  <script src="{{STATIC_URL}}/js/feedback.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/ajile/com.iskitz.ajile.js?mvcoff,mvcshareoff,refresh"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/gdataloader/org.wattdepot.gdata.GDataLoader.js"></script>
+  <script type="text/javascript" src="http://wattdepot-gdata.googlecode.com/svn/trunk/src/javascript/energyrank/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
   {% import_logged_in_css STATIC_URL %}
   {% block extra_head %}{% endblock %}
 {% endblock %}
