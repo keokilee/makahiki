@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.cache import never_cache
 from django.db.models import Q
 
-from components.canopy.models import Quest, Post
+from components.canopy.models import Mission, Post, MissionMember
 from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
@@ -28,7 +28,7 @@ def index(request):
   Directs the user to the canopy page.
   """
   # Load quests
-  canopy_quests = Quest.objects.exclude(users__pk=request.user.pk)
+  canopy_missions = Mission.objects.all()
   
   # Load wall
   form = WallForm()
@@ -61,7 +61,7 @@ def index(request):
 
   return render_to_response("canopy/index.html", {
       "in_canopy": True,
-      "canopy_quests": canopy_quests,
+      "canopy_missions": canopy_missions,
       "wall_form": form,
       "posts": posts,
       "more_posts": more_posts,
@@ -80,42 +80,50 @@ def members(request):
   """
   Lists all of the members of the canopy.
   """
-  canopy_quests = Quest.objects.exclude(users__pk=request.user.pk)
+  canopy_missions = Mission.objects.exclude(users__pk=request.user.pk)
   members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
   
   return render_to_response("canopy/directory/members.html", {
       "in_canopy": True,
-      "canopy_quests": canopy_quests,
+      "canopy_quests": canopy_mission,
       "members": members,
   }, context_instance=RequestContext(request))
   
 ### Quest methods -------------------------
 @login_required
 @can_access_canopy
-def quest_accept(request, slug):
+def mission_accept(request, slug):
   if request.method == "POST":
     user = request.user
-    quest = get_object_or_404(Quest, slug=slug)
-    if user not in quest.users.all():
-      quest.users.add(user)
-    
+    mission = get_object_or_404(Mission, slug=slug)
+    if user not in mission.users.all():
+      member = MissionMember.objects.create(
+          mission=mission,
+          user=user,
+      )
+      
     return HttpResponseRedirect(reverse("canopy_index"))
     
   raise Http404
   
 @login_required
 @can_access_canopy
-def quest_cancel(request, slug):
+def mission_cancel(request, slug):
   if request.method == "POST":
     user = request.user
-    quest = get_object_or_404(Quest, slug=slug)
-    if user in quest.users.all():
-      quest.users.remove(user)
+    member = get_object_or_404(MissionMember, 
+        mission__slug=slug, 
+        user=user, 
+        completed=False,
+    )
+    member.delete()
     
     return HttpResponseRedirect(reverse("canopy_index"))
     
   raise Http404
   
+### Wall methods -------------------------
+
 @login_required
 @can_access_canopy
 def post(request):
@@ -139,8 +147,7 @@ def post(request):
         return HttpResponseRedirect(reverse("canopy_index"))
   
   raise Http404
-  
-### Wall methods -------------------------
+
 @login_required
 @can_access_canopy
 def more_posts(request):
