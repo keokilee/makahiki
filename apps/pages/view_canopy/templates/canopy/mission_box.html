@@ -1,32 +1,28 @@
 {% load class_tags %}
 
-<div {% get_id_and_classes "quest-box" %} style="clear: both">
-  <div {% get_id_and_classes "quest-header" %}>
-    <h3 {% get_id_and_classes "quest-title" %}>Canopy Quests</h3>
+<div {% get_id_and_classes "mission-box" %} style="clear: both">
+  <div {% get_id_and_classes "mission-header" %}>
+    <h3 {% get_id_and_classes "mission-title" %}>Canopy missions</h3>
     <a href="#" style="float: right">
     <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
 	title="Click to get help about this window" 
-	onclick="toggleHelp('widget', 'canopy-quests'); return false;"
+	onclick="toggleHelp('widget', 'canopy-missions'); return false;"
    /></a>
 	</div>
 	<div style="clear: both"></div>
 	
 	{# Cycle for breaking columns #}
 	{% cycle '' '' '<br style="clear:both"/>' as break %}
-  {% if canopy_quests or user.canopyquest_set.count > 0 %}
-    <ul {% get_id_and_classes "quest-list" %}>
-      {% for quest in user.canopyquests.all %}
-        {% include "canopy/quest_item.html" %}
-        {{break}}
-      {% endfor %}
-      {% for quest in canopy_quests %}
-        {% include "canopy/quest_item.html" %}
-        {{break}}
+  {% if canopy_missions or user.mission_set.count > 0 %}
+    <ul {% get_id_and_classes "mission-list" %}>
+      {% for mission in canopy_missions %}
+        {% include "canopy/mission_item.html" %}
+        {# {{break}} #}
       {% endfor %}
       <br style='clear:both'/>
     </ul>
   {% else %}
-  <p style="text-align: center; width: 100%">There are no quests available at this time.  Please check back later!</p>
+  <p style="text-align: center; width: 100%">There are no missions available at this time.  Please check back later!</p>
   {% endif %}
   
   <div {% get_id_and_classes "quest-details" %} style="margin: 0px 10px; display: none">

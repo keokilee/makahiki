@@ -17,8 +17,8 @@ jQuery(document).ready(function() {
 
       //Toggle quest-details if it is hidden.
       if (!jQuery("#quest-details").is(":visible")) {
-        if(jQuery(this).parent().hasClass('canopy-quest')) {
-          log_js_action("canopy-quest", jQuery(this).attr('id'), 'show');
+        if(jQuery(this).parent().hasClass('canopy-mission')) {
+          log_js_action("canopy-mission", jQuery(this).attr('id'), 'show');
         }
         else {
           log_js_action("quest", jQuery(this).attr('id'), 'show'); 

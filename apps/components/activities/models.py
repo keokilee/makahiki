@@ -121,6 +121,9 @@ class ActivityBase(models.Model):
   
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
+  
+  def __unicode__(self):
+    return "%s: %s" % (self.type.capitalize(), self.title)
     
 class Commitment(ActivityBase):
   """Commitments involve non-verifiable actions that a user can commit to.
