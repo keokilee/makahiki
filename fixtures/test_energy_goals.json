@@ -592,16 +592,6 @@
     }
   }, 
   {
-    "pk": 58, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:22", 
-      "percent_reduction": 20, 
-      "user": 74, 
-      "goal": 1
-    }
-  }, 
-  {
     "pk": 59, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -1218,16 +1208,6 @@
       "created_at": "2011-01-25 10:47:22", 
       "percent_reduction": 25, 
       "user": 151, 
-      "goal": 1
-    }
-  }, 
-  {
-    "pk": 121, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:22", 
-      "percent_reduction": 5, 
-      "user": 152, 
       "goal": 1
     }
   }, 
@@ -5622,16 +5602,6 @@
     }
   }, 
   {
-    "pk": 563, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:35", 
-      "percent_reduction": 25, 
-      "user": 74, 
-      "goal": 2
-    }
-  }, 
-  {
     "pk": 564, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -6258,16 +6228,6 @@
       "created_at": "2011-01-25 10:47:36", 
       "percent_reduction": 5, 
       "user": 151, 
-      "goal": 2
-    }
-  }, 
-  {
-    "pk": 627, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:36", 
-      "percent_reduction": 15, 
-      "user": 152, 
       "goal": 2
     }
   }, 
@@ -7792,16 +7752,6 @@
     }
   }, 
   {
-    "pk": 780, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:37", 
-      "percent_reduction": 20, 
-      "user": 345, 
-      "goal": 2
-    }
-  }, 
-  {
     "pk": 781, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -9092,16 +9042,6 @@
     }
   }, 
   {
-    "pk": 910, 
-    "model": "energy_goals.energygoalvote", 
-    "fields": {
-      "created_at": "2011-01-25 10:47:37", 
-      "percent_reduction": 25, 
-      "user": 504, 
-      "goal": 2
-    }
-  }, 
-  {
     "pk": 911, 
     "model": "energy_goals.energygoalvote", 
     "fields": {
@@ -10150,8 +10090,8 @@
       "created_at": "2010-06-25 10:10:38", 
       "percent_reduction": 15, 
       "updated_at": "2010-06-25 10:10:38", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10163,8 +10103,8 @@
       "created_at": "2011-01-25 10:47:24", 
       "percent_reduction": 10, 
       "updated_at": "2011-01-25 10:47:24", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10176,8 +10116,8 @@
       "created_at": "2011-01-25 10:47:24", 
       "percent_reduction": 20, 
       "updated_at": "2011-01-25 10:47:24", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10189,8 +10129,8 @@
       "created_at": "2011-01-25 10:47:24", 
       "percent_reduction": 15, 
       "updated_at": "2011-01-25 10:47:24", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10202,8 +10142,8 @@
       "created_at": "2011-01-25 10:47:25", 
       "percent_reduction": 0, 
       "updated_at": "2011-01-25 10:47:25", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10215,8 +10155,8 @@
       "created_at": "2011-01-25 10:47:25", 
       "percent_reduction": 25, 
       "updated_at": "2011-01-25 10:47:25", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10228,8 +10168,8 @@
       "created_at": "2011-01-25 10:47:25", 
       "percent_reduction": 10, 
       "updated_at": "2011-01-25 10:47:25", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10241,8 +10181,8 @@
       "created_at": "2011-01-25 10:47:26", 
       "percent_reduction": 15, 
       "updated_at": "2011-01-25 10:47:26", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10254,8 +10194,8 @@
       "created_at": "2011-01-25 10:47:26", 
       "percent_reduction": 0, 
       "updated_at": "2011-01-25 10:47:26", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10267,8 +10207,8 @@
       "created_at": "2011-01-25 10:47:26", 
       "percent_reduction": 25, 
       "updated_at": "2011-01-25 10:47:26", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10280,8 +10220,8 @@
       "created_at": "2011-01-25 10:47:26", 
       "percent_reduction": 5, 
       "updated_at": "2011-01-25 10:47:26", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10293,8 +10233,8 @@
       "created_at": "2011-01-25 10:47:26", 
       "percent_reduction": 10, 
       "updated_at": "2011-01-25 10:47:26", 
-      "awarded": false, 
-      "completed": false
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10306,8 +10246,8 @@
       "created_at": "2011-01-25 10:47:27", 
       "percent_reduction": 15, 
       "updated_at": "2011-01-25 10:47:27", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10319,8 +10259,8 @@
       "created_at": "2011-01-25 10:47:27", 
       "percent_reduction": 15, 
       "updated_at": "2011-01-25 10:47:27", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }, 
   {
@@ -10332,8 +10272,8 @@
       "created_at": "2011-01-25 10:47:27", 
       "percent_reduction": 20, 
       "updated_at": "2011-01-25 10:47:27", 
-      "awarded": true, 
-      "completed": true
+      "actual_usage": "0", 
+      "goal_usage": "0"
     }
   }
 ]
