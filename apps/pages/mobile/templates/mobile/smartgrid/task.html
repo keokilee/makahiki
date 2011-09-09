@@ -73,44 +73,6 @@
 
     </div>
     <div>
-<!-- insert-->
-      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
-       
-        {% if task.is_event_completed %}
-<!-- code goes here-->
-<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
-    {% csrf_token %}  
-    {% if admin_message %}
-      Admin message: {{ admin_message }}  
-     {% endif %}
-            <br/>
-          <label for="id_response">Please enter the confirmation code you receieved from the event:</label><br/>{{form.response.errors}} {{form.response}}<br/> 
-          
-
-	   {{form.code}}
-	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>
-          {{ form.social_email.errors }}  <br/>
-          {{form.social_email}}  
-          <div>
-<div style="visibility:hidden; display:none">
-	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
-	  </div>
-            <button type="submit">Submit</button>
-          </div> 
-	</form>
- 
-     <!-- code goes here-->
-        {% else %}
-          You will earn 2 points for signing up for the {{task.type}}.
-          <div>
-            <button>OK, Let's do it</button>
-            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
-              I don't want to do it</a>
-          </div>
-        {% endif %} 
-    {% endif %}
-
-<!-- end insert-->
       {% if pau %}
       <div data-role="content" class="ui body ui-body-a ui-corner-all">
         {% if approval.approval_status == "approved" or approval.award_date %}
@@ -199,9 +161,36 @@
         {% if task.type == "event" or task.type == "excursion" %}
            {% if task.is_event_completed %}
             <b>This event was already completed at {{task.event_date}}. <br/>
-               If you attended the event, Click on the "I Did it" button to get your points. <br/>
-            <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I Did it</a>
-            </b>
+              
+<!-- insert-->
+      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
+       
+        {% if task.is_event_completed %}
+<!-- code goes here-->
+<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
+    {% csrf_token %}  
+    {% if admin_message %}
+      Admin message: {{ admin_message }}  
+     {% endif %}
+            <br/>
+          <label for="id_response">Please enter the confirmation code you receieved from the event:</label><br/>{{form.response.errors}} {{form.response}}<br/> 
+          
+
+	   {{form.code}}
+	  <label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>
+          {{ form.social_email.errors }}  <br/>
+          {{form.social_email}}  
+          <div>
+<div style="visibility:hidden; display:none">
+	    <label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="40" name="comment"></textarea> 
+	  </div>
+            <button type="submit">Submit</button>
+          </div> 
+	</form>
+        {% endif %} 
+    {% endif %}
+
+<!-- end insert-->
            {% else %}
             <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I want to sign up</a>
            {% endif %}
