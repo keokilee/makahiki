@@ -14,7 +14,7 @@
           </td>
           {% else %}
           <td>
-            <a href="{% url mobile_task member.activity.category member.activity.slug %}">
+            <a href="{% url mobile_task member.activity.category.slug member.activity.slug %}">
               {{log.message}}
             </a>
           </td>
