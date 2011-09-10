@@ -45,8 +45,8 @@ class ActivitiesUnitTestCase(TestCase):
     activity_member.save()
     
     activities = get_popular_activities()
-    self.assertEqual(activities[0], self.activity)
-    self.assertEqual(activities[0].completions, 1, "Most popular activity should have one completion.")
+    self.assertEqual(activities[0]["title"], self.activity.title)
+    self.assertEqual(activities[0]["completions"], 1, "Most popular activity should have one completion.")
     
   def testActivityOrdering(self):
     """Check the ordering of two activities.  If they do not have priorities, they should be alphabetical."""
@@ -252,8 +252,8 @@ class CommitmentsUnitTestCase(TestCase):
     commitment_member.save()
     
     commitments = get_popular_commitments()
-    self.assertEqual(commitments[0], self.commitment)
-    self.assertEqual(commitments[0].completions, 1, "Most popular commitment should have one completion.")
+    self.assertEqual(commitments[0]["title"], self.commitment.title)
+    self.assertEqual(commitments[0]["completions"], 1, "Most popular commitment should have one completion.")
     
   def testCompletionAddsPoints(self):
     """Tests that completing a task adds points."""

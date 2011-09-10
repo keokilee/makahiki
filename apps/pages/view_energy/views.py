@@ -24,7 +24,7 @@ def index(request):
   user = request.user
   floor = user.get_profile().floor
   golow_activities = get_available_golow_activities(user)
-  golow_posts = Post.objects.filter(floor=floor, style_class="user_post").order_by("-id")[:5]
+  golow_posts = Post.objects.filter(floor=floor, style_class="user_post").select_related('user__profile').order_by("-id")[:5]
   
   standings = []
 

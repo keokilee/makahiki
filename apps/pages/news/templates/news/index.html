@@ -86,10 +86,10 @@
     <ul {% get_id_and_classes "news-members-list" %}>
       {% for member in floor_members %}
       <li>
-        <a href="{% url news_floor_members %}#{{member.get_profile.name|slugify}}">
-          <img src="{% avatar_url member 40 %}" alt="Photo of {{ member.get_profile.name }}" title="Photo of {{ member.get_profile.name }}" align="top" />
+        <a href="{% url news_floor_members %}#{{member.name|slugify}}">
+          <img src="{% avatar_url member.user 40 %}" alt="Photo of {{ member.name }}" title="Photo of {{ member.name }}" align="top" />
           <div>
-            {{member.get_profile.name}}
+            {{member.name}}
           </div>
         </a>
       </li>

@@ -91,7 +91,7 @@ def _get_available_themes():
   return ((item, item) for item in os.listdir(theme_dir))
   
 class Profile(models.Model):
-  user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+  user = models.ForeignKey(User, unique=True, verbose_name=_('user'), related_name='profile')
   name = models.CharField(_('name'), unique=True, max_length=50)
   first_name = models.CharField(_('first_name'), max_length=50, null=True, blank=True)
   last_name = models.CharField(_('last_name'), max_length=50, null=True, blank=True)

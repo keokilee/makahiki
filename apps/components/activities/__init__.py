@@ -31,13 +31,13 @@ def get_popular_activities(activity_type="activity"):
   return Activity.objects.filter(
       activitymember__approval_status="approved",
       type=activity_type,
-  ).annotate(completions=Count("activitymember")).order_by("-completions")
+  ).values("title", "type", "slug").annotate(completions=Count("activitymember")).order_by("-completions")
   
 def get_popular_commitments():
   """Gets the most popular commitments in terms of completions."""
   return Commitment.objects.filter(
       commitmentmember__award_date__isnull=False,
-  ).annotate(completions=Count("commitmentmember")).order_by("-completions")
+  ).values("title", "type", "slug").annotate(completions=Count("commitmentmember")).order_by("-completions")
 
 def get_incomplete_tasks(user):
   """Gets user's incomplete activities and commitments. Returns a dictionary."""

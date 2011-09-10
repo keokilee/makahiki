@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 
 from components.floors.models import Post
 from components.activities import get_available_events, get_current_commitment_members, get_popular_tasks
+from components.makahiki_profiles.models import Profile
 from pages.news.forms import WallForm
 from pages.view_activities.forms import EventCodeForm
 
@@ -18,10 +19,10 @@ from pages.news import DEFAULT_POST_COUNT
 @never_cache
 @login_required
 def index(request):
-  floor = request.user.get_profile().floor
+  floor_id = request.user.get_profile().floor_id
   
   # Get floor posts.
-  posts = Post.objects.filter(floor=floor).order_by("-id")
+  posts = Post.objects.filter(floor=floor_id).order_by("-id").select_related('user__profile')
   post_count = posts.count
   posts = posts[:DEFAULT_POST_COUNT]
   more_posts = True if post_count > DEFAULT_POST_COUNT else False
@@ -30,13 +31,13 @@ def index(request):
   events = get_available_events(request.user)
   
   # Get the user's current commitments.
-  commitment_members = get_current_commitment_members(request.user)
+  commitment_members = get_current_commitment_members(request.user).select_related("commitment")
   
   # Get the floor members.
-  floor_members = User.objects.filter(profile__floor=request.user.get_profile().floor).order_by(
-      "-profile__points", 
-      "-profile__last_awarded_submission"
-  )[:12]
+  floor_members = Profile.objects.filter(floor=floor_id).order_by(
+      "-points", 
+      "-last_awarded_submission"
+  ).select_related('user')[:12]
   
   form = EventCodeForm()
     

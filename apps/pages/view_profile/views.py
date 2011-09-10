@@ -67,7 +67,7 @@ def index(request):
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
     "points_logs": points_logs,
-    "notifications": user.usernotification_set.order_by("-created_at"),
+    # "notifications": user.usernotification_set.order_by("-created_at"),
   }, context_instance=RequestContext(request))
 
 @login_required
