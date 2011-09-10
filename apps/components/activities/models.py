@@ -106,7 +106,7 @@ class ActivityBase(models.Model):
                   choices=TYPE_CHOICES, 
                   verbose_name="Activity Type"
                  )
-  category = models.ForeignKey(Category, null=True)
+  category = models.ForeignKey(Category, null=True, blank=True)
   priority = models.IntegerField(
                 default=1000,
                 help_text="Orders the activities in the available activities list. " + 
@@ -118,7 +118,17 @@ class ActivityBase(models.Model):
   energy_related = models.BooleanField(default=False)
   social_bonus = models.IntegerField(default=0, help_text="Social bonus points.")
   mobile_restricted = models.BooleanField(default=False, help_text="Set to true if this task should not be displayed on mobile devices.")
+
+  is_canopy = models.BooleanField(default=False,
+      verbose_name="Canopy Activity",
+      help_text="Check this box if this is a canopy activity."
+  )
   
+  is_group = models.BooleanField(default=False, 
+      verbose_name="Group Activity",
+      help_text="Check this box if this is a group activity."
+  )
+
   created_at = models.DateTimeField(editable=False, auto_now_add=True)
   updated_at = models.DateTimeField(editable=False, auto_now=True, null=True)
   
@@ -479,6 +489,7 @@ class ActivityMember(CommonActivityUser):
         self.submission_date = self.award_date
         
       self._handle_approved()
+
       super(ActivityMember, self).save()
       
     if self.approval_status == u"rejected":
@@ -494,7 +505,7 @@ class ActivityMember(CommonActivityUser):
     
     title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
     profile.add_points(points, self.submission_date, title, self)
-    
+
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
     if self.social_email:
@@ -567,7 +578,7 @@ class ActivityMember(CommonActivityUser):
         
       profile = self.user.get_profile()
       message = "%s: %s (Removed)" % (self.activity.type.capitalize(), self.activity.title)
-      profile.remove_points(points, self.submission_date, message)
+      profile.remove_points(points, self.submission_date, message, self)
       profile.save()
       
     super(ActivityMember, self).delete()

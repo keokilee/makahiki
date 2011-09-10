@@ -26,7 +26,17 @@
           one of their UH email addresses here for a social bonus:<br/>
           {{ form.social_email.errors }}
           {{ form.social_email }}
-        {% endif %}  
+        {% endif %}
+
+        {% if task.is_group %}
+          <p/>
+            Please enter the UH email address of other team members that complete this task with you:<br/>
+            {{ form.social_email.errors }}
+            email #1 : {{ form.social_email }}
+            <br/>
+            {{ form.social_email2.errors }}
+            email #2 : {{ form.social_email2 }}
+        {% endif %}
         <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
@@ -57,7 +67,16 @@
           one of their UH email addresses here for a social bonus:<br/>
           {{ form.social_email.errors }}
           {{ form.social_email }}
-     {% endif %}  
+     {% endif %}
+         {% if task.is_group %}
+           <p/>
+             Please enter the UH email address of other team members that complete this task with you:<br/>
+             {{ form.social_email.errors }}
+             email #1 : {{ form.social_email }}
+             <br/>
+             {{ form.social_email2.errors }}
+             email #2 : {{ form.social_email2 }}
+         {% endif %}
      {% endif %}
      <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">OK</button>
@@ -97,8 +116,16 @@
           one of their UH email addresses here for a social bonus: <br/>
           {{ form.social_email.errors }}
           {{ form.social_email }}
-    {% endif %} 
-
+    {% endif %}
+      {% if task.is_group %}
+        <p/>
+          Please enter the UH email address of other team members that complete this task with you:<br/>
+          {{ form.social_email.errors }}
+          email #1 : {{ form.social_email }}
+          <br/>
+          {{ form.social_email2.errors }}
+          email #2 : {{ form.social_email2 }}
+      {% endif %}
       <div {% get_id_and_classes "activity-task-form-content-button" %}>
           <button style="cursor:pointer;">Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>

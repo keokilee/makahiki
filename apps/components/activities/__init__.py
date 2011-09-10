@@ -7,6 +7,7 @@ from django.db.models import Sum, Count
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 
+
 # Directory in which to save image files for ActivityMember verification.
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
 
@@ -273,6 +274,16 @@ def afterPublished(task_name):
   
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""
+
+  # only canopy member able to see canopy activity
+  try:
+    profile = self.user.get_profile()
+  except:
+    profile = None
+
+  if task.is_canopy and profile != None and not profile.canopy_member:
+     return False;
+
   expr = task.depends_on
   if expr == None or expr == "":
     return False
@@ -317,3 +328,4 @@ def get_user_by_email(email):
     return User.objects.get(email=email);
   except ObjectDoesNotExist:
     return None
+
