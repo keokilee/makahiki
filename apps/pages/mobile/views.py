@@ -714,6 +714,7 @@ def profile(request,page):
   page = string.lower(page)
   user = request.user
   form = None
+  points_logs = user.pointstransaction_set.order_by("-submission_date").all()
   if request.method == "POST":
     user = request.user
     form = ProfileForm(request.POST)
@@ -750,7 +751,8 @@ def profile(request,page):
   return render_to_response("mobile/profile/"+page+".html", {
     "profile": user.get_profile(),
     "user": user,
-    "form": form,
+    "form": form, 
+    "points_logs": points_logs,
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
     "completed_members": get_completed_members(user),

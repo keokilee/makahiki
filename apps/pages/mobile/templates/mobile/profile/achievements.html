@@ -21,7 +21,7 @@
     <div {% get_id_and_classes "profile-history-content" %}>
       <h5 {% get_id_and_classes "profile-history-current" %}>Current and Pending</h5>
       {% if in_progress_members %}
-        {% include "view_profile/components/in_progress_members.html" %}
+        {% include "mobile/profile/in_progress_members.html" %}
       {% else %}
         <p style="width: 100%; text-align: left; padding: 16px;">You have nothing in progress or pending.</p>
       {% endif %}
@@ -34,7 +34,7 @@
             <th {% get_id_and_classes "profile-history-previous-task-header" %}>Task</th>
             <th {% get_id_and_classes "profile-history-previous-points-header" %}>Points</th>
           </tr>
-          {% include "view_profile/components/completed_members.html" %}
+          {% include "mobile/profile/completed_members.html" %}
           </table>
         {% else %}
           <p style="width: 100%; text-align: left; padding: 16px;">You have not been awarded anything yet!</p>

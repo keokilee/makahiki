@@ -21,7 +21,13 @@
     <div {% get_id_and_classes "activity-task-stats-title" %}>
       {{ task.type|capfirst }} : {{task.name}}
     </div>   
-    <div {% get_id_and_classes "activity-task-stats-content" %}>   
+    <div {% get_id_and_classes "activity-task-stats-content" %}>
+      {%  if task.is_canopy %}
+          <p/> This is a Canopy {{ task.type|capfirst }}.
+      {%  endif %}
+     {% if task.is_group %}
+          <p/>This is a Group {{ task.type|capfirst }}.
+      {% endif %}
       <p/>
       This {{task.type}} is worth
       {% if task.point_value %}        
@@ -36,7 +42,8 @@
       {% if task.type == "event" or task.type == "excursion" %}
       <p/>
       <b>When</b>  : {{task.event_date}} <br/>
-      <b>Where</b> : {{task.event_location}}
+      <b>Where</b> : {{task.event_location}} <br/>
+      <b>Space(s) still available</b> : {{ task.available_seat }}
       {% endif %}
       <p/>
       {% if task.social_bonus > 0 %}
@@ -73,13 +80,22 @@
      {% endif %}
      
      <p/><p/>
-     <center> 
-     <a href="/activities">
-     <button style="cursor:pointer;">
-     <img src="{{ STATIC_URL}}/css/default/images/left.png" width="50" align="top">
-     <br/>Back to Smart Grid Game
-     </button>
-     </a> 
+     <center>
+     {%  if task.is_canopy %}
+         <a href="/canopy">
+         <button style="cursor:pointer;">
+         <img src="{{ STATIC_URL}}/css/default/images/left.png" width="50" align="top">
+         <br/>Back to the Canopy
+         </button>
+         </a>
+     {%  else %}
+         <a href="/activities">
+         <button style="cursor:pointer;">
+         <img src="{{ STATIC_URL}}/css/default/images/left.png" width="50" align="top">
+         <br/>Back to Smart Grid Game
+         </button>
+         </a>
+    {% endif %}
     </center>
     </div>
   </div>  
@@ -196,9 +212,13 @@
             </a>
             </b>
            {% else %}
-            <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I want to sign up
-            <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
-            </button></a>
+              {%  if task.available_seat > 0 %}
+              <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I want to sign up
+              <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
+              </button></a>
+              {% else %}
+              <b>This {{ task.type}} is full. You can still try to attend on a space available basis.</b>
+              {% endif %}
            {% endif %}
         {% endif %} 
         {% if task.type == "survey" %}

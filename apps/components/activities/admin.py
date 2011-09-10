@@ -225,7 +225,8 @@ class ActivityAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
       'fields' : ('name', 'slug', 'type', 'title', 'description', 'duration', ('pub_date', 'expire_date'), 
-      'event_date', 'event_location', 'depends_on','depends_on_text','energy_related', 'mobile_restricted'),
+      ('event_date', 'event_max_seat', 'event_location'), ('depends_on','depends_on_text'),
+      'energy_related', 'mobile_restricted', ('is_canopy','is_group')),
     }),
     ("Points", {"fields": ("point_value", 'social_bonus', ("point_range_start", "point_range_end",))}),
     ("Ordering", {"fields": ("priority", "category")}),

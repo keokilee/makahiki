@@ -9,7 +9,8 @@ class ActivityTextForm(forms.Form):
 
   response = forms.CharField(widget=forms.Textarea(attrs={'rows':'2'}), required=True)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
 
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
@@ -43,7 +44,8 @@ class ActivityTextForm(forms.Form):
 class ActivityCodeForm(forms.Form):
   response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}), required=True)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
 
   def __init__(self, *args, **kwargs):
     self.request = kwargs.pop('request', None)
@@ -83,10 +85,12 @@ class ActivityCodeForm(forms.Form):
 class ActivityFreeResponseForm(forms.Form):
   response = forms.CharField(widget=forms.Textarea)
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
 
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
     super(ActivityFreeResponseForm, self).__init__(*args, **kwargs)  
   
   def clean(self):
@@ -97,10 +101,12 @@ class ActivityFreeResponseForm(forms.Form):
 class ActivityImageForm(forms.Form):
   image_response = forms.ImageField()
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
 
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
     super(ActivityImageForm, self).__init__(*args, **kwargs)  
 
   def clean(self):
@@ -110,10 +116,12 @@ class ActivityImageForm(forms.Form):
     
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
 
   def __init__(self, *args, **kwargs):  
     self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
     super(CommitmentCommentForm, self).__init__(*args, **kwargs)  
 
   def clean(self):
@@ -142,11 +150,21 @@ class SurveyForm(forms.Form):
     return cleaned_data
   
 def _validate_social_email(self, cleaned_data):
-  if cleaned_data["social_email"]:
-    user = get_user_by_email(cleaned_data["social_email"]) 
+  print self.activity
+  print self.activity.is_group
+  print cleaned_data["social_email"]
+  if self.activity.is_group and (not cleaned_data.has_key("social_email") or cleaned_data["social_email"]==None or cleaned_data["social_email"]==""):
+    self._errors["social_email"] = ErrorList(["At least one email is required."])
+
+  _validate_one_email(self, cleaned_data, "social_email")
+  _validate_one_email(self, cleaned_data, "social_email2")
+
+def _validate_one_email(self, cleaned_data, email):
+  if cleaned_data[email]:
+    user = get_user_by_email(cleaned_data[email])
     if user == None or user == self.request.user:
-      self._errors["social_email"] = ErrorList(["Invalid email. Please input only one valid email."])
-      del cleaned_data["social_email"]
+      self._errors[email] = ErrorList(["Invalid email. Please input only one valid email."])
+      del cleaned_data[email]
 
 class EventCodeForm(forms.Form):
   response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}))

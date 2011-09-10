@@ -222,7 +222,13 @@ class Profile(models.Model):
       "rank":query.filter(canopy_karma__gt=self.canopy_karma).count() + 1,
       "total": query.count(),
     }
-    
+
+  def _is_canopy_activity(self, related_object):
+    return related_object != None and \
+       ((hasattr(related_object, "activity") and related_object.activity.is_canopy)
+        or
+        (hasattr(related_object, "commitment") and related_object.commitment.is_canopy))
+
   def add_points(self, points, submission_date, message, related_object=None):
     """
     Adds points based on the point value of the submitted object.
@@ -239,21 +245,26 @@ class Profile(models.Model):
       transaction.related_object = related_object
       
     transaction.save()
-    
-    self.points += points
-    if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
-      self.last_awarded_submission = submission_date
-      
-    current_round = self._get_round(submission_date)
-        
-    # If we have a round, then update the scoreboard entry.  Otherwise, this just counts towards overall.
-    if current_round:
-      entry, created = ScoreboardEntry.objects.get_or_create(profile=self, round_name=current_round)
-      entry.points += points
-      if not entry.last_awarded_submission or submission_date > entry.last_awarded_submission:
-        entry.last_awarded_submission = submission_date
-      entry.save()
-    
+
+    # canopy activity deal with karma
+    if self._is_canopy_activity(related_object):
+        self.canopy_karma += points
+    else:
+        self.points += points
+
+        if not self.last_awarded_submission or submission_date > self.last_awarded_submission:
+          self.last_awarded_submission = submission_date
+
+        current_round = self._get_round(submission_date)
+
+        # If we have a round, then update the scoreboard entry.  Otherwise, this just counts towards overall.
+        if current_round:
+          entry, created = ScoreboardEntry.objects.get_or_create(profile=self, round_name=current_round)
+          entry.points += points
+          if not entry.last_awarded_submission or submission_date > entry.last_awarded_submission:
+            entry.last_awarded_submission = submission_date
+          entry.save()
+
   def remove_points(self, points, submission_date, message, related_object=None):
     """
     Removes points from the user. Note that this method does not save the profile.  
@@ -271,27 +282,30 @@ class Profile(models.Model):
       transaction.related_object = related_object
     
     transaction.save()
+
+    if self._is_canopy_activity(related_object):
+        self.canopy_karma -= points
+    else:
+        self.points -= points
     
-    self.points -= points
-    
-    current_round = self._get_round(submission_date)    
-    # If we have a round, then update the scoreboard entry.  Otherwise, this just counts towards overall.
-    if current_round:
-      try:
-        entry = ScoreboardEntry.objects.get(profile=self, round_name=current_round)
-        entry.points -= points
-        if entry.last_awarded_submission == submission_date:
-          # Need to find the previous update.
-          entry.last_awarded_submission = self._last_submitted_before(submission_date)
-          
-        entry.save()
-      except ObjectDoesNotExist:
-        # This should not happen once the competition is rolling.
-        raise InvalidRoundException("Attempting to remove points from a round when the user has no points in that round.")
-      
-    if self.last_awarded_submission == submission_date:
-      self.last_awarded_submission = self._last_submitted_before(submission_date)
-      
+        current_round = self._get_round(submission_date)
+        # If we have a round, then update the scoreboard entry.  Otherwise, this just counts towards overall.
+        if current_round:
+          try:
+            entry = ScoreboardEntry.objects.get(profile=self, round_name=current_round)
+            entry.points -= points
+            if entry.last_awarded_submission == submission_date:
+              # Need to find the previous update.
+              entry.last_awarded_submission = self._last_submitted_before(submission_date)
+
+            entry.save()
+          except ObjectDoesNotExist:
+            # This should not happen once the competition is rolling.
+            raise InvalidRoundException("Attempting to remove points from a round when the user has no points in that round.")
+
+        if self.last_awarded_submission == submission_date:
+          self.last_awarded_submission = self._last_submitted_before(submission_date)
+
   def _get_round(self, submission_date):
     """Get the round that the submission date corresponds to.  Returns None if it doesn't correspond to anything."""
     

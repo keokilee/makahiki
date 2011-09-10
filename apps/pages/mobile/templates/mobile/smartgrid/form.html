@@ -19,7 +19,20 @@
   
     <p/>
 
-<!---------------- EVENT CODE WENT HERE  ----->
+<!-- insert-->
+      {% if task.type == "event" or task.type == "excursion" %}          {# event #}
+ 
+        {% if not task.is_event_completed %}
+          You will earn 2 points for signing up for the {{task.type}}.
+          <div>
+            <button>OK, Let's do it</button>
+            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+              I don't want to do it</a>
+          </div>
+        {% endif %} 
+    {% endif %}
+
+<!-- end insert-->
   
     {% if task.type == "activity" %}          {# activity #}
       {% if form.image_response %}         {# image #}

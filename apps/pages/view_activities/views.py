@@ -137,9 +137,7 @@ def attend_code(request):
         message = "This code is not valid."
       except KeyError:
         message = "Please input code."
-      
-      print message
-      
+
       if message:
         return HttpResponse(json.dumps({
           "message": message,
@@ -148,9 +146,6 @@ def attend_code(request):
             
       try:
         activity_member = ActivityMember.objects.get(user=user, activity=code.activity)
-        # decrease sign up points
-        user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
-        user.get_profile().save()
       except ObjectDoesNotExist:
         activity_member = ActivityMember(user=user, activity=code.activity)
         
@@ -183,31 +178,31 @@ def attend_code(request):
 def __add_commitment(request, commitment):
   """Commit the current user to the commitment."""
   user = request.user
-  floor = user.get_profile().floor
   value = None
-  
-  if request.method == "POST":
-    form = CommitmentCommentForm(request.POST, request=request)
-    if form.is_valid():  
-      members = CommitmentMember.objects.filter(user=user, commitment=commitment);
-      if members.count() > 0 and members[0].days_left() == 0:
-        #commitment end, award full point
-        member = members[0]
-        member.award_date = datetime.datetime.today()
-        member.comment = form.cleaned_data["social_email"]
-        member.save()
-        value = commitment.point_value
-    else:
-       return render_to_response("view_activities/task.html", {
-         "task":commitment,
-         "pau":True,
-         "form":form,
-         "question":None,
-         "member_all":0,
-         "member_floor":0,
-         "display_form":True,
-         "form_title": "Get your points",
-         }, context_instance=RequestContext(request))    
+
+  if commitment in user.commitment_set.all():
+      if request.method == "POST":
+        form = CommitmentCommentForm(request.POST, request=request)
+        if form.is_valid():
+          members = CommitmentMember.objects.filter(user=user, commitment=commitment);
+          if members.count() > 0 and members[0].days_left() == 0:
+            #commitment end, award full point
+            member = members[0]
+            member.award_date = datetime.datetime.today()
+            member.comment = form.cleaned_data["social_email"]
+            member.save()
+            value = commitment.point_value
+        else:
+           return render_to_response("view_activities/task.html", {
+             "task":commitment,
+             "pau":True,
+             "form":form,
+             "question":None,
+             "member_all":0,
+             "member_floor":0,
+             "display_form":True,
+             "form_title": "Get your points",
+             }, context_instance=RequestContext(request))
     
   if commitment not in user.commitment_set.all() and can_add_commitments(user):
     # User can commit to this commitment.
@@ -217,7 +212,7 @@ def __add_commitment(request, commitment):
 
     #increase the point from signup
     message = "Commitment: %s (Sign up)" % (commitment.title)
-    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
+    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
     user.get_profile().save()
     value = 2
     
@@ -251,7 +246,8 @@ def __drop_commitment(request, commitment):
     member.delete()
 
     #decrease sign up point
-    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    message = "Commitment: %s (Drop)" % (commitment.title)
+    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
     user.get_profile().save()
     value = 2
       
@@ -299,7 +295,7 @@ def __add_activity(request, activity):
         
       #increase point
       message = "%s: %s (Sign up)" % (activity.type.capitalize(), activity.title)
-      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message)
+      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
       user.get_profile().save()
       value = 2
       
@@ -316,10 +312,11 @@ def __drop_activity(request, activity):
     activity_member.delete()
         
     #decrease point
-    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1))
+    message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
+    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
     user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("activity_index", args=())+"?notify=drop_activity&value=2")
+    return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,))+"?notify=drop_activity&value=2")
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
@@ -339,9 +336,9 @@ def __request_activity_points(request, activity):
 
   if request.method == "POST":
     if activity.confirm_type == "image":
-      form = ActivityImageForm(request.POST, request.FILES, request=request)
+      form = ActivityImageForm(request.POST, request.FILES, request=request, activity=activity)
     elif activity.confirm_type == "free":
-      form = ActivityFreeResponseForm(request.POST, request=request)
+      form = ActivityFreeResponseForm(request.POST, request=request, activity=activity)
     elif activity.confirm_type == "code":
       form = ActivityCodeForm(request.POST, request=request, activity=activity)
     else:
@@ -495,6 +492,8 @@ def task(request, activity_type, slug):
   # Load reminders
   reminders = {}
   if task.type == "event" or task.type == "excursion":
+    task.available_seat = task.event_max_seat - member_all_count
+    
     # Store initial reminder fields.
     reminder_init = {
         "email": user.get_profile().contact_email or user.email,
@@ -535,6 +534,8 @@ def task(request, activity_type, slug):
   if value and value != "None":
     if notify == "add_point":
       notification = "You just earned " + value + " points."
+    if notify == "drop_activity":
+      notification = "Removed from signup list, you lose " + value + " points."
   
   return render_to_response("view_activities/task.html", {
     "task":task,
