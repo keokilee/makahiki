@@ -10,7 +10,8 @@ def award_badge(slug, username):
     badge = badges.possibly_award_badge(slug, user=user)
   except User.DoesNotExist:
     self.stderr.write("User with the username %s does not exist.\n" % username)
-    return
+  except KeyError:
+    self.stderr.write("Badge with the slug %s does not exist.\n" % slug)
 
 class Command(management.base.BaseCommand):
   help = 'Awards a badge (identified by its slug) to a user.'
