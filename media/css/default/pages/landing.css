@@ -214,3 +214,54 @@
 #standings-table td {
   width: 100px;
 }
+
+/******* Browser check styles *********/
+#landing-browser-check {
+	/* 
+	  Transparent background info found at:
+	  http://www.w3schools.com/css/css_image_transparency.asp
+	  http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
+	*/
+	background: none;
+	background-color: rgba(255,255,255,0.6);
+	border: 2px solid #167000;
+	
+	width: 690px;
+	margin: 2em auto 0 auto;
+	padding: 30px;
+	float: none;
+	display: block;
+	text-align: left;
+	font-size: 12pt;
+	clear:both;
+}
+
+#landing-browser-buttons button {
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+  background-image: -webkit-linear-gradient(top, #fff, #ddd);
+  background-image: -moz-linear-gradient(top, #fff, #ddd);
+  background-image: -ms-linear-gradient(top, #fff, #ddd);
+  background-image: -o-linear-gradient(top, #fff, #ddd);
+  background-image: linear-gradient(top, #fff, #ddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dddddd');
+  border: 1px solid #777;
+  border-radius: .2em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
+  -moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+  box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+  cursor: pointer;
+}
+
+#landing-browser-buttons #landing-button-cancel {
+  float: left;
+  background: none;
+  background-color: #FEF1EC;
+  border: 1px solid #CD0A0A;
+}
+
+#landing-button-continue {
+  float: right;
+}
