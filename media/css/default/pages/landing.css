@@ -236,16 +236,14 @@
 	clear:both;
 }
 
+#landing-browser-buttons {
+  width: 400px;
+  margin: 0 auto;
+}
+
 #landing-browser-buttons button {
-  background-color: #fff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-  background-image: -webkit-linear-gradient(top, #fff, #ddd);
-  background-image: -moz-linear-gradient(top, #fff, #ddd);
-  background-image: -ms-linear-gradient(top, #fff, #ddd);
-  background-image: -o-linear-gradient(top, #fff, #ddd);
-  background-image: linear-gradient(top, #fff, #ddd);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#dddddd');
-  border: 1px solid #777;
+  background-color: #FEF1EC;
+  border: 1px solid #CD0A0A;
   border-radius: .2em;
   -moz-border-radius: .2em;
   -webkit-border-radius: .2em;
@@ -253,15 +251,6 @@
   -webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
   box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
   cursor: pointer;
-}
-
-#landing-browser-buttons #landing-button-cancel {
-  float: left;
-  background: none;
-  background-color: #FEF1EC;
-  border: 1px solid #CD0A0A;
-}
-
-#landing-button-continue {
-  float: right;
+  padding: 0 auto;
+  color: #CD0A0A;
 }

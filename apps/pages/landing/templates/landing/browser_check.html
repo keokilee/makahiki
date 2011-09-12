@@ -37,12 +37,8 @@
   </p>
   
   <div {% get_id_and_classes "landing-browser-buttons" %}>
-    <button {% get_id_and_classes "landing-button-cancel" %} onclick="javascript:location.href='{% url landing %}'">
-      <h3>Take me back to the landing page.</h3>
-    </button>
-
     <button {% get_id_and_classes "landing-button-continue" %} onclick="javascript:location.href='{% url home_index %}'">
-      <h3>I understand.  Take me to the log in page.</h3>
+      <h3>I understand that some things may not work correctly. Click to continue.</h3>
     </button>
     <br style="clear: both"/>
   </div>
