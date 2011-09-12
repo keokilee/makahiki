@@ -14,10 +14,8 @@ from components.activities import *
 from django.contrib.sites.models import Site
 
 # Register badges immediately.
-from components.makahiki_badges.user_badges import FullyCommittedBadge
+from components.makahiki_badges import user_badges
 from lib.brabeion import badges
-
-badges.register(FullyCommittedBadge)
 
 from components.floors.models import Post
 from components.makahiki_base.models import Like
@@ -384,7 +382,7 @@ class CommitmentMember(CommonBase):
     super(CommitmentMember, self).save()
     
     # Note, possibly_award is here because the member needs to be saved.
-    badges.possibly_award_badge("fully_committed", user=self.user)
+    badges.possibly_award_badge(user_badges.FullyCommittedBadge.slug, user=self.user)
     
   def delete(self):
     """Custom delete method to remove the points for completed commitments."""

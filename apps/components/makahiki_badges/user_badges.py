@@ -18,6 +18,8 @@ class DailyVisitorBadge(Badge):
     visits = user.get_profile().daily_visit_count
     if visits >= 3:
       return BadgeAwarded()
+      
+badges.register(DailyVisitorBadge)
 
 class FullyCommittedBadge(Badge):
   name = "Fully Committed"
@@ -39,6 +41,27 @@ class FullyCommittedBadge(Badge):
     if current_members.count() == 5:
       return BadgeAwarded()
       
-
+badges.register(FullyCommittedBadge)
+      
+class BugHunterBadge(Badge):
+  name = "Bug Hunter"
+  description = [
+      "Filed a bug report."
+  ]
+  hint = "Found a bug?  Let us know!"
+  slug = 'bug_hunter'
+  levels = ['Awarded',]
+  events = ['bug_hunter',]
+  multiple = False
+  image = "images/badges/badge.gif"
+  
+  def award(self, **state):
+    """
+    Awards the badge to a user.  
+    Note that since this badge is awarded directly, we just return the badge award object.
+    """
+    return BadgeAwarded()
+    
+badges.register(BugHunterBadge)
 
   

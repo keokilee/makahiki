@@ -1,9 +1,7 @@
 import datetime
 
-from components.makahiki_badges.user_badges import DailyVisitorBadge
+from components.makahiki_badges import user_badges
 from lib.brabeion import badges
-
-badges.register(DailyVisitorBadge)
 
 class LoginTrackingMiddleware(object):
   """
@@ -22,7 +20,7 @@ class LoginTrackingMiddleware(object):
         profile.last_visit_date = today
         profile.daily_visit_count += 1
         profile.save()
-        badges.possibly_award_badge("dailyvisitor", user=request.user)
+        badges.possibly_award_badge(user_badges.DailyVisitorBadge.slug, user=request.user)
 
       elif not last_visit or (today - last_visit) > datetime.timedelta(days=1):
         # Reset the daily login count.

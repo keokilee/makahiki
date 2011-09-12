@@ -5,11 +5,9 @@ from django.contrib.auth.models import User
 
 from lib.brabeion import badges
 
-from components.makahiki_badges.user_badges import DailyVisitorBadge, FullyCommittedBadge
+from components.makahiki_badges import user_badges
 from components.activities.models import Commitment, CommitmentMember
-
-badges.register(DailyVisitorBadge)
-badges.register(FullyCommittedBadge)
+from components.makahiki_badges.management.commands.award_badge import award_badge
 
 class DailyVisitorBadgeTest(TestCase):
   def test_awarding(self):
@@ -42,7 +40,6 @@ class FullyCommittedBadgeTest(TestCase):
     user = User(username="testuser", password="password")
     user.save()
     
-    
     commitments = []
     # Create 5 test commitments.
     for i in range(0, 5):
@@ -66,4 +63,13 @@ class FullyCommittedBadgeTest(TestCase):
       
     self.assertEqual(user.badges_earned.count(), 1, "A badge should have been awarded.")
     self.assertEqual(user.badges_earned.all()[0].slug, "fully_committed", "Check that the Fully Committed badge was awarded.")
+    
+class ManagementCommandTest(TestCase):
+  def test_bug_hunter_award(self):
+    """
+    Test that we can award the bug hunter badge.
+    """
+    user = User.objects.create_user("testuser", "user@test.com")
+    award_badge(user_badges.BugHunterBadge.slug, user)
+    self.assertEqual(user.badges_earned.count(), 1, "Badge should have been awarded.")
       
