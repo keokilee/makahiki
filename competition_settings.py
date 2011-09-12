@@ -17,3 +17,7 @@ COMPETITION_ROUNDS = {
     "end": (datetime.date.today() + datetime.timedelta(days=3)).strftime("%Y-%m-%d"),
   },
 }
+
+# When enabled, users who try to access the site before or after the competition ends are blocked.
+# Admin users are able to log in at any time.
+CAN_ACCESS_OUTSIDE_COMPETITION = False

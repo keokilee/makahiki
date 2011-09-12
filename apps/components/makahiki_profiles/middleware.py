@@ -10,7 +10,8 @@ class LoginTrackingMiddleware(object):
   
   def process_request(self, request):
     """Checks if the user is logged in and updates the tracking field."""
-    if request.user.is_authenticated():
+    user = request.user
+    if user.is_authenticated() and user.badges_earned.filter(slug="dailyvisitor").count() == 0:
       profile = request.user.get_profile()
       last_visit = request.user.get_profile().last_visit_date
       today = datetime.date.today()
