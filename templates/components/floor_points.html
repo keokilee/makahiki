@@ -1,5 +1,7 @@
 {% load class_tags %}
+{% load cache %}
 
+{% cache 60 infobar floor.dorm.name floor.number %}
 {% if CURRENT_ROUND %}
 <!-- First slideshow element -->
 <div id="header-floor-overall-rank1">
@@ -46,3 +48,4 @@
     <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
   </div>
 </div>
+{% endcache %}
