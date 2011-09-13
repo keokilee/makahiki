@@ -2,23 +2,49 @@
 <html>
 <head> 
   <title>Kukui Cup</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+<!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
   <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"-->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head> 
 <body>  
   <div data-role="page">
-   <!--endbase-->
+   <!--endbase--> 
+   {% include "mobile/mlist.html" %}
    {% load class_tags %}
    {% load generic_flatblocks %}  
    {% load markup %} 
    {% block body %}{% endblock %}
    <!--startbase-->
 <div data-role="footer">
-<a href="{% url home_index %}" rel="external">Go to desktop site</a> 
+<a href="{% url home_index %}" rel="external" onClick="write_cookie()";>Go to desktop site</a> 
 </div>
   </div>
+ <script language="JavaScript">
+ cookie_name = "mobile-desktop";
+ function write_cookie() {
+ if(document.cookie) {
+ index = document.cookie.indexOf(cookie_name);
+ } else {
+ index = -1;
+ }
  
+ if (index == -1) {
+ document.cookie=cookie_name+"=1; expires=Wednesday, 01-Aug-2040 08:00:00 GMT";
+ } else {
+ countbegin = (document.cookie.indexOf("=", index) + 1);
+ countend = document.cookie.indexOf(";", index);
+ if (countend == -1) {
+ countend = document.cookie.length;
+ }
+ count = eval(document.cookie.substring(countbegin, countend)) + 1;
+ document.cookie=cookie_name+"="+count+"; expires=Wednesday, 01-Aug-2040 08:00:00 GMT";
+ }
+ }
+ </script>
 </body>
 </html>

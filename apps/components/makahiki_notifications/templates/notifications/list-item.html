@@ -22,32 +22,6 @@
           $("#notification-item-{{notification.id}}").fadeOut();
         });
       });
-      
-      $("#notification-item-{{notification.id}} .notification-share").click(function() {
-        log_js_action("notification", "{{notification.id}}", "share");
-        FB.ui(
-           {
-             method: 'feed',
-             name: 'Kukui Cup',
-             link: 'http://{{request.META.HTTP_HOST}}',
-             picture: 'http://{{request.META.HTTP_HOST}}{{STATIC_URL}}css/default/images/old-logo.png',
-             description: '{{notification.contents}}',
-             display: 'popup'
-           },
-           
-           function(response) {
-             if (response && response.post_id) {
-               log_js_action("notification", "{{notification.id}}", "shared");
-               $.post("{% url notifications_read notification.id %}", function(data) {
-                 $("#notification-item-{{notification.id}}").fadeOut();
-               });
-             }
-             else {
-               log_js_action("notification", "{{notification.id}}", "share-canceled");
-             }
-           }
-         );
-      });
     });
   </script>
 </li>

@@ -2,7 +2,9 @@
    {% load generic_flatblocks %}  
    {% load markup %} 
 <link rel="stylesheet" href="{{STATIC_URL}}css/default/jquery-ui.css">
+<!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" /-->
 <script src="{{STATIC_URL}}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+
 {% if NOTIFICATIONS %}
   {% if NOTIFICATIONS.unread %}
   <ul id="notification-list">
@@ -10,9 +12,5 @@
     {% include "mobile/list-item.html" %}
     {% endfor %}
   </ul>
-  {% endif %}
-
-  {% if NOTIFICATIONS.alerts %}
-  {% include "notifications/dialog.html" %}
-  {% endif %}
+  {% endif %} 
 {% endif %}

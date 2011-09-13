@@ -7,6 +7,13 @@
 {% block body %}
 
 {% load markup %}  
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+        $("{% url mobile_reminder category task.name|slugify %}").dialog();
+    });
+</script>
+
   <div data-role="header" data-theme="b">
 {{request.META.HTTP_REFERER}}
     <a href="{{request.META.HTTP_REFERER}}" data-icon="back" rel="external">Back</a>
@@ -93,7 +100,7 @@
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
-
+ 	    {{reminders.form}}
             {% endif %}
 
           {% endif %}
@@ -218,7 +225,5 @@
 
 {#    <a href="{% url mobile_landing %}smartgrid/task/{{task.id}}/#form" data-role="button" data-rel="dialog" rel="external "data-transition="pop"> #}
 {#      I did this! - not part of desktop #}
-{#    </a> #}
-
-  </div>  
+{#    </a> #} 
 {% endblock %}

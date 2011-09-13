@@ -1,6 +1,8 @@
-from django.shortcuts import render_to_response, get_object_or_404
+
+import simplejson as json
+from django.shortcuts import render_to_response, get_object_or_404 
 from django.template import RequestContext
-from django.http import Http404, HttpResponseRedirect, get_host
+from django.http import Http404, HttpResponseRedirect, HttpResponse,get_host
 import unicodedata
 from components.activities.models import ActivityBase
 from components.makahiki_base import get_current_round
@@ -332,6 +334,43 @@ def task(request, category_slug, slug):
     member_all_count = member_all_count + 1
     member_floor_count = member_floor_count +1
     users.append(user)
+
+  # Load reminders
+  reminders = {}
+  if task.type == "event" or task.type == "excursion":
+    task.available_seat = task.event_max_seat - member_all_count
+    
+    # Store initial reminder fields.
+    reminder_init = {
+        "email": user.get_profile().contact_email or user.email,
+        "text_number": user.get_profile().contact_text,
+        "text_carrier": user.get_profile().contact_carrier,
+    }
+    # Retrieve an existing reminder and update it accordingly.
+    try:
+      email = user.emailreminder_set.get(activity=task)
+      reminders.update({"email": email})
+      reminder_init.update({
+          "email": email.email_address, 
+          "send_email": True,
+          "email_advance": str((task.activity.event_date - email.send_at).seconds / 3600)
+      })
+    except ObjectDoesNotExist:
+      pass
+    
+    try:
+      text = user.textreminder_set.get(activity=task)
+      reminders.update({"text": text})
+      reminder_init.update({
+          "text_number": text.text_number, 
+          "text_carrier": text.text_carrier,
+          "send_text": True,
+          "text_advance": str((task.activity.event_date - text.send_at).seconds / 3600)
+      })
+    except ObjectDoesNotExist:
+      pass
+      
+    reminders.update({"form": ReminderForm(initial=reminder_init)})
     
   display_form = True if request.GET.has_key("display_form") else False
   
@@ -348,8 +387,50 @@ def task(request, category_slug, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
+    "reminders":reminders,
   }, context_instance=RequestContext(request))    
 
+@never_cache
+def reminder(request, category_slug, slug):
+   # Load reminders
+  reminders = {}
+  if task.type == "event" or task.type == "excursion":
+    task.available_seat = task.event_max_seat - member_all_count
+    
+    # Store initial reminder fields.
+    reminder_init = {
+        "email": user.get_profile().contact_email or user.email,
+        "text_number": user.get_profile().contact_text,
+        "text_carrier": user.get_profile().contact_carrier,
+    }
+    # Retrieve an existing reminder and update it accordingly.
+    try:
+      email = user.emailreminder_set.get(activity=task)
+      reminders.update({"email": email})
+      reminder_init.update({
+          "email": email.email_address, 
+          "send_email": True,
+          "email_advance": str((task.activity.event_date - email.send_at).seconds / 3600)
+      })
+    except ObjectDoesNotExist:
+      pass
+    
+    try:
+      text = user.textreminder_set.get(activity=task)
+      reminders.update({"text": text})
+      reminder_init.update({
+          "text_number": text.text_number, 
+          "text_carrier": text.text_carrier,
+          "send_text": True,
+          "text_advance": str((task.activity.event_date - text.send_at).seconds / 3600)
+      })
+    except ObjectDoesNotExist:
+      pass
+      
+    reminders.update({"form": ReminderForm(initial=reminder_init)})
+    return render_to_response("mobile/smartgrid/reminder.html", { 
+    "reminders":reminders,
+  }, context_instance=RequestContext(request))    
 
 ###################################################################################################
 
@@ -475,6 +556,8 @@ def __request_activity_points(request, activity_id, slug):
       form = ActivityImageForm(request.POST, request.FILES, request=request)
     elif activity.confirm_type == "free":
       form = ActivityFreeResponseForm(request.POST, request=request)
+    elif activity.confirm_type == "code":
+      form = ActivityCodeForm(request.POST, request=request, activity=activity)
     else:
       form = ActivityTextForm(request.POST, request=request, activity=activity)
     
@@ -495,12 +578,15 @@ def __request_activity_points(request, activity_id, slug):
 
       elif activity.confirm_type == "code":
         # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
-        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
-        code.is_active = False
-        code.save()
-        activity_member.approval_status = "approved" # Model save method will award the points.
-        points = activity_member.activity.point_value
-        
+	try:
+          code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+          code.is_active = False
+          code.save()
+          activity_member.approval_status = "approved" # Model save method will award the points.
+          points = activity_member.activity.point_value
+        except ConfirmationCode.DoesNotExist:
+          form.response.errors="ERROR"
+          return HttpResponseRedirect(reverse("mobile_task", args=(category, activity.slug,)))
       # Attach text prompt question if one is provided
       elif form.cleaned_data.has_key("question"):
         activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
@@ -548,10 +634,10 @@ def sgadd(request, category_slug, slug):
     return __request_activity_points(request, category_slug, slug)
   elif task.type == "survey":
     return __add_activity(request, category_slug, slug)
-  else:
+  else: ##event 
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():
-      return __request_activity_points(request, category_slug, slug)
+      return __request_activity_points(request, category_slug, slug) 
     else:  
       return __add_activity(request, category_slug, slug)
     
@@ -794,6 +880,76 @@ def power_and_energy(request):
   return render_to_response("mobile/power&energy/index.html", { 
   }, context_instance=RequestContext(request))
 
+def attend_code(request):
+  """claim the attendance code"""
+  
+  user = request.user
+  activity_member = None
+  message = None
+  social_email = None
+  
+ #if request.is_ajax() and request.method == "POST":
+  if True:
+    form = EventCodeForm(request.POST)
+    if form.is_valid():
+      try:
+        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+     
+        if not code.is_active:
+          message = "This code has already been used."
+        # Check if the user has already submitted a code for this activity.
+        elif code.activity in user.activity_set.filter(activitymember__award_date__isnull=False):
+          message = "You have already redemmed a code for this event/excursion."          
+        elif code.activity.social_bonus:
+          if form.cleaned_data["social_email"]:
+            if form.cleaned_data["social_email"] != "Email":
+              ref_user = get_user_by_email(form.cleaned_data["social_email"]) 
+              if ref_user == None or ref_user == user:
+                message = "Invalid email. Please input only one valid email."
+                social_email = "true"
+            else: 
+              message = " "
+              social_email = "true"
+      except ConfirmationCode.DoesNotExist:
+        message = "This code is not valid."
+      except KeyError:
+        message = "Please input code."
+
+      if message:
+        return HttpResponse(json.dumps({
+          "message": message,
+          "social_email": social_email
+          }), mimetype="application/json")
+            
+      try:
+        activity_member = ActivityMember.objects.get(user=user, activity=code.activity)
+      except ObjectDoesNotExist:
+        activity_member = ActivityMember(user=user, activity=code.activity)
+        
+      activity_member.approval_status = "approved" # Model save method will award the points.
+      value = code.activity.point_value  
+
+      if form.cleaned_data.has_key("social_email") and form.cleaned_data["social_email"] != "Email":
+        activity_member.social_email = form.cleaned_data["social_email"]
+        
+      activity_member.save()
+
+      code.is_active = False
+      code.save()
+      
+      return HttpResponse(json.dumps({
+        "type":code.activity.type,
+        "slug":code.activity.slug,
+        "notify": "add_point",
+        "value":str(value)
+      }), mimetype="application/json")
+          
+    # At this point there is a form validation error.
+    return HttpResponse(json.dumps({
+        "message": "Please input code."
+    }), mimetype="application/json")
+  
+  raise Http404
  
 def uniToStr(uni) :
   str = unicodedata.normalize('NFKD', uni).encode('ascii','ignore')

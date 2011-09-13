@@ -4,13 +4,13 @@
     {{notification.contents|safe}}
   </div> 
        <form action="{% url notifications_read notification.id %}" rel="external" method="POST" style="display: inline">
-        <button type="submit"  onClick="this.parent.parent.style.visibility='hidden'"class="notification-read ui-icon ui-icon-circle-close"/>
+        <button type="submit"  onClick='$(this).fadeout()' class="notification-read ui-icon ui-icon-circle-close"/>
       </form> 
   <script>
     function close() {
-        $.post("{% url notifications_read notification.id %}");
-        $("#notification-item-{{notification.id}}").fadeOut();
-        });
+        $.post("{% url notifications_read notification.id %}",function () {
+	$("#notification-item-{{notification.id}}").fadeOut();});
+        
       }
   </script>
 </li>
