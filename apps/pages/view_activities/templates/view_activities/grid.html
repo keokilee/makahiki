@@ -42,10 +42,10 @@
                 {{task.name}}       
 	        {% else %}
 	             <br/>
-	            {% if task.activity.point_value %}        
-	             <h3>{{task.activity.point_value}}</h3>
+	            {% if task.point_value %}
+	             <h3>{{task.point_value}}</h3>
 	            {% else %}
-	             <h3>{{task.activity.point_range_end}}</h3>
+	             <h3>{{task.point_range_end}}</h3>
 	            {% endif %}  
 		    {% endif %}  
           {% else %}     {# ------ is commitment #}             
@@ -59,7 +59,7 @@
 		        {{task.name}}
 		       {% else %}
 		        <br/>
-		        <h3>{{task.commitment.point_value}}</h3>
+		        <h3>{{task.point_value}}</h3>
 		       {% endif %} {# end task.is_pau #}        
           {% endif %}    {# ------- end task.type #}
           </a>

@@ -24,6 +24,8 @@ from components.floors import *
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 
+from django.db import connection
+
 MAX_INDIVIDUAL_STANDINGS = 10
 ACTIVITIES_COL_COUNT = 3
 
@@ -78,20 +80,55 @@ def index(request):
 def __get_categories(user):
   categories = cache.get('smartgrid-categories-%s' % user.username)
   if not categories:
-    categories = Category.objects.all() 
+      categories = Category.objects.all()
 
-    for cat in categories:
-      task_list = []
-      for task in cat.activitybase_set.order_by("priority"):   
-        task_list.append(annotate_task_status(user, task))
+      cursor = connection.cursor()
 
-      cat.task_list = task_list
-    
-    # Cache the categories for an hour (or until they are invalidated)
-    cache.set('smartgrid-categories-%s' % user.username,
+      cursor.execute('''SELECT  activities_activitymember.activity_id,
+            activities_activitybase.slug as slug,
+            activities_commonactivityuser.approval_status,
+            activities_commonactivityuser.award_date
+          FROM activities_activitymember
+          INNER JOIN activities_commonactivityuser
+            ON (activities_activitymember.commonactivityuser_ptr_id = activities_commonactivityuser.id)
+          INNER JOIN ACTIVITIES_ACTIVITYBASE
+            ON (activities_activitymember.activity_id = activities_activitybase.id)
+          WHERE activities_activitymember.user_id = %s ''' % (user.id))
+
+      activity_members = _dictfetchall(cursor)
+
+      cursor.execute('''SELECT  activities_commitmentmember.commitment_id,
+            activities_activitybase.slug as slug,
+            activities_commitmentmember.completion_date,
+            activities_commitmentmember.award_date
+          FROM activities_commitmentmember
+          INNER JOIN ACTIVITIES_ACTIVITYBASE
+            ON (activities_commitmentmember.commitment_id = activities_activitybase.id)
+          WHERE activities_commitmentmember.user_id = %s ''' % (user.id))
+
+      commitment_members = _dictfetchall(cursor)
+
+      for cat in categories:
+        task_list = []
+        tasks = ActivityBase.objects.filter(category=cat).order_by("priority").values("id", "type","depends_on", "slug", "name")
+        for task in tasks:
+          task_list.append(annotate_simple_task_status(user, task, activity_members, commitment_members))
+
+        cat.task_list = task_list
+
+      # Cache the categories for an hour (or until they are invalidated)
+      cache.set('smartgrid-categories-%s' % user.username,
         categories, 60 * 60)
+
   return categories
     
+def _dictfetchall(cursor):
+    "Returns all rows from a cursor as a dict"
+    desc = cursor.description
+    return [
+        dict(zip([col[0] for col in desc], row))
+        for row in cursor.fetchall()
+    ]
 
 @never_cache
 @login_required

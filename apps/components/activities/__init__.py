@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 
 
 # Directory in which to save image files for ActivityMember verification.
+from apps.components.activities.models import Activity, ActivityMember, CommitmentMember
+
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
 
 # Maximum number of commitments user can have at one time.
@@ -204,20 +206,20 @@ def get_awarded_points(user, category):
   return 0 + apoint + cpoint
 
 def is_pau(user, task):
-  if task.type != "commitment":
-    is_pau = ActivityMember.objects.filter(user=user, activity__id=task.id).count() > 0
+  return is_pau_by_id(user, task.id, task.type)
+
+def is_pau_by_id(user, task_id, task_type):
+  if task_type != "commitment":
+    is_pau = ActivityMember.objects.filter(user=user, activity__id=task_id).count() > 0
   else:
-    is_pau = CommitmentMember.objects.filter(user=user, commitment__id=task.id).count() > 0  
+    is_pau = CommitmentMember.objects.filter(user=user, commitment__id=task_id).count() > 0
   return is_pau
 
-def completedAllOf(user, cat_name):
+def completedAllOf(user, cat_slug):
   """completed all of the category"""
   try:
-    cat = Category.objects.get(slug=cat_name)
-  except ObjectDoesNotExist:  
-    try:
-      cat = Category.objects.get(name=cat_name)
-    except ObjectDoesNotExist:
+    cat = Category.objects.get(slug=cat_slug)
+  except ObjectDoesNotExist:
       return False  
 
   for task in cat.activitybase_set.all():
@@ -225,16 +227,12 @@ def completedAllOf(user, cat_name):
       return False
   
   return True
-    
 
-def completedSomeOf(user, some, cat_name):
+def completedSomeOf(user, some, cat_slug):
   """completed some of the category"""
   try:
-    cat = Category.objects.get(slug=cat_name)
+    cat = Category.objects.get(slug=cat_slug)
   except ObjectDoesNotExist: 
-    try:
-      cat = Category.objects.get(name=cat_name)
-    except ObjectDoesNotExist:
       return False
       
   count = 0
@@ -246,33 +244,32 @@ def completedSomeOf(user, some, cat_name):
     
   return False  
     
-def completed(user, task_name):
+def completed(user, activity_members, commitment_members, task_slug):
   """completed the task"""
-  try:
-    task = ActivityBase.objects.get(slug=task_name)
-  except ObjectDoesNotExist:
-    try:
-      task = ActivityBase.objects.get(name=task_name)
-    except ObjectDoesNotExist:
-      return False
-      
-  return is_pau(user, task)  
 
-def afterPublished(task_name):
+  if activity_members != None:
+      for member in activity_members:
+          if member["slug"] == task_slug:
+              return True
+
+      for member in commitment_members:
+          if member["slug"] == task_slug:
+              return True
+  else:
+      try:
+        task = ActivityBase.objects.get(slug=task_slug)
+      except ObjectDoesNotExist:
+          return False
+
+      return is_pau(user, task)
+
+def afterPublished(task_id):
   """return true if the event/excursion have been published"""
   try:
-    task = ActivityBase.objects.get(slug=task_name)
-  except ObjectDoesNotExist: 
-    try:
-      task = ActivityBase.objects.get(name=task_name)
-    except ObjectDoesNotExist:
-      return False 
+    return Activity.get(id=task_id).pub_date <= datetime.date.today()
+  except:
+    return False
     
-  if task.type == "event" or task.type == "excursion":
-    return task.activity.pub_date <= datetime.date.today()
-      
-  return False;    
-  
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""
 
@@ -285,14 +282,17 @@ def is_unlock(user, task):
   if task.is_canopy and profile != None and not profile.canopy_member:
      return False;
 
-  expr = task.depends_on
+  return is_unlock_by_id(user, task.id, task.depends_on, None, None)
+
+def is_unlock_by_id(user, task_id, task_depends_on, activity_members, commitment_members):
+  expr = task_depends_on
   if expr == None or expr == "":
     return False
   
   expr = expr.replace("completedAllOf(", "completedAllOf(user,")
   expr = expr.replace("completedSomeOf(", "completedSomeOf(user,")
-  expr = expr.replace("completed(", "completed(user,")
-  expr = expr.replace("afterPublished(", "afterPublished('"+task.name+"'")
+  expr = expr.replace("completed(", "completed(user,activity_members,commitment_members,")
+  expr = expr.replace("afterPublished(", "afterPublished(%d" % (task_id))
 
   allow_dict = {'completedAllOf':completedAllOf,
                 'completedSomeOf':completedSomeOf, 
@@ -301,6 +301,8 @@ def is_unlock(user, task):
                 'True':True,
                 'False':False,
                 'user':user,
+                'activity_members':activity_members,
+                'commitment_members':commitment_members,
                }
 
   return eval(expr, {"__builtins__":None}, allow_dict)
@@ -328,7 +330,55 @@ def annotate_task_status(user, task):
     task.is_unlock = is_unlock(user, task)
       
   return task
-  
+
+
+def annotate_simple_task_status(user, task, activity_members, commitment_members):
+  """Adds additional fields that identify whether or not the activity is approved."""
+
+  has_member = None
+  if task["type"] !="commitment":
+      for member in activity_members:
+        if member["activity_id"] == task["id"]:
+            has_member = member
+  else:
+      for member in commitment_members:
+        if member["commitment_id"] == task["id"]:
+            has_member = member
+
+  if has_member:
+      task["is_pau"] = True
+      task["is_unlock"] = True
+      task["approval"] = has_member
+      if task["type"] == "commitment":
+          task["approval"]["days_left"] = task["approval"]["completion_date"] - datetime.date.today()
+          commitment = Commitment.objects.filter(activitybase_ptr__id=task["id"]).values("point_value")[0]
+          task["point_value"]=commitment["point_value"]
+      else:
+        activity = Activity.objects.filter(activitybase_ptr__id=task["id"]).values("event_date", "point_value", "point_range_start", "point_range_end")[0]
+        task["point_value"]=activity["point_value"]
+        task["point_range_start"]=activity["point_range_start"]
+        task["point_range_end"]=activity["point_range_end"]
+        if activity["event_date"]:
+            result = datetime.datetime.today() - activity["event_date"]
+            if result.days >= 0 and result.seconds >= 0:
+              task["is_event_pau"] = True
+            else:
+              task["is_event_pau"] = False
+  else:
+    task["is_pau"] = False
+    task["is_unlock"] = is_unlock_by_id(user, task["id"], task["depends_on"], activity_members, commitment_members)
+    if task["is_unlock"]:
+        if task["type"] == "commitment":
+            commitment = Commitment.objects.filter(activitybase_ptr__id=task["id"]).values("point_value")[0]
+            task["point_value"]=commitment["point_value"]
+        else:
+          activity = Activity.objects.filter(activitybase_ptr__id=task["id"]).values("event_date", "point_value", "point_range_start", "point_range_end")[0]
+          task["point_value"]=activity["point_value"]
+          task["point_range_start"]=activity["point_range_start"]
+          task["point_range_end"]=activity["point_range_end"]
+
+  return task
+
 def get_user_by_email(email):
   """return the user from given email"""
   try:
