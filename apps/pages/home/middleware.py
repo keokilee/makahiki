@@ -1,5 +1,7 @@
 import re
+import datetime
 
+from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -19,4 +21,26 @@ class CheckSetupMiddleware(object):
       return HttpResponseRedirect(reverse("mobile_setup"))
     elif needs_setup and not pattern.match(path):
       return HttpResponseRedirect(reverse("home_index"))
+    return None
+
+class CompetitionMiddleware(object):
+  """
+  This middleware checks if the competition is over.
+  """
+  def process_request(self, request):
+    """
+    Checks if we are still in the competition. If the user is logged in, 
+    they are redirected to a competition status page.
+    """
+    if request.user.is_authenticated():
+      today = datetime.datetime.today()
+      start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+      end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+
+      if today < start:
+        pass
+
+      if today < end:
+        pass
+
     return None

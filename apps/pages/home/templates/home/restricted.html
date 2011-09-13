@@ -1,0 +1,19 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Competition Over
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "home" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+  {% if before %}
+  The competition has not started yet.
+  {% else %}
+  The competition is over.
+  {% endif %}
+{% endblock %}
