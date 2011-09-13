@@ -12,6 +12,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from components.activities import *
 from django.contrib.sites.models import Site
+from django.core.cache import cache
 
 # Register badges immediately.
 from components.makahiki_badges import user_badges
@@ -379,6 +380,8 @@ class CommitmentMember(CommonBase):
         post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
         post.save()
         
+    # Invalidate the categories cache.
+    cache.delete('smartgrid-categories-%s' % self.user.username)
     super(CommitmentMember, self).save()
     
     # Note, possibly_award is here because the member needs to be saved.
@@ -399,6 +402,8 @@ class CommitmentMember(CommonBase):
       post = Post(user=self.user, floor=self.user.get_profile().floor, text=message, style_class="system_post")
       post.save()
       
+    # Invalidate the categories cache.
+    cache.delete('smartgrid-categories-%s' % self.user.username)
     super(CommitmentMember, self).delete()
   
 
@@ -476,6 +481,9 @@ class ActivityMember(CommonActivityUser):
       self.award_date = None
       # self.submission_date = None # User will have to resubmit.
       
+    # Invalidate the categories cache.
+    cache.delete('smartgrid-categories-%s' % self.user.username)
+    
     super(ActivityMember, self).save()
     
     # We check here for approved and rejected items because the object needs to be saved first.
@@ -579,6 +587,8 @@ class ActivityMember(CommonActivityUser):
       profile.remove_points(points, self.submission_date, message, self)
       profile.save()
       
+    # Invalidate the categories cache.
+    cache.delete('smartgrid-categories-%s' % self.user.username)
     super(ActivityMember, self).delete()
 
 #------ Reminders --------#

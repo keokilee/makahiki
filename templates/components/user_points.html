@@ -1,7 +1,7 @@
 {% load class_tags %}
 {% load cache %}
 
-{% cache 60 infobar request.user.username %}
+{% cache 600 infobar request.user.username %}
 {% if CURRENT_ROUND %}
 <!-- First slideshow element -->
 <div id="header-user-overall-rank1">

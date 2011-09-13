@@ -22,9 +22,4 @@ def invalidate_info_bar_cache(user):
   if floor:
     invalidate_template_cache("infobar", floor.dorm.name, floor.number)
     
-def invalidate_smart_grid_cache(user):
-  """
-  Invalidates the smart grid's cache for a user.
-  """
-  invalidate_template_cache("smartgrid", user.username)
   

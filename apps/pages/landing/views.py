@@ -3,7 +3,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.views.decorators.cache import never_cache
 
+@never_cache
 def index(request):
   if request.mobile and not request.COOKIES.has_key("mobile-desktop"):
     return HttpResponseRedirect(reverse("mobile_landing"))

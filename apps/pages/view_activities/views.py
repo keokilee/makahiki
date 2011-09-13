@@ -13,6 +13,7 @@ from django.views.decorators.cache import never_cache
 from django.db.models import Count, Max
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
+from django.core.cache import cache
 
 from components.makahiki_base import get_current_round
 from pages.view_activities.forms import *
@@ -75,16 +76,22 @@ def index(request):
 
 ## new design, return the category list with the tasks info
 def __get_categories(user):
-  categories = Category.objects.all() 
+  categories = cache.get('smartgrid-categories-%s' % user.username)
+  if not categories:
+    categories = Category.objects.all() 
 
-  for cat in categories:
-    task_list = []
-    for task in cat.activitybase_set.order_by("priority"):   
-      task_list.append(annotate_task_status(user, task))
+    for cat in categories:
+      task_list = []
+      for task in cat.activitybase_set.order_by("priority"):   
+        task_list.append(annotate_task_status(user, task))
+
+      cat.task_list = task_list
     
-    cat.task_list = task_list
-    
+    # Cache the categories for an hour (or until they are invalidated)
+    cache.set('smartgrid-categories-%s' % user.username,
+        categories, 60 * 60)
   return categories
+    
 
 @never_cache
 @login_required
