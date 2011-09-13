@@ -12,8 +12,28 @@
 
 {% block body %}
   {% if before %}
-  The competition has not started yet.
+  <h3>The competition starts in <span id='restricted-countdown'></span></h3>
   {% else %}
-  The competition is over.
+  <h3>The competition ended on {{end|date:"l, F j"}}.</h3>
   {% endif %}
 {% endblock %}
+
+<script type="text/javascript">
+  var endDate = new Date("{{before}}");
+  var today = new Date();
+  // Calculate the number of days in the difference.
+  var hourDiff = (endDate - today) / (1000 * 60 * 60);
+  if (hourDiff > 24) {
+    $("#restricted-countdown").countdown({
+      until: endDate,
+      tickInterval: 60,
+      layout: '(ends in {dn} {dl}, {hn} {hl}, and {mn} {ml})'
+    });
+  }
+  else {
+    $("#restricted-countdown").countdown({
+      until: endDate,
+      layout: '(ends in {hn} {hl}, {mn} {ml}, and {sn} {sl})'
+    });
+  }
+</script>

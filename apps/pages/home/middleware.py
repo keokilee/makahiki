@@ -15,7 +15,7 @@ class CheckSetupMiddleware(object):
     is_mobile = request.mobile
     # We need to check if the user is going to the home page so we don't get caught in a redirect loop.
     # We do need to filter out requests for CSS and other resources.
-    pattern = re.compile("^/(m\/setup|account|home|site_media|media|favicon.ico)/")
+    pattern = re.compile("^/(m\/admin|home|site_media|media|favicon.ico)/")
     needs_setup = user.is_authenticated() and not user.get_profile().setup_complete
     if is_mobile and needs_setup and not pattern.match(path):
       return HttpResponseRedirect(reverse("mobile_setup"))
@@ -33,14 +33,18 @@ class CompetitionMiddleware(object):
     they are redirected to a competition status page.
     """
     if request.user.is_authenticated():
+      path = request.path
+      
       today = datetime.datetime.today()
       start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
       end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+      
+      pattern = re.compile("^/(m\/|home\/restricted|site_media|media|favicon.ico)/")
+      
+      if today < start and not pattern.match(path):
+        return HttpResponseRedirect(reverse("home_restricted"))
 
-      if today < start:
-        pass
-
-      if today < end:
-        pass
+      if today > end and not pattern.match(path):
+        return HttpResponseRedirect(reverse("home_restricted"))
 
     return None

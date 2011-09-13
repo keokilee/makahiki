@@ -28,6 +28,21 @@ def index(request):
   Directs the user to the home page.
   """
   return render_to_response("home/index.html", {}, context_instance=RequestContext(request))
+  
+@login_required
+def restricted(request):
+  today = datetime.datetime.today()
+  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+  end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
+  
+  before = False
+  if today < start:
+    before = True
+    
+  return render_to_response("home/restricted.html", {
+      "before": before,
+      "start": start,
+  }, context_instance=RequestContext(request))
 
 @never_cache
 @login_required

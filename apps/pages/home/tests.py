@@ -16,6 +16,49 @@ class HomeFunctionalTestCase(TestCase):
     
     response = self.client.get(reverse("home_index"))
     self.failUnlessEqual(response.status_code, 200)
+    
+class CompetitionMiddlewareTestCase(TestCase):
+  def setUp(self):
+    user = User.objects.create_user("user", "user@test.com", password="changeme")
+    self.client.login(username="user", password="changeme")
+    
+    # Save settings that will be restored later.
+    self.saved_start = settings.COMPETITION_START
+    self.saved_end = settings.COMPETITION_END
+    
+    self.saved_access = settings.CAN_ACCESS_OUTSIDE_COMPETITION
+    settings.CAN_ACCESS_OUTSIDE_COMPETITION = False
+    
+  def testBeforeCompetition(self):
+    """
+    Check that the user is redirected before the competition starts.
+    """
+    start = datetime.date.today() + datetime.timedelta(days=1)
+    settings.COMPETITION_START = start.strftime("%Y-%m-%d")
+    settings.COMPETITION_END = (start + datetime.timedelta(days=7)).strftime("%Y-%m-%d")
+    
+    response = self.client.get(reverse("home_index"), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/restricted.html")
+    self.assertContains(response, "The competition starts in")
+    
+  def testAfterCompetition(self):
+    """
+    Check that the user is redirected after the competition ends.
+    """
+    start = datetime.date.today() - datetime.timedelta(days=8)
+    settings.COMPETITION_START = start.strftime("%Y-%m-%d")
+    settings.COMPETITION_END = (start + datetime.timedelta(days=7)).strftime("%Y-%m-%d")
+
+    response = self.client.get(reverse("home_index"), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/restricted.html")
+    self.assertContains(response, "The competition ended on")
+    
+  def tearDown(self):
+    settings.COMPETITION_START = self.saved_start
+    settings.COMPETITION_END = self.saved_end
+    settings.CAN_ACCESS_OUTSIDE_COMPETITION = self.saved_access
   
 class SetupWizardFunctionalTestCase(TestCase):
   def setUp(self):

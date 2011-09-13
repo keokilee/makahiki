@@ -51,6 +51,7 @@ def competition(request):
     "FACEBOOK_APP_ID": facebook_app_id,
     "QUESTS": quests,
     "NOTIFICATIONS": notifications,
+    "IN_COMPETITION": in_competition(),
     "SPREADSHEETS": {
       "THIRTY_DAYS": settings.ENERGY_THIRTY_DAYS_URL,
       "ENERGY_GOAL": settings.ENERGY_GOAL_URL,
