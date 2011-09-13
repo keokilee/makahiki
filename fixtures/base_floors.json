@@ -10,11 +10,51 @@
     }
   }, 
   {
+    "pk": 2, 
+    "model": "floors.dorm", 
+    "fields": {
+      "updated_at": "2010-08-16 00:00:00", 
+      "created_at": "2010-05-25 00:00:00", 
+      "name": "Ilima", 
+      "slug": "hale-ilima"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "floors.dorm", 
+    "fields": {
+      "updated_at": "2010-08-16 00:00:00", 
+      "created_at": "2010-06-16 00:00:00", 
+      "name": "Mokihana", 
+      "slug": "hale-mokihana"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "floors.floor", 
     "fields": {
       "dorm": 1, 
       "floor_identifier": "Lehua-A", 
+      "number": "A", 
+      "slug": "3-4"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 2, 
+      "floor_identifier": "Ilima-A", 
+      "number": "A", 
+      "slug": "3-4"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 3, 
+      "floor_identifier": "Mokihana-A", 
       "number": "A", 
       "slug": "3-4"
     }
@@ -55,6 +95,86 @@
     "fields": {
       "dorm": 1, 
       "floor_identifier": "Lehua-E", 
+      "number": "E", 
+      "slug": "11-12"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 2, 
+      "floor_identifier": "Ilima-B", 
+      "number": "B", 
+      "slug": "5-6"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 2, 
+      "floor_identifier": "Ilima-C", 
+      "number": "C", 
+      "slug": "7-8"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 2, 
+      "floor_identifier": "Ilima-D", 
+      "number": "D", 
+      "slug": "9-10"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 2, 
+      "floor_identifier": "Ilima-E", 
+      "number": "E", 
+      "slug": "11-12"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 3, 
+      "floor_identifier": "Mokihana-B", 
+      "number": "B", 
+      "slug": "5-6"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 3, 
+      "floor_identifier": "Mokihana-C", 
+      "number": "C", 
+      "slug": "7-8"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 3, 
+      "floor_identifier": "Mokihana-D", 
+      "number": "D", 
+      "slug": "9-10"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "floors.floor", 
+    "fields": {
+      "dorm": 3, 
+      "floor_identifier": "Mokihana-E", 
       "number": "E", 
       "slug": "11-12"
     }

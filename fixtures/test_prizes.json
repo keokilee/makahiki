@@ -3,56 +3,126 @@
     "pk": 1, 
     "model": "prizes.prize", 
     "fields": {
-      "title": "Kokua Market gift cert", 
+      "title": "iPod Touch", 
       "round_name": "Round 1", 
-      "image": "prizes/kokua-market-square-small.png", 
+      "image": "prizes/ipod-nano.jpg", 
       "award_to": "individual_overall", 
       "value": 20, 
       "competition_type": "points", 
-      "short_description": "The individual with the most points across all teams", 
-      "long_description": "A $20 gift certificate to [Kokua Market Co-op](http://www.kokua.coop/) near the University of Hawaii at Manoa. Kokua sells a variety of organic and local products and produce, and is owned by its members!"
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
     }
   }, 
   {
     "pk": 2, 
     "model": "prizes.prize", 
     "fields": {
-      "title": "Cookie Corner", 
+      "title": "Pizza Party", 
       "round_name": "Round 1", 
-      "image": "prizes/cookie-corner.png", 
-      "award_to": "floor_overall", 
-      "value": 15, 
+      "image": "prizes/Pizza.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "prizes.prize", 
+    "fields": {
+      "title": "Ice Cream Party", 
+      "round_name": "Round 1", 
+      "image": "prizes/ice-cream-cone.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
       "competition_type": "points", 
-      "short_description": "The team with the most points", 
-      "long_description": "A small box of Cookie Corner bite size cookies to share with your team/organization."
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "prizes.prize", 
+    "fields": {
+      "title": "iPod Touch", 
+      "round_name": "Round 2", 
+      "image": "prizes/ipod-nano.jpg", 
+      "award_to": "individual_overall", 
+      "value": 20, 
+      "competition_type": "points", 
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
     }
   }, 
   {
     "pk": 5, 
     "model": "prizes.prize", 
     "fields": {
-      "title": "TOWN gift cert", 
+      "title": "iPod Touch", 
       "round_name": "Overall", 
-      "image": "prizes/town.png", 
+      "image": "prizes/ipod-nano.jpg", 
       "award_to": "individual_overall", 
-      "value": 30, 
+      "value": 20, 
       "competition_type": "points", 
-      "short_description": "The individual with the most points across all teams", 
-      "long_description": "A $30 gift certificate to [Town restaurant](http://www.townkaimuki.com/) in Kaimuki. Their moto is \"Local first, organic whenever possible, with Aloha always\""
+      "short_description": "Won by the #1 individual point getter across all residence halls", 
+      "long_description": "Won by the #1 individual point getter across all residence halls"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "prizes.prize", 
+    "fields": {
+      "title": "Pizza Party", 
+      "round_name": "Round 2", 
+      "image": "prizes/Pizza.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "prizes.prize", 
+    "fields": {
+      "title": "Pizza Party", 
+      "round_name": "Overall", 
+      "image": "prizes/Pizza.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
+      "competition_type": "energy", 
+      "short_description": "Won by the #1 lounge energy conserver in each residence hall.", 
+      "long_description": "Won by the #1 lounge energy conserver in each residence hall."
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "prizes.prize", 
+    "fields": {
+      "title": "Ice Cream Party", 
+      "round_name": "Round 2", 
+      "image": "prizes/ice-cream-cone.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
+      "competition_type": "points", 
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
   }, 
   {
     "pk": 9, 
     "model": "prizes.prize", 
     "fields": {
-      "title": "Team Lunch", 
+      "title": "Ice Cream Party", 
       "round_name": "Overall", 
-      "image": "prizes/lunchspread4c-small.png", 
-      "award_to": "floor_overall", 
-      "value": 50, 
+      "image": "prizes/ice-cream-cone.jpg", 
+      "award_to": "floor_dorm", 
+      "value": 20, 
       "competition_type": "points", 
-      "short_description": "The team with the most points", 
-      "long_description": "You will receive lunch for your team at location of your choice (up to $50 value) to gloat about your Kukui Cup dominance."
+      "short_description": "Won by the #1 lounge point getter in each residence hall.", 
+      "long_description": "Won by the #1 lounge point getter in each residence hall."
     }
   }, 
   {
@@ -60,27 +130,30 @@
     "model": "prizes.raffledeadline", 
     "fields": {
       "round_name": "Round 1", 
-      "pub_date": "2011-08-11 16:46:44", 
-      "end_date": "2011-09-29 23:00:00"
+      "pub_date": "2011-04-17 10:49:25", 
+      "end_date": "2011-07-31 10:00:00"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "prizes.raffleprize", 
+    "fields": {
+      "description": "A bike helmet.", 
+      "title": "Bike Helmet", 
+      "image": "prizes/bikehelmet_1.jpg", 
+      "winner": null, 
+      "value": 10, 
+      "deadline": 1
     }
   }, 
   {
     "pk": 2, 
-    "model": "prizes.raffledeadline", 
-    "fields": {
-      "round_name": "Overall", 
-      "pub_date": "2011-08-15 00:00:00", 
-      "end_date": "2011-08-17 23:00:00"
-    }
-  }, 
-  {
-    "pk": 4, 
     "model": "prizes.raffleprize", 
     "fields": {
-      "description": "A gift card to that Island favorite: Zippy's", 
-      "title": "Zippy's gift card", 
-      "image": "prizes/Zippys.png", 
-      "winner": 695, 
+      "description": "A surfboard.", 
+      "title": "Surfboard", 
+      "image": "prizes/surf_lessons_1.jpg", 
+      "winner": null, 
       "value": 10, 
       "deadline": 1
     }
@@ -92,1569 +165,5009 @@
       "description": "A gift certificate for a double dip cone from Bubbies Ice Cream Parlor, voted Best Ice Cream of 2010!", 
       "title": "Bubbies Gift Certificate", 
       "image": "prizes/bubbies.png", 
-      "winner": 692, 
-      "value": 5, 
-      "deadline": 1
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "prizes.raffleprize", 
-    "fields": {
-      "description": "An hour-long single or family portraiture session held at a location of your choosing. You will be given a CD with digital versions of up to 20 photos, edited and retouched.\r\n\r\nRisa Khamsi has worked professionally in photography since 2008. She has worked with Cherish Photography in Honolulu, and has experience shooting at beach locations.\r\n\r\n(picture of camera by Tim Williams CC Attribution)", 
-      "title": "Photo shoot", 
-      "image": "prizes/camera-small.jpg", 
-      "winner": 686, 
-      "value": 200, 
-      "deadline": 2
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "prizes.raffleprize", 
-    "fields": {
-      "description": "Enjoy beautiful Kailua Bay during this one hour introduction to outrigger canoe paddling for one or two people.  After meeting at Kailua Beach Park, you will learn the basics of paddling and go out into the bay on a two man outrigger canoe. You will be taught and accompanied at all times by Philip Johnson, an experienced paddler and member of the Kailua Canoe Club masters crew. All equipment provided. For safety purposes, please be able to swim at least 100 yards.", 
-      "title": "Paddling Adventure", 
-      "image": "prizes/oc2_prod.jpg", 
-      "winner": 682, 
-      "value": 100, 
+      "winner": null, 
+      "value": 10, 
       "deadline": 1
     }
   }, 
   {
     "pk": 7, 
-    "model": "prizes.raffleprize", 
+    "model": "prizes.raffleticket", 
     "fields": {
-      "description": "A gift certificate for a double dip cone from Bubbies Ice Cream Parlor, voted Best Ice Cream of 2010!", 
-      "title": "Bubbies Gift Certificate", 
-      "image": "prizes/bubbies_1.png", 
-      "winner": 689, 
-      "value": 5, 
-      "deadline": 2
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 59, 
+      "updated_at": "2011-04-20 11:01:03"
     }
   }, 
   {
     "pk": 8, 
-    "model": "prizes.raffleprize", 
+    "model": "prizes.raffleticket", 
     "fields": {
-      "description": "A gift card to Long's Drugs, an island institution (even if it is now owned by CVS)", 
-      "title": "Long's Gift Card", 
-      "image": "prizes/longs_logo.gif", 
-      "winner": 688, 
-      "value": 10, 
-      "deadline": 2
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 490, 
+      "updated_at": "2011-04-20 11:01:03"
     }
   }, 
   {
     "pk": 9, 
-    "model": "prizes.raffleprize", 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 365, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 305, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 602, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 449, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 490, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 216, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 318, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 577, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 18, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 640, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 328, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 556, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 13, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 96, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 422, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 426, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 166, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 492, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 31, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 197, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 90, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 432, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 551, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 15, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 567, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 526, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 61, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 436, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 268, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 460, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 581, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 382, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 31, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 220, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 473, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 492, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 502, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 170, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 580, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 226, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 110, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 199, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 330, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 181, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 621, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 572, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 168, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 540, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 292, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 502, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 194, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 422, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 563, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 255, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 191, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 529, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 131, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 127, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 212, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 471, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 237, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 468, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 47, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 562, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 341, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 403, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 563, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 207, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 458, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 441, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 526, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 635, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 23, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 354, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 462, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 432, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 442, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 598, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 59, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 437, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 615, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 244, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 613, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 160, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 230, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 635, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 515, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 568, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 213, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 423, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 274, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 165, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 149, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 406, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 117, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 189, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 468, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 583, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 229, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 565, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 571, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 524, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 625, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 52, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 353, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 611, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 637, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 387, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 444, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 585, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 199, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 618, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 511, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 368, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 49, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 519, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 448, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 631, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 144, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 352, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 366, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 62, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 97, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 5, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 251, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 155, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 145, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 75, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 155, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 539, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 447, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 483, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 203, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 389, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 366, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 145, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 401, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 146, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 279, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 147, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 418, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 148, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 124, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 149, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 455, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 150, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 72, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 151, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:01:03", 
+      "raffle_prize": 1, 
+      "user": 407, 
+      "updated_at": "2011-04-20 11:01:03"
+    }
+  }, 
+  {
+    "pk": 152, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 121, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 153, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 466, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 154, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 162, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 155, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 173, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 156, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 160, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 157, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 352, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 158, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 185, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 159, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 299, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 160, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 327, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 161, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 539, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 162, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 207, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 163, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 534, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 164, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 235, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 165, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 553, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 166, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 499, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 167, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 384, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 168, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 213, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 169, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 189, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 170, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 227, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 171, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 443, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 104, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 173, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 527, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 174, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 504, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 175, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 579, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 176, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 230, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 177, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 580, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 178, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 549, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 179, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 628, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 180, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 550, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 181, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 588, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 182, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 250, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 183, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 179, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 184, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 35, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 185, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 113, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 186, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 354, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 187, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 360, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 188, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 268, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 189, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 339, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 190, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 254, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 191, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 11, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 192, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 104, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 193, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 581, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 194, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 285, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 195, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 152, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 196, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 626, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 197, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 519, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 198, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 133, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 199, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 220, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 200, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 173, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 201, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 524, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 202, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 238, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 203, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 201, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 204, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 316, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 205, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 572, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 206, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 618, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 207, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 39, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 208, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 421, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 209, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 315, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 210, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 509, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 211, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 429, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 212, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 535, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 213, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 389, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 214, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 227, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 215, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 372, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 216, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 319, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 217, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 318, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 218, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 209, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 219, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 426, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 220, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 118, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 221, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 185, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 222, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 355, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 223, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 171, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 224, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 126, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 225, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 573, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 226, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 109, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 227, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 513, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 228, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 481, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 229, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 287, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 230, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 276, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 231, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 568, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 232, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 45, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 233, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 573, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 234, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 7, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 235, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 144, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 236, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 593, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 237, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 262, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 238, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 146, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 239, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 383, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 240, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 281, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 241, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 202, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 242, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 162, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 243, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 49, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 244, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 215, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 245, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 32, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 246, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 159, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 247, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 592, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 248, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 463, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 249, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 394, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 250, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 518, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 251, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 289, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 252, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 66, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 253, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 604, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 254, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 170, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 255, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 533, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 256, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 261, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 257, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 12, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 258, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 74, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 259, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 471, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 260, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 195, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 261, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 213, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 262, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 271, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 263, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 496, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 264, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 610, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 265, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 595, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 266, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 439, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 267, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 120, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 268, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 287, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 269, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 144, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 270, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 557, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 271, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 160, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 272, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 270, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 273, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 632, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 274, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 173, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 276, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 208, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 277, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 139, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 278, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 285, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 279, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 20, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 280, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 333, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 281, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 287, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 282, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 117, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 283, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 437, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 284, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 310, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 285, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 209, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 286, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 283, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 287, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 554, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 288, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 176, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 289, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 554, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 290, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 392, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 291, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 27, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 292, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 175, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 293, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 500, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 294, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 486, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 295, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 518, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 296, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 56, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 297, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 312, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 298, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 252, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 299, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 293, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 300, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 241, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 301, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 14, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 302, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 36, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 303, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 505, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 304, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 612, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 305, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 498, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 306, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 290, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 307, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 265, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 308, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 488, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 309, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 79, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 310, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 635, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 311, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 424, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 312, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 305, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 313, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 537, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 314, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 151, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 315, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 557, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 316, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 130, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 317, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 248, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 318, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 467, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 319, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 71, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 320, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 562, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 321, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 442, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 322, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 119, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 323, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 30, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 324, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 148, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 325, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 286, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 326, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 553, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 327, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 208, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 328, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 61, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 329, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 412, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 330, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 583, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 331, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 535, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 332, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 159, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 333, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 513, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 334, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 501, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 335, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 459, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 336, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 611, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 337, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 3, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 338, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 50, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 339, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 538, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 340, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 547, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 341, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 203, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 342, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 86, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 343, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 225, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 344, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 616, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 345, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 402, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 346, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 629, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 347, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 618, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 348, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 87, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 349, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 42, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 350, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 69, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 351, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 374, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 352, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 219, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 353, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 79, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 354, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 388, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 355, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 410, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 356, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 563, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 357, 
+    "model": "prizes.raffleticket", 
+    "fields": {
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 360, 
+      "updated_at": "2011-04-20 11:02:13"
+    }
+  }, 
+  {
+    "pk": 358, 
+    "model": "prizes.raffleticket", 
     "fields": {
-      "description": "Lock & Lock Bento Boxes are watertight, airtight, compartmentalized lunchboxes. The removable trays are perfect for separating one dish from another, or remove them all for more room. This includes an assortment of 3 box sizes.", 
-      "title": "Leak-Proof Bento Boxes", 
-      "image": "prizes/bento-boxes.jpg", 
-      "winner": 693, 
-      "value": 15, 
-      "deadline": 2
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 52, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 653, 
+    "pk": 359, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:17", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:17"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 616, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 652, 
+    "pk": 360, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:14", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:14"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 172, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 737, 
+    "pk": 361, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:37:38", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:37:38"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 529, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 607, 
+    "pk": 362, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:47:47", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:47:47"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 286, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 651, 
+    "pk": 363, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:12", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:12"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 343, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 650, 
+    "pk": 364, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:06", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:06"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 324, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 649, 
+    "pk": 365, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:09:37", 
-      "raffle_prize": 4, 
-      "user": 695, 
-      "updated_at": "2011-08-14 21:09:37"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 370, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 736, 
+    "pk": 366, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:37:34", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:37:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 231, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 735, 
+    "pk": 367, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:37:30", 
-      "raffle_prize": 8, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:37:30"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 516, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 734, 
+    "pk": 368, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:37:24", 
-      "raffle_prize": 7, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:37:24"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 512, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 733, 
+    "pk": 369, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 20:57:51", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 20:57:51"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 202, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 732, 
+    "pk": 370, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 20:57:48", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 20:57:48"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 478, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 731, 
+    "pk": 371, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 20:57:45", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 20:57:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 504, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 730, 
+    "pk": 372, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 20:57:43", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 20:57:43"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 90, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 648, 
+    "pk": 373, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:09:34", 
-      "raffle_prize": 4, 
-      "user": 695, 
-      "updated_at": "2011-08-14 21:09:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 166, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 647, 
+    "pk": 374, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 20:36:56", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-14 20:36:56"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 154, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 729, 
+    "pk": 375, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 18:56:01", 
-      "raffle_prize": 7, 
-      "user": 685, 
-      "updated_at": "2011-08-17 18:56:01"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 543, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 646, 
+    "pk": 376, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 20:05:49", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 20:05:49"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 246, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 728, 
+    "pk": 377, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 18:54:01", 
-      "raffle_prize": 8, 
-      "user": 688, 
-      "updated_at": "2011-08-17 18:54:01"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 89, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 645, 
+    "pk": 378, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 20:05:42", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 20:05:42"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 584, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 727, 
+    "pk": 379, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 18:53:58", 
-      "raffle_prize": 8, 
-      "user": 688, 
-      "updated_at": "2011-08-17 18:53:58"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 390, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 726, 
+    "pk": 380, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 18:53:53", 
-      "raffle_prize": 8, 
-      "user": 688, 
-      "updated_at": "2011-08-17 18:53:53"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 344, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 725, 
+    "pk": 381, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 06:32:31", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 06:32:31"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 472, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 724, 
+    "pk": 382, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 06:32:28", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 06:32:28"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 472, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 723, 
+    "pk": 383, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 06:32:26", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 06:32:26"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 397, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 644, 
+    "pk": 384, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 17:24:43", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 17:24:43"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 155, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 722, 
+    "pk": 385, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 06:32:23", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-17 06:32:23"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 36, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 643, 
+    "pk": 386, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 17:24:11", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 17:24:11"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 43, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 721, 
+    "pk": 387, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 19:43:27", 
-      "raffle_prize": 8, 
-      "user": 685, 
-      "updated_at": "2011-08-16 19:43:27"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 272, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 720, 
+    "pk": 388, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 15:18:46", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-16 15:18:46"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 215, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 579, 
+    "pk": 389, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 15:44:58", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-12 15:44:58"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 275, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 642, 
+    "pk": 390, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 17:24:07", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 17:24:07"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 279, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 719, 
+    "pk": 391, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 15:18:45", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-16 15:18:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 208, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 718, 
+    "pk": 392, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 08:05:58", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-16 08:05:58"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 184, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 641, 
+    "pk": 393, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 17:13:00", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-14 17:13:00"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 181, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 717, 
+    "pk": 394, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 08:05:55", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-16 08:05:55"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 584, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 716, 
+    "pk": 395, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 08:05:52", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-16 08:05:52"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 40, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 715, 
+    "pk": 396, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-16 07:24:43", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-16 07:24:43"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 140, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 640, 
+    "pk": 397, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:50:08", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 16:50:08"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 128, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 639, 
+    "pk": 398, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:49:58", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 16:49:58"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 586, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 638, 
+    "pk": 399, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:49:53", 
-      "raffle_prize": 4, 
-      "user": 692, 
-      "updated_at": "2011-08-14 16:49:53"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 492, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 714, 
+    "pk": 400, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:55", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:55"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 248, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 637, 
+    "pk": 401, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:40:46", 
-      "raffle_prize": 4, 
-      "user": 685, 
-      "updated_at": "2011-08-14 16:40:46"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 105, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 713, 
+    "pk": 402, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:53", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:53"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 114, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 636, 
+    "pk": 403, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:40:45", 
-      "raffle_prize": 4, 
-      "user": 685, 
-      "updated_at": "2011-08-14 16:40:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 184, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 712, 
+    "pk": 404, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:51", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:51"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 123, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 711, 
+    "pk": 405, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:50", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:50"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 181, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 710, 
+    "pk": 406, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:48", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:48"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 257, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 635, 
+    "pk": 407, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:40:28", 
-      "raffle_prize": 3, 
-      "user": 685, 
-      "updated_at": "2011-08-14 16:40:28"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 619, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 709, 
+    "pk": 408, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:46", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:46"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 283, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 708, 
+    "pk": 409, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:45", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 185, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 707, 
+    "pk": 410, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:13:42", 
-      "raffle_prize": 8, 
-      "user": 691, 
-      "updated_at": "2011-08-15 22:13:42"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 56, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 706, 
+    "pk": 411, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 22:03:52", 
-      "raffle_prize": 7, 
-      "user": 690, 
-      "updated_at": "2011-08-15 22:03:52"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 421, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 705, 
+    "pk": 412, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 20:37:10", 
-      "raffle_prize": 5, 
-      "user": 686, 
-      "updated_at": "2011-08-15 20:37:10"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 485, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 704, 
+    "pk": 413, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 18:25:43", 
-      "raffle_prize": 8, 
-      "user": 688, 
-      "updated_at": "2011-08-15 18:25:43"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 103, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 703, 
+    "pk": 414, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 15:58:04", 
-      "raffle_prize": 7, 
-      "user": 685, 
-      "updated_at": "2011-08-15 15:58:04"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 235, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 634, 
+    "pk": 415, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:40:25", 
-      "raffle_prize": 3, 
-      "user": 685, 
-      "updated_at": "2011-08-14 16:40:25"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 22, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 633, 
+    "pk": 416, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 16:40:15", 
-      "raffle_prize": 3, 
-      "user": 685, 
-      "updated_at": "2011-08-14 16:40:15"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 301, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 702, 
+    "pk": 417, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 15:58:02", 
-      "raffle_prize": 7, 
-      "user": 685, 
-      "updated_at": "2011-08-15 15:58:02"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 554, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 632, 
+    "pk": 418, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 15:15:07", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-14 15:15:07"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 567, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 631, 
+    "pk": 419, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 14:11:47", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-14 14:11:47"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 42, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 701, 
+    "pk": 420, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 15:57:56", 
-      "raffle_prize": 8, 
-      "user": 685, 
-      "updated_at": "2011-08-15 15:57:56"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 127, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 700, 
+    "pk": 421, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 15:57:51", 
-      "raffle_prize": 8, 
-      "user": 685, 
-      "updated_at": "2011-08-15 15:57:51"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 433, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 699, 
+    "pk": 422, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 14:25:54", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 14:25:54"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 569, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 698, 
+    "pk": 423, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 14:25:51", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 14:25:51"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 344, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 630, 
+    "pk": 424, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 14:11:44", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-14 14:11:44"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 208, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 629, 
+    "pk": 425, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 14:11:38", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-14 14:11:38"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 98, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 697, 
+    "pk": 426, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:49:01", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 13:49:01"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 136, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 696, 
+    "pk": 427, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:22:09", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 13:22:09"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 374, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 695, 
+    "pk": 428, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:09:11", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 13:09:11"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 121, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 694, 
+    "pk": 429, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:09:07", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 13:09:07"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 549, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 628, 
+    "pk": 430, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 12:58:15", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 12:58:15"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 371, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 627, 
+    "pk": 431, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 12:58:13", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 12:58:13"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 235, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 693, 
+    "pk": 432, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:09:01", 
-      "raffle_prize": 7, 
-      "user": 689, 
-      "updated_at": "2011-08-15 13:09:01"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 418, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 692, 
+    "pk": 433, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 13:08:40", 
-      "raffle_prize": 9, 
-      "user": 683, 
-      "updated_at": "2011-08-15 13:08:40"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 345, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 691, 
+    "pk": 434, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 12:44:16", 
-      "raffle_prize": 5, 
-      "user": 692, 
-      "updated_at": "2011-08-15 12:44:16"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 526, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 688, 
+    "pk": 435, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 08:17:49", 
-      "raffle_prize": 7, 
-      "user": 698, 
-      "updated_at": "2011-08-15 08:17:49"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 545, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 617, 
+    "pk": 436, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 10:31:20", 
-      "raffle_prize": 6, 
-      "user": 698, 
-      "updated_at": "2011-08-14 10:31:20"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 473, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 689, 
+    "pk": 437, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 08:18:05", 
-      "raffle_prize": 8, 
-      "user": 698, 
-      "updated_at": "2011-08-15 08:18:05"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 187, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 686, 
+    "pk": 438, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 08:17:44", 
-      "raffle_prize": 9, 
-      "user": 698, 
-      "updated_at": "2011-08-15 08:17:44"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 252, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 685, 
+    "pk": 439, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 08:17:43", 
-      "raffle_prize": 5, 
-      "user": 698, 
-      "updated_at": "2011-08-15 08:17:43"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 220, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 623, 
+    "pk": 440, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 10:31:36", 
-      "raffle_prize": 6, 
-      "user": 698, 
-      "updated_at": "2011-08-14 10:31:36"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 308, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 684, 
+    "pk": 441, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 07:34:03", 
-      "raffle_prize": 8, 
-      "user": 684, 
-      "updated_at": "2011-08-15 07:34:03"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 503, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 624, 
+    "pk": 442, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 10:31:36", 
-      "raffle_prize": 6, 
-      "user": 698, 
-      "updated_at": "2011-08-14 10:31:36"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 627, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 614, 
+    "pk": 443, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 10:31:00", 
-      "raffle_prize": 6, 
-      "user": 698, 
-      "updated_at": "2011-08-14 10:31:00"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 354, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 613, 
+    "pk": 444, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 09:43:34", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 09:43:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 638, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 683, 
+    "pk": 445, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 07:33:36", 
-      "raffle_prize": 5, 
-      "user": 684, 
-      "updated_at": "2011-08-15 07:33:36"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 140, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 612, 
+    "pk": 446, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 09:43:34", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 09:43:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 559, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 682, 
+    "pk": 447, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 00:38:33", 
-      "raffle_prize": 7, 
-      "user": 693, 
-      "updated_at": "2011-08-15 00:38:33"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 453, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 681, 
+    "pk": 448, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-15 00:38:24", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-15 00:38:24"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 534, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 680, 
+    "pk": 449, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:58:07", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:58:07"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 124, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 611, 
+    "pk": 450, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 09:05:22", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-14 09:05:22"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 257, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 679, 
+    "pk": 451, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:58:03", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:58:03"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 411, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 610, 
+    "pk": 452, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 07:08:22", 
-      "raffle_prize": 4, 
-      "user": 690, 
-      "updated_at": "2011-08-14 07:08:22"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 476, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 609, 
+    "pk": 453, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 07:08:14", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-14 07:08:14"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 516, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 678, 
+    "pk": 454, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:50", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:50"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 97, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 677, 
+    "pk": 455, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:45", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 587, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 608, 
+    "pk": 456, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 07:08:06", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-14 07:08:06"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 619, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 676, 
+    "pk": 457, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:42", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:42"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 170, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 605, 
+    "pk": 458, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:47:21", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:47:21"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 574, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 604, 
+    "pk": 459, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:47:19", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:47:19"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 125, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 675, 
+    "pk": 460, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:42", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:42"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 200, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 596, 
+    "pk": 461, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 12:24:41", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 12:24:41"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 607, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 595, 
+    "pk": 462, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 12:24:34", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 12:24:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 67, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 597, 
+    "pk": 463, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 12:24:51", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 12:24:51"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 439, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 593, 
+    "pk": 464, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 09:45:05", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-13 09:45:05"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 542, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 674, 
+    "pk": 465, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:42", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:42"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 566, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 673, 
+    "pk": 466, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:41", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:41"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 503, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 592, 
+    "pk": 467, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 09:45:02", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-13 09:45:02"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 444, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 591, 
+    "pk": 468, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 08:57:08", 
-      "raffle_prize": 4, 
-      "user": 690, 
-      "updated_at": "2011-08-13 08:57:08"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 344, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 672, 
+    "pk": 469, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:54:40", 
-      "raffle_prize": 4, 
-      "user": 683, 
-      "updated_at": "2011-08-14 22:54:40"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 85, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 590, 
+    "pk": 470, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 08:57:02", 
-      "raffle_prize": 4, 
-      "user": 690, 
-      "updated_at": "2011-08-13 08:57:02"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 357, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 589, 
+    "pk": 471, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 08:56:45", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-13 08:56:45"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 118, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 602, 
+    "pk": 472, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:47:14", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:47:14"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 323, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 671, 
+    "pk": 473, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:44:44", 
-      "raffle_prize": 6, 
-      "user": 684, 
-      "updated_at": "2011-08-14 22:44:44"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 141, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 670, 
+    "pk": 474, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:44:41", 
-      "raffle_prize": 6, 
-      "user": 684, 
-      "updated_at": "2011-08-14 22:44:41"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 542, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 668, 
+    "pk": 475, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:33:46", 
-      "raffle_prize": 6, 
-      "user": 684, 
-      "updated_at": "2011-08-14 22:33:46"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 531, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 669, 
+    "pk": 476, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:33:49", 
-      "raffle_prize": 6, 
-      "user": 684, 
-      "updated_at": "2011-08-14 22:33:49"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 355, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 665, 
+    "pk": 477, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:32:56", 
-      "raffle_prize": 6, 
-      "user": 684, 
-      "updated_at": "2011-08-14 22:32:56"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 579, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 599, 
+    "pk": 478, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 13:57:34", 
-      "raffle_prize": 3, 
-      "user": 698, 
-      "updated_at": "2011-08-13 13:57:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 123, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 664, 
+    "pk": 479, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:03:17", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:03:17"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 265, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 663, 
+    "pk": 480, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:03:14", 
-      "raffle_prize": 4, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:03:14"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 576, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 598, 
+    "pk": 481, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 13:57:33", 
-      "raffle_prize": 4, 
-      "user": 698, 
-      "updated_at": "2011-08-13 13:57:33"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 482, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 578, 
+    "pk": 482, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 11:16:02", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-12 11:16:02"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 447, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 601, 
+    "pk": 483, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:32:16", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:32:16"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 250, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 584, 
+    "pk": 484, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 17:33:03", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-12 17:33:03"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 212, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 745, 
+    "pk": 485, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:59", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:59"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 217, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 744, 
+    "pk": 486, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:49", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:49"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 274, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 743, 
+    "pk": 487, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:44", 
-      "raffle_prize": 7, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:44"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 585, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 742, 
+    "pk": 488, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:41", 
-      "raffle_prize": 8, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:41"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 540, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 741, 
+    "pk": 489, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:36", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:36"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 412, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 583, 
+    "pk": 490, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 17:32:36", 
-      "raffle_prize": 3, 
-      "user": 690, 
-      "updated_at": "2011-08-12 17:32:36"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 61, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 600, 
+    "pk": 491, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-13 14:32:13", 
-      "raffle_prize": 4, 
-      "user": 688, 
-      "updated_at": "2011-08-13 14:32:13"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 175, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 740, 
+    "pk": 492, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:32", 
-      "raffle_prize": 5, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:32"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 483, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 662, 
+    "pk": 493, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:03:08", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:03:08"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 144, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 661, 
+    "pk": 494, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 22:03:02", 
-      "raffle_prize": 3, 
-      "user": 692, 
-      "updated_at": "2011-08-14 22:03:02"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 524, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 581, 
+    "pk": 495, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 16:23:30", 
-      "raffle_prize": 6, 
-      "user": 698, 
-      "updated_at": "2011-08-12 16:23:30"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 548, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 660, 
+    "pk": 496, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:58:34", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 21:58:34"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 94, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 659, 
+    "pk": 497, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:58:28", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 21:58:28"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 566, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 739, 
+    "pk": 499, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:38:12", 
-      "raffle_prize": 5, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:38:12"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 577, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 738, 
+    "pk": 500, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-17 22:37:59", 
-      "raffle_prize": 9, 
-      "user": 693, 
-      "updated_at": "2011-08-17 22:37:59"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 496, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 658, 
+    "pk": 501, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:58:22", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 21:58:22"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 437, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 657, 
+    "pk": 502, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:58:18", 
-      "raffle_prize": 6, 
-      "user": 682, 
-      "updated_at": "2011-08-14 21:58:18"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 429, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 656, 
+    "pk": 545, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:36", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:36"
+      "created_at": "2011-07-19 15:01:07", 
+      "raffle_prize": 2, 
+      "user": 606, 
+      "updated_at": "2011-07-19 15:01:07"
     }
   }, 
   {
-    "pk": 655, 
+    "pk": 504, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:25", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:25"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 476, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 577, 
+    "pk": 505, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 00:13:13", 
-      "raffle_prize": 6, 
-      "user": 691, 
-      "updated_at": "2011-08-12 00:13:13"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 606, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 654, 
+    "pk": 506, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-14 21:42:20", 
-      "raffle_prize": 3, 
-      "user": 686, 
-      "updated_at": "2011-08-14 21:42:20"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 441, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 575, 
+    "pk": 507, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 00:12:31", 
-      "raffle_prize": 4, 
-      "user": 691, 
-      "updated_at": "2011-08-12 00:12:31"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 271, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 574, 
+    "pk": 508, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-08-12 00:12:25", 
-      "raffle_prize": 3, 
-      "user": 691, 
-      "updated_at": "2011-08-12 00:12:25"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 596, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }, 
   {
-    "pk": 760, 
+    "pk": 509, 
     "model": "prizes.raffleticket", 
     "fields": {
-      "created_at": "2011-09-10 18:03:00", 
-      "raffle_prize": 6, 
-      "user": 655, 
-      "updated_at": "2011-09-10 18:03:00"
+      "created_at": "2011-04-20 11:02:13", 
+      "raffle_prize": 2, 
+      "user": 172, 
+      "updated_at": "2011-04-20 11:02:13"
     }
   }
 ]
