@@ -350,7 +350,12 @@ def annotate_simple_task_status(user, task, activity_members, commitment_members
       task["is_unlock"] = True
       task["approval"] = has_member
       if task["type"] == "commitment":
-          task["approval"]["days_left"] = task["approval"]["completion_date"] - datetime.date.today()
+          diff = task["approval"]["completion_date"] - datetime.date.today()
+          if diff.days < 0:
+            task["approval"]["days_left"] =  0
+          else:
+            task["approval"]["days_left"] =  diff.days
+
           commitment = Commitment.objects.filter(activitybase_ptr__id=task["id"]).values("point_value")[0]
           task["point_value"]=commitment["point_value"]
       else:

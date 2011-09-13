@@ -226,7 +226,7 @@ def __add_commitment(request, commitment):
 
   if commitment in user.commitment_set.all():
       if request.method == "POST":
-        form = CommitmentCommentForm(request.POST, request=request)
+        form = CommitmentCommentForm(request.POST, request=request, activity=commitment)
         if form.is_valid():
           members = CommitmentMember.objects.filter(user=user, commitment=commitment);
           if members.count() > 0 and members[0].days_left() == 0:
