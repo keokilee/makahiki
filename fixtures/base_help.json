@@ -17,7 +17,7 @@
       "category": "rules", 
       "parent_topic": null, 
       "slug": "terms-and-conditions", 
-      "contents": "# Motivation\r\n\r\nOne of the goals of the Kukui Cup is to learn more about the factors which help people to make sustained, positive changes to their energy behaviors.\r\n\r\n# Kinds of data collected\r\n\r\nIn order to accomplish this goal, we wish to collect and analyze data about your participation in the competition. This data takes two forms:\r\n\r\n* Data collected from your interactions with this website. We will collect data about the things you do while logged in to this website, such as your activities, goals, and commitments. This helps us to understand which of these tasks are interesting and helpful.\r\n* Data gathered through interviews and questionnaires. We will contact a subset of participants to request a short interview and/or to fill out an online questionnaire. This data will help us to understand more about the strengths and weaknesses of our approach. \r\n\r\n# Privacy\r\n\r\nNo identifying information about you will be made available in any research publications resulting from this study.\r\n\r\nNote that as part of your participation in the competition, information such as your \"public commitments\" will be made available to others via mechanisms such as the Kukui Cup \"wall\" in your home page. If you choose to enable Facebook integration, then public commitments and activities will be transmitted to Facebook. However, such identifying information will not be made available in future research publications.\r\n\r\n# If you do not wish to participate\r\n\r\nYour participation in this study is voluntary. If you decide you do not wish to participate in this study at any time, please contact Philip Johnson (johnson@hawaii.edu, 956-3489, POST 307, University of Hawaii). We will remove your data from all analyses.\r\n\r\nYou can decline to participate in this study but still participate in the Kukui Cup. Your decision to participate or not has no impact on your ablity to win prizes or participate in events associated with the competition. ", 
+      "contents": "Motivation\r\nOne of the goals of the Kukui Cup is to learn more about the factors which help people to make sustained, positive changes to their energy behaviors.\r\nKinds of data collected\r\nIn order to accomplish this goal, we wish to collect and analyze data about your participation in the competition. This data takes two forms:\r\n\r\n    Data collected from your interactions with this website. We will collect data about the things you do while logged in to this website, such as your activities, goals, and commitments. This helps us to understand which of these tasks are interesting and helpful.\r\n    Data gathered through interviews and questionnaires. We will contact a subset of participants to request a short interview and/or to fill out an online questionnaire. This data will help us to understand more about the strengths and weaknesses of our approach. \r\n\r\nPrivacy\r\nNo identifying information about you will be made available in any research publications resulting from this study.\r\n\r\nNote that as part of your participation in the competition, information such as your \"public commitments\" will be made available to others via mechanisms such as the Kukui Cup \"wall\" in your home page. If you choose to enable Facebook integration, then public commitments and activities will be transmitted to Facebook. However, such identifying information will not be made available in future research publications.\r\nIf you do not wish to participate\r\nYour participation in this study is voluntary. If you decide you do not wish to participate in this study at any time, please contact Philip Johnson (johnson@hawaii.edu, 956-3489, POST 307, University of Hawaii). We will remove your data from all analyses.\r\n\r\nYou can decline to participate in this study but still participate in the Kukui Cup. Your decision to participate or not has no impact on your ablity to win prizes or participate in events associated with the competition. ", 
       "title": "Terms and Conditions"
     }
   }, 
@@ -72,19 +72,41 @@
       "category": "rules", 
       "parent_topic": null, 
       "slug": "performing-activities", 
-      "contents": "Some of the activites in the Smart Grid Game involve you to watch a video, attend an event, or do certain activities around the dorms. To do an activity, go to the Get Nutz page and find an activity that you would like to perform. After performing an activity, there will be either questions, code inputs, or image uploads that you will have to provide to prove that you have done the activity. After an Admin approves the activity you done, you will get your points!", 
+      "contents": "Some of the activites in the Smart Grid Game involve you to watch a video, attend an event, or do certain activities around the dorms. To do an activity, go to the Get Nutz page and find an activity that you would like to perform. After performing an activity, there will be either questions, code inputs, or image uploads that you will have to provide to prove that you have done the activity. After an Admin approves the activity you done, you will get your points!!! ", 
       "title": "Performing Activities"
     }
   }, 
   {
-    "pk": 45, 
+    "pk": 8, 
     "model": "help_topics.helptopic", 
     "fields": {
-      "category": "faq", 
+      "category": "rules", 
       "parent_topic": null, 
-      "slug": "virtual-event-info", 
-      "contents": "You've made it to the virtual event page! The virtual event is over, mahalo to those that \"attended\"", 
-      "title": "Virtual event info"
+      "slug": "making-commitments", 
+      "contents": "Some of the activities in the Smart Grid Game involve commitments, and you can engage in up to five commitments at any one time. We notice that you are committed to just \"N\" commitments. Why not go for all five and earn the super-committed badge for energy conservation? To make a commitment, go to the Get Nutz page and find <5 - N> more commitments that you are comfortable carrying out. Remember that a commitment only lasts for five days and then have to renew it if you want to continue the commitment. You get points for each commitment you complete for a five day period. ", 
+      "title": "Making Commitments"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "rules", 
+      "parent_topic": null, 
+      "slug": "setting-conservation-goals", 
+      "contents": "One of the most challenging games in the Kukui Cup is the Daily Energy Goal. We have collected data on your lounge's energy usage since the beginning of the semester, and for this quest, you need to work with your lounge mates to reduce your lounge's overall usage by 5%. Each day that your lounge meets or beats this conservation goal, you and everyone else in your lounge will earn Kukui Cup points. To set a conservation goal, start by going to the Go Low page by clicking on the energy meter icon at the top of this page. Once there, find out your lounge's current consumption for today and see if it's above or below the goal. Then do whatever you can personally to minimize your energy consumption for the remainder of today, and encourage your lounge mates to do the same. See the Go Low page for suggestions on what to do. If you're successful, your lounge will have used less energy than the goal by midnight tonight, and everyone in your lounge will get awarded Kukui Cup points! ", 
+      "title": "Setting Conservation Goals"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "help_topics.helptopic", 
+    "fields": {
+      "category": "rules", 
+      "parent_topic": null, 
+      "slug": "award-categories-and-prizes", 
+      "contents": "Round 1 Awards:\r\nCategory\tAward\r\nIndividual on each floor who gained the most points. \t$25 gift certif.\r\nFloor that gained the most points (across all dorms). \tIce cream party\r\nFloor that reduced energy use the most (across all dorms). \tIce cream party\r\nRound 2 Awards:\r\nCategory\tAward\r\nIndividual on each floor who gained the most points. \t$25 gift certif.\r\nFloor that gained the most points (across all dorms). \tIce cream party\r\nFloor that reduced energy use the most (across all dorms). \tIce cream party\r\nGrand Prize Awards:\r\nCategory\tAward\r\nIndividual per dorm with highest number of points. \tiPod touch\r\nFloor with highest number of points. \tPizza party\r\nFloor that reduced energy use the most. \tPizza party", 
+      "title": "Award Categories and Prizes"
     }
   }, 
   {
@@ -116,7 +138,7 @@
       "category": "faq", 
       "parent_topic": null, 
       "slug": "what-plug-load", 
-      "contents": "A plug load is the energy consumed by any electronic device that's plugged into a socket.", 
+      "contents": "A plug load is the energy consumed by any electronic device that's plugged into a socket.\r\n\r\nCurrently, the meters in the residence halls only monitor the energy used by the wall outlets (\"plug loads\") on floors 3 through 12 (where residence rooms are located). ", 
       "title": "What is plug load?"
     }
   }, 
@@ -138,7 +160,7 @@
       "category": "faq", 
       "parent_topic": null, 
       "slug": "how-do-i-contact-you-questions", 
-      "contents": "You could use the \"Ask an Admin\" on the [Help page](/help/). This will send in your question to an Admin who will reply to you with an available answer. Also, at the top of every page is a \"Send Feedback\" button that you can use to ask a question from anywhere on the website.", 
+      "contents": "You could use the \"Ask an Admin\" on the <a href=\"/help/\">help</a> page. This will send in your question to an Admin who will reply to you with an available answer. ", 
       "title": "How do I contact you with questions?"
     }
   }, 
@@ -160,7 +182,7 @@
       "category": "widget", 
       "parent_topic": null, 
       "slug": "task-details-widget-help", 
-      "contents": "You will see the detailed information of the activity in this widget.  <p/> You will be asked to either complete the activity or sign up for an event. after event or commitment period, you can come back here to claim the rest of your points.", 
+      "contents": "You will see the detailed information of the activity in this widget. <p/> You will be asked to either complete the activity or sign up for an event. After an event has taken place or a commitment is complete, you can come back here to claim the rest of your points.", 
       "title": "Task Details Widget Help"
     }
   }, 
@@ -171,7 +193,7 @@
       "category": "widget", 
       "parent_topic": null, 
       "slug": "smart-grid-game", 
-      "contents": "Welcome to the Smart Grid Game! Each square contains an activity you can complete to earn points.\r\n\r\nGrid squares containing numbers are activities that you have not yet completed, and the number shows how many points the activity is worth.\r\n\r\nGrid squares with the lock icon ![lock icon](/site_media/static/css/default/images/lock24.png) are locked, but you can click on the lock icon to see how to unlock it. Usually, you need to complete some other activities in order to unlock an activity.\r\n\r\nOnce an activity is completed, a checkmark <img alt=\"checkmark\" src=\"/site_media/static//css/default/images/icon-done.png\" width=\"12\"/> will appear in the upper left corner of the square.\r\n\r\nIf any activity needs your attention, an exclamation point <img alt=\"checkmark\" src=\"/site_media/static//css/default/images/icon-exclamation2.png\" width=\"12\"/> will appear in the upper left corner of its square. You might need to correct your answer to a question, the time period for a commitment might be completed, or an event or excursion you signed up for has finished so you can come back to claim the rest of your points.", 
+      "contents": "**Welcome to the Smart Grid Game!** <p/> Each square on the grid indicates an activity, commitment, event, or excursion you can participate in. Completing activities earns you points. <p/> The lock icon indicates the activity is locked, but you can click on the lock icon to see how to unlock it. Often you can unlock an activity by completing other activities on the grid. <p/> Numbers on the grid indicate how many points you will earn for completing the activity. <p/> Once an activity is completed, a little check tag will display on the top-left corner of the grid square. <p/> If you see a little exclamation mark tag on a square instead, that means there is something about this activity need your attention. Two common reasons the mark are: there was a problem with your verification submission (such as an answer to a question) so you need to review the reply and resubmit to get your points, or an event or excursion is over and now you can claim the rest of your points.", 
       "title": "Smart Grid Game"
     }
   }, 
@@ -182,7 +204,7 @@
       "category": "widget", 
       "parent_topic": null, 
       "slug": "energy-goal-game", 
-      "contents": "The Daily Energy Goal Game is a way to keep your lounge on track to win the energy competition. This panel shows how much energy your lounge has used so far today, compared to an energy reduction goal set by the Kukui Cup administrators. If the traffic light is:\r\n\r\n* <FONT COLOR=\"ff0000\">Red</FONT>, it means your lounge is currently exceeding the energy consumption goal.\r\n* <FONT COLOR=\"FCD116\">Yellow</FONT>, it means your lounge is close to using more energy than your goal\r\n* <FONT COLOR=\"00ff00\">Green</FONT>, your lounge is doing a great job so keep it up!\r\n\r\nIf your lounge is able to keep the energy usage under the goal for the entire day, everyone in your lounge will earn 20 points.", 
+      "contents": "Welcome to the Energy Goal Game. <p/> If the stop light is red, it means you are currently exceeding your energy consumption goal. At midnight, if the stop light is green, your lounge will be rewarded points for consume less than your predefined consumption goal.\r\n ", 
       "title": "Energy Goal Game"
     }
   }, 
@@ -193,7 +215,7 @@
       "category": "widget", 
       "parent_topic": null, 
       "slug": "lounge-power", 
-      "contents": "This panel shows how much power your lounge is using right now in watts. It updates every 15 seconds.\r\n\r\nYou can use this power gauge to run an experiment: try turning something on or off and check if you can see the difference in your lounge's power use.", 
+      "contents": "You will see the real-time power usage of your lounge.", 
       "title": "Lounge Power"
     }
   }, 
@@ -201,11 +223,11 @@
     "pk": 21, 
     "model": "help_topics.helptopic", 
     "fields": {
-      "category": "faq", 
+      "category": "widget", 
       "parent_topic": null, 
-      "slug": "how-screenshot-mac", 
-      "contents": "A screenshot is a picture of what is currently displayed on the screen. To take a screenshot on a Macintosh:\r\n\r\n1. Make sure your screen is showing what you want to capture\r\n2. Hold down the following three keys at the same time Command (&#8984;), Shift, and the number 3 (Command-Shift-3)\r\n3. A file will be created on the desktop titled \"Screen shot\" followed by the current date and time.\r\n4. You can now upload that screen shot file to the Kukui Cup.", 
-      "title": "How do I take a screenshot on a Mac?"
+      "slug": "quests", 
+      "contents": "This is the quest bar, where you can see your currently active and available quests.", 
+      "title": "Quests"
     }
   }, 
   {
@@ -214,9 +236,9 @@
     "fields": {
       "category": "widget", 
       "parent_topic": null, 
-      "slug": "activity-details", 
-      "contents": "This panel describes an activity that you can perform to earn points. Some activities involve watching a video, others will require you to go off and do something.\r\n\r\nWhen you complete an activity, click the **I Did This!** button at the bottom of the panel, and you will be prompted for some sort of verification: answering a question, uploading a picture, etc. An administrator will then review your answer (usually within a few hours), and if your answer is approved, you will receive your points.", 
-      "title": "Activity help"
+      "slug": "social-bonus", 
+      "contents": "We strongly encourage you to complete the activities with friends. It is more fun and we will reward you social bonus points. After you complete the activity with your friends, all you need to do is to input one of your friends UH email in confirmation dialog box.", 
+      "title": "social bonus"
     }
   }, 
   {
@@ -225,9 +247,9 @@
     "fields": {
       "category": "widget", 
       "parent_topic": null, 
-      "slug": "quests", 
-      "contents": "The quest bar shows 3 quests that you can undertake. Clicking on the title of a quest will show the details of that particular quest. A second click on the title will hide the details.\r\n\r\nQuests are intended to guide you through the Kukui Cup website, highlighting interesting things and encouraging you to explore the competition. Each quest consists of a series of steps for you to undertake.\r\n\r\nIf a quest sounds interesting, click the **\"I accept this quest\"** button in the lower right corner of the quest description.\r\n\r\nIf you aren't interested in a quest, you can also skip it by clicking the **\"I am not interested in this quest\"** button.\r\n\r\nWhen you have completed a quest, you will get a notification of your success, which you can share on Facebook if you choose to. Early quests are easy, while later quests are more complicated. Go forth and explore!", 
-      "title": "Quest help"
+      "slug": "excursion-details", 
+      "contents": "You will see the detailed information of the excursion in this widget.  \r\n\r\n You will be asked to sign up for an excursion. after the excursion, you can come back here to claim the rest of your points.", 
+      "title": "Excursion Details"
     }
   }, 
   {
@@ -236,9 +258,9 @@
     "fields": {
       "category": "widget", 
       "parent_topic": null, 
-      "slug": "upcoming-events", 
-      "contents": "This widget shows a list of upcoming events you can attend as part of the competition. Each row shows the name, number of points you can earn by attending, the time, and the place of the event. You can click on the event to find out more about it, and see who else is attending.\r\n\r\nBelow the event list, you can enter an attendance code from an event you attended. When you enter the code, you are awarded the points.", 
-      "title": "Upcoming Events help"
+      "slug": "commitment-details", 
+      "contents": "You will see the detailed information of the commitment in this widget.  \r\n\r\n You will be asked to commit to this commitment. after the commitment perioid, you can come back here to claim the rest of your points.", 
+      "title": "Commitment Details"
     }
   }, 
   {
@@ -247,9 +269,9 @@
     "fields": {
       "category": "widget", 
       "parent_topic": null, 
-      "slug": "points-scoreboard", 
-      "contents": "This scoreboard rotates between 3 displays: the ranking of lounges, ranking of individuals across all towers (overall ranking), and the ranking of individuals just within your lounge. You and your lounge will be displayed in boldface in the scoreboard.\r\n\r\nCheck the scoreboard to see where you and your lounge stand in the competition.", 
-      "title": "Points Scoreboard"
+      "slug": "event-details", 
+      "contents": "You will see the detailed information of the event in this widget.  \r\n\r\n You will be asked to sign up for an event. after event, you can come back here to claim the rest of your points.", 
+      "title": "Event Details"
     }
   }, 
   {
@@ -258,207 +280,9 @@
     "fields": {
       "category": "widget", 
       "parent_topic": null, 
-      "slug": "social-bonus", 
-      "contents": "The **social bonus** is a way to have fun doing things with your friends and earn extra points! Certain activities and events are eligible for the social bonus. It's really easy:\r\n\r\n1. Plan to attend an event, make a commitment, or perform an activity with one or more friends\r\n2. Make sure you have your friend's UH email address\r\n3. When you click the button to get your points, you will be prompted for your friend's UH email address\r\n4. If the friend you entered does the same activity, you get the social bonus points\r\n5. Your friend can enter your email address so they can also get the social bonus", 
-      "title": "Social bonus"
-    }
-  }, 
-  {
-    "pk": 27, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "commitment-details", 
-      "contents": "This panel describes a commitment that you can make to earn points. If this is something you would like to commit to, click the **\"I will do this\"** button. Each commitment lasts a certain number of days, and you must live up to your commitment while it is active. You can have up to 5 commitments active at one time.\r\n\r\nOnce the time period is up, you can return to this page to get the rest of your points.", 
-      "title": "Commitment help"
-    }
-  }, 
-  {
-    "pk": 28, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "event-details", 
-      "contents": "This panel describes an event that you can attend to earn points. If the event sounds interesting, you can click the **\"I want to sign up\"** button to indicate that you plan to attend and you will get 2 points for signing up.\r\n\r\nAt the event, there will be someone from the Kukui Cup handing out little slips of paper called *attendance codes*. When the event is over, you can come back to this page and type in the attendance code to get the rest of your points.", 
-      "title": "Event help"
-    }
-  }, 
-  {
-    "pk": 29, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "excursion-details", 
-      "contents": "This panel describes an excursion that you can go on to earn points. Excursions generally involve traveling off campus, and transportation will be provided by the Kukui Cup.\r\n\r\nIf the excursion sounds interesting, you can click the **\"I want to sign up\"** button to indicate that you plan to attend and you will get 2 points for signing up.\r\n\r\nOn the excursion, there will be someone from the Kukui Cup handing out little slips of paper called *attendance codes*. When the excursion is over, you can come back to this page and type in the attendance code to get the rest of your points.", 
-      "title": "Excursion help"
-    }
-  }, 
-  {
-    "pk": 30, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "energy-scoreboard", 
-      "contents": "The energy scoreboard shows how your lounge is doing in the energy competition. The goal of the energy competition is to be the lounge that uses the least amount of electricity.\r\n\r\nThe scoreboard alternates between showing the amount of energy used by each lounge during the current round, and the amount of energy used overall.", 
-      "title": "Energy scoreboard"
-    }
-  }, 
-  {
-    "pk": 31, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "news-directory", 
-      "contents": "This panel shows you some of the top participants in your lounge. If you click on any of the lounge members, you will be taken to a page that shows more details about each member, including their: points, ranking, badges, and commitments.", 
-      "title": "Lounge Members"
-    }
-  }, 
-  {
-    "pk": 32, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "news-feed", 
-      "contents": "The news feed is a place where you can discuss things or organize with your loungemates. Only members of your lounge can see your lounge newsfeed. To post, just type something into the text box, and press the **Post** button.\r\n\r\nAs members of your lounge do things in the competition, automatic posts will be made to the news feed so you can see what your loungemates are up to in the Cup.", 
-      "title": "News Feed Help"
-    }
-  }, 
-  {
-    "pk": 33, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "most-popular", 
-      "contents": "This panel shows the most popular activities, commitments, events, and excursions in the competition. If one of them catches your eye, just click on it to see more information about it.", 
-      "title": "Most Popular"
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "my-public-commitments", 
-      "contents": "This is a list of the commitments you have made. You can make up to 5 commitments at one time, and these commitments are public to other members of your lounge.", 
-      "title": "My Public Commitments"
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "prizes", 
-      "contents": "This panel shows the various prizes that can be won during the competition, cycling through the different rounds of the competition. It will also show who the current leader is for each prize. For more information on a prize, click on the name of the prize.", 
-      "title": "Prizes"
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "raffle-game", 
-      "contents": "This panel displays the *Raffle Game*. For every 25 points you earn in the competition, you get 1 raffle ticket. Each round of the competition has a set of prizes that are awarded through the Raffle Game. You can allocate your raffle tickets to any of the prizes, as can all the other Kukui Cup players. At the end of the round, a winner is selected from the tickets allocated to that prize.\r\n\r\nSince allocating more tickets to a prize increases your odds of winning it, you can decide whether you want to focus on one particular prize, or spread your tickets over multiple prizes. You can shift your ticket allocations as much as you want until the deadline given at the bottom of the panel.\r\n\r\n**Don't forget to allocate your tickets, as they expire at the end of the round!**\r\n\r\nNote that raffle tickets are separate from points, you won't reduce your score by allocating raffle tickets. Good luck!", 
-      "title": "Raffle Game"
-    }
-  }, 
-  {
-    "pk": 37, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "my-info", 
-      "contents": "This panel displays your personal profile information. Here you can change your:\r\n\r\n* Display name (this is the name others in your lounge will see, and how you will be identified on scoreboards)\r\n* Your picture (either upload a picture or grab from Facebook profile)\r\n* Your preferred email address for reminders\r\n* Your mobile number and carrier if you want to receive reminder texts for events\r\n\r\nRemember to click the **Save Changes** link at the bottom of the panel after you make any changes.", 
-      "title": "My Info"
-    }
-  }, 
-  {
-    "pk": 38, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "my-badges", 
-      "contents": "This panel displays all the badges you have acquired so far. You receive badges for certain achievements in the game. For some hints on what badges are available and how you might get them, click on the [See Badge Catalog](/profile/badges/) link.", 
-      "title": "My Badges"
-    }
-  }, 
-  {
-    "pk": 39, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "my-achievements", 
-      "contents": "This panel shows what you have accomplished in the Kukui Cup so far. The top portion of the window shows things that are pending, such as current commitments and activities that are waiting for verification from the administrators. The bottom portion shows activities that are completed, along with how many points you earned for each one.\r\n\r\nYou can go to the activity page by clicking on the name of the activity.", 
-      "title": "My Achievements"
-    }
-  }, 
-  {
-    "pk": 40, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "canopy-quests", 
-      "contents": "The Canopy quest bar is like the regular quest bar: it shows 3 quests that you can undertake. Clicking on the title of a quest causes the quest bar to show the details of that particular quest. A second click on the title will hide the details.\r\n\r\nCanopy quests are intended to explore the Hale Aloha real-time energy data in more depth. Each quest will ask you to examine the advanced energy visualizations and answer some questions. You can post your answers to the Canopy Feed for other Canopy members to comment on.", 
-      "title": "Canopy Quests"
-    }
-  }, 
-  {
-    "pk": 41, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "advanced-visualizations", 
-      "contents": "This panel provides 3 different visualizations of energy use in Hale Aloha:\r\n\r\nThe **Hot Spots** visualization shows hourly energy use for one lounge over a 7 day period. Large spots mean high energy use, small spots mean low energy use. The spots are red if they are among the highest 5% of energy used. This visualization lets you look for patterns of energy use in a particular lounge.\r\n\r\nThe **Heat Map** visualization shows energy use for all lounges in a particular tower over a 24 hour or 21 day period. Green squares represent lower energy use, while red squares show higher energy use. At a glance, you can see that times and what lounges seem to be using the most and least energy.\r\n\r\nThe **Line Graph** visualization shows energy or power use in one or more lounges as a line graph. You can scroll around the chart, zoom in, and see what the energy or power use was at any point in the graph.", 
-      "title": "Advanced Visualizations"
-    }
-  }, 
-  {
-    "pk": 42, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "canopy-feed", 
-      "contents": "The Canopy feed is like the Lounge newsfeed on the News page, but only members of the Canopy can see and post to the Canopy feed. You can use the Canopy feed to communicate with other Canopy members and sometimes administrators might drop by.", 
-      "title": "Canopy Feed"
-    }
-  }, 
-  {
-    "pk": 43, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "canopy-directory", 
-      "contents": "This panel shows you some of the other Canopy members. If you click on any of the lounge members, you will be taken to a page that shows more details about each member, including their: points, ranking, badges, and commitments.", 
-      "title": "Canopy Members"
-    }
-  }, 
-  {
-    "pk": 44, 
-    "model": "help_topics.helptopic", 
-    "fields": {
-      "category": "widget", 
-      "parent_topic": null, 
-      "slug": "attendance-code", 
-      "contents": "When you attend a Kukui Cup event or excursion, make sure you get an attendance code from one of the Kukui Cup staff members at the event. The code will come on a little slip of paper, make sure you save it! When the event is finished, you can type the code into the field here and click **Submit**, and then you will get the points you earned by attending the event.\r\n\r\nNote that each attendance code is only good for the event it was issued at, and can only be used once, like a ticket to a concert. So don't share your attendance code with friends, make sure they get their own!", 
-      "title": "Attendance Code Entry"
+      "slug": "activity-details", 
+      "contents": "You will see the detailed information of the activity in this widget.  <p/> You will be asked to complete the activity and submit your answer related to the activity.", 
+      "title": "Activity Details"
     }
   }
 ]
