@@ -179,7 +179,8 @@ def get_available_events(user):
   unlock_events = []
   for event in events:
     if is_unlock(user, event):
-      unlock_events.append(event)
+      if not ActivityMember.objects.filter(user=user, activity=event, award_date__isnull=False):
+        unlock_events.append(event)
 
   return unlock_events # Filters out inactive activities.
   
