@@ -1,3 +1,5 @@
+{% extends "mobile/base.html" %}
+{% block body%}
 {% load class_tags %}
 
 {% if not task.is_event_completed %}
@@ -19,7 +21,7 @@
 </div>
 
 <div {% get_id_and_classes "task-reminder-dialog" %} title="Remind Me" style="display: none">
-  {% include "view_activities/reminder_form.html" %}
+  {% include "mobile/smartgrid/reminder_form.html" %}
 </div>
 
 <script type="text/javascript">
@@ -119,3 +121,4 @@
   });
 </script>
 {% endif %}
+{%endblock%}

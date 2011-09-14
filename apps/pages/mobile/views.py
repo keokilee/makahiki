@@ -390,13 +390,26 @@ def task(request, category_slug, slug):
     "reminders":reminders,
   }, context_instance=RequestContext(request))    
 
+
+
+
+
 @never_cache
 def reminder(request, category_slug, slug):
+  user = request.user
+  try:
+    task = get_object_or_404(ActivityBase, type='event', slug=slug)
+    task = task.activity
+  except ActivityBase.DoesNotExist:
+    try:
+      task = get_object_or_404(ActivityBase, type='excursion', slug=slug)
+      task = task.activity
+    except ActivityBase.DoesNotExist:
+      raise Http404 
+
    # Load reminders
   reminders = {}
-  if task.type == "event" or task.type == "excursion":
-    task.available_seat = task.event_max_seat - member_all_count
-    
+  if task.type == "event" or task.type == "excursion":  
     # Store initial reminder fields.
     reminder_init = {
         "email": user.get_profile().contact_email or user.email,
@@ -428,8 +441,13 @@ def reminder(request, category_slug, slug):
       pass
       
     reminders.update({"form": ReminderForm(initial=reminder_init)})
-    return render_to_response("mobile/smartgrid/reminder.html", { 
+
+
+    return render_to_response("mobile/smartgrid/reminder_form.html", { 
     "reminders":reminders,
+    "category_slug":category_slug,
+    "slug":slug,
+    "task":task,
   }, context_instance=RequestContext(request))    
 
 ###################################################################################################
