@@ -291,13 +291,11 @@ def __drop_commitment(request, commitment):
 
     #decrease sign up point
     message = "Commitment: %s (Drop)" % (commitment.title)
-    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
-    user.get_profile().save()
     value = 2
-      
-    # messages.info("You are now drop commitment to \"%s\"" % commitment.title)
+    user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+    user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("activity_index", args=())+"?notify=drop_commit&value="+str(value))
+    return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,))+"?notify=drop_commit&value="+str(value))
 
 def __add_activity(request, activity):
   """Commit the current user to the activity."""
@@ -580,6 +578,8 @@ def task(request, activity_type, slug):
       notification = "You just earned " + value + " points."
     if notify == "drop_activity":
       notification = "Removed from signup list, you lose " + value + " points."
+    if notify == "drop_commit":
+      notification = "Commitment dropped, you lose " + value + " points."
   
   return render_to_response("view_activities/task.html", {
     "task":task,

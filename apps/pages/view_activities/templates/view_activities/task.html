@@ -61,7 +61,11 @@
       {% else %}
         people in the competition have 
       {% endif %}
-      done this.
+      {% if task.type == "event" or task.type == "excursion" %}
+        signed up.
+      {% else %}
+        done this.
+      {% endif %}
       <p/>
       {{member_floor}}  
       {% if member_floor == 1 %}
@@ -69,7 +73,11 @@
       {% else %}
         people in your {{FLOOR_LABEL.lower}} have 
       {% endif %}
-      done this.
+      {% if task.type == "event" or task.type == "excursion" %}
+        signed up.
+      {% else %}
+        done this.
+      {% endif %}
       <br/>
       {% for user in users %}
          <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
@@ -146,7 +154,8 @@
              <p/>
               {% if approval.days_left > 0 %}
               Thank you! You've earned 2 points by committing.<br/>
-              You have {{approval.days_left}} days left to come back to get the rest of your points.
+              Please come back on {{ approval.completion_date|date:"l m/d" }}
+              ({{approval.days_left}} days left) to get the rest of your points.
               <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>

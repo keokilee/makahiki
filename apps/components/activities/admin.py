@@ -13,7 +13,7 @@ class CommitmentAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Basic Information", {
       'fields' : ('name', 'slug', 'title', 'description', 'social_bonus', 'duration', 
-          'depends_on', 'depends_on_text','energy_related', 'mobile_restricted'),
+          'depends_on', 'depends_on_text','energy_related', 'mobile_restricted', ('is_canopy','is_group')),
     }),
     ("Points", {"fields": ("point_value",)}),
     ("Ordering", {"fields": ("priority", "category")}),
@@ -303,19 +303,33 @@ class ActivityMemberAdminForm(forms.ModelForm):
       self._errors["points_awarded"] = ErrorList([u"This field is only required for activities with variable point values."])
       del cleaned_data["points_awarded"]
       
-    return cleaned_data 
+    return cleaned_data
 
 class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
-  fields = ("user", "activity", "question", "response", "image", "admin_comment", "approval_status", "social_email")
-  readonly_fields = ("question", "response", "social_email",)
-  list_display = ("activity", "submission_date", "approval_status", "question", "response", "image")
+  fields = ("user", "activity", "question", "full_response", "image", "admin_comment", "approval_status", "social_email")
+  readonly_fields = ("question", "full_response", "social_email",)
+  list_display = ("activity", "submission_date", "approval_status", "short_question", "short_response")
   list_filter = ["approval_status"]
   actions = ["delete_selected"]
   date_hierarchy = "submission_date"
   ordering = ["submission_date"]
+
   form = ActivityMemberAdminForm
-  
+
+  def short_question(self, obj):
+        return "%s" % (obj.question)
+  short_question.short_description = 'Question'
+
+  def short_response(self, obj):
+        return "%s %s" % (obj.response, obj.image)
+  short_response.short_description = 'Response'
+
+  def full_response(self, obj):
+      return "%s" % (obj.response).replace("\n", "<br/>")
+  full_response.short_description = 'Response'
+  full_response.allow_tags = True
+
   def changelist_view(self, request, extra_context=None):
     """
     Set the default filter of the admin view to pending.
