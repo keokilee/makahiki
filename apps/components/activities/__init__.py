@@ -306,31 +306,24 @@ def is_unlock_by_id(user, task_id, task_depends_on, activity_members, commitment
                }
 
   return eval(expr, {"__builtins__":None}, allow_dict)
-  
+
 def annotate_task_status(user, task):
   """Adds additional fields that identify whether or not the activity is approved."""
-
-  if task.type == "event" or task.type == "excursion":
-    task.is_event_pau = task.activity.is_event_completed()
-
+  task.is_unlock = is_unlock(user, task)
   task.is_pau = is_pau(user, task)
-  if task.is_pau:
-      task.is_unlock = True
-      if task.type != "commitment":
-        members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at").values("approval_status","award_date")
-      else:
-        members = CommitmentMember.objects.filter(user=user, commitment=task).order_by("-updated_at").values("completion_date", "award_date")
+  if task.type == "event" or task.type == "excursion":
+    task.is_event_pau = Activity.objects.get(pk=task.pk).is_event_completed()
 
-      if members:
-        task.approval = members[0]
-        print task.approval
-        if task.type == "commitment":
-          task.approval["days_left"] = task.approval["completion_date"] - datetime.date.today()
+  members = None
+  if task.type != "commitment":
+    members = ActivityMember.objects.filter(user=user, activity=task).order_by("-updated_at")
   else:
-    task.is_unlock = is_unlock(user, task)
-      
-  return task
+    members = CommitmentMember.objects.filter(user=user, commitment=task)
 
+  if members.count() > 0:
+    task.approval = members[0]
+
+  return task
 
 def annotate_simple_task_status(user, task, activity_members, commitment_members):
   """Adds additional fields that identify whether or not the activity is approved."""
