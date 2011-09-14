@@ -80,8 +80,6 @@ def index(request):
 def __get_categories(user):
   categories = cache.get('smartgrid-categories-%s' % user.username)
   if not categories:
-      categories = Category.objects.all()
-
       cursor = connection.cursor()
 
       cursor.execute('''SELECT  activities_activitymember.activity_id,
@@ -108,12 +106,34 @@ def __get_categories(user):
 
       commitment_members = _dictfetchall(cursor)
 
+      cursor.execute('''SELECT activities_activitybase.category_id,
+            activities_activitybase.id,
+            activities_activitybase.type,
+            activities_activitybase.depends_on,
+            activities_activitybase.slug,
+            activities_activitybase.name,
+            activities_activity.event_date,
+            activities_activity.point_value as 'activity_point_value',
+            activities_activity.point_range_start,
+            activities_activity.point_range_end,
+            activities_commitment.point_value as 'commitment_point_value'
+          FROM activities_activitybase
+          LEFT JOIN activities_activity
+            ON (activities_activity.activitybase_ptr_id = activities_activitybase.id)
+          LEFT JOIN activities_commitment
+            ON (activities_commitment.activitybase_ptr_id = activities_activitybase.id)
+          ORDER BY activities_activitybase.category_id ASC, activities_activitybase.priority ASC''')
+
+      tasks = _dictfetchall(cursor)
+      for task in tasks:
+          annotate_simple_task_status(user, task, activity_members, commitment_members)
+
+      categories = Category.objects.all()
       for cat in categories:
         task_list = []
-        tasks = ActivityBase.objects.filter(category=cat).order_by("priority").values("id", "type","depends_on", "slug", "name")
         for task in tasks:
-          task_list.append(annotate_simple_task_status(user, task, activity_members, commitment_members))
-
+          if task["category_id"]==cat.id:
+            task_list.append(task)
         cat.task_list = task_list
 
       # Cache the categories for an hour (or until they are invalidated)
