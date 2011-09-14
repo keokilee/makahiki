@@ -1,7 +1,7 @@
-{% extends "mobile/base.html" %}
-{% block body%}
+{% extends "mobile/base.html"%}
 {% load class_tags %}
 
+{% block body %}
 {% if not task.is_event_completed %}
 <div {% get_id_and_classes "task-reminder"%}>
   <p>
@@ -21,7 +21,7 @@
 </div>
 
 <div {% get_id_and_classes "task-reminder-dialog" %} title="Remind Me" style="display: none">
-  {% include "mobile/smartgrid/reminder_form.html" %}
+  {% include "view_activities/reminder_form.html" %}
 </div>
 
 <script type="text/javascript">
@@ -29,13 +29,7 @@
     $("#task-reminder-dialog").dialog({
       modal: true,
       autoOpen: false,
-      width: 650,
-      open: function (event, ui) {
-        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-open");
-      },
-      close: function(event, ui) {
-        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-close");
-      }
+      width: 650, 
     });
     
     $("#task-reminder-button").click(function() {
@@ -57,13 +51,13 @@
         hour = 12;
       }
       if(minutes < 10) {
-        minutes = "0"  + minutes;
+        minutes = "0" + minutes;
       }
       var timeString = "" + hour + ":" + minutes + " " + ampm;
       return d.toDateString() + ", " + timeString;
     }
     
-    // Function for binding the reminder form elements.  This is needed when there are form errors to process the
+    // Function for binding the reminder form elements. This is needed when there are form errors to process the
     // ajax response.
     function bindReminderForm() {
       $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));

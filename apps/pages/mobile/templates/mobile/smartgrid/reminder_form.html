@@ -1,12 +1,8 @@
-{% extends "mobile/base.html" %}
-{% block body%}
 {% load class_tags %}
 
 <form id="task-reminder-form" action="{% url activity_reminder task.type task.slug %}" method="post">
-  {{reminders.form}}
- <!-- {% csrf_token %}
+  {% csrf_token %}
   {{ reminders.form.non_field_errors }}
-  {{reminders.form.messages}}
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>
       <div style="float: left; width: 5%; padding-top: 5px">
@@ -33,7 +29,5 @@
   <div style="clear: both; padding-top: 15px">
     <button {% get_id_and_classes "task-reminder-form-submit" %} style="display: inline">Remind Me</button>
     <button {% get_id_and_classes "task-reminder-form-cancel" %}>Cancel</button>
-  </div>-->
-<button type="submit">Remind Me</button>
+  </div>
 </form>
-{% endblock%}

@@ -3,6 +3,7 @@ import json
 import datetime
 import urllib2
 
+from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -20,6 +21,7 @@ from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
 import components.makahiki_facebook.facebook as facebook
 from pages.home.forms import FacebookForm, ProfileForm
+from components.help_topics.models import HelpTopic
 
 @never_cache
 @login_required
@@ -272,3 +274,18 @@ def setup_complete(request):
     return response
   raise Http404
     
+@never_cache 
+@login_required
+def mobile_tc(request):
+  topic = get_object_or_404(HelpTopic, slug='terms-and-conditions', category='rules')
+  if request.is_ajax():
+    contents = render_to_string("help/dialog.html", {"topic": topic})
+    return HttpResponse(json.dumps({
+        "title": topic.title,
+        "contents": contents,
+    }), mimetype="application/json")
+  return render_to_response("home/first-login/mobile_TC.html", {
+      "topic": topic,
+      }, context_instance=RequestContext(request))
+ 
+

@@ -443,12 +443,13 @@ def reminder(request, category_slug, slug):
     reminders.update({"form": ReminderForm(initial=reminder_init)})
 
 
-    return render_to_response("mobile/smartgrid/reminder_form.html", { 
+    return render_to_response("mobile/smartgrid/reminder.html", { 
     "reminders":reminders,
     "category_slug":category_slug,
     "slug":slug,
     "task":task,
   }, context_instance=RequestContext(request))    
+
 
 ###################################################################################################
 
