@@ -500,7 +500,14 @@ class ActivityMember(CommonActivityUser):
       
     if self.approval_status == u"rejected":
       self._handle_rejected()
-     
+
+  def _has_noshow_penalty(self):
+    diff = datetime.date.today() - self.submission_date.date()
+    if diff.days > 2:
+        return True
+    else:
+        return False
+
   def _handle_approved(self):
     profile = self.user.get_profile()
     # Determine how many points to award.
@@ -511,6 +518,11 @@ class ActivityMember(CommonActivityUser):
     
     title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
     profile.add_points(points, self.submission_date, title, self)
+
+    ## reverse event/excursion noshow penalty
+    if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
+        message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
+        profile.add_points(4, self.submission_date, message, self)
 
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
