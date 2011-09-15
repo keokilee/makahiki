@@ -59,17 +59,23 @@ class QuestionChoice(models.Model):
 class ConfirmationCode(models.Model):
   """Represents confirmation codes for activities."""
   activity = models.ForeignKey("Activity")
-  code = models.CharField(max_length=10, unique=True)
+  code = models.CharField(max_length=50, unique=True)
   is_active = models.BooleanField(default=True, editable=False)
   
   @staticmethod
   def generate_codes_for_activity(activity, num_codes):
     """Generates a set of random codes for the activity."""
+    values = 'abcdefghijkmnpqrstuvwxyzABCDEFHJKLMNPQRTUVWXYZ234789!?@#$%&*+='
     
-    values = 'abcdefghijklmnopqrstuvwxyz0123456789'
-    # Use the first 4 characters of the activity title as the start of the code.
-    header = string.join(activity.title.split(), "")
-    header = header.lower()[:4]
+    # Use the first non-dash component of the slug.
+    components = activity.slug.split('-')
+    header = components[0]
+    # Need to see if there are other codes with this header.
+    index = 1
+    while ConfirmationCode.objects.filter(code__istartswith=header).count() > 0 or index < len(components):
+      header += components[index]
+      index += 1
+      
     header += "-"
     for i in range(0, num_codes):
       code = ConfirmationCode(activity=activity, code=header)
