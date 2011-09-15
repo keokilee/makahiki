@@ -59,7 +59,7 @@ class QuestionChoice(models.Model):
 class ConfirmationCode(models.Model):
   """Represents confirmation codes for activities."""
   activity = models.ForeignKey("Activity")
-  code = models.CharField(max_length=10, unique=True)
+  code = models.CharField(max_length=50, unique=True)
   is_active = models.BooleanField(default=True, editable=False)
   
   @staticmethod
