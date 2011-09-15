@@ -243,10 +243,18 @@ def task_form(request,category_slug,slug):
 
 @never_cache
 @login_required
-def task(request, category_slug, slug):
+def task(request, category_slug, slug, sender=None):
   """individual task page"""
   user = request.user
   
+  if sender is None:
+    ref=request.META["HTTP_REFERER"]
+    if "profile" in ref:
+      sender = "profile"
+    elif "events" in ref:
+      sender = "events"
+    else:
+      sender = "sgg"  
   floor = user.get_profile().floor
   pau = False
   question = None
@@ -387,6 +395,7 @@ def task(request, category_slug, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
+    "sender":sender,
     "reminders":reminders,
   }, context_instance=RequestContext(request))    
 
