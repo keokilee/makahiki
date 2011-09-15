@@ -45,12 +45,12 @@
        <ul data-role="listview" > 
 	 {% for events in object.eventlist %}  
 	     <li> 
-               <a href="{% url mobile_task events.category.name|slugify events.name|slugify %}" rel="external">
+               <a href="{% url mobile_task events.type events.slug %}" rel="external">
                  {%if events.attending %} 
                     <img align="middle" src="/site_media/static/css/default/images/star.png" alt="attending">
                  {% endif %}
 	        
-	         <h4>{{events.title}}
+	         <h4>{{events.title}} {{events.a}}
                  
                     </h4> 
 	         <p><strong>{{events.event_location}}</strong></p> 
@@ -80,7 +80,7 @@
 	 {% for events in objlist %}  
               <!--if events.is_unlock-->
 	     <li> 
-               <a href="{% url mobile_task events.category.name|slugify events.name|slugify%}" rel="external"> 
+               <a href="{% url mobile_task events.type events.slug %}" rel="external"> 
 	         <h3>{{events.title}}</h3> 
 	         <p><strong>{{events.event_location}}</strong></p> 
 		 <p> ({{events.point_value}} points)</p>

@@ -132,7 +132,7 @@ def taskdeny(request, category_slug, slug):
 
 @login_required
 @never_cache
-def task_form(request,category_slug,slug):
+def task_form(request,atype,slug):
   """individual task page"""
   user = request.user
   
@@ -145,7 +145,7 @@ def task_form(request,category_slug,slug):
   member_all_count = 0
   member_floor_count = 0
   
-  task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+  task = get_object_or_404(ActivityBase, type=atype, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
@@ -248,13 +248,16 @@ def task(request, category_slug, slug, sender=None):
   user = request.user
   
   if sender is None:
-    ref=request.META["HTTP_REFERER"]
-    if "profile" in ref:
-      sender = "profile"
-    elif "events" in ref:
-      sender = "events"
-    else:
-      sender = "sgg"  
+    try:
+      ref=request.META["HTTP_REFERER"]
+      if "profile" in ref:
+        sender = "profile"
+      elif "events" in ref:
+        sender = "events"
+      else:
+        sender = "sgg"  
+    except:
+      sender="sgg"
   floor = user.get_profile().floor
   pau = False
   question = None
@@ -264,7 +267,10 @@ def task(request, category_slug, slug, sender=None):
   member_all_count = 0
   member_floor_count = 0
   
-  task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+  try:
+    task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+  except:
+    task = get_object_or_404(ActivityBase,type=category_slug, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
@@ -728,11 +734,12 @@ def events(request,option):
       temparray = [] 
       count = 0
       for event in events: 
-        if event.event_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):  
+        e_date = event["event_date"]
+        if e_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):  
           try:
-            member = ActivityMember.objects.get(user=request.user,activity=event) 
+            member = ActivityMember.objects.get(user=request.user,activity__id=event["id"])
             if member.approval_status == "pending":  
-              event.attending = True
+              event["attending"] = True
           except ActivityMember.DoesNotExist: 
             boolean = False
           temparray.append(event)

@@ -2,6 +2,8 @@
 {% load class_tags %}
 
 {% block body %}
+
+ <div data-role="content">
 {% if not task.is_event_completed %}
 <div {% get_id_and_classes "task-reminder"%}>
   <p>
@@ -24,12 +26,21 @@
   {% include "view_activities/reminder_form.html" %}
 </div>
 
+    <script src="{{STATIC_URL}}js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery.cycle.all.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery.form.2.43.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}js/jquery.countdown.pack.js" type="text/javascript"></script> 
+    <script src="{{STATIC_URL}}js/jquery.purr.js" type="text/javascript" ></script> 
+    <script src="{{STATIC_URL}}/js/makahiki.js" type="text/javascript"></script>  
+
 <script type="text/javascript">
+$.noConflict();  
   jQuery(document).ready(function($) {
     $("#task-reminder-dialog").dialog({
       modal: true,
       autoOpen: false,
-      width: 650, 
+      width: 650
     });
     
     $("#task-reminder-button").click(function() {
@@ -115,4 +126,5 @@
   });
 </script>
 {% endif %}
+</div>
 {%endblock%}
