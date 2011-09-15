@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^setup/activity/$', 'pages.home.views.setup_activity', name="setup_activity"),
     url(r'^setup/question/$', 'pages.home.views.setup_question', name="setup_question"),
     url(r'^setup/complete/$', 'pages.home.views.setup_complete', name="setup_complete"),
+    url(r'^tc/?$', 'pages.home.views.mobile_tc', name="mobile_tc"),
 )

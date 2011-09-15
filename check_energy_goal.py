@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import datetime
 
 from os.path import abspath, dirname, join
 
@@ -40,6 +41,9 @@ sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
+from components.activities.models import *
+from django.db.models import Q
+
 
 __EMAIL__ = settings.GDATA_EMAIL
 __PASSWORD__ = settings.GDATA_PASSWORD
@@ -99,5 +103,32 @@ def check_energy_goal():
   gdata = GDataGoal()
   gdata.Run()
 
+def process_rsvp():
+  members = ActivityMember.objects.filter(Q(activity__type="event")|Q(activity__type="excursion"),approval_status="pending")
+  for member in members:
+
+      activity = member.activity
+      user = member.user
+      profile = user.get_profile()
+      
+      if member._has_noshow_penalty():
+          message = "%s: %s (No Show)" % (activity.type.capitalize(), activity.title)
+          profile.remove_points(4, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+          profile.save()
+          print "remove 4 points from '%s' for '%s'" % (profile.name, message)
+      else:
+          diff = datetime.date.today() - member.submission_date.date()
+          if diff.days > 1:
+              #create a email reminder
+              EmailReminder.objects.create(
+                  user=user,
+                  activity=activity,
+                  email_address=profile.contact_email,
+                  send_at=member.submission_date + datetime.timedelta(days=1)
+                  )
+              
+              print "create email reminder for %s" % profile.contact_email
+              
 if __name__ == "__main__":
     check_energy_goal()
+    #process_rsvp()

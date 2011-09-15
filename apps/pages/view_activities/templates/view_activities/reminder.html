@@ -55,13 +55,13 @@
         hour = 12;
       }
       if(minutes < 10) {
-        minutes = "0"  + minutes;
+        minutes = "0" + minutes;
       }
       var timeString = "" + hour + ":" + minutes + " " + ampm;
       return d.toDateString() + ", " + timeString;
     }
     
-    // Function for binding the reminder form elements.  This is needed when there are form errors to process the
+    // Function for binding the reminder form elements. This is needed when there are form errors to process the
     // ajax response.
     function bindReminderForm() {
       $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));

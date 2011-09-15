@@ -4612,7 +4612,7 @@
     "model": "activities.activity", 
     "fields": {
       "event_location": "All dorms", 
-      "confirm_type": "free", 
+      "confirm_type": "code", 
       "point_range_start": null, 
       "confirm_prompt": "Enter in the minimum value you saw for your Lounge's power usage, with everything turned off.", 
       "event_date": "2011-08-27 20:00:00", 

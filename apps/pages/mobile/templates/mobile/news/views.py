@@ -68,7 +68,7 @@ def post(request):
     return HttpResponse(json.dumps({
         "message": "This should not be blank."
     }), mimetype="application/json")
-  
+  return HttpResponseRedirect(reverse("mobile_news"))
   raise Http404
 
 @login_required

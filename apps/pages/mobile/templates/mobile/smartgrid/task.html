@@ -7,6 +7,13 @@
 {% block body %}
 
 {% load markup %}  
+
+<!--script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+        $("{%url root_index%}{% url mobile_reminder category|slugify task.name|slugify %}").dialog();
+    });
+</script-->
+
   <div data-role="header" data-theme="b">
 {{request.META.HTTP_REFERER}}
     <a href="{{request.META.HTTP_REFERER}}" data-icon="back" rel="external">Back</a>
@@ -87,13 +94,12 @@
 
             <p/>
             {% if task.is_event_completed %}
-            Thank you for attending the event. <br/>
-            Enter your code below to get points for this activity.
+            Thank you for attending the event. <br/> 
 
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
-
+ 	    <a type="button" href="{% url mobile_reminder task.category|slugify task.slug%}" rel="external">Set up Reminders</a>
             {% endif %}
 
           {% endif %}
@@ -161,7 +167,7 @@
         {% endif %}  
         {% if task.type == "event" or task.type == "excursion" %}
            {% if task.is_event_completed %}
-            <b>This event was already completed at {{task.event_date}}. <br/>
+            <b>This event took place on {{task.event_date}}. <br/>
               
 <!-- insert-->
       {% if task.type == "event" or task.type == "excursion" %}          {# event #}
@@ -218,7 +224,5 @@
 
 {#    <a href="{% url mobile_landing %}smartgrid/task/{{task.id}}/#form" data-role="button" data-rel="dialog" rel="external "data-transition="pop"> #}
 {#      I did this! - not part of desktop #}
-{#    </a> #}
-
-  </div>  
+{#    </a> #} 
 {% endblock %}
