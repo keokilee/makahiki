@@ -92,7 +92,8 @@ class ActivitiesUnitTestCase(TestCase):
       self.fail("Event is listed in the activity list.")
         
     events = get_available_events(self.user)
-    if not self.activity in events:
+    
+    if self.activity.id != events[0]["id"]:
       self.fail("Event is not listed in the events list.")
   
   def testApproveAddsPoints(self):

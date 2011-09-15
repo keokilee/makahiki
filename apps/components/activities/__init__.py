@@ -121,27 +121,29 @@ def get_available_activities(user):
 
 def get_available_golow_activities(user):
   """Retrieves only the golow activities that a user can participate in (excluding events)."""
+
+  commitments = Commitment.objects.exclude(
+    commitmentmember__user=user,
+  ).filter(
+    energy_related=True,
+    is_canopy=False,
+  ).order_by("priority").values("id","depends_on","type", "slug", "title", "point_value")
   
+  golow_tasks = []
+  for task in commitments:
+    if is_unlock_by_id(user, task["id"], task["depends_on"], None, None):
+      golow_tasks.append(task)
+      break
+
   activities = Activity.objects.exclude(
     activitymember__user=user,
   ).filter(
     energy_related=True,
     pub_date__lte=datetime.date.today(),
-    expire_date__gte=datetime.date.today(),    
-  ).order_by("type", "priority")
-  
-  commitments = Commitment.objects.exclude(
-    commitmentmember__user=user,
-  ).filter(
-    energy_related=True,
-  ).order_by("type", "priority")
-  
-  golow_tasks = []
-  for task in commitments:
-    if is_unlock(user, task):
-      golow_tasks.append(task)
-      break
-          
+    expire_date__gte=datetime.date.today(),
+    is_canopy=False,
+  ).order_by("type", "priority").values("id","depends_on","type", "slug", "title", "point_value", "point_range_end")
+
   _pick_one_activity_per_type(user, activities, golow_tasks)
   
   if len(golow_tasks) < 3:
@@ -155,12 +157,12 @@ def _pick_one_activity_per_type(user, activities, golow_tasks):
     if task in golow_tasks:
       continue;
       
-    if type == task.type:
+    if type == task["type"]:
       continue
     
-    if is_unlock(user, task):
+    if is_unlock_by_id(user, task["id"], task["depends_on"], None, None):
       golow_tasks.append(task)
-      type = task.type
+      type = task["type"]
         
       if len(golow_tasks) == 3:
         break
@@ -174,12 +176,13 @@ def get_available_events(user):
     expire_date__gte=datetime.date.today(),
     event_date__gte=datetime.date.today(),
     is_canopy=False,
-  ).order_by("event_date","priority")
-
+  ).order_by("event_date").values("id", "depends_on", "type", "slug", "title", "point_value","event_date", "event_location")
+  
   unlock_events = []
   for event in events:
-    if is_unlock(user, event):
-      unlock_events.append(event)
+    if is_unlock_by_id(user, event["id"], event["depends_on"], None, None):
+      if not ActivityMember.objects.filter(user=user, activity__id=event["id"], award_date__isnull=False):
+        unlock_events.append(event)
 
   return unlock_events # Filters out inactive activities.
   
@@ -348,16 +351,11 @@ def annotate_simple_task_status(user, task, activity_members, commitment_members
             task["approval"]["days_left"] =  0
           else:
             task["approval"]["days_left"] =  diff.days
-
-          commitment = Commitment.objects.filter(activitybase_ptr__id=task["id"]).values("point_value")[0]
-          task["point_value"]=commitment["point_value"]
+          task["point_value"]=task["commitment_point_value"]
       else:
-        activity = Activity.objects.filter(activitybase_ptr__id=task["id"]).values("event_date", "point_value", "point_range_start", "point_range_end")[0]
-        task["point_value"]=activity["point_value"]
-        task["point_range_start"]=activity["point_range_start"]
-        task["point_range_end"]=activity["point_range_end"]
-        if activity["event_date"]:
-            result = datetime.datetime.today() - activity["event_date"]
+        task["point_value"]=task["activity_point_value"]
+        if task["event_date"]:
+            result = datetime.datetime.today() - task["event_date"]
             if result.days >= 0 and result.seconds >= 0:
               task["is_event_pau"] = True
             else:
@@ -367,13 +365,9 @@ def annotate_simple_task_status(user, task, activity_members, commitment_members
     task["is_unlock"] = is_unlock_by_id(user, task["id"], task["depends_on"], activity_members, commitment_members)
     if task["is_unlock"]:
         if task["type"] == "commitment":
-            commitment = Commitment.objects.filter(activitybase_ptr__id=task["id"]).values("point_value")[0]
-            task["point_value"]=commitment["point_value"]
+            task["point_value"]=task["commitment_point_value"]
         else:
-          activity = Activity.objects.filter(activitybase_ptr__id=task["id"]).values("event_date", "point_value", "point_range_start", "point_range_end")[0]
-          task["point_value"]=activity["point_value"]
-          task["point_range_start"]=activity["point_range_start"]
-          task["point_range_end"]=activity["point_range_end"]
+          task["point_value"]=task["activity_point_value"]
 
   return task
 

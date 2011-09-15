@@ -42,6 +42,8 @@ sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 from components.activities.models import *
+from django.db.models import Q
+
 
 __EMAIL__ = settings.GDATA_EMAIL
 __PASSWORD__ = settings.GDATA_PASSWORD
@@ -102,7 +104,7 @@ def check_energy_goal():
   gdata.Run()
 
 def process_rsvp():
-  members = ActivityMember.objects.filter(activity__type="event",approval_status="pending")
+  members = ActivityMember.objects.filter(Q(activity__type="event")|Q(activity__type="excursion"),approval_status="pending")
   for member in members:
 
       activity = member.activity
