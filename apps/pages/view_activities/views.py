@@ -110,6 +110,7 @@ def __get_categories(user):
             activities_activitybase.id,
             activities_activitybase.type,
             activities_activitybase.depends_on,
+            activities_activitybase.depends_on_text,
             activities_activitybase.slug,
             activities_activitybase.name,
             activities_activity.event_date,
@@ -244,16 +245,14 @@ def __add_commitment(request, commitment):
   user = request.user
   value = None
 
-  if commitment in user.commitment_set.all():
+  if is_pending_commitment(user, commitment):
       if request.method == "POST":
         form = CommitmentCommentForm(request.POST, request=request, activity=commitment)
         if form.is_valid():
-          members = CommitmentMember.objects.filter(user=user, commitment=commitment);
-          if members.count() > 0 and members[0].days_left() == 0:
+            member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
             #commitment end, award full point
-            member = members[0]
             member.award_date = datetime.datetime.today()
-            member.comment = form.cleaned_data["social_email"]
+            member.social_email = form.cleaned_data["social_email"]
             member.save()
             value = commitment.point_value
         else:
@@ -267,9 +266,8 @@ def __add_commitment(request, commitment):
              "display_form":True,
              "form_title": "Get your points",
              }, context_instance=RequestContext(request))
-    
-  if commitment not in user.commitment_set.all() and can_add_commitments(user):
-    # User can commit to this commitment.
+  elif can_add_commitments(user):
+    # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
     member = CommitmentMember(user=user, commitment=commitment)
     member.save()
     # messages.info("You are now committed to \"%s\"" % commitment.title)
@@ -306,7 +304,7 @@ def __drop_commitment(request, commitment):
 
   if commitment in user.commitment_set.all():
     # User can drop this commitment.
-    member = user.commitmentmember_set.get(commitment=commitment)
+    member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
     member.delete()
 
     #decrease sign up point
@@ -521,23 +519,16 @@ def task(request, activity_type, slug):
         
   else:  ## "Commitment"
     task = task.commitment
-    members = CommitmentMember.objects.filter(user=user, commitment=task);
+    members = CommitmentMember.objects.filter(user=user, commitment=task).order_by("-updated_at");
     if members.count() > 0:
       pau = True
       approval = members[0]
       approval.points_awarded = task.point_value
-      if approval.comment:
-        ref_user = User.objects.get(email=approval.comment)
-        ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=task)
-        for m in ref_members:
-          if m.award_date:
-            approval.social_bonus_awarded = True
-
-    
+      
     member_all = CommitmentMember.objects.filter(commitment=task);
     form_title = "Make this commitment"
     form = CommitmentCommentForm(request=request)
-    can_commit = can_add_commitments(user)
+    can_commit = can_add_commitments(user) and not is_pending_commitment(user, task)
     
   floor_members = member_all.filter(user__profile__floor=floor)
   member_all_count = member_all.count()

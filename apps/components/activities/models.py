@@ -21,6 +21,7 @@ from lib.brabeion import badges
 from components.floors.models import Post
 from components.makahiki_base.models import Like
 from components.makahiki_notifications.models import UserNotification
+from components.cache.utils import invalidate_floor_avatar_cache
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
@@ -320,6 +321,7 @@ class CommitmentMember(CommonBase):
   completion_date = models.DateField()
   award_date = models.DateTimeField(blank=True, null=True)
   comment = models.TextField(blank=True)
+  social_email = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
   objects = CommitmentMemberManager()
   
   def __unicode__(self):
@@ -334,7 +336,23 @@ class CommitmentMember(CommonBase):
       return 0
     
     return diff.days
-  
+
+  def social_bonus_awarded(self):
+    """
+    Try to check if there is a social bonus.
+    """
+    if self.social_email:
+      try:
+        ref_user = User.objects.get(email=self.social_email)
+        ref_count = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment,
+            approval_status="approved").count()
+        if ref_count > 0:
+          return True
+      except User.DoesNotExist:
+        pass
+
+    return False
+
   def save(self):
     """Custom save method to set fields depending on whether or not the item is just added or if the item is completed."""
     profile = self.user.get_profile()
@@ -360,8 +378,8 @@ class CommitmentMember(CommonBase):
 
       ## award social bonus to myself if the ref user had successfully completed the activity
       social_message = message + "(Social Bonus)"
-      if self.comment:
-        ref_user = User.objects.get(email=self.comment)
+      if self.social_email:
+        ref_user = User.objects.get(email=self.social_email)
         ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment)
         for m in ref_members:
           if m.award_date:
@@ -388,6 +406,7 @@ class CommitmentMember(CommonBase):
         
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    invalidate_floor_avatar_cache(self.commitment, self.user)
     super(CommitmentMember, self).save()
     
     # Note, possibly_award is here because the member needs to be saved.
@@ -410,6 +429,7 @@ class CommitmentMember(CommonBase):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    invalidate_floor_avatar_cache(self.commitment, self.user)
     super(CommitmentMember, self).delete()
   
 
@@ -445,7 +465,7 @@ class ActivityMember(CommonActivityUser):
   
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
-  
+
   def social_bonus_awarded(self):
     """
     Try to check if there is a social bonus.
@@ -453,13 +473,13 @@ class ActivityMember(CommonActivityUser):
     if self.social_email:
       try:
         ref_user = User.objects.get(email=self.social_email)
-        ref_count = ActivityMember.objects.filter(user=ref_user, activity=self.activity, 
+        ref_count = ActivityMember.objects.filter(user=ref_user, activity=self.activity,
             approval_status="approved").count()
         if ref_count > 0:
           return True
       except User.DoesNotExist:
         pass
-        
+
     return False
         
   def save(self, *args, **kwargs):
@@ -489,7 +509,7 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
-    
+    invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).save()
     
     # We check here for approved and rejected items because the object needs to be saved first.
@@ -607,6 +627,7 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).delete()
 
 #------ Reminders --------#

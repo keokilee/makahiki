@@ -5,6 +5,8 @@
 {% load avatar_tags %}
 {% load class_tags %}
 
+{% load cache %}
+
 {% block page_title %}
   Get Nuts!
 {% endblock %}
@@ -38,12 +40,16 @@
       points.
       {% if task.type == "commitment" %}
         It lasts {{task.duration}} days.
-      {% endif %}
-      {% if task.type == "event" or task.type == "excursion" %}
-      <p/>
-      <b>When</b>  : {{task.event_date}} <br/>
-      <b>Where</b> : {{task.event_location}} <br/>
-      <b>Space(s) still available</b> : {{ task.available_seat }}
+      {% else %}
+         <p/>
+        {% if task.type == "event" or task.type == "excursion" %}
+          <b>When</b> : {{task.event_date}} <br/>
+          <b>Where</b> : {{task.event_location}} <br/>
+          <b>Estimated duration</b> : {{task.duration}} <br/>
+          <b>Space(s) still available</b> : {{ task.available_seat }}
+        {% else %}
+          <b>Estimated time required</b> : {{task.duration}} <br/>
+        {% endif %}
       {% endif %}
       <p/>
       {% if task.social_bonus > 0 %}
@@ -80,11 +86,21 @@
         done this.
       {% endif %}
       <br/>
+<<<<<<< HEAD
       {% for member in floor_members %}
          <img src="{% avatar_url member.user 40 %}" title="{{member.user.get_profile.name}}"/>
      {% endfor %}
      {% endwith %}
      
+=======
+
+{% cache 3600000 floor_avatar task.id user.get_profile.floor.id %}
+      {% for user in users %}
+         <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
+     {% endfor %}
+{% endcache %}
+
+>>>>>>> 1955a298f1b610d8ca01e2b1debfa3a9e61f5c1d
      {% if task.type == "event" or task.type == "excursion" %}
      {% include "view_activities/reminder.html" %}
      {% endif %}
@@ -134,6 +150,10 @@
             {% endif %}  
             <br/>
             Thank you for your participation.
+            {% if task.type == "commitment" and can_commit %}
+              <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I will do this again!</button></a>
+            {% endif %}
+
            </div>
         {% else %}
           {% if task.type == "event" or task.type == "excursion" %}
