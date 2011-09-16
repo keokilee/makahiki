@@ -21,7 +21,7 @@ python manage.py dumpdata --indent=2 floors.post > $var/test_posts.json
 
 python manage.py dumpdata --indent=2 energy_goals > $var/test_energy_goals.json
 
-python manage.py dumpdata --indent=2 prizes > $var/test_prizes.json
+python manage.py dumpdata --indent=2 prizes.prize prizes.raffledeadline prizes.raffleprize > $var/test_prizes.json
 
 # python manage.py dumpdata --indent=2 brabeion.badgeaward > $var/test_badges.json
 
