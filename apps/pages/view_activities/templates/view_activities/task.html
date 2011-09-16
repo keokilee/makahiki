@@ -67,6 +67,7 @@
         done this.
       {% endif %}
       <p/>
+      {% with floor_members|length as member_floor %}
       {{member_floor}}  
       {% if member_floor == 1 %}
         person in your {{FLOOR_LABEL.lower}} has
@@ -79,9 +80,10 @@
         done this.
       {% endif %}
       <br/>
-      {% for user in users %}
-         <img src="{% avatar_url user 40 %}" title="{{user.get_profile.name}}"/>
+      {% for member in floor_members %}
+         <img src="{% avatar_url member.user 40 %}" title="{{member.user.get_profile.name}}"/>
      {% endfor %}
+     {% endwith %}
      
      {% if task.type == "event" or task.type == "excursion" %}
      {% include "view_activities/reminder.html" %}
