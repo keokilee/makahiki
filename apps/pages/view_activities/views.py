@@ -712,8 +712,7 @@ def reminder(request, activity_type, slug):
       return HttpResponse(json.dumps({
           "success": False,
           "form": template,
-      }), mimetype="application/json")
-  return HttpResponseRedirect(reverse("mobile_reminder"))
+      }), mimetype="application/json") 
   raise Http404
     
 @never_cache
