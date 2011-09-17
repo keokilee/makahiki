@@ -167,8 +167,8 @@ def _validate_one_email(self, cleaned_data, email):
       del cleaned_data[email]
 
 class EventCodeForm(forms.Form):
-  response = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}))
-  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'20'}), initial="Email", required=False)
+  response = forms.CharField(widget=forms.TextInput(attrs={'size':'12'}))
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'15'}), initial="Email", required=False)
 
 #------ Reminder form ---------
 from django.contrib.localflavor.us.forms import USPhoneNumberField

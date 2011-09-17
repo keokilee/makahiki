@@ -34,7 +34,7 @@
     <div {% get_id_and_classes "activity-scoreboard-title" %}>
       {{current_round}} Points Scoreboard
       <a href="#" style="float: right">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'points-scoreboard'); return false;"
 	   /></a>
@@ -52,7 +52,7 @@
       </td>
       <td width="1%">
       <a href="#">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'smart-grid-game'); return false;"
 	   /></a>
@@ -150,6 +150,7 @@ $( document ).ready( function ()
             $.post("{% url activity_attend_code %}", $("#event-code-form").serialize(), function(data) {
                 if (data.message) {
                   $("#event-code-errors").html(data.message);
+                  $("#event-code-errors").show();
                   if (data.social_email) {
                     $("#social_email").show();
                   }

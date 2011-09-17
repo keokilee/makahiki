@@ -6,13 +6,13 @@
 
 .content {
 	clear: both;
-	padding: 0 20px 0 20px;
+	padding: 0 15px 0 15px;
 }
 
 #activity-events-scoreboard {
 	clear: both;
 	float: left;
-	width: 375px;
+	width: 342px;
 }
 
 #activity-scoreboard-content table {
@@ -21,7 +21,7 @@
 
 #activity-categories {
 	float: right;
-	width: 512px;
+	width: 565px;
 }
 
 #activity-task-stats {
@@ -130,13 +130,13 @@ h3.activity-categories-title {
 #activity-events-content th, #activity-scoreboard-content th {
 	background-color: #dbd7af;
 	
-	padding: 4px 4px 4px 8px;
+	padding: 4px 4px 4px 4px;
 	text-align: left;
 	}
 
 #activity-events-content td, #activity-scoreboard-content td {
 	text-align: left;
-	padding: 4px 4px 4px 8px;
+	padding: 4px 4px 4px 4px;
 }
 
 #activity-scoreboard-content td, #activity-scoreboard-content th {
@@ -160,7 +160,7 @@ table#activities-grid-legend td{
 }
 
 table#activities-grid {
-	padding-left: 4px;
+	padding-left: 2px;
 	border: 0;
 	margin: 0 auto;
 }
