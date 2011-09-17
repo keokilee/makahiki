@@ -12,7 +12,8 @@ from pages.view_profile.forms import ProfileForm
 from pages.view_profile import get_completed_members, get_in_progress_members
 from components.makahiki_facebook.models import FacebookProfile
 from components.activities.models import *
-from components.activities import * 
+from components.activities import *  
+from components.makahiki_notifications.models import UserNotification
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 from datetime import timedelta, date
@@ -410,7 +411,7 @@ def task(request, category_slug, slug, sender=None):
 
 
 @never_cache
-def reminder(request, category_slug, slug):
+def reminder(request, category_slug, slug,sender=None):
   user = request.user
   try:
     task = get_object_or_404(ActivityBase, type='event', slug=slug)
@@ -461,11 +462,100 @@ def reminder(request, category_slug, slug):
     return render_to_response("mobile/smartgrid/reminder.html", { 
     "reminders":reminders,
     "category_slug":category_slug,
+    "type":task.type,
     "slug":slug,
+    "sender":sender,
     "task":task,
   }, context_instance=RequestContext(request))    
 
+@login_required
+def reminder_form(request, activity_type, slug):
+  if request.is_ajax():
+    if request.method == "POST":
+      profile = request.user.get_profile()
+      task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
+      form = ReminderForm(request.POST)
+      if form.is_valid():
+        email_reminder = None
+        text_reminder = None
+        
+      
+        # Try and retrieve the reminders.
+        try:
+          email_reminder = EmailReminder.objects.get(user=request.user, activity=task)
+          if form.cleaned_data["send_email"]:
+            email_reminder.email_address = form.cleaned_data["email"]
+            email_reminder.send_at = task.activity.event_date - datetime.timedelta(
+                hours=int(form.cleaned_data["email_advance"])
+            )
+            email_reminder.save()
+            
+            profile.contact_email = form.cleaned_data["email"]
+            profile.save() 
 
+          else:
+            # If send_email is false, the user does not want the reminder anymore.
+            email_reminder.delete()
+          
+        except EmailReminder.DoesNotExist:
+          # Create a email reminder
+          if form.cleaned_data["send_email"]:
+            email_reminder = EmailReminder.objects.create(
+                user=request.user,
+                activity=task,
+                email_address=form.cleaned_data["email"],
+                send_at=task.activity.event_date - datetime.timedelta(
+                    hours=int(form.cleaned_data["email_advance"])
+                )
+            )
+            
+            profile.contact_email = form.cleaned_data["email"]
+            profile.save()
+            
+        try:
+          text_reminder = TextReminder.objects.get(user=request.user, activity=task)
+          if form.cleaned_data["send_text"]:
+            text_reminder.text_number = form.cleaned_data["text_number"]
+            text_reminder.text_carrier = form.cleaned_data["text_carrier"]
+            text_reminder.send_at = task.activity.event_date - datetime.timedelta(
+                hours=int(form.cleaned_data["text_advance"])
+            )
+            text_reminder.save()
+            
+            profile.contact_text = form.cleaned_data["text_number"]
+            profile.contact_carrier = form.cleaned_data["text_carrier"]
+            profile.save()
+            
+          else:
+            text_reminder.delete()
+          
+        except TextReminder.DoesNotExist:
+          if form.cleaned_data["send_text"]:
+            text_reminder = TextReminder.objects.create(
+                user=request.user,
+                activity=task,
+                text_number=form.cleaned_data["text_number"],
+                text_carrier=form.cleaned_data["text_carrier"],
+                send_at=task.activity.event_date - datetime.timedelta(
+                    hours=int(form.cleaned_data["text_advance"])
+                ),
+            )
+            
+            profile.contact_text = form.cleaned_data["text_number"]
+            profile.contact_carrier = form.cleaned_data["text_carrier"]
+            profile.save()
+        return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug)))
+        return HttpResponse(json.dumps({"success": True}), mimetype="application/json") 
+      template = render_to_string("mobile/smartgrid/reminder.html", {
+          "reminders": {"form": form},
+          "task": task,
+      },context_instance=RequestContext(request)) 
+    else: 
+      return HttpResponse(json.dumps({
+        "success": False,
+        "form": template,
+      }), mimetype="application/json") 
+  return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug)))
 ###################################################################################################
 
 ### Private methods.
@@ -989,3 +1079,22 @@ def attend_code(request):
 def uniToStr(uni) :
   str = unicodedata.normalize('NFKD', uni).encode('ascii','ignore')
   return str
+
+
+
+
+
+def read_notification(request, notification_id):
+  if not request.method == "POST":
+    raise Http404
+    
+  notification = get_object_or_404(UserNotification, pk=notification_id)
+  notification.unread = False
+  notification.save() 
+  if request.META.has_key("HTTP_REFERER"):
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+  else:
+    return HttpResponseRedirect(reverse("mobile_index"))
+
+
+

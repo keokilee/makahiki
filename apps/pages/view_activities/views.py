@@ -485,7 +485,7 @@ def task(request, activity_type, slug):
       member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
       members = ActivityMember.objects.filter(user=user, activity=task, approval_status="approved")
     else:
-      member_all = ActivityMember.objects.exclude(user=user).filter(activity=task)
+      member_all = ActivityMember.objects.filter(activity=task)
       members = ActivityMember.objects.filter(user=user, activity=task)
 
     if members.count() > 0:
@@ -524,23 +524,14 @@ def task(request, activity_type, slug):
       pau = True
       approval = members[0]
       approval.points_awarded = task.point_value
-
-    member_all = CommitmentMember.objects.exclude(user=user).filter(commitment=task);
+      
+    member_all = CommitmentMember.objects.filter(commitment=task);
     form_title = "Make this commitment"
     form = CommitmentCommentForm(request=request)
     can_commit = can_add_commitments(user) and not is_pending_commitment(user, task)
     
-  users = []
+  floor_members = member_all.filter(user__profile__floor=floor)
   member_all_count = member_all.count()
-  for member in member_all:
-    if member.user.get_profile().floor == floor:
-      member_floor_count = member_floor_count + 1
-      users.append(member.user)
-  
-  if pau:
-    member_all_count = member_all_count + 1
-    member_floor_count = member_floor_count +1
-    users.append(user)
    
   # Load reminders
   reminders = {}
@@ -599,8 +590,7 @@ def task(request, activity_type, slug):
     "form":form,
     "question":question,
     "member_all":member_all_count,
-    "member_floor":member_floor_count,
-    "users":users,
+    "floor_members": floor_members,
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
@@ -712,8 +702,7 @@ def reminder(request, activity_type, slug):
       return HttpResponse(json.dumps({
           "success": False,
           "form": template,
-      }), mimetype="application/json")
-  
+      }), mimetype="application/json") 
   raise Http404
     
 @never_cache
