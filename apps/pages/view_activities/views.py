@@ -702,8 +702,7 @@ def reminder(request, activity_type, slug):
       return HttpResponse(json.dumps({
           "success": False,
           "form": template,
-      }), mimetype="application/json")
-  
+      }), mimetype="application/json") 
   raise Http404
     
 @never_cache
