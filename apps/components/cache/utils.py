@@ -27,6 +27,6 @@ def invalidate_floor_avatar_cache(task, user):
   Invalidates task completed avatar list cache.
   """
   if task and user and user.get_profile() and user.get_profile().floor:
-    invalidate_template_cache("floor_avatar", task.id, user.get_profile().floor.id)
+    invalidate_template_cache("floor_avatar", task.id, user.get_profile().floor)
   
   

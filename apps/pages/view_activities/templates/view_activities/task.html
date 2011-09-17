@@ -86,7 +86,7 @@
         done this.
       {% endif %}
       <br/>
-      {% cache 3600000 floor_avatar task.id user.get_profile.floor.id %}
+      {% cache 3600000 floor_avatar task.id user.get_profile.floor %}
       {% for member in floor_members %}
          <img src="{% avatar_url member.user 40 %}" title="{{member.user.get_profile.name}}"/>
      {% endfor %}
