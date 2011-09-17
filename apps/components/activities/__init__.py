@@ -62,11 +62,14 @@ def get_incomplete_task_members(user):
     "commitments": commitment_members,
     "activities": activity_members,
   }
-  
+
+def is_pending_commitment(user, commitment):
+   return CommitmentMember.objects.filter(user=user, commitment=commitment, award_date=None)
+
 def can_add_commitments(user):
   """Determines if the user can add additional commitments."""
-  return get_current_commitments(user).count() < MAX_COMMITMENTS
-  
+  return CommitmentMember.objects.filter(user=user).count() < MAX_COMMITMENTS
+
 def get_current_commitments(user):
   """Get the user's incomplete commitments."""
   return user.commitment_set.filter(

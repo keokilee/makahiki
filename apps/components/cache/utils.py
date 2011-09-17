@@ -21,5 +21,12 @@ def invalidate_info_bar_cache(user):
   floor = user.get_profile().floor
   if floor:
     invalidate_template_cache("infobar", floor.dorm.name, floor.number)
-    
+
+def invalidate_floor_avatar_cache(task, user):
+  """
+  Invalidates task completed avatar list cache.
+  """
+  if task and user and user.get_profile() and user.get_profile().floor:
+    invalidate_template_cache("floor_avatar", task.id, user.get_profile().floor.id)
+  
   
