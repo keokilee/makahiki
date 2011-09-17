@@ -112,7 +112,9 @@
             {% else %}
             Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
- 	    <a type="button" href="{% url mobile_reminder task.category|slugify task.slug%}" rel="external">Set up Reminders</a>
+ 	    <!--a type="button" href="{% url mobile_reminder task.category|slugify task.slug%}" rel="external">Set up Reminders</a-->
+            
+            <a href="{% url mobile_reminder task.type task.slug %}" data-role="button" rel="external"> CLICK </a>
             {% endif %}
 
           {% endif %}
