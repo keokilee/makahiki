@@ -480,6 +480,16 @@ def task(request, activity_type, slug):
   
   if task.type != "commitment":
     task = task.activity
+    hours = task.duration / 60
+    minutes = task.duration % 60
+    task.duration = ""
+    if hours > 1:
+      task.duration = "%d hours" % (hours)
+    elif hours > 0: 
+      task.duration = "%d hour" % (hours)
+      
+    if minutes > 0:
+      task.duration = task.duration + " %d minutes" % (minutes)
 
     if task.type == "survey":
       member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
@@ -532,7 +542,7 @@ def task(request, activity_type, slug):
     
   floor_members = member_all.filter(user__profile__floor=floor)
   member_all_count = member_all.count()
-   
+    
   # Load reminders
   reminders = {}
   if task.type == "event" or task.type == "excursion":
