@@ -20,7 +20,7 @@
     <div {% get_id_and_classes "activity-events-title" %}>
       Upcoming Events
       <a href="#" style="float: right">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'upcoming-events'); return false;"
 	   /></a>
@@ -46,22 +46,19 @@
 </div>
 
 <div {% get_id_and_classes "activity-categories" %}>
-  <center>
-    <h3 class="{% insert_classes 'activity-categories-title' %}">
-      <table><tr><td align=center>The Smart Grid Game
-      </td>
-      <td width="1%">
-      <a href="#">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20"
+ <div {% get_id_and_classes "activity-categories-box" %}>
+    <div {% get_id_and_classes "activity-categories-title" %}>
+      The Smart Grid Game
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'smart-grid-game'); return false;"
 	   /></a>
-	   </td></tr></table>
-      
-    </h3>
-  </center>
-  {% include "view_activities/grid.html" %}
-  
+	</div>
+    <div {% get_id_and_classes "activity-categories-content" %}>
+      {% include "view_activities/grid.html" %}
+    </div>
+ </div>
 </div>
 {% endblock %}
 

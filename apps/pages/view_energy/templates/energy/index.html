@@ -21,22 +21,21 @@
 
 <div {% get_id_and_classes "energy-power-scoreboard" %}>
   <div {% get_id_and_classes "energy-power" %}>
+   <div {% get_id_and_classes "activity-power-box" %}>
     <div {% get_id_and_classes "energy-power-title" %}>
-      <table><tr><td align=center>Current Lounge Power
-      </td>
-      <td width="1%">
-      <a href="#">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20"
+      Current Lounge Power
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'lounge-power'); return false;"
 	   /></a>
-	   </td></tr></table>
     </div>
     <div {% get_id_and_classes "energy-power-content" %}>
       <center>
       {% include "energy/power.html" %}  
       </center>
     </div>
+   </div>
   </div>
   
   <p>
@@ -48,15 +47,12 @@
 <div {% get_id_and_classes "energy-status" %}>
   <div {% get_id_and_classes "energy-status-box" %}>
     <div {% get_id_and_classes "energy-status-title" %}>     
-      <table><tr><td align=center>Daily Energy Goal Game
-      </td>
-      <td width="1%">
-      <a href="#">
-      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20"
+     Daily Energy Goal Game
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center"
 		title="Click to get help about this window" 
 		onclick="toggleHelp('widget', 'energy-goal-game'); return false;"
 	   /></a>
-	   </td></tr></table>
     </div>
     <div {% get_id_and_classes "energy-status-content" %}>
       <fieldset {% get_id_and_classes "energy-status-progress" %}>

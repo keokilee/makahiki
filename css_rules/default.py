@@ -50,10 +50,11 @@ CSS_IDS = {
   
   "activity-events-box": "content-box",
   "activity-scoreboard-box": "content-box",
-  "activity-categories": "content-box",
+  "activity-categories-box": "content-box",
   "activity-task-stats-box": "content-box",
   "activity-task-details-box": "content-box",
   "activity-events-title": "content-box-title",
+  "activity-categories-title": "content-box-title",
   "activity-scoreboard-title": "content-box-title",
   "activity-task-stats-title": "content-box-title",
   "activity-task-details-title": "content-box-title",
