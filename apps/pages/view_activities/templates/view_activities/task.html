@@ -37,7 +37,7 @@
 	  {% else %}
 	    from <b>{{task.point_range_start}}</b> to <b>{{task.point_range_end}}</b>
 	  {% endif %}  
-      points.
+      {% if task.is_canopy %} Karma {% endif %} points.
       {% if task.type == "commitment" %}
         It lasts {{task.duration}} days.
       {% else %}
@@ -136,14 +136,15 @@
         {% if approval.approval_status == "approved" or approval.award_date %}
           <div {% get_id_and_classes "activity-task-details-info" %}>
             <p/>
-            Congratulations! You did it and earned {{approval.points_awarded}} points! <br/>
+            Congratulations! You did it and earned {{approval.points_awarded}} {% if task.is_canopy %} Karma {% endif %} points! <br/>
             {% if approval.social_bonus_awarded %}
               <span style="color:orange"> Plus {{task.social_bonus}} social bonus points!</span>
             {% endif %}  
             <br/>
             Thank you for your participation.
             {% if task.type == "commitment" and can_commit %}
-              <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I will do this again!</button></a>
+              <br/>
+              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this again!</button></a>
             {% endif %}
 
            </div>
@@ -156,7 +157,7 @@
             Click on the "I Did it" button to get the rest of your points. <br/>
             <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
             {% else %}
-            Thank you! You've earned 2 bonus points by signing up.<br/>
+            Thank you! You've earned 2 bonus {% if task.is_canopy %} Karma {% endif %} points by signing up.<br/>
             After the {{task.type}}, please come back here within 2 days to get your points.
             If you sign up but do not attend, you will lost the 2 point signing bonus and pay a 2 point "no-show" penalty.
             <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Take me off the signup list</button></a>
@@ -167,7 +168,7 @@
              <div {% get_id_and_classes "activity-task-details-info" %}>
              <p/>
               {% if approval.days_left > 0 %}
-              Thank you! You've earned 2 points by committing.<br/>
+              Thank you! You've earned 2 {% if task.is_canopy %} Karma {% endif %} points by committing.<br/>
               Please come back on {{ approval.completion_date|date:"l m/d" }}
               ({{approval.days_left}} days left) to get the rest of your points.
               <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
@@ -216,7 +217,7 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I will do this!
+            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this!
             <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
             </button></a>
           {% else %}
@@ -272,35 +273,6 @@
     {% include "view_activities/task_form.html" %}
 </div>
 
-<div id="signup-point-dialog" title="Thank you" style="visibility: hidden;">
-    <p/>
-    {% if approval.approval_status == "approved" %}
-       You just got {{task.point_value}} points !
-    {% else %}   
-      {% if task.type == "activity" %}
-       <p style="text-align:left">
-       Thank you for submitting your response.   
-       </p>
-       <p style="text-align:left">
-       An administrator will review it and approve your points, usually within a few hours.  
-       You can see the status of your submission on your Profile Page.  
-       </p>
-     
-       <p style="text-align:left">
-        Come back soon to see your new total.
-       </p>
-       {% else %}
-         You just got 2 points !
-       {% endif %}  
-    {% endif %}        
-    
-    <p/>
-    <center>
-    <input type="submit" value="OK" onclick='$("#signup-point-dialog").dialog("close");' /> 
-    </center>
-   
-</div>
-
 <script type="text/javascript"> 
 $( document ).ready( function ()
  {
@@ -349,26 +321,7 @@ function task_form_overlay()
 
     return false;
 }
- 
-function signup_point_dialog_overlay()
-{
-  el = document.getElementById("signup-point-dialog"); 
-  el.style.visibility = "visible";
-  $("#signup-point-dialog").dialog({
-    modal: true,
-    {% if task.type == "activity" %}
-      width: 400,
-      height: 250,
-    {% else %}
-      width: 300,
-      height: 150,
-    {% endif %}
-    closeOnEscape: false,
-    position: [400,100]
-    });
-    return true;
-}
- 
+
 </script>  
 
 {% endblock %}

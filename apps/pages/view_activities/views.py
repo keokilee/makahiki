@@ -245,57 +245,46 @@ def __add_commitment(request, commitment):
   user = request.user
   value = None
 
-  if is_pending_commitment(user, commitment):
-      if request.method == "POST":
-        form = CommitmentCommentForm(request.POST, request=request, activity=commitment)
-        if form.is_valid():
+  if request.method == "POST":
+    form = CommitmentCommentForm(request.POST, request=request, activity=commitment)
+    if form.is_valid():
+      if is_pending_commitment(user, commitment):
             member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
             #commitment end, award full point
             member.award_date = datetime.datetime.today()
-            member.social_email = form.cleaned_data["social_email"]
+            if form.cleaned_data["social_email"]:
+              member.social_email = form.cleaned_data["social_email"]
+            if form.cleaned_data["social_email2"]:
+              member.social_email2 = form.cleaned_data["social_email2"]
             member.save()
             value = commitment.point_value
-        else:
-           return render_to_response("view_activities/task.html", {
-             "task":commitment,
-             "pau":True,
-             "form":form,
-             "question":None,
-             "member_all":0,
-             "member_floor":0,
-             "display_form":True,
-             "form_title": "Get your points",
-             }, context_instance=RequestContext(request))
-  elif can_add_commitments(user):
-    # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
-    member = CommitmentMember(user=user, commitment=commitment)
-    member.save()
-    # messages.info("You are now committed to \"%s\"" % commitment.title)
+      elif can_add_commitments(user):
+        # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
+        member = CommitmentMember(user=user, commitment=commitment)
+        member.social_email = form.cleaned_data["social_email"]
+        member.social_email2 = form.cleaned_data["social_email2"]
+        member.save()
+        # messages.info("You are now committed to \"%s\"" % commitment.title)
 
-    #increase the point from signup
-    message = "Commitment: %s (Sign up)" % (commitment.title)
-    user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
-    user.get_profile().save()
-    value = 2
-    
-    # Check for Facebook.
-    # try:
-    #   import makahiki_facebook.facebook as facebook
-    #   
-    #   fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
-    #   if fb_user:
-    #     try:
-    #       graph = facebook.GraphAPI(fb_user["access_token"])
-    #       graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
-    #     except facebook.GraphAPIError:
-    #       # Incorrect user token.
-    #       pass
-    #       
-    # except ImportError:
-    #   # Facebook not enabled.
-    #   pass
-        
-  return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,))+"?notify=add_point&value="+str(value))
+        #increase the point from signup
+        message = "Commitment: %s (Sign up)" % (commitment.title)
+        user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+        user.get_profile().save()
+        value = 2
+
+      return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,))+"?notify=add_point&value="+str(value))
+
+    else:
+      return render_to_response("view_activities/task.html", {
+        "task":commitment,
+        "pau":True,
+        "form":form,
+        "question":None,
+        "member_all":0,
+        "member_floor":0,
+        "display_form":True,
+        "form_title": "Get your points",
+        }, context_instance=RequestContext(request))
 
 def __drop_commitment(request, commitment):
   """drop the commitment."""
@@ -534,6 +523,7 @@ def task(request, activity_type, slug):
       pau = True
       approval = members[0]
       approval.points_awarded = task.point_value
+      print approval.social_email
       
     member_all = CommitmentMember.objects.filter(commitment=task);
     form_title = "Make this commitment"

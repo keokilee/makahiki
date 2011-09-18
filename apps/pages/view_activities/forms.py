@@ -150,9 +150,6 @@ class SurveyForm(forms.Form):
     return cleaned_data
   
 def _validate_social_email(self, cleaned_data):
-  print self.activity
-  print self.activity.is_group
-  print cleaned_data["social_email"]
   if self.activity.is_group and (not cleaned_data.has_key("social_email") or cleaned_data["social_email"]==None or cleaned_data["social_email"]==""):
     self._errors["social_email"] = ErrorList(["At least one email is required."])
 

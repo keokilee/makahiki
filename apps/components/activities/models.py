@@ -345,7 +345,7 @@ class CommitmentMember(CommonBase):
       try:
         ref_user = User.objects.get(email=self.social_email)
         ref_count = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment,
-            approval_status="approved").count()
+            award_date__isnull=False).count()
         if ref_count > 0:
           return True
       except User.DoesNotExist:
