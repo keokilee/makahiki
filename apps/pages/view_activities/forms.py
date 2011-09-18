@@ -92,7 +92,7 @@ class ActivityFreeResponseForm(forms.Form):
     self.request = kwargs.pop('request', None)
     self.activity = kwargs.pop('activity', None)
     super(ActivityFreeResponseForm, self).__init__(*args, **kwargs)  
-  
+
   def clean(self):
     cleaned_data = self.cleaned_data
     _validate_social_email(self, cleaned_data)    
@@ -150,6 +150,7 @@ class SurveyForm(forms.Form):
     return cleaned_data
   
 def _validate_social_email(self, cleaned_data):
+
   if self.activity.is_group and (not cleaned_data.has_key("social_email") or cleaned_data["social_email"]==None or cleaned_data["social_email"]==""):
     self._errors["social_email"] = ErrorList(["At least one email is required."])
 

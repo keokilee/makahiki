@@ -275,7 +275,21 @@ def afterPublished(task_id):
     return Activity.get(id=task_id).pub_date <= datetime.date.today()
   except:
     return False
-    
+
+def is_unlock_from_cache(user, task):
+  if task.is_canopy:
+      return is_unlock(user, task)
+  
+  categories = cache.get('smartgrid-categories-%s' % user.username)
+  if not categories:
+      return is_unlock(user, task)
+
+  for cat in categories:
+      if cat.id == task.category_id:
+          for t in cat.task_list:
+              if t["id"] == task.id:
+                  return t["is_unlock"]
+
 def is_unlock(user, task):
   """determine the unlock status of a task by dependency expression"""
 

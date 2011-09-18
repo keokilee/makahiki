@@ -196,7 +196,11 @@
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>  
               </div>
-              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will try again</button></a> 
+              {% if user == approval.user %}
+                <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will try again</button></a>
+              {% else %}
+                 <br/>Please try again.
+              {%  endif %}
               </div>
             {% endif %}
           {% endif %}            

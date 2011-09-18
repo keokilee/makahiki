@@ -47,6 +47,7 @@ admin.site.register(Category)
 
 class CommitmentMemberAdmin(admin.ModelAdmin):
   """Override to use custom delete method."""
+  readonly_fields = ("social_email","social_email2")
   actions = ["delete_selected"]
     
   def delete_selected(self, request, queryset):
@@ -307,8 +308,8 @@ class ActivityMemberAdminForm(forms.ModelForm):
 
 class ActivityMemberAdmin(admin.ModelAdmin):
   radio_fields = {"approval_status" : admin.HORIZONTAL}
-  fields = ("user", "activity", "question", "full_response", "image", "admin_comment", "approval_status", "social_email")
-  readonly_fields = ("question", "full_response", "social_email",)
+  fields = ("user", "activity", "question", "full_response", "image", "admin_comment", "approval_status",)
+  readonly_fields = ("question", "full_response", "social_email", "social_email2",)
   list_display = ("activity", "submission_date", "approval_status", "short_question", "short_response")
   list_filter = ["approval_status"]
   actions = ["delete_selected"]

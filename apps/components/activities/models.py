@@ -322,6 +322,7 @@ class CommitmentMember(CommonBase):
   award_date = models.DateTimeField(blank=True, null=True)
   comment = models.TextField(blank=True)
   social_email = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
+  social_email2 = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
   objects = CommitmentMemberManager()
   
   def __unicode__(self):
@@ -341,7 +342,7 @@ class CommitmentMember(CommonBase):
     """
     Try to check if there is a social bonus.
     """
-    if self.social_email:
+    if not self.commitment.is_group and self.social_email:
       try:
         ref_user = User.objects.get(email=self.social_email)
         ref_count = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment,
@@ -451,6 +452,8 @@ class ActivityMember(CommonActivityUser):
   response = models.TextField(blank=True)
   admin_comment = models.TextField(blank=True, help_text="Reason for approval/rejection")
   social_email = models.TextField(blank=True, help_text="Email address of the person the user went with.")
+  social_email2 = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
+
   image = models.ImageField(max_length=1024, 
                             blank=True, 
                             upload_to=activity_image_file_path,
@@ -470,7 +473,7 @@ class ActivityMember(CommonActivityUser):
     """
     Try to check if there is a social bonus.
     """
-    if self.social_email:
+    if not self.activity.is_group and self.social_email:
       try:
         ref_user = User.objects.get(email=self.social_email)
         ref_count = ActivityMember.objects.filter(user=ref_user, activity=self.activity,
@@ -569,6 +572,22 @@ class ActivityMember(CommonActivityUser):
         ref_profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
         ref_profile.save()
 
+    ## canopy group activity need to create multiple approved members
+    if self.activity.is_group:
+        if self.social_email:
+            group_user = User.objects.get(email=self.social_email)
+            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
+                                                 response=self.response, admin_comment=self.admin_comment,
+                                                 image=self.image, points_awarded=self.points_awarded,
+                                                 approval_status=self.approval_status, award_date=self.award_date,
+                                                 submission_date=self.submission_date)
+        if self.social_email2:
+            group_user = User.objects.get(email=self.social_email2)
+            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
+                                                 response=self.response, admin_comment=self.admin_comment,
+                                                 image=self.image, points_awarded=self.points_awarded,
+                                                 approval_status=self.approval_status, award_date=self.award_date,
+                                                 submission_date=self.submission_date)
     if profile.floor:
       # Post on the user's floor wall.
       message = " has been awarded %d points for completing \"%s\"." % (

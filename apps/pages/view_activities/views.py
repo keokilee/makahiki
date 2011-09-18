@@ -1,4 +1,5 @@
 import datetime
+from django.db.models.query_utils import Q
 import simplejson as json
 
 from django.shortcuts import get_object_or_404, render_to_response
@@ -33,7 +34,15 @@ ACTIVITIES_COL_COUNT = 3
 @login_required
 def index(request):
   user = request.user
-  events = get_available_events(user)
+
+  events = cache.get('user_events-%s' % user.username)
+  if not events:
+    events = get_available_events(user)
+    # Cache the user_event for a day
+    cache.set('user_events-%s' % user.username,
+      events, 60 * 60 * 24)
+
+
   floor = user.get_profile().floor
   user_floor_standings = None
   
@@ -461,10 +470,10 @@ def task(request, activity_type, slug):
   form = None
   approval = None
   can_commit = None
-  member_all_count = 0
-  member_floor_count = 0
+  social_email = None
+  social_email2 = None
 
-  if is_unlock(user, task) != True:
+  if is_unlock_from_cache(user, task) != True:
     return HttpResponseRedirect(reverse("pages.view_activities.views.index", args=()))
   
   if task.type != "commitment":
@@ -480,19 +489,27 @@ def task(request, activity_type, slug):
     if minutes > 0:
       task.duration = task.duration + " %d minutes" % (minutes)
 
+    count = 0
     if task.type == "survey":
       member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
       members = ActivityMember.objects.filter(user=user, activity=task, approval_status="approved")
     else:
       member_all = ActivityMember.objects.filter(activity=task)
       members = ActivityMember.objects.filter(user=user, activity=task)
+      count =  members.count()
 
-    if members.count() > 0:
+    if count == 0 and task.is_group:
+        members = ActivityMember.objects.filter(Q(social_email=user.email)|Q(social_email2=user.email), activity=task)
+        count = members.count()
+
+    if count > 0:
       pau = True
       approval = members[0]
+      social_email = approval.social_email
+      social_email2 = approval.social_email2
       if not task.has_variable_points:
         approval.points_awarded = task.point_value
-      
+
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
       form = SurveyForm(questions=question)    
@@ -502,16 +519,16 @@ def task(request, activity_type, slug):
     
       # Create activity request form.
       if task.confirm_type == "image":
-        form = ActivityImageForm(request=request)
+        form = ActivityImageForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
       elif task.confirm_type == "text":
         question = task.pick_question(user.id)
         if question:
-          form = ActivityTextForm(initial={"question" : question.pk},question_id=question.pk,request=request)
+          form = ActivityTextForm(initial={"question" : question.pk,"social_email":social_email,"social_email2":social_email2},question_id=question.pk,request=request)
       elif task.confirm_type == "free":
-        form = ActivityFreeResponseForm(request=request)
+        form = ActivityFreeResponseForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
       else:
-        form = ActivityCodeForm(request=request)
-                
+        form = ActivityCodeForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
+
       if task.type == "event" or task.type == "excursion":
         if not pau:
           form_title = "Sign up for this "+task.type
@@ -522,17 +539,18 @@ def task(request, activity_type, slug):
     if members.count() > 0:
       pau = True
       approval = members[0]
+      social_email = approval.social_email
+      social_email2 = approval.social_email2
       approval.points_awarded = task.point_value
-      print approval.social_email
       
     member_all = CommitmentMember.objects.filter(commitment=task);
     form_title = "Make this commitment"
-    form = CommitmentCommentForm(request=request)
+    form = CommitmentCommentForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
     can_commit = can_add_commitments(user) and not is_pending_commitment(user, task)
     
   floor_members = member_all.filter(user__profile__floor=floor)
   member_all_count = member_all.count()
-    
+
   # Load reminders
   reminders = {}
   if task.type == "event" or task.type == "excursion":
