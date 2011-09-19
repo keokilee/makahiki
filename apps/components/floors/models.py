@@ -72,14 +72,14 @@ class Floor(models.Model):
     Returns the floor points leaders across all dorms.
     """
     if round_name:
-      return Floor.objects.filter(
+      return Floor.objects.select_related('dorm').filter(
           profile__scoreboardentry__round_name=round_name
       ).annotate(
           points=Sum("profile__scoreboardentry__points"), 
           last=Max("profile__scoreboardentry__last_awarded_submission")
       ).order_by("-points", "-last")[:num_results]
       
-    return Floor.objects.annotate(
+    return Floor.objects.select_related('dorm').annotate(
         points=Sum("profile__points"), 
         last=Max("profile__last_awarded_submission")
     ).order_by("-points", "-last")[:num_results]
@@ -89,9 +89,9 @@ class Floor(models.Model):
     Gets the individual points leaders for the floor.
     """
     if round_name:
-      return self.profile_set.filter(
+      return self.profile_set.select_related('scoreboardentry').filter(
           scoreboardentry__round_name=round_name
-      ).order_by("-scoreboardentry__points", "-scoreboardentry__last_awarded_submission")[:num_results]
+      ).order_by("-scoreboardentry__points", "-scoreboardentry__last_awarded_submission",)[:num_results]
       
     return self.profile_set.all().order_by("-points", "-last_awarded_submission")[:num_results]
     

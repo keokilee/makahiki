@@ -65,7 +65,9 @@ class NewsFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertEqual(posts + 2, self.floor.post_set.count(), "Two posts should have been posted to the wall (commit and award).")
     self.assertContains(response, commitment.title, 3, 
-        msg_prefix="Commitment title should appear in the wall twice and in the most popular box."
+        msg_prefix="""
+        Commitment title should appear in the wall twice and in the most popular box. Note, may fail because of caching.
+        """
     )
     
   def testPost(self):

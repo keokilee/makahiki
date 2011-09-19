@@ -1,6 +1,7 @@
 {% extends "logged_in_base.html" %}
 
 {% load class_tags %}
+{# {% load cache %} #}
 
 {% block page_title %}
   Help
@@ -14,6 +15,7 @@
 {% block selected_icon %}selected-help{% endblock %}
 
 {% block body %}
+{# {% cache 3600 help %} #}
 <div class="left-column">
   <div {% get_id_and_classes "help-video" %}>
     <div {% get_id_and_classes "help-video-box" %}>
@@ -84,4 +86,5 @@
     </div>
   </div>
 </div>
+{# {% endcache %} #}
 {% endblock %}

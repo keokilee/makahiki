@@ -22,7 +22,10 @@ def index(request):
   floor_id = request.user.get_profile().floor_id
   
   # Get floor posts.
-  posts = Post.objects.filter(floor=floor_id).order_by("-id").select_related('user__profile')
+  posts = Post.objects.filter(
+      floor=floor_id
+  ).order_by("-id").select_related('user__profile')
+  
   post_count = posts.count
   posts = posts[:DEFAULT_POST_COUNT]
   more_posts = True if post_count > DEFAULT_POST_COUNT else False

@@ -47,7 +47,7 @@
           var height = 45; //Minimum height of the box.
           $("#news-most-popular-tasks").children().each(function(index, value) {
             if ($(value).height() > height) {
-              height = $(value).height();
+              height = $(value).height() + 30;
             }
           });
 

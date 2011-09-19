@@ -21,7 +21,7 @@ from lib.brabeion import badges
 from components.floors.models import Post
 from components.makahiki_base.models import Like
 from components.makahiki_notifications.models import UserNotification
-from components.cache.utils import invalidate_floor_avatar_cache
+from components.cache.utils import invalidate_floor_avatar_cache, invalidate_commitments_cache
 
 MARKDOWN_LINK = "http://daringfireball.net/projects/markdown/syntax"
 MARKDOWN_TEXT = "Uses <a href=\"" + MARKDOWN_LINK + "\" target=\"_blank\">Markdown</a> formatting."
@@ -408,6 +408,7 @@ class CommitmentMember(CommonBase):
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
+    invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).save()
     
     # Note, possibly_award is here because the member needs to be saved.
@@ -431,6 +432,7 @@ class CommitmentMember(CommonBase):
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
+    invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).delete()
   
 

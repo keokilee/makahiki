@@ -1,3 +1,6 @@
+{% load cache %}
+
+{% cache 3600 commitments request.user %}
 {% if commitment_members %}
 <table>
   <tr>
@@ -14,3 +17,4 @@
 {% else %}
 <p style="width: 100%; text-align: center">You are not participating in any commitments</p>
 {% endif %}
+{% endcache %}

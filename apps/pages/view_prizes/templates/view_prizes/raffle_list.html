@@ -2,8 +2,10 @@
 {% load prize_tags %}
 {% load markup %}
 
+{% with user.get_profile.available_tickets as available_tickets %}
 {% for prize in raffle.prizes %}
   <!-- {% cycle 'alt-row' '' as cycle_class %} -->
+  {% with prize|user_tickets:user as user_tickets %}
   <tr class="{{cycle_class}}">
     <td class="{% insert_classes "prize-item" %}">
       <a id="raffle-{{prize.title|slugify}}" href="javascript:void(0);">
@@ -34,18 +36,18 @@
       </script>
     </td>
     <td class="{% insert_classes "prize-number" %}">{{prize.value|currency}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize|user_tickets:user}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize.allocated_tickets}}</td>
-    <td class="{% insert_classes "prize-number" %}">{{prize|user_odds:user}}</td>
+    <td class="{% insert_classes "prize-number" %} user-tickets">{{user_tickets}}</td>
+    <td class="{% insert_classes "prize-number" %} total-tickets">{{prize.allocated_tickets}}</td>
+    <td class="{% insert_classes "prize-number" %} user-odds">{# {{prize|user_odds:user}} #}</td>
     <td>
-      {% if user.get_profile.available_tickets > 0 %}
+      {% if available_tickets > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST">
         <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">+1</a>
       </form>
       {% else %}
       <div class="disabled">+1</div>
       {% endif %}
-      {% if prize|user_tickets:user > 0 %}
+      {% if user_tickets > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST">
         <a class="enabled" href="#" onclick="$(this).parent().submit(); return false;">-1</a>
       </form>
@@ -54,4 +56,15 @@
       {% endif %}
     </td>
   </tr>
+  {% endwith %}
 {% endfor %}
+{% endwith %}
+
+<script type='text/javascript'>
+  $(".user-odds").each(function(index) {
+    var total = $(this).prev();
+    var userTickets = total.prev();
+    var odds = parseFloat(userTickets.html()) * 100.0 / parseFloat(total.html());
+    $(this).html(odds.toFixed(1).toString() + "%");
+  });
+</script>
