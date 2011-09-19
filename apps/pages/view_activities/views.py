@@ -548,7 +548,7 @@ def task(request, activity_type, slug):
     form = CommitmentCommentForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
     can_commit = can_add_commitments(user) and not is_pending_commitment(user, task)
     
-  floor_members = member_all.filter(user__profile__floor=floor)
+  floor_members = member_all.select_related('user__profile').filter(user__profile__floor=floor)
   member_all_count = member_all.count()
 
   # Load reminders

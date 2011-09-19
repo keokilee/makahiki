@@ -32,13 +32,15 @@ def index(request):
   
   # Load wall
   form = WallForm()
-  posts = Post.objects.order_by("-id")
+  posts = Post.objects.order_by("-id").select_related('user')
   post_count = posts.count()
   posts = posts[:DEFAULT_POST_COUNT]
   more_posts = True if post_count > DEFAULT_POST_COUNT else False
   
   # Load members
-  members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
+  members = User.objects.filter(
+      Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True)
+  ).select_related('profile')
   
   # Load canopy karma scoreboard.
   karma_scoreboard = Profile.objects.filter(
