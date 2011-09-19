@@ -117,10 +117,6 @@ class Profile(models.Model):
   def __unicode__(self):
       return self.name
   
-  def get_absolute_url(self):
-      return ('profile_detail', None, {'username': self.user.username})
-  get_absolute_url = models.permalink(get_absolute_url)
-  
   def get_lounge_name(self):
     return self.floor.dorm.name + '-' + self.floor.number
     

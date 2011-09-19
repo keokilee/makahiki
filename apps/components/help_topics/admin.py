@@ -22,6 +22,7 @@ class HelpAdminForm(forms.ModelForm):
 class HelpTopicAdmin(admin.ModelAdmin):
   # Automatically populates the slug field.
   prepopulated_fields = {"slug": ("title",)}
+  list_filter = ["category",]
   
   form = HelpAdminForm
 

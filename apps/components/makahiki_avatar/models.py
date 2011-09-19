@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.utils.translation import ugettext as _
+from django.core.cache import cache
 
 try:
     from cStringIO import StringIO
@@ -36,6 +37,9 @@ class Avatar(models.Model):
             avatars = Avatar.objects.filter(user=self.user, primary=True)\
                 .exclude(id=self.id)
             avatars.update(primary=False)
+        
+        # Invalidate avatar cache
+        cache.delete('avatar-url-%s' % self.user.username)
         super(Avatar, self).save(force_insert, force_update)
     
     def thumbnail_exists(self, size):

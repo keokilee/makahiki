@@ -23,6 +23,10 @@ class HelpTopic(models.Model):
       related_name="sub_topics",
   )
   
+  @models.permalink
+  def get_absolute_url(self):
+      return ('help_topic', [self.category, self.slug])
+  
   def __unicode__(self):
     return "%s: %s" % (self.category.capitalize(), self.title)
     
