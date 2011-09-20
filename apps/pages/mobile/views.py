@@ -133,7 +133,7 @@ def taskdeny(request, category_slug, slug):
 
 @login_required
 @never_cache
-def task_form(request,atype,slug):
+def task_form(request,category_slug,slug):
   """individual task page"""
   user = request.user
   
@@ -145,8 +145,10 @@ def task_form(request,atype,slug):
   can_commit = None
   member_all_count = 0
   member_floor_count = 0
-  
-  task = get_object_or_404(ActivityBase, type=atype, slug=slug)
+  try:
+    task = get_object_or_404(ActivityBase, type=category_slug, slug=slug)
+  except:
+    task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
@@ -411,7 +413,7 @@ def task(request, category_slug, slug, sender=None):
 
 
 @never_cache
-def reminder(request, category_slug, slug,sender=None):
+def reminder(request, category_slug, slug, error=False):
   user = request.user
   try:
     task = get_object_or_404(ActivityBase, type='event', slug=slug)
@@ -463,15 +465,15 @@ def reminder(request, category_slug, slug,sender=None):
     "reminders":reminders,
     "category_slug":category_slug,
     "type":task.type,
-    "slug":slug,
-    "sender":sender,
+    "slug":slug, 
+    "error":error,
     "task":task,
   }, context_instance=RequestContext(request))    
 
 @login_required
-def reminder_form(request, activity_type, slug):
+def reminder_form(request, activity_type, slug, error=False):
   if request.is_ajax():
-    if request.method == "POST":
+    if request.method == "POST": 
       profile = request.user.get_profile()
       task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
       form = ReminderForm(request.POST)
@@ -544,18 +546,20 @@ def reminder_form(request, activity_type, slug):
             profile.contact_text = form.cleaned_data["text_number"]
             profile.contact_carrier = form.cleaned_data["text_carrier"]
             profile.save()
-        return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug)))
+        return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
         return HttpResponse(json.dumps({"success": True}), mimetype="application/json") 
-      template = render_to_string("mobile/smartgrid/reminder.html", {
-          "reminders": {"form": form},
-          "task": task,
-      },context_instance=RequestContext(request)) 
-    else: 
-      return HttpResponse(json.dumps({
-        "success": False,
-        "form": template,
-      }), mimetype="application/json") 
-  return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug)))
+
+      else: 
+        #template = render_to_string("mobile/smartgrid/reminder.html", {
+        #"reminders": {"form": form},
+        #"task": task,
+        #},context_instance=RequestContext(request)) 
+        #return HttpResponse(json.dumps({
+        #"success": False,
+        #"form": template,
+        #}), mimetype="application/json") 
+        return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug,True)))
+  return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
 ###################################################################################################
 
 ### Private methods.

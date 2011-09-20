@@ -25,7 +25,7 @@
         {% if not task.is_event_completed %}
           You will earn 2 points for signing up for the {{task.type}}.
           <div>
-            <button>OK, Let's do it</button>
+            <button type="submit">OK, Let's do it</button>
             <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
               I don't want to do it</a>
           </div>
@@ -64,8 +64,8 @@
       {% endif %}  
     {%endif%}
       <div>
-        <button>Submit</button>
-        <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+        <button type="submit">Submit</button>
+        <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
            Cancel</a>
       </div>
     {% endif %}
@@ -79,7 +79,7 @@
         <p/>
         {% endfor %}
         <div>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
           <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
             Cancel</a>
         </div>

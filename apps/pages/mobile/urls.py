@@ -29,5 +29,6 @@ urlpatterns = patterns('',
     url(r'^power_and_energy/?$', 'pages.mobile.views.power_and_energy', name='mobile_power_and_energy'), 
     url(r'^news/?$', 'pages.mobile.templates.mobile.news.views.news' , name='mobile_news'),
     url(r'^news/(\d+)/?$', 'pages.mobile.templates.mobile.news.views.more_posts' , name='news_more'),
-    url(r'^notification/(\d+)/?$', 'pages.mobile.views.read_notification' , name='mobile_read_notification'),
+    url(r'^notification/(\d+)/?$', 'pages.mobile.views.read_notification' , name='mobile_read_notification'), 
 )
+

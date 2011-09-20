@@ -1,8 +1,8 @@
 {% load class_tags %}
 
 <form id="task-reminder-form" action="{% url mobile_reminder_form task.type task.slug %}" method="post">
-  {% csrf_token %}
-  {{ reminders.form.non_field_errors }}
+  {% csrf_token %} 
+  {{ reminders.form.non_field_errors }} 
   {{reminders.errors}}
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>

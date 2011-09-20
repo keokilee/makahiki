@@ -149,7 +149,7 @@
               Please try again. Here is the feedback: <br/>             
               <span style="color:orange">{{approval.admin_comment}}</span>
 
-              <a href="{% url mobile_task_form type task.name|slugify %}" data-role="button" data-rel="dialog">I will try again</a> 
+              <a href="{% url mobile_task_form category task.name|slugify %}" data-role="button" data-rel="dialog">I will try again</a> 
 
             {% endif %}
           {% endif %}            
