@@ -36,6 +36,9 @@ DATABASES = {
   }
 }
 
+# Permissions for large uploaded files.
+FILE_UPLOAD_PERMISSIONS = 0644
+
 # Generates XML reports for the Django tests.
 # Requires http://pypi.python.org/pypi/unittest-xml-reporting/1.0.3
 # TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.run_tests'
