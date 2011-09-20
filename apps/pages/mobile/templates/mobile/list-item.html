@@ -4,14 +4,14 @@
     {{notification.contents|safe}}
   </div> 
        <form action="{% url mobile_read_notification notification.id %}" rel="external" method="POST" style="display: inline">
-        <button type="submit"  onClick='$('#notification-item-{{notification.id}}').fadeOut();return true;' class="notification-read ui-icon ui-icon-circle-close"/>
+        <!--button type="submit"  onClick='$('#notification-item-{{notification.id}}').fadeOut();return true;' class="notification-read ui-icon ui-icon-circle-close"/--><button type="submit"  onClick='$('#notification-item-{{notification.id}}').fadeOut();return true;' data-icon="close" data-inline="true">Dismiss</button>
       </form> 
 <!--$(this).parent().style.display='none';window.location.reload();return false;'-->
-  <script>
+  <!--script>
     function close() {
         $.post("{% url mobile_read_notification notification.id %}",function () {
 	$("#notification-item-{{notification.id}}").fadeOut();});
         
       }
-  </script>
+  </script-->
 </li>
