@@ -103,10 +103,22 @@ def check_energy_goal():
   gdata = GDataGoal()
   gdata.Run()
 
+def notify_commitment_end():
+  members = CommitmentMember.objects.filter(completion_date__lte=datetime.date.today(), award_date__isnull=True)
+  for member in members:
+    message = "Your commitment <a href='%s'>%s</a> has end." % (
+        reverse("activity_task", args=(member.commitment.type, member.commitment.slug,)),
+        member.commitment.title)
+
+    message += "You can click on the link to claim your points."
+    print "%s : %s" % (member.user, message)
+
+    UserNotification.create_info_notification(member.user, message, content_object=member)
+
+
 def process_rsvp():
   members = ActivityMember.objects.filter(Q(activity__type="event")|Q(activity__type="excursion"),approval_status="pending")
   for member in members:
-
       activity = member.activity
       user = member.user
       profile = user.get_profile()
@@ -132,3 +144,4 @@ def process_rsvp():
 if __name__ == "__main__":
     check_energy_goal()
     #process_rsvp()
+    notify_commitment_end()
