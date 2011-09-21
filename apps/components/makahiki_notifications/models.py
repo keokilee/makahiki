@@ -15,7 +15,7 @@ constants = message_constants
 
 TYPE_CHOICES = (
   ('round-transition', 'Round Transition'),
-  ('prize-winner', 'Prize Winner'),
+  ('raffle-winner', 'Raffle Winner'),
   ('canopy-elevation', 'Canopy Elevation'),
   ('commitment-ready', 'Commitment Ready'),
 )
