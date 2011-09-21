@@ -31,7 +31,7 @@ class Command(management.base.BaseCommand):
       
         # Notify winner using the template.
         try:
-          template = NoticeTemplate.objects.get(slug='raffle-winner')
+          template = NoticeTemplate.objects.get(notice_type='raffle-winner')
           message = template.render({'PRIZE': prize})
           UserNotification.create_info_notification(user, message, True, prize)
         except NoticeTemplate.DoesNotExist:

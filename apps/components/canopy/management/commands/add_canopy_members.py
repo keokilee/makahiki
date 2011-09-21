@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 from django.template.loader import render_to_string
 
 from components.makahiki_profiles.models import Profile
-from components.makahiki_notifications.models import UserNotification
+from components.makahiki_notifications.models import UserNotification, NoticeTemplate
 
 class Command(management.base.BaseCommand):
   help = 'Adds the top n users in points to the canopy.'
@@ -40,9 +40,15 @@ class Command(management.base.BaseCommand):
         member.save()
         
   def __create_notifications(self, user):
-    message = "Congratulations! You have been added to the canopy!" 
-    
-    UserNotification.create_success_notification(user, message)
+    try:
+      template = NoticeTemplate.objects.get(notice_type='canopy-elevation')
+      contents = template.render()
+      UserNotification.create_info_notification(user, contents, True)
+      
+    except NoticeTemplate.DoesNotExist:
+      # Use default message.
+      message = "Congratulations! You have been added to the canopy!" 
+      UserNotification.create_info_notification(user, message, True)
 
     if user.email and len(user.email) > 0:
       subject = "[%s] Congratulations! You have been added to the canopy!" % (settings.COMPETITION_NAME,) 

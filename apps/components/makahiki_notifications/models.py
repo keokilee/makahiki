@@ -27,13 +27,14 @@ class NoticeTemplates(models.Model):
   notice_type = models.SlugField(max_length=50, choices=TYPE_CHOICES)
   template = models.TextField(help_text="Uses Markdown formatting.")
     
-  def render(self, context_dict):
+  def render(self, context_dict={}):
     """
     Renders the message first using Django's templating system, then using Markdown.
     The template renderer uses the passed in context to insert variables.
     """
     template = Template(self.message)
     template = template.render(Context(context_dict))
+      
     return markdown(template)
 
 class UserNotification(models.Model):
