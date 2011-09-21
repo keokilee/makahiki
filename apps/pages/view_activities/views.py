@@ -42,7 +42,6 @@ def index(request):
     cache.set('user_events-%s' % user.username,
       events, 60 * 60 * 24)
 
-
   floor = user.get_profile().floor
   user_floor_standings = None
   
@@ -54,20 +53,11 @@ def index(request):
     user_floor_standings = floor.points_leaders(num_results=10, round_name=round_name)
   
   categories_list = __get_categories(user)
-  
-  notification = None
-  notify = request.REQUEST.get("notify", None)
-  value = request.REQUEST.get("value", None)
-  if value and value != "None":
-    if notify == "drop_commit":
-      notification = "Commitment dropped, you lose " + value + " points."
-    if notify == "drop_activity":
-      notification = "Removed from signup list, you lose " + value + " points."
 
-  # Check for the about cookie.
   hide_about = False
-  if request.COOKIES.has_key("grid-hide-about"):
-    hide_about = True
+  ##TODO Check for the about cookie.
+  ##if request.COOKIES.has_key("grid-hide-about"):
+  ##  hide_about = True
  
   form = EventCodeForm()
   
@@ -80,7 +70,6 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
-    "notification":notification,
     "hide_about": hide_about,
     "event_form": form,
   }, context_instance=RequestContext(request))
@@ -233,13 +222,14 @@ def attend_code(request):
 
       code.is_active = False
       code.save()
-      
-      return HttpResponse(json.dumps({
+
+      notification = "You just earned " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
+      response = HttpResponse(json.dumps({
         "type":code.activity.type,
         "slug":code.activity.slug,
-        "notify": "add_point",
-        "value":str(value)
       }), mimetype="application/json")
+      return response
           
     # At this point there is a form validation error.
     return HttpResponse(json.dumps({
@@ -253,38 +243,12 @@ def __add_commitment(request, commitment):
   """Commit the current user to the commitment."""
   user = request.user
   value = None
+  form = None
 
   if request.method == "POST":
     form = CommitmentCommentForm(request.POST, request=request, activity=commitment)
-    if form.is_valid():
-      if is_pending_commitment(user, commitment):
-            member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
-            #commitment end, award full point
-            member.award_date = datetime.datetime.today()
-            if form.cleaned_data["social_email"]:
-              member.social_email = form.cleaned_data["social_email"]
-            if form.cleaned_data["social_email2"]:
-              member.social_email2 = form.cleaned_data["social_email2"]
-            member.save()
-            value = commitment.point_value
-      elif can_add_commitments(user):
-        # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
-        member = CommitmentMember(user=user, commitment=commitment)
-        member.social_email = form.cleaned_data["social_email"]
-        member.social_email2 = form.cleaned_data["social_email2"]
-        member.save()
-        # messages.info("You are now committed to \"%s\"" % commitment.title)
-
-        #increase the point from signup
-        message = "Commitment: %s (Sign up)" % (commitment.title)
-        user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
-        user.get_profile().save()
-        value = 2
-
-      return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,))+"?notify=add_point&value="+str(value))
-
-    else:
-      return render_to_response("view_activities/task.html", {
+    if not form.is_valid():
+        return render_to_response("view_activities/task.html", {
         "task":commitment,
         "pau":True,
         "form":form,
@@ -294,6 +258,44 @@ def __add_commitment(request, commitment):
         "display_form":True,
         "form_title": "Get your points",
         }, context_instance=RequestContext(request))
+
+  # now we either have a valid form or a GET
+  if is_pending_commitment(user, commitment):
+     member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+     #commitment end, award full point
+     member.award_date = datetime.datetime.today()
+
+     if form.cleaned_data["social_email"]:
+       member.social_email = form.cleaned_data["social_email"]
+     if form.cleaned_data["social_email2"]:
+       member.social_email2 = form.cleaned_data["social_email2"]
+     member.save()
+     value = commitment.point_value
+
+  elif can_add_commitments(user):
+     # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
+     member = CommitmentMember(user=user, commitment=commitment)
+
+     if form:
+        member.social_email = form.cleaned_data["social_email"]
+        member.social_email2 = form.cleaned_data["social_email2"]
+
+     member.save()
+     # messages.info("You are now committed to \"%s\"" % commitment.title)
+
+     #increase the point from signup
+     message = "Commitment: %s (Sign up)" % (commitment.title)
+     user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+     user.get_profile().save()
+     value = 2
+
+  response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+  notification = "You just earned " + str(value) + " points."
+  response.set_cookie("task_notify", notification)
+  return response
+
+
+
 
 def __drop_commitment(request, commitment):
   """drop the commitment."""
@@ -311,7 +313,11 @@ def __drop_commitment(request, commitment):
     user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
     user.get_profile().save()
 
-    return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,))+"?notify=drop_commit&value="+str(value))
+    response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+    notification = "Commitment dropped. you lose " + str(value) + " points."
+    response.set_cookie("task_notify", notification)
+    return response
+
 
 def __add_activity(request, activity):
   """Commit the current user to the activity."""
@@ -356,8 +362,12 @@ def __add_activity(request, activity):
       user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
       user.get_profile().save()
       value = 2
-      
-    return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,))+"?notify=add_point&value="+str(value))
+
+    response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+    notification = "You just earned " + str(value) + " points."
+    response.set_cookie("task_notify", notification)
+    return response
+
 
 def __drop_activity(request, activity):
   """drop the current user from the activity."""
@@ -373,8 +383,13 @@ def __drop_activity(request, activity):
     message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
     user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
     user.get_profile().save()
+    value = 2
+    
+    response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+    notification = "Removed from signup list. you lose " + str(value) + " points."
+    response.set_cookie("task_notify", notification)
+    return response
 
-    return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,))+"?notify=drop_activity&value=2")
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
@@ -421,7 +436,7 @@ def __request_activity_points(request, activity):
         code.save()
         activity_member.approval_status = "approved" # Model save method will award the points.
         value = activity.point_value
-        
+
       # Attach text prompt question if one is provided
       elif form.cleaned_data.has_key("question"):
         activity_member.question = TextPromptQuestion.objects.get(pk=form.cleaned_data["question"])
@@ -434,9 +449,14 @@ def __request_activity_points(request, activity):
 
       activity_member.social_email = form.cleaned_data["social_email"]
       activity_member.save()
+
+      response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+      if value:
+          notification = "You just earned " + str(value) + " points."
+          response.set_cookie("task_notify", notification)
           
-      return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,))+"?notify=add_point&value="+str(value))
-    
+      return response
+
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
       ##if question:
@@ -590,17 +610,6 @@ def task(request, activity_type, slug):
     
   display_form = True if request.GET.has_key("display_form") else False
 
-  notification = None
-  notify = request.REQUEST.get("notify", None)
-  value = request.REQUEST.get("value", None)
-  if value and value != "None":
-    if notify == "add_point":
-      notification = "You just earned " + value + " points."
-    if notify == "drop_activity":
-      notification = "Removed from signup list, you lose " + value + " points."
-    if notify == "drop_commit":
-      notification = "Commitment dropped, you lose " + value + " points."
-  
   return render_to_response("view_activities/task.html", {
     "task":task,
     "pau":pau,
@@ -612,9 +621,8 @@ def task(request, activity_type, slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-    "notification":notification,
     "reminders": reminders,
-  }, context_instance=RequestContext(request))    
+  }, context_instance=RequestContext(request))
 
 @never_cache
 @login_required

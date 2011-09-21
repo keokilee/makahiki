@@ -98,38 +98,41 @@
 <script type="text/javascript"> 
 $( document ).ready( function ()
  {
-  
-    {% if notification %}
-	var notice = '<div class="notice">'
-		+ '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
-		+ '<div class="body"> {{notification}} </div>' 
-		+ '</div>';
+    var notification = getCookie("task_notify");
+    if (notification != null)
+    {
+        notification = notification.replace(/"/g,'');
+        var notice = '<div class="notice">'
+            + '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
+            + '<div class="body">'
+            + notification
+            + '</div>'
+            + '</div>';
 
-	$(notice).purr(
-	   {
-			usingTransparentPNG: true,
-			fadeInSpeed: 100,
-            fadeOutSpeed: 600,
-            removeTimer: 2500,
-            isSticky: false
-	   }
-    );		
-    {% endif %}
-    
-    jQuery(document).ready(function($) {
-      var height = 0;
-      $("#activity-scoreboard-content").children().each(function(index, value) {
-        if ($(value).height() > height) {
-          height = $(value).height();
-        }
-      });
+        $(notice).purr(
+           {
+                usingTransparentPNG: true,
+                fadeInSpeed: 100,
+                fadeOutSpeed: 600,
+                removeTimer: 2500,
+                isSticky: false
+           }
+        );
+        deleteCookie("task_notify");
+    }
 
-      $("#activity-scoreboard-content").after("<div id='scoreboard-cycle-nav'>").cycle({
-          height: "" + height + "px",
-          pause: 1,
-          timeout: 7000,
-          pager: '#scoreboard-cycle-nav'
-      });
+    var height = 0;
+    $("#activity-scoreboard-content").children().each(function(index, value) {
+      if ($(value).height() > height) {
+        height = $(value).height();
+      }
+    });
+
+    $("#activity-scoreboard-content").after("<div id='scoreboard-cycle-nav'>").cycle({
+        height: "" + height + "px",
+        pause: 1,
+        timeout: 7000,
+        pager: '#scoreboard-cycle-nav'
     });
     
 /* TODO. comment out temporary

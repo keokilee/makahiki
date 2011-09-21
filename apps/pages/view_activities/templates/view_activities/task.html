@@ -221,7 +221,12 @@
       {% if not pau %}              <!-- not done yet  -->
         {% if task.type == "commitment" %}
           {% if can_commit %}
-            <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this!
+            {% if task.social_bonus > 0 %}
+              <a onclick="task_form_overlay()">
+            {% else %}
+              <a href="{% url activity_add_task task.type task.slug %}">
+            {%  endif %}
+            <button style="cursor:pointer;">I will do this!
             <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
             </button></a>
           {% else %}
@@ -280,11 +285,16 @@
 <script type="text/javascript"> 
 $( document ).ready( function ()
  {
-    {% if notification %}
-	  var notice = '<div class="notice">'
-		+ '<img src="{{ STATIC_URL}}/css/default/images/icon-notify-add.png" width="30" align="center" />'
-		+ '<div class="body"> {{notification}} </div>'
-		+ '</div>';
+     var notification = getCookie("task_notify");
+     if (notification != null)
+     {
+         notification = notification.replace(/"/g,'');
+         var notice = '<div class="notice">'
+             + '<img src="{{ STATIC_URL}}/css/default/images/icon-exclamation2.png" width="30" align="center" />'
+             + '<div class="body">'
+             + notification
+             + '</div>'
+             + '</div>';
 
 	  $(notice).purr(
 	    {
@@ -293,8 +303,9 @@ $( document ).ready( function ()
             fadeOutSpeed: 600,
             removeTimer: 2500,
             isSticky: false
-	    }); 
-    {% endif %}
+	    });
+      deleteCookie("task_notify");
+    }
     
     {% if display_form %}
        task_form_overlay();
