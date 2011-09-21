@@ -413,6 +413,7 @@ def task(request, category_slug, slug, sender=None):
 
 
 @never_cache
+@login_required
 def reminder(request, category_slug, slug, error=False):
   user = request.user
   try:
@@ -469,6 +470,11 @@ def reminder(request, category_slug, slug, error=False):
     "error":error,
     "task":task,
   }, context_instance=RequestContext(request))    
+
+@never_cache
+@login_required
+def reminder_err(request, category_slug, slug, error=False):
+  reminder(category_slug,slug,error)
 
 @login_required
 def reminder_form(request, activity_type, slug, error=False):
@@ -558,7 +564,8 @@ def reminder_form(request, activity_type, slug, error=False):
         #"success": False,
         #"form": template,
         #}), mimetype="application/json") 
-        return HttpResponseRedirect(reverse('mobile_reminder',args=( slug,slug,True)))
+        #return HttpResponseRedirect(reverse('mobile_reminder_error',args=( slug,slug)))
+        return reminder(request,slug,slug,True)
   return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
 ###################################################################################################
 
