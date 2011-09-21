@@ -223,12 +223,12 @@ def attend_code(request):
       code.is_active = False
       code.save()
 
-      notification = "You just earned " + str(value) + " points."
-      response.set_cookie("task_notify", notification)
       response = HttpResponse(json.dumps({
         "type":code.activity.type,
         "slug":code.activity.slug,
       }), mimetype="application/json")
+      notification = "You just earned " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
       return response
           
     # At this point there is a form validation error.

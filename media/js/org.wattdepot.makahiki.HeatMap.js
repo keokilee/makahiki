@@ -1,5 +1,4 @@
 Namespace("org.makahiki");
-  google.load("visualization", "1", {});
   
    // Store user preferences in corresponding variables.
    var title = "Energy Consumed"; 
