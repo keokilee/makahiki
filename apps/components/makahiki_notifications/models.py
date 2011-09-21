@@ -7,11 +7,36 @@ from django.core.mail.message import EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.template import Template, Context
+from markdown import markdown
 
 # Notification Levels
 constants = message_constants
 
-class Notification(models.Model):
+TYPE_CHOICES = (
+  ('round-transition', 'Round Transition'),
+  ('prize-winner', 'Prize Winner'),
+  ('canopy-elevation', 'Canopy Elevation'),
+  ('commitment-ready', 'Commitment Ready'),
+)
+
+class NoticeTemplates(models.Model):
+  """
+  Templates for built in notifications.
+  """
+  notice_type = models.SlugField(max_length=50, choices=TYPE_CHOICES)
+  template = models.TextField(help_text="Uses Markdown formatting.")
+    
+  def render(self, context_dict):
+    """
+    Renders the message first using Django's templating system, then using Markdown.
+    The template renderer uses the passed in context to insert variables.
+    """
+    template = Template(self.message)
+    template = template.render(Context(context_dict))
+    return markdown(template)
+
+class UserNotification(models.Model):
   recipient = models.ForeignKey(User)
   contents = models.TextField()
   unread = models.BooleanField(default=True)
@@ -19,10 +44,6 @@ class Notification(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   level = models.IntegerField(default=constants.INFO)
   
-  class Meta:
-    abstract = True
-
-class UserNotification(Notification):
   display_alert = models.BooleanField(default=False)
   content_type = models.ForeignKey(ContentType, null=True, blank=True)
   object_id = models.PositiveIntegerField(null=True, blank=True)
