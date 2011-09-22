@@ -104,6 +104,10 @@
   {% if task.type == "activity" %}          {# activity #}
     {% if form.image_response %}         {# image #}
       {{task.confirm_prompt}} <p/>
+      {% if form.response %}
+        {{ form.response.errors }}
+        {{ form.response }}
+      {%  endif %}
       {{ form.image_response.errors }}
       {{ form.image_response }}
     {% else %}                           

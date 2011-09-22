@@ -113,7 +113,24 @@ class ActivityImageForm(forms.Form):
     cleaned_data = self.cleaned_data
     _validate_social_email(self, cleaned_data)    
     return cleaned_data
-    
+
+class ActivityFreeResponseImageForm(forms.Form):
+  response = forms.CharField(widget=forms.Textarea)
+  image_response = forms.ImageField()
+  comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
+  social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+  social_email2 = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
+
+  def __init__(self, *args, **kwargs):
+    self.request = kwargs.pop('request', None)
+    self.activity = kwargs.pop('activity', None)
+    super(ActivityFreeResponseImageForm, self).__init__(*args, **kwargs)
+
+  def clean(self):
+    cleaned_data = self.cleaned_data
+    _validate_social_email(self, cleaned_data)
+    return cleaned_data
+
 class CommitmentCommentForm(forms.Form):
   comment = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}), required=False)
   social_email = forms.CharField(widget=forms.TextInput(attrs={'size':'30'}), required=False)
