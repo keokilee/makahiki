@@ -48,6 +48,14 @@ class CanopyFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertContains(response, 'alt="Photo of Test U."', count=1)
     
+  def testDirectory(self):
+    profile = self.user.get_profile()
+    profile.canopy_member = True
+    profile.save()
+    
+    response = self.client.get(reverse('canopy_members'))
+    self.failUnlessEqual(response.status_code, 200)
+    
 class MissionsFunctionalTestCase(TestCase):
   def setUp(self):
     self.user = User.objects.create_user("user", "user@test.com", password="atest")
