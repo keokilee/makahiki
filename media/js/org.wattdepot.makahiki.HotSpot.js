@@ -1,7 +1,7 @@
-Namespace("org.makahiki");
+Namespace("org.wattdepot.makahiki");
 
   /**  Load the Visualization API and the bar chart package. */
-  google.load("visualization", "1", {packages:['corechart']});
+  google.load("visualization", "1", {packages:['corechart', 'imagechart']});
 
   /** Set a callback to run when the Google Visualization API is loaded. */
   google.setOnLoadCallback(initialize);
@@ -68,7 +68,7 @@ Namespace("org.makahiki");
             var url = host_uri + 'sources/' + source +  '/calculated?startTime=' + 
                   startTime + '&endTime=' + endTime + '&samplingInterval=' + interval;
             query = new google.visualization.Query(url);
-           // debug(url);
+            debug(url);
             query.setQuery('select timePoint, ' + dataType);
           
           query.send(function(response) {responseHandler(response, query, source, 0);});
@@ -257,7 +257,7 @@ function getHighlightMarkers(data, maxSpotSize) {
 
   for (var i = 0; i < data.getNumberOfRows(); i++) {
     var value = data.getValue(i, valueColumn);
-    if (value > maxValue * 0.95) {
+    if (value > maxValue * 0.98) {
       var scaledValue = Math.ceil(((value / maxValue) * 100) / (100 / maxSpotSize));
       returnString = returnString + 
         '|o,' + 

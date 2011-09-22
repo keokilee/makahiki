@@ -2,13 +2,31 @@
 <p/>
 <div id="HeatMap">
       <div id="title" style="font-weight: bold; text-align: center;">Heat Map Analysis</div>
-     
-      <div id="control">
-        <input type="radio" name="period" value="last24hours" checked="checked" onchange="updatePeriod();" /> 
+
+      <div id="control-dorm">
+        Dorm :
+        {% for dorm in all_dorms %}
+          <input type="radio" name="heatmap-dorm" value="{{ dorm.name }}"
+              {%  if user.get_profile.floor.dorm == dorm %} checked="checked" {% endif %}
+                 onchange="updatePeriod();"/> {{ dorm.name }}
+
+            {% for lounge in dorm.floor_set.all %}
+                <input id="{{ lounge.floor_identifier}}" name="heatmap-lounge-{{ dorm.name }}" type="hidden"/>
+            {% endfor %}
+
+        {% endfor %}
+
+
+      </div>
+
+      <div id="control-period">
+        Time :
+        <input type="radio" name="period" value="last24hours" checked="checked" onchange="updatePeriod();" />
           last 24 hours 
-        <input type="radio" name="period" value="last21days" onchange="updatePeriod();"/> 
+        <input type="radio" name="period" value="last21days" onchange="updatePeriod();"/>
           last 21 days
-      </div>        
+      </div>
+
       
 
       <!-- Loading div that displays an animated gif, display is set to none when displaying a BioHeatMap -->
