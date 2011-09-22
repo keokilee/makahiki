@@ -82,12 +82,12 @@ def members(request):
   """
   Lists all of the members of the canopy.
   """
-  canopy_missions = Mission.objects.exclude(users__pk=request.user.pk)
+  canopy_missions = Mission.objects.all()
   members = User.objects.filter(Q(is_superuser=True) | Q(is_staff=True) | Q(profile__canopy_member=True))
   
   return render_to_response("canopy/directory/members.html", {
       "in_canopy": True,
-      "canopy_quests": canopy_mission,
+      "canopy_missions": canopy_missions,
       "members": members,
   }, context_instance=RequestContext(request))
   

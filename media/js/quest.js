@@ -13,8 +13,13 @@ jQuery(document).ready(function() {
       jQuery("#quest-contents").html(jQuery(this).next(".quest-description").html());
       
       // Set cookie that identifies this quest as open.
-      setCookie("visible-quest", "#" + jQuery(this).attr('id'));
-
+      if(jQuery(this).parent().hasClass('canopy-mission')) {
+        setCookie("visible-mission", "#" + jQuery(this).attr('id'));
+      }
+      else {
+        setCookie("visible-quest", "#" + jQuery(this).attr('id'));
+      }
+      
       //Toggle quest-details if it is hidden.
       if (!jQuery("#quest-details").is(":visible")) {
         if(jQuery(this).parent().hasClass('canopy-mission')) {
@@ -33,14 +38,14 @@ jQuery(document).ready(function() {
     else {
       //Hide quest details and remove selected.
       jQuery(this).parent().removeClass("selected");
-      
-      // Remove cookie.
-      deleteCookie("visible-quest");
-      
       if(jQuery(this).parent().hasClass('canopy-quest')) {
-        log_js_action("canopy-quest", jQuery(this).attr('id'), 'hide');
+        // Remove cookie.
+        deleteCookie("visible-mission");
+        log_js_action("canopy-mission", jQuery(this).attr('id'), 'hide');
       }
       else {
+        // Remove cookie.
+        deleteCookie("visible-quest");
         log_js_action("quest", jQuery(this).attr('id'), 'hide');
       }
       jQuery("#quest-details").slideUp("slow", function() {
@@ -51,12 +56,16 @@ jQuery(document).ready(function() {
   
   // Handler for clicking on the hide link.
   jQuery("#quest-hide").click(function() {
+    // Remove classes from the list of quests/missions.
     jQuery("#quest-box li").removeClass("selected");
-    deleteCookie("visible-quest");
+    jQuery('#mission-list li').removeClass("selected");
+    
     if(jQuery(this).parent().hasClass('canopy-quest')) {
-      log_js_action("canopy-quest", jQuery(this).attr('id'), 'hide');
+      deleteCookie("visible-mission");
+      log_js_action("canopy-mission", jQuery(this).attr('id'), 'hide');
     }
     else {
+      deleteCookie("visible-quest");
       log_js_action("quest", jQuery(this).attr('id'), 'hide');
     }
     jQuery("#quest-details").slideUp("slow", function() {
@@ -70,18 +79,29 @@ jQuery(document).ready(function() {
     jQuery(value).parent().addClass("selected");
     jQuery("#quest-contents").html(jQuery(value).next(".quest-description").html());
 
-    if(jQuery(value).parent().hasClass('canopy-quest')) {
-      log_js_action("canopy-quest", jQuery(value).attr('id'), 'show');
-    }
-    else {
-      log_js_action("quest", jQuery(value).attr('id'), 'show'); 
-    }
+    log_js_action("quest", jQuery(value).attr('id'), 'show'); 
     // console.log(jQuery(this).attr('id'));
     jQuery("#quest-details").show();
   }
   else if (value) {
     // alert("delete");
     // Could not find this quest item, so let's delete the cookie.
-    deleteCookie("visible-quest");
+    // deleteCookie("visible-quest");
+  }
+  
+  // Check for a mission cookie.
+  value = getCookie('visible-mission');
+  if (value && (jQuery(value).attr('id') != null)) {
+    jQuery(value).parent().addClass("selected");
+    jQuery("#quest-contents").html(jQuery(value).next(".quest-description").html());
+
+    log_js_action("canopy-mission", jQuery(value).attr('id'), 'show');
+    // console.log(jQuery(this).attr('id'));
+    jQuery("#quest-details").show();
+  }
+  else if (value) {
+    // alert("delete");
+    // Could not find this mission item, so let's delete the cookie.
+    // deleteCookie("visible-mission");
   }
 });
