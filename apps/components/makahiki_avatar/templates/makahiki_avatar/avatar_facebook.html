@@ -1,5 +1,5 @@
 {% if fb_id %}
-<p>Or, use your picture from Facebook:</p>
+<h4 style="margin-top: 0px">Use your picture from Facebook:</h4>
 <form action="{% url avatar_upload_fb %}" method="POST">
   {% csrf_token %}
   <img src="http://graph.facebook.com/{{fb_id}}/picture"/>
