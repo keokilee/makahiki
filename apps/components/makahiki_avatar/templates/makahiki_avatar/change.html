@@ -4,18 +4,18 @@
 
 {% block body %}
 <div {% get_id_and_classes "avatar-change" %}>
-  <div {% get_id_and_classes "avatar-change-title" %}>Change your avatar</div>
+  <div {% get_id_and_classes "avatar-change-title" %}>Change your profile picture</div>
   <div {% get_id_and_classes "avatar-change-content" %}>
     <div id="avatar-back">
       <a href="{% url profile_index %}">Back to profile</a>
     </div>
     <ul>
       <li {% get_id_and_classes "avatar-current" %}>
-        <p>Your current avatar: </p>
+        <p>Your current profile picture: </p>
         {% avatar user %}
       </li>
       <li {% get_id_and_classes "avatar-upload" %}>
-        <p>Upload a new avatar.</p>
+        <p>Upload a new profile picture.</p>
         <form enctype="multipart/form-data" method="POST" action="">
             <input type="file" name="avatar" value="Avatar Image" />
             <button type="submit">Upload New Image</button>
