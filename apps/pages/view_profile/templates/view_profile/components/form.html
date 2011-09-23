@@ -2,6 +2,7 @@
 {% load class_tags %}
 
 <form {% get_id_and_classes "profile-form-contents" %} action="{% url profile_index %}" method="post">
+  {% csrf_token %}
   {% if form.message %}
   <div style="text-align: center">
     <span {% get_id_and_classes "profile-form-message" %}>{{form.message}}</span>

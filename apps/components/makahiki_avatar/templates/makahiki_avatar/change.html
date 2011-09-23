@@ -17,10 +17,11 @@
       <li {% get_id_and_classes "avatar-upload" %} style="width: 380px; margin-left: 20px; border-right: 1px solid gray">
         <h4 style="margin-top: 0px">Upload a new profile picture.</h4>
         <p>
-          Click the Choose File button to select a picture on your 
-          computer that will be used as your profile picture.
+          Click the Choose File button to select a picture on your computer that will be used as your 
+          profile picture.  The picture should be square and less than 5MB in size.
         </p>
         <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
             <input type="file" name="avatar" value="Avatar Image" />
             <button type="submit">Upload New Image</button>
         </form>
