@@ -1,0 +1,3 @@
+first_login requires cleanstart
+add_remove_raffle requires test_activity & first_login to be run first
+
