@@ -42,6 +42,7 @@ sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 from components.activities.models import *
+from components.makahiki_notifications.models import UserNotification, NoticeTemplate
 from django.db.models import Q
 
 
@@ -95,7 +96,7 @@ class GDataGoal:
         actual_usage=actual,
     )
     goal.save()
-        
+    
   def Run(self):
     self._checkCellGoal()
         
@@ -105,12 +106,24 @@ def check_energy_goal():
 
 def notify_commitment_end():
   members = CommitmentMember.objects.filter(completion_date=datetime.date.today(), award_date__isnull=True)
+  
+  # try and load the notification template.
+  template = None
+  try:
+    template = NoticeTemplate.objects.get(notice_type="commitment-ready")
+  except NoticeTemplate.DoesNotExist:
+    pass
+    
   for member in members:
-    message = "Your commitment <a href='%s'>%s</a> has end." % (
-        reverse("activity_task", args=(member.commitment.type, member.commitment.slug,)),
-        member.commitment.title)
+    message = None
+    if template:
+      message = template.render({"COMMITMENT": member.commitment})
+    else:
+      message = "Your commitment <a href='%s'>%s</a> has end." % (
+          reverse("activity_task", args=(member.commitment.type, member.commitment.slug,)),
+          member.commitment.title)
 
-    message += "You can click on the link to claim your points."
+      message += "You can click on the link to claim your points."
     #print "%s : %s" % (member.user, message)
 
     UserNotification.create_info_notification(member.user, message, display_alert=True, content_object=member)
