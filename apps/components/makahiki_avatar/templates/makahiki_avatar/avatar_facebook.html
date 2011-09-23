@@ -3,7 +3,7 @@
 <form action="{% url avatar_upload_fb %}" method="POST">
   {% csrf_token %}
   <img src="http://graph.facebook.com/{{fb_id}}/picture"/>
-  {{form.facebook_photo}}
+  {{fb_form.facebook_photo}}
   <button type="submit">Use Facebook Photo</button>
 </div>
 {% else %}

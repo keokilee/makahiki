@@ -79,7 +79,7 @@ def get_facebook_photo(request):
     response = render_to_string("makahiki_avatar/avatar_facebook.html", {
       "fb_error": fb_error,
       "fb_id": fb_id,
-      "form": form,
+      "fb_form": form,
     }, context_instance=RequestContext(request))
 
     return HttpResponse(json.dumps({
@@ -91,29 +91,60 @@ def get_facebook_photo(request):
 def upload_fb(request):
   """Uploads the user's picture from Facebook."""
   if request.method == "POST":
-    # Need to download the image from the url and save it.
-    photo_temp = NamedTemporaryFile(delete=True)
-    fb_url = "http://graph.facebook.com/%s/picture?type=large" % request.user.facebookprofile.profile_id
-    # print fb_url
-    photo_temp.write(urllib2.urlopen(fb_url).read())
-    photo_temp.flush()
+    form = FacebookPictureForm(request.POST)
+    if form.is_valid():
+      # Need to download the image from the url and save it.
+      photo_temp = NamedTemporaryFile(delete=True)
+      fb_url = form.cleaned_data["facebook_photo"]
+      photo_temp.write(urllib2.urlopen(fb_url).read())
+      photo_temp.flush()
+      
+      # Delete old avatars if they exist
+      avatars = Avatar.objects.filter(user=request.user)
+      for avatar in avatars:
+        avatar.avatar.delete()
+        avatar.delete()
+        
+      path = avatar_file_path(user=request.user, 
+          filename="fb_photo.jpg")
+      avatar = Avatar(
+          user = request.user,
+          primary = True,
+          avatar = path,
+      )
+      # print "saving facebook photo to " + path
+      new_file = avatar.avatar.storage.save(path, File(photo_temp))
+      avatar.save()
     
-    path = avatar_file_path(user=request.user, 
-        filename="fb_photo.jpg")
-    avatar = Avatar(
-        user = request.user,
-        primary = True,
-        avatar = path,
-    )
-    # print "saving facebook photo to " + path
-    new_file = avatar.avatar.storage.save(path, File(photo_temp))
-    avatar.save()
-    
-    return HttpResponseRedirect(reverse("profile_index"))
+      return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
   
   raise Http404
   
+SIZE_LIMIT = 1024 * 1024 * 2 # 2MB size limit
+
+def __handle_uploaded_file(uploaded_file, user):
+  if uploaded_file.size > SIZE_LIMIT:
+    raise Exception("File is too large")
+  
+  # Delete old avatars if they exist
+  avatars = Avatar.objects.filter(user=user)
+  for avatar in avatars:
+    avatar.avatar.delete()
+    avatar.delete()
+    
+  path = avatar_file_path(user=user, 
+      filename=uploaded_file.name)
+      
+  avatar = Avatar(
+      user = user,
+      primary = True,
+      avatar = path,
+  )
+  new_file = avatar.avatar.storage.save(path, uploaded_file)
+  avatar.save()
+  
 def change(request, extra_context={}, next_override=None):
+    file_error = None
     avatars = Avatar.objects.filter(user=request.user).order_by('-primary')
     if avatars.count() > 0:
         avatar = avatars[0]
@@ -125,31 +156,21 @@ def change(request, extra_context={}, next_override=None):
     if request.method == "POST":
         updated = False
         if 'avatar' in request.FILES:
-            path = avatar_file_path(user=request.user, 
-                filename=request.FILES['avatar'].name)
-            avatar = Avatar(
-                user = request.user,
-                primary = True,
-                avatar = path,
-            )
-            new_file = avatar.avatar.storage.save(path, request.FILES['avatar'])
-            avatar.save()
-            updated = True
-            # request.user.message_set.create(
-            #                 message=_("Successfully uploaded a new avatar."))
+            try:
+              __handle_uploaded_file(request.FILES['avatar'], request.user)
+              updated = True
+              return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
+            except Exception:
+              file_error = "Uploaded file is larger than 1 MB."
+              
         if 'choice' in request.POST and primary_avatar_form.is_valid():
             avatar = Avatar.objects.get(id=
                 primary_avatar_form.cleaned_data['choice'])
             avatar.primary = True
             avatar.save()
             updated = True
-            # request.user.message_set.create(
-            #                 message=_("Successfully updated your avatar."))
-        # if updated and notification:
-        #     notification.send([request.user], "avatar_updated", {"user": request.user, "avatar": avatar})
-        #     notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "avatar_friend_updated", {"user": request.user, "avatar": avatar})
-        # return HttpResponseRedirect(next_override or _get_next(request))
-        return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
+            
+            return HttpResponseRedirect(reverse("profile_index") + "?changed_avatar=True")
         
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
     fb_id = None
@@ -162,6 +183,9 @@ def change(request, extra_context={}, next_override=None):
       except facebook.GraphAPIError:
         pass
       
+    fb_form = FacebookPictureForm(initial={
+      "facebook_photo": "http://graph.facebook.com/%s/picture?type=large" % fb_id
+    })
     return render_to_response(
         'makahiki_avatar/change.html',
         extra_context,
@@ -171,7 +195,10 @@ def change(request, extra_context={}, next_override=None):
               'avatars': avatars,
               'primary_avatar_form': primary_avatar_form,
               'next': next_override or _get_next(request), 
-              'fb_id': fb_id,}
+              'fb_id': fb_id,
+              'fb_form': fb_form,
+              'file_error': file_error,
+            }
         )
     )
 change = login_required(change)

@@ -18,10 +18,13 @@
         <h4 style="margin-top: 0px">Upload a new profile picture.</h4>
         <p>
           Click the Choose File button to select a picture on your computer that will be used as your 
-          profile picture.  The picture should be square and less than 5MB in size.
+          profile picture.  The picture should be square and less than 2MB in size.
         </p>
         <form enctype="multipart/form-data" method="POST" action="">
             {% csrf_token %}
+            {% if file_error %}
+            <div style="color: red">{{file_error}}</div>
+            {% endif %}
             <input type="file" name="avatar" value="Avatar Image" />
             <button type="submit">Upload New Image</button>
         </form>
