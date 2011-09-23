@@ -43,6 +43,7 @@ from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
 from components.activities.models import *
 from components.makahiki_notifications.models import UserNotification, NoticeTemplate
+from components.makahiki_base import in_competition, get_round_info
 from django.db.models import Q
 
 
@@ -104,6 +105,28 @@ def check_energy_goal():
   gdata = GDataGoal()
   gdata.Run()
 
+def notify_round_started():
+  if not in_competition():
+    return
+    
+  today = datetime.datetime.today()
+  current_round = None
+  previous_round = None
+  
+  for key, value in get_round_info().items)_:
+    start = datetime.datetime.strptime(value["start"], "%Y-%m-%d")
+    end = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
+    if start < today < end:
+      current_round = key
+    elif (start < today - datetime.timedelta(days=1)) < end:
+      previous_round = key
+    
+  if current_round and previous_round and current_round != previous_round:
+    template = NoticeTemplate.objects.get(notice_type="round-transition")
+    message = template.render({"PREVIOUS_ROUND": previous_round, "CURRENT_ROUND": current_round,})
+    for user in User.objects.all():
+      UserNotification.create_info_notification(user, message, display_alert=True,)
+    
 def notify_commitment_end():
   members = CommitmentMember.objects.filter(completion_date=datetime.date.today(), award_date__isnull=True)
   
@@ -158,3 +181,4 @@ if __name__ == "__main__":
     check_energy_goal()
     #process_rsvp()
     notify_commitment_end()
+    notify_round_started()
