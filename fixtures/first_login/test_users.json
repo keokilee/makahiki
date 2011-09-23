@@ -1,0 +1,170 @@
+[
+  {
+    "pk": 660, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "gburgess", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-22 18:08:17", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$a6d02$feda1df8ba4c9038ef9dafc232f7ef2a06bce721", 
+      "email": "gburgess@hawaii.edu", 
+      "date_joined": "2011-09-22 14:10:19"
+    }
+  }, 
+  {
+    "pk": 662, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "admin", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-22 14:31:39", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$24ce6$91ae55eeea082e13a63a68681c73bb9bb3fbe5bd", 
+      "email": "admin@admin.com", 
+      "date_joined": "2011-09-22 14:31:39"
+    }
+  }, 
+  {
+    "pk": 663, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "testbot", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-22 18:09:26", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$f7f24$1f02e9e78ea0efe4e65047e9b5a4b6e10cb36965", 
+      "email": "testbot@testbot.com", 
+      "date_joined": "2011-09-22 18:07:54"
+    }
+  }, 
+  {
+    "pk": 929, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 660, 
+      "round_name": "Round 1", 
+      "points": 5, 
+      "last_awarded_submission": "2011-09-22 14:22:22"
+    }
+  }, 
+  {
+    "pk": 931, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 662, 
+      "round_name": "Round 1", 
+      "points": 0, 
+      "last_awarded_submission": null
+    }
+  }, 
+  {
+    "pk": 932, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 663, 
+      "round_name": "Round 1", 
+      "points": 0, 
+      "last_awarded_submission": null
+    }
+  }, 
+  {
+    "pk": 660, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": "2011-09-22", 
+      "first_name": null, 
+      "last_name": null, 
+      "name": "gburgess", 
+      "floor": 1, 
+      "canopy_member": false, 
+      "daily_visit_count": 1, 
+      "last_awarded_submission": "2011-09-22 14:22:22", 
+      "canopy_karma": 0, 
+      "setup_complete": true, 
+      "contact_text": null, 
+      "points": 5, 
+      "contact_email": null, 
+      "user": 660, 
+      "contact_carrier": null, 
+      "setup_profile": true, 
+      "enable_help": true, 
+      "completion_date": "2011-09-22 14:22:27"
+    }
+  }, 
+  {
+    "pk": 662, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": null, 
+      "first_name": "", 
+      "last_name": "", 
+      "name": "admin", 
+      "floor": 2, 
+      "canopy_member": false, 
+      "daily_visit_count": 0, 
+      "last_awarded_submission": null, 
+      "canopy_karma": 0, 
+      "setup_complete": false, 
+      "contact_text": "", 
+      "points": 0, 
+      "contact_email": "", 
+      "user": 662, 
+      "contact_carrier": "", 
+      "setup_profile": false, 
+      "enable_help": true, 
+      "completion_date": null
+    }
+  }, 
+  {
+    "pk": 663, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": "2011-09-22", 
+      "first_name": "", 
+      "last_name": "", 
+      "name": "testbot", 
+      "floor": 2, 
+      "canopy_member": false, 
+      "daily_visit_count": 1, 
+      "last_awarded_submission": null, 
+      "canopy_karma": 0, 
+      "setup_complete": false, 
+      "contact_text": null, 
+      "points": 0, 
+      "contact_email": null, 
+      "user": 663, 
+      "contact_carrier": null, 
+      "setup_profile": false, 
+      "enable_help": true, 
+      "completion_date": null
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-22 14:22:22", 
+      "object_id": null, 
+      "points": 5, 
+      "user": 660, 
+      "content_type": null, 
+      "message": "Set up profile"
+    }
+  }
+]
