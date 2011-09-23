@@ -20,12 +20,17 @@ TYPE_CHOICES = (
   ('commitment-ready', 'Commitment Ready'),
 )
 
-class NoticeTemplates(models.Model):
+class NoticeTemplate(models.Model):
   """
   Templates for built in notifications.
   """
+  TEMPLATE_TEXT = """
+  Uses <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> formatting. 
+  The available template variables are listed 
+  <a href='https://github.com/keokilee/makahiki/wiki/Notice-Templates'>here</a>.
+  """
   notice_type = models.SlugField(max_length=50, choices=TYPE_CHOICES)
-  template = models.TextField(help_text="Uses Markdown formatting.")
+  template = models.TextField(help_text=TEMPLATE_TEXT)
     
   def render(self, context_dict={}):
     """

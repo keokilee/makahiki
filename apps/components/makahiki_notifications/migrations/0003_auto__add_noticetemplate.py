@@ -8,19 +8,19 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'NoticeTemplates'
-        db.create_table('makahiki_notifications_noticetemplates', (
+        # Adding model 'NoticeTemplate'
+        db.create_table('makahiki_notifications_noticetemplate', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('notice_type', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
             ('template', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal('makahiki_notifications', ['NoticeTemplates'])
+        db.send_create_signal('makahiki_notifications', ['NoticeTemplate'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'NoticeTemplates'
-        db.delete_table('makahiki_notifications_noticetemplates')
+        # Deleting model 'NoticeTemplate'
+        db.delete_table('makahiki_notifications_noticetemplate')
 
 
     models = {
@@ -60,8 +60,8 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'makahiki_notifications.noticetemplates': {
-            'Meta': {'object_name': 'NoticeTemplates'},
+        'makahiki_notifications.noticetemplate': {
+            'Meta': {'object_name': 'NoticeTemplate'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'notice_type': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'}),
             'template': ('django.db.models.fields.TextField', [], {})
