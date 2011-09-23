@@ -14,7 +14,7 @@ from components.canopy.models import Mission, Post, MissionMember
 from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
-from apps.components.floors.models import Floor
+from apps.components.floors.models import Floor,Dorm
 
 # Number of posts to load at a time.
 
@@ -55,6 +55,7 @@ def index(request):
   viz = request.REQUEST.get("viz", None)
 
   all_lounges = Floor.objects.order_by('floor_identifier').all()
+  all_dorms = Dorm.objects.order_by('name').all()
 
   if request.user.get_profile().floor:
     dorm_lounges = request.user.get_profile().floor.dorm.floor_set.all()
@@ -73,6 +74,7 @@ def index(request):
       "karma_scoreboard": karma_scoreboard,
       "all_lounges":all_lounges,
       "dorm_lounges":dorm_lounges,
+      "all_dorms":all_dorms,
   }, context_instance=RequestContext(request))
   
 ### User methods -------------------------

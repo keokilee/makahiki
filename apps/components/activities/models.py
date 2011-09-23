@@ -171,6 +171,7 @@ class Activity(ActivityBase):
     ('image', 'Image Upload'),
     ('code', 'Confirmation Code'),
     ('free', 'Free Response'),
+    ('free_image', 'Free Response and Image Upload'),
   )
   
   users = models.ManyToManyField(User, through="ActivityMember")

@@ -1,9 +1,8 @@
-Namespace("org.makahiki");
+Namespace("org.wattdepot.makahiki");
   
    // Store user preferences in corresponding variables.
    var title = "Energy Consumed"; 
    var host_uri = 'http://server.wattdepot.org:8192/gviz/';
-   var source = ['Lehua-E','Lehua-D', 'Lehua-C', 'Lehua-B', 'Lehua-A'];
    var dataType = "energyConsumed";
 
     // an array for collected tables which will be combined for display.
@@ -19,20 +18,34 @@ Namespace("org.makahiki");
 
     // Array to hold all the months, used in implementing Date Picker.
     var monthArray = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
-  
+
     google.setOnLoadCallback(initialize);
 
     /* Parses the user preferences and generates the Query to WattDepot and displays the BioHeatMap. */ 
     function initialize() {
+
+          var dorms = document.getElementsByName("heatmap-dorm");
+          var dorm;
+          for (i = 0; i<dorms.length; i++)
+            if (dorms[i].checked)
+              dorm = dorms[i].value;
+          
+          var lounges = document.getElementsByName("heatmap-lounge-"+dorm);
+
+          source = [];
+          for (i = 0; i<lounges.length; i++)
+          {
+            
+              source.push(lounges[i].id);
+          }
+          debug(source);
+
           table = new Array();
           
           var periods = document.getElementsByName("period");
           for (i = 0; i<periods.length; i++)
             if (periods[i].checked) 
               dateRange = periods[i].value;
-          
-          console.info(dateRange);
-          debug(dateRange);
           
           // Depending on the data range selected,
           // changed the sample-interval to WattDepot to compensate for daily or hourly values.
@@ -218,7 +231,7 @@ Namespace("org.makahiki");
             loadingMsgContainer.style.display = 'none';
           }
           
-          debug(display);
+          //debug(display);
  
           var container = document.getElementById('datadiv');
 
@@ -339,6 +352,6 @@ Namespace("org.makahiki");
  */
 function debug(msg) {
   if (typeof(console) != 'undefined') {
-    console.error(msg);
+    console.info(msg);
   }
 }

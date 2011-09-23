@@ -412,6 +412,8 @@ def __request_activity_points(request, activity):
       form = ActivityImageForm(request.POST, request.FILES, request=request, activity=activity)
     elif activity.confirm_type == "free":
       form = ActivityFreeResponseForm(request.POST, request=request, activity=activity)
+    elif activity.confirm_type == "free_image":
+      form = ActivityFreeResponseImageForm(request.POST, request.FILES, request=request, activity=activity)
     elif activity.confirm_type == "code":
       form = ActivityCodeForm(request.POST, request=request, activity=activity)
     else:
@@ -424,6 +426,9 @@ def __request_activity_points(request, activity):
       
       # Attach image if it is an image form.
       if form.cleaned_data.has_key("image_response"):
+        if activity.confirm_type == "free_image":
+          activity_member.response = form.cleaned_data["response"]
+
         path = activity_image_file_path(user=user, filename=request.FILES['image_response'].name)
         activity_member.image = path
         new_file = activity_member.image.storage.save(path, request.FILES["image_response"])
@@ -546,6 +551,8 @@ def task(request, activity_type, slug):
           form = ActivityTextForm(initial={"question" : question.pk,"social_email":social_email,"social_email2":social_email2},question_id=question.pk,request=request)
       elif task.confirm_type == "free":
         form = ActivityFreeResponseForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
+      elif task.confirm_type == "free_image":
+        form = ActivityFreeResponseImageForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
       else:
         form = ActivityCodeForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
 
