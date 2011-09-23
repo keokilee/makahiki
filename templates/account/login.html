@@ -27,6 +27,7 @@
 <div style="margin: 0 auto; width: 650px; padding-top: 20px">
   <form class="login uniForm" method="POST" action="{% url acct_login %}">
       <fieldset class="inlineLabels">
+	  {% csrf_token %}
           {# <div class="form_block"> #}
           {#     <a href="{% url acct_passwd_reset %}">Forgot your password?</a> #}
           {# </div> #}
