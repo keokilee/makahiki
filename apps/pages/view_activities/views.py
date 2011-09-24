@@ -167,6 +167,21 @@ def view_codes(request, slug):
     "codes": codes,
   }, context_instance = RequestContext(request))
   
+@never_cache
+@login_required
+def view_rsvps(request, slug):
+  if not request.user or not request.user.is_staff:
+    raise Http404
+    
+  print slug
+  activity = get_object_or_404(Activity, slug=slug)
+  rsvps = ActivityMember.objects.filter(activity=activity, approval_status='pending')
+  
+  return render_to_response("view_activities/rsvps.html", {
+      "activity": activity,
+      "rsvps": rsvps,
+  }, context_instance=RequestContext(request))
+  
 def attend_code(request):
   """claim the attendance code"""
   
