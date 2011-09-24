@@ -55,17 +55,26 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "Your changes have been saved", 
         msg_prefix="Second form update should have a success message.")
         
-    # Test posting an invalid form.
+    # Test posting without a name
     user_form.update({"display_name": ""})
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     self.assertContains(response, "This field is required", 
         msg_prefix="User should not have a valid display name.")
+        
+    # Test posting a name that is too long.
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    user_form.update({"display_name": letters})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertNotContains(response, "Your changes have been saved", 
+        msg_prefix="Profile with long name should not be valid.")
     
+    # Test posting without a valid email
     user_form.update({"display_name": "Test User", "contact_email": "foo"})
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     self.assertContains(response, "Enter a valid e-mail address", 
         msg_prefix="User should not have a valid email address")
         
+    # Test posting without a valid phone number
     user_form.update({"contact_email": "user@test.com", "contact_text": "foo"})
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     self.assertContains(response, "Phone numbers must be in XXX-XXX-XXXX format.", 
