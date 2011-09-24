@@ -93,8 +93,11 @@ class ProfileFunctionalTestCase(TestCase):
     user_form.update({"display_name": "  Test U.     "})
     # Test posting a form with a dup name with a lot of whitespace.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    # print response.content
     self.assertContains(response, "please enter another name.", 
         msg_prefix="Duplicate name with whitespace should raise an error.")
+    self.assertContains(response, "Test U.", count=2,
+        msg_prefix="This should only be in the form and in the error message.")
     
   def testActivityAchievement(self):
     """Check that the user's activity achievements are loaded."""

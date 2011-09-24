@@ -12,6 +12,7 @@ from django.views.decorators.cache import never_cache
 from pages.view_profile.forms import ProfileForm
 from pages.view_profile import get_completed_members, get_in_progress_members
 from components.makahiki_facebook.models import FacebookProfile
+from components.makahiki_profiles.models import Profile
 from components.activities.models import ActivityMember, CommitmentMember
 from components.activities import get_current_commitment_members
 import components.makahiki_facebook.facebook as facebook
@@ -30,20 +31,25 @@ def index(request):
     if form.is_valid():
       profile = user.get_profile()
       name = form.cleaned_data["display_name"].strip()
-      if name != profile.name:
-        profile.name = name
-        
-      profile.contact_email = form.cleaned_data["contact_email"]
-      profile.contact_text = form.cleaned_data["contact_text"]
-      profile.contact_carrier = form.cleaned_data["contact_carrier"]
-      # profile.enable_help = form.cleaned_data["enable_help"]
-        
-      try:
+      
+      # Find a user with the same name
+      profiles = Profile.objects.filter(name=name).exclude(user=user)
+      if profiles.count() > 0:
+        form.message = "Please correct the errors below"
+        form.errors.update({"display_name": "'%s' is taken, please enter another name." % name})
+      else:
+        # Profile with this name does not exist.
+        if name != profile.name:
+          profile.name = name
+
+        profile.contact_email = form.cleaned_data["contact_email"]
+        profile.contact_text = form.cleaned_data["contact_text"]
+        profile.contact_carrier = form.cleaned_data["contact_carrier"]
+        # profile.enable_help = form.cleaned_data["enable_help"]
+
         profile.save()
         form.message = "Your changes have been saved"
-      except IntegrityError:
-        form.message = "Please correct the errors below."
-        form.errors.update({"display_name": "'%s' is taken, please enter another name." % profile.name})
+        
     else:
       form.message = "Please correct the errors below."
       

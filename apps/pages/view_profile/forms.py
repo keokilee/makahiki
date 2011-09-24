@@ -15,7 +15,7 @@ class ProfileForm(forms.Form):
     "style": "width: 100px",
   }))
   contact_carrier = forms.ChoiceField(choices=TextReminder.TEXT_CARRIERS)
-  
+    
   # def clean_display_name(self):
   #   """
   #   Validates the display name of the user.
