@@ -70,7 +70,7 @@
 	border: 2px solid #167000;
 	
 	width: 690px;
-	height: 480px;
+	height: 530px;
 	margin: 2em auto 0 auto;
 	padding: 30px;
 	float: none;
@@ -140,9 +140,9 @@
 
 #footer {
 	position: relative;
-	margin: -230px auto -230px auto;
+	margin: -260px auto -230px auto;
 	width: 480px;
-	height: 130px;
+	height: 160px;
 }
 
 #landing-sponsors {
