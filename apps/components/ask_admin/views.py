@@ -9,6 +9,8 @@ from django.core.urlresolvers import reverse
 
 from components.ask_admin.forms import FeedbackForm
 
+FROM_EMAIL = settings.MANAGERS[0][1]
+
 def send_feedback(request):
   if request.method == "POST":
     form = FeedbackForm(request.POST)
@@ -27,7 +29,7 @@ def send_feedback(request):
       # Using adapted version from Django source code
       current_site = Site.objects.get(id=settings.SITE_ID)
       subject = u'[%s] Message for admins' % current_site.domain
-      mail = EmailMultiAlternatives(subject, message, settings.SERVER_EMAIL, 
+      mail = EmailMultiAlternatives(subject, message, FROM_EMAIL, 
           [settings.CONTACT_EMAIL,], headers={"Reply-To": request.user.email})
       
       mail.attach_alternative(html_message, 'text/html')
