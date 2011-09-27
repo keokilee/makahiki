@@ -41,10 +41,10 @@ class CompetitionMiddleware(object):
       
       pattern = re.compile("^/(m\/|home\/restricted|site_media|media|favicon.ico)/")
       
-      if today < start and not pattern.match(path):
+      if today < start and not request.user.is_staff and not pattern.match(path):
         return HttpResponseRedirect(reverse("home_restricted"))
 
-      if today > end and not pattern.match(path):
+      if today > end and not request.user.is_staff and not pattern.match(path):
         return HttpResponseRedirect(reverse("home_restricted"))
 
     return None
