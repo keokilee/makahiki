@@ -40,7 +40,10 @@ if ( typeof jQuery != "undefined" )
 // Setup the header cycle.
 jQuery(document).ready(function($) {
   jQuery("#user-cycle").cycle();
-  jQuery("#floor-cycle").cycle();
+  var $floorInfo = $("#floor-cycle");
+  if ($floorInfo.children().length > 0) {
+    jQuery("#floor-cycle").cycle();
+  }
   
   //Set up the help dialog.
   jQuery("#widget-help-dialog").dialog({
