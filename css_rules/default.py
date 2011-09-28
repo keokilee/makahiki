@@ -27,6 +27,7 @@ PAGE_CSS_IMPORT = {
   "view_prizes": '<link rel="stylesheet" href="{0}css/{1}/pages/view_prizes.css">',
   "view_profile": '<link rel="stylesheet" href="{0}css/{1}/pages/view_profile.css">',
   "canopy": '<link rel="stylesheet" href="{0}css/{1}/pages/canopy.css">',
+  "status": '<link rel="stylesheet" href="{0}css/{1}/pages/status.css">',
 }
 CSS_IDS = {
   "landing-sponsors": "content-box",

@@ -28,7 +28,7 @@ def competition(request):
       floor_member_count = user.get_profile().floor.profile_set.count()
   
   # Get current round info.
-  current_round = get_current_round()
+  current_round = get_current_round() or "Overall"
   
   # Get Facebook info.
   try:

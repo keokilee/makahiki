@@ -181,6 +181,7 @@ INSTALLED_APPS = (
     'pages.news',
     'pages.mobile',
     'pages.view_prizes',
+    'pages.status',
     
     # Makahiki components
     'components.activities',

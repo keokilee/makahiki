@@ -55,7 +55,7 @@ def get_current_round():
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:
       return key
-  
+    
   # No current round.
   return None
   
