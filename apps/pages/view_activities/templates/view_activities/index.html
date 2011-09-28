@@ -147,7 +147,7 @@ $( document ).ready( function ()
  });
 
 
-function unlock_dialog(depends_on)
+function unlock_dialog(type, slug, depends_on)
 {
   el = document.getElementById("unlock-dialog"); 
   el.style.visibility = "visible";
@@ -156,6 +156,12 @@ function unlock_dialog(depends_on)
     width: 450,
     closeOnEscape: false,
     position: [400,100],
+    open: function(event, ui) {
+      log_js_action(type, slug, 'view-lock-open');
+    },
+    close: function(event, ui) {
+      log_js_action(type, slug, 'view-lock-close');
+    }
     });
     
   document.getElementById("depends_on").innerHTML = depends_on;

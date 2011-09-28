@@ -338,6 +338,11 @@ if DEMO:
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
+# uncomment the following to turn on sentry chain to makahiki_logger
+#    'root': {
+#        'level': 'WARNING',
+#        'handlers': ['sentry'],
+#    },
     'formatters': {
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
@@ -350,6 +355,11 @@ LOGGING = {
         'null': {
             'level':'DEBUG',
             'class':'django.utils.log.NullHandler',
+        },
+        'sentry': {
+            'level': 'DEBUG',
+            'class': 'sentry.client.handlers.SentryHandler',
+            'formatter': 'verbose'
         },
         'console':{
             'level':'DEBUG',
@@ -368,6 +378,11 @@ LOGGING = {
         }
     },
     'loggers': {
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
         'django': {
             'handlers':['null'],
             'propagate': True,
