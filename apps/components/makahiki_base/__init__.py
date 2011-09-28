@@ -55,12 +55,6 @@ def get_current_round():
     end = datetime.datetime.strptime(rounds[key]["end"], "%Y-%m-%d")
     if today >= start and today < end:
       return key
-  
-  # Check for overall round.
-  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
-  end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
-  if today >= start and today < end:
-    return "Overall"
     
   # No current round.
   return None

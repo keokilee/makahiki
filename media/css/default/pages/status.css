@@ -1,0 +1,31 @@
+body {
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container {
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container-top {
+  background: none;
+}
+
+.container-bottom {
+  background: none;
+}
+
+/* Base status styles */
+#status-title {
+  padding-top: 35px;
+}
+
+#status-nav {
+  list-style: none;
+}
+
+#status-nav li {
+  margin: 0 5px;
+  display: inline;
+}
