@@ -11,14 +11,7 @@ from components.prizes.models import RafflePrize
 
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
-def status(request):
-  # Get top point getters in the current round.
-  round_name = get_current_round()
-  top_users = Profile.objects.order_by("-points", "-last_awarded_submission")[:10]
-  if round_name:
-    top_profiles = ScoreboardEntry.objects.filter(
-        round_name=round_name,
-    ).order_by("-points", "-last_awarded_submission")[:10]
+def home(request):
     
   # TODO get users who logged in today.
   # TODO get raffle prizes.
@@ -28,6 +21,38 @@ def status(request):
   
   # TODO RSVPs for events.
     
-  return render_to_response("status/home.html", {
-      "popular_tasks": popular_tasks,
-  }, context_instance=RequestContext(request))
+  return render_to_response("status/home.html", {}, context_instance=RequestContext(request))
+  
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def points_scoreboard(request):
+  # Get top point getters in the current round.
+  round_name = get_current_round()
+  top_users = Profile.objects.order_by("-points", "-last_awarded_submission")
+  if round_name:
+    top_profiles = ScoreboardEntry.objects.filter(
+        round_name=round_name,
+    ).order_by("-points", "-last_awarded_submission")
+    
+  return render_to_response("status/points.html", {}, context_instance=RequestContext(request))
+  
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def energy_scoreboard(request):
+  return render_to_response("status/energy.html", {}, context_instance=RequestContext(request))
+    
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def users(request):
+  return render_to_response("status/users.html", {}, context_instance=RequestContext(request))
+
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def prizes(request):
+  return render_to_response("status/prizes.html", {}, context_instance=RequestContext(request))
+    
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def popular_activities(request):
+  return render_to_response("status/activities.html", {}, context_instance=RequestContext(request))
+        
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def event_rsvps(request):
+  return render_to_response("status/rsvps.html", {}, context_instance=RequestContext(request))
+  
+  

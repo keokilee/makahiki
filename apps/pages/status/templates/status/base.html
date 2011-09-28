@@ -16,12 +16,12 @@
 {% block header %}
 <h1 {% get_id_and_classes "status-title" %}>{{COMPETITION_NAME}} Mission Control</h1>
 <ul {% get_id_and_classes "status-nav" %}>
-  <li>Points Scoreboards</li>
-  <li>Energy Scoreboards</li>
-  <li>Users</li>
-  <li>Prizes</li>
-  <li>Activities and Commitments</li>
-  <li>Event RSVPs</li>
+  <li><a href="{% url status_points %}">Points Scoreboards</a></li>
+  <li><a href="{% url status_energy %}">Energy Scoreboards</a></li>
+  <li><a href="{% url status_users %}">Users</a></li>
+  <li><a href="{% url status_prizes %}">Prizes</a></li>
+  <li><a href="{% url status_activities %}">Activities and Commitments</a></li>
+  <li><a href="{% url status_rsvps %}">Event RSVPs</a></li>
 </ul>
 {% endblock %}
 
