@@ -12,7 +12,10 @@ echo ===RESETTING TESTBOT PASSWORD...===
 python selenium/Selenium/reset_testbot.py 
 
 echo ===TESTING FIRST LOGIN PROCESS...===
-python selenium/Selenium/first_login.py 
+python selenium/Selenium/first_login.py  
+
+echo ===TESTING GOLOW PAGE...===
+python selenium/Selenium/test_golow.py 
 
 echo ===TESTING NAVBAR...===
 python selenium/Selenium/test_navbar.py 
