@@ -39,6 +39,7 @@ class ScoreboardEntry(models.Model):
   
   class Meta:
     unique_together = (("profile", "round_name",),)
+    ordering = ("round_name",)
     
   @staticmethod
   def user_round_overall_rank(user, round_name):

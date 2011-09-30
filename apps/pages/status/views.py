@@ -3,8 +3,10 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from components.activities import get_popular_tasks
+from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
 from components.prizes.models import RafflePrize
@@ -25,15 +27,30 @@ def home(request):
   
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def points_scoreboard(request):
-  # Get top point getters in the current round.
-  round_name = get_current_round()
-  top_users = Profile.objects.order_by("-points", "-last_awarded_submission")
-  if round_name:
-    top_profiles = ScoreboardEntry.objects.filter(
-        round_name=round_name,
-    ).order_by("-points", "-last_awarded_submission")
+  profiles = Profile.objects.filter(
+    points__gt=0,
+  ).order_by("-points", "-last_awarded_submission").values("name", "points")
+  
+  floor_standings = Floor.floor_points_leaders(num_results=10)
+  
+  round_individuals = {}
+  round_floors = {}
+  for round_name in settings.COMPETITION_ROUNDS:
+    round_individuals[round_name] = ScoreboardEntry.objects.filter(
+        points__gt=0,
+    ).order_by("-points", "-last_awarded_submission").values("profile__name", "points")
     
-  return render_to_response("status/points.html", {}, context_instance=RequestContext(request))
+    round_floors[round_name] = Floor.floor_points_leaders(
+        num_results=10, 
+        round_name=round_name
+    )
+    
+  return render_to_response("status/points.html", {
+      "profiles": profiles,
+      "round_individuals": round_individuals,
+      "floor_standings": floor_standings,
+      "round_floors": round_floors,
+  }, context_instance=RequestContext(request))
   
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def energy_scoreboard(request):
