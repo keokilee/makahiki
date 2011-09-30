@@ -1,5 +1,6 @@
 {% extends "status/base.html" %}
 
+{% load class_tags %}
 {% block body %}
 <div {% get_id_and_classes "status-points" %}>
   <div class="content-box">
@@ -7,27 +8,19 @@
       Popular Tasks
     </div>
     <div class="content-body">
-      {% for deadline in deadlines %}
+      {% for type, tasks in tasks.items %}
       <table style="float: left; margin: 10px; padding: 0 10px; border-right: 1px solid gray">
         <tr>
-          <th colspan=3>{{deadline.round_name}}</th>
+          <th colspan=2>{{type.capitalize}}</th>
         </tr>
         <tr>
-          <th style="text-align: left">Prize</th>
-          <th>Tickets</th>
-          <th>Winner</th>
+          <th style="text-align: left">Title</th>
+          <th>Completions</th>
         </tr>
-        {% for prize in deadline.raffleprize_set.all %}
+        {% for task in tasks %}
         <tr>
-          <td style="text-align: left">{{prize.title}}</td>
-          <td>{{prize.raffleticket_set.count}}</td>
-          <td>
-            {% if prize.winner %}
-              {{prize.winner.get_profile.name}}
-            {% else %}
-              N/A\
-            {% endif %}
-          </td>
+          <td style="text-align: left">{{task.title}}</td>
+          <td>{{task.completions}}</td>
         </tr>
         {% endfor %}
       </table>
