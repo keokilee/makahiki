@@ -1,5 +1,98 @@
 {% extends "status/base.html" %}
 
+{% load class_tags %}
+
 {% block body %}
-<h3>Click a link at the top</h3>
+
+<div {% get_id_and_classes "status-points" %}>
+  <div class="content-box">
+    <div class="content-box-title">
+      Top Individuals
+    </div>
+    <div class="content-body">
+      <table style="float: left; margin: 10px;">
+        <tr>
+          <th colspan=3>Overall</th>
+        </tr>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Points</th>
+        </tr>
+        {% for profile in profiles %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{profile.name}}</td>
+          <td>{{profile.points}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% for name, entries in round_individuals.items %}
+      <table style="float: left; margin: 10px; padding: 0 10px; border-left: 1px solid gray">
+        <tr>
+          <th colspan=3>{{name}}</th>
+        </tr>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Points</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{entry.profile__name}}</td>
+          <td>{{entry.points}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endfor %}
+      <br style="clear: both"/>
+    </div>
+  </div>
+  
+  <div class="content-box">
+    <div class="content-box-title">
+      Top Floors
+    </div>
+    <div class="content-body">
+      <table style="float: left; margin: 10px;">
+        <tr>
+          <th colspan=3>Overall</th>
+        </tr>
+        <tr>
+          <th>Rank</th>
+          <th>{{FLOOR_LABEL}}</th>
+          <th>Points</th>
+        </tr>
+        {% for floor in floor_standings %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{floor}}</td>
+          <td>{{floor.points}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% for name, floors in round_floors.items %}
+      <table style="float: left; margin: 10px; padding: 0 10px; border-left: 1px solid gray">
+        <tr>
+          <th colspan=3>{{name}}</th>
+        </tr>
+        <tr>
+          <th>Rank</th>
+          <th>{{FLOOR_LABEL}}</th>
+          <th>Points</th>
+        </tr>
+        {% for floor in floors %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{floor}}</td>
+          <td>{{floor.points}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endfor %}
+      <br style="clear: both"/>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -29,3 +29,7 @@ body {
   margin: 0 5px;
   display: inline;
 }
+
+#status-points {
+  margin: 10px;
+}
