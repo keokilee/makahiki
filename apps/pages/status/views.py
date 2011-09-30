@@ -5,11 +5,12 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from components.activities import get_popular_tasks
+from components.activities import get_popular_activities, get_popular_commitments
+from components.activities.models import ActivityBase
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
-from components.prizes.models import RafflePrize
+from components.prizes.models import RaffleDeadline
 
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
@@ -62,11 +63,25 @@ def users(request):
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def prizes(request):
-  return render_to_response("status/prizes.html", {}, context_instance=RequestContext(request))
+  deadlines = RaffleDeadline.objects.all().order_by("pub_date")
+  return render_to_response("status/prizes.html", {
+      "deadlines": deadlines,
+  }, context_instance=RequestContext(request))
     
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def popular_activities(request):
-  return render_to_response("status/activities.html", {}, context_instance=RequestContext(request))
+  tasks = {}
+  types = ActivityBase.objects.values('type').distinct()
+  for item in types:
+    task_type = item["type"]
+    if task_type == 'commitment':
+      tasks[task_type] = get_popular_commitments()
+    else:
+      tasks[task_type] = get_popular_activities(activity_type=task_type)
+  
+  return render_to_response("status/activities.html", {
+      "tasks": tasks,
+  }, context_instance=RequestContext(request))
         
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def event_rsvps(request):

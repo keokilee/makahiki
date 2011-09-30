@@ -1,5 +1,32 @@
 {% extends "status/base.html" %}
 
+{% load class_tags %}
 {% block body %}
-<h3>Click a link at the top</h3>
+<div {% get_id_and_classes "status-points" %}>
+  <div class="content-box">
+    <div class="content-box-title">
+      Popular Tasks
+    </div>
+    <div class="content-body">
+      {% for type, tasks in tasks.items %}
+      <table style="float: left; margin: 10px; padding: 0 10px; border-right: 1px solid gray">
+        <tr>
+          <th colspan=2>{{type.capitalize}}</th>
+        </tr>
+        <tr>
+          <th style="text-align: left">Title</th>
+          <th>Completions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+          <td style="text-align: left">{{task.title}}</td>
+          <td>{{task.completions}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endfor %}
+      <br style="clear: both"/>
+    </div>
+  </div>
+</div>
 {% endblock %}
