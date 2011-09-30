@@ -1,0 +1,242 @@
+[
+  {
+    "pk": 660, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "gburgess", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-22 18:48:17", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$a6d02$feda1df8ba4c9038ef9dafc232f7ef2a06bce721", 
+      "email": "gburgess@hawaii.edu", 
+      "date_joined": "2011-09-22 14:10:19"
+    }
+  }, 
+  {
+    "pk": 662, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "admin", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-29 15:12:20", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$24ce6$91ae55eeea082e13a63a68681c73bb9bb3fbe5bd", 
+      "email": "admin@admin.com", 
+      "date_joined": "2011-09-22 14:31:39"
+    }
+  }, 
+  {
+    "pk": 663, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "testbot", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2011-09-29 15:14:26", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$4138c$f7477de043ded8e6fc0c7c0c083bcb72be4b98d8", 
+      "email": "testbot@testbot.com", 
+      "date_joined": "2011-09-29 15:12:07"
+    }
+  }, 
+  {
+    "pk": 929, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 660, 
+      "round_name": "Round 1", 
+      "points": 5, 
+      "last_awarded_submission": "2011-09-22 14:22:22"
+    }
+  }, 
+  {
+    "pk": 931, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 662, 
+      "round_name": "Round 1", 
+      "points": 5, 
+      "last_awarded_submission": "2011-09-22 19:09:21"
+    }
+  }, 
+  {
+    "pk": 932, 
+    "model": "makahiki_profiles.scoreboardentry", 
+    "fields": {
+      "profile": 663, 
+      "round_name": "Round 1", 
+      "points": 32, 
+      "last_awarded_submission": "2011-09-29 15:14:11"
+    }
+  }, 
+  {
+    "pk": 660, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": "2011-09-22", 
+      "first_name": null, 
+      "last_name": null, 
+      "name": "gburgess", 
+      "floor": 1, 
+      "canopy_member": false, 
+      "daily_visit_count": 1, 
+      "last_awarded_submission": "2011-09-22 14:22:22", 
+      "canopy_karma": 0, 
+      "setup_complete": true, 
+      "contact_text": null, 
+      "points": 5, 
+      "contact_email": null, 
+      "user": 660, 
+      "contact_carrier": null, 
+      "setup_profile": true, 
+      "enable_help": true, 
+      "completion_date": "2011-09-22 14:22:27"
+    }
+  }, 
+  {
+    "pk": 662, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": "2011-09-29", 
+      "first_name": "", 
+      "last_name": "", 
+      "name": "admin", 
+      "floor": 2, 
+      "canopy_member": false, 
+      "daily_visit_count": 1, 
+      "last_awarded_submission": "2011-09-22 19:09:21", 
+      "canopy_karma": 0, 
+      "setup_complete": true, 
+      "contact_text": "", 
+      "points": 5, 
+      "contact_email": "", 
+      "user": 662, 
+      "contact_carrier": "", 
+      "setup_profile": true, 
+      "enable_help": true, 
+      "completion_date": "2011-09-22 19:09:25"
+    }
+  }, 
+  {
+    "pk": 663, 
+    "model": "makahiki_profiles.profile", 
+    "fields": {
+      "last_visit_date": "2011-09-29", 
+      "first_name": "", 
+      "last_name": "", 
+      "name": "testbot", 
+      "floor": 2, 
+      "canopy_member": false, 
+      "daily_visit_count": 1, 
+      "last_awarded_submission": "2011-09-29 15:14:11", 
+      "canopy_karma": 0, 
+      "setup_complete": true, 
+      "contact_text": null, 
+      "points": 32, 
+      "contact_email": null, 
+      "user": 663, 
+      "contact_carrier": null, 
+      "setup_profile": true, 
+      "enable_help": true, 
+      "completion_date": "2011-09-29 15:12:54"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-22 14:22:22", 
+      "object_id": null, 
+      "points": 5, 
+      "user": 660, 
+      "content_type": null, 
+      "message": "Set up profile"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-22 19:02:23", 
+      "object_id": null, 
+      "points": 5, 
+      "user": 662, 
+      "content_type": null, 
+      "message": "Set up profile"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-22 19:09:21", 
+      "object_id": null, 
+      "points": 5, 
+      "user": 662, 
+      "content_type": null, 
+      "message": "Set up profile"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-29 15:12:50", 
+      "object_id": null, 
+      "points": 5, 
+      "user": 663, 
+      "content_type": null, 
+      "message": "Set up profile"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-29 15:13:26", 
+      "object_id": 1, 
+      "points": 20, 
+      "user": 663, 
+      "content_type": 41, 
+      "message": "Activity: Watch introduction video"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-29 15:12:59", 
+      "object_id": 1, 
+      "points": 2, 
+      "user": 663, 
+      "content_type": 40, 
+      "message": "Commitment: I will turn off vampire loads using a power strip (Sign up)"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "makahiki_profiles.pointstransaction", 
+    "fields": {
+      "submission_date": "2011-09-29 15:14:11", 
+      "object_id": 1, 
+      "points": 5, 
+      "user": 663, 
+      "content_type": 40, 
+      "message": "Commitment: I will turn off vampire loads using a power strip"
+    }
+  }
+]
