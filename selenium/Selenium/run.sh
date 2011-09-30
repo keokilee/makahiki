@@ -39,9 +39,11 @@ echo ===TESTING RAFFLE...===
 python selenium/Selenium/add_remove_raffle.py
 
 echo ===TESTING CANOPY VISUALIZATIONS...===
-echo IF THIS TEST FAILS, ITS PROBABLY DUE TO A SLOW INTERNET CONNECTION
-
+echo IF THIS TEST FAILS, ITS PROBABLY DUE TO A SLOW INTERNET CONNECTION 
 python selenium/Selenium/test_canopy_graph.py 
+
+echo ===TESTING CANOPY POST...===
+python selenium/Selenium/test_canopy_post.py 
 
 echo ===TESTING HELP...===
 python selenium/Selenium/test_help.py
