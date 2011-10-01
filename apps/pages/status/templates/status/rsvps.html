@@ -1,5 +1,29 @@
 {% extends "status/base.html" %}
 
+{% load class_tags %}
+
 {% block body %}
-<h3>Click a link at the top</h3>
+<div {% get_id_and_classes "status-rsvps" %}>
+  <div class="content-box">
+    <div class="content-box-title">
+      Event RSVPs
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px">
+        <tr>
+          <th style="text-align: left">Event</th>
+          <th>Capacity</th>
+          <th>RSVPs</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+          <td style="text-align: left">{{event.title}}</td>
+          <td>{{event.event_max_seat}}</td>
+          <td>{{event.rsvps}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

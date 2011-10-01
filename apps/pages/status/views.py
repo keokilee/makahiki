@@ -6,9 +6,10 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models import Count
 
 from components.activities import get_popular_activities, get_popular_commitments
-from components.activities.models import ActivityBase
+from components.activities.models import ActivityBase, Activity
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
@@ -52,7 +53,7 @@ def energy_scoreboard(request):
     
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def users(request):
-  users = User.objects.filter(profile__last_visit_date=datetime.datetime.today())
+  users = Profile.objects.filter(last_visit_date=datetime.datetime.today())
   return render_to_response("status/users.html", {
       "users": users,
   }, context_instance=RequestContext(request))
@@ -81,6 +82,12 @@ def popular_activities(request):
         
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def event_rsvps(request):
-  return render_to_response("status/rsvps.html", {}, context_instance=RequestContext(request))
+  events = Activity.objects.filter(
+      type="event",
+      activitymember__approval_status="pending",
+  ).annotate(rsvps=Count('activitymember')).order_by('-rsvps')
+  return render_to_response("status/rsvps.html", {
+      "events": events,
+  }, context_instance=RequestContext(request))
   
   
