@@ -5,7 +5,7 @@
 {% block body %}
 
 <div {% get_id_and_classes "status-points" %}>
-  <div class="content-box">
+  <div class="content-box" style="float: left; margin-right: 20px">
     <div class="content-box-title">
       Top Individuals
     </div>
@@ -46,11 +46,10 @@
         {% endfor %}
       </table>
       {% endfor %}
-      <br style="clear: both"/>
     </div>
   </div>
   
-  <div class="content-box">
+  <div class="content-box" style="float: left">
     <div class="content-box-title">
       Top Floors
     </div>
@@ -94,5 +93,7 @@
       <br style="clear: both"/>
     </div>
   </div>
+  
+  <br style="clear: both"/>
 </div>
 {% endblock %}
