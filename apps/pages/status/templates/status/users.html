@@ -1,5 +1,20 @@
 {% extends "status/base.html" %}
 
+{% load class_tags %}
+
 {% block body %}
-<h3>Click a link at the top</h3>
+<div {% get_id_and_classes "status-users" %}>
+  <div class="content-box">
+    <div class="content-box-title">
+      {{users|length}} users logged in today
+    </div>
+    <div class="content-body">
+      <ul style="list-style: none; text-align: left; width: 100px">
+        {% for user in users %}
+        <li style="margin: 0">{{user.username}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
