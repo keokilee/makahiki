@@ -223,7 +223,7 @@
 	  http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
 	*/
 	background: none;
-	background-color: rgba(255,255,255,0.6);
+	background-color: white;
 	border: 2px solid #167000;
 	
 	width: 690px;
@@ -237,20 +237,20 @@
 }
 
 #landing-browser-buttons {
-  width: 400px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 #landing-browser-buttons button {
   background-color: #FEF1EC;
   border: 1px solid #CD0A0A;
-  border-radius: .2em;
-  -moz-border-radius: .2em;
-  -webkit-border-radius: .2em;
-  -moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
-  box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
   cursor: pointer;
-  padding: 0 auto;
+  padding: 0;
   color: #CD0A0A;
+  width: 700px;
+}
+
+#landing-button-continue h3 {
+  margin: 0;
+  padding: 0 5px;
 }

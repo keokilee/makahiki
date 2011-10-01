@@ -25,7 +25,7 @@
  Aloha! The Kukui Cup is an energy challenge that can be played by all first year UH students living in the Hale Aloha residence halls.
 <p> <p>
 
-<button {% get_id_and_classes "landing-button-participant" %} onclick="javascript:location.href='{% url home_index %}'">
+<button {% get_id_and_classes "landing-button-participant" %} onclick='javascript:location.href="{% url home_index %}"'>
   <h3>I live in Hale Aloha</h3>
 	<h5>You will be prompted for your <br>
 	UH username and password, it's safe</h5>
@@ -40,27 +40,27 @@
 
 </div>
 
-<!-- <div {% get_id_and_classes "landing-poster" %}>
-<img src="{{ STATIC_URL}}images/landing/personkukui.jpg" height="300" width="400"/>
-</div> -->
-<p>
-
 <!--[if IE]>
-<script type="text/javascript">
-  var insertBrowserCheck = function() {
-    jQuery("#landing-button-participant").unbind('click').click(function() {
-      location.href='{% url browser-check %}';
-    });
-  }
-  
+<script type="text/javascript" 
+ src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+
+
+<script>
+  // The conditional ensures that this code will only execute in IE,
+  // Therefore we can use the IE-specific attachEvent without worry
   window.attachEvent("onload", function() {
     CFInstall.check({
-        preventPrompt: true,
-        onmissing: insertBrowserCheck
-    });
+      preventPrompt: true,
+      preventInstallDetection: true,
+      onmissing: function() {
+        jQuery('#landing-button-participant').unbind('click').click(function() {
+          location.href='{% url browser_check %}';
+        });
+      }
+   });
   });
 </script>
-<![endif] -->
+<![endif]-->
 
 {% endblock %}
 
