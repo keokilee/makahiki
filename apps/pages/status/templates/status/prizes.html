@@ -10,7 +10,7 @@
       {{deadline.round_name}} Raffle Prizes
     </div>
     <div class="content-body">
-      <table style="margin: 10px; padding: 0 10px;">
+      <table style="margin: 10px; padding: 0 10px; width: 300px">
         <tr>
           <th style="text-align: left">Prize</th>
           <th>Tickets</th>
@@ -24,7 +24,7 @@
             {% if prize.winner %}
               {{prize.winner.get_profile.name}}
             {% else %}
-              N/A\
+              N/A
             {% endif %}
           </td>
         </tr>

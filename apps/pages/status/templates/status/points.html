@@ -5,15 +5,12 @@
 {% block body %}
 
 <div {% get_id_and_classes "status-points" %}>
-  <div class="content-box" style="float: left; margin-right: 20px">
+  <div class="content-box" style="float: left; margin: 15px;">
     <div class="content-box-title">
-      Top Individuals
+      Overall Individuals
     </div>
     <div class="content-body">
-      <table style="float: left; margin: 10px;">
-        <tr>
-          <th colspan=3>Overall</th>
-        </tr>
+      <table style="float: left; padding: 15px; width: 300px;">
         <tr>
           <th>Rank</th>
           <th>Name</th>
@@ -27,11 +24,16 @@
         </tr>
         {% endfor %}
       </table>
-      {% for name, entries in round_individuals.items %}
-      <table style="float: left; margin: 10px; padding: 0 10px; border-left: 1px solid gray">
-        <tr>
-          <th colspan=3>{{name}}</th>
-        </tr>
+    </div>
+  </div>
+  
+  {% for name, entries in round_individuals.items %}
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      {{name}} Top Individuals
+    </div>
+    <div class="content-body">
+      <table style="padding: 15px; width: 300px">
         <tr>
           <th>Rank</th>
           <th>Name</th>
@@ -45,19 +47,16 @@
         </tr>
         {% endfor %}
       </table>
-      {% endfor %}
     </div>
   </div>
+  {% endfor %}
   
-  <div class="content-box" style="float: left">
+  <div class="content-box" style="float: left; margin: 15px">
     <div class="content-box-title">
-      Top Floors
+      Overall Floors
     </div>
     <div class="content-body">
-      <table style="float: left; margin: 10px;">
-        <tr>
-          <th colspan=3>Overall</th>
-        </tr>
+      <table style='padding: 15px; width: 300px'>
         <tr>
           <th>Rank</th>
           <th>{{FLOOR_LABEL}}</th>
@@ -71,11 +70,16 @@
         </tr>
         {% endfor %}
       </table>
-      {% for name, floors in round_floors.items %}
-      <table style="float: left; margin: 10px; padding: 0 10px; border-left: 1px solid gray">
-        <tr>
-          <th colspan=3>{{name}}</th>
-        </tr>
+    </div>
+  </div>
+  
+  {% for name, floors in round_floors.items %}
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      {{name}} Floors
+    </div>
+    <div class="content-body">
+      <table style="padding: 15px; width: 300px">
         <tr>
           <th>Rank</th>
           <th>{{FLOOR_LABEL}}</th>
@@ -89,10 +93,9 @@
         </tr>
         {% endfor %}
       </table>
-      {% endfor %}
-      <br style="clear: both"/>
     </div>
   </div>
+  {% endfor %}
   
   <br style="clear: both"/>
 </div>
