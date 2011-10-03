@@ -3,18 +3,14 @@
 {% load class_tags %}
 
 {% block body %}
-
-<div {% get_id_and_classes "status-points" %}>
-  <div class="content-box">
+<div {% get_id_and_classes "status-prizes" %}>
+  {% for deadline in deadlines %}
+  <div class="content-box" style='float:left; margin: 15px'>
     <div class="content-box-title">
-      Raffle Prizes
+      {{deadline.round_name}} Raffle Prizes
     </div>
     <div class="content-body">
-      {% for deadline in deadlines %}
-      <table style="float: left; margin: 10px; padding: 0 10px; border-right: 1px solid gray">
-        <tr>
-          <th colspan=3>{{deadline.round_name}}</th>
-        </tr>
+      <table style="margin: 10px; padding: 0 10px;">
         <tr>
           <th style="text-align: left">Prize</th>
           <th>Tickets</th>
@@ -34,9 +30,9 @@
         </tr>
         {% endfor %}
       </table>
-      {% endfor %}
-      <br style="clear: both"/>
     </div>
   </div>
+  {% endfor %}
+  <br style="clear: both"/>
 </div>
 {% endblock %}
