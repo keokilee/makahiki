@@ -1,18 +1,16 @@
 {% extends "status/base.html" %}
 
 {% load class_tags %}
+
 {% block body %}
 <div {% get_id_and_classes "status-activities" %}>
-  <div class="content-box">
+  {% for type, tasks in tasks.items %}
+  <div class="content-box" style='float: left; margin: 15px'>
     <div class="content-box-title">
-      Popular Tasks
+      Popular {% if type == 'activity' %}Activities{% else %}{{type.capitalize}}s{% endif %}
     </div>
     <div class="content-body">
-      {% for type, tasks in tasks.items %}
-      <table style="float: left; margin: 10px; padding: 0 10px; border-right: 1px solid gray">
-        <tr>
-          <th colspan=2>{{type.capitalize}}</th>
-        </tr>
+      <table style="margin: 10px; padding: 0 10px;">
         <tr>
           <th style="text-align: left">Title</th>
           <th>Completions</th>
@@ -24,9 +22,9 @@
         </tr>
         {% endfor %}
       </table>
-      {% endfor %}
-      <br style="clear: both"/>
     </div>
   </div>
+  {% endfor %}
+  <br style="clear: both"/>
 </div>
 {% endblock %}
