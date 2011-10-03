@@ -1,10 +1,35 @@
-Confirmation codes for {{ activity.title }}<br/>
-
-{% for code in codes %}
-  <p>
-	{{ code.code }}
-	{% if not code.is_active %}
-	  - Code used
-	{%endif %}
-	</p>
-{% endfor %}
+<html>
+<head>
+  <style type='text/css'>
+  <!--
+  tr {
+    
+  }
+  -->
+  </style>
+</head>
+<body>
+  <table style="width: 800px;" cellpadding="15">
+    <tr>
+    {% for code in codes %}
+      <td>
+        Attendance code for '{{ activity.title }}'. Enter this code at 
+        kukuicup.manoa.hawaii.edu to get your points: 
+        <span style='white-space:nowrap; font-weight: bold'>{{ code.code }}</span>
+      </td>
+    {% if forloop.counter|divisibleby:"2" %}
+      {% if forloop.counter|divisibleby:'22' %}
+      {# Create a new table #}
+      </tr>
+      </table>
+      <table style="width: 800px; page-break-before: always" cellpadding="15">
+      <tr>
+      {% else %}
+      </tr>
+      <tr>
+      {% endif %}
+    {% endif %}
+    {% endfor %}
+  </table>
+</body>
+</html>
