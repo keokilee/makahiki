@@ -27,12 +27,14 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
     var dataTable = energyDataTable.clone();
     
     // Remove dorm rows.
-    //console.log("Removing source row " + dataTable.getValue(13, 0));
-    // dataTable.removeRow(13);
-    //console.log("Removing source row " + dataTable.getValue(7, 0));
-    // dataTable.removeRow(7);
-    //console.log("Removing source row " + dataTable.getValue(1, 0));
-    // dataTable.removeRow(1);
+    console.log("Removing source row " + dataTable.getValue(13, 0));
+    dataTable.removeRow(13);
+    console.log("Removing source row " + dataTable.getValue(7, 0));
+    dataTable.removeRow(7);
+    console.log("Removing source row " + dataTable.getValue(1, 0));
+    dataTable.removeRow(1);
+    console.log("Removing source row " + dataTable.getValue(0, 0));
+    dataTable.removeRow(0);
     
     // Note that first two columns are source and timestamp.
     var start = startDays + 2; 
