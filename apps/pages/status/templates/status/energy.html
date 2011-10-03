@@ -5,21 +5,20 @@
 {% block body %}
 
 <div {% get_id_and_classes "status-energy" %}>
-  <div class="content-box">
+  {% for key, value in ROUNDS.items %}
+  <div class="content-box" style="float: left; margin: 15px">
     <div class="content-box-title">
-      Energy Scoreboards
+      {{key.capitalize}} Energy Scoreboard
     </div>
     <div class="content-body">
-      {% for key, value in ROUNDS.items %}
-      <div style="float: left; margin: 10px; padding: 0 10px; border-right: 1px solid gray">
-        <h4>{{key.capitalize}}</h4>
+      <div style="margin: 10px; padding: 0 10px;">
         <table id="{{key|slugify}}-energy-scoreboard">
         </table>
       </div>
-      {% endfor %}
-      <br style="clear: both"/>
     </div>
   </div>
+  {% endfor %}
+  <br style="clear: both"/>
 </div>
 
 <script type="text/javascript">
