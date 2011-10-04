@@ -6,6 +6,7 @@
 
 </div>
 
+{% if user.get_profile.floor %}
 <script type="text/javascript"> 
 // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
 (function() {
@@ -28,4 +29,5 @@
     energyChart.draw('visualization', source, datatable, options);
   }
 })();  
-</script> 
+</script>
+{% endif %}

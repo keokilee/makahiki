@@ -27,13 +27,15 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
     var dataTable = energyDataTable.clone();
     
     // Remove dorm rows.
-    console.log("Removing source row " + dataTable.getValue(13, 0));
+    // console.log("Removing source row " + dataTable.getValue(20, 0));
+    dataTable.removeRow(20);
+    // console.log("Removing source row " + dataTable.getValue(13, 0));
     dataTable.removeRow(13);
-    console.log("Removing source row " + dataTable.getValue(7, 0));
+    // console.log("Removing source row " + dataTable.getValue(7, 0));
     dataTable.removeRow(7);
-    console.log("Removing source row " + dataTable.getValue(1, 0));
+    // console.log("Removing source row " + dataTable.getValue(1, 0));
     dataTable.removeRow(1);
-    console.log("Removing source row " + dataTable.getValue(0, 0));
+    // console.log("Removing source row " + dataTable.getValue(0, 0));
     dataTable.removeRow(0);
     
     // Note that first two columns are source and timestamp.
@@ -89,29 +91,33 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
   
   // Calculates the rank and current energy of the source.
   function calculateRankInfo(usageTable, source) {
-    // Get the index of the source.
-    var rows = usageTable.getFilteredRows([{column: 0, value: source}]);
-    if (rows.length == 0) {
-      console.error("Could not find source " + source);
-      return null;
-    }
-    
-    var index = rows[0];
-    return {
-      rank: index + 1,
-      usage: usageTable.getValue(index, 1),
+    if (source) {
+        // Get the index of the source.
+        var rows = usageTable.getFilteredRows([{column: 0, value: source}]);
+        if (rows.length == 0) {
+          console.error("Could not find source " + source);
+          return null;
+        }
+
+        var index = rows[0];
+        return {
+          rank: index + 1,
+          usage: usageTable.getValue(index, 1),
+        }
     }
   }
 
   // Insert the rank and energy into the specified elements.
   function draw(rankId, energyId, sourceInfo) {
-    // Get the rank element.
-    var element = document.getElementById(rankId);
-    element.innerHTML = "#" + sourceInfo.rank;
-    
-    // Get the energy element.
-    element = document.getElementById(energyId);
-    element.innerHTML = "" + Math.floor(sourceInfo.usage / 1000);
+    if (sourceInfo) {
+        // Get the rank element.
+        var element = document.getElementById(rankId);
+        element.innerHTML = "#" + sourceInfo.rank;
+
+        // Get the energy element.
+        element = document.getElementById(energyId);
+        element.innerHTML = "" + Math.floor(sourceInfo.usage / 1000);
+    }
   }
   
   // Insert the leader into the specified element.

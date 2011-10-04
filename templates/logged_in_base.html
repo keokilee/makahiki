@@ -117,7 +117,7 @@
 
   function displayRank(energyDataTable) {
     // The source for which we want to find the rank must be specified by Makahiki.
-    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var source = {% if user.get_profile.floor %}'{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}'{% else %}null{% endif %};
     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
     
     // Get the usage for the current round and overall.
