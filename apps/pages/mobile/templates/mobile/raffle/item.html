@@ -3,10 +3,8 @@
 {% load class_tags %}
 {% load prize_tags %}
 {% load markup %}
-
-
-{% block body %} 
-<div data-role="dialog">
+ 
+{% block body %}  
 
   {% for prize in raffle.prizes %}
     {% if prize.title|slugify == slug %}
@@ -25,6 +23,5 @@
       </div>
     </div>
     {% endif %}
-  {% endfor %}
-</div>
+  {% endfor %} 
 {% endblock %}
