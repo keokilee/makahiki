@@ -18,6 +18,7 @@
     <div style="display: inline" >
       {% if raffle.tickets.available > 0 %}
       <form action="{% url raffle_add_ticket prize.id %}" method="POST" style="display: inline">
+	{%csrf_token%}
         <button class="enabled" style="display: inline" type="submit" data-icon="plus" onClick="setTimeout('parent.location.reload()',500);return true;"></button>
       </form>
       {% else %}
@@ -25,6 +26,7 @@
       {% endif %}
       {% if prize|user_tickets:user > 0 %}
       <form action="{% url raffle_remove_ticket prize.id %}" method="POST" style="display: inline">
+        {%csrf_token%}
         <button class="enabled" type="submit" style="display: inline" data-icon="minus" onClick="setTimeout('parent.location.reload()',500);return true;"></button>
       </form>
       {% else %}
