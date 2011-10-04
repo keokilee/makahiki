@@ -22,17 +22,23 @@ class Command(management.base.BaseCommand):
     for prize in prizes:
       if not prize.winner:
         # Randomly order the tickets and then pick a random ticket.
-        tickets = prize.raffleticket_set.order_by("?").all()
-        ticket = random.randint(0, tickets.count() - 1)
-        user = tickets[ticket].user
-        print str(prize) + ": " + user.username
-        prize.winner = user
-        prize.save()
-      
-        # Notify winner using the template.
-        try:
-          template = NoticeTemplate.objects.get(notice_type='raffle-winner')
-          message = template.render({'PRIZE': prize})
-          UserNotification.create_info_notification(user, message, True, prize)
-        except NoticeTemplate.DoesNotExist:
-          self.stdout.write("Could not find the raffle-winner template.  User was not notified.")
+        while True:
+          tickets = prize.raffleticket_set.order_by("?").all()
+          ticket = random.randint(0, tickets.count() - 1)
+          user = tickets[ticket].user
+          self.stdout.write(str(prize) + ": " + user.username + '\n')
+          value = raw_input('Is this OK? [y/n] ')
+          if value.lower() == 'y':
+            prize.winner = user
+            prize.save()
+            
+            self.stdout.write("Notifying %s\n" % user.username)
+            # Notify winner using the template.
+            try:
+              template = NoticeTemplate.objects.get(notice_type='raffle-winner')
+              message = template.render({'PRIZE': prize})
+              UserNotification.create_info_notification(user, message, True, prize)
+            except NoticeTemplate.DoesNotExist:
+              self.stdout.write("Could not find the raffle-winner template.  User was not notified.\n")
+              
+            break
