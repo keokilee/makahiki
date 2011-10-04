@@ -13,6 +13,8 @@ class Command(management.base.BaseCommand):
       self.stdout.write("the csv file name missing.\n")
       return
 
+    error_count = 0
+    load_count = 0
     filename = args[0]
     try:
         file = open(filename)
@@ -35,25 +37,29 @@ class Command(management.base.BaseCommand):
         email = items[4].strip()
         username = email.split("@")[0]
         print "%s,%s,%s,%s,%s" % (lounge, firstname, lastname, email, username)
-
-        try:
-          user = User.objects.get(username=username)
-          user.delete()
-        except:
-          None
+        if not email.endswith("@hawaii.edu"):
+          print "==== ERROR ==== non-hawaii edu email: %s" % (email)
+          error_count += 1
+        else:
+          try:
+            user = User.objects.get(username=username)
+            user.delete()
+          except:
+            None
             
-        user = User.objects.create_user(username, email)
-        user.first_name = firstname
-        user.last_name = lastname
-        user.save()
+          user = User.objects.create_user(username, email)
+          user.first_name = firstname
+          user.last_name = lastname
+          user.save()
         
-        profile = user.get_profile()
-        profile.first_name = firstname
-        profile.last_name = lastname
-        profile.floor = Floor.objects.get(floor_identifier=lounge)
-        profile.save()
-
+          profile = user.get_profile()
+          profile.first_name = firstname
+          profile.last_name = lastname
+          profile.floor = Floor.objects.get(floor_identifier=lounge)
+          profile.save()
+          load_count += 1
     file.close()
+    print "---- total loaded: %d , errors: %d" % (load_count, error_count)
 
   def get_lounge(self, dorm, floor):
     if dorm == 'LE':
