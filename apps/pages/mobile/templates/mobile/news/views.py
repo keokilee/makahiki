@@ -60,11 +60,11 @@ def post(request):
       # Render the post and send it as a response.
       template = render_to_string("news/user_post.html", {"post": post}, 
           context_instance=RequestContext(request))
-      return HttpResponseRedirect(reverse("mobile_news_index 1"))
-      #return HttpResponse(json.dumps({
-      #  "contents": template,
-      #}), mimetype="application/json")
-    return HttpResponseRedirect(reverse("mobile_news_index 1"))
+      return HttpResponseRedirect(reverse("mobile_news_index"))
+      return HttpResponse(json.dumps({
+        "contents": template,
+      }), mimetype="application/json")
+    return HttpResponseRedirect(reverse("mobile_news_index"))
 
     # At this point there is a form validation error.
     return HttpResponse(json.dumps({
