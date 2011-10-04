@@ -18,7 +18,7 @@
               {% csrf_token %}
               <div {% get_id_and_classes "wall-post-errors" %}></div>
               <div {% get_id_and_classes "wall-post" %}>
-                {{wall_form.post}}
+                {{wall_form.post}} 
 
 <script type="text/javascript">
   $(document).ready((change("id_post"))); 
