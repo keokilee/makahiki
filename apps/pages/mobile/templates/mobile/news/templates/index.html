@@ -3,7 +3,7 @@
 {% load class_tags %}
 {% load avatar_tags %} 
     <div data-role="header" data-theme="b" data-add-back-btn="True">
-      <h1>News</h1>
+      <h1>News{{next}}</h1>
       <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
     </div>
 
@@ -14,7 +14,7 @@
         </div>
         <div {% get_id_and_classes "news-wall-content" %}>
           <div {% get_id_and_classes "wall-form" %}>
-            <form {% get_id_and_classes "news-post-form" %} action="{% url news_post %}" method="POST" onSubmit="setTimeout('parent.location.reload()',500); return true;">
+            <form {% get_id_and_classes "news-post-form" %} action="{% url mobile_news_post %}" rel="external" method="POST" onSubmit="setTimeout('parent.location.reload()',0); return true;">
               {% csrf_token %}
               <div {% get_id_and_classes "wall-post-errors" %}></div>
               <div {% get_id_and_classes "wall-post" %}>

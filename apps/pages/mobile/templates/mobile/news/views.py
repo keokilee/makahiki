@@ -4,12 +4,12 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.models import User 
 from components.floors.models import Post 
 from pages.news.forms import WallForm
-
+from django.core.urlresolvers import reverse
 from pages.news import DEFAULT_POST_COUNT
 
 @never_cache
@@ -60,15 +60,17 @@ def post(request):
       # Render the post and send it as a response.
       template = render_to_string("news/user_post.html", {"post": post}, 
           context_instance=RequestContext(request))
+      return HttpResponseRedirect(reverse("mobile_news_index"))
       return HttpResponse(json.dumps({
         "contents": template,
       }), mimetype="application/json")
-    
+    return HttpResponseRedirect(reverse("mobile_news_index"))
+
     # At this point there is a form validation error.
     return HttpResponse(json.dumps({
         "message": "This should not be blank."
     }), mimetype="application/json")
-  return HttpResponseRedirect(reverse("mobile_news"))
+  
   raise Http404
 
 @login_required

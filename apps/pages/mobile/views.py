@@ -967,9 +967,6 @@ def profile(request,page):
       "contact_carrier": user.get_profile().contact_carrier,
     })
     
-    if request.GET.has_key("changed_avatar"):
-      form.message = "Your avatar has been updated."
-  
   return render_to_response("mobile/profile/"+page+".html", {
     "profile": user.get_profile(),
     "user": user,

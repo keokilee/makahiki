@@ -1,7 +1,6 @@
 {% extends "mobile/base.html" %}
 
-{% block body %} 
-<div data-role="page">
+{% block body %}  
   <div data-role="header">
     <h1>Logout</h1>
   </div>
@@ -10,6 +9,5 @@
     <a href="/account/cas/logout/?next=/m" data-role="button" rel="external">Yes</a>
     <a href="{% url mobile_index %}" data-role="button" data-rel="back">
       Cancel</a>
-  </div>
-</div>
+  </div> 
 {% endblock %}

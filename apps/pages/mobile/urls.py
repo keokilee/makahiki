@@ -27,9 +27,8 @@ urlpatterns = patterns('',
     url(r'^profile/(\w*)/?$', 'pages.mobile.views.profile', name='mobile_profile'),
     url(r'^raffle/?$', 'pages.mobile.views.raffle', name='mobile_raffle'),
     url(r'^raffle/(?P<prize_slug>[\w\d\-]+)/?$', 'pages.mobile.views.raffle_item', name="mobile_raffle_item"),
-    url(r'^power_and_energy/?$', 'pages.mobile.views.power_and_energy', name='mobile_power_and_energy'), 
-    url(r'^news/?$', 'pages.mobile.templates.mobile.news.views.news' , name='mobile_news'),
-    url(r'^news/(\d+)/?$', 'pages.mobile.templates.mobile.news.views.more_posts' , name='news_more'),
+    url(r'^power_and_energy/?$', 'pages.mobile.views.power_and_energy', name='mobile_power_and_energy'),  
+    url(r'^news/', include('pages.mobile.templates.mobile.news.urls')),
     url(r'^notification/(\d+)/?$', 'pages.mobile.views.read_notification' , name='mobile_read_notification'), 
 )
 

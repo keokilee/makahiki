@@ -2,7 +2,7 @@
 {% load class_tags %}
   
 <form id="profile-form-contents" action="{% url mobile_profile 'index' %}" rel="external" method="post">
-<div style='display:none;'><input type='hidden' id='csrfmiddlewaretoken' name='csrfmiddlewaretoken' value='ebf3e05dc4548c8311df7db111b897f6' /></div> 
+{%csrf_token%} 
 <div align="left">
 {{form.message}}
 {{form.errors}}
