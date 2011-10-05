@@ -1,12 +1,5 @@
 <html>
 <head>
-  <style type='text/css'>
-  <!--
-  tr {
-    
-  }
-  -->
-  </style>
 </head>
 <body>
   <table style="width: 800px;" cellpadding="15">
@@ -15,10 +8,10 @@
       <td>
         Attendance code for '{{ activity.title }}'. Enter this code at 
         kukuicup.manoa.hawaii.edu to get your points: 
-        <span style='white-space:nowrap; font-weight: bold'>{{ code.code }}</span>
+        <span style='font-family: "Courier New", Courier, monospace; white-space:nowrap; font-weight: bold'>{{ code.code }}</span>
       </td>
     {% if forloop.counter|divisibleby:"2" %}
-      {% if forloop.counter|divisibleby:'22' %}
+      {% if forloop.counter|divisibleby:per_page %}
       {# Create a new table #}
       </tr>
       </table>

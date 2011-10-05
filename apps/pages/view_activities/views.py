@@ -153,9 +153,12 @@ def _dictfetchall(cursor):
 @login_required
 def view_codes(request, slug):
   """View the confirmation codes for a given activity."""
-  
   if not request.user or not request.user.is_staff:
     raise Http404
+    
+  per_page = "20"
+  if request.GET.has_key('per_page'):
+    per_page = request.GET['per_page']
     
   activity = get_object_or_404(Activity, slug=slug)
   codes = ConfirmationCode.objects.filter(activity=activity)
@@ -165,6 +168,7 @@ def view_codes(request, slug):
   return render_to_response("view_activities/view_codes.html", {
     "activity": activity,
     "codes": codes,
+    "per_page": per_page,
   }, context_instance = RequestContext(request))
   
 @never_cache
