@@ -26,6 +26,10 @@ def points_scoreboard(request):
     points__gt=0,
   ).order_by("-points", "-last_awarded_submission").values("name", "points")
   
+  canopy_members = Profile.objects.filter(
+      canopy_member=True,
+  ).order_by("-canopy_karma").values("name", "canopy_karma")
+  
   floor_standings = Floor.floor_points_leaders(num_results=10)
   
   round_individuals = {}
@@ -42,6 +46,7 @@ def points_scoreboard(request):
     
   return render_to_response("status/points.html", {
       "profiles": profiles,
+      "canopy_members": canopy_members,
       "round_individuals": round_individuals,
       "floor_standings": floor_standings,
       "round_floors": round_floors,

@@ -97,6 +97,31 @@
   </div>
   {% endfor %}
   
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Canopy Karma
+    </div>
+    <div class="content-body">
+      <table style='padding: 15px; width: 300px'>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Karma</th>
+        </tr>
+        {% for member in canopy_members %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{member.name}}</td>
+          <td>{{member.canopy_karma}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan='3'>There are no canopy members yet</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
   <br style="clear: both"/>
 </div>
 {% endblock %}
