@@ -175,7 +175,10 @@ def view_rsvps(request, slug):
     
   print slug
   activity = get_object_or_404(Activity, slug=slug)
-  rsvps = ActivityMember.objects.filter(activity=activity, approval_status='pending')
+  rsvps = ActivityMember.objects.filter(
+      activity=activity, 
+      approval_status='pending'
+  ).order_by('user__username')
   
   return render_to_response("view_activities/rsvps.html", {
       "activity": activity,
