@@ -17,9 +17,17 @@ body {
   background: none;
 }
 
+.container #header {
+  min-height: 0px;
+  height: auto;
+  background: none;
+}
+
 /* Base status styles */
-#status-title {
-  padding-top: 35px;
+#status-header {
+  border: 1px solid gray;
+  background-color: #F8F8FF;
+  margin: 0 auto;
 }
 
 #status-nav {

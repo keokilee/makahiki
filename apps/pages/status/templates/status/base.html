@@ -10,17 +10,40 @@
   <script type="text/javascript" src="{{STATIC_URL}}/js/org.wattdepot.gdata.GDataLoader.js"></script>
   <script type="text/javascript" src="{{STATIC_URL}}/js/org.wattdepot.gdata.makahiki.EnergyRank.js"></script>
   
+  <script type='text/javascript'>
+  jQuery(document).ready(function($) {
+    $('#header-spacer').hover(function() {
+      // mouse in handler
+      $('#status-header').slideDown();
+    }, function() {
+      // mouse out handler
+      // Do nothing
+    });
+    
+    $('#status-header').hover(function() {
+      // Do nothing
+    }, function() {
+      $('#status-header').slideUp();
+    });
+  });
+  </script>
   {% import_page_css "status" STATIC_URL CSS_THEME %}
 {% endblock %}
 
 {% block header %}
-<h1 {% get_id_and_classes "status-title" %}>{{COMPETITION_NAME}} Mission Control</h1>
-<ul {% get_id_and_classes "status-nav" %}>
-  <li><a href="{% url status_points %}">Points Scoreboards</a></li>
-  <li><a href="{% url status_energy %}">Energy Scoreboards</a></li>
-  <li><a href="{% url status_users %}">Users</a></li>
-  <li><a href="{% url status_prizes %}">Prizes</a></li>
-  <li><a href="{% url status_activities %}">Activities and Commitments</a></li>
-  <li><a href="{% url status_rsvps %}">Event RSVPs</a></li>
-</ul>
+<div id='header-spacer' style="height: 10px; width: 100%;">
+  &nbsp;
+</div>
+
+<div id='status-header' style='display: none'>
+  <h1 {% get_id_and_classes "status-title" %}>{{COMPETITION_NAME}} Mission Control</h1>
+  <ul {% get_id_and_classes "status-nav" %}>
+    <li><a href="{% url status_points %}">Points Scoreboards</a></li>
+    <li><a href="{% url status_energy %}">Energy Scoreboards</a></li>
+    <li><a href="{% url status_users %}">Users</a></li>
+    <li><a href="{% url status_prizes %}">Prizes</a></li>
+    <li><a href="{% url status_activities %}">Activities and Commitments</a></li>
+    <li><a href="{% url status_rsvps %}">Event RSVPs</a></li>
+  </ul>
+</div>
 {% endblock %}
