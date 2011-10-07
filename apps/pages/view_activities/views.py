@@ -182,7 +182,7 @@ def view_rsvps(request, slug):
   rsvps = ActivityMember.objects.filter(
       activity=activity, 
       approval_status='pending'
-  ).order_by('user__username')
+  ).order_by('user__last_name', 'user__first_name')
   
   return render_to_response("view_activities/rsvps.html", {
       "activity": activity,
