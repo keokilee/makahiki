@@ -4,7 +4,7 @@
 
 {% block body %}
 <div {% get_id_and_classes "status-rsvps" %}>
-  <div class="content-box">
+  <div class="content-box" style='float:left; margin: 15px'>
     <div class="content-box-title">
       Event RSVPs
     </div>
@@ -25,5 +25,29 @@
       </table>
     </div>
   </div>
+  
+  <div class="content-box" style='float:left; margin: 15px'>
+    <div class="content-box-title">
+      Excursion RSVPs
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px">
+        <tr>
+          <th style="text-align: left">Event</th>
+          <th>Capacity</th>
+          <th>RSVPs</th>
+        </tr>
+        {% for excursion in excursions %}
+        <tr>
+          <td style="text-align: left">{{excursion.title}}</td>
+          <td>{{excursion.event_max_seat}}</td>
+          <td>{{excursion.rsvps}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <br style="clear: both"/>
 </div>
 {% endblock %}
