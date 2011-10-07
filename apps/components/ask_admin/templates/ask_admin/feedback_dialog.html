@@ -1,5 +1,6 @@
 <div id="feedback-dialog" title="Send Feedback" style="display: none">
   <form id="feedback-form" action="{% url ask_admin_feedback %}" method="POST">
+    {% csrf_token %}
     <p>Having issues?  Just want to tell us something?  Let us know!</p>
     <input id="id_url" type="hidden" name="url" value=""/>
     <textarea id="id_question" rows="3" cols="53" name="question"></textarea><br/>
