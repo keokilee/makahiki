@@ -11,7 +11,7 @@
                    {%if user.get_profile.get_lounge_name == lounge.floor_identifier %} checked="checked" {% endif %}
                    onchange='update();'/>
             {{ lounge.floor_identifier  }}
-            {%  if forloop.counter == 5 or forloop.counter == 10 %}
+            {%  if forloop.counter == 5 or forloop.counter == 10 or forloop.counter == 15 %}
                <br/>
             {%  endif %}
          {% endfor %}
