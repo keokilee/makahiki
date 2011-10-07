@@ -57,10 +57,12 @@
       {% if mission.is_group %}
       {% if user in mission.participating_users %}
       <form action="{% url canopy_mission_cancel mission.slug%}" method="POST" style="display: inline">
+        {% csrf_token %}
         <button type="submit" style="margin-right: 20px">Cancel this mission</button>
       </form>
       {% else %}
       <form action="{% url canopy_mission_accept mission.slug %}" method="POST" style="display: inline">
+        {% csrf_token %}
         <button type="submit" style="margin-right: 20px">I am up for this mission</button>
       </form>
       {# <form action="" method="POST" style="display: inline"> #}
