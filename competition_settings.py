@@ -10,7 +10,7 @@ COMPETITION_END = (datetime.date.today() + datetime.timedelta(days=6)).strftime(
 # The rounds of the competition. Specify dates using "yyyy-mm-dd".
 # Start means the competition will start at midnight on that date.
 # End means the competition will end at midnight of that date.
-# This means that a round that ends on "2010-08-02" will end at 11:59pm of August 2nd.
+# This means that a round that ends on "2010-08-02" will end at 11:59pm of August 1st.
 COMPETITION_ROUNDS = {
   "Round 1" : {
     "start": (datetime.date.today() - datetime.timedelta(days=3)).strftime("%Y-%m-%d"),

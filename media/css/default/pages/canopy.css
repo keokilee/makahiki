@@ -268,7 +268,7 @@ body {
 /******* Member styles *******/
 #canopy-feed-members #canopy-members{
   float: right;
-  clear: both;
+  /*clear: both;*/
 }
 
 #canopy-members-content {
