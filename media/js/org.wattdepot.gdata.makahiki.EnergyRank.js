@@ -27,8 +27,8 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
     var dataTable = energyDataTable.clone();
     
     // Remove dorm rows.
-    // console.log("Removing source row " + dataTable.getValue(20, 0));
-    dataTable.removeRow(20);
+    // console.log("Removing source row " + dataTable.getValue(19, 0));
+    dataTable.removeRow(19);
     // console.log("Removing source row " + dataTable.getValue(13, 0));
     dataTable.removeRow(13);
     // console.log("Removing source row " + dataTable.getValue(7, 0));

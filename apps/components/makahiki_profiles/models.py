@@ -16,6 +16,7 @@ from django.contrib.localflavor.us.models import PhoneNumberField
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.prizes import POINTS_PER_TICKET
+from components.cache.utils import invalidate_info_bar_cache
 
 class InvalidRoundException(Exception):
   def __init__(self, value):
@@ -242,6 +243,9 @@ class Profile(models.Model):
       transaction.related_object = related_object
       
     transaction.save()
+    
+    # Invalidate info bar cache.
+    invalidate_info_bar_cache(self.user)
 
     # canopy activity deal with karma
     if self._is_canopy_activity(related_object):
@@ -279,6 +283,9 @@ class Profile(models.Model):
       transaction.related_object = related_object
     
     transaction.save()
+    
+    # Invalidate info bar cache.
+    invalidate_info_bar_cache(self.user)
 
     if self._is_canopy_activity(related_object):
         self.canopy_karma -= points
