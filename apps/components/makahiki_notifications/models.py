@@ -37,10 +37,13 @@ class NoticeTemplate(models.Model):
     Renders the message first using Django's templating system, then using Markdown.
     The template renderer uses the passed in context to insert variables.
     """
-    template = Template(self.message)
+    template = Template(self.template)
     template = template.render(Context(context_dict))
       
     return markdown(template)
+    
+  def __unicode__(self):
+    return self.notice_type
 
 class UserNotification(models.Model):
   recipient = models.ForeignKey(User)
