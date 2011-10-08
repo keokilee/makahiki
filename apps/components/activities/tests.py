@@ -38,6 +38,30 @@ class ActivitiesUnitTestCase(TestCase):
       },
     }
     
+  def testCanopyActivityLog(self):
+    """
+    Test that canopy activities create the appropriate log.
+    """
+    self.activity.is_canopy = True
+    self.activity.save()
+    member = ActivityMember(user=self.user, activity=self.activity, approval_status='approved')
+    member.save()
+    
+    # Check the points log for this user.
+    log = self.user.pointstransaction_set.all()[0]
+    self.assertTrue(log.message.startswith('Canopy'))
+    
+  def testActivityLog(self):
+    """
+    Test that regular activities create the appropriate log.
+    """
+    member = ActivityMember(user=self.user, activity=self.activity, approval_status='approved')
+    member.save()
+
+    # Check the points log for this user.
+    log = self.user.pointstransaction_set.all()[0]
+    self.assertTrue(log.message.startswith(self.activity.type.capitalize()))
+    
   def testPopularActivities(self):
     """Check which activity is the most popular."""
     activity_member = ActivityMember(user=self.user, activity=self.activity)
