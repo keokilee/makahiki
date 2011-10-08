@@ -47,7 +47,7 @@ def notify_round_started():
     end = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
     if start < today < end:
       current_round = key
-    elif (start < today - datetime.timedelta(days=1)) < end:
+    elif start < (today - datetime.timedelta(days=1)) < end:
       previous_round = key
     
   if current_round and previous_round and current_round != previous_round:
