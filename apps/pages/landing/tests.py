@@ -32,6 +32,11 @@ class LandingFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "landing/about.html")
     
+    settings.ROOT_REDIRECT_URL = None
+    response = self.client.get(reverse("root_index"), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "landing/index.html")
+    
     settings.REDIRECT_TO_ABOUT = current_setting
     
   def testLoggedInRedirect(self):
