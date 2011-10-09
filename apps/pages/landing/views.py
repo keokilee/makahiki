@@ -11,8 +11,8 @@ def index(request):
     return HttpResponseRedirect(reverse("mobile_landing"))
   elif request.user.is_authenticated():
     return HttpResponseRedirect(reverse("home_index"))
-  elif hasattr(settings, "REDIRECT_TO_ABOUT") and settings.REDIRECT_TO_ABOUT:
-    return HttpResponseRedirect(reverse("about"))
+  elif hasattr(settings, "ROOT_REDIRECT_URL") and settings.ROOT_REDIRECT_URL:
+    return HttpResponseRedirect(settings.ROOT_REDIRECT_URL)
     
   return landing(request)
   
