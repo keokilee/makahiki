@@ -8,7 +8,8 @@ from django.views.decorators.cache import never_cache
 @never_cache
 def index(request):
   if request.mobile and not request.COOKIES.has_key("mobile-desktop"):
-    return HttpResponseRedirect(reverse("mobile_landing"))
+    # return HttpResponseRedirect(reverse("mobile_landing"))
+    return HttpResponseRedirect(reverse("mobile_temp"))
   elif request.user.is_authenticated():
     return HttpResponseRedirect(reverse("home_index"))
   elif hasattr(settings, "ROOT_REDIRECT_URL") and settings.ROOT_REDIRECT_URL:
