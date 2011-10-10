@@ -3,8 +3,9 @@ from django.views.generic.simple import direct_to_template
 from components.activities.models import ActivityBase
 
 urlpatterns = patterns('',
-    url(r'^$', 'pages.mobile.views.temp', name='mobile_temp'),
+    #url(r'^$', 'pages.mobile.views.temp', name='mobile_temp'),
     url(r'^landing/?$', 'pages.mobile.views.landing', name='mobile_landing'),
+    url(r'^about/$', direct_to_template, {'template': 'landing/about.html'}, name='m_about'),
     url(r'^home/?$', 'pages.mobile.views.index', name='mobile_index'),
     url(r'^logout/?$', 'pages.mobile.views.logout', name='mobile_logout'),
     url(r'^setup/$', direct_to_template, {"template": 'mobile/setup.html'}, name='mobile_setup'),
