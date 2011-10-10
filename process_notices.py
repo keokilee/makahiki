@@ -39,7 +39,7 @@ def notify_round_started():
     return
     
   today = datetime.datetime.today()
-  current_round = 'Overall'
+  current_round = 'Overall Round'
   previous_round = None
   
   for key, value in settings.COMPETITION_ROUNDS.items():
