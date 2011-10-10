@@ -290,6 +290,7 @@ SITE_NAME = "Kukui Cup"
 LOGIN_URL = "/account/cas/login/"
 LOGIN_REDIRECT_URLNAME = "home_index"
 LOGIN_REDIRECT_URL = "/"
+RESTRICTED_URL = '/restricted/'
 
 SERIALIZATION_MODULES = {
     "jsonfk": "pinax.core.serializers.jsonfk",
