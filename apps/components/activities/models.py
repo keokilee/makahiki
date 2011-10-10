@@ -598,13 +598,22 @@ class ActivityMember(CommonActivityUser):
                                                  image=self.image, points_awarded=self.points_awarded,
                                                  approval_status=self.approval_status, award_date=self.award_date,
                                                  submission_date=self.submission_date)
-    if profile.floor:
+    if profile.floor and not self.activity.is_canopy:
       # Post on the user's floor wall.
       message = " has been awarded %d points for completing \"%s\"." % (
         points,
         self.activity.title,
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
+      post.save()
+    elif self.activity.is_canopy:
+      from components.canopy.models import Post as CanopyPost
+      
+      message = " has been awarded %d karma points for completing \"%s\"." % (
+        points,
+        self.activity.title,
+      )
+      post = CanopyPost(user=self.user, text=message)
       post.save()
        
   def _handle_rejected(self):
