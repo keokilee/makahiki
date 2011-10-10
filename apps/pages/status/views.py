@@ -91,8 +91,14 @@ def event_rsvps(request):
       type="event",
       activitymember__approval_status="pending",
   ).annotate(rsvps=Count('activitymember')).order_by('-rsvps')
+  excursions = Activity.objects.filter(
+      type="excursions",
+      activitymember__approval_status="pending",
+  ).annotate(rsvps=Count('activitymember')).order_by('-rsvps')
+  
   return render_to_response("status/rsvps.html", {
       "events": events,
+      "excursions": excursions,
   }, context_instance=RequestContext(request))
   
   

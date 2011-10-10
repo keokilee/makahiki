@@ -14,16 +14,29 @@ class LandingFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "landing/index.html")
     
-  def testAboutRedirect(self):
-    """Check that if a settings variable is set, then going to the root url goes to the about page."""
-    current_setting = False
-    if hasattr(settings, "REDIRECT_TO_ABOUT"):
-      current_setting = settings.REDIRECT_TO_ABOUT
+  def testRootRedirect(self):
+    """
+    Check that if a settings variable is set, then going to the root url redirects to the appropriate page.
+    """
+    current_setting = None
+    if hasattr(settings, "ROOT_REDIRECT_URL"):
+      current_setting = settings.ROOT_REDIRECT_URL
       
-    settings.REDIRECT_TO_ABOUT = True
+    settings.ROOT_REDIRECT_URL = reverse('coming_soon')
+    response = self.client.get(reverse("root_index"), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "landing/coming_soon.html")
+    
+    settings.ROOT_REDIRECT_URL = reverse('about')
     response = self.client.get(reverse("root_index"), follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "landing/about.html")
+    
+    settings.ROOT_REDIRECT_URL = None
+    response = self.client.get(reverse("root_index"), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "landing/index.html")
+    
     settings.REDIRECT_TO_ABOUT = current_setting
     
   def testLoggedInRedirect(self):

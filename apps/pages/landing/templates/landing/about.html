@@ -3,7 +3,7 @@
 {% load class_tags %}
 
 {% block page_title %}
-  Welcome to KukuiCup!
+  Welcome to Kukui Cup!
 {% endblock %}
 
 {% block extra_head %}
@@ -21,7 +21,9 @@
 
 <div {% get_id_and_classes "landing-page" %}>
   <div {% get_id_and_classes "landing-logo" %}>
-    <a href="{% url landing %}"><img src="{{STATIC_URL}}css/default/images/old-logo.png"/></a>
+    {# <a href="{% url landing %}"> #}
+      <img src="{{STATIC_URL}}css/default/images/old-logo.png"/>
+    {# </a> #}
   </div>
   <div {% get_id_and_classes "landing-title" %}>
     <h2>The Kukui Cup: Lights out, game on!</h2>
@@ -174,16 +176,23 @@
 
   <h3>Our sponsors</h3>
 
-  The Kukui Cup is grateful for financial support from: the
-  <a href="http://www.nsf.gov/">National Science Foundation</a> under
+  The Kukui Cup is grateful for financial support from:
+  
+  <ul>
+  	<li>the <a href="http://www.nsf.gov/">National Science Foundation</a> under
   <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1017126">
-  grant 1017126</a>; the <a href="http://reis.manoa.hawaii.edu/">Center for
-  Renewable Energy and Island Sustainability</a>; 
-  <a href="http://manoa.hawaii.edu/housing/">University of Hawaii at Manoa
-  Student Housing Services</a>; 
-  <a href="http://manoa.hawaii.edu/facilities/">University of Hawaii at Manoa
-  Facilities Management</a>; and the <a href="http://energy.hawaii.gov/">State
-  of Hawaii Department of Business, Economic Development, and Tourism</a>.
+  grant 1017126</a>;</li>
+  	<li>the <a href="http://reis.manoa.hawaii.edu/">Center for Renewable Energy
+  	and Island Sustainability</a>;</li>
+	  <li><a href="http://manoa.hawaii.edu/housing/">University of Hawaii at
+	  Manoa Student Housing Services</a>;</li>
+  	<li><a href="http://manoa.hawaii.edu/facilities/">University of Hawaii at
+  	Manoa Facilities Management</a>;</li>
+  	<li>the <a href="http://energy.hawaii.gov/">State of Hawaii Department of
+  	Business, Economic Development, and Tourism</a>;</li>
+  	<li>the <a href="http://www.ics.hawaii.edu/">University of Hawaii
+  	Department of Information and Computer Sciences</a>.</li>
+  </ul>
   
   <h3>Publications</h3>
   <ul>
@@ -194,7 +203,7 @@
   
   {# (Editor's note: conclude with Twitter, Facebook, and Tumblr icons so  #}
   {# folks can follow us?) #}
-  <a href="{% url landing %}" style="display:block; margin-top: 10px;">Back to the home page</a>
+  {# <a href="{% url landing %}" style="display:block; margin-top: 10px;">Back to the home page</a> #}
 </div>
 
 {# <script type="text/javascript"> #}

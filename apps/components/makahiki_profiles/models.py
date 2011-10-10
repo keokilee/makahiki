@@ -105,7 +105,7 @@ class Profile(models.Model):
   contact_carrier = models.CharField(max_length=50, null=True, blank=True)
   enable_help = models.BooleanField(default=True)
   canopy_member = models.BooleanField(default=False)
-  canopy_karma = models.IntegerField(default=0)
+  canopy_karma = models.IntegerField(default=0, editable=False)
   
   # Check first login completion.
   setup_profile = models.BooleanField(default=False, editable=False)

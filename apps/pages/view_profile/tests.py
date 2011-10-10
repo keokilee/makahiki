@@ -172,6 +172,52 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "Event:")
     self.assertNotContains(response, "You have nothing in progress or pending.")
     
+  def testActivityAchievement(self):
+    """Check that the user's activity achievements are loaded."""
+    activity = Activity(
+        title="Test activity",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+        type="activity",
+        is_canopy=True
+    )
+    activity.save()
+
+    # Test that profile page has a pending activity.
+    member = ActivityMember(user=self.user, activity=activity, approval_status="approved")
+    member.save()
+    
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, reverse("activity_task", args=(activity.type, activity.slug,)))
+    self.assertContains(response, "Canopy Activity:")
+    self.assertContains(response, "%d&nbsp;(Karma)" % activity.point_value)
+
+    # Test adding an event to catch a bug.
+    event = Activity(
+        title="Test event",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+        type="event",
+    )
+    event.save()
+
+    member = ActivityMember(user=self.user, activity=event, approval_status="pending")
+    member.save()
+    response = self.client.get(reverse("profile_index"))
+    self.assertContains(response, reverse("activity_task", args=(activity.type, activity.slug,)))
+    self.assertContains(response, "Pending")
+    self.assertContains(response, "Activity:")
+    self.assertContains(response, "Event:")
+    self.assertNotContains(response, "You have nothing in progress or pending.")
+    
   def testCommitmentAchievement(self):
     """Check that the user's commitment achievements are loaded."""
     commitment = Commitment(

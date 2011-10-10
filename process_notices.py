@@ -43,13 +43,15 @@ def notify_round_started():
   previous_round = None
   
   for key, value in get_round_info().items():
+    print key
+    print value
     start = datetime.datetime.strptime(value["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
     if start < today < end:
       current_round = key
-    elif (start < today - datetime.timedelta(days=1)) < end:
+    elif start < (today - datetime.timedelta(days=1)) < end:
       previous_round = key
-    
+      
   if current_round and previous_round and current_round != previous_round:
     template = NoticeTemplate.objects.get(notice_type="round-transition")
     message = template.render({"PREVIOUS_ROUND": previous_round, "CURRENT_ROUND": current_round,})

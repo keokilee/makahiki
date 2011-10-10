@@ -374,7 +374,10 @@ class CommitmentMember(CommonBase):
       # User has finished the commitment.
       # Award the points
       profile = self.user.get_profile()
-      message = "Commitment: %s"  % self.commitment.title
+      message = "%sCommitment: %s"  % (
+          'Canopy ' if self.commitment.is_canopy else '',
+          self.commitment.title
+      )
       profile.add_points(self.commitment.point_value, self.award_date, message, self)
       profile.save()
 
@@ -548,7 +551,11 @@ class ActivityMember(CommonActivityUser):
     else:
       points = self.activity.point_value
     
-    title = "%s: %s" % (self.activity.type.capitalize(), self.activity.title)
+    title = "%s%s: %s" % (
+        'Canopy ' if self.activity.is_canopy else '',
+        self.activity.type.capitalize(), 
+        self.activity.title
+    )
     profile.add_points(points, self.submission_date, title, self)
 
     ## reverse event/excursion noshow penalty

@@ -68,6 +68,7 @@
       <div {% get_id_and_classes "help-ask-content" %}>
         Got a question that's not answered here? Type it below and an admin will email you the answer.
         <form {% get_id_and_classes "help-ask-form" %} action="{% url ask_admin_feedback %}" method="POST">
+          {% csrf_token %}
           {{form.url}}
           {% if form.question.errors %}
           {{form.question.errors}}
