@@ -39,18 +39,19 @@ def notify_round_started():
     return
     
   today = datetime.datetime.today()
-  current_round = None
+  current_round = 'Overall'
   previous_round = None
   
-  for key, value in get_round_info().items():
+  for key, value in settings.COMPETITION_ROUNDS.items():
     # We're looking for a round that ends today and another that starts today (or overall)
     start = datetime.datetime.strptime(value["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
-    if end == today:
+    # We want a round that ended in the last 24 hours and a round that started in the last 24 hours.
+    if end - today < datetime.timedelta(hours=24):
       previous_round = key
-    elif start <= today < end:
+    elif start - today < datetime.timedelta(hours=24):
       current_round = key
-      
+  
   if current_round and previous_round and current_round != previous_round:
     template = NoticeTemplate.objects.get(notice_type="round-transition")
     message = template.render({"PREVIOUS_ROUND": previous_round, "CURRENT_ROUND": current_round,})
