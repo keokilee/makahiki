@@ -417,9 +417,23 @@ a {
   margin-right: .3em;
 }
 
-.notification-contents {
+#notification-list .notification-contents {
   float: left;
   width: 800px;
+}
+
+.notice-icon {
+  float: left;
+  width: 25px;
+}
+
+.notice-content {
+  float: left;
+}
+
+.notice-content p {
+  margin: 0;
+  padding: 0;
 }
 
 .notification-options {
