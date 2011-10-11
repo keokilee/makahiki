@@ -50,15 +50,15 @@ class ContextProcessorFunctionalTestCase(TestCase):
     expected_info = {
       "Round 1": {
         "start": 7,
-        "end": 1,
+        "end": 2,
       },
       "Round 2": {
         "start": 0,
-        "end": -6,
+        "end": -5,
       },
       "Overall": {
         "start": 7,
-        "end": -13,
+        "end": -12,
       },
     }
     
