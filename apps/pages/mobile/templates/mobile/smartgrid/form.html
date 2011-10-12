@@ -9,7 +9,7 @@
   </div>
 
   <div data-role="content">
-    <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+    <form id="myform" action="{% url mobile_task_add task.category|slugify task.name|slugify %}" method="post" data-ajax="false">
 
     {% csrf_token %}
 
@@ -26,7 +26,7 @@
           You will earn 2 points for signing up for the {{task.type}}.
           <div>
             <button type="submit">OK, Let's do it</button>
-            <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+            <a href="{% url mobile_task task.category|slugify task.name|slugify %}" data-role="button" data-rel="back">
               I don't want to do it</a>
           </div>
         {% endif %} 
@@ -65,7 +65,7 @@
     {%endif%}
       <div>
         <button type="submit">Submit</button>
-        <a href="{% url mobile_task task.type task.name|slugify %}" data-role="button" data-rel="back">
+        <a href="{% url mobile_task task.category|slugify task.name|slugify %}" data-role="button" data-rel="back">
            Cancel</a>
       </div>
     {% endif %}
@@ -80,7 +80,7 @@
         {% endfor %}
         <div>
           <button type="submit">Submit</button>
-          <a href="{% url mobile_task category task.name|slugify %}" data-role="button" data-rel="back">
+          <a href="{% url mobile_task task.category|slugify task.name|slugify %}" data-role="button" data-rel="back">
             Cancel</a>
         </div>
     {% endif %}

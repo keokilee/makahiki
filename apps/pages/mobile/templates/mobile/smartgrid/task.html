@@ -128,6 +128,7 @@
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
               <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+		{%csrf_token%}
 		<input type="submit" value="I Did it"/>
  	      </from>
               {% endif %}
@@ -172,6 +173,7 @@
         {% if task.type == "commitment" %}
           {% if can_commit %}
             <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
+		{%csrf_token%}
  	      <input type="submit" value="I will do this!"/>
  	    </form>
           {% else %}

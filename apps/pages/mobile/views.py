@@ -36,6 +36,8 @@ from pages.view_prizes.views import _get_prizes
 from pages.view_prizes.views import _get_raffle_prizes
 
  
+def temp(request):
+  return render_to_response("mobile/temp.html", {}, context_instance=RequestContext(request))
 
 @login_required
 @never_cache
@@ -759,8 +761,12 @@ def __request_activity_points(request, activity_id, slug):
 
 @login_required
 def sgadd(request, category_slug, slug):
-  
-  task = ActivityBase.objects.get(category__slug=category_slug, slug=slug)
+ 
+  try:
+    task = get_object_or_404(ActivityBase, type=category_slug, slug=slug)
+  except:
+    task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+
 
   if task.type == "commitment":
     return __add_commitment(request, category_slug, slug)
@@ -781,8 +787,7 @@ def sgadd(request, category_slug, slug):
 
 def landing(request):
   if request.user.is_authenticated():
-    return HttpResponseRedirect(reverse("mobile_index"))
-    
+    return HttpResponseRedirect(reverse("mobile_index")) 
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
 class EventDay:

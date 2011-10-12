@@ -8,6 +8,7 @@ from django.core import mail
 from components.activities import *
 from components.activities.models import *
 from components.makahiki_notifications.models import UserNotification
+from components.canopy.models import Post as CanopyPost
 
 class ActivitiesUnitTestCase(TestCase):
   def setUp(self):
@@ -38,10 +39,11 @@ class ActivitiesUnitTestCase(TestCase):
       },
     }
     
-  def testCanopyActivityLog(self):
+  def testCanopyActivity(self):
     """
-    Test that canopy activities create the appropriate log.
+    Test that canopy activities create the appropriate log and a wall post.
     """
+    posts = CanopyPost.objects.count()
     self.activity.is_canopy = True
     self.activity.save()
     member = ActivityMember(user=self.user, activity=self.activity, approval_status='approved')
@@ -50,6 +52,9 @@ class ActivitiesUnitTestCase(TestCase):
     # Check the points log for this user.
     log = self.user.pointstransaction_set.all()[0]
     self.assertTrue(log.message.startswith('Canopy'))
+    
+    # Check for a canopy post.
+    self.assertEqual(CanopyPost.objects.count(), posts + 1, "Canopy activity should create a canopy post.")
     
   def testActivityLog(self):
     """

@@ -28,6 +28,7 @@
 
 #landing-page {
 	background: none;
+	background-color: white;
 	background-color: rgba(255,255,255,0.8);
 	border: 2px solid #167000;
 	
@@ -66,6 +67,7 @@
 
 #landing-intro {
 	background: none;
+	background-color: white;
 	background-color: rgba(255,255,255,0.6);
 	border: 2px solid #167000;
 	
@@ -182,6 +184,7 @@
 	  http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text
 	*/
 	background: none;
+	background-color: white;
 	background-color: rgba(255,255,255,0.6);
 	border: 2px solid #167000;
 	
@@ -200,6 +203,7 @@
   margin: 5px;
   padding: 5px;
   background: none;
+  background-color: white;
   background-color: rgba(20,22,22,0.7);
   color: white;
   -moz-border-radius: 8px;
