@@ -519,25 +519,24 @@ def reminder_form(request, activity_type, slug, error=False):
                 )
             )
             
-            profile.contact_email = form.cleaned_data["email"]
-            profile.save()
+        profile.contact_email = form.cleaned_data["email"]
+        profile.save()
             
         try:
           text_reminder = TextReminder.objects.get(user=request.user, activity=task)
+          text_reminder.text_number = form.cleaned_data["text_number"]
+          text_reminder.text_carrier = form.cleaned_data["text_carrier"]
           if form.cleaned_data["send_text"]:
-            text_reminder.text_number = form.cleaned_data["text_number"]
-            text_reminder.text_carrier = form.cleaned_data["text_carrier"]
+
             text_reminder.send_at = task.activity.event_date - datetime.timedelta(
                 hours=int(form.cleaned_data["text_advance"])
             )
             text_reminder.save()
-            
-            profile.contact_text = form.cleaned_data["text_number"]
-            profile.contact_carrier = form.cleaned_data["text_carrier"]
-            profile.save()
-            
           else:
-            text_reminder.delete()
+            text_reminder.delete()  
+          
+            
+          
           
         except TextReminder.DoesNotExist:
           if form.cleaned_data["send_text"]:
@@ -554,6 +553,9 @@ def reminder_form(request, activity_type, slug, error=False):
             profile.contact_text = form.cleaned_data["text_number"]
             profile.contact_carrier = form.cleaned_data["text_carrier"]
             profile.save()
+	profile.contact_text = form.cleaned_data["text_number"]
+        profile.contact_carrier = form.cleaned_data["text_carrier"]
+        profile.save()
         return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
         return HttpResponse(json.dumps({"success": True}), mimetype="application/json") 
 
@@ -758,7 +760,7 @@ def __request_activity_points(request, activity_id, slug):
 
 ###################################################################################################
 
-
+@never_cache
 @login_required
 def sgadd(request, category_slug, slug):
  
@@ -1109,5 +1111,40 @@ def read_notification(request, notification_id):
   else:
     return HttpResponseRedirect(reverse("mobile_index"))
 
+
+
+@never_cache
+@login_required
+def drop_task(request, category_slug, slug):
+  
+  task = get_object_or_404(ActivityBase, type=category_slug, slug=slug)
+  
+  if task.type == "commitment":
+    return __drop_commitment(request, task.commitment)
+    
+  if task.type == "event" or task.type == "excursion":
+    return __drop_activity(request, task.activity)
+
+
+def __drop_activity(request, activity):
+  """drop the current user from the activity."""
+  user = request.user
+  floor = user.get_profile().floor
+  
+  # Search for an existing activity for this user
+  if activity in user.activity_set.all():
+    activity_member = user.activitymember_set.get(activity=activity)
+    activity_member.delete()
+        
+    #decrease point
+    message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
+    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
+    user.get_profile().save()
+    value = 2
+    
+    response = HttpResponseRedirect(reverse("mobile_task", args=(slugify(activity.category), activity.slug,)))
+    notification = "Removed from signup list. you lose " + str(value) + " points."
+    response.set_cookie("task_notify", notification)
+    return response
 
 

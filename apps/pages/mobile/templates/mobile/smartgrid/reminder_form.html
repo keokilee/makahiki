@@ -11,8 +11,7 @@
       </div>
       <div style="float: left;">
         {{reminders.form.email.label}}: {{reminders.form.email}}<br/>
-        {{reminders.form.email_advance.label}}: {{reminders.form.email_advance}}<br/>
-        Reminder time: <span id="task-reminder-form-email-date"></span>
+        {{reminders.form.email_advance.label}}: {{reminders.form.email_advance}}<br/> 
       </div>
     </li>
     <li {% get_id_and_classes "task-reminder-form-text" %} style="clear: both; padding-top: 15px">
@@ -21,14 +20,13 @@
       </div>
       <div style="float: left;">
         {{reminders.form.text_number.label}}: {{reminders.form.text_number}} {{reminders.form.text_carrier.label}}: {{reminders.form.text_carrier}}<br/>
-        {{reminders.form.text_advance.label}}: {{reminders.form.text_advance}}<br/>
-        Reminder time: <span id="task-reminder-form-text-date"></span>
+        {{reminders.form.text_advance.label}}: {{reminders.form.text_advance}}<br/> 
       </div>
     </li>
   </ul>
   
   <div style="clear: both; padding-top: 15px">
     <button {% get_id_and_classes "task-reminder-form-submit" %} style="display: inline">Remind Me</button>
-    <button {% get_id_and_classes "task-reminder-form-cancel" %} style="display: inline">Cancel</button>
+    <a href= "{% url mobile_task task.type task.slug %}" ><button style="display: inline">Cancel</button></a>
   </div>
 </form>
