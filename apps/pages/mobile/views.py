@@ -1115,9 +1115,9 @@ def read_notification(request, notification_id):
 
 @never_cache
 @login_required
-def drop_task(request, activity_type, slug):
+def drop_task(request, category_slug, slug):
   
-  task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
+  task = get_object_or_404(ActivityBase, type=category_slug, slug=slug)
   
   if task.type == "commitment":
     return __drop_commitment(request, task.commitment)
