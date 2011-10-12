@@ -44,6 +44,7 @@ def restricted(request):
   return render_to_response("home/restricted.html", {
       "before": before,
       "start": start,
+      "end": end,
   }, context_instance=RequestContext(request))
 
 @never_cache
