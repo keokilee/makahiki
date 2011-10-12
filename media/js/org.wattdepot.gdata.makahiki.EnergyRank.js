@@ -9,6 +9,7 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
   // startDays is the start of the interval and endDays is the end of the interval.
   // For example, to look at the energy usage between 5 days ago and today, 
   // startDays should be 5 and endDays should be 0.
+  // Any negative numbers in endDays will be converted to 0.
   function processDataTable(energyDataTable, startDays, endDays) {
     if (startDays < endDays) {
       console.error("Start must be greater than or equal to end.");
@@ -56,7 +57,7 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
     else if (end > 32) {
       end = 32;
     }
-    
+    // console.log('start: ' + start + ', end: ' + end);
     // Iterate over the rows and insert them into the returned table.
     // Note that first row is source information.
     // console.log("Table now has " + dataTable.getNumberOfRows() + " rows");
