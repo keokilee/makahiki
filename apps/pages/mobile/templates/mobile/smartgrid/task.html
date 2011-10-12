@@ -110,10 +110,15 @@
             Thank you for attending the event. <br/> 
 
             {% else %}
-            Thank you! You've earned 2 points by signing up.<br/>
+            <!--Thank you! You've earned 2 points by signing up.<br/>
             After the {{task.type}}, please come back here to get your points.
- 	    <!--a type="button" href="{% url mobile_reminder task.category|slugify task.slug%}" rel="external">Set up Reminders</a-->
-            
+ 	    <!--freak-->
+            Thank you! You've earned 2 bonus {% if task.is_canopy %} Karma {% endif %} points by signing up.<br/>
+            After the {{task.type}}, please come back here within 2 days to get your points.
+            If you sign up but do not attend, you will lost the 2 point signing bonus and pay a 2 point "no-show" penalty.
+            <br/><a href="{% url mobile_task_drop task.type|slugify task.slug %}"data-role="button" rel="external">Take me off the signup list </a>
+             
+		<!--/freak-->
             <a href="{% url mobile_reminder task.type task.slug %}" data-role="button" rel="external">Set up Reminders</a>
             {% endif %}
 
@@ -173,7 +178,7 @@
         {% if task.type == "commitment" %}
           {% if can_commit %}
             <form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false">
-		{%csrf_token%}
+		 {% csrf_token %}
  	      <input type="submit" value="I will do this!"/>
  	    </form>
           {% else %}

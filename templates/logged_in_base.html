@@ -122,6 +122,7 @@
     
     // Get the usage for the current round and overall.
     {% for key, value in ROUNDS.items %}
+      // console.log('{{key}} start: {{value.start}}, end: {{value.end}}');
       var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
       var info = energyRank.calculateRankInfo(usage, source);
       

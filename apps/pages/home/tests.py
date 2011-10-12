@@ -53,7 +53,7 @@ class CompetitionMiddlewareTestCase(TestCase):
     response = self.client.get(reverse("home_index"), follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/restricted.html")
-    self.assertContains(response, "The competition ended on")
+    self.assertContains(response, "The competition ended at midnight on")
     
   def tearDown(self):
     settings.COMPETITION_START = self.saved_start

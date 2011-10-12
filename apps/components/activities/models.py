@@ -66,7 +66,7 @@ class ConfirmationCode(models.Model):
   @staticmethod
   def generate_codes_for_activity(activity, num_codes):
     """Generates a set of random codes for the activity."""
-    values = 'abcdefghijkmnpqrstuvwxyzABCDEFHJKLMNPQRTUVWXYZ234789!?@#$%&*+='
+    values = 'abcdefghijkmnpqrstuvwxyz234789'
     
     # Use the first non-dash component of the slug.
     components = activity.slug.split('-')
