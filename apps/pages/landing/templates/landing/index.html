@@ -40,6 +40,17 @@
 
 </div>
 
+<script>
+jQuery(document).ready(function($) {
+  // Check if the browser supports opacity as another check for an up to date browser.
+  if(!jQuery.support.opacity) {
+    $('#landing-button-participant').unbind('click').click(function() {
+      location.href='{% url browser_check %}';
+    });
+  }
+});
+</script>
+
 <!--[if lt IE 9]>
 <script type="text/javascript" 
  src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
