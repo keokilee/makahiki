@@ -761,8 +761,12 @@ def __request_activity_points(request, activity_id, slug):
 
 @login_required
 def sgadd(request, category_slug, slug):
-  
-  task = ActivityBase.objects.get(category__slug=category_slug, slug=slug)
+ 
+  try:
+    task = get_object_or_404(ActivityBase, type=category_slug, slug=slug)
+  except:
+    task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
+
 
   if task.type == "commitment":
     return __add_commitment(request, category_slug, slug)
