@@ -17,7 +17,7 @@
   <div data-role="header" data-theme="b"> 
     <a href=
     {% if sender == "sgg" %}
-      "{% url mobile_activities task.category|slugify %}"
+      "{% url mobile_index %}"
     {% else %}
       {% if sender == "events" %}
         "{% url mobile_events 'upcoming' %}"
@@ -130,7 +130,8 @@
               {% if approval.days_left != 0 %} 
               Thank you! You've earned 2 {% if task.is_canopy %} Karma {% endif %} points by committing.<br/>
               Please come back on {{ approval.completion_date|date:"l m/d" }}
-              ({{approval.days_left}} days left) to get the rest of your points.
+              ({{approval.days_left}} days left) to get the rest of your points.<br/>
+              You may drop this commitment at any time, but you will lose your 2 point commitment bonus.
               <br/><a href="{% url mobile_task_drop task.type|slugify task.slug %}"data-role="button" rel="external">Drop this commitment</a> 
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>

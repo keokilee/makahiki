@@ -677,7 +677,10 @@ def __request_activity_points(request, activity_id, slug):
   """Creates a request for points for an activity."""
   
   category = activity_id
-  activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
+  try:
+    activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
+  except:
+    activity = get_object_or_404(Activity, type=activity_id, slug=slug)
   user = request.user
   floor = user.get_profile().floor
   question = None
@@ -1163,7 +1166,7 @@ def __drop_commitment(request, commitment):
     user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
     user.get_profile().save()
 
-    response = HttpResponseRedirect(reverse("mobile_task", args=(slugify(activity.category), activity.slug,)))
+    response = HttpResponseRedirect(reverse("mobile_task", args=(slugify(commitment.category), commitment.slug,)))
     notification = "Commitment dropped. you lose " + str(value) + " points."
     response.set_cookie("task_notify", notification)
     return response
