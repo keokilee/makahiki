@@ -3,7 +3,7 @@
 
 {% if floor and floor.dorm %}
 {% cache 600 infobar floor.dorm.name floor.number %}
-{% if CURRENT_ROUND %}
+{% if CURRENT_ROUND and CURRENT_ROUND != 'Overall' %}
 <!-- First slideshow element -->
 <div id="header-floor-overall-rank1">
   <div {% get_id_and_classes "header-floor-points" %}>
