@@ -17,7 +17,7 @@
   <div data-role="header" data-theme="b"> 
     <a href=
     {% if sender == "sgg" %}
-      "{% url mobile_activities task.category|slugify %}"
+      "{% url mobile_index %}"
     {% else %}
       {% if sender == "events" %}
         "{% url mobile_events 'upcoming' %}"
