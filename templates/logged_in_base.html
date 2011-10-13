@@ -105,7 +105,12 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
 <script type="text/javascript">
-  FB.init({appId: '{{FACEBOOK_APP_ID}}', status: true, cookie: true, xfbml: true});
+  FB.init({
+    appId: '{{FACEBOOK_APP_ID}}', 
+    status: true, 
+    cookie: true, 
+    xfbml: true
+  });
   
   // Normally, we would wrap this in an anonymous function, but we want it to be available for later.
   // Get the spreadsheet we need.

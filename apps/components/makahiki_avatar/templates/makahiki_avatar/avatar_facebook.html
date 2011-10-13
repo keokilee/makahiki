@@ -7,7 +7,10 @@
   <button type="submit">Use Facebook Photo</button>
 </div>
 {% else %}
-  <p id="avatar-fb-error">Or, to use your Facebook picture, click here to log in:</p>
+  <p id="avatar-fb-error" style='margin-top: 0'>
+    Or, to use your Facebook picture,<br/>
+    click here to log in:
+  </p>
   <fb:login-button style="display: block" 
      id="fb_login" length="long"
      onlogin="

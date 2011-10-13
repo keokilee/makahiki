@@ -189,13 +189,28 @@ def _get_profile_form(request, form=None, non_xhr=False):
   """
   Helper method to render the profile form.
   """
-  if not form:
-    form = ProfileForm(initial={
-      "display_name": request.user.get_profile().name,
-    })
+  fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+  fb_id = None
+  facebook_photo = None
+  if fb_user:
+    try:
+      graph = facebook.GraphAPI(fb_user["access_token"])
+      graph_profile = graph.get_object("me")
+      fb_id = graph_profile["id"]
+      facebook_photo = "http://graph.facebook.com/%s/picture?type=large" % fb_id
+    except facebook.GraphAPIError:
+      return HttpResponse(json.dumps({
+          "contents": "Facebook is not available at the moment, please try later",
+      }), mimetype='application/json')
     
+  form = ProfileForm(initial={
+    "display_name": request.user.get_profile().name,
+    "facebook_photo": facebook_photo,
+  })
+  
   response = render_to_string("home/first-login/profile.html", {
     "form": form,
+    "fb_id": fb_id,
   }, context_instance=RequestContext(request))
 
   if non_xhr:
