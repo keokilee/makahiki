@@ -203,10 +203,11 @@ def _get_profile_form(request, form=None, non_xhr=False):
           "contents": "Facebook is not available at the moment, please try later",
       }), mimetype='application/json')
     
-  form = ProfileForm(initial={
-    "display_name": request.user.get_profile().name,
-    "facebook_photo": facebook_photo,
-  })
+  if not form:
+    form = ProfileForm(initial={
+      "display_name": request.user.get_profile().name,
+      "facebook_photo": facebook_photo,
+    })
   
   response = render_to_string("home/first-login/profile.html", {
     "form": form,
