@@ -677,7 +677,10 @@ def __request_activity_points(request, activity_id, slug):
   """Creates a request for points for an activity."""
   
   category = activity_id
-  activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
+  try:
+    activity = get_object_or_404(Activity, category__slug=activity_id, slug=slug)
+  except:
+    activity = get_object_or_404(Activity, type=activity_id, slug=slug)
   user = request.user
   floor = user.get_profile().floor
   question = None
