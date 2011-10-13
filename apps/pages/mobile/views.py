@@ -1166,7 +1166,7 @@ def __drop_commitment(request, commitment):
     user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
     user.get_profile().save()
 
-    response = HttpResponseRedirect(reverse("mobile_task", args=(slugify(activity.category), activity.slug,)))
+    response = HttpResponseRedirect(reverse("mobile_task", args=(slugify(commitment.category), commitment.slug,)))
     notification = "Commitment dropped. you lose " + str(value) + " points."
     response.set_cookie("task_notify", notification)
     return response
