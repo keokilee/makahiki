@@ -70,7 +70,9 @@ def terms(request):
   Uses AJAX to display a terms and conditions page.
   """
   if request.is_ajax():
-    response = render_to_string("home/first-login/terms.html", {}, context_instance=RequestContext(request))
+    response = render_to_string("home/first-login/terms.html", {
+        'is_mobile': request.mobile,
+    }, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
         "title": "Introduction: Step 2 of 6",
