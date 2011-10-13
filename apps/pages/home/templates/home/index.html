@@ -114,20 +114,6 @@
         position: ["center", 25],
         open: function(event, ui) { $('.ui-dialog-titlebar-close').hide(); }
       });
-      
-      $("#progressbar").progressbar({
-        value: 100/6
-      });
-
-      $("#next").button().click(function() {
-        $(this).button("option", "disabled", true);
-        $.get("{% url setup_terms %}", function(data) {
-          $("#ui-dialog-title-setup-dialog").html(data.title);
-          $("#setup-dialog").html(data.contents);
-        });
-      });
-
-      $("#next").button("option", "disabled", false);
     });
   </script>
 {% endif %}
