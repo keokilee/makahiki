@@ -156,9 +156,10 @@ def view_codes(request, slug):
   if not request.user or not request.user.is_staff:
     raise Http404
     
-  per_page = "20"
-  if request.GET.has_key('per_page'):
-    per_page = request.GET['per_page']
+  per_page = 10
+  # Check for a rows parameter
+  if request.GET.has_key('rows'):
+    per_page = int(request.GET['rows'])
     
   activity = get_object_or_404(Activity, slug=slug)
   codes = ConfirmationCode.objects.filter(activity=activity)
@@ -201,7 +202,7 @@ def attend_code(request):
     form = EventCodeForm(request.POST)
     if form.is_valid():
       try:
-        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
+        code = ConfirmationCode.objects.get(code=form.cleaned_data["response"].lower())
      
         if not code.is_active:
           message = "This code has already been used."
