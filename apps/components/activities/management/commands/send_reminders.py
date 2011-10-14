@@ -11,6 +11,7 @@ class Command(management.base.BaseCommand):
     """
     Sends out pending reminders if their send_at time has passed.
     """
+    self.stdout.write('****** Checking reminders for %s *******\n' % datetime.datetime.today())
     reminders = EmailReminder.objects.filter(
         send_at__lte=datetime.datetime.today(),
         sent=False,
