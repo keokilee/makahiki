@@ -38,6 +38,9 @@ def restricted(request):
   end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
   
   before = False
+  # If we are in the competition, bring them back to the home page.
+  if start < today < end:
+    return HttpResponseRedirect(reverse('home_index'))
   if today < start:
     before = True
     
