@@ -25,8 +25,11 @@ class Command(management.base.BaseCommand):
       
     activities = Activity.objects.filter(slug__in=args[1:])
     for activity in activities:
-      self.stdout.write("Generating %d additional codes for '%s'.\n" % (num_codes, activity.title))
-      ConfirmationCode.generate_codes_for_activity(activity, num_codes)
+      if activity.confirm_type != 'code':
+        self.stdout.write("ERROR: '%s' has confirmation type %s" % (activity.title, activity.confirm_type))
+      else:
+        self.stdout.write("Generating %d additional codes for '%s'.\n" % (num_codes, activity.title))
+        ConfirmationCode.generate_codes_for_activity(activity, num_codes)
       
     
         
