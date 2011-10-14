@@ -4,6 +4,7 @@
   {% csrf_token %} 
   {{ reminders.form.non_field_errors }} 
   {{reminders.errors}}
+  {{reminders.message}}
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>
       <div style="float: left; width: 5%; padding-top: 5px">
