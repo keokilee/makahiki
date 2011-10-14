@@ -23,7 +23,7 @@
 
 <div {% get_id_and_classes "landing-about" %}>
   {% if before %}
-  <h3>The competition starts in <span id='restricted-countdown'></span></h3>
+  <h3>You have logged in successfully, but the competition has not yet started. The competition starts in <span id='restricted-countdown'></span>. Come back then!</h3>
   {% else %}
   <h3>The competition ended at midnight on {{end|date:"l, F j"}}.</h3>
   {% endif %}
@@ -38,13 +38,13 @@
       $("#restricted-countdown").countdown({
         until: startDate,
         tickInterval: 60,
-        layout: '{dn} {dl}, {hn} {hl}, and {mn} {ml}!'
+        layout: '{dn} {dl}, {hn} {hl}, and {mn} {ml}'
       });
     }
     else {
       $("#restricted-countdown").countdown({
         until: startDate,
-        layout: '{hn} {hl}, {mn} {ml}, and {sn} {sl}!'
+        layout: '{hn} {hl}, {mn} {ml}, and {sn} {sl}'
       });
     }
   </script>
