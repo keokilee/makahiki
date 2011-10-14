@@ -56,6 +56,7 @@ def get_facebook_photo(request):
   if request.is_ajax():
     fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
     fb_id = None
+    fb_error = None
     if not fb_user:
       return HttpResponse(json.dumps({
           "error": "We could not access your info.  Please log in again."
