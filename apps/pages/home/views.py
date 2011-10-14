@@ -38,6 +38,9 @@ def restricted(request):
   end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
   
   before = False
+  # If we are in the competition, bring them back to the home page.
+  if start < today < end:
+    return HttpResponseRedirect(reverse('home_index'))
   if today < start:
     before = True
     
@@ -70,7 +73,9 @@ def terms(request):
   Uses AJAX to display a terms and conditions page.
   """
   if request.is_ajax():
-    response = render_to_string("home/first-login/terms.html", {}, context_instance=RequestContext(request))
+    response = render_to_string("home/first-login/terms.html", {
+        'is_mobile': request.mobile,
+    }, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
         "title": "Introduction: Step 2 of 6",
@@ -187,13 +192,29 @@ def _get_profile_form(request, form=None, non_xhr=False):
   """
   Helper method to render the profile form.
   """
+  fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+  fb_id = None
+  facebook_photo = None
+  if fb_user:
+    try:
+      graph = facebook.GraphAPI(fb_user["access_token"])
+      graph_profile = graph.get_object("me")
+      fb_id = graph_profile["id"]
+      facebook_photo = "http://graph.facebook.com/%s/picture?type=large" % fb_id
+    except facebook.GraphAPIError:
+      return HttpResponse(json.dumps({
+          "contents": "Facebook is not available at the moment, please try later",
+      }), mimetype='application/json')
+    
   if not form:
     form = ProfileForm(initial={
       "display_name": request.user.get_profile().name,
+      "facebook_photo": facebook_photo,
     })
-    
+  
   response = render_to_string("home/first-login/profile.html", {
     "form": form,
+    "fb_id": fb_id,
   }, context_instance=RequestContext(request))
 
   if non_xhr:

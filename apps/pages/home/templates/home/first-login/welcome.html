@@ -4,7 +4,7 @@
 <div {% get_id_and_classes "setup-content"%}>
   <p>You have successfully logged into the Kukui Cup website.  You will stay logged into the website until you click the logout button, so if you are using a public computer remember to log out when you are finished just like you would log out of Facebook or your email.</p>
   
-  <p>Now we will step you through setting up your profile and getting your first Kukui Nut Points.</p>
+  <p>Now we will step you through setting up your profile and getting your first points!</p>
   
   <div {% get_id_and_classes "setup-welcome-info" %}>
     <p style="margin: 5px 0">
@@ -22,3 +22,21 @@
   </div>
 </div>
 <div {% get_id_and_classes "progressbar" %}></div>
+
+<script type='text/javascript'>
+jQuery(document).ready(function($) {
+  $("#progressbar").progressbar({
+    value: 100/6
+  });
+
+  $("#next").button().unbind('click').click(function() {
+    $(this).button("option", "disabled", true);
+    $.get("{% url setup_terms %}", function(data) {
+      $("#ui-dialog-title-setup-dialog").html(data.title);
+      $("#setup-dialog").html(data.contents);
+    });
+  });
+
+  $("#next").button("option", "disabled", false);
+});
+</script>

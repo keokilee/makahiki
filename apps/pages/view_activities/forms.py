@@ -59,7 +59,7 @@ class ActivityCodeForm(forms.Form):
 
     # Check if we are validating a confirmation code.
     try:
-        code = ConfirmationCode.objects.get(code=cleaned_data["response"])
+        code = ConfirmationCode.objects.get(code=cleaned_data["response"].lower())
         # Check if the code is inactive.
         if not code.is_active:
           self._errors["response"] = ErrorList(["This code has already been used."])

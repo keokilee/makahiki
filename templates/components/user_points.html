@@ -2,7 +2,7 @@
 {% load cache %}
 
 {% cache 600 infobar request.user.username %}
-{% if CURRENT_ROUND %}
+{% if CURRENT_ROUND and CURRENT_ROUND != 'Overall' %}
 <!-- First slideshow element -->
 <div id="header-user-overall-rank1">
   <div {% get_id_and_classes "header-user-points" %}>

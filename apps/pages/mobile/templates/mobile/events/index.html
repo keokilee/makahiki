@@ -36,11 +36,11 @@
    	<!--day[1] holds the date as a date object-->
    <div data-role="collapsible" data-collapsed="false" data-theme="b"> 
      
-     <h3>
+     <h3> 
         <li data-role="list-divider">
-          {{object.datestring}}
-          <span class="ui-li-count">{{object.count}}</span>
-        </li>
+          {{object.datestring}}  
+          <!--span class="ui-li-count">{{object.count}}</span-->
+        </li> 
      </h3>
        <ul data-role="listview" > 
 	 {% for events in object.eventlist %}  
