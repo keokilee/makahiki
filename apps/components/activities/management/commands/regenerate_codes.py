@@ -6,7 +6,7 @@ from components.activities.models import Activity, ConfirmationCode
 
 class Command(management.base.BaseCommand):
   help = """
-  Regenerate the confirmation codes for activities that use confirmation codes. Takes an optional parameter to 
+  Regenerate the confirmation codes for activities that use confirmation codes. Takes optional parameters to 
   delete the codes for an activity with the specified slug(s)."""
   
   def handle(self, *args, **options):
