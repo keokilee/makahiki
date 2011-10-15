@@ -95,7 +95,7 @@ def process_rsvp():
       user = member.user
       profile = user.get_profile()
       
-      diff = datetime.date.today() - member.submission_date.date()
+      diff = datetime.date.today() - member.activity.event_date.date()
       if diff.days == 2:
           message = "%s: %s (No Show)" % (activity.type.capitalize(), activity.title)
           profile.remove_points(4, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
@@ -108,7 +108,7 @@ def process_rsvp():
                   user=user,
                   activity=activity,
                   email_address=profile.contact_email,
-                  send_at=member.submission_date + datetime.timedelta(days=1)
+                  send_at=member.activity.event_date.date() - datetime.timedelta(days=1)
                   )
               
               print "create email reminder for %s" % profile.contact_email
