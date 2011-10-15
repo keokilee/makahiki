@@ -7,21 +7,26 @@
   {{reminders.message}}
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>
-      <div style="float: left; width: 5%; padding-top: 5px">
-        {{reminders.form.send_email}}
+      <div >
+	<!--div style="float: left;"-->
+        {{reminders.form.send_email}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send Email Reminder<br/><br/>
       </div>
-      <div style="float: left;">
-        {{reminders.form.email.label}}: {{reminders.form.email}}<br/>
-        {{reminders.form.email_advance.label}}: {{reminders.form.email_advance}}<br/> 
+	
+      <!--div style="float: left;"-->
+	<div>
+        {{reminders.form.email.label}}:<br/> {{reminders.form.email}}<br/>
+        {{reminders.form.email_advance.label}}:<br/> {{reminders.form.email_advance}}<br/> 
       </div>
     </li>
     <li {% get_id_and_classes "task-reminder-form-text" %} style="clear: both; padding-top: 15px">
-      <div style="float: left; width: 5%; padding-top: 5px">
-        {{reminders.form.send_text}}
+      <!--div style="float: left; width: 5%; padding-top: 5px"-->
+     <div>
+        {{reminders.form.send_text}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send Text Message Reminder<br/><br/>
       </div>
-      <div style="float: left;">
-        {{reminders.form.text_number.label}}: {{reminders.form.text_number}} {{reminders.form.text_carrier.label}}: {{reminders.form.text_carrier}}<br/>
-        {{reminders.form.text_advance.label}}: {{reminders.form.text_advance}}<br/> 
+      <!--div style="float: left;"-->
+	<div>
+        {{reminders.form.text_number.label}}:<br/> {{reminders.form.text_number}} {{reminders.form.text_carrier.label}}: {{reminders.form.text_carrier}}<br/>
+        {{reminders.form.text_advance.label}}:<br/> {{reminders.form.text_advance}}<br/> 
       </div>
     </li>
   </ul>
