@@ -1,11 +1,11 @@
 
 {% extends "mobile/base.html" %}
 {% block body %} 
-  <div data-role="header">
+  <div data-role="header" data-theme="b">
     <h1>Intro Video</h1>
   </div>
 
-  <div data-role="content">
+  <div data-role="content" >
     <iframe title="YouTube video player" width="376" height="225" src="http://www.youtube.com/embed/T37kNTkZCrA" frameborder="0" allowfullscreen></iframe>
     <a href="{% url mobile_help 'index'%}" data-role="button" data-rel="back">Go Back</a>
   </div> 
