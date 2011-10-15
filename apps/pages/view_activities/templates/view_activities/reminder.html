@@ -47,7 +47,7 @@
       var hour = d.getHours();
       var minutes = d.getMinutes();
       var ampm = "AM";
-      if (hour >= 12) {
+      if (hour > 12) {
         hour = hour - 12;
         ampm = "PM";
       }
