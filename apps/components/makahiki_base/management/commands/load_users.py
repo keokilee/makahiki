@@ -22,13 +22,14 @@ class Command(management.base.BaseCommand):
         self.stdout.write("Can not open the file: %s , Aborting.\n" % (filename))
         return
 
+    is_ra = False
     if len(args) > 1:
       if args[1] == 'RA':
         is_ra = True
       else:
         self.stdout.write("the second argument can only be RA.\n")
         return 
-        
+    
     for line in file:
         items = line.split(":")
 
