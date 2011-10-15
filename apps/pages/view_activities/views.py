@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views.decorators.cache import never_cache
 from django.db.models import Count, Max
-from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from django.core.cache import cache
 

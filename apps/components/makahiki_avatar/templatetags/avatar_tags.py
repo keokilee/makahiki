@@ -4,7 +4,6 @@ from django import template
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from django.utils.hashcompat import md5_constructor
-from django.core.cache import cache
 
 from components.makahiki_avatar import AVATAR_DEFAULT_URL, AVATAR_GRAVATAR_BACKUP
 
@@ -16,35 +15,25 @@ def avatar_url(user, size=80):
             user = User.objects.get(username=user)
         except User.DoesNotExist:
             return AVATAR_DEFAULT_URL
-            
-    # Try and get the avatar from cache first.
-    avatar = cache.get('avatar-%s' % user.username)
-    if not avatar:
-        avatars = user.avatar_set.order_by('-date_uploaded')
-        primary = avatars.filter(primary=True)
-        if primary.count() > 0:
-            avatar = primary[0]
-        elif avatars.count() > 0:
-            avatar = avatars[0]
-        
-        # Update cache.
-        if avatar is not None:
-            cache.set('avatar-%s' % user.username)
-        
+    avatars = user.avatar_set.order_by('-date_uploaded')
+    primary = avatars.filter(primary=True)
+    if primary.count() > 0:
+        avatar = primary[0]
+    elif avatars.count() > 0:
+        avatar = avatars[0]
+    else:
+        avatar = None
     if avatar is not None:
         if not avatar.thumbnail_exists(size):
             avatar.create_thumbnail(size)
-        user_avatar = avatar.avatar_url(size)
+        return avatar.avatar_url(size)
     else:
         if AVATAR_GRAVATAR_BACKUP:
-            user_avatar = "http://www.gravatar.com/avatar/%s/?%s" % (
+            return "http://www.gravatar.com/avatar/%s/?%s" % (
                 md5_constructor(user.email).hexdigest(),
                 urllib.urlencode({'s': str(size)}),)
         else:
-            user_avatar = AVATAR_DEFAULT_URL
-            
-    return user_avatar
-    
+            return AVATAR_DEFAULT_URL
 register.simple_tag(avatar_url)
 
 def avatar(user, size=80):
