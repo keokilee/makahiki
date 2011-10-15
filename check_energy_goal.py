@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import datetime
+from decimal import *
 
 from os.path import abspath, dirname, join
 
@@ -72,9 +73,9 @@ class GDataGoal:
         if i % 5 == 0:
           source = entry.content.text
         if i % 5 == 2:
-   	      actual = float(entry.content.text)
+   	      actual = Decimal(entry.content.text)
         if i % 5 == 3:
-          goal = float(entry.content.text)
+          goal = Decimal(entry.content.text)
           if goal != 0 and actual <= goal:
             is_meet_goal = True
           else:
