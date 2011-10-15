@@ -6,13 +6,7 @@
 
 {% block body %}
 
-{% load markup %}  
-
-<!--script type="text/javascript" language="javascript">
-    $(document).ready(function(){
-        $("{%url root_index%}{% url mobile_reminder category|slugify task.name|slugify %}").dialog();
-    });
-</script-->
+{% load markup %}   
 
   <div data-role="header" data-theme="b"> 
     <a href=
@@ -90,29 +84,52 @@
      {% endfor %}
      
      <p/><p/>
+    </div> 
     </div>
 
-    </div>
-    <div>
+
+
+ 
+pau = {{pau}}
+	<!--no members-->
       {% if pau %}
       <div data-role="content" class="ui body ui-body-a ui-corner-all">
-        {% if approval.approval_status == "approved" or approval.award_date %}
-
+        {% if approval.approval_status == "approved" or approval.award_date %} 
           <p/>
           Congratulations! You did it and earned {{task.point_value}} points! <br/>
           Thank you for your participation.
-
+	  <p/>
         {% else %}
           {% if task.type == "event" or task.type == "excursion" %}
 
-            <p/>
-            {% if task.is_event_completed and approval.approval_status == "approved"%}
-            Thank you for attending the event. <br/> 
+            
+            {% if task.is_event_completed %}
+              {%if approval.approval_status == "approved"%}
+                Thank you for attending the event. <br/> 
+              {%else%}
+													<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
+													{% csrf_token %}  
+													{% if admin_message %}
+													Admin message: {{ admin_message }}  
+													{% endif %}
+																<br/>
+															<label for="id_response">Please enter the confirmation code you receieved from the event:</label><br/>{{form.response.errors}} {{form.response}}<br/> 
+				
 
-            {% else %}
-            <!--Thank you! You've earned 2 points by signing up.<br/>
-            After the {{task.type}}, please come back here to get your points.
- 	    <!--freak-->
+													{{form.code}}
+													<label for="id_social_email">(Optional) If you did this with a friend or friends, please enter one of their UH email addresses here for a social bonus:</label><br/>
+															{{ form.social_email.errors }}  <br/>
+															{{form.social_email}}   
+													<div style="display:none">
+													<label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="0" name="comment"></textarea> 
+													</div>
+																<button type="submit">Submit</button> 
+													</form>
+	            {% endif %}
+              {%endif%}
+
+            {% if not task.is_event_completed %} 
+ 	   			  <!--freak-->
             Thank you! You've earned 2 bonus {% if task.is_canopy %} Karma {% endif %} points by signing up.<br/>
             After the {{task.type}}, please come back here within 2 days to get your points.<br/>
             If you sign up but do not attend, you will lose the 2 point signing bonus and pay a 2 point "no-show" penalty.<br/>
@@ -121,8 +138,8 @@
              
 		<!--/freak-->
             <a href="{% url mobile_reminder task.type task.slug %}" data-role="button" rel="external">Set up Reminders</a>
-            {% endif %}
-
+            
+	    {% endif %}
           {% endif %}
           {% if task.type == "commitment" %}
 
@@ -140,6 +157,7 @@
 		{%csrf_token%}
 		<input type="submit" value="I Did it"/>
  	      </from>
+		
               {% endif %}
 
           {% endif %}         
@@ -164,9 +182,9 @@
             {% endif %}
           {% endif %}            
         {% endif %}  
-      </div>
+     
       {% endif %}
-
+ 		</div>
       
       <p/>
       <center><b>{{task.title}}</b></center>

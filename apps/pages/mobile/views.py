@@ -427,12 +427,13 @@ def reminder(request, category_slug, slug, error=False):
       task = task.activity
     except ActivityBase.DoesNotExist:
       raise Http404 
-  
-  sender =False 
-  ref=request.META["HTTP_REFERER"]
-  if "reminder" in ref:
-    sender = True 
- 
+  try:
+    sender =False 
+    ref=request.META["HTTP_REFERER"]
+    if "reminder" in ref:
+      sender = True 
+  except:
+    sender = False
    # Load reminders
   reminders = {}
   if task.type == "event" or task.type == "excursion":  
