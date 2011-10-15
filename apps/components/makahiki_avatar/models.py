@@ -39,7 +39,7 @@ class Avatar(models.Model):
             avatars.update(primary=False)
         
         # Invalidate avatar cache
-        cache.delete('avatar-url-%s' % self.user.username)
+        cache.delete('avatar-%s' % self.user.username)
         super(Avatar, self).save(force_insert, force_update)
     
     def thumbnail_exists(self, size):

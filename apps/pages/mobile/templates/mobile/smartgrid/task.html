@@ -106,7 +106,7 @@
           {% if task.type == "event" or task.type == "excursion" %}
 
             <p/>
-            {% if task.is_event_completed %}
+            {% if task.is_event_completed and approval.approval_status == "approved"%}
             Thank you for attending the event. <br/> 
 
             {% else %}

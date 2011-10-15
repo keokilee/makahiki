@@ -7,7 +7,7 @@ class Command(management.base.BaseCommand):
 
   def handle(self, *args, **options):
     """
-    Resets the user as if they never took part in the competition.
+    Load and create the users from a csv file containing lounge, name, and email
     """
     if len(args) == 0:
       self.stdout.write("the csv file name missing.\n")

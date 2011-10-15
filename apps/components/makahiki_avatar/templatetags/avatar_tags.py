@@ -17,16 +17,20 @@ def avatar_url(user, size=80):
         except User.DoesNotExist:
             return AVATAR_DEFAULT_URL
             
-    # user_avatar = cache.get('avatar-url-%s-%d' % (user.username, size))
-    # if not user_avatar:
-    avatars = user.avatar_set.order_by('-date_uploaded')
-    primary = avatars.filter(primary=True)
-    if primary.count() > 0:
-        avatar = primary[0]
-    elif avatars.count() > 0:
-        avatar = avatars[0]
-    else:
-        avatar = None
+    # Try and get the avatar from cache first.
+    avatar = cache.get('avatar-%s' % user.username)
+    if not avatar:
+        avatars = user.avatar_set.order_by('-date_uploaded')
+        primary = avatars.filter(primary=True)
+        if primary.count() > 0:
+            avatar = primary[0]
+        elif avatars.count() > 0:
+            avatar = avatars[0]
+        
+        # Update cache.
+        if avatar is not None:
+            cache.set('avatar-%s' % user.username)
+        
     if avatar is not None:
         if not avatar.thumbnail_exists(size):
             avatar.create_thumbnail(size)
@@ -38,8 +42,7 @@ def avatar_url(user, size=80):
                 urllib.urlencode({'s': str(size)}),)
         else:
             user_avatar = AVATAR_DEFAULT_URL
-    
-      # cache.set('avatar-url-%s' % (user.username, size), user_avatar, 60 * 60 * 24)
+            
     return user_avatar
     
 register.simple_tag(avatar_url)
