@@ -17,6 +17,7 @@
  </div>
  {% endfor %}
  {# Additional scoreboard entry for the energy goals #}
+ {% if goals_scoreboard and goals_scoreboard|length > 0 %}
  <div class="energy-scoreboard-cycle" style="display: none">
    <div {% get_id_and_classes "energy-scoreboard-title" %} style="width: 100%">
      Completed Energy Goals
@@ -44,7 +45,8 @@
       {% endfor %}
      </table>
    </div>
-</div>
+ </div>
+ {% endif %}
 </div>
 <div id="scoreboard-cycle-nav"></div>
 <div id="energy-scoreboard-message">#1 at end of round wins a 
