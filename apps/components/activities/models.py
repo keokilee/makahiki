@@ -537,7 +537,7 @@ class ActivityMember(CommonActivityUser):
       self._handle_rejected()
 
   def _has_noshow_penalty(self):
-    diff = datetime.date.today() - self.submission_date.date()
+    diff = datetime.date.today() - self.activity.event_date.date()
     if diff.days > 2:
         return True
     else:
