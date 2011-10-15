@@ -29,7 +29,7 @@ def avatar_url(user, size=80):
         
         # Update cache.
         if avatar is not None:
-            cache.set('avatar-%s' % user.username)
+            cache.set('avatar-%s' % user.username, avatar, 60 * 60 *24)
         
     if avatar is not None:
         if not avatar.thumbnail_exists(size):
