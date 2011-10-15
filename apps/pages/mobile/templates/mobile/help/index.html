@@ -1,7 +1,7 @@
 {% extends "mobile/base.html" %}
 
 {% block body %} 
-  <div data-role="header">
+  <div data-role="header" data-theme="b">
     <a href="{% url mobile_help 'ask'%}" data-rel="dialog" data-role="button">Ask Admin</a>
     <h1>Help</h1>  
     <a href="{% url mobile_index %}" rel="external" data-role="button" data-icon="home" data-iconpos="notext">Home</a>

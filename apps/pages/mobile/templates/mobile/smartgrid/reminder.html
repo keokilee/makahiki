@@ -15,6 +15,12 @@
   <p> * Please ensure that you have entered a valid email address</p></b>
 </div>
 {% endif %}
+
+{% if not error%}
+  {% if sender %}
+    Changes Saved.
+  {% endif%}
+{% endif %}
 <div {% get_id_and_classes "task-reminder"%}>
  
 <div {% get_id_and_classes "task-reminder-dialog" %} title="Remind Me" > 

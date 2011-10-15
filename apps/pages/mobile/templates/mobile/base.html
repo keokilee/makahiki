@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 </head> 
 <body>  
-  <div data-role="page">
+  <div data-role="page" data-theme="b">
    <!--endbase--> 
    {% include "mobile/mlist.html" %}
    {% load class_tags %}
@@ -20,7 +20,7 @@
    {% load markup %} 
    {% block body %}{% endblock %}
    <!--startbase-->
-<div data-role="footer"> 
+<div data-role="footer" data-theme = "b"> 
 <a href="{% url home_index %}" rel="external" onClick="write_cookie()";>Go to desktop site</a> 
 </div>
   </div>
