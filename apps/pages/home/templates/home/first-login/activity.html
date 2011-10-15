@@ -1,10 +1,38 @@
 {% load class_tags %}
 
+<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+
 <h2>Introduction Video</h2>
 <div {% get_id_and_classes "setup-content" %}>
   <p>Please watch this short video that explains the Kukui Cup competition and how to use this website. Pay close attention, because on the next screen you will be asked a question about the video to earn some more points!</p>
 
-  <iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/T37kNTkZCrA?rel=0" frameborder="0" allowfullscreen></iframe>
+    <iframe id="player" type="text/html" width="640" height="390"
+      src="http://www.youtube.com/embed/T37kNTkZCrA?fs=1&hl=en_US&rel=0&enablejsapi=1"
+      frameborder="0"> </iframe>
+
+    <script>
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      function onPlayerStateChange(event) {
+          var state = "";
+          switch (event.data) {
+            case -1: state = "unstarted"; break;
+            case 0:  state = "end"; break;
+            case 1: state = "playing"; break;
+            case 2: state = "paused"; break;
+            case 3: state = "buffering"; break;
+            case 5: state = "cued"; break;
+          }
+          log_js_action("home", "setup-video", "video-"+ state);
+      }
+    </script>
+    
 </div>
 
 <div style="float: left">

@@ -95,14 +95,14 @@ def process_rsvp():
       user = member.user
       profile = user.get_profile()
       
-      if member._has_noshow_penalty():
+      diff = datetime.date.today() - member.submission_date.date()
+      if diff.days == 2:
           message = "%s: %s (No Show)" % (activity.type.capitalize(), activity.title)
           profile.remove_points(4, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
           profile.save()
           print "remove 4 points from '%s' for '%s'" % (profile.name, message)
-      else:
-          diff = datetime.date.today() - member.submission_date.date()
-          if diff.days > 1:
+
+      if diff.days == 1:
               #create a email reminder
               EmailReminder.objects.create(
                   user=user,
@@ -114,6 +114,6 @@ def process_rsvp():
               print "create email reminder for %s" % profile.contact_email
               
 if __name__ == "__main__":
-    #process_rsvp()
+    process_rsvp()
     notify_commitment_end()
     notify_round_started()

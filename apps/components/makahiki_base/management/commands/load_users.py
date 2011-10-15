@@ -1,6 +1,7 @@
 from django.core import management
 from django.contrib.auth.models import User
 from apps.components.floors.models import Floor
+from django.db.utils import IntegrityError
 
 class Command(management.base.BaseCommand):
   help = 'load and create the users from a csv file containing lounge, name, and email, if the second argument is RA, the csv file is the RA list, consists of name, email, lounge.'
@@ -75,8 +76,14 @@ class Command(management.base.BaseCommand):
           profile = user.get_profile()
           profile.first_name = firstname
           profile.last_name = lastname
+          profile.name = firstname + " " + lastname[:1] + "."
           profile.floor = Floor.objects.get(floor_identifier=lounge)
-          profile.save()
+          try:
+            profile.save()
+          except IntegrityError:
+            profile.name = firstname + " " + lastname
+            profile.save()
+            
           load_count += 1
     file.close()
     print "---- total loaded: %d , errors: %d" % (load_count, error_count)
