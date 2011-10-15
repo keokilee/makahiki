@@ -1,14 +1,13 @@
 {% load notice_tags %}
 
 <li id="notification-item-{{notification.id}}" class="{{notification.style_class}} notification-item">
-  <div class="notification-contents">
+  <div class="notification-contents" {% if notification.is_success %}style='width: 700px'{% endif %}>
     <div class='notice-icon'>
       <span class="ui-icon {{notification.icon_class}}"></span>
     </div>
-    <div class='notice-content'>
+    <div class='notice-content' {% if notification.is_success %}style='width: 650px'{% endif %}>
       {{notification.contents|safe}}
     </div>
-    <br style='clear: both'/>
   </div>
   
   <div class="notification-options">
