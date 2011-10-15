@@ -161,7 +161,7 @@ function onPlayerStateChange(newState) {
     case 5: state = "cued"; break;
   }
   var videoSlug = window.location.pathname.split('/'); 
-  log_js_action("video_"+videoSlug[videoSlug.length -2], "state", state);
+  log_js_action("activities/activity/"+videoSlug[videoSlug.length -2], "video", state);
 }
             
 function onYouTubePlayerReady(playerId) {
