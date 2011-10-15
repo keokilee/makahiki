@@ -67,7 +67,7 @@
     var total = $(this).prev();
     var userTickets = total.prev();
     var odds = 0;
-    if (total > 0) {
+    if (parseFloat(total.html()) > 0.0) {
       var odds = parseFloat(userTickets.html()) * 100.0 / parseFloat(total.html());
     }
     $(this).html(odds.toFixed(1).toString() + "%");
