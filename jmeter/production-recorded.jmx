@@ -17,7 +17,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">350</stringProp>
+        <stringProp name="ThreadGroup.num_threads">250</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1315967409000</longProp>
         <longProp name="ThreadGroup.end_time">1315967409000</longProp>
@@ -35,8 +35,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">kukuicup.manoa.hawaii.edu</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.domain">dasha.ics.hawaii.edu</stringProp>
+          <stringProp name="HTTPSampler.port">8200</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -162,7 +162,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">LOGIN_AUTH_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -512,7 +512,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -669,7 +669,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -1077,7 +1077,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -1295,7 +1295,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -1315,18 +1315,21 @@
                   <stringProp name="Argument.name">csrfmiddlewaretoken</stringProp>
                   <stringProp name="Argument.value">${SUBMIT_TOKEN}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="question" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">question</stringProp>
                   <stringProp name="Argument.value">66</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="response" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">response</stringProp>
                   <stringProp name="Argument.value">CFL</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -1422,7 +1425,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">350</stringProp>
+        <stringProp name="ThreadGroup.num_threads">250</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1316048083000</longProp>
         <longProp name="ThreadGroup.end_time">1316048083000</longProp>
@@ -1435,8 +1438,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">kukuicup.manoa.hawaii.edu</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.domain">dasha.ics.hawaii.edu</stringProp>
+          <stringProp name="HTTPSampler.port">8200</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -1565,7 +1568,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">LOGIN_AUTH_TOKEN</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+            <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -1910,7 +1913,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+            <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -2067,7 +2070,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+            <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -2475,7 +2478,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+            <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -2693,7 +2696,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">SUBMIT_TOKEN</stringProp>
-            <stringProp name="RegexExtractor.regex">&lt;input type=&apos;hidden&apos; id=&apos;csrfmiddlewaretoken&apos; name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos; /&gt;</stringProp>
+            <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -2713,18 +2716,21 @@
                 <stringProp name="Argument.name">csrfmiddlewaretoken</stringProp>
                 <stringProp name="Argument.value">${SUBMIT_TOKEN}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
               <elementProp name="question" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">question</stringProp>
                 <stringProp name="Argument.value">66</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
               <elementProp name="response" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">response</stringProp>
                 <stringProp name="Argument.value">CFL</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -2811,6 +2817,27 @@
           </objProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/prizes/" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/prizes/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
     </hashTree>

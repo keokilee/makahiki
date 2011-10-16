@@ -70,9 +70,9 @@ org.wattdepot.gdata.makahiki.EnergyRank = function() {
       }
       
       // Bogus value to make sure lounges without metered energy is huge.
-      if (usage == 0) {
-        usage = 10000000;
-      }
+      // if (usage == 0) {
+      //         usage = 10000000;
+      //       }
       returnTable.addRow([source, usage]);
     }
     

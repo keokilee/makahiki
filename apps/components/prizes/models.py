@@ -95,7 +95,8 @@ class Prize(models.Model):
       return Floor.floor_points_leaders(num_results=1, round_name=round_name)[0]
       
     elif self.award_to == "individual_floor":
-      return floor.points_leaders(num_results=1, round_name=round_name)[0]
+      if floor:
+        return floor.points_leaders(num_results=1, round_name=round_name)[0]
       
     raise Exception("'%s' is not implemented yet." % self.award_to)
     

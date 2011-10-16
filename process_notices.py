@@ -114,6 +114,11 @@ def process_rsvp():
               print "create email reminder for %s" % profile.contact_email
               
 if __name__ == "__main__":
+    print '****** Processing RSVPs for %s *******\n' % datetime.datetime.today()
     process_rsvp()
+    
+    print '****** Processing commitment notifications for %s *******\n' % datetime.datetime.today()
     notify_commitment_end()
+    
+    print '****** Processing round notifications for %s *******\n' % datetime.datetime.today()
     notify_round_started()

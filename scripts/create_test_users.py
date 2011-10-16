@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+import datetime
 
 from components.floors.models import Floor
 
@@ -12,8 +13,10 @@ def create_users():
     profile.setup_complete = True
     profile.setup_profile = True
     profile.floor = Floor.objects.all()[i % floor_count]
+    profile.add_points(25, datetime.datetime.today(), 'test points for raffle')
     profile.save()
-    
+
+
 def remove_users():
   for i in range(0, 1000):
     username = "user%d-%d" % (i / 500, i % 500)

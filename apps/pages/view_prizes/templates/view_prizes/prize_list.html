@@ -39,9 +39,17 @@
     <td>
       {{prize.short_description|markdown}} <br/>
       {% if prize.winner %}
+        {% if prize.winner.points %}
+        Winner: {{prize.winner}}
+        {% else %}
         Winner: {{prize.winner|safe}}
+        {% endif %}
       {% else %}
+        {% if prize.current_leader.points %}
+        Current leader: {{prize.current_leader}} 
+        {% else %}
         Current leader: {{prize.current_leader|safe}}
+        {% endif %}
       {% endif %}
     </td>
   </tr>

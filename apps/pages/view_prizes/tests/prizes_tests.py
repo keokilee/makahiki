@@ -73,6 +73,14 @@ class PrizesFunctionalTestCase(TestCase):
     self.assertContains(response, "Current leader: TBD", count=3,
         msg_prefix="Round 2 prizes should not have a leader yet.")
         
+    # Test XSS vulnerability.
+    profile.name = '<div id="xss-script"></div>'
+    profile.save()
+    
+    response = self.client.get(reverse("prizes_index"))
+    self.assertNotContains(response, profile.name,
+        msg_prefix="<div> tag should be escaped.")
+        
     # Restore rounds.
     settings.COMPETITION_ROUNDS = saved_rounds
     settings.COMPETITION_START = saved_start
@@ -115,7 +123,15 @@ class PrizesFunctionalTestCase(TestCase):
         msg_prefix="Span for round 2 energy prize should be inserted.")
     self.assertContains(response, "Current leader: " + str(floor), count=2,
         msg_prefix="Floor points prizes should have floor as the leader")
+        
+    # Test XSS vulnerability.
+    profile.name = '<div id="xss-script"></div>'
+    profile.save()
 
+    response = self.client.get(reverse("prizes_index"))
+    self.assertNotContains(response, profile.name,
+        msg_prefix="<div> tag should be escaped.")
+            
     # Restore rounds.
     settings.COMPETITION_ROUNDS = saved_rounds
     settings.COMPETITION_START = saved_start
