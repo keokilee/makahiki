@@ -272,7 +272,7 @@ def completed(user, activity_members, commitment_members, task_slug):
 def afterPublished(task_id):
   """return true if the event/excursion have been published"""
   try:
-    return Activity.get(id=task_id).pub_date <= datetime.date.today()
+    return Activity.objects.get(id=task_id).pub_date <= datetime.date.today()
   except:
     return False
 
