@@ -216,7 +216,7 @@ def attend_code(request):
                 message = "Invalid email. Please input only one valid email."
                 social_email = "true"
             else: 
-              message = " "
+              message = "Please enter one UH email or clear the email to submit"
               social_email = "true"
       except ConfirmationCode.DoesNotExist:
         message = "This code is not valid."
