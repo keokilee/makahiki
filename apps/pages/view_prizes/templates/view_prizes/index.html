@@ -44,7 +44,7 @@
 {% block extra_body %}
   <script type="text/javascript">
     $(document).ready(function() {
-      var height = 10 + (85 * {{prizes.items|length}});
+      var height = 10 + (140 * {{prizes.items|length}});
       $("#prizes-list-content").children().each(function(index, value) {
         if ($(value).height() > height) {
           height = $(value).height();
