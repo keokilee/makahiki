@@ -131,13 +131,15 @@ def process_rsvp():
           if template_reminder:
             message = template_reminder.render({"ACTIVITY": activity})
           else:
-            message = "The %s <a href='%s'>%s</a> had ended. Please click on the link to claim your points." % (
+            message  = "Hi %s, <p/> We just wanted to remind you that the %s <a href='http://%s%s'>%s</a> had ended. Please click on the link to claim your points." % (            
+              profile.name,
               activity.type.capitalize(), 
+              Site.objects.get(id=settings.SITE_ID).domain,
               reverse("activity_task", args=(activity.type, activity.slug,)),
               activity.title)  
-            message += "Because you signed up, if you do not enter the confirmation code 2 days after the event/excusion, 4 points will be deducted from you."
-                       
-          subject = "Reminder to enter your event/excursion confirmation code"
+            message += "<p/>Because you signed up for the event/excursion, if you do not enter the confirmation code within 2 days after the event/excusion, a total of 4 points (2 point signup bonus plus 2 point no-show penalty) will be deducted from your total points. So please enter your confirmation code early to avoid the penalty."
+            message += "<p/><p/>Kukui Cup Administrators"           
+          subject = "[Kukui Cup] Reminder to enter your event/excursion confirmation code"
           UserNotification.create_email_notification(user.email, subject, message, message)    
           print "sent post event email reminder to %s for %s" % (profile.name, activity.title)
               
