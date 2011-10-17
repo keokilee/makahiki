@@ -2,7 +2,9 @@
 
 <form id="task-reminder-form" action="{% url activity_reminder task.type task.slug %}" method="post">
   {% csrf_token %}
-  {{ reminders.form.non_field_errors }}
+  <div style='padding-left: 10px'>
+    {{ reminders.form.non_field_errors }}
+  </div>
   <ul style="list-style: none">
     <li {% get_id_and_classes "task-reminder-form-email" %}>
       <div style="float: left; width: 5%; padding-top: 5px">

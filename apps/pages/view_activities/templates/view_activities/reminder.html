@@ -51,6 +51,9 @@
         hour = hour - 12;
         ampm = "PM";
       }
+      if (hour == 12) {
+        ampm = "PM";
+      }
       else if (hour == 0) {
         hour = 12;
       }
