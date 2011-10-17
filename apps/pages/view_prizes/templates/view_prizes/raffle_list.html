@@ -24,6 +24,7 @@
         $("#raffle-{{prize.title|slugify}}-description").dialog({
           autoOpen: false,
           modal: true,
+          width: 325,
           close: function(event, ui) {
             log_js_action("prizes", "raffle-{{prize.title|slugify}}-description", "close");
           }
