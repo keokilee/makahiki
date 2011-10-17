@@ -23,8 +23,24 @@
         Introduction to the Kukui Cup
       </div>
       <div {% get_id_and_classes "help-video-content" %}>
-		<object width="376" height="225"><param name="movie" value="http://www.youtube.com/v/T37kNTkZCrA?fs=1&amp;hl=en_US&amp;rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/T37kNTkZCrA?fs=1&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="376" height="225" wmode="opaque"></embed></object>
-      </div>
+        <div id="videoDiv">Loading Video ...</div>
+            <script type="text/javascript">
+                google.load("swfobject", "2.1");
+            </script>
+            <script type="text/javascript">
+                  google.setOnLoadCallback(function()
+                     {
+                        var videoID = "T37kNTkZCrA";
+                        var width = "376";
+                        var length = "225";
+                        var params = { allowScriptAccess: "always", wmode: "opaque" };
+                        var atts = { id: "ytPlayer" };
+                        swfobject.embedSWF("http://www.youtube.com/v/" + videoID +
+                                       "?fs=1&hl=en_US&rel=0&enablejsapi=1",
+                                       "videoDiv", width, length, "8", null, null, params, atts);
+                     });
+            </script>
+        </div>
     </div>
   </div>
 
