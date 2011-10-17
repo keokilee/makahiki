@@ -1,7 +1,7 @@
 Hi {{object.user.get_profile.name}},
 
 {% with object.activity as activity %}
-Your response to {{activity.title}} was not approved.  Here is their feedback:
+Your response to {{activity.title}} was not approved.  Here is our feedback:
 
 {{object.admin_comment}}
 

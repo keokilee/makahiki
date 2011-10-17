@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>Makahiki: Check Energy Goal</string>
+    <string>Makahiki: Check Energy Goal (Production)</string>
     <key>WorkingDirectory</key>
     <string>/Users/kukuicup/production/makahiki</string>
     <key>ProgramArguments</key>
