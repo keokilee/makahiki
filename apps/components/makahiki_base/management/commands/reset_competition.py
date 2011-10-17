@@ -5,7 +5,7 @@ import string
 from django.core import management
 from django.conf import settings
 
-from components.makahiki_profiles.models import Profile
+from components.makahiki_profiles.models import Profile, PointsTransaction
 from components.floors.models import Post
 from components.canopy.models import Post as CanopyPost
 from components.activities.models import EmailReminder, TextReminder, ActivityMember, CommitmentMember
@@ -33,6 +33,7 @@ class Command(management.base.BaseCommand):
       return
       
     self._reset_points()
+    self._delete_points_log()
     self._delete_reminders()
     self._delete_memberships()
     self._delete_raffle_tickets()
@@ -51,6 +52,10 @@ class Command(management.base.BaseCommand):
         entry.points = 0
         entry.last_awarded_submission = datetime.datetime.today()
         entry.save()
+        
+  def _delete_points_log(self):
+    self.stdout.write('Deleting points transactions.\n')
+    PointsTransaction.objects.all().delete()
         
   def _delete_posts(self):
     self.stdout.write('Deleting floor posts.\n')
