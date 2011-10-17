@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db.models import Count
 
-from components.activities import get_popular_activities, get_popular_commitments
+from components.activities import get_popular_activities, get_popular_commitments, get_popular_events
 from components.activities.models import ActivityBase, Activity
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
@@ -78,6 +78,8 @@ def popular_activities(request):
     task_type = item["type"]
     if task_type == 'commitment':
       tasks[task_type] = get_popular_commitments()
+    elif task_type == 'event' or task_type == 'excursion':
+      tasks[task_type] = get_popular_events(activity_type=task_type)
     else:
       tasks[task_type] = get_popular_activities(activity_type=task_type)
   

@@ -24,8 +24,8 @@ def get_popular_tasks():
   return {
     "Activity": get_popular_activities("activity")[:5],
     "Commitment": get_popular_commitments()[:5],
-    "Event": get_popular_activities("event")[:5],
-    "Excursion": get_popular_activities("excursion")[:5],
+    "Event": get_popular_events("event")[:5],
+    "Excursion": get_popular_events("excursion")[:5],
   }
   
 def get_popular_activities(activity_type="activity"):
@@ -34,6 +34,14 @@ def get_popular_activities(activity_type="activity"):
       activitymember__approval_status="approved",
       type=activity_type,
   ).values("title", "type", "slug").annotate(completions=Count("activitymember")).order_by("-completions")
+  
+def get_popular_events(activity_type='event'):
+  if activity_type == 'event' or activity_type == 'excursion':
+    return Activity.objects.filter(
+        activitymember__approval_status="pending",
+        type=activity_type,
+    ).values("title", "type", "slug").annotate(completions=Count("activitymember")).order_by("-completions")
+  return None
   
 def get_popular_commitments():
   """Gets the most popular commitments in terms of completions."""

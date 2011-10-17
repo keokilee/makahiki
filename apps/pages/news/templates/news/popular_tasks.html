@@ -6,7 +6,7 @@
     <table id="news-popular-{{key|slugify}}-table" {% if forloop.counter > 1 %}style="display: none"{% endif %}>
       <tr>
         <th>{{key}}</th>
-        <th>Completions</th>
+        <th>{% if key == 'Excursion' or key == 'Event' %}Sign ups{% else %}Completions{% endif %}</th>
       </tr>
       {% for task in value %}
       <tr>
