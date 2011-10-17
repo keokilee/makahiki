@@ -23,6 +23,10 @@
       <key>Minute</key>
       <integer>1</integer>
     </dict>
+    <dict>
+      <key>Minute</key>
+      <integer>31</integer>
+    </dict>
     
     <key>StandardErrorPath</key>
   	<string>/Users/kukuicup/production/log/send-reminders.err</string>
