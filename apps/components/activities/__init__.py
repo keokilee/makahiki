@@ -25,7 +25,6 @@ def get_popular_tasks():
     "Activity": get_popular_activities("activity")[:5],
     "Commitment": get_popular_commitments()[:5],
     "Event": get_popular_activities("event")[:5],
-    "Survey": get_popular_activities("survey")[:5],
     "Excursion": get_popular_activities("excursion")[:5],
   }
   
