@@ -68,19 +68,19 @@ class GDataGoal:
     feed = self.gd_client.GetCellsFeed(self.curr_key)
     ## self._PrintFeed(feed)
     for i, entry in enumerate(feed.entry):
-      if i >= 5:  
+      if i >= 6:  
         ## print entry.content.text
-        if i % 5 == 0:
+        if i % 6 == 0:
           source = entry.content.text
-        if i % 5 == 2:
+        if i % 6 == 2:
    	      actual = Decimal(entry.content.text)
-        if i % 5 == 3:
+        if i % 6 == 3:
           goal = Decimal(entry.content.text)
           if goal != 0 and actual <= goal:
             is_meet_goal = True
           else:
             is_meet_goal = False;
-        if i % 5 == 4:
+        if i % 6 == 5:
           ## end of row
           print '---- %s actual=%d goal=%d' % (source, actual, goal) 
           if is_meet_goal:
