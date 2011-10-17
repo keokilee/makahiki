@@ -47,11 +47,11 @@ def notify_round_started():
     # We're looking for a round that ends today and another that starts today (or overall)
     start = datetime.datetime.strptime(value["start"], "%Y-%m-%d")
     end = datetime.datetime.strptime(value["end"], "%Y-%m-%d")
-    # Check if a round ended in the last 24 hours and check for the current round.
-    if abs(today - end) < datetime.timedelta(hours=23):
+    # Check yesterday's round and check for the current round.
+    if start < (today - datetime.timedelta(days=1)) < end:
       previous_round = key
         
-    elif start < today < end:
+    if start < today < end:
       current_round = key
     
   print previous_round
