@@ -26,11 +26,8 @@
     </dict>
     
     <key>StandardErrorPath</key>
-  	<string>/Users/kukuicup/evaluation/log/check-energy-goal.err</string>
+  	<string>/Users/kukuicup/evaluation/log/process-notices.err</string>
   	<key>StandardOutPath</key>
-  	<string>/Users/kukuicup/evaluation/log/check-energy-goal.out</string>
-    
-    <key>RunAtLoad</key>
-    <true/>
+  	<string>/Users/kukuicup/evaluation/log/process-notices.out</string>
 </dict>
 </plist>

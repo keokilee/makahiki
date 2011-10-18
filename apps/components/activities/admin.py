@@ -361,6 +361,9 @@ class ActivityMemberAdmin(admin.ModelAdmin):
     if obj and obj.activity.has_variable_points:
       self.fields = ("user", "activity", "question", "response", "image", 
           "admin_comment", "approval_status", "points_awarded", "social_email")
+    else:
+      self.fields = ("user", "activity", "question", "response", "image", 
+          "admin_comment", "approval_status")
       
     return super(ActivityMemberAdmin, self).get_form(request, obj, **kwargs)
   
