@@ -283,16 +283,19 @@ def __add_commitment(request, commitment):
 
   # now we either have a valid form or a GET
   if is_pending_commitment(user, commitment):
-     member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
-     #commitment end, award full point
-     member.award_date = datetime.datetime.today()
+     if form:     
+       member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+       #commitment end, award full point
+       member.award_date = datetime.datetime.today()
 
-     if form.cleaned_data["social_email"]:
-       member.social_email = form.cleaned_data["social_email"]
-     if form.cleaned_data["social_email2"]:
-       member.social_email2 = form.cleaned_data["social_email2"]
-     member.save()
-     value = commitment.point_value
+       if form.cleaned_data["social_email"]:
+         member.social_email = form.cleaned_data["social_email"]
+       if form.cleaned_data["social_email2"]:
+         member.social_email2 = form.cleaned_data["social_email2"]
+       member.save()
+       value = commitment.point_value
+     else:   # it is a GET, redirect to task page
+       return  HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
 
   elif can_add_commitments(user):
      # User can commit to this commitment. allow to commit to completed commitment again as long as the pending does not reach max
@@ -315,9 +318,6 @@ def __add_commitment(request, commitment):
   notification = "You just earned " + str(value) + " points."
   response.set_cookie("task_notify", notification)
   return response
-
-
-
 
 def __drop_commitment(request, commitment):
   """drop the commitment."""
@@ -375,7 +375,7 @@ def __add_activity(request, activity):
             "form_title": "Survey",
             }, context_instance=RequestContext(request))    
           
-    else:
+    else:  # other than survey
       activity_member = ActivityMember(user=user, activity=activity)
       activity_member.save()
         
@@ -389,7 +389,10 @@ def __add_activity(request, activity):
     notification = "You just earned " + str(value) + " points."
     response.set_cookie("task_notify", notification)
     return response
-
+  
+  # adding to the existing activity results in redirecting to the task page
+  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+    
 
 def __drop_activity(request, activity):
   """drop the current user from the activity."""
@@ -484,6 +487,7 @@ def __request_activity_points(request, activity):
           
       return response
 
+    # if invalid form
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
       ##if question:
@@ -499,6 +503,9 @@ def __request_activity_points(request, activity):
     "display_form":True,
     "form_title": "Get your points",
     }, context_instance=RequestContext(request))    
+  
+  # if not POST, return to task page
+  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
 
 @never_cache
 @login_required
