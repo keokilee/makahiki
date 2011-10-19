@@ -6,15 +6,15 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.conf import settings
-from django.db.models import Count
+from django.db.models import Count, F
 
 from components.activities import get_popular_activities, get_popular_commitments, get_popular_events
 from components.activities.models import ActivityBase, Activity
+from components.energy_goals.models import FloorEnergyGoal
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
 from components.prizes.models import RaffleDeadline
-
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def home(request):
@@ -55,7 +55,16 @@ def points_scoreboard(request):
   
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def energy_scoreboard(request):
-  return render_to_response("status/energy.html", {}, context_instance=RequestContext(request))
+  goals_scoreboard = FloorEnergyGoal.objects.filter(
+      actual_usage__lte=F("goal_usage")
+  ).values(
+      "floor__number", 
+      "floor__dorm__name"
+  ).annotate(completions=Count("floor")).order_by("-completions")
+  
+  return render_to_response("status/energy.html", {
+      "goals_scoreboard": goals_scoreboard,
+  }, context_instance=RequestContext(request))
     
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def users(request):
