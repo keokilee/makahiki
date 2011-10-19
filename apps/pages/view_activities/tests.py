@@ -198,7 +198,13 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
-    
+
+    points = Profile.objects.get(user=self.user).points
+    response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+
+    self.assertEqual(points, Profile.objects.get(user=self.user).points)
+
   def testMobileRedirect(self):
     """Tests that the mobile redirection and the cookie that forces the desktop version."""
     category = Category.objects.create(

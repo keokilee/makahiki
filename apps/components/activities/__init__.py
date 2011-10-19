@@ -77,6 +77,10 @@ def can_add_commitments(user):
   """Determines if the user can add additional commitments."""
   return CommitmentMember.objects.filter(user=user, award_date__isnull=True).count() < MAX_COMMITMENTS
 
+def can_complete_commitments(user, commitment):
+  """Determines if the user can complete commitments, assuming there is a pending commitment"""
+  return CommitmentMember.objects.filter(user=user, commitment=commitment, award_date=None)[0].days_left()==0
+
 def get_current_commitments(user):
   """Get the user's incomplete commitments."""
   return user.commitment_set.filter(
