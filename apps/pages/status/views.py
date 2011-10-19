@@ -30,7 +30,7 @@ def points_scoreboard(request):
       canopy_member=True,
   ).order_by("-canopy_karma").values("name", "canopy_karma")
   
-  floor_standings = Floor.floor_points_leaders(num_results=10)
+  floor_standings = Floor.floor_points_leaders(num_results=20)
   
   round_individuals = {}
   round_floors = {}
@@ -41,7 +41,7 @@ def points_scoreboard(request):
     ).order_by("-points", "-last_awarded_submission").values("profile__name", "points")
     
     round_floors[round_name] = Floor.floor_points_leaders(
-        num_results=10, 
+        num_results=20, 
         round_name=round_name
     )
     
