@@ -37,6 +37,7 @@ def points_scoreboard(request):
   for round_name in settings.COMPETITION_ROUNDS:
     round_individuals[round_name] = ScoreboardEntry.objects.filter(
         points__gt=0,
+        round_name=round_name,
     ).order_by("-points", "-last_awarded_submission").values("profile__name", "points")
     
     round_floors[round_name] = Floor.floor_points_leaders(
