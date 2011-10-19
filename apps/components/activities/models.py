@@ -411,6 +411,7 @@ class CommitmentMember(CommonBase):
         
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
     invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).save()
@@ -435,6 +436,7 @@ class CommitmentMember(CommonBase):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
     invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).delete()
@@ -518,6 +520,7 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).save()
     
@@ -665,6 +668,7 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).delete()
 
