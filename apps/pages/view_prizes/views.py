@@ -35,13 +35,14 @@ def add_ticket(request, prize_id):
     deadline = prize.deadline
     profile = request.user.get_profile()
     in_deadline = (deadline.pub_date <= datetime.datetime.today()) and (deadline.end_date >= datetime.datetime.today())
-    if profile.available_tickets > 0 and in_deadline:
+    print profile.available_tickets()
+    if profile.available_tickets() > 0 and in_deadline:
       prize.add_ticket(request.user)
       return HttpResponseRedirect(reverse("prizes_index"))
     elif not in_deadline:
       messages.error(request, "The raffle for this round is over.")
       return HttpResponseRedirect(reverse("prizes_index"))
-    elif profile.available_tickets <= 0:
+    else:
       messages.error(request, "Sorry, but you do not have any more tickets.")
       return HttpResponseRedirect(reverse("prizes_index"))
     
@@ -58,8 +59,8 @@ def remove_ticket(request, prize_id):
       prize.remove_ticket(request.user)
       return HttpResponseRedirect(reverse("prizes_index"))
 
-    elif profile.available_tickets <= 0:
-      messages.error(request, "Sorry, but you do not have any tickets in this prize.")
+    else:
+      messages.error(request, "Sorry, but you do not have any tickets for this prize.")
       return HttpResponseRedirect(reverse("prizes_index"))
     
   raise Http404
