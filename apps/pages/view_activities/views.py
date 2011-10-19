@@ -283,7 +283,7 @@ def __add_commitment(request, commitment):
 
   # now we either have a valid form or a GET
   if is_pending_commitment(user, commitment):
-     if form:     
+     if form and can_complete_commitments(user, commitment):
        member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
        #commitment end, award full point
        member.award_date = datetime.datetime.today()
@@ -313,6 +313,9 @@ def __add_commitment(request, commitment):
      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
      user.get_profile().save()
      value = 2
+  else:  
+     # user can not add more than 5 commitment
+     return  HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
 
   response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
   notification = "You just earned " + str(value) + " points."
