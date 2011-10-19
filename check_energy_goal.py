@@ -112,7 +112,6 @@ def check_energy_goal():
   gdata.Run()
               
 if __name__ == "__main__":
+    print '****** Processing check_energy_goal for %s *******\n' % datetime.datetime.today()
+
     check_energy_goal()
-    #process_rsvp()
-    # notify_commitment_end()
-    # notify_round_started()

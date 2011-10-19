@@ -39,7 +39,7 @@ def index(request):
     events = get_available_events(user)
     # Cache the user_event for a day
     cache.set('user_events-%s' % user.username,
-      events, 60 * 60 * 24)
+      events, 60 * 60)
 
   floor = user.get_profile().floor
   user_floor_standings = None
