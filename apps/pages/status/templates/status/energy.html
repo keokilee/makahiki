@@ -18,6 +18,32 @@
     </div>
   </div>
   {% endfor %}
+  
+  {# Extra box for energy goals #}
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Daily Energy Goal Scoreboard
+    </div>
+    <div class="content-body">
+      <div style="margin: 10px; padding: 0 10px;">
+        <table id="energy-goals-scoreboard" style='width: 300px'>
+          <tr>
+            <th>Rank</th>
+            <th>Lounge</th>
+            <th>Days met goal</th>
+          </tr>
+          {% for entry in goals_scoreboard %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+              {{entry.floor__dorm__name}}-{{entry.floor__number}}
+            </td>
+            <td style="text-align: right; padding-right: 20px">{{entry.completions}}</td>
+          </tr>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
   <br style="clear: both"/>
 </div>
 
