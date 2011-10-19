@@ -317,7 +317,7 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   fields = ("user", "activity", "question", "full_response", "image", "admin_comment", "approval_status",)
   readonly_fields = ("question", "full_response", "social_email", "social_email2",)
   list_display = ("activity", "submission_date", "approval_status", "short_question", "short_response")
-  list_filter = ["approval_status"]
+  list_filter = ["approval_status", "activity__type"]
   actions = ["delete_selected"]
   date_hierarchy = "submission_date"
   ordering = ["submission_date"]
@@ -347,6 +347,7 @@ class ActivityMemberAdmin(admin.ModelAdmin):
       if not request.GET.has_key('approval_status__exact'):
         q = request.GET.copy()
         q['approval_status__exact'] = 'pending'
+        q['activity__type__exact'] = 'activity'
         request.GET = q
         request.META['QUERY_STRING'] = request.GET.urlencode()
     return super(ActivityMemberAdmin,self).changelist_view(request, extra_context=extra_context)
