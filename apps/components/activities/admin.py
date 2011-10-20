@@ -77,7 +77,7 @@ class ActivityAdminForm(forms.ModelForm):
       self.fields["num_codes"].help_text += reverse("pages.view_activities.views.view_codes", args=(self.instance.slug,))
       self.fields["num_codes"].help_text += "\" target=\"_blank\">View codes</a>"
       
-    if self.instance and self.instance.created_at and (self.instance.type == "event" or self.instance.type == "exucrsion"):
+    if self.instance and self.instance.created_at and (self.instance.type == "event" or self.instance.type == "excursion"):
       url = reverse("pages.view_activities.views.view_rsvps", args=(self.instance.slug,))
       self.fields["event_max_seat"].help_text += " <a href='%s' target='_blank'>View RSVPs</a>" % url
     
