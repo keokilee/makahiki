@@ -9,7 +9,7 @@ from django.conf import settings
 from django.db.models import Count, F
 
 from components.activities import get_popular_activities, get_popular_commitments, get_popular_events
-from components.activities.models import ActivityBase, Activity
+from components.activities.models import ActivityBase, Activity, ActivityMember
 from components.energy_goals.models import FloorEnergyGoal
 from components.floors.models import Floor
 from components.makahiki_base import get_current_round
@@ -93,8 +93,15 @@ def popular_activities(request):
     else:
       tasks[task_type] = get_popular_activities(activity_type=task_type)
   
+  pending_members = ActivityMember.objects.filter(
+      activity__type='activity',
+      approval_status='pending',
+  ).order_by('submission_date')
+  
   return render_to_response("status/activities.html", {
       "tasks": tasks,
+      "pending_members": pending_members.count(),
+      "oldest_member": pending_members[0],
   }, context_instance=RequestContext(request))
         
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
