@@ -76,8 +76,22 @@ def users(request):
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def prizes(request):
   deadlines = RaffleDeadline.objects.all().order_by("pub_date")
+  
+  # Calculate unused raffle tickets for every user.
+  users = User.objects.filter(profile__points__gte=25).select_related('profile', 'raffleticket')
+  unused = 0
+  errors = []
+  for user in users:
+    available = (user.get_profile().points / 25) - user.raffleticket_set.count()
+    if available < 0:
+      errors.append(user.username)
+    unused += available
+    
   return render_to_response("status/prizes.html", {
       "deadlines": deadlines,
+      "unused": unused,
+      "has_error": len(errors) > 0,
+      "errors": errors,
   }, context_instance=RequestContext(request))
     
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
