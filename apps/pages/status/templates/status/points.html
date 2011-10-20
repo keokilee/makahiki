@@ -7,7 +7,7 @@
 <div {% get_id_and_classes "status-points" %}>
   <div class="content-box" style="float: left; margin: 15px;">
     <div class="content-box-title">
-      Overall Individuals
+      Overall Individuals ({{profiles|length}} total users)
     </div>
     <div class="content-body">
       <table style="float: left; padding: 15px; width: 300px;">
@@ -30,7 +30,7 @@
   {% for name, entries in round_individuals.items %}
   <div class="content-box" style="float: left; margin: 15px">
     <div class="content-box-title">
-      {{name}} Top Individuals
+      {{name}} Top Individuals ({{entries|length}} total users)
     </div>
     <div class="content-body">
       <table style="padding: 15px; width: 300px">

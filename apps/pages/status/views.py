@@ -107,15 +107,20 @@ def popular_activities(request):
     else:
       tasks[task_type] = get_popular_activities(activity_type=task_type)
   
-  pending_members = ActivityMember.objects.filter(
+  members = ActivityMember.objects.filter(
       activity__type='activity',
       approval_status='pending',
   ).order_by('submission_date')
   
+  pending_members = members.count()
+  oldest_member = None
+  if pending_members > 0:
+    oldest_member = members[0]
+  
   return render_to_response("status/activities.html", {
       "tasks": tasks,
-      "pending_members": pending_members.count(),
-      "oldest_member": pending_members[0],
+      "pending_members": pending_members,
+      "oldest_member": oldest_member,
   }, context_instance=RequestContext(request))
         
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
