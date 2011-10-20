@@ -13,7 +13,7 @@
       <table style="margin: 10px; padding: 0 10px;">
         <tr>
           <th style="text-align: left">Title</th>
-          <th><th>{% if key == 'Excursion' or key == 'Event' %}Sign ups{% else %}Completions{% endif %}</th></th>
+          <th><th>{% if type == 'excursion' or type == 'event' %}Sign ups{% else %}Completions{% endif %}</th></th>
         </tr>
         {% for task in tasks %}
         <tr>
