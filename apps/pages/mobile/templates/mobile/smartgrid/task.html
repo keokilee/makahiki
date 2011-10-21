@@ -106,7 +106,7 @@
               {%if approval.approval_status == "approved"%}
                 Thank you for attending the event. <br/> 
               {%else%}
-													<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
+													<!--#epy00nform id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
 													{% csrf_token %}  
 													{% if admin_message %}
 													Admin message: {{ admin_message }}  
@@ -123,7 +123,7 @@
 													<label for="id_comment">Comment:</label> <textarea id="id_comment" rows="3" cols="0" name="comment"></textarea> 
 													</div>
 																<button type="submit">Submit</button> 
-													</form>
+													</form-->
 	            {% endif %}
               {%endif%}
 
@@ -217,7 +217,7 @@
        
         {% if task.is_event_completed %}
 <!-- code goes here-->
-<form id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
+<!--#epy00nform id="myform" action="{% url mobile_task_add category task.name|slugify %}" method="post" data-ajax="false"> 
     {% csrf_token %}  
     {% if admin_message %}
       Admin message: {{ admin_message }}  
@@ -236,7 +236,7 @@
 	  </div>
             <button type="submit">Submit</button>
           </div> 
-	</form>
+	</form-->
         {% endif %} 
     {% endif %}
 
