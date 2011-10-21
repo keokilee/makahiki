@@ -15,6 +15,7 @@ from components.floors.models import Floor
 from components.makahiki_base import get_current_round
 from components.makahiki_profiles.models import Profile, ScoreboardEntry
 from components.prizes.models import RaffleDeadline
+from components.quests.models import Quest
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def home(request):
@@ -106,6 +107,10 @@ def popular_activities(request):
       tasks[task_type] = get_popular_events(activity_type=task_type)
     else:
       tasks[task_type] = get_popular_activities(activity_type=task_type)
+      
+  quests = Quest.objects.filter(
+      questmember__completed=True,
+  ).values("name").annotate(completions=Count("questmember")).order_by("-completions")
   
   members = ActivityMember.objects.filter(
       activity__type='activity',
@@ -119,6 +124,7 @@ def popular_activities(request):
   
   return render_to_response("status/activities.html", {
       "tasks": tasks,
+      "quests": quests,
       "pending_members": pending_members,
       "oldest_member": oldest_member,
   }, context_instance=RequestContext(request))

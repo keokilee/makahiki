@@ -247,9 +247,15 @@
             </b>
            {% else %}
               {%  if task.available_seat > 0 %}
-              <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I want to sign up
-              <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
-              </button></a>
+              {# <a href="{% url activity_add_task task.type task.slug %}"> #}
+              <form action='{% url activity_add_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button style="cursor:pointer;" onclick='javascript:this.form.submit()'>
+                  I want to sign up
+                  <img src="{{ STATIC_URL }}/css/default/images/right.png" width="50" align="center"/>
+                </button>
+              </form>
+              {# </a> #}
               {% else %}
               <b>This {{ task.type}} is full. You can still try to attend on a space available basis.</b>
               {% endif %}

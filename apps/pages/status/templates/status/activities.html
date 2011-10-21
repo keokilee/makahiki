@@ -22,7 +22,7 @@
       <table style="margin: 10px; padding: 0 10px;">
         <tr>
           <th style="text-align: left">Title</th>
-          <th><th>{% if type == 'excursion' or type == 'event' %}Sign ups{% else %}Completions{% endif %}</th></th>
+          <th>{% if type == 'excursion' or type == 'event' %}Sign ups{% else %}Completions{% endif %}</th>
         </tr>
         {% for task in tasks %}
         <tr>
@@ -34,6 +34,27 @@
     </div>
   </div>
   {% endfor %}
+  
+  <div class="content-box" style='float: left; margin: 15px'>
+    <div class="content-box-title">
+      Popular Quests
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px;">
+        <tr>
+          <th style='text-align: left'>Name</th>
+          <th>Completions</th>
+        </tr>
+        {% for quest in quests %}
+        <tr>
+          <td>{{quest.name}}</td>
+          <td>{{quest.completions}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  
   <br style="clear: both"/>
 </div>
 {% endblock %}
