@@ -271,6 +271,8 @@ def task(request, category_slug, slug, sender=None):
   can_commit = None
   member_all_count = 0
   member_floor_count = 0
+  social_email = None
+  social_email2 = None
   
   try:
     task = get_object_or_404(ActivityBase, category__slug=category_slug, slug=slug)
@@ -294,12 +296,14 @@ def task(request, category_slug, slug, sender=None):
     if members.count() > 0:
       pau = True
       approval = members[0]
-      if approval.social_email:
-        ref_user = User.objects.get(email=approval.user_comment)
-        ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
-        for m in ref_members:
-          if m.approval_status == 'approved':
-            approval.social_bonus_awarded = True
+      social_email = approval.social_email
+      social_email2 = approval.social_email2
+      #if approval.social_email:
+      #  ref_user = User.objects.get(email=approval.user_comment)
+      #  ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+      #  for m in ref_members:
+      #    if m.approval_status == 'approved':
+      #      approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
@@ -318,8 +322,9 @@ def task(request, category_slug, slug, sender=None):
       elif task.confirm_type == "free":
         form = ActivityFreeResponseForm(request=request)
       else:
-        form = ActivityTextForm(initial={"code" : 1},request=request)
-                
+        form = ActivityCodeForm(initial={"social_email":social_email,"social_email2":social_email2}, request=request)
+
+      
       if task.type == "event" or task.type == "excursion":
         if not pau:
           form_title = "Sign up for this "+task.type
@@ -709,7 +714,7 @@ def __request_activity_points(request, activity_id, slug):
       form = ActivityCodeForm(request.POST, request=request, activity=activity)
     else:
       form = ActivityTextForm(request.POST, request=request, activity=activity)
-    
+
     ## print activity.confirm_type
     if form.is_valid():
       if not activity_member:
@@ -746,6 +751,7 @@ def __request_activity_points(request, activity_id, slug):
         activity_member.response = form.cleaned_data["response"]
         activity_member.approval_status = "pending"
 
+      activity_member.social_email = form.cleaned_data["social_email"]
       activity_member.save()
           
       return HttpResponseRedirect(reverse("mobile_task", args=(category, activity.slug,)))
