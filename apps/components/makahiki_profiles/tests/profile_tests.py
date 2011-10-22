@@ -126,7 +126,7 @@ class ProfileUnitTests(TestCase):
     profile2 = user2.get_profile()
     profile2.setup_profile = True
     profile2.setup_complete = True
-    profile2.referrer_email = user1.email
+    profile2.referring_user = user1
     profile2.add_points(10, datetime.datetime.today(), 'test 1')
     profile2.save()
     
@@ -138,7 +138,7 @@ class ProfileUnitTests(TestCase):
     
     self.assertEqual(points1 + 10, Profile.objects.get(user=user1).points, 'User 1 should have the referral bonus')
     self.assertEqual(points2 + 10, Profile.objects.get(user=user2).points, 'User 2 should have the referral bonus')
-    self.assertTrue(Profile.objects.get(user=user2).referral_awarded, 'User 2 should have the referral awarded.')
+    self.assertTrue(Profile.objects.get(user=user2).referrer_awarded, 'User 2 should have the referral awarded.')
     
     profile2.add_points(20, datetime.datetime.today(), 'Post test')
     profile2.save()
