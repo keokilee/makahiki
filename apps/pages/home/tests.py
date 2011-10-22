@@ -95,6 +95,50 @@ class SetupWizardFunctionalTestCase(TestCase):
     except ValueError:
       self.fail("Response JSON could not be decoded.")
     
+  def testReferralStep(self):
+    """
+    Test that we can record referral emails from the setup page.
+    """
+    user2 = User.objects.create_user("user2", "user2@test.com")
+
+    # Test referring using their own email
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': self.user.email,
+    }, follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    self.assertContains(response, "Please use another user's email address, not your own.", 
+        msg_prefix="Using their own email as referrer should raise an error.")
+
+    # Test referring using the email of a user who is not in the system.
+    response = self.client.post(reverse('setup_profile'), {
+        'display_name': 'Test User',
+        'referrer_email': 'bogus@test.com',
+    }, follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    self.assertContains(response, "Sorry, but that user is not a part of the competition.", 
+        msg_prefix="Using their own email as referrer should raise an error.")
+
+    # Test no referrer.
+    response = self.client.post(reverse('setup_profile'), {
+        'display_name': 'Test User',
+        'referrer_email': '',
+    }, follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/activity.html")
+    
+    # Test referral bonus
+    points = self.user.get_profile().points
+    response = self.client.post(reverse('setup_profile'), {
+        'display_name': 'Test User',
+        'referrer_email': user2.email,
+    }, follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/activity.html")
+    profile = Profile.objects.get(user=self.user)
+    self.assertEqual(profile.referrer_email, user2.email, 'User 2 should be referred.')
+    self.assertEqual(points, profile.points, 'Point value should not change.')
     
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""
@@ -169,7 +213,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     self.assertTemplateUsed(response, "home/first-login/profile.html")
     self.assertContains(response, "please enter another name.", 
         msg_prefix="Duplicate name with whitespace should raise an error.")
-      
+    
   def testSetupActivity(self):
     """Check that we can access the activity page of the setup wizard."""
     response = self.client.get(reverse("setup_activity"), {}, 

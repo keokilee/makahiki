@@ -10,6 +10,13 @@ class FacebookForm(forms.Form):
         label="%s can post to my Facebook feed (at most 2 posts per day)" % settings.COMPETITION_NAME
   )
 
+class ReferralForm(forms.Form):
+  referrer_email = forms.EmailField(
+        required=False,
+        help_text="If someone has referred you to the Kukui Cup, enter their UH email here.  " + \
+                  "You will both earn %d points if you get at least 30 points!"
+  )
+  
 class ProfileForm(forms.Form):
   display_name = forms.CharField(
         max_length=20, 
