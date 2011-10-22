@@ -29,9 +29,6 @@ class ActivitiesFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     
   def testViewCodesAndRsvps(self):
-    self.user.is_staff = True
-    self.user.save()
-    
     activity = Activity(
         title="Test activity",
         slug="testactivity",
@@ -45,7 +42,15 @@ class ActivitiesFunctionalTestCase(TestCase):
         event_date=datetime.datetime.today() - datetime.timedelta(days=1, seconds=30),
     )
     activity.save()
-    ConfirmationCode.generate_codes_for_activity(activity, 100)
+    ConfirmationCode.generate_codes_for_activity(activity, 5)
+    
+    response = self.client.get(reverse('activity_view_codes', args=(activity.type, activity.slug)))
+    self.failUnlessEqual(response.status_code, 404)
+    response = self.client.get(reverse('activity_view_rsvps', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 404)
+    
+    self.user.is_staff = True
+    self.user.save()
     
     response = self.client.get(reverse('activity_view_codes', args=(activity.type, activity.slug)))
     self.assertEqual(response.status_code, 200)
