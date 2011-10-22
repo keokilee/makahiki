@@ -150,7 +150,7 @@ def _dictfetchall(cursor):
 
 @never_cache
 @login_required
-def view_codes(request, slug):
+def view_codes(request, activity_type, slug):
   """View the confirmation codes for a given activity."""
   if not request.user or not request.user.is_staff:
     raise Http404
@@ -160,7 +160,7 @@ def view_codes(request, slug):
   if request.GET.has_key('rows'):
     per_page = int(request.GET['rows'])
     
-  activity = get_object_or_404(Activity, slug=slug)
+  activity = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
   codes = ConfirmationCode.objects.filter(activity=activity)
   if len(codes) == 0:
     raise Http404
