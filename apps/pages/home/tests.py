@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 from components.activities.models import Activity, ActivityMember
+from components.makahiki_profiles.models import Profile
 
 class HomeFunctionalTestCase(TestCase):
   def testIndex(self):
@@ -100,45 +101,56 @@ class SetupWizardFunctionalTestCase(TestCase):
     Test that we can record referral emails from the setup page.
     """
     user2 = User.objects.create_user("user2", "user2@test.com")
-
+    
+    # Test we can get the referral page.
+    response = self.client.get(reverse('setup_referral'), {},
+               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    try:
+      response_dict = json.loads(response.content)
+    except ValueError:
+      self.fail("Response JSON could not be decoded.")
+      
     # Test referring using their own email
     response = self.client.post(reverse('setup_referral'), {
         'referrer_email': self.user.email,
-    }, follow=True)
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
-    self.assertTemplateUsed(response, "home/first-login/profile.html")
-    self.assertContains(response, "Please use another user's email address, not your own.", 
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    self.assertContains(response, "Please use another user&#39;s email address, not your own.", 
         msg_prefix="Using their own email as referrer should raise an error.")
 
     # Test referring using the email of a user who is not in the system.
-    response = self.client.post(reverse('setup_profile'), {
-        'display_name': 'Test User',
-        'referrer_email': 'bogus@test.com',
-    }, follow=True)
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': 'user@foo.com',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    self.assertContains(response, "Sorry, but that user is not a part of the competition.", 
+        msg_prefix="Using external email as referrer should raise an error.")
+        
+    # Test bad email.
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': 'foo',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+        
+    # Test no referrer.
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': '',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
-    self.assertContains(response, "Sorry, but that user is not a part of the competition.", 
-        msg_prefix="Using their own email as referrer should raise an error.")
-
-    # Test no referrer.
-    response = self.client.post(reverse('setup_profile'), {
-        'display_name': 'Test User',
-        'referrer_email': '',
-    }, follow=True)
-    self.failUnlessEqual(response.status_code, 200)
-    self.assertTemplateUsed(response, "home/first-login/activity.html")
     
-    # Test referral bonus
-    points = self.user.get_profile().points
-    response = self.client.post(reverse('setup_profile'), {
-        'display_name': 'Test User',
+    # Test successful referrer
+    response = self.client.post(reverse('setup_referral'), {
         'referrer_email': user2.email,
-    }, follow=True)
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
-    self.assertTemplateUsed(response, "home/first-login/activity.html")
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
     profile = Profile.objects.get(user=self.user)
-    self.assertEqual(profile.referrer_email, user2.email, 'User 2 should be referred.')
-    self.assertEqual(points, profile.points, 'Point value should not change.')
+    self.assertEqual(profile.referring_user, user2, 'User 1 should be referred by user 2.')
     
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""

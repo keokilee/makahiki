@@ -9,6 +9,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
@@ -20,7 +21,7 @@ from django.db import IntegrityError
 from components.activities.models import Activity, ActivityMember
 from components.makahiki_avatar.models import avatar_file_path, Avatar
 import components.makahiki_facebook.facebook as facebook
-from pages.home.forms import FacebookForm, ProfileForm
+from pages.home.forms import FacebookForm, ProfileForm, ReferralForm
 from components.help_topics.models import HelpTopic
 
 @never_cache
@@ -60,7 +61,7 @@ def setup_welcome(request):
     response = render_to_string("home/first-login/welcome.html", {}, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 1 of 6",
+        "title": "Introduction: Step 1 of 7",
         "contents": response,
     }), mimetype='application/json')
     
@@ -78,7 +79,39 @@ def terms(request):
     }, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 2 of 6",
+        "title": "Introduction: Step 2 of 7",
+        "contents": response,
+    }), mimetype='application/json')
+    
+  raise Http404
+  
+@login_required
+def referral(request):
+  """
+  Uses AJAX to display a referral page.
+  """
+  if request.is_ajax():
+    form = ReferralForm()
+    
+    if request.method == 'POST':
+      form = ReferralForm(request.POST, user=request.user)
+      if form.is_valid():
+        cleaned_data = form.cleaned_data
+        if cleaned_data.has_key('referrer_email') and len(cleaned_data['referrer_email']) > 0:
+          profile = request.user.get_profile()
+          profile.referring_user = User.objects.get(email=cleaned_data['referrer_email'])
+          profile.save()
+        
+        return _get_profile_form(request)
+        
+      # If form is not valid, it falls through here
+        
+    response = render_to_string('home/first-login/referral.html', {
+        'form': form,
+    })
+    
+    return HttpResponse(json.dumps({
+        "title": "Introduction: Step 3 of 7",
         "contents": response,
     }), mimetype='application/json')
     
@@ -223,12 +256,12 @@ def _get_profile_form(request, form=None, non_xhr=False):
 
   if non_xhr:
     return HttpResponse('<textarea>' + json.dumps({
-        "title": "Introduction: Step 3 of 6",
+        "title": "Introduction: Step 4 of 7",
         "contents": cgi.escape(response),
     }) + '</textarea>', mimetype='text/html')
   else:
     return HttpResponse(json.dumps({
-        "title": "Introduction: Step 3 of 6",
+        "title": "Introduction: Step 4 of 7",
         "contents": response,
     }), mimetype='application/json')
     
@@ -239,7 +272,7 @@ def setup_activity(request):
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 4 of 6",
+        "title": "Introduction: Step 5 of 7",
         "contents": template,
     }), mimetype='application/json')
     
@@ -249,7 +282,7 @@ def setup_activity(request):
     template = render_to_string("home/first-login/activity.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse("<textarea>" + json.dumps({
-        "title": "Introduction: Step 4 of 6",
+        "title": "Introduction: Step 5 of 7",
         "contents": cgi.escape(template),
     }) + "</textarea>", mimetype='text/html')
     
@@ -262,7 +295,7 @@ def setup_question(request):
     template = render_to_string("home/first-login/question.html", {}, context_instance=RequestContext(request))
     
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 5 of 6",
+        "title": "Introduction: Step 6 of 7",
         "contents": template,
     }), mimetype='application/json')
     
@@ -293,7 +326,7 @@ def setup_complete(request):
     template = render_to_string("home/first-login/complete.html", {}, context_instance=RequestContext(request))
 
     response = HttpResponse(json.dumps({
-        "title": "Introduction: Step 6 of 6",
+        "title": "Introduction: Step 7 of 7",
         "contents": template,
     }), mimetype='application/json')
 

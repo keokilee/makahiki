@@ -1,7 +1,6 @@
 from django import forms
 from django.conf import settings
-
-from components.makahiki_profiles.models import Profile
+from django.contrib.auth.models import User
   
 class FacebookForm(forms.Form):
   can_post = forms.BooleanField(
@@ -14,8 +13,36 @@ class ReferralForm(forms.Form):
   referrer_email = forms.EmailField(
         required=False,
         help_text="If someone has referred you to the Kukui Cup, enter their UH email here.  " + \
-                  "You will both earn %d points if you get at least 30 points!"
+                  "If you get at least 30 points, both you and the person who referred you will get an additional 10 points!"
   )
+  
+  def __init__(self, *args, **kwargs):  
+    self.user = kwargs.pop('user', None)
+      
+    super(ReferralForm, self).__init__(*args, **kwargs)
+    
+  def clean(self):
+    """
+    Check if the user is not submitting their own email.
+    """
+    cleaned_data = self.cleaned_data
+    if self.user.email == cleaned_data.get('referrer_email'):
+      raise forms.ValidationError("Please use another user's email address, not your own.")
+      
+    return cleaned_data
+    
+  def clean_referrer_email(self):
+    """
+    Check if the user is a part of the competition.
+    """
+    email = self.cleaned_data['referrer_email']
+    if email:
+      # Check if user is in the system.
+      try:
+        user = User.objects.get(email=email)
+      except User.DoesNotExist:
+        raise forms.ValidationError("Sorry, but that user is not a part of the competition.")
+    return email
   
 class ProfileForm(forms.Form):
   display_name = forms.CharField(

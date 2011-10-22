@@ -117,7 +117,7 @@ class Profile(models.Model):
   last_visit_date = models.DateField(null=True, blank=True)
   
   # Check for referrer
-  referrer_email = models.EmailField(null=True, blank=True)
+  referring_user = models.ForeignKey(User, null=True, blank=True, related_name='referred_profiles')
   referrer_awarded = models.BooleanField(default=False)
   
   def __unicode__(self):
