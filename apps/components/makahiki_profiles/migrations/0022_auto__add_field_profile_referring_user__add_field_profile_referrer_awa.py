@@ -8,16 +8,17 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding field 'Profile.referrer_email'
-        db.add_column('makahiki_profiles_profile', 'referrer_email', self.gf('django.db.models.fields.EmailField')(max_length=75, null=True, blank=True), keep_default=False)
+        # Adding field 'Profile.referring_user'
+        db.add_column('makahiki_profiles_profile', 'referring_user', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='referred_profiles', null=True, to=orm['auth.User']), keep_default=False)
 
         # Adding field 'Profile.referrer_awarded'
         db.add_column('makahiki_profiles_profile', 'referrer_awarded', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True), keep_default=False)
 
+
     def backwards(self, orm):
         
-        # Deleting field 'Profile.referrer_email'
-        db.delete_column('makahiki_profiles_profile', 'referrer_email')
+        # Deleting field 'Profile.referring_user'
+        db.delete_column('makahiki_profiles_profile', 'referring_user_id')
 
         # Deleting field 'Profile.referrer_awarded'
         db.delete_column('makahiki_profiles_profile', 'referrer_awarded')
@@ -105,7 +106,7 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'}),
             'points': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'referrer_awarded': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
-            'referrer_email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
+            'referring_user': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'referred_profiles'", 'null': 'True', 'to': "orm['auth.User']"}),
             'setup_complete': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'setup_profile': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'profile'", 'unique': 'True', 'to': "orm['auth.User']"})

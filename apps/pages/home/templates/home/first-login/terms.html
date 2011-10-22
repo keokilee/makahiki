@@ -40,7 +40,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#progressbar").progressbar({
-      value: 200/6
+      value: 200/7
     });
     
     $("#decline").button();
@@ -55,7 +55,7 @@
     
     $("#agree").button().click(function() {
       $(this).button("option", "disabled", true);
-      $.get("{% url setup_profile %}", function(data) {
+      $.get("{% url setup_referral %}", function(data) {
         $("#ui-dialog-title-setup-dialog").html(data.title);
         $("#setup-dialog").html(data.contents);
       });
