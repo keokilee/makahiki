@@ -91,21 +91,30 @@ def referral(request):
   Uses AJAX to display a referral page.
   """
   if request.is_ajax():
-    form = ReferralForm()
+    profile = request.user.get_profile()
+    form = None
     
     if request.method == 'POST':
       form = ReferralForm(request.POST, user=request.user)
       if form.is_valid():
         cleaned_data = form.cleaned_data
         if cleaned_data.has_key('referrer_email') and len(cleaned_data['referrer_email']) > 0:
-          profile = request.user.get_profile()
           profile.referring_user = User.objects.get(email=cleaned_data['referrer_email'])
-          profile.save()
+        else:
+          # Double check just in case user comes back and deletes the email.
+          profile.referring_user = None
+        profile.save()
         
         return _get_profile_form(request)
         
       # If form is not valid, it falls through here
-        
+    if not form and profile.referring_user:
+      form = ReferralForm(initial={
+          'referrer_email': profile.referring_user.email
+      })
+    elif not form:
+      form = ReferralForm()
+      
     response = render_to_string('home/first-login/referral.html', {
         'form': form,
     })
