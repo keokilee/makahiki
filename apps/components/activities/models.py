@@ -525,13 +525,7 @@ class ActivityMember(CommonActivityUser):
     super(ActivityMember, self).save()
     
     # We check here for approved and rejected items because the object needs to be saved first.
-    if self.approval_status == u"approved" and not self.award_date:
-      # Record dates.
-      self.award_date = datetime.datetime.today()
-      if not self.submission_date:
-        # This may happen if it is an item with a confirmation code.
-        self.submission_date = self.award_date
-        
+    if self.approval_status == u"approved" and not self.award_date:        
       self._handle_approved()
 
       super(ActivityMember, self).save()
@@ -540,8 +534,9 @@ class ActivityMember(CommonActivityUser):
       self._handle_rejected()
 
   def _has_noshow_penalty(self):
+    # 2 days past and has submission_date (signed up)
     diff = datetime.date.today() - self.activity.event_date.date()
-    if diff.days > 2:
+    if diff.days > 2 and self.submission_date:
         return True
     else:
         return False
@@ -553,6 +548,18 @@ class ActivityMember(CommonActivityUser):
       points = self.points_awarded
     else:
       points = self.activity.point_value
+
+    # Record dates.
+    self.award_date = datetime.datetime.today()
+
+    ## reverse event/excursion noshow penalty
+    if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
+        message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
+        profile.add_points(4, self.submission_date, message, self)
+
+    if not self.submission_date:
+      # This may happen if it is an item with a confirmation code.
+      self.submission_date = self.award_date
     
     title = "%s%s: %s" % (
         'Canopy ' if self.activity.is_canopy else '',
@@ -560,11 +567,6 @@ class ActivityMember(CommonActivityUser):
         self.activity.title
     )
     profile.add_points(points, self.submission_date, title, self)
-
-    ## reverse event/excursion noshow penalty
-    if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
-        message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
-        profile.add_points(4, self.submission_date, message, self)
 
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
