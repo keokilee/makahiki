@@ -152,6 +152,12 @@ class SetupWizardFunctionalTestCase(TestCase):
     profile = Profile.objects.get(user=self.user)
     self.assertEqual(profile.referring_user, user2, 'User 1 should be referred by user 2.')
     
+    # Test getting the referral page now has user2's email.
+    response = self.client.get(reverse('setup_referral'), {},
+               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, user2.email, msg_prefix="Going back to referral page should have second user's email.")
+    
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""
     profile = self.user.get_profile()
