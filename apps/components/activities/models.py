@@ -393,7 +393,7 @@ class CommitmentMember(CommonBase):
       profile.save()
       
       ## award social bonus to others who referenced my email and successfully completed the activity
-      ref_members = CommitmentMember.objects.filter(commitment=self.commitment, comment=self.user.email)
+      ref_members = CommitmentMember.objects.filter(commitment=self.commitment, social_email=self.user.email)
       for m in ref_members:
         if m.award_date:
           ref_profile = m.user.get_profile()
