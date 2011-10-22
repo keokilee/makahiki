@@ -7,7 +7,6 @@ class LoginTrackingMiddleware(object):
   """
   This middleware tracks how many days in a row the user has come to the site.
   """
-  
   def process_request(self, request):
     """Checks if the user is logged in and updates the tracking field."""
     user = request.user
