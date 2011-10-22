@@ -28,6 +28,33 @@ class ActivitiesFunctionalTestCase(TestCase):
     response = self.client.get(reverse("activity_index"))
     self.failUnlessEqual(response.status_code, 200)
     
+  def testViewCodesAndRsvps(self):
+    self.user.is_staff = True
+    self.user.save()
+    
+    activity = Activity(
+        title="Test activity",
+        slug="testactivity",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() - datetime.timedelta(days=1, seconds=30),
+    )
+    activity.save()
+    ConfirmationCode.generate_codes_for_activity(activity, 100)
+    
+    response = self.client.get(reverse('activity_view_codes', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, 'view_activities/view_codes.html')
+    
+    response = self.client.get(reverse('activity_view_rsvps', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, 'view_activities/rsvps.html')
+    
   def testScoreboard(self):
     """Test that the scoreboard loads current round information."""
     saved_rounds = settings.COMPETITION_ROUNDS

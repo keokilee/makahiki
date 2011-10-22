@@ -173,7 +173,7 @@ def view_codes(request, activity_type, slug):
   
 @never_cache
 @login_required
-def view_rsvps(request, slug):
+def view_rsvps(request, activity_type, slug):
   if not request.user or not request.user.is_staff:
     raise Http404
     
