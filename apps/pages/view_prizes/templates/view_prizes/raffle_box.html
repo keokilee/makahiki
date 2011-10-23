@@ -28,13 +28,17 @@
           Raffle prizes for this round are not available yet. 
           They will be available on {{deadline.pub_date|date:"N jS"}} at {{deadline.pub_date|date:"P"}}
         {% else %}
-          The raffle is now over. 
+          The raffle is now over.
           {% if raffle.prizes.count > 0 %}
           Please check back in the next round for more prizes!
           {% endif %}
         {% endif %}
         </h4>
       {% endif %}
+      
+      <div style='text-align: center; margin-top: 5px'>
+        <a href='{% url help_topic "faq" "list-raffle-prizes" %}'>List of upcoming raffle prizes</a>
+      </div>
     </div>
   </div>
 </div>

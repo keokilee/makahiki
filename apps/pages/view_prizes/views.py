@@ -19,7 +19,7 @@ def index(request):
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
   raffle_dict = _get_raffle_prizes(request.user)
-    
+  
   return render_to_response("view_prizes/index.html", {
       "prizes": prizes,
       "raffle": raffle_dict,
@@ -106,7 +106,7 @@ def _get_raffle_prizes(user):
   Private method to process the raffle half of the prize page.
   Takes a user and returns a dictionary to be used in the template.
   """
-  current_round = get_current_round()
+  current_round = get_current_round() or 'Overall'
   today = datetime.datetime.today()
   
   # Get deadline.
