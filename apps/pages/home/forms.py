@@ -12,8 +12,6 @@ class FacebookForm(forms.Form):
 class ReferralForm(forms.Form):
   referrer_email = forms.EmailField(
         required=False,
-        help_text="If someone has referred you to the Kukui Cup, enter their UH email here.  " + \
-                  "If you get at least 30 points, both you and the person who referred you will get an additional 10 points!"
   )
   
   def __init__(self, *args, **kwargs):  

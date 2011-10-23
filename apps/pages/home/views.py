@@ -117,7 +117,7 @@ def referral(request):
       
     response = render_to_string('home/first-login/referral.html', {
         'form': form,
-    })
+    }, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps({
         "title": "Introduction: Step 3 of 7",

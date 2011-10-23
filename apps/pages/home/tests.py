@@ -117,8 +117,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/referral.html")
-    self.assertContains(response, "Please use another user&#39;s email address, not your own.", 
-        msg_prefix="Using their own email as referrer should raise an error.")
+    self.assertEqual(len(response.context['form'].errors), 1, "Using their own email as referrer should raise an error.")
 
     # Test referring using the email of a user who is not in the system.
     response = self.client.post(reverse('setup_referral'), {
@@ -126,14 +125,14 @@ class SetupWizardFunctionalTestCase(TestCase):
     }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/referral.html")
-    self.assertContains(response, "Sorry, but that user is not a part of the competition.", 
-        msg_prefix="Using external email as referrer should raise an error.")
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using external email as referrer should raise an error.')
         
     # Test bad email.
     response = self.client.post(reverse('setup_referral'), {
         'referrer_email': 'foo',
     }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
     self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using a bad email should insert an error.')
     self.assertTemplateUsed(response, "home/first-login/referral.html")
         
     # Test no referrer.

@@ -1,9 +1,12 @@
 {% load avatar_tags %}
 {% load class_tags %}
-<h2>Referral bonus</h2>
+<h2>Referral Bonus</h2>
 
 <div {% get_id_and_classes "setup-content" %}>
-  <p>Referral bonus</p>
+  <p>
+    If a participant in the competition has referred you to the {{COMPETITION_NAME}}, please enter their email here.  
+    If you complete the setup and earn at least 30 points, you will both be awarded 10 extra points!
+  </p>
   <form {% get_id_and_classes "setup-referrer-form" %} action="{% url setup_referral %}" method="post">
     {{form.as_p}}
   </form>
@@ -27,29 +30,27 @@
 <div {% get_id_and_classes "progressbar" %}></div>
 
 <script type="text/javascript">
-  <script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $("#progressbar").progressbar({
-        value: 300/7
-      });
+jQuery(document).ready(function($) {
+  $("#progressbar").progressbar({
+    value: 300/7
+  });
 
-      $("#decline").button();
+  $("#decline").button();
 
-      $("#back").button().click(function() {
-        $(this).button("option", "disabled", true);
-        $.get("{% url setup_welcome %}?from=terms", function(data) {
-          $("#ui-dialog-title-setup-dialog").html(data.title);
-          $("#setup-dialog").html(data.contents);
-        });
-      });
-
-      $("#next").button().click(function() {
-        $(this).button("option", "disabled", true);
-        $.post("{% url setup_referral %}", $('#setup-referrer-form').serialize(), function(data) {
-          $("#ui-dialog-title-setup-dialog").html(data.title);
-          $("#setup-dialog").html(data.contents);
-        });
-      });
+  $("#back").button().click(function() {
+    $(this).button("option", "disabled", true);
+    $.get("{% url setup_terms %}?from=referral", function(data) {
+      $("#ui-dialog-title-setup-dialog").html(data.title);
+      $("#setup-dialog").html(data.contents);
     });
-  </script>
+  });
+
+  $("#next").button().click(function() {
+    $(this).button("option", "disabled", true);
+    $.post("{% url setup_referral %}", $('#setup-referrer-form').serialize(), function(data) {
+      $("#ui-dialog-title-setup-dialog").html(data.title);
+      $("#setup-dialog").html(data.contents);
+    });
+  });
+});
 </script>
