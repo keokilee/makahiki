@@ -446,6 +446,9 @@ def __drop_activity(request, activity):
   messages.error = 'It appears that you are not participating in this activity.'
   return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
 
+  # drop non existing activity results in redirecting to the task page
+  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""

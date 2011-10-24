@@ -160,7 +160,14 @@
             Thank you! You've earned 2 bonus {% if task.is_canopy %} Karma {% endif %} points by signing up.<br/>
             After the {{task.type}}, please come back here within 2 days to get your points.
             If you sign up but do not attend, you will lose the 2 point signing bonus and pay a 2 point "no-show" penalty.
-            <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Take me off the signup list</button></a>
+            <br/>
+            <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>
+                  Take me off the signup list
+                </button>
+            </form>
+            
             {% endif %}
              </div>
           {% endif %}
@@ -171,12 +178,23 @@
               Thank you! You've earned 2 {% if task.is_canopy %} Karma {% endif %} points by committing.<br/>
               Please come back on {{ approval.completion_date|date:"l m/d" }}
               ({{approval.days_left}} days left) to get the rest of your points.
-              <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
+              <br/>
+               <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>
+                  Drop this commitment
+                </button>
+              </form>
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
               <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
-              <a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
+              <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>
+                  Drop this commitment
+                </button>
+              </form>
               {% endif %}
              </div>
           {% endif %}         
@@ -223,12 +241,18 @@
           {% if can_commit %}
             {% if task.social_bonus > 0 %}
               <a onclick="task_form_overlay()">
+              <button style="cursor:pointer;">I will do this!
+                <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
+              </button></a>
             {% else %}
-              <a href="{% url activity_add_task task.type task.slug %}">
+              <form action='{% url activity_add_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>
+                  I will do this!
+                  <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
+                </button>
+              </form>
             {%  endif %}
-            <button style="cursor:pointer;">I will do this!
-            <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
-            </button></a>
           {% else %}
             <b>You already have 5 active commitments. <br/>
             You can make this commitment once any of your active commitments are completed.
@@ -250,7 +274,7 @@
               {# <a href="{% url activity_add_task task.type task.slug %}"> #}
               <form action='{% url activity_add_task task.type task.slug %}' method='post'>
                 {% csrf_token %}
-                <button style="cursor:pointer;" onclick='javascript:this.form.submit()'>
+                <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>
                   I want to sign up
                   <img src="{{ STATIC_URL }}/css/default/images/right.png" width="50" align="center"/>
                 </button>
