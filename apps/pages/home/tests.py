@@ -134,6 +134,20 @@ class SetupWizardFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertEqual(len(response.context['form'].errors), 1, 'Using a bad email should insert an error.')
     self.assertTemplateUsed(response, "home/first-login/referral.html")
+    
+    # Staff user should not be able to be referred.
+    user2.is_staff = True
+    user2.save()
+    
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': user2.email,
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using an admin as a referrer should raise an error.')
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    
+    user2.is_staff = False
+    user2.save()
         
     # Test no referrer.
     response = self.client.post(reverse('setup_referral'), {

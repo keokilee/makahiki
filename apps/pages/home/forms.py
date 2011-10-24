@@ -38,7 +38,7 @@ class ReferralForm(forms.Form):
     if email:
       # Check if user is in the system.
       try:
-        user = User.objects.get(email=email)
+        user = User.objects.get(email=email, is_staff=False)
       except User.DoesNotExist:
         raise forms.ValidationError("Sorry, but that user is not a part of the competition.")
     return email
