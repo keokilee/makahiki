@@ -418,6 +418,9 @@ def __drop_activity(request, activity):
     response.set_cookie("task_notify", notification)
     return response
 
+  # drop non existing activity results in redirecting to the task page
+  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
