@@ -31,4 +31,7 @@ class RaffleDeadlineAdmin(admin.ModelAdmin):
     
 admin.site.register(RaffleDeadline, RaffleDeadlineAdmin)
 
-admin.site.register(RafflePrize)
+class RafflePrizeAdmin(admin.ModelAdmin):
+  list_display = ('title', 'deadline', 'value')
+  
+admin.site.register(RafflePrize, RafflePrizeAdmin)
