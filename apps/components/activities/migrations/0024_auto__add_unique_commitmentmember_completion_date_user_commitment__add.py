@@ -7,13 +7,18 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+        # Adding unique constraint on 'CommitmentMember', fields ['completion_date', 'user', 'commitment']
+        db.create_unique('activities_commitmentmember', ['completion_date', 'user_id', 'commitment_id'])
+
         # Adding unique constraint on 'ActivityMember', fields ['user', 'activity']
         db.create_unique('activities_activitymember', ['user_id', 'activity_id'])
 
 
     def backwards(self, orm):
-        
+        pass
+        # Removing unique constraint on 'CommitmentMember', fields ['completion_date', 'user', 'commitment']
+        db.delete_unique('activities_commitmentmember', ['completion_date', 'user_id', 'commitment_id'])
+
         # Removing unique constraint on 'ActivityMember', fields ['user', 'activity']
         db.delete_unique('activities_activitymember', ['user_id', 'activity_id'])
 
@@ -82,7 +87,7 @@ class Migration(SchemaMigration):
             'users': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'through': "orm['activities.CommitmentMember']", 'symmetrical': 'False'})
         },
         'activities.commitmentmember': {
-            'Meta': {'object_name': 'CommitmentMember'},
+            'Meta': {'unique_together': "(('user', 'commitment', 'completion_date'),)", 'object_name': 'CommitmentMember'},
             'award_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'comment': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'commitment': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['activities.Commitment']"}),

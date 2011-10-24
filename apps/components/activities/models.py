@@ -326,6 +326,9 @@ class CommitmentMember(CommonBase):
   social_email2 = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
   objects = CommitmentMemberManager()
   
+  class Meta:
+    unique_together = ('user', 'commitment', 'completion_date')
+  
   def __unicode__(self):
     return "%s : %s" % (self.commitment.title, self.user.username)
     
