@@ -25,7 +25,7 @@ def home(request):
 def points_scoreboard(request):
   profiles = Profile.objects.filter(
     points__gt=0,
-  ).order_by("-points", "-last_awarded_submission").values("name", "points")
+  ).order_by("-points", "-last_awarded_submission").values("name", "points", 'user__username')
   
   canopy_members = Profile.objects.filter(
       canopy_member=True,
@@ -39,7 +39,7 @@ def points_scoreboard(request):
     round_individuals[round_name] = ScoreboardEntry.objects.filter(
         points__gt=0,
         round_name=round_name,
-    ).order_by("-points", "-last_awarded_submission").values("profile__name", "points")
+    ).order_by("-points", "-last_awarded_submission").values("profile__name", "points", 'profile__user__username')
     
     round_floors[round_name] = Floor.floor_points_leaders(
         num_results=20, 
