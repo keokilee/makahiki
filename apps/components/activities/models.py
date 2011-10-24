@@ -474,6 +474,9 @@ class ActivityMember(CommonActivityUser):
   )
   notifications = generic.GenericRelation(UserNotification, editable=False)
   
+  class Meta:
+    unique_together = ('user', 'activity',)
+  
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
 
