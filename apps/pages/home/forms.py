@@ -12,6 +12,7 @@ class FacebookForm(forms.Form):
 class ReferralForm(forms.Form):
   referrer_email = forms.EmailField(
         required=False,
+        label='Referrer Email (Optional)'
   )
   
   def __init__(self, *args, **kwargs):  
