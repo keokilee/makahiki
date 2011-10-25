@@ -70,6 +70,7 @@ def remove_ticket(request, prize_id):
 def raffle_form(request, prize_id):
   prize = get_object_or_404(RafflePrize, pk=prize_id)
   return render_to_response('view_prizes/form.txt', {
+      'raffle': True,
       'prize': prize,
       'round': prize.deadline.round_name
   }, mimetype='text/plain')

@@ -39,6 +39,7 @@ class Command(management.base.BaseCommand):
     for prize in prizes:
       # Render form
       contents = render_to_string('view_prizes/form.txt', {
+          'raffle': True,
           'prize': prize,
           'round': round_name
       })
@@ -61,6 +62,7 @@ class Command(management.base.BaseCommand):
           leader = floor.points_leaders(1, round_name)[0].user
           prize.winner = leader
           contents = render_to_string('view_prizes/form.txt', {
+              'raffle': False,
               'prize':  prize,
               'round': round_name
           })
@@ -73,6 +75,7 @@ class Command(management.base.BaseCommand):
         leader = Profile.points_leaders(1, round_name)[0].user
         prize.winner = leader
         contents = render_to_string('view_prizes/form.txt', {
+            'raffle': False,
             'prize':  prize,
             'round': round_name
         })
