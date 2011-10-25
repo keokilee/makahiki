@@ -1,0 +1,15 @@
+{{round}} Kukui Cup Prize Winner
+
+I, {{prize.winner.first_name}} {{prize.winner.last_name}}, acknowledge receipt of the prize '{{prize.title}}' for participation in {{round}} of the 2011 Kukui Cup.  
+
+
+Signed: _______________________________
+
+
+Date: _________________________________
+
+
+Address:  ______________________________
+
+
+Phone: ________________________________

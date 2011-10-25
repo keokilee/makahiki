@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import never_cache
 
@@ -64,6 +64,15 @@ def remove_ticket(request, prize_id):
       return HttpResponseRedirect(reverse("prizes_index"))
     
   raise Http404
+  
+@never_cache
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def raffle_form(request, prize_id):
+  prize = get_object_or_404(RafflePrize, pk=prize_id)
+  return render_to_response('view_prizes/form.txt', {
+      'prize': prize,
+      'round': prize.deadline.round_name
+  }, mimetype='text/plain')
   
 def _get_prizes(floor):
   """
