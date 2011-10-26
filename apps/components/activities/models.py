@@ -561,18 +561,23 @@ class ActivityMember(CommonActivityUser):
     ## reverse event/excursion noshow penalty
     if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
         message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
-        profile.add_points(4, self.submission_date, message, self)
+        profile.add_points(4, self.award_date, message, self)
 
     if not self.submission_date:
       # This may happen if it is an item with a confirmation code.
       self.submission_date = self.award_date
+
+    if self.activity.type == "event" or self.activity.type=="excursion":
+      point_transaction_date = self.award_date
+    else:
+      point_transaction_date = self.submission_date
     
     title = "%s%s: %s" % (
         'Canopy ' if self.activity.is_canopy else '',
         self.activity.type.capitalize(), 
         self.activity.title
     )
-    profile.add_points(points, self.submission_date, title, self)
+    profile.add_points(points, point_transaction_date, title, self)
 
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
@@ -581,7 +586,7 @@ class ActivityMember(CommonActivityUser):
       ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
       for m in ref_members:
         if m.approval_status == 'approved':
-          profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+          profile.add_points(self.activity.social_bonus, point_transaction_date, social_title)
       
     profile.save()
     
@@ -590,7 +595,7 @@ class ActivityMember(CommonActivityUser):
     for m in ref_members:
       if m.approval_status == 'approved':
         ref_profile = m.user.get_profile()
-        ref_profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+        ref_profile.add_points(self.activity.social_bonus, point_transaction_date, social_title)
         ref_profile.save()
 
     ## canopy group activity need to create multiple approved members
