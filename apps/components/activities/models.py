@@ -391,7 +391,7 @@ class CommitmentMember(CommonBase):
         ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment)
         for m in ref_members:
           if m.award_date:
-            profile.add_points(self.commitment.social_bonus, self.award_date, social_message)
+            profile.add_points(self.commitment.social_bonus, self.award_date, social_message, self)
         
       profile.save()
       
@@ -400,7 +400,7 @@ class CommitmentMember(CommonBase):
       for m in ref_members:
         if m.award_date:
           ref_profile = m.user.get_profile()
-          ref_profile.add_points(self.commitment.social_bonus, self.award_date, social_message)
+          ref_profile.add_points(self.commitment.social_bonus, self.award_date, social_message, self)
           ref_profile.save()
       
       if profile.floor:
@@ -586,7 +586,7 @@ class ActivityMember(CommonActivityUser):
       ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
       for m in ref_members:
         if m.approval_status == 'approved':
-          profile.add_points(self.activity.social_bonus, point_transaction_date, social_title)
+          profile.add_points(self.activity.social_bonus, point_transaction_date, social_title, self)
       
     profile.save()
     
@@ -595,7 +595,7 @@ class ActivityMember(CommonActivityUser):
     for m in ref_members:
       if m.approval_status == 'approved':
         ref_profile = m.user.get_profile()
-        ref_profile.add_points(self.activity.social_bonus, point_transaction_date, social_title)
+        ref_profile.add_points(self.activity.social_bonus, point_transaction_date, social_title, self)
         ref_profile.save()
 
     ## canopy group activity need to create multiple approved members
