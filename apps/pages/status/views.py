@@ -46,8 +46,10 @@ def points_scoreboard(request):
         round_name=round_name
     )
     
-  # Calculate participation.
-  floor_participation = Floor.objects.filter(profile__setup_complete=True).annotate(user_count=Count('profile')).order_by('-user_count')
+  # Calculate active participation.
+  floor_participation = Floor.objects.filter(profile__points__gte=50).annotate(user_count=Count('profile')).order_by('-user_count')
+  for floor in floor_participation:
+    floor.active_participation = (floor.user_count * 100) / floor.profile_set.count()
   
   return render_to_response("status/points.html", {
       "profiles": profiles,

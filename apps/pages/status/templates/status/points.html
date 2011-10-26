@@ -125,7 +125,7 @@
   
   <div class="content-box" style="float: left; margin: 15px">
     <div class="content-box-title">
-      Floor Participation
+      Active Participation
     </div>
     <div class="content-body">
       <table style='padding: 15px; width: 300px'>
@@ -138,7 +138,7 @@
         <tr>
           <td>{{forloop.counter}}</td>
           <td>{{floor}}</td>
-          <td>{{floor.user_count}}</td>
+          <td>{{floor.active_participation}}%</td>
         </tr>
         {% endfor %}
       </table>
