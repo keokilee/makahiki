@@ -46,12 +46,16 @@ def points_scoreboard(request):
         round_name=round_name
     )
     
+  # Calculate participation.
+  floor_participation = Floor.objects.filter(profile__setup_complete=True).annotate(user_count=Count('profile')).order_by('-user_count')
+  
   return render_to_response("status/points.html", {
       "profiles": profiles,
       "canopy_members": canopy_members,
       "round_individuals": round_individuals,
       "floor_standings": floor_standings,
       "round_floors": round_floors,
+      "floor_participation": floor_participation,
   }, context_instance=RequestContext(request))
   
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
