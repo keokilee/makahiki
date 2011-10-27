@@ -122,6 +122,28 @@
       </table>
     </div>
   </div>
+  
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Active Participation
+    </div>
+    <div class="content-body">
+      <table style='padding: 15px; width: 300px'>
+        <tr>
+          <th>Rank</th>
+          <th>{{FLOOR_IDENTIFIER}}</th>
+          <th>Participants</th>
+        </tr>
+        {% for floor in floor_participation %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{floor}}</td>
+          <td>{{floor.active_participation}}%</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
   <br style="clear: both"/>
 </div>
 {% endblock %}
