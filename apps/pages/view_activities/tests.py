@@ -79,7 +79,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     profile.save()
     
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response, "Round 1 Points Scoreboard", count=1,
+    self.assertContains(response, "Round 1 Scoreboard", count=1,
         msg_prefix="This should display the current round scoreboard.")
     self.assertEqual(response.context["floor_standings"][0], profile.floor,
         "The user's floor should be leading.")
@@ -110,7 +110,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     settings.COMPETITION_ROUNDS = {}
     
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response, "Overall Points Scoreboard", count=1,
+    self.assertContains(response, "Overall Scoreboard", count=1,
         msg_prefix="This should display the overall scoreboard.")
     self.assertEqual(response.context["floor_standings"][0].points, 20,
         "The user's floor should have 20 points overall.")

@@ -60,6 +60,14 @@ def index(request):
  
   form = EventCodeForm()
   
+  # Calculate active participation.
+  floor_participation = Floor.objects.filter(profile__points__gte=50).annotate(
+      user_count=Count('profile'),
+  ).order_by('-user_count').select_related('dorm')[:10]
+  
+  for f in floor_participation:
+    f.active_participation = (f.user_count * 100) / f.profile_set.count()
+    
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
@@ -69,6 +77,7 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
+    "floor_participation": floor_participation,
     "hide_about": hide_about,
     "event_form": form,
   }, context_instance=RequestContext(request))
