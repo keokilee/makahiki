@@ -38,13 +38,13 @@
             email #2 : {{ form.social_email2 }}
         {% endif %}
         <div {% get_id_and_classes "activity-task-form-content-button" %}>
-          <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>Submit</button>
+          <button id = "submit_form_button1" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button1").attr("disabled", "disabled");'>Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
         </div>
      {% else %}
         You will earn 2 {% if task.is_canopy %} Karma {% endif %} points for signing up for the {{task.type}}.
          <div {% get_id_and_classes "activity-task-form-content-button" %}>
-          <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>OK</button>
+          <button id = "submit_form_button2" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button2").attr("disabled", "disabled");'>OK</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
          </div>
       {% endif %}
@@ -73,7 +73,7 @@
               email #2 : {{ form.social_email2 }}
          {% endif %}
          <div {% get_id_and_classes "activity-task-form-content-button" %}>
-            <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>OK</button>
+            <button id = "submit_form_button3" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button3").attr("disabled", "disabled");'>OK</button>
          </div>
      {% else %}
          Thank you for the commitment.
@@ -96,7 +96,7 @@
               email #2 : {{ form.social_email2 }}
          {% endif %}
          <div {% get_id_and_classes "activity-task-form-content-button" %}>
-              <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>OK</button>
+              <button id = "submit_form_button4" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button4").attr("disabled", "disabled");'>OK</button>
          </div>
      {% endif %}
    {% endif %}
@@ -148,7 +148,7 @@
         email #2 : {{ form.social_email2 }}
     {% endif %}
     <div {% get_id_and_classes "activity-task-form-content-button" %}>
-        <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>Submit</button>
+        <button id = "submit_form_button5" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button5").attr("disabled", "disabled");'>Submit</button>
         <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
     </div>
   {% endif %}
@@ -162,7 +162,7 @@
      <p/>
      {% endfor %}
       <div {% get_id_and_classes "activity-task-form-content-button" %}>
-          <button id = "submit_button" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_button").attr("disabled", "disabled");'>Submit</button>
+          <button id = "submit_form_button6" style="cursor:pointer;" onclick='javascript:this.form.submit();$("#submit_form_button6").attr("disabled", "disabled");'>Submit</button>
           <button style="cursor:pointer;" onclick='$("#setup-dialog").dialog("close"); return false;'>Cancel</button>
       </div>
    {% endif %}

@@ -284,7 +284,12 @@ def __add_commitment(request, commitment):
   # now we either have a valid form or a GET
   if is_pending_commitment(user, commitment):
      if form and can_complete_commitments(user, commitment):
-       member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+       try:
+         member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+       except:
+         # ignore the race condition
+         return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+         
        #commitment end, award full point
        member.award_date = datetime.datetime.today()
 
@@ -305,7 +310,6 @@ def __add_commitment(request, commitment):
         member.social_email = form.cleaned_data["social_email"]
         member.social_email2 = form.cleaned_data["social_email2"]
 
-     member.save()
      try:  
        member.save()
      except IntegrityError:

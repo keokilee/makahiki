@@ -399,6 +399,9 @@ class PointsTransaction(models.Model):
   object_id = models.PositiveIntegerField(null=True)
   content_type = models.ForeignKey(ContentType, null=True)
   related_object = generic.GenericForeignKey("content_type", "object_id") 
+
+  class Meta:
+    unique_together = ('user', 'message', 'object_id')
   
   @staticmethod
   def get_transaction_for_object(related_object, points):
