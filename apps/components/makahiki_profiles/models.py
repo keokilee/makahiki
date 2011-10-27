@@ -401,7 +401,7 @@ class PointsTransaction(models.Model):
   related_object = generic.GenericForeignKey("content_type", "object_id") 
 
   class Meta:
-    unique_together = ('user', 'message', 'object_id')
+    unique_together = ('user', 'message', 'content_type', 'object_id')
   
   @staticmethod
   def get_transaction_for_object(related_object, points):
