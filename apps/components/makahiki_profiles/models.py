@@ -374,9 +374,7 @@ class Profile(models.Model):
     super(Profile, self).save(*args, **kwargs)
     
     if referrer:
-      print referrer.points
       referrer.add_points(10, datetime.datetime.today(), 'Referred %s' % self.name, referrer)
-      print referrer.points
       referrer.save()
       
   class Meta:
