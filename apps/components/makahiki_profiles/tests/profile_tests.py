@@ -145,6 +145,35 @@ class ProfileUnitTests(TestCase):
     
     self.assertEqual(points1 + 10, Profile.objects.get(user=user1).points, 'User 1 should not be given the referral bonus again.')
     
+  def testReferralLoop(self):
+    user1 = User.objects.create_user("test_user", 'user@test.com', password="changeme")
+    user1.save()
+    user2 = User.objects.create_user('test_user2', 'user2@test.com', password="changeme")
+    user2.save()
+    
+    profile1 = user1.get_profile()
+    profile1.setup_profile = True
+    profile1.setup_complete = True
+    profile1.referring_user = user2
+    profile1.add_points(25, datetime.datetime.today(), 'test 1')
+    profile1.save()
+    
+    profile2 = user2.get_profile()
+    profile2.setup_profile = True
+    profile2.setup_complete = True
+    profile2.referring_user = user1
+    profile2.add_points(25, datetime.datetime.today(), 'test 1')
+    profile2.save()
+    
+    profile1.add_points(10, datetime.datetime.today(), 'test 1')
+    profile1.save()
+    
+    # for log in user1.pointstransaction_set.all():
+    #   print log.message
+      
+    self.assertEqual(Profile.objects.get(user=user1).points, 55)
+    self.assertEqual(Profile.objects.get(user=user2).points, 45)
+    
   def testFloorRankWithPoints(self):
     """Tests that the floor_rank method accurately computes the rank based on points."""
     user = User(username="test_user", password="changeme")

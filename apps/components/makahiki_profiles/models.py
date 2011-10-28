@@ -365,17 +365,20 @@ class Profile(models.Model):
     Custom save method to check for referral bonus.
     """
     has_referral = self.referring_user is not None and not self.referrer_awarded
+    referrer = None
     if has_referral and self.points >= 30:
-      referrer = Profile.objects.get(user=self.referring_user)
-      self.add_points(10, datetime.datetime.today(), 'Referred by %s' % referrer.name, self) 
       self.referrer_awarded = True
-      
-      
-      referrer.add_points(10, datetime.datetime.today(), 'Referred %s' % self.name, referrer)
-      referrer.save()
+      referrer = Profile.objects.get(user=self.referring_user)
+      self.add_points(10, datetime.datetime.today(), 'Referred by %s' % referrer.name, self)
       
     super(Profile, self).save(*args, **kwargs)
     
+    if referrer:
+      print referrer.points
+      referrer.add_points(10, datetime.datetime.today(), 'Referred %s' % self.name, referrer)
+      print referrer.points
+      referrer.save()
+      
   class Meta:
     verbose_name = _('profile')
     verbose_name_plural = _('profiles')
