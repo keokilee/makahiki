@@ -344,33 +344,32 @@ def __add_commitment(request, commitment):
 def __drop_commitment(request, commitment):
   """drop the commitment."""
   user = request.user
-  floor = user.get_profile().floor
 
   if commitment in user.commitment_set.all():
     # User can drop this commitment.
     try:
       member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+    
+      #decrease sign up point
+      message = "Commitment: %s (Drop)" % (commitment.title)
+      value = 2
+      user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+      user.get_profile().save()
+
       member.delete()
+
+      response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+      notification = "Commitment dropped. you lose " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
+      return response
       
     except ObjectDoesNotExist:
-      messages.error = 'You are not participating in this commitment.'
-      return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+      pass
 
-    #decrease sign up point
-    message = "Commitment: %s (Drop)" % (commitment.title)
-    value = 2
-    user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
-    user.get_profile().save()
-
-    response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
-    notification = "Commitment dropped. you lose " + str(value) + " points."
-    response.set_cookie("task_notify", notification)
-    return response
-    
-  # Fall through.  If the user is not participating in this commitment, take them back to the commitment page.
+  # Fall through, the user is not participating in this commitment
   messages.error = 'It appears that you are not participating in this commitment.'
+  # Take them back to the commitment page.
   return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
-
 
 def __add_activity(request, activity):
   """Commit the current user to the activity."""
@@ -433,35 +432,31 @@ def __add_activity(request, activity):
 def __drop_activity(request, activity):
   """drop the current user from the activity."""
   user = request.user
-  floor = user.get_profile().floor
-  
+
   # Search for an existing activity for this user
   if activity in user.activity_set.all():
     try:
       activity_member = user.activitymember_set.get(activity=activity)
+
+      #decrease point
+      message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
+      user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
+      user.get_profile().save()
+      value = 2
+
       activity_member.delete()
+
+      response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+      notification = "Removed from signup list. you lose " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
+      return response
+
     except ObjectDoesNotExist:
-      messages.error = 'It appears that you are not participating in this activity.'
-      return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
-        
-    #decrease point
-    message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
-    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
-    user.get_profile().save()
-    value = 2
-    
-    response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
-    notification = "Removed from signup list. you lose " + str(value) + " points."
-    response.set_cookie("task_notify", notification)
-    return response
-    
+      pass
+
   # Fall through.  If they are already not participating, then they should be taken to the task page.
   messages.error = 'It appears that you are not participating in this activity.'
   return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
-
-  # drop non existing activity results in redirecting to the task page
-  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
-
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
