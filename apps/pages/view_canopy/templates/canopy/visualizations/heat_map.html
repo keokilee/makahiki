@@ -10,7 +10,7 @@
               {%  if user.get_profile.floor.dorm == dorm %} checked="checked" {% endif %}
                  onchange="updatePeriod();"/> {{ dorm.name }}
 
-            {% for lounge in dorm.floor_set.all %}
+            {% for lounge in dorm.floors %}
                 <input id="{{ lounge.floor_identifier}}" name="heatmap-lounge-{{ dorm.name }}" type="hidden"/>
             {% endfor %}
 
@@ -23,8 +23,8 @@
         Time :
         <input type="radio" name="period" value="last24hours" checked="checked" onchange="updatePeriod();" />
           last 24 hours 
-        <input type="radio" name="period" value="last21days" onchange="updatePeriod();"/>
-          last 21 days
+        <input type="radio" name="period" value="last14days" onchange="updatePeriod();"/>
+          last 14 days
       </div>
 
       
