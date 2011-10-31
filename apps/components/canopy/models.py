@@ -2,6 +2,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.db.models import Q
 
 from components.activities.models import ActivityBase, ActivityMember
 
@@ -15,7 +16,7 @@ class Mission(models.Model):
       help_text="Check this box if this is a group mission."
   )
   users = models.ManyToManyField(User, through='MissionMember', editable=False)
-  activities = models.ManyToManyField(ActivityBase, related_name="missionactivities")
+  activities = models.ManyToManyField(ActivityBase)
   created_at = models.DateTimeField(auto_now_add=True, editable=False)
   updated_at = models.DateTimeField(auto_now=True, editable=False)
   
@@ -69,6 +70,39 @@ class MissionMember(models.Model):
   
   class Meta:
     unique_together = ("user", "mission")
+    
+  def save(self, *args, **kwargs):
+    """
+    Override for save function to find activity members where this user is specified.
+    """
+    if not self.completed:
+      # Find any activity member objects for this mission that reference this user's email.
+      # User should not already be participating in this activity.
+      members = ActivityMember.objects.filter(
+          Q(social_email=self.user.email) | Q(social_email2=self.user.email),
+          activity__mission=self.mission,
+          approval_status='approved',
+      ).exclude(
+          user=self.user,
+      )
+      
+      user_activities = self.user.activity_set.all()
+      
+      for member in members:
+        if member.activity not in user_activities:
+          new_member = ActivityMember.objects.create(user=self.user, activity=member.activity,)
+          new_member.question = member.question
+          new_member.response = member.response
+          new_member.image = member.image
+          new_member.points_awarded = member.points_awarded
+          new_member.submission_date = member.submission_date
+
+          new_member.approval_status = 'approved'
+          new_member.save()
+          
+          user_activities = self.user.activity_set.all()
+      
+    super(MissionMember, self).save(*args, **kwargs)
   
 @receiver(post_save, sender=ActivityMember)
 def mission_activity_handler(sender, instance=None, **kwargs):

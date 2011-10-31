@@ -600,20 +600,39 @@ class ActivityMember(CommonActivityUser):
 
     ## canopy group activity need to create multiple approved members
     if self.activity.is_group:
-        if self.social_email:
-            group_user = User.objects.get(email=self.social_email)
-            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
-                                                 response=self.response, admin_comment=self.admin_comment,
-                                                 image=self.image, points_awarded=self.points_awarded,
-                                                 approval_status=self.approval_status, award_date=self.award_date,
-                                                 submission_date=self.submission_date)
-        if self.social_email2:
-            group_user = User.objects.get(email=self.social_email2)
-            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
-                                                 response=self.response, admin_comment=self.admin_comment,
-                                                 image=self.image, points_awarded=self.points_awarded,
-                                                 approval_status=self.approval_status, award_date=self.award_date,
-                                                 submission_date=self.submission_date)
+      # Assumption: given activity only belongs to one mission, so we only have to check that a group user
+      # is participating in that mission.
+      mission = self.activity.mission_set.all()[0]
+      if self.social_email:
+        group_user = User.objects.get(email=self.social_email)
+        if mission in group_user.mission_set.filter(missionmember__completed=False):
+          member, created = ActivityMember.objects.get_or_create(user=group_user, activity=self.activity,)
+          if created:
+            member.question = self.question
+            member.response = self.response
+            member.image = self.image
+            member.points_awarded = self.points_awarded
+            member.submission_date = self.submission_date
+
+          if member.approval_status != 'approved':
+            member.approval_status = 'approved'
+            member.save()
+          
+      if self.social_email2:
+        group_user = User.objects.get(email=self.social_email2)
+        if mission in group_user.mission_set.filter(missionmember__completed=False):
+          member, created = ActivityMember.objects.get_or_create(user=group_user, activity=self.activity,)
+          if created:
+            member.question = self.question
+            member.response = self.response
+            member.image = self.image
+            member.points_awarded = self.points_awarded
+            member.submission_date = self.submission_date
+
+          if member.approval_status != 'approved':
+            member.approval_status = 'approved'
+            member.save()
+            
     if profile.floor and not self.activity.is_canopy:
       # Post on the user's floor wall.
       message = " has been awarded %d points for completing \"%s\"." % (
@@ -622,6 +641,7 @@ class ActivityMember(CommonActivityUser):
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
+      
     elif self.activity.is_canopy:
       from components.canopy.models import Post as CanopyPost
       
