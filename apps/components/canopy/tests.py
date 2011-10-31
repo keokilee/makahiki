@@ -105,7 +105,9 @@ class MissionTest(TestCase):
     profile1 = Profile.objects.get(user=user1)
     profile2 = Profile.objects.get(user=user2)
     self.assertEqual(profile1.canopy_karma, 10, 'Group member should be awarded 10 karma.')
+    self.assertTrue(MissionMember.objects.get(user=user1, mission=mission).completed, "Mission should now be completed.")
     self.assertEqual(profile.canopy_karma, 10, 'Group member should be awarded 10 karma.')
+    self.assertTrue(MissionMember.objects.get(user=user, mission=mission).completed, "Mission should now be completed.")
     self.assertEqual(profile2.canopy_karma, 0, 'Group member not participating in the mission should be awarded 0 karma.')
     
     # If group user is not participating in this mission, ensure they get karma points when they do participate.
@@ -113,6 +115,7 @@ class MissionTest(TestCase):
     
     profile2 = Profile.objects.get(user=user2)
     self.assertEqual(profile2.canopy_karma, 10, 'New group member should now be awarded 10 karma.')
+    self.assertTrue(MissionMember.objects.get(user=user2, mission=mission).completed, "Mission should now be completed.")
     
   def testSoloMissionCompletion(self):
     """

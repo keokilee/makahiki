@@ -75,6 +75,9 @@ class MissionMember(models.Model):
     """
     Override for save function to find activity members where this user is specified.
     """
+    super(MissionMember, self).save(*args, **kwargs)
+    
+    # We check this after saving because this process may mark the mission as completed.
     if not self.completed:
       # Find any activity member objects for this mission that reference this user's email.
       # User should not already be participating in this activity.
@@ -101,8 +104,6 @@ class MissionMember(models.Model):
           new_member.save()
           
           user_activities = self.user.activity_set.all()
-      
-    super(MissionMember, self).save(*args, **kwargs)
   
 @receiver(post_save, sender=ActivityMember)
 def mission_activity_handler(sender, instance=None, **kwargs):
