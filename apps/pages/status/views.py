@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.conf import settings
-from django.db.models import Count, F
+from django.db.models import Count, F, Min
 
 from components.activities import get_popular_activities, get_popular_commitments, get_popular_events
 from components.activities.models import ActivityBase, Activity, ActivityMember
@@ -78,9 +78,24 @@ def energy_scoreboard(request):
     
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
 def users(request):
-  users = Profile.objects.filter(last_visit_date=datetime.datetime.today())
+  todays_users = Profile.objects.filter(last_visit_date=datetime.datetime.today())
+  
+  # Approximate logins by their first points transaction.
+  start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
+  today = datetime.datetime.today()
+  
+  users = User.objects.annotate(login_date=Min('pointstransaction__submission_date'))
+  logins = []
+  while start <= today:
+    result = {}
+    result['date'] = start.strftime("%m/%d")
+    result['logins'] = users.filter(login_date__gte=start, login_date__lt=start + datetime.timedelta(days=1)).count()
+    logins.append(result)
+    start += datetime.timedelta(days=1)
+  
   return render_to_response("status/users.html", {
-      "users": users,
+      "todays_users": todays_users,
+      'logins': logins,
   }, context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
