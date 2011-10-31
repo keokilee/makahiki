@@ -1,6 +1,10 @@
+import re
+
 from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
+
+from components.makahiki_profiles.models import Profile
   
 class FacebookForm(forms.Form):
   can_post = forms.BooleanField(
@@ -52,17 +56,25 @@ class ProfileForm(forms.Form):
   use_fb_photo = forms.BooleanField(required=False)
   avatar = forms.ImageField(required=False)
   
-  # def clean_display_name(self):
-  #     """
-  #     Validates the display name of the user.
-  #     
-  #     This needs to be implemented since some DBs (SQLite) do not have the ability to add unique constraints.
-  #     """
-  #     data = self.cleaned_data['display_name']
-  #     try:
-  #       profile = Profile.objects.get(name=data.strip())
-  #       raise forms.ValidationError("'%s' is taken, please enter another name." % data)
-  #     except Profile.DoesNotExist:
-  #       pass
-  #       
-  #     return data
+  def __init__(self, *args, **kwargs):  
+    """
+    Override for init to take a user argument.
+    """
+    self.user = kwargs.pop('user', None)  
+    super(ProfileForm, self).__init__(*args, **kwargs)
+  
+  def clean_display_name(self):
+    name = self.cleaned_data['display_name'].strip()
+    # Remove extra whitespace from the name.
+    spaces = re.compile(r'\s+')
+    name = spaces.sub(' ', name)
+    
+    # Check for name that is just whitespace.
+    if name == '':
+      raise forms.ValidationError('This field is required')
+      
+    # Check for duplicate name
+    if Profile.objects.exclude(user=self.user).filter(name=name).count() > 0:
+      raise forms.ValidationError("%s is taken.  Please use another name.")
+      
+    return name

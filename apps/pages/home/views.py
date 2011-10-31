@@ -177,7 +177,7 @@ def setup_profile(request):
     
   # Fields with file uploads are not AJAX requests.
   if request.method == "POST":
-    form = ProfileForm(request.POST)
+    form = ProfileForm(request.POST, user=request.user)
     profile = request.user.get_profile()
     
     # print request
@@ -186,11 +186,8 @@ def setup_profile(request):
       if not profile.setup_profile:
         profile.setup_profile = True
         profile.add_points(5, datetime.datetime.today(), "Set up profile")
-      try:
-        profile.save()
-      except IntegrityError:
-        form.errors.update({"display_name": "'%s' is taken, please enter another name." % profile.name})
-        return _get_profile_form(request, form=form, non_xhr=True)
+      
+      profile.save()
       
       if 'avatar' in request.FILES:
         path = avatar_file_path(user=request.user, 
