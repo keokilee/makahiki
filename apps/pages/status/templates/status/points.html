@@ -144,6 +144,28 @@
       </table>
     </div>
   </div>
+  
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Referrals
+    </div>
+    <div class="content-body">
+      <table style='padding: 15px; width: 300px'>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>Referrals</th>
+        </tr>
+        {% for item in referrals|dictsortreversed:'referrals' %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{item.referring_user__profile__name}} ({{item.referring_user__username}})</td>
+          <td>{{item.referrals}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
   <br style="clear: both"/>
 </div>
 {% endblock %}

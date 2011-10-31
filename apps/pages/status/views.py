@@ -33,6 +33,13 @@ def points_scoreboard(request):
   
   floor_standings = Floor.floor_points_leaders(num_results=20)
   
+  # Find referrals.
+  referrals = Profile.objects.filter(
+      referring_user__isnull=False,
+  ).values('referring_user__profile__name', 'referring_user__username').annotate(
+      referrals=Count('referring_user')
+  )
+  
   round_individuals = {}
   round_floors = {}
   for round_name in settings.COMPETITION_ROUNDS:
@@ -61,6 +68,7 @@ def points_scoreboard(request):
       "floor_standings": floor_standings,
       "round_floors": round_floors,
       "floor_participation": floor_participation,
+      "referrals": referrals,
   }, context_instance=RequestContext(request))
   
 @user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
