@@ -24,6 +24,8 @@ class Command(management.base.BaseCommand):
         # Randomly order the tickets and then pick a random ticket.
         while True:
           tickets = prize.raffleticket_set.order_by("?").all()
+          if tickets.count() == 0:
+            self.stdout.write('No tickets for %s. Skipping.\n' % prize)
           ticket = random.randint(0, tickets.count() - 1)
           user = tickets[ticket].user
           self.stdout.write(str(prize) + ": " + user.username + '\n')

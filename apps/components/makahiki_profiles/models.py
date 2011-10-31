@@ -118,7 +118,7 @@ class Profile(models.Model):
   
   # Check for referrer
   referring_user = models.ForeignKey(User, null=True, blank=True, related_name='referred_profiles')
-  referrer_awarded = models.BooleanField(default=False)
+  referrer_awarded = models.BooleanField(default=False, editable=False)
   
   def __unicode__(self):
       return self.name
