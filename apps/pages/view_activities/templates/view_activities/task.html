@@ -140,8 +140,10 @@
             {% if approval.social_bonus_awarded %}
               <span style="color:orange"> Plus {{task.social_bonus}} social bonus points!</span>
             {% endif %}  
+            {% if not task.is_canopy %}
             <br/>
             You may have unlocked new activities in the smart grid game.
+            {% endif %}
             {% if task.type == "commitment" and can_commit %}
               <br/>
               <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this again!</button></a>
