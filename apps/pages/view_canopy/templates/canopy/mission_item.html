@@ -61,10 +61,12 @@
         <button type="submit" style="margin-right: 20px">Cancel this mission</button>
       </form>
       {% else %}
-      <form action="{% url canopy_mission_accept mission.slug %}" method="POST" style="display: inline">
-        {% csrf_token %}
-        <button type="submit" style="margin-right: 20px">I am up for this mission</button>
-      </form>
+        {% if user not in mission.completed_users %}
+        <form action="{% url canopy_mission_accept mission.slug %}" method="POST" style="display: inline">
+          {% csrf_token %}
+          <button type="submit" style="margin-right: 20px">I am up for this mission</button>
+        </form>
+        {% endif %}
       {# <form action="" method="POST" style="display: inline"> #}
       {#   <button type="submit">I am not interested in this mission</button> #}
       {# </form> #}
