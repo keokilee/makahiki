@@ -190,13 +190,7 @@
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
-              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
-              <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
-                {% csrf_token %}
-                <button id = "submit_button3" style="cursor:pointer;" onclick='$("#submit_button3").attr("disabled", "disabled");javascript:this.form.submit();'>
-                  Drop this commitment
-                </button>
-              </form>
+              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a>
               {% endif %}
              </div>
           {% endif %}         
