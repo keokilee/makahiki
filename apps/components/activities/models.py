@@ -73,7 +73,7 @@ class ConfirmationCode(models.Model):
     header = components[0]
     # Need to see if there are other codes with this header.
     index = 1
-    while ConfirmationCode.objects.filter(code__istartswith=header).count() > 0 and index < len(components):
+    while ConfirmationCode.objects.filter(code__istartswith=header).exclude(activity=activity).count() > 0 and index < len(components):
       header += components[index]
       index += 1
       
