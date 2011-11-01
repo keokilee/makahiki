@@ -607,14 +607,13 @@ class ActivityMember(CommonActivityUser):
         group_user = User.objects.get(email=self.social_email)
         if mission in group_user.mission_set.filter(missionmember__completed=False):
           member, created = ActivityMember.objects.get_or_create(user=group_user, activity=self.activity,)
-          if created:
+
+          if member.approval_status != 'approved':
             member.question = self.question
             member.response = self.response
             member.image = self.image
-            member.points_awarded = self.points_awarded
             member.submission_date = self.submission_date
-
-          if member.approval_status != 'approved':
+            member.points_awarded = self.points_awarded
             member.approval_status = 'approved'
             member.save()
           
