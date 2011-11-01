@@ -117,6 +117,58 @@ class MissionTest(TestCase):
     self.assertEqual(profile2.canopy_karma, 10, 'New group member should now be awarded 10 karma.')
     self.assertTrue(MissionMember.objects.get(user=user2, mission=mission).completed, "Mission should now be completed.")
     
+  def testGroupMissionVariableKarma(self):
+    """
+    Test that karma for a group activity with variable karma points works properly.
+    """
+    user = User.objects.create_user("user", "user@test.com")
+    user1 = User.objects.create_user('user2', 'user2@test.com')
+
+    activity = Activity.objects.create(
+        title="Test activity",
+        slug="test-activity",
+        description="Testing!",
+        duration=10,
+        point_range_start=10,
+        point_range_end=50,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="text",
+        type="activity",
+        is_group=True,
+        is_canopy=True,
+    )
+
+    mission = Mission.objects.create(
+        name="Test mission",
+        slug="test-mission",
+        description="A test mission",
+        is_group=True
+    )
+    mission.activities.add(activity)
+    
+    MissionMember.objects.create(user=user, mission=mission)
+    MissionMember.objects.create(user=user1, mission=mission)
+    
+    member = ActivityMember.objects.create(
+        user=user, 
+        activity=activity,
+        approval_status='pending', 
+        social_email=user1.email
+    )
+    member1 = ActivityMember.objects.create(
+        user=user1, 
+        activity=activity, 
+        approval_status='approved', 
+        social_email=user.email, 
+        points_awarded=30,
+    )
+    
+    profile = Profile.objects.get(user=user)
+    profile1 = Profile.objects.get(user=user1)
+    self.assertEqual(profile1.canopy_karma, 30, 'Group member should be awarded 30 karma.')
+    self.assertEqual(profile.canopy_karma, 30, 'Group member should be awarded 30 karma.')
+    
   def testSoloMissionCompletion(self):
     """
     Test that a solo mission is completed when its related activity is completed.
