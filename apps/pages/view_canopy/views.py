@@ -82,6 +82,7 @@ def index(request):
   
 ### User methods -------------------------
 @login_required
+@never_cache
 @can_access_canopy
 def members(request):
   """
