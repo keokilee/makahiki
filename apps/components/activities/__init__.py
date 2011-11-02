@@ -79,8 +79,11 @@ def can_add_commitments(user):
 
 def can_complete_commitments(user, commitment):
   """Determines if the user can complete commitments, assuming there is a pending commitment"""
-  return CommitmentMember.objects.filter(user=user, commitment=commitment, award_date=None)[0].days_left()==0
-
+  try:
+    return CommitmentMember.objects.filter(user=user, commitment=commitment, award_date=None)[0].days_left()==0
+  except:
+    return False
+  
 def get_current_commitments(user):
   """Get the user's incomplete commitments."""
   return user.commitment_set.filter(
