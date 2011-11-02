@@ -57,6 +57,9 @@ def index(request):
   all_lounges = Floor.objects.order_by('floor_identifier').all()
   all_dorms = Dorm.objects.order_by('name').all()
 
+  for dorm in all_dorms:
+      dorm.floors = dorm.floor_set.order_by('-floor_identifier').all()
+      
   if request.user.get_profile().floor:
     dorm_lounges = request.user.get_profile().floor.dorm.floor_set.all()
   else:
@@ -79,6 +82,7 @@ def index(request):
   
 ### User methods -------------------------
 @login_required
+@never_cache
 @can_access_canopy
 def members(request):
   """

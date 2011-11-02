@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import never_cache
 
@@ -19,7 +19,7 @@ def index(request):
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
   raffle_dict = _get_raffle_prizes(request.user)
-    
+  
   return render_to_response("view_prizes/index.html", {
       "prizes": prizes,
       "raffle": raffle_dict,
@@ -35,13 +35,14 @@ def add_ticket(request, prize_id):
     deadline = prize.deadline
     profile = request.user.get_profile()
     in_deadline = (deadline.pub_date <= datetime.datetime.today()) and (deadline.end_date >= datetime.datetime.today())
-    if profile.available_tickets > 0 and in_deadline:
+    print profile.available_tickets()
+    if profile.available_tickets() > 0 and in_deadline:
       prize.add_ticket(request.user)
       return HttpResponseRedirect(reverse("prizes_index"))
     elif not in_deadline:
       messages.error(request, "The raffle for this round is over.")
       return HttpResponseRedirect(reverse("prizes_index"))
-    elif profile.available_tickets <= 0:
+    else:
       messages.error(request, "Sorry, but you do not have any more tickets.")
       return HttpResponseRedirect(reverse("prizes_index"))
     
@@ -58,11 +59,21 @@ def remove_ticket(request, prize_id):
       prize.remove_ticket(request.user)
       return HttpResponseRedirect(reverse("prizes_index"))
 
-    elif profile.available_tickets <= 0:
-      messages.error(request, "Sorry, but you do not have any tickets in this prize.")
+    else:
+      messages.error(request, "Sorry, but you do not have any tickets for this prize.")
       return HttpResponseRedirect(reverse("prizes_index"))
     
   raise Http404
+  
+@never_cache
+@user_passes_test(lambda u: u.is_staff, login_url="/account/cas/login")
+def raffle_form(request, prize_id):
+  prize = get_object_or_404(RafflePrize, pk=prize_id)
+  return render_to_response('view_prizes/form.txt', {
+      'raffle': True,
+      'prize': prize,
+      'round': prize.deadline.round_name
+  }, mimetype='text/plain')
   
 def _get_prizes(floor):
   """
@@ -105,7 +116,7 @@ def _get_raffle_prizes(user):
   Private method to process the raffle half of the prize page.
   Takes a user and returns a dictionary to be used in the template.
   """
-  current_round = get_current_round()
+  current_round = get_current_round() or 'Overall'
   today = datetime.datetime.today()
   
   # Get deadline.

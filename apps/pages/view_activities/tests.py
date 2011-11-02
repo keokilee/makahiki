@@ -28,6 +28,38 @@ class ActivitiesFunctionalTestCase(TestCase):
     response = self.client.get(reverse("activity_index"))
     self.failUnlessEqual(response.status_code, 200)
     
+  def testViewCodesAndRsvps(self):
+    activity = Activity(
+        title="Test activity",
+        slug="testactivity",
+        description="Testing!",
+        duration=10,
+        point_value=10,
+        pub_date=datetime.datetime.today(),
+        expire_date=datetime.datetime.today() + datetime.timedelta(days=7),
+        confirm_type="code",
+        type="event",
+        event_date=datetime.datetime.today() - datetime.timedelta(days=1, seconds=30),
+    )
+    activity.save()
+    ConfirmationCode.generate_codes_for_activity(activity, 5)
+    
+    response = self.client.get(reverse('activity_view_codes', args=(activity.type, activity.slug)))
+    self.failUnlessEqual(response.status_code, 404)
+    response = self.client.get(reverse('activity_view_rsvps', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 404)
+    
+    self.user.is_staff = True
+    self.user.save()
+    
+    response = self.client.get(reverse('activity_view_codes', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, 'view_activities/view_codes.html')
+    
+    response = self.client.get(reverse('activity_view_rsvps', args=(activity.type, activity.slug)))
+    self.assertEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, 'view_activities/rsvps.html')
+    
   def testScoreboard(self):
     """Test that the scoreboard loads current round information."""
     saved_rounds = settings.COMPETITION_ROUNDS
@@ -47,7 +79,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     profile.save()
     
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response, "Round 1 Points Scoreboard", count=1,
+    self.assertContains(response, "Round 1 Scoreboard", count=1,
         msg_prefix="This should display the current round scoreboard.")
     self.assertEqual(response.context["floor_standings"][0], profile.floor,
         "The user's floor should be leading.")
@@ -78,7 +110,7 @@ class ActivitiesFunctionalTestCase(TestCase):
     settings.COMPETITION_ROUNDS = {}
     
     response = self.client.get(reverse("activity_index"))
-    self.assertContains(response, "Overall Points Scoreboard", count=1,
+    self.assertContains(response, "Overall Scoreboard", count=1,
         msg_prefix="This should display the overall scoreboard.")
     self.assertEqual(response.context["floor_standings"][0].points, 20,
         "The user's floor should have 20 points overall.")
@@ -198,7 +230,13 @@ class ActivitiesFunctionalTestCase(TestCase):
     
     response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
     self.failUnlessEqual(response.status_code, 200)
-    
+
+    points = Profile.objects.get(user=self.user).points
+    response = self.client.post(reverse("activity_add_task", args=(commitment.type, commitment.slug,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+
+    self.assertEqual(points, Profile.objects.get(user=self.user).points)
+
   def testMobileRedirect(self):
     """Tests that the mobile redirection and the cookie that forces the desktop version."""
     category = Category.objects.create(

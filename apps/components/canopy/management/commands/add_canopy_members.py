@@ -63,7 +63,7 @@ class Command(management.base.BaseCommand):
           "competition_name": settings.COMPETITION_NAME,
           "domain": current_site.domain,
       })
-
+      self.stdout.write('Sending email to %s\n' % user.email)
       UserNotification.create_email_notification(user.email, subject, message, html_message)
       
     else:

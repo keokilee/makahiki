@@ -106,11 +106,73 @@ class ProfileUnitTests(TestCase):
     
     profile2 = user2.get_profile()
     profile2.name = "Test User"
-    try:
-      profile2.save()
-      self.fail("Exception should be raised.")
-    except IntegrityError:
-      pass
+    self.assertRaises(IntegrityError, profile2.save)
+    
+  def testReferralBonus(self):
+    """
+    Test that the referral bonus is awarded once the referred user reaches 30 points.
+    """
+    user1 = User.objects.create_user("test_user", 'user@test.com', password="changeme")
+    user1.save()
+    user2 = User.objects.create_user('test_user2', 'user2@test.com', password="changeme")
+    user2.save()
+    
+    profile1 = user1.get_profile()
+    profile1.setup_profile = True
+    profile1.setup_complete = True
+    points1 = profile1.points
+    profile1.save()
+    
+    profile2 = user2.get_profile()
+    profile2.setup_profile = True
+    profile2.setup_complete = True
+    profile2.referring_user = user1
+    profile2.add_points(10, datetime.datetime.today(), 'test 1')
+    profile2.save()
+    
+    self.assertEqual(points1, Profile.objects.get(user=user1).points, 'User 1 should not have received any points.')
+    
+    profile2.add_points(20, datetime.datetime.today(), 'Trigger referral bonus.')
+    points2 = profile2.points
+    profile2.save()
+    
+    self.assertEqual(points1 + 10, Profile.objects.get(user=user1).points, 'User 1 should have the referral bonus')
+    self.assertEqual(points2 + 10, Profile.objects.get(user=user2).points, 'User 2 should have the referral bonus')
+    self.assertTrue(Profile.objects.get(user=user2).referrer_awarded, 'User 2 should have the referral awarded.')
+    
+    profile2.add_points(20, datetime.datetime.today(), 'Post test')
+    profile2.save()
+    
+    self.assertEqual(points1 + 10, Profile.objects.get(user=user1).points, 'User 1 should not be given the referral bonus again.')
+    
+  def testReferralLoop(self):
+    user1 = User.objects.create_user("test_user", 'user@test.com', password="changeme")
+    user1.save()
+    user2 = User.objects.create_user('test_user2', 'user2@test.com', password="changeme")
+    user2.save()
+    
+    profile1 = user1.get_profile()
+    profile1.setup_profile = True
+    profile1.setup_complete = True
+    profile1.referring_user = user2
+    profile1.add_points(25, datetime.datetime.today(), 'test 1')
+    profile1.save()
+    
+    profile2 = user2.get_profile()
+    profile2.setup_profile = True
+    profile2.setup_complete = True
+    profile2.referring_user = user1
+    profile2.add_points(25, datetime.datetime.today(), 'test 1')
+    profile2.save()
+    
+    profile1.add_points(10, datetime.datetime.today(), 'test 1')
+    profile1.save()
+    
+    # for log in user1.pointstransaction_set.all():
+    #   print log.message
+      
+    self.assertEqual(Profile.objects.get(user=user1).points, 55)
+    self.assertEqual(Profile.objects.get(user=user2).points, 45)
     
   def testFloorRankWithPoints(self):
     """Tests that the floor_rank method accurately computes the rank based on points."""

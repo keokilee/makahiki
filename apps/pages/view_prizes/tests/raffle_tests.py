@@ -135,6 +135,48 @@ class RafflePrizesTestCase(TestCase):
     self.assertContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
         msg_prefix="There should be an url to remove a ticket.")
         
+  def testAddRemoveWithoutTicket(self):
+    """Test that the user cannot remove a ticket from a prize they did not allocate tickets in."""
+    raffle_prize = RafflePrize(
+        title="Test raffle prize",
+        description="A raffle prize for testing",
+        deadline=self.deadline,
+        value=5,
+    )
+    raffle_prize.save()
+    
+    # Test removing a ticket.
+    response = self.client.post(reverse("raffle_remove_ticket", args=(raffle_prize.id,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "Your total raffle tickets: 0 Allocated right now: 0 Available: 0",
+        msg_prefix="User should have no tickets available")
+    self.assertNotContains(response, reverse("raffle_add_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should not be a url to add a ticket.")
+    self.assertNotContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should not be a url to remove a ticket.")
+        
+  def testAddWithoutTicket(self):
+    """
+    Test that the user cannot add a ticket to a raffle if they don't have any tickets.
+    """
+    raffle_prize = RafflePrize(
+        title="Test raffle prize",
+        description="A raffle prize for testing",
+        deadline=self.deadline,
+        value=5,
+    )
+    raffle_prize.save()
+    
+    # Test adding a ticket.
+    response = self.client.post(reverse("raffle_add_ticket", args=(raffle_prize.id,)), follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, "Your total raffle tickets: 0 Allocated right now: 0 Available: 0",
+        msg_prefix="User should have no tickets available")
+    self.assertNotContains(response, reverse("raffle_add_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should not be a url to add a ticket.")
+    self.assertNotContains(response, reverse("raffle_remove_ticket", args=(raffle_prize.id,)),
+        msg_prefix="There should not be a url to remove a ticket.")
+        
   def testBeforePublication(self):
     """
     Test what happens when the prizes for the round are not published yet.

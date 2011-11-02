@@ -89,7 +89,10 @@ class FloorEnergyGoal(models.Model):
   def save(self, *args, **kwargs):
     """Overrided save method to award the goal's points to members of the floor."""
     goal_completed = self.goal_usage and self.actual_usage and (self.actual_usage <= self.goal_usage)
+    super(FloorEnergyGoal, self).save(*args, **kwargs)
+    
     if self.floor and goal_completed:
+      count = 0
       # Award points to the members of the floor.
       for profile in self.floor.profile_set.all():
         if profile.setup_complete:
@@ -102,6 +105,8 @@ class FloorEnergyGoal(models.Model):
           date = "%d/%d/%d" % (today.month, today.day, today.year)
           profile.add_points(self.GOAL_POINTS, today, "Floor Energy Goal for %s"  % date, self)
           profile.save()
+          count = count + 1
+      print '     %s users in the lounge awarded %s points each' % (count, self.GOAL_POINTS)    
           
       
-    super(FloorEnergyGoal, self).save(*args, **kwargs)
+    

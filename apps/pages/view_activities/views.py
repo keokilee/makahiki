@@ -39,7 +39,7 @@ def index(request):
     events = get_available_events(user)
     # Cache the user_event for a day
     cache.set('user_events-%s' % user.username,
-      events, 60 * 60 * 24)
+      events, 60 * 60)
 
   floor = user.get_profile().floor
   user_floor_standings = None
@@ -60,6 +60,14 @@ def index(request):
  
   form = EventCodeForm()
   
+  # Calculate active participation.
+  floor_participation = Floor.objects.filter(profile__points__gte=50).annotate(
+      user_count=Count('profile'),
+  ).order_by('-user_count').select_related('dorm')[:10]
+  
+  for f in floor_participation:
+    f.active_participation = (f.user_count * 100) / f.profile_set.count()
+    
   return render_to_response("view_activities/index.html", {
     "events": events,
     "profile":user.get_profile(),
@@ -69,6 +77,7 @@ def index(request):
     "floor_standings": floor_standings,
     "profile_standings": profile_standings,
     "user_floor_standings": user_floor_standings,
+    "floor_participation": floor_participation,
     "hide_about": hide_about,
     "event_form": form,
   }, context_instance=RequestContext(request))
@@ -150,7 +159,7 @@ def _dictfetchall(cursor):
 
 @never_cache
 @login_required
-def view_codes(request, slug):
+def view_codes(request, activity_type, slug):
   """View the confirmation codes for a given activity."""
   if not request.user or not request.user.is_staff:
     raise Http404
@@ -160,7 +169,7 @@ def view_codes(request, slug):
   if request.GET.has_key('rows'):
     per_page = int(request.GET['rows'])
     
-  activity = get_object_or_404(Activity, slug=slug)
+  activity = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
   codes = ConfirmationCode.objects.filter(activity=activity)
   if len(codes) == 0:
     raise Http404
@@ -173,7 +182,7 @@ def view_codes(request, slug):
   
 @never_cache
 @login_required
-def view_rsvps(request, slug):
+def view_rsvps(request, activity_type, slug):
   if not request.user or not request.user.is_staff:
     raise Http404
     
@@ -283,8 +292,13 @@ def __add_commitment(request, commitment):
 
   # now we either have a valid form or a GET
   if is_pending_commitment(user, commitment):
-     if form:     
-       member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+     if form and can_complete_commitments(user, commitment):
+       try:
+         member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+       except:
+         # ignore the race condition
+         return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+         
        #commitment end, award full point
        member.award_date = datetime.datetime.today()
 
@@ -305,7 +319,12 @@ def __add_commitment(request, commitment):
         member.social_email = form.cleaned_data["social_email"]
         member.social_email2 = form.cleaned_data["social_email2"]
 
-     member.save()
+     try:  
+       member.save()
+     except IntegrityError:
+       messages.error = 'Sorry, but it appears that you are already participating in this commitment.'
+       return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+       
      # messages.info("You are now committed to \"%s\"" % commitment.title)
 
      #increase the point from signup
@@ -313,6 +332,9 @@ def __add_commitment(request, commitment):
      user.get_profile().add_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
      user.get_profile().save()
      value = 2
+  else:  
+     # user can not add more than 5 commitment
+     return  HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
 
   response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
   notification = "You just earned " + str(value) + " points."
@@ -322,24 +344,32 @@ def __add_commitment(request, commitment):
 def __drop_commitment(request, commitment):
   """drop the commitment."""
   user = request.user
-  floor = user.get_profile().floor
 
   if commitment in user.commitment_set.all():
     # User can drop this commitment.
-    member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
-    member.delete()
+    try:
+      member = user.commitmentmember_set.get(commitment=commitment, award_date=None)
+    
+      #decrease sign up point
+      message = "Commitment: %s (Drop)" % (commitment.title)
+      value = 2
+      user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
+      user.get_profile().save()
 
-    #decrease sign up point
-    message = "Commitment: %s (Drop)" % (commitment.title)
-    value = 2
-    user.get_profile().remove_points(value, datetime.datetime.today() - datetime.timedelta(minutes=1), message, member)
-    user.get_profile().save()
+      member.delete()
 
-    response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
-    notification = "Commitment dropped. you lose " + str(value) + " points."
-    response.set_cookie("task_notify", notification)
-    return response
+      response = HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
+      notification = "Commitment dropped. you lose " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
+      return response
+      
+    except ObjectDoesNotExist:
+      pass
 
+  # Fall through, the user is not participating in this commitment
+  messages.error = 'It appears that you are not participating in this commitment.'
+  # Take them back to the commitment page.
+  return HttpResponseRedirect(reverse("activity_task", args=(commitment.type, commitment.slug,)))
 
 def __add_activity(request, activity):
   """Commit the current user to the activity."""
@@ -361,8 +391,13 @@ def __add_activity(request, activity):
           
           if i == (len(question)-1):
             activity_member.approval_status = "approved"
+          
+          try:  
+            activity_member.save()
+          except IntegrityError:
+            messages.error = 'Sorry, but it appears that you have already added this activity.'
+            return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
             
-          activity_member.save()
           value = activity.point_value
           
       else:   # form not valid
@@ -397,24 +432,31 @@ def __add_activity(request, activity):
 def __drop_activity(request, activity):
   """drop the current user from the activity."""
   user = request.user
-  floor = user.get_profile().floor
-  
+
   # Search for an existing activity for this user
   if activity in user.activity_set.all():
-    activity_member = user.activitymember_set.get(activity=activity)
-    activity_member.delete()
-        
-    #decrease point
-    message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
-    user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
-    user.get_profile().save()
-    value = 2
-    
-    response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
-    notification = "Removed from signup list. you lose " + str(value) + " points."
-    response.set_cookie("task_notify", notification)
-    return response
+    try:
+      activity_member = user.activitymember_set.get(activity=activity)
 
+      #decrease point
+      message = "%s: %s (Drop)" % (activity.type.capitalize(), activity.title)
+      user.get_profile().remove_points(2, datetime.datetime.today() - datetime.timedelta(minutes=1), message, activity_member)
+      user.get_profile().save()
+      value = 2
+
+      activity_member.delete()
+
+      response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+      notification = "Removed from signup list. you lose " + str(value) + " points."
+      response.set_cookie("task_notify", notification)
+      return response
+
+    except ObjectDoesNotExist:
+      pass
+
+  # Fall through.  If they are already not participating, then they should be taken to the task page.
+  messages.error = 'It appears that you are not participating in this activity.'
+  return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
 
 def __request_activity_points(request, activity):
   """Creates a request for points for an activity."""
@@ -478,7 +520,12 @@ def __request_activity_points(request, activity):
         activity_member.approval_status = "pending"
 
       activity_member.social_email = form.cleaned_data["social_email"]
-      activity_member.save()
+      try:  
+        activity_member.save()
+      except IntegrityError:
+        messages.error = 'Sorry, but it appears that you have already added this activity.'
+        return HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
+        
 
       response = HttpResponseRedirect(reverse("activity_task", args=(activity.type, activity.slug,)))
       if value:

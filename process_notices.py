@@ -41,7 +41,7 @@ def notify_round_started():
   today = datetime.datetime.today()
   prev_date = None
   current_round = "Overall Round"
-  previous_round = None
+  previous_round = 'Overall Round'
   
   for key, value in settings.COMPETITION_ROUNDS.items():
     # We're looking for a round that ends today and another that starts today (or overall)
@@ -54,10 +54,11 @@ def notify_round_started():
     if start < today < end:
       current_round = key
     
-  print previous_round
-  print current_round
+  print 'Previous Round: %s' % previous_round
+  print 'Current Round: %s' % current_round
     
   if current_round and previous_round and current_round != previous_round:
+    print 'Sending out round transition notices.'
     template = NoticeTemplate.objects.get(notice_type="round-transition")
     message = template.render({"PREVIOUS_ROUND": previous_round, "CURRENT_ROUND": current_round,})
     for user in User.objects.all():

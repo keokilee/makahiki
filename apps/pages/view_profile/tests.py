@@ -61,6 +61,12 @@ class ProfileFunctionalTestCase(TestCase):
     self.assertContains(response, "This field is required", 
         msg_prefix="User should not have a valid display name.")
         
+    # Test posting with whitespace as a name
+    user_form.update({"display_name": "    "})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    self.assertContains(response, "This field is required", 
+        msg_prefix="User should not have a valid display name.")
+        
     # Test posting a name that is too long.
     letters = "abcdefghijklmnopqrstuvwxyz"
     user_form.update({"display_name": letters})
@@ -96,17 +102,23 @@ class ProfileFunctionalTestCase(TestCase):
     }
     # Test posting form with dup name.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
-    self.assertContains(response, "please enter another name.", 
+    self.assertContains(response, "Please use another name.", 
         msg_prefix="Duplicate name should raise an error.")
         
     user_form.update({"display_name": "  Test U.     "})
     # Test posting a form with a dup name with a lot of whitespace.
     response = self.client.post(reverse("profile_index"), user_form, follow=True)
     # print response.content
-    self.assertContains(response, "please enter another name.", 
+    self.assertContains(response, "Please use another name.", 
         msg_prefix="Duplicate name with whitespace should raise an error.")
-    self.assertContains(response, "Test U.", count=2,
+    self.assertContains(response, "Test U.", count=1,
         msg_prefix="This should only be in the form and in the error message.")
+        
+    user_form.update({"display_name": "Test   U."})
+    response = self.client.post(reverse("profile_index"), user_form, follow=True)
+    # print response.content
+    self.assertContains(response, "Please use another name.", 
+        msg_prefix="Duplicate name with internal whitespace should raise an error.")
     
   def testActivityAchievement(self):
     """Check that the user's activity achievements are loaded."""

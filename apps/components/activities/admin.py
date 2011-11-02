@@ -74,11 +74,11 @@ class ActivityAdminForm(forms.ModelForm):
     # Check if it is created and if it has a code confirmation type.
     if self.instance and self.instance.created_at and self.instance.confirm_type == "code":
       self.fields["num_codes"].help_text = "Number of additional codes to generate <a href=\""
-      self.fields["num_codes"].help_text += reverse("pages.view_activities.views.view_codes", args=(self.instance.slug,))
+      self.fields["num_codes"].help_text += reverse("pages.view_activities.views.view_codes", args=(self.instance.type, self.instance.slug,))
       self.fields["num_codes"].help_text += "\" target=\"_blank\">View codes</a>"
       
-    if self.instance and self.instance.created_at and (self.instance.type == "event" or self.instance.type == "exucrsion"):
-      url = reverse("pages.view_activities.views.view_rsvps", args=(self.instance.slug,))
+    if self.instance and self.instance.created_at and (self.instance.type == "event" or self.instance.type == "excursion"):
+      url = reverse("pages.view_activities.views.view_rsvps", args=(self.instance.type, self.instance.slug,))
       self.fields["event_max_seat"].help_text += " <a href='%s' target='_blank'>View RSVPs</a>" % url
     
   class Meta:
@@ -317,7 +317,7 @@ class ActivityMemberAdmin(admin.ModelAdmin):
   fields = ("user", "activity", "question", "full_response", "image", "admin_comment", "approval_status",)
   readonly_fields = ("question", "full_response", "social_email", "social_email2",)
   list_display = ("activity", "submission_date", "approval_status", "short_question", "short_response")
-  list_filter = ["approval_status"]
+  list_filter = ["approval_status", "activity__type"]
   actions = ["delete_selected"]
   date_hierarchy = "submission_date"
   ordering = ["submission_date"]
@@ -347,6 +347,7 @@ class ActivityMemberAdmin(admin.ModelAdmin):
       if not request.GET.has_key('approval_status__exact'):
         q = request.GET.copy()
         q['approval_status__exact'] = 'pending'
+        q['activity__type__exact'] = 'activity'
         request.GET = q
         request.META['QUERY_STRING'] = request.GET.urlencode()
     return super(ActivityMemberAdmin,self).changelist_view(request, extra_context=extra_context)

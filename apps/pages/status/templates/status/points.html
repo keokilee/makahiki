@@ -7,7 +7,7 @@
 <div {% get_id_and_classes "status-points" %}>
   <div class="content-box" style="float: left; margin: 15px;">
     <div class="content-box-title">
-      Overall Individuals
+      Overall Individuals ({{profiles|length}} total users)
     </div>
     <div class="content-body">
       <table style="float: left; padding: 15px; width: 300px;">
@@ -19,7 +19,7 @@
         {% for profile in profiles %}
         <tr>
           <td>{{forloop.counter}}</td>
-          <td>{{profile.name}}</td>
+          <td>{{profile.name}} ({{profile.user__username}})</td>
           <td>{{profile.points}}</td>
         </tr>
         {% endfor %}
@@ -30,7 +30,7 @@
   {% for name, entries in round_individuals.items %}
   <div class="content-box" style="float: left; margin: 15px">
     <div class="content-box-title">
-      {{name}} Top Individuals
+      {{name}} Top Individuals ({{entries|length}} total users)
     </div>
     <div class="content-body">
       <table style="padding: 15px; width: 300px">
@@ -42,7 +42,7 @@
         {% for entry in entries %}
         <tr>
           <td>{{forloop.counter}}</td>
-          <td>{{entry.profile__name}}</td>
+          <td>{{entry.profile__name}} ({{entry.profile__user__username}})</td>
           <td>{{entry.points}}</td>
         </tr>
         {% endfor %}
@@ -117,6 +117,50 @@
         {% empty %}
         <tr>
           <td colspan='3'>There are no canopy members yet</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Active Participation
+    </div>
+    <div class="content-body">
+      <table style='padding: 15px; width: 300px'>
+        <tr>
+          <th>Rank</th>
+          <th>{{FLOOR_IDENTIFIER}}</th>
+          <th>Participants</th>
+        </tr>
+        {% for floor in floor_participation %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{floor}}</td>
+          <td>{{floor.active_participation}}%</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Referrals
+    </div>
+    <div class="content-body">
+      <table style='padding: 15px; width: 300px'>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>Referrals</th>
+        </tr>
+        {% for item in referrals|dictsortreversed:'referrals' %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{item.referring_user__profile__name}} ({{item.referring_user__username}})</td>
+          <td>{{item.referrals}}</td>
         </tr>
         {% endfor %}
       </table>

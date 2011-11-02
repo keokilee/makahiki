@@ -56,3 +56,22 @@
 		{% endfor %}
 	</tbody>
 </table>
+
+<table {% get_id_and_classes "activities-scoreboard-table-profile" %} style="width: 100%; display: none">
+	<thead><tr>
+		<th>Rank</th>
+		<th>{{ FLOOR_IDENTIFIER }}</th>
+		<th style="text-align: right">Participation</th></tr>
+	</thead>
+	<tbody>
+		{% for f in floor_participation %}
+		<tr><td>{{forloop.counter}}</td>
+	  <td style="width: 150px; {% if f == floor %}font-weight: bold{% endif %}">
+		  {{ f }}
+		</td>
+		 <td style="width: 110px; text-align:right;{% if f == floor %}font-weight: bold{% endif %}">
+		  {{ f.active_participation }}%
+		</td>
+		{% endfor %}
+	</tbody>
+</table>

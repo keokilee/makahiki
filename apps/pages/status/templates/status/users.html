@@ -6,12 +6,27 @@
 <div {% get_id_and_classes "status-users" %}>
   <div class="content-box">
     <div class="content-box-title">
-      {{users|length}} users logged in today
+      {{todays_users|length}} users logged in today
     </div>
     <div class="content-body">
       <ul style="list-style: none; text-align: left; width: 100px">
-        {% for profile in users %}
+        {% for profile in todays_users %}
         <li style="margin: 0">{{profile.name}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div {% get_id_and_classes "status-users" %}>
+  <div class="content-box">
+    <div class="content-box-title">
+      New Signups
+    </div>
+    <div class="content-body">
+      <ul style="list-style: none; text-align: left; width: 100px">
+        {% for item in logins|dictsort:'date' %}
+        <li style="margin: 0">{{item.date}}: {{item.logins}} users</li>
         {% endfor %}
       </ul>
     </div>

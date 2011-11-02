@@ -73,7 +73,7 @@ class ConfirmationCode(models.Model):
     header = components[0]
     # Need to see if there are other codes with this header.
     index = 1
-    while ConfirmationCode.objects.filter(code__istartswith=header).count() > 0 and index < len(components):
+    while ConfirmationCode.objects.filter(code__istartswith=header).exclude(activity=activity).count() > 0 and index < len(components):
       header += components[index]
       index += 1
       
@@ -326,6 +326,9 @@ class CommitmentMember(CommonBase):
   social_email2 = models.TextField(blank=True, null=True, help_text="Email address of the person the user went with.")
   objects = CommitmentMemberManager()
   
+  class Meta:
+    unique_together = ('user', 'commitment', 'completion_date')
+  
   def __unicode__(self):
     return "%s : %s" % (self.commitment.title, self.user.username)
     
@@ -388,16 +391,16 @@ class CommitmentMember(CommonBase):
         ref_members = CommitmentMember.objects.filter(user=ref_user, commitment=self.commitment)
         for m in ref_members:
           if m.award_date:
-            profile.add_points(self.commitment.social_bonus, self.award_date, social_message)
+            profile.add_points(self.commitment.social_bonus, self.award_date, social_message, self)
         
       profile.save()
       
       ## award social bonus to others who referenced my email and successfully completed the activity
-      ref_members = CommitmentMember.objects.filter(commitment=self.commitment, comment=self.user.email)
+      ref_members = CommitmentMember.objects.filter(commitment=self.commitment, social_email=self.user.email)
       for m in ref_members:
         if m.award_date:
           ref_profile = m.user.get_profile()
-          ref_profile.add_points(self.commitment.social_bonus, self.award_date, social_message)
+          ref_profile.add_points(self.commitment.social_bonus, self.award_date, social_message, self)
           ref_profile.save()
       
       if profile.floor:
@@ -411,6 +414,7 @@ class CommitmentMember(CommonBase):
         
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
     invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).save()
@@ -435,6 +439,7 @@ class CommitmentMember(CommonBase):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.commitment, self.user)
     invalidate_commitments_cache(self.user)
     super(CommitmentMember, self).delete()
@@ -471,6 +476,9 @@ class ActivityMember(CommonActivityUser):
       help_text="Number of points to award for activities with variable point values."
   )
   notifications = generic.GenericRelation(UserNotification, editable=False)
+  
+  class Meta:
+    unique_together = ('user', 'activity',)
   
   def __unicode__(self):
     return "%s : %s" % (self.activity.title, self.user.username)
@@ -518,17 +526,12 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).save()
     
     # We check here for approved and rejected items because the object needs to be saved first.
-    if self.approval_status == u"approved" and not self.award_date:
-      # Record dates.
-      self.award_date = datetime.datetime.today()
-      if not self.submission_date:
-        # This may happen if it is an item with a confirmation code.
-        self.submission_date = self.award_date
-        
+    if self.approval_status == u"approved" and not self.award_date:        
       self._handle_approved()
 
       super(ActivityMember, self).save()
@@ -537,8 +540,9 @@ class ActivityMember(CommonActivityUser):
       self._handle_rejected()
 
   def _has_noshow_penalty(self):
+    # 2 days past and has submission_date (signed up)
     diff = datetime.date.today() - self.activity.event_date.date()
-    if diff.days > 2:
+    if diff.days > 2 and self.submission_date:
         return True
     else:
         return False
@@ -550,18 +554,30 @@ class ActivityMember(CommonActivityUser):
       points = self.points_awarded
     else:
       points = self.activity.point_value
+
+    # Record dates.
+    self.award_date = datetime.datetime.today()
+
+    ## reverse event/excursion noshow penalty
+    if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
+        message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
+        profile.add_points(4, self.award_date, message, self)
+
+    if not self.submission_date:
+      # This may happen if it is an item with a confirmation code.
+      self.submission_date = self.award_date
+
+    if self.activity.type == "event" or self.activity.type=="excursion":
+      point_transaction_date = self.award_date
+    else:
+      point_transaction_date = self.submission_date
     
     title = "%s%s: %s" % (
         'Canopy ' if self.activity.is_canopy else '',
         self.activity.type.capitalize(), 
         self.activity.title
     )
-    profile.add_points(points, self.submission_date, title, self)
-
-    ## reverse event/excursion noshow penalty
-    if (self.activity.type == "event" or self.activity.type=="excursion") and self._has_noshow_penalty():
-        message = "%s: %s (Reverse No Show Penalty)" % (self.activity.type.capitalize(), self.activity.title)
-        profile.add_points(4, self.submission_date, message, self)
+    profile.add_points(points, point_transaction_date, title, self)
 
     ## award social bonus to myself if the ref user had successfully completed the activity
     social_title = "%s: %s (Social Bonus)" % (self.activity.type.capitalize(), self.activity.title)
@@ -570,7 +586,7 @@ class ActivityMember(CommonActivityUser):
       ref_members = ActivityMember.objects.filter(user=ref_user, activity=self.activity)
       for m in ref_members:
         if m.approval_status == 'approved':
-          profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+          profile.add_points(self.activity.social_bonus, point_transaction_date, social_title, self)
       
     profile.save()
     
@@ -579,25 +595,43 @@ class ActivityMember(CommonActivityUser):
     for m in ref_members:
       if m.approval_status == 'approved':
         ref_profile = m.user.get_profile()
-        ref_profile.add_points(self.activity.social_bonus, self.submission_date, social_title)
+        ref_profile.add_points(self.activity.social_bonus, point_transaction_date, social_title, self)
         ref_profile.save()
 
     ## canopy group activity need to create multiple approved members
     if self.activity.is_group:
-        if self.social_email:
-            group_user = User.objects.get(email=self.social_email)
-            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
-                                                 response=self.response, admin_comment=self.admin_comment,
-                                                 image=self.image, points_awarded=self.points_awarded,
-                                                 approval_status=self.approval_status, award_date=self.award_date,
-                                                 submission_date=self.submission_date)
-        if self.social_email2:
-            group_user = User.objects.get(email=self.social_email2)
-            ActivityMember.objects.create(user=group_user, activity=self.activity, question=self.question,
-                                                 response=self.response, admin_comment=self.admin_comment,
-                                                 image=self.image, points_awarded=self.points_awarded,
-                                                 approval_status=self.approval_status, award_date=self.award_date,
-                                                 submission_date=self.submission_date)
+      # Assumption: given activity only belongs to one mission, so we only have to check that a group user
+      # is participating in that mission.
+      mission = self.activity.mission_set.all()[0]
+      if self.social_email:
+        group_user = User.objects.get(email=self.social_email)
+        if mission in group_user.mission_set.filter(missionmember__completed=False):
+          member, created = ActivityMember.objects.get_or_create(user=group_user, activity=self.activity,)
+
+          if member.approval_status != 'approved':
+            member.question = self.question
+            member.response = self.response
+            member.image = self.image
+            member.submission_date = self.submission_date
+            member.points_awarded = self.points_awarded
+            member.approval_status = 'approved'
+            member.save()
+          
+      if self.social_email2:
+        group_user = User.objects.get(email=self.social_email2)
+        if mission in group_user.mission_set.filter(missionmember__completed=False):
+          member, created = ActivityMember.objects.get_or_create(user=group_user, activity=self.activity,)
+          if created:
+            member.question = self.question
+            member.response = self.response
+            member.image = self.image
+            member.points_awarded = self.points_awarded
+            member.submission_date = self.submission_date
+
+          if member.approval_status != 'approved':
+            member.approval_status = 'approved'
+            member.save()
+            
     if profile.floor and not self.activity.is_canopy:
       # Post on the user's floor wall.
       message = " has been awarded %d points for completing \"%s\"." % (
@@ -606,6 +640,7 @@ class ActivityMember(CommonActivityUser):
       )
       post = Post(user=self.user, floor=profile.floor, text=message, style_class="system_post")
       post.save()
+      
     elif self.activity.is_canopy:
       from components.canopy.models import Post as CanopyPost
       
@@ -665,6 +700,7 @@ class ActivityMember(CommonActivityUser):
       
     # Invalidate the categories cache.
     cache.delete('smartgrid-categories-%s' % self.user.username)
+    cache.delete('user_events-%s' % self.user.username)
     invalidate_floor_avatar_cache(self.activity, self.user)
     super(ActivityMember, self).delete()
 

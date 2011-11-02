@@ -27,28 +27,21 @@ def index(request):
   form = None
   if request.method == "POST":
     user = request.user
-    form = ProfileForm(request.POST)
+    form = ProfileForm(request.POST, user=request.user)
     if form.is_valid():
       profile = user.get_profile()
       name = form.cleaned_data["display_name"].strip()
       
-      # Find a user with the same name
-      profiles = Profile.objects.filter(name=name).exclude(user=user)
-      if profiles.count() > 0:
-        form.message = "Please correct the errors below"
-        form.errors.update({"display_name": "'%s' is taken, please enter another name." % name})
-      else:
-        # Profile with this name does not exist.
-        if name != profile.name:
-          profile.name = name
+      if name != profile.name:
+        profile.name = name
 
-        profile.contact_email = form.cleaned_data["contact_email"]
-        profile.contact_text = form.cleaned_data["contact_text"]
-        profile.contact_carrier = form.cleaned_data["contact_carrier"]
-        # profile.enable_help = form.cleaned_data["enable_help"]
+      profile.contact_email = form.cleaned_data["contact_email"]
+      profile.contact_text = form.cleaned_data["contact_text"]
+      profile.contact_carrier = form.cleaned_data["contact_carrier"]
+      # profile.enable_help = form.cleaned_data["enable_help"]
 
-        profile.save()
-        form.message = "Your changes have been saved"
+      profile.save()
+      form.message = "Your changes have been saved"
         
     else:
       form.message = "Please correct the errors below."

@@ -116,6 +116,10 @@ class Profile(models.Model):
   daily_visit_count = models.IntegerField(default=0, editable=False)
   last_visit_date = models.DateField(null=True, blank=True)
   
+  # Check for referrer
+  referring_user = models.ForeignKey(User, null=True, blank=True, related_name='referred_profiles')
+  referrer_awarded = models.BooleanField(default=False, editable=False)
+  
   def __unicode__(self):
       return self.name
   
@@ -356,6 +360,23 @@ class Profile(models.Model):
     
     return last_date
     
+  def save(self, *args, **kwargs):
+    """
+    Custom save method to check for referral bonus.
+    """
+    has_referral = self.referring_user is not None and not self.referrer_awarded
+    referrer = None
+    if has_referral and self.points >= 30:
+      self.referrer_awarded = True
+      referrer = Profile.objects.get(user=self.referring_user)
+      self.add_points(10, datetime.datetime.today(), 'Referred by %s' % referrer.name, self)
+      
+    super(Profile, self).save(*args, **kwargs)
+    
+    if referrer:
+      referrer.add_points(10, datetime.datetime.today(), 'Referred %s' % self.name, referrer)
+      referrer.save()
+      
   class Meta:
     verbose_name = _('profile')
     verbose_name_plural = _('profiles')

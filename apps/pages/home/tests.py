@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 from components.activities.models import Activity, ActivityMember
+from components.makahiki_profiles.models import Profile
 
 class HomeFunctionalTestCase(TestCase):
   def testIndex(self):
@@ -95,6 +96,80 @@ class SetupWizardFunctionalTestCase(TestCase):
     except ValueError:
       self.fail("Response JSON could not be decoded.")
     
+  def testReferralStep(self):
+    """
+    Test that we can record referral emails from the setup page.
+    """
+    user2 = User.objects.create_user("user2", "user2@test.com")
+    
+    # Test we can get the referral page.
+    response = self.client.get(reverse('setup_referral'), {},
+               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    try:
+      response_dict = json.loads(response.content)
+    except ValueError:
+      self.fail("Response JSON could not be decoded.")
+      
+    # Test referring using their own email
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': self.user.email,
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    self.assertEqual(len(response.context['form'].errors), 1, "Using their own email as referrer should raise an error.")
+
+    # Test referring using the email of a user who is not in the system.
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': 'user@foo.com',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using external email as referrer should raise an error.')
+        
+    # Test bad email.
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': 'foo',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using a bad email should insert an error.')
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    
+    # Staff user should not be able to be referred.
+    user2.is_staff = True
+    user2.save()
+    
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': user2.email,
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertEqual(len(response.context['form'].errors), 1, 'Using an admin as a referrer should raise an error.')
+    self.assertTemplateUsed(response, "home/first-login/referral.html")
+    
+    user2.is_staff = False
+    user2.save()
+        
+    # Test no referrer.
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': '',
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    
+    # Test successful referrer
+    response = self.client.post(reverse('setup_referral'), {
+        'referrer_email': user2.email,
+    }, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    profile = Profile.objects.get(user=self.user)
+    self.assertEqual(profile.referring_user, user2, 'User 1 should be referred by user 2.')
+    
+    # Test getting the referral page now has user2's email.
+    response = self.client.get(reverse('setup_referral'), {},
+               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertContains(response, user2.email, msg_prefix="Going back to referral page should have second user's email.")
     
   def testSetupProfile(self):
     """Check that we can access the profile page of the setup wizard."""
@@ -159,7 +234,7 @@ class SetupWizardFunctionalTestCase(TestCase):
     }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
-    self.assertContains(response, "please enter another name.", 
+    self.assertContains(response, "Please use another name.", 
         msg_prefix="Duplicate name should raise an error.")
         
     response = self.client.post(reverse("setup_profile"), {
@@ -167,9 +242,17 @@ class SetupWizardFunctionalTestCase(TestCase):
     }, follow=True)
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "home/first-login/profile.html")
-    self.assertContains(response, "please enter another name.", 
+    self.assertContains(response, "Please use another name.", 
         msg_prefix="Duplicate name with whitespace should raise an error.")
-      
+        
+    response = self.client.post(reverse("setup_profile"), {
+        "display_name": "Test   U.",
+    }, follow=True)
+    self.failUnlessEqual(response.status_code, 200)
+    self.assertTemplateUsed(response, "home/first-login/profile.html")
+    self.assertContains(response, "Please use another name.", 
+        msg_prefix="Duplicate name with whitespace should raise an error.")
+    
   def testSetupActivity(self):
     """Check that we can access the activity page of the setup wizard."""
     response = self.client.get(reverse("setup_activity"), {}, 

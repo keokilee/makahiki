@@ -13,7 +13,7 @@ from components.canopy.models import Post as CanopyPost
 class ActivitiesUnitTestCase(TestCase):
   def setUp(self):
     """Generate test user and activity. Set the competition settings to the current date for testing."""
-    self.user = User(username="test_user", password="changeme")
+    self.user = User.objects.create_user('user', 'user@test.com')
     self.user.save()
     self.activity = Activity(
                       title="Test activity",

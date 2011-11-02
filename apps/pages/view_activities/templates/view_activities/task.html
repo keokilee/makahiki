@@ -140,8 +140,10 @@
             {% if approval.social_bonus_awarded %}
               <span style="color:orange"> Plus {{task.social_bonus}} social bonus points!</span>
             {% endif %}  
+            {% if not task.is_canopy %}
             <br/>
             You may have unlocked new activities in the smart grid game.
+            {% endif %}
             {% if task.type == "commitment" and can_commit %}
               <br/>
               <a onclick="task_form_overlay()"><button style="cursor:pointer;">I will do this again!</button></a>
@@ -160,7 +162,14 @@
             Thank you! You've earned 2 bonus {% if task.is_canopy %} Karma {% endif %} points by signing up.<br/>
             After the {{task.type}}, please come back here within 2 days to get your points.
             If you sign up but do not attend, you will lose the 2 point signing bonus and pay a 2 point "no-show" penalty.
-            <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Take me off the signup list</button></a>
+            <br/>
+            <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button1" style="cursor:pointer;" onclick='$("#submit_button1").attr("disabled", "disabled");javascript:this.form.submit();'>
+                  Take me off the signup list
+                </button>
+            </form>
+            
             {% endif %}
              </div>
           {% endif %}
@@ -171,12 +180,17 @@
               Thank you! You've earned 2 {% if task.is_canopy %} Karma {% endif %} points by committing.<br/>
               Please come back on {{ approval.completion_date|date:"l m/d" }}
               ({{approval.days_left}} days left) to get the rest of your points.
-              <br/><a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
+              <br/>
+               <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button2" style="cursor:pointer;" onclick='$("#submit_button2").attr("disabled", "disabled");javascript:this.form.submit();'>
+                  Drop this commitment
+                </button>
+              </form>
               {% else %}
               Thank you for committing to this for {{task.duration}} days. <br/>
               Click on the "I Did it" button to get the rest of your points. <br/>
-              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a> 
-              <a href="{% url activity_drop_task task.type task.slug %}"><button style="cursor:pointer;">Drop this commitment</button></a> 
+              <a onclick="task_form_overlay()"><button style="cursor:pointer;">I Did it</button></a>
               {% endif %}
              </div>
           {% endif %}         
@@ -223,12 +237,18 @@
           {% if can_commit %}
             {% if task.social_bonus > 0 %}
               <a onclick="task_form_overlay()">
+              <button style="cursor:pointer;">I will do this!
+                <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
+              </button></a>
             {% else %}
-              <a href="{% url activity_add_task task.type task.slug %}">
+              <form action='{% url activity_add_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button4" style="cursor:pointer;" onclick='$("#submit_button4").attr("disabled", "disabled");javascript:this.form.submit();'>
+                  I will do this!
+                  <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
+                </button>
+              </form>
             {%  endif %}
-            <button style="cursor:pointer;">I will do this!
-            <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
-            </button></a>
           {% else %}
             <b>You already have 5 active commitments. <br/>
             You can make this commitment once any of your active commitments are completed.
@@ -247,9 +267,15 @@
             </b>
            {% else %}
               {%  if task.available_seat > 0 %}
-              <a href="{% url activity_add_task task.type task.slug %}"><button style="cursor:pointer;">I want to sign up
-              <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
-              </button></a>
+              {# <a href="{% url activity_add_task task.type task.slug %}"> #}
+              <form action='{% url activity_add_task task.type task.slug %}' method='post'>
+                {% csrf_token %}
+                <button id = "submit_button5" style="cursor:pointer;" onclick='$("#submit_button5").attr("disabled", "disabled");javascript:this.form.submit();'>
+                  I want to sign up
+                  <img src="{{ STATIC_URL }}/css/default/images/right.png" width="50" align="center"/>
+                </button>
+              </form>
+              {# </a> #}
               {% else %}
               <b>This {{ task.type}} is full. You can still try to attend on a space available basis.</b>
               {% endif %}
