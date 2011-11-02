@@ -1,6 +1,5 @@
-
 import simplejson as json
-from django.shortcuts import render_to_response, get_object_or_404 
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect, HttpResponse,get_host
 import unicodedata
@@ -12,7 +11,7 @@ from pages.view_profile.forms import ProfileForm
 from pages.view_profile import get_completed_members, get_in_progress_members
 from components.makahiki_facebook.models import FacebookProfile
 from components.activities.models import *
-from components.activities import *  
+from components.activities import *
 from components.makahiki_notifications.models import UserNotification
 from components.makahiki_profiles.models import *
 from components.makahiki_profiles import *
@@ -94,8 +93,8 @@ def smartgrid(request):
 @login_required
 @never_cache
 def sgactivities(request, category_slug):
-  activities = ActivityBase.objects.order_by("priority") 
-  category_slugs = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala", 
+  activities = ActivityBase.objects.order_by("priority")
+  category_slugs = ["get-started", "basic-energy", "lights-out", "make-watts", "moving-on", "opala",
     "wet-and-wild", "pot-pourri"]
   categories = ["Get Started", "Basic Energy", "Lights Out", "Make Watts", "Moving On", "Opala",
     "Wet & Wild", "Pot Pourri"]
@@ -131,7 +130,7 @@ def taskdeny(request, category_slug, slug):
   return render_to_response("mobile/smartgrid/denied.html", {
     "category":category_slug,
     "activity":activity,
-  }, context_instance=RequestContext(request))   
+  }, context_instance=RequestContext(request))
 
 @login_required
 @never_cache
@@ -178,7 +177,7 @@ def task_form(request,category_slug,slug):
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
-      form = SurveyForm(questions=question)    
+      form = SurveyForm(questions=question)
       form_title = "Survey"
     else:
       form_title = "Get your points"
@@ -199,7 +198,7 @@ def task_form(request,category_slug,slug):
         if not pau:
           form_title = "Sign up for this "+task.type
         
-  else:  ## "Commitment"
+  else: ## "Commitment"
     task = task.commitment
     members = CommitmentMember.objects.filter(user=user, commitment=task);
     if members.count() > 0:
@@ -244,7 +243,7 @@ def task_form(request,category_slug,slug):
     "display_form":display_form,
     "form_title": form_title,
     "can_commit":can_commit,
-  }, context_instance=RequestContext(request))   
+  }, context_instance=RequestContext(request))
 
 @never_cache
 @login_required
@@ -260,7 +259,7 @@ def task(request, category_slug, slug, sender=None):
       elif "events" in ref:
         sender = "events"
       else:
-        sender = "sgg"  
+        sender = "sgg"
     except:
       sender="sgg"
   floor = user.get_profile().floor
@@ -281,12 +280,12 @@ def task(request, category_slug, slug, sender=None):
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
-  if task.type != "excursion" or task.type != "event":
+
+  if task.type != "event" and task.type != "excursion":
     return HttpResponseRedirect(reverse("mobile_index", args=()))
-  
   if task.type != "commitment":
     task = task.activity
-
+  
     if task.type == "survey":
       member_all = ActivityMember.objects.exclude(user=user).filter(activity=task, approval_status="approved")
       members = ActivityMember.objects.filter(user=user, activity=task, approval_status="approved")
@@ -300,15 +299,15 @@ def task(request, category_slug, slug, sender=None):
       social_email = approval.social_email
       social_email2 = approval.social_email2
       #if approval.social_email:
-      #  ref_user = User.objects.get(email=approval.user_comment)
-      #  ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
-      #  for m in ref_members:
-      #    if m.approval_status == 'approved':
-      #      approval.social_bonus_awarded = True
+      # ref_user = User.objects.get(email=approval.user_comment)
+      # ref_members = ActivityMember.objects.filter(user=ref_user, activity=task)
+      # for m in ref_members:
+      # if m.approval_status == 'approved':
+      # approval.social_bonus_awarded = True
       
     if task.type == "survey":
       question = TextPromptQuestion.objects.filter(activity=task)
-      form = SurveyForm(questions=question)    
+      form = SurveyForm(questions=question)
       form_title = "Survey"
     else:
       form_title = "Get your points"
@@ -330,7 +329,7 @@ def task(request, category_slug, slug, sender=None):
         if not pau:
           form_title = "Sign up for this "+task.type
         
-  else:  ## "Commitment"
+  else: ## "Commitment"
     task = task.commitment
     members = CommitmentMember.objects.filter(user=user, commitment=task);
     if members.count() > 0:
@@ -376,7 +375,7 @@ def task(request, category_slug, slug, sender=None):
       email = user.emailreminder_set.get(activity=task)
       reminders.update({"email": email})
       reminder_init.update({
-          "email": email.email_address, 
+          "email": email.email_address,
           "send_email": True,
           "email_advance": str((task.activity.event_date - email.send_at).seconds / 3600)
       })
@@ -387,7 +386,7 @@ def task(request, category_slug, slug, sender=None):
       text = user.textreminder_set.get(activity=task)
       reminders.update({"text": text})
       reminder_init.update({
-          "text_number": text.text_number, 
+          "text_number": text.text_number,
           "text_carrier": text.text_carrier,
           "send_text": True,
           "text_advance": str((task.activity.event_date - text.send_at).seconds / 3600)
@@ -414,7 +413,7 @@ def task(request, category_slug, slug, sender=None):
     "can_commit":can_commit,
     "sender":sender,
     "reminders":reminders,
-  }, context_instance=RequestContext(request))    
+  }, context_instance=RequestContext(request))
 
 
 
@@ -432,17 +431,17 @@ def reminder(request, category_slug, slug, error=False):
       task = get_object_or_404(ActivityBase, type='excursion', slug=slug)
       task = task.activity
     except ActivityBase.DoesNotExist:
-      raise Http404 
+      raise Http404
   try:
-    sender =False 
+    sender =False
     ref=request.META["HTTP_REFERER"]
     if "reminder" in ref:
-      sender = True 
+      sender = True
   except:
     sender = False
    # Load reminders
   reminders = {}
-  if task.type == "event" or task.type == "excursion":  
+  if task.type == "event" or task.type == "excursion":
     # Store initial reminder fields.
     reminder_init = {
         "email": user.get_profile().contact_email or user.email,
@@ -454,7 +453,7 @@ def reminder(request, category_slug, slug, error=False):
       email = user.emailreminder_set.get(activity=task)
       reminders.update({"email": email})
       reminder_init.update({
-          "email": email.email_address, 
+          "email": email.email_address,
           "send_email": True,
           "email_advance": str((task.activity.event_date - email.send_at).seconds / 3600)
       })
@@ -465,7 +464,7 @@ def reminder(request, category_slug, slug, error=False):
       text = user.textreminder_set.get(activity=task)
       reminders.update({"text": text})
       reminder_init.update({
-          "text_number": text.text_number, 
+          "text_number": text.text_number,
           "text_carrier": text.text_carrier,
           "send_text": True,
           "text_advance": str((task.activity.event_date - text.send_at).seconds / 3600)
@@ -476,15 +475,15 @@ def reminder(request, category_slug, slug, error=False):
     reminders.update({"form": ReminderForm(initial=reminder_init)})
 
 
-    return render_to_response("mobile/smartgrid/reminder.html", { 
+    return render_to_response("mobile/smartgrid/reminder.html", {
     "reminders":reminders,
     "category_slug":category_slug,
     "type":task.type,
-    "slug":slug, 
+    "slug":slug,
     "error":error,
     "sender":sender,
     "task":task,
-  }, context_instance=RequestContext(request))    
+  }, context_instance=RequestContext(request))
 
 @never_cache
 @login_required
@@ -494,7 +493,7 @@ def reminder_err(request, category_slug, slug, error=False):
 @login_required
 def reminder_form(request, activity_type, slug, error=False):
   if request.is_ajax():
-    if request.method == "POST": 
+    if request.method == "POST":
       profile = request.user.get_profile()
       task = get_object_or_404(ActivityBase, type=activity_type, slug=slug)
       form = ReminderForm(request.POST)
@@ -514,7 +513,7 @@ def reminder_form(request, activity_type, slug, error=False):
             email_reminder.save()
             
             profile.contact_email = form.cleaned_data["email"]
-            profile.save() 
+            profile.save()
 
           else:
             # If send_email is false, the user does not want the reminder anymore.
@@ -546,7 +545,7 @@ def reminder_form(request, activity_type, slug, error=False):
             )
             text_reminder.save()
           else:
-            text_reminder.delete()  
+            text_reminder.delete()
           
             
           
@@ -566,21 +565,21 @@ def reminder_form(request, activity_type, slug, error=False):
             profile.contact_text = form.cleaned_data["text_number"]
             profile.contact_carrier = form.cleaned_data["text_carrier"]
             profile.save()
-	profile.contact_text = form.cleaned_data["text_number"]
+        profile.contact_text = form.cleaned_data["text_number"]
         profile.contact_carrier = form.cleaned_data["text_carrier"]
         profile.save()
         return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
-        return HttpResponse(json.dumps({"success": True}), mimetype="application/json") 
+        return HttpResponse(json.dumps({"success": True}), mimetype="application/json")
 
-      else: 
+      else:
         #template = render_to_string("mobile/smartgrid/reminder.html", {
         #"reminders": {"form": form},
         #"task": task,
-        #},context_instance=RequestContext(request)) 
+        #},context_instance=RequestContext(request))
         #return HttpResponse(json.dumps({
         #"success": False,
         #"form": template,
-        #}), mimetype="application/json") 
+        #}), mimetype="application/json")
         #return HttpResponseRedirect(reverse('mobile_reminder_error',args=( slug,slug)))
         return reminder(request,slug,slug,True)
   return HttpResponseRedirect(reverse('mobile_reminder',args=(slug,slug)))
@@ -619,20 +618,20 @@ def __add_commitment(request, commitment_id, slug):
     
     # Check for Facebook.
     # try:
-    #   import makahiki_facebook.facebook as facebook
-    #   
-    #   fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
-    #   if fb_user:
-    #     try:
-    #       graph = facebook.GraphAPI(fb_user["access_token"])
-    #       graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
-    #     except facebook.GraphAPIError:
-    #       # Incorrect user token.
-    #       pass
-    #       
+    # import makahiki_facebook.facebook as facebook
+    #
+    # fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_SECRET_KEY)
+    # if fb_user:
+    # try:
+    # graph = facebook.GraphAPI(fb_user["access_token"])
+    # graph.put_object("me", "feed", message="I am now committed to \"%s\" in the Kukui Cup!" % commitment.title)
+    # except facebook.GraphAPIError:
+    # # Incorrect user token.
+    # pass
+    #
     # except ImportError:
-    #   # Facebook not enabled.
-    #   pass
+    # # Facebook not enabled.
+    # pass
         
   return HttpResponseRedirect(reverse("mobile_task", args=(category, commitment.slug,)))
 
@@ -655,7 +654,7 @@ def __add_activity(request, activity_id, slug):
       if form.is_valid():
         for i,q in enumerate(question):
           activity_member = ActivityMember(user=user, activity=activity)
-##TODO.          activity_member.user_comment = form.cleaned_data["comment"]
+##TODO. activity_member.user_comment = form.cleaned_data["comment"]
           activity_member.question = q
           activity_member.response = form.cleaned_data['choice_response_%s' % i]
           
@@ -663,7 +662,7 @@ def __add_activity(request, activity_id, slug):
             activity_member.approval_status = "approved"
             
           activity_member.save()
-      else:   # form not valid
+      else: # form not valid
         return render_to_response("mobile/smartgrid/task.html", {
             "task":activity,
             "category":category,
@@ -672,7 +671,7 @@ def __add_activity(request, activity_id, slug):
             "question":question,
             "display_form":True,
             "form_title": "Survey",
-            }, context_instance=RequestContext(request))    
+            }, context_instance=RequestContext(request))
           
     else:
       activity_member = ActivityMember(user=user, activity=activity)
@@ -733,7 +732,7 @@ def __request_activity_points(request, activity_id, slug):
 
       elif activity.confirm_type == "code":
         # Approve the activity (confirmation code is validated in forms.ActivityTextForm.clean())
-	try:
+        try:
           code = ConfirmationCode.objects.get(code=form.cleaned_data["response"])
           code.is_active = False
           code.save()
@@ -760,7 +759,7 @@ def __request_activity_points(request, activity_id, slug):
     if activity.confirm_type == "text":
       question = activity.pick_question(user.id)
       ##if question:
-      ##  form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
+      ## form = ActivityTextForm(initial={"question" : question.pk}, question_id=question.pk)
       
     return render_to_response("mobile/smartgrid/task.html", {
     "task":activity,
@@ -772,7 +771,7 @@ def __request_activity_points(request, activity_id, slug):
     "member_floor":0,
     "display_form":True,
     "form_title": "Get your points",
-    }, context_instance=RequestContext(request))    
+    }, context_instance=RequestContext(request))
 
 
 ###################################################################################################
@@ -794,11 +793,11 @@ def sgadd(request, category_slug, slug):
     return __request_activity_points(request, category_slug, slug)
   elif task.type == "survey":
     return __add_activity(request, category_slug, slug)
-  else: ##event 
+  else: ##event
     task = Activity.objects.get(pk=task.pk)
     if task.is_event_completed():
-      return __request_activity_points(request, category_slug, slug) 
-    else:  
+      return __request_activity_points(request, category_slug, slug)
+    else:
       return __add_activity(request, category_slug, slug)
     
    
@@ -806,7 +805,7 @@ def sgadd(request, category_slug, slug):
 
 def landing(request):
   if request.user.is_authenticated():
-    return HttpResponseRedirect(reverse("mobile_index")) 
+    return HttpResponseRedirect(reverse("mobile_index"))
   return render_to_response("mobile/landing.html", {}, context_instance=RequestContext(request))
  
 class EventDay:
@@ -817,7 +816,7 @@ class EventDay:
     self.count = 0
     self.attending = False
   def __str__(self):
-    return "obj= " + str(self.date) + " " +  " " + str(self.eventlist)
+    return "obj= " + str(self.date) + " " + " " + str(self.eventlist)
 
 #used for sorting lists of events
 def get_date(obj):
@@ -825,15 +824,15 @@ def get_date(obj):
 
 @login_required
 @never_cache
-def events(request,option): 
+def events(request,option):
   objlist = []
   user = request.user
-  options = ["upcoming","attending","past"] 
+  options = ["upcoming","attending","past"]
   option = uniToStr(option)
   view = str.lower(option)
 
   #handle the date functionality
-  day = timedelta(days = 1) 
+  day = timedelta(days = 1)
   today= datetime.date(2011,07,10)
   datelist = []
   #uncomment the below line to bring things up to date
@@ -851,65 +850,65 @@ def events(request,option):
 
   #upcoming
   if string.lower(option) == options[0] :
-    events = get_available_events(user) 
+    events = get_available_events(user)
     for element in datelist:
       obj = EventDay()
       obj.date = element[0]
       obj.datestring = element[1]
-      temparray = [] 
+      temparray = []
       count = 0
-      for event in events: 
+      for event in events:
         e_date = event["event_date"]
-        if e_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):  
+        if e_date.strftime("%B %d, %y") == obj.date.strftime("%B %d, %y"):
           try:
             member = ActivityMember.objects.get(user=request.user,activity__id=event["id"])
-            if member.approval_status == "pending":  
+            if member.approval_status == "pending":
               event["attending"] = True
-          except ActivityMember.DoesNotExist: 
+          except ActivityMember.DoesNotExist:
             boolean = False
           temparray.append(event)
-          count = count + 1  
+          count = count + 1
       obj.count = count
       obj.eventlist = temparray
       objlist.append(obj)
   
   #past
-  elif string.lower(option) == options[2]:   
+  elif string.lower(option) == options[2]:
     avail = ActivityBase.objects.filter(type='event')
     for event in avail:
       if event.activity.event_date.date() < today:
-        objlist.append(event.activity) 
+        objlist.append(event.activity)
     objlist.sort(key=get_date)
   return render_to_response("mobile/events/index.html", {
-  "view": view, 
+  "view": view,
   "objlist": objlist,
-  "options": options, 
+  "options": options,
   }, context_instance=RequestContext(request))
 
 
 
 @login_required
 @never_cache
-def quests(request,option): 
+def quests(request,option):
   questlist = []
   user = request.user
-  options = ["available","accepted","completed"] 
-  view = option 
+  options = ["available","accepted","completed"]
+  view = option
 
   #completed
   if string.lower(option) == options[2]:
-    questlist = Quest.objects.filter(questmember__user=request.user,questmember__completed=True)  
+    questlist = Quest.objects.filter(questmember__user=request.user,questmember__completed=True)
 
   return render_to_response("mobile/quests/index.html", {
   "view": view,
   "questlist": questlist,
-  "options": options, 
+  "options": options,
   }, context_instance=RequestContext(request))
 
 @login_required
 def quest_detail(request, ref, slug):
-  ref=ref.lower 
-  quest=get_object_or_404(Quest,quest_slug=slug)  
+  ref=ref.lower
+  quest=get_object_or_404(Quest,quest_slug=slug)
   return render_to_response("mobile/quests/details.html", {
     "quest": quest,
     "referer": ref,
@@ -956,7 +955,7 @@ def helptopic(request, category, slug):
 
 @never_cache
 @login_required
-def profile(request,page): 
+def profile(request,page):
   page = string.lower(page)
   user = request.user
   form = None
@@ -982,7 +981,7 @@ def profile(request,page):
       form.message = "Please correct the errors below."
       
   # If this is a new request, initialize the form.
-  if not form:    
+  if not form:
     form = ProfileForm(initial={
       "enable_help": user.get_profile().enable_help,
       "display_name": user.get_profile().name,
@@ -994,7 +993,7 @@ def profile(request,page):
   return render_to_response("mobile/profile/"+page+".html", {
     "profile": user.get_profile(),
     "user": user,
-    "form": form, 
+    "form": form,
     "points_logs": points_logs,
     "in_progress_members": get_in_progress_members(user),
     "commitment_members": get_current_commitment_members(user),
@@ -1021,10 +1020,10 @@ def raffle_item(request, prize_slug):
   floor = request.user.get_profile().floor
   prizes = _get_prizes(floor)
   raffle_dict = _get_raffle_prizes(request.user)
-#  prize = ""
-#  for i in prizes:
-#    if prize_slug == slugify(i.title):
-#      prize = i
+# prize = ""
+# for i in prizes:
+# if prize_slug == slugify(i.title):
+# prize = i
 
   return render_to_response("mobile/raffle/item.html", {
     "slug":prize_slug,
@@ -1033,8 +1032,8 @@ def raffle_item(request, prize_slug):
   }, context_instance=RequestContext(request))
 
 @login_required
-def power_and_energy(request): 
-  return render_to_response("mobile/power&energy/index.html", { 
+def power_and_energy(request):
+  return render_to_response("mobile/power&energy/index.html", {
   }, context_instance=RequestContext(request))
 
 def attend_code(request):
@@ -1056,15 +1055,15 @@ def attend_code(request):
           message = "This code has already been used."
         # Check if the user has already submitted a code for this activity.
         elif code.activity in user.activity_set.filter(activitymember__award_date__isnull=False):
-          message = "You have already redemmed a code for this event/excursion."          
+          message = "You have already redemmed a code for this event/excursion."
         elif code.activity.social_bonus:
           if form.cleaned_data["social_email"]:
             if form.cleaned_data["social_email"] != "Email":
-              ref_user = get_user_by_email(form.cleaned_data["social_email"]) 
+              ref_user = get_user_by_email(form.cleaned_data["social_email"])
               if ref_user == None or ref_user == user:
                 message = "Invalid email. Please input only one valid email."
                 social_email = "true"
-            else: 
+            else:
               message = " "
               social_email = "true"
       except ConfirmationCode.DoesNotExist:
@@ -1084,7 +1083,7 @@ def attend_code(request):
         activity_member = ActivityMember(user=user, activity=code.activity)
         
       activity_member.approval_status = "approved" # Model save method will award the points.
-      value = code.activity.point_value  
+      value = code.activity.point_value
 
       if form.cleaned_data.has_key("social_email") and form.cleaned_data["social_email"] != "Email":
         activity_member.social_email = form.cleaned_data["social_email"]
@@ -1122,7 +1121,7 @@ def read_notification(request, notification_id):
     
   notification = get_object_or_404(UserNotification, pk=notification_id)
   notification.unread = False
-  notification.save() 
+  notification.save()
   if request.META.has_key("HTTP_REFERER"):
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
   else:
@@ -1184,5 +1183,3 @@ def __drop_commitment(request, commitment):
     notification = "Commitment dropped. you lose " + str(value) + " points."
     response.set_cookie("task_notify", notification)
     return response
-
-
