@@ -12,6 +12,7 @@
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" role="listbox">
 
       {% for activity in activities %}
+        {% if activity.type == "event" or activity.type == "excursion" %}
         {% if activity.activity.confirm_type != "image" %}
         {% if activity.category.name|slugify == category %}
           {% if activity.is_unlock %}
@@ -54,6 +55,7 @@
           {% endif %}
         {% endif %}
         {% endif %}
+	{% endif %}
       {% endfor %}
     </ul>
   </div> 
