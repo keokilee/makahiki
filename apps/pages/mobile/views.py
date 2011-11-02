@@ -281,7 +281,8 @@ def task(request, category_slug, slug, sender=None):
 
   if is_unlock(user, task) != True:
     return HttpResponseRedirect(reverse("pages.mobile.views.smartgrid", args=()))
-
+  if task.type != "excursion" or task.type != "event":
+    return HttpResponseRedirect(reverse("mobile_index", args=()))
   
   if task.type != "commitment":
     task = task.activity
