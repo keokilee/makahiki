@@ -165,7 +165,7 @@
             <br/>
             <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
                 {% csrf_token %}
-                <button id = "submit_button1" style="cursor:pointer;" onclick='$("#submit_button1").attr("disabled", "disabled");javascript:this.form.submit();'>
+                <button id = "submit_button1" style="cursor:pointer;" onclick='$("#submit_button1").attr("disabled", "disabled");javascript:this.form.submit(); return false;'>
                   Take me off the signup list
                 </button>
             </form>
@@ -183,7 +183,7 @@
               <br/>
                <form action='{% url activity_drop_task task.type task.slug %}' method='post'>
                 {% csrf_token %}
-                <button id = "submit_button2" style="cursor:pointer;" onclick='$("#submit_button2").attr("disabled", "disabled");javascript:this.form.submit();'>
+                <button id = "submit_button2" style="cursor:pointer;" onclick='$("#submit_button2").attr("disabled", "disabled");javascript:this.form.submit(); return false;'>
                   Drop this commitment
                 </button>
               </form>
@@ -243,7 +243,7 @@
             {% else %}
               <form action='{% url activity_add_task task.type task.slug %}' method='post'>
                 {% csrf_token %}
-                <button id = "submit_button4" style="cursor:pointer;" onclick='$("#submit_button4").attr("disabled", "disabled");javascript:this.form.submit();'>
+                <button id = "submit_button4" style="cursor:pointer;" onclick='$("#submit_button4").attr("disabled", "disabled");javascript:this.form.submit(); return false;'>
                   I will do this!
                   <img src="{{ STATIC_URL}}/css/default/images/right.png" width="50" align="center">
                 </button>
@@ -270,7 +270,7 @@
               {# <a href="{% url activity_add_task task.type task.slug %}"> #}
               <form action='{% url activity_add_task task.type task.slug %}' method='post'>
                 {% csrf_token %}
-                <button id = "submit_button5" style="cursor:pointer;" onclick='$("#submit_button5").attr("disabled", "disabled");javascript:this.form.submit();'>
+                <button id = "submit_button5" style="cursor:pointer;" onclick='$("#submit_button5").attr("disabled", "disabled");javascript:this.form.submit(); return false;'>
                   I want to sign up
                   <img src="{{ STATIC_URL }}/css/default/images/right.png" width="50" align="center"/>
                 </button>
