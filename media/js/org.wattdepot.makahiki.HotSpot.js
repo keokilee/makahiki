@@ -119,7 +119,7 @@ function makeHotSpotImageElement(data) {
     var scaleView = new google.visualization.DataTable();
     var view = transpose(data, scaleView);
     var img = document.createElement('img');
-    img.setAttribute('src', getChartUrl(scaleView));
+    img.setAttribute('src', getChartUrl(data, scaleView));
     img.setAttribute('usemap', '#tooltipMap', 0);
     img.setAttribute('usemap', '#tooltipMap', 0);
     // Remove the blue line around the image.
@@ -189,10 +189,10 @@ function transpose(tempTable, scaleView) {
  * We can generate the data param manually later in order to fix this.
  * Note we need to create a view containing just the (x,y,data) columns
  */
-function getChartUrl(data) {
+function getChartUrl(tempTable, data) {
 
     var chart = new google.visualization.ImageChart(document.getElementById('chart_div'));
-    chart.draw(data, getOptions(data));
+    chart.draw(data, getOptions(tempTable, data));
 
     // Get the URL without URL encoding of commas, pipes, and colons, since they take up too many characters and we have a 2K limit
     var gvizChartUrl = chart.getImageUrl().replace(/%2C/g, ',').replace(/%7C/g, '|').replace(/%3A/g, ':');
@@ -202,7 +202,7 @@ function getChartUrl(data) {
 }
 
 /** Build and return the options array for the chart. */
-function getOptions(data) {
+function getOptions(tempTable, data) {
     // Set up the options
     var options = {};
     // Scatter chart
@@ -210,7 +210,7 @@ function getOptions(data) {
     // Image size
     options.chs = '500x200';
     // X-axis (0) and Y-axis (1) labels
-    options.chxl = '0:|' + getXAxisLabels(data) + '|1:|' + getYAxisLabels(data);
+    options.chxl = '0:|' + getXAxisLabels(tempTable) + '|1:|' + getYAxisLabels(tempTable);
     // Adjust the X & Y axis with -1 so that dots line up correctly.
     // The last two numbers indicate the scaling range.
     // Supply the lowest and highest value in the dataset to get automatic dot scaling.
@@ -276,20 +276,39 @@ function getHighlightMarkers(data, maxValue, maxSpotSize) {
 }
 
 /** Return the labels for the X Axis. */
-function getXAxisLabels(data) {
+function getXAxisLabels(tempTable) {
     return '|12am|1|2|3|4|5|6|7|8|9|10|11|12pm|1|2|3|4|5|6|7|8|9|10|11|';
 }
 
 /** Return the labels for the Y Axis. */
-function getYAxisLabels(data) {
+function getYAxisLabels(tempTable) {
 
     var yLabel = '|';
-    var mon = appendZero(begDate.getMonth() + 1);
-    for (i = begDate.getDate(); i < endDate.getDate(); i++)
-        yLabel += mon + '-' + appendZero(i) + '|';
+
+    var rows = tempTable.getNumberOfRows() - 1;
+    for (k = 0; k < rows; k++) {
+        if (k%24 == 0)
+        {
+            yLabel += formatDate(tempTable.getValue(k, 0)) + '|';
+        }
+    }
     return yLabel;
 }
 
+
+/*
+ * Takes in a Date object and returns either a formatted date or time.
+ * Times are formatted using AM/PM, dates are returned as Month/Day.
+ *
+ * @param date is a date object to be formatted.
+ */
+function formatDate(date) {
+        // Format the date as Month/Day, year is optional, but seems too long for gadget use.
+        var columnMonth = date.getMonth() + 1;
+        var columnDay = appendZero(date.getDate());
+        var ColumnYear = date.getFullYear();
+        return columnMonth + "-" + columnDay;
+}
 
 /** Create and return the image map element.  */
 function createMap(data) {
