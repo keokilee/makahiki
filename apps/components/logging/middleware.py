@@ -28,6 +28,8 @@ class LoggingMiddleware(object):
       username = request.user.username
       
     if username:
+      # if request.session.get('staff', False):
+      #   username = username + '*'
       self.__write_log_entry(username, request, response=response)
     
     return response 

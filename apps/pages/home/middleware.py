@@ -39,12 +39,14 @@ class CompetitionMiddleware(object):
       start = datetime.datetime.strptime(settings.COMPETITION_START, "%Y-%m-%d")
       end = datetime.datetime.strptime(settings.COMPETITION_END, "%Y-%m-%d")
       
+      staff_user = request.user.is_staff or request.session.get('staff', False)
+      
       pattern = re.compile("^/(m\/|home\/restricted|site_media|media|favicon.ico)/")
       
-      if today < start and not request.user.is_staff and not pattern.match(path):
+      if today < start and not staff_user and not pattern.match(path):
         return HttpResponseRedirect(reverse("home_restricted"))
 
-      if today > end and not request.user.is_staff and not pattern.match(path):
+      if today > end and not staff_user and not pattern.match(path):
         return HttpResponseRedirect(reverse("home_restricted"))
 
     return None
