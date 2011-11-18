@@ -186,6 +186,7 @@ INSTALLED_APPS = (
     
     # Makahiki components
     'components.activities',
+    'components.analytics',
     'components.api',
     'components.ask_admin',
     'components.canopy',
