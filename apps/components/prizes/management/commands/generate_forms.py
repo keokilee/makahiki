@@ -54,6 +54,8 @@ class Command(management.base.BaseCommand):
         Q(award_to='individual_floor') | Q(award_to='individual_overall'),
         round_name=round_name,
     )
+    
+    round_name = round_name if round_name != 'Overall' else None
     # Need to calculate winners for each prize.
     for prize in prizes:
       if prize.award_to == 'individual_floor':
@@ -64,7 +66,7 @@ class Command(management.base.BaseCommand):
           contents = render_to_string('view_prizes/form.txt', {
               'raffle': False,
               'prize':  prize,
-              'round': round_name
+              'round': round_name,
           })
           
           filename = '%s-%s-%s.txt' % (floor.dorm.name, floor.number, leader.username)
@@ -77,7 +79,7 @@ class Command(management.base.BaseCommand):
         contents = render_to_string('view_prizes/form.txt', {
             'raffle': False,
             'prize':  prize,
-            'round': round_name
+            'round': round_name,
         })
         
         filename = 'overall-%s.txt' % leader.username
