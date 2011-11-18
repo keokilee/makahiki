@@ -19,4 +19,4 @@ class MakahikiLog(models.Model):
     request = models.CharField(max_length=10)
     url = models.CharField(max_length=1000)
     status = models.IntegerField()
-    post_content = models.CharField(max_length=4000)
+    post_content = models.TextField()
