@@ -76,7 +76,8 @@ def calculate_admin_time():
     admin_file = open('time_spent_admin.csv', 'w')
     users = User.objects.filter(is_staff=True)
     for user in users:
-        logs = MakahikiLog.objects.filter(remote_user=user.username, url__startswith='/admin/activities/').order_by('request_time')
+        logs = MakahikiLog.objects.filter(remote_user=user.username, url__startswith='/admin/activities/activitymember').order_by('request_time')
+        answers = logs.filter(request='POST').count()
         sys.stdout.write('Processing %d logs for %s\n' % (logs.count(), user.username))
         if logs.count() > 0:
             # Iterate over the logs and track previous time and time spent.
@@ -99,10 +100,11 @@ def calculate_admin_time():
 
             # Append any session that was in progress.
             total += cur_session
-            admin_file.write('%s,%d\n' % (user.username, total))
+            admin_file.write('%s,%d,%d\n' % (user.username, total, answers))
         
     admin_file.close()
     
 if __name__ == "__main__":
     calculate_user_time()
     calculate_admin_time()
+    calculate_admin_answers()
