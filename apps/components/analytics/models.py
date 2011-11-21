@@ -15,7 +15,7 @@ class MakahikiLog(models.Model):
     level = models.CharField(max_length=10)
     request_time = models.CharField(max_length=100)
     host = models.CharField(max_length=50)
-    remote_user = models.CharField(max_length=100, blank=True, null=True)
+    remote_user = models.CharField(max_length=100, blank=True, null=True, db_index=True)
     request = models.CharField(max_length=10)
     url = models.CharField(max_length=1000)
     status = models.IntegerField()
