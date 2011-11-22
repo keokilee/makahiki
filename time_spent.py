@@ -28,6 +28,7 @@ sys.path.insert(0, join(settings.PINAX_ROOT, "apps"))
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from components.analytics.models import MakahikiLog
 
@@ -88,7 +89,8 @@ def _time_spent(logs):
 def _page_time(url_prefix, logs):
     start = prev = None
     total = cur_session = 0
-    for log in logs:
+    # Need to filter out AJAX interactions.
+    for log in logs.exclude(Q(url__startswith='/log') | Q(url__startswith='/slog') | Q(url__startswith='/notifications') | Q(url__startswith='/quests')):
         current = datetime.datetime.strptime(log.request_time, "%Y-%m-%d %H:%M:%S")
         diff = current - prev if prev else None
         # Check if we are starting a session
