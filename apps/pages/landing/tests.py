@@ -37,7 +37,7 @@ class LandingFunctionalTestCase(TestCase):
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "landing/index.html")
     
-    settings.REDIRECT_TO_ABOUT = current_setting
+    settings.ROOT_REDIRECT_URL = current_setting
     
   def testLoggedInRedirect(self):
     """Tests that if the user is logged in, we redirect to the home page."""
