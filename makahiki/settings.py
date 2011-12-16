@@ -7,9 +7,9 @@
 
 import os.path
 import posixpath
-import pinax
+# import pinax
 
-PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
+# PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # tells Pinax to use the default theme
@@ -89,7 +89,7 @@ STATIC_URL = '/site_media/static/'
 # Additional directories which hold static files
 STATICFILES_DIRS = (
     ('makahiki', os.path.join(PROJECT_ROOT, 'media')),
-    ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
+    # ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -151,7 +151,7 @@ ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates"),
-    os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
+    # os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
