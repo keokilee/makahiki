@@ -1,6 +1,9 @@
 # Ignore database files
 *.db
 
+# Ignore results folder
+results/
+
 # Ignore fabfile because of potentially sensitive info
 fabfile.py
 
