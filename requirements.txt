@@ -89,3 +89,5 @@ uuid==1.30
 vobject==0.8.1c
 wsgiref==0.1.2
 ybrowserauth==1.2
+# Required by Heroku #
+psycopg2==2.4.2
