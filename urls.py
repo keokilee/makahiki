@@ -3,7 +3,7 @@ from django.conf import settings
 
 from django.views.generic.simple import direct_to_template
 
-from account.openid_consumer import PinaxConsumer
+# from account.openid_consumer import PinaxConsumer
 
 from django.contrib import admin
 admin.autodiscover()
@@ -45,7 +45,7 @@ urlpatterns = patterns('',
     (r'^sentry/', include('sentry.urls')),
     
     # pinax provided
-    (r'^account/', include('account.urls')),
+    # (r'^account/', include('account.urls')),
     (r'^admin/status/', include('pages.status.urls'),),
     (r'^admin/login-as/(?P<user_id>\d+)/$', 'components.makahiki_auth.views.login_as'),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

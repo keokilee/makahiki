@@ -115,7 +115,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'account.middleware.LocaleMiddleware',
+    # 'account.middleware.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -236,7 +236,7 @@ INSTALLED_APPS = (
     
     # internal (for now)
     # 'basic_profiles',
-    'account',
+    # 'account',
     'django.contrib.admin',
     'django.contrib.admindocs',
     
@@ -277,7 +277,7 @@ MARKUP_CHOICES = (
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
 AUTH_PROFILE_MODULE = 'makahiki_profiles.Profile'
-NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
+# NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 # ACCOUNT_OPEN_SIGNUP is not used by this project, but it acts as if it was
 # set to False
