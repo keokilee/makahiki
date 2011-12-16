@@ -14,7 +14,7 @@ fabfile.py
 local_settings.py
 
 # Ignore the test files.
-log/makahiki.log
+# log/makahiki.log
 site_media
 
 # Ignore the apache configuration
