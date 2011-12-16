@@ -1,7 +1,0 @@
-{% load markup %}
-{% load frontendadmin_tags %}
-
-<div class="makahiki_content_body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-all ui-accordion-content-active">
-    {% frontendadmin_change object %}
-    {{ object.text|markdown }}
-</div>

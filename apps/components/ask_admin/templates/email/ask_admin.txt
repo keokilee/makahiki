@@ -1,5 +1,0 @@
-"{{user.get_profile.name}}" sent some feedback:
-
-{{question}}
-
-"{{user.get_profile.name}}" sent this while viewing "{{url}}".  You can reach this user at {{user.email}}.
