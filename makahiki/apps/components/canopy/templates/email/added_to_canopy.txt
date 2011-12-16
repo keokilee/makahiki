@@ -1,0 +1,23 @@
+Congratulations on your success in the {{ competition_name }}! You are now part of
+an exclusive group eligible to access a new part of the {{ competition_name }}
+website called the Canopy. The Canopy is a different type of {{ competition_name }}
+experience, focused on more in-depth investigations of energy data and
+discussion between members. You will find Canopy Missions to complete,
+some which are done solo, others require you to work in a group of 2-3
+Canopy members.
+
+To keep things fair for the folks not in the Canopy, your activities
+in the Canopy earn you Canopy Karma rather than normal {{ competition_name }}
+points. But just to keep things interesting, we're going to give away
+a $25 UH Bookstore gift certificate to the Canopy member who has the
+most Karma at the end of the competition.
+
+You can continue to access and participate in the other parts of the
+{{ competition_name }} website that you have already experienced, including earning
+more points there.
+
+How do you get up there? Just log in and take a look "above you"!
+
+Welcome to the Canopy!
+
+{{ competition_name }} administrators

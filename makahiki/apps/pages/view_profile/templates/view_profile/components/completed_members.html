@@ -1,0 +1,39 @@
+{% for log in points_logs %}
+  <tr>
+    <td>{{log.submission_date|date:"n/j/y"}}</td>
+    {# Determine if the log is an activity #}
+    {% if log.related_object %}
+      {# Need to handle the various types of objects #}
+      {% with log.related_object as member %}
+        {% if member.commitment or member.activity %}
+          {% if member.commitment %}
+          {% with member.commitment as commitment %}
+          <td>
+            <a href="{% url activity_task 'commitment' commitment.slug %}">
+              {{log.message}}
+            </a>
+          </td>
+          <td>{{log.points}}{% if commitment.is_canopy %}&nbsp;(Karma){% endif %}</td>
+          {% endwith %}
+          {% else %}
+          {% with member.activity as activity %}
+          <td>
+            <a href="{% url activity_task activity.type activity.slug %}">
+              {{log.message}}
+            </a>
+          </td>
+          <td>{{log.points}}{% if activity.is_canopy %}&nbsp;(Karma){% endif %}</td>
+          {% endwith %}
+          {% endif %}
+        {% else %}
+          <td>{{log.message}}</td>
+          <td>{{log.points}}</td>
+        {% endif %}
+      {% endwith %}
+    {% else %}
+      <td>{{log.message}}</td>
+      <td>{{log.points}}</td>
+    {% endif %}
+  </tr>
+{% endfor %}
+

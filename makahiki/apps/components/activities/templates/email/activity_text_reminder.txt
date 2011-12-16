@@ -1,0 +1,1 @@
+Reminder: '{{activity.title}}' {{activity.type.lower}} is happening on {{activity.activity.event_date}}{% if activity.activity.event_location %} at {{activity.activity.event_location}}{% endif %}.

@@ -1,0 +1,9 @@
+Hi {{user.get_profile.name}},
+
+  We just wanted to remind you that the '{{activity.title}}' {{activity.type.lower}} is happening on {{activity.activity.event_date}}{% if activity.activity.event_location %} at {{activity.activity.event_location}}{% endif %}.  If you do attend, you will receive a code which can be redeemed for {{activity.activity.point_value}} points.  If you would like more information, please use the following link.
+  
+http://{{domain}}{% url activity_task activity.type activity.slug %}
+
+Hope to see you there!
+
+{{COMPETITION_NAME}} Administrators

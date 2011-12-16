@@ -1,0 +1,15 @@
+{% if round %}{{round}} {%endif%}Kukui Cup {% if raffle %}Raffle {% endif %}Prize Winner
+
+I, {{prize.winner.first_name}} {{prize.winner.last_name}}, acknowledge receipt of the {% if raffle %}raffle {% endif %}prize '{{prize.title}}' for participation in {% if round %}{{round}} of {% endif %}the 2011 Kukui Cup.  
+
+
+Signed: _______________________________
+
+
+Date: _________________________________
+
+
+Address:  ______________________________
+
+
+Phone: ________________________________

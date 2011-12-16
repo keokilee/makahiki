@@ -1,0 +1,18 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Canopy
+{% endblock %}
+
+{% block extra_head %}
+
+  <script src="{{STATIC_URL}}/js/canopy.js" type="text/javascript"></script>
+
+  {% import_page_css "canopy" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block quests %}
+  {% include "canopy/mission_box.html" %}
+{% endblock %}

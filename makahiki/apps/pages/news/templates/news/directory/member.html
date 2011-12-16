@@ -1,0 +1,54 @@
+{% load class_tags %}
+{% load avatar_tags %}
+
+<img class="member-image" src="{% avatar_url member 40 %}" alt="Photo of {{ member.get_profile.name }}" title="Photo of {{ member.get_profile.name }}" align="top" />
+  <ul {% get_id_and_classes "floor-member-details" %}>
+    <li class="floor-member-name">
+      <a name="{{member.get_profile.name|slugify}}">
+      {{member.get_profile.name}}
+      
+      {% for badge in member.badges_earned.all %}
+      <a href="{% url profile_badges %}"><img class="member-badges" src="{{STATIC_URL}}{{badge.image}}" alt="{{badge.badge.name}}" title="{{badge.badge.name}}" /></a>
+      {% endfor %}
+    </li>
+    
+    {% if member.is_superuser or member.is_staff %}
+    <!-- Downloaded from http://www.iconarchive.com/show/silk-icons-by-famfamfam/award-star-gold-3-icon.html -->
+    <li class="floor-member-admin"><img src="{{STATIC_URL}}images/award-star-gold-3-icon.png">Administrator</li>
+    {% endif %}
+    
+    <li>
+      {% if CURRENT_ROUND %}
+      Ranked #{{member.get_profile.current_round_overall_rank}} in {{CURRENT_ROUND}}
+      (#{{member.get_profile.overall_rank}} overall)
+      {% else %}
+      #{{member.get_profile.overall_rank}} overall
+      {% endif %}
+    </li>
+    
+    {# Check if the user is a participant or an admin without a floor #}
+    {% if member.get_profile.floor and member.get_profile.points > 0 %}
+    <li>
+      {% if CURRENT_ROUND %}
+      Points: {{member.get_profile.current_round_points}} points in {{CURRENT_ROUND}}
+      ({{member.get_profile.points}} points overall)
+      {% else %}
+      Points: {{member.get_profile.points}} points overall
+      {% endif %}
+    </li>
+    {% endif %}
+  </ul>
+  
+  <div style="float: right; width: 500px">
+    {% with member.commitmentmember_set.active as commitment_members %}
+    {% if commitment_members.count > 0 %}
+    <h4 style="margin: 0; padding: 0">{{member.get_profile.name}}&apos;s Commitments</h4>
+      <ul {% get_id_and_classes "floor-member-commitments" %}>
+      {% for commitment_member in commitment_members %}
+        <li><a href="{% url activity_task 'commitment' commitment_member.commitment.slug %}">{{commitment_member.commitment}}</a></li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <br style="clear: both"/>

@@ -1,0 +1,33 @@
+{% extends "logged_in_base.html" %}
+
+{% load class_tags %}
+{% load markup %}
+
+{% block page_title %}
+  Help
+{% endblock %}
+
+{% block selected_icon %}selected-help{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "view_help" STATIC_URL CSS_THEME %}
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "help-topic" %}>
+  <div {% get_id_and_classes "help-topic-box" %}>
+    <div {% get_id_and_classes "help-topic-title" %}>
+      {{topic.title}}
+    </div>
+    <div {% get_id_and_classes "help-topic-content" %}>
+	    <a href="{% url help_index %}">Back to help page</a>
+      <p>
+        {{topic.contents|markdown}}
+      </p>
+	    <a href="{% url help_index %}">Back to help page</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

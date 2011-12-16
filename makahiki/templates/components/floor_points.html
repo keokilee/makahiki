@@ -1,0 +1,53 @@
+{% load class_tags %}
+{% load cache %}
+
+{% if floor and floor.dorm %}
+{% cache 600 infobar floor.dorm.name floor.number %}
+{% if CURRENT_ROUND and CURRENT_ROUND != 'Overall' %}
+<!-- First slideshow element -->
+<div id="header-floor-overall-rank1">
+  <div {% get_id_and_classes "header-floor-points" %}>
+    <h3>{{floor.current_round_points}}</h3>
+    <div {% get_id_and_classes "header-text" %}>{{COMPETITION_POINT_NAME}}s in {{CURRENT_ROUND.title}}</div>
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3>#{{floor.current_round_rank}}</h3>
+    <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
+  </div>
+</div>
+
+<div id="header-floor-overall-rank2" style="display:none">
+  <div {% get_id_and_classes "header-floor-energy" %}>
+    <h3 id="round-energy-value"></h3>
+     <div {% get_id_and_classes "header-text" %}>kWh used in {{CURRENT_ROUND.title}}</div>
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3 id="round-energy-rank"></h3> 
+    <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
+  </div>
+</div>
+{% endif %}
+
+<div id="header-floor-overall-rank3" {% if CURRENT_ROUND %}style="display:none"{% endif %}>
+  <div {% get_id_and_classes "header-floor-points" %}>
+    <h3>{{floor.points}}</h3>
+    <div {% get_id_and_classes "header-text" %}>{{COMPETITION_POINT_NAME}}s overall</div>
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3>#{{floor.rank}}</h3> 
+    <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
+  </div>
+</div>
+
+<div id="header-floor-overall-rank4" style="display:none">
+  <div {% get_id_and_classes "header-floor-energy" %}>
+    <h3 id="overall-energy-value"></h3>
+     <div {% get_id_and_classes "header-text" %}>kWh used overall</div>
+  </div>
+  <div {% get_id_and_classes "header-floor-rank" %}>
+    <h3 id="overall-energy-rank"></h3> 
+    <div {% get_id_and_classes "header-text" %}>out of {{FLOOR_COUNT}} in all dorms</div>
+  </div>
+</div>
+{% endcache %}
+{% endif %}

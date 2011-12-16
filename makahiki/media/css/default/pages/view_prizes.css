@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/* CSS Document */
+/********************** prize styles ******************************/
+
+th {
+	background: #c2bb79;
+	text-transform: capitalize;
+}
+
+#prizes-raffle-info {
+	background: transparent url(/site_media/static/css/default/images/bkg-message-tray.png) top left no-repeat;
+	width: 450px;
+	height: 54px;
+	line-height: 47px;
+	display: block;
+	margin: .5em auto 5px auto;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+}
+
+#prizes-list-table-header, #prizes-list-table-awarded-header, #prizes-list-table-criteria-header {
+	background: #dbd7af;
+}
+
+#prizes-list {
+	float: left;
+	width: 400px;
+	margin-left: 30px;
+}
+
+#prizes-raffle {
+	float: right;
+	width: 480px;
+	margin-right: 20px;
+}
+
+.content-box {	
+	text-align: left;
+}
+
+#prizes-list table {
+	margin: 0;
+	padding: 0;
+	border-spacing: 1;
+	border: 0;
+}
+
+.content-box th, .content-box td {
+	padding: 4px 8px 4px 8px;
+}
+
+#prizes-raffle th {
+	background: transparent;
+	text-align: center;
+	}
+
+#prizes-list th {
+	text-align: center;
+	}
+
+.prize {
+	text-align: center;
+	width: 55px;
+}
+
+/*.prize {
+  text-align: center;
+  width: 55px;
+}*/
+
+.prize img {
+	display: block;
+	margin: 0 auto;
+}
+
+.prize a {
+	color: #c86c09;
+}
+
+.prize-dialog {
+  text-align: left;
+}
+
+.number {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #03b710;
+  text-align: center;
+}
+
+.enabled, .disabled {
+	width: 28px;
+	height: 28px;
+	display: inline;
+	margin: .5em;
+	color: #FFF;
+	font-weight: bold;
+	line-height: 28px;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	float: left;
+}
+
+.enabled {
+	background: transparent url(/site_media/static/css/default/images/circle+.png) top center no-repeat;
+}
+
+.disabled {
+	background: transparent url(/site_media/static/css/default/images/circle-.png) top center no-repeat;
+}
+
+#prizes-raffle-footer {
+	margin: .5em .5em 0 .5em;
+	text-align: center;
+}
+
+#prizes-raffle-footer-deadline {
+	font-weight: bold;
+	display: block;
+}
+
+/**** Prize cycle styles ****/
+#prize-cycle-nav {
+  text-align: center;
+}
+
+#prize-cycle-nav a {
+  padding: 1px 5px;
+}
+
+#prize-cycle-nav a.activeSlide {
+  font-weight: bold;
+/*  background-color: #DBD7AF;*/
+}
+

@@ -1,0 +1,57 @@
+{% extends "status/base.html" %}
+
+{% load class_tags %}
+
+{% block body %}
+<div {% get_id_and_classes "status-prizes" %}>
+  <div class="content-box" style='clear: both; margin: 15px auto; width: 500px'>
+    <div class="content-box-title">
+      Unused Tickets
+    </div>
+    <div class="content-body" style='font-weight: bold;{% if pending_members > 50 %}color: red{% endif %}'>
+      There are {{unused}} tickets that have not been allocated.<br/>
+      {% if has_errors %}
+      <div style='color: red; font-weight: bold'>
+        The following users have more tickets than points
+        <ul>
+          {% for name in errors %}
+          <li>{{name}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% for deadline in deadlines %}
+  <div class="content-box" style='float:left; margin: 15px'>
+    <div class="content-box-title">
+      {{deadline.round_name}} Raffle Prizes
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px; width: 300px">
+        <tr>
+          <th style="text-align: left">Prize</th>
+          <th>Tickets</th>
+          <th>Winner</th>
+        </tr>
+        {% for prize in deadline.raffleprize_set.all %}
+        <tr>
+          <td style="text-align: left">{{prize.title}}</td>
+          <td>{{prize.raffleticket_set.count}}</td>
+          <td>
+            {% if prize.winner %}
+              {{prize.winner.get_profile.name}}
+            {% else %}
+              N/A
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+  <br style="clear: both"/>
+</div>
+{% endblock %}

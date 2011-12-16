@@ -1,0 +1,22 @@
+{% load cache %}
+
+{% cache 600 news-popular-tasks %}
+{% for key, value in popular_tasks.items %}
+  {% if value %}
+    <table id="news-popular-{{key|slugify}}-table" {% if forloop.counter > 1 %}style="display: none"{% endif %}>
+      <tr>
+        <th style="width: 80%">{{key}}</th>
+        <th>{% if key == 'Excursion' or key == 'Event' %}Sign ups{% else %}Completions{% endif %}</th>
+      </tr>
+      {% for task in value %}
+      <tr>
+        <td><a href="{% url activity_task task.type task.slug %}">{{task.title}}</a></td>
+        <td>{{task.completions}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p style="width: 100%; text-align: center; {% if forloop.counter > 1 %}display: none{% endif %}">Be the first to {% if key == 'Excursion' or key == 'Event' %}sign up for{% else %}complete{% endif %} a {{key.lower}}!</p>
+  {% endif %}
+{% endfor %}
+{% endcache %}

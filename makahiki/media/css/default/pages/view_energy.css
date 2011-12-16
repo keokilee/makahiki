@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+/********************** energy styles ******************************/
+
+.content {
+	width: 920px;
+	margin: 0 auto 0 auto;
+}
+
+#energy-power-scoreboard {
+	width: 298px;
+	float: left;
+}
+
+#energy-power {
+
+	}
+
+.status-tray {
+	background: transparent url(/site_media/static/css/default/images/bkg-goal-tray.png) top center no-repeat;
+	width: 470px;
+	height: 95px;
+	padding: 6px 30px 6px 30px;
+	display: block;
+	border: 0;
+	margin: 0 auto 0 auto;
+}
+
+.status-tray img {
+	float: left;
+	width: 76px;
+	height: 76px;
+	display: block;
+}
+
+.status-tray font {
+	float: right;
+	height: 76px;
+	width: 380px;
+	display: block;
+	padding-top: 25px;
+}
+
+
+fieldset {
+	background: #dfdab1;
+	border: 0;
+	border-radius: 8px;
+	moz-border-radius: 8px;
+	webkit-border-radius: 8px;
+	margin-top: -10px;
+}
+
+fieldset legend {
+	font-weight: bold;
+	text-align: left;
+	text-decoration: underline;
+	padding: 25px 0 0 0;
+}
+
+#energy-scoreboard table {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	width: 298px;
+}
+
+#energy-scoreboard table th {
+	background: #d0cb9b;
+	font-weight: bold;
+	padding: 4px 4px 4px 20px;
+}
+
+#energy-scoreboard table td {
+	padding: 4px 4px 4px 20px;
+}
+
+#energy-scoreboard-table .alt-row {
+	background: #d9d3a6;
+}
+
+#energy-scoreboard-message {
+	margin-top: .5em;
+	margin-left: 30px;
+	font-size: 12pt;
+}
+
+#energy-status {
+	width: 595px;
+	float: right;
+}
+
+#energy-status-content {
+	padding: .5em .5em 0 .5em;
+	}
+
+#energy-smiley {
+    font-size:200%;
+    }
+    
+#energy-power-box {
+	padding: 5px;
+	
+	margin-right: 1em;
+}
+
+#energy-power-goal-updated {
+	font-size: 8pt;
+}
+
+#energy-power-gauge-label, #energy-power-gauge-table-goal, #energy-power-gauge-table-actual, #energy-power-goal-info {
+	font-weight: bold;
+}
+
+#energy-status-progress-about a {
+	color: #db9703;
+}
+
+td#energy-status-how-calculator-content {
+    vertical-align: text-top;
+    padding-right: 20px;
+    width: 50%;
+}
+
+td#energy-status-how-activities-content {
+    vertical-align: text-top;
+}
+
+#energy-status-how-activities-table {
+	border-collapse: collapse;
+	border: 1px solid #02ac0e;
+	color: #000000;
+	margin-top: .5em;
+}
+
+#energy-status-how-activities-table th {
+	background: #cec99c;
+	text-align: left;
+	padding-left: 20px;
+}
+
+#energy-status-how-activities-table td {
+	padding: 4px 4px 4px 20px;
+	text-align: left;
+}
+
+#energy-status-posts {
+	text-align: left;
+}
+
+#energy-status-posts a {
+	color: #db9703;
+}
+
+table#energy-status-posts-table {
+	padding-left: 20px;
+}
+
+/********************** News styles ******************************/
+
+th {
+	background: #dbd7af;
+	}
+
+#news-wall {
+	width: 480px;
+	float: left;
+	margin-left: 20px;
+}
+
+#news-events-popular-activities {
+	width: 400px;
+	float: right;
+	margin-right: 20px;
+}
+
+
+.content-box {	
+	text-align: left;
+}
+
+#news-wall-content a {
+	color: #db9703;
+}
+
+a#wall-post-submit {
+	background: transparent url(/site_media/static/css/default/images/bkg-buttonx80.png) top left no-repeat;
+	width: 80px;
+	height: 27px;
+	display: block;
+	cursor: pointer;
+	float: right;
+	margin: .7em .5em;
+	text-align: center;
+	text-decoration: none;
+	padding: 0 auto 0 auto;
+	line-height: 25px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+#id_post {
+	width: 360px;
+	height: 30px;
+	margin: .5em 0 .5em .5em;
+	float: left;
+}
+
+
+#news-wall-content hr {
+	display: none;
+}
+
+#news-wall-content ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#news-wall-content li {
+	clear: both;
+}
+
+#news-wall-content li div{
+	padding: 5px;
+}
+
+#news-wall-content li div div {
+	padding: 0;
+}
+
+#news-wall-content .news-image {
+	float: left;
+	width: 40px;
+}
+
+#news-wall-content .news-text p {
+	margin: 0 0 10px 50px;
+}
+
+#news-wall-content .news-posted {
+	font-size: 8pt;
+	margin: 0 0 0 50px;
+	font-style: italic;
+	color: #777;
+}
+
+#view-more-posts {
+	padding: .5em 0 0 .5em;
+	text-align: center;
+}
+
+.content-box table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	/*border-bottom: 1px solid #000;*/
+}
+
+.content-box th, .content-box td {
+	padding: 4px;
+}
+
+.news-event-name, .news-event-date, .news-most-popular-activity, .news-commitments-name {
+	border-right: 1px solid #000;
+}
+
+/******* Scoreboard cycle styles ******/
+#scoreboard-cycle-nav {
+  text-align: center;
+}
+
+#scoreboard-cycle-nav a {
+  padding: 1px 5px;
+}
+
+#scoreboard-cycle-nav a.activeSlide {
+  font-weight: bold;
+/*  background-color: #DBD7AF;*/
+}

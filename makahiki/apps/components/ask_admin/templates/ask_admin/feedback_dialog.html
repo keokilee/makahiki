@@ -1,0 +1,22 @@
+<div id="feedback-dialog" title="Send Feedback" style="display: none">
+  <form id="feedback-form" action="{% url ask_admin_feedback %}" method="POST">
+    {% csrf_token %}
+    <p>Having issues?  Just want to tell us something?  Let us know!</p>
+    <input id="id_url" type="hidden" name="url" value=""/>
+    <textarea id="id_question" rows="3" cols="53" name="question"></textarea><br/>
+    <input id="feedback-submit" type="submit" value="Send"/>
+    <span id="feedback-spinner" style="display:none">
+      Sending
+      <img src="{{STATIC_URL}}images/spinner.gif"/>
+    </span>
+  </form>
+</div>
+
+<div id="feedback-success" title="Thank You!" style="display: none">
+  <p style="text-align: left">
+    Your feedback has been sent to the administrators.  If you asked a question, they will email
+    you a response as soon as possible.
+  </p>
+  
+  <button>OK</button>
+</div>

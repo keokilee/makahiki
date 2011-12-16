@@ -1,0 +1,18 @@
+{% load avatar_tags %}
+{% load class_tags %}
+
+<ul {% get_id_and_classes "canopy-member-list" %}>
+  {% for member in members %}
+  <li>
+    <div>
+      <a href="{% url canopy_members %}#{{member.get_profile.name|slugify}}">
+        <img src="{% avatar_url member 40 %}" alt="Photo of {{ member.get_profile.name }}" align="top" />
+        <div>{{member.get_profile.name}}</div>
+      </a>
+    </div>
+  </li>
+  {% if forloop.counter|divisibleby:6 %}
+  <br style="clear: left"/>
+  {% endif %}
+  {% endfor %}
+</ul>

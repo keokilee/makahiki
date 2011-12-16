@@ -1,0 +1,71 @@
+from selenium import selenium
+import unittest, time, re
+
+class test_canopy_graph(unittest.TestCase):
+    def setUp(self):
+        self.verificationErrors = []
+        self.selenium = selenium("localhost", 4444, "*chrome", "http://localhost:8000/activities/")
+        self.selenium.start()
+    
+    def test_test_canopy_graph(self):
+        sel = self.selenium
+	sel.open("/account/login/")
+        sel.type("id=id_username", "testbot")
+        sel.type("id=id_password", "testbot")
+        sel.click("css=input[type=\"submit\"]")
+        sel.wait_for_page_to_load("30000") 
+        sel.open("/canopy/")
+        sel.click("link=Hot Spots")
+        sel.wait_for_page_to_load("30000")
+	time.sleep(5)
+        try: self.failUnless(sel.is_element_present("css=#img > img"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("id=lounge")
+        sel.select("id=lounge", "label=Lehua-A")
+        sel.click("css=option[value=\"Lehua-A\"]")
+	time.sleep(5)
+        try: self.failUnless(sel.is_element_present("css=#img > img"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("link=Heat Map")
+        sel.wait_for_page_to_load("30000")
+	time.sleep(5)
+        try: self.failUnless(sel.is_element_present("css=canvas"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("//input[@name='heatmap-dorm' and @value='Lehua']")
+        time.sleep(5)
+	try: self.failUnless(sel.is_element_present("css=canvas"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("//input[@name='heatmap-dorm' and @value='Mokihana']")
+        time.sleep(5)
+	try: self.failUnless(sel.is_element_present("css=canvas"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("//input[@name='period' and @value='last21days']")
+        time.sleep(5)
+	try: self.failUnless(sel.is_element_present("css=canvas"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        sel.click("link=Line Graph")
+        sel.wait_for_page_to_load("30000")
+        sel.click("//input[@name='period' and @value='last7days']")
+        sel.click("link=Power Meters")
+        sel.wait_for_page_to_load("30000")
+        sel.select("id=lounge_1", "label=Ilima-E")
+        sel.click("css=option[value=\"Ilima-E\"]")
+	time.sleep(10)
+        try: self.failUnless(sel.is_element_present("css=img.goog-serverchart-image"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+	time.sleep(5)
+        try: self.failUnless(sel.is_element_present("css=#visualization_2__PowerMeter > img.goog-serverchart-image"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        try: self.failUnless(sel.is_element_present("css=#visualization_3__PowerMeter > img.goog-serverchart-image"))
+        except AssertionError, e: self.verificationErrors.append(str(e)) 
+        try: self.failUnless(sel.is_element_present("id=visualization_4__PowerMeter"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+        try: self.failUnless(sel.is_element_present("css=#visualization_5__PowerMeter > img.goog-serverchart-image"))
+        except AssertionError, e: self.verificationErrors.append(str(e))
+    
+    def tearDown(self):
+        self.selenium.stop()
+        self.assertEqual([], self.verificationErrors)
+
+if __name__ == "__main__":
+    unittest.main()

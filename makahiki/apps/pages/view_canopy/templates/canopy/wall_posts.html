@@ -1,0 +1,18 @@
+{% load class_tags %}
+{% for post in posts %}
+  <!-- {% cycle 'alt-row' '' as cycle_class %} -->
+  {% include "canopy/post.html" %}
+  
+  {% if forloop.last and more_posts %}
+  <li {% get_id_and_classes "view-more-posts" %}>
+    <a href="javascript:void(0);" onclick='
+      $.get("{% url canopy_more_posts %}?last_post={{post.id}}", function(data) {
+        $("#view-more-posts").remove();
+        $("#wall-posts").append(data.contents);
+      });
+
+      return false;'>See more</a>
+  </li>
+  {% endif %}
+{% endfor %}
+

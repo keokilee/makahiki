@@ -1,0 +1,35 @@
+{% load class_tags %}
+
+<form id="task-reminder-form" action="{% url activity_reminder task.type task.slug %}" method="post">
+  {% csrf_token %}
+  <div style='padding-left: 10px'>
+    {{ reminders.form.non_field_errors }}
+  </div>
+  <ul style="list-style: none">
+    <li {% get_id_and_classes "task-reminder-form-email" %}>
+      <div style="float: left; width: 5%; padding-top: 5px">
+        {{reminders.form.send_email}}
+      </div>
+      <div style="float: left;">
+        {{reminders.form.email.label}}: {{reminders.form.email}}<br/>
+        {{reminders.form.email_advance.label}}: {{reminders.form.email_advance}}<br/>
+        Reminder time: <span id="task-reminder-form-email-date"></span>
+      </div>
+    </li>
+    <li {% get_id_and_classes "task-reminder-form-text" %} style="clear: both; padding-top: 15px">
+      <div style="float: left; width: 5%; padding-top: 5px">
+        {{reminders.form.send_text}}
+      </div>
+      <div style="float: left;">
+        {{reminders.form.text_number.label}}: {{reminders.form.text_number}} {{reminders.form.text_carrier.label}}: {{reminders.form.text_carrier}}<br/>
+        {{reminders.form.text_advance.label}}: {{reminders.form.text_advance}}<br/>
+        Reminder time: <span id="task-reminder-form-text-date"></span>
+      </div>
+    </li>
+  </ul>
+  
+  <div style="clear: both; padding-top: 15px">
+    <button {% get_id_and_classes "task-reminder-form-submit" %} style="display: inline">Remind Me</button>
+    <button {% get_id_and_classes "task-reminder-form-cancel" %}>Cancel</button>
+  </div>
+</form>

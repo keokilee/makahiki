@@ -1,0 +1,45 @@
+{% load class_tags %}
+
+{% with raffle.deadline as deadline %}
+<div {% get_id_and_classes "prizes-raffle" %}>
+  <div {% get_id_and_classes "prizes-raffle-box" %}>
+    <div {% get_id_and_classes "prizes-raffle-title" %}>
+      {{deadline.round_name}} Raffle Game 
+      <a href="#" style="float: right">
+      <img src="{{ STATIC_URL}}/css/default/images/icon-help-sm.png" width="20" align="center" 
+		title="Click to get help about this window" 
+		onclick="toggleHelp('widget', 'raffle-game'); return false;"
+	   /></a>
+    </div>
+    <div {% get_id_and_classes "prizes-raffle-content" %}>
+      <div {% get_id_and_classes "prizes-raffle-info" %}>
+        Your total raffle tickets: {{raffle.tickets.total}} Allocated right now: {{raffle.tickets.allocated}} Available: {{raffle.tickets.available}}
+      </div>
+      
+      {% if raffle.today > deadline.pub_date  and raffle.today < deadline.end_date %}
+        {% if raffle.prizes.count > 0 %}
+        {% include "view_prizes/raffle_table.html" %}
+        {% else %}
+        <h4 style="text-align: center">There are no raffle prizes for this round yet.  Please check back later.</h4>
+        {% endif %}
+      {% else %}
+        <h4 style="text-align: center">
+        {% if raffle.today < deadline.pub_date %}
+          Raffle prizes for this round are not available yet. 
+          They will be available on {{deadline.pub_date|date:"N jS"}} at {{deadline.pub_date|date:"P"}}
+        {% else %}
+          The raffle is now over.
+          {% if raffle.prizes.count > 0 %}
+          Please check back in the next round for more prizes!
+          {% endif %}
+        {% endif %}
+        </h4>
+      {% endif %}
+      
+      <div style='text-align: center; margin-top: 5px'>
+        <a href='{% url help_topic "faq" "list-raffle-prizes" %}'>List of upcoming raffle prizes</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endwith %}

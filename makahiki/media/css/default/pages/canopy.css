@@ -1,0 +1,336 @@
+body {
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container {
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container-top {
+  background: transparent url(/site_media/static/css/default/images/canopytop.png) top center no-repeat;
+}
+
+.container-bottom {
+  background: transparent url(/site_media/static/css/default/images/canopybottom.png) bottom center no-repeat;
+}
+
+/*------- mission styles -----*/
+#mission-list {
+  margin: 0;
+  margin-left: 40px;
+  text-align: left;
+  list-style: none;
+  padding: 0 10px 5px 5px;
+}
+
+#mission-list .canopy-mission {
+  float: left;
+  width: 175px;
+  text-align: center;
+  margin: 10px 5px 0;
+  padding: 5px;
+}
+
+#mission-list li {
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  display: inline;
+}
+
+#mission-list li a {
+  color: white;
+  font-size: 1.1em;
+}
+
+#mission-list li.selected {
+  background-color: rgba(40,42,42, 1.0);
+/*  font-weight: bold;*/
+}
+
+#mission-list li a.mission-user-mission {
+  color: #FCE988;
+}
+
+#header #mission-box {
+  background: none;
+  background-color: rgba(64,66,66,0.9);
+  color: white;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 5px;
+}
+
+#mission-title {
+  margin: 0;
+  display: inline;
+  vertical-align: bottom;
+  float:left;
+  text-align: center;
+  width: 850px;
+  margin-left: 25px;
+}
+
+#mission-help-icon {
+  height: 17px; 
+  cursor: pointer;
+  float: right;
+}
+
+#mission-box .mission-links h4 {
+  color: #FCE988;
+}
+.mission-links a {
+  color: white;
+}
+
+.mission-users {
+  float: left;
+  padding-left: 10px;
+  width: 48%;
+}
+
+.mission-users>h4 {
+  text-align: center;
+}
+
+.mission-options {
+  float: right;
+}
+
+#mission-contents {
+  text-align: left;
+}
+
+#mission-box h4 {
+  margin: 5px 0;
+  color: white;
+}
+
+#mission-complete-dialog {
+  text-align: left;
+}
+
+#mission-hide {
+  color: white;
+  float: right;
+  display: block;
+  font-weight: bold;
+  padding-right: 10px;
+  padding-top: 3px;
+}
+
+/***** Canopy styles ******/
+.content {
+  margin: 0 15px;
+}
+
+#canopy-about {
+  text-align: left;
+  padding: 5px 10px;
+  background-color: rgba(255,255,255,0.8);
+	border: 2px solid #167000;
+	margin-bottom: 10px;
+}
+
+.content-box {
+  margin-bottom: 20px;
+}
+
+#canopy-feed-members .content-box {
+  float: left;
+  width: 450px;
+}
+
+/***** Visualization styles *******/
+#canopy-viz-list {
+  list-style: none;
+}
+
+#canopy-viz-list li {
+  display: inline;
+  margin: 0 10px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+#canopy-viz-list li.selected {
+  background-color: #DBD7AF;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+#canopy-viz-list li.selected a {
+  text-decoration: none;
+}
+
+#canopy-viz-list li h3 {
+  display: inline;
+}
+
+/**** Wall styles *****/
+#canopy-feed {
+  margin-right: 20px;
+  text-align: left;
+}
+
+#canopy-feed-content {
+  padding: 5px 20px;
+}
+
+#news-post-form textarea {
+  height: 30px;
+  width: 80%;
+  float:left;
+}
+
+#wall-post-submit {
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 5px;
+  float:left;
+}
+
+#wall-posts {
+  list-style: none;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.news-image {
+  float: left;
+}
+
+.news-image img {
+  padding: 10px 5px;
+}
+
+.news-text {
+  float: left;
+  margin-left: 20px;
+  padding: 10px 0;
+  width: 80%;
+}
+
+.news-text p {
+  margin: 0;
+  margin-bottom: 11px;
+}
+
+.news-posted {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/******* Karma scoreboard styles ******/
+#canopy-karma-content {
+  text-align: left;
+  margin: 0;
+  padding: 5px 10px;
+}
+
+#canopy-karma-scoreboard {
+  width: 100%;
+  border: 0;
+  border-spacing: 0;
+}
+
+#canopy-karma-scoreboard-header {
+  background: #dbd7af;
+}
+
+#canopy-karma-scoreboard td {
+  padding-top: 5px;
+}
+
+.karma-rank {
+  width: 60px;
+}
+
+.karma-points {
+  width: 100px;
+  text-align: right;
+  padding-right: 5px;
+}
+
+#canopy-karma-prize {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/******* Member styles *******/
+#canopy-feed-members #canopy-members{
+  float: right;
+  /*clear: both;*/
+}
+
+#canopy-members-content {
+  text-align: left;
+  margin: 0;
+  padding: 5px 20px;
+}
+
+#canopy-member-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#canopy-member-list li {
+  float: left;
+  width: 68px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 80px;
+}
+
+#canopy-member-list li img {
+  padding: 2px;
+}
+
+/******* Directory styles ******/
+#canopy-member-detail-list, #canopy-member-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#canopy-member-detail-list>li {
+  padding: 5px 0;
+}
+
+#canopy-member-detail-list>li .member-image {
+  padding: 4px 2px;
+  float: left;
+}
+
+#canopy-member-details {
+  float: left;
+  margin-left: 5px;
+}
+
+#canopy-member-details>li {
+  padding: 2px 0;
+}
+
+#canopy-member-details .canopy-member-name {
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+#canopy-member-details .member-badges {
+  vertical-align: middle;
+  padding-left: 2px;
+}
+
+#canopy-member-details .canopy-member-admin {
+  font-style: italic;
+}

@@ -1,0 +1,42 @@
+{% load class_tags %}
+       
+<div {% get_id_and_classes "header-nav-links" %}>
+  <ul>
+    <li>
+      <a href="{% url activity_index %}?ref=nav-button" class="activities">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>Get Nutz</h4>
+      </a>
+    </li>
+    <li><a href="{% url energy_index %}?ref=nav-button" class="energy">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>Go Low</h4>
+      </a>
+    </li>
+    <li>
+      <a href="{% url news_index %}?ref=nav-button" class="news">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>News</h4>
+      </a>
+    </li>
+    <li>
+      <a href="{% url prizes_index %}?ref=nav-button" class="prizes">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>Prizes</h4>
+      </a>
+    </li>
+    <li>
+      <a href="{% url profile_index %}?ref=nav-button" class="profile">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>Profile</h4>
+      </a>
+    </li>
+    <li>
+      <a href="{% url help_index %}?ref=nav-button" class="help">
+        <img src="{{STATIC_URL}}css/default/images/spacer.png"/>
+        <h4>Help</h4>
+      </a>
+    </li>
+  </ul>
+</div>
+

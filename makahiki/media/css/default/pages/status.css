@@ -1,0 +1,44 @@
+body {
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container {
+  width: auto;
+  background: none;
+  background-color: #BDCBDF;
+}
+
+.container-top {
+  background: none;
+}
+
+.container-bottom {
+  background: none;
+}
+
+.container #header {
+  min-height: 0px;
+  height: auto;
+  background: none;
+}
+
+/* Base status styles */
+#status-header {
+  border: 1px solid gray;
+  background-color: #F8F8FF;
+  margin: 0 auto;
+}
+
+#status-nav {
+  list-style: none;
+}
+
+#status-nav li {
+  margin: 0 5px;
+  display: inline;
+}
+
+#status-points {
+  margin: 10px;
+}

@@ -1,0 +1,204 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/********************** news styles ******************************/
+
+th {
+	background: #dbd7af;
+	}
+
+#news-wall, #news-members {
+	width: 480px;
+	float: left;
+	margin-left: 20px;
+}
+
+#news-events-popular-activities {
+	width: 400px;
+	float: right;
+	margin-right: 20px;
+}
+
+.content-box {	
+	text-align: left;
+}
+
+#news-wall-content a {
+	color: #db9703;
+}
+
+a#wall-post-submit {
+	background: transparent url(/site_media/static/css/default/images/bkg-buttonx80.png) top left no-repeat;
+	width: 80px;
+	height: 27px;
+	display: block;
+	cursor: pointer;
+	float: right;
+	margin: .7em .5em;
+	text-align: center;
+	text-decoration: none;
+	padding: 0 auto 0 auto;
+	line-height: 25px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+#id_post {
+	width: 360px;
+	height: 30px;
+	margin: .5em 0 .5em .5em;
+	float: left;
+}
+
+
+#news-wall-content hr {
+	display: none;
+}
+
+#news-wall-content ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#news-wall-content li {
+	clear: both;
+}
+
+#news-wall-content li div{
+	padding: 5px;
+}
+
+#news-wall-content li div div {
+	padding: 0;
+}
+
+#news-wall-content .news-image {
+	float: left;
+	width: 40px;
+}
+
+#news-wall-content .news-text p {
+	margin: 0 0 10px 50px;
+}
+
+#news-wall-content .news-posted {
+	font-size: 8pt;
+	margin: 0 0 0 50px;
+	font-style: italic;
+	color: #777;
+}
+
+#news-wall-content .news-system-text p {
+	margin: 0 0 10px 20px;
+	font-style: italic;
+}
+
+#news-wall-content .news-system-posted {
+	font-size: 8pt;
+	margin: 0 0 0 20px;
+	font-style: italic;
+	color: #777;
+}
+
+#view-more-posts {
+	padding: .5em 0 0 .5em;
+	text-align: center;
+}
+
+.content-box table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	/*border-bottom: 1px solid #000;*/
+}
+
+.content-box th, .content-box td {
+	padding: 4px;
+}
+
+.news-event-name, .news-event-date, .news-most-popular-activity, .news-commitments-name {
+	border-right: 1px solid #000;
+}
+
+#news-members-list {
+  list-style: none;
+  margin: 0;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+#news-members-list li {
+  float: left;
+  width: 75px;
+  text-align: center;
+  min-height: 80px;
+}
+
+/**** Floor members list styles *******/
+#floor-members {
+  margin: 0 15px;
+}
+
+#floor-members-content {
+  text-align: left;
+  margin: 0;
+  padding: 5px 20px;
+}
+
+#floor-member-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#floor-member-list li {
+  float: left;
+  width: 60px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#floor-member-list li img {
+  padding: 2px;
+}
+
+#floor-member-detail-list, #floor-member-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#floor-member-detail-list>li {
+  padding: 5px 0;
+}
+
+#floor-member-detail-list>li .member-image {
+  padding: 4px 2px;
+  float: left;
+}
+
+#floor-member-details {
+  float: left;
+  margin-left: 5px;
+}
+
+#floor-member-details>li {
+  padding: 2px 0;
+}
+
+#floor-member-details .floor-member-name {
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+#floor-member-details .member-badges {
+  vertical-align: middle;
+  padding-left: 2px;
+}
+
+#floor-member-details .floor-member-admin {
+  font-style: italic;
+}

@@ -1,0 +1,53 @@
+{% extends "status/base.html" %}
+
+{% load class_tags %}
+
+{% block body %}
+<div {% get_id_and_classes "status-rsvps" %}>
+  <div class="content-box" style='float:left; margin: 15px'>
+    <div class="content-box-title">
+      Event RSVPs
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px">
+        <tr>
+          <th style="text-align: left">Event</th>
+          <th>Capacity</th>
+          <th>RSVPs</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+          <td style="text-align: left"><a href='{% url activity_view_rsvps event.type event.slug %}'>{{event.title}}</a></td>
+          <td>{{event.event_max_seat}}</td>
+          <td>{{event.rsvps}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  
+  <div class="content-box" style='float:left; margin: 15px'>
+    <div class="content-box-title">
+      Excursion RSVPs
+    </div>
+    <div class="content-body">
+      <table style="margin: 10px; padding: 0 10px">
+        <tr>
+          <th style="text-align: left">Event</th>
+          <th>Capacity</th>
+          <th>RSVPs</th>
+        </tr>
+        {% for excursion in excursions %}
+        <tr>
+          <td style="text-align: left"><a href='{% url activity_view_rsvps excursion.type excursion.slug %}'>{{excursion.title}}</a></td>
+          <td>{{excursion.event_max_seat}}</td>
+          <td>{{excursion.rsvps}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <br style="clear: both"/>
+</div>
+{% endblock %}

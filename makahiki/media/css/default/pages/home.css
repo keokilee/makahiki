@@ -1,0 +1,233 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/********************** home styles ******************************/
+
+.content p {
+	background: transparent url(/site_media/static/css/default/images/bullet.png) top left repeat-y;
+	font-size: 8pt;
+	line-height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	padding-left: 13px;
+	margin: 0 2px 5px 2px
+}
+
+.content img {
+	border: 0;
+}
+
+h6 {
+	margin: 0 ;
+	padding: 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+div.home-item {
+	width: 210px;
+	display: block;
+	padding-bottom: 2px;
+	margin: 20px 20px 0px 20px;
+	float: left;
+}
+
+.content .tile {
+	background: #E3E3E3;
+	padding: 1px;
+	border: 3px outset #DDD;
+	margin-top: -.7em;
+	
+	
+    background-image: -moz-linear-gradient(100% 50% 90deg, #E3E3E3, #A1A1A1);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#E3E3E3), to(#BBB));
+	
+	border-radius: 3px;
+	
+	box-shadow: 3px 3px 5px #000;
+	-moz-box-shadow: 3px 3px 5px #000;
+	-webkit-box-shadow: 3px 3px 5px #000;
+	
+	/* Force tiles on top of icons.*/
+	position: relative;
+	z-index: 100;
+}
+
+.content {
+	width: 920px;
+	height: 440px;
+	margin: 0 auto 0 auto;
+	
+	background: none;
+	background-color: rgba(255,255,255,0.8);
+	border: 2px solid #167000;
+}
+
+#home-center {
+    margin-left: 80px;
+}
+
+#home-prizes {
+	clear: left;
+}
+
+.home-item img {
+	float: none;
+}
+
+#home-energy-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-energy-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-go-low-lg-over.jpg) top left no-repeat;
+}
+
+
+#home-activities-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-activities-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-scoreboard-lg-over.jpg) top left no-repeat;
+}
+
+#home-news-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-news-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-news-lg-over.jpg) top left no-repeat;
+}
+
+
+#home-prizes-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-prizes-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-prizes-lg-over.jpg) top left no-repeat;
+}
+
+
+#home-help-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-help-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-help-lg-over.jpg) top left no-repeat;
+}
+
+#home-profile-icon {
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg.jpg) top left no-repeat;
+	width: 120px;
+	height: 124px;
+}
+
+#home-profile-icon:hover {
+	background: transparent url(/site_media/static/css/default/images/icon-profile-lg-over.jpg) top left no-repeat;
+}
+
+/* Setup wizard styles */
+
+#setup-dialog h2 {
+  text-align: center;
+}
+
+#progressbar-header {
+  text-align: center;
+}
+
+#progressbar-header p {
+  margin: 5px 0;
+}
+
+#setup-welcome-info {
+  border: 1px solid black; 
+  padding: 10px; 
+  margin-bottom: 5px; 
+  text-align: center
+}
+
+#setup-dialog {
+  text-align: left;
+}
+
+#setup-dialog .ui-progressbar-value{
+  background: none;
+  background-color: #528EE3;
+}
+
+#profile-form ul {
+  list-style: none; 
+  padding: 0; 
+  padding-bottom: 5px; 
+  margin: 5px 0;
+}
+
+#profile-form ul li {
+  padding: 0; 
+  margin: 5px 0;
+}
+
+.setup-profile-help-text {
+  font-style: italic; 
+  font-size: 0.8em; 
+  margin: 5px 0;
+}
+
+.setup-form-photo {
+  float: left; 
+  width: 40%; 
+  padding-right: 5px
+}
+
+.setup-form-photo p {
+  margin: 5px 0;
+}
+
+#profile-picture-facebook {
+  margin-top: 10px;
+}
+
+#profile-picture-facebook p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#profile-form img {
+  vertical-align: baseline;
+}
+
+#setup-content {
+  margin-bottom: 10px;
+}
+
+#setup-terms-content {
+  border: 1px solid black;
+  height: 200px; 
+  overflow: auto; 
+  padding: 5px;
+}
+
+#setup-activity-form {
+  border: 1px solid black; 
+  margin-top: 10px; 
+  padding: 5px;
+}
+
+#setup-activity-form label {
+  margin-bottom: 5px;
+  display: block;
+}

@@ -1,0 +1,29 @@
+{% load markup %}
+
+<li>
+  <a href="javascript:void(0)" id="{{quest.quest_slug}}" 
+  class="quest-title {% if user_quest %}quest-user-quest{%endif%}">
+    {{quest.name}}
+  </a>
+  <div class="quest-description" style="display:none">
+    <h4>This is a level {{quest.level}} quest</h4>
+    {{quest.description|markdown}}
+    <div class="quest-options">
+      {% if user_quest %}
+      <form action="{% url quests_cancel quest.quest_slug %}" method="POST" style="display: inline">
+{%csrf_token%}
+        <button type="submit" style="margin-right: 20px">Cancel this quest</button>
+      </form>
+      {% else %}
+      <form action="{% url quests_accept quest.quest_slug %}" method="POST" style="display: inline">
+       {%csrf_token%}
+        <button type="submit" style="margin-right: 20px">I accept this quest</button>
+      </form>
+      <form action="{% url quests_opt_out quest.quest_slug %}" method="POST" style="display: inline">
+{%csrf_token%}
+        <button type="submit">I am not interested in this quest</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</li>

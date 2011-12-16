@@ -1,0 +1,11 @@
+RSVPs for '{{ activity.title }}'<br/>
+
+<ol>
+{% for member in rsvps %}
+  <li style="padding: 5px">
+	{{ member.user.last_name }}, {{ member.user.first_name }}
+	</li>
+{% empty %}
+<li>There are no RSVPs for this event/excursion</li>
+{% endfor %}
+</ol>

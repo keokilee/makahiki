@@ -1,0 +1,64 @@
+{% load class_tags %}
+
+<h2>Terms and Conditions</h2>
+<div {% get_id_and_classes "setup-content" %}>
+  <p>The Kukui Cup competition is part of a University of Hawaii research project on energy. Please read the following information and make a selection below.</p>
+  <div {% get_id_and_classes "setup-terms-content" %}>
+    {% include "help/terms.html" %}
+  </div>
+</div>
+
+<div style="float:left">
+  <button id="back">
+   <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
+   Back</button>
+</div>
+
+{% if is_mobile %}
+<div style="float:center"> 
+  <a href="{% url mobile_tc %}"><font color="Purple">View Terms and Conditions</font></a> 
+</div>
+{% endif %}
+
+<div style="float:right">
+  <button id="agree" style="margin-bottom: 10px">I Agree
+  <img src="{{ STATIC_URL}}/css/default/images/right.png" width="24" align="top">
+  </button>
+</div>
+<div style="clear: right; float:right;">
+  <a href="/account/cas/logout?next={% url about %}">
+  <button id="decline" style="text-align: right">I don't agree <img src="{{ STATIC_URL}}/css/default/images/stop.png" width="24" align="top"><br/>Take me to non-participant page
+  </button></a>
+</div>
+
+<div style="clear:both"></div>
+
+<div {% get_id_and_classes "progressbar-header" %}>
+  <p>Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div {% get_id_and_classes "progressbar" %}></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#progressbar").progressbar({
+      value: 200/7
+    });
+    
+    $("#decline").button();
+    
+    $("#back").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_welcome %}?from=terms", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+    
+    $("#agree").button().click(function() {
+      $(this).button("option", "disabled", true);
+      $.get("{% url setup_referral %}", function(data) {
+        $("#ui-dialog-title-setup-dialog").html(data.title);
+        $("#setup-dialog").html(data.contents);
+      });
+    });
+  });
+</script>

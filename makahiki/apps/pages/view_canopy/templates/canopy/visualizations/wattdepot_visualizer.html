@@ -1,0 +1,47 @@
+  <script type="text/javascript" src="{{ STATIC_URL}}/js/org.wattdepot.makahiki.Visualizer.js"></script> 
+  
+<p/>
+<div id="Wattdepot-Visualizer">
+    <div id="title" style="font-weight: bold; text-align: center;">Line Graph</div>
+       <p/>
+       <div id="control" style="margin-left: 210px; text-align: left;"> 
+         Lounge : <br/>
+         {% for lounge in all_lounges %}
+            <input type="checkbox" name="lounge" value="{{ lounge.floor_identifier}}"
+                   {%if user.get_profile.get_lounge_name == lounge.floor_identifier %} checked="checked" {% endif %}
+                   onchange='update();'/>
+            {{ lounge.floor_identifier  }}
+            {%  if forloop.counter == 5 or forloop.counter == 10 or forloop.counter == 15 %}
+               <br/>
+            {%  endif %}
+         {% endfor %}
+        <p/>    
+        Time :
+        <input type="radio" name="period" value="last24hours" checked="checked" onchange="update();" /> 
+          last 24 hours 
+        <input type="radio" name="period" value="last7days" onchange="update();"/> 
+          last 7 days
+         <input type="radio" name="period" value="last21days" onchange="update();"/> 
+          last 21 days  
+         <br/>
+        Data :  
+        <input type="radio" name="datatype" value="energyConsumed" checked="checked" onchange="update();"/> 
+          Energy Consumed
+        <input type="radio" name="datatype" value="powerConsumed" onchange="update();" /> 
+          Power Consumed
+      </div>        
+
+
+    <!-- Loading div that displays an animated gif, display is set to none when displaying a BioHeatMap -->
+    <div id="loading"><img src="{{STATIC_URL}}/images/spinner.gif" /></div>
+     
+    <div id='chart_div' style='margin-left: 150px; width: 650px; height: 350px; '></div>
+    <div id="description" style="margin-left: 210px; text-align: left; width: 500px;">
+     <p>
+    This visualization shows the annotated timeline of the energy or power consumption for the selected lounges.
+
+    The data sample interval is 15 minutes if you select "last 24 hours" option, otherwise the interval is 1 hours. 
+    You can use this visualization to look for fine grain energy data and compare data from multiple lounges.
+    </div>
+
+</div>

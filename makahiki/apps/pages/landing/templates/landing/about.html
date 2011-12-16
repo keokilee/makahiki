@@ -1,0 +1,143 @@
+{% extends "site_base.html" %}
+
+{% load class_tags %}
+
+{% block page_title %}
+  Welcome to Kukui Cup!
+{% endblock %}
+
+{% block extra_head %}
+  {% import_page_css "landing" STATIC_URL CSS_THEME %}
+  <style>
+    /* Override for the footer on the index page.*/
+    #footer {
+      margin: 0;
+    }
+  </style>
+  <meta name="format-detection" content="telephone=no">
+{% endblock %}
+
+{% block body %}
+
+<div {% get_id_and_classes "landing-page" %}>
+  <div {% get_id_and_classes "landing-logo" %}>
+    {# <a href="{% url landing %}"> #}
+      <img src="{{STATIC_URL}}css/default/images/old-logo.png"/>
+    {# </a> #}
+  </div>
+  <div {% get_id_and_classes "landing-title" %}>
+    <h2>The Kukui Cup: Lights out, game on!</h2>
+  </div>
+</div>
+
+<div {% get_id_and_classes "landing-about" %}>
+  {# <div id="standings-header"> #}
+  {#   <h3>Today&apos;s Usage (updated hourly)</h3> #}
+  {#   <table id="standings-table" style="margin: 5px auto"> #}
+  {#   </table> #}
+  {# </div> #}
+  <div id="social" style="float: right; width: 120px; margin-left: 10px; padding-top: 20px">
+    <div style="margin-bottom: 10px">
+      <a href="http://twitter.com/kukuicup" class="twitter-follow-button" data-text-color="#FFFFFF" data-show-count="false">Follow @kukuicup</a>
+      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </div>
+  
+    <div>
+      <!-- Facebook Badge START --><a href="https://www.facebook.com/kukuicup" target="_TOP" title="Kukui Cup"><img src="https://badge.facebook.com/badge/198203673552272.2024.1805538213.png" width="120" height="186" style="border: 0px;" /></a><br/><!-- Facebook Badge END -->
+    </div>
+
+    <div style="margin-top: 5px">
+        <g:plusone size="medium"></g:plusone>
+
+        <script type="text/javascript">
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    </div>
+  
+  </div>
+  <h2>What is the Kukui Cup?&nbsp;</h2>
+  <div>The Kukui Cup is an advanced energy challenge that combines real-time energy feedback, energy education, multiple forms of incentives, and gamification techniques to support positive changes in energy behavior. &nbsp;The inaugural Kukui Cup was held in Fall, 2011 for over 1,000 first year students living in the Hale Aloha residence halls at the University of Hawaii. &nbsp;We are planning the second Kukui Cup for Fall, 2012.&nbsp;</div>
+  <h2>Why is the Kukui Cup important to Hawaii?&nbsp;</h2>
+  <div>One of the great challenges facing Hawaii today is our dependence on foreign oil, which negatively affects our security, our economy, our environment, and our next generation's ability to have a healthy, prosperous, sustainable lifestyle. &nbsp;The Kukui Cup raises awareness about Hawaii's oil dependency and how to work toward a better energy future. &nbsp;</div>
+  <div><br>
+  </div>
+  <div>We created the following three minute video to help explain why we believe energy issues are so important to Hawaii.</div>
+  <div><br>
+  </div>
+  <div>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/EJc0mXS7JCo" frameborder="0" allowfullscreen></iframe>
+  <h2>How it works</h2>
+  <div>Students participating in the Kukui Cup challenge can login to the website during the challenge to gain access about their current power consumption and cumulative energy use. &nbsp;The site also provides short videos developed specifically for the competition that provide insight into Hawaii energy issues, and students can earn points by correctly answering questions about each video's content.&nbsp;</div>
+  <div><br>
+  </div>
+  <div>Other ways to earn points include meeting a daily energy conservation goal, attending short, interactive "workshops" about energy, &nbsp;or going on excursions to power plants, wind farms, and more. Participation can lead to prizes including t-shirts, pizza parties, and gift certificates. By playing the game, students become knowledgeable about the energy challenges facing Hawaii and how to change their own behavior and those around them to use energy more efficiently. </div>
+  <div><br>
+  </div>
+  <div>The following two minute video was used in 2011 to introduce students to the Kukui Cup; it is one of the first things they watched after logging in to the website:</div>
+  <div><br>
+  </div>
+  <div>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/T37kNTkZCrA" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <h2>A "serious game"</h2>
+  </div>
+  The Kukui Cup is part of a new generation of "serious" games. In serious games, players earn points, see their ranking on scoreboards, go on quests, and form communities just like traditional games. Unlike traditional games, the goal of a serious game is to make positive change in the real world, not conquer imaginary realms or other "virtual" outcomes. In the Kukui Cup, students use "gamification" techniques to learn about energy concepts, Hawaii's unique energy situation, challenges, and opportunities, and to change their behavior to contribute to a positive energy future for Hawaii.
+  <div><br>
+  </div>
+  <div>We presented a "lightning talk" at the 2011 Behavior, Energy, and Climate Change conference on the use of gamification in the Kukui Cup and our preliminary results. &nbsp;The following screencast provides a four minute version of that talk:</div>
+  <div><br>
+  </div>
+  <div>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/XtIm9Nbi7PA" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <h2>Makahiki: A game engine for energy</h2>
+  <div>While the Kukui Cup content is specific to Hawaii's energy challenges and opportunities, we have designed the system in two layers. Underneath the Kukui Cup system is a "game engine" called Makahiki, which provides a customizable infrastructure for development of energy challenges. &nbsp;</div>
+  <div><br>
+  </div>
+  <div>We have exciting plans for improving the ability of Makahiki to support energy game development. &nbsp;Please contact Philip Johnson (johnson@hawaii.edu) if you are interested in more details.&nbsp;</div>
+  <h2>Publications</h2>
+  <div>
+  <ul><li>Robert S. Brewer, <a href="http://csdl.ics.hawaii.edu/techreports/11-03/11-03.pdf">The Kukui Cup: Shaping Everyday Energy Use Via a Dorm Energy Competition</a>, Proceedings of the CHI 2011 Workshop on Everyday Practice and Sustainable HCI, May 2011</li>
+  <li>Robert S. Brewer, George E. Lee, Yongwen Xu, Caterina Desiato, Michelle Katchuck, Philip M. Johnson, <a href="http://csdl.ics.hawaii.edu/techreports/11-02/11-02.pdf">Lights Off. Game On. The Kukui Cup: A Dorm Energy Competition</a>, Proceedings of the CHI 2011 Workshop on Gamification, May 2011</li>
+  <li>Robert S. Brewer, George E. Lee, Philip M. Johnson, <a href="http://csdl.ics.hawaii.edu/techreports/10-07/10-07.pdf">The Kukui Cup: a Dorm Energy Competition Focused on Sustainable Behavior Change and Energy Literacy</a>, Proceedings of the 44th Hawaii International Conference on System Sciences, January 2011</li></ul>
+  <h2>Our sponsors</h2>
+  The Kukui Cup is grateful for financial support from:<br>
+  <ul><li>The <a href="http://www.nsf.gov/">National Science Foundation</a> under <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1017126">grant 1017126</a>;</li>
+  <li>The <a href="http://reis.manoa.hawaii.edu/">Center for Renewable Energy and Island Sustainability</a>;</li>
+  <li><a href="http://manoa.hawaii.edu/housing/">University of Hawaii at Manoa Student Housing Services</a>;</li>
+  <li><a href="http://manoa.hawaii.edu/facilities/">University of Hawaii at Manoa Facilities Management</a>;</li>
+  <li>The <a href="http://energy.hawaii.gov/">State of Hawaii Department of Business, Economic Development, and Tourism</a>;</li>
+  <li>The <a href="http://www.ics.hawaii.edu/">University of Hawaii Department of Information and Computer Sciences</a>.</li></ul>
+  <h2>Our team</h2>
+  </div>
+  <div>The Kukui Cup project team is led by Professor Philip Johnson from the Department of Information and Computer Sciences (ICS) at the University of Hawaii. &nbsp;Team members from ICS include: Robert Brewer, Yongwen Xu, George Lee, Greg Burgess, and Nathan Dorman. &nbsp;Team members from the Department of Communications include: Michelle Katchuck, Hana Bowers, and Risa Khamsi. &nbsp; Alex Young joins us from the Departments of Art and Spanish, Kaveh Abhari from Shidler College of Business, and Chris Zorn comes from the University of Hawaii Lab School.</div>
+
+  {# <a href="{% url landing %}" style="display:block; margin-top: 10px;">Back to the home page</a> #}
+</div>
+
+{# <script type="text/javascript"> #}
+{# // Wrap this code in an anonymous self-invoking function to avoid polluting global namespace. #}
+{# (function() { #}
+{#   // Get the spreadsheet we need. #}
+{#   var energyLastThirtyDays = "https://spreadsheets.google.com/tq?key=0An9ynmXUoikYdHhxeW1xRURQZUlGd1oxVERnQktsWXc"; #}
+{#   var refreshInterval = 0; // don't refresh this spreadsheet. #}
+{#  #}
+{#   // Load the visualization API and the spreadsheet, then call displayRank. #}
+{#   var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);   #}
+{#  #}
+{#   function displayRank(energyDataTable) { #}
+{#     // The source for which we want to find the rank must be specified by Makahiki. #}
+{#     var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank(); #}
+{#     var usage = energyRank.processDataTable(energyDataTable, 0, 0); #}
+{#      #}
+{#     energyRank.drawCompleteStandings("standings-table", null, usage, true); #}
+{#     $(".container-bottom").height(1000); #}
+{#   } #}
+{# })(); #}
+{#  #}
+{# </script> #}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load avatar_tags %}
+{% load class_tags %}
+<h2>Customize your Kukui Cup profile</h2>
+
+<div {% get_id_and_classes "setup-content" %}>
+  <p>Each participant has a profile on the Kukui Cup website. You can personalize yours right now and get 5 points immediately!</p>
+  <form {% get_id_and_classes "profile-form" %} action="{% url setup_profile %}" method="post">
+    {% csrf_token %}
+    <ul>
+      <li>
+        <div style="color: red; font-style: italic">{{form.display_name.errors}}</div>
+        {{form.display_name.label_tag}}: {{form.display_name}}
+        <p class="setup-profile-help-text">{{form.display_name.help_text}}</p>
+      </li>
+      <li>
+        <div class="setup-form-photo">
+          <p>Your profile picture:</p>
+          {% avatar user %}
+        </div>
+        <div class="setup-form-photo">
+          <p>Upload a new picture (optional):</p>
+          {{form.avatar}}
+          <div id="profile-picture-facebook">
+            {% include "home/first-login/profile-facebook.html" %}
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </li>
+    </ul>
+  </form>
+</div>
+
+<div style="float: left">
+  <button id="back" style="text-align: left">
+   <img src="{{ STATIC_URL}}/css/default/images/left.png" width="24" align="top">
+   Back<br/>Referral</button>
+</div>
+<div style="float:right">
+  <button id="next" style="text-align: right">Next 
+   <img src="{{ STATIC_URL}}/css/default/images/right.png" width="24" align="top">
+   <br/>Introduction video</button>
+</div>
+<div style="clear:both"></div>
+
+<div {% get_id_and_classes "progressbar-header" %}>
+  <p>Introduction progress, points: {{user.get_profile.points}}</p>
+</div>
+<div {% get_id_and_classes "progressbar" %}></div>
+
+<script type="text/javascript">
+  {% include "home/first-login/profile.js" %}
+</script>

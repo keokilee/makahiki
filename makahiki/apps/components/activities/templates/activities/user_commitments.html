@@ -1,0 +1,20 @@
+{% load cache %}
+
+{% cache 3600 commitments request.user %}
+{% if commitment_members %}
+<table>
+  <tr>
+    <th class="commitments-title">Commitment</th>
+    <th class="commitments-expire">Expires</th>
+  </tr>
+  {% for member in commitment_members %}
+  <tr>
+    <td class="commitments-title"><a href="{% url activity_task 'commitment' member.commitment.slug %}">{{member.commitment.title}}</a></td>
+    <td class="commitments-expire">{{member.completion_date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p style="width: 100%; text-align: center">You are not participating in any commitments</p>
+{% endif %}
+{% endcache %}

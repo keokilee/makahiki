@@ -1,0 +1,77 @@
+{% extends "status/base.html" %}
+
+{% load class_tags %}
+
+{% block body %}
+
+<div {% get_id_and_classes "status-energy" %}>
+  {% for key, value in ROUNDS.items %}
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      {{key.capitalize}} Energy Scoreboard
+    </div>
+    <div class="content-body">
+      <div style="margin: 10px; padding: 0 10px;">
+        <table id="{{key|slugify}}-energy-scoreboard" style='width: 300px'>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+  {# Extra box for energy goals #}
+  <div class="content-box" style="float: left; margin: 15px">
+    <div class="content-box-title">
+      Daily Energy Goal Scoreboard
+    </div>
+    <div class="content-body">
+      <div style="margin: 10px; padding: 0 10px;">
+        <table id="energy-goals-scoreboard" style='width: 300px'>
+          <tr>
+            <th>Rank</th>
+            <th>Lounge</th>
+            <th>Days met goal</th>
+          </tr>
+          {% for entry in goals_scoreboard %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+              {{entry.floor__dorm__name}}-{{entry.floor__number}}
+            </td>
+            <td style="text-align: right; padding-right: 20px">{{entry.completions}}</td>
+          </tr>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+  <br style="clear: both"/>
+</div>
+
+<script type="text/javascript">
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
+  // Get the spreadsheet we need.
+  var energyLastThirtyDays = '{{SPREADSHEETS.THIRTY_DAYS}}';
+  var refreshInterval = 0; // don't refresh this spreadsheet.
+
+  // Load the visualization API and the spreadsheet, then call displayRank.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayRank, energyLastThirtyDays, refreshInterval);  
+
+  function displayRank(energyDataTable) {
+    // The source for which we want to find the rank must be specified by Makahiki.
+    var energyRank = new org.wattdepot.gdata.makahiki.EnergyRank();
+    
+    // Get the usage for the current round and overall.
+    {% for key, value in ROUNDS.items %}
+      var usage = energyRank.processDataTable(energyDataTable, {{value.start}}, {{value.end}});
+      var info = energyRank.calculateRankInfo(usage, null);
+      
+      // Check if this is overall information.
+      // alert("{{key|slugify}}");
+      energyRank.drawCompleteStandings("{{key|slugify}}-energy-scoreboard", null, usage);
+    {% endfor %}
+  }
+})();
+</script>
+
+{% endblock %}

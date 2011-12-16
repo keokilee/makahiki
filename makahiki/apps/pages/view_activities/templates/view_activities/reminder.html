@@ -1,0 +1,124 @@
+{% load class_tags %}
+
+{% if not task.is_event_completed %}
+<div {% get_id_and_classes "task-reminder"%}>
+  <p>
+    {% if reminders.email or reminders.text %}
+      {% if reminders.email %}
+      Email reminder: {{reminders.email.send_at}}<br/>
+      {% endif %}
+      {% if reminders.text %}
+      Text reminder: {{reminders.text.send_at}}<br/>
+      {% endif %}
+      <button {% get_id_and_classes "task-reminder-button" %}>Change Reminder</button>
+    {% else %}
+    Get a text or email reminder
+    <button {% get_id_and_classes "task-reminder-button" %}>Remind Me</button>
+    {% endif %}
+  </p>
+</div>
+
+<div {% get_id_and_classes "task-reminder-dialog" %} title="Remind Me" style="display: none">
+  {% include "view_activities/reminder_form.html" %}
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $("#task-reminder-dialog").dialog({
+      modal: true,
+      autoOpen: false,
+      width: 650,
+      open: function (event, ui) {
+        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-open");
+      },
+      close: function(event, ui) {
+        log_js_action("{{task.type}}", "{{task.slug}}", "reminder-close");
+      }
+    });
+    
+    $("#task-reminder-button").click(function() {
+      $("#task-reminder-dialog").dialog("open");
+    });
+    
+    function createDateString(offset) {
+      var d = new Date('{{task.activity.event_date|date:"r"}}');
+      // Subtract the milliseconds from the event date.
+      d = new Date(d.getTime() - (offset * 60 * 60 * 1000));
+      var hour = d.getHours();
+      var minutes = d.getMinutes();
+      var ampm = "AM";
+      if (hour > 12) {
+        hour = hour - 12;
+        ampm = "PM";
+      }
+      if (hour == 12) {
+        ampm = "PM";
+      }
+      else if (hour == 0) {
+        hour = 12;
+      }
+      if(minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      var timeString = "" + hour + ":" + minutes + " " + ampm;
+      return d.toDateString() + ", " + timeString;
+    }
+    
+    // Function for binding the reminder form elements. This is needed when there are form errors to process the
+    // ajax response.
+    function bindReminderForm() {
+      $("#task-reminder-form-text-date").html(createDateString($("#id_text_advance").val()));
+      $("#task-reminder-form-email-date").html(createDateString($("#id_email_advance").val()));
+      
+      // Variables for the mobile and email checkboxes.
+      var $mobile = $("#id_send_text");
+      var $email = $("#id_send_email");
+
+      $("#id_text_advance").change(function() {
+        $("#task-reminder-form-text-date").html(createDateString($(this).val()));
+        return false;
+      });
+
+      $("#id_email_advance").change(function() {
+        $("#task-reminder-form-email-date").html(createDateString($(this).val()));
+        return false;
+      });
+      
+      $("#id_text_number").click(function() {
+        if (!$mobile.checked) {
+          $mobile.attr("checked", "checked");
+        }
+      });
+      
+      $("#id_email").click(function() {
+        if (!$email.checked) {
+          $email.attr("checked", "checked");
+        }
+      });
+      
+      $("#task-reminder-form-cancel").click(function() {
+        $("#task-reminder-dialog").dialog("close");
+        return false;
+      });
+      
+      $("#task-reminder-form-submit").click(function() {
+        $("#task-reminder-form button").attr("disabled", "disabled");
+        $.post("{% url activity_reminder task.type task.slug %}", $("#task-reminder-form").serialize(), function(data) {
+          if(data.success) {
+            window.location.reload();
+          }
+          else {
+            $("#task-reminder-dialog").html(data.form);
+            bindReminderForm();
+          }
+
+          return false;
+        });
+        return false;
+      });
+    }
+    
+    bindReminderForm();
+  });
+</script>
+{% endif %}

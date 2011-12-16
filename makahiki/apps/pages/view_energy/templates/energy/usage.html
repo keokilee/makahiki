@@ -1,0 +1,77 @@
+{% load class_tags %}
+<div {% get_id_and_classes "energy-power-box" %}>
+  
+<div id="EnergyGoalGame-visualization"></div> 
+
+</div>
+
+{% if user.get_profile.floor %}
+<script type="text/javascript"> 
+// Wrap this code in an anonymous self-invoking function to avoid polluting global namespace.
+(function() {
+  var spreadsheetUrl = '{{SPREADSHEETS.ENERGY_GOAL}}';
+  var refreshInterval = 15; // refresh every 15 seconds.
+ 
+  // Load the visualization API and the spreadsheet, then call displayEnergy.
+  var loader = new org.wattdepot.gdata.GDataLoader(displayEnergy, spreadsheetUrl, refreshInterval);  
+ 
+  function displayEnergy(datatable) {
+    var source = '{{user.get_profile.floor.dorm.name}}-{{user.get_profile.floor.number}}';
+    var options = {};  // no options currently supported. 
+    var energyChart = new org.wattdepot.gdata.makahiki.EnergyGoalGame();
+    energyChart.draw('EnergyGoalGame-visualization', source, datatable, options);
+    
+    //display_energy_calculator("energy-calculator", source, datatable);   
+  } 
+              
+})();
+
+
+function display_energy_calculator(div, source, datatable)
+{
+   var row = -1;
+   for (var i = 0; i < datatable.getNumberOfRows(); i++) {
+      if (datatable.getValue(i, 0) == source) {
+        row  = i;
+      }
+   }
+    
+   var actualConsumption = parseInt(datatable.getValue(row,2));
+   var goalConsumption = parseInt(datatable.getValue(row,3));
+   var diff = actualConsumption - goalConsumption;
+   if (diff < 0) { diff = 0 - diff; }
+
+   var appliance_type = ["Playing XBox 360",
+                "Using laptop",
+                "Watching plasma TV",
+                "Playing stereo",
+                "Playing Wii",
+                "Playing Playstation 3"];
+   var appliance_data = [185.0, 
+                    70.0, 
+                    300.0, 
+                    100.0, 
+                    20.0, 
+                    195.0];
+
+   var selectText = '<select onchange="cal_energy(this.options[this.selectedIndex]);" >\n';
+   for (var i=0; i<appliance_type.length; i++) 
+   {   var diffstr = diff*1000/appliance_data[i];
+       selectText += '<option value="'+diffstr.toFixed(1)+'">'+appliance_type[i]+'</option>\n';
+   }
+   selectText += '</select> '
+    
+   var diffstr = diff*1000/appliance_data[0]; 
+   document.getElementById(div).innerHTML = "We need to conserve energy to meet our goal, but what does "+diff+" kWh mean? <p/>" +
+     "To save "+diff+"  kWh, we must reduce our energy use by an amount equivalent to" + 
+     selectText + 
+     "<div id='cal_energy_text'> for "+diffstr.toFixed(1)+" hours</p>";          
+}
+
+function cal_energy(selected)
+{
+  document.getElementById("cal_energy_text").innerHTML = 
+  "for "+selected.value+" hours</p>"
+}
+</script> 
+{% endif %}

@@ -1,0 +1,15 @@
+Hi {{object.user.get_profile.name}},
+
+{% with object.activity as activity %}
+Your response to {{activity.title}} was not approved.  Here is our feedback:
+
+{{object.admin_comment}}
+
+You can still receive the points for this {{activity.type}}!  Please click the following link to try again.
+
+http://{{domain}}{% url activity_task activity.type activity.slug %}
+
+Thank you,
+
+{{COMPETITION_NAME}} Administrators
+{% endwith %}

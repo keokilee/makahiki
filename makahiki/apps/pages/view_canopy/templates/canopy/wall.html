@@ -1,0 +1,23 @@
+{% load class_tags %}
+
+<div {% get_id_and_classes "wall-form" %}>
+  <form {% get_id_and_classes "news-post-form" %} action="{% url canopy_wall_post %}" method="POST">
+    <div {% get_id_and_classes "wall-post-errors" %}></div>
+    <div {% get_id_and_classes "wall-post" %}>
+      {{wall_form.post}}
+      
+      <button {% get_id_and_classes "wall-post-submit" %}>
+      	Post
+      </button>
+      <br style="clear:both"/>
+    </div>
+  </form>
+</div>
+
+<ul {% get_id_and_classes "wall-posts" %}>
+  {% include "canopy/wall_posts.html" %}
+</ul>
+
+{% if not posts %}
+  <p {% get_id_and_classes "wall-no-posts" %} style="padding: 7px;">There are no posts yet!</p>
+{% endif %}

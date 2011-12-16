@@ -1,0 +1,39 @@
+{% extends "makahiki_avatar/base.html" %}
+{% load class_tags %}
+{% load avatar_tags %}
+
+{% block body %}
+<div {% get_id_and_classes "avatar-change" %}>
+  <div {% get_id_and_classes "avatar-change-title" %}>Change your profile picture</div>
+  <div {% get_id_and_classes "avatar-change-content" %}>
+    <div id="avatar-back">
+      <a href="{% url profile_index %}">Back to profile</a>
+    </div>
+    <ul style="margin-top: 10px">
+      <li {% get_id_and_classes "avatar-current" %} style="border-right: 1px solid gray">
+        <h4 style="margin-top: 0px">Your current profile picture: </h4>
+        {% avatar user %}
+      </li>
+      <li {% get_id_and_classes "avatar-upload" %} style="width: 380px; margin-left: 20px; border-right: 1px solid gray">
+        <h4 style="margin-top: 0px">Upload a new profile picture.</h4>
+        <p>
+          Click the Choose File button to select a picture on your computer that will be used as your 
+          profile picture.  The picture should be square and less than 2MB in size.
+        </p>
+        <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {% if file_error %}
+            <div style="color: red">{{file_error}}</div>
+            {% endif %}
+            <input type="file" name="avatar" value="Avatar Image" />
+            <button type="submit">Upload New Image</button>
+        </form>
+      </li>
+      <li {% get_id_and_classes "avatar-facebook" %} style="margin-left: 20px">
+        {% include "makahiki_avatar/avatar_facebook.html" %}
+      </li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+</div>
+{% endblock %}

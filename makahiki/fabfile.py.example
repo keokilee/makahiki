@@ -1,0 +1,56 @@
+from __future__ import with_statement
+import datetime
+
+from fabric.api import *
+
+env.hosts = ["user@hostname"]
+# env.no_keys = True
+
+PRODUCTION_DIR = "<production folder path>"
+EVALUATION_DIR = "<evaluation folder path>"
+STAGING_FOLDER = "<staging folder path>"
+FOLDER_NAME_FORMAT = "%Y-%m-%d-%H%M"
+VIRTUALENV_PREFIX = "source <virtualenv path>"
+
+def deploy():
+  env.hosts = ["user@hostname"]
+  # env.no_keys = True
+  
+def production():
+  with cd(PRODUCTION_DIR):
+    # Make the directory
+    folder = datetime.datetime.today().strftime(FOLDER_NAME_FORMAT)
+    run("mkdir %s" % folder)
+    
+    # Copy from staging
+    run("cp -R %s %s" % (STAGING_FOLDER, folder))
+    
+    __update_instance(folder, PRODUCTION_DIR)
+    
+def evaluation():
+  with cd(EVALUATION_DIR):
+    # Make the directory
+    folder = datetime.datetime.today().strftime(FOLDER_NAME_FORMAT)
+    run("mkdir %s" % folder)
+    
+    # Copy from staging
+    run("cp -R %s %s" % (STAGING_FOLDER, folder))
+    
+    __update_instance(folder, EVALUATION_DIR)
+    
+def __update_instance(folder_name, instance_dir):
+  with cd(folder_name):
+    # Update settings and site media folder
+    run("cp %slocal_settings.py local_settings.py" % instance_dir)
+    run("rm site_media; ln -s %ssite_media site_media" % instance_dir)
+    
+    with prefix(VIRTUALENV_PREFIX):
+      # Shouldn't need to update requirements since staging already did this, but just in case.
+      run("pip install -r requirements.pip -q; python manage.py syncdb; python manage.py migrate")
+    
+    # Update Log
+    run('echo "INFO: New deployment in %s" >> ../log/makahiki.log' % folder_name)
+    
+    # Create symlink and restart process
+    run("ln -fns %s %smakahiki" % (instance_dir + folder_name, instance_dir))
+    run("touch %smakahiki/deploy/pinax.wsgi" % instance_dir)
