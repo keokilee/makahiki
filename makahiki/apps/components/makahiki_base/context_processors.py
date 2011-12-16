@@ -37,6 +37,7 @@ def competition(request):
     facebook_app_id = None
     
   return {
+    "STATIC_URL": settings.STATIC_URL,
     "COMPETITION_NAME": settings.COMPETITION_NAME,
     "COMPETITION_POINT_NAME": settings.COMPETITION_POINT_NAME or "point",
     "THEME_NAME": theme_name, 
