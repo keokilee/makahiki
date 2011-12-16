@@ -161,7 +161,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     'django.contrib.messages.context_processors.messages',
-    "pinax.core.context_processors.pinax_settings",
+    # "pinax.core.context_processors.pinax_settings",
     # "notification.context_processors.notification",
     # "account.context_processors.openid",
     # "account.context_processors.account",
@@ -219,7 +219,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.messages',
-    'pinax.templatetags',
+    # 'pinax.templatetags',
     
     # external
     # 'notification', # must be first
@@ -294,9 +294,9 @@ LOGIN_REDIRECT_URLNAME = "home_index"
 LOGIN_REDIRECT_URL = "/"
 RESTRICTED_URL = '/restricted/'
 
-SERIALIZATION_MODULES = {
-    "jsonfk": "pinax.core.serializers.jsonfk",
-}
+# SERIALIZATION_MODULES = {
+#     "jsonfk": "pinax.core.serializers.jsonfk",
+# }
 
 # If demo flag is set, use the additional demo settings.
 DEMO = False
