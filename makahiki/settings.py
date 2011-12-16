@@ -302,7 +302,7 @@ SERIALIZATION_MODULES = {
 DEMO = False
 
 # Default log file location.
-LOG_FILE = './log/makahiki.log'
+LOG_FILE = './makahiki.log'
 
 # Load additional settings files
 try:
