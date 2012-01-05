@@ -10,9 +10,16 @@ class LandingFunctionalTestCase(TestCase):
   
   def testLanding(self):
     """Check that we can load the landing page."""
+    current_setting = None
+    if hasattr(settings, "ROOT_REDIRECT_URL"):
+      current_setting = settings.ROOT_REDIRECT_URL
+      settings.ROOT_REDIRECT_URL = None
+      
     response = self.client.get(reverse("root_index"))
     self.failUnlessEqual(response.status_code, 200)
     self.assertTemplateUsed(response, "landing/index.html")
+    
+    settings.ROOT_REDIRECT_URL = current_setting
     
   def testRootRedirect(self):
     """
@@ -57,6 +64,11 @@ class LandingFunctionalTestCase(TestCase):
         
   def testMobileRedirect(self):
     """Tests that the mobile redirection and the cookie that forces the desktop version."""
+    current_setting = None
+    if hasattr(settings, "ROOT_REDIRECT_URL"):
+      current_setting = settings.ROOT_REDIRECT_URL
+      settings.ROOT_REDIRECT_URL =  None
+      
     response = self.client.get(reverse("root_index"),
         HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a"
     )
@@ -67,6 +79,9 @@ class LandingFunctionalTestCase(TestCase):
     response = self.client.get(reverse("root_index"),
         HTTP_USER_AGENT="Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A100a"
     )
+    print response.content
     self.failUnlessEqual(response.status_code, 200, "Mobile device should not redirect.")
     self.assertTemplateUsed(response, "landing/index.html")
+    
+    settings.ROOT_REDIRECT_URL = current_setting
     
