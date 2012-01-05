@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This README describes how to set up your computer for developing the [Pinax implementation](http://github.com/keokilee/makahiki) of the [Kukui Cup](http://code.google.com/p/kukui-cup/).  Most of the content can be found in the [Pinax documentation](http://pinaxproject.com/docs/0.7/install.html) and the [Django CAS](http://code.google.com/p/django-cas/) project page.
+This README describes how to set up your computer for Makahiki Development.
 
 ## Prerequisites
 * [Python](http://www.python.org/download/) 2.6 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using the 64 bit version appears to have issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
