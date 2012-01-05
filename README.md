@@ -8,17 +8,10 @@ This README describes how to set up your computer for developing the [Pinax impl
 * [Python](http://www.python.org/download/) 2.6 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using the 64 bit version appears to have issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
 * If on Mac OS X, make sure that the Apple Developer Tools are installed (which is bundled with XCode).  You can either get this from your Mac's install DVD or from Apple's [site](http://developer.apple.com/technologies/xcode.html).  Note that you need an Apple developer account (which is free) to download from Apple.
 * [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL).
-
-## Installing Pinax
-* Download the latest official release from the [Pinax web site](http://pinaxproject.com/downloads/).
-* Extract the bundle and using the terminal or a command prompt, change into the new directory.
-* Run `python scripts/pinax-boot.py <path-to-virtual-env-to-create>`.  For example, if you want to install to /pinax-env, then type `python scripts/pinax-boot.py /pinax-env`.
-* TROUBLESHOOTING: If you are runninng Python 2.7, you may receive an error along the lines of `ImportError: No module named _weakrefset`.  This is caused by an outdated version of the virtualenv plugin used to create the Pinax environment.  You can fix this error by replacing the contents of scripts/pinax-boot.py with the following [Gist](https://gist.github.com/949011).
-* TROUBLESHOOTING: On Mac OS X Snow Leopard, you may see an issue where the virtual environment fails to install.  One way to avoid this is to use the [virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/).  Follow the steps in the introduction and make a virtualenv for Pinax (i.e. `mkvirtualenv pinax-env`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script. Then, you can go back to the pinax folder you downloaded and type `python scripts/pinax-boot.py $WORKON_HOME/pinax-env` to install Pinax into the virtual environment.
+* Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect). It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
+* _Optional but recommended_ [Virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/). Virtualenv and Virtualenvwrapper allow you to install libraries separately from your global Python path. Follow the steps in the introduction and make a virtualenv for Makahiki (i.e. `mkvirtualenv makahiki`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script.
 
 ## Obtaining the Kukui Cup Pinax source
-* Getting this project requires Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect).
-* It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
 * If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/makahiki.git` to get the source.
 * If you wish to commit to the Kukui Cup Pinax project, you will need to create an account at [GitHub](http://github.com).  Then, you will need to set up your [SSH keys](http://help.github.com/key-setup-redirect) and your [email settings](http://help.github.com/git-email-settings/).
 * Once those are set up, send me your Git username so that you can be added as a collaborator.
@@ -27,26 +20,24 @@ This README describes how to set up your computer for developing the [Pinax impl
 ## Grabbing External Dependencies
 The following steps are to download additional libraries and upgrade some of the default ones.
 
-* cd into the makahiki folder.
-* Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
+* cd into the makahiki/makahiki folder.
+* If you used virtualenvwrapper, start the virtual environment by typing `workon <environment-name>`.
 * Check if you have pip installed by typing `pip help`.  If it works, great.  Otherwise, type `easy_install pip` to install it.
-* Type `pip install -r requirements.pip` from the application root.  This will load the dependencies in requirements.pip.
+* Type `pip install -r requirements.txt` from the application root.  This will load the dependencies in requirements.txt.
 
-## Setting up Kukui Cup Pinax
-* cd into the makahiki folder.
-* Start the Pinax virtual environment by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.  If you used virtualenvwrapper, then you can just use `workon <pinax-environment-name>`.
+## Setting up Makahiki
+* If you used virtualenvwrapper, activate the virtual environment by typing `workon <environment-name>`.
 * Update makahiki_settings.py with the settings related to the competition.  Important settings include the CAS authentication server for your organization and your time zone.
 * RECOMMENDED: Copy example\_settings/local\_settings.py.dev to local\_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "no", as this will be done in a later step.
 * Run `python manage.py migrate` to sync the migrations.
 * Run `python manage.py createsuperuser` to create a user.
-* IMPORTANT: Use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
+* IMPORTANT: If you are using CAS, use your CAS username as your username.  This is so that you can authenticate via the CAS login server.
 * Type in a valid email address and any password you like (you probably won't use the password, but emails might be activated later).
 * To load some sample data into the application, type `./scripts/load_data.sh`.  If you are on Windows, you can use `scripts\load_data.bat`.
 
 ## Running the server
-* If the virtual environment is not already active, start it by typing `source <path-to-created-virtual-env>/bin/activate` or `<path-to-created-virtual-env>\Scripts\activate.bat` on Windows.
 * Type `python manage.py runserver` to start the web server.
 * Open a browser and go to http://localhost:8000 to see the website.
 
