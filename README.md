@@ -9,7 +9,8 @@ This README describes how to set up your computer for Makahiki Development.
 * If on Mac OS X, make sure that the Apple Developer Tools are installed (which is bundled with XCode).  You can either get this from your Mac's install DVD or from Apple's [site](http://developer.apple.com/technologies/xcode.html).  Note that you need an Apple developer account (which is free) to download from Apple.
 * [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL). If you are on OSX, it might be easier to install via [Homebrew](http://mxcl.github.com/homebrew/). Once Homebrew is installed, install PIL by typing `brew install pil`.
 * Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect). It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
-* _Optional but recommended_ [Virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/). Virtualenv and Virtualenvwrapper allow you to install libraries separately from your global Python path. Follow the steps in the introduction and make a virtualenv for Makahiki (i.e. `mkvirtualenv makahiki`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script.
+* Pip. Check if it is installed by typing `pip help`. If not, install it by typing `easy_install pip`. If you do not have easy_install, download and follow the instructions [here](http://pypi.python.org/pypi/setuptools).
+* _Optional but recommended_ [Virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/). Virtualenv and Virtualenvwrapper allow you to install libraries separately from your global Python path. Follow the steps in the introduction and make a virtualenv for Makahiki (i.e. `mkvirtualenv makahiki`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script (it uses `~/.virtualenv` by default).
 
 ## Obtaining the Kukui Cup Pinax source
 * If you only wish to download the source, you can check out using the read-only URL.  Type `git clone git://github.com/keokilee/makahiki.git` to get the source.
@@ -22,7 +23,6 @@ The following steps are to download additional libraries and upgrade some of the
 
 * cd into the makahiki/makahiki folder.
 * If you used virtualenvwrapper, start the virtual environment by typing `workon <environment-name>`.
-* Check if you have pip installed by typing `pip help`.  If it works, great.  Otherwise, type `easy_install pip` to install it.
 * Type `pip install -r requirements.txt` from the application root.  This will load the dependencies in requirements.txt.
 
 ## Setting up Makahiki
