@@ -7,7 +7,7 @@ This README describes how to set up your computer for Makahiki Development.
 ## Prerequisites
 * [Python](http://www.python.org/download/) 2.6 or higher (but not Python 3).  On Windows machines, it is recommended that you use the 32 bit version, as using the 64 bit version appears to have issues.  Verify that you have it installed by typing `python` at the command prompt.  The interpreter should launch.  Close the interpreter by typing `exit()`.
 * If on Mac OS X, make sure that the Apple Developer Tools are installed (which is bundled with XCode).  You can either get this from your Mac's install DVD or from Apple's [site](http://developer.apple.com/technologies/xcode.html).  Note that you need an Apple developer account (which is free) to download from Apple.
-* [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL). If you are on OSX, it might be easier to install via [Homebrew](http://mxcl.github.com/homebrew/). Once Homebrew is installed, install PIL by typing `brew install pil`.
+* [Python Imaging Library](http://www.pythonware.com/products/pil/) (PIL). If you are on OSX, it is easier to install via [Homebrew](http://mxcl.github.com/homebrew/). Once Homebrew is installed, install PIL by typing `brew install pil`. If you are brave enough to install from source, make sure you have both libjpeg and zlib for jpeg and png support respectively.
 * Git.  Find a package for your operating system at the [GitHub install wiki](http://help.github.com/git-installation-redirect). It is recommended that you also configure Git so that it handles line endings from Windows users correctly. See [Dealing With Line Endings](http://help.github.com/dealing-with-lineendings/).
 * Pip. Check if it is installed by typing `pip help`. If not, install it by typing `easy_install pip`. If you do not have easy_install, download and follow the instructions [here](http://pypi.python.org/pypi/setuptools).
 * _Optional but recommended_ [Virtualenvwrapper](http://www.doughellmann.com/docs/virtualenvwrapper/). Virtualenv and Virtualenvwrapper allow you to install libraries separately from your global Python path. Follow the steps in the introduction and make a virtualenv for Makahiki (i.e. `mkvirtualenv makahiki`). You may also want to define $WORKON_HOME to your shell startup file in addition to adding the virtualenv startup script (it uses `~/.virtualenv` by default).
@@ -28,7 +28,7 @@ The following steps are to download additional libraries and upgrade some of the
 ## Setting up Makahiki
 * If you used virtualenvwrapper, activate the virtual environment by typing `workon <environment-name>`.
 * Update makahiki_settings.py with the settings related to the competition.  Important settings include the CAS authentication server for your organization and your time zone.
-* RECOMMENDED: Copy example\_settings/local\_settings.py.dev to local\_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
+* Copy example\_settings/local\_settings.py.dev to local\_settings.py.  This file provides additional modules for testing and can be used to override previously defined settings.  For example, you can specify a different database in this file.
 * Type `python manage.py syncdb` to create the database.
 * It will ask you if you want to create a superuser.  Say "no", as this will be done in a later step.
 * Run `python manage.py migrate` to sync the migrations.
