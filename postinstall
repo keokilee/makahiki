@@ -1,0 +1,3 @@
+#!/bin/sh
+python makahiki/manage.py syncdb --noinput;
+python makahiki/manage.py migrate;
