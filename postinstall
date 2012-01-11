@@ -1,3 +1,6 @@
 #!/bin/sh
+cp makahiki/example_settings/local_settings.py.dotcloud makahiki/local_settings.py
 python makahiki/manage.py syncdb --noinput;
-python makahiki/manage.py migrate;
+python makahiki/manage.py migrate --noinput;
+mkdir -p /home/dotcloud/data/media /home/dotcloud/data/static;
+python makahiki/manage.py collectstatic --noinput;
