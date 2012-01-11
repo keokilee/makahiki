@@ -1,2 +1,4 @@
 www:
-  type: python
+    type: python
+db:
+    type: postgresql
