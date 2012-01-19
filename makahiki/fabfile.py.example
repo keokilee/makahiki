@@ -3,9 +3,6 @@ import datetime
 
 from fabric.api import *
 
-env.hosts = ["user@hostname"]
-# env.no_keys = True
-
 PRODUCTION_DIR = "<production folder path>"
 EVALUATION_DIR = "<evaluation folder path>"
 STAGING_FOLDER = "<staging folder path>"
@@ -13,7 +10,7 @@ FOLDER_NAME_FORMAT = "%Y-%m-%d-%H%M"
 VIRTUALENV_PREFIX = "source <virtualenv path>"
 
 def deploy():
-  env.hosts = ["user@hostname"]
+  env.hosts = ["<user@hostname>"]
   # env.no_keys = True
   
 def production():
@@ -52,5 +49,5 @@ def __update_instance(folder_name, instance_dir):
     run('echo "INFO: New deployment in %s" >> ../log/makahiki.log' % folder_name)
     
     # Create symlink and restart process
-    run("ln -fns %s %smakahiki" % (instance_dir + folder_name, instance_dir))
+    run("ln -fns %s %smakahiki" % (instance_dir + folder_name + '/makahiki', instance_dir))
     run("touch %smakahiki/deploy/pinax.wsgi" % instance_dir)
