@@ -1,6 +1,6 @@
 from django.core import management
 from django.contrib.auth.models import User
-from apps.components.floors.models import Floor
+from components.floors.models import Floor
 from django.db.utils import IntegrityError
 
 class Command(management.base.BaseCommand):

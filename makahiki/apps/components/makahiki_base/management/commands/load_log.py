@@ -1,7 +1,7 @@
 from django.core import management
 
 import re
-from apps.components.analytics.models import ApacheLog, MakahikiLog
+from components.analytics.models import ApacheLog, MakahikiLog
 
 def load_apache_log(filename, format):
 

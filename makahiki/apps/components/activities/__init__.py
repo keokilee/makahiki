@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 
 # Directory in which to save image files for ActivityMember verification.
-from apps.components.activities.models import Activity, ActivityMember, CommitmentMember
+from components.activities.models import Activity, ActivityMember, CommitmentMember
 
 ACTIVITY_FILE_DIR = getattr(settings, 'ACTIVITY_FILE_DIR', 'activities')
 

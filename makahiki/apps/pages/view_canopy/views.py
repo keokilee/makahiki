@@ -14,7 +14,7 @@ from components.canopy.models import Mission, Post, MissionMember
 from components.makahiki_profiles.models import Profile
 from pages.view_canopy.decorators import can_access_canopy
 from pages.view_canopy.forms import WallForm
-from apps.components.floors.models import Floor,Dorm
+from components.floors.models import Floor,Dorm
 
 # Number of posts to load at a time.
 
