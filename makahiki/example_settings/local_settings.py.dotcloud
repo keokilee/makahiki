@@ -22,7 +22,7 @@ GDATA_KEY = 'KEY'
 
 MEDIA_ROOT = '/home/dotcloud/data/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/dotcloud/data/static/'
+STATIC_ROOT = '/home/dotcloud/data/static/makahiki/'
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
