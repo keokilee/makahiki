@@ -1,0 +1,53 @@
+from settings import *
+
+import json
+with open('/home/dotcloud/environment.json') as f:
+    env = json.load(f)
+    
+# Override for the secret key setting.
+# SECRET_KEY = "<SECRET_KEY>"
+
+# You might need this additional setting if you're running on Apache.
+LOCALE_SETTING = 'en_US.UTF-8'
+
+# FACEBOOK_APP_ID = '<APP ID>'
+# FACEBOOK_API_KEY = '<API_KEY>'
+# FACEBOOK_SECRET_KEY = '<SECRET_KEY>'
+
+# GData settings
+
+GDATA_EMAIL = "EMAIL"
+GDATA_PASSWORD = 'PASSWORD'
+GDATA_KEY = 'KEY'
+
+MEDIA_ROOT = '/home/dotcloud/data/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = '/home/dotcloud/data/static/makahiki/'
+STATIC_URL = '/static/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'template1',
+    'USER': env['DOTCLOUD_DB_SQL_LOGIN'],
+    'PASSWORD': env['DOTCLOUD_DB_SQL_PASSWORD'],
+    'HOST': env['DOTCLOUD_DB_SQL_HOST'],
+    'PORT': int(env['DOTCLOUD_DB_SQL_PORT']),
+  }
+}
+
+LOCAL_INSTALLED_APPS = ('django.contrib.staticfiles',)
+
+# Email settings
+ADMINS = (
+    # ('Your Name', 'your_email@domain.com'),
+)
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "USER"
+EMAIL_HOST_PASSWORD = "PASSWORD"
+# This prints sent emails out to the console.  If you want to actually send email, comment this out.
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
