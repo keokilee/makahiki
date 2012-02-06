@@ -257,6 +257,7 @@ INSTALLED_APPS = (
     
     # migration support. comment out if module is not installed.
     'south',
+    'gunicorn',
 )
 
 FIXTURE_DIRS = [
