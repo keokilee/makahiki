@@ -28,9 +28,6 @@
   <form class="login uniForm" method="POST" action="{% url acct_login %}">
       <fieldset class="inlineLabels">
 	  {% csrf_token %}
-          {# <div class="form_block"> #}
-          {#     <a href="{% url acct_passwd_reset %}">Forgot your password?</a> #}
-          {# </div> #}
           {{ form|as_uni_form }}
           <div class="form_block">
               <input type="submit" value="Log in &raquo;" />

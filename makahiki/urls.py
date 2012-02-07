@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^prizes/', include('pages.view_prizes.urls')),
     
     # Component views.
+    url(r'^account/login/$', 'pages.landing.views.login', name="acct_login"),
     url(r'^account/cas/login/$', 'lib.django_cas.views.login'),
     url(r'^account/cas/logout/$', 'lib.django_cas.views.logout'),
     url(r'^ask-admin/', include('components.ask_admin.urls')),
