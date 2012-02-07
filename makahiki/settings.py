@@ -120,7 +120,7 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.middleware.csrf.CsrfResponseMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
     'lib.django_cas.middleware.CASMiddleware',
     'pages.home.middleware.CompetitionMiddleware',
     'lib.minidetector.Middleware',
