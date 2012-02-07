@@ -92,3 +92,5 @@ ybrowserauth==1.2
 # Required by Heroku #
 psycopg2==2.4.2
 gunicorn
+pylibmc==1.2.2
+django-pylibmc-sasl==0.2.4
