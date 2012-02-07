@@ -337,7 +337,15 @@ if DEMO:
     from demo.competition_settings import *
   except ImportError:
     pass
-    
+ 
+# Setup for memcache on heroku.
+if 'MEMCACHE_USERNAME' in os.environ:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_pylibmc.memcached.PyLibMCCache'
+        }
+    }
+
 # Logging is defined down here to give local_settings a chance to override 
 # the default log file location.
 LOGGING = {
