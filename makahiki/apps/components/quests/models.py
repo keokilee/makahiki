@@ -71,7 +71,7 @@ class Quest(models.Model):
       return False
       
     # Note in this case, we don't care if the user already has the quest.
-    member, created = QuestMember.objects.get_or_create(quest=self, user=user)
+    member, _ = QuestMember.objects.get_or_create(quest=self, user=user)
     member.opt_out = True
     member.save()
     return True

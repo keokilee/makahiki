@@ -27,9 +27,9 @@ setup_environ(settings_mod)
 sys.path.insert(0, join(settings.PINAX_ROOT, "apps"))
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 
-from components.makahiki_profiles.models import *
-from components.makahiki_profiles import *
-from components.activities.models import *
+#from components.makahiki_profiles.models import *
+#from components.makahiki_profiles import *
+from components.activities.models import ActivityMember,CommitmentMember, reverse, Site, User
 from components.makahiki_notifications.models import UserNotification, NoticeTemplate
 from components.makahiki_base import in_competition, get_round_info
 from django.db.models import Q
