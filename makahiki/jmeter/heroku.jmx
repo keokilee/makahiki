@@ -162,7 +162,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">LOGIN_AUTH_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">name=&quot;csrfmiddlewaretoken&quot; value=&quot;(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.regex">name=&apos;csrfmiddlewaretoken&apos; value=&apos;(.*?)&apos;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>

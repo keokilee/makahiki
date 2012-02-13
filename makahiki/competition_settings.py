@@ -20,4 +20,4 @@ COMPETITION_ROUNDS = {
 
 # When enabled, users who try to access the site before or after the competition ends are blocked.
 # Admin users are able to log in at any time.
-CAN_ACCESS_OUTSIDE_COMPETITION = False
+CAN_ACCESS_OUTSIDE_COMPETITION = True
