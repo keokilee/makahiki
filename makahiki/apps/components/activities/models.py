@@ -30,7 +30,7 @@ class Category(models.Model):
   """Categories used to group commitments and activities."""
   name = models.CharField(max_length=255, help_text="255 character maximum")
   slug = models.SlugField(help_text="Automatically generated if left blank.", null=True)
-
+  
   class Meta:
     verbose_name_plural = "categories"
 

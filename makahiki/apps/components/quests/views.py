@@ -27,7 +27,7 @@ def opt_out(request, slug):
     referer = re.sub(r'\?.*$', '', referer) # Chomp off the query parameters.
     quest = get_object_or_404(Quest, quest_slug=slug)
     if quest.can_add_quest(request.user):
-      member, created = QuestMember.objects.get_or_create(user=request.user, quest=quest)
+      member, _ = QuestMember.objects.get_or_create(user=request.user, quest=quest)
       member.opt_out = True
       member.save()
 
